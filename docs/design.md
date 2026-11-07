@@ -10,7 +10,7 @@ the insider. The name is English and reads instantly in French.
 The mark is three rising bars, Sieyès' *nothing, something, everything*, which also reads as a bar chart.
 The third bar is the people, split red (left) and blue (right) in the French convention, the same split as
 the active-tab underline. Wordmark: Archivo 850 condensed **THIRD** + 300 **ESTATE**, uppercase. Favicon:
-the mark on the ink tile. Share image: `public/og.png` (1200×630).
+the mark on the ink tile. Catchphrase: Article 15 of the 1789 Declaration, *« La société a le droit de demander compte à tout agent public de son administration »*, shortened on the homepage to « Demander compte à tout agent public ». Share image: `public/og.png` (1200×630).
 
 A data desk, not a blog template. The page is a black-framed news product: one grotesk for
 everything people read, a monospace for everything that annotates, a 3px ink rule to open

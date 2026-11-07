@@ -41,7 +41,7 @@ export async function renderHome(app: HTMLElement) {
   app.innerHTML = `
     <section class="page home">
       <header class="page-head hero welcome">
-        <p class="eyebrow">Third Estate · ${L("de votre mairie à l’Élysée", "from your town hall to the Élysée")} <span class="live-badge" id="live-badge" hidden><i></i><span id="live-count"></span></span></p>
+        <p class="eyebrow">Third Estate · ${L("« Demander compte à tout agent public »", "“Ask every public official to account”")} <span class="eyebrow-cite">${L("Art. 15, Déclaration de 1789", "Art. 15, Declaration of 1789")}</span> <span class="live-badge" id="live-badge" hidden><i></i><span id="live-count"></span></span></p>
         <h1>${L("Tout ce qui se décide là où vous vivez", "Everything being decided where you live")}</h1>
         <p class="dek">${L("Vos élus, du maire au député et au sénateur, comment ils votent, ce qu’ils ont promis, et la vie de votre commune : emploi, écoles, sécurité, actualité, et ce qui en fait le charme.", "Your elected officials, from mayor to MP and senator, how they vote, what they promised, and life in your town: jobs, schools, safety, news, and what makes it a good place.")}</p>
         ${searchBox(L("Votre adresse, votre ville ou votre code postal", "Your address, town or postcode"))}
