@@ -973,3 +973,10 @@ body { overflow-x: clip; }
 .fc-trend-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.6rem 1rem; margin-bottom: 0.4rem; }
 .fc-trend-head h3 { margin: 0; font-size: 1.05rem; }
 .small-tabs button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+/* Section band: let the town-search suggestions hang below it (they were clipped after the first row).
+   The drifting dots stay inside the band by geometry instead of overflow:hidden. */
+.sec-hero { overflow-x: clip; overflow-y: visible; z-index: 5; }
+.sec-hero::after { top: 0; height: 100%; }
+.sec-hero .town-search { position: relative; z-index: 40; }
+.suggest { max-height: min(60vh, 460px); overflow-y: auto; }
