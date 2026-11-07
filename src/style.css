@@ -713,3 +713,4 @@ figure.spectrum + p { margin-top: 0.7rem; }
 .q-card:focus-visible { outline: 2px solid var(--focus, #4b2fd0); outline-offset: 3px; }
 footer .foot-quote { font-style: italic; color: #8e919b; font-size: 0.82rem; }
 footer .foot-quote span { font-style: normal; font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; margin-left: 0.3rem; }
+.eyebrow .eyebrow-cite { color: var(--ink-3, #8a8d96); margin-left: 0.4rem; }
