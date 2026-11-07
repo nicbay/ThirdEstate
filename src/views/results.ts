@@ -6,13 +6,17 @@ import { LEG_BLOCS, NUANCE_LABEL, meta, nuanceColor, registerParties } from "../
 import { pollValue, trend, type Poll } from "../lib/polls";
 import { esc } from "../util";
 import { renderPresidential } from "./presidential";
+import { renderHistoryList } from "./history";
+import { renderShifts } from "./shifts";
 
 const TABS = [
-  { key: "presidentielle-2022", fr: "Présidentielle 2022", en: "2022 presidential" },
+  { key: "presidentielles", fr: "Présidentielles depuis 1848", en: "Presidential elections since 1848" },
+  { key: "bascules", fr: "Bascules gauche-droite", en: "Left–right shifts" },
+  { key: "presidentielle-2022", fr: "2022 : sondages et résultat", en: "2022: polls vs result" },
   { key: "legislatives-2024", fr: "Législatives 2024", en: "2024 legislative" },
 ];
 
-export async function renderResults(app: HTMLElement, tab = "presidentielle-2022") {
+export async function renderResults(app: HTMLElement, tab = "presidentielles") {
   app.innerHTML = `
     <section class="page">
       <div class="page-head">
@@ -24,7 +28,9 @@ export async function renderResults(app: HTMLElement, tab = "presidentielle-2022
     </section>`;
   const pane = app.querySelector<HTMLElement>("#pane")!;
   if (tab === "legislatives-2024") await legislatives(pane);
-  else await presidential2022(pane);
+  else if (tab === "presidentielle-2022") await presidential2022(pane);
+  else if (tab === "bascules") await renderShifts(pane);
+  else await renderHistoryList(pane);
 }
 
 const norm = (s: string) => s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().replace(/[^a-z]/g, "");

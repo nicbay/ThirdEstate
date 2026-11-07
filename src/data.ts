@@ -131,6 +131,8 @@ export interface Depute {
   hatvp: string | null;
   email: string | null;
   socials: Record<string, string>;
+  /** where each account was found (merged from socials.json) */
+  socialSources?: Record<string, { source: string; confidence: string }>;
   groupe: { id: string; abrev: string; libelle: string; couleur: string } | null;
   region: string | null;
   departement: string | null;
@@ -147,7 +149,25 @@ const memo = <T>(fn: () => Promise<T>) => {
   let p: Promise<T> | null = null;
   return () => (p ??= fn());
 };
-export const loadDeputes = memo(() => fetchJson<Depute[]>("/data/an/deputes.json"));
+/** MPs, with accounts found by scripts/sync-socials.mjs merged over the ones declared to the Assemblée. */
+export const loadDeputes = memo(async () => {
+  type Found = Record<string, Record<string, { url: string; handle?: string; source: string; confidence: string }>>;
+  const [deps, found] = await Promise.all([
+    fetchJson<Depute[]>("/data/an/deputes.json"),
+    fetchJson<Found>("/data/an/socials.json").catch((): Found => ({})),
+  ]);
+  for (const d of deps) {
+    const f = found[d.id];
+    if (!f) continue;
+    d.socialSources = {};
+    for (const [platform, acc] of Object.entries(f)) {
+      if (!acc?.url) continue;
+      d.socials[platform] = acc.url;
+      d.socialSources[platform] = { source: acc.source, confidence: acc.confidence };
+    }
+  }
+  return deps;
+});
 export const loadScrutins = memo(() => fetchJson<Scrutin[]>("/data/an/scrutins.json"));
 export const loadAnMeta = memo(() => fetchJson<{ syncedAt: string }>("/data/an/meta.json"));
 export const loadVotes = (id: string) => fetchJson<Record<string, "P" | "C" | "A" | "N">>(`/data/an/votes/${id}.json`);
@@ -190,3 +210,49 @@ export async function fetchJson<T>(url: string): Promise<T> {
   if (!res.ok) throw new Error(`${res.status} ${url}`);
   return res.json() as Promise<T>;
 }
+
+
+// ---------- history ----------
+export type Side = "left" | "centre" | "right" | "other";
+export interface HistMedia { type: "tv" | "radio" | "newsreel" | "newspaper"; provider?: string; url: string; embed?: string | null; start?: number; title?: string; publisher?: string; date?: string | null }
+export interface HistCandidate { id: string; name: string; party: string; family: string; side: Side; votes: number; pct: number; elected?: boolean; qualified?: boolean; other?: boolean }
+export interface HistRound {
+  id: string; round: number; date: string; decisive: boolean; turnoutPct: number | null;
+  totals: { inscrits: number | null; votants: number | null; exprimes: number };
+  candidates: HistCandidate[];
+  departments: null | { count: number; coveragePct: number; rows: Record<string, { name: string; exprimes: number; votes: Record<string, number> }> };
+  media: HistMedia | null; mediaAlternatives?: HistMedia[]; mediaSearched?: string;
+  checks?: string[];
+  sources: { national: { name: string; page?: string; permalink?: string; licence?: string } };
+}
+export interface HistElection {
+  id: string; year: number; title: { fr: string; en: string }; regime: string | { id: string; fr: string; en: string };
+  method: { fr: string; en: string }; direct: boolean;
+  winner: { id: string; name: string; party: string; family: string; side: Side };
+  rounds: HistRound[];
+}
+export interface HistIndex { elections: (Omit<HistElection, "rounds"> & { regime: string; rounds: { id: string; round: number; date: string; decisive: boolean; turnoutPct: number | null; top: { name: string; party: string; side: Side; pct: number }[]; departments: number; media: { type: string; url: string } | null }[] })[] }
+export const loadHistIndex = memo(() => fetchJson<HistIndex>("/data/history/presidential/index.json"));
+export const loadHistElection = (id: string) => fetchJson<HistElection>(`/data/history/presidential/${id}.json`);
+
+/** [from, to, to − from] */
+export type Triple = [number, number, number];
+export interface ShiftUnit { lon: number; lat: number; name?: string; lr: Triple; farRight: Triple; centre: Triple; turnout: Triple; left: Triple; right: Triple }
+export interface ShiftPair { from: number; to: number; fromId: string; toId: string; fromDate: string; toDate: string; level: "department" | "district"; national: Omit<ShiftUnit, "lon" | "lat">; units: Record<string, ShiftUnit> }
+export const loadShifts = memo(() => fetchJson<{ metrics: Record<string, string>; pairs: ShiftPair[] }>("/data/history/legislative/shifts.json"));
+
+// ---------- red / blue feed ----------
+export interface FeedReaction {
+  id: string; platform: string; url: string; time: string; text: string; handle?: string;
+  mp: { id: string; name: string; group?: { abrev: string; libelle: string; couleur: string } };
+  metrics?: { likes?: number; reposts?: number; replies?: number };
+  rating?: {
+    political: boolean;
+    lean: { score: number; rationale_fr: string; rationale_en: string };
+    populism: { score: number; markers: string[]; rationale_fr: string; rationale_en: string };
+    check: null | { claim: string; why_fr: string; why_en: string; sources: { title: string; url: string }[] };
+    model: string; ratedAt: string;
+  };
+}
+export interface FeedStory { id: string; title: string; firstTime: string; lastTime: string; outlets: string[]; items: { outlet: string; title: string; link: string; time: string; summary?: string }[]; reactions?: FeedReaction[] }
+export const loadFeed = () => fetchJson<{ generatedAt: string; windowHours: number; outlets: { id: string; name: string; lean: string }[]; counts: Record<string, number>; stories: FeedStory[] }>("/data/feed/latest.json");

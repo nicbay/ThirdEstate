@@ -9,6 +9,8 @@ import { renderCirco } from "./views/circo";
 import { renderDepute } from "./views/depute";
 import { renderSources } from "./views/sources";
 import { initTooltip } from "./lib/tooltip";
+import { renderElection } from "./views/history";
+import { renderFeed } from "./views/feed";
 
 const app = document.getElementById("app")!;
 const nav = document.getElementById("nav")!;
@@ -28,13 +30,16 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/circo\/(\w{4,5})$/, (m) => renderCirco(app, m[1])],
   [/^#\/depute\/(PA\d+)$/, (m) => renderDepute(app, m[1])],
   [/^#\/sources$/, () => renderSources(app)],
+  [/^#\/histoire\/([\w-]+)$/, (m) => renderElection(app, m[1])],
+  [/^#\/fil$/, () => renderFeed(app)],
 ];
 
 const SECTIONS = [
   { href: "#/", match: /^#\/$/, fr: "2027", en: "2027" },
+  { href: "#/fil", match: /^#\/fil/, fr: "Fil rouge, fil bleu", en: "Red feed, blue feed" },
   { href: "#/sondages", match: /^#\/sondages/, fr: "Sondages", en: "Polls" },
   { href: "#/simulateur", match: /^#\/simulateur/, fr: "Simulateur", en: "Simulator" },
-  { href: "#/resultats", match: /^#\/resultats/, fr: "Résultats", en: "Results" },
+  { href: "#/resultats", match: /^#\/(resultats|histoire)/, fr: "Histoire et résultats", en: "History & results" },
   { href: "#/assemblee", match: /^#\/(assemblee|circo|depute)/, fr: "Assemblée", en: "Parliament" },
 ];
 

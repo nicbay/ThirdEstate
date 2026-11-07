@@ -5,6 +5,13 @@ import { esc } from "../util";
 import { photoUrl } from "./deputes";
 
 const PAGE = 20;
+const href = (platform: string, v: string) => (v.startsWith("http") ? v : (SOCIAL_URL[platform] ?? ((h: string) => h))(v));
+const PLATFORM_LABEL: Record<string, string> = { twitter: "X", instagram: "Instagram", facebook: "Facebook", linkedin: "LinkedIn", bluesky: "Bluesky", tiktok: "TikTok", youtube: "YouTube", mastodon: "Mastodon", website: "Site web" };
+const SOURCE_LABEL: Record<string, [string, string]> = {
+  assemblee: ["déclaré à l’Assemblée", "declared to the Assemblée"], an: ["déclaré à l’Assemblée", "declared to the Assemblée"],
+  wikidata: ["Wikidata", "Wikidata"], site: ["lié depuis son site", "linked from their website"], override: ["vérifié manuellement", "checked by hand"],
+  nosdeputes: ["NosDéputés.fr", "NosDéputés.fr"], bluesky: ["recherche Bluesky", "Bluesky search"], group: ["page du groupe ou du parti", "group or party page"], party: ["page du parti", "party page"],
+};
 const SOCIAL_URL: Record<string, (h: string) => string> = {
   twitter: (h) => `https://x.com/${h.replace(/^@/, "")}`,
   instagram: (h) => `https://www.instagram.com/${h.replace(/^@/, "")}`,
@@ -57,14 +64,20 @@ export async function renderDepute(app: HTMLElement, id: string) {
             ${d.hatvp ? `<dt>HATVP</dt><dd><a href="${esc(d.hatvp)}" target="_blank" rel="noopener">${s.hatvp} ↗</a> <span class="muted small">${L("parcours, activités et intérêts déclarés", "declared career, activities and interests")}</span></dd>` : ""}
             <dt>LinkedIn</dt><dd>${
               d.socials.linkedin
-                ? `<a href="${esc(SOCIAL_URL.linkedin(d.socials.linkedin))}" target="_blank" rel="noopener">${L("Profil déclaré à l’Assemblée", "Profile declared to the Assemblée")} ↗</a>`
+                ? `<a href="${esc(href("linkedin", d.socials.linkedin))}" target="_blank" rel="noopener">${L("Voir le profil", "View profile")}</a>`
                 : `<a href="https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(`${d.prenom} ${d.nom} député`)}" target="_blank" rel="noopener">${L("Rechercher sur LinkedIn", "Search LinkedIn")} ↗</a> <span class="muted small">${L("aucun profil déclaré", "no profile declared")}</span>`
             }</dd>
           </dl>
           <h3>${s.contact} <span class="score" title="${L("Nombre de réseaux déclarés sur 5 (X, Facebook, Instagram, LinkedIn, site web)", "Channels declared out of 5 (X, Facebook, Instagram, LinkedIn, website)")}">${L("Présence numérique", "Digital presence")} ${presence(d)}/${PLATFORMS.length}</span></h3>
           <ul class="socials">
             ${d.email ? `<li><a href="mailto:${esc(d.email)}">✉ ${esc(d.email)}</a></li>` : ""}
-            ${Object.entries(d.socials).map(([k, v]) => `<li><a href="${esc((SOCIAL_URL[k] ?? ((h: string) => h))(v))}" target="_blank" rel="noopener">${esc(k)} · ${esc(v)}</a></li>`).join("")}
+            ${Object.entries(d.socials)
+              .map(([k, v]) => {
+                const src = d.socialSources?.[k]?.source;
+                const lbl = src ? SOURCE_LABEL[src] ?? [src, src] : SOURCE_LABEL.assemblee;
+                return `<li><a href="${esc(href(k, v))}" target="_blank" rel="noopener">${esc(PLATFORM_LABEL[k] ?? k)}</a> <span class="muted small">${esc(L(lbl[0], lbl[1]))}</span></li>`;
+              })
+              .join("")}
           </ul>
         </div>
         <div class="card">
