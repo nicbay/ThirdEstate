@@ -106,7 +106,7 @@ p.muted.pad { font-family: var(--mono); font-size: 0.8rem; text-transform: upper
   background: var(--ink); color: #fff;
 }
 .brand { display: inline-flex; align-items: center; gap: 0.55rem; color: #fff; text-decoration: none; white-space: nowrap; font-family: var(--display); font-size: 1.28rem; letter-spacing: -0.01em; line-height: 1; }
-.brand svg { flex: none; width: 24px; height: 22px; }
+.brand svg { flex: none; width: 28px; height: 28px; }
 .brand b { font-weight: 850; font-stretch: 75%; text-transform: uppercase; letter-spacing: 0.01em; }
 .brand b span { font-weight: 300; color: #d8d9de; margin-left: 0.22em; }
 .brand:hover { text-decoration: none; }
