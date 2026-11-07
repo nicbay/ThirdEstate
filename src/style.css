@@ -404,3 +404,18 @@ footer { max-width: var(--col); margin: 0 auto; padding: 1.5rem 16px 3rem; borde
 .where-form div { display: flex; gap: 0.5rem; margin-top: 0.4rem; }
 .where-form input { font: 1.1rem var(--sans); width: 8rem; border: 1px solid #b9bcc2; border-radius: 3px; padding: 0.45rem 0.6rem; letter-spacing: 0.08em; }
 .where-form .button { margin-top: 0; }
+
+/* ---------- district profile ---------- */
+.local-kpis { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.4rem 2rem; }
+.lk { display: grid; gap: 0.25rem; font-family: var(--sans); }
+.lk strong { font: 600 1.7rem/1.1 var(--serif); font-variant-numeric: lining-nums; }
+.tiny { font-size: 0.72rem; }
+.scale { position: relative; display: block; height: 6px; background: linear-gradient(90deg, #e9e9e6, #cfd2d6); margin: 0.35rem 0 0.15rem; min-width: 90px; }
+.scale .med { position: absolute; top: -3px; width: 2px; height: 12px; background: var(--ink); transform: translateX(-1px); }
+.scale .val { position: absolute; top: -3px; width: 12px; height: 12px; border-radius: 50%; background: var(--link); border: 2px solid #fff; transform: translateX(-6px); box-shadow: 0 0 0 1px var(--link); }
+.table .scale { margin: 0; }
+.cmp { color: var(--ink-2); }
+.cmp-worse { color: var(--C); }
+.cmp-better { color: var(--P); }
+.events { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; font-family: var(--sans); font-size: 0.92rem; }
+.events li { border-top: 1px solid var(--rule); padding-top: 0.5rem; }

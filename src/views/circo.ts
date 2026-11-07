@@ -6,6 +6,7 @@ import { mapPaths, rewind } from "../lib/map";
 import { esc } from "../util";
 import { PLATFORMS, age, presence } from "./assemblee";
 import { photoUrl } from "./deputes";
+import { renderDistrictProfile } from "./district-profile";
 
 export async function renderCirco(app: HTMLElement, code: string) {
   const dep = code.slice(0, -2);
@@ -50,7 +51,9 @@ export async function renderCirco(app: HTMLElement, code: string) {
         </div>
         <article class="card"><svg id="m" viewBox="0 0 400 400"></svg><p class="muted small">${L("En surbrillance : cette circonscription dans son département.", "Highlighted: this district within its department.")}</p></article>
       </div>
+      <div id="profile" class="stack-col"></div>
     </section>`;
+  renderDistrictProfile(app.querySelector<HTMLElement>("#profile")!, code);
 
   // district map (missing for French abroad)
   loadCircoGeo(dep)
