@@ -7,10 +7,13 @@
 //              (tabular API for 2022 and 2024; raw files for 2012 polling stations and 2017 xlsx)
 //   1958–2007  Sciences Po CDSP "Élections législatives 1958-2012" (ODbL), by old district,
 //              aggregated here to departments
+//   1848–1956  Cagé & Piketty (2023), "Une histoire du conflit politique", by commune (already mapped to
+//              today's departments by the authors), aggregated here to departments; free use with citation
 //
 // Output (public/data/history/legislative/):
 //   <year>.json   2012–2024: results by district (both rounds) + national
-//                 1958–2007: first-round results by department + national
+//                 1848–2007: first-round results by department + national
+//                 (two elections in 1946: 1946-06.json and 1946-11.json)
 //   shifts.json   per consecutive pair: left–right, far-right, centre and turnout shift for
 //                 each district (2012→2017, 2017→2022, 2022→2024) and each department (1958→…→2024),
 //                 with centroids (lon/lat) for drawing arrows
@@ -19,8 +22,9 @@
 
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { unzipSync } from "fflate";
 import { readSheet } from "./lib/xlsx.mjs";
-import { BLOCS, BLOC_KEYS, LEFT, RIGHT, NUANCE_BLOC, NUANCE_LABEL, CDSP_BLOC, CDSP_LABEL } from "./lib/legislative-blocs.mjs";
+import { BLOCS, BLOC_KEYS, LEFT, RIGHT, NUANCE_BLOC, NUANCE_LABEL, CDSP_BLOC, CDSP_LABEL, CP_BLOC, CP_FAMILY, CP_FAMILY_LABEL, CP_LABEL } from "./lib/legislative-blocs.mjs";
 
 const ROOT = new URL("../", import.meta.url);
 const OUT = new URL("public/data/history/legislative/", ROOT);
@@ -77,6 +81,36 @@ const CDSP = {
   2002: { id: "332b2dc4-2c62-4eca-89bb-27ec39af6edc", date: "2002-06-09" },
   2007: { id: "5527d841-95fd-41b0-ac8c-a182b0980748", date: "2007-06-10" },
 };
+// Cagé–Piketty files (https://unehistoireduconflitpolitique.fr/telecharger.html). system: "list" =
+// department-list majority vote (scrutin de liste), "pr" = proportional by department, otherwise
+// single-member districts in two rounds. July 1871 (complementary by-elections) is left out.
+const CP_SITE = "https://unehistoireduconflitpolitique.fr/telecharger.html";
+const CP_ZIP = (name) => `https://conflit-politique-data.ams3.cdn.digitaloceanspaces.com/zip/${name}_csv.zip`;
+const CP = {
+  "1848": { zip: "leg1848", date: "1848-04-23", system: "list" },
+  "1849": { zip: "leg1849", date: "1849-05-13", system: "list" },
+  "1871": { zip: "leg1871fev", date: "1871-02-08", system: "list" },
+  "1876": { zip: "leg1876", date: "1876-02-20" },
+  "1881": { zip: "leg1881", date: "1881-08-21" },
+  "1885": { zip: "leg1885", date: "1885-10-04", system: "list" },
+  "1889": { zip: "leg1889", date: "1889-09-22" },
+  "1893": { zip: "leg1893", date: "1893-08-20" },
+  "1898": { zip: "leg1898", date: "1898-05-08" },
+  "1902": { zip: "leg1902", date: "1902-04-27" },
+  "1906": { zip: "leg1906", date: "1906-05-06" },
+  "1910": { zip: "leg1910", date: "1910-04-24" },
+  "1914": { zip: "leg1914", date: "1914-04-26" },
+  "1919": { zip: "leg1919", date: "1919-11-16", system: "list" },
+  "1924": { zip: "leg1924", date: "1924-05-11", system: "list" },
+  "1928": { zip: "leg1928", date: "1928-04-22" },
+  "1932": { zip: "leg1932", date: "1932-05-01" },
+  "1936": { zip: "leg1936", date: "1936-04-26" },
+  "1945": { zip: "leg1945", date: "1945-10-21", system: "pr" },
+  "1946-06": { zip: "leg1946Juin", date: "1946-06-02", system: "pr" },
+  "1946-11": { zip: "leg1946Nov", date: "1946-11-10", system: "pr" },
+  "1951": { zip: "leg1951", date: "1951-06-17", system: "pr" },
+  "1956": { zip: "leg1956", date: "1956-01-02", system: "pr" },
+};
 
 // ---------------------------------------------------------------- helpers
 const num = (x) => (typeof x === "number" ? x : x == null || x === "" ? 0 : Number(String(x).replace(/[\s%]/g, "").replace(",", ".")) || 0);
@@ -90,6 +124,17 @@ async function download(id) {
   console.log(`↓ ${RES(id)}`);
   const res = await fetch(RES(id));
   if (!res.ok) throw new Error(`${res.status} ${RES(id)}`);
+  const buf = Buffer.from(await res.arrayBuffer());
+  await writeFile(file, buf);
+  return buf;
+}
+
+async function downloadUrl(url, name) {
+  const file = new URL(name, CACHE);
+  if (!REFRESH && existsSync(file)) return readFile(file);
+  console.log(`↓ ${url}`);
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`${res.status} ${url}`);
   const buf = Buffer.from(await res.arrayBuffer());
   await writeFile(file, buf);
   return buf;
@@ -281,6 +326,47 @@ function parseCdsp(year, buf) {
   return { deps, gap };
 }
 
+// ---------------------------------------------------------------- Cagé–Piketty parser (department level)
+// One row per commune: dep, …, inscrits, votants, exprimes, voix<PARTY>… In list-vote years the files also
+// have voixtot<PARTY> (raw totals, several names per ballot); voix<PARTY> is the per-voter equivalent,
+// which adds up to valid votes, and is what we use.
+function parseCp(id, zipBuf) {
+  const files = unzipSync(new Uint8Array(zipBuf), { filter: (f) => !f.name.includes("MACOSX") && /comm\.csv$/.test(f.name) });
+  const [csv] = Object.values(files);
+  const rows = parseCsv(text(csv), ",");
+  const H = rows[0].map((h) => h.trim());
+  const col = { dep: H.indexOf("dep"), i: H.indexOf("inscrits"), v: H.indexOf("votants"), e: H.indexOf("exprimes") };
+  const parties = H.map((h, j) => [h, j]).filter(([h]) => /^voix(?!tot)/.test(h)).map(([h, j]) => [h.slice(4), j]);
+  const map = CP_BLOC[id];
+  const unknown = parties.filter(([c]) => !map[c]).map(([c]) => c);
+  if (unknown.length) warnings.push(`${id}: unmapped codes → DIV: ${unknown.join(" ")}`);
+  const deps = {};
+  let sumVotes = 0, sumExpr = 0;
+  for (const r of rows.slice(1)) {
+    const dep = r[col.dep] ? depCode(r[col.dep]) : "";
+    if (!dep) continue;
+    const d = (deps[dep] ??= { i: 0, v: 0, e: 0, nu: {} });
+    d.i += num(r[col.i]);
+    d.v += num(r[col.v]);
+    d.e += num(r[col.e]);
+    sumExpr += num(r[col.e]);
+    for (const [c, j] of parties) {
+      const x = num(r[j]);
+      if (!x) continue;
+      d.nu[c] = (d.nu[c] ?? 0) + x;
+      sumVotes += x;
+    }
+  }
+  // list-vote years have fractional per-voter votes: round the department sums
+  for (const d of Object.values(deps)) {
+    for (const k of ["i", "v", "e"]) d[k] = Math.round(d[k]);
+    for (const k of Object.keys(d.nu)) d.nu[k] = Math.round(d.nu[k]);
+  }
+  const gap = (100 * (sumVotes - sumExpr)) / sumExpr;
+  if (Math.abs(gap) > 0.5) warnings.push(`${id}: sum of votes differs from valid votes by ${gap.toFixed(2)} %`);
+  return { deps, gap };
+}
+
 // ---------------------------------------------------------------- geometry
 // Area-weighted planar centroid in lon/lat (districts are small enough for this to be accurate).
 // Each polygon is oriented by its own exterior ring, so files with mixed winding orders still work.
@@ -397,7 +483,7 @@ for (const year of [2012, 2017, 2022, 2024]) {
   if (unknown.size) warnings.push(`${year}: unmapped nuances → DIV: ${[...unknown].join(" ")}`);
   const natOut = (u) => ({ inscrits: u.i, votants: u.v, exprimes: u.e, turnout: r2(pct(u.v, u.i)), nuances: u.nu, blocs: blocVotes(u.nu, map), shares: metrics(u, map).shares });
   const national = { t1: natOut(nat.t1), t2: natOut(nat.t2), seats };
-  units[year] = { dist, dep, map, national: nat.t1 };
+  units[String(year)] = { year, date: MODERN[year].dates.t1, dist, dep, map, national: nat.t1 };
   const s = MODERN[year];
   await writeFile(
     new URL(`${year}.json`, OUT),
@@ -422,7 +508,7 @@ for (const [y, s] of Object.entries(CDSP)) {
   const map = CDSP_BLOC[year];
   const { deps, gap } = parseCdsp(year, await download(s.id));
   const nat = Object.values(deps).reduce(addUnit, empty());
-  units[year] = { dist: null, dep: deps, map, national: nat };
+  units[y] = { year, date: s.date, dist: null, dep: deps, map, national: nat };
   const used = new Set(Object.values(deps).flatMap((d) => Object.keys(d.nu)));
   await writeFile(
     new URL(`${year}.json`, OUT),
@@ -445,18 +531,57 @@ for (const [y, s] of Object.entries(CDSP)) {
   console.log(`✓ ${year}: ${Object.keys(deps).length} departments, turnout ${r2(pct(nat.v, nat.i))} %, votes vs valid ${gap.toFixed(2)} %`);
 }
 
+for (const [id, s] of Object.entries(CP)) {
+  const year = +id.slice(0, 4);
+  const map = CP_BLOC[id];
+  const { deps, gap } = parseCp(id, await downloadUrl(CP_ZIP(s.zip), `cp-${s.zip}_csv.zip`));
+  const nat = Object.values(deps).reduce(addUnit, empty());
+  units[id] = { year, date: s.date, dist: null, dep: deps, map, national: nat };
+  const used = new Set(Object.values(deps).flatMap((d) => Object.keys(d.nu)));
+  const round =
+    s.system === "pr" ? "single round (proportional representation by department)"
+    : s.system === "list" ? "first round, department-list vote (each voter chose several names; votes are per-voter equivalents)"
+    : "first round";
+  await writeFile(
+    new URL(`${id}.json`, OUT),
+    JSON.stringify({
+      year,
+      ...(id !== String(year) ? { id } : {}),
+      level: "department",
+      boundaries: "communes mapped by the source to today's departments, aggregated to departments",
+      dates: { t1: s.date },
+      round,
+      sources: [CP_SITE, CP_ZIP(s.zip)],
+      licence: "Free use with citation: J. Cagé and T. Piketty (2023), Une histoire du conflit politique. Élections et inégalités sociales en France, 1789-2022, Le Seuil",
+      coverage: "metropolitan France within the borders of the time; men only before 1945",
+      votesVsValid: r2(gap),
+      blocs: blocsOut,
+      nuances: Object.fromEntries([...used].sort().map((k) => [k, { label: CP_LABEL[k] ?? k, bloc: blocOf(map, k), family: CP_FAMILY_LABEL[CP_FAMILY[id][k]] ?? "divers" }])),
+      national: { t1: { inscrits: nat.i, votants: nat.v, exprimes: nat.e, turnout: r2(pct(nat.v, nat.i)), nuances: nat.nu, blocs: blocVotes(nat.nu, map), shares: metrics(nat, map).shares } },
+      departments: Object.fromEntries(Object.entries(deps).sort().map(([k, d]) => [k, { name: depNames[k] ?? null, t1: d }])),
+    })
+  );
+  console.log(`✓ ${id}: ${Object.keys(deps).length} departments, turnout ${r2(pct(nat.v, nat.i))} %, votes vs valid ${gap.toFixed(2)} %`);
+}
+
 // ---- shifts
-// Department units are harmonised per pair: before 1967 Paris/Seine (75, 92, 93, 94) and Seine-et-Oise
-// (78, 91, 95) did not exist as today's departments; before 1976 Corsica was one department (20).
+// Department units are harmonised per pair. The CDSP reports 1958–1962 by the departments of the time
+// (Paris/Seine = 75, Seine-et-Oise = 78; 91–95 date from 1968) and Corsica as 20 until 1976. When the two
+// elections of a pair report one of these groups differently, the group is merged in both years.
+// Cagé–Piketty map every commune to today's departments, so pairs between their elections are not merged.
 const MERGE = [
-  { key: "75", members: ["75", "92", "93", "94"], before: 1967, name: "Seine (75 + 92 + 93 + 94)" },
-  { key: "78", members: ["78", "91", "95"], before: 1967, name: "Seine-et-Oise (78 + 91 + 95)" },
-  { key: "20", members: ["2A", "2B", "20"], before: 1978, name: "Corse (2A + 2B)" },
+  { key: "75", members: ["75", "92", "93", "94"], name: "Seine (75 + 92 + 93 + 94)" },
+  { key: "78", members: ["78", "91", "95"], name: "Seine-et-Oise (78 + 91 + 95)" },
+  { key: "20", members: ["2A", "2B", "20"], name: "Corse (2A + 2B)" },
 ];
-function harmonise(depUnits, y0) {
+const mergesFor = (d0, d1) => {
+  const sig = (d, m) => m.members.filter((k) => d[k]).join();
+  return MERGE.filter((m) => sig(d0, m) !== sig(d1, m));
+};
+function harmonise(depUnits, merges) {
   const out = {};
   for (const [code, u] of Object.entries(depUnits)) {
-    const m = MERGE.find((m) => y0 < m.before && m.members.includes(code));
+    const m = merges.find((m) => m.members.includes(code));
     addUnit((out[m ? m.key : code] ??= empty()), u);
   }
   return out;
@@ -468,13 +593,15 @@ const unitCentroid = (key, merged, isDistrict) => {
   return fs.length ? centroid(fs) : null;
 };
 
-const YEARS = [...Object.keys(CDSP).map(Number), 2012, 2017, 2022, 2024].sort((a, b) => a - b);
+// elections in date order; ids are the year ("1958"), or "1946-06" / "1946-11"
+const ELECTIONS = Object.keys(units).sort((a, b) => units[a].date.localeCompare(units[b].date));
 const pairs = [];
 const pairOf = (y0, y1, level) => {
   const U0 = units[y0], U1 = units[y1];
   const isD = level === "district";
-  const a = isD ? U0.dist : harmonise(U0.dep, y0);
-  const b = isD ? U1.dist : harmonise(U1.dep, y0);
+  const merges = isD ? [] : mergesFor(U0.dep, U1.dep);
+  const a = isD ? U0.dist : harmonise(U0.dep, merges);
+  const b = isD ? U1.dist : harmonise(U1.dep, merges);
   const out = {};
   const missing = [];
   for (const key of Object.keys({ ...a, ...b }).sort()) {
@@ -482,7 +609,7 @@ const pairOf = (y0, y1, level) => {
       missing.push(key);
       continue;
     }
-    const merged = isD ? null : MERGE.find((m) => y0 < m.before && m.key === key);
+    const merged = merges.find((m) => m.key === key);
     const [lon, lat] = unitCentroid(key, merged, isD) ?? [null, null];
     const rec = { lon, lat, ...shift(a[key], b[key], U0.map, U1.map, y0, y1, metrics(U0.national, U0.map), metrics(U1.national, U1.map)) };
     if (!isD) rec.name = merged ? merged.name : depNames[key] ?? null;
@@ -490,23 +617,28 @@ const pairOf = (y0, y1, level) => {
     out[key] = rec;
   }
   return {
-    from: y0,
-    to: y1,
+    from: U0.year,
+    to: U1.year,
+    fromId: y0, // = year file name; differs from the year only for "1946-06" / "1946-11"
+    toId: y1,
+    fromDate: U0.date,
+    toDate: U1.date,
     level,
     national: shift(U0.national, U1.national, U0.map, U1.map, y0, y1),
     ...(missing.length ? { skipped: missing } : {}),
     units: out,
   };
 };
-for (let k = 1; k < YEARS.length; k++) pairs.push(pairOf(YEARS[k - 1], YEARS[k], "department"));
-for (const [y0, y1] of [[2012, 2017], [2017, 2022], [2022, 2024]]) pairs.push(pairOf(y0, y1, "district"));
+for (let k = 1; k < ELECTIONS.length; k++) pairs.push(pairOf(ELECTIONS[k - 1], ELECTIONS[k], "department"));
+for (const [y0, y1] of [["2012", "2017"], ["2017", "2022"], ["2022", "2024"]]) pairs.push(pairOf(y0, y1, "district"));
 
 await writeFile(
   new URL("shifts.json", OUT),
   JSON.stringify({
     generated: new Date().toISOString().slice(0, 10),
     doc: "docs/data-legislative-history.md",
-    round: "first round (1986: single round)",
+    round: "first round (single round for the proportional elections of 1945–1956 and 1986)",
+    elections: ELECTIONS.map((id) => ({ id, year: units[id].year, date: units[id].date })),
     units: "percentage points of valid votes (turnout: points of registered voters)",
     metrics: {
       lr: "(D + XD) − (XG + G + ECO) share of valid votes; positive = right of left. Centre (C) and DIV count in the denominator only.",
@@ -521,6 +653,6 @@ await writeFile(
     pairs,
   })
 );
-const nUnits = pairs.map((p) => `${p.from}→${p.to} ${p.level[0]}:${Object.keys(p.units).length}`).join(", ");
+const nUnits = pairs.map((p) => `${p.fromId}→${p.toId} ${p.level[0]}:${Object.keys(p.units).length}`).join(", ");
 console.log(`✓ shifts.json: ${nUnits}`);
 for (const w of warnings) console.warn(`⚠ ${w}`);

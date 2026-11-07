@@ -115,3 +115,70 @@ export const CDSP_LABEL = {
   "RADICAUX GAUCHE": "Radicaux de gauche", RDG: "Radicaux de gauche", PRG: "Parti radical de gauche", MAJ: "Majorité présidentielle", VEC: "Les Verts", GEC: "Génération écologie",
   UMP: "UMP", MODEM: "MoDem", PSLE: "Nouveau Centre", DIV: "Divers",
 };
+
+// ---------- Cagé & Piketty (2023), 1848–1956, communes mapped to today's departments ----------
+// Their own classification of every party column into five families — G (left), CG (centre-left),
+// C (centre), CD (centre-right), D (right) — taken from their Stata code
+// (CagePiketty2023CodesInformatiques → doAnnexeA2nuancespolitiqueslegislatives.txt). Where they split a
+// party between two families (e.g. 1848 DEMSOC 0.7 G / 0.3 CG) the larger share is used; their "DIV"
+// (split evenly across all five) stays DIV here. Families → our blocs: G, CG → G; C → C; CD, D → D,
+// then the overrides in CP_OVERRIDE.
+const f = (spec) => {
+  const out = {};
+  for (const [fam, codes] of Object.entries(spec)) for (const c of codes.split(/\s+/)) out[c] = fam;
+  return out;
+};
+export const CP_FAMILY = {
+  "1848": f({ G: "DEMSOC", C: "REPMOD", D: "CONS" }),
+  "1849": f({ G: "DEMSOC", C: "REPCONS", D: "CONS" }),
+  "1871": f({ G: "RAD REP", CG: "REPMOD", CD: "LIB BON PLEB CONS", D: "MON LEG CLE" }),
+  "1876": f({ G: "RAD", CG: "REP", C: "REPCONS CONST CENT CED", CD: "BON", D: "MON LEG CONS CLE" }),
+  "1881": f({ G: "SOCOUV RAD", CG: "UR", C: "DVG REP", CD: "CENT BON", D: "MON LEG REAC" }),
+  "1885": f({ G: "SOC RAD", CG: "RADREP", C: "REP OPP REPIND", CD: "BON MON", D: "CONS" }),
+  "1889": f({ G: "SOC RADSOC RAD", CG: "RADDIV", C: "REP OPP REPDIV", CD: "LIB REVIS BOUL BON", D: "MON CONS REAC" }),
+  "1893": f({ G: "SOCREV SOC RADSOC", CG: "RAD RADDIV", C: "REP REPDIV", CD: "REPLIB RALLIE REVIS BOUL BON", D: "REAC" }),
+  "1898": f({ G: "SOCREV SOC RADSOC", CG: "RAD", C: "REP OPP", CD: "REPDIV REPLIB RALLIE REVIS BON", D: "CONS MON ANT" }),
+  "1902": f({ G: "SOCGUES SOC", CG: "RADSOC RAD RADDIS", C: "REP REPMIN REPDIV", CD: "REPLIB RALLIE", D: "NATI REAC PLEBI" }),
+  "1906": f({ G: "SOCUNI SOC", CG: "RADSOC RAD", C: "REP", CD: "REPPROG REPLIB PROG LIB", D: "NATI REAC PLEBI CONS MON" }),
+  "1910": f({ G: "SFIO SOCIND", CG: "RADSOC RADIND", C: "RADDIV PROG RADARD", CD: "ARD FRARD FR", D: "FRLIB LIB CONS" }),
+  "1914": f({ G: "SFIO", CG: "REPSOC RADSOC", C: "RADIND", CD: "ADPRD", D: "FRPR ALP" }),
+  "1919": f({ G: "COM SFIO", CG: "REPSOC PRRS", C: "RADIND", CD: "ARD FRURD", D: "UNR ERD BN AF" }),
+  "1924": f({ G: "BOP", CG: "SFIO DVG REPSOC", C: "RADSOC REPRAD", CD: "RG", D: "URERD CONSAF" }),
+  "1928": f({ G: "PCF", CG: "SFIO DVG REPSOC", C: "RADSOC", CD: "ADRG ADIND", D: "FRURD DVD" }),
+  "1932": f({ G: "PCF", CG: "SFIO DVG REPSOC", C: "RADSOC", CD: "ADRG ADIND", D: "ADPDP FRURD AGR DVD" }),
+  "1936": f({ G: "PCF", CG: "SFIO DVG USR", C: "RADSOC", CD: "AD", D: "FRURD AGR DVD" }),
+  "1945": f({ G: "AUG PCF PCFSFIO", CG: "SFIO DVG", C: "RADSOC UDSR RG REP", CD: "MRP", D: "ADPAYS URDDVD PRL DVD" }),
+  "1946-06": f({ G: "PCF", CG: "SFIO DVG", C: "RADSOC UDSR RGR", CD: "MRP", D: "GAUL INDPAYS PRL DVD" }),
+  "1946-11": f({ G: "PCI PCF", CG: "SFIO", C: "RADSOC RGR", CD: "MRP GAULG", D: "GAUL INDPAYS PRL DVD" }),
+  "1951": f({ G: "PCF", CG: "SFIO DVG", C: "RADSOC UDSR RGR", CD: "MRP RGRIF UIPRN", D: "REP RPF DVD UNIR" }),
+  "1956": f({ G: "PCF", CG: "SFIO DVG", C: "RADSOC FRREP UDSR RGR", CD: "MRP CNI", D: "RFGAUL DVD UFFUDCA AUD" }),
+};
+const FAMILY_BLOC = { G: "G", CG: "G", C: "C", CD: "D", D: "D" };
+// Where we depart from the family rule (see doc):
+//  - MRP 1945–1956 → centre, as for 1958–1962 (Christian democrats of the "Third Force", not the right)
+//  - Poujadists 1956, Action française 1919 and the 1898 antisemitic lists → far right
+//  - PCI (Trotskyists, Nov. 1946) → far left
+export const CP_OVERRIDE = { MRP: "C", UFFUDCA: "XD", AF: "XD", ANT: "XD", PCI: "XG" };
+export const CP_BLOC = Object.fromEntries(
+  Object.entries(CP_FAMILY).map(([id, fam]) => [id, Object.fromEntries(Object.entries(fam).map(([c, fm]) => [c, CP_OVERRIDE[c] ?? FAMILY_BLOC[fm]]).concat([["DIV", "DIV"]]))])
+);
+export const CP_FAMILY_LABEL = { G: "gauche", CG: "centre gauche", C: "centre", CD: "centre droit", D: "droite" };
+
+export const CP_LABEL = {
+  DEMSOC: "Démocrates-socialistes (Montagne)", REPMOD: "Républicains modérés", REPCONS: "Républicains conservateurs", CONS: "Conservateurs", DIV: "Divers",
+  RAD: "Radicaux", REP: "Républicains", LIB: "Libéraux", BON: "Bonapartistes", PLEB: "Plébiscitaires", MON: "Monarchistes", LEG: "Légitimistes", CLE: "Cléricaux",
+  CONST: "Constitutionnels", CENT: "Centre", CED: "Centre droit", SOCOUV: "Socialistes ouvriers", UR: "Union républicaine", DVG: "Divers gauche", REAC: "Réactionnaires",
+  SOC: "Socialistes", RADREP: "Radicaux républicains", OPP: "Opportunistes", REPIND: "Républicains indépendants", RADSOC: "Radicaux-socialistes", RADDIV: "Radicaux divers",
+  REPDIV: "Républicains divers", REVIS: "Révisionnistes", BOUL: "Boulangistes", SOCREV: "Socialistes révolutionnaires", REPLIB: "Républicains libéraux", RALLIE: "Ralliés",
+  ANT: "Antisémites", SOCGUES: "Socialistes guesdistes", RADDIS: "Radicaux dissidents", REPMIN: "Républicains ministériels", NATI: "Nationalistes", PLEBI: "Plébiscitaires",
+  SOCUNI: "Socialistes unifiés (SFIO)", REPPROG: "Républicains progressistes", PROG: "Progressistes", SFIO: "SFIO", SOCIND: "Socialistes indépendants", RADIND: "Radicaux indépendants",
+  RADARD: "Radicaux (Alliance démocratique)", ARD: "Alliance républicaine démocratique", FRARD: "Fédération républicaine – ARD", FR: "Fédération républicaine", FRLIB: "Fédération républicaine – libéraux",
+  REPSOC: "Républicains socialistes", ADPRD: "Alliance démocratique – PRD", FRPR: "Fédération républicaine – progressistes", ALP: "Action libérale populaire", COM: "Communistes",
+  PRRS: "Parti radical et radical-socialiste", FRURD: "Fédération républicaine / URD", UNR: "Union nationale républicaine", ERD: "Entente républicaine démocratique", BN: "Bloc national",
+  AF: "Action française", BOP: "Bloc ouvrier et paysan (PCF)", REPRAD: "Républicains radicaux", RG: "Gauche radicale", URERD: "Union républicaine / ERD", CONSAF: "Conservateurs – Action française",
+  PCF: "Parti communiste", ADRG: "Alliance démocratique – Gauche radicale", ADIND: "Alliance démocratique – indépendants", DVD: "Divers droite", ADPDP: "Alliance démocratique – PDP",
+  AGR: "Agrariens", USR: "Union socialiste républicaine", AD: "Alliance démocratique", AUG: "Autres gauche", PCFSFIO: "Listes PCF-SFIO", UDSR: "UDSR", MRP: "MRP",
+  ADPAYS: "Alliance démocratique – paysans", URDDVD: "URD et divers droite", PRL: "Parti républicain de la liberté", RGR: "Rassemblement des gauches républicaines",
+  GAUL: "Gaullistes", INDPAYS: "Indépendants et paysans", PCI: "Parti communiste internationaliste", GAULG: "Union gaulliste", RGRIF: "RGR – indépendants", UIPRN: "Indépendants, paysans et républicains nationaux",
+  RPF: "RPF (gaullistes)", UNIR: "UNIR", FRREP: "Front républicain", CNI: "CNI", RFGAUL: "Républicains sociaux (gaullistes)", UFFUDCA: "Poujadistes (UFF-UDCA)", AUD: "Autres droite",
+};
