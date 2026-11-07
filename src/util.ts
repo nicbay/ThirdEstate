@@ -12,3 +12,14 @@ export function groupBy<T, K>(items: T[], key: (x: T) => K): Map<K, T[]> {
   }
   return m;
 }
+
+/** Only http(s) URLs from external data may reach href/src (security review M2). */
+export const safeUrl = (u: unknown): string => {
+  if (typeof u !== "string") return "#";
+  try {
+    const p = new URL(u, location.href);
+    return p.protocol === "https:" || p.protocol === "http:" ? p.href : "#";
+  } catch {
+    return "#";
+  }
+};
