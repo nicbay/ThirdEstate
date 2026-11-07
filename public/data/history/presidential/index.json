@@ -1,0 +1,2748 @@
+{
+ "generatedAt": "2026-11-07T12:00:44.132Z",
+ "doc": "docs/data-presidential-history.md",
+ "colours": {
+  "left": "red/pink",
+  "right": "blue",
+  "centre": "neutral",
+  "other": "grey"
+ },
+ "elections": [
+  {
+   "id": "1848",
+   "year": 1848,
+   "title": {
+    "fr": "Élection présidentielle française de 1848",
+    "en": "1848 French presidential election"
+   },
+   "regime": "IIe",
+   "method": {
+    "fr": "Suffrage universel masculin direct",
+    "en": "Direct universal male suffrage"
+   },
+   "direct": true,
+   "winner": {
+    "id": "louis-napoleon-bonaparte",
+    "name": "Louis-Napoléon Bonaparte",
+    "party": "Bonapartiste",
+    "family": "droite",
+    "side": "right"
+   },
+   "file": "1848.json",
+   "rounds": [
+    {
+     "id": "1848-t1",
+     "round": 1,
+     "date": "1848-12-10",
+     "decisive": true,
+     "turnoutPct": 75.6,
+     "exprimes": 7519035,
+     "top": [
+      {
+       "id": "louis-napoleon-bonaparte",
+       "name": "Louis-Napoléon Bonaparte",
+       "party": "Bonapartiste",
+       "side": "right",
+       "pct": 74.31,
+       "votes": 5587759
+      },
+      {
+       "id": "eugene-cavaignac",
+       "name": "Eugène Cavaignac",
+       "party": "Républicain modéré",
+       "side": "left",
+       "pct": 19.61,
+       "votes": 1474687
+      }
+     ],
+     "departments": 92,
+     "media": null
+    }
+   ]
+  },
+  {
+   "id": "1873",
+   "year": 1873,
+   "title": {
+    "fr": "Élection présidentielle française de 1873",
+    "en": "1873 French presidential election"
+   },
+   "regime": "IIIe",
+   "method": {
+    "fr": "Assemblée nationale (chambre unique) à Versailles",
+    "en": "National Assembly (single chamber) at Versailles"
+   },
+   "direct": false,
+   "winner": {
+    "id": "patrice-de-mac-mahon",
+    "name": "Patrice de Mac Mahon",
+    "party": "Légitimiste",
+    "family": "droite",
+    "side": "right"
+   },
+   "file": "1873.json",
+   "rounds": [
+    {
+     "id": "1873-t1",
+     "round": 1,
+     "date": "1873-05-24",
+     "decisive": true,
+     "turnoutPct": 50.78,
+     "exprimes": 391,
+     "top": [
+      {
+       "id": "patrice-de-mac-mahon",
+       "name": "Patrice de Mac Mahon",
+       "party": "Légitimiste",
+       "side": "right",
+       "pct": 99.74,
+       "votes": 390
+      },
+      {
+       "id": "jules-grevy",
+       "name": "Jules Grévy",
+       "party": "Républicain modéré",
+       "side": "left",
+       "pct": 0.26,
+       "votes": 1
+      }
+     ],
+     "departments": 0,
+     "media": null
+    }
+   ]
+  },
+  {
+   "id": "1879",
+   "year": 1879,
+   "title": {
+    "fr": "Élection présidentielle française de 1879",
+    "en": "1879 French presidential election"
+   },
+   "regime": "IIIe",
+   "method": {
+    "fr": "Parlement réuni en Congrès (Assemblée nationale) à Versailles",
+    "en": "Parliament sitting as a Congress (National Assembly) at Versailles"
+   },
+   "direct": false,
+   "winner": {
+    "id": "jules-grevy",
+    "name": "Jules Grévy",
+    "party": "Républicains modérés",
+    "family": "centre-gauche",
+    "side": "left"
+   },
+   "file": "1879.json",
+   "rounds": [
+    {
+     "id": "1879-t1",
+     "round": 1,
+     "date": "1879-01-30",
+     "decisive": true,
+     "turnoutPct": 89.13,
+     "exprimes": 670,
+     "top": [
+      {
+       "id": "jules-grevy",
+       "name": "Jules Grévy",
+       "party": "Républicains modérés",
+       "side": "left",
+       "pct": 84.03,
+       "votes": 563
+      },
+      {
+       "id": "alfred-chanzy",
+       "name": "Alfred Chanzy",
+       "party": "Sans étiquette",
+       "side": "other",
+       "pct": 14.78,
+       "votes": 99
+      },
+      {
+       "id": "leon-gambetta",
+       "name": "Léon Gambetta",
+       "party": "Union républicaine",
+       "side": "left",
+       "pct": 0.75,
+       "votes": 5
+      }
+     ],
+     "departments": 0,
+     "media": null
+    }
+   ]
+  },
+  {
+   "id": "1885",
+   "year": 1885,
+   "title": {
+    "fr": "Élection présidentielle française de 1885",
+    "en": "1885 French presidential election"
+   },
+   "regime": "IIIe",
+   "method": {
+    "fr": "Parlement réuni en Congrès (Assemblée nationale) à Versailles",
+    "en": "Parliament sitting as a Congress (National Assembly) at Versailles"
+   },
+   "direct": false,
+   "winner": {
+    "id": "jules-grevy",
+    "name": "Jules Grévy",
+    "party": "Républicains de gouvernement",
+    "family": "centre-gauche",
+    "side": "left"
+   },
+   "file": "1885.json",
+   "rounds": [
+    {
+     "id": "1885-t1",
+     "round": 1,
+     "date": "1885-12-28",
+     "decisive": true,
+     "turnoutPct": null,
+     "exprimes": 576,
+     "top": [
+      {
+       "id": "jules-grevy",
+       "name": "Jules Grévy",
+       "party": "Républicains de gouvernement",
+       "side": "left",
+       "pct": 79.34,
+       "votes": 457
+      },
+      {
+       "id": "henri-brisson",
+       "name": "Henri Brisson",
+       "party": "Républicains radicaux",
+       "side": "left",
+       "pct": 11.81,
+       "votes": 68
+      },
+      {
+       "id": "charles-de-freycinet",
+       "name": "Charles de Freycinet",
+       "party": "Républicains de gouvernement",
+       "side": "left",
+       "pct": 2.43,
+       "votes": 14
+      }
+     ],
+     "departments": 0,
+     "media": null
+    }
+   ]
+  },
+  {
+   "id": "1887",
+   "year": 1887,
+   "title": {
+    "fr": "Élection présidentielle française de 1887",
+    "en": "1887 French presidential election"
+   },
+   "regime": "IIIe",
+   "method": {
+    "fr": "Parlement réuni en Congrès (Assemblée nationale) à Versailles",
+    "en": "Parliament sitting as a Congress (National Assembly) at Versailles"
+   },
+   "direct": false,
+   "winner": {
+    "id": "sadi-carnot",
+    "name": "Sadi Carnot",
+    "party": "Républicains de gouvernement",
+    "family": "centre-gauche",
+    "side": "left"
+   },
+   "file": "1887.json",
+   "rounds": [
+    {
+     "id": "1887-t1",
+     "round": 1,
+     "date": "1887-12-03",
+     "decisive": false,
+     "turnoutPct": null,
+     "exprimes": 849,
+     "top": [
+      {
+       "id": "sadi-carnot",
+       "name": "Sadi Carnot",
+       "party": "Républicains de gouvernement",
+       "side": "left",
+       "pct": 35.69,
+       "votes": 303
+      },
+      {
+       "id": "jules-ferry",
+       "name": "Jules Ferry",
+       "party": "Républicains de gouvernement",
+       "side": "left",
+       "pct": 24.97,
+       "votes": 212
+      },
+      {
+       "id": "felix-gustave-saussier",
+       "name": "Félix Gustave Saussier",
+       "party": "Républicains ralliés",
+       "side": "right",
+       "pct": 17.43,
+       "votes": 148
+      }
+     ],
+     "departments": 0,
+     "media": null
+    },
+    {
+     "id": "1887-t2",
+     "round": 2,
+     "date": "1887-12-03",
+     "decisive": true,
+     "turnoutPct": null,
+     "exprimes": 827,
+     "top": [
+      {
+       "id": "sadi-carnot",
+       "name": "Sadi Carnot",
+       "party": "Républicains de gouvernement",
+       "side": "left",
+       "pct": 74.49,
+       "votes": 616
+      },
+      {
+       "id": "felix-gustave-saussier",
+       "name": "Félix Gustave Saussier",
+       "party": "Républicains ralliés",
+       "side": "right",
+       "pct": 22.73,
+       "votes": 188
+      },
+      {
+       "id": "jules-ferry",
+       "name": "Jules Ferry",
+       "party": "Républicains de gouvernement",
+       "side": "left",
+       "pct": 1.33,
+       "votes": 11
+      }
+     ],
+     "departments": 0,
+     "media": null
+    }
+   ]
+  },
+  {
+   "id": "1894",
+   "year": 1894,
+   "title": {
+    "fr": "Élection présidentielle française de 1894",
+    "en": "1894 French presidential election"
+   },
+   "regime": "IIIe",
+   "method": {
+    "fr": "Parlement réuni en Congrès (Assemblée nationale) à Versailles",
+    "en": "Parliament sitting as a Congress (National Assembly) at Versailles"
+   },
+   "direct": false,
+   "winner": {
+    "id": "jean-casimir-perier",
+    "name": "Jean Casimir-Perier",
+    "party": "Républicains de gouvernement",
+    "family": "centre-gauche",
+    "side": "left"
+   },
+   "file": "1894.json",
+   "rounds": [
+    {
+     "id": "1894-t1",
+     "round": 1,
+     "date": "1894-06-27",
+     "decisive": true,
+     "turnoutPct": null,
+     "exprimes": 845,
+     "top": [
+      {
+       "id": "jean-casimir-perier",
+       "name": "Jean Casimir-Perier",
+       "party": "Républicains de gouvernement",
+       "side": "left",
+       "pct": 53.37,
+       "votes": 451
+      },
+      {
+       "id": "henri-brisson",
+       "name": "Henri Brisson",
+       "party": "Républicains radicaux",
+       "side": "left",
+       "pct": 23.08,
+       "votes": 195
+      },
+      {
+       "id": "charles-dupuy",
+       "name": "Charles Dupuy",
+       "party": "Républicains de gouvernement",
+       "side": "left",
+       "pct": 11.48,
+       "votes": 97
+      }
+     ],
+     "departments": 0,
+     "media": null
+    }
+   ]
+  },
+  {
+   "id": "1895",
+   "year": 1895,
+   "title": {
+    "fr": "Élection présidentielle française de 1895",
+    "en": "1895 French presidential election"
+   },
+   "regime": "IIIe",
+   "method": {
+    "fr": "Parlement réuni en Congrès (Assemblée nationale) à Versailles",
+    "en": "Parliament sitting as a Congress (National Assembly) at Versailles"
+   },
+   "direct": false,
+   "winner": {
+    "id": "felix-faure",
+    "name": "Félix Faure",
+    "party": "Républicains de gouvernement",
+    "family": "centre-gauche",
+    "side": "left"
+   },
+   "file": "1895.json",
+   "rounds": [
+    {
+     "id": "1895-t1",
+     "round": 1,
+     "date": "1895-01-17",
+     "decisive": false,
+     "turnoutPct": null,
+     "exprimes": 787,
+     "top": [
+      {
+       "id": "henri-brisson",
+       "name": "Henri Brisson",
+       "party": "Républicains radicaux",
+       "side": "left",
+       "pct": 42.95,
+       "votes": 338
+      },
+      {
+       "id": "felix-faure",
+       "name": "Félix Faure",
+       "party": "Républicains de gouvernement",
+       "side": "left",
+       "pct": 31,
+       "votes": 244
+      },
+      {
+       "id": "pierre-waldeck-rousseau",
+       "name": "Pierre Waldeck-Rousseau",
+       "party": "Républicains de gouvernement",
+       "side": "left",
+       "pct": 23.38,
+       "votes": 184
+      }
+     ],
+     "departments": 0,
+     "media": null
+    },
+    {
+     "id": "1895-t2",
+     "round": 2,
+     "date": "1895-01-17",
+     "decisive": true,
+     "turnoutPct": null,
+     "exprimes": 800,
+     "top": [
+      {
+       "id": "felix-faure",
+       "name": "Félix Faure",
+       "party": "Républicains de gouvernement",
+       "side": "left",
+       "pct": 53.75,
+       "votes": 430
+      },
+      {
+       "id": "henri-brisson",
+       "name": "Henri Brisson",
+       "party": "Républicains radicaux",
+       "side": "left",
+       "pct": 45.13,
+       "votes": 361
+      }
+     ],
+     "departments": 0,
+     "media": null
+    }
+   ]
+  },
+  {
+   "id": "1899",
+   "year": 1899,
+   "title": {
+    "fr": "Élection présidentielle française de 1899",
+    "en": "1899 French presidential election"
+   },
+   "regime": "IIIe",
+   "method": {
+    "fr": "Parlement réuni en Congrès (Assemblée nationale) à Versailles",
+    "en": "Parliament sitting as a Congress (National Assembly) at Versailles"
+   },
+   "direct": false,
+   "winner": {
+    "id": "emile-loubet",
+    "name": "Émile Loubet",
+    "party": "Républicains de gauche",
+    "family": "centre-gauche",
+    "side": "left"
+   },
+   "file": "1899.json",
+   "rounds": [
+    {
+     "id": "1899-t1",
+     "round": 1,
+     "date": "1899-02-18",
+     "decisive": true,
+     "turnoutPct": null,
+     "exprimes": 812,
+     "top": [
+      {
+       "id": "emile-loubet",
+       "name": "Émile Loubet",
+       "party": "Républicains de gauche",
+       "side": "left",
+       "pct": 59.48,
+       "votes": 483
+      },
+      {
+       "id": "jules-meline",
+       "name": "Jules Méline",
+       "party": "Républicains progressistes",
+       "side": "right",
+       "pct": 34.36,
+       "votes": 279
+      },
+      {
+       "id": "godefroy-cavaignac",
+       "name": "Godefroy Cavaignac",
+       "party": "Parti nationaliste / Groupe de la Défense nationale",
+       "side": "right",
+       "pct": 2.83,
+       "votes": 23
+      }
+     ],
+     "departments": 0,
+     "media": null
+    }
+   ]
+  },
+  {
+   "id": "1906",
+   "year": 1906,
+   "title": {
+    "fr": "Élection présidentielle française de 1906",
+    "en": "1906 French presidential election"
+   },
+   "regime": "IIIe",
+   "method": {
+    "fr": "Parlement réuni en Congrès (Assemblée nationale) à Versailles",
+    "en": "Parliament sitting as a Congress (National Assembly) at Versailles"
+   },
+   "direct": false,
+   "winner": {
+    "id": "armand-fallieres",
+    "name": "Armand Fallières",
+    "party": "ARD",
+    "family": "centre",
+    "side": "centre"
+   },
+   "file": "1906.json",
+   "rounds": [
+    {
+     "id": "1906-t1",
+     "round": 1,
+     "date": "1906-01-17",
+     "decisive": true,
+     "turnoutPct": null,
+     "exprimes": 848,
+     "top": [
+      {
+       "id": "armand-fallieres",
+       "name": "Armand Fallières",
+       "party": "ARD",
+       "side": "centre",
+       "pct": 52.95,
+       "votes": 449
+      },
+      {
+       "id": "paul-doumer",
+       "name": "Paul Doumer",
+       "party": "RI",
+       "side": "right",
+       "pct": 43.75,
+       "votes": 371
+      },
+      {
+       "id": "alexandre-ribot",
+       "name": "Alexandre Ribot",
+       "party": "FR",
+       "side": "right",
+       "pct": 1.17,
+       "votes": 10
+      }
+     ],
+     "departments": 0,
+     "media": null
+    }
+   ]
+  },
+  {
+   "id": "1913",
+   "year": 1913,
+   "title": {
+    "fr": "Élection présidentielle française de 1913",
+    "en": "1913 French presidential election"
+   },
+   "regime": "IIIe",
+   "method": {
+    "fr": "Parlement réuni en Congrès (Assemblée nationale) à Versailles",
+    "en": "Parliament sitting as a Congress (National Assembly) at Versailles"
+   },
+   "direct": false,
+   "winner": {
+    "id": "raymond-poincare",
+    "name": "Raymond Poincaré",
+    "party": "PRD",
+    "family": "centre-gauche",
+    "side": "left"
+   },
+   "file": "1913.json",
+   "rounds": [
+    {
+     "id": "1913-t1",
+     "round": 1,
+     "date": "1913-01-17",
+     "decisive": false,
+     "turnoutPct": null,
+     "exprimes": 868,
+     "top": [
+      {
+       "id": "raymond-poincare",
+       "name": "Raymond Poincaré",
+       "party": "PRD",
+       "side": "left",
+       "pct": 49.42,
+       "votes": 429
+      },
+      {
+       "id": "jules-pams",
+       "name": "Jules Pams",
+       "party": "PR",
+       "side": "left",
+       "pct": 37.67,
+       "votes": 327
+      },
+      {
+       "id": "edouard-vaillant",
+       "name": "Édouard Vaillant",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 7.26,
+       "votes": 63
+      }
+     ],
+     "departments": 0,
+     "media": null
+    },
+    {
+     "id": "1913-t2",
+     "round": 2,
+     "date": "1913-01-17",
+     "decisive": true,
+     "turnoutPct": null,
+     "exprimes": 863,
+     "top": [
+      {
+       "id": "raymond-poincare",
+       "name": "Raymond Poincaré",
+       "party": "PRD",
+       "side": "left",
+       "pct": 55.97,
+       "votes": 483
+      },
+      {
+       "id": "jules-pams",
+       "name": "Jules Pams",
+       "party": "PR",
+       "side": "left",
+       "pct": 34.3,
+       "votes": 296
+      },
+      {
+       "id": "edouard-vaillant",
+       "name": "Édouard Vaillant",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 7.99,
+       "votes": 69
+      }
+     ],
+     "departments": 0,
+     "media": null
+    }
+   ]
+  },
+  {
+   "id": "1920-01",
+   "year": 1920,
+   "title": {
+    "fr": "Élection présidentielle française de janvier 1920",
+    "en": "January 1920 French presidential election"
+   },
+   "regime": "IIIe",
+   "method": {
+    "fr": "Parlement réuni en Congrès (Assemblée nationale) à Versailles",
+    "en": "Parliament sitting as a Congress (National Assembly) at Versailles"
+   },
+   "direct": false,
+   "winner": {
+    "id": "paul-deschanel",
+    "name": "Paul Deschanel",
+    "party": "ARD",
+    "family": "centre",
+    "side": "centre"
+   },
+   "file": "1920-01.json",
+   "rounds": [
+    {
+     "id": "1920-01-t1",
+     "round": 1,
+     "date": "1920-01-17",
+     "decisive": true,
+     "turnoutPct": 95.69,
+     "exprimes": 868,
+     "top": [
+      {
+       "id": "paul-deschanel",
+       "name": "Paul Deschanel",
+       "party": "ARD",
+       "side": "centre",
+       "pct": 84.56,
+       "votes": 734
+      },
+      {
+       "id": "charles-jonnart",
+       "name": "Charles Jonnart",
+       "party": "ARD",
+       "side": "centre",
+       "pct": 6.22,
+       "votes": 54
+      },
+      {
+       "id": "georges-clemenceau",
+       "name": "Georges Clemenceau",
+       "party": "RI",
+       "side": "right",
+       "pct": 6.1,
+       "votes": 53
+      }
+     ],
+     "departments": 0,
+     "media": null
+    }
+   ]
+  },
+  {
+   "id": "1920-09",
+   "year": 1920,
+   "title": {
+    "fr": "Élection présidentielle française de septembre 1920",
+    "en": "September 1920 French presidential election"
+   },
+   "regime": "IIIe",
+   "method": {
+    "fr": "Parlement réuni en Congrès (Assemblée nationale) à Versailles",
+    "en": "Parliament sitting as a Congress (National Assembly) at Versailles"
+   },
+   "direct": false,
+   "winner": {
+    "id": "alexandre-millerand",
+    "name": "Alexandre Millerand",
+    "party": "DVD",
+    "family": "droite",
+    "side": "right"
+   },
+   "file": "1920-09.json",
+   "rounds": [
+    {
+     "id": "1920-09-t1",
+     "round": 1,
+     "date": "1920-09-23",
+     "decisive": true,
+     "turnoutPct": 96.12,
+     "exprimes": 786,
+     "top": [
+      {
+       "id": "alexandre-millerand",
+       "name": "Alexandre Millerand",
+       "party": "DVD",
+       "side": "right",
+       "pct": 88.42,
+       "votes": 695
+      },
+      {
+       "id": "gustave-delory",
+       "name": "Gustave Delory",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 8.78,
+       "votes": 69
+      }
+     ],
+     "departments": 0,
+     "media": null
+    }
+   ]
+  },
+  {
+   "id": "1924",
+   "year": 1924,
+   "title": {
+    "fr": "Élection présidentielle française de 1924",
+    "en": "1924 French presidential election"
+   },
+   "regime": "IIIe",
+   "method": {
+    "fr": "Parlement réuni en Congrès (Assemblée nationale) à Versailles",
+    "en": "Parliament sitting as a Congress (National Assembly) at Versailles"
+   },
+   "direct": false,
+   "winner": {
+    "id": "gaston-doumergue",
+    "name": "Gaston Doumergue",
+    "party": "PRRRS",
+    "family": "centre-gauche",
+    "side": "left"
+   },
+   "file": "1924.json",
+   "rounds": [
+    {
+     "id": "1924-t1",
+     "round": 1,
+     "date": "1924-06-13",
+     "decisive": true,
+     "turnoutPct": 95.98,
+     "exprimes": 853,
+     "top": [
+      {
+       "id": "gaston-doumergue",
+       "name": "Gaston Doumergue",
+       "party": "PRRRS",
+       "side": "left",
+       "pct": 60.38,
+       "votes": 515
+      },
+      {
+       "id": "paul-painleve",
+       "name": "Paul Painlevé",
+       "party": "PRS",
+       "side": "left",
+       "pct": 36.23,
+       "votes": 309
+      },
+      {
+       "id": "zephirin-camelinat",
+       "name": "Zéphirin Camélinat",
+       "party": "SFIC",
+       "side": "left",
+       "pct": 2.46,
+       "votes": 21
+      }
+     ],
+     "departments": 0,
+     "media": null
+    }
+   ]
+  },
+  {
+   "id": "1931",
+   "year": 1931,
+   "title": {
+    "fr": "Élection présidentielle française de 1931",
+    "en": "1931 French presidential election"
+   },
+   "regime": "IIIe",
+   "method": {
+    "fr": "Parlement réuni en Congrès (Assemblée nationale) à Versailles",
+    "en": "Parliament sitting as a Congress (National Assembly) at Versailles"
+   },
+   "direct": false,
+   "winner": {
+    "id": "paul-doumer",
+    "name": "Paul Doumer",
+    "party": "RI",
+    "family": "centre-droit",
+    "side": "right"
+   },
+   "file": "1931.json",
+   "rounds": [
+    {
+     "id": "1931-t1",
+     "round": 1,
+     "date": "1931-05-13",
+     "decisive": false,
+     "turnoutPct": null,
+     "exprimes": 897,
+     "top": [
+      {
+       "id": "paul-doumer",
+       "name": "Paul Doumer",
+       "party": "RI",
+       "side": "right",
+       "pct": 49.28,
+       "votes": 442
+      },
+      {
+       "id": "aristide-briand",
+       "name": "Aristide Briand",
+       "party": "PRS",
+       "side": "left",
+       "pct": 44.7,
+       "votes": 401
+      },
+      {
+       "id": "louis-barthou",
+       "name": "Louis Barthou",
+       "party": "AD",
+       "side": "right",
+       "pct": 4.9,
+       "votes": 44
+      }
+     ],
+     "departments": 0,
+     "media": null
+    },
+    {
+     "id": "1931-t2",
+     "round": 2,
+     "date": "1931-05-13",
+     "decisive": true,
+     "turnoutPct": null,
+     "exprimes": 883,
+     "top": [
+      {
+       "id": "paul-doumer",
+       "name": "Paul Doumer",
+       "party": "RI",
+       "side": "right",
+       "pct": 57.08,
+       "votes": 504
+      },
+      {
+       "id": "pierre-marraud",
+       "name": "Pierre Marraud",
+       "party": "PRRRS",
+       "side": "left",
+       "pct": 37.83,
+       "votes": 334
+      },
+      {
+       "id": "louis-barthou",
+       "name": "Louis Barthou",
+       "party": "AD",
+       "side": "right",
+       "pct": 2.49,
+       "votes": 22
+      }
+     ],
+     "departments": 0,
+     "media": {
+      "type": "newspaper",
+      "url": "https://gallica.bnf.fr/ark:/12148/bpt6k248338j/f1.item"
+     }
+    }
+   ]
+  },
+  {
+   "id": "1932",
+   "year": 1932,
+   "title": {
+    "fr": "Élection présidentielle française de 1932",
+    "en": "1932 French presidential election"
+   },
+   "regime": "IIIe",
+   "method": {
+    "fr": "Parlement réuni en Congrès (Assemblée nationale) à Versailles",
+    "en": "Parliament sitting as a Congress (National Assembly) at Versailles"
+   },
+   "direct": false,
+   "winner": {
+    "id": "albert-lebrun",
+    "name": "Albert Lebrun",
+    "party": "PRDS",
+    "family": "centre",
+    "side": "centre"
+   },
+   "file": "1932.json",
+   "rounds": [
+    {
+     "id": "1932-t1",
+     "round": 1,
+     "date": "1932-05-10",
+     "decisive": true,
+     "turnoutPct": null,
+     "exprimes": 777,
+     "top": [
+      {
+       "id": "albert-lebrun",
+       "name": "Albert Lebrun",
+       "party": "PRDS",
+       "side": "centre",
+       "pct": 81.47,
+       "votes": 633
+      },
+      {
+       "id": "paul-faure",
+       "name": "Paul Faure",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 14.67,
+       "votes": 114
+      },
+      {
+       "id": "paul-painleve",
+       "name": "Paul Painlevé",
+       "party": "PRS",
+       "side": "left",
+       "pct": 1.54,
+       "votes": 12
+      }
+     ],
+     "departments": 0,
+     "media": {
+      "type": "newsreel",
+      "url": "https://www.youtube.com/watch?v=HSjgTN90WxI"
+     }
+    }
+   ]
+  },
+  {
+   "id": "1939",
+   "year": 1939,
+   "title": {
+    "fr": "Élection présidentielle française de 1939",
+    "en": "1939 French presidential election"
+   },
+   "regime": "IIIe",
+   "method": {
+    "fr": "Parlement réuni en Congrès (Assemblée nationale) à Versailles",
+    "en": "Parliament sitting as a Congress (National Assembly) at Versailles"
+   },
+   "direct": false,
+   "winner": {
+    "id": "albert-lebrun",
+    "name": "Albert Lebrun",
+    "party": "AD",
+    "family": "centre-droit",
+    "side": "right"
+   },
+   "file": "1939.json",
+   "rounds": [
+    {
+     "id": "1939-t1",
+     "round": 1,
+     "date": "1939-04-05",
+     "decisive": true,
+     "turnoutPct": 98.91,
+     "exprimes": 904,
+     "top": [
+      {
+       "id": "albert-lebrun",
+       "name": "Albert Lebrun",
+       "party": "AD",
+       "side": "right",
+       "pct": 55.97,
+       "votes": 506
+      },
+      {
+       "id": "albert-bedouce",
+       "name": "Albert Bedouce",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 16.7,
+       "votes": 151
+      },
+      {
+       "id": "marcel-cachin",
+       "name": "Marcel Cachin",
+       "party": "PC-SFIC",
+       "side": "left",
+       "pct": 8.19,
+       "votes": 74
+      }
+     ],
+     "departments": 0,
+     "media": {
+      "type": "newsreel",
+      "url": "https://www.youtube.com/watch?v=QTYJH6KDCwE"
+     }
+    }
+   ]
+  },
+  {
+   "id": "1947",
+   "year": 1947,
+   "title": {
+    "fr": "Élection présidentielle française de 1947",
+    "en": "1947 French presidential election"
+   },
+   "regime": "IVe",
+   "method": {
+    "fr": "Parlement (Assemblée nationale et Conseil de la République) réuni en Congrès à Versailles",
+    "en": "Parliament (National Assembly and Council of the Republic) sitting as a Congress at Versailles"
+   },
+   "direct": false,
+   "winner": {
+    "id": "vincent-auriol",
+    "name": "Vincent Auriol",
+    "party": "SFIO",
+    "family": "gauche",
+    "side": "left"
+   },
+   "file": "1947.json",
+   "rounds": [
+    {
+     "id": "1947-t1",
+     "round": 1,
+     "date": "1947-01-16",
+     "decisive": true,
+     "turnoutPct": 100,
+     "exprimes": 883,
+     "top": [
+      {
+       "id": "vincent-auriol",
+       "name": "Vincent Auriol",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 51.19,
+       "votes": 452
+      },
+      {
+       "id": "auguste-champetier-de-ribes",
+       "name": "Auguste Champetier de Ribes",
+       "party": "MRP",
+       "side": "centre",
+       "pct": 27.41,
+       "votes": 242
+      },
+      {
+       "id": "jules-gasser",
+       "name": "Jules Gasser",
+       "party": "RGR",
+       "side": "left",
+       "pct": 13.82,
+       "votes": 122
+      }
+     ],
+     "departments": 0,
+     "media": {
+      "type": "radio",
+      "url": "https://www.ina.fr/ina-eclaire-actu/audio/phd85000595/election-du-premier-president-de-la-iveme-republique"
+     }
+    }
+   ]
+  },
+  {
+   "id": "1953",
+   "year": 1953,
+   "title": {
+    "fr": "Élection présidentielle française de 1953",
+    "en": "1953 French presidential election"
+   },
+   "regime": "IVe",
+   "method": {
+    "fr": "Parlement (Assemblée nationale et Conseil de la République) réuni en Congrès à Versailles",
+    "en": "Parliament (National Assembly and Council of the Republic) sitting as a Congress at Versailles"
+   },
+   "direct": false,
+   "winner": {
+    "id": "rene-coty",
+    "name": "René Coty",
+    "party": "CNIP",
+    "family": "droite",
+    "side": "right"
+   },
+   "file": "1953.json",
+   "rounds": [
+    {
+     "id": "1953-t1",
+     "round": 1,
+     "date": "1953-12-17",
+     "decisive": false,
+     "turnoutPct": 98.52,
+     "exprimes": 928,
+     "top": [
+      {
+       "id": "marcel-edmond-naegelen",
+       "name": "Marcel-Edmond Naegelen",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 17.25,
+       "votes": 160
+      },
+      {
+       "id": "joseph-laniel",
+       "name": "Joseph Laniel",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 16.7,
+       "votes": 155
+      },
+      {
+       "id": "georges-bidault",
+       "name": "Georges Bidault",
+       "party": "MRP",
+       "side": "centre",
+       "pct": 14.11,
+       "votes": 131
+      }
+     ],
+     "departments": 0,
+     "media": null
+    },
+    {
+     "id": "1953-t2",
+     "round": 2,
+     "date": "1953-12-17",
+     "decisive": false,
+     "turnoutPct": 97.99,
+     "exprimes": 923,
+     "top": [
+      {
+       "id": "marcel-edmond-naegelen",
+       "name": "Marcel-Edmond Naegelen",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 32.4,
+       "votes": 299
+      },
+      {
+       "id": "joseph-laniel",
+       "name": "Joseph Laniel",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 29.9,
+       "votes": 276
+      },
+      {
+       "id": "yvon-delbos",
+       "name": "Yvon Delbos",
+       "party": "RGR",
+       "side": "left",
+       "pct": 20.04,
+       "votes": 185
+      }
+     ],
+     "departments": 0,
+     "media": null
+    },
+    {
+     "id": "1953-t3",
+     "round": 3,
+     "date": "1953-12-18",
+     "decisive": false,
+     "turnoutPct": 98.41,
+     "exprimes": 922,
+     "top": [
+      {
+       "id": "joseph-laniel",
+       "name": "Joseph Laniel",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 38.83,
+       "votes": 358
+      },
+      {
+       "id": "marcel-edmond-naegelen",
+       "name": "Marcel-Edmond Naegelen",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 33.95,
+       "votes": 313
+      },
+      {
+       "id": "yvon-delbos",
+       "name": "Yvon Delbos",
+       "party": "RGR",
+       "side": "left",
+       "pct": 24.4,
+       "votes": 225
+      }
+     ],
+     "departments": 0,
+     "media": null
+    },
+    {
+     "id": "1953-t4",
+     "round": 4,
+     "date": "1953-12-18",
+     "decisive": false,
+     "turnoutPct": 98.1,
+     "exprimes": 918,
+     "top": [
+      {
+       "id": "joseph-laniel",
+       "name": "Joseph Laniel",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 44.44,
+       "votes": 408
+      },
+      {
+       "id": "marcel-edmond-naegelen",
+       "name": "Marcel-Edmond Naegelen",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 37.48,
+       "votes": 344
+      },
+      {
+       "id": "jean-medecin",
+       "name": "Jean Médecin",
+       "party": "RI",
+       "side": "right",
+       "pct": 4.9,
+       "votes": 45
+      }
+     ],
+     "departments": 0,
+     "media": null
+    },
+    {
+     "id": "1953-t5",
+     "round": 5,
+     "date": "1953-12-19",
+     "decisive": false,
+     "turnoutPct": 97.89,
+     "exprimes": 921,
+     "top": [
+      {
+       "id": "joseph-laniel",
+       "name": "Joseph Laniel",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 40.6,
+       "votes": 374
+      },
+      {
+       "id": "marcel-edmond-naegelen",
+       "name": "Marcel-Edmond Naegelen",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 33.88,
+       "votes": 312
+      },
+      {
+       "id": "jean-medecin",
+       "name": "Jean Médecin",
+       "party": "RI",
+       "side": "right",
+       "pct": 21.39,
+       "votes": 197
+      }
+     ],
+     "departments": 0,
+     "media": null
+    },
+    {
+     "id": "1953-t6",
+     "round": 6,
+     "date": "1953-12-19",
+     "decisive": false,
+     "turnoutPct": 96.51,
+     "exprimes": 905,
+     "top": [
+      {
+       "id": "joseph-laniel",
+       "name": "Joseph Laniel",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 43.87,
+       "votes": 397
+      },
+      {
+       "id": "marcel-edmond-naegelen",
+       "name": "Marcel-Edmond Naegelen",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 33.81,
+       "votes": 306
+      },
+      {
+       "id": "jean-medecin",
+       "name": "Jean Médecin",
+       "party": "RI",
+       "side": "right",
+       "pct": 18.9,
+       "votes": 171
+      }
+     ],
+     "departments": 0,
+     "media": null
+    },
+    {
+     "id": "1953-t7",
+     "round": 7,
+     "date": "1953-12-20",
+     "decisive": false,
+     "turnoutPct": 97.46,
+     "exprimes": 909,
+     "top": [
+      {
+       "id": "joseph-laniel",
+       "name": "Joseph Laniel",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 44.77,
+       "votes": 407
+      },
+      {
+       "id": "marcel-edmond-naegelen",
+       "name": "Marcel-Edmond Naegelen",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 33.33,
+       "votes": 303
+      },
+      {
+       "id": "jean-medecin",
+       "name": "Jean Médecin",
+       "party": "RI",
+       "side": "right",
+       "pct": 17.16,
+       "votes": 156
+      }
+     ],
+     "departments": 0,
+     "media": null
+    },
+    {
+     "id": "1953-t8",
+     "round": 8,
+     "date": "1953-12-20",
+     "decisive": false,
+     "turnoutPct": 96.83,
+     "exprimes": 903,
+     "top": [
+      {
+       "id": "joseph-laniel",
+       "name": "Joseph Laniel",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 47.62,
+       "votes": 430
+      },
+      {
+       "id": "marcel-edmond-naegelen",
+       "name": "Marcel-Edmond Naegelen",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 42.2,
+       "votes": 381
+      },
+      {
+       "id": "antoine-pinay",
+       "name": "Antoine Pinay",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 2.76,
+       "votes": 25
+      }
+     ],
+     "departments": 0,
+     "media": null
+    },
+    {
+     "id": "1953-t9",
+     "round": 9,
+     "date": "1953-12-21",
+     "decisive": false,
+     "turnoutPct": 96.83,
+     "exprimes": 909,
+     "top": [
+      {
+       "id": "joseph-laniel",
+       "name": "Joseph Laniel",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 45.43,
+       "votes": 413
+      },
+      {
+       "id": "marcel-edmond-naegelen",
+       "name": "Marcel-Edmond Naegelen",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 40.15,
+       "votes": 365
+      },
+      {
+       "id": "pierre-montel",
+       "name": "Pierre Montel",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 11.33,
+       "votes": 103
+      }
+     ],
+     "departments": 0,
+     "media": null
+    },
+    {
+     "id": "1953-t10",
+     "round": 10,
+     "date": "1953-12-21",
+     "decisive": false,
+     "turnoutPct": 93.87,
+     "exprimes": 867,
+     "top": [
+      {
+       "id": "joseph-laniel",
+       "name": "Joseph Laniel",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 45.22,
+       "votes": 392
+      },
+      {
+       "id": "marcel-edmond-naegelen",
+       "name": "Marcel-Edmond Naegelen",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 41.3,
+       "votes": 358
+      },
+      {
+       "id": "pierre-montel",
+       "name": "Pierre Montel",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 9.68,
+       "votes": 84
+      }
+     ],
+     "departments": 0,
+     "media": null
+    },
+    {
+     "id": "1953-t11",
+     "round": 11,
+     "date": "1953-12-23",
+     "decisive": false,
+     "turnoutPct": 94.82,
+     "exprimes": 880,
+     "top": [
+      {
+       "id": "marcel-edmond-naegelen",
+       "name": "Marcel-Edmond Naegelen",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 42.27,
+       "votes": 372
+      },
+      {
+       "id": "louis-jacquinot",
+       "name": "Louis Jacquinot",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 38.41,
+       "votes": 338
+      },
+      {
+       "id": "rene-coty",
+       "name": "René Coty",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 8.07,
+       "votes": 71
+      }
+     ],
+     "departments": 0,
+     "media": null
+    },
+    {
+     "id": "1953-t12",
+     "round": 12,
+     "date": "1953-12-23",
+     "decisive": false,
+     "turnoutPct": 94.93,
+     "exprimes": 882,
+     "top": [
+      {
+       "id": "rene-coty",
+       "name": "René Coty",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 48.86,
+       "votes": 431
+      },
+      {
+       "id": "marcel-edmond-naegelen",
+       "name": "Marcel-Edmond Naegelen",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 31.75,
+       "votes": 333
+      },
+      {
+       "id": "louis-jacquinot",
+       "name": "Louis Jacquinot",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 2.95,
+       "votes": 26
+      }
+     ],
+     "departments": 0,
+     "media": null
+    },
+    {
+     "id": "1953-t13",
+     "round": 13,
+     "date": "1953-12-23",
+     "decisive": true,
+     "turnoutPct": 93.45,
+     "exprimes": 871,
+     "top": [
+      {
+       "id": "rene-coty",
+       "name": "René Coty",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 54.76,
+       "votes": 477
+      },
+      {
+       "id": "marcel-edmond-naegelen",
+       "name": "Marcel-Edmond Naegelen",
+       "party": "SFIO",
+       "side": "left",
+       "pct": 37.78,
+       "votes": 329
+      },
+      {
+       "id": "louis-jacquinot",
+       "name": "Louis Jacquinot",
+       "party": "CNIP",
+       "side": "right",
+       "pct": 2.41,
+       "votes": 21
+      }
+     ],
+     "departments": 0,
+     "media": {
+      "type": "newsreel",
+      "url": "https://www.ina.fr/ina-eclaire-actu/video/afe85005407/rene-coty-elu-president"
+     }
+    }
+   ]
+  },
+  {
+   "id": "1958",
+   "year": 1958,
+   "title": {
+    "fr": "Élection présidentielle française de 1958",
+    "en": "1958 French presidential election"
+   },
+   "regime": "Ve",
+   "method": {
+    "fr": "Collège électoral (parlementaires, conseillers généraux, délégués des conseils municipaux…)",
+    "en": "Electoral college (MPs, departmental councillors, municipal delegates…)"
+   },
+   "direct": false,
+   "winner": {
+    "id": "charles-de-gaulle",
+    "name": "Charles de Gaulle",
+    "party": "UNR",
+    "family": "droite",
+    "side": "right"
+   },
+   "file": "1958.json",
+   "rounds": [
+    {
+     "id": "1958-t1",
+     "round": 1,
+     "date": "1958-12-21",
+     "decisive": true,
+     "turnoutPct": 99.42,
+     "exprimes": 79470,
+     "top": [
+      {
+       "id": "charles-de-gaulle",
+       "name": "Charles de Gaulle",
+       "party": "UNR",
+       "side": "right",
+       "pct": 78.51,
+       "votes": 62394
+      },
+      {
+       "id": "georges-marrane",
+       "name": "Georges Marrane",
+       "party": "PCF",
+       "side": "left",
+       "pct": 13.03,
+       "votes": 10355
+      },
+      {
+       "id": "albert-chatelet",
+       "name": "Albert Châtelet",
+       "party": "UFD",
+       "side": "left",
+       "pct": 8.46,
+       "votes": 6721
+      }
+     ],
+     "departments": 0,
+     "media": {
+      "type": "newsreel",
+      "url": "https://www.ina.fr/ina-eclaire-actu/video/afe85008136/charles-de-gaulle-president-de-la-republique"
+     }
+    }
+   ]
+  },
+  {
+   "id": "1965",
+   "year": 1965,
+   "title": {
+    "fr": "Élection présidentielle française de 1965",
+    "en": "1965 French presidential election"
+   },
+   "regime": "Ve",
+   "method": {
+    "fr": "Suffrage universel direct",
+    "en": "Direct universal suffrage"
+   },
+   "direct": true,
+   "winner": {
+    "id": "charles-de-gaulle",
+    "name": "Charles de Gaulle",
+    "party": "UNR-UDT",
+    "family": "droite",
+    "side": "right"
+   },
+   "file": "1965.json",
+   "rounds": [
+    {
+     "id": "1965-t1",
+     "round": 1,
+     "date": "1965-12-05",
+     "decisive": false,
+     "turnoutPct": 84.75,
+     "exprimes": 24254556,
+     "top": [
+      {
+       "id": "charles-de-gaulle",
+       "name": "Charles de Gaulle",
+       "party": "UNR-UDT",
+       "side": "right",
+       "pct": 44.65,
+       "votes": 10828521
+      },
+      {
+       "id": "francois-mitterrand",
+       "name": "François Mitterrand",
+       "party": "CIR",
+       "side": "left",
+       "pct": 31.72,
+       "votes": 7694005
+      },
+      {
+       "id": "jean-lecanuet",
+       "name": "Jean Lecanuet",
+       "party": "MRP",
+       "side": "centre",
+       "pct": 15.57,
+       "votes": 3777120
+      }
+     ],
+     "departments": 90,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=k8_qVgr9Q7c"
+     }
+    },
+    {
+     "id": "1965-t2",
+     "round": 2,
+     "date": "1965-12-19",
+     "decisive": true,
+     "turnoutPct": 84.32,
+     "exprimes": 23703434,
+     "top": [
+      {
+       "id": "charles-de-gaulle",
+       "name": "Charles de Gaulle",
+       "party": "UNR-UDT",
+       "side": "right",
+       "pct": 55.2,
+       "votes": 13083699
+      },
+      {
+       "id": "francois-mitterrand",
+       "name": "François Mitterrand",
+       "party": "CIR",
+       "side": "left",
+       "pct": 44.8,
+       "votes": 10619735
+      }
+     ],
+     "departments": 90,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=YfzncBfAj4M"
+     }
+    }
+   ]
+  },
+  {
+   "id": "1969",
+   "year": 1969,
+   "title": {
+    "fr": "Élection présidentielle française de 1969",
+    "en": "1969 French presidential election"
+   },
+   "regime": "Ve",
+   "method": {
+    "fr": "Suffrage universel direct",
+    "en": "Direct universal suffrage"
+   },
+   "direct": true,
+   "winner": {
+    "id": "georges-pompidou",
+    "name": "Georges Pompidou",
+    "party": "UDR",
+    "family": "droite",
+    "side": "right"
+   },
+   "file": "1969.json",
+   "rounds": [
+    {
+     "id": "1969-t1",
+     "round": 1,
+     "date": "1969-06-01",
+     "decisive": false,
+     "turnoutPct": 77.59,
+     "exprimes": 22603924,
+     "top": [
+      {
+       "id": "georges-pompidou",
+       "name": "Georges Pompidou",
+       "party": "UDR",
+       "side": "right",
+       "pct": 44.47,
+       "votes": 10051783
+      },
+      {
+       "id": "alain-poher",
+       "name": "Alain Poher",
+       "party": "CD",
+       "side": "centre",
+       "pct": 23.31,
+       "votes": 5268613
+      },
+      {
+       "id": "jacques-duclos",
+       "name": "Jacques Duclos",
+       "party": "PCF",
+       "side": "left",
+       "pct": 21.27,
+       "votes": 4808285
+      }
+     ],
+     "departments": 95,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=rvApHXLuxmA&t=75s"
+     }
+    },
+    {
+     "id": "1969-t2",
+     "round": 2,
+     "date": "1969-06-15",
+     "decisive": true,
+     "turnoutPct": 68.85,
+     "exprimes": 19007489,
+     "top": [
+      {
+       "id": "georges-pompidou",
+       "name": "Georges Pompidou",
+       "party": "UDR",
+       "side": "right",
+       "pct": 58.21,
+       "votes": 11064371
+      },
+      {
+       "id": "alain-poher",
+       "name": "Alain Poher",
+       "party": "CD",
+       "side": "centre",
+       "pct": 41.79,
+       "votes": 7943118
+      }
+     ],
+     "departments": 95,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=YfzncBfAj4M&t=106s"
+     }
+    }
+   ]
+  },
+  {
+   "id": "1974",
+   "year": 1974,
+   "title": {
+    "fr": "Élection présidentielle française de 1974",
+    "en": "1974 French presidential election"
+   },
+   "regime": "Ve",
+   "method": {
+    "fr": "Suffrage universel direct",
+    "en": "Direct universal suffrage"
+   },
+   "direct": true,
+   "winner": {
+    "id": "valery-giscard-d-estaing",
+    "name": "Valéry Giscard d'Estaing",
+    "party": "FNRI",
+    "family": "centre-droit",
+    "side": "right"
+   },
+   "file": "1974.json",
+   "rounds": [
+    {
+     "id": "1974-t1",
+     "round": 1,
+     "date": "1974-05-05",
+     "decisive": false,
+     "turnoutPct": 84.23,
+     "exprimes": 25538636,
+     "top": [
+      {
+       "id": "francois-mitterrand",
+       "name": "François Mitterrand",
+       "party": "PS",
+       "side": "left",
+       "pct": 43.25,
+       "votes": 11044373
+      },
+      {
+       "id": "valery-giscard-d-estaing",
+       "name": "Valéry Giscard d'Estaing",
+       "party": "FNRI",
+       "side": "right",
+       "pct": 32.6,
+       "votes": 8326774
+      },
+      {
+       "id": "jacques-chaban-delmas",
+       "name": "Jacques Chaban-Delmas",
+       "party": "UDR",
+       "side": "right",
+       "pct": 15.11,
+       "votes": 3857728
+      }
+     ],
+     "departments": 95,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=rvApHXLuxmA&t=148s"
+     }
+    },
+    {
+     "id": "1974-t2",
+     "round": 2,
+     "date": "1974-05-19",
+     "decisive": true,
+     "turnoutPct": 87.33,
+     "exprimes": 26367807,
+     "top": [
+      {
+       "id": "valery-giscard-d-estaing",
+       "name": "Valéry Giscard d'Estaing",
+       "party": "FNRI",
+       "side": "right",
+       "pct": 50.81,
+       "votes": 13396203
+      },
+      {
+       "id": "francois-mitterrand",
+       "name": "François Mitterrand",
+       "party": "PS",
+       "side": "left",
+       "pct": 49.19,
+       "votes": 12971604
+      }
+     ],
+     "departments": 95,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=mY8267pz_Bw"
+     }
+    }
+   ]
+  },
+  {
+   "id": "1981",
+   "year": 1981,
+   "title": {
+    "fr": "Élection présidentielle française de 1981",
+    "en": "1981 French presidential election"
+   },
+   "regime": "Ve",
+   "method": {
+    "fr": "Suffrage universel direct",
+    "en": "Direct universal suffrage"
+   },
+   "direct": true,
+   "winner": {
+    "id": "francois-mitterrand",
+    "name": "François Mitterrand",
+    "party": "PS",
+    "family": "gauche",
+    "side": "left"
+   },
+   "file": "1981.json",
+   "rounds": [
+    {
+     "id": "1981-t1",
+     "round": 1,
+     "date": "1981-04-26",
+     "decisive": false,
+     "turnoutPct": 81.09,
+     "exprimes": 29038117,
+     "top": [
+      {
+       "id": "valery-giscard-d-estaing",
+       "name": "Valéry Giscard d'Estaing",
+       "party": "UDF",
+       "side": "right",
+       "pct": 28.32,
+       "votes": 8222432
+      },
+      {
+       "id": "francois-mitterrand",
+       "name": "François Mitterrand",
+       "party": "PS",
+       "side": "left",
+       "pct": 25.85,
+       "votes": 7505960
+      },
+      {
+       "id": "jacques-chirac",
+       "name": "Jacques Chirac",
+       "party": "RPR",
+       "side": "right",
+       "pct": 18,
+       "votes": 5225848
+      }
+     ],
+     "departments": 96,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=rc9EpOZPgKo"
+     }
+    },
+    {
+     "id": "1981-t2",
+     "round": 2,
+     "date": "1981-05-10",
+     "decisive": true,
+     "turnoutPct": 85.85,
+     "exprimes": 30350568,
+     "top": [
+      {
+       "id": "francois-mitterrand",
+       "name": "François Mitterrand",
+       "party": "PS",
+       "side": "left",
+       "pct": 51.76,
+       "votes": 15708262
+      },
+      {
+       "id": "valery-giscard-d-estaing",
+       "name": "Valéry Giscard d'Estaing",
+       "party": "UDF",
+       "side": "right",
+       "pct": 48.24,
+       "votes": 14642306
+      }
+     ],
+     "departments": 96,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=mkJ6_L47MWo"
+     }
+    }
+   ]
+  },
+  {
+   "id": "1988",
+   "year": 1988,
+   "title": {
+    "fr": "Élection présidentielle française de 1988",
+    "en": "1988 French presidential election"
+   },
+   "regime": "Ve",
+   "method": {
+    "fr": "Suffrage universel direct",
+    "en": "Direct universal suffrage"
+   },
+   "direct": true,
+   "winner": {
+    "id": "francois-mitterrand",
+    "name": "François Mitterrand",
+    "party": "PS",
+    "family": "gauche",
+    "side": "left"
+   },
+   "file": "1988.json",
+   "rounds": [
+    {
+     "id": "1988-t1",
+     "round": 1,
+     "date": "1988-04-24",
+     "decisive": false,
+     "turnoutPct": 81.38,
+     "exprimes": 30406038,
+     "top": [
+      {
+       "id": "francois-mitterrand",
+       "name": "François Mitterrand",
+       "party": "PS",
+       "side": "left",
+       "pct": 34.1,
+       "votes": 10367220
+      },
+      {
+       "id": "jacques-chirac",
+       "name": "Jacques Chirac",
+       "party": "RPR",
+       "side": "right",
+       "pct": 19.94,
+       "votes": 6063514
+      },
+      {
+       "id": "raymond-barre",
+       "name": "Raymond Barre",
+       "party": "UDF",
+       "side": "right",
+       "pct": 16.55,
+       "votes": 5031849
+      }
+     ],
+     "departments": 96,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=u9XJOLf47kI"
+     }
+    },
+    {
+     "id": "1988-t2",
+     "round": 2,
+     "date": "1988-05-08",
+     "decisive": true,
+     "turnoutPct": 84.06,
+     "exprimes": 30923249,
+     "top": [
+      {
+       "id": "francois-mitterrand",
+       "name": "François Mitterrand",
+       "party": "PS",
+       "side": "left",
+       "pct": 54.02,
+       "votes": 16704279
+      },
+      {
+       "id": "jacques-chirac",
+       "name": "Jacques Chirac",
+       "party": "RPR",
+       "side": "right",
+       "pct": 45.98,
+       "votes": 14218970
+      }
+     ],
+     "departments": 97,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=OjEtEMIFx-4"
+     }
+    }
+   ]
+  },
+  {
+   "id": "1995",
+   "year": 1995,
+   "title": {
+    "fr": "Élection présidentielle française de 1995",
+    "en": "1995 French presidential election"
+   },
+   "regime": "Ve",
+   "method": {
+    "fr": "Suffrage universel direct",
+    "en": "Direct universal suffrage"
+   },
+   "direct": true,
+   "winner": {
+    "id": "jacques-chirac",
+    "name": "Jacques Chirac",
+    "party": "RPR",
+    "family": "droite",
+    "side": "right"
+   },
+   "file": "1995.json",
+   "rounds": [
+    {
+     "id": "1995-t1",
+     "round": 1,
+     "date": "1995-04-23",
+     "decisive": false,
+     "turnoutPct": 78.38,
+     "exprimes": 30462633,
+     "top": [
+      {
+       "id": "lionel-jospin",
+       "name": "Lionel Jospin",
+       "party": "PS",
+       "side": "left",
+       "pct": 23.3,
+       "votes": 7097786
+      },
+      {
+       "id": "jacques-chirac",
+       "name": "Jacques Chirac",
+       "party": "RPR",
+       "side": "right",
+       "pct": 20.84,
+       "votes": 6348375
+      },
+      {
+       "id": "edouard-balladur",
+       "name": "Édouard Balladur",
+       "party": "RPR",
+       "side": "right",
+       "pct": 18.58,
+       "votes": 5658796
+      }
+     ],
+     "departments": 96,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=D9X8PoM52Nw"
+     }
+    },
+    {
+     "id": "1995-t2",
+     "round": 2,
+     "date": "1995-05-07",
+     "decisive": true,
+     "turnoutPct": 79.66,
+     "exprimes": 29943671,
+     "top": [
+      {
+       "id": "jacques-chirac",
+       "name": "Jacques Chirac",
+       "party": "RPR",
+       "side": "right",
+       "pct": 52.64,
+       "votes": 15763027
+      },
+      {
+       "id": "lionel-jospin",
+       "name": "Lionel Jospin",
+       "party": "PS",
+       "side": "left",
+       "pct": 47.36,
+       "votes": 14180644
+      }
+     ],
+     "departments": 96,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=04a1r4oX6QM"
+     }
+    }
+   ]
+  },
+  {
+   "id": "2002",
+   "year": 2002,
+   "title": {
+    "fr": "Élection présidentielle française de 2002",
+    "en": "2002 French presidential election"
+   },
+   "regime": "Ve",
+   "method": {
+    "fr": "Suffrage universel direct",
+    "en": "Direct universal suffrage"
+   },
+   "direct": true,
+   "winner": {
+    "id": "jacques-chirac",
+    "name": "Jacques Chirac",
+    "party": "RPR",
+    "family": "droite",
+    "side": "right"
+   },
+   "file": "2002.json",
+   "rounds": [
+    {
+     "id": "2002-t1",
+     "round": 1,
+     "date": "2002-04-21",
+     "decisive": false,
+     "turnoutPct": 71.6,
+     "exprimes": 28498471,
+     "top": [
+      {
+       "id": "jacques-chirac",
+       "name": "Jacques Chirac",
+       "party": "RPR",
+       "side": "right",
+       "pct": 19.88,
+       "votes": 5665855
+      },
+      {
+       "id": "jean-marie-le-pen",
+       "name": "Jean-Marie Le Pen",
+       "party": "FN",
+       "side": "right",
+       "pct": 16.86,
+       "votes": 4804713
+      },
+      {
+       "id": "lionel-jospin",
+       "name": "Lionel Jospin",
+       "party": "PS",
+       "side": "left",
+       "pct": 16.18,
+       "votes": 4610113
+      }
+     ],
+     "departments": 105,
+     "media": {
+      "type": "tv",
+      "url": "https://www.ina.fr/ina-eclaire-actu/video/i17103686/annonce-des-premieres-estimations-du-premier-tour-des-elections"
+     }
+    },
+    {
+     "id": "2002-t2",
+     "round": 2,
+     "date": "2002-05-05",
+     "decisive": true,
+     "turnoutPct": 79.71,
+     "exprimes": 31062988,
+     "top": [
+      {
+       "id": "jacques-chirac",
+       "name": "Jacques Chirac",
+       "party": "RPR",
+       "side": "right",
+       "pct": 82.21,
+       "votes": 25537956
+      },
+      {
+       "id": "jean-marie-le-pen",
+       "name": "Jean-Marie Le Pen",
+       "party": "FN",
+       "side": "right",
+       "pct": 17.79,
+       "votes": 5525032
+      }
+     ],
+     "departments": 105,
+     "media": {
+      "type": "tv",
+      "url": "https://www.ina.fr/ina-eclaire-actu/video/i06185214/presidentielle-2002-2eme-tour"
+     }
+    }
+   ]
+  },
+  {
+   "id": "2007",
+   "year": 2007,
+   "title": {
+    "fr": "Élection présidentielle française de 2007",
+    "en": "2007 French presidential election"
+   },
+   "regime": "Ve",
+   "method": {
+    "fr": "Suffrage universel direct",
+    "en": "Direct universal suffrage"
+   },
+   "direct": true,
+   "winner": {
+    "id": "nicolas-sarkozy",
+    "name": "Nicolas Sarkozy",
+    "party": "UMP (PRV)",
+    "family": "droite",
+    "side": "right"
+   },
+   "file": "2007.json",
+   "rounds": [
+    {
+     "id": "2007-t1",
+     "round": 1,
+     "date": "2007-04-22",
+     "decisive": false,
+     "turnoutPct": 83.77,
+     "exprimes": 36719396,
+     "top": [
+      {
+       "id": "nicolas-sarkozy",
+       "name": "Nicolas Sarkozy",
+       "party": "UMP (PRV)",
+       "side": "right",
+       "pct": 31.18,
+       "votes": 11448663
+      },
+      {
+       "id": "segolene-royal",
+       "name": "Ségolène Royal",
+       "party": "PS (PRG, MRC)",
+       "side": "left",
+       "pct": 25.87,
+       "votes": 9500112
+      },
+      {
+       "id": "francois-bayrou",
+       "name": "François Bayrou",
+       "party": "UDF (Cap21, MÉI)",
+       "side": "centre",
+       "pct": 18.57,
+       "votes": 6820119
+      }
+     ],
+     "departments": 106,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=rvApHXLuxmA&t=538s"
+     }
+    },
+    {
+     "id": "2007-t2",
+     "round": 2,
+     "date": "2007-05-06",
+     "decisive": true,
+     "turnoutPct": 83.97,
+     "exprimes": 35773578,
+     "top": [
+      {
+       "id": "nicolas-sarkozy",
+       "name": "Nicolas Sarkozy",
+       "party": "UMP (PRV)",
+       "side": "right",
+       "pct": 53.06,
+       "votes": 18983138
+      },
+      {
+       "id": "segolene-royal",
+       "name": "Ségolène Royal",
+       "party": "PS (PRG, MRC)",
+       "side": "left",
+       "pct": 46.94,
+       "votes": 16790440
+      }
+     ],
+     "departments": 106,
+     "media": {
+      "type": "tv",
+      "url": "https://www.ina.fr/ina-eclaire-actu/video/i08128486/elysee-2007-2eme-tour-6-mai-2007"
+     }
+    }
+   ]
+  },
+  {
+   "id": "2012",
+   "year": 2012,
+   "title": {
+    "fr": "Élection présidentielle française de 2012",
+    "en": "2012 French presidential election"
+   },
+   "regime": "Ve",
+   "method": {
+    "fr": "Suffrage universel direct",
+    "en": "Direct universal suffrage"
+   },
+   "direct": true,
+   "winner": {
+    "id": "francois-hollande",
+    "name": "François Hollande",
+    "party": "PS",
+    "family": "gauche",
+    "side": "left"
+   },
+   "file": "2012.json",
+   "rounds": [
+    {
+     "id": "2012-t1",
+     "round": 1,
+     "date": "2012-04-22",
+     "decisive": false,
+     "turnoutPct": 79.48,
+     "exprimes": 35883209,
+     "top": [
+      {
+       "id": "francois-hollande",
+       "name": "François Hollande",
+       "party": "PS",
+       "side": "left",
+       "pct": 28.63,
+       "votes": 10272705
+      },
+      {
+       "id": "nicolas-sarkozy",
+       "name": "Nicolas Sarkozy",
+       "party": "UMP",
+       "side": "right",
+       "pct": 27.18,
+       "votes": 9753629
+      },
+      {
+       "id": "marine-le-pen",
+       "name": "Marine Le Pen",
+       "party": "FN",
+       "side": "right",
+       "pct": 17.9,
+       "votes": 6421426
+      }
+     ],
+     "departments": 107,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=rvApHXLuxmA&t=636s"
+     }
+    },
+    {
+     "id": "2012-t2",
+     "round": 2,
+     "date": "2012-05-06",
+     "decisive": true,
+     "turnoutPct": 80.35,
+     "exprimes": 34861353,
+     "top": [
+      {
+       "id": "francois-hollande",
+       "name": "François Hollande",
+       "party": "PS",
+       "side": "left",
+       "pct": 51.64,
+       "votes": 18000668
+      },
+      {
+       "id": "nicolas-sarkozy",
+       "name": "Nicolas Sarkozy",
+       "party": "UMP",
+       "side": "right",
+       "pct": 48.36,
+       "votes": 16860685
+      }
+     ],
+     "departments": 107,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=YfzncBfAj4M&t=714s"
+     }
+    }
+   ]
+  },
+  {
+   "id": "2017",
+   "year": 2017,
+   "title": {
+    "fr": "Élection présidentielle française de 2017",
+    "en": "2017 French presidential election"
+   },
+   "regime": "Ve",
+   "method": {
+    "fr": "Suffrage universel direct",
+    "en": "Direct universal suffrage"
+   },
+   "direct": true,
+   "winner": {
+    "id": "emmanuel-macron",
+    "name": "Emmanuel Macron",
+    "party": "EM",
+    "family": "centre",
+    "side": "centre"
+   },
+   "file": "2017.json",
+   "rounds": [
+    {
+     "id": "2017-t1",
+     "round": 1,
+     "date": "2017-04-23",
+     "decisive": false,
+     "turnoutPct": 77.77,
+     "exprimes": 36054394,
+     "top": [
+      {
+       "id": "emmanuel-macron",
+       "name": "Emmanuel Macron",
+       "party": "EM",
+       "side": "centre",
+       "pct": 24.01,
+       "votes": 8656346
+      },
+      {
+       "id": "marine-le-pen",
+       "name": "Marine Le Pen",
+       "party": "FN",
+       "side": "right",
+       "pct": 21.3,
+       "votes": 7678491
+      },
+      {
+       "id": "francois-fillon",
+       "name": "François Fillon",
+       "party": "LR",
+       "side": "right",
+       "pct": 20.01,
+       "votes": 7212995
+      }
+     ],
+     "departments": 107,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=rvApHXLuxmA&t=681s"
+     }
+    },
+    {
+     "id": "2017-t2",
+     "round": 2,
+     "date": "2017-05-07",
+     "decisive": true,
+     "turnoutPct": 74.56,
+     "exprimes": 31381603,
+     "top": [
+      {
+       "id": "emmanuel-macron",
+       "name": "Emmanuel Macron",
+       "party": "EM",
+       "side": "centre",
+       "pct": 66.1,
+       "votes": 20743128
+      },
+      {
+       "id": "marine-le-pen",
+       "name": "Marine Le Pen",
+       "party": "FN",
+       "side": "right",
+       "pct": 33.9,
+       "votes": 10638475
+      }
+     ],
+     "departments": 103,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=YfzncBfAj4M&t=759s"
+     }
+    }
+   ]
+  },
+  {
+   "id": "2022",
+   "year": 2022,
+   "title": {
+    "fr": "Élection présidentielle française de 2022",
+    "en": "2022 French presidential election"
+   },
+   "regime": "Ve",
+   "method": {
+    "fr": "Suffrage universel direct",
+    "en": "Direct universal suffrage"
+   },
+   "direct": true,
+   "winner": {
+    "id": "emmanuel-macron",
+    "name": "Emmanuel Macron",
+    "party": "LREM",
+    "family": "centre",
+    "side": "centre"
+   },
+   "file": "2022.json",
+   "rounds": [
+    {
+     "id": "2022-t1",
+     "round": 1,
+     "date": "2022-04-10",
+     "decisive": false,
+     "turnoutPct": 73.69,
+     "exprimes": 35132947,
+     "top": [
+      {
+       "id": "emmanuel-macron",
+       "name": "Emmanuel Macron",
+       "party": "LREM",
+       "side": "centre",
+       "pct": 27.85,
+       "votes": 9783058
+      },
+      {
+       "id": "marine-le-pen",
+       "name": "Marine Le Pen",
+       "party": "RN",
+       "side": "right",
+       "pct": 23.15,
+       "votes": 8133828
+      },
+      {
+       "id": "jean-luc-melenchon",
+       "name": "Jean-Luc Mélenchon",
+       "party": "LFI",
+       "side": "left",
+       "pct": 21.95,
+       "votes": 7712520
+      }
+     ],
+     "departments": 107,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=gFocUvSngx0"
+     }
+    },
+    {
+     "id": "2022-t2",
+     "round": 2,
+     "date": "2022-04-24",
+     "decisive": true,
+     "turnoutPct": 71.99,
+     "exprimes": 32057325,
+     "top": [
+      {
+       "id": "emmanuel-macron",
+       "name": "Emmanuel Macron",
+       "party": "LREM",
+       "side": "centre",
+       "pct": 58.55,
+       "votes": 18768639
+      },
+      {
+       "id": "marine-le-pen",
+       "name": "Marine Le Pen",
+       "party": "RN",
+       "side": "right",
+       "pct": 41.45,
+       "votes": 13288686
+      }
+     ],
+     "departments": 107,
+     "media": {
+      "type": "tv",
+      "url": "https://www.youtube.com/watch?v=jQz1NPbKhpQ"
+     }
+    }
+   ]
+  }
+ ]
+}
