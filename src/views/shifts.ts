@@ -7,8 +7,8 @@ import { L, fmtDate, getLang } from "../i18n";
 import { rewind } from "../lib/map";
 import { esc } from "../util";
 
-type Metric = "lr" | "farRight" | "turnout";
-const METRICS: Record<Metric, { fr: string; en: string; pos: [string, string, string]; neg: [string, string, string] }> = {
+export type Metric = "lr" | "farRight" | "turnout";
+export const METRICS: Record<Metric, { fr: string; en: string; pos: [string, string, string]; neg: [string, string, string] }> = {
   lr: { fr: "Gauche ou droite", en: "Left or right", pos: ["Plus à droite", "More right", "#2e5fb8"], neg: ["Plus à gauche", "More left", "#c9302c"] },
   farRight: { fr: "Extrême droite", en: "Far right", pos: ["Extrême droite en hausse", "Far right up", "#1b2a5e"], neg: ["Extrême droite en baisse", "Far right down", "#8fa3c8"] },
   turnout: { fr: "Participation", en: "Turnout", pos: ["Participation en hausse", "Turnout up", "#2f8f5b"], neg: ["Participation en baisse", "Turnout down", "#b07a2a"] },
@@ -28,27 +28,8 @@ export async function renderShifts(pane: HTMLElement) {
   const draw = () => {
     const pair = pairs.find((p) => key(p) === ui.pair)!;
     const m = METRICS[ui.metric];
-    const units = Object.entries(pair.units).filter(([, u]) => u[ui.metric] && u.lon > -6 && u.lon < 10 && u.lat > 41 && u.lat < 52); // mainland + Corsica
-    const deltas = units.map(([, u]) => Math.abs(u[ui.metric][2]));
-    const scale = pair.level === "district" ? 2.2 : 3; // px per point of shift
-    const cap = 90;
-    const arrows = units
-      .map(([code, u]) => {
-        const p = proj([u.lon, u.lat]);
-        if (!p) return "";
-        const d = u[ui.metric][2];
-        if (Math.abs(d) < 0.3) return "";
-        const len = Math.min(cap, Math.abs(d) * scale);
-        const dx = Math.sign(d) * len * Math.cos(Math.PI / 6), dy = -len * Math.sin(Math.PI / 6);
-        const [x2, y2] = [p[0] + dx, p[1] + dy];
-        const color = d > 0 ? m.pos[2] : m.neg[2];
-        // arrowhead: two short strokes back from the tip
-        const a = Math.atan2(dy, dx), h = Math.min(6, len * 0.35);
-        const head = `M${(x2 - h * Math.cos(a - 0.5)).toFixed(1)},${(y2 - h * Math.sin(a - 0.5)).toFixed(1)}L${x2.toFixed(1)},${y2.toFixed(1)}L${(x2 - h * Math.cos(a + 0.5)).toFixed(1)},${(y2 - h * Math.sin(a + 0.5)).toFixed(1)}`;
-        const tip = `${u.name ?? code}\n${tip3(u, ui.metric, pair)}`;
-        return `<g class="arrow" data-tip="${esc(tip)}" stroke="${color}"><path d="M${p[0].toFixed(1)},${p[1].toFixed(1)}L${x2.toFixed(1)},${y2.toFixed(1)}${head}"/><circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="6" class="hit"/></g>`;
-      })
-      .join("");
+    const units = mainland(pair, ui.metric);
+    const arrows = arrowPaths(pair, ui.metric, proj);
 
     const nat = pair.national[ui.metric];
     const sorted = [...units].sort((a, b) => b[1][ui.metric][2] - a[1][ui.metric][2]);
@@ -65,7 +46,6 @@ export async function renderShifts(pane: HTMLElement) {
       .map(([title, list]) => `<section><h3>${title as string}</h3><table class="table"><tbody>${(list as [string, ShiftUnit][]).map(([code, u]) => `<tr><td>${esc(u.name ?? labelFor(code))}</td><td class="num">${signed(u[ui.metric][2])}</td></tr>`).join("")}</tbody></table></section>`)
       .join("");
     pane.querySelectorAll<HTMLButtonElement>("[data-metric]").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.metric === ui.metric)));
-    void deltas;
   };
 
   const groups = [
@@ -96,6 +76,34 @@ export async function renderShifts(pane: HTMLElement) {
   pane.querySelector<HTMLSelectElement>("#pair")!.addEventListener("change", (e) => { ui.pair = (e.target as HTMLSelectElement).value; draw(); });
   pane.querySelectorAll<HTMLButtonElement>("[data-metric]").forEach((b) => b.addEventListener("click", () => { ui.metric = b.dataset.metric as Metric; draw(); }));
   draw();
+}
+
+
+/** Units drawn on the mainland map (mainland France + Corsica). */
+export const mainland = (pair: ShiftPair, metric: Metric) => Object.entries(pair.units).filter(([, u]) => u[metric] && u.lon > -6 && u.lon < 10 && u.lat > 41 && u.lat < 52);
+
+/** SVG arrows for one pair of elections. Each arrow has pathLength=1 so it can be drawn in with CSS. */
+export function arrowPaths(pair: ShiftPair, metric: Metric, proj: (p: [number, number]) => [number, number] | null, opts: { scale?: number; cap?: number } = {}) {
+  const m = METRICS[metric];
+  const scale = opts.scale ?? (pair.level === "district" ? 2.2 : 3); // px per point of shift
+  const cap = opts.cap ?? 90;
+  return mainland(pair, metric)
+    .map(([code, u], i) => {
+      const p = proj([u.lon, u.lat]);
+      if (!p) return "";
+      const d = u[metric][2];
+      if (Math.abs(d) < 0.3) return "";
+      const len = Math.min(cap, Math.abs(d) * scale);
+      const dx = Math.sign(d) * len * Math.cos(Math.PI / 6), dy = -len * Math.sin(Math.PI / 6);
+      const [x2, y2] = [p[0] + dx, p[1] + dy];
+      const color = d > 0 ? m.pos[2] : m.neg[2];
+      const a = Math.atan2(dy, dx), h = Math.min(6, len * 0.35);
+      const head = `M${(x2 - h * Math.cos(a - 0.5)).toFixed(1)},${(y2 - h * Math.sin(a - 0.5)).toFixed(1)}L${x2.toFixed(1)},${y2.toFixed(1)}L${(x2 - h * Math.cos(a + 0.5)).toFixed(1)},${(y2 - h * Math.sin(a + 0.5)).toFixed(1)}`;
+      const tip = `${u.name ?? code}
+${tip3(u, metric, pair)}`;
+      return `<g class="arrow" data-tip="${esc(tip)}" stroke="${color}" style="--i:${i % 40}"><path pathLength="1" d="M${p[0].toFixed(1)},${p[1].toFixed(1)}L${x2.toFixed(1)},${y2.toFixed(1)}${head}"/><circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="6" class="hit"/></g>`;
+    })
+    .join("");
 }
 
 const signed = (n: number) => `${n > 0 ? "+" : ""}${n.toFixed(1)}`;
