@@ -45,10 +45,15 @@ async function kalshi() {
   return out;
 }
 
+// Polymarket lists unlaunched placeholder outcomes ("Candidate A", "Person 3") and many tiny side bets.
+const PLACEHOLDER = /^(candidate|person|option) [a-z0-9]+$/i;
+const MIN_VOLUME = 50000; // USD traded; below this a market says little
+const MAX_POLYMARKET = 6;
+
 async function polymarket() {
   const events = await getJson("https://gamma-api.polymarket.com/events?closed=false&limit=200&tag_slug=france");
   return events
-    .filter((e) => /french presiden|france presiden/i.test(e.title))
+    .filter((e) => /french presiden|france presiden/i.test(e.title) && Number(e.volume ?? 0) >= MIN_VOLUME)
     .map((e) => ({
       platform: "Polymarket",
       id: e.slug,
@@ -58,9 +63,12 @@ async function polymarket() {
       outcomes: (e.markets ?? [])
         .filter((m) => !m.closed)
         .map((m) => ({ name: m.groupItemTitle || m.question, prob: Math.round(Number(JSON.parse(m.outcomePrices ?? "[0]")[0]) * 1000) / 10 }))
-        .filter((o) => o.prob > 0)
+        .filter((o) => o.prob > 0 && !PLACEHOLDER.test(o.name))
         .sort((a, b) => b.prob - a.prob),
-    }));
+    }))
+    .filter((m) => m.outcomes.length)
+    .sort((a, b) => b.volume - a.volume)
+    .slice(0, MAX_POLYMARKET);
 }
 
 const markets = [];
