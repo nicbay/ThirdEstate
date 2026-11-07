@@ -163,4 +163,12 @@ Then run `node scripts/sync-socials.mjs`.
 | `data/socials-cache.json` | yes | AI verdicts, domain-guess results, NosDéputés fallback (~200 KB) |
 | `.cache/socials-fetch.json` | no (git-ignored) | links of fetched pages, 7-day cache |
 
-Not done here: no `package.json` script (out of scope for this change) and no GitHub Actions step yet. A weekly job running the script and committing `public/data/an/socials*.json`, `data/socials-cache.json` and `data/usage/` would keep it fresh.
+## Automatic refresh
+
+`.github/workflows/sync-socials.yml` runs the script every Monday at 08:45 UTC, and on demand from the Actions tab ("Sync MPs' social accounts").
+- It commits `public/data/an/socials*.json`, `data/socials-cache.json` and `data/usage/`, but only when the accounts, the cache or the AI spend changed.
+- It runs `git pull --rebase` before pushing, because other jobs push to the same branch.
+- The AI step uses the `ANTHROPIC_API_KEY` repository secret if it exists; without it the step is skipped.
+- On GitHub's runners the fetch cache starts empty, so each run fetches every page again (about 3 minutes).
+
+There is no `package.json` script for this (out of scope for this change); the workflow calls the script directly.
