@@ -12,6 +12,7 @@ Every 2 hours, `.github/workflows/sync-feed.yml` runs these four steps:
 |---|---|---|---|
 | 1. News | `scripts/sync-news.mjs` | RSS feeds | `data/feed/news.json` |
 | 2. MP posts | `scripts/sync-mp-posts.mjs` | Bluesky, YouTube, Mastodon, Wikidata (daily) | `data/feed/posts.json`, `data/feed/accounts.json` |
+| 2b. X sample (experiment) | `scripts/sync-x-sample.mjs` | news article pages (once each), X oEmbed, Claude web search | `data/feed/posts.json` (platform `x`), `data/feed/x-search.json` |
 | 3. Rating | `scripts/rate-reactions.mjs` | Claude API (Haiku 5.5) | `data/feed/ratings.json`, `data/usage/claude-YYYY-MM.json` |
 | 4. Build | `scripts/build-feed.mjs` | none | `public/data/feed/latest.json`, `archive/YYYY-MM-DD.json`, `index.json` |
 
@@ -58,7 +59,7 @@ Le Point, Marianne and CNews block RSS readers (HTTP 403) and are left out. To a
 | Bluesky | `app.bsky.feed.getAuthorFeed` on the public AppView (`public.api.bsky.app`), no key, own posts only (no replies, no reposts) | 69 current MPs (Wikidata P12361) |
 | YouTube | channel RSS `youtube.com/feeds/videos.xml?channel_id=…` (title + description) | 40 (Wikidata P2397) |
 | Mastodon | public API `accounts/lookup` + `statuses` | 7 (Wikidata P4033) |
-| X/Twitter | **not used**: it can't be read for free | — |
+| X/Twitter | **sample only, experimental**: see [X sample](#x-sample-experiment) | 354 MPs have an X handle in `deputes.json` |
 
 Accounts are merged in this order of preference:
 
@@ -69,6 +70,18 @@ Accounts are merged in this order of preference:
 The resolved list is in `data/feed/accounts.json` → `merged`. On 2026-11-07, 5 of the 69 Wikidata Bluesky handles no longer resolve (HTTP 400) and 1 Mastodon instance is down. Fixing them in Wikidata or in socials.json is enough.
 
 Measured volume (2026-11-07): about 45–70 posts per weekday from 25–30 active MPs, and ~180 posts in a 72 h window.
+
+### X sample (experiment)
+
+X has no free read API, and paid options (the official pay-per-use API, resellers) are ruled out because the owner pays only for Anthropic. `scripts/sync-x-sample.mjs` builds a **partial sample** of MPs' X posts from two discovery routes. Both rely on X's official, free, key-less **oEmbed** endpoint (`publish.twitter.com/oembed`), which returns a post's exact text and author from its URL. The post time is decoded from the post id (snowflake).
+
+1. **Posts embedded in the news articles** (free). Each article listed in the feed is fetched once. The script looks only for `x.com/<handle>/status/<id>` links whose handle belongs to a current MP; nothing else from the page is kept. Such a post is matched to that article's story for sure (`match.how = "embed"`). Measured 2026-11-07: about 440 articles gave 6 MP post links, 4 of them from the last 72 h: Marine Le Pen (×2), Aurélien Taché and Clémence Guetté. That's low volume, but it reaches X-first MPs, including the RN, that Bluesky misses. It is biased towards posts the press chose to embed.
+2. **Claude web search on x.com** (Anthropic budget). For the day's biggest stories (≥ 3 outlets, each story at most once a day), one Haiku request runs the server-side `web_search_20250305` tool, limited to x.com and twitter.com with `max_uses: 1`. Status URLs are taken straight from the search results and kept only if the author is an MP and the post is under 72 h old. The story is offered to the rating step as a candidate, and Haiku confirms or rejects it. Search engines index only part of X, often late, so expect few hits.
+   - Cost: $0.01 per search plus the result tokens, about $0.013 a search in total. That is roughly $4/month at the default `X_SEARCHES_PER_DAY=10`, with at most `X_SEARCHES_PER_RUN=2` per run.
+   - Guards: a separate share, `X_MONTHLY_USD=4` (ledger job `feed-x`), and the run stops when less than $1 is left on the shared cap. The shared client now counts web-search fees (`usage.server_tool_use.web_search_requests` × $0.01) and includes them in its worst-case check before each call.
+   - **Not yet tested live** (no key locally): the first run will show whether Haiku 5.5 accepts the web search tool. If it doesn't, the step logs the error and stops, and the article route keeps working.
+
+`data/feed/x-search.json` logs every search (query, results, MP posts found, cost) and the articles already scanned, so the yield of each route can be judged after a few days. Without `ANTHROPIC_API_KEY`, only route 1 runs. `node scripts/sync-x-sample.mjs --urls <x.com post URL>…` tests the oEmbed step by hand.
 
 ## Stories (clustering)
 
@@ -134,6 +147,7 @@ At Haiku 5.5 prices ($0.10 / M input, $0.50 / M output):
 |---|---|---|---|
 | Measured now (~55 posts/day, ~50 % matched) | ~28 | ~$0.007 | **~$0.20** |
 | socials.json triples the accounts and the campaign doubles activity | ~170 | ~$0.04 | ~$1.25 |
+| X sample web search (default 10 searches a day) | — | ~$0.13 | ~$4, capped by `X_MONTHLY_USD` |
 | Hard ceiling from the per-run cap (120 × 12 runs) | 1,440 | $0.35 | stopped at the $6 feed share |
 
 These are estimates: no API key was available when this was written, so no live call has been measured. Real spend is in `data/usage/claude-YYYY-MM.json` → `byJob.feed`, and once the first runs land it is worth checking against the table.
@@ -159,11 +173,12 @@ These are estimates: no API key was available when this was written, so no live 
     "reactions": [{
       "id": "bsky:at://…",
       "mp": { "id": "PA794786", "name": "…", "group": { "abrev": "LFI-NFP", "libelle": "…", "couleur": "#C00D0D" } },
-      "platform": "bluesky" | "youtube" | "mastodon",
+      "platform": "bluesky" | "youtube" | "mastodon" | "x",
+      "source": "platform" | "article-embed+oembed" | "web-search+oembed",
       "handle": "…", "url": "…", "time": "…",
       "text": "…", "link": { "url", "title" } | null, "quoted": "…" | null,
       "metrics": { "likes", "reposts", "replies" } | { "views" },
-      "match": { "how": "link" | "terms" | "ai", "score": 0.42 },
+      "match": { "how": "link" | "embed" | "terms" | "ai", "score": 0.42 },
       "rating": null | {
         "political": true,
         "lean": { "score": -0.7, "rationale_fr": "…", "rationale_en": "…" },
@@ -181,7 +196,7 @@ These are estimates: no API key was available when this was written, so no live 
 
 ## Limitations
 
-- **No X/Twitter.** Most MPs post mainly on X, so the feed under-represents them, especially on the right, where Bluesky use is low. The reaction mix is therefore **not** a representative sample of the Assemblée. The front end should say so.
+- **X is only sampled.** Most MPs post mainly on X. The X sample catches only posts that the press embedded or that search engines indexed, so X-first MPs, especially on the right, where Bluesky use is low, are still under-represented. The reaction mix is **not** a representative sample of the Assemblée. The front end should say so and label X posts with their `source`.
 - Coverage is bounded by known accounts (69 Bluesky, 40 YouTube, 7 Mastodon in Wikidata), and socials.json will extend it.
 - YouTube posts are video titles and descriptions, not what is said in the video.
 - Clustering is lexical. It sometimes splits one story in two (two angles on the same event) or misses a post that uses different words. Thresholds are at the top of `scripts/lib/stories.mjs`.

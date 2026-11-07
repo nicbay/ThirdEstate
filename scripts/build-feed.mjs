@@ -33,7 +33,7 @@ for (const p of posts) {
   let how = m?.how ?? null;
   if (r) {
     story = r.storyItems.map((id) => storyOfItem.get(id)).find(Boolean) ?? null; // the AI's choice wins
-    how = how === "link" ? "link" : "ai";
+    how = how === "link" || how === "embed" ? how : "ai";
     if (!story) continue; // the model said it isn't about any candidate story
   } else if (m?.sure) {
     story = stories.find((s) => s.id === m.sure);
@@ -44,6 +44,7 @@ for (const p of posts) {
     id: p.id,
     mp: mpInfo(p.mpId),
     platform: p.platform,
+    source: p.source ?? "platform",
     handle: p.handle,
     url: p.url,
     time: p.time,

@@ -120,7 +120,21 @@ export function matchPosts(posts, { stories, idf }) {
     }
     // prefer bigger stories on near-ties
     scored.sort((a, b) => b.score + 0.01 * b.size - (a.score + 0.01 * a.size));
-    const candidates = scored.slice(0, MATCH.candidates).map(({ storyId, score }) => ({ storyId, score }));
+    let candidates = scored.slice(0, MATCH.candidates).map(({ storyId, score }) => ({ storyId, score }));
+    // 3. X sample: embedded in one of the story's own articles = sure; found by a web search for a story =
+    //    that story is always a candidate, the AI confirms
+    if (p.searchHint?.length) {
+      const hinted = stories.find((s) => s.items.some((i) => p.searchHint.includes(i.id)));
+      if (hinted && p.source === "article-embed+oembed") {
+        out.set(p.id, { sure: hinted.id, how: "embed", candidates: [{ storyId: hinted.id, score: 1 }] });
+        continue;
+      }
+      if (hinted && !candidates.some((c) => c.storyId === hinted.id)) {
+        candidates = [{ storyId: hinted.id, score: Math.round(cosine(v, hinted.centroid) * 1000) / 1000 }, ...candidates].slice(0, MATCH.candidates);
+        out.set(p.id, { sure: null, how: null, candidates });
+        continue;
+      }
+    }
     if (!candidates.length) continue;
     const top = candidates[0];
     const clear = top.score >= MATCH.sure && (candidates.length < 2 || top.score - candidates[1].score >= 0.08);
