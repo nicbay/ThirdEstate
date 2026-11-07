@@ -838,3 +838,9 @@ body { overflow-x: clip; }
 .subnav-bar a.active { color: #fff; border-image: linear-gradient(90deg, var(--left) 0 50%, var(--right) 50% 100%) 1; }
 .sec-hero .town-hero .dek { display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
 .filters .check { display: flex; align-items: center; gap: 0.5rem; } .filters .check input { width: auto; flex: none; margin: 0; }
+
+/* Town search dropdown inside the dark homepage hero: dark text on white, above the doors, not clipped by the band */
+.hero-x { overflow-x: clip; overflow-y: visible; }
+.hero-x .town-search { position: relative; z-index: 40; }
+.hero-x .suggest { --paper: #fff; --panel: #f1f0ec; --ink: #111216; --ink-2: #54565e; --ink-3: #6c6f78; --rule: #e1e0da; color: #111216; }
+.hero-x .suggest b, .hero-x .suggest strong { color: #111216; }
