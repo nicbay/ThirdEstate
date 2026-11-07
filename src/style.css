@@ -655,3 +655,9 @@ figure.spectrum + p { margin-top: 0.7rem; }
 
 /* municipal winner line */
 .lead-result { border-left: 5px solid var(--c); padding: 0.3rem 0 0.3rem 0.8rem; margin: 0 0 1rem; }
+
+/* explorer cards with a photo (Wikimedia Commons, credited on the town page) */
+.town-card.has-photo { grid-template-columns: 132px 1fr; column-gap: 0.9rem; }
+.town-card.has-photo > :not(.tc-photo) { grid-column: 2; }
+.tc-photo { grid-row: 1 / span 4; width: 132px; height: 96px; object-fit: cover; display: block; background: var(--wash, #eee); }
+@media (max-width: 480px) { .town-card.has-photo { grid-template-columns: 96px 1fr; } .tc-photo { width: 96px; height: 76px; } }
