@@ -53,7 +53,7 @@ export function lineChart(series: Series[], opts: { height?: number; yMax?: numb
       .map(
         (s) => `<g class="series" data-name="${esc(s.name)}">
           ${(s.dots ?? []).map((p) => `<circle cx="${x(p.date)}" cy="${y(p.value)}" r="2.6" fill="${s.color}" class="dot"><title>${esc(p.title)}</title></circle>`).join("")}
-          <polyline fill="none" stroke="${s.color}" stroke-width="2.4" stroke-linejoin="round" points="${s.line.map((p) => `${x(p.date)},${y(p.value)}`).join(" ")}"/>
+          <polyline class="line" pathLength="1" fill="none" stroke="${s.color}" stroke-width="2.4" stroke-linejoin="round" points="${s.line.map((p) => `${x(p.date)},${y(p.value)}`).join(" ")}"/>
           ${s.final ? `<path d="M${x(s.final.date)},${y(s.final.value) - 6}l6,6l-6,6l-6,-6z" fill="${s.color}" stroke="var(--card)"><title>${esc(s.final.title)}</title></path>` : ""}
         </g>`,
       )

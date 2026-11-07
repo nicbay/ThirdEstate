@@ -9,6 +9,7 @@ import { renderCirco } from "./views/circo";
 import { renderDepute } from "./views/depute";
 import { renderSources } from "./views/sources";
 import { initTooltip } from "./lib/tooltip";
+import { joinPresence } from "./lib/cloud";
 import { renderElection } from "./views/history";
 import { renderFeed } from "./views/feed";
 
@@ -21,7 +22,7 @@ const footer = document.getElementById("footer")!;
 const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/$/, () => renderHome(app)],
   [/^#\/sondages$/, () => renderPolls(app)],
-  [/^#\/simulateur$/, () => renderSimulator(app)],
+  [/^#\/simulateur(?:\/([\w-]+))?$/, (m) => renderSimulator(app, m[1])],
   [/^#\/resultats(?:\/([\w-]+))?$/, (m) => renderResults(app, m[1])],
   [/^#\/presidentielle(?:\/\d{4})?$/, () => void (location.hash = "#/resultats/presidentielle-2022")], // old links
   [/^#\/assemblee(?:\/(deputes|composition))?$/, (m) => renderAssemblee(app, m[1] ?? "carte")],
@@ -89,4 +90,5 @@ langBtn.addEventListener("click", () => {
 window.addEventListener("hashchange", route);
 setLang(getLang());
 initTooltip();
+joinPresence();
 route();

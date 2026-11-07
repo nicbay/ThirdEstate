@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.6.0",
+    "@supabase/supabase-js": "^2.118.0",
     "d3-geo": "3.1.1",
     "fflate": "^0.8.2"
   }
