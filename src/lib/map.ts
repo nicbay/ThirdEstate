@@ -33,3 +33,19 @@ export function mapPaths(features: GeoJSON.Feature[], size: [number, number], ar
 }
 
 export const OVERSEAS_DEPS = ["971", "972", "973", "974", "976"];
+
+/** Caption under an overseas inset. */
+export const insetFigure = (svg: string, caption: string) => `<figure class="inset-fig">${svg}<figcaption class="inset-cap">${esc(caption)}</figcaption></figure>`;
+
+/**
+ * "French abroad" tile, drawn as a peer of the overseas insets: same 100×100 box and caption,
+ * a globe filled with the area's colour, and the same hover/selected states as map areas.
+ * The click target is the button (data-code="99"); the globe itself carries no data-code.
+ */
+export function abroadInset(a: { fill: string; opacity?: number; title: string; label: string; sub?: string; selected?: boolean }) {
+  const lines = `<g class="globe-lines" aria-hidden="true"><ellipse cx="50" cy="50" rx="17" ry="38"/><path d="M12 50H88M17 31H83M17 69H83M50 12V88"/></g>`;
+  return `<button type="button" class="abroad${a.selected ? " selected" : ""}" data-code="99" aria-pressed="${a.selected ? "true" : "false"}" aria-label="${esc(a.title)}" data-tip="${esc(a.title)}">
+    <svg viewBox="0 0 100 100" class="inset" aria-hidden="true"><circle class="globe" cx="50" cy="50" r="38" fill="${a.fill}" fill-opacity="${a.opacity ?? 1}"/>${lines}</svg>
+    <span class="inset-cap">${esc(a.label)}${a.sub ? ` <span class="muted">${esc(a.sub)}</span>` : ""}</span>
+  </button>`;
+}

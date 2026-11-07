@@ -8,7 +8,7 @@ import { geoMercator, geoPath } from "d3-geo";
 import { fetchJson, loadDeputes, type Depute } from "../data";
 import { L, fmtDate, fmtNum, getLang } from "../i18n";
 import { rewind } from "../lib/map";
-import { esc } from "../util";
+import { esc, safeUrl, safeColor } from "../util";
 import { PLATFORMS, age, presence } from "./assemblee";
 import { photoUrl } from "./deputes";
 
@@ -181,7 +181,7 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
         return `<li><a href="#/ville/${t.code}" class="town-card" data-code="${t.code}">
           <span class="tc-head"><b>${esc(t.name)}</b><span class="muted small">${fmtNum(t.pop)} ${L("hab.", "people")}</span></span>
           <span class="tc-stats small">${t.income ? `<span><i>${L("Niveau de vie", "Living standard")}</i>${fmtNum(t.income)} €</span>` : ""}${t.unemployment != null ? `<span><i>${L("Chômage", "Unemployment")}</i>${fmt(t.unemployment)} %</span>` : ""}${t.schools.length ? `<span><i>${L("Écoles", "Schools")}</i>${t.schools.length}</span>` : ""}${t.events.length ? `<span><i>${L("Événements", "Events")}</i>${t.events.length}</span>` : ""}</span>
-          ${mp ? `<span class="small muted">${L("Député·e", "MP")} : ${esc(mp.prenom)} ${esc(mp.nom)} <span class="chip" style="--c:${mp.groupe?.couleur ?? "#999"}">${esc(mp.groupe?.abrev ?? "")}</span></span>` : ""}
+          ${mp ? `<span class="small muted">${L("Député·e", "MP")} : ${esc(mp.prenom)} ${esc(mp.nom)} <span class="chip" style="--c:${safeColor(mp.groupe?.couleur) ?? "#999"}">${esc(mp.groupe?.abrev ?? "")}</span></span>` : ""}
         </a></li>`;
       })
       .join("") + (list.length > 150 ? `<li class="muted small">${L("Les 150 premières ; cherchez une commune pour les autres.", "First 150 shown; search for others.")}</li>` : "");
@@ -240,12 +240,12 @@ export async function renderTown(app: HTMLElement, code: string) {
     <section class="page town">
       <p class="crumbs"><a href="#/explorer/${dep}">${esc(info?.departement?.nom ?? dep)}</a></p>
       <header class="town-hero ${photo ? "has-photo" : ""}">
-        ${photo ? `<figure><img src="${esc(photo.url)}" alt="${esc(name)}" loading="eager"/><figcaption class="tiny">${esc(photo.author ?? "")} ${photo.licence ? `(${esc(photo.licence)})` : ""}, Wikimedia Commons</figcaption></figure>` : ""}
+        ${photo ? `<figure><img src="${esc(safeUrl(photo.url))}" alt="${esc(name)}" loading="eager"/><figcaption class="tiny">${esc(photo.author ?? "")} ${photo.licence ? `(${esc(photo.licence)})` : ""}, Wikimedia Commons</figcaption></figure>` : ""}
         <div>
           <p class="eyebrow">${esc(info?.departement?.nom ?? "")}${info?.region?.nom ? `, ${esc(info.region.nom)}` : ""}</p>
           <h1>${esc(name)}</h1>
           <p class="dek">${info?.population ? `${fmtNum(info.population)} ${L("habitants", "inhabitants")}` : ""}${info?.codesPostaux?.length ? `, ${info.codesPostaux.slice(0, 3).join(", ")}` : ""}.${extra?.description?.text ? ` ${esc(extra.description.text)}` : ""}</p>
-          ${extra?.description?.url ? `<p class="tiny muted">${L("Extrait de", "From")} <a href="${esc(extra.description.url)}" target="_blank" rel="noopener">Wikipédia</a> (CC BY-SA)</p>` : ""}
+          ${extra?.description?.url ? `<p class="tiny muted">${L("Extrait de", "From")} <a href="${esc(safeUrl(extra.description.url))}" target="_blank" rel="noopener">Wikipédia</a> (CC BY-SA)</p>` : ""}
           ${searchBox(L("Chercher une autre adresse", "Search another address"))}
         </div>
       </header>
@@ -253,7 +253,7 @@ export async function renderTown(app: HTMLElement, code: string) {
       <section class="card">
         <header class="card-head"><h2>${L("Vos élus", "Your elected officials")}</h2></header>
         <div class="grid-2">
-          <div>${mps.map(({ d, mp }) => `<a class="mp-mini" href="#/depute/${mp.id}" style="--c:${mp.groupe?.couleur ?? "#999"}"><img src="${photoUrl(mp.id)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"/><span><span class="muted small">${L("Député·e", "MP")}, ${esc(mp.departement ?? "")} ${d.code.slice(-2)}${d.share < 1 ? ` (${L("partie de la commune", "part of the town")})` : ""}</span><br><b>${esc(mp.prenom)} ${esc(mp.nom)}</b> <span class="chip">${esc(mp.groupe?.abrev ?? "")}</span><br><span class="small muted">${age(mp) ?? "?"} ${L("ans", "years old")}, ${L("participation aux votes", "votes attended")} ${Math.round(100 * mp.stats.participation)} %, ${L("présence en ligne", "online presence")} ${presence(mp)}/${PLATFORMS.length}</span></span></a>`).join("") || `<p class="muted">${L("Député non trouvé pour cette commune.", "No MP found for this town.")}</p>`}</div>
+          <div>${mps.map(({ d, mp }) => `<a class="mp-mini" href="#/depute/${mp.id}" style="--c:${safeColor(mp.groupe?.couleur) ?? "#999"}"><img src="${photoUrl(mp.id)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"/><span><span class="muted small">${L("Député·e", "MP")}, ${esc(mp.departement ?? "")} ${d.code.slice(-2)}${d.share < 1 ? ` (${L("partie de la commune", "part of the town")})` : ""}</span><br><b>${esc(mp.prenom)} ${esc(mp.nom)}</b> <span class="chip">${esc(mp.groupe?.abrev ?? "")}</span><br><span class="small muted">${age(mp) ?? "?"} ${L("ans", "years old")}, ${L("participation aux votes", "votes attended")} ${Math.round(100 * mp.stats.participation)} %, ${L("présence en ligne", "online presence")} ${presence(mp)}/${PLATFORMS.length}</span></span></a>`).join("") || `<p class="muted">${L("Député non trouvé pour cette commune.", "No MP found for this town.")}</p>`}</div>
           <div>${
             extra?.officials
               ? `<ul class="officials">${extra.officials.mayor ? `<li><span class="muted small">${L("Maire", "Mayor")}</span><br><b>${esc(extra.officials.mayor.name)}</b>${extra.officials.mayor.nuance ? ` <span class="muted small">${esc(extra.officials.mayor.nuance)}</span>` : ""}</li>` : ""}${extra.officials.councillors ? `<li><span class="muted small">${L("Conseil municipal", "Town council")}</span><br><b>${extra.officials.councillors.count ?? extra.officials.councillors.length}</b> ${L("élus", "councillors")}</li>` : ""}${extra.officials.senators?.length ? `<li><span class="muted small">${L("Sénateurs du département", "Senators for the department")}</span><br>${extra.officials.senators.slice(0, 6).map((s: Any) => esc(s.name)).join(", ")}</li>` : ""}</ul>`
@@ -284,7 +284,7 @@ export async function renderTown(app: HTMLElement, code: string) {
         <section class="card">
           <header class="card-head"><h2>${L("Ce qui fait vivre la commune", "What makes the town tick")}</h2></header>
           ${positives.length ? `<ul class="positives">${positives.join("")}</ul>` : `<p class="muted small">${L("Monuments, musées et équipements : bientôt.", "Monuments, museums and facilities: coming soon.")}</p>`}
-          ${t?.events.length ? `<h3>${L("À venir", "Coming up")}</h3><ul class="events">${t.events.slice(0, 6).map((e: Any) => `<li><span class="muted small">${fmtDate(e.start)}</span><br><a href="${esc(e.url ?? e.datatourisme)}" target="_blank" rel="noopener">${esc(e.name)}</a></li>`).join("")}</ul>` : ""}
+          ${t?.events.length ? `<h3>${L("À venir", "Coming up")}</h3><ul class="events">${t.events.slice(0, 6).map((e: Any) => `<li><span class="muted small">${fmtDate(e.start)}</span><br><a href="${esc(safeUrl(e.url ?? e.datatourisme))}" target="_blank" rel="noopener">${esc(e.name)}</a></li>`).join("")}</ul>` : ""}
         </section>
         <section class="card">
           <header class="card-head"><h2>${L("Sécurité", "Safety")}</h2><span class="muted small">${L("faits pour 1 000 habitants", "per 1,000 people")}</span></header>

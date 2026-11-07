@@ -2,6 +2,7 @@ import { geoConicConformal, geoMercator, geoPath, type GeoProjection } from "d3-
 import { ELECTIONS, loadDepartements, presidentialResults, type AreaResult, type Election, type RoundResult } from "../data";
 import { L, fmtNum, fmtPct, t } from "../i18n";
 import { esc } from "../util";
+import { abroadInset, insetFigure } from "../lib/map";
 
 const OVERSEAS = ["971", "972", "973", "974", "976"];
 let state = { round: 1 as 1 | 2, selected: null as string | null };
@@ -47,7 +48,7 @@ export async function renderPresidential(app: HTMLElement, year?: number) {
       const f = features.find((x) => x.properties!.code === code);
       if (!f) return "";
       const fc = { type: "FeatureCollection", features: [f] } as GeoJSON.FeatureCollection;
-      return `<svg viewBox="0 0 100 100" class="inset">${paths(fc.features, geoMercator().fitExtent([[6, 6], [94, 94]], fc), round, election, 100)}</svg>`;
+      return insetFigure(`<svg viewBox="0 0 100 100" class="inset">${paths(fc.features, geoMercator().fitExtent([[6, 6], [94, 94]], fc), round, election, 100)}</svg>`, f.properties!.nom as string);
     }).join("") + abroadTile(round, election);
 
     renderPanel(app.querySelector("#panel")!, round, election);
@@ -98,8 +99,14 @@ function paths(fs: GeoJSON.Feature[], proj: GeoProjection, round: RoundResult, e
 function abroadTile(round: RoundResult, e: Election) {
   const a = round.departments.get("99");
   if (!a) return "";
-  const sel = state.selected === "99" ? " selected" : "";
-  return `<button class="abroad${sel}" data-code="99" style="--c:${color(a, e)}">🌍<span>${esc(a.name)}</span></button>`;
+  const lead = a.candidates[0];
+  return abroadInset({
+    fill: color(a, e),
+    opacity: opacity(a),
+    title: `${L("Français de l’étranger", "French abroad")}${lead ? ` — ${lead.prenom} ${lead.nom} ${fmtPct(lead.pct)}` : ""}`,
+    label: L("Français de l’étranger", "French abroad"),
+    selected: state.selected === "99",
+  });
 }
 
 function renderPanel(el: HTMLElement, round: RoundResult, e: Election) {

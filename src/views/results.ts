@@ -4,7 +4,7 @@ import { L, fmtDate, fmtNum, getLang } from "../i18n";
 import { lineChart } from "../lib/chart";
 import { LEG_BLOCS, NUANCE_LABEL, meta, nuanceColor, registerParties } from "../lib/candidates";
 import { pollValue, trend, type Poll } from "../lib/polls";
-import { esc } from "../util";
+import { esc, safeUrl } from "../util";
 import { renderPresidential } from "./presidential";
 import { renderHistoryList } from "./history";
 import { renderShifts } from "./shifts";
@@ -101,7 +101,7 @@ async function presidential2022(pane: HTMLElement) {
       ${lineChart(series)}
       <p class="muted small">${L("Losanges : résultat officiel du 1er tour.", "Diamonds: official first-round result.")}</p>
     </article>
-    <p class="source muted">${L("Sondages : Wikipédia (CC BY-SA)", "Polls: Wikipedia (CC BY-SA)")} · <a href="${polls.source}" target="_blank" rel="noopener">source</a> · ${L("Résultats : ministère de l’Intérieur via data.gouv.fr", "Results: Ministry of the Interior via data.gouv.fr")}</p>`;
+    <p class="source muted">${L("Sondages : Wikipédia (CC BY-SA)", "Polls: Wikipedia (CC BY-SA)")} · <a href="${esc(safeUrl(polls.source))}" target="_blank" rel="noopener">source</a> · ${L("Résultats : ministère de l’Intérieur via data.gouv.fr", "Results: Ministry of the Interior via data.gouv.fr")}</p>`;
 }
 
 async function legislatives(pane: HTMLElement) {
@@ -171,5 +171,5 @@ async function legislatives(pane: HTMLElement) {
         .map(([code, v]) => `<li><div class="bar-label"><span><i class="dot" style="background:${nuanceColor(code)}"></i>${esc(NUANCE_LABEL[code] ?? code)} <span class="muted">${code}</span></span><span><b>${((100 * v) / n.exprimes).toFixed(2)} %</b> <span class="muted small">${fmtNum(v)}</span></span></div><div class="bar"><div style="width:${(100 * v) / n.exprimes / 0.35}%;background:${nuanceColor(code)}"></div></div></li>`)
         .join("")}</ol>
     </article>
-    <p class="source muted">${L("Résultats : ministère de l’Intérieur via l’API data.gouv.fr", "Results: Ministry of the Interior via the data.gouv.fr API")} · <a href="${leg.source}" target="_blank" rel="noopener">${L("jeu de données", "dataset")}</a> · ${L("Sondages : Wikipédia (CC BY-SA)", "Polls: Wikipedia (CC BY-SA)")} · <a href="${polls.source}" target="_blank" rel="noopener">source</a></p>`;
+    <p class="source muted">${L("Résultats : ministère de l’Intérieur via l’API data.gouv.fr", "Results: Ministry of the Interior via the data.gouv.fr API")} · <a href="${esc(safeUrl(leg.source))}" target="_blank" rel="noopener">${L("jeu de données", "dataset")}</a> · ${L("Sondages : Wikipédia (CC BY-SA)", "Polls: Wikipedia (CC BY-SA)")} · <a href="${esc(safeUrl(polls.source))}" target="_blank" rel="noopener">source</a></p>`;
 }

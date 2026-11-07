@@ -6,7 +6,7 @@ import { L, fmtDate, getLang } from "../i18n";
 import { BLOCS, meta, registerParties, spectrumRank, type Bloc } from "../lib/candidates";
 import { average, duelAverages, referenceLineup } from "../lib/polls";
 import { cloudEnabled, currentUser, deleteScenario, listScenarios, onAuth, saveScenario, sendLoginLink, signOut, type SavedScenario } from "../lib/cloud";
-import { esc } from "../util";
+import { esc, safeColor } from "../util";
 
 interface Cand { name: string; share: number; bloc: Bloc | null }
 interface Scenario { cands: Cand[]; finalists: [string, string]; transfers: Record<string, [number, number]>; edited: string[] }
@@ -98,7 +98,7 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
               const fin = s.finalists.includes(c.name);
               const m = meta(c.name);
               return `<div class="sim-row ${fin ? "is-finalist" : ""}" data-row="${esc(c.name)}" style="--c:${m.color}">
-                <div class="sim-name"><b>${esc(c.name)}</b> <span class="muted small">${m.party ?? ""}</span>
+                <div class="sim-name"><b>${esc(c.name)}</b> <span class="muted small">${esc(m.party ?? "")}</span>
                   <select data-bloc="${esc(c.name)}" aria-label="${L("Famille politique", "Political family")}"><option value="">?</option>${BLOCS.map((_, i) => `<option value="${i}" ${c.bloc === i ? "selected" : ""}>${blocName(i as Bloc)}</option>`).join("")}</select></div>
                 <label class="sim-share"><span class="muted small">${L("1er tour", "1st round")}</span><input type="range" min="0" max="45" step="0.5" value="${c.share}" data-share="${esc(c.name)}"/><output data-share-out="${esc(c.name)}">${c.share.toFixed(1)} %</output></label>
                 ${

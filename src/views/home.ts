@@ -8,8 +8,8 @@ import { meta, registerParties, spectrumRank } from "../lib/candidates";
 import { cloudEnabled, getHome, lookupPostcode, onHome, onPresence, setHome } from "../lib/cloud";
 import { rewind } from "../lib/map";
 import { average, duelAverages, pollValue, referenceLineup, trend, WINDOW } from "../lib/polls";
-import { esc } from "../util";
-import { arrowPaths } from "./shifts";
+import { esc, safeColor } from "../util";
+import { arrowPaths, legend, unitsPerPx } from "./shifts";
 import { bindSearch, searchBox } from "./explore";
 
 export async function renderHome(app: HTMLElement) {
@@ -35,6 +35,7 @@ export async function renderHome(app: HTMLElement) {
   const feed = await loadFeed().catch(() => null);
   const stories = (feed?.stories ?? []).filter((s) => (s.reactions ?? []).some((r) => r.rating)).slice(0, 3);
   void duels; void winner; void now; void pollValue;
+  const swing = shifts?.pairs.filter((p) => p.level === "district").at(-1)?.national.lr?.[2];
 
   app.innerHTML = `
     <section class="page home">
@@ -43,6 +44,11 @@ export async function renderHome(app: HTMLElement) {
         <h1>${L("Tout ce qui se décide là où vous vivez", "Everything being decided where you live")}</h1>
         <p class="dek">${L("Vos élus, du maire au député et au sénateur, comment ils votent, ce qu’ils ont promis, et la vie de votre commune : emploi, écoles, sécurité, actualité, et ce qui en fait le charme.", "Your elected officials, from mayor to MP and senator, how they vote, what they promised, and life in your town: jobs, schools, safety, news, and what makes it a good place.")}</p>
         ${searchBox(L("Votre adresse, votre ville ou votre code postal", "Your address, town or postcode"))}
+        <aside class="hero-stats" aria-label="${L("En chiffres", "In numbers")}">
+          ${leader ? `<a href="#/2027"><strong style="color:${meta(leader.name).color}">${leader.share.toFixed(0)} %</strong><span>${fr ? `${esc(leader.name)} en tête des sondages pour 2027` : `${esc(leader.name)} leads 2027 polling`}</span></a>` : ""}
+          ${swing ? `<a href="#/resultats/bascules"><strong style="color:${swing > 0 ? "var(--right)" : "var(--left)"}">${swing > 0 ? "+" : "−"}${Math.abs(swing).toFixed(1)}</strong><span>${L(`points de glissement ${swing > 0 ? "vers la droite" : "vers la gauche"}, législatives 2022 → 2024`, `points of swing to the ${swing > 0 ? "right" : "left"}, 2022 → 2024 legislative`)}</span></a>` : ""}
+          <a href="#/assemblee"><strong>${deputes.length || 577}</strong><span>${L("députés, leurs votes et leurs circonscriptions", "MPs, how they vote and the districts they represent")}</span></a>
+        </aside>
       </header>
 
       <section class="card where-block">
@@ -75,7 +81,7 @@ export async function renderHome(app: HTMLElement) {
                 .map((s) => {
                   const rs = (s.reactions ?? []).filter((r) => r.rating);
                   const l = rs.filter((r) => r.rating!.lean.score < 0).length, r = rs.length - l;
-                  return `<li><a href="#/fil"><b>${esc(s.items[0].title)}</b></a><span class="lean-split"><span style="flex:${l || 0.001};background:#c9302c"></span><span style="flex:${r || 0.001};background:#2e5fb8"></span></span><span class="muted small">${l} ${L("réactions à gauche", "left-leaning reactions")}, ${r} ${L("à droite", "right-leaning")}</span></li>`;
+                  return `<li><a href="#/fil"><b>${esc(s.items[0].title)}</b></a><span class="lean-split"><span style="flex:${l || 0.001};background:#d4253a"></span><span style="flex:${r || 0.001};background:#1f5fcf"></span></span><span class="muted small">${l} ${L("réactions à gauche", "left-leaning reactions")}, ${r} ${L("à droite", "right-leaning")}</span></li>`;
                 })
                 .join("")}</ul>
             </section>`
@@ -84,10 +90,11 @@ export async function renderHome(app: HTMLElement) {
 
       ${
         shifts
-          ? `<section class="card reveal">
+          ? `<section class="card arrows-card">
               <header class="card-head"><h2>${L("De 2022 à 2024, presque toute la France a basculé à droite", "From 2022 to 2024, almost all of France moved right")}</h2><a href="#/resultats/bascules">${L("Toutes les élections depuis 1848", "Every election since 1848")}</a></header>
-              <p class="muted small">${L("Une flèche par circonscription, au premier tour des législatives. Vers la droite et en bleu : la droite a progressé ; vers la gauche et en rouge : la gauche a progressé.", "One arrow per district, legislative first round. Pointing right and blue: the right gained; pointing left and red: the left gained.")}</p>
-              <svg id="home-arrows" viewBox="0 0 800 780" class="home-arrows"></svg>
+              <p class="muted small">${L("Une flèche par circonscription, premier tour des législatives. Écart entre la droite (droite et extrême droite) et la gauche (gauche et écologistes).", "One arrow per district, legislative first round. Margin between the right (right and far right) and the left (left and greens).")}</p>
+              <div class="shift-legend" id="home-legend"></div>
+              <div class="reveal"><svg id="home-arrows" viewBox="0 0 800 780" class="home-arrows" role="img" aria-label="${L("Carte des bascules 2022–2024", "Shift map 2022–2024")}"></svg></div>
             </section>`
           : ""
       }
@@ -169,7 +176,7 @@ export async function renderHome(app: HTMLElement) {
           const c = cf.properties!.code as string;
           const d = byCirco.get(c);
           const pc = path.centroid(cf);
-          return `<a href="#/circo/${c}"><path class="district" d="${path(cf)}" fill="${d?.groupe?.couleur ?? "#ccc"}" data-tip="${esc(`${L("Circonscription", "District")} ${Number(c.slice(-2))}\n${d ? `${d.prenom} ${d.nom} (${d.groupe?.abrev ?? ""})` : ""}`)}"/><text x="${pc[0]}" y="${pc[1]}" class="district-num" style="font-size:${(side / 40).toFixed(1)}px">${Number(c.slice(-2))}</text></a>`;
+          return `<a href="#/circo/${c}"><path class="district" d="${path(cf)}" fill="${safeColor(d?.groupe?.couleur) ?? "#ccc"}" data-tip="${esc(`${L("Circonscription", "District")} ${Number(c.slice(-2))}\n${d ? `${d.prenom} ${d.nom} (${d.groupe?.abrev ?? ""})` : ""}`)}"/><text x="${pc[0]}" y="${pc[1]}" class="district-num" style="font-size:${(side / 40).toFixed(1)}px">${Number(c.slice(-2))}</text></a>`;
         })
         .join("");
     } catch {
@@ -195,7 +202,7 @@ export async function renderHome(app: HTMLElement) {
       ${
         dep
           ? `<h3>${esc(depName.get(dep) ?? dep)} : ${mps.length} ${L("circonscriptions", "districts")}</h3>
-             <ul class="circo-list">${mps.map((d) => `<li><a href="#/circo/${d.circo}"><span class="num-badge">${d.numCirco}</span><span><b>${esc(d.prenom)} ${esc(d.nom)}</b> <span class="chip" style="--c:${d.groupe?.couleur ?? "#999"}">${esc(d.groupe?.abrev ?? "")}</span></span></a></li>`).join("")}</ul>`
+             <ul class="circo-list">${mps.map((d) => `<li><a href="#/circo/${d.circo}"><span class="num-badge">${d.numCirco}</span><span><b>${esc(d.prenom)} ${esc(d.nom)}</b> <span class="chip" style="--c:${safeColor(d.groupe?.couleur) ?? "#999"}">${esc(d.groupe?.abrev ?? "")}</span></span></a></li>`).join("")}</ul>`
           : `<p class="muted small">${L("Ou cliquez sur un département pour zoomer sur ses circonscriptions.", "Or click a department to zoom into its districts.")}</p>`
       }`;
     panel.querySelector("#home-change")?.addEventListener("click", () => setHome(null));
@@ -243,7 +250,11 @@ export async function renderHome(app: HTMLElement) {
     const pair = shifts.pairs.filter((p) => p.level === "district").at(-1)!;
     const projA = geoConicConformal().parallels([44, 49]).rotate([-3, 0]).fitExtent([[10, 10], [790, 770]], fc);
     const outlines = features.map((f) => `<path d="${geoPath(projA)(f)}" class="shift-base"/>`);
-    app.querySelector("#home-arrows")!.innerHTML = outlines.join("") + arrowPaths(pair, "lr", (p) => projA(p) as [number, number] | null);
+    const svgA = app.querySelector<SVGSVGElement>("#home-arrows")!;
+    const k = unitsPerPx(svgA, 800);
+    svgA.style.setProperty("--sw", `${(1.7 * k).toFixed(2)}px`);
+    svgA.innerHTML = outlines.join("") + arrowPaths(pair, "lr", (p) => projA(p) as [number, number] | null, { k });
+    app.querySelector("#home-legend")!.innerHTML = legend("lr", 2.2 / k);
   }
 
   // draw-in when scrolled into view

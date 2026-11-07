@@ -23,3 +23,12 @@ export const safeUrl = (u: unknown): string => {
     return "#";
   }
 };
+
+/** Colours from external data (group colours, candidate colours) may only be hex or hsl(); anything else falls back. */
+const COLOR_RE = /^(#[0-9a-f]{3,8}|hsl\(\s*[\d.]+(deg)?[\s,]+[\d.]+%[\s,]+[\d.]+%\s*\))$/i;
+export function safeColor(c: string, fallback?: string): string;
+export function safeColor(c: string | null | undefined, fallback?: string): string | undefined;
+export function safeColor(c: string | null | undefined, fallback = "#9aa0aa") {
+  if (c == null) return undefined;
+  return COLOR_RE.test(c.trim()) ? c.trim() : fallback;
+}

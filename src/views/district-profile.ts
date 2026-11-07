@@ -3,7 +3,7 @@
 // the national distribution across districts. Data: scripts/sync-district-profiles.mjs.
 import { fetchJson } from "../data";
 import { L, fmtDate, fmtNum, getLang } from "../i18n";
-import { esc } from "../util";
+import { esc, safeUrl } from "../util";
 
 type Bench = { fr: string; en: string; unit: string; year?: number; n: number; median: number; deciles: number[]; min: number; max: number };
 interface Index { indicators: Record<string, Bench>; national: Record<string, { rates?: Record<string, number>; france?: number; year?: number }> }
@@ -35,7 +35,7 @@ function scale(b: Bench | undefined, v: number | null | undefined) {
   return `<span class="scale" data-tip="${esc(`${L("Médiane des circonscriptions", "District median")} : ${fmt(b.median)}\n${L("1er–9e décile", "1st–9th decile")} : ${fmt(lo)} – ${fmt(hi)}`)}"><i class="med" style="left:${pct(b.median)}%"></i><i class="val" style="left:${pct(v)}%"></i></span>`;
 }
 const fmt = (n: number) => (Math.abs(n) >= 1000 ? fmtNum(Math.round(n)) : n.toLocaleString(getLang() === "fr" ? "fr-FR" : "en-GB", { maximumFractionDigits: 1 }));
-const src = (s: { name: string; url?: string } | undefined, year?: number | string) => (s ? `<a href="${esc(s.url ?? "#")}" target="_blank" rel="noopener">${esc(s.name.split(" — ")[0])}</a>${year ? ` ${year}` : ""}` : "");
+const src = (s: { name: string; url?: string } | undefined, year?: number | string) => (s ? `<a href="${s.url ? esc(safeUrl(s.url)) : "#"}" target="_blank" rel="noopener">${esc(s.name.split(" — ")[0])}</a>${year ? ` ${year}` : ""}` : "");
 
 export async function renderDistrictProfile(box: HTMLElement, code: string) {
   let p: Profile;
@@ -136,7 +136,7 @@ export async function renderDistrictProfile(box: HTMLElement, code: string) {
         ev?.events?.length
           ? `<section class="card">
               <header class="card-head"><h2>${L("À venir près de chez vous", "Coming up nearby")}</h2></header>
-              <ul class="events">${ev.events.slice(0, 8).map((e) => `<li><span class="muted small">${fmtDate(e.start)}${e.end && e.end !== e.start ? ` – ${fmtDate(e.end)}` : ""}, ${esc(e.commune ?? "")}</span><br><a href="${esc(e.url ?? e.datatourisme)}" target="_blank" rel="noopener">${esc(e.name)}</a></li>`).join("")}</ul>
+              <ul class="events">${ev.events.slice(0, 8).map((e) => `<li><span class="muted small">${fmtDate(e.start)}${e.end && e.end !== e.start ? ` – ${fmtDate(e.end)}` : ""}, ${esc(e.commune ?? "")}</span><br><a href="${esc(safeUrl(e.url ?? e.datatourisme))}" target="_blank" rel="noopener">${esc(e.name)}</a></li>`).join("")}</ul>
               <p class="source">DATAtourisme, ${L("offices de tourisme", "tourist offices")}.</p>
             </section>`
           : ""
