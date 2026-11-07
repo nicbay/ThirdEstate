@@ -1,0 +1,44 @@
+# Daily refresh of MPs and votes from Assemblée nationale open data.
+# The Assemblée republishes its files every night (Paris time); this runs after.
+name: Sync Assemblée nationale data
+
+on:
+  schedule:
+    - cron: "30 7 * * *" # 07:30 UTC every day
+  workflow_dispatch: # allow a manual run from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-assemblee
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run sync:an
+
+      - name: Commit if anything changed
+        run: |
+          # meta.json always changes (sync timestamp); only commit when real data changed
+          if git diff --quiet -- public/data/an ':!public/data/an/meta.json' && [ -z "$(git ls-files --others --exclude-standard public/data/an)" ]; then
+            echo "No new data."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add -A public/data/an
+          git commit -m "data: sync Assemblée nationale ($(date -u +%F))"
+          git push

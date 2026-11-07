@@ -1,0 +1,23 @@
+{
+  "name": "projectview",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "sync:an": "node scripts/sync-assemblee.mjs",
+    "sync:geo": "node scripts/sync-geo.mjs",
+    "sync": "npm run sync:geo && npm run sync:an"
+  },
+  "devDependencies": {
+    "@types/d3-geo": "3.1.0",
+    "typescript": "5.6.3",
+    "vite": "6.0.7"
+  },
+  "dependencies": {
+    "d3-geo": "3.1.1",
+    "fflate": "^0.8.2"
+  }
+}
