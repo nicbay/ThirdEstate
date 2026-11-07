@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T12:00:44.132Z",
+ "generatedAt": "2026-11-07T15:39:47.305Z",
  "doc": "docs/data-presidential-history.md",
  "colours": {
   "left": "red/pink",
@@ -748,7 +748,10 @@
       }
      ],
      "departments": 0,
-     "media": null
+     "media": {
+      "type": "newsreel",
+      "url": "https://commons.wikimedia.org/wiki/File:Election_du_pr%C3%A9sident_Deschanel_-_AI101097.webm"
+     }
     }
    ]
   },
@@ -800,7 +803,10 @@
       }
      ],
      "departments": 0,
-     "media": null
+     "media": {
+      "type": "newsreel",
+      "url": "https://www.youtube.com/watch?v=IuPp5Ok07jI"
+     }
     }
    ]
   },
@@ -860,7 +866,10 @@
       }
      ],
      "departments": 0,
-     "media": null
+     "media": {
+      "type": "newsreel",
+      "url": "https://www.youtube.com/watch?v=UoL3sa0v85Y"
+     }
     }
    ]
   },
@@ -957,8 +966,8 @@
      ],
      "departments": 0,
      "media": {
-      "type": "newspaper",
-      "url": "https://gallica.bnf.fr/ark:/12148/bpt6k248338j/f1.item"
+      "type": "newsreel",
+      "url": "https://commons.wikimedia.org/wiki/File:Congr%C3%A8s_pour_l%27%C3%A9lection_du_Pr%C3%A9sident_de_la_R%C3%A9publique_-_AI101187.webm"
      }
     }
    ]
@@ -1244,7 +1253,10 @@
       }
      ],
      "departments": 0,
-     "media": null
+     "media": {
+      "type": "tv",
+      "url": "https://www.ina.fr/ina-eclaire-actu/video/caf89036803/l-election-presidentielle-l-apres-midi-au-congres-de-versailles"
+     }
     },
     {
      "id": "1953-t3",
@@ -1388,7 +1400,10 @@
       }
      ],
      "departments": 0,
-     "media": null
+     "media": {
+      "type": "tv",
+      "url": "https://www.ina.fr/ina-eclaire-actu/video/caf97513517/l-election-presidentielle-l-apres-midi-a-versailles"
+     }
     },
     {
      "id": "1953-t7",
@@ -1532,7 +1547,10 @@
       }
      ],
      "departments": 0,
-     "media": null
+     "media": {
+      "type": "tv",
+      "url": "https://www.ina.fr/ina-eclaire-actu/video/caf89036805/l-election-presidentielle-l-apres-midi-a-versailles"
+     }
     },
     {
      "id": "1953-t11",

@@ -7,7 +7,7 @@ import { mapPaths, rewind } from "../lib/map";
 import { esc, safeUrl } from "../util";
 
 /** Only these players may be framed (security review M2). */
-const EMBED_HOSTS = new Set(["www.youtube-nocookie.com", "player.ina.fr", "www.ina.fr", "archive.org"]);
+const EMBED_HOSTS = new Set(["www.youtube-nocookie.com", "player.ina.fr", "www.ina.fr", "archive.org", "commons.wikimedia.org"]);
 const embedAllowed = (u: string) => {
   try { const x = new URL(u); return x.protocol === "https:" && EMBED_HOSTS.has(x.hostname); } catch { return false; }
 };
