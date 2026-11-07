@@ -231,7 +231,14 @@ for (let i = 0; i < queue.length; i += BATCH) {
       console.log(`Budget stop: ${e.message}`);
       break;
     }
-    console.warn(`Request failed (${e.status ?? ""} ${e.message}); these ${batch.length} posts will be retried next run.`);
+    // Not the posts' fault: bad key / permissions (401, 403), rate limit (429), API down (5xx), network.
+    // Stop the run without counting a failure against the posts.
+    if (!e.status || e.status === 401 || e.status === 403 || e.status === 429 || e.status >= 500) {
+      console.warn(`Request failed (${e.status ?? "network"}: ${e.message}). Stopping; all ${queue.length - i} remaining posts will be retried next run.`);
+      if (e.status === 401) console.warn("401 = the API key was rejected: check the ANTHROPIC_API_KEY secret (a Console API key, sk-ant-api…, pasted without quotes or spaces).");
+      break;
+    }
+    console.warn(`Request failed (${e.status} ${e.message}); these ${batch.length} posts will be retried once more.`);
     for (const b of batch) store.failures[b.post.id] = (store.failures[b.post.id] ?? 0) + 1;
     continue;
   }
