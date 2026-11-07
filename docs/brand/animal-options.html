@@ -1,0 +1,59 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;width:1200px;background:#e9e8e3;font-family:Archivo,sans-serif}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px}
+.opt{background:#fff;border-radius:6px;overflow:hidden}
+.opt h3{margin:0;padding:12px 18px 0;font:500 13px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:#666}
+.opt p{margin:4px 18px 12px;font-size:14px;color:#444;line-height:1.35;min-height:57px}
+.row{display:flex;align-items:center;gap:36px;padding:22px}
+.dark{background:#111216;color:#fff}
+.lock{display:flex;align-items:center;gap:12px}
+.lock svg{width:46px;height:46px}
+.sans{font-weight:850;font-stretch:75%;text-transform:uppercase;font-size:30px;letter-spacing:.01em;line-height:1}
+.sans span{font-weight:300;margin-left:.2em}
+.fav{width:40px;height:40px;border-radius:8px;background:#111216;display:grid;place-items:center}
+.fav svg{width:30px;height:30px}
+.big svg{width:96px;height:96px}
+</style></head><body><div class="grid" id="g"></div>
+<script>
+const C=d=>({ink:d?'#fff':'#111216',bg:d?'#111216':'#fff',r:d?'#ff5a6a':'#e0313f',b:d?'#5b8dff':'#2f6bdc',y:'#f2a400',wing:d?'rgba(255,255,255,.72)':'#c9d4ea'});
+let uid=0;
+function bee(d){const c=C(d),id='b'+(uid++);return `<svg viewBox="0 0 32 32">
+<polygon points="16,1.5 28.6,8.75 28.6,23.25 16,30.5 3.4,23.25 3.4,8.75" fill="none" stroke="${c.ink}" stroke-width="1.6"/>
+<ellipse cx="11.2" cy="13.4" rx="4.3" ry="2.7" transform="rotate(-32 11.2 13.4)" fill="${c.wing}"/>
+<ellipse cx="20.8" cy="13.4" rx="4.3" ry="2.7" transform="rotate(32 20.8 13.4)" fill="${c.wing}"/>
+<clipPath id="${id}"><ellipse cx="16" cy="19.2" rx="4.4" ry="6.3"/></clipPath>
+<g clip-path="url(#${id})"><rect x="10" y="12" width="12" height="16" fill="${c.ink}"/><rect x="10" y="15.4" width="12" height="2.8" fill="${c.r}"/><rect x="10" y="20" width="12" height="2.8" fill="${c.b}"/></g>
+<circle cx="16" cy="10.6" r="2.6" fill="${c.ink}"/>
+<path d="M15 8.6 Q14 6.4 12.4 6 M17 8.6 Q18 6.4 19.6 6" stroke="${c.ink}" stroke-width="1" fill="none" stroke-linecap="round"/>
+<polygon points="15.2,25.3 16.8,25.3 16,27.3" fill="${c.ink}"/></svg>`}
+function owl(d){const c=C(d);return `<svg viewBox="0 0 32 32">
+<path d="M6.5 12 Q6.5 5.5 9.5 3.5 L12.2 7.4 Q16 6 19.8 7.4 L22.5 3.5 Q25.5 5.5 25.5 12 L25.5 21.5 Q25.5 29.5 16 29.5 Q6.5 29.5 6.5 21.5 Z" fill="${c.ink}"/>
+<circle cx="11.6" cy="14.2" r="4.6" fill="${c.r}"/><circle cx="11.6" cy="14.2" r="2.7" fill="${c.bg}"/><circle cx="12.2" cy="14.2" r="1.35" fill="${c.ink}"/>
+<circle cx="20.4" cy="14.2" r="4.6" fill="${c.b}"/><circle cx="20.4" cy="14.2" r="2.7" fill="${c.bg}"/><circle cx="19.8" cy="14.2" r="1.35" fill="${c.ink}"/>
+<polygon points="14.8,18.4 17.2,18.4 16,21.4" fill="${c.y}"/>
+<path d="M11 24 l1.6 1.4 1.6-1.4 1.6 1.4 1.6-1.4 1.6 1.4 1.6-1.4" stroke="${c.bg}" stroke-width="1" fill="none" opacity=".5"/></svg>`}
+function hedgehog(d){const c=C(d),id='h'+(uid++);let pts=[];const cx=14,cy=22;for(let i=0;i<=22;i++){const a=Math.PI-(Math.PI*0.86)*i/22,r=i%2?8.2:12.6;pts.push((cx+r*Math.cos(a)).toFixed(2)+','+(cy-r*Math.sin(a)).toFixed(2))}
+return `<svg viewBox="0 2 34 26"><defs><linearGradient id="${id}" x1="0" x2="1"><stop offset="0" stop-color="${c.r}"/><stop offset="1" stop-color="${c.b}"/></linearGradient></defs>
+<polygon points="${cx-12.6},${cy} ${pts.join(' ')} ${cx+9},${cy}" fill="url(#${id})"/>
+<path d="M17 22 Q18 13.5 24.5 15 Q28 16 31.5 19.6 Q30 22 26 22 Z" fill="${c.ink}"/>
+<circle cx="31.3" cy="19.8" r="1.2" fill="${c.ink}"/><circle cx="24.6" cy="17.6" r="0.95" fill="${c.bg}"/>
+<rect x="6" y="22" width="22" height="1.6" rx=".8" fill="${c.ink}"/></svg>`}
+function rooster(d){const c=C(d);return `<svg viewBox="0 0 32 32">
+<circle cx="12.6" cy="6.2" r="2.9" fill="${c.r}"/><circle cx="16.4" cy="4.6" r="3.2" fill="${c.r}"/><circle cx="20.2" cy="6.4" r="2.7" fill="${c.r}"/>
+<path d="M10.2 14 Q9.4 23 5.5 29.5 L22.5 29.5 Q19 23.5 20.4 17.5 Z" fill="${c.b}"/>
+<circle cx="15.6" cy="12.6" r="6.3" fill="${c.ink}"/>
+<polygon points="21.4,10.8 27.6,12.9 21.4,15" fill="${c.y}"/>
+<circle cx="17.8" cy="11.3" r="1.25" fill="${c.bg}"/>
+<ellipse cx="20.6" cy="18.6" rx="1.9" ry="3" fill="${c.r}"/></svg>`}
+const opts=[
+ ['A · L’abeille (recommandée)','Bees hold elections: a swarm picks its new home by a vote among scouts (Seeley, Honeybee Democracy). The hive is the people at work, the Third Estate, and the hexagon cell is l’Hexagone. Red and blue stripes.',bee],
+ ['B · La chouette','The night owl of election night, and Athena’s bird of wisdom. One eye on the left (red), one on the right (blue): it watches both sides.',owl],
+ ['C · Le hérisson','A wink at 538’s fox: “the fox knows many things, the hedgehog knows one big thing” (Archilochus, via Isaiah Berlin). Spines run red to blue.',hedgehog],
+ ['D · Le coq gaulois','The national bird, instantly French. The most obvious and the most used already (sports teams, French Tech), so the hardest to own.',rooster],
+];
+document.getElementById('g').innerHTML=opts.map(([t,d,f])=>`<div class="opt"><h3>${t}</h3><p>${d}</p>
+<div class="row dark"><div class="lock">${f(true)}<div class="sans">Third<span>Estate</span></div></div><div class="fav">${f(true)}</div></div>
+<div class="row"><div class="lock">${f(false)}<div class="sans" style="color:#111216">Third<span>Estate</span></div></div><div class="big">${f(false)}</div></div></div>`).join('');
+</script></body></html>
