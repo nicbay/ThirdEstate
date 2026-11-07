@@ -54,7 +54,8 @@ function loadDepartmentTowns(dep: string) {
             t.unemployment ??= I.unemploymentCensus?.communes?.[u.code];
             const inc = I.income?.communes?.[u.code];
             if (inc) { t.income ??= inc[0]; t.poverty ??= inc[1]; }
-            t.crime ??= I.crime?.communes?.[u.code];
+            // Paris, Lyon, Marseille: SSMSI publishes the whole city only, keyed by the city code
+            t.crime ??= I.crime?.communes?.[u.code] ?? I.crime?.communes?.[plmCity(u.code)];
             t.spending ??= I.localSpending?.communes?.values?.[u.code];
             for (const s of I.schools?.list ?? []) if (s.commune === u.code && !t.schools.some((x: Any) => x.uai === s.uai)) t.schools.push(s);
             for (const e of events.get(c) ?? []) if ((e.commune === u.name || e.postcode?.startsWith(dep)) && e.commune === u.name && !t.events.some((x: Any) => x.name === e.name)) t.events.push(e);
@@ -299,6 +300,23 @@ function niceStep(max: number) {
   return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 2.5 ? 2.5 : n <= 5 ? 5 : 10) * p;
 }
 
+/** Paris, Lyon, Marseille as a whole: the district profiles list their arrondissements, so build the city from them. */
+function plmWhole(towns: Map<string, TownData>, code: string): TownData | undefined {
+  const arrs = [...towns.values()].filter((t) => t.code !== code && plmCity(t.code) === code);
+  if (!arrs.length) return undefined;
+  const districts = new Map<string, number>();
+  for (const a of arrs) for (const d of a.districts) districts.set(d.code, 1);
+  return {
+    code,
+    name: code === "75056" ? "Paris" : code === "69123" ? "Lyon" : "Marseille",
+    pop: arrs.reduce((s, a) => s + a.pop, 0),
+    districts: [...districts.keys()].sort().map((c) => ({ code: c, share: 1 })),
+    crime: arrs.find((a) => a.crime)?.crime,
+    schools: arrs.flatMap((a) => a.schools),
+    events: arrs.flatMap((a) => a.events),
+  };
+}
+
 export async function renderTown(app: HTMLElement, code: string) {
   const dep = depOf(code);
   const crimeHist = fetchJson<CrimeHistory>(`/data/crime-history/${dep}.json`).catch(() => null);
@@ -309,8 +327,11 @@ export async function renderTown(app: HTMLElement, code: string) {
     loadTownExtra(code),
     fetchJson<Any>(`https://geo.api.gouv.fr/communes/${code}?fields=nom,code,codesPostaux,population,departement,region,surface,centre`).catch(() => null),
   ]);
-  const t = towns.get(code);
+  const t = towns.get(code) ?? plmWhole(towns, code);
   const name = info?.nom ?? t?.name ?? code;
+  const cityCode = plmCity(code);
+  const isArr = cityCode !== code;
+  const cityName = cityCode === "75056" ? "Paris" : cityCode === "69123" ? "Lyon" : cityCode === "13055" ? "Marseille" : name;
   const mps = (t?.districts ?? []).map((d) => ({ d, mp: deputes.find((x) => x.circo === d.code) })).filter((x) => x.mp) as { d: { code: string; share: number }; mp: Depute }[];
   const fr = getLang() === "fr";
   const natCrime = nat?.national?.crime?.rates ?? {};
@@ -385,6 +406,7 @@ export async function renderTown(app: HTMLElement, code: string) {
         </section>
         <section class="card">
           <header class="card-head"><h2>${L("Sécurité", "Safety")}</h2><span class="muted small">${L("faits pour 1 000 habitants", "per 1,000 people")}</span></header>
+          ${isArr && t?.crime ? `<p class="muted small">${L(`Chiffres de ${cityName} entier : le ministère ne publie pas la délinquance par arrondissement.`, `Figures for the whole of ${cityName}: the ministry doesn’t publish crime by arrondissement.`)}</p>` : ""}
           ${
             t?.crime
               ? `<div id="crime-chart"></div><table class="table crime-table"><tbody>${Object.entries(CRIME_LABELS)
@@ -421,7 +443,7 @@ export async function renderTown(app: HTMLElement, code: string) {
     if (!rows.length) return;
     const show = (key: string) => {
       const lab = CRIME_LABELS[key];
-      box.innerHTML = crimeChart(h, series[key], key, name, fr ? lab[0] : lab[1]);
+      box.innerHTML = crimeChart(h, series[key], key, cityName, fr ? lab[0] : lab[1]);
       rows.forEach((r) => r.setAttribute("aria-selected", String(r.dataset.crime === key)));
     };
     for (const r of rows) {
