@@ -12,6 +12,7 @@ import { initTooltip } from "./lib/tooltip";
 import { joinPresence } from "./lib/cloud";
 import { renderElection } from "./views/history";
 import { renderFeed } from "./views/feed";
+import { renderExplorer, renderTown } from "./views/explore";
 
 const app = document.getElementById("app")!;
 const nav = document.getElementById("nav")!;
@@ -33,10 +34,13 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/sources$/, () => renderSources(app)],
   [/^#\/histoire\/([\w-]+)$/, (m) => renderElection(app, m[1])],
   [/^#\/fil$/, () => renderFeed(app)],
+  [/^#\/explorer(?:\/(\w{2,3}))?$/, (m) => renderExplorer(app, m[1])],
+  [/^#\/ville\/(\w{5})$/, (m) => renderTown(app, m[1])],
 ];
 
 const SECTIONS = [
   { href: "#/", match: /^#\/$/, fr: "2027", en: "2027" },
+  { href: "#/explorer", match: /^#\/(explorer|ville)/, fr: "Ma commune", en: "My town" },
   { href: "#/fil", match: /^#\/fil/, fr: "Fil rouge, fil bleu", en: "Red feed, blue feed" },
   { href: "#/sondages", match: /^#\/sondages/, fr: "Sondages", en: "Polls" },
   { href: "#/simulateur", match: /^#\/simulateur/, fr: "Simulateur", en: "Simulator" },
