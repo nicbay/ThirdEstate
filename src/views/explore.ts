@@ -242,8 +242,66 @@ const CRIME_LABELS: Record<string, [string, string]> = {
   vehicleTheft: ["Vols de véhicules", "Vehicle theft"], criminalDamage: ["Destructions et dégradations", "Criminal damage"], drugTrafficking: ["Trafic de stupéfiants", "Drug trafficking"], fraud: ["Escroqueries", "Fraud"],
 };
 
+// ---------- crime over time: the town against France (SSMSI, every year since 2016) ----------
+interface CrimeHistory { years: number[]; national: Record<string, (number | null)[]>; department: Record<string, (number | null)[]>; communes: Record<string, Record<string, (number | null)[]>> }
+/** Paris, Lyon and Marseille are published as whole cities. */
+const plmCity = (c: string) => (/^751\d\d$/.test(c) ? "75056" : /^6938\d$/.test(c) ? "69123" : /^132\d\d$/.test(c) ? "13055" : c);
+const numFmt = (v: number) => v.toLocaleString(getLang() === "fr" ? "fr-FR" : "en-GB", { maximumFractionDigits: 1, minimumFractionDigits: v < 10 ? 1 : 0 });
+
+/** Polyline path that breaks across missing years. */
+function linePath(vals: (number | null)[], x: (i: number) => number, y: (v: number) => number) {
+  let d = "", pen = false;
+  vals.forEach((v, i) => { if (v == null) { pen = false; return; } d += `${pen ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`; pen = true; });
+  return d;
+}
+
+function crimeSpark(town: (number | null)[], france: (number | null)[]) {
+  const W = 96, H = 26, all = [...town, ...france].filter((v): v is number => v != null);
+  const max = Math.max(...all, 0.1), x = (i: number) => 2 + (i * (W - 4)) / (town.length - 1), y = (v: number) => H - 3 - (v / max) * (H - 6);
+  const last = town.map((v, i) => [v, i] as const).filter(([v]) => v != null).at(-1);
+  return `<svg class="crime-spark" viewBox="0 0 ${W} ${H}" aria-hidden="true"><path class="fr" d="${linePath(france, x, y)}"/><path class="tw" d="${linePath(town, x, y)}"/>${last ? `<circle cx="${x(last[1]).toFixed(1)}" cy="${y(last[0]!).toFixed(1)}" r="2.2"/>` : ""}</svg>`;
+}
+
+function crimeChart(h: CrimeHistory, town: (number | null)[], key: string, name: string, label: string) {
+  const W = 560, H = 230, m = { t: 14, r: 92, b: 26, l: 34 };
+  const france = h.national[key] ?? [], dep = h.department[key] ?? [];
+  const all = [...town, ...france, ...dep].filter((v): v is number => v != null);
+  const step = niceStep(Math.max(...all, 1));
+  const max = Math.ceil(Math.max(...all, 0.1) / step) * step;
+  const x = (i: number) => m.l + (i * (W - m.l - m.r)) / (h.years.length - 1), y = (v: number) => H - m.b - (v / max) * (H - m.t - m.b);
+  const ticks = Array.from({ length: Math.round(max / step) + 1 }, (_, i) => i * step);
+  const lastIdx = (s: (number | null)[]) => s.map((v, i) => (v == null ? -1 : i)).filter((i) => i >= 0).at(-1);
+  const end = (s: (number | null)[], cls: string, txt: string) => { const i = lastIdx(s); return i == null ? null : { i, v: s[i]!, cls, txt }; };
+  const labels = [end(town, "tw", name), end(dep, "dp", L("Département", "Department")), end(france, "fr", "France")].filter(Boolean) as { i: number; v: number; cls: string; txt: string }[];
+  // keep end labels from overlapping
+  labels.sort((a, b) => y(a.v) - y(b.v));
+  let prev = -Infinity;
+  const placed = labels.map((l) => { const ly = Math.max(y(l.v) + 4, prev + 15); prev = ly; return { ...l, ly }; });
+  const fmtv = (v: number | null) => (v == null ? L("non publié", "not published") : numFmt(v));
+  const sep = L(" : ", ": ");
+  const tickFmt = (t: number) => t.toLocaleString(getLang() === "fr" ? "fr-FR" : "en-GB", { maximumFractionDigits: Number.isInteger(step) ? 0 : 1 });
+  return `<figure class="crime-chart">
+    <figcaption><b>${esc(label)}</b> <span class="muted small">${key === "burglary" ? L("pour 1 000 logements", "per 1,000 dwellings") : L("pour 1 000 habitants", "per 1,000 people")}, ${h.years[0]}–${h.years.at(-1)}</span></figcaption>
+    <svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(`${label}: ${name} ${L("et France", "and France")}`)}">
+      ${ticks.map((t) => `<line class="grid${t === 0 ? " base" : ""}" x1="${m.l}" x2="${W - m.r}" y1="${y(t)}" y2="${y(t)}"/><text class="axis" x="${m.l - 6}" y="${y(t) + 4}" text-anchor="end">${tickFmt(t)}</text>`).join("")}
+      ${h.years.map((yr, i) => (i % 2 === 0 || i === h.years.length - 1 ? `<text class="axis" x="${x(i)}" y="${H - 8}" text-anchor="middle">${yr}</text>` : "")).join("")}
+      <path class="cc-line dp" d="${linePath(dep, x, y)}"/>
+      <path class="cc-line fr" d="${linePath(france, x, y)}"/>
+      <path class="cc-line tw" d="${linePath(town, x, y)}"/>
+      ${town.map((v, i) => (v == null ? "" : `<circle class="cc-dot" cx="${x(i)}" cy="${y(v)}" r="3.2"/>`)).join("")}
+      ${placed.map((l) => `<text class="end-label cc-${l.cls}" x="${x(l.i) + 8}" y="${l.ly}">${esc(l.txt.length > 14 ? `${l.txt.slice(0, 13)}…` : l.txt)} <tspan class="v">${numFmt(l.v)}</tspan></text>`).join("")}
+      ${h.years.map((yr, i) => `<rect class="cc-hit" x="${x(i) - (W - m.l - m.r) / (h.years.length - 1) / 2}" y="${m.t}" width="${(W - m.l - m.r) / (h.years.length - 1)}" height="${H - m.t - m.b}" data-tip="${esc(`${yr}\n${name}${sep}${fmtv(town[i])}\n${L("Département", "Department")}${sep}${fmtv(dep[i] ?? null)}\nFrance${sep}${fmtv(france[i] ?? null)}`)}"/>`).join("")}
+    </svg>
+  </figure>`;
+}
+function niceStep(max: number) {
+  const raw = max / 4, p = 10 ** Math.floor(Math.log10(raw)), n = raw / p;
+  return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 2.5 ? 2.5 : n <= 5 ? 5 : 10) * p;
+}
+
 export async function renderTown(app: HTMLElement, code: string) {
   const dep = depOf(code);
+  const crimeHist = fetchJson<CrimeHistory>(`/data/crime-history/${dep}.json`).catch(() => null);
   const [{ towns }, deputes, nat, extra, info] = await Promise.all([
     loadDepartmentTowns(dep),
     loadDeputes(),
@@ -329,10 +387,10 @@ export async function renderTown(app: HTMLElement, code: string) {
           <header class="card-head"><h2>${L("Sécurité", "Safety")}</h2><span class="muted small">${L("faits pour 1 000 habitants", "per 1,000 people")}</span></header>
           ${
             t?.crime
-              ? `<table class="table"><tbody>${Object.entries(CRIME_LABELS)
+              ? `<div id="crime-chart"></div><table class="table crime-table"><tbody>${Object.entries(CRIME_LABELS)
                   .filter(([k]) => t.crime![k])
-                  .map(([k, [lf, le]]) => `<tr><td>${fr ? lf : le}</td><td class="num"><b>${fmt(t.crime![k][1])}</b></td><td class="num small">${cmpPct(t.crime![k][1], natCrime[k])}</td></tr>`)
-                  .join("")}</tbody></table><p class="muted tiny">${L("Faits enregistrés par la police et la gendarmerie (SSMSI). Cambriolages : pour 1 000 logements.", "Offences recorded by police and gendarmerie (SSMSI). Burglary: per 1,000 dwellings.")}</p>`
+                  .map(([k, [lf, le]]) => `<tr data-crime="${k}"><td>${fr ? lf : le}</td><td class="num"><b>${fmt(t.crime![k][1])}</b></td><td class="spark-cell"></td><td class="num small">${cmpPct(t.crime![k][1], natCrime[k])}</td></tr>`)
+                  .join("")}</tbody></table><p class="muted tiny">${L("Faits enregistrés par la police et la gendarmerie (SSMSI). Cambriolages : pour 1 000 logements. Courbes : la commune (trait plein) et la France (pointillés), chaque année depuis 2016 ; cliquez sur une ligne pour l’agrandir. Une année manque quand le ministère ne l’a pas publiée (trop peu de faits). Dans une petite commune, quelques faits suffisent à faire bondir le taux.", "Offences recorded by police and gendarmerie (SSMSI). Burglary: per 1,000 dwellings. Curves: the town (solid) and France (dotted), every year since 2016; click a row to enlarge it. A year is missing when the ministry didn’t publish it (too few offences). In a small town, a handful of offences is enough to make the rate jump.")}</p>`
               : `<p class="muted small">${L("Pas de chiffres publiés pour cette commune : le ministère ne publie pas les communes où les faits sont très peu nombreux.", "No figures published for this town: the ministry doesn’t publish towns with very few offences.")}</p>`
           }
         </section>
@@ -355,4 +413,25 @@ export async function renderTown(app: HTMLElement, code: string) {
   bindSearch(app);
   renderTownLocal(app.querySelector<HTMLElement>("#town-local")!, code, dep);
   renderQuartiers(app.querySelector<HTMLElement>("#town-quartiers")!, code);
+  crimeHist.then((h) => {
+    const box = app.querySelector<HTMLElement>("#crime-chart");
+    const series = h?.communes[code] ?? h?.communes[plmCity(code)];
+    if (!h || !box || !series) return;
+    const rows = [...app.querySelectorAll<HTMLTableRowElement>(".crime-table tr[data-crime]")].filter((r) => series[r.dataset.crime!]?.some((v) => v != null));
+    if (!rows.length) return;
+    const show = (key: string) => {
+      const lab = CRIME_LABELS[key];
+      box.innerHTML = crimeChart(h, series[key], key, name, fr ? lab[0] : lab[1]);
+      rows.forEach((r) => r.setAttribute("aria-selected", String(r.dataset.crime === key)));
+    };
+    for (const r of rows) {
+      const k = r.dataset.crime!;
+      r.querySelector(".spark-cell")!.innerHTML = crimeSpark(series[k], h.national[k] ?? []);
+      r.tabIndex = 0;
+      r.title = L("Voir l’évolution", "See the trend");
+      r.addEventListener("click", () => show(k));
+      r.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(k); } });
+    }
+    show(rows[0].dataset.crime!);
+  });
 }

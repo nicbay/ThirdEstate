@@ -1,0 +1,42 @@
+# Monthly refresh of recorded crime over time (SSMSI, data.gouv.fr): every year since 2016 for each town,
+# its department and France, used by the curves on town pages. SSMSI publishes a new year once a year;
+# the monthly run picks it up and commits only when the files changed.
+name: Sync crime history
+
+on:
+  schedule:
+    - cron: "40 5 3 * *" # 05:40 UTC on the 3rd of each month
+  workflow_dispatch: # allow a manual run from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-crime-history
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+
+      - run: node scripts/sync-crime-history.mjs
+
+      - name: Commit if anything changed
+        run: |
+          if [ -z "$(git status --porcelain -- public/data/crime-history)" ]; then
+            echo "No new data."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add -A public/data/crime-history
+          git commit -m "data: sync crime history ($(date -u +%F))"
+          git pull --rebase
+          git push
