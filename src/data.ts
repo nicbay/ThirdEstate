@@ -136,6 +136,7 @@ export interface Depute {
   departement: string | null;
   numDepartement: string | null;
   numCirco: number | null;
+  circo: string | null;
   debutMandat: string;
   stats: { pour: number; contre: number; abstention: number; nonVotant: number; scrutins: number; participation: number };
 }
@@ -151,6 +152,38 @@ export const loadScrutins = memo(() => fetchJson<Scrutin[]>("/data/an/scrutins.j
 export const loadAnMeta = memo(() => fetchJson<{ syncedAt: string }>("/data/an/meta.json"));
 export const loadVotes = (id: string) => fetchJson<Record<string, "P" | "C" | "A" | "N">>(`/data/an/votes/${id}.json`);
 export const loadDepartements = memo(() => fetchJson<GeoJSON.FeatureCollection>("/data/geo/departements.geojson"));
+export const loadCircoGeo = (dep: string) => fetchJson<GeoJSON.FeatureCollection>(`/data/geo/circo/${dep}.geojson`);
+
+// ---------- polls, markets, legislative results ----------
+import type { PollFile } from "./lib/polls";
+export const loadPolls = (key: "2027" | "2022" | "legislatives-2024") => (pollCache[key] ??= fetchJson<PollFile>(`/data/polls/${key}.json`));
+const pollCache: Record<string, Promise<PollFile>> = {};
+
+export interface Market {
+  platform: string;
+  id: string;
+  question: string;
+  url: string;
+  volume: number;
+  outcomes: { name: string; prob: number }[];
+}
+export const loadMarkets = memo(() => fetchJson<{ fetchedAt: string; markets: Market[]; errors: { platform: string; error: string }[] }>("/data/markets.json"));
+
+export interface Leg24 {
+  source: string;
+  resource: string;
+  national: { inscrits: number; votants: number; exprimes: number; nuances: Record<string, number> };
+  circos: Record<string, { e: number; c: [string, number, string][] }>;
+}
+export const loadLeg24 = memo(() => fetchJson<Leg24>("/data/results/legislatives-2024-t1.json"));
+
+/** Live: every 2024 first-round candidate in one district, from the data.gouv.fr tabular API. */
+export async function districtResults2024(circo: string) {
+  const code = circo.startsWith("99") ? "ZZ" + circo.slice(2) : circo;
+  const url = `${TABULAR}/a04f8cae-c94d-4ade-804d-ec024ee554ac/data/?page_size=50&CodCirElec__exact=${code}`;
+  const r = await fetchJson<{ data: { NomPsn: string; PrenomPsn: string; CodNuaCand: string; NbVoix: number; RapportExprimes: number; Elu: string; Inscrits: number; Votants: number; Exprimes: number }[] }>(url);
+  return { url, rows: r.data.sort((a, b) => b.NbVoix - a.NbVoix) };
+}
 
 export async function fetchJson<T>(url: string): Promise<T> {
   const res = await fetch(url);

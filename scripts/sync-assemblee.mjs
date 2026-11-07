@@ -62,6 +62,11 @@ for (const a of acteurs) {
     if (key && ad.valElec) socials[key] = ad.valElec;
   }
   const ec = a.etatCivil;
+  // Some records have an empty XML node (parsed as an object) instead of a string.
+  const str = (v) => (typeof v === "string" && v.trim() ? v.trim() : null);
+  // the source spells this family two ways; use INSEE's label
+  const fam = str(a.profession?.socProcINSEE?.famSocPro)?.replace(/^Artisans.*$/, "Artisans, commerçants et chefs d'entreprise") ?? null;
+  const depNum = lieu.numDepartement === "099" ? "99" : lieu.numDepartement ?? null;
   deputes.push({
     id: a.uid["#text"],
     civ: ec.ident.civ,
@@ -69,17 +74,19 @@ for (const a of acteurs) {
     nom: ec.ident.nom,
     alpha: ec.ident.alpha,
     naissance: ec.infoNaissance?.dateNais ?? null,
-    profession: a.profession?.libelleCourant ?? null,
-    catSocPro: a.profession?.socProcINSEE?.catSocPro ?? null,
-    famSocPro: a.profession?.socProcINSEE?.famSocPro ?? null,
+    profession: str(a.profession?.libelleCourant)?.replace(/^\(\d+\)\s*-\s*/, "") ?? null,
+    catSocPro: str(a.profession?.socProcINSEE?.catSocPro),
+    famSocPro: fam,
     hatvp: a.uri_hatvp ?? null,
     email,
     socials,
     groupe: g ? { id: g.uid, abrev: g.libelleAbrev, libelle: g.libelle, couleur: g.couleurAssociee } : null,
     region: lieu.region ?? null,
     departement: lieu.departement ?? null,
-    numDepartement: lieu.numDepartement ?? null,
+    numDepartement: depNum,
     numCirco: lieu.numCirco ? Number(lieu.numCirco) : null,
+    // district code shared with the map and results: department + 2-digit district ("0104", "97101", "9901")
+    circo: depNum && lieu.numCirco ? depNum + String(lieu.numCirco).padStart(2, "0") : null,
     debutMandat: an.dateDebut,
   });
 }
