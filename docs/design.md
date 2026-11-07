@@ -7,10 +7,14 @@ claimed their place in the Estates-General. Sieyès: *What is the Third Estate? 
 until now? Nothing. What does it ask? To become something.* The site is for that reader: the citizen, not
 the insider. The name is English and reads instantly in French.
 
-The mark is three rising bars, Sieyès' *nothing, something, everything*, which also reads as a bar chart.
-The third bar is the people, split red (left) and blue (right) in the French convention, the same split as
-the active-tab underline. Wordmark: Archivo 850 condensed **THIRD** + 300 **ESTATE**, uppercase. Favicon:
-the mark on the ink tile. Catchphrase: Article 15 of the 1789 Declaration, *« La société a le droit de demander compte à tout agent public de son administration »*, shortened on the homepage to « Demander compte à tout agent public ». Share image: `public/og.png` (1200×630).
+The mark is a fighting bee cut out of a solid hexagon, like a regimental badge (sheet:
+`docs/brand/bee-options.html`, variant C). Bees vote: a swarm chooses its new home by a debate among scouts
+(Seeley, *Honeybee Democracy*). The hive is the many who do the work, the Third Estate; the hexagon is
+l'Hexagone. Swept blade wings, horn antennae, narrowed eyes and a long stinger keep it combative, not cute.
+The abdomen carries two chevrons, red (left) and blue (right) in the French convention, the same split as
+the active-tab underline. On dark: white hexagon, ink bee, light red/blue (`#ff5a6a`/`#5b8dff`). On white:
+ink hexagon, white bee, `#e0313f`/`#2f6bdc`. Wordmark: Archivo 850 condensed **THIRD** + 300 **ESTATE**,
+uppercase. Favicon: the ink badge with a thin white edge, so it holds on light and dark tabs. Catchphrase: Article 15 of the 1789 Declaration, *« La société a le droit de demander compte à tout agent public de son administration »*, shortened on the homepage to « Demander compte à tout agent public ». Share image: `public/og.png` (1200×630).
 
 A data desk, not a blog template. The page is a black-framed news product: one grotesk for
 everything people read, a monospace for everything that annotates, a 3px ink rule to open
