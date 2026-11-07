@@ -1,0 +1,64 @@
+# Red/Blue feed: French news (RSS) + MP posts (Bluesky, YouTube, Mastodon), AI-rated with Claude Haiku 5.5.
+# Every 2 hours. Uses the shared Claude budget ($15/month, ledger in data/usage/), so it shares the
+# `claude-budget` concurrency group with every other job that calls Claude: runs never overlap and
+# never race on the ledger. See docs/data-feed.md.
+name: Sync Red/Blue feed
+
+on:
+  schedule:
+    - cron: "41 */2 * * *" # every 2 hours, off the hour
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: claude-budget
+  cancel-in-progress: false
+
+jobs:
+  feed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: News (RSS)
+        run: node scripts/sync-news.mjs
+
+      - name: MP posts (Bluesky, YouTube, Mastodon)
+        run: node scripts/sync-mp-posts.mjs
+        continue-on-error: true # keep the last posts if a platform is down
+
+      - name: X sample (experiment; embeds in articles = free, Claude web search = budget-capped)
+        run: node scripts/sync-x-sample.mjs
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Rate reactions (Claude Haiku 5.5, budget-capped)
+        run: node scripts/rate-reactions.mjs
+        continue-on-error: true # an API outage must not block the feed; unrated posts are retried next run
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Build feed
+        run: node scripts/build-feed.mjs
+
+      - name: Commit data and usage ledger
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add data/feed public/data/feed
+          [ -d data/usage ] && git add data/usage
+          git diff --cached --quiet && { echo "No change."; exit 0; }
+          git commit -m "data: sync red/blue feed ($(date -u +'%F %H:%M'))"
+          git pull --rebase --autostash
+          git push
