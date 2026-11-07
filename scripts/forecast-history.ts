@@ -32,10 +32,16 @@ interface History { fetchedAt: string; days: Day[] }
 
 const iso = (t: number) => new Date(t).toISOString().slice(0, 10);
 const r1 = (x: number) => Math.round(x * 10) / 10;
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+/** GET JSON, pacing requests and backing off on 429 (Kalshi rate-limits shared CI addresses). */
 async function getJson<T = any>(url: string): Promise<T> {
-  const res = await fetch(url, { headers: { Accept: "application/json", "User-Agent": "ThirdEstate/0.1 (forecast history)" }, signal: AbortSignal.timeout(20000) });
-  if (!res.ok) throw new Error(`${res.status} ${url}`);
-  return res.json() as Promise<T>;
+  for (let attempt = 0; ; attempt++) {
+    await sleep(attempt ? 2000 * 2 ** attempt : 250);
+    const res = await fetch(url, { headers: { Accept: "application/json", "User-Agent": "ThirdEstate/0.1 (forecast history)" }, signal: AbortSignal.timeout(20000) });
+    if (res.status === 429 && attempt < 5) continue;
+    if (!res.ok) throw new Error(`${res.status} ${url}`);
+    return res.json() as Promise<T>;
+  }
 }
 
 function entry(date: string, live: boolean, polls: PollFile, markets: Market[], asOf: string): Day {
@@ -129,7 +135,8 @@ if (want.length) {
     const m = syntheticMarkets(date, k, p, marketsNow);
     if (!m.length) continue;
     const prev = byDate.get(date);
-    if (prev && prev.sources.length >= m.length + 1) continue; // nothing new
+    const srcs = ["polls", ...m.map((x) => x.platform)];
+    if (prev && !(srcs.length > prev.sources.length && prev.sources.every((x) => srcs.includes(x)))) continue; // only replace with a superset of sources
     byDate.set(date, entry(date, false, polls, m, date));
     n++;
   }
