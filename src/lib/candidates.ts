@@ -91,3 +91,11 @@ export const NUANCE_LABEL: Record<string, string> = {
   REC: "Reconquête", EXD: "Extrême droite", REG: "Régionaliste", DIV: "Divers",
 };
 export const nuanceColor = (code: string) => LEG_BLOCS.find((b) => b.nuances.includes(code))?.color ?? "#9aa3b2";
+
+const PARTY_ORDER = Object.keys(PARTY);
+/** Position on the left → right axis, for ordering strips and lists by seating rather than size. */
+export function spectrumRank(name: string) {
+  const m = meta(name);
+  const p = m.party ? PARTY_ORDER.indexOf(m.party) : -1;
+  return (m.bloc ?? 2.5) * 100 + (p < 0 ? 50 : p);
+}

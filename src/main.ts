@@ -8,6 +8,7 @@ import { renderAssemblee } from "./views/assemblee";
 import { renderCirco } from "./views/circo";
 import { renderDepute } from "./views/depute";
 import { renderSources } from "./views/sources";
+import { initTooltip } from "./lib/tooltip";
 
 const app = document.getElementById("app")!;
 const nav = document.getElementById("nav")!;
@@ -82,4 +83,5 @@ langBtn.addEventListener("click", () => {
 });
 window.addEventListener("hashchange", route);
 setLang(getLang());
+initTooltip();
 route();

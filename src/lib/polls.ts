@@ -100,3 +100,17 @@ export function duelAverages(duels: Duel[], days = 60) {
     })
     .sort((x, y) => y.total - x.total);
 }
+
+/** The candidate line-up pollsters tested most often in the window, averaged over those polls.
+ *  Unlike `average`, its shares add up to ~100 because everyone in it was tested together. */
+export function referenceLineup(polls: Poll[], asOf: string) {
+  const hyps = pollsInWindow(polls, asOf).flatMap((p) => p.hyps);
+  const sets = new Map<string, Record<string, number>[]>();
+  for (const h of hyps) {
+    const k = Object.keys(h).sort().join("|");
+    sets.set(k, [...(sets.get(k) ?? []), h]);
+  }
+  const best = [...sets.values()].sort((a, b) => b.length - a.length)[0] ?? [];
+  const names = Object.keys(best[0] ?? {});
+  return { n: best.length, rows: names.map((name) => ({ name, share: best.reduce((s, h) => s + h[name], 0) / best.length })) };
+}

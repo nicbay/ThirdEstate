@@ -44,7 +44,7 @@ export async function renderDepute(app: HTMLElement, id: string) {
         </div>
         <nav class="mp-nav small">
           ${prev ? `<a href="#/depute/${prev.id}">← ${esc(prev.prenom)} ${esc(prev.nom)}</a>` : "<span></span>"}
-          ${next ? `<a href="#/depute/${next.id}">${esc(next.prenom)} ${esc(next.nom)} →</a>` : ""}
+          ${next ? `<a href="#/depute/${next.id}">${esc(next.prenom)} ${esc(next.nom)}</a>` : ""}
         </nav>
       </div>
 

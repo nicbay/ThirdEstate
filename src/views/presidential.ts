@@ -70,7 +70,7 @@ export async function renderPresidential(app: HTMLElement, year?: number) {
 }
 
 function color(a: AreaResult | undefined, e: Election) {
-  if (!a) return "var(--map-empty)";
+  if (!a) return "var(--wash)";
   const lead = a.candidates[0];
   return e.candidates[lead.nom]?.color ?? "#888";
 }
