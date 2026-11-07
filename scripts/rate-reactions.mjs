@@ -12,7 +12,7 @@ import { STATE, readJson, writeJson, snippet, path } from "./lib/feed-common.mjs
 import { loadWindow, postText } from "./lib/stories.mjs";
 import { readFile } from "node:fs/promises";
 
-export const PROMPT_VERSION = "feed-rating-v1";
+export const PROMPT_VERSION = "feed-rating-v2";
 const JOB = "feed";
 const BATCH = 8; // posts per request
 const argLimit = process.argv.indexOf("--limit");
@@ -32,7 +32,7 @@ const SOURCE_DOMAINS = [
 const MARKERS = ["anti_elites", "peuple_vs_elites", "peuple_homogene", "souverainete_populaire", "delegitimation", "complot", "simplisme", "nativisme", "appel_emotionnel"];
 const BANNED = /\b(faux|fausse|fausses|mensong\w*|ment|mentent|menteu\w*|erron\w*|inexact\w*|false|untrue|lie|lies|lying|incorrect|wrong|fake|désinformation|disinformation|misinformation)\b/i;
 
-export const SYSTEM = `Tu analyses des messages publiés sur les réseaux sociaux par des député·es français·es, en réaction à l'actualité. Pour chaque message, tu rends une notation JSON. Sois sobre, factuel et équilibré : tes sorties sont publiées sur un site d'information non partisan.
+export const SYSTEM = `Tu analyses des messages publiés sur les réseaux sociaux par des député·es français·es, en réaction à l'actualité. Pour chaque message, tu rends une notation JSON. Juge chaque message séparément : ne le compare pas aux autres messages de la liste. Sois sobre, factuel et équilibré : tes sorties sont publiées sur un site d'information non partisan.
 
 1. story — Parmi les sujets d'actualité candidats (A, B, C…) fournis avec le message, lequel le message commente-t-il directement ? Réponds par la lettre, ou "none" si aucun ne correspond vraiment (simple ressemblance de mots, sujet différent, message sans rapport).
 
@@ -44,7 +44,7 @@ export const SYSTEM = `Tu analyses des messages publiés sur les réseaux sociau
    anti_elites (attaque « les élites », « la caste », « l'oligarchie »), peuple_vs_elites (peuple pur contre élite corrompue), peuple_homogene (« le peuple veut… » comme bloc unique), souverainete_populaire (la volonté du peuple contre les institutions / contre-pouvoirs), delegitimation (adversaires présentés comme illégitimes, ennemis, traîtres), complot (intentions cachées, manipulation organisée), simplisme (solution simple à un problème complexe), nativisme (« nous » contre les étrangers), appel_emotionnel (indignation ou peur mise en avant à la place d'arguments).
    La critique d'une politique ou d'un gouvernement n'est pas du populisme en soi. rationale_fr / rationale_en : une phrase courte.
 
-5. check — « À vérifier ». Seulement si le message avance une affirmation factuelle VÉRIFIABLE (chiffre, statistique, fait daté, citation, résultat de vote) dont tu doutes raisonnablement. Sinon null. Les opinions, promesses, prévisions et slogans ne sont jamais à vérifier.
+5. check — « À vérifier ». Seulement si le message avance une affirmation factuelle VÉRIFIABLE (chiffre, statistique, fait daté, citation, résultat de vote) dont tu doutes pour une raison concrète : un article fourni donne une autre version, le chiffre diffère de ce que tu sais des chiffres officiels, ou il s'agit visiblement d'un décompte d'une seule partie (organisateurs, militants) présenté comme un fait. L'absence de source dans le message ne suffit pas. Sinon null — la plupart des messages n'en ont pas. Les opinions, promesses, prévisions, slogans et jugements (« les seuls », « historique », « inédit ») ne sont jamais à vérifier.
    Règles strictes : ne dis jamais que le message est faux, mensonger, erroné ou incorrect, et n'emploie pas ces mots ; explique seulement pourquoi l'affirmation mérite d'être vérifiée (ex. « d'autres sources donnent un chiffre différent », « le chiffre semble être celui des organisateurs », « la période de comparaison n'est pas précisée »). claim : l'affirmation, reformulée brièvement. why_fr / why_en : une ou deux phrases. sources : 1 à 3 liens où vérifier — de préférence les articles fournis (copie exactement leur URL), sinon uniquement la page d'accueil ou une rubrique générale d'un organisme officiel (insee.fr, assemblee-nationale.fr, vie-publique.fr, legifrance.gouv.fr, ccomptes.fr…). N'invente jamais d'URL précise.
 
 Réponds uniquement avec l'objet JSON demandé, un élément par message, dans l'ordre, en reprenant l'index i.`;
@@ -221,7 +221,7 @@ for (let i = 0; i < queue.length; i += BATCH) {
       {
         system: SYSTEM,
         messages: [{ role: "user", content: buildPrompt(batch, ctx) }],
-        max_tokens: 1500 + batch.length * 450,
+        max_tokens: 3000 + batch.length * 600,
         output_config: { effort: "low", format: { type: "json_schema", schema: ratingSchema } },
       },
       JOB,
@@ -231,7 +231,14 @@ for (let i = 0; i < queue.length; i += BATCH) {
       console.log(`Budget stop: ${e.message}`);
       break;
     }
-    console.warn(`Request failed (${e.status ?? ""} ${e.message}); these ${batch.length} posts will be retried next run.`);
+    // Not the posts' fault: bad key / permissions (401, 403), rate limit (429), API down (5xx), network.
+    // Stop the run without counting a failure against the posts.
+    if (!e.status || e.status === 401 || e.status === 403 || e.status === 429 || e.status >= 500) {
+      console.warn(`Request failed (${e.status ?? "network"}: ${e.message}). Stopping; all ${queue.length - i} remaining posts will be retried next run.`);
+      if (e.status === 401) console.warn("401 = the API key was rejected: check the ANTHROPIC_API_KEY secret (a Console API key, sk-ant-api…, pasted without quotes or spaces).");
+      break;
+    }
+    console.warn(`Request failed (${e.status} ${e.message}); these ${batch.length} posts will be retried once more.`);
     for (const b of batch) store.failures[b.post.id] = (store.failures[b.post.id] ?? 0) + 1;
     continue;
   }
