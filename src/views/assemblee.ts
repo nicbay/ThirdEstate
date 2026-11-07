@@ -4,6 +4,7 @@ import { L, fmtDate, fmtPct } from "../i18n";
 import { NUANCE_LABEL, nuanceColor } from "../lib/candidates";
 import { OVERSEAS_DEPS, mapPaths, rewind } from "../lib/map";
 import { esc, groupBy } from "../util";
+import { hemicycle, seatRank } from "../lib/hemicycle";
 import { renderDeputes } from "./deputes";
 
 export const PLATFORMS = ["twitter", "facebook", "instagram", "linkedin", "website"] as const;
@@ -17,7 +18,9 @@ export async function renderAssemblee(app: HTMLElement, tab = "carte", dep?: str
   app.innerHTML = `
     <section class="page">
       <div class="page-head">
-        <div><p class="eyebrow">${L("17e législature", "17th legislature")}</p><h1>${L("Assemblée nationale", "National Assembly")}</h1></div>
+        <p class="eyebrow">${L("Assemblée nationale, 17e législature", "National Assembly, 17th legislature")}</p>
+        <h1>${L("Qui siège à l’Assemblée, et pour qui ont voté leurs circonscriptions", "Who sits in the Assembly, and how their districts voted")}</h1>
+        <p class="dek">${L("Choisissez un département sur la carte pour voir ses circonscriptions, leur député et leur vote de 2024.", "Pick a department on the map to see its districts, their MP and how they voted in 2024.")}</p>
         <nav class="tabs">
           <a role="tab" href="#/assemblee" aria-selected="${tab === "carte"}">${L("Carte", "Map")}</a>
           <a role="tab" href="#/assemblee/deputes" aria-selected="${tab === "deputes"}">${L("Députés", "MPs")}</a>
@@ -45,23 +48,23 @@ async function mapView(pane: HTMLElement, dep?: string) {
     const count = new Map<string, { n: number; c: string }>();
     for (const d of mps) if (d.groupe) count.set(d.groupe.id, { n: (count.get(d.groupe.id)?.n ?? 0) + 1, c: d.groupe.couleur });
     const top = [...count.values()].sort((a, b) => b.n - a.n)[0];
-    return { fill: top?.c ?? "var(--map-empty)", opacity: top ? 0.35 + (0.65 * top.n) / mps.length : 1 };
+    return { fill: top?.c ?? "var(--wash)", opacity: top ? 0.35 + (0.65 * top.n) / mps.length : 1 };
   };
   const circoFill = (code: string) => {
     if (mapMode === "leg24") {
       const lead = leg.circos[code]?.c[0];
-      return lead ? nuanceColor(lead[0]) : "var(--map-empty)";
+      return lead ? nuanceColor(lead[0]) : "var(--wash)";
     }
-    return byCirco.get(code)?.groupe?.couleur ?? "var(--map-empty)";
+    return byCirco.get(code)?.groupe?.couleur ?? "var(--wash)";
   };
 
   pane.innerHTML = `
     <div class="pres-grid">
       <article class="card">
-        <header class="card-head"><h2>${L("Choisissez un département", "Pick a department")}</h2></header>
+        <header class="card-head"><h2>${L("Le groupe le plus représenté par département", "Largest group in each department")}</h2></header>
         <svg id="fr" viewBox="0 0 600 600"></svg>
         <div class="overseas">${OVERSEAS_DEPS.map((c) => `<svg viewBox="0 0 100 100" class="inset" data-inset="${c}"></svg>`).join("")}<button type="button" class="abroad" data-code="99" style="--c:${depColor("99").fill}">🌍<span>${L("Étranger", "Abroad")}</span></button></div>
-        <p class="muted small">${L("Couleur : groupe qui détient le plus de sièges du département.", "Colour: group holding most of the department’s seats.")}</p>
+        <p class="muted small">${L("Plus la couleur est franche, plus ce groupe domine le département.", "The stronger the colour, the more that group dominates the department.")}</p>
       </article>
       <aside class="card panel" id="dep"></aside>
     </div>`;
@@ -81,9 +84,10 @@ async function mapView(pane: HTMLElement, dep?: string) {
   const drawDep = async () => {
     const box = pane.querySelector<HTMLElement>("#dep")!;
     if (!dep) {
-      const groups = [...groupBy(deputes.filter((d) => d.groupe), (d) => d.groupe!.id).values()].sort((a, b) => b.length - a.length);
-      box.innerHTML = `<h2>${L("Composition", "Seats")} · ${deputes.length} ${L("députés en exercice", "sitting MPs")}</h2>
-        <div class="hemi">${groups.map((g) => `<span style="flex:${g.length};background:${g[0].groupe!.couleur}" title="${esc(g[0].groupe!.libelle)} ${g.length}"></span>`).join("")}</div>
+      const groups = [...groupBy(deputes.filter((d) => d.groupe), (d) => d.groupe!.id).values()].sort((a, b) => seatRank(a[0].groupe!.abrev) - seatRank(b[0].groupe!.abrev));
+      box.innerHTML = `<h2>${L("Les groupes, de gauche à droite", "The groups, left to right")}</h2>
+        ${hemicycle(groups.map((g) => ({ label: g[0].groupe!.libelle, color: g[0].groupe!.couleur, seats: g.length })))}
+        <p class="muted small">${deputes.length} ${L("députés en exercice", "sitting MPs")}${deputes.length < 577 ? L(` ; ${577 - deputes.length} sièges vacants`, `; ${577 - deputes.length} seats vacant`) : ""}.</p>
         <ul class="legend-list">${groups.map((g) => `<li><i class="dot" style="background:${g[0].groupe!.couleur}"></i>${esc(g[0].groupe!.abrev)} <span class="muted">${esc(g[0].groupe!.libelle)}</span><b>${g.length}</b></li>`).join("")}</ul>`;
       return;
     }
@@ -116,7 +120,7 @@ async function mapView(pane: HTMLElement, dep?: string) {
 
 async function composition(pane: HTMLElement) {
   const [deputes, meta] = await Promise.all([loadDeputes(), loadAnMeta()]);
-  const groups = [...groupBy(deputes.filter((d) => d.groupe), (d) => d.groupe!.id).values()].sort((a, b) => b.length - a.length);
+  const groups = [...groupBy(deputes.filter((d) => d.groupe), (d) => d.groupe!.id).values()].sort((a, b) => seatRank(a[0].groupe!.abrev) - seatRank(b[0].groupe!.abrev));
   const fams = [...new Set(deputes.map((d) => d.famSocPro ?? L("Non renseigné", "Not stated")))].sort((a, b) => deputes.filter((d) => (d.famSocPro ?? "") === b).length - deputes.filter((d) => (d.famSocPro ?? "") === a).length);
   const famColor = (i: number) => ["#1d4ed8", "#0ea5e9", "#14b8a6", "#f59e0b", "#a855f7", "#ef4444", "#64748b", "#94a3b8", "#cbd5e1"][i % 9];
   const famOf = (d: Depute) => d.famSocPro ?? L("Non renseigné", "Not stated");

@@ -17,7 +17,7 @@ export async function renderSources(app: HTMLElement) {
   ];
   app.innerHTML = `
     <section class="page narrow">
-      <div class="page-head"><h1>${L("Sources et méthode", "Sources & method")}</h1></div>
+      <div class="page-head"><h1>${L("D’où viennent les chiffres", "Where the numbers come from")}</h1><p class="dek">${L("Chaque donnée vient d’une source publique et gratuite. Voici lesquelles, quand elles sont mises à jour et comment nous les calculons.", "Every figure comes from a free, public source. Here is which, how often it’s refreshed and how we calculate it.")}</p></div>
       <article class="card">
         <table class="table">
           <thead><tr><th>${L("Donnée", "Data")}</th><th>${L("Source", "Source")}</th><th>${L("Mise à jour", "Refresh")}</th></tr></thead>

@@ -82,7 +82,8 @@ export async function renderSimulator(app: HTMLElement) {
     app.innerHTML = `
       <section class="page">
         <div class="page-head">
-          <div><p class="eyebrow">${L("Présidentielle 2027", "2027 presidential")}</p><h1>${L("Simulateur de scénarios", "Scenario planner")}</h1></div>
+          <div><p class="eyebrow">${L("Présidentielle 2027", "2027 presidential election")}</p><h1>${L("Construisez votre second tour", "Build your own runoff")}</h1>
+          <p class="dek">${L("Partez des sondages, changez les scores du premier tour, choisissez les finalistes et décidez où vont les voix des éliminés.", "Start from the polls, change first-round shares, pick the finalists and decide where eliminated candidates’ voters go.")}</p></div>
           <button type="button" class="button" id="reset">${L("Repartir des sondages", "Reset to polling average")}</button>
         </div>
 

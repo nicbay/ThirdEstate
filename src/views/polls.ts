@@ -19,7 +19,8 @@ export async function renderPolls(app: HTMLElement) {
   app.innerHTML = `
     <section class="page">
       <div class="page-head">
-        <div><p class="eyebrow">${L("Présidentielle 2027", "2027 presidential")}</p><h1>${L("Sondages et marchés", "Polls & markets")}</h1></div>
+        <div><p class="eyebrow">${L("Présidentielle 2027", "2027 presidential election")}</p><h1>${L("Tous les sondages, et ce que parient les marchés", "Every poll, and what the betting markets say")}</h1>
+          <p class="dek">${L("L’évolution des intentions de vote depuis 2025, chaque duel de second tour testé, la liste complète des sondages et les cotes de Kalshi et Polymarket.", "Voting intention since 2025, every runoff match-up tested, the full list of polls, and the odds on Kalshi and Polymarket.")}</p></div>
         <nav class="subnav">
           <a href="#/sondages#evolution">${L("Évolution", "Trend")}</a>
           <a href="#/sondages#second-tour">${L("Second tour", "Runoff")}</a>

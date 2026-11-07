@@ -39,7 +39,7 @@ export async function renderCirco(app: HTMLElement, code: string) {
                 <div><span class="muted">${L("Contre", "Against")}</span><strong class="pos-C">${fmtNum(d.stats.contre)}</strong></div>
                 <div><span class="muted">${L("Présence numérique", "Digital presence")}</span><strong>${presence(d)}/${PLATFORMS.length}</strong></div>
               </div>
-              <p><a class="button" href="#/depute/${d.id}">${L("Profil complet et tous ses votes", "Full profile and every vote")} →</a></p>
+              <p><a class="button" href="#/depute/${d.id}">${L("Profil complet et tous ses votes", "Full profile and every vote")}</a></p>
             </article>`
               : `<article class="card"><p>${L("Siège actuellement vacant ou non renseigné.", "Seat currently vacant or not listed.")}</p></article>`
           }
@@ -55,7 +55,7 @@ export async function renderCirco(app: HTMLElement, code: string) {
   // district map (missing for French abroad)
   loadCircoGeo(dep)
     .then((g) => {
-      app.querySelector("#m")!.innerHTML = mapPaths(g.features.map(rewind), [400, 400], (c) => ({ fill: c === code ? d?.groupe?.couleur ?? "var(--accent)" : "var(--map-empty)", title: `${L("Circonscription", "District")} ${Number(c.slice(-2))}`, selected: c === code }), dep.length === 3 ? "mercator" : "france");
+      app.querySelector("#m")!.innerHTML = mapPaths(g.features.map(rewind), [400, 400], (c) => ({ fill: c === code ? d?.groupe?.couleur ?? "var(--ink)" : "var(--wash)", title: `${L("Circonscription", "District")} ${Number(c.slice(-2))}`, selected: c === code }), dep.length === 3 ? "mercator" : "france");
       app.querySelectorAll<SVGElement>("#m [data-code]").forEach((el) => el.addEventListener("click", () => (location.hash = `#/circo/${el.dataset.code}`)));
     })
     .catch(() => app.querySelector("#m")?.closest(".card")?.remove());

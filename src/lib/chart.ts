@@ -41,6 +41,11 @@ export function lineChart(series: Series[], opts: { height?: number; yMax?: numb
     .map((s) => ({ s, y: y(s.line.at(-1)!.value) }))
     .sort((a, b) => a.y - b.y);
   for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < 13) ends[i].y = ends[i - 1].y + 13;
+  // if the stack ran past the bottom, push it back up from the last label
+  if (ends.length && ends[ends.length - 1].y > H - B) {
+    ends[ends.length - 1].y = H - B;
+    for (let i = ends.length - 2; i >= 0; i--) if (ends[i + 1].y - ends[i].y < 13) ends[i].y = ends[i + 1].y - 13;
+  }
 
   return `<svg viewBox="0 0 ${W} ${H}" class="chart" role="img">
     ${grid.join("")}${ticks.join("")}

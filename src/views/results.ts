@@ -16,7 +16,8 @@ export async function renderResults(app: HTMLElement, tab = "presidentielle-2022
   app.innerHTML = `
     <section class="page">
       <div class="page-head">
-        <div><p class="eyebrow">${L("Archives", "Archive")}</p><h1>${L("Résultats passés et précision des sondages", "Past results and poll accuracy")}</h1></div>
+        <div><p class="eyebrow">${L("Résultats passés", "Past results")}</p><h1>${L("Ce que les électeurs ont voté, et à quel point les sondages s’étaient trompés", "How France voted, and how far off the polls were")}</h1>
+          <p class="dek">${L("Résultats officiels du ministère de l’Intérieur, comparés au dernier sondage de chaque institut avant le vote.", "Official Ministry of the Interior results, compared with each pollster’s last poll before the vote.")}</p></div>
         <nav class="tabs">${TABS.map((t) => `<a role="tab" href="#/resultats/${t.key}" aria-selected="${t.key === tab}">${L(t.fr, t.en)}</a>`).join("")}</nav>
       </div>
       <div id="pane"></div>
@@ -159,7 +160,7 @@ async function legislatives(pane: HTMLElement) {
       <p class="muted small">${L("Moyenne mobile sur 7 jours. Losanges : résultat officiel.", "7-day rolling average. Diamonds: official result.")}</p>
     </article>
     <article class="card">
-      <header class="card-head"><h2>${L("Résultat national par nuance · 1er tour", "National result by label · first round")}</h2><a href="#/assemblee">${L("Voir par circonscription", "See by district")} →</a></header>
+      <header class="card-head"><h2>${L("Résultat national par nuance · 1er tour", "National result by label · first round")}</h2><a href="#/assemblee">${L("Voir par circonscription", "See by district")}</a></header>
       <ol class="bars compact">${nuances
         .map(([code, v]) => `<li><div class="bar-label"><span><i class="dot" style="background:${nuanceColor(code)}"></i>${esc(NUANCE_LABEL[code] ?? code)} <span class="muted">${code}</span></span><span><b>${((100 * v) / n.exprimes).toFixed(2)} %</b> <span class="muted small">${fmtNum(v)}</span></span></div><div class="bar"><div style="width:${(100 * v) / n.exprimes / 0.35}%;background:${nuanceColor(code)}"></div></div></li>`)
         .join("")}</ol>
