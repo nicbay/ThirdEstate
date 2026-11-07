@@ -3,7 +3,7 @@ import { loadMarkets, loadPolls } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
 import { meta, registerParties, spectrumRank } from "../lib/candidates";
 import { average, duelAverages, pollValue, referenceLineup, WINDOW } from "../lib/polls";
-import { combineOdds } from "../lib/markets";
+import { combineOdds, marketMeta } from "../lib/markets";
 import { esc, safeUrl, safeColor } from "../util";
 import { shiftDays } from "./home";
 
@@ -50,17 +50,19 @@ export async function renderRace(app: HTMLElement) {
       <section class="card polls-vs-markets">
         <header class="card-head"><h2>${L("Sondages ou paris : qui va gagner ?", "Polls or bets: who will win?")}</h2><a href="#/sondages#marches">${L("Détail des marchés", "Market details")}</a></header>
         <p class="muted small">${L("Les sondages mesurent les intentions de vote au premier tour ; les marchés prédictifs donnent la probabilité, selon les parieurs, que chacun soit élu ou qualifié au second tour.", "Polls measure first-round voting intention; prediction markets give the probability, according to traders, that each candidate wins or reaches the runoff.")}</p>
-        <table class="table"><thead><tr><th>${L("Candidat", "Candidate")}</th><th class="num">${L("Sondages, 1er tour", "Polls, 1st round")}</th><th class="num">${L("Chance d’être qualifié", "Chance of reaching runoff")}</th><th class="num">${L("Chance de gagner", "Chance of winning")}</th><th class="num">Kalshi</th><th class="num">Polymarket</th></tr></thead>
+        <table class="table"><thead><tr><th>${L("Candidat", "Candidate")}</th><th class="num">${L("Sondages, 1er tour", "Polls, 1st round")}</th><th class="num">${L("Chance d’être qualifié", "Chance of reaching runoff")}</th><th class="num">${L("Chance de gagner", "Chance of winning")}</th><th class="num">${L("S’il est qualifié", "If qualified")}</th><th class="num">Kalshi</th><th class="num">Polymarket</th></tr></thead>
         <tbody>${(() => {
           const odds = combineOdds(markets?.markets ?? []);
           const pollOf = (n: string) => average(polls.firstRound, latest).find((r) => r.name.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase() === n.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase())?.avg;
           return odds
             .filter((o) => (o.win?.avg ?? 0) >= 1 || (o.runoff?.avg ?? 0) >= 5)
             .slice(0, 10)
-            .map((o) => { const pv = pollOf(o.name); const w = o.win?.avg ?? 0; return `<tr><td><i class="dot" style="background:${meta(o.name).color}"></i><b>${esc(o.name)}</b></td><td class="num">${pv != null ? `${pv.toFixed(1)} %` : "–"}</td><td class="num">${o.runoff ? `${Math.round(o.runoff.avg)} %` : "–"}</td><td class="num"><span class="odds-bar"><i style="width:${w}%;background:${meta(o.name).color}"></i></span><b>${Math.round(w)} %</b></td><td class="num muted">${o.win?.kalshi != null ? `${Math.round(o.win.kalshi)} %` : "–"}</td><td class="num muted">${o.win?.polymarket != null ? `${Math.round(o.win.polymarket)} %` : "–"}</td></tr>`; })
+            .map((o) => { const pv = pollOf(o.name); const w = o.win?.avg ?? 0; return `<tr><td><i class="dot" style="background:${meta(o.name).color}"></i><b>${esc(o.name)}</b></td><td class="num">${pv != null ? `${pv.toFixed(1)} %` : "–"}</td><td class="num">${o.runoff ? `${Math.round(o.runoff.avg)} %` : "–"}</td><td class="num"><span class="odds-bar"><i style="width:${w}%;background:${meta(o.name).color}"></i></span><b>${Math.round(w)} %</b></td><td class="num">${o.ifQualified != null ? `${Math.round(o.ifQualified)} %` : "–"}</td><td class="num muted">${o.win?.kalshi != null ? `${Math.round(o.win.kalshi)} %` : "–"}</td><td class="num muted">${o.win?.polymarket != null ? `${Math.round(o.win.polymarket)} %` : "–"}</td></tr>`; })
             .join("");
         })()}</tbody></table>
-        <p class="muted tiny">${L("Kalshi et Polymarket, prix des contrats « oui ». Polymarket est bloqué en France ; il est interrogé depuis un serveur à l’étranger. Information, pas incitation à parier.", "Kalshi and Polymarket, price of “yes” contracts. Polymarket is blocked in France and is queried from a server abroad. Information only, not an invitation to bet.")}${markets?.fetchedAt ? ` ${L("Mis à jour le", "Updated")} ${fmtDate(markets.fetchedAt)}.` : ""}</p>
+        <p class="small"><b>${L("Comment lire :", "How to read it:")}</b> ${L("un candidat peut avoir de bonnes chances d’être qualifié mais peu de chances de gagner (s’il perdrait le second tour), ou l’inverse. La colonne « s’il est qualifié » donne ses chances de l’emporter une fois au second tour.", "a candidate can be likely to reach the runoff yet unlikely to win (if they would lose it), or the reverse. The “if qualified” column gives their chance of winning once in the runoff.")}</p>
+        <p class="muted tiny">${L("Cotes « vainqueur » ramenées à 100 % pour retirer la marge des plateformes, cotes « qualifiés » telles quelles ; puis moyenne des deux plateformes pondérée par les montants échangés.", "Winner prices rescaled to 100% to remove the platforms’ margin, runoff prices as quoted; then averaged across platforms weighted by traded volume.")} ${marketMeta(markets?.markets ?? []).map((x) => `${esc(x.platform)} ${x.kind === "win" ? L("vainqueur", "winner") : L("qualifiés", "runoff")} : ${Math.round(x.volume / 1000).toLocaleString()} k$${x.thin ? ` (${L("marché peu liquide", "thin market")})` : ""}`).join(", ")}.</p>
+        <p class="muted tiny">${L("Kalshi et Polymarket, prix des contrats « oui ». Polymarket est bloqué en France ; il est interrogé depuis un serveur à l’étranger. Information, pas incitation à parier.", "Kalshi and Polymarket, price of “yes” contracts. Polymarket is blocked in France and is queried from a server abroad. Information only, not an invitation to bet.")}${markets?.fetchedAt ? ` <b>${L("Cotes du", "Prices as of")} ${fmtDate(markets.fetchedAt)} ${new Date(markets.fetchedAt).toLocaleTimeString(getLang() === "fr" ? "fr-FR" : "en-GB", { hour: "2-digit", minute: "2-digit" })}.</b>` : ""}</p>
       </section>
 
       <div class="grid-2">
