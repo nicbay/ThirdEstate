@@ -1,0 +1,5187 @@
+{
+ "generated": "2026-11-07",
+ "schemaVersion": 1,
+ "code": "44109",
+ "name": "Nantes",
+ "granularity": "totals",
+ "council": "Conseil municipal de Nantes",
+ "mandate": "2020–2026 (no deliberation of the new council published yet)",
+ "method": "Totals for / against / abstention from the SCDL fields VOTE_POUR, VOTE_CONTRE, VOTE_ABSTENTION. 'outcome' is derived (for > against). No group or councillor breakdown is published. Deliberations since 2025-01-01.",
+ "source": {
+  "name": "Délibérations des instances de Nantes Métropole et de la Ville de Nantes",
+  "publisher": "Nantes Métropole",
+  "url": "https://data.nantesmetropole.fr/explore/dataset/244400404_deliberations-instances-metropole-nantes/",
+  "api": "https://data.nantesmetropole.fr/api/explore/v2.1/catalog/datasets/244400404_deliberations-instances-metropole-nantes/records",
+  "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)"
+ },
+ "deliberations": [
+  {
+   "id": "26",
+   "date": "2026-02-19",
+   "title": "Jardins et nature en ville - Subventions - Convention de partenariat avec l'établissement d'enseignement Nantes Terre Atlantique - Approbation",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 0,
+    "members": 57,
+    "voting": 57
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "36",
+   "date": "2026-02-19",
+   "title": "Bilans d'activités de la commission éthique et transparence de la Ville de Nantes et du déontologue  - Présentation",
+   "theme": "institutions et vie politique/fonctionnement des assemblées",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 61,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "41",
+   "date": "2026-02-19",
+   "title": "Commande publique durable - Dispositions relatives aux marchés publics : Investissement - Travaux -  Approbation",
+   "theme": "commande publique/marchés publics",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 53,
+    "against": 4,
+    "abstain": 6,
+    "members": 63,
+    "voting": 63
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "1",
+   "date": "2026-02-12",
+   "title": "Approbation du procès-verbal de la séance du 5 décembre 2025",
+   "theme": "institutions et vie politique/fonctionnement des assemblées",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 67,
+    "against": 0,
+    "abstain": 0,
+    "members": 67,
+    "voting": 67
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "2",
+   "date": "2026-02-12",
+   "title": "Compte-rendu des décisions prises par délégation du Conseil municipal",
+   "theme": "institutions et vie politique/délégation de fonctions (à l'exclusion des emprunts et ligne de trésorerie)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 67,
+    "against": 0,
+    "abstain": 0,
+    "members": 67,
+    "voting": 67
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "3",
+   "date": "2026-02-12",
+   "title": "Appel à créativité \"Lieux à réinventer\" - Subventions - Approbation",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 51,
+    "against": 0,
+    "abstain": 11,
+    "members": 62,
+    "voting": 62
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "4",
+   "date": "2026-02-12",
+   "title": "Appel à projets \"Les temps de la nuit\" - Subventions - Convention - Approbation.",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 1,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "5",
+   "date": "2026-02-12",
+   "title": "Budgets participatifs - Subventions - Bourses citoyennes - Convention - Approbation",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 52,
+    "against": 0,
+    "abstain": 11,
+    "members": 63,
+    "voting": 63
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "6",
+   "date": "2026-02-12",
+   "title": "Quartier Nantes Erdre - Concession de travaux assortie d'une promesse de bail à construction pour le renouvellement de l'ancienne cité communale Port Durand à Nantes - Approbation de la concession de travaux et désignation du concessionnaire",
+   "theme": "domaine et patrimoine/autres actes de gestion du domaine public",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 64,
+    "against": 0,
+    "abstain": 0,
+    "members": 64,
+    "voting": 64
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "7",
+   "date": "2026-02-12",
+   "title": "Équipement public -  Voirie - Dénominations - Approbation",
+   "theme": "domaine et patrimoine/autres actes de gestion du domaine public",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 65,
+    "against": 0,
+    "abstain": 0,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "8",
+   "date": "2026-02-12",
+   "title": "Politique publique du patrimoine - Soutien de la Ville à la préservation et à l'amélioration du patrimoine urbain - Subventions - Conventions et avenants - Participation à la création d'une verrière contemporaine à la Cathédrale St-Pierre et St-Paul - Consultation pour le schéma directeur des églises - Approbation",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 0,
+    "members": 57,
+    "voting": 57
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "9",
+   "date": "2026-02-12",
+   "title": "Conventions pluriannuelles d'objectifs entre la Ville de Nantes, l'État, le Département de Loire-Atlantique et les associations Centre Chorégraphique National de Nantes (CCNN) et Nantes Jazz Action (le Pannonica) - Approbation.",
+   "theme": "domaines de compétences par thèmes/culture",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "10",
+   "date": "2026-02-12",
+   "title": "Accompagnement des projets et réseaux artistiques - Répartition de subventions - Conventions et avenant - approbation",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 0,
+    "members": 57,
+    "voting": 57
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "11",
+   "date": "2026-02-12",
+   "title": "Équipements en régie - Dispositions diverses - Approbation",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 59,
+    "against": 0,
+    "abstain": 0,
+    "members": 59,
+    "voting": 59
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "12",
+   "date": "2026-02-12",
+   "title": "Fabriques & Laboratoires artistiques - Conventions de partenariat avec l'association Au Bout du Plongeoir et avec l'EPCC MIXT - Approbation",
+   "theme": "domaines de compétences par thèmes/culture",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 58,
+    "against": 0,
+    "abstain": 0,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "13",
+   "date": "2026-02-12",
+   "title": "Publics et citoyenneté culturelle - Proximité - Répartition de subventions - Approbation",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 65,
+    "against": 0,
+    "abstain": 0,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "14",
+   "date": "2026-02-12",
+   "title": "Subventions à l'ACCOORD et aux CEMEA - Approbation",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 50,
+    "against": 0,
+    "abstain": 0,
+    "members": 50,
+    "voting": 50
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "15",
+   "date": "2026-02-12",
+   "title": "Lutte contre les discriminations - Première répartition de subventions 2026 - Approbation.",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 63,
+    "against": 0,
+    "abstain": 0,
+    "members": 63,
+    "voting": 63
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "16",
+   "date": "2026-02-12",
+   "title": "Politique publique ville non-sexiste - Citad'elles - Répartition de subventions - Conventions - Approbation",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 61,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "17",
+   "date": "2026-02-12",
+   "title": "Accessibilité universelle - Première répartition de subventions 2026 - Approbation.",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 63,
+    "against": 0,
+    "abstain": 0,
+    "members": 63,
+    "voting": 63
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "18",
+   "date": "2026-02-12",
+   "title": "Migration - intégration - Parcours linguistiques - Première répartition de subventions - Approbation.",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 61,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "19",
+   "date": "2026-02-12",
+   "title": "Migration - intégration - Attribution de subventions à des associations - Conventions - Avenants - Approbation",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 55,
+    "against": 6,
+    "abstain": 4,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "20",
+   "date": "2026-02-12",
+   "title": "Associations œuvrant dans le domaine de la santé - Première répartition de subventions - Conventions - Approbation.",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 61,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "21",
+   "date": "2026-02-12",
+   "title": "Engagement citoyen et vie associative - Première répartition de subventions - Avenants- Conventions",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 59,
+    "against": 0,
+    "abstain": 0,
+    "members": 59,
+    "voting": 59
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "22",
+   "date": "2026-02-12",
+   "title": "Politique jeunesses - Première répartition de subventions - Conventions - Approbation.",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 61,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "23",
+   "date": "2026-02-12",
+   "title": "Maison des adolescents - Info jeunes Pays de la Loire -  Subventions -Convention- Approbation",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 63,
+    "against": 0,
+    "abstain": 0,
+    "members": 63,
+    "voting": 63
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "24",
+   "date": "2026-02-12",
+   "title": "Vie étudiante - Première répartition de subventions - Approbation",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 50,
+    "against": 0,
+    "abstain": 0,
+    "members": 50,
+    "voting": 50
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "25",
+   "date": "2026-02-12",
+   "title": "Nantes Université - Soutien au fonctionnement de l'Université permanente- Subvention - Approbation",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 45,
+    "against": 0,
+    "abstain": 0,
+    "members": 45,
+    "voting": 45
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "27",
+   "date": "2026-02-12",
+   "title": "Sports - Rénovation d'un terrain de hockey sur la plaine de jeux de la Colinière - Approbation du programme et de l'enveloppe financière prévisionnelle - Lancement d'une procédure adaptée - Approbation",
+   "theme": "commande publique/marchés publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 61,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "28",
+   "date": "2026-02-12",
+   "title": "Sports - Première répartition de subventions - Conventions et avenants - Approbation",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 58,
+    "against": 0,
+    "abstain": 0,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "29",
+   "date": "2026-02-12",
+   "title": "\"Politique publique \"Bien grandir à Nantes\" volet \"familles et parentalité\" - Répartition de subventions - Conventions - Avenant - Approbation\"",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 63,
+    "against": 0,
+    "abstain": 0,
+    "members": 63,
+    "voting": 63
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "30",
+   "date": "2026-02-12",
+   "title": "Subventions au titre des actions éducatives et des actions temps libre - Conventions - Approbation",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 0,
+    "members": 53,
+    "voting": 53
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "31",
+   "date": "2026-02-12",
+   "title": "Soutien aux associations de commerçants Plein Centre et UNACOD - Subventions - Convention - Approbation",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 59,
+    "against": 0,
+    "abstain": 0,
+    "members": 59,
+    "voting": 59
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "32",
+   "date": "2026-02-12",
+   "title": "Prévention de la délinquance - Subventions - Approbation",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 61,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "33",
+   "date": "2026-02-12",
+   "title": "Échanges internationaux - Cosmopolis  - Subventions - Approbation",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 62,
+    "against": 0,
+    "abstain": 0,
+    "members": 62,
+    "voting": 62
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "34",
+   "date": "2026-02-12",
+   "title": "Jumelages européens - Subvention - Approbation.",
+   "theme": "finances locales/subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 64,
+    "against": 0,
+    "abstain": 0,
+    "members": 64,
+    "voting": 64
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "35",
+   "date": "2026-02-12",
+   "title": "Expérimentation Territoire Zéro Chômeur de Longue Durée - Avenant - approbation",
+   "theme": "domaines de competences par themes/emploi-formation professionnelle",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 63,
+    "against": 0,
+    "abstain": 0,
+    "members": 63,
+    "voting": 63
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "37",
+   "date": "2026-02-12",
+   "title": "Projet de réaménagement du site des Basses Landes - Déclaration de projet emportant mise en compatibilité du PLUm - Objectifs poursuivis et modalités de la concertation préalable - Approbation",
+   "theme": "urbanisme/droit de préemption urbain",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 65,
+    "against": 0,
+    "abstain": 0,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "38",
+   "date": "2026-02-12",
+   "title": "Personnel municipal - Adaptation du tableau des effectifs - Dispositions diverses - Approbation.",
+   "theme": "fonction publique/personnel titulaires et stagiaires de la F.P.T.",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 9,
+    "members": 64,
+    "voting": 64
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "39",
+   "date": "2026-02-12",
+   "title": "Dispositions diverses et tarifaires - Approbation",
+   "theme": "finances locales/prise de participation (sem, etc...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 52,
+    "against": 0,
+    "abstain": 0,
+    "members": 52,
+    "voting": 52
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "40",
+   "date": "2026-02-12",
+   "title": "Désignations diverses - Approbation",
+   "theme": "institutions et vie politique/désignation de représentants",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 63,
+    "against": 0,
+    "abstain": 0,
+    "members": 63,
+    "voting": 63
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "42",
+   "date": "2026-02-12",
+   "title": "Commande publique durable - Dispositions relatives aux marchés publics et concessions : fonctionnement - Approbation.",
+   "theme": "commande publique/marchés publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 64,
+    "against": 0,
+    "abstain": 0,
+    "members": 64,
+    "voting": 64
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "43",
+   "date": "2026-02-12",
+   "title": "Transactions immobilières diverses - Approbation",
+   "theme": "domaine et patrimoine/acquisitions",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 10,
+    "members": 66,
+    "voting": 66
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "44",
+   "date": "2026-02-12",
+   "title": "Transactions foncières diverses - Approbation",
+   "theme": "domaine et patrimoine/acquisitions",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 50,
+    "against": 9,
+    "abstain": 0,
+    "members": 59,
+    "voting": 59
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "45",
+   "date": "2026-02-12",
+   "title": "Loire Atlantique Développement - Société d'Équipement de Loire-Atlantique (LAD SELA) - Modification des statuts - Approbation",
+   "theme": "finances locales/prise de participation (sem, etc...)",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 54,
+    "against": 9,
+    "abstain": 0,
+    "members": 63,
+    "voting": 63
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "46",
+   "date": "2026-02-12",
+   "title": "Association des Courses Hippiques de Nantes - Travaux de rénovation du bâtiment des tribunes de l'Hippodrome de Nantes - Garantie d'emprunt partielle de la Ville - Convention - Approbation",
+   "theme": "finances locales/emprunts",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 63,
+    "against": 0,
+    "abstain": 0,
+    "members": 63,
+    "voting": 63
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "47",
+   "date": "2026-02-12",
+   "title": "Communication du rapport thématique régional de synthèse de la Chambre Régionale des Comptes relatif à la sobriété foncière en région Pays de la Loire - Information",
+   "theme": "domaines de competences par themes/amenagement du territoire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 64,
+    "against": 0,
+    "abstain": 0,
+    "members": 64,
+    "voting": 64
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "1",
+   "date": "2025-12-05",
+   "title": "Approbation du procès-verbal de la séance du 10 octobre 2025",
+   "theme": "Institutions et vie politique / Fonctionnement des assemblées",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 65,
+    "against": 0,
+    "abstain": 0,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "2",
+   "date": "2025-12-05",
+   "title": "Compte-rendu des décisions prises par délégation du Conseil municipal",
+   "theme": "Institutions et vie politique / Fonctionnement des assemblées",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 65,
+    "against": 0,
+    "abstain": 0,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "3",
+   "date": "2025-12-05",
+   "title": "Vœu relatif à la contribution exigée des collectivités dans le cadre du PLF 2026",
+   "theme": "Autres domaines de competences / Voeux et motions",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 51,
+    "against": 11,
+    "abstain": 2,
+    "members": 64,
+    "voting": 64
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "4",
+   "date": "2025-12-05",
+   "title": "Budget primitif 2026 - Budget principal, budget transition écologique et budget sensible au genre",
+   "theme": "Finances locales / Décisions budgétaires",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 55,
+    "against": 9,
+    "abstain": 2,
+    "members": 66,
+    "voting": 66
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "5",
+   "date": "2025-12-05",
+   "title": "Taux de fiscalité directe locale 2026 - Approbation",
+   "theme": "Finances locales / Fiscalité",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 55,
+    "against": 9,
+    "abstain": 2,
+    "members": 66,
+    "voting": 66
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "6",
+   "date": "2025-12-05",
+   "title": "Quartier Bellevue Chantenay - Sainte-Anne - Création du pôle enfance Jean Zay - Restructuration et extension du groupe scolaire Jean Zay et création d'un multi-accueil petite enfance- Programme et enveloppe financière prévisionnelle - Lancement d'un concours de maîtrise d'œuvre - Approbation",
+   "theme": "Commande publique / Actes relatifs à la maîtrise d'oeuvre",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 60,
+    "against": 0,
+    "abstain": 0,
+    "members": 60,
+    "voting": 60
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "7",
+   "date": "2025-12-05",
+   "title": "Projet global Nantes Nord - Construction du pôle d'équipements publics et du Conservatoire de Nantes Nord - Convention de co-maîtrise d'ouvrage avec Nantes Métropole Habitat - Approbation du programme et de l'enveloppe financière prévisionnelle - Lancement d'un concours de maîtrise d'œuvre - Approbation",
+   "theme": "Commande publique / Actes relatifs à la maîtrise d'oeuvre",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 62,
+    "against": 0,
+    "abstain": 0,
+    "members": 62,
+    "voting": 62
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "8",
+   "date": "2025-12-05",
+   "title": "Construction du Pôle de services publics Bottière - Lancement d'un appel d'offres - Convention avec Nantes Métropole Aménagement et Nantes Métropole - Approbation",
+   "theme": "Commande publique / Marchés publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 0,
+    "members": 53,
+    "voting": 53
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "9",
+   "date": "2025-12-05",
+   "title": "Réhabilitation de la Maison de quartier de Doulon - Approbation du programme et de l'enveloppe financière prévisionnelle - Lancement d'un concours de maitrise d'œuvre - Approbation",
+   "theme": "Commande publique / Marchés publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 0,
+    "members": 53,
+    "voting": 53
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "10",
+   "date": "2025-12-05",
+   "title": "Nantes - Centre-ville - Opération de transformation en logements sociaux du bâtiment historique du Crédit Municipal de Nantes  - Convention de financement - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 41,
+    "against": 11,
+    "abstain": 0,
+    "members": 53,
+    "voting": 52
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "11",
+   "date": "2025-12-05",
+   "title": "Appel à créativité \"Lieux à réinventer\"  - Bilan de la troisième édition - Résultats des lauréats - Subventions de fonctionnement - Avenant - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 52,
+    "against": 0,
+    "abstain": 7,
+    "members": 59,
+    "voting": 59
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "12",
+   "date": "2025-12-05",
+   "title": "Budgets participatifs - Subventions - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 50,
+    "against": 0,
+    "abstain": 9,
+    "members": 59,
+    "voting": 59
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "13",
+   "date": "2025-12-05",
+   "title": "Ancienne école supérieure des Beaux-Arts de Nantes (Atelier Dulcie September) - Séquence 2  des travaux et de l'activation du lieu - Approbation du programme et de l'enveloppe financière - Lancement d'une procédure adaptée",
+   "theme": "Commande publique / Marchés publics",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 43,
+    "against": 9,
+    "abstain": 0,
+    "members": 52,
+    "voting": 52
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "14",
+   "date": "2025-12-05",
+   "title": "Accompagnement des projets et réseaux artistiques - Attribution de subventions - Conventions et avenants - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 47,
+    "against": 0,
+    "abstain": 0,
+    "members": 47,
+    "voting": 47
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "15",
+   "date": "2025-12-05",
+   "title": "Équipements en régie - Dispositions diverses - Approbation",
+   "theme": "Domaine de competence par theme / culture",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 52,
+    "against": 0,
+    "abstain": 0,
+    "members": 52,
+    "voting": 52
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "16",
+   "date": "2025-12-05",
+   "title": "La Folle Journée - Attribution de subvention à la Cité des Congrès - Convention - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 44,
+    "against": 0,
+    "abstain": 0,
+    "members": 44,
+    "voting": 44
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "17",
+   "date": "2025-12-05",
+   "title": "Politique de la lecture publique et du livre - dispositions diverses - Attribution de subventions -  Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 50,
+    "against": 0,
+    "abstain": 0,
+    "members": 50,
+    "voting": 50
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "18",
+   "date": "2025-12-05",
+   "title": "Établissements publics de coopération culturelle Mixt et Ecole des Beaux-arts Nantes Saint-Nazaire - Contributions statutaires - Approbation",
+   "theme": "Domaine de competence par theme / culture",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 38,
+    "against": 0,
+    "abstain": 0,
+    "members": 38,
+    "voting": 38
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "19",
+   "date": "2025-12-05",
+   "title": "Publics et citoyenneté culturelle : subventions solidarités et accessibilité, pratiques en amateur - Proximité - Attribution de subventions - Conventions et avenants - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 47,
+    "against": 0,
+    "abstain": 0,
+    "members": 48,
+    "voting": 47
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "20",
+   "date": "2025-12-05",
+   "title": "Politique publique du patrimoine - Soutien de la Ville à la préservation et à l'amélioration du patrimoine urbain - Subventions - Conventions et avenants - Adhésion - Enrichissement des collections - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 55
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "21",
+   "date": "2025-12-05",
+   "title": "Réinventer les cours d'écoles - Cours des écoles Émile Péhant et Jacques Prévert- Approbation des programmes et des enveloppes financières prévisionnelles - Lancement de procédures adaptées pour les travaux - Approbation",
+   "theme": "Commande publique / Marchés publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "22",
+   "date": "2025-12-05",
+   "title": "Subventions au titre des actions éducatives et des actions temps libre - Convention - Avenant - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 0,
+    "members": 53,
+    "voting": 53
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "23",
+   "date": "2025-12-05",
+   "title": "Détermination des périmètres scolaires des écoles publiques nantaises - Ajustements à la rentrée 2026 - Approbation",
+   "theme": "Domaine de competence par theme / Enseignement",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 0,
+    "members": 57,
+    "voting": 57
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "24",
+   "date": "2025-12-05",
+   "title": "Associations gestionnaires des écoles privées sous contrat du 1er degré - Participation financière de la Ville de Nantes en 2026 - Modalités de calcul et de versement - Approbation",
+   "theme": "Finances locales / Décisions budgétaires",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 31,
+    "against": 0,
+    "abstain": 0,
+    "members": 33,
+    "voting": 31
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "25",
+   "date": "2025-12-05",
+   "title": "Convention d'occupation du domaine public pour une centrale photovoltaïque sur la toiture de l'école Joséphine Baker sur l'Ile de Nantes - Approbation",
+   "theme": "Domaine et patrimoine / Autres actes de gestion du domaine public",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 49,
+    "against": 0,
+    "abstain": 4,
+    "members": 53,
+    "voting": 53
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "26",
+   "date": "2025-12-05",
+   "title": "Travaux de végétalisation des façades - Accord-cadre - Lancement d'une procédure adaptée - Approbation",
+   "theme": "Commande publique / Marchés publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 0,
+    "members": 55,
+    "voting": 55
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "27",
+   "date": "2025-12-05",
+   "title": "Jardins Mixt, grand pôle du spectacle vivant à Nantes - Conventions de financement et de gestion avec l'EPCC Mixt - Terrain d'arts en Loire-Atlantique - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 51,
+    "against": 0,
+    "abstain": 0,
+    "members": 51,
+    "voting": 51
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "28",
+   "date": "2025-12-05",
+   "title": "Petite enfance - Projet de crèche Cour Monselet - Approbation du programme et de l'enveloppe financière prévisionnelle - Lancement d'une procédure adaptée - Approbation",
+   "theme": "Commande publique / Marchés publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 0,
+    "members": 53,
+    "voting": 53
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "29",
+   "date": "2025-12-05",
+   "title": "Petite enfance - Crèches associatives et mutualistes - Évolution des modalités de subventionnement - Conventions de partenariat 2026-2030 - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 50,
+    "against": 0,
+    "abstain": 0,
+    "members": 50,
+    "voting": 50
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "30",
+   "date": "2025-12-05",
+   "title": "Avis préalable de l'autorité organisatrice sur les projets d'établissement d'accueil du jeune enfant de droit privé - Approbation",
+   "theme": "Domaine par competence par theme / Enseignement",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 52,
+    "against": 0,
+    "abstain": 0,
+    "members": 52,
+    "voting": 52
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "31",
+   "date": "2025-12-05",
+   "title": "Petite enfance - Subventions - Avenant - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 0,
+    "members": 53,
+    "voting": 53
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "32",
+   "date": "2025-12-05",
+   "title": "Mesures de soutien à l'activité commerciale du centre-ville dans le cadre des vitrines de Noël - subvention - approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "33",
+   "date": "2025-12-05",
+   "title": "Politique engagement citoyen et vie associative - Cinquième répartition de subventions - Bilan 2025 - Convention - Avenant - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 54,
+    "against": 0,
+    "abstain": 0,
+    "members": 54,
+    "voting": 54
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "34",
+   "date": "2025-12-05",
+   "title": "Politique jeunesses -  Bilan 2025 - Cinquième répartition de subventions - Avenants - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 51,
+    "against": 0,
+    "abstain": 0,
+    "members": 51,
+    "voting": 51
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "35",
+   "date": "2025-12-05",
+   "title": "Politique publique en faveur des personnes âgées - Subvention 2026 à l'association des seniors nantais (ORPAN) - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 51,
+    "against": 0,
+    "abstain": 0,
+    "members": 51,
+    "voting": 51
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "36",
+   "date": "2025-12-05",
+   "title": "Info jeunes Pays de la Loire - Subventions - Avenant - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 50,
+    "against": 0,
+    "abstain": 0,
+    "members": 50,
+    "voting": 50
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "37",
+   "date": "2025-12-05",
+   "title": "Sports - Cinquième répartition de subventions - Conventions et avenants - Dispositions diverses - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "38",
+   "date": "2025-12-05",
+   "title": "Actions de coopération et de solidarité internationales - Conventions - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 0,
+    "members": 58,
+    "voting": 57
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "39",
+   "date": "2025-12-05",
+   "title": "Cosmopolis - Subvention - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 59,
+    "against": 0,
+    "abstain": 0,
+    "members": 59,
+    "voting": 59
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "40",
+   "date": "2025-12-05",
+   "title": "Jumelages européens - Subventions - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 60,
+    "against": 0,
+    "abstain": 0,
+    "members": 60,
+    "voting": 60
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "41",
+   "date": "2025-12-05",
+   "title": "Politique publique action sociale et insertion - Migration - Intégration - Répartition de subventions - Avenants - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 60,
+    "against": 0,
+    "abstain": 0,
+    "members": 60,
+    "voting": 60
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "42",
+   "date": "2025-12-05",
+   "title": "Association ACCOORD - Subventions diverses - Avenant - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 50,
+    "against": 0,
+    "abstain": 0,
+    "members": 50,
+    "voting": 50
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "43",
+   "date": "2025-12-05",
+   "title": "Accueils de loisirs et séjours de vacances - Évolution de la tarification pour 2026 - Approbation.",
+   "theme": "Finances locales / Décisions budgétaires",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 50,
+    "against": 0,
+    "abstain": 0,
+    "members": 50,
+    "voting": 50
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "44",
+   "date": "2025-12-05",
+   "title": "Personnel municipal - Adaptation du tableau des effectifs - Dispositions diverses - Approbation.",
+   "theme": "Fonction publique / Fonction publique / Personnel titulaires et stagiaires de la F.P.T.",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 8,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "45",
+   "date": "2025-12-05",
+   "title": "Convention relative aux services communs entre Nantes Métropole et la Ville de Nantes - Rapport de la commission - Approbation",
+   "theme": "Institutions et vie politique / intercommunalité",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 8,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "46",
+   "date": "2025-12-05",
+   "title": "Commande publique durable - Dispositions relatives aux marchés publics et concessions : Investissement - Travaux -  Approbation.",
+   "theme": "Commande publique / Marchés publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 64,
+    "against": 0,
+    "abstain": 0,
+    "members": 64,
+    "voting": 64
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "47",
+   "date": "2025-12-05",
+   "title": "Commande publique durable - Dispositions relatives aux marchés publics et concessions : Investissement - Acquisition de 3 rampes de luminothérapie pour le stade Marcel Saupin - Programmes et enveloppes financières prévisionnelles - Lancement d'une procédure formalisée d'appel d'offres ouvert - Approbation",
+   "theme": "Commande publique / Marchés publics",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 45,
+    "against": 0,
+    "abstain": 19,
+    "members": 64,
+    "voting": 64
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "48",
+   "date": "2025-12-05",
+   "title": "Commande publique durable - Dispositions relatives aux marchés publics et concessions : fonctionnement - Approbation.",
+   "theme": "Commande publique / Marchés publics",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 6,
+    "members": 63,
+    "voting": 63
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "49",
+   "date": "2025-12-05",
+   "title": "Ouvertures des commerces le dimanche en 2026 - Avis du Conseil Municipal",
+   "theme": "Libertes publiques et pouvoirs de police / police municipale",
+   "outcome": "rejected",
+   "unanimous": false,
+   "totals": {
+    "for": 31,
+    "against": 34,
+    "abstain": 1,
+    "members": 66,
+    "voting": 66
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "50",
+   "date": "2025-12-05",
+   "title": "Désignations diverses - Approbation",
+   "theme": "Institutions et vie politique / Désignation de représentants",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 8,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "51",
+   "date": "2025-12-05",
+   "title": "Transaction foncière - 24 rue de Port la Blanche - Cession d'une parcelle à la Société civile immobilière de construction-vente PORT LA BLANCHE 26 - Approbation",
+   "theme": "Domaine et patrimoine / Alienations",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 6,
+    "members": 62,
+    "voting": 62
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "52",
+   "date": "2025-12-05",
+   "title": "Transactions immobilières diverses - Approbation",
+   "theme": "Domaine et patrimoine / Autres actes de gestion du domaine public",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 6,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "53",
+   "date": "2025-12-05",
+   "title": "Dispositions diverses et tarifaires - Approbation",
+   "theme": "Finances locales / Prise de participation (SEM, etc.)",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 6,
+    "members": 59,
+    "voting": 59
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "54",
+   "date": "2025-12-05",
+   "title": "Octroi de la garantie de la Ville de Nantes à certains créanciers de l'Agence France Locale - Année 2026 - Approbation.",
+   "theme": "Finances locales / Emprunts",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 62,
+    "against": 0,
+    "abstain": 0,
+    "members": 62,
+    "voting": 62
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "1",
+   "date": "2025-10-10",
+   "title": "Approbation du procès-verbal de la séance du 20 juin 2025",
+   "theme": "Institutions et vie politique / Fonctionnement des assemblées",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 67,
+    "against": 0,
+    "abstain": 0,
+    "members": 67,
+    "voting": 67
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "2",
+   "date": "2025-10-10",
+   "title": "Compte-rendu des décisions prises par délégation du Conseil municipal",
+   "theme": "Institutions et vie politique / Délégation de fonctions (à l’exclusion des emprunts et ligne de trésorie)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 67,
+    "against": 0,
+    "abstain": 0,
+    "members": 67,
+    "voting": 67
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "3",
+   "date": "2025-10-10",
+   "title": "Débat d'orientations budgétaires 2026",
+   "theme": "Finances locales / Décisions budgétaires",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 69,
+    "against": 0,
+    "abstain": 0,
+    "members": 69,
+    "voting": 69
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "4",
+   "date": "2025-10-10",
+   "title": "Présentation du rapport égalité 2024",
+   "theme": "Autres domaines de compétences / Autres domaines de compétences communes",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 69,
+    "against": 0,
+    "abstain": 0,
+    "members": 69,
+    "voting": 69
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "5",
+   "date": "2025-10-10",
+   "title": "Rapport sur la situation en matière de développement durable 2024/2025 - Information",
+   "theme": "Domaine de competence par theme / Environnement",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 69,
+    "against": 0,
+    "abstain": 0,
+    "members": 69,
+    "voting": 69
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "6",
+   "date": "2025-10-10",
+   "title": "Bilan du schéma de promotion des achats responsables - Information",
+   "theme": "Commande publique / Marchés publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 69,
+    "against": 0,
+    "abstain": 0,
+    "members": 69,
+    "voting": 69
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "7",
+   "date": "2025-10-10",
+   "title": "Création de la Maison des enfants - Lieu d'accueil et d'accompagnement en santé mentale pour les enfants et leurs familles - Convention constitutive du groupement d'intérêt public - Approbation",
+   "theme": "Domaine de competence par theme / Aide sociale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 64,
+    "against": 0,
+    "abstain": 0,
+    "members": 64,
+    "voting": 64
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "8",
+   "date": "2025-10-10",
+   "title": "Sports - Reconstruction du gymnase ASPTT Longchamp - Chanteclerc - Approbation du programme et de l'enveloppe financière prévisionnelle",
+   "theme": "Commande publique / Actes speciaux et divers",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 0,
+    "members": 55,
+    "voting": 55
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "9",
+   "date": "2025-10-10",
+   "title": "Accompagnement des projets et des réseaux artistiques - Attribution de subventions - Conventions et avenants - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 59,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 59
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "10",
+   "date": "2025-10-10",
+   "title": "Nouveau projet de l'association Pol'N - Restructuration et aménagement du bâtiment Delrue - Modification du programme et de l'enveloppe financière prévisionnelle - Approbation.",
+   "theme": "Commande publique / Actes speciaux et divers",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 49,
+    "against": 0,
+    "abstain": 11,
+    "members": 60,
+    "voting": 60
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "11",
+   "date": "2025-10-10",
+   "title": "Prix des arts visuels de la Ville de Nantes - Désignation des lauréates et des lauréats -  Appel à projets expositions et résidences de création en arts visuels - Attribution de bourses - Conventions - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 61,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "12",
+   "date": "2025-10-10",
+   "title": "Les Utopiales - Attribution de subvention - La Cité des Congrès - Convention - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 51,
+    "against": 0,
+    "abstain": 0,
+    "members": 54,
+    "voting": 51
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "13",
+   "date": "2025-10-10",
+   "title": "Établissement Public de Coopération Culturelle MIXT - Modification des statuts - Approbation.",
+   "theme": "Institutions et vie politique / Fonctionnement des assemblées",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 49,
+    "against": 0,
+    "abstain": 9,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "14",
+   "date": "2025-10-10",
+   "title": "Equipements en régie - Dispositions diverses",
+   "theme": "Domaine de competence par theme / Culture",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 0,
+    "members": 55,
+    "voting": 55
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "15",
+   "date": "2025-10-10",
+   "title": "Éducation artistique et culturelle à l'école - Demande de labellisation \"100% EAC '- Soutien aux projets -Attribution de subventions - Avenants – Approbation\"",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 0,
+    "members": 53,
+    "voting": 53
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "16",
+   "date": "2025-10-10",
+   "title": "Publics et citoyenneté culturelle : politiques de soutien \"culture et inclusion – solidarités et débat d'idées - Attribution de subventions - Avenant – Approbation\"",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 52,
+    "against": 0,
+    "abstain": 0,
+    "members": 52,
+    "voting": 52
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "17",
+   "date": "2025-10-10",
+   "title": "Culture et territoires : appel à projets Résidences artistiques de territoire - Attribution de subventions -  Conventions et avenant - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 0,
+    "members": 53,
+    "voting": 53
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "18",
+   "date": "2025-10-10",
+   "title": "Politique publique du patrimoine - Soutien de la Ville à la préservation et à l'amélioration du patrimoine urbain - Subventions - Conventions - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 0,
+    "members": 53,
+    "voting": 53
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "19",
+   "date": "2025-10-10",
+   "title": "Voirie - Dénominations - Approbation.",
+   "theme": "Domaine et patrimoine / Autres actes de gestion du domaine public",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 59,
+    "against": 0,
+    "abstain": 0,
+    "members": 59,
+    "voting": 59
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "20",
+   "date": "2025-10-10",
+   "title": "Budgets participatifs - Subventions - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 7,
+    "members": 62,
+    "voting": 62
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "21",
+   "date": "2025-10-10",
+   "title": "Budgets participatifs - Subvention - ACCOORD - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 47,
+    "against": 0,
+    "abstain": 0,
+    "members": 47,
+    "voting": 47
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "22",
+   "date": "2025-10-10",
+   "title": "Quartier Hauts Pavés - Saint-Félix - Réhabilitation du groupe scolaire Gaston Serpette - Approbation du programme et de l'enveloppe financière prévisionnelle de l'opération - Lancement d'une procédure adaptée - Approbation",
+   "theme": "Commande publique / Marchés publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 58,
+    "against": 0,
+    "abstain": 0,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "23",
+   "date": "2025-10-10",
+   "title": "Subventions au titre des actions éducatives et des actions temps libre - Conventions - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 50,
+    "against": 0,
+    "abstain": 0,
+    "members": 50,
+    "voting": 50
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "24",
+   "date": "2025-10-10",
+   "title": "Avis préalable de l'autorité organisatrice sur les projets d'établissement d'accueil du jeune enfant de droit privé",
+   "theme": "Domaine de competence par theme / Aide sociale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 0,
+    "members": 53,
+    "voting": 53
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "25",
+   "date": "2025-10-10",
+   "title": "Politique publique petite enfance - Subventions exceptionnelles aux crèches associatives Mickey et Minnie et Minibou - Avenants - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 51,
+    "against": 0,
+    "abstain": 7,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "26",
+   "date": "2025-10-10",
+   "title": "Politique publique \"bien grandir à Nantes volet familles et parentalité - Lieux d'accueil Enfants-Parents (LAEP) - Subventions - Avenant – Approbation.\"",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 0,
+    "members": 55,
+    "voting": 55
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "27",
+   "date": "2025-10-10",
+   "title": "Politique publique petite enfance - Avenants aux conventions de subvention dans le cadre de la concession relative à la construction de deux crèches au sein des ZAC du Champ de Manœuvre et Doulon Gohards - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 50,
+    "against": 0,
+    "abstain": 0,
+    "members": 53,
+    "voting": 50
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "28",
+   "date": "2025-10-10",
+   "title": "Ferme urbaine des Dervallières - Convention d'occupation temporaire du domaine public à conclure avec l'association OCEAN - Approbation",
+   "theme": "Domaine et patrimoine / Autres actes de gestion du domaine public",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 0,
+    "members": 53,
+    "voting": 53
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "29",
+   "date": "2025-10-10",
+   "title": "Ville non-sexiste - Citad'elles - Subventions - Avenants  et Conventions - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 52,
+    "against": 0,
+    "abstain": 0,
+    "members": 52,
+    "voting": 52
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "30",
+   "date": "2025-10-10",
+   "title": "Engagement citoyen et vie associative - Quatrième répartition de subventions - Convention - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "31",
+   "date": "2025-10-10",
+   "title": "Engagement citoyen et vie associative - Convention relative à l'organisation des rencontres nationales du RNMA - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 0,
+    "members": 54,
+    "voting": 53
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "32",
+   "date": "2025-10-10",
+   "title": "Sports - Quatrième répartition de subventions - Conventions et avenants - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 58,
+    "against": 0,
+    "abstain": 0,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "33",
+   "date": "2025-10-10",
+   "title": "Politique jeunesses - Quatrième répartition de subventions - Avenant - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 61,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "34",
+   "date": "2025-10-10",
+   "title": "Solidarités - Convention tripartite régissant les relations du Centre Communal d'Action Sociale (CCAS) de Nantes avec la Ville de Nantes et Nantes Métropole -  Approbation",
+   "theme": "Domaine de competence par theme / Aide sociale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 58,
+    "against": 0,
+    "abstain": 0,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "35",
+   "date": "2025-10-10",
+   "title": "Échanges internationaux - Subvention à la Maison des Etats-Unis - Avenant - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "36",
+   "date": "2025-10-10",
+   "title": "Actions de coopération et de solidarité internationales - Subventions - Conventions - Avenant Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 61,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "37",
+   "date": "2025-10-10",
+   "title": "Jumelages européens - Subventions - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 64,
+    "against": 0,
+    "abstain": 0,
+    "members": 64,
+    "voting": 64
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "38",
+   "date": "2025-10-10",
+   "title": "Prévention de la délinquance - Subventions - Approbation",
+   "theme": "Libertes publiques et pouvoirs de police / Police municipale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 65,
+    "against": 0,
+    "abstain": 0,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "39",
+   "date": "2025-10-10",
+   "title": "Plan Intercommunal de Sauvegarde (PICS) - Présentation",
+   "theme": "Intitutions et vie politique / Intercommunalité",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 65,
+    "against": 0,
+    "abstain": 0,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "40",
+   "date": "2025-10-10",
+   "title": "Associations œuvrant dans le domaine de la santé - Troisième répartition de subventions 2025 - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 65,
+    "against": 0,
+    "abstain": 0,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "41",
+   "date": "2025-10-10",
+   "title": "Personnel municipal - Adaptation du tableau des effectifs - Dispositions diverses - Approbation.",
+   "theme": "Fonction publique / Personnel titulaires et stagiaires de la F.P.T.",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 8,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "42",
+   "date": "2025-10-10",
+   "title": "Commande publique durable - Dispositions relatives aux marchés publics et concessions : investissement - Travaux -  Approbation",
+   "theme": "Commande publique / Marchés publics",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 49,
+    "against": 0,
+    "abstain": 8,
+    "members": 58,
+    "voting": 57
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "43",
+   "date": "2025-10-10",
+   "title": "Commande publique durable - Dispositions relatives aux marchés publics et concessions : fonctionnement - Approbation.",
+   "theme": "Commande publique / Marchés publics",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 8,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "44",
+   "date": "2025-10-10",
+   "title": "Saisine du Préfet de la Loire-Atlantique pour la prescription d'une enquête publique dans le cadre de la modification des limites communales avec la Ville de Saint-Herblain - Approbation",
+   "theme": "Domaine et patrimoine / Limites territoriales",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 65,
+    "against": 0,
+    "abstain": 0,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "45",
+   "date": "2025-10-10",
+   "title": "Modification du règlement intérieur - Approbation",
+   "theme": "Institutions et vie politique / Fonctionnement des assemblées",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 65,
+    "against": 0,
+    "abstain": 0,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "46",
+   "date": "2025-10-10",
+   "title": "Désignations diverses - Approbation.",
+   "theme": "institutions et vie politique / Désignation de représentants",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 8,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "47",
+   "date": "2025-10-10",
+   "title": "Service public de la fourrière automobile municipale - Approbation du principe de la délégation de service public.",
+   "theme": "Commande publique / Délégation de service public",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 65,
+    "against": 0,
+    "abstain": 0,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "48",
+   "date": "2025-10-10",
+   "title": "Décision modificative 2025 N°2 - Approbation",
+   "theme": "Finances locales / Décisions budgétaires",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 57,
+    "against": 8,
+    "abstain": 0,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "49",
+   "date": "2025-10-10",
+   "title": "Dispositions diverses à caractère financier - Approbation",
+   "theme": "Finances locales / Divers",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 52,
+    "against": 8,
+    "abstain": 0,
+    "members": 61,
+    "voting": 60
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "50",
+   "date": "2025-10-10",
+   "title": "Transactions foncières diverses - Approbation",
+   "theme": "Domaine et patrimoine / Alienations",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 48,
+    "against": 0,
+    "abstain": 8,
+    "members": 57,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "51",
+   "date": "2025-10-10",
+   "title": "Transactions foncières diverses - Impasse Louis Momesson : cession à la SNC PARIS GESTION de la parcelle cadastrée WR n°46 - Approbation",
+   "theme": "Domaine et patrimoine / Alienations",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 34,
+    "against": 19,
+    "abstain": 8,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "52",
+   "date": "2025-10-10",
+   "title": "Transactions immobilières diverses - Approbation",
+   "theme": "Domaine et patrimoine / Alienations",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 3,
+    "members": 61,
+    "voting": 59
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "53",
+   "date": "2025-10-10",
+   "title": "Rapport d'activité de Nantes Métropole - Information",
+   "theme": "Finances locales / Intercommunalité",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 65,
+    "against": 0,
+    "abstain": 0,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "1",
+   "date": "2025-06-20",
+   "title": "Conseil municipal - Procès-verbal de la séance du 28 mars 2025 - Approbation.",
+   "theme": "Institutions et vie politique / Fonctionnement des assemblées",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 61,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "2",
+   "date": "2025-06-20",
+   "title": "Compte-rendu des décisions prises par délégation du Conseil municipal",
+   "theme": "Institutions et vie politique / Délégation de fonctions (à l’exclusion des emprunts et ligne de trésorerie)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 61,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "3",
+   "date": "2025-06-20",
+   "title": "Compte de Gestion de la receveuse des Finances de la Ville de Nantes pour l'exercice 2024 - Budget principal - Approbation.",
+   "theme": "Finances locales / Décisions budgétaires",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 63,
+    "against": 0,
+    "abstain": 0,
+    "members": 63,
+    "voting": 63
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "4",
+   "date": "2025-06-20",
+   "title": "Compte Administratif 2024 - Budget principal Ville  - Approbation.",
+   "theme": "Finances locales / Décisions budgétaires",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 51,
+    "against": 12,
+    "abstain": 0,
+    "members": 63,
+    "voting": 63
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "5",
+   "date": "2025-06-20",
+   "title": "Budget supplémentaire - Affectation du résultat 2024 - Décision modificative 2025 n°1 - Approbation.",
+   "theme": "Finances locales / Décisions budgétaires",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 52,
+    "against": 7,
+    "abstain": 0,
+    "members": 59,
+    "voting": 59
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "6",
+   "date": "2025-06-20",
+   "title": "Rapport d'activité 2024 du CCAS - Information",
+   "theme": "Domaine de competence par theme / Aide sociale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 65,
+    "against": 0,
+    "abstain": 0,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "7",
+   "date": "2025-06-20",
+   "title": "Nouveau modèle de restauration scolaire - Construction d'une Base logistique de Traitement Primaire et d'une Unité Centrale de Production - Approbation du programme et de l'enveloppe financière prévisionnelle - Lancement du concours de maîtrise d'œuvre - Approbation.",
+   "theme": "Commande publique / Actes relatifs à la maîtrise d’oeuvre",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 58,
+    "against": 0,
+    "abstain": 6,
+    "members": 64,
+    "voting": 64
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "8",
+   "date": "2025-06-20",
+   "title": "Vie associative - Pôle éducatif et associatif Rosa Parks - Approbation du programme et de l'enveloppe financière - Lancement d'une procédure adaptée - Approbation",
+   "theme": "Commande publique / Marchés publics",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 51,
+    "against": 2,
+    "abstain": 0,
+    "members": 53,
+    "voting": 53
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "9",
+   "date": "2025-06-20",
+   "title": "Budgets participatifs - Subventions - Convention - Avenant - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 62,
+    "against": 0,
+    "abstain": 0,
+    "members": 62,
+    "voting": 62
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "10",
+   "date": "2025-06-20",
+   "title": "Stratégie \"animal en ville\" - Plan d'actions et guide citoyen - Approbation",
+   "theme": "Domaine de competence par theme / Environnement",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 60,
+    "against": 0,
+    "abstain": 4,
+    "members": 64,
+    "voting": 64
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "11",
+   "date": "2025-06-20",
+   "title": "Projet \"productions végétales\"  - Volet graineterie - Création d'un bâtiment dédié à la graineterie - Approbation du programme et de l'enveloppe  financière prévisionnelle - Convention de co-maîtrise d'ouvrage - Approbation.",
+   "theme": "Domaine de competence par theme / Environnement",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 59,
+    "against": 2,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "12",
+   "date": "2025-06-20",
+   "title": "Équipements en régie - Dispositions diverses - Convention - Approbation",
+   "theme": "Domaine et patrimoine / Aliénations",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 62,
+    "against": 0,
+    "abstain": 0,
+    "members": 62,
+    "voting": 62
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "13",
+   "date": "2025-06-20",
+   "title": "Accompagnement des projets et réseaux artistiques - Attribution de subventions - Conventions et avenants - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 61,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "14",
+   "date": "2025-06-20",
+   "title": "Lecture publique - Attribution de subventions - Conventions et avenants - Approbation.",
+   "theme": "Domaine de competence par theme / Culture",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 62,
+    "against": 0,
+    "abstain": 0,
+    "members": 62,
+    "voting": 62
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "15",
+   "date": "2025-06-20",
+   "title": "Publics et citoyenneté culturelle : solidarité, accessibilité et pratiques en amateur - Proximité - attribution de subventions - conventions et avenants - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 0,
+    "members": 58,
+    "voting": 57
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "16",
+   "date": "2025-06-20",
+   "title": "Politique publique du patrimoine - Soutien de la Ville à la préservation et à l'amélioration du patrimoine urbain - Subventions - Conventions et avenants - Enrichissement des collections - Approbation.",
+   "theme": "Domaine de competence par theme / Culture",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 61,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "17",
+   "date": "2025-06-20",
+   "title": "Équipement public - Dénomination - Approbation.",
+   "theme": "Domaine et patrimoine / Autres actes de gestion du domaine public",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 61,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "18",
+   "date": "2025-06-20",
+   "title": "Vie associative - Îlot B Place des Dervallières - Approbation du programme et de l'enveloppe financière prévisionnelle - Procédure de marché négocié sans publicité, ni mise en concurrence sous la forme d'une promesse de VEFA - Approbation.",
+   "theme": "Commande publique / Actes spéciaux et divers",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 58,
+    "against": 0,
+    "abstain": 0,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "19",
+   "date": "2025-06-20",
+   "title": "Engagement citoyen et vie associative - Troisième répartition de subventions - Conventions et avenants - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 50,
+    "against": 0,
+    "abstain": 0,
+    "members": 50,
+    "voting": 50
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "20",
+   "date": "2025-06-20",
+   "title": "Politique publique ville non-sexiste - Troisième répartition de subventions -  Avenants - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 0,
+    "members": 58,
+    "voting": 57
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "21",
+   "date": "2025-06-20",
+   "title": "Subventions à l'ACCOORD- Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 43,
+    "against": 0,
+    "abstain": 1,
+    "members": 46,
+    "voting": 44
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "22",
+   "date": "2025-06-20",
+   "title": "ACCOORD - Accueils de loisirs et séjours de vacances -  Rapport du délégataire de service public pour 2024 - Protocole financier de fin de contrat du contrat de DSP 2023-2024 - Avenant n°1 au contrat de DSP pour 2025-2028 - Approbation.",
+   "theme": "Commande publique / Délégation de service public",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 43,
+    "against": 0,
+    "abstain": 5,
+    "members": 50,
+    "voting": 48
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "23",
+   "date": "2025-06-20",
+   "title": "Quartier Nantes-Erdre - Restructuration et extension du groupe scolaire des Batignolles - Approbation du programme et de l'enveloppe financière prévisionnelle - Lancement d'un concours de maîtrise d'œuvre - Approbation",
+   "theme": "Commande publique / Actes relatifs à la maîtrise d’oeuvre",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 51,
+    "against": 0,
+    "abstain": 0,
+    "members": 51,
+    "voting": 51
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "24",
+   "date": "2025-06-20",
+   "title": "Accueil d'élèves de l'ULIS TSA suivis par l'association ARRIA au sein de l'école élémentaire Chauvinière et accueil d'élèves de l'Institut médico-éducatif \"Pôle nantais\" géré par l'association ADAPEILA au sein de l'école élémentaire Gustave Roch - Conventions - Approbation.",
+   "theme": "Domaine de competence par theme / Enseignement",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 54,
+    "against": 0,
+    "abstain": 0,
+    "members": 54,
+    "voting": 54
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "25",
+   "date": "2025-06-20",
+   "title": "Subventions au titre des actions éducatives et des actions temps libre - Conventions - Avenant - Projet d'aire terrestre éducative Val de Chézine - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 47,
+    "against": 0,
+    "abstain": 0,
+    "members": 47,
+    "voting": 47
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "26",
+   "date": "2025-06-20",
+   "title": "Politique publique bien grandir à Nantes - Demande d'adhésion de la Ville à la Charte départementale d'accueil des enfants en situation de handicap - Approbation.",
+   "theme": "Domaine de competence par theme / Aide sociale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 52,
+    "against": 0,
+    "abstain": 0,
+    "members": 52,
+    "voting": 52
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "27",
+   "date": "2025-06-20",
+   "title": "Renouvellement de la convention de partenariat, d'objectifs et de moyens entre l'Éducation nationale et la Ville de Nantes relative à la santé scolaire pour les élèves de des écoles publiques et privées sous contrat de la Ville de Nantes - Approbation",
+   "theme": "Domaine de competence par theme / Enseignement",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 59,
+    "against": 0,
+    "abstain": 0,
+    "members": 59,
+    "voting": 59
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "28",
+   "date": "2025-06-20",
+   "title": "Convention Territoriale Globale 2025 - 2029 avec la Caisse d'Allocations Familiales de Loire-Atlantique - Avenant à la convention d'objectifs et de financement pour le périscolaire - Approbation",
+   "theme": "Domaine de competence par theme / Aide sociale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "29",
+   "date": "2025-06-20",
+   "title": "Petite enfance - Multi-accueil Breil - Regroupement/extension - Approbation du programme et de l'enveloppe financière prévisionnelle - Lancement d'une procédure adaptée - Approbation.",
+   "theme": "Commande publique / Marchés publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 0,
+    "members": 57,
+    "voting": 57
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "30",
+   "date": "2025-06-20",
+   "title": "Petite enfance - Mise en place du Service Public de la Petite Enfance (SPPE) - Avis concernant l'installation d'établissements d'accueil du jeune enfant (EAJE) de droit privé - Approbation",
+   "theme": "Domaine de competence par theme / Aide sociale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 58,
+    "against": 0,
+    "abstain": 0,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "31",
+   "date": "2025-06-20",
+   "title": "Petite enfance - Actualisation du règlement de fonctionnement des établissements d'accueil du jeune enfant -  Approbation.",
+   "theme": "Domaine de competence par theme / Aide sociale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 59,
+    "against": 0,
+    "abstain": 0,
+    "members": 59,
+    "voting": 59
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "32",
+   "date": "2025-06-20",
+   "title": "Petite enfance - Partenariat avec France Travail - Convention - Approbation",
+   "theme": "Domaine de competence par theme / Aide sociale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "33",
+   "date": "2025-06-20",
+   "title": "Petite enfance - Établissements gestionnaires de crèches - Attribution de subventions - Avenants - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "34",
+   "date": "2025-06-20",
+   "title": "Politique publique \"bien grandir à Nantes  volet \"familles et parentalité\" -    Lieux d'accueil Enfants-Parents (LAEP) - Subventions - Conventions – Approbation.\"",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 0,
+    "members": 55,
+    "voting": 55
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "35",
+   "date": "2025-06-20",
+   "title": "Vie étudiante et logement des jeunes - Troisième répartition de subventions - Convention - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 49,
+    "against": 0,
+    "abstain": 0,
+    "members": 50,
+    "voting": 49
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "36",
+   "date": "2025-06-20",
+   "title": "Subventions à Nantes Université - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 48,
+    "against": 0,
+    "abstain": 0,
+    "members": 49,
+    "voting": 48
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "37",
+   "date": "2025-06-20",
+   "title": "Politique publique migrations-intégration - Subventions - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 52,
+    "against": 1,
+    "abstain": 7,
+    "members": 60,
+    "voting": 60
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "38",
+   "date": "2025-06-20",
+   "title": "Politique publique migrations-intégration - Contrat territorial d'accueil et d'intégration - Programme 2025 - Soutien aux projets - Convention - Avenants - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 1,
+    "members": 57,
+    "voting": 57
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "39",
+   "date": "2025-06-20",
+   "title": "Politique jeunesses - Troisième répartition de subventions  - Avenant - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "40",
+   "date": "2025-06-20",
+   "title": "Echanges  internationaux - Cosmopolis - Subventions - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 58,
+    "against": 0,
+    "abstain": 0,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "41",
+   "date": "2025-06-20",
+   "title": "Actions de coopération et de solidarité internationales - Subventions - Conventions -  Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 58,
+    "against": 0,
+    "abstain": 0,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "42",
+   "date": "2025-06-20",
+   "title": "Jumelages Européens - Subventions - Approbation.",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 59,
+    "against": 0,
+    "abstain": 0,
+    "members": 59,
+    "voting": 59
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "43",
+   "date": "2025-06-20",
+   "title": "Sports - Troisième répartition de subventions - Conventions et avenants - Dispositions diverses - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 0,
+    "members": 55,
+    "voting": 55
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "44",
+   "date": "2025-06-20",
+   "title": "Pacte métropolitain des solidarités - Avenant n°1 à la convention entre Nantes Métropole et la Ville de Nantes, définissant les modalités de mise en œuvre du Contrat Local des Solidarités pluriannuel 2024- 2027 - Approbation",
+   "theme": "Domaine de competence par theme / Aide sociale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "45",
+   "date": "2025-06-20",
+   "title": "Projet du Grand Bellevue - Convention partenariale entre Nantes Métropole, la Ville de Nantes,  Loire Océan Métropole Aménagement,  et l'Atelier Gru Design relative à l'aménagement temporaire de la place Mendès France à Nantes.",
+   "theme": "Domaine et patrimoine / Autres actes de gestion du domaine public",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 60,
+    "against": 0,
+    "abstain": 1,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "46",
+   "date": "2025-06-20",
+   "title": "Prévention de la délinquance - Actions financées par la Ville - Subventions - Approbation",
+   "theme": "Finances locales / Subventions",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 0,
+    "members": 57,
+    "voting": 57
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "47",
+   "date": "2025-06-20",
+   "title": "Commande publique durable - Dispositions relatives aux marchés publics et concessions : investissement - Travaux - Approbation.",
+   "theme": "Commande publique / Marchés publics",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 6,
+    "members": 59,
+    "voting": 59
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "48",
+   "date": "2025-06-20",
+   "title": "Commande publique durable - Dispositions relatives aux marchés publics et concessions : fonctionnement - Approbation.",
+   "theme": "Commande publique / Marchés publics",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 52,
+    "against": 0,
+    "abstain": 6,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "49",
+   "date": "2025-06-20",
+   "title": "Personnel municipal - Adaptation du tableau des effectifs - Dispositions diverses - Approbation.",
+   "theme": "Fonction publique / Personnel titulaires et stagiaires de la F.P.T.",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 6,
+    "members": 59,
+    "voting": 59
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "50",
+   "date": "2025-06-20",
+   "title": "Convention de participation pour la couverture du risque prévoyance des agents de la Ville de Nantes - Approbation",
+   "theme": "Fonction publique / Personnel titulaires et stagiaires de la F.P.T.",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 60,
+    "against": 0,
+    "abstain": 0,
+    "members": 60,
+    "voting": 60
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "51",
+   "date": "2025-06-20",
+   "title": "Dispositions diverses à caractère financier - Approbation",
+   "theme": "Autres domaine de competences / Autres domaines de competences des communes",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 48,
+    "against": 0,
+    "abstain": 6,
+    "members": 54,
+    "voting": 54
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "52",
+   "date": "2025-06-20",
+   "title": "Dispositions diverses à caractère financier - Rétrocession d'un local commercial au 17 Quai de la Fosse",
+   "theme": "Domaine et patrimoine / Aliénations",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 31,
+    "against": 0,
+    "abstain": 23,
+    "members": 54,
+    "voting": 54
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "53",
+   "date": "2025-06-20",
+   "title": "Transactions immobilières diverses - Approbation",
+   "theme": "Domaine et patrimoine / Acquisitions",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 6,
+    "members": 62,
+    "voting": 62
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "54",
+   "date": "2025-06-20",
+   "title": "Transactions foncières diverses - Approbation",
+   "theme": "Domaine et patrimoine / Aliénations",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 54,
+    "against": 0,
+    "abstain": 6,
+    "members": 60,
+    "voting": 60
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "55",
+   "date": "2025-06-20",
+   "title": "Fondation Cémavie - Opération d'extension de l'établissement d'hébergement pour personnes âgées dépendantes \"La Grande Providence\" - Emprunt auprès de la Caisse Fédérale du Crédit Mutuel - Garantie d'emprunt partielle de la Ville - Convention - Approbation.",
+   "theme": "Finances locales / Emprunts",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 60,
+    "against": 0,
+    "abstain": 0,
+    "members": 60,
+    "voting": 60
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "56",
+   "date": "2025-06-20",
+   "title": "Rapports 2024 des partenaires externes - Approbation.",
+   "theme": "Commande publique / Transactions (protocole d’accord transactionnel)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 60,
+    "against": 0,
+    "abstain": 0,
+    "members": 60,
+    "voting": 60
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "1",
+   "date": "2025-04-07",
+   "title": "Conseil municipal - Procès-verbal de la séance du 31 janvier 2025 - Approbation.",
+   "theme": "Autres",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 68,
+    "against": 0,
+    "abstain": 0,
+    "members": 68,
+    "voting": 68
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "2",
+   "date": "2025-04-07",
+   "title": "Compte-rendu des décisions prises par délégation du Conseil municipal.",
+   "theme": "Permanente",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 68,
+    "against": 0,
+    "abstain": 0,
+    "members": 68,
+    "voting": 68
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "3",
+   "date": "2025-04-07",
+   "title": "Intégration de la Ville de Nantes au dossier de candidature au dispositif d'expérimentation de l'encadrement des loyers - Approbation",
+   "theme": "Autres",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 55,
+    "against": 12,
+    "abstain": 0,
+    "members": 67,
+    "voting": 67
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "4",
+   "date": "2025-04-07",
+   "title": "Égalité femmes - hommes - Citad'elles, centre pour les femmes victimes de violences et leurs enfants : rapport d'activité - Information",
+   "theme": "Aide sociale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 61,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "5",
+   "date": "2025-04-07",
+   "title": "Politique publique ville non-sexiste - Deuxième répartition de subventions - Conventions et avenant - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 65,
+    "against": 0,
+    "abstain": 0,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "6",
+   "date": "2025-04-07",
+   "title": "Quartier Malakoff - Saint-Donatien - Aménagement du parc de la Moutonnerie - Approbation du programme et de l'enveloppe financière prévisionnelle - Lancement d'une procédure adaptée pour la réalisation des travaux - Approbation",
+   "theme": "Marchés publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 66,
+    "against": 0,
+    "abstain": 0,
+    "members": 66,
+    "voting": 66
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "7",
+   "date": "2025-04-07",
+   "title": "Charte communale des arbres - Approbation",
+   "theme": "Divers",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 52,
+    "against": 1,
+    "abstain": 12,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "8",
+   "date": "2025-04-07",
+   "title": "Jardins et nature en ville - Subventions - Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 65,
+    "against": 0,
+    "abstain": 0,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "9",
+   "date": "2025-04-07",
+   "title": "Appel à projets- les temps de la nuit-Avenants-Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 60,
+    "against": 0,
+    "abstain": 0,
+    "members": 60,
+    "voting": 60
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "10",
+   "date": "2025-04-07",
+   "title": "Équipements en régie -  Bibliothèque municipale et Musée Jules Verne - Convention d'acquisition d'une collection exceptionnelle de 354 pièces (ouvrages, documents patrimoniaux) relative à l'œuvre de Jules Verne - Musée d'arts - Convention d'acquisition - Approbation.",
+   "theme": "Biens mobiliers (acquisition onéreuse ou gratuite)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 60,
+    "against": 0,
+    "abstain": 0,
+    "members": 60,
+    "voting": 60
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "11",
+   "date": "2025-04-07",
+   "title": "Accompagnement des projets et réseaux artistiques - Attribution de subventions - Conventions et avenants - Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 0,
+    "members": 55,
+    "voting": 55
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "12",
+   "date": "2025-04-07",
+   "title": "Équipements en régie - Convention - Dispositions diverses - Approbation.",
+   "theme": "Fonds de concours",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 54,
+    "against": 0,
+    "abstain": 0,
+    "members": 54,
+    "voting": 54
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "13",
+   "date": "2025-04-07",
+   "title": "Enjeux bretons et débat d'idées - Attribution de subventions - Convention - Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 49,
+    "against": 0,
+    "abstain": 1,
+    "members": 50,
+    "voting": 50
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "14",
+   "date": "2025-04-07",
+   "title": "Publics et citoyenneté culturelle : solidarités et accessibilité, pratiques artistiques en amateur - Proximité - Attribution de subventions - Convention et avenants - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 49,
+    "against": 0,
+    "abstain": 0,
+    "members": 49,
+    "voting": 49
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "15",
+   "date": "2025-04-07",
+   "title": "Culture scientifique, technique et industrielle - Attribution de subventions - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 0,
+    "members": 55,
+    "voting": 55
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "16",
+   "date": "2025-04-07",
+   "title": "Politique publique du patrimoine - Subventions - Conventions et avenants - Soutien de la Ville à l'amélioration du patrimoine urbain - Enrichissement des collections - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 0,
+    "members": 55,
+    "voting": 55
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "17",
+   "date": "2025-04-07",
+   "title": "Équipements publics -  Voirie - Dénominations - Approbation.",
+   "theme": "Dénomination d'équipements",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 0,
+    "members": 57,
+    "voting": 57
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "18",
+   "date": "2025-04-07",
+   "title": "Attribution de subventions à Nantes Université - Approbation.",
+   "theme": "Subventions accordées aux établissements et organismes publics (OPH, CCAS, CIAS, EPCC...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 51,
+    "against": 0,
+    "abstain": 0,
+    "members": 53,
+    "voting": 51
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "19",
+   "date": "2025-04-07",
+   "title": "Quartier Nantes Nord - Restructuration et extension du groupe scolaire George Sand / Camille Claudel - Ajustement de l'enveloppe financière prévisionnelle - Lancement d'une procédure d'appel d'offres et d'une procédure adaptée - Approbation",
+   "theme": "Decisions budgetaires",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 60,
+    "against": 0,
+    "abstain": 0,
+    "members": 60,
+    "voting": 60
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "20",
+   "date": "2025-04-07",
+   "title": "Subventions au titre des actions éducatives et des actions temps libre - Conventions - Avenant - Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "21",
+   "date": "2025-04-07",
+   "title": "Subventions au titre des actions éducatives et des actions temps libre - Subvention à  l'ACCOORD - Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 43,
+    "against": 0,
+    "abstain": 0,
+    "members": 46,
+    "voting": 43
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "22",
+   "date": "2025-04-07",
+   "title": "Petite enfance - Avis préalable de l'autorité organisatrice - Projet d'extension de l'établissement d'accueil du jeune enfant Pirouette -  Approbation",
+   "theme": "Tous actes relatifs à l'organisation des services publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "23",
+   "date": "2025-04-07",
+   "title": "Politique publique-bien grandir à Nantes- Lieux d'accueil Enfants-Parents (LAEP)-Première répartition de subventions Convention-Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "24",
+   "date": "2025-04-07",
+   "title": "Petite enfance - Convention avec la crèche associative Toiles  - Approbation",
+   "theme": "Conventions signées",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "25",
+   "date": "2025-04-07",
+   "title": "Politique publique- bien grandir à Nantes- volet familles et parentalité-Deuxième répartition de subventions-Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 0,
+    "members": 57,
+    "voting": 57
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "26",
+   "date": "2025-04-07",
+   "title": "Politique jeunesses - Deuxième répartition de subventions  -  Convention et avenant   -  Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "27",
+   "date": "2025-04-07",
+   "title": "Vie étudiante et logement des Jeunes - Deuxième répartition de subventions - Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 0,
+    "members": 57,
+    "voting": 57
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "28",
+   "date": "2025-04-07",
+   "title": "Budgets participatifs - Subventions - Bourse - Convention et avenant - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 0,
+    "members": 57,
+    "voting": 57
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "29",
+   "date": "2025-04-07",
+   "title": "Engagement citoyen et vie associative - Deuxième répartition de subventions - Conventions - Avenants -  Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 52,
+    "against": 0,
+    "abstain": 0,
+    "members": 52,
+    "voting": 52
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "30",
+   "date": "2025-04-07",
+   "title": "Sports - Deuxième répartition de subventions - Convention et avenants - Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 49,
+    "against": 0,
+    "abstain": 0,
+    "members": 51,
+    "voting": 49
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "31",
+   "date": "2025-04-07",
+   "title": "Soutien aux associations de commerçants Plein Centre et UNACOD - Subventions - Convention - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 54,
+    "against": 0,
+    "abstain": 0,
+    "members": 54,
+    "voting": 54
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "32",
+   "date": "2025-04-07",
+   "title": "Prévention de la délinquance - Accès aux droits - Subventions - Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 52,
+    "against": 0,
+    "abstain": 0,
+    "members": 54,
+    "voting": 52
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "33",
+   "date": "2025-04-07",
+   "title": "Plan Communal de Sauvegarde - Nouvelle version - Information",
+   "theme": "Autres",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 0,
+    "members": 55,
+    "voting": 55
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "34",
+   "date": "2025-04-07",
+   "title": "Renouvellement de l'adhésion de la Ville à la Charte des Villes actives du Programme National Nutrition Santé - Approbation.",
+   "theme": "Santé",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 0,
+    "members": 55,
+    "voting": 55
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "35",
+   "date": "2025-04-07",
+   "title": "Associations œuvrant dans le domaine de la santé - Première répartition de subventions - Conventions - Avenants - Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "36",
+   "date": "2025-04-07",
+   "title": "Expérimentation Territoires Zéro Chômeur de Longue Durée - Attribution de subventions à l'Association Territoriale pour le Développement de l'Emploi et des Compétences (ATDEC) et La Belle Cordée Nantaise - Approbation",
+   "theme": "Autres",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 0,
+    "members": 54,
+    "voting": 53
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "37",
+   "date": "2025-04-07",
+   "title": "Politiques publique migration-intégration - Subventions - Convention - Approbation.",
+   "theme": "Autres",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 54,
+    "against": 0,
+    "abstain": 0,
+    "members": 54,
+    "voting": 54
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "38",
+   "date": "2025-04-07",
+   "title": "Échanges internationaux - Cosmopolis  - Subventions - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 54,
+    "against": 0,
+    "abstain": 0,
+    "members": 54,
+    "voting": 54
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "39",
+   "date": "2025-04-07",
+   "title": "Actions de coopération et de solidarité internationales - Subventions -  Conventions - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 0,
+    "members": 53,
+    "voting": 53
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "40",
+   "date": "2025-04-07",
+   "title": "Bilans d'activités du déontologue et de la commission éthique et transparence - Information",
+   "theme": "Autres",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 51,
+    "against": 0,
+    "abstain": 0,
+    "members": 51,
+    "voting": 51
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "41",
+   "date": "2025-04-07",
+   "title": "Personnel municipal - Adaptation du tableau des effectifs - Dispositions diverses - Approbation.",
+   "theme": "Autres délibérations générales (temps de travail, frais de déplacement, action sociale,,,)",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 49,
+    "against": 0,
+    "abstain": 3,
+    "members": 53,
+    "voting": 52
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "42",
+   "date": "2025-04-07",
+   "title": "Analyse des résultats à six ans de l'application du Plan Local d'Urbanisme métropolitain - Avis de la Ville de Nantes",
+   "theme": "POS/PLU",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 36,
+    "against": 1,
+    "abstain": 23,
+    "members": 60,
+    "voting": 60
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "43",
+   "date": "2025-04-07",
+   "title": "Opération d'aménagement et d'habitat - Tivoli Moutonnerie - Clôture de la concession d'aménagement - Approbation",
+   "theme": "ZAC concessions d'aménagement",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 54,
+    "against": 0,
+    "abstain": 0,
+    "members": 54,
+    "voting": 54
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "44",
+   "date": "2025-04-07",
+   "title": "Commande publique durable - Dispositions relatives aux marchés publics et concessions : fonctionnement  et investissement -  Approbation.",
+   "theme": "Marchés publics",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 51,
+    "against": 0,
+    "abstain": 3,
+    "members": 54,
+    "voting": 54
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "45",
+   "date": "2025-04-07",
+   "title": "Communication du rapport d'observations définitives de la Chambre Régionale des Comptes relatif au contrôle des comptes et de la gestion de la SEML Nantes Métropole Gestion Equipements (NGE), de la SPL Nantes Métropole Gestion Service (NMGS) et du GIE NGE pour les années 2018 et suivantes - Information",
+   "theme": "Autres actes (rapports annuels, commission de DSP¿)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 54,
+    "against": 0,
+    "abstain": 0,
+    "members": 54,
+    "voting": 54
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "46",
+   "date": "2025-04-07",
+   "title": "Octroi de la garantie de la Ville de Nantes à certains créanciers de l'Agence France Locale-Année 2025- Approbation.",
+   "theme": "Autres garanties d'emprunt accordées",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 50,
+    "against": 0,
+    "abstain": 0,
+    "members": 52,
+    "voting": 50
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "47",
+   "date": "2025-04-07",
+   "title": "Dispositions diverses à caractère financier - Approbation",
+   "theme": "Autres",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 58,
+    "against": 0,
+    "abstain": 0,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "48",
+   "date": "2025-04-07",
+   "title": "Transactions immobilières diverses - Approbation.",
+   "theme": "Biens immobiliers (acquisition onéreuse ou gratuite)",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 3,
+    "members": 57,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "1",
+   "date": "2025-02-10",
+   "title": "Conseil municipal - Procès-verbal de la séance du 6 décembre 2024 - Approbation.",
+   "theme": "Autres",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 69,
+    "against": 0,
+    "abstain": 0,
+    "members": 69,
+    "voting": 69
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "2",
+   "date": "2025-02-10",
+   "title": "Compte-rendu des décisions prises par délégation du Conseil municipal",
+   "theme": "Permanente",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 69,
+    "against": 0,
+    "abstain": 0,
+    "members": 69,
+    "voting": 69
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "3",
+   "date": "2025-02-10",
+   "title": "Budget primitif 2025 - Budget principal, budget transition écologique, et budget sensible au genre.",
+   "theme": "Délibérations afférentes aux actes budgétaires (budget primitif,budget supplémentaire,compte administratif)",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 55,
+    "against": 13,
+    "abstain": 0,
+    "members": 69,
+    "voting": 68
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "4",
+   "date": "2025-02-10",
+   "title": "Vote des taux 2025 des 3 taxes directes locales - Approbation",
+   "theme": "Vote des taux des 4 taxes locales (TH, TP, TFB, TFNB)",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 47,
+    "against": 9,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "5",
+   "date": "2025-02-10",
+   "title": "Pacte financier de solidarité avec Nantes Métropole - Attribution de compensation pour les années 2025 à 2027 -  Approbation.",
+   "theme": "Transactions /protocole d accord transactionnel",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "6",
+   "date": "2025-02-10",
+   "title": "Renouvellement de la labellisation européenne Territoire Engagé Transition Écologique 5 étoiles / European Energy Award Gold - Label Air-Energie Climat - Approbation",
+   "theme": "Environnement",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 65,
+    "against": 0,
+    "abstain": 0,
+    "members": 65,
+    "voting": 65
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "7",
+   "date": "2025-02-10",
+   "title": "Construction du pôle d'équipements publics de la Bottière - Attribution du marché de maîtrise d'œuvre - Approbation",
+   "theme": "Marchés de maîtrise d'oeuvre procédure formalisée (appel d¿offres, marché négocié)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 68,
+    "against": 0,
+    "abstain": 0,
+    "members": 68,
+    "voting": 68
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "8",
+   "date": "2025-02-10",
+   "title": "Port des Arts Nomades - Attribution du marché de maîtrise d'œuvre - Approbation.",
+   "theme": "Actes relatifs à la maîtrise d'oeuvre",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 52,
+    "against": 9,
+    "abstain": 1,
+    "members": 62,
+    "voting": 62
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "9",
+   "date": "2025-02-10",
+   "title": "Accompagnement des projets et réseaux artistiques - Attribution de subventions - Conventions et avenants - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 61,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "10",
+   "date": "2025-02-10",
+   "title": "Groupement d'Intérêt Public Cafés Culture - Contribution - Approbation.",
+   "theme": "Autres",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 59,
+    "against": 0,
+    "abstain": 0,
+    "members": 59,
+    "voting": 59
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "11",
+   "date": "2025-02-10",
+   "title": "Politique de la lecture publique et du livre - Prix Bermond-Boquié -  Attribution de subventions - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 63,
+    "against": 0,
+    "abstain": 0,
+    "members": 63,
+    "voting": 63
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "12",
+   "date": "2025-02-10",
+   "title": "Publics et citoyenneté culturelle : subventions solidarités et accessibilité, pratiques en amateur - Proximité - Conventions - Avenant - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 58,
+    "against": 0,
+    "abstain": 0,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "13",
+   "date": "2025-02-10",
+   "title": "Équipement public -  Voirie - Dénominations - Approbation.",
+   "theme": "Dénomination d'équipements",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 64,
+    "against": 0,
+    "abstain": 0,
+    "members": 64,
+    "voting": 64
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "14",
+   "date": "2025-02-10",
+   "title": "Subvention à Nantes Université pour le fonctionnement de l'université permanente -  Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 47,
+    "against": 0,
+    "abstain": 0,
+    "members": 49,
+    "voting": 47
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "15",
+   "date": "2025-02-10",
+   "title": "Culture scientifique, technique et industrielle et débat d'idées - Attribution de subventions - Adhésion à l'association TACTISS (Territoire d'action culturelle : techniques, industries, sciences et société) - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 58,
+    "against": 0,
+    "abstain": 0,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "16",
+   "date": "2025-02-10",
+   "title": "Politique publique du patrimoine - Subventions - Conventions - Soutien de la Ville à l'amélioration du patrimoine urbain - Évolution du dispositif - Travaux de mise en sécurité des baies à vitraux de l'église Saint-Similien - Enrichissement des collections - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "17",
+   "date": "2025-02-10",
+   "title": "Subventions à l'ACCOORD et aux CEMEA - Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 47,
+    "against": 0,
+    "abstain": 1,
+    "members": 49,
+    "voting": 48
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "18",
+   "date": "2025-02-10",
+   "title": "Multi-accueils petite enfance Sully et Nouvelle Vague - Projets de de mise en accessibilité et de restructuration - Approbation des programmes et des enveloppes financières prévisionnelles - Lancement de procédures adaptées - Approbation.",
+   "theme": "Tous actes relatifs à l'organisation des services publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 0,
+    "members": 57,
+    "voting": 57
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "19",
+   "date": "2025-02-10",
+   "title": "Politique publique \"bien grandir à Nantes\" volet familles et parentalité - Répartition de subventions-Convention",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 0,
+    "members": 55,
+    "voting": 55
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "20",
+   "date": "2025-02-10",
+   "title": "Petite enfance - Subventions aux crèches gérées par des structures publiques ou de l'économie sociale et solidaire - Barème 2025 - Versement de subventions actions spécifiques à des associations-Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 48,
+    "against": 0,
+    "abstain": 0,
+    "members": 49,
+    "voting": null
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "21",
+   "date": "2025-02-10",
+   "title": "Subventions au titre des actions éducatives et des actions temps libre - Conventions - Approbation",
+   "theme": "Subventions accordées aux collectivités",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 50,
+    "against": 0,
+    "abstain": 0,
+    "members": 50,
+    "voting": 50
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "22",
+   "date": "2025-02-10",
+   "title": "Éducation - Dispositions diverses - Approbation",
+   "theme": "Enseignement",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 1,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "23",
+   "date": "2025-02-10",
+   "title": "Associations vie étudiante et logement des jeunes - Première répartition de subventions - Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 60,
+    "against": 0,
+    "abstain": 0,
+    "members": 60,
+    "voting": 60
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "24",
+   "date": "2025-02-10",
+   "title": "Politique jeunesses - Première répartition de subventions - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "25",
+   "date": "2025-02-10",
+   "title": "Contrat local de santé métropolitain - Approbation",
+   "theme": "Santé",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 52,
+    "against": 0,
+    "abstain": 0,
+    "members": 53,
+    "voting": 52
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "26",
+   "date": "2025-02-10",
+   "title": "Maison des adolescents - Info jeunes Pays de la Loire - Subventions - Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 0,
+    "members": 55,
+    "voting": 55
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "27",
+   "date": "2025-02-10",
+   "title": "Budgets participatifs - Subventions - Conventions - Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 58,
+    "against": 0,
+    "abstain": 0,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "28",
+   "date": "2025-02-10",
+   "title": "Engagement citoyen et vie associative - Première répartition de subventions - Conventions - Avenant -  Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 0,
+    "members": 55,
+    "voting": 55
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "29",
+   "date": "2025-02-10",
+   "title": "Lutte contre les discriminations - Première répartition de subventions - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 58,
+    "against": 0,
+    "abstain": 0,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "30",
+   "date": "2025-02-10",
+   "title": "Politique publique ville non-sexiste - Citad'elles -  Répartition de subventions -  Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 60,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 60
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "31",
+   "date": "2025-02-10",
+   "title": "Accessibilité universelle -  Première répartition de subventions -  Annulation de subvention -  Approbation.",
+   "theme": "Autres",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 62,
+    "against": 0,
+    "abstain": 0,
+    "members": 62,
+    "voting": 62
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "32",
+   "date": "2025-02-10",
+   "title": "Politique publique parcours linguistiques - Première répartition de subventions - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 63,
+    "against": 0,
+    "abstain": 0,
+    "members": 63,
+    "voting": 63
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "33",
+   "date": "2025-02-10",
+   "title": "Politique publique migration - intégration -  Répartition de subventions - Convention - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 64,
+    "against": 0,
+    "abstain": 0,
+    "members": 64,
+    "voting": 64
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "34",
+   "date": "2025-02-10",
+   "title": "Échanges internationaux -  Subventions - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 64,
+    "against": 0,
+    "abstain": 0,
+    "members": 64,
+    "voting": 64
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "35",
+   "date": "2025-02-10",
+   "title": "Jumelages européens - Subvention - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 64,
+    "against": 0,
+    "abstain": 0,
+    "members": 64,
+    "voting": 64
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "36",
+   "date": "2025-02-10",
+   "title": "Sports - Première répartition de subventions - Conventions et avenants - Approbation",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 61,
+    "against": 0,
+    "abstain": 0,
+    "members": 61,
+    "voting": 61
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "37",
+   "date": "2025-02-10",
+   "title": "Centre de loisirs du Petit Port - Avenant n° 13 à la convention de délégation de service public entre la Ville de Nantes et Nantes métropole Gestion Équipements - Avenant n°1 à la convention de gestion et de subvention pour réalisation de travaux entre la Ville de Nantes et Nantes Métropole - Approbation",
+   "theme": "Conventions de Mandat",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 55,
+    "against": 0,
+    "abstain": 0,
+    "members": 57,
+    "voting": 55
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "38",
+   "date": "2025-02-10",
+   "title": "Personnel municipal - Adaptation du tableau des effectifs - Dispositions diverses - Approbation.",
+   "theme": "Autres délibérations générales (temps de travail, frais de déplacement, action sociale,,,)",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 64,
+    "against": 0,
+    "abstain": 0,
+    "members": 64,
+    "voting": 64
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "39",
+   "date": "2025-02-10",
+   "title": "Commande publique durable - Dispositions relatives aux marchés publics et concessions : investissement - Travaux -  Approbation.",
+   "theme": "Marchés publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 63,
+    "against": 0,
+    "abstain": 0,
+    "members": 63,
+    "voting": 63
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "40",
+   "date": "2025-02-10",
+   "title": "Commande publique durable - Dispositions relatives aux marchés publics et concessions : fonctionnement - Approbation.",
+   "theme": "Marchés publics",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 57,
+    "against": 0,
+    "abstain": 6,
+    "members": 63,
+    "voting": 63
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "41",
+   "date": "2025-02-10",
+   "title": "Conventions de fourniture de chaleur entre Nantes Métropole Habitat et la Ville de Nantes pour différents sites de la Ville de Nantes - Approbation",
+   "theme": "Politique de la ville-habitat-logement",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 53,
+    "against": 0,
+    "abstain": 0,
+    "members": 54,
+    "voting": 53
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "42",
+   "date": "2025-02-10",
+   "title": "Conventions de prêts de matériels de fêtes et manifestations entre la Ville de Nantes, les communes de Rezé et Vertou et la Ville de Saint-Nazaire - Approbation",
+   "theme": "Conventions de Mandat",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "43",
+   "date": "2025-02-10",
+   "title": "Transactions immobilières diverses - Approbation.",
+   "theme": "Acquisitions",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 52,
+    "against": 6,
+    "abstain": 0,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "44",
+   "date": "2025-02-10",
+   "title": "Transactions foncières diverses - Approbation.",
+   "theme": "Biens immobiliers (acquisition onéreuse ou gratuite)",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 52,
+    "against": 6,
+    "abstain": 0,
+    "members": 58,
+    "voting": 58
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "45",
+   "date": "2025-02-10",
+   "title": "Dispositions diverses à caractère financier - Approbation.",
+   "theme": "Subventions accordées aux autres personnes morales de droit privé (associations...)",
+   "outcome": "adopted",
+   "unanimous": false,
+   "totals": {
+    "for": 50,
+    "against": 5,
+    "abstain": 0,
+    "members": 56,
+    "voting": 55
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  },
+  {
+   "id": "46",
+   "date": "2025-02-10",
+   "title": "Communication du rapport d'observations définitives de la Chambre Régionale des Comptes relatif au contrôle des comptes et de la gestion de Nantes Métropole pour les années 2005 et suivantes, portant sur la sobriété foncière - Information.",
+   "theme": "Autres actes de gestion du domaine public",
+   "outcome": "adopted",
+   "unanimous": true,
+   "totals": {
+    "for": 56,
+    "against": 0,
+    "abstain": 0,
+    "members": 56,
+    "voting": 56
+   },
+   "mandate": "2020 - 2026",
+   "url": "https://leaa-citoyens.nantesmetropole.fr/"
+  }
+ ]
+}

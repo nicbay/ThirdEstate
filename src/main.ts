@@ -13,6 +13,7 @@ import { joinPresence } from "./lib/cloud";
 import { renderElection } from "./views/history";
 import { renderFeed } from "./views/feed";
 import { renderRace } from "./views/race";
+import { renderSenat, renderSenateur } from "./views/senat";
 import { renderExplorer, renderTown } from "./views/explore";
 
 const app = document.getElementById("app")!;
@@ -36,6 +37,8 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/histoire\/([\w-]+)$/, (m) => renderElection(app, m[1])],
   [/^#\/fil$/, () => renderFeed(app)],
   [/^#\/2027$/, () => renderRace(app)],
+  [/^#\/senat$/, () => renderSenat(app)],
+  [/^#\/senateur\/([\w-]+)$/, (m) => renderSenateur(app, m[1])],
   [/^#\/elus$/, () => renderAssemblee(app, "carte")],
   [/^#\/explorer(?:\/(\w{2,3}))?$/, (m) => renderExplorer(app, m[1])],
   [/^#\/ville\/(\w{5})$/, (m) => renderTown(app, m[1])],

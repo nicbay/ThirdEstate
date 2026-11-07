@@ -1,0 +1,53 @@
+# Local news per commune: regional / local press RSS feeds matched to communes (public/data/news/).
+# Every 3 hours. No API key, no Claude budget. The 14-day item store lives in .cache/local-news/
+# (restored with actions/cache); if the cache is cold the script rebuilds it from the committed
+# public/data/news/*.json, so history is never lost. Commits only when the data changed: the script
+# leaves a file untouched when nothing but its generatedAt would change (same idea as
+# scripts/data-changed.mjs). See docs/data-local-news.md.
+name: Sync local news
+
+on:
+  schedule:
+    - cron: "23 */3 * * *" # every 3 hours, off the hour
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: local-news
+  cancel-in-progress: false
+
+jobs:
+  local-news:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci --ignore-scripts
+
+      - name: Restore feed cache
+        uses: actions/cache@v4
+        with:
+          path: .cache/local-news
+          key: local-news-${{ github.run_id }}
+          restore-keys: local-news-
+
+      - name: Fetch feeds and match communes
+        run: node scripts/sync-local-news.mjs
+
+      - name: Commit if data changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add public/data/news
+          git diff --cached --quiet && { echo "No data change."; exit 0; }
+          git commit -m "data: sync local news ($(date -u +'%F %H:%M'))"
+          git pull --rebase --autostash
+          git push

@@ -11,6 +11,7 @@ import { rewind } from "../lib/map";
 import { esc, safeUrl, safeColor } from "../util";
 import { PLATFORMS, age, presence } from "./assemblee";
 import { photoUrl } from "./deputes";
+import { renderTownLocal } from "./town-local";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type Any = any;
@@ -309,7 +310,9 @@ export async function renderTown(app: HTMLElement, code: string) {
           : ""
       }
 
+      <div id="town-local" class="stack-col"></div>
       <nav class="doors">${mps.map(({ d }) => `<a class="door" href="#/circo/${d.code}"><b>${L("Toute la circonscription", "The whole district")} ${d.code.slice(-2)}</b><span class="muted small">${L("Résultats électoraux, député, chiffres détaillés", "Election results, MP, detailed figures")}</span></a>`).join("")}<a class="door" href="#/explorer/${dep}"><b>${L("Les autres communes du département", "Other towns in the department")}</b><span class="muted small">${L("Liste et carte", "List and map")}</span></a></nav>
     </section>`;
   bindSearch(app);
+  renderTownLocal(app.querySelector<HTMLElement>("#town-local")!, code, dep);
 }

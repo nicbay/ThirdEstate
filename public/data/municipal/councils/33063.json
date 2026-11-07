@@ -1,0 +1,2149 @@
+{
+ "generated": "2026-11-07",
+ "schemaVersion": 1,
+ "code": "33063",
+ "name": "Bordeaux",
+ "granularity": "outcome",
+ "council": "Conseil municipal de Bordeaux",
+ "mandate": "2026–2032",
+ "method": "Outcome only, from 'tech_delibs_dde_resultat' ('ADOPTE A L'UNANIMITE', '… DES VOTANTS', 'ADOPTE A LA MAJORITE', …). The dataset publishes no vote counts and no group positions.",
+ "source": {
+  "name": "Délibérations du conseil municipal de Bordeaux",
+  "publisher": "Ville de Bordeaux / Bordeaux Métropole",
+  "url": "https://opendata.bordeaux-metropole.fr/explore/dataset/bor_deliberations/",
+  "api": "https://opendata.bordeaux-metropole.fr/api/explore/v2.1/catalog/datasets/bor_deliberations/records",
+  "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)"
+ },
+ "deliberations": [
+  {
+   "id": "2026/212",
+   "date": "2026-11-02",
+   "title": "Démission d'une adjointe au Maire. Décision de suppression ou de maintien du poste. Modalités de mise en œuvre.",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F212"
+  },
+  {
+   "id": "2026/213",
+   "date": "2026-11-02",
+   "title": "Rapport sur les orientations budgétaires - Exercice 2027",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "noted",
+   "unanimous": null,
+   "outcomeLabel": "INFORMATION DU CONSEIL MUNICIPAL",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F213"
+  },
+  {
+   "id": "2026/214",
+   "date": "2026-11-02",
+   "title": "Décision modificative N°2 - Exercice 2026",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F214"
+  },
+  {
+   "id": "2026/215",
+   "date": "2026-11-02",
+   "title": "Attribution d'aides en faveur de la jeunesse. Subventions 2026. Adoption. Autorisation",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F215"
+  },
+  {
+   "id": "2026/216",
+   "date": "2026-11-02",
+   "title": "Dispositif \"Je relève le défi 2027\". Règlement. Adoption",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F216"
+  },
+  {
+   "id": "2026/217",
+   "date": "2026-11-02",
+   "title": "Subventions d'accompagnement de la Vie Sportive. Attribution de subventions 2026. Adoption. Autorisation",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F217"
+  },
+  {
+   "id": "2026/218",
+   "date": "2026-11-02",
+   "title": "Bordeaux Mon Quartier - Budgets Participatifs de Proximité 2026",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F218"
+  },
+  {
+   "id": "2026/219",
+   "date": "2026-11-02",
+   "title": "Attributions de subventions dans le cadre du Règlement d'Intervention de la Ville de Bordeaux en faveur de l'habitat privé. Autorisation.",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F219"
+  },
+  {
+   "id": "2026/220",
+   "date": "2026-11-02",
+   "title": "Egalité entre les femmes et les hommes. Convention de partenariat en faveur de la lutte contre les violences faites aux femmes. Adoption. Autorisation.",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F220"
+  },
+  {
+   "id": "2026/221",
+   "date": "2026-11-02",
+   "title": "Rapport d'ajustement des effectifs",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F221"
+  },
+  {
+   "id": "2026/222",
+   "date": "2026-11-02",
+   "title": "Actualisation du Régime Indemnitaire tenant compte des Fonctions, des Sujétions, de l'Expertise et de l'Engagement professionnel (RIFSEEP) constitué de l'Indemnité de Fonctions, de Sujétions et d'Expertise (IFSE) et du Complément Indemnitaire Annuel (CIA)",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F222"
+  },
+  {
+   "id": "2026/223",
+   "date": "2026-11-02",
+   "title": "Protection sociale complémentaire des agents de la Ville de Bordeaux - Complémentaire santé avec APICIL évolution des cotisations et évolution de la participation de l'employeur au 1er janvier 2027",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F223"
+  },
+  {
+   "id": "2026/224",
+   "date": "2026-11-02",
+   "title": "Protection sociale complémentaire des agents de la Ville de Bordeaux - Complémentaire prévoyance avec Collecteam et Allianz - Evolution des cotisations au 1er janvier 2027 - Autorisation donnée à Monsieur le Maire de signer l'avenant numéro 2 au contrat",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F224"
+  },
+  {
+   "id": "2026/225",
+   "date": "2026-11-02",
+   "title": "Recensement de la population et dispositif HMSA 2027",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F225"
+  },
+  {
+   "id": "2026/226",
+   "date": "2026-11-02",
+   "title": "Protection fonctionnelle. Versement par la Ville de Bordeaux des sommes allouées par les tribunaux aux agents en réparation des préjudices moraux ou corporels.",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F226"
+  },
+  {
+   "id": "2026/227",
+   "date": "2026-11-02",
+   "title": "Remises gracieuses - trop perçu de rémunération",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F227"
+  },
+  {
+   "id": "2026/228",
+   "date": "2026-11-02",
+   "title": "Subventions à diverses associations culturelles. Conventions. Autorisation. Signature",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F228"
+  },
+  {
+   "id": "2026/229",
+   "date": "2026-11-02",
+   "title": "Etablissements culturels de la Ville de Bordeaux. Tarifs. Autorisation",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F229"
+  },
+  {
+   "id": "2026/230",
+   "date": "2026-11-02",
+   "title": "Musée d'Aquitaine. Partenariat avec la Société Française pour la Promotion Artistique - magazine Connaissance des Arts. Convention. Autorisation. Signature.",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F230"
+  },
+  {
+   "id": "2026/231",
+   "date": "2026-11-02",
+   "title": "Bibliothèques de Bordeaux. Organisation de deux jeux concours \"Dictée au musée\" et \"Prix BD de la Fabrique du Citoyen\". Règlement. Autorisation.",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F231"
+  },
+  {
+   "id": "2026/232",
+   "date": "2026-11-02",
+   "title": "Convention Metpark-Ville de Bordeaux parkings secteur centre",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F232"
+  },
+  {
+   "id": "2026/233",
+   "date": "2026-11-02",
+   "title": "Attribution d'aides en faveur de l'Enfance. Avenant aux conventions 2026. Adoption. Autorisation. Signature",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F233"
+  },
+  {
+   "id": "2026/234",
+   "date": "2026-11-02",
+   "title": "Avenant n°1 à la convention de co-Maîtrise d'Ouvrage, et de transferts entre Bordeaux Métropole et la Ville de Bordeaux, pour la reconstruction et l'extension de l'école Jean Monnet (Louise Michel) située dans le quartier des Aubiers. Décision. Autorisation",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F234"
+  },
+  {
+   "id": "2026/235",
+   "date": "2026-11-02",
+   "title": "Avenant n°2 à la convention de co-Maîtrise d'Ouvrage, de gestion et de transferts entre Bordeaux Métropole et la Ville de Bordeaux, pour la réalisation des équipements situés sur l'îlot D4 de l'opération Brazza. Décision. Autorisation",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F235"
+  },
+  {
+   "id": "2026/236",
+   "date": "2026-11-02",
+   "title": "Instruction budgétaire et comptable M57- Budget principal de la Ville de Bordeaux - Fixation du mode opératoire et des durées d'amortissement des \"Biens historiques et culturels immobiliers\", mise à jour de certaines durées et modalités d'amortissement",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F236"
+  },
+  {
+   "id": "2026/237",
+   "date": "2026-11-02",
+   "title": "Avenant à la méthodologie des provisions pour créances douteuses - Décision - Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F237"
+  },
+  {
+   "id": "2026/238",
+   "date": "2026-11-02",
+   "title": "Maison de retraite Terre Nègre - Réhabilitation du pavillon Buhan. Emprunts d'un montant total de 5 934 404 € à souscrire auprès de la Banque Postale. Garantie de la ville à hauteur de 100 %. Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F238"
+  },
+  {
+   "id": "2026/239",
+   "date": "2026-11-02",
+   "title": "Diaconat de Bordeaux. Subvention d'investissement dans le cadre de la mise en œuvre du projet grande marginalité. Convention. Autorisation. Signature",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F239"
+  },
+  {
+   "id": "2026/240",
+   "date": "2026-11-02",
+   "title": "Promotion de la santé et du handicap. Soutien aux initiatives en faveur de l'inclusion des personnes en situation de handicap dans la cité. Adoption. Autorisation.",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F240"
+  },
+  {
+   "id": "2026/241",
+   "date": "2026-11-02",
+   "title": "Actualisation des droits de place 2027",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F241"
+  },
+  {
+   "id": "2026/242",
+   "date": "2026-11-02",
+   "title": "Projet Rézeau - Soutien au programme ClickTaff de diffusion des opportunités professionnelles et de promotion des métiers et des entreprises auprès des jeunes des quartiers prioritaires.",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F242"
+  },
+  {
+   "id": "2026/243",
+   "date": "2026-11-02",
+   "title": "Partenariat avec la Chambre de Métiers et de l'Artisanat Nouvelle Aquitaine - Gironde pour la gestion et l'animation de la pépinière artisanale Bordeaux Sainte-Croix : subvention d'équilibre pour l'année 2025",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F243"
+  },
+  {
+   "id": "2026/244",
+   "date": "2026-11-02",
+   "title": "Bordeaux - Place Renaudel - Réalisation des espaces publics et de voirie - Co-maîtrise d'ouvrage - Eclairage public - Participation financière - Convention - Décision - Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F244"
+  },
+  {
+   "id": "2026/245",
+   "date": "2026-11-02",
+   "title": "BORDEAUX. ZAC Saint-Jean-Belcier. Rétrocession par l'EPA Bordeaux Euratlantique à la Ville de Bordeaux d'emprises d'espaces publics et ouvrages publics sis quartier Amédée Saint-Germain. Décision. Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F245"
+  },
+  {
+   "id": "2026/246",
+   "date": "2026-11-02",
+   "title": "BORDEAUX - 66 rue des 3 Conils - Mise en vente par adjudication d'un immeuble communal.  Décision. Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F246"
+  },
+  {
+   "id": "2026/247",
+   "date": "2026-11-02",
+   "title": "Proposition de jumelage entre les villes de Bordeaux et de Jytomyr (Ukraine).",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F247"
+  },
+  {
+   "id": "2026/248",
+   "date": "2026-11-02",
+   "title": "Participation à la campagne nationale de soutien aux otages civils ukrainiens - Parrainage d'Olga BARANEVSKA et Oleksandr YAROVYI",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F248"
+  },
+  {
+   "id": "2026/249",
+   "date": "2026-11-02",
+   "title": "Convention entre la Ville de Bordeaux et l'Agence Française de Développement (AFD) pour le cofinancement du projet de coopération Bordeaux - Lima dans le cadre du dispositif FICOL (Facilité de financement des collectivités territoriales françaises).",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F249"
+  },
+  {
+   "id": "2026/250",
+   "date": "2026-11-02",
+   "title": "Semaines de l'Amérique Latine et des Caraïbes - Lancement de l'appel à projet 2027.",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F250"
+  },
+  {
+   "id": "2026/251",
+   "date": "2026-11-02",
+   "title": "Attribution d'une subvention à l'Association Climate Chance 2026. Autorisation. Décision",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F251"
+  },
+  {
+   "id": "2026/252",
+   "date": "2026-11-02",
+   "title": "Remise gracieuse 2026. Association Nour. Autorisation",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F252"
+  },
+  {
+   "id": "2026/253",
+   "date": "2026-11-02",
+   "title": "Autorité Organisatrice (AO) de l'accueil du jeune enfant. Projet de création d'un EAJE \"LUMIN&SENS\". AVIS",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F253"
+  },
+  {
+   "id": "2026/160",
+   "date": "2026-09-28",
+   "title": "Adoption de la Stratégie d'adaptation de la Ville de Bordeaux à la hauteur du dérèglement climatique ' Bordeaux s'adapte ' - Décision - Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F160"
+  },
+  {
+   "id": "2026/161",
+   "date": "2026-09-28",
+   "title": "Pacte de Gouvernance de Bordeaux Métropole 2026-2032. Adoption.",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F161"
+  },
+  {
+   "id": "2026/162",
+   "date": "2026-09-28",
+   "title": "ADIL 33 - Année 2026 - Subvention de fonctionnement - Convention - Décision - Autorisation",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F162"
+  },
+  {
+   "id": "2026/163",
+   "date": "2026-09-28",
+   "title": "Soliha Terres-Océan - Demande de subvention de fonctionnement 2026 - Convention - Décision - Autorisation.",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F163"
+  },
+  {
+   "id": "2026/164",
+   "date": "2026-09-28",
+   "title": "Accompagnement financier de l'association arc en rêve - versement anticipé du solde de la subvention 2026 - décision, autorisation.",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F164"
+  },
+  {
+   "id": "2026/165",
+   "date": "2026-09-28",
+   "title": "Délibération Subvention complémentaire GIP REB Programmation 2026. Autorisation. Décision",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F165"
+  },
+  {
+   "id": "2026/166",
+   "date": "2026-09-28",
+   "title": "Représentations des élus au sein d'organismes divers et des écoles. 4ème partie. Modifications. Adoption",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F166"
+  },
+  {
+   "id": "2026/167",
+   "date": "2026-09-28",
+   "title": "Subventions d'accompagnement de la Vie Sportive. Attribution et désaffectation de subventions 2026. Adoption. Autorisation de signature",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F167"
+  },
+  {
+   "id": "2026/168",
+   "date": "2026-09-28",
+   "title": "Instauration de la taxe sur les friches commerciales",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F168"
+  },
+  {
+   "id": "2026/169",
+   "date": "2026-09-28",
+   "title": "Economie sociale et solidaire (ESS) - Dispositif de financement participatif Financez demain - Abondements 2026 de la Ville de Bordeaux en faveur des projets ESS retenus et financés par les citoyens. Décision. Autorisation.",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F169"
+  },
+  {
+   "id": "2026/170",
+   "date": "2026-09-28",
+   "title": "Soutien au commerce et à l'artisanat bordelais : subvention Fête du vin nouveau 2026. Subvention - Autorisation - Décision",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F170"
+  },
+  {
+   "id": "2026/171",
+   "date": "2026-09-28",
+   "title": "Cotisation à Alliance Ville emploi 2026, décision, autorisation",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F171"
+  },
+  {
+   "id": "2026/172",
+   "date": "2026-09-28",
+   "title": "Avenant n°1 de prolongation de la convention de partenariat entre le Conseil Départemental de la Gironde, la Ville de Bordeaux et son Centre Communal d'Action Sociale (CTEC 2026-2027). Adoption. Autorisation.",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F172"
+  },
+  {
+   "id": "2026/173",
+   "date": "2026-09-28",
+   "title": "Subventions à diverses associations culturelles. Conventions. Avenant à la convention avec le Glob Théâtre. Autorisation. Signature",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F173"
+  },
+  {
+   "id": "2026/174",
+   "date": "2026-09-28",
+   "title": "Capc musée d'art contemporain. Exposition Quoi qu'il en soit. Coproduction avec le Théâtre national Bordeaux Aquitaine et l'Ecole du TnBA. Convention. Autorisation. Signature",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F174"
+  },
+  {
+   "id": "2026/175",
+   "date": "2026-09-28",
+   "title": "Subvention de la Maison de l'Europe Bordeaux Aquitaine (MEBA)2026. Autorisation . Décision",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F175"
+  },
+  {
+   "id": "2026/176",
+   "date": "2026-09-28",
+   "title": "Engagement des cofinancements pour le projet de végétalisation des cours d'école - phases 2025 et 2026. Demande de subvention FEDER. Autorisation",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F176"
+  },
+  {
+   "id": "2026/177",
+   "date": "2026-09-28",
+   "title": "Attributions d'aides en faveur des associations pendant le temps scolaire. Délégation actions éducatives. Subventions 2026. Adoption. Autorisation",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F177"
+  },
+  {
+   "id": "2026/178",
+   "date": "2026-09-28",
+   "title": "Appel à projet Politiques Alimentaires- Programmation 2026 délibération rectificative portant sur erreur matérielle",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F178"
+  },
+  {
+   "id": "2026/179",
+   "date": "2026-09-28",
+   "title": "Attribution d'aides en faveur des associations. Délégation vie associative. Subventions 2026. Adoption. Autorisation",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F179"
+  },
+  {
+   "id": "2026/180",
+   "date": "2026-09-28",
+   "title": "Approbation de la politique sociale de l'employeur Ville de Bordeaux Année 2026",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F180"
+  },
+  {
+   "id": "2026/181",
+   "date": "2026-09-28",
+   "title": "Protection sociale complémentaire des agents de la Ville de Bordeaux - Débat en assemblée",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "noted",
+   "unanimous": null,
+   "outcomeLabel": "INFORMATION DU CONSEIL MUNICIPAL",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F181"
+  },
+  {
+   "id": "2026/182",
+   "date": "2026-09-28",
+   "title": "Remises gracieuses -  trop perçu de rémunération",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F182"
+  },
+  {
+   "id": "2026/183",
+   "date": "2026-09-28",
+   "title": "Recours au médiateur - Décision - Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F183"
+  },
+  {
+   "id": "2026/184",
+   "date": "2026-09-28",
+   "title": "Règlement intérieur du conseil municipal. Adoption.",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F184"
+  },
+  {
+   "id": "2026/185",
+   "date": "2026-09-28",
+   "title": "Organisation du dispositif de remise sur le marché immobilier privé de biens communaux par le biais des ventes aux enchères ou interactives publiques - Approbation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F185"
+  },
+  {
+   "id": "2026/186",
+   "date": "2026-09-28",
+   "title": "Ville de Bordeaux. PRU des Aubiers. Acquisition du volume n° 1 et d'une partie en pleine propriété de la parcelle cadastrée TB 89 sise à Bordeaux, 19 place Ginette Neveu appartenant à Aquitanis en vue de la construction du futur centre d'animation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F186"
+  },
+  {
+   "id": "2026/187",
+   "date": "2026-09-28",
+   "title": "BORDEAUX. Cession par la Ville de Bordeaux à Bordeaux Métropole d'une parcelle cadastrée section AR numéro 10 d'une contenance d'environ 20 690 m² sise à Bordeaux, rue du recteur Thamin à usage de voirie et accotements. Décision. Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F187"
+  },
+  {
+   "id": "2026/188",
+   "date": "2026-09-28",
+   "title": "Ville de Bordeaux - ZAC de la Berge du Lac - écoquartier GINKO - Acquisition des aménagements promenoirs et espaces verts - Décision. Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F188"
+  },
+  {
+   "id": "2026/189",
+   "date": "2026-09-28",
+   "title": "Ville de Bordeaux - ZAC de la Berge du Lac - écoquartier GINKO - Acquisition par la Ville de Bordeaux auprès de Bordeaux Métropole des parcelles TC 186, 190p, et 198 aménagées en espaces verts - Décision. Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F189"
+  },
+  {
+   "id": "2026/190",
+   "date": "2026-09-28",
+   "title": "Ville de Bordeaux - Modification par avenant du bail emphytéotique administratif du 29 avril 2014 au profit de l'association Maison de Retraite Terre Nègre - Décision. Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F190"
+  },
+  {
+   "id": "2026/191",
+   "date": "2026-09-28",
+   "title": "Ville de Bordeaux - Cession d'une emprise foncière d'environ 60 m² sise 98 rue Arago - Décision. Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F191"
+  },
+  {
+   "id": "2026/192",
+   "date": "2026-09-28",
+   "title": "BORDEAUX - 110 rue Charles Martin - Mise en vente par adjudication d'un immeuble communal. Décision. Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F192"
+  },
+  {
+   "id": "2026/193",
+   "date": "2026-09-28",
+   "title": "Bordeaux - 18 rue d'Alzon - Déclassement de la parcelle n° LA 166 et de l'immeuble communal associé. Décision. Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F193"
+  },
+  {
+   "id": "2026/194",
+   "date": "2026-09-28",
+   "title": "BORDEAUX - 18 rue d'Alzon - Mise en vente par adjudication d'un immeuble communal - Décision - Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F194"
+  },
+  {
+   "id": "2026/195",
+   "date": "2026-09-28",
+   "title": "31 rue de Cursol - Bordeaux. Désaffectation et déclassement de la parcelle HI157 et de l'immeuble communal associé. Décision. Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F195"
+  },
+  {
+   "id": "2026/196",
+   "date": "2026-09-28",
+   "title": "BORDEAUX - 31 rue de Cursol - Mise en vente par adjudication d'un immeuble communal. Décision. Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F196"
+  },
+  {
+   "id": "2026/197",
+   "date": "2026-09-28",
+   "title": "BORDEAUX - 62 rue Laseppe - Mise en vente par adjudication d'un immeuble communal - Décision - Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F197"
+  },
+  {
+   "id": "2026/198",
+   "date": "2026-09-28",
+   "title": "CENON. Déclassement rétroactif de la parcelle cadastrée section AE numéro 468 sise 110 avenue René Cassagne - Décision. Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F198"
+  },
+  {
+   "id": "2026/199",
+   "date": "2026-09-28",
+   "title": "Stationnement Payant. Rapport annuel Recours Administratifs Préalables Obligatoires (RAPO). 2025. Information.",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "noted",
+   "unanimous": null,
+   "outcomeLabel": "INFORMATION DU CONSEIL MUNICIPAL",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F199"
+  },
+  {
+   "id": "2026/200",
+   "date": "2026-09-28",
+   "title": "SAEM GERTRUDE.Rapport des administrateurs pour les comptes 2025.Information.",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "noted",
+   "unanimous": null,
+   "outcomeLabel": "INFORMATION DU CONSEIL MUNICIPAL",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F200"
+  },
+  {
+   "id": "2026/201",
+   "date": "2026-09-28",
+   "title": "Egalité entre les femmes et les hommes. Soutien aux associations. Adoption. Autorisation.",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F201"
+  },
+  {
+   "id": "2026/202",
+   "date": "2026-09-28",
+   "title": "Egalité entre les femmes et les hommes. Soutien au collectif paroles de femmes en migration. Adoption. Autorisation.",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F202"
+  },
+  {
+   "id": "2026/203",
+   "date": "2026-09-28",
+   "title": "Lutte contre les discriminations. Subvention au Conseil Départemental d'Accès au Droit de la Gironde dans le cadre du dispositif ELUCID. Adoption. Autorisation.",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F203"
+  },
+  {
+   "id": "2026/204",
+   "date": "2026-09-28",
+   "title": "Lutte contre les discriminations. Appel à projets municipal Quinzaine de l'égalité et de la diversité 2026. Adoption. Autorisation.",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F204"
+  },
+  {
+   "id": "2026/205",
+   "date": "2026-09-28",
+   "title": "Lutte contre les discriminations. Soutien aux associations. Adoption. Autorisation.",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F205"
+  },
+  {
+   "id": "2026/206",
+   "date": "2026-09-28",
+   "title": "Autorité Organisatrice (AO) de l'accueil du jeune enfant. Projet de création d'un EAJE \"CANAILLOUS SON TAY\". AVIS",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F206"
+  },
+  {
+   "id": "2026/207",
+   "date": "2026-09-28",
+   "title": "Autorité Organisatrice (AO) de l'accueil du jeune enfant. Projet d'extension de l'EAJE \"BILBO'QUAI\". AVIS",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F207"
+  },
+  {
+   "id": "2026/208",
+   "date": "2026-09-28",
+   "title": "Autorité Organisatrice (AO) de l'accueil du jeune enfant. Projet de création d'un EAJE \"MINIDO BELCIER 2\". AVIS",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F208"
+  },
+  {
+   "id": "2026/209",
+   "date": "2026-09-28",
+   "title": "Subventions d'accompagnement de la Vie Sportive. Aide aux événements et clubs de haut niveau. Fan zone Champion's Cup UBB. Attribution de subventions 2026. Adoption. Autorisation",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F209"
+  },
+  {
+   "id": "2026/210",
+   "date": "2026-09-28",
+   "title": "Délégation permanente du Conseil Municipal à Monsieur le Maire. Application des articles L.2122.22 et L2122.23 du CGCT. Délibération D-2026/41 du 27 mars 2026. Finances - Emprunts.",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "noted",
+   "unanimous": null,
+   "outcomeLabel": "INFORMATION DU CONSEIL MUNICIPAL",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F210"
+  },
+  {
+   "id": "2026/211",
+   "date": "2026-09-28",
+   "title": "Délégation permanente du Conseil Municipal à Monsieur le Maire.\nCompte Rendu de Monsieur le Maire des opérations de gestion locative.\nDécisions prises entre le 1er Juillet et le 31 décembre 2025.",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "noted",
+   "unanimous": null,
+   "outcomeLabel": "INFORMATION DU CONSEIL MUNICIPAL",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F211"
+  },
+  {
+   "id": "2026/122",
+   "date": "2026-07-06",
+   "title": "Audit des finances de la Ville de Bordeaux. Information du Conseil municipal",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "noted",
+   "unanimous": null,
+   "outcomeLabel": "INFORMATION DU CONSEIL MUNICIPAL",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F122"
+  },
+  {
+   "id": "2026/123",
+   "date": "2026-07-06",
+   "title": "Affectation des résultats constatés au compte financier unique 2025.\n Approbation.",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F123"
+  },
+  {
+   "id": "2026/124",
+   "date": "2026-07-06",
+   "title": "Exercice 2026 - Budget supplémentaire",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F124"
+  },
+  {
+   "id": "2026/125",
+   "date": "2026-07-06",
+   "title": "Aide à la production du logement social - Subventions de la Ville aux bailleurs sociaux pour la production de logements locatifs sociaux agréés en 2025. Demande de subvention. Autorisation",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F125"
+  },
+  {
+   "id": "2026/126",
+   "date": "2026-07-06",
+   "title": "Attributions de subventions dans le cadre du règlement d'intervention de la Ville de Bordeaux en faveur de l'habitat privé. Autorisation.",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F126"
+  },
+  {
+   "id": "2026/127",
+   "date": "2026-07-06",
+   "title": "Appel à Projet Politique de la Ville Programmation 2026. Autorisation. Décision",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F127"
+  },
+  {
+   "id": "2026/128",
+   "date": "2026-07-06",
+   "title": "Représentation des élus au sein d'organismes divers. Modifications. Adoption. 3ème partie",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F128"
+  },
+  {
+   "id": "2026/129",
+   "date": "2026-07-06",
+   "title": "Association Bordeaux Technowest - Subvention de fonctionnement 2026 - Décision - Autorisation",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F129"
+  },
+  {
+   "id": "2026/130",
+   "date": "2026-07-06",
+   "title": "Attribution de subventions prévention de la délinquance et aides aux victimes",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F130"
+  },
+  {
+   "id": "2026/131",
+   "date": "2026-07-06",
+   "title": "Commission consultative de toponymie(viographie): composition et objet. Autorisation",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F131"
+  },
+  {
+   "id": "2026/132",
+   "date": "2026-07-06",
+   "title": "Subvention au bénéfice de l'association L'avant-poste - Maison d'art et de convivialité. Autorisation",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F132"
+  },
+  {
+   "id": "2026/133",
+   "date": "2026-07-06",
+   "title": "Capc musée d'art contemporain. Partenariat avec le Centre Pompidou pour 2027. Convention cadre. Autorisation. Signature",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F133"
+  },
+  {
+   "id": "2026/134",
+   "date": "2026-07-06",
+   "title": "Bibliothèques de Bordeaux. Organisation d'un jeu concours \"Loto de la Nuit des bibliothèques\". Règlement. Autorisation.",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F134"
+  },
+  {
+   "id": "2026/135",
+   "date": "2026-07-06",
+   "title": "Bibliothèque de Bordeaux. Grands retards. Demandes de remise gracieuse. Autorisation.",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F135"
+  },
+  {
+   "id": "2026/136",
+   "date": "2026-07-06",
+   "title": "Appel à projets pour le lancement des Journées des Langues Maternelles et Paternelles 2027. Adoption. Autorisation",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F136"
+  },
+  {
+   "id": "2026/137",
+   "date": "2026-07-06",
+   "title": "Subventions Enfance. Réajustements des budgets d'activités d'accueils éducatifs et de loisirs de l'année 2025. Autorisation. Décision",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F137"
+  },
+  {
+   "id": "2026/138",
+   "date": "2026-07-06",
+   "title": "Attribution d'aides en faveur de l'Enfance et de la Jeunesse. Avenant aux conventions 2026. Adoption. Autorisation. Signature. Décision",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F138"
+  },
+  {
+   "id": "2026/139",
+   "date": "2026-07-06",
+   "title": "Attribution d'aides en faveur des associations. Appel à projets Grandir & s'épanouir (Projet Educatif de Territoire) 2026. Signature de conventions. Subventions. Adoption. Autorisation",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F139"
+  },
+  {
+   "id": "2026/140",
+   "date": "2026-07-06",
+   "title": "Appel à projet politique alimentaire - Programmation 2026 Autorisation - décision",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F140"
+  },
+  {
+   "id": "2026/141",
+   "date": "2026-07-06",
+   "title": "Écoles primaires. Transports en commun pédagogiques. Autorisation.",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F141"
+  },
+  {
+   "id": "2026/142",
+   "date": "2026-07-06",
+   "title": "Dotation spéciale pour les logements des instituteurs. Reversement partiel à Bordeaux Métropole. Autorisation",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F142"
+  },
+  {
+   "id": "2026/143",
+   "date": "2026-07-06",
+   "title": "Subventions d'accompagnement de la vie sportive. Attribution. Autorisation de signature",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F143"
+  },
+  {
+   "id": "2026/144",
+   "date": "2026-07-06",
+   "title": "Aide en faveur des évènementiels de haut niveau. Attribution. Autorisation de signature",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F144"
+  },
+  {
+   "id": "2026/145",
+   "date": "2026-07-06",
+   "title": "Tarifs d'utilisation des équipements sportifs. Avis. Autorisation",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F145"
+  },
+  {
+   "id": "2026/146",
+   "date": "2026-07-06",
+   "title": "Avenant n°2 au contrat de délégation de service public ' Exploitation, gestion et entretien d'équipements de sports et de loisirs de la ville de Bordeaux 2023-2028 '. Compensation des frais de travaux inhérents à la participation des ' Boxers ' à la Champion Hockey League (CHL)",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F146"
+  },
+  {
+   "id": "2026/147",
+   "date": "2026-07-06",
+   "title": "Attribution d'aides en faveur des associations. Délégation Vie associative. Subventions 2026. Adoption. Autorisation",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F147"
+  },
+  {
+   "id": "2026/148",
+   "date": "2026-07-06",
+   "title": "Droit à la formation des élus locaux - Décision",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F148"
+  },
+  {
+   "id": "2026/149",
+   "date": "2026-07-06",
+   "title": "Rapport d'ajustement des effectifs",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F149"
+  },
+  {
+   "id": "2026/150",
+   "date": "2026-07-06",
+   "title": "EYSINES. Cession par la Ville de Bordeaux à Bordeaux Métropole d'une emprise de 193 m² environ à détacher de la parcelle cadastrée BA 1682 sise rue du Moulineau pour élargissement de la voirie. Décision. Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F150"
+  },
+  {
+   "id": "2026/151",
+   "date": "2026-07-06",
+   "title": "EYSINES. Cession par la Ville de Bordeaux à Bordeaux Métropole d'une emprise d'une superficie de 17 m² environ à détacher de la parcelle cadastrée section BA numéro 763, sise rue du Moulineau pour élargissement de la voirie. Décision. Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F151"
+  },
+  {
+   "id": "2026/152",
+   "date": "2026-07-06",
+   "title": "EYSINES. Cession par la Ville de Bordeaux à Bordeaux Métropole d'une emprise d'une superficie d'environ 249 m² à détacher de la parcelle cadastrée section BA numéro 319, sise rue du Moulineau pour élargissement de voirie. Décision. Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F152"
+  },
+  {
+   "id": "2026/153",
+   "date": "2026-07-06",
+   "title": "Ville de Bordeaux. Quartier Grand Parc. 1 rue Henri Expert. Constitution de servitude de surplomb au profit du syndicat des copropriétaires de l'immeuble dénommé ' Résidence les Noisetiers '. Parcelle PW 64p (835 m²). Autorisation. Décision",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F153"
+  },
+  {
+   "id": "2026/154",
+   "date": "2026-07-06",
+   "title": "BORDEAUX. Déclassement rétroactif de la parcelle cadastrée section PV numéro 15 sise rue Robert Schuman - Décision. Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F154"
+  },
+  {
+   "id": "2026/155",
+   "date": "2026-07-06",
+   "title": "Aménagement des boulevards Joliot-Curie et Entre-deux-mers. Délégation de maîtrise d'ouvrage à Bordeaux Métropole sur les équipements d'éclairage public, de vidéosurveillance et de bornes escamotables de compétences communales. Décision. Autorisation",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F155"
+  },
+  {
+   "id": "2026/156",
+   "date": "2026-07-06",
+   "title": "Sente de la Frégate - Réalisation de travaux de reprise d'ouvrages, approbation d'une convention de délégation de maîtrise d'ouvrage avec Bordeaux Euratlantique et autorisation de financement",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F156"
+  },
+  {
+   "id": "2026/157",
+   "date": "2026-07-06",
+   "title": "Avis préalable de l'Autorité Organisatrice (AO) de l'accueil du jeune enfant portant sur le projet de création d'un EAJE \"Sweet 4 U Nature - Maubourguet\", situé 20 rue MAUBOURGUET 33000 Bordeaux. Autorisation",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F157"
+  },
+  {
+   "id": "2026/158",
+   "date": "2026-07-06",
+   "title": "Compte rendu du pouvoir du maire en matière de mécénat - Information",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "noted",
+   "unanimous": null,
+   "outcomeLabel": "INFORMATION DU CONSEIL MUNICIPAL",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F158"
+  },
+  {
+   "id": "2026/159",
+   "date": "2026-07-06",
+   "title": "Délégation permanente du Conseil Municipal à Monsieur le Maire. Compte rendu de Monsieur le Maire des demandes de subvention formulées, des dons reçus et des tarifs mis en place. Décisions prises entre le 1er janvier 2025 et le 31 décembre 2025. Information du Conseil Municipal",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "noted",
+   "unanimous": null,
+   "outcomeLabel": "INFORMATION DU CONSEIL MUNICIPAL",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F159"
+  },
+  {
+   "id": "2026/78",
+   "date": "2026-06-01",
+   "title": "Une nouvelle ambition en matière de proximité et de participation citoyenne",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F78"
+  },
+  {
+   "id": "2026/79",
+   "date": "2026-06-01",
+   "title": "Création des budgets participatifs de proximité",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F79"
+  },
+  {
+   "id": "2026/80",
+   "date": "2026-06-01",
+   "title": "Fonds d'Aides aux Quartiers 2026 (FAQ). Aides aux quartiers et participation des habitants",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F80"
+  },
+  {
+   "id": "2026/81",
+   "date": "2026-06-01",
+   "title": "Subventions de fonctionnement. Quartiers Politique de la Ville. Programmation 2026. Autorisation. Décision",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F81"
+  },
+  {
+   "id": "2026/82",
+   "date": "2026-06-01",
+   "title": "Soutien au commerce et à l'artisanat bordelais : subventions aux associations de commerçants et artisans pour leurs programmes d'animations 2026. Subventions - Autorisation - Décision",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F82"
+  },
+  {
+   "id": "2026/83",
+   "date": "2026-06-01",
+   "title": "Soutien en fonctionnement à l'association Atelier Remuménage pour son plan d'actions 2026 - Décision - Autorisation - Convention",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F83"
+  },
+  {
+   "id": "2026/84",
+   "date": "2026-06-01",
+   "title": "Création et adhésion à un groupement de commande pour un marché public de propreté globale sur le quartier des Aubiers - Le Lac",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F84"
+  },
+  {
+   "id": "2026/85",
+   "date": "2026-06-01",
+   "title": "Demande de prorogation de l'agenda d'accessibilité programmée (2026-2029)",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F85"
+  },
+  {
+   "id": "2026/86",
+   "date": "2026-06-01",
+   "title": "Dénomination des voies, espaces publics et bâtiments municipaux. Autorisation",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F86"
+  },
+  {
+   "id": "2026/87",
+   "date": "2026-06-01",
+   "title": "Education Artistique et culturelle. Appel à projet marrainage / parrainage et résidences. Subventions. Autorisation",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F87"
+  },
+  {
+   "id": "2026/88",
+   "date": "2026-06-01",
+   "title": "Musée d'Aquitaine. Legs de Mme Marie-Thérèse Deleigne, veuve Petit. Refus du legs pour 53 objets. Suspension de l'acceptation pour les autres biens. Autorisation.",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F88"
+  },
+  {
+   "id": "2026/89",
+   "date": "2026-06-01",
+   "title": "Capc musée d'art contemporain. Exposition Quoi qu'il en soit. Création d'un billet d'accès illimité à l'exposition. Autorisation",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F89"
+  },
+  {
+   "id": "2026/90",
+   "date": "2026-06-01",
+   "title": "Aide exceptionnelle - Fonds d'action extérieure des collectivités territoriales (FACECO) du ministère des Affaires étrangères pour le soutien aux populations civiles du Liban. Autorisation. Décision",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F90"
+  },
+  {
+   "id": "2026/91",
+   "date": "2026-06-01",
+   "title": "Convention triennale d'objectifs et de moyens 2026-2028 entre la Ville de Bordeaux, le Centre communal d'action sociale de Bordeaux et l'Association Banque alimentaire de Bordeaux et de la Gironde",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F91"
+  },
+  {
+   "id": "2026/92",
+   "date": "2026-06-01",
+   "title": "Forfait dû par les enseignants au titre de la consommation d'eau dans les logements de fonction.\nDisposition d'encaissement. Autorisation.",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F92"
+  },
+  {
+   "id": "2026/93",
+   "date": "2026-06-01",
+   "title": "Redevances dues par les enseignants au titre du chauffage dans les logements de fonction. \nDisposition d'encaissement. Autorisation.",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F93"
+  },
+  {
+   "id": "2026/94",
+   "date": "2026-06-01",
+   "title": "Mise en place d'un avantage croisé entre le musée d'Aquitaine et la Flèche Saint-Michel. Autorisation.",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F94"
+  },
+  {
+   "id": "2026/95",
+   "date": "2026-06-01",
+   "title": "Subventions d'accompagnement de la Vie Sportive. Adoption. Autorisation",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F95"
+  },
+  {
+   "id": "2026/96",
+   "date": "2026-06-01",
+   "title": "Partenariat entre la Ville de Bordeaux et la Fédération Française de Rugby. Accueil de l'étape finale des circuits mondiaux de rugby à 7. Saison 2025 2026",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F96"
+  },
+  {
+   "id": "2026/97",
+   "date": "2026-06-01",
+   "title": "Compte Financier Unique du Maire pour l'exercice 2025.\n Approbation.",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F97"
+  },
+  {
+   "id": "2026/98",
+   "date": "2026-06-01",
+   "title": "Règlement budgétaire et financier métropolitain - Décision - Approbation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F98"
+  },
+  {
+   "id": "2026/99",
+   "date": "2026-06-01",
+   "title": "Corrections d'erreurs sur exercices antérieurs - M57",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F99"
+  },
+  {
+   "id": "2026/100",
+   "date": "2026-06-01",
+   "title": "Cotisations/Adhésions aux organismes. Année 2026. Délibération cadre. Décisions. Autorisation.",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F100"
+  },
+  {
+   "id": "2026/101",
+   "date": "2026-06-01",
+   "title": "Conditions d'octroi de la garantie de la ville de bordeaux a certains creanciers de l'agence france locale - Annee 2026",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F101"
+  },
+  {
+   "id": "2026/102",
+   "date": "2026-06-01",
+   "title": "Convention relative aux modalités de dépôt et de reversement de la subvention FEDER sollicitée par Bordeaux Métropole pour le compte de la ville de Bordeaux pour l'aménagement du parc de l'arrière-base sous-marine.",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F102"
+  },
+  {
+   "id": "2026/103",
+   "date": "2026-06-01",
+   "title": "Création et composition de la Commission de contrôle. Décision",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F103"
+  },
+  {
+   "id": "2026/104",
+   "date": "2026-06-01",
+   "title": "Rapport de transition écologique et sociale 2026 (sur les données 2025) - Information au Conseil municipal",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "noted",
+   "unanimous": null,
+   "outcomeLabel": "INFORMATION DU CONSEIL MUNICIPAL",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F104"
+  },
+  {
+   "id": "2026/105",
+   "date": "2026-06-01",
+   "title": "Renouvellement de la Commission Consultative des Services Publics Locaux. Décision",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F105"
+  },
+  {
+   "id": "2026/106",
+   "date": "2026-06-01",
+   "title": "Rapport d'ajustement des effectifs",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F106"
+  },
+  {
+   "id": "2026/107",
+   "date": "2026-06-01",
+   "title": "Complémentaire santé des agents de la Ville de Bordeaux - Evolution des cotisations au 1er juillet 2026 - Evolution de la participation de l'employeur au 1er juillet 2026",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F107"
+  },
+  {
+   "id": "2026/108",
+   "date": "2026-06-01",
+   "title": "Fixation du nombre de représentants du personnel au sein des instances représentatives du personnel et maintien du paritarisme au sein du Comité social territorial et de sa formation spécialisée en matière de santé, sécurité et conditions de travail",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F108"
+  },
+  {
+   "id": "2026/109",
+   "date": "2026-06-01",
+   "title": "Recours au médiateur - Décision -Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "withdrawn",
+   "unanimous": null,
+   "outcomeLabel": "RETIRE DE L'ORDRE DU JOUR",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F109"
+  },
+  {
+   "id": "2026/110",
+   "date": "2026-06-01",
+   "title": "Adhésion à un groupement de commande pour la fourniture de prestations de services, pour la réalisation d'enquêtes administratives et des diagnostics des risques psychosociaux entre Bordeaux Métropole, la Ville de Bordeaux et le CCAS.",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F110"
+  },
+  {
+   "id": "2026/111",
+   "date": "2026-06-01",
+   "title": "Bilan des acquisitions et cessions foncières réalisées en 2025 - Approbation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F111"
+  },
+  {
+   "id": "2026/112",
+   "date": "2026-06-01",
+   "title": "Ville de Bordeaux. Déclassement d'une emprise de 101 m² environ située devant le numéro 80 de la rue Arago. Autorisation. Décision",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F112"
+  },
+  {
+   "id": "2026/113",
+   "date": "2026-06-01",
+   "title": "Ville de Bordeaux. Cession d'une emprise de 101 m² environ au propriétaire riverain du n° 80 de la rue Arago. Autorisation. Décision",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F113"
+  },
+  {
+   "id": "2026/114",
+   "date": "2026-06-01",
+   "title": "Ville de Bordeaux. Déclassement d'une emprise de 101 m² environ située devant le numéro 82 de la rue Arago. Autorisation. Décision",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F114"
+  },
+  {
+   "id": "2026/115",
+   "date": "2026-06-01",
+   "title": "Ville de Bordeaux. Cession d'une emprise de 101 m² environ au propriétaire riverain du n° 82 de la rue Arago. Autorisation. Décision",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F115"
+  },
+  {
+   "id": "2026/116",
+   "date": "2026-06-01",
+   "title": "Bordeaux. Avenant au bail emphytéotique liant la Ville de Bordeaux au GARAGE MODERNE. Immeuble sis 15 rue des Etrangers. Prolongation de la durée du bail et modification des conditions de versement de la redevance. Autorisation. Décision",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F116"
+  },
+  {
+   "id": "2026/117",
+   "date": "2026-06-01",
+   "title": "Ville de Bordeaux. Grand Parc. Modification de l'assiette du BEA entre Incité et la Ville de Bordeaux. Sortie d'une emprise de 835 m² à détacher de la parcelle cadastrée section PW numéro 64. Autorisation. Décision",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F117"
+  },
+  {
+   "id": "2026/119",
+   "date": "2026-06-01",
+   "title": "Lutte contre les discriminations. Soutien à la Ligue internationale contre le racisme et l'antisémitisme Bordeaux - Gironde. Adoption. Autorisation.",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F119"
+  },
+  {
+   "id": "2026/120",
+   "date": "2026-06-01",
+   "title": "Avis préalable de l'Autorité Organisatrice (AO) de l'accueil du jeune enfant portant sur le projet de création d'un EAJE \"Les P'tits Potes de Mathis\", situé 69 rue Henri DUNANT 33100 Bordeaux. AUTORISATION",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F120"
+  },
+  {
+   "id": "2026/121",
+   "date": "2026-06-01",
+   "title": "Délégation permanente du Conseil Municipal à Monsieur le Maire. Application des articles L.2122.22 et L2122.23 du CGCT. Délibération D-2026/41 du 27 mars 2026. Finances - Emprunts.",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "noted",
+   "unanimous": null,
+   "outcomeLabel": "INFORMATION DU CONSEIL MUNICIPAL",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F121"
+  },
+  {
+   "id": "2026/48",
+   "date": "2026-04-28",
+   "title": "Vote des taux de taxe d'habitation sur les résidences secondaires et des taxes foncières pour 2026",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F48"
+  },
+  {
+   "id": "2026/49",
+   "date": "2026-04-28",
+   "title": "Election des représentants du Conseil Municipal élus pour siéger au Conseil d'Administration du CCAS.",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "other",
+   "unanimous": null,
+   "outcomeLabel": "(VOIR VOTES DETAILLES CI-CONTRE)",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F49"
+  },
+  {
+   "id": "2026/50",
+   "date": "2026-04-28",
+   "title": "Représentation des élus au sein d'organismes divers et des écoles : 2ème partie",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F50"
+  },
+  {
+   "id": "2026/51",
+   "date": "2026-04-28",
+   "title": "Création de commissions permanentes du conseil municipal. Désignations. Adoption",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F51"
+  },
+  {
+   "id": "2026/52",
+   "date": "2026-04-28",
+   "title": "Subvention de fonctionnement. Quartiers Politique de la Ville. Programmation 2026. Autorisation. Décision",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F52"
+  },
+  {
+   "id": "2026/53",
+   "date": "2026-04-28",
+   "title": "SEM BORDEAUX METROPOLE AMENAGEMENT (BMA);Rapport 2025 relatif à l'exercice 2024 (En application de l'article L. 1524-5 du code général des collectivités territoriales)-Information du Conseil de la ville de Bordeaux",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "noted",
+   "unanimous": null,
+   "outcomeLabel": "INFORMATION DU CONSEIL MUNICIPAL",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F53"
+  },
+  {
+   "id": "2026/54",
+   "date": "2026-04-28",
+   "title": "Soutien municipal 2026 à l'association IKOS pour son projet de village du réemploi solidaire à Bordeaux nord - Convention - Décision - Autorisation",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F54"
+  },
+  {
+   "id": "2026/55",
+   "date": "2026-04-28",
+   "title": "Association Invest In Bordeaux. Subvention de fonctionnement 2026. \nAutorisation et signature.",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F55"
+  },
+  {
+   "id": "2026/56",
+   "date": "2026-04-28",
+   "title": "Subventions à diverses associations culturelles. Autorisation. Signature",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F56"
+  },
+  {
+   "id": "2026/57",
+   "date": "2026-04-28",
+   "title": "Conservatoire de Bordeaux Jacques Thibaud. Demande d'agrément pour les classes préparatoires à l'enseignement supérieur. Autorisation",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F57"
+  },
+  {
+   "id": "2026/58",
+   "date": "2026-04-28",
+   "title": "Bibliothèques de Bordeaux. Grands retards. Demandes de remise gracieuse. Autorisations.",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F58"
+  },
+  {
+   "id": "2026/59",
+   "date": "2026-04-28",
+   "title": "Soutien aux acteurs locaux dans le cadre de l'édition 2026 de la semaine de l'Amérique Latine et des Caraïbes - autorisation - décision",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F59"
+  },
+  {
+   "id": "2026/60",
+   "date": "2026-04-28",
+   "title": "Participation aux dépenses de fonctionnement des écoles privées Bordeaux International School et Edmond J. Safra pour les élèves bordelais sous contrat d'association",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F60"
+  },
+  {
+   "id": "2026/61",
+   "date": "2026-04-28",
+   "title": "Fusion de l'école maternelle Noviciat et de l'élémentaire André Meunier - création de l'école primaire Noviciat André Meunier",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F61"
+  },
+  {
+   "id": "2026/62",
+   "date": "2026-04-28",
+   "title": "Subventions d'accompagnement de la Vie Sportive. Adoption. Autorisation",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F62"
+  },
+  {
+   "id": "2026/63",
+   "date": "2026-04-28",
+   "title": "Attribution d'aides en faveur de la Jeunesse. Opération “Je relève le défi 2026”. Subventions 2026. Adoption. Autorisation",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F63"
+  },
+  {
+   "id": "2026/64",
+   "date": "2026-04-28",
+   "title": "Commission Communale des Impôts Directs",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F64"
+  },
+  {
+   "id": "2026/65",
+   "date": "2026-04-28",
+   "title": "Prix des Jeunes Associations 2026. Subventions. Adoption. Autorisation",
+   "theme": "4 - Services aux publics",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F65"
+  },
+  {
+   "id": "2026/66",
+   "date": "2026-04-28",
+   "title": "Commission d'appel d'offres - Election - Décision - Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F66"
+  },
+  {
+   "id": "2026/67",
+   "date": "2026-04-28",
+   "title": "Commission de concession - Election - Décision - Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F67"
+  },
+  {
+   "id": "2026/68",
+   "date": "2026-04-28",
+   "title": "Fonctionnement des groupes d'élus du Conseil municipal",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F68"
+  },
+  {
+   "id": "2026/69",
+   "date": "2026-04-28",
+   "title": "Modification de la délibération n°2026/45 du 27 mars 2026 portant sur la participation de la Ville de Bordeaux au fonctionnement des groupes d'élus. Calcul de l'enveloppe destinée à la rémunération des collaborateurs des groupes d'élus. Décision. Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F69"
+  },
+  {
+   "id": "2026/70",
+   "date": "2026-04-28",
+   "title": "Recours aux contrats d'apprentissage Ville de Bordeaux - Accueil de jeunes mineurs pour la rentrée scolaire 2026/2027 en complément de la délibération n° D 2025-298 du 4 novembre 2025 - Décision - Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "ADOPTE A LA MAJORITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F70"
+  },
+  {
+   "id": "2026/71",
+   "date": "2026-04-28",
+   "title": "Suivi de la mise en oeuvre des recommandations formulées dans le cadre de l'enquête de la Chambre régionale des comptes relative au contrôle des comptes et de la gestion de la commune de Bordeaux et aux services rendus aux demandeurs de permis de construire - INFORMATION DU CONSEIL MUNICIPAL",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "noted",
+   "unanimous": null,
+   "outcomeLabel": "INFORMATION DU CONSEIL MUNICIPAL",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F71"
+  },
+  {
+   "id": "2026/72",
+   "date": "2026-04-28",
+   "title": "Rapport d'observations définitives de la chambre régionale des comptes Nouvelle-Aquitaine sur la gestion de Bordeaux Métropole - plan vélo concernant les exercices 2019 et suivants. - INFORMATION DU CONSEIL MUNICIPAL",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "noted",
+   "unanimous": null,
+   "outcomeLabel": "INFORMATION DU CONSEIL MUNICIPAL",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F72"
+  },
+  {
+   "id": "2026/73",
+   "date": "2026-04-28",
+   "title": "BORDEAUX - Incorporation d'un bien sans maître sis 4 rue Comayrou / 19 rue Filaurie Bordeaux Cadastré BT 23 - DECISION - ACQUISITION",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F73"
+  },
+  {
+   "id": "2026/74",
+   "date": "2026-04-28",
+   "title": "Convention de financement relative aux études projet (PRO) et aux travaux (REA) de l'opération de restructuration de la gare de Bordeaux Saint-Jean. Signature de l'avenant n°1. Décision- autorisation",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F74"
+  },
+  {
+   "id": "2026/75",
+   "date": "2026-04-28",
+   "title": "STATIONNEMENT PAYANT - Renouvellement de la convention de mandat avec la société INDIGO",
+   "theme": "2 - Projets urbains et Cadre de vie",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F75"
+  },
+  {
+   "id": "2026/76",
+   "date": "2026-04-28",
+   "title": "Egalité entre les femmes et les hommes. Soutien aux associations. Adoption. Autorisation.",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F76"
+  },
+  {
+   "id": "2026/77",
+   "date": "2026-04-28",
+   "title": "Lutte contre les discriminations. Appel à projets Mois des fiertés 2026. Adoption. Autorisation.",
+   "theme": "3 - Bordeaux en grand",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F77"
+  },
+  {
+   "id": "2026/40",
+   "date": "2026-03-27",
+   "title": "Détermination du nombre d'Adjoints au Maire et élection",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F40"
+  },
+  {
+   "id": "2026/41",
+   "date": "2026-03-27",
+   "title": "Délégation de pouvoirs du Conseil municipal au Maire - Autorisation - Décision",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F41"
+  },
+  {
+   "id": "2026/42",
+   "date": "2026-03-27",
+   "title": "Nombre d'administrateurs du Conseil d'administration du CCAS de Bordeaux",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F42"
+  },
+  {
+   "id": "2026/43",
+   "date": "2026-03-27",
+   "title": "Commission de concession et commission d'appel d'offres - Condition de dépôt des listes - Décision - Autorisation",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F43"
+  },
+  {
+   "id": "2026/44",
+   "date": "2026-03-27",
+   "title": "Représentation des élus au sein d'organismes divers: 1ère partie",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F44"
+  },
+  {
+   "id": "2026/45",
+   "date": "2026-03-27",
+   "title": "Participation de la Ville de Bordeaux au fonctionnement des groupes d'élus. Enveloppe destinée à la rémunération des collaborateurs des groupes d'élus",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F45"
+  },
+  {
+   "id": "2026/46",
+   "date": "2026-03-27",
+   "title": "Indemnités de fonction des élus municipaux",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F46"
+  },
+  {
+   "id": "2026/47",
+   "date": "2026-03-27",
+   "title": "Majoration des indemnités de fonction des élus",
+   "theme": "1 - Commission des Finances et de l'Administration générale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "ADOPTE A L'UNANIMITE DES VOTANTS",
+   "url": "https://www.bordeaux.fr/actes/recherche?numero=2026%2F47"
+  }
+ ]
+}

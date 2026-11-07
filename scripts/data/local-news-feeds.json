@@ -1,0 +1,3815 @@
+{
+ "note": "Regional/local press RSS feeds used by scripts/sync-local-news.mjs. departments = the departments whose communes an item of this feed may be matched to; scope = department | multi (several departments) | region (France 3 regional feed) | city (feed of one town's pages). checked = verification when the list was built (items in feed, newest item date). See docs/data-local-news.md.",
+ "feeds": [
+  {
+   "id": "france3-01",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/ain/rss",
+   "departments": [
+    "01"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T09:39:59.000Z"
+   }
+  },
+  {
+   "id": "france3-02",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/hauts-de-france/aisne/rss",
+   "departments": [
+    "02"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T11:42:15.000Z"
+   }
+  },
+  {
+   "id": "france3-03",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/allier/rss",
+   "departments": [
+    "03"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T15:54:26.000Z"
+   }
+  },
+  {
+   "id": "france3-04",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-de-haute-provence/rss",
+   "departments": [
+    "04"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T10:14:58.000Z"
+   }
+  },
+  {
+   "id": "france3-05",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/hautes-alpes/rss",
+   "departments": [
+    "05"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T17:11:33.000Z"
+   }
+  },
+  {
+   "id": "france3-06",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/rss",
+   "departments": [
+    "06"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:40:08.000Z"
+   }
+  },
+  {
+   "id": "france3-07",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/ardeche/rss",
+   "departments": [
+    "07"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T17:08:25.000Z"
+   }
+  },
+  {
+   "id": "france3-08",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/grand-est/ardennes/rss",
+   "departments": [
+    "08"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T11:17:31.000Z"
+   }
+  },
+  {
+   "id": "france3-09",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/occitanie/ariege/rss",
+   "departments": [
+    "09"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-04T17:40:33.000Z"
+   }
+  },
+  {
+   "id": "france3-10",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/grand-est/aube/rss",
+   "departments": [
+    "10"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T15:05:54.000Z"
+   }
+  },
+  {
+   "id": "france3-11",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/occitanie/aude/rss",
+   "departments": [
+    "11"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T14:26:35.000Z"
+   }
+  },
+  {
+   "id": "france3-12",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/occitanie/aveyron/rss",
+   "departments": [
+    "12"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T09:23:58.000Z"
+   }
+  },
+  {
+   "id": "france3-13",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/bouches-du-rhone/rss",
+   "departments": [
+    "13"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:53:31.000Z"
+   }
+  },
+  {
+   "id": "france3-14",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/normandie/calvados/rss",
+   "departments": [
+    "14"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T12:19:42.000Z"
+   }
+  },
+  {
+   "id": "france3-15",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/cantal/rss",
+   "departments": [
+    "15"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T15:00:50.000Z"
+   }
+  },
+  {
+   "id": "france3-16",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/charente/rss",
+   "departments": [
+    "16"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T11:41:52.000Z"
+   }
+  },
+  {
+   "id": "france3-17",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/charente-maritime/rss",
+   "departments": [
+    "17"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T09:51:44.000Z"
+   }
+  },
+  {
+   "id": "france3-18",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/centre-val-de-loire/cher/rss",
+   "departments": [
+    "18"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T18:16:53.000Z"
+   }
+  },
+  {
+   "id": "france3-19",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/correze/rss",
+   "departments": [
+    "19"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T11:54:47.000Z"
+   }
+  },
+  {
+   "id": "france3-21",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/rss",
+   "departments": [
+    "21"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:44:21.000Z"
+   }
+  },
+  {
+   "id": "france3-22",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/bretagne/cotes-d-armor/rss",
+   "departments": [
+    "22"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T15:41:08.000Z"
+   }
+  },
+  {
+   "id": "france3-23",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/creuse/rss",
+   "departments": [
+    "23"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T11:54:47.000Z"
+   }
+  },
+  {
+   "id": "france3-24",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/dordogne/rss",
+   "departments": [
+    "24"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T09:51:44.000Z"
+   }
+  },
+  {
+   "id": "france3-25",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/doubs/rss",
+   "departments": [
+    "25"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:07:37.000Z"
+   }
+  },
+  {
+   "id": "france3-26",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/drome/rss",
+   "departments": [
+    "26"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-05T11:10:05.000Z"
+   }
+  },
+  {
+   "id": "france3-27",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/normandie/eure/rss",
+   "departments": [
+    "27"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T08:59:48.000Z"
+   }
+  },
+  {
+   "id": "france3-28",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/centre-val-de-loire/eure-et-loir/rss",
+   "departments": [
+    "28"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T18:16:53.000Z"
+   }
+  },
+  {
+   "id": "france3-29",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/bretagne/finistere/rss",
+   "departments": [
+    "29"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T12:00:47.000Z"
+   }
+  },
+  {
+   "id": "france3-2A",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/corse/corse-du-sud/rss",
+   "departments": [
+    "2A"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T12:06:26.000Z"
+   }
+  },
+  {
+   "id": "france3-2B",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/corse/haute-corse/rss",
+   "departments": [
+    "2B"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T08:04:44.000Z"
+   }
+  },
+  {
+   "id": "france3-30",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/occitanie/gard/rss",
+   "departments": [
+    "30"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T19:21:10.000Z"
+   }
+  },
+  {
+   "id": "france3-31",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/rss",
+   "departments": [
+    "31"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:07:03.000Z"
+   }
+  },
+  {
+   "id": "france3-32",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/occitanie/gers/rss",
+   "departments": [
+    "32"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T09:51:44.000Z"
+   }
+  },
+  {
+   "id": "france3-33",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/gironde/rss",
+   "departments": [
+    "33"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T11:54:47.000Z"
+   }
+  },
+  {
+   "id": "france3-34",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/occitanie/herault/rss",
+   "departments": [
+    "34"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T12:07:08.000Z"
+   }
+  },
+  {
+   "id": "france3-35",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/bretagne/ille-et-vilaine/rss",
+   "departments": [
+    "35"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:44:50.000Z"
+   }
+  },
+  {
+   "id": "france3-36",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/centre-val-de-loire/indre/rss",
+   "departments": [
+    "36"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T09:20:46.000Z"
+   }
+  },
+  {
+   "id": "france3-38",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/isere/rss",
+   "departments": [
+    "38"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T08:02:33.000Z"
+   }
+  },
+  {
+   "id": "france3-39",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/jura/rss",
+   "departments": [
+    "39"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T11:16:30.000Z"
+   }
+  },
+  {
+   "id": "france3-40",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/landes/rss",
+   "departments": [
+    "40"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T17:28:17.000Z"
+   }
+  },
+  {
+   "id": "france3-42",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/loire/rss",
+   "departments": [
+    "42"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T10:48:20.000Z"
+   }
+  },
+  {
+   "id": "france3-43",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/haute-loire/rss",
+   "departments": [
+    "43"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-10-13T15:08:40.000Z"
+   }
+  },
+  {
+   "id": "france3-44",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/pays-de-la-loire/loire-atlantique/rss",
+   "departments": [
+    "44"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:56:38.000Z"
+   }
+  },
+  {
+   "id": "france3-45",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/centre-val-de-loire/loiret/rss",
+   "departments": [
+    "45"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T19:09:12.000Z"
+   }
+  },
+  {
+   "id": "france3-46",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/occitanie/lot/rss",
+   "departments": [
+    "46"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T14:50:46.000Z"
+   }
+  },
+  {
+   "id": "france3-47",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/lot-et-garonne/rss",
+   "departments": [
+    "47"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T09:51:44.000Z"
+   }
+  },
+  {
+   "id": "france3-48",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/occitanie/lozere/rss",
+   "departments": [
+    "48"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T19:21:10.000Z"
+   }
+  },
+  {
+   "id": "france3-49",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/pays-de-la-loire/maine-et-loire/rss",
+   "departments": [
+    "49"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-05T15:32:03.000Z"
+   }
+  },
+  {
+   "id": "france3-50",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/normandie/manche/rss",
+   "departments": [
+    "50"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T17:19:29.000Z"
+   }
+  },
+  {
+   "id": "france3-51",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/grand-est/marne/rss",
+   "departments": [
+    "51"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T16:44:05.000Z"
+   }
+  },
+  {
+   "id": "france3-52",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/grand-est/haute-marne/rss",
+   "departments": [
+    "52"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T15:53:50.000Z"
+   }
+  },
+  {
+   "id": "france3-53",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/pays-de-la-loire/mayenne/rss",
+   "departments": [
+    "53"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T10:53:35.000Z"
+   }
+  },
+  {
+   "id": "france3-54",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/grand-est/meurthe-et-moselle/rss",
+   "departments": [
+    "54"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T07:11:48.000Z"
+   }
+  },
+  {
+   "id": "france3-55",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/grand-est/meuse/rss",
+   "departments": [
+    "55"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-05T16:57:53.000Z"
+   }
+  },
+  {
+   "id": "france3-56",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/bretagne/morbihan/rss",
+   "departments": [
+    "56"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T12:00:47.000Z"
+   }
+  },
+  {
+   "id": "france3-57",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/grand-est/moselle/rss",
+   "departments": [
+    "57"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T03:29:55.000Z"
+   }
+  },
+  {
+   "id": "france3-58",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/nievre/rss",
+   "departments": [
+    "58"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T11:16:30.000Z"
+   }
+  },
+  {
+   "id": "france3-60",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/hauts-de-france/oise/rss",
+   "departments": [
+    "60"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T09:27:24.000Z"
+   }
+  },
+  {
+   "id": "france3-61",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/normandie/orne/rss",
+   "departments": [
+    "61"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T11:21:06.000Z"
+   }
+  },
+  {
+   "id": "france3-63",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/puy-de-dome/rss",
+   "departments": [
+    "63"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:53:26.000Z"
+   }
+  },
+  {
+   "id": "france3-64",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/pyrenees-atlantiques/rss",
+   "departments": [
+    "64"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T11:10:43.000Z"
+   }
+  },
+  {
+   "id": "france3-65",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/occitanie/hautes-pyrenees/rss",
+   "departments": [
+    "65"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T18:07:20.000Z"
+   }
+  },
+  {
+   "id": "france3-66",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/occitanie/pyrenees-orientales/rss",
+   "departments": [
+    "66"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T19:38:20.000Z"
+   }
+  },
+  {
+   "id": "france3-67",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/grand-est/bas-rhin/rss",
+   "departments": [
+    "67"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T11:10:24.000Z"
+   }
+  },
+  {
+   "id": "france3-68",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/grand-est/haut-rhin/rss",
+   "departments": [
+    "68"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T07:11:16.000Z"
+   }
+  },
+  {
+   "id": "france3-69",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/rhone/rss",
+   "departments": [
+    "69"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T10:12:40.000Z"
+   }
+  },
+  {
+   "id": "france3-70",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/haute-saone/rss",
+   "departments": [
+    "70"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-04T17:50:20.000Z"
+   }
+  },
+  {
+   "id": "france3-71",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/saone-et-loire/rss",
+   "departments": [
+    "71"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T18:34:13.000Z"
+   }
+  },
+  {
+   "id": "france3-72",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/pays-de-la-loire/sarthe/rss",
+   "departments": [
+    "72"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T18:12:50.000Z"
+   }
+  },
+  {
+   "id": "france3-73",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/savoie/rss",
+   "departments": [
+    "73"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T08:02:33.000Z"
+   }
+  },
+  {
+   "id": "france3-74",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/haute-savoie/rss",
+   "departments": [
+    "74"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T08:02:33.000Z"
+   }
+  },
+  {
+   "id": "france3-75",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/paris-ile-de-france/paris/rss",
+   "departments": [
+    "75"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T09:15:08.000Z"
+   }
+  },
+  {
+   "id": "france3-76",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rss",
+   "departments": [
+    "76"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T12:10:29.000Z"
+   }
+  },
+  {
+   "id": "france3-77",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/paris-ile-de-france/seine-et-marne/rss",
+   "departments": [
+    "77"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T11:50:34.000Z"
+   }
+  },
+  {
+   "id": "france3-78",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/paris-ile-de-france/yvelines/rss",
+   "departments": [
+    "78"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T10:42:15.000Z"
+   }
+  },
+  {
+   "id": "france3-79",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/deux-sevres/rss",
+   "departments": [
+    "79"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T11:02:46.000Z"
+   }
+  },
+  {
+   "id": "france3-80",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/hauts-de-france/somme/rss",
+   "departments": [
+    "80"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:23:00.000Z"
+   }
+  },
+  {
+   "id": "france3-81",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/occitanie/tarn/rss",
+   "departments": [
+    "81"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T17:34:06.000Z"
+   }
+  },
+  {
+   "id": "france3-82",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/occitanie/tarn-et-garonne/rss",
+   "departments": [
+    "82"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-01T14:33:47.000Z"
+   }
+  },
+  {
+   "id": "france3-83",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/var/rss",
+   "departments": [
+    "83"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:40:08.000Z"
+   }
+  },
+  {
+   "id": "france3-84",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/vaucluse/rss",
+   "departments": [
+    "84"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T13:07:45.000Z"
+   }
+  },
+  {
+   "id": "france3-85",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/pays-de-la-loire/vendee/rss",
+   "departments": [
+    "85"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T12:10:29.000Z"
+   }
+  },
+  {
+   "id": "france3-86",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/vienne/rss",
+   "departments": [
+    "86"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T11:02:46.000Z"
+   }
+  },
+  {
+   "id": "france3-87",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/haute-vienne/rss",
+   "departments": [
+    "87"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T11:54:47.000Z"
+   }
+  },
+  {
+   "id": "france3-88",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/grand-est/vosges/rss",
+   "departments": [
+    "88"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T03:28:11.000Z"
+   }
+  },
+  {
+   "id": "france3-89",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/yonne/rss",
+   "departments": [
+    "89"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T16:41:23.000Z"
+   }
+  },
+  {
+   "id": "france3-90",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/territoire-de-belfort/rss",
+   "departments": [
+    "90"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T17:38:22.000Z"
+   }
+  },
+  {
+   "id": "france3-91",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/paris-ile-de-france/essonne/rss",
+   "departments": [
+    "91"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-05T16:38:52.000Z"
+   }
+  },
+  {
+   "id": "france3-92",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/paris-ile-de-france/hauts-de-seine/rss",
+   "departments": [
+    "92"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-04T11:21:17.000Z"
+   }
+  },
+  {
+   "id": "france3-93",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/paris-ile-de-france/seine-saint-denis/rss",
+   "departments": [
+    "93"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:55:34.000Z"
+   }
+  },
+  {
+   "id": "france3-94",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/paris-ile-de-france/val-de-marne/rss",
+   "departments": [
+    "94"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T13:39:20.000Z"
+   }
+  },
+  {
+   "id": "france3-95",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/paris-ile-de-france/val-d-oise/rss",
+   "departments": [
+    "95"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T11:50:34.000Z"
+   }
+  },
+  {
+   "id": "france3-paris-ile-de-france",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/paris-ile-de-france/rss",
+   "departments": [
+    "75",
+    "77",
+    "78",
+    "91",
+    "92",
+    "93",
+    "94",
+    "95"
+   ],
+   "scope": "region",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:55:34.000Z"
+   }
+  },
+  {
+   "id": "france3-centre-val-de-loire",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/centre-val-de-loire/rss",
+   "departments": [
+    "18",
+    "28",
+    "36",
+    "37",
+    "41",
+    "45"
+   ],
+   "scope": "region",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T09:20:46.000Z"
+   }
+  },
+  {
+   "id": "france3-bourgogne-franche-comte",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/rss",
+   "departments": [
+    "21",
+    "25",
+    "39",
+    "58",
+    "70",
+    "71",
+    "89",
+    "90"
+   ],
+   "scope": "region",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:44:21.000Z"
+   }
+  },
+  {
+   "id": "france3-normandie",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/normandie/rss",
+   "departments": [
+    "14",
+    "27",
+    "50",
+    "61",
+    "76"
+   ],
+   "scope": "region",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T12:19:42.000Z"
+   }
+  },
+  {
+   "id": "france3-hauts-de-france",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/hauts-de-france/rss",
+   "departments": [
+    "02",
+    "59",
+    "60",
+    "62",
+    "80"
+   ],
+   "scope": "region",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:48:11.000Z"
+   }
+  },
+  {
+   "id": "france3-grand-est",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/grand-est/rss",
+   "departments": [
+    "08",
+    "10",
+    "51",
+    "52",
+    "54",
+    "55",
+    "57",
+    "67",
+    "68",
+    "88"
+   ],
+   "scope": "region",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T11:17:31.000Z"
+   }
+  },
+  {
+   "id": "france3-pays-de-la-loire",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/pays-de-la-loire/rss",
+   "departments": [
+    "44",
+    "49",
+    "53",
+    "72",
+    "85"
+   ],
+   "scope": "region",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:56:38.000Z"
+   }
+  },
+  {
+   "id": "france3-bretagne",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/bretagne/rss",
+   "departments": [
+    "22",
+    "29",
+    "35",
+    "56"
+   ],
+   "scope": "region",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:44:50.000Z"
+   }
+  },
+  {
+   "id": "france3-nouvelle-aquitaine",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/rss",
+   "departments": [
+    "16",
+    "17",
+    "19",
+    "23",
+    "24",
+    "33",
+    "40",
+    "47",
+    "64",
+    "79",
+    "86",
+    "87"
+   ],
+   "scope": "region",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T11:54:47.000Z"
+   }
+  },
+  {
+   "id": "france3-occitanie",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/occitanie/rss",
+   "departments": [
+    "09",
+    "11",
+    "12",
+    "30",
+    "31",
+    "32",
+    "34",
+    "46",
+    "48",
+    "65",
+    "66",
+    "81",
+    "82"
+   ],
+   "scope": "region",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:07:03.000Z"
+   }
+  },
+  {
+   "id": "france3-auvergne-rhone-alpes",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/rss",
+   "departments": [
+    "01",
+    "03",
+    "07",
+    "15",
+    "26",
+    "38",
+    "42",
+    "43",
+    "63",
+    "69",
+    "73",
+    "74"
+   ],
+   "scope": "region",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:53:26.000Z"
+   }
+  },
+  {
+   "id": "france3-provence-alpes-cote-d-azur",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/rss",
+   "departments": [
+    "04",
+    "05",
+    "06",
+    "13",
+    "83",
+    "84"
+   ],
+   "scope": "region",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T13:53:31.000Z"
+   }
+  },
+  {
+   "id": "france3-corse",
+   "outlet": "France 3 Régions",
+   "url": "https://france3-regions.franceinfo.fr/corse/rss",
+   "departments": [
+    "2A",
+    "2B"
+   ],
+   "scope": "region",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-07T12:06:26.000Z"
+   }
+  },
+  {
+   "id": "ici-107-1",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/107-1/a-la-une.xml",
+   "departments": [
+    "75",
+    "77",
+    "78",
+    "91",
+    "92",
+    "93",
+    "94",
+    "95"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-alsace",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/alsace/a-la-une.xml",
+   "departments": [
+    "67",
+    "68"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-elsass",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/elsass/a-la-une.xml",
+   "departments": [
+    "67",
+    "68"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-armorique",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/armorique/a-la-une.xml",
+   "departments": [
+    "35",
+    "22"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-breizh-izel",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/breizh-izel/a-la-une.xml",
+   "departments": [
+    "29",
+    "56",
+    "22"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-auxerre",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/auxerre/a-la-une.xml",
+   "departments": [
+    "89"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-azur",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/azur/a-la-une.xml",
+   "departments": [
+    "06"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-bearn",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/bearn/a-la-une.xml",
+   "departments": [
+    "64",
+    "65"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-belfort-montbeliard",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/belfort-montbeliard/a-la-une.xml",
+   "departments": [
+    "90",
+    "25"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-berry",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/berry/a-la-une.xml",
+   "departments": [
+    "18",
+    "36"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-besancon",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/besancon/a-la-une.xml",
+   "departments": [
+    "25",
+    "39",
+    "70"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:42:38.000Z"
+   }
+  },
+  {
+   "id": "ici-bourgogne",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/bourgogne/a-la-une.xml",
+   "departments": [
+    "21",
+    "71",
+    "58"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-champagne-ardenne",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/champagne-ardenne/a-la-une.xml",
+   "departments": [
+    "51",
+    "08",
+    "10",
+    "52"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-cotentin",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/cotentin/a-la-une.xml",
+   "departments": [
+    "50"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-creuse",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/creuse/a-la-une.xml",
+   "departments": [
+    "23"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-drome-ardeche",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/drome-ardeche/a-la-une.xml",
+   "departments": [
+    "26",
+    "07"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-gard-lozere",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/gard-lozere/a-la-une.xml",
+   "departments": [
+    "30",
+    "48"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:39:37.000Z"
+   }
+  },
+  {
+   "id": "ici-gascogne",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/gascogne/a-la-une.xml",
+   "departments": [
+    "40"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-gironde",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/gironde/a-la-une.xml",
+   "departments": [
+    "33"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-herault",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/herault/a-la-une.xml",
+   "departments": [
+    "34"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:51:39.000Z"
+   }
+  },
+  {
+   "id": "ici-isere",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/isere/a-la-une.xml",
+   "departments": [
+    "38"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-la-rochelle",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/la-rochelle/a-la-une.xml",
+   "departments": [
+    "17"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-limousin",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/limousin/a-la-une.xml",
+   "departments": [
+    "87",
+    "19"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-loire-ocean",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/loire-ocean/a-la-une.xml",
+   "departments": [
+    "44",
+    "85",
+    "49"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-lorraine-nord",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/lorraine-nord/a-la-une.xml",
+   "departments": [
+    "57"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-maine",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/maine/a-la-une.xml",
+   "departments": [
+    "72"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:26:31.000Z"
+   }
+  },
+  {
+   "id": "ici-mayenne",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/mayenne/a-la-une.xml",
+   "departments": [
+    "53"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-nord",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/nord/a-la-une.xml",
+   "departments": [
+    "59",
+    "62"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-normandie-caen",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/normandie-caen/a-la-une.xml",
+   "departments": [
+    "14",
+    "50",
+    "61"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-normandie-rouen",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/normandie-rouen/a-la-une.xml",
+   "departments": [
+    "76",
+    "27"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:56:16.000Z"
+   }
+  },
+  {
+   "id": "ici-orleans",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/orleans/a-la-une.xml",
+   "departments": [
+    "45",
+    "41",
+    "28"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-pays-basque",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/pays-basque/a-la-une.xml",
+   "departments": [
+    "64",
+    "40"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-pays-d-auvergne",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/pays-d-auvergne/a-la-une.xml",
+   "departments": [
+    "63",
+    "03",
+    "15",
+    "43"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:21:21.000Z"
+   }
+  },
+  {
+   "id": "ici-pays-de-savoie",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/pays-de-savoie/a-la-une.xml",
+   "departments": [
+    "73",
+    "74"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-perigord",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/perigord/a-la-une.xml",
+   "departments": [
+    "24"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-picardie",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/picardie/a-la-une.xml",
+   "departments": [
+    "80",
+    "60",
+    "02"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:30:49.000Z"
+   }
+  },
+  {
+   "id": "ici-poitou",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/poitou/a-la-une.xml",
+   "departments": [
+    "86",
+    "79"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-provence",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/provence/a-la-une.xml",
+   "departments": [
+    "13",
+    "83",
+    "04"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:35:12.000Z"
+   }
+  },
+  {
+   "id": "ici-rcfm",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/rcfm/a-la-une.xml",
+   "departments": [
+    "2A",
+    "2B"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-roussillon",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/roussillon/a-la-une.xml",
+   "departments": [
+    "66",
+    "11"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-saint-etienne-loire",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/saint-etienne-loire/a-la-une.xml",
+   "departments": [
+    "42",
+    "43"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-sud-lorraine",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/sud-lorraine/a-la-une.xml",
+   "departments": [
+    "54",
+    "55",
+    "88"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-toulouse",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/toulouse/a-la-une.xml",
+   "departments": [
+    "31",
+    "81",
+    "82",
+    "32",
+    "09"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:38:17.000Z"
+   }
+  },
+  {
+   "id": "ici-touraine",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/touraine/a-la-une.xml",
+   "departments": [
+    "37",
+    "41"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ici-vaucluse",
+   "outlet": "ici",
+   "url": "https://www.ici.fr/rss/vaucluse/a-la-une.xml",
+   "departments": [
+    "84"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:20:20.000Z"
+   }
+  },
+  {
+   "id": "ledauphine-38",
+   "outlet": "Le Dauphiné libéré",
+   "url": "https://www.ledauphine.com/isere/rss",
+   "departments": [
+    "38"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:48:00.000Z"
+   }
+  },
+  {
+   "id": "ledauphine-73",
+   "outlet": "Le Dauphiné libéré",
+   "url": "https://www.ledauphine.com/savoie/rss",
+   "departments": [
+    "73"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:50:00.000Z"
+   }
+  },
+  {
+   "id": "ledauphine-74",
+   "outlet": "Le Dauphiné libéré",
+   "url": "https://www.ledauphine.com/haute-savoie/rss",
+   "departments": [
+    "74"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:54:00.000Z"
+   }
+  },
+  {
+   "id": "ledauphine-26",
+   "outlet": "Le Dauphiné libéré",
+   "url": "https://www.ledauphine.com/drome/rss",
+   "departments": [
+    "26"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:20:00.000Z"
+   }
+  },
+  {
+   "id": "ledauphine-07",
+   "outlet": "Le Dauphiné libéré",
+   "url": "https://www.ledauphine.com/ardeche/rss",
+   "departments": [
+    "07"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T11:08:00.000Z"
+   }
+  },
+  {
+   "id": "ledauphine-05",
+   "outlet": "Le Dauphiné libéré",
+   "url": "https://www.ledauphine.com/hautes-alpes/rss",
+   "departments": [
+    "05"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:44:00.000Z"
+   }
+  },
+  {
+   "id": "ledauphine-84",
+   "outlet": "Le Dauphiné libéré",
+   "url": "https://www.ledauphine.com/vaucluse/rss",
+   "departments": [
+    "84"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:29:00.000Z"
+   }
+  },
+  {
+   "id": "ledauphine-01",
+   "outlet": "Le Dauphiné libéré",
+   "url": "https://www.ledauphine.com/ain/rss",
+   "departments": [
+    "01"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T09:53:00.000Z"
+   }
+  },
+  {
+   "id": "ledauphine-30",
+   "outlet": "Le Dauphiné libéré",
+   "url": "https://www.ledauphine.com/gard/rss",
+   "departments": [
+    "30"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-06T19:53:00.000Z"
+   }
+  },
+  {
+   "id": "leprogres-69",
+   "outlet": "Le Progrès",
+   "url": "https://www.leprogres.fr/rhone/rss",
+   "departments": [
+    "69"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:06:00.000Z"
+   }
+  },
+  {
+   "id": "leprogres-42",
+   "outlet": "Le Progrès",
+   "url": "https://www.leprogres.fr/loire/rss",
+   "departments": [
+    "42"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:00:00.000Z"
+   }
+  },
+  {
+   "id": "leprogres-01",
+   "outlet": "Le Progrès",
+   "url": "https://www.leprogres.fr/ain/rss",
+   "departments": [
+    "01"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T12:00:00.000Z"
+   }
+  },
+  {
+   "id": "leprogres-39",
+   "outlet": "Le Progrès",
+   "url": "https://www.leprogres.fr/jura/rss",
+   "departments": [
+    "39"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T12:19:00.000Z"
+   }
+  },
+  {
+   "id": "leprogres-43",
+   "outlet": "Le Progrès",
+   "url": "https://www.leprogres.fr/haute-loire/rss",
+   "departments": [
+    "43"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T11:00:00.000Z"
+   }
+  },
+  {
+   "id": "estrepublicain-54",
+   "outlet": "L'Est Républicain",
+   "url": "https://www.estrepublicain.fr/meurthe-et-moselle/rss",
+   "departments": [
+    "54"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T12:50:00.000Z"
+   }
+  },
+  {
+   "id": "estrepublicain-25",
+   "outlet": "L'Est Républicain",
+   "url": "https://www.estrepublicain.fr/doubs/rss",
+   "departments": [
+    "25"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:45:00.000Z"
+   }
+  },
+  {
+   "id": "estrepublicain-55",
+   "outlet": "L'Est Républicain",
+   "url": "https://www.estrepublicain.fr/meuse/rss",
+   "departments": [
+    "55"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T05:30:00.000Z"
+   }
+  },
+  {
+   "id": "estrepublicain-70",
+   "outlet": "L'Est Républicain",
+   "url": "https://www.estrepublicain.fr/haute-saone/rss",
+   "departments": [
+    "70"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T10:30:00.000Z"
+   }
+  },
+  {
+   "id": "estrepublicain-90",
+   "outlet": "L'Est Républicain",
+   "url": "https://www.estrepublicain.fr/territoire-de-belfort/rss",
+   "departments": [
+    "90"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-06T17:00:00.000Z"
+   }
+  },
+  {
+   "id": "vosgesmatin-88",
+   "outlet": "Vosges Matin",
+   "url": "https://www.vosgesmatin.fr/vosges/rss",
+   "departments": [
+    "88"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:14:00.000Z"
+   }
+  },
+  {
+   "id": "lalsace-68",
+   "outlet": "L'Alsace",
+   "url": "https://www.lalsace.fr/haut-rhin/rss",
+   "departments": [
+    "68"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T12:11:00.000Z"
+   }
+  },
+  {
+   "id": "bienpublic-21",
+   "outlet": "Le Bien Public",
+   "url": "https://www.bienpublic.com/cote-d-or/rss",
+   "departments": [
+    "21"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:05:00.000Z"
+   }
+  },
+  {
+   "id": "lejsl-71",
+   "outlet": "Le Journal de Saône-et-Loire",
+   "url": "https://www.lejsl.com/saone-et-loire/rss",
+   "departments": [
+    "71"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:47:00.000Z"
+   }
+  },
+  {
+   "id": "republicain-lorrain",
+   "outlet": "Le Républicain lorrain",
+   "url": "https://www.republicain-lorrain.fr/rss",
+   "departments": [
+    "57",
+    "54"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:42:00.000Z"
+   }
+  },
+  {
+   "id": "dna",
+   "outlet": "Dernières Nouvelles d'Alsace",
+   "url": "https://www.dna.fr/rss",
+   "departments": [
+    "67"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:28:00.000Z"
+   }
+  },
+  {
+   "id": "midilibre-34",
+   "outlet": "Midi Libre",
+   "url": "https://www.midilibre.fr/herault/rss.xml",
+   "departments": [
+    "34"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T13:42:12.000Z"
+   }
+  },
+  {
+   "id": "midilibre-30",
+   "outlet": "Midi Libre",
+   "url": "https://www.midilibre.fr/gard/rss.xml",
+   "departments": [
+    "30"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T13:12:04.000Z"
+   }
+  },
+  {
+   "id": "midilibre-12",
+   "outlet": "Midi Libre",
+   "url": "https://www.midilibre.fr/aveyron/rss.xml",
+   "departments": [
+    "12"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T13:22:51.000Z"
+   }
+  },
+  {
+   "id": "midilibre-48",
+   "outlet": "Midi Libre",
+   "url": "https://www.midilibre.fr/lozere/rss.xml",
+   "departments": [
+    "48"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T13:12:04.000Z"
+   }
+  },
+  {
+   "id": "midilibre-11",
+   "outlet": "Midi Libre",
+   "url": "https://www.midilibre.fr/aude/rss.xml",
+   "departments": [
+    "11"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-06T14:32:43.000Z"
+   }
+  },
+  {
+   "id": "midilibre-66",
+   "outlet": "Midi Libre",
+   "url": "https://www.midilibre.fr/pyrenees-orientales/rss.xml",
+   "departments": [
+    "66"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-05T06:31:02.000Z"
+   }
+  },
+  {
+   "id": "midilibre-84",
+   "outlet": "Midi Libre",
+   "url": "https://www.midilibre.fr/vaucluse/rss.xml",
+   "departments": [
+    "84"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-05T13:04:00.000Z"
+   }
+  },
+  {
+   "id": "midilibre-13",
+   "outlet": "Midi Libre",
+   "url": "https://www.midilibre.fr/bouches-du-rhone/rss.xml",
+   "departments": [
+    "13"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-06T08:51:57.000Z"
+   }
+  },
+  {
+   "id": "lindependant-11",
+   "outlet": "L'Indépendant",
+   "url": "https://www.lindependant.fr/aude/rss.xml",
+   "departments": [
+    "11"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T11:53:55.000Z"
+   }
+  },
+  {
+   "id": "lindependant-66",
+   "outlet": "L'Indépendant",
+   "url": "https://www.lindependant.fr/pyrenees-orientales/rss.xml",
+   "departments": [
+    "66"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T13:27:10.000Z"
+   }
+  },
+  {
+   "id": "sudouest-33",
+   "outlet": "Sud Ouest",
+   "url": "https://www.sudouest.fr/gironde/rss.xml",
+   "departments": [
+    "33"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:44:11.000Z"
+   }
+  },
+  {
+   "id": "sudouest-16",
+   "outlet": "Sud Ouest",
+   "url": "https://www.sudouest.fr/charente/rss.xml",
+   "departments": [
+    "16"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T11:10:00.000Z"
+   }
+  },
+  {
+   "id": "sudouest-17",
+   "outlet": "Sud Ouest",
+   "url": "https://www.sudouest.fr/charente-maritime/rss.xml",
+   "departments": [
+    "17"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:00:00.000Z"
+   }
+  },
+  {
+   "id": "sudouest-24",
+   "outlet": "Sud Ouest",
+   "url": "https://www.sudouest.fr/dordogne/rss.xml",
+   "departments": [
+    "24"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:36:27.000Z"
+   }
+  },
+  {
+   "id": "sudouest-40",
+   "outlet": "Sud Ouest",
+   "url": "https://www.sudouest.fr/landes/rss.xml",
+   "departments": [
+    "40"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T12:27:00.000Z"
+   }
+  },
+  {
+   "id": "sudouest-47",
+   "outlet": "Sud Ouest",
+   "url": "https://www.sudouest.fr/lot-et-garonne/rss.xml",
+   "departments": [
+    "47"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:51:27.000Z"
+   }
+  },
+  {
+   "id": "sudouest-64",
+   "outlet": "Sud Ouest",
+   "url": "https://www.sudouest.fr/pyrenees-atlantiques/rss.xml",
+   "departments": [
+    "64"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T11:59:08.000Z"
+   }
+  },
+  {
+   "id": "sudouest-32",
+   "outlet": "Sud Ouest",
+   "url": "https://www.sudouest.fr/gers/rss.xml",
+   "departments": [
+    "32"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T11:00:00.000Z"
+   }
+  },
+  {
+   "id": "sudouest-65",
+   "outlet": "Sud Ouest",
+   "url": "https://www.sudouest.fr/hautes-pyrenees/rss.xml",
+   "departments": [
+    "65"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-04T15:42:30.000Z"
+   }
+  },
+  {
+   "id": "sudouest-87",
+   "outlet": "Sud Ouest",
+   "url": "https://www.sudouest.fr/haute-vienne/rss.xml",
+   "departments": [
+    "87"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-05T19:49:00.000Z"
+   }
+  },
+  {
+   "id": "sudouest-19",
+   "outlet": "Sud Ouest",
+   "url": "https://www.sudouest.fr/correze/rss.xml",
+   "departments": [
+    "19"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-03T10:09:23.000Z"
+   }
+  },
+  {
+   "id": "sudouest-79",
+   "outlet": "Sud Ouest",
+   "url": "https://www.sudouest.fr/deux-sevres/rss.xml",
+   "departments": [
+    "79"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-05T18:03:00.000Z"
+   }
+  },
+  {
+   "id": "leparisien-75",
+   "outlet": "Le Parisien",
+   "url": "https://feeds.leparisien.fr/leparisien/rss/paris-75",
+   "departments": [
+    "75"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 100,
+    "newest": null
+   }
+  },
+  {
+   "id": "leparisien-77",
+   "outlet": "Le Parisien",
+   "url": "https://feeds.leparisien.fr/leparisien/rss/seine-et-marne-77",
+   "departments": [
+    "77"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 100,
+    "newest": null
+   }
+  },
+  {
+   "id": "leparisien-78",
+   "outlet": "Le Parisien",
+   "url": "https://feeds.leparisien.fr/leparisien/rss/yvelines-78",
+   "departments": [
+    "78"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 100,
+    "newest": null
+   }
+  },
+  {
+   "id": "leparisien-91",
+   "outlet": "Le Parisien",
+   "url": "https://feeds.leparisien.fr/leparisien/rss/essonne-91",
+   "departments": [
+    "91"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 100,
+    "newest": null
+   }
+  },
+  {
+   "id": "leparisien-92",
+   "outlet": "Le Parisien",
+   "url": "https://feeds.leparisien.fr/leparisien/rss/hauts-de-seine-92",
+   "departments": [
+    "92"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 100,
+    "newest": null
+   }
+  },
+  {
+   "id": "leparisien-93",
+   "outlet": "Le Parisien",
+   "url": "https://feeds.leparisien.fr/leparisien/rss/seine-saint-denis-93",
+   "departments": [
+    "93"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 100,
+    "newest": null
+   }
+  },
+  {
+   "id": "leparisien-94",
+   "outlet": "Le Parisien",
+   "url": "https://feeds.leparisien.fr/leparisien/rss/val-de-marne-94",
+   "departments": [
+    "94"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 100,
+    "newest": null
+   }
+  },
+  {
+   "id": "leparisien-95",
+   "outlet": "Le Parisien",
+   "url": "https://feeds.leparisien.fr/leparisien/rss/val-d-oise-95",
+   "departments": [
+    "95"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 100,
+    "newest": null
+   }
+  },
+  {
+   "id": "leparisien-60",
+   "outlet": "Le Parisien",
+   "url": "https://feeds.leparisien.fr/leparisien/rss/oise-60",
+   "departments": [
+    "60"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 100,
+    "newest": null
+   }
+  },
+  {
+   "id": "leparisien-02",
+   "outlet": "Le Parisien",
+   "url": "https://feeds.leparisien.fr/leparisien/rss/aisne-02",
+   "departments": [
+    "02"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 100,
+    "newest": null
+   }
+  },
+  {
+   "id": "leparisien-45",
+   "outlet": "Le Parisien",
+   "url": "https://feeds.leparisien.fr/leparisien/rss/loiret-45",
+   "departments": [
+    "45"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 100,
+    "newest": null
+   }
+  },
+  {
+   "id": "leparisien-28",
+   "outlet": "Le Parisien",
+   "url": "https://feeds.leparisien.fr/leparisien/rss/eure-et-loir-28",
+   "departments": [
+    "28"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 100,
+    "newest": null
+   }
+  },
+  {
+   "id": "leparisien-27",
+   "outlet": "Le Parisien",
+   "url": "https://feeds.leparisien.fr/leparisien/rss/eure-27",
+   "departments": [
+    "27"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 100,
+    "newest": null
+   }
+  },
+  {
+   "id": "leparisien-10",
+   "outlet": "Le Parisien",
+   "url": "https://feeds.leparisien.fr/leparisien/rss/aube-10",
+   "departments": [
+    "10"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 100,
+    "newest": null
+   }
+  },
+  {
+   "id": "ladepeche",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/rss.xml",
+   "departments": [
+    "09",
+    "11",
+    "12",
+    "31",
+    "32",
+    "46",
+    "47",
+    "65",
+    "81",
+    "82"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 100,
+    "newest": "2026-11-07T13:46:07.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-09122",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/foix,09122/rss.xml",
+   "departments": [
+    "09"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T10:31:03.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-09225",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/pamiers,09225/rss.xml",
+   "departments": [
+    "09"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T10:24:02.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-11069",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/carcassonne,11069/rss.xml",
+   "departments": [
+    "11"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-06T14:54:00.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-11262",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/narbonne,11262/rss.xml",
+   "departments": [
+    "11"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-10-20T13:34:14.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-12145",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/millau,12145/rss.xml",
+   "departments": [
+    "12"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-07-06T03:24:48.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-12202",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/rodez,12202/rss.xml",
+   "departments": [
+    "12"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-04T15:40:08.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-31044",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/balma,31044/rss.xml",
+   "departments": [
+    "31"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T05:24:09.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-31069",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/blagnac,31069/rss.xml",
+   "departments": [
+    "31"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T05:26:08.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-31113",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/castanet-tolosan,31113/rss.xml",
+   "departments": [
+    "31"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T05:22:07.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-31149",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/colomiers,31149/rss.xml",
+   "departments": [
+    "31"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T05:27:08.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-31157",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/cugnaux,31157/rss.xml",
+   "departments": [
+    "31"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T05:25:08.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-31395",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/muret,31395/rss.xml",
+   "departments": [
+    "31"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T05:24:10.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-31424",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/plaisance-du-touch,31424/rss.xml",
+   "departments": [
+    "31"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T05:25:09.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-31446",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/ramonville-saint-agne,31446/rss.xml",
+   "departments": [
+    "31"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T05:22:08.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-31555",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/toulouse,31555/rss.xml",
+   "departments": [
+    "31"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T13:45:42.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-31557",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/tournefeuille,31557/rss.xml",
+   "departments": [
+    "31"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T05:26:08.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-32013",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/auch,32013/rss.xml",
+   "departments": [
+    "32"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T08:07:51.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-46042",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/cahors,46042/rss.xml",
+   "departments": [
+    "46"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T13:18:02.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-47001",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/agen,47001/rss.xml",
+   "departments": [
+    "47"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T10:31:21.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-47157",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/marmande,47157/rss.xml",
+   "departments": [
+    "47"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-06T15:50:22.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-47323",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/villeneuve-sur-lot,47323/rss.xml",
+   "departments": [
+    "47"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T10:01:02.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-65440",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/tarbes,65440/rss.xml",
+   "departments": [
+    "65"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-06T18:26:14.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-81004",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/albi,81004/rss.xml",
+   "departments": [
+    "81"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T10:01:03.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-81065",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/castres,81065/rss.xml",
+   "departments": [
+    "81"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T11:01:03.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-81099",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/gaillac,81099/rss.xml",
+   "departments": [
+    "81"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T11:31:03.000Z"
+   }
+  },
+  {
+   "id": "ladepeche-82121",
+   "outlet": "La Dépêche du Midi",
+   "url": "https://www.ladepeche.fr/communes/montauban,82121/rss.xml",
+   "departments": [
+    "82"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 25,
+    "newest": "2026-11-07T12:27:26.000Z"
+   }
+  },
+  {
+   "id": "nicematin-nice",
+   "outlet": "Nice-Matin",
+   "url": "https://www.nicematin.com/alpes-maritimes/nice/rss",
+   "departments": [
+    "06"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 50,
+    "newest": "2026-11-07T13:00:06.000Z"
+   }
+  },
+  {
+   "id": "nicematin-cannes",
+   "outlet": "Nice-Matin",
+   "url": "https://www.nicematin.com/alpes-maritimes/cannes/rss",
+   "departments": [
+    "06"
+   ],
+   "scope": "city",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 50,
+    "newest": "2026-11-07T09:16:20.000Z"
+   }
+  },
+  {
+   "id": "nicematin-monaco",
+   "outlet": "Monaco-Matin",
+   "url": "https://www.nicematin.com/monaco/rss",
+   "departments": [
+    "06"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 50,
+    "newest": "2026-11-07T12:45:06.000Z"
+   }
+  },
+  {
+   "id": "nicematin-var",
+   "outlet": "Var-Matin",
+   "url": "https://www.nicematin.com/var/rss",
+   "departments": [
+    "83"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 50,
+    "newest": "2026-11-07T12:30:05.000Z"
+   }
+  },
+  {
+   "id": "laprovence-region",
+   "outlet": "La Provence",
+   "url": "https://www.laprovence.com/rss/region.xml",
+   "departments": [
+    "13",
+    "84",
+    "04",
+    "05"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:50:07.000Z"
+   }
+  },
+  {
+   "id": "nr-36",
+   "outlet": "La Nouvelle République",
+   "url": "https://www.lanouvellerepublique.fr/api/v1/rss/5e20725dcc4d8d75408b458d",
+   "departments": [
+    "36"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:50:15.000Z"
+   }
+  },
+  {
+   "id": "nr-37",
+   "outlet": "La Nouvelle République",
+   "url": "https://www.lanouvellerepublique.fr/api/v1/rss/5e206fd2fb1714762f8b4592",
+   "departments": [
+    "37"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T12:34:15.000Z"
+   }
+  },
+  {
+   "id": "nr-41",
+   "outlet": "La Nouvelle République",
+   "url": "https://www.lanouvellerepublique.fr/api/v1/rss/5e2072c23915ea8c028b4582",
+   "departments": [
+    "41"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T12:30:02.000Z"
+   }
+  },
+  {
+   "id": "nr-79",
+   "outlet": "La Nouvelle République",
+   "url": "https://www.lanouvellerepublique.fr/api/v1/rss/5e2072f9f30f8cdd4c8b4594",
+   "departments": [
+    "79"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T13:19:27.000Z"
+   }
+  },
+  {
+   "id": "nr-86",
+   "outlet": "La Nouvelle République",
+   "url": "https://www.lanouvellerepublique.fr/api/v1/rss/5e20732239a34f77578b457c",
+   "departments": [
+    "86"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 40,
+    "newest": "2026-11-07T12:30:02.000Z"
+   }
+  },
+  {
+   "id": "charentelibre",
+   "outlet": "Charente libre",
+   "url": "https://www.charentelibre.fr/rss.xml",
+   "departments": [
+    "16"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T12:36:27.000Z"
+   }
+  },
+  {
+   "id": "larepubliquedespyrenees",
+   "outlet": "La République des Pyrénées",
+   "url": "https://www.larepubliquedespyrenees.fr/rss.xml",
+   "departments": [
+    "64"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T13:16:37.000Z"
+   }
+  },
+  {
+   "id": "centrepresseaveyron",
+   "outlet": "Centre Presse Aveyron",
+   "url": "https://www.centrepresseaveyron.fr/rss.xml",
+   "departments": [
+    "12"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 100,
+    "newest": "2026-11-07T13:56:24.000Z"
+   }
+  },
+  {
+   "id": "corsenetinfos",
+   "outlet": "Corse Net Infos",
+   "url": "https://www.corsenetinfos.corsica/xml/syndication.rss",
+   "departments": [
+    "2A",
+    "2B"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 100,
+    "newest": "2026-11-07T10:50:00.000Z"
+   }
+  },
+  {
+   "id": "zinfos974",
+   "outlet": "Zinfos 974",
+   "url": "https://www.zinfos974.com/general-rss",
+   "departments": [
+    "974"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 20,
+    "newest": "2026-11-07T12:52:33.000Z"
+   }
+  },
+  {
+   "id": "imazpress",
+   "outlet": "Imaz Press Réunion",
+   "url": "https://imazpress.com/feed",
+   "departments": [
+    "974"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 10,
+    "newest": "2026-11-07T13:44:00.000Z"
+   }
+  },
+  {
+   "id": "lejournaldemayotte",
+   "outlet": "Le Journal de Mayotte",
+   "url": "https://lejournaldemayotte.yt/feed/",
+   "departments": [
+    "976"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 30,
+    "newest": "2026-11-06T11:37:00.000Z"
+   }
+  },
+  {
+   "id": "mayottehebdo",
+   "outlet": "Mayotte Hebdo",
+   "url": "https://www.mayottehebdo.com/feed/",
+   "departments": [
+    "976"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 10,
+    "newest": "2026-11-06T08:02:23.000Z"
+   }
+  },
+  {
+   "id": "linfokwezi",
+   "outlet": "L'Info Kwézi",
+   "url": "https://www.linfokwezi.fr/feed/",
+   "departments": [
+    "976"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 10,
+    "newest": "2026-11-06T13:27:17.000Z"
+   }
+  },
+  {
+   "id": "guyaweb",
+   "outlet": "Guyaweb",
+   "url": "https://www.guyaweb.com/feed/",
+   "departments": [
+    "973"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 15,
+    "newest": "2026-11-07T12:02:40.000Z"
+   }
+  },
+  {
+   "id": "karibinfo",
+   "outlet": "Karib'Info",
+   "url": "https://www.karibinfo.com/feed/",
+   "departments": [
+    "971",
+    "972",
+    "973"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 10,
+    "newest": "2026-11-07T13:00:00.000Z"
+   }
+  },
+  {
+   "id": "antilla",
+   "outlet": "Antilla",
+   "url": "https://antilla-martinique.com/feed/",
+   "departments": [
+    "972"
+   ],
+   "scope": "department",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 10,
+    "newest": "2026-11-06T15:52:20.000Z"
+   }
+  },
+  {
+   "id": "outremers360",
+   "outlet": "Outremers360",
+   "url": "https://api.outremers360.com/rss/fil-info.xml",
+   "departments": [
+    "971",
+    "972",
+    "973",
+    "974",
+    "976"
+   ],
+   "scope": "multi",
+   "checked": {
+    "at": "2026-11-07",
+    "items": 50,
+    "newest": "2026-11-07T11:31:43.000Z"
+   }
+  }
+ ]
+}
