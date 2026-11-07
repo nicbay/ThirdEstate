@@ -1,6 +1,6 @@
 import { loadAnMeta, loadDeputes, type Depute } from "../data";
 import { fmtDate, fmtPct, t } from "../i18n";
-import { esc } from "../util";
+import { esc, safeColor } from "../util";
 
 let filter = { q: "", groupe: "" };
 
@@ -46,7 +46,7 @@ export const photoUrl = (id: string) => `https://www2.assemblee-nationale.fr/sta
 function card(d: Depute) {
   const s = t();
   return `
-    <a class="mp-card card" href="#/depute/${d.id}" style="--c:${d.groupe?.couleur ?? "#999"}">
+    <a class="mp-card card" href="#/depute/${d.id}" style="--c:${safeColor(d.groupe?.couleur) ?? "#999"}">
       <img src="${photoUrl(d.id)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'" />
       <div>
         <strong>${esc(d.prenom)} ${esc(d.nom)}</strong>

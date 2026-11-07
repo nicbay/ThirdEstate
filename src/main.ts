@@ -79,8 +79,29 @@ function renderChrome(path: string) {
   sub.innerHTML = current?.children ? `<div>${current.children.map((c) => `<a href="${c.href}" class="${c.match.test(path) ? "active" : ""}">${L(c.fr, c.en)}</a>`).join("")}</div>` : "";
   langBtn.textContent = t().langSwitch;
   langBtn.setAttribute("aria-label", getLang() === "fr" ? "Switch to English" : "Passer en français");
-  footer.innerHTML = `<a href="#/sources">${L("Sources et méthode", "Sources & method")}</a> · <a href="https://github.com/nicbay/projectview" target="_blank" rel="noopener">GitHub</a>`;
+  footer.innerHTML = `<div class="foot">
+    <div>${document.querySelector(".topbar .brand")!.outerHTML}
+      <p>${L("Données électorales françaises, de la commune à l’Élysée. Sources publiques, méthode ouverte, code libre.", "French election data, from your town hall to the Élysée. Public sources, open method, open code.")}</p></div>
+    <nav aria-label="${L("Pied de page", "Footer")}"><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/resultats/bascules">${L("Bascules", "Shifts")}</a><a href="#/2027">2027</a><a href="https://github.com/nicbay/projectview" target="_blank" rel="noopener">GitHub</a></nav>
+  </div>`;
 }
+
+/** Presentation pass after each render: wide tables scroll inside their own box on small screens. */
+function enhance() {
+  app.querySelectorAll<HTMLTableElement>("table.table").forEach((t) => {
+    if (t.parentElement?.classList.contains("table-scroll")) return;
+    const box = document.createElement("div");
+    box.className = "table-scroll";
+    t.replaceWith(box);
+    box.append(t);
+  });
+}
+let queued = false;
+new MutationObserver(() => {
+  if (queued) return;
+  queued = true;
+  queueMicrotask(() => { queued = false; enhance(); });
+}).observe(app, { childList: true, subtree: true });
 
 let lastPath = "";
 async function route() {

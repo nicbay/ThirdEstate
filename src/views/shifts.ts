@@ -1,49 +1,109 @@
 // Shift map in the manner of the NYT county arrows: one arrow per district (2012–2024) or per
-// department (1848–2024), drawn at its centre. Leaning right = moved right, leaning left = moved left.
-// French colours: right blue, left red. Far-right and turnout modes use their own pair of colours.
-import { geoConicConformal, geoPath } from "d3-geo";
-import { loadDepartements, loadShifts, type ShiftPair, type ShiftUnit } from "../data";
+// department (1848–2024), drawn from its centre.
+//
+// Direction carries meaning and is never reused:
+//   • Left/right metric (lr = right share − left share): the arrow tilts RIGHT and is BLUE when the
+//     margin rose (moved right), tilts LEFT and is RED when it fell (moved left).
+//   • Far-right vote and turnout are not left/right movements, so they use VERTICAL arrows
+//     (up = rose, down = fell) and never point left or right.
+import { geoConicConformal, geoPath, type GeoProjection } from "d3-geo";
+import { loadCircoGeo, loadDepartements, loadShifts, type ShiftPair, type ShiftUnit } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
 import { rewind } from "../lib/map";
 import { esc } from "../util";
 
 export type Metric = "lr" | "farRight" | "turnout";
-export const METRICS: Record<Metric, { fr: string; en: string; pos: [string, string, string]; neg: [string, string, string] }> = {
-  lr: { fr: "Gauche ou droite", en: "Left or right", pos: ["Plus à droite", "More right", "#2e5fb8"], neg: ["Plus à gauche", "More left", "#c9302c"] },
-  farRight: { fr: "Extrême droite", en: "Far right", pos: ["Extrême droite en hausse", "Far right up", "#1b2a5e"], neg: ["Extrême droite en baisse", "Far right down", "#8fa3c8"] },
-  turnout: { fr: "Participation", en: "Turnout", pos: ["Participation en hausse", "Turnout up", "#2f8f5b"], neg: ["Participation en baisse", "Turnout down", "#b07a2a"] },
+type Side = [fr: string, en: string, color: string];
+export const METRICS: Record<Metric, { fr: string; en: string; axis: "x" | "y"; pos: Side; neg: Side; unit: [string, string] }> = {
+  lr: { fr: "Gauche ou droite", en: "Left or right", axis: "x", pos: ["Vers la droite", "Moved right", "#1f5fcf"], neg: ["Vers la gauche", "Moved left", "#d4253a"], unit: ["pts d’écart", "pt margin"] },
+  farRight: { fr: "Extrême droite", en: "Far right", axis: "y", pos: ["Extrême droite en hausse", "Far right up", "#1c2c6c"], neg: ["Extrême droite en baisse", "Far right down", "#8e9cc6"], unit: ["pts", "pts"] },
+  turnout: { fr: "Participation", en: "Turnout", axis: "y", pos: ["Participation en hausse", "Turnout up", "#4b2fd0"], neg: ["Participation en baisse", "Turnout down", "#9aa0aa"], unit: ["pts", "pts"] },
 };
 const ui = { pair: "", metric: "lr" as Metric };
+/** Arrow tilt for the left/right metric: 30° above horizontal, like the NYT maps. */
+const TILT = Math.PI / 6;
+/** Paris and the inner suburbs, drawn again at a larger scale. */
+const PARIS = ["75", "92", "93", "94"];
+const inParis = (u: ShiftUnit) => u.lon > 2.2 && u.lon < 2.62 && u.lat > 48.72 && u.lat < 48.96;
 
 export async function renderShifts(pane: HTMLElement) {
   const [data, geo] = await Promise.all([loadShifts(), loadDepartements()]);
   const pairs = data.pairs;
   const key = (p: ShiftPair) => `${p.fromId}>${p.toId}:${p.level}`;
   if (!pairs.some((p) => key(p) === ui.pair)) ui.pair = key(pairs.filter((p) => p.level === "district").at(-1) ?? pairs.at(-1)!);
-  const metro = { type: "FeatureCollection", features: geo.features.map(rewind).filter((f) => f.properties!.code.length === 2) } as GeoJSON.FeatureCollection;
+  const deps = geo.features.map(rewind);
+  const depName = new Map(deps.map((f) => [f.properties!.code as string, f.properties!.nom as string]));
+  const metro = { type: "FeatureCollection", features: deps.filter((f) => f.properties!.code.length === 2) } as GeoJSON.FeatureCollection;
   const proj = geoConicConformal().parallels([44, 49]).rotate([-3, 0]).fitExtent([[10, 10], [790, 770]], metro);
   const base = geoPath(proj);
   const outlines = metro.features.map((f) => `<path d="${base(f)}" class="shift-base"/>`).join("");
+
+  // Paris inset: district outlines of the four inner departments, at their own projection.
+  const parisGeo = await Promise.all(PARIS.map((c) => loadCircoGeo(c).catch(() => null)));
+  const parisFeatures = parisGeo.flatMap((g) => (g ? g.features.map(rewind) : []));
+  const parisFc = { type: "FeatureCollection", features: parisFeatures.length ? parisFeatures : deps.filter((f) => PARIS.includes(f.properties!.code)) } as GeoJSON.FeatureCollection;
+  const projP = geoConicConformal().parallels([44, 49]).rotate([-3, 0]).fitExtent([[12, 12], [348, 288]], parisFc);
+  const parisBase = parisFc.features.map((f) => `<path d="${geoPath(projP)(f)}" class="shift-base"/>`).join("");
+  const [[px0, py0], [px1, py1]] = base.bounds({ type: "FeatureCollection", features: deps.filter((f) => PARIS.includes(f.properties!.code)) } as GeoJSON.FeatureCollection);
+
+  const unitLabel = (code: string, u: ShiftUnit) => u.name ?? (code.length >= 4 ? `${depName.get(code.slice(0, -2).padStart(2, "0")) ?? code.slice(0, -2)} · ${Number(code.slice(-2))}${L("e", "")}` : depName.get(code) ?? code);
 
   const draw = () => {
     const pair = pairs.find((p) => key(p) === ui.pair)!;
     const m = METRICS[ui.metric];
     const units = mainland(pair, ui.metric);
-    const arrows = arrowPaths(pair, ui.metric, proj);
+    const svg = pane.querySelector<SVGSVGElement>("#shift-svg")!;
+    const k = unitsPerPx(svg, 800);
+    const scale = pair.level === "district" ? 2.2 : 3;
+    const district = pair.level === "district";
 
     const nat = pair.national[ui.metric];
     const sorted = [...units].sort((a, b) => b[1][ui.metric][2] - a[1][ui.metric][2]);
+    const nPos = units.filter(([, u]) => u[ui.metric][2] > 0).length;
     const fr = getLang() === "fr";
+    const what = district ? L("circonscriptions", "districts") : L("départements", "departments");
+    const natWord = nat ? (nat[2] > 0 ? L(m.pos[0], m.pos[1]) : L(m.neg[0], m.neg[1])).toLowerCase() : "";
     pane.querySelector("#shift-head")!.innerHTML = `
-      <h2>${fr ? `De ${pair.from} à ${pair.to}` : `From ${pair.from} to ${pair.to}`}${pair.level === "district" ? L(", par circonscription", ", by district") : L(", par département", ", by department")}</h2>
-      <p class="muted small">${L("Au niveau national", "Nationally")} : ${nat ? `${signed(nat[2])} ${L("points", "points")} (${nat[0].toFixed(1)} → ${nat[1].toFixed(1)})` : "–"}. ${units.length} ${pair.level === "district" ? L("circonscriptions", "districts") : L("départements", "departments")}, ${L("premier tour", "first round")}.</p>`;
-    pane.querySelector("#shift-svg")!.innerHTML = outlines + arrows;
-    pane.querySelector("#shift-legend")!.innerHTML = `<span><svg width="34" height="16"><path d="M2,14L28,2" stroke="${m.neg[2]}" stroke-width="2.4" transform="scale(-1,1) translate(-30,0)"/></svg>${L(m.neg[0], m.neg[1])}</span><span><svg width="34" height="16"><path d="M2,14L28,2" stroke="${m.pos[2]}" stroke-width="2.4"/></svg>${L(m.pos[0], m.pos[1])}</span>`;
-    pane.querySelector("#movers")!.innerHTML = [
-      [L(m.pos[0], m.pos[1]), sorted.slice(0, 8)],
-      [L(m.neg[0], m.neg[1]), sorted.slice(-8).reverse()],
-    ]
-      .map(([title, list]) => `<section><h3>${title as string}</h3><table class="table"><tbody>${(list as [string, ShiftUnit][]).map(([code, u]) => `<tr><td>${esc(u.name ?? labelFor(code))}</td><td class="num">${signed(u[ui.metric][2])}</td></tr>`).join("")}</tbody></table></section>`)
+      <h2>${fr ? `De ${pair.from} à ${pair.to}` : `From ${pair.from} to ${pair.to}`}${district ? L(", par circonscription", ", by district") : L(", par département", ", by department")}</h2>
+      ${nat ? `<div class="shift-stat"><strong style="color:${nat[2] > 0 ? m.pos[2] : m.neg[2]}">${signed(nat[2])}</strong><span><b>${L("points au niveau national", "points nationally")}</b> · ${natWord} <span class="muted">(${fmt1(nat[0])} → ${fmt1(nat[1])})</span></span></div>` : ""}
+      <p class="muted small">${fr ? `${nPos} ${what} sur ${units.length} : ${m.pos[0].toLowerCase()}` : `${nPos} of ${units.length} ${what}: ${m.pos[1].toLowerCase()}`}. ${L("Premier tour des législatives.", "Legislative first round.")}</p>`;
+
+    const box = district ? `<rect x="${(px0 - 6).toFixed(1)}" y="${(py0 - 6).toFixed(1)}" width="${(px1 - px0 + 12).toFixed(1)}" height="${(py1 - py0 + 12).toFixed(1)}" fill="none" stroke="var(--ink)" stroke-width="${(1.2 * k).toFixed(2)}"/>` : "";
+    svg.style.setProperty("--sw", `${(1.7 * k).toFixed(2)}px`);
+    svg.innerHTML = outlines + arrowPaths(pair, ui.metric, proj, { scale, k }) + box;
+
+    // the inset keeps the same on-screen length per point as the main map
+    const inset = pane.querySelector<HTMLElement>("#paris-inset")!;
+    inset.hidden = !district;
+    if (district) {
+      const isvg = inset.querySelector<SVGSVGElement>("svg")!;
+      const ki = unitsPerPx(isvg, 360);
+      isvg.style.setProperty("--sw", `${(1.7 * ki).toFixed(2)}px`);
+      isvg.innerHTML = parisBase + arrowPaths(pair, ui.metric, projP, { scale: (scale / k) * ki, k: ki, cap: 90 * (ki / k), only: inParis });
+    }
+
+    pane.querySelector("#shift-legend")!.innerHTML = legend(ui.metric, scale / k, district);
+    pane.querySelector("#shift-caption")!.textContent = m.axis === "x"
+      ? L(
+          "Chaque flèche part du centre de la zone. Elle penche vers la droite (en bleu) si la droite et l’extrême droite ont progressé par rapport à la gauche et aux écologistes, vers la gauche (en rouge) dans le cas contraire ; sa longueur est proportionnelle à la variation de l’écart, en points. Le centre n’est compté dans aucun camp. France métropolitaine et Corse.",
+          "Each arrow starts at the area’s centre. It tilts right (blue) if the right and far right gained on the left and greens, left (red) otherwise; its length is proportional to the change in the margin, in points. The centre counts for neither side. Mainland France and Corsica.",
+        )
+      : L(
+          "Chaque flèche part du centre de la zone. Elle monte si la part a augmenté, descend si elle a baissé ; sa longueur est proportionnelle à la variation, en points. Ces flèches sont verticales pour ne pas être confondues avec un glissement à gauche ou à droite. France métropolitaine et Corse.",
+          "Each arrow starts at the area’s centre. It points up if the share rose, down if it fell; its length is proportional to the change, in points. These arrows are vertical so they can’t be mistaken for a shift left or right. Mainland France and Corsica.",
+        );
+
+    const up = sorted.filter(([, u]) => u[ui.metric][2] > 0).slice(0, 8);
+    const down = sorted.filter(([, u]) => u[ui.metric][2] < 0).reverse().slice(0, 8);
+    const maxAbs = Math.max(1, ...units.map(([, u]) => Math.abs(u[ui.metric][2])));
+    pane.querySelector("#movers")!.innerHTML = ([[m.pos, up], [m.neg, down]] as const)
+      .map(([side, list]) => `<section><h3><span class="mover-bar" style="width:18px;background:${side[2]}"></span>${L(side[0], side[1])}</h3>${
+        list.length
+          ? `<table class="table"><thead><tr><th>${district ? L("Circonscription", "District") : L("Département", "Department")}</th><th class="num">${L("Variation", "Change")}</th></tr></thead><tbody>${list
+              .map(([code, u]) => { const d = u[ui.metric][2]; return `<tr><td>${esc(unitLabel(code, u))}</td><td class="num"><span class="mover-bar" style="width:${Math.round((48 * Math.abs(d)) / maxAbs)}px;background:${side[2]}"></span>${signed(d)}</td></tr>`; })
+              .join("")}</tbody></table>`
+          : `<p class="muted small">${L("Aucune.", "None.")}</p>`
+      }</section>`)
       .join("");
     pane.querySelectorAll<HTMLButtonElement>("[data-metric]").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.metric === ui.metric)));
   };
@@ -58,58 +118,131 @@ export async function renderShifts(pane: HTMLElement) {
         <select id="pair" aria-label="${L("Élections comparées", "Elections compared")}">${groups
           .map(([label, ps]) => `<optgroup label="${label}">${ps.map((p) => `<option value="${key(p)}" ${key(p) === ui.pair ? "selected" : ""}>${p.from} → ${p.to}${p.fromId !== String(p.from) || p.toId !== String(p.to) ? ` (${fmtDate(p.fromDate)} → ${fmtDate(p.toDate)})` : ""}</option>`).join("")}</optgroup>`)
           .join("")}</select>
-        <div class="tabs small-tabs">${(Object.keys(METRICS) as Metric[]).map((k) => `<button type="button" data-metric="${k}">${L(METRICS[k].fr, METRICS[k].en)}</button>`).join("")}</div>
+        <div class="tabs small-tabs" role="tablist">${(Object.keys(METRICS) as Metric[]).map((k) => `<button type="button" role="tab" data-metric="${k}">${L(METRICS[k].fr, METRICS[k].en)}</button>`).join("")}</div>
       </div>
-      <div id="shift-head"></div>
-      <div class="shift-wrap">
-        <svg id="shift-svg" viewBox="0 0 800 780" role="img" aria-label="${L("Carte des bascules", "Shift map")}"></svg>
-        <div class="shift-legend" id="shift-legend"></div>
+      <div id="shift-head" class="shift-head"></div>
+      <div class="shift-legend" id="shift-legend"></div>
+      <div class="shift-layout">
+        <div class="shift-wrap reveal">
+          <svg id="shift-svg" viewBox="0 0 800 780" role="img" aria-label="${L("Carte des bascules", "Shift map")}"></svg>
+        </div>
+        <aside class="shift-key">
+          <figure class="paris-inset" id="paris-inset" style="margin:0">
+            <p>${L("Paris et petite couronne", "Paris and inner suburbs")}</p>
+            <svg viewBox="0 0 360 300" class="reveal" role="img" aria-label="${L("Paris et petite couronne", "Paris and inner suburbs")}"></svg>
+          </figure>
+        </aside>
       </div>
-      <p class="muted small">${L(
-        "Chaque flèche part du centre de la zone. Elle penche à droite si la droite (droite + extrême droite) a progressé par rapport à la gauche (gauche + écologistes), à gauche sinon ; sa longueur est proportionnelle à l’écart. Le centre n’est compté dans aucun camp. France métropolitaine et Corse.",
-        "Each arrow starts at the area’s centre. It leans right if the right (right + far right) gained on the left (left + greens), left otherwise; its length is proportional to the change. The centre counts for neither side. Mainland France and Corsica.",
-      )}</p>
+      <p class="muted small" id="shift-caption"></p>
     </section>
-    <section class="card"><header class="card-head"><h2>${L("Les plus fortes bascules", "Biggest moves")}</h2></header><div class="grid-2" id="movers"></div></section>
+    <section class="card movers"><header class="card-head"><h2>${L("Les plus fortes bascules", "Biggest moves")}</h2></header><div class="grid-2" id="movers"></div></section>
     <p class="source">${L("Résultats : ministère de l’Intérieur (data.gouv.fr) depuis 2012 ; Cagé et Piketty, « Une histoire du conflit politique », pour les élections antérieures. Méthode détaillée dans le dépôt.", "Results: Ministry of the Interior (data.gouv.fr) since 2012; Cagé and Piketty, “Une histoire du conflit politique”, for earlier elections. Full method in the repository.")}</p>`;
 
   pane.querySelector<HTMLSelectElement>("#pair")!.addEventListener("change", (e) => { ui.pair = (e.target as HTMLSelectElement).value; draw(); });
   pane.querySelectorAll<HTMLButtonElement>("[data-metric]").forEach((b) => b.addEventListener("click", () => { ui.metric = b.dataset.metric as Metric; draw(); }));
   draw();
+  revealOnScroll(pane);
+  redrawOnResize(pane, draw);
 }
-
 
 /** Units drawn on the mainland map (mainland France + Corsica). */
 export const mainland = (pair: ShiftPair, metric: Metric) => Object.entries(pair.units).filter(([, u]) => u[metric] && u.lon > -6 && u.lon < 10 && u.lat > 41 && u.lat < 52);
 
-/** SVG arrows for one pair of elections. Each arrow has pathLength=1 so it can be drawn in with CSS. */
-export function arrowPaths(pair: ShiftPair, metric: Metric, proj: (p: [number, number]) => [number, number] | null, opts: { scale?: number; cap?: number } = {}) {
+/** SVG user units per CSS pixel, so arrowheads and strokes keep a readable size on phones. */
+export function unitsPerPx(svg: SVGSVGElement, viewWidth: number) {
+  const w = svg.getBoundingClientRect().width || viewWidth;
+  return Math.min(2.6, Math.max(0.75, viewWidth / w));
+}
+
+/** Arrow path from (x, y) for a signed change d. Returns shaft, head and tip. */
+export function arrowGeometry(x: number, y: number, d: number, axis: "x" | "y", len: number, k: number) {
+  const ux = axis === "x" ? Math.sign(d) * Math.cos(TILT) : 0;
+  const uy = axis === "x" ? -Math.sin(TILT) : -Math.sign(d);
+  const headLen = Math.min(6.5 * k, len), headW = headLen * 0.5;
+  const tx = x + ux * len, ty = y + uy * len;
+  const bx = tx - ux * headLen, by = ty - uy * headLen; // base of the head
+  const px = -uy * headW, py = ux * headW; // perpendicular
+  const head = `M${f(tx)},${f(ty)}L${f(bx + px)},${f(by + py)}L${f(bx - px)},${f(by - py)}Z`;
+  const shaft = len > headLen * 1.05 ? `M${f(x)},${f(y)}L${f(bx + ux * 0.6 * k)},${f(by + uy * 0.6 * k)}` : "";
+  return { shaft, head };
+}
+
+/** SVG arrows for one pair of elections. Arrows grow from their origin when their parent gets `.in`. */
+export function arrowPaths(
+  pair: ShiftPair,
+  metric: Metric,
+  proj: GeoProjection | ((p: [number, number]) => [number, number] | null),
+  opts: { scale?: number; cap?: number; k?: number; only?: (u: ShiftUnit) => boolean } = {},
+) {
   const m = METRICS[metric];
-  const scale = opts.scale ?? (pair.level === "district" ? 2.2 : 3); // px per point of shift
+  const k = opts.k ?? 1;
+  const scale = opts.scale ?? (pair.level === "district" ? 2.2 : 3); // user units per point of change
   const cap = opts.cap ?? 90;
   return mainland(pair, metric)
-    .map(([code, u], i) => {
+    .filter(([, u]) => !opts.only || opts.only(u))
+    .sort((a, b) => Math.abs(b[1][metric][2]) - Math.abs(a[1][metric][2])) // small arrows on top
+    .map(([code, u]) => {
       const p = proj([u.lon, u.lat]);
       if (!p) return "";
       const d = u[metric][2];
       if (Math.abs(d) < 0.3) return "";
       const len = Math.min(cap, Math.abs(d) * scale);
-      const dx = Math.sign(d) * len * Math.cos(Math.PI / 6), dy = -len * Math.sin(Math.PI / 6);
-      const [x2, y2] = [p[0] + dx, p[1] + dy];
+      const { shaft, head } = arrowGeometry(p[0], p[1], d, m.axis, len, k);
       const color = d > 0 ? m.pos[2] : m.neg[2];
-      const a = Math.atan2(dy, dx), h = Math.min(6, len * 0.35);
-      const head = `M${(x2 - h * Math.cos(a - 0.5)).toFixed(1)},${(y2 - h * Math.sin(a - 0.5)).toFixed(1)}L${x2.toFixed(1)},${y2.toFixed(1)}L${(x2 - h * Math.cos(a + 0.5)).toFixed(1)},${(y2 - h * Math.sin(a + 0.5)).toFixed(1)}`;
-      const tip = `${u.name ?? code}
-${tip3(u, metric, pair)}`;
-      return `<g class="arrow" data-tip="${esc(tip)}" stroke="${color}" style="--i:${i % 40}"><path pathLength="1" d="M${p[0].toFixed(1)},${p[1].toFixed(1)}L${x2.toFixed(1)},${y2.toFixed(1)}${head}"/><circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="6" class="hit"/></g>`;
+      const dir = d > 0 ? L(m.pos[0], m.pos[1]) : L(m.neg[0], m.neg[1]);
+      const tip = `${u.name ?? labelFor(code)}\n${dir}\n${tip3(u, metric, pair)}`;
+      const delay = Math.round((p[0] / 800) * 700);
+      return `<g class="arrow" data-tip="${esc(tip)}" stroke="${color}" fill="${color}" style="--ox:${f(p[0])}px;--oy:${f(p[1])}px;--d:${delay}">${shaft ? `<path class="shaft" d="${shaft}"/>` : ""}<path class="head" d="${head}"/><circle cx="${f(p[0])}" cy="${f(p[1])}" r="${f(6 * k)}" class="hit"/></g>`;
     })
     .join("");
 }
 
-const signed = (n: number) => `${n > 0 ? "+" : ""}${n.toFixed(1)}`;
+/** Legend glyph: the same arrow as on the map. */
+export function arrowGlyph(metric: Metric, sign: 1 | -1, len = 26) {
+  const m = METRICS[metric];
+  const color = sign > 0 ? m.pos[2] : m.neg[2];
+  const W = m.axis === "x" ? len * Math.cos(TILT) + 6 : 16, H = m.axis === "x" ? len * Math.sin(TILT) + 6 : len + 4;
+  const x0 = m.axis === "x" ? (sign > 0 ? 3 : W - 3) : W / 2, y0 = m.axis === "x" ? H - 3 : sign > 0 ? H - 2 : 2;
+  const { shaft, head } = arrowGeometry(x0, y0, sign, m.axis, len, 1);
+  return `<svg width="${f(W)}" height="${f(H)}" viewBox="0 0 ${f(W)} ${f(H)}" aria-hidden="true"><path d="${shaft}" stroke="${color}" stroke-width="2" stroke-linecap="round"/><path d="${head}" fill="${color}"/></svg>`;
+}
+
+/** Legend: direction key, then a length key (an arrow of 10 points at screen scale). */
+export function legend(metric: Metric, pxPerPoint: number, district = true) {
+  const m = METRICS[metric];
+  const ten = Math.round(10 * pxPerPoint);
+  const lenKey = `<span class="muted" style="font-weight:500"><svg width="${ten + 4}" height="10" aria-hidden="true"><path d="M2,5H${ten + 2}M2,1V9M${ten + 2},1V9" stroke="currentColor" stroke-width="1.2"/></svg>10 ${L("points", "points")}</span>`;
+  void district;
+  return m.axis === "x"
+    ? `<span style="color:${m.neg[2]}">${arrowGlyph(metric, -1)}${L(m.neg[0], m.neg[1])}</span><i class="sep"></i><span style="color:${m.pos[2]}">${L(m.pos[0], m.pos[1])}${arrowGlyph(metric, 1)}</span>${lenKey}`
+    : `<span style="color:${m.pos[2]}">${arrowGlyph(metric, 1, 20)}${L(m.pos[0], m.pos[1])}</span><span style="color:${m.neg[2] === "#9aa0aa" ? "var(--ink-2)" : m.neg[2]}">${arrowGlyph(metric, -1, 20)}${L(m.neg[0], m.neg[1])}</span>${lenKey}`;
+}
+
+/** Add `.in` to `.reveal` elements as they scroll into view (arrows grow, lines draw). */
+export function revealOnScroll(root: HTMLElement) {
+  const io = new IntersectionObserver((entries) => entries.forEach((e) => e.isIntersecting && (e.target.classList.add("in"), io.unobserve(e.target))), { threshold: 0.15 });
+  root.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+}
+
+/** Arrow heads are sized in screen pixels, so redraw when the map changes width (e.g. rotation). */
+export function redrawOnResize(root: HTMLElement, draw: () => void) {
+  let w = window.innerWidth, t = 0;
+  const on = () => {
+    if (!document.body.contains(root)) return window.removeEventListener("resize", on);
+    if (Math.abs(window.innerWidth - w) < 40) return;
+    w = window.innerWidth;
+    clearTimeout(t);
+    t = window.setTimeout(draw, 150);
+  };
+  window.addEventListener("resize", on);
+}
+
+const f = (n: number) => n.toFixed(1);
+const fmt1 = (n: number) => n.toLocaleString(getLang() === "fr" ? "fr-FR" : "en-GB", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const signed = (n: number) => `${n > 0 ? "+" : n < 0 ? "−" : ""}${fmt1(Math.abs(n))}`;
 const labelFor = (code: string) => (code.length >= 4 ? `${code.slice(0, -2)} · ${Number(code.slice(-2))}` : code);
 function tip3(u: ShiftUnit, m: Metric, p: ShiftPair) {
   const [a, b, d] = u[m];
-  if (m === "lr") return `${L("Écart droite − gauche", "Right − left margin")} : ${a.toFixed(1)} → ${b.toFixed(1)} (${signed(d)})\n${L("Gauche", "Left")} ${u.left[0].toFixed(1)} → ${u.left[1].toFixed(1)}, ${L("droite", "right")} ${u.right[0].toFixed(1)} → ${u.right[1].toFixed(1)}`;
-  return `${p.from} : ${a.toFixed(1)} %, ${p.to} : ${b.toFixed(1)} % (${signed(d)})`;
+  if (m === "lr") return `${L("Écart droite − gauche", "Right − left margin")} : ${fmt1(a)} → ${fmt1(b)} (${signed(d)})\n${L("Gauche", "Left")} ${fmt1(u.left[0])} → ${fmt1(u.left[1])} · ${L("droite", "right")} ${fmt1(u.right[0])} → ${fmt1(u.right[1])}`;
+  return `${p.from} : ${fmt1(a)} % · ${p.to} : ${fmt1(b)} % (${signed(d)})`;
 }

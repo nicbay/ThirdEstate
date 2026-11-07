@@ -3,7 +3,7 @@ import { loadMarkets, loadPolls } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
 import { meta, registerParties, spectrumRank } from "../lib/candidates";
 import { average, duelAverages, pollValue, referenceLineup, WINDOW } from "../lib/polls";
-import { esc } from "../util";
+import { esc, safeUrl, safeColor } from "../util";
 import { shiftDays } from "./home";
 
 export async function renderRace(app: HTMLElement) {
@@ -57,7 +57,7 @@ export async function renderRace(app: HTMLElement) {
                 const prev = before.get(r.name);
                 const delta = prev != null ? r.avg - prev : null;
                 return `<li>
-                  <div class="bar-label"><span>${esc(r.name)} <span class="muted">${m.party ?? ""}</span></span>
+                  <div class="bar-label"><span>${esc(r.name)} <span class="muted">${esc(m.party ?? "")}</span></span>
                   <span>${delta != null && Math.abs(delta) >= 0.1 ? `<span class="${delta > 0 ? "up" : "down"}">${delta > 0 ? "+" : ""}${delta.toFixed(1)}</span> ` : ""}<b>${r.avg.toFixed(1)} %</b></span></div>
                   <div class="bar"><div style="width:${(100 * r.avg) / max}%;background:${m.color}"></div></div>
                 </li>`;
@@ -113,7 +113,7 @@ export async function renderRace(app: HTMLElement) {
         <a class="door" href="#/assemblee"><b>${L("L’Assemblée nationale", "The National Assembly")}</b><span class="muted small">${L("Les 577 circonscriptions, leurs députés, leurs votes et leur profil.", "All 577 districts, their MPs, how they vote and who they are.")}</span></a>
         <a class="door" href="#/sources"><b>${L("Sources et méthode", "Sources and method")}</b><span class="muted small">${L("D’où viennent les chiffres et comment ils sont calculés.", "Where the numbers come from and how they’re calculated.")}</span></a>
       </nav>
-      <p class="source">${L("Sondages compilés par Wikipédia (CC BY-SA)", "Polls compiled by Wikipedia (CC BY-SA)")}, <a href="${polls.source}" target="_blank" rel="noopener">${L("page source", "source page")}</a>, ${L("mis à jour le", "updated")} ${fmtDate(polls.fetchedAt)}.</p>
+      <p class="source">${L("Sondages compilés par Wikipédia (CC BY-SA)", "Polls compiled by Wikipedia (CC BY-SA)")}, <a href="${esc(safeUrl(polls.source))}" target="_blank" rel="noopener">${L("page source", "source page")}</a>, ${L("mis à jour le", "updated")} ${fmtDate(polls.fetchedAt)}.</p>
     </section>`;
 }
 

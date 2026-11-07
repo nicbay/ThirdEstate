@@ -4,10 +4,16 @@
 import { loadDepartements, loadHistElection, loadHistIndex, type HistCandidate, type HistMedia, type HistRound, type Side } from "../data";
 import { L, fmtDate, fmtNum, getLang } from "../i18n";
 import { mapPaths, rewind } from "../lib/map";
-import { esc } from "../util";
+import { esc, safeUrl } from "../util";
+
+/** Only these players may be framed (security review M2). */
+const EMBED_HOSTS = new Set(["www.youtube-nocookie.com", "player.ina.fr", "www.ina.fr"]);
+const embedAllowed = (u: string) => {
+  try { const x = new URL(u); return x.protocol === "https:" && EMBED_HOSTS.has(x.hostname); } catch { return false; }
+};
 
 // French convention: left red, right blue.
-export const SIDE_COLOR: Record<Side, string> = { left: "#c9302c", centre: "#e3a72f", right: "#2e5fb8", other: "#9aa0a8" };
+export const SIDE_COLOR: Record<Side, string> = { left: "#d4253a", centre: "#f2a400", right: "#1f5fcf", other: "#9aa0a8" };
 const sideColor = (s: Side | undefined) => SIDE_COLOR[s ?? "other"] ?? SIDE_COLOR.other;
 const REGIMES: Record<string, [string, string]> = {
   "IIe": ["Deuxième République", "Second Republic"],
@@ -110,7 +116,7 @@ function roundBlock(r: HistRound, direct: boolean) {
         </div>
         <div>${mediaBlock(r.media, r.mediaAlternatives)}${!r.media && r.mediaSearched ? `<p class="muted small">${L("Aucune archive vérifiée pour ce tour.", "No verified archive for this round.")}</p>` : ""}</div>
       </div>
-      <p class="source">${esc(r.sources.national.name)}${r.sources.national.permalink ? `, <a href="${esc(r.sources.national.permalink)}" target="_blank" rel="noopener">${fr ? "version consultée" : "revision used"}</a>` : ""}${r.sources.national.licence ? ` (${esc(r.sources.national.licence)})` : ""}</p>
+      <p class="source">${esc(r.sources.national.name)}${r.sources.national.permalink ? `, <a href="${esc(safeUrl(r.sources.national.permalink))}" target="_blank" rel="noopener">${fr ? "version consultée" : "revision used"}</a>` : ""}${r.sources.national.licence ? ` (${esc(r.sources.national.licence)})` : ""}</p>
     </section>`;
 }
 
@@ -121,11 +127,11 @@ function candidateBar(c: HistCandidate, max: number) {
 function mediaBlock(m: HistMedia | null, alts?: HistMedia[]) {
   if (!m) return "";
   const kind = L(...(MEDIA_LABEL[m.type] ?? [m.type, m.type]));
-  const embed = m.embed ? `${m.embed}${m.start ? `${m.embed.includes("?") ? "&" : "?"}start=${m.start}` : ""}` : null;
+  const embed = m.embed && embedAllowed(m.embed) ? `${m.embed}${m.start ? `${m.embed.includes("?") ? "&" : "?"}start=${m.start}` : ""}` : null;
   return `<figure class="media">
       <figcaption><b>${kind}</b>${m.date ? `, ${fmtDate(m.date)}` : ""}</figcaption>
-      ${embed ? `<div class="video"><iframe src="${esc(embed)}" title="${esc(m.title ?? kind)}" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>` : ""}
-      <p class="small"><a href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.title ?? m.url)}</a>${m.publisher ? ` <span class="muted">${esc(m.publisher)}</span>` : ""}</p>
-      ${alts?.length ? `<p class="small muted">${L("Voir aussi", "See also")} : ${alts.map((a) => `<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.title ?? L(...(MEDIA_LABEL[a.type] ?? [a.type, a.type])))}</a>`).join(", ")}</p>` : ""}
+      ${embed ? `<div class="video"><iframe src="${esc(safeUrl(embed))}" title="${esc(m.title ?? kind)}" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>` : ""}
+      <p class="small"><a href="${esc(safeUrl(m.url))}" target="_blank" rel="noopener">${esc(m.title ?? m.url)}</a>${m.publisher ? ` <span class="muted">${esc(m.publisher)}</span>` : ""}</p>
+      ${alts?.length ? `<p class="small muted">${L("Voir aussi", "See also")} : ${alts.map((a) => `<a href="${esc(safeUrl(a.url))}" target="_blank" rel="noopener">${esc(a.title ?? L(...(MEDIA_LABEL[a.type] ?? [a.type, a.type])))}</a>`).join(", ")}</p>` : ""}
     </figure>`;
 }

@@ -3,7 +3,7 @@ import { districtResults2024, loadCircoGeo, loadDepartements, loadDeputes } from
 import { L, fmtNum, fmtPct } from "../i18n";
 import { NUANCE_LABEL, nuanceColor } from "../lib/candidates";
 import { mapPaths, rewind } from "../lib/map";
-import { esc } from "../util";
+import { esc, safeColor } from "../util";
 import { PLATFORMS, age, presence } from "./assemblee";
 import { photoUrl } from "./deputes";
 import { renderDistrictProfile } from "./district-profile";
@@ -24,7 +24,7 @@ export async function renderCirco(app: HTMLElement, code: string) {
         <div class="stack-col">
           ${
             d
-              ? `<article class="card mp-head" style="--c:${d.groupe?.couleur ?? "#999"}">
+              ? `<article class="card mp-head" style="--c:${safeColor(d.groupe?.couleur) ?? "#999"}">
               <img src="${photoUrl(d.id)}" alt="" onerror="this.style.visibility='hidden'" />
               <div class="mp-id">
                 <p class="eyebrow">${L("Député·e", "MP")}</p>
@@ -58,7 +58,7 @@ export async function renderCirco(app: HTMLElement, code: string) {
   // district map (missing for French abroad)
   loadCircoGeo(dep)
     .then((g) => {
-      app.querySelector("#m")!.innerHTML = mapPaths(g.features.map(rewind), [400, 400], (c) => ({ fill: c === code ? d?.groupe?.couleur ?? "var(--ink)" : "var(--wash)", title: `${L("Circonscription", "District")} ${Number(c.slice(-2))}`, selected: c === code }), dep.length === 3 ? "mercator" : "france");
+      app.querySelector("#m")!.innerHTML = mapPaths(g.features.map(rewind), [400, 400], (c) => ({ fill: c === code ? safeColor(d?.groupe?.couleur) ?? "var(--ink)" : "var(--wash)", title: `${L("Circonscription", "District")} ${Number(c.slice(-2))}`, selected: c === code }), dep.length === 3 ? "mercator" : "france");
       app.querySelectorAll<SVGElement>("#m [data-code]").forEach((el) => el.addEventListener("click", () => (location.hash = `#/circo/${el.dataset.code}`)));
     })
     .catch(() => app.querySelector("#m")?.closest(".card")?.remove());

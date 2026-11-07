@@ -3,10 +3,10 @@
 // from each post's content. Claims the AI doubts are flagged "à vérifier", never "false".
 import { loadFeed, type FeedReaction, type FeedStory } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
-import { esc } from "../util";
+import { esc, safeUrl, safeColor } from "../util";
 
 const ui = { populist: false, checks: false };
-const RED = "#c9302c", BLUE = "#2e5fb8";
+const RED = "#d4253a", BLUE = "#1f5fcf";
 
 export async function renderFeed(app: HTMLElement) {
   const feed = await loadFeed();
@@ -57,7 +57,7 @@ function storyBlock(s: FeedStory, rs: FeedReaction[], outletName: Map<string, st
   return `
     <article class="story">
       <header>
-        <h2><a href="${esc(lead.link)}" target="_blank" rel="noopener">${esc(lead.title)}</a></h2>
+        <h2><a href="${esc(safeUrl(lead.link))}" target="_blank" rel="noopener">${esc(lead.title)}</a></h2>
         <p class="muted small">${s.outlets.map((o) => esc(outletName.get(o) ?? o)).join(", ")}${s.items.length > 1 ? ` (${s.items.length} ${L("articles", "articles")})` : ""}, ${fmtDate(s.lastTime)}</p>
       </header>
       <div class="feed-cols">
@@ -75,16 +75,16 @@ function reaction(r: FeedReaction, fr: boolean) {
   const pop = rt.populism.score;
   return `
     <div class="reaction">
-      <p class="who"><a href="#/depute/${esc(r.mp.id)}"><b>${esc(r.mp.name)}</b></a> ${r.mp.group ? `<span class="chip" style="--c:${r.mp.group.couleur}">${esc(r.mp.group.abrev)}</span>` : ""} <span class="muted small">${esc(PLATFORM[r.platform] ?? r.platform)}, ${fmtDate(r.time)}</span></p>
+      <p class="who"><a href="#/depute/${esc(r.mp.id)}"><b>${esc(r.mp.name)}</b></a> ${r.mp.group ? `<span class="chip" style="--c:${safeColor(r.mp.group.couleur)}">${esc(r.mp.group.abrev)}</span>` : ""} <span class="muted small">${esc(PLATFORM[r.platform] ?? r.platform)}, ${fmtDate(r.time)}</span></p>
       <blockquote>${esc(r.text.length > 420 ? r.text.slice(0, 420) + "…" : r.text)}</blockquote>
       <div class="meters small">
         <span class="meter" data-tip="${esc(fr ? rt.lean.rationale_fr : rt.lean.rationale_en)}"><span class="meter-track"><i style="left:${((lean + 1) / 2) * 100}%"></i></span>${L("Gauche", "Left")} / ${L("droite", "right")}</span>
         <span data-tip="${esc(fr ? rt.populism.rationale_fr : rt.populism.rationale_en)}">${L("Populisme", "Populism")} <b>${Math.round(pop * 10)}/10</b>${rt.populism.markers.length ? ` (${esc(rt.populism.markers.join(", "))})` : ""}</span>
-        <a href="${esc(r.url)}" target="_blank" rel="noopener">${L("Voir le message", "See the post")}</a>
+        <a href="${esc(safeUrl(r.url))}" target="_blank" rel="noopener">${L("Voir le message", "See the post")}</a>
       </div>
       ${
         rt.check
-          ? `<div class="verify"><b>${L("À vérifier", "To verify")}</b> : « ${esc(rt.check.claim)} » ${esc(fr ? rt.check.why_fr : rt.check.why_en)}${rt.check.sources.length ? ` <span class="small">${rt.check.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("; ")}</span>` : ""}</div>`
+          ? `<div class="verify"><b>${L("À vérifier", "To verify")}</b> : « ${esc(rt.check.claim)} » ${esc(fr ? rt.check.why_fr : rt.check.why_en)}${rt.check.sources.length ? ` <span class="small">${rt.check.sources.map((s) => `<a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("; ")}</span>` : ""}</div>`
           : ""
       }
     </div>`;

@@ -2,8 +2,8 @@
 import { loadAnMeta, loadCircoGeo, loadDepartements, loadDeputes, loadLeg24, type Depute } from "../data";
 import { L, fmtDate, fmtPct } from "../i18n";
 import { NUANCE_LABEL, nuanceColor } from "../lib/candidates";
-import { OVERSEAS_DEPS, mapPaths, rewind } from "../lib/map";
-import { esc, groupBy } from "../util";
+import { OVERSEAS_DEPS, abroadInset, insetFigure, mapPaths, rewind } from "../lib/map";
+import { esc, groupBy, safeColor } from "../util";
 import { hemicycle, seatRank } from "../lib/hemicycle";
 import { renderDeputes } from "./deputes";
 
@@ -46,7 +46,7 @@ async function mapView(pane: HTMLElement, dep?: string) {
   const depColor = (code: string) => {
     const mps = byDep.get(code) ?? [];
     const count = new Map<string, { n: number; c: string }>();
-    for (const d of mps) if (d.groupe) count.set(d.groupe.id, { n: (count.get(d.groupe.id)?.n ?? 0) + 1, c: d.groupe.couleur });
+    for (const d of mps) if (d.groupe) count.set(d.groupe.id, { n: (count.get(d.groupe.id)?.n ?? 0) + 1, c: safeColor(d.groupe.couleur) });
     const top = [...count.values()].sort((a, b) => b.n - a.n)[0];
     return { fill: top?.c ?? "var(--wash)", opacity: top ? 0.35 + (0.65 * top.n) / mps.length : 1 };
   };
@@ -55,7 +55,7 @@ async function mapView(pane: HTMLElement, dep?: string) {
       const lead = leg.circos[code]?.c[0];
       return lead ? nuanceColor(lead[0]) : "var(--wash)";
     }
-    return byCirco.get(code)?.groupe?.couleur ?? "var(--wash)";
+    return safeColor(byCirco.get(code)?.groupe?.couleur) ?? "var(--wash)";
   };
 
   pane.innerHTML = `
@@ -63,7 +63,8 @@ async function mapView(pane: HTMLElement, dep?: string) {
       <article class="card">
         <header class="card-head"><h2>${L("Le groupe le plus représenté par département", "Largest group in each department")}</h2></header>
         <svg id="fr" viewBox="0 0 600 600"></svg>
-        <div class="overseas">${OVERSEAS_DEPS.map((c) => `<svg viewBox="0 0 100 100" class="inset" data-inset="${c}"></svg>`).join("")}<button type="button" class="abroad" data-code="99" style="--c:${depColor("99").fill}">🌍<span>${L("Étranger", "Abroad")}</span></button></div>
+        <div class="overseas-label">${L("Outre-mer et étranger", "Overseas and abroad")}</div>
+        <div class="overseas">${OVERSEAS_DEPS.map((c) => insetFigure(`<svg viewBox="0 0 100 100" class="inset" data-inset="${c}"></svg>`, depName(c))).join("")}<div class="inset-fig" id="abroad-slot"></div></div>
         <p class="muted small">${L("Plus la couleur est franche, plus ce groupe domine le département.", "The stronger the colour, the more that group dominates the department.")}</p>
       </article>
       <aside class="card panel" id="dep"></aside>
@@ -76,6 +77,13 @@ async function mapView(pane: HTMLElement, dep?: string) {
       const f = features.find((x) => x.properties!.code === c);
       if (f) pane.querySelector(`[data-inset="${c}"]`)!.innerHTML = mapPaths([f], [100, 100], area, "mercator");
     }
+    pane.querySelector("#abroad-slot")!.innerHTML = abroadInset({
+      ...depColor("99"),
+      title: `${L("Français de l’étranger", "French abroad")} · ${(byDep.get("99") ?? []).length} ${L("députés", "MPs")}`,
+      label: L("Français de l’étranger", "French abroad"),
+      sub: L("11 circ.", "11 districts"),
+      selected: dep === "99",
+    });
     pane.querySelectorAll<SVGElement | HTMLElement>("#fr [data-code], .inset [data-code], .abroad").forEach((el) =>
       el.addEventListener("click", () => (location.hash = `#/assemblee/${el.dataset.code}`)),
     );
@@ -86,9 +94,9 @@ async function mapView(pane: HTMLElement, dep?: string) {
     if (!dep) {
       const groups = [...groupBy(deputes.filter((d) => d.groupe), (d) => d.groupe!.id).values()].sort((a, b) => seatRank(a[0].groupe!.abrev) - seatRank(b[0].groupe!.abrev));
       box.innerHTML = `<h2>${L("Les groupes, de gauche à droite", "The groups, left to right")}</h2>
-        ${hemicycle(groups.map((g) => ({ label: g[0].groupe!.libelle, color: g[0].groupe!.couleur, seats: g.length })))}
+        ${hemicycle(groups.map((g) => ({ label: g[0].groupe!.libelle, color: safeColor(g[0].groupe!.couleur), seats: g.length })))}
         <p class="muted small">${deputes.length} ${L("députés en exercice", "sitting MPs")}${deputes.length < 577 ? L(` ; ${577 - deputes.length} sièges vacants`, `; ${577 - deputes.length} seats vacant`) : ""}.</p>
-        <ul class="legend-list">${groups.map((g) => `<li><i class="dot" style="background:${g[0].groupe!.couleur}"></i>${esc(g[0].groupe!.abrev)} <span class="muted">${esc(g[0].groupe!.libelle)}</span><b>${g.length}</b></li>`).join("")}</ul>`;
+        <ul class="legend-list">${groups.map((g) => `<li><i class="dot" style="background:${safeColor(g[0].groupe!.couleur)}"></i>${esc(g[0].groupe!.abrev)} <span class="muted">${esc(g[0].groupe!.libelle)}</span><b>${g.length}</b></li>`).join("")}</ul>`;
       return;
     }
     const mps = (byDep.get(dep) ?? []).sort((a, b) => (a.numCirco ?? 0) - (b.numCirco ?? 0));
@@ -99,7 +107,7 @@ async function mapView(pane: HTMLElement, dep?: string) {
       <ul class="circo-list">${mps
         .map((d) => {
           const lead = leg.circos[d.circo!]?.c[0];
-          return `<li><a href="#/circo/${d.circo}"><span class="num-badge">${d.numCirco}</span><span><b>${esc(d.prenom)} ${esc(d.nom)}</b> <span class="chip" style="--c:${d.groupe?.couleur ?? "#999"}">${esc(d.groupe?.abrev ?? "—")}</span><br><span class="muted small">${L("1er tour 2024", "2024 1st round")} : ${lead ? `${esc(NUANCE_LABEL[lead[0]] ?? lead[0])} ${lead[1]} %` : "–"}</span></span></a></li>`;
+          return `<li><a href="#/circo/${d.circo}"><span class="num-badge">${d.numCirco}</span><span><b>${esc(d.prenom)} ${esc(d.nom)}</b> <span class="chip" style="--c:${safeColor(d.groupe?.couleur) ?? "#999"}">${esc(d.groupe?.abrev ?? "—")}</span><br><span class="muted small">${L("1er tour 2024", "2024 1st round")} : ${lead ? `${esc(NUANCE_LABEL[lead[0]] ?? lead[0])} ${lead[1]} %` : "–"}</span></span></a></li>`;
         })
         .join("")}</ul>`;
     box.querySelectorAll<HTMLButtonElement>("[data-mode]").forEach((b) => b.addEventListener("click", () => { mapMode = b.dataset.mode as typeof mapMode; drawDep(); }));
@@ -138,7 +146,7 @@ async function composition(pane: HTMLElement) {
         <thead><tr><th>${L("Groupe", "Group")}</th><th>${L("Répartition", "Breakdown")}</th><th class="num">${L("Cadres", "Managers & prof.")}</th></tr></thead>
         <tbody>
           <tr><td><b>${L("Assemblée", "Whole house")}</b></td><td>${stack(deputes)}</td><td class="num">${pct(deputes.filter((d) => d.famSocPro?.startsWith("Cadres")).length, deputes.length)}</td></tr>
-          ${groups.map((g) => `<tr><td><span class="chip" style="--c:${g[0].groupe!.couleur}">${esc(g[0].groupe!.abrev)}</span></td><td>${stack(g)}</td><td class="num">${pct(g.filter((d) => d.famSocPro?.startsWith("Cadres")).length, g.length)}</td></tr>`).join("")}
+          ${groups.map((g) => `<tr><td><span class="chip" style="--c:${safeColor(g[0].groupe!.couleur)}">${esc(g[0].groupe!.abrev)}</span></td><td>${stack(g)}</td><td class="num">${pct(g.filter((d) => d.famSocPro?.startsWith("Cadres")).length, g.length)}</td></tr>`).join("")}
         </tbody>
       </table>
       <p class="muted small">${L("Comparaison avec la population française : à ajouter depuis les données INSEE (voir Sources).", "Comparison with the French population: to be added from INSEE data (see Sources).")}</p>
@@ -150,7 +158,7 @@ async function composition(pane: HTMLElement) {
         <table class="table"><thead><tr><th>${L("Groupe", "Group")}</th><th class="num">${L("Âge médian", "Median age")}</th><th class="num">${L("Femmes", "Women")}</th></tr></thead>
           <tbody>
             <tr><td><b>${L("Assemblée", "Whole house")}</b></td><td class="num">${median(deputes.map(age).filter((a): a is number => a != null))}</td><td class="num">${pct(deputes.filter((d) => d.civ === "Mme").length, deputes.length)}</td></tr>
-            ${groups.map((g) => `<tr><td><span class="chip" style="--c:${g[0].groupe!.couleur}">${esc(g[0].groupe!.abrev)}</span></td><td class="num">${median(g.map(age).filter((a): a is number => a != null))}</td><td class="num">${pct(g.filter((d) => d.civ === "Mme").length, g.length)}</td></tr>`).join("")}
+            ${groups.map((g) => `<tr><td><span class="chip" style="--c:${safeColor(g[0].groupe!.couleur)}">${esc(g[0].groupe!.abrev)}</span></td><td class="num">${median(g.map(age).filter((a): a is number => a != null))}</td><td class="num">${pct(g.filter((d) => d.civ === "Mme").length, g.length)}</td></tr>`).join("")}
           </tbody></table>
       </article>
       <article class="card">
@@ -158,7 +166,7 @@ async function composition(pane: HTMLElement) {
         <p class="muted small">${L("Part des députés déclarant chaque réseau à l’Assemblée, et score moyen (nombre de réseaux sur 5).", "Share of MPs declaring each channel to the Assemblée, and mean score (channels out of 5).")}</p>
         <table class="table"><thead><tr><th>${L("Groupe", "Group")}</th>${PLATFORMS.map((p) => `<th class="num">${p === "website" ? "Web" : p === "twitter" ? "X" : p[0].toUpperCase() + p.slice(1, 5)}</th>`).join("")}<th class="num">Score</th></tr></thead>
           <tbody>
-            ${[[L("Assemblée", "Whole house"), deputes, null] as const, ...groups.map((g) => [g[0].groupe!.abrev, g, g[0].groupe!.couleur] as const)]
+            ${[[L("Assemblée", "Whole house"), deputes, null] as const, ...groups.map((g) => [g[0].groupe!.abrev, g, safeColor(g[0].groupe!.couleur)] as const)]
               .map(([label, mps, color]) => `<tr><td>${color ? `<span class="chip" style="--c:${color}">${esc(label)}</span>` : `<b>${esc(label)}</b>`}</td>${PLATFORMS.map((p) => `<td class="num">${pct(mps.filter((d) => d.socials[p]).length, mps.length)}</td>`).join("")}<td class="num"><b>${(mps.reduce((s, d) => s + presence(d), 0) / mps.length).toFixed(1)}</b></td></tr>`)
               .join("")}
           </tbody></table>

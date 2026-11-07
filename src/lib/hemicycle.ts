@@ -1,5 +1,6 @@
 // Hemicycle seat chart: one dot per MP, groups placed left → right in the order they sit.
 import { esc } from "../util";
+import { L } from "../i18n";
 
 /** Seating order of the 17th-legislature groups, left to right; unknown groups go before non-attached. */
 export const SEATING = ["GDR", "LFI-NFP", "ECOS", "SOC", "LIOT", "DEM", "EPR", "HOR", "DR", "UDR", "RN", "NI"];
@@ -40,10 +41,11 @@ export function hemicycle(groups: SeatGroup[], rows = 12) {
     while (g < groups.length - 1 && used >= groups[g].seats) { g++; used = 0; }
     used++;
     const grp = groups[g];
-    return `<circle class="seat" cx="${s.x.toFixed(1)}" cy="${s.y.toFixed(1)}" r="${dot.toFixed(1)}" fill="${grp.color}" data-tip="${esc(`${grp.label}\n${grp.seats} sièges`)}"/>`;
+    return `<circle class="seat" cx="${s.x.toFixed(1)}" cy="${s.y.toFixed(1)}" r="${dot.toFixed(1)}" fill="${grp.color}" data-tip="${esc(`${grp.label}\n${grp.seats} ${L("sièges", "seats")}`)}"/>`;
   });
   return `<svg class="hemicycle" viewBox="0 0 ${W} ${H}" role="img" aria-label="Hémicycle">${circles.join("")}
-    <text x="${cx}" y="${cy - 30}" text-anchor="middle" style="font: 600 44px var(--serif); fill: var(--ink)">${total}</text>
-    <text x="${cx}" y="${cy - 6}" text-anchor="middle" style="font: 13px var(--sans); fill: var(--ink-2)">sièges · majorité ${Math.floor(total / 2) + 1}</text>
+    <line x1="${cx}" x2="${cx}" y1="${cy - outer - 10}" y2="${cy - inner + 14}" class="hemi-maj"/>
+    <text x="${cx}" y="${cy - 34}" text-anchor="middle" class="hemi-total">${total}</text>
+    <text x="${cx}" y="${cy - 8}" text-anchor="middle" class="hemi-sub">${L("sièges", "seats")} · ${L("majorité", "majority")} ${Math.floor(total / 2) + 1}</text>
   </svg>`;
 }

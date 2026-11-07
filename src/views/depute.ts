@@ -1,7 +1,7 @@
 import { loadAnMeta, loadDeputes, loadScrutins, loadVotes, type Depute } from "../data";
 import { L, fmtDate, fmtNum, fmtPct, t } from "../i18n";
 import { PLATFORMS, age, presence } from "./assemblee";
-import { esc } from "../util";
+import { esc, safeUrl, safeColor } from "../util";
 import { photoUrl } from "./deputes";
 
 const PAGE = 20;
@@ -42,7 +42,7 @@ export async function renderDepute(app: HTMLElement, id: string) {
   app.innerHTML = `
     <section class="page">
       <p class="muted small crumbs"><a href="#/assemblee">${L("Assemblée", "Assembly")}</a> › ${d.numDepartement ? `<a href="#/assemblee/${d.numDepartement}">${esc(d.departement ?? d.numDepartement)}</a> › ` : ""}${d.circo ? `<a href="#/circo/${d.circo}">${L("Circonscription", "District")} ${d.numCirco}</a> › ` : ""}${esc(d.prenom)} ${esc(d.nom)}</p>
-      <div class="mp-head card" style="--c:${d.groupe?.couleur ?? "#999"}">
+      <div class="mp-head card" style="--c:${safeColor(d.groupe?.couleur) ?? "#999"}">
         <img src="${photoUrl(d.id)}" alt="" onerror="this.style.visibility='hidden'" />
         <div class="mp-id">
           <h1>${esc(d.civ)} ${esc(d.prenom)} ${esc(d.nom)}</h1>
@@ -61,10 +61,10 @@ export async function renderDepute(app: HTMLElement, id: string) {
             ${d.naissance ? `<dt>${s.born}</dt><dd>${fmtDate(d.naissance)} (${age(d)} ${L("ans", "years")})</dd>` : ""}
             ${d.profession ? `<dt>${s.profession}</dt><dd>${esc(d.profession)}</dd>` : ""}
             ${d.catSocPro ? `<dt>${s.socioCategory}</dt><dd>${esc(d.famSocPro)} — ${esc(d.catSocPro)}</dd>` : ""}
-            ${d.hatvp ? `<dt>HATVP</dt><dd><a href="${esc(d.hatvp)}" target="_blank" rel="noopener">${s.hatvp} ↗</a> <span class="muted small">${L("parcours, activités et intérêts déclarés", "declared career, activities and interests")}</span></dd>` : ""}
+            ${d.hatvp ? `<dt>HATVP</dt><dd><a href="${esc(safeUrl(d.hatvp))}" target="_blank" rel="noopener">${s.hatvp} ↗</a> <span class="muted small">${L("parcours, activités et intérêts déclarés", "declared career, activities and interests")}</span></dd>` : ""}
             <dt>LinkedIn</dt><dd>${
               d.socials.linkedin
-                ? `<a href="${esc(href("linkedin", d.socials.linkedin))}" target="_blank" rel="noopener">${L("Voir le profil", "View profile")}</a>`
+                ? `<a href="${esc(safeUrl(href("linkedin", d.socials.linkedin)))}" target="_blank" rel="noopener">${L("Voir le profil", "View profile")}</a>`
                 : `<a href="https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(`${d.prenom} ${d.nom} député`)}" target="_blank" rel="noopener">${L("Rechercher sur LinkedIn", "Search LinkedIn")} ↗</a> <span class="muted small">${L("aucun profil déclaré", "no profile declared")}</span>`
             }</dd>
           </dl>
@@ -75,7 +75,7 @@ export async function renderDepute(app: HTMLElement, id: string) {
               .map(([k, v]) => {
                 const src = d.socialSources?.[k]?.source;
                 const lbl = src ? SOURCE_LABEL[src] ?? [src, src] : SOURCE_LABEL.assemblee;
-                return `<li><a href="${esc(href(k, v))}" target="_blank" rel="noopener">${esc(PLATFORM_LABEL[k] ?? k)}</a> <span class="muted small">${esc(L(lbl[0], lbl[1]))}</span></li>`;
+                return `<li><a href="${esc(safeUrl(href(k, v)))}" target="_blank" rel="noopener">${esc(PLATFORM_LABEL[k] ?? k)}</a> <span class="muted small">${esc(L(lbl[0], lbl[1]))}</span></li>`;
               })
               .join("")}
           </ul>

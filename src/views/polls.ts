@@ -4,7 +4,7 @@ import { L, fmtDate, fmtNum } from "../i18n";
 import { lineChart } from "../lib/chart";
 import { meta, registerParties } from "../lib/candidates";
 import { average, duelAverages, pollValue, trend } from "../lib/polls";
-import { esc } from "../util";
+import { esc, safeUrl } from "../util";
 import { shiftDays } from "./home";
 
 const ui = { range: 365, hidden: new Set<string>(), pollster: "" };
@@ -66,7 +66,7 @@ export async function renderPolls(app: HTMLElement) {
         ${markets ? marketsHtml(markets) : `<p class="muted">${L("Données indisponibles.", "Data unavailable.")}</p>`}
       </article>
 
-      <p class="source muted">${L("Sondages : Wikipédia (CC BY-SA), mis à jour le", "Polls: Wikipedia (CC BY-SA), updated")} ${fmtDate(polls.fetchedAt)} · <a href="${polls.source}" target="_blank" rel="noopener">${L("page source", "source page")}</a></p>
+      <p class="source muted">${L("Sondages : Wikipédia (CC BY-SA), mis à jour le", "Polls: Wikipedia (CC BY-SA), updated")} ${fmtDate(polls.fetchedAt)} · <a href="${esc(safeUrl(polls.source))}" target="_blank" rel="noopener">${L("page source", "source page")}</a></p>
     </section>`;
 
   const drawChart = () => {
@@ -150,7 +150,7 @@ function marketsHtml(data: NonNullable<Awaited<ReturnType<typeof loadMarkets>>>)
             .slice(0, 8)
             .map((o) => `<li><div class="bar-label"><span>${esc(o.name)}</span><b>${o.prob.toFixed(0)} %</b></div><div class="bar"><div style="width:${o.prob}%;background:${meta(o.name).color}"></div></div></li>`)
             .join("")}</ol>
-          <p class="muted small">${L("Volume", "Volume")} ${fmtNum(m.volume)} · <a href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.platform)} ↗</a></p>
+          <p class="muted small">${L("Volume", "Volume")} ${fmtNum(m.volume)} · <a href="${esc(safeUrl(m.url))}" target="_blank" rel="noopener">${esc(m.platform)} ↗</a></p>
         </div>`,
       )
       .join("")}</div>
