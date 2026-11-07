@@ -2252,16 +2252,1955 @@
       },
       "check": null,
       "postTime": "2026-11-04T13:38:27.640Z"
+    },
+    "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3mzq6sdxkrc2i": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:28:46.093Z",
+      "storyItems": [
+        "06e2d1518a6d"
+      ],
+      "storyTitle": "Présidentielle 2027 : « Liberté, Égalité, Solidarité », Jean-Luc Mélenchon dévoile une nouvelle affiche de campagne",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Appel à « reconstruire l'École publique » et « l'égalité et l'émancipation », orientation de gauche sur les services publics.",
+        "rationale_en": "Calls to rebuild public schooling around equality and emancipation, a left-leaning position on public services."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Slogan de programme sans attaque d'élites ni rhétorique populiste.",
+        "rationale_en": "Programmatic slogan with no attack on elites or populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-07T15:14:49.825Z"
+    },
+    "bsky:at://did:plc:hiebgjpdm7uhdm2zjafcg5on/app.bsky.feed.post/3mzpkqyd7u42y": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:28:46.093Z",
+      "storyItems": [
+        "4973bd30e93d"
+      ],
+      "storyTitle": "La mobilisation impose les revendications sociales dans le débat, au grand dam du gouvernement et de l’extrême droite",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Dénonce le refus du gouvernement de répondre aux revendications populaires, centrées sur la question sociale.",
+        "rationale_en": "Criticises the government for refusing popular social demands, a left-wing framing."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "peuple_vs_elites",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Oppose le « gouvernement » aux « revendications populaires » avec un ton de mobilisation.",
+        "rationale_en": "Opposes the government to 'popular demands' in a mobilising tone."
+      },
+      "check": null,
+      "postTime": "2026-11-07T09:16:09.004Z"
+    },
+    "bsky:at://did:plc:yphqj24zexmev436eeyx6gof/app.bsky.feed.post/3mzohibkdpk2b": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:28:46.093Z",
+      "storyItems": [
+        "99fb717bb79e"
+      ],
+      "storyTitle": "Présidentielle 2027 : Smic à 1.700 euros net, Retraite à 62 ans… Le programme de LFI en 1.069 mesures en librairie",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Promotion d'un programme de gauche radicale (« L'Avenir en commun ») sans contenu précis cité dans le message.",
+        "rationale_en": "Promotes a radical-left programme ('L'Avenir en commun') without specific content in the message."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Appel à être « une déferlante » et ton militant, sans attaque d'élites.",
+        "rationale_en": "Calls to be 'a tidal wave' with activist tone, without attacking elites."
+      },
+      "check": null,
+      "postTime": "2026-11-06T22:44:55.945Z"
+    },
+    "yt:wanrYwCu9MM": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:28:46.093Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Accusation de propos racistes visant Édouard Philippe, sans contenu idéologique développé.",
+        "rationale_en": "Accuses Édouard Philippe of racist remarks, without developed ideological content."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Qualifie l'adversaire de raciste sans argumentation, en mobilisant l'indignation.",
+        "rationale_en": "Labels an opponent as racist without argument, mobilising indignation."
+      },
+      "check": null,
+      "postTime": "2026-11-06T18:29:35.000Z"
+    },
+    "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3mznyfpc2o22h": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:28:46.093Z",
+      "storyItems": [
+        "b8612f349b2f",
+        "1f7d7f6d68a1",
+        "c1a3bb52f2c9",
+        "c804852ef03f",
+        "3e18760e95bd",
+        "66e19823719c"
+      ],
+      "storyTitle": "Marine Le Pen et Edouard Philippe attaquent le programme de LFI, que Jean-Luc Mélenchon doit présenter samedi lors d’un meeting au Bourget",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message d'agenda pour un meeting, sans position politique exprimée.",
+        "rationale_en": "Event announcement for a rally, with no political position expressed."
+      },
+      "populism": {
+        "score": 0.05,
+        "markers": [],
+        "rationale_fr": "Enthousiasme de mobilisation sans rhétorique populiste.",
+        "rationale_en": "Mobilisation enthusiasm without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-06T18:15:03.540Z"
+    },
+    "yt:k8uudz4gYLk": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:28:46.093Z",
+      "storyItems": [
+        "99fb717bb79e"
+      ],
+      "storyTitle": "Présidentielle 2027 : Smic à 1.700 euros net, Retraite à 62 ans… Le programme de LFI en 1.069 mesures en librairie",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Simple annonce de disponibilité du programme, sans contenu idéologique.",
+        "rationale_en": "Simple announcement that the programme is available, with no ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Annonce neutre sans rhétorique populiste.",
+        "rationale_en": "Neutral announcement without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-06T18:08:09.000Z"
+    },
+    "bsky:at://did:plc:yiitgmldz3gwyxmz3p5fqcwv/app.bsky.feed.post/3mznw3ifh2s2o": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:28:46.093Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.4,
+        "rationale_fr": "Critique le RN pour ses amendements contre l'encadrement des loyers, position de gauche sur le logement.",
+        "rationale_en": "Criticises the RN over amendments against rent control, a left-leaning housing position."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Ton moqueur et indigné envers un adversaire, sans argument développé.",
+        "rationale_en": "Mocking, indignant tone toward an opponent, without developed argument."
+      },
+      "check": null,
+      "postTime": "2026-11-06T17:33:33.310Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3mznvm6euqk2t": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:28:46.093Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique de l'extrême droite et de la Macronie sur l'État de droit ; position de gauche antifasciste.",
+        "rationale_en": "Criticises the far right and Macronie on the rule of law; left-wing anti-far-right position."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel",
+          "complot"
+        ],
+        "rationale_fr": "Qualifie l'extrême droite de « laboratoires politiques de la haine » ; ton alarmiste.",
+        "rationale_en": "Calls the far right 'political laboratories of hatred'; alarmist tone."
+      },
+      "check": null,
+      "postTime": "2026-11-06T17:24:59.487Z"
+    },
+    "bsky:at://did:plc:fakceyj3l3pen4wtnjhgudd3/app.bsky.feed.post/3mzntg5xcfs25": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:03.489Z",
+      "storyItems": [
+        "785a99c3c5a2"
+      ],
+      "storyTitle": "À quel niveau augmenter le Smic, et quand? \"Les deux sujets sont sur la table\" pour Roland Lescure. Quelles sont les règles en la matière?",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique de la revalorisation du Smic jugée insuffisante et de sa portée, au nom du décrochage par rapport au PIB ; orientation sociale-démocrate.",
+        "rationale_en": "Criticizes the proposed minimum wage rise as too small, citing its lag behind GDP; social-democratic orientation."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Ton ironique mais sans opposition peuple contre élites ni appel émotionnel marqué.",
+        "rationale_en": "Ironic tone but no people-versus-elite framing or strong emotional appeal."
+      },
+      "check": null,
+      "postTime": "2026-11-06T16:45:50.226Z"
+    },
+    "bsky:at://did:plc:k3duvs7l7xsp7varh7eoajnq/app.bsky.feed.post/3mznsi4frfs2q": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:03.489Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 1,
+        "rationale_fr": "Soutien à une alternance RN avec Marine Le Pen à l'Élysée et Jordan Bardella à Matignon ; droite nationaliste.",
+        "rationale_en": "Backs an RN alternance with Le Pen as president and Bardella as prime minister; nationalist right."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [],
+        "rationale_fr": "Message de tractage à caractère partisan, sans attaque explicite contre les élites ni rhétorique du peuple homogène.",
+        "rationale_en": "Partisan canvassing message without explicit attack on elites or homogeneous-people rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-06T16:29:01.970Z"
+    },
+    "bsky:at://did:plc:otrocyu2h7akfbiurwlqxxl6/app.bsky.feed.post/3mznrynqcgs2t": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:03.489Z",
+      "storyItems": [
+        "99fb717bb79e"
+      ],
+      "storyTitle": "Présidentielle 2027 : Smic à 1.700 euros net, Retraite à 62 ans… Le programme de LFI en 1.069 mesures en librairie",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Présentation du programme LFI incluant rénovation énergétique et RIC ; orientation de gauche radicale.",
+        "rationale_en": "Presents LFI program including energy renovation and the RIC; radical left orientation."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Annonce de programme sans rhétorique populiste notable, la mention du RIC restant factuelle.",
+        "rationale_en": "Program announcement with no notable populist rhetoric; the RIC mention stays factual."
+      },
+      "check": null,
+      "postTime": "2026-11-06T16:20:23.279Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3mznqyhrujc2l": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:03.489Z",
+      "storyItems": [
+        "64417e9968f4",
+        "2043d386566b"
+      ],
+      "storyTitle": "Maïssa, éborgnée à 17 ans le 17 octobre : « J’ai reçu le tir mais deux secondes avant j’étais en train de sourire »",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Demande d'interdiction des grenades lacrymogènes et appel à la vérité et à la justice ; sensibilité de gauche.",
+        "rationale_en": "Calls for banning tear gas grenades and for truth and justice; left-leaning sensibility."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message de soutien et de demande de justice, sans opposition peuple contre élites.",
+        "rationale_en": "Support and justice message without people-versus-elites framing."
+      },
+      "check": {
+        "claim": "Le tir de grenade qui a éborgné la lycéenne serait illégal et aurait eu lieu sans sommation.",
+        "why_fr": "Les articles fournis rapportent que ce sont des témoins et l'avocat qui identifient le tir ; la qualification juridique et l'absence de sommation restent à établir.",
+        "why_en": "The provided articles report that witnesses and the lawyer identify the shot; the legal qualification and absence of warning remain to be established.",
+        "sources": [
+          {
+            "title": "Témoignage : « Personne ne mérite ça » : rencontre avec Maïssa, 18 ans",
+            "url": "https://www.franceinfo.fr/faits-divers/police/violences-policieres/temoignage-personne-ne-merite-ca-rencontre-avec-maissa-18-ans-qui-a-perdu-un-il-a-la-suite-d-un-tir-de-grenade-le-17-octobre_8271551.html"
+          },
+          {
+            "title": "Maïssa, éborgnée à 17 ans le 17 octobre",
+            "url": "https://www.lemonde.fr/videos/video/2026/11/06/maissa-eborgnee-a-17-ans-le-17-octobre-j-ai-recu-le-tir-mais-deux-secondes-avant-j-etais-en-train-de-sourire_6807857_1669088.html"
+          }
+        ]
+      },
+      "postTime": "2026-11-06T16:02:23.293Z"
+    },
+    "yt:j_LDJr3BzMc": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:03.489Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Propositions de fonds mutualisé pour l'assurance agricole et d'aide à la transition agroécologique ; gauche écologiste radicale.",
+        "rationale_en": "Proposes a pooled fund replacing private agricultural insurance and support for agroecological transition; radical left-ecologist."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Présentation de propositions institutionnelles, sans rhétorique populiste.",
+        "rationale_en": "Presents institutional proposals with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-06T15:59:19.000Z"
+    },
+    "bsky:at://did:plc:ippzwyckniihibs22d6wju7d/app.bsky.feed.post/3mznlkuildc26": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:03.489Z",
+      "storyItems": [
+        "99fb717bb79e"
+      ],
+      "storyTitle": "Présidentielle 2027 : Smic à 1.700 euros net, Retraite à 62 ans… Le programme de LFI en 1.069 mesures en librairie",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce pratique de sortie et de vente du livre-programme, sans contenu idéologique explicite.",
+        "rationale_en": "Practical announcement of the book's release and sales, with no explicit ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Message promotionnel sans rhétorique populiste.",
+        "rationale_en": "Promotional message with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-06T14:25:18.154Z"
+    },
+    "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3mznl2awyos2f": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:03.489Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Simple promotion d'un livre de Rima Hassan, sans position politique exprimée.",
+        "rationale_en": "Simple promotion of a Rima Hassan book, with no political position expressed."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Message promotionnel sans rhétorique populiste.",
+        "rationale_en": "Promotional message with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-06T14:16:00.779Z"
+    },
+    "yt:vBVsEhMIdDE": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:03.489Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique de Parcoursup comme marché et appel à mobiliser l'argent de l'apprentissage ; orientation de gauche.",
+        "rationale_en": "Criticizes Parcoursup as a market and calls for redirecting apprenticeship aid money; left orientation."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "simplisme"
+        ],
+        "rationale_fr": "Présente l'arbitrage budgétaire comme une simple question de choix d'argent, sans détailler les contraintes.",
+        "rationale_en": "Frames the budget trade-off as a simple matter of money choices without detailing constraints."
+      },
+      "check": {
+        "claim": "23 milliards d'euros vont aux aides à l'apprentissage, soit plus que le budget des universités.",
+        "why_fr": "Le chiffre n'est pas daté et son périmètre (aides incluses, année, comparaison avec quel budget universitaire) n'est pas précisé ; il mérite une vérification.",
+        "why_en": "The figure is undated and its scope (which aid included, which year, which university budget) is not specified; it merits checking.",
+        "sources": [
+          {
+            "title": "Vie publique : portail de l'information publique",
+            "url": "https://www.vie-publique.fr/"
+          }
+        ]
+      },
+      "postTime": "2026-11-06T12:51:25.000Z"
+    },
+    "yt:uP53Bm9waFE": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:24.914Z",
+      "storyItems": [
+        "9b25be158ffe"
+      ],
+      "storyTitle": "Université : après Parcoursup, Mon Master sera-t-il le prochain totem à abattre ?",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Critique de Parcoursup et demande de moyens humains et financiers pour l'université, avec la mention de 23 milliards disponibles, position de gauche.",
+        "rationale_en": "Criticizes Parcoursup and calls for more human resources and funding for universities, citing 23 billion euros available; a left-leaning position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Argumentation essentiellement chiffrée, sans opposition au peuple contre les élites.",
+        "rationale_en": "Mostly figure-based argument, with no people-versus-elites framing."
+      },
+      "check": {
+        "claim": "110 000 lycéens laissés sans solution chaque année par Parcoursup, et près de 5 000 maîtres de conférences en moins depuis 2009.",
+        "why_fr": "Ces chiffres sont présentés sans période ni source précise ; le décompte des jeunes sans proposition et l'évolution des effectifs gagnent à être vérifiés auprès des données officielles.",
+        "why_en": "These figures are given without a precise period or source; the count of students without an offer and the change in staffing should be checked against official data.",
+        "sources": [
+          {
+            "title": "Université : après Parcoursup, Mon Master sera-t-il le prochain totem à abattre ? (L'Opinion)",
+            "url": "https://www.lopinion.fr/politique/universite-apres-parcoursup-mon-master-sera-t-il-le-prochain-totem-a-abattre"
+          },
+          {
+            "title": "Vie publique, accueil",
+            "url": "https://www.vie-publique.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-06T12:36:42.000Z"
+    },
+    "bsky:at://did:plc:sgunesm6k7o2zrdzdico7ai7/app.bsky.feed.post/3mzn3qdhjjk2d": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:24.914Z",
+      "storyItems": [
+        "99fb717bb79e"
+      ],
+      "storyTitle": "Présidentielle 2027 : Smic à 1.700 euros net, Retraite à 62 ans… Le programme de LFI en 1.069 mesures en librairie",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Promotion du programme de LFI (Smic à 1 700 euros, retraite à 62 ans) : programme de gauche radicale.",
+        "rationale_en": "Promotes the LFI programme (1,700 euro net minimum wage, retirement at 62): a radical left programme."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [],
+        "rationale_fr": "Ton militant et enthousiaste, sans attaque explicite contre des élites ou le peuple.",
+        "rationale_en": "Enthusiastic campaign tone, with no explicit attack on elites or appeal to the people."
+      },
+      "check": null,
+      "postTime": "2026-11-06T09:42:01.747Z"
+    },
+    "bsky:at://did:plc:hiebgjpdm7uhdm2zjafcg5on/app.bsky.feed.post/3mzn2l5lc4a2l": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:24.914Z",
+      "storyItems": [
+        "ab544818d2b5",
+        "40b05122349e",
+        "79d2ac19d8d6",
+        "e2928b28e93f",
+        "6a2c92893f44",
+        "0453ea39fdb8"
+      ],
+      "storyTitle": "Mobilisation du 7 novembre : suivez avec nous cette nouvelle journée de manifestations",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Appel à la mobilisation contre le macronisme, dans la rue et aux urnes, en soutien à une gauche radicale.",
+        "rationale_en": "Calls for mobilisation against Macronism, in the streets and at the ballot box, from a radical left position."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Présente le pouvoir comme à abattre et mobilise l'émotion militante (« en finir avec le macronisme »).",
+        "rationale_en": "Frames the government as something to end and uses militant emotional appeal (end Macronism)."
+      },
+      "check": null,
+      "postTime": "2026-11-06T09:21:13.835Z"
+    },
+    "bsky:at://did:plc:47fzaypb7ahtgp3wxvc2ects/app.bsky.feed.post/3mzmzwxtsms2a": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:24.914Z",
+      "storyItems": [
+        "9c409c3ae751"
+      ],
+      "storyTitle": "Inéligibilité de Marine Le Pen : « La liberté d’expression des juges ne saurait être sanctionnée au risque de menacer la vie même de la démocratie »",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message centré sur la procédure d'inéligibilité, sans position économique ou sociétale permettant de situer l'orientation.",
+        "rationale_en": "Focuses on the ineligibility procedure, with no economic or societal position that places it on the left-right axis."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Présente la candidate du RN comme juridiquement disqualifiée et insiste sur la jurisprudence.",
+        "rationale_en": "Presents the RN candidate as legally disqualified and stresses case law."
+      },
+      "check": {
+        "claim": "Marine Le Pen est inéligible pour 2027.",
+        "why_fr": "La citation fournie précise que l'inéligibilité court jusqu'à la décision de la Cour de cassation ; le message présente le statut comme acquis pour 2027, ce qui mérite d'être vérifié à la lumière de cette précision.",
+        "why_en": "The quoted source specifies that ineligibility lasts until the Court of Cassation rules; the message presents the status as settled for 2027, which should be checked against that qualification.",
+        "sources": [
+          {
+            "title": "Inéligibilité de Marine Le Pen : la liberté d'expression des juges ne saurait être sanctionnée (Le Monde)",
+            "url": "https://www.lemonde.fr/idees/article/2026/11/06/ineligibilite-de-marine-le-pen-la-liberte-d-expression-des-juges-ne-saurait-etre-sanctionnee-au-risque-de-menacer-la-vie-meme-de-la-democratie_6807834_3232.html"
+          },
+          {
+            "title": "Vie publique, accueil",
+            "url": "https://www.vie-publique.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-06T09:09:56.968Z"
+    },
+    "bsky:at://did:plc:7qlw6gig76xhkjjkxl35xpxe/app.bsky.feed.post/3mzmzckxyk22s": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:24.914Z",
+      "storyItems": [
+        "66d1743db79f",
+        "cd0c14b79821",
+        "56031080e33c",
+        "abaf3290c789",
+        "7b8c1671b04f"
+      ],
+      "storyTitle": "Présidentielle: la moitié des députés communistes choisit Jean-Luc Mélenchon plutôt que Fabien Roussel",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Soutien à Mélenchon et à « l'alliance populaire » pour battre le RN, positionnement de gauche radicale.",
+        "rationale_en": "Backs Mélenchon and a 'popular alliance' to defeat the RN, a radical left positioning."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [],
+        "rationale_fr": "Vocabulaire de mobilisation populaire, sans opposition explicite au peuple contre des élites.",
+        "rationale_en": "Popular mobilisation vocabulary, without an explicit people-versus-elites opposition."
+      },
+      "check": null,
+      "postTime": "2026-11-06T08:58:32.384Z"
+    },
+    "bsky:at://did:plc:sgunesm6k7o2zrdzdico7ai7/app.bsky.feed.post/3mzmz7srq222h": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:24.914Z",
+      "storyItems": [
+        "b8612f349b2f",
+        "1f7d7f6d68a1",
+        "c1a3bb52f2c9",
+        "c804852ef03f",
+        "3e18760e95bd",
+        "66e19823719c"
+      ],
+      "storyTitle": "Marine Le Pen et Edouard Philippe attaquent le programme de LFI, que Jean-Luc Mélenchon doit présenter samedi lors d’un meeting au Bourget",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce pratique d'un meeting et de la présentation d'un programme, sans position idéologique exprimée.",
+        "rationale_en": "Practical announcement of a rally and programme presentation, with no ideological position stated."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Simple annonce d'événement, sans rhétorique populiste.",
+        "rationale_en": "Simple event announcement, with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-06T08:56:59.898Z"
+    },
+    "bsky:at://did:plc:dzhhf6dtekdyjpcvm5xr6jeb/app.bsky.feed.post/3mzmyj6nuzc2d": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:24.914Z",
+      "storyItems": [
+        "99fb717bb79e"
+      ],
+      "storyTitle": "Présidentielle 2027 : Smic à 1.700 euros net, Retraite à 62 ans… Le programme de LFI en 1.069 mesures en librairie",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Présentation positive du programme de LFI, mise en avant de ses mesures et de son sérieux.",
+        "rationale_en": "Positive presentation of the LFI programme, highlighting its measures and seriousness; a radical left position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message promotionnel sans opposition au peuple contre des élites.",
+        "rationale_en": "Promotional message with no people-versus-elites opposition."
+      },
+      "check": null,
+      "postTime": "2026-11-06T08:44:20.607Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3mzmxexu3z72n": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:24.914Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Défend une hausse des salaires imposée aux entreprises, position de gauche sociale.",
+        "rationale_en": "Defends wage increases imposed on companies, a social left position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Réponse argumentée à une déclaration, sans opposition au peuple contre des élites.",
+        "rationale_en": "Argued response to a statement, with no people-versus-elites opposition."
+      },
+      "check": null,
+      "postTime": "2026-11-06T08:24:05.492Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3mzmx5oufw62p": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:36.195Z",
+      "storyItems": [
+        "72cc7fef130b",
+        "fefb065b845b"
+      ],
+      "storyTitle": "« 10 milliards, ni plus, ni moins » : d'où vient ce montant brandi par les syndicats étudiants ?",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique des aides aux grands groupes et défense des PME et artisans, dans une logique de redistribution fiscale de gauche.",
+        "rationale_en": "Criticizes aid to large firms and defends small businesses, a redistributive left-leaning framing."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "anti_elites"
+        ],
+        "rationale_fr": "Oppose les grands groupes aux petits acteurs, sans recours marqué au peuple homogène ni au complot.",
+        "rationale_en": "Contrasts large groups with small businesses, without strong appeal to a homogeneous people or conspiracy."
+      },
+      "check": {
+        "claim": "211 milliards d'euros d'aides aux entreprises par an, et 100 000 emplois supprimés en 10 ans par les grands groupes.",
+        "why_fr": "Le montant des aides dépend fortement du périmètre retenu (exonérations, crédits d'impôt) et le chiffre de suppressions d'emplois attribué aux seuls grands groupes mérite une source précise.",
+        "why_en": "The aid total depends heavily on the scope used (exemptions, tax credits), and the job-loss figure attributed to large groups needs a precise source.",
+        "sources": [
+          {
+            "title": "Vie publique : les aides publiques aux entreprises",
+            "url": "https://www.vie-publique.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-06T08:20:01.186Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3mzmwvlwmgb2y": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:36.195Z",
+      "storyItems": [
+        "7431821d3b75"
+      ],
+      "storyTitle": "Barre des 1 500 euros, 10% d'augmentation, 100 euros en plus… Quelles sont les propositions du gouvernement et des syndicats sur le smic ?",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique de la faiblesse de la hausse du Smic proposée et appel à une meilleure rémunération du travail, orientation sociale-démocrate.",
+        "rationale_en": "Criticizes the small proposed minimum wage increase and calls for better pay, a social-democratic stance."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "anti_elites",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Ironie envers un ministre et appel à l'empathie plutôt qu'à un argumentaire chiffré.",
+        "rationale_en": "Irony toward a minister and appeal to empathy rather than detailed argument."
+      },
+      "check": null,
+      "postTime": "2026-11-06T08:15:29.681Z"
+    },
+    "yt:ZhVFkFrahxg": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:36.195Z",
+      "storyItems": [
+        "ad50f7387657",
+        "d22432d23d96",
+        "b78d3c43c488",
+        "ec88731ef639",
+        "1e142ccee986",
+        "50751336c8fb"
+      ],
+      "storyTitle": "Budget 2027: l'Assemblée rejette à l'unanimité la partie \"recettes\", le projet de loi de finances va être transmis au Sénat",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique d'un gouvernement obsédé par la baisse des dépenses, position de gauche sur la dépense publique.",
+        "rationale_en": "Criticizes a government fixated on spending cuts, a left-wing position on public spending."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Critique argumentée d'une politique budgétaire, sans rhétorique populiste marquée.",
+        "rationale_en": "Argued criticism of budget policy, without marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-06T07:30:16.000Z"
+    },
+    "bsky:at://did:plc:4yo5qhevwdkksmmxtvlben3v/app.bsky.feed.post/3mzloicgfkv2u": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:36.195Z",
+      "storyItems": [
+        "5d8afd1b341e",
+        "94833c0b9905"
+      ],
+      "storyTitle": "Présidentielle 2027 : Jean-Luc Mélenchon fait de la conquête de la rue un tremplin vers sa « révolution citoyenne »",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Revendications sociales (salaires, services publics) et appel à une « révolution citoyenne », orientation de gauche radicale.",
+        "rationale_en": "Social demands (wages, public services) and call for a 'citizen revolution', radical-left orientation."
+      },
+      "populism": {
+        "score": 0.7,
+        "markers": [
+          "peuple_vs_elites",
+          "souverainete_populaire",
+          "appel_emotionnel",
+          "delegitimation"
+        ],
+        "rationale_fr": "Mobilisation du peuple contre « leur monde », ton émotionnel et appel à une révolution.",
+        "rationale_en": "Mobilization of the people against 'their world', emotional tone and call for revolution."
+      },
+      "check": {
+        "claim": "1,6 million de manifestants lors de la grève du 5 novembre.",
+        "why_fr": "Ce chiffre semble être un décompte des organisateurs ; les estimations de la police ou d'autres sources peuvent être nettement inférieures.",
+        "why_en": "This figure appears to be an organizers' count; police or other estimates may be considerably lower.",
+        "sources": [
+          {
+            "title": "Le Figaro : Mélenchon et la conquête de la rue",
+            "url": "https://www.lefigaro.fr/elections/presidentielles/presidentielle-2027-jean-luc-melenchon-fait-de-la-conquete-de-la-rue-un-tremplin-vers-sa-revolution-citoyenne-20261106"
+          }
+        ]
+      },
+      "postTime": "2026-11-05T20:12:13.818Z"
+    },
+    "yt:bXLvu3hYXN0": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:36.195Z",
+      "storyItems": [
+        "b8612f349b2f",
+        "1f7d7f6d68a1",
+        "c1a3bb52f2c9",
+        "c804852ef03f",
+        "3e18760e95bd",
+        "66e19823719c"
+      ],
+      "storyTitle": "Marine Le Pen et Edouard Philippe attaquent le programme de LFI, que Jean-Luc Mélenchon doit présenter samedi lors d’un meeting au Bourget",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Présentation d'un programme de gauche radicale avec plus de 1 000 mesures, sans contenu idéologique détaillé dans le message.",
+        "rationale_en": "Presents a radical-left program of over 1,000 measures; the message itself has little detailed ideological content."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "appel_emotionnel",
+          "peuple_vs_elites"
+        ],
+        "rationale_fr": "Ton d'enthousiasme et de mobilisation, sans attaque directe nommée.",
+        "rationale_en": "Enthusiastic mobilizing tone, without a named direct attack."
+      },
+      "check": null,
+      "postTime": "2026-11-05T20:00:46.000Z"
+    },
+    "bsky:at://did:plc:awp4pev7xbtmhlwvq6qfirpz/app.bsky.feed.post/3mzlnd6t23c2g": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:36.195Z",
+      "storyItems": [
+        "ab45863302fa",
+        "04ba1168f518",
+        "bebc4e0cebfa",
+        "3838911abfb6",
+        "091b1e697554"
+      ],
+      "storyTitle": "Pétition contre CNews: le député Alexandre Portier (LR) nommé rapporteur, prochaine étape mardi en commission",
+      "political": true,
+      "lean": {
+        "score": -0.4,
+        "rationale_fr": "Critique d'un « glissement idéologique » d'une chaîne et soutien à une pétition pour sa fermeture, position de gauche.",
+        "rationale_en": "Criticizes an alleged ideological drift of a channel and supports a petition to close it, a left-leaning position."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Présente la chaîne comme illégitime et mobilise l'indignation via le nombre de signataires.",
+        "rationale_en": "Presents the channel as illegitimate and mobilizes indignation via signature counts."
+      },
+      "check": {
+        "claim": "213 journalistes de BFMTV et 160 techniciens ont alerté sur le glissement idéologique de la chaîne ; pétition à 900 000 signataires.",
+        "why_fr": "Le nombre de signataires de la pétition peut évoluer et les chiffres de la lettre de journalistes méritent d'être confirmés par la source directe.",
+        "why_en": "Petition signature counts change over time and the journalist letter figures should be confirmed at the primary source.",
+        "sources": [
+          {
+            "title": "Libération CheckNews : pétitions à l'Assemblée",
+            "url": "https://www.liberation.fr/checknews/supprimer-cnews-que-sont-devenues-les-autres-petitions-a-lassemblee-nationale-ayant-recueilli-plus-de-500-000-signatures-20261106_YD6HMHM3T5FTFNGLWOIGOURFEU/"
+          }
+        ]
+      },
+      "postTime": "2026-11-05T19:51:28.553Z"
+    },
+    "bsky:at://did:plc:awp4pev7xbtmhlwvq6qfirpz/app.bsky.feed.post/3mzlmdhiwic2g": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:36.195Z",
+      "storyItems": [
+        "ad50f7387657",
+        "d22432d23d96",
+        "b78d3c43c488",
+        "ec88731ef639",
+        "1e142ccee986",
+        "50751336c8fb"
+      ],
+      "storyTitle": "Budget 2027: l'Assemblée rejette à l'unanimité la partie \"recettes\", le projet de loi de finances va être transmis au Sénat",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Critique du bloc gouvernemental et appel à « en finir avec leur monde », position de gauche radicale.",
+        "rationale_en": "Criticizes the governing bloc and calls to end 'their world', a radical-left position."
+      },
+      "populism": {
+        "score": 0.7,
+        "markers": [
+          "delegitimation",
+          "peuple_vs_elites",
+          "appel_emotionnel",
+          "anti_elites"
+        ],
+        "rationale_fr": "Présente la majorité comme sans soutien et appelle à « en finir avec leur monde », ton de rupture.",
+        "rationale_en": "Presents the majority as having no supporters and calls to end 'their world', a rupture tone."
+      },
+      "check": {
+        "claim": "Premier rejet à l'unanimité du budget sous la Ve République.",
+        "why_fr": "Le fait est daté et vérifiable ; les articles fournis décrivent un rejet de la partie recettes, ce qui peut différer d'un rejet global du budget.",
+        "why_en": "The claim is dated and verifiable; the articles describe rejection of the revenue part, which may differ from rejecting the whole budget.",
+        "sources": [
+          {
+            "title": "Public Sénat : points chauds des débats au Sénat",
+            "url": "https://www.publicsenat.fr/actualites/politique/budget-2027-les-points-chauds-lors-des-debats-au-senat-du-9-au-17-novembre"
+          }
+        ]
+      },
+      "postTime": "2026-11-05T19:33:43.913Z"
+    },
+    "yt:tZpkG9EOt_g": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:36.195Z",
+      "storyItems": [
+        "ab544818d2b5",
+        "40b05122349e",
+        "79d2ac19d8d6",
+        "e2928b28e93f",
+        "6a2c92893f44",
+        "0453ea39fdb8"
+      ],
+      "storyTitle": "Mobilisation du 7 novembre : suivez avec nous cette nouvelle journée de manifestations",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Soutien à un mouvement social et dénonciation de l'extrême droite, orientation de gauche.",
+        "rationale_en": "Supports a social movement and denounces the far right, a left-leaning orientation."
+      },
+      "populism": {
+        "score": 0.5,
+        "markers": [
+          "appel_emotionnel",
+          "delegitimation"
+        ],
+        "rationale_fr": "Ton épique (« historique », « rien ne l'arrêtera ») et qualification de l'adversaire d'extrême droite.",
+        "rationale_en": "Epic tone ('historic', 'nothing will stop it') and framing of opponents as far right."
+      },
+      "check": null,
+      "postTime": "2026-11-05T19:20:10.000Z"
+    },
+    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3mzllfodoh22n": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:53.172Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Soutien au mouvement social et lutte contre l'extrême droite, sans proposition précise.",
+        "rationale_en": "Supports the social movement and opposes the far right, without specific proposals."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Ton mobilisateur (« rien ne l'arrêtera ») sans opposition au peuple contre les élites.",
+        "rationale_en": "Mobilizing tone (\"nothing will stop it\") without a people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-05T19:17:04.452Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3mzll2elfy424": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:53.172Z",
+      "storyItems": [
+        "219eb8e255b1",
+        "1ab81dfa1df9",
+        "be9a4f74a317",
+        "9a1edd838dc9",
+        "61fec5cd0379",
+        "4e59e3cac14f"
+      ],
+      "storyTitle": "Midterms : « Puisse cette leçon vous servir »… La gauche voit dans l’échec de Trump une préfiguration du RN au pouvoir",
+      "political": true,
+      "lean": {
+        "score": -0.3,
+        "rationale_fr": "Critique de la division entre gauches, sans position économique ou institutionnelle explicite.",
+        "rationale_en": "Criticizes divisions among the left, with no explicit economic or institutional position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message bref sans rhétorique populiste marquée.",
+        "rationale_en": "Short message without marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-05T19:10:45.088Z"
+    },
+    "bsky:at://did:plc:d57dxlliqj3ctzpgmentyyn3/app.bsky.feed.post/3mzljmcuabc24": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:53.172Z",
+      "storyItems": [
+        "7b6ab6a4e3ac"
+      ],
+      "storyTitle": "Manifestations du 5 novembre en France : «On voit que ce n’est pas fini»",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Rejet du budget et de la « politique de violence sociale », position de gauche radicale.",
+        "rationale_en": "Rejects the budget and the \"policy of social violence\", a far-left position."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "peuple_homogene",
+          "appel_emotionnel",
+          "delegitimation"
+        ],
+        "rationale_fr": "Présente un rejet unanime (« partout ») et qualifie le président de « fini », ton polémique.",
+        "rationale_en": "Presents unanimous rejection (\"everywhere\") and declares the president \"finished\", polemical tone."
+      },
+      "check": {
+        "claim": "Plus de 1,5 million de manifestants en France et près de 100 000 à Lille le 5 novembre.",
+        "why_fr": "Ces chiffres semblent pouvoir provenir des organisateurs ; d'autres sources donnent des décomptes différents selon les sources.",
+        "why_en": "These figures may come from organizers; other sources give different counts.",
+        "sources": [
+          {
+            "title": "Manifestations du 5 novembre en France : «On voit que ce n'est pas fini»",
+            "url": "https://www.liberation.fr/economie/social/manifestations-du-5-novembre-on-voit-que-ce-nest-pas-fini-20261105_OZT5RGYRKVGDHFP24UPDPVIISY/"
+          }
+        ]
+      },
+      "postTime": "2026-11-05T18:44:59.807Z"
+    },
+    "bsky:at://did:plc:fakceyj3l3pen4wtnjhgudd3/app.bsky.feed.post/3mzljih5vbk2z": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:53.172Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Soutien à la mobilisation des jeunes et des travailleurs, revendications sociales de gauche.",
+        "rationale_en": "Supports youth and worker mobilization and left-wing social demands."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Ton émotionnel (« joie et détermination », critique de la matraque) plutôt que d'arguments.",
+        "rationale_en": "Emotional tone (\"joy and determination\", criticism of batons) rather than arguments."
+      },
+      "check": null,
+      "postTime": "2026-11-05T18:42:50.070Z"
+    },
+    "bsky:at://did:plc:sgunesm6k7o2zrdzdico7ai7/app.bsky.feed.post/3mzlhmvv7a22j": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:53.172Z",
+      "storyItems": [
+        "1179e501df9d"
+      ],
+      "storyTitle": "5 novembre : « Sauvez un paysan, mangez un macroniste », à Valence le ras-le-bol d’un règne austéritaire qui a trop duré",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Revendications de hausse des salaires, blocage des prix et services publics, ancrage à gauche.",
+        "rationale_en": "Demands wage increases, price freezes and public services, a left-wing stance."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Appel à la dignité et au ras-le-bol, sans opposition peuple contre élites explicite.",
+        "rationale_en": "Appeals to dignity and frustration, without an explicit people-versus-elites framing."
+      },
+      "check": {
+        "claim": "Environ 10 000 personnes à Valence le 5 novembre.",
+        "why_fr": "L'article fourni évoque près de 12 000 personnes ; les chiffres de manifestation varient selon les sources.",
+        "why_en": "The article provided cites nearly 12,000 people; protest counts vary by source.",
+        "sources": [
+          {
+            "title": "5 novembre : « Sauvez un paysan, mangez un macroniste », à Valence le ras-le-bol d'un règne austéritaire qui a trop duré",
+            "url": "https://www.humanite.fr/politique/drome/5-novembre-sauvez-un-paysan-mangez-un-macroniste-a-valence-le-ras-le-bol-dun-regne-austeritaire-qui-a-trop-dure"
+          }
+        ]
+      },
+      "postTime": "2026-11-05T18:09:32.275Z"
+    },
+    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3mzlgkhddp22d": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:53.172Z",
+      "storyItems": [
+        "b8612f349b2f",
+        "1f7d7f6d68a1",
+        "c1a3bb52f2c9",
+        "c804852ef03f",
+        "3e18760e95bd",
+        "66e19823719c"
+      ],
+      "storyTitle": "Marine Le Pen et Edouard Philippe attaquent le programme de LFI, que Jean-Luc Mélenchon doit présenter samedi lors d’un meeting au Bourget",
+      "political": true,
+      "lean": {
+        "score": -0.9,
+        "rationale_fr": "Promotion d'un programme de « révolution fiscale » et de « République écologique », gauche radicale.",
+        "rationale_en": "Promotes a \"fiscal revolution\" and \"ecological republic\" program, far-left."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Appel à participer à un meeting, sans rhétorique populiste marquée.",
+        "rationale_en": "Call to attend a rally, without marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-05T17:50:16.162Z"
+    },
+    "bsky:at://did:plc:dzhhf6dtekdyjpcvm5xr6jeb/app.bsky.feed.post/3mzlfyw2qgs2d": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:53.172Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Demande de renforcer les moyens de l'Éducation nationale, position de gauche sociale.",
+        "rationale_en": "Calls for more resources for the education system, a social-democratic position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Message sobre sans rhétorique populiste.",
+        "rationale_en": "Measured message without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-05T17:40:27.627Z"
+    },
+    "bsky:at://did:plc:3jl4i7ervegs6md2tvxpgfvf/app.bsky.feed.post/3mzldvybizs2m": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:29:53.172Z",
+      "storyItems": [
+        "ab544818d2b5",
+        "40b05122349e",
+        "79d2ac19d8d6",
+        "e2928b28e93f",
+        "6a2c92893f44",
+        "0453ea39fdb8"
+      ],
+      "storyTitle": "Mobilisation du 7 novembre : suivez avec nous cette nouvelle journée de manifestations",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Mobilisation contre la vie chère et pour de meilleures conditions d'éducation, revendications de gauche sociale.",
+        "rationale_en": "Mobilization against high living costs and for better education conditions, social-left demands."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message factuel sans opposition peuple contre élites.",
+        "rationale_en": "Factual message without a people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-05T17:03:01.800Z"
+    },
+    "bsky:at://did:plc:fakceyj3l3pen4wtnjhgudd3/app.bsky.feed.post/3mzldu5p2mc27": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:01.022Z",
+      "storyItems": [
+        "66d1743db79f",
+        "cd0c14b79821",
+        "56031080e33c",
+        "abaf3290c789",
+        "7b8c1671b04f"
+      ],
+      "storyTitle": "Présidentielle: la moitié des députés communistes choisit Jean-Luc Mélenchon plutôt que Fabien Roussel",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Soutien à la candidature de Mélenchon, programme de gauche radicale ; le message n'expose pas de mesure précise mais s'inscrit dans la gauche.",
+        "rationale_en": "Supports Mélenchon's presidential bid; the message gives no specific measure but sits on the left."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel",
+          "souverainete_populaire"
+        ],
+        "rationale_fr": "« Dynamique populaire » et « on va gagner » mobilisent l'enthousiasme plutôt que des arguments.",
+        "rationale_en": "'Popular dynamic' and 'we will win' rely on enthusiasm rather than arguments."
+      },
+      "check": null,
+      "postTime": "2026-11-05T17:02:00.337Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3mzldftdyvs2q": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:01.022Z",
+      "storyItems": [
+        "e02a80f849dc",
+        "db3e943f3aba",
+        "93e565c2f4d0",
+        "dc0083ecbd21",
+        "d77e5cf73165",
+        "06cf16a94294"
+      ],
+      "storyTitle": "« Vous êtes tous trop durs avec moi » : Emmanuel Macron à l'heure du bilan (littéraire)",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Critique du président et appel à la mobilisation sociale, orientation de gauche radicale.",
+        "rationale_en": "Criticises the president and calls for social mobilisation, a radical-left orientation."
+      },
+      "populism": {
+        "score": 0.8,
+        "markers": [
+          "peuple_vs_elites",
+          "souverainete_populaire",
+          "delegitimation",
+          "anti_elites",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "« Le peuple est dans la rue », « monarque présidentiel », « monde de malheur » opposent un peuple unanime à un pouvoir illégitime.",
+        "rationale_en": "'The people are in the street', 'presidential monarch', 'wretched world' oppose a unified people to an illegitimate power."
+      },
+      "check": null,
+      "postTime": "2026-11-05T16:53:59.768Z"
+    },
+    "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3mzlbissbuk2c": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:01.022Z",
+      "storyItems": [
+        "a4e75734c66d"
+      ],
+      "storyTitle": "Reportage. Manifestation à Paris : « À 6 mois de l’élection présidentielle, on veut montrer qu’on est là pour défendre notre état de droit »",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Défense des salaires, des services publics et des jeunes, contre la répression : positions de gauche.",
+        "rationale_en": "Defends wages, public services and young people, and opposes repression: left-wing positions."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message bref et factuel, sans opposition peuple contre élites.",
+        "rationale_en": "Brief and factual, with no people-versus-elite framing."
+      },
+      "check": null,
+      "postTime": "2026-11-05T16:19:52.369Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3mzlagwlshi2e": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:01.022Z",
+      "storyItems": [
+        "5437a289157b",
+        "5d33c2016106"
+      ],
+      "storyTitle": "En réponse à la mobilisation sociale, le gouvernement prêt à donner un «coup de pouce» au smic",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Demande de relèvement du Smic, indexation des salaires et moyens pour l'éducation : mesures de gauche sociale.",
+        "rationale_en": "Calls for a higher minimum wage, wage indexation and education funding: social-democratic left measures."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Propositions concrètes, sans rhétorique populiste marquée.",
+        "rationale_en": "Concrete proposals with no marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-05T16:00:55.474Z"
+    },
+    "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3mzl7jnayas2l": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:01.022Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de promotion de précommande, sans contenu idéologique.",
+        "rationale_en": "Pre-order promotion with no ideological content."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Annonce pratique, sans rhétorique populiste.",
+        "rationale_en": "Practical announcement with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-05T15:44:32.630Z"
+    },
+    "yt:Q0o72eXteWI": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:01.022Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Simple appel à la précommande, sans contenu idéologique.",
+        "rationale_en": "Simple pre-order call with no ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-05T15:42:13.000Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3mzl77zsogb2c": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:01.022Z",
+      "storyItems": [
+        "72cc7fef130b",
+        "fefb065b845b"
+      ],
+      "storyTitle": "« 10 milliards, ni plus, ni moins » : d'où vient ce montant brandi par les syndicats étudiants ?",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Demande une réforme fiscale et la remise en cause des aides aux grandes entreprises : orientation de gauche sociale.",
+        "rationale_en": "Calls for tax reform and cuts to aid for large firms: social-democratic left orientation."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "anti_elites"
+        ],
+        "rationale_fr": "Oppose les grosses firmes aux intérêts populaires, sans rhétorique de peuple homogène.",
+        "rationale_en": "Opposes large firms to popular interests, without homogeneous-people rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-05T15:39:10.211Z"
+    },
+    "bsky:at://did:plc:sgunesm6k7o2zrdzdico7ai7/app.bsky.feed.post/3mzl6emogic2n": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:01.022Z",
+      "storyItems": [
+        "1179e501df9d"
+      ],
+      "storyTitle": "5 novembre : « Sauvez un paysan, mangez un macroniste », à Valence le ras-le-bol d’un règne austéritaire qui a trop duré",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Critique de l'austérité et soutien à la mobilisation sociale, positions de gauche.",
+        "rationale_en": "Criticises austerity and supports social mobilisation: left-wing positions."
+      },
+      "populism": {
+        "score": 0.6,
+        "markers": [
+          "peuple_vs_elites",
+          "delegitimation",
+          "appel_emotionnel",
+          "anti_elites"
+        ],
+        "rationale_fr": "« Ils nous méprisent et nous répriment », « mobilisation populaire massive » opposent le peuple au pouvoir avec ton émotionnel.",
+        "rationale_en": "'They despise and repress us' and 'massive popular mobilisation' pit the people against power in an emotional tone."
+      },
+      "check": {
+        "claim": "La mobilisation à Valence est présentée comme massive.",
+        "why_fr": "Le chiffre de participation cité dans l'article (environ 12 000) peut provenir d'estimations différentes selon les sources ; le caractère « massif » est un jugement.",
+        "why_en": "The attendance figure in the article (about 12,000) may come from estimates that differ across sources; 'massive' is a judgement.",
+        "sources": [
+          {
+            "title": "5 novembre : « Sauvez un paysan, mangez un macroniste », à Valence",
+            "url": "https://www.humanite.fr/politique/drome/5-novembre-sauvez-un-paysan-mangez-un-macroniste-a-valence-le-ras-le-bol-dun-regne-austeritaire-qui-a-trop-dure"
+          }
+        ]
+      },
+      "postTime": "2026-11-05T15:23:50.507Z"
+    },
+    "bsky:at://did:plc:dzhhf6dtekdyjpcvm5xr6jeb/app.bsky.feed.post/3mzl3q3uvls2y": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:08.053Z",
+      "storyItems": [
+        "7b6ab6a4e3ac"
+      ],
+      "storyTitle": "Manifestations du 5 novembre en France : «On voit que ce n’est pas fini»",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Défense des services publics et critique de la vie chère et de l'austérité, positions de gauche sociale.",
+        "rationale_en": "Defends public services and criticises cost of living and austerity, a left-wing social position."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Qualifie le gouvernement d'austéritaire et mobilise l'indignation, sans opposer un peuple pur aux élites.",
+        "rationale_en": "Labels the government as austerity-driven and mobilises indignation, without a pure-people vs elite framing."
+      },
+      "check": null,
+      "postTime": "2026-11-05T14:36:34.314Z"
+    },
+    "bsky:at://did:plc:ln2ibflz7bn3uttly7yepk4f/app.bsky.feed.post/3mzkzpq3ruk26": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:08.053Z",
+      "storyItems": [
+        "ad50f7387657",
+        "d22432d23d96",
+        "b78d3c43c488",
+        "ec88731ef639",
+        "1e142ccee986",
+        "50751336c8fb"
+      ],
+      "storyTitle": "Budget 2027: l'Assemblée rejette à l'unanimité la partie \"recettes\", le projet de loi de finances va être transmis au Sénat",
+      "political": true,
+      "lean": {
+        "score": 0.4,
+        "rationale_fr": "Critique d'un budget jugé fiscalement trop lourd, défense de la stabilité et de la baisse de pression fiscale, positions libérales-conservatrices.",
+        "rationale_en": "Criticises a budget seen as too heavy on taxes, stressing stability; liberal-conservative positions."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Qualifie le texte d'irresponsable, sans rhétorique populiste marquée.",
+        "rationale_en": "Calls the text irresponsible, with no marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-05T14:00:34.478Z"
+    },
+    "bsky:at://did:plc:njxfufv45zwqgju3yfdtpy72/app.bsky.feed.post/3mzkywaterc2s": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:08.053Z",
+      "storyItems": [
+        "66d1743db79f",
+        "cd0c14b79821",
+        "56031080e33c",
+        "abaf3290c789",
+        "7b8c1671b04f"
+      ],
+      "storyTitle": "Présidentielle: la moitié des députés communistes choisit Jean-Luc Mélenchon plutôt que Fabien Roussel",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Promotion du programme de La France insoumise, rupture à gauche radicale.",
+        "rationale_en": "Promotes the La France insoumise programme, a radical left position."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Message de mobilisation militante, formulé sur un ton de victoire annoncée.",
+        "rationale_en": "Militant mobilisation message with an announced-victory tone."
+      },
+      "check": null,
+      "postTime": "2026-11-05T13:46:19.609Z"
+    },
+    "bsky:at://did:plc:3jl4i7ervegs6md2tvxpgfvf/app.bsky.feed.post/3mzkxfnoo2s2m": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:08.053Z",
+      "storyItems": [
+        "ad50f7387657",
+        "d22432d23d96",
+        "b78d3c43c488",
+        "ec88731ef639",
+        "1e142ccee986",
+        "50751336c8fb"
+      ],
+      "storyTitle": "Budget 2027: l'Assemblée rejette à l'unanimité la partie \"recettes\", le projet de loi de finances va être transmis au Sénat",
+      "political": true,
+      "lean": {
+        "score": 0.4,
+        "rationale_fr": "Critique d'un budget jugé mauvais et injuste, réclamant un budget plus juste; positionnement libéral-conservateur.",
+        "rationale_en": "Criticises the budget as unfair and bad; liberal-conservative positioning."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Critique politique classique, sans opposition peuple contre élites.",
+        "rationale_en": "Standard political criticism, with no people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-05T13:19:08.924Z"
+    },
+    "yt:PUFDWEIQ70Q": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:08.053Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.3,
+        "rationale_fr": "Soutien à la mobilisation lycéenne, sans contenu idéologique explicite au-delà du soutien.",
+        "rationale_en": "Supports the high school mobilisation, with no explicit ideological content beyond support."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Message bref de soutien, sans rhétorique populiste.",
+        "rationale_en": "Brief supportive message with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-05T13:08:45.000Z"
+    },
+    "bsky:at://did:plc:7qlw6gig76xhkjjkxl35xpxe/app.bsky.feed.post/3mzktukjnhk2z": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:08.053Z",
+      "storyItems": [
+        "41883bab1109",
+        "127bd5d78065",
+        "c404703c4baa"
+      ],
+      "storyTitle": "«Je m’en contrefous» : Raphaël Glucksmann tente de se faire une place dans le cortège parisien malgré les quolibets",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Appel au partage des richesses et dénonciation du macronisme, positions de gauche radicale.",
+        "rationale_en": "Calls for wealth redistribution and denounces macronism; radical left positions."
+      },
+      "populism": {
+        "score": 0.7,
+        "markers": [
+          "peuple_vs_elites",
+          "peuple_homogene",
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Oppose un peuple homogène à l'injustice du macronisme et use d'un ton émotionnel fort.",
+        "rationale_en": "Sets a homogeneous people against macronism's injustice with strong emotional tone."
+      },
+      "check": null,
+      "postTime": "2026-11-05T12:15:53.964Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3mzktfgbp2x2f": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:08.053Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Simple annonce d'une apparition télévisée, sans contenu idéologique.",
+        "rationale_en": "Simple announcement of a TV appearance, with no ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Annonce pratique, sans rhétorique populiste.",
+        "rationale_en": "Practical announcement with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-05T12:07:26.165Z"
+    },
+    "bsky:at://did:plc:7howemlmmr5kgkcif2zeob26/app.bsky.feed.post/3mzkjj74yj22h": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:08.053Z",
+      "storyItems": [
+        "e57af2520cfe"
+      ],
+      "storyTitle": "« Il n’y a aucun désengagement de l’État » : nouvelle passe d’armes entre le maire LFI de Saint-Denis Bally Bagayoko et le préfet du département",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Soutien à une intersyndicale contre la répression du mouvement lycéen, position de gauche.",
+        "rationale_en": "Supports a union coalition against repression of the high school movement; left-wing position."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Accuse implicitement l'État de répression, sans opposition peuple-élites.",
+        "rationale_en": "Implicitly accuses the state of repression, without a people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-05T09:10:35.496Z"
+    },
+    "bsky:at://did:plc:sgunesm6k7o2zrdzdico7ai7/app.bsky.feed.post/3mzkikazejs22": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:15.331Z",
+      "storyItems": [
+        "1179e501df9d"
+      ],
+      "storyTitle": "5 novembre : « Sauvez un paysan, mangez un macroniste », à Valence le ras-le-bol d’un règne austéritaire qui a trop duré",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Défense des salaires, pensions, services publics et industrie, appel à la mobilisation : positions sociales-démocrates ou de gauche.",
+        "rationale_en": "Calls to defend wages, pensions, public services and industry; left-leaning social positions."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Appel à mobilisation sans rhétorique anti-élite explicite ; ton mobilisateur modéré.",
+        "rationale_en": "Mobilisation call without explicit anti-elite rhetoric; moderately mobilising tone."
+      },
+      "check": null,
+      "postTime": "2026-11-05T08:53:17.290Z"
+    },
+    "bsky:at://did:plc:dzhhf6dtekdyjpcvm5xr6jeb/app.bsky.feed.post/3mzkeuuxs722q": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:15.331Z",
+      "storyItems": [
+        "5d8afd1b341e",
+        "94833c0b9905"
+      ],
+      "storyTitle": "Présidentielle 2027 : Jean-Luc Mélenchon fait de la conquête de la rue un tremplin vers sa « révolution citoyenne »",
+      "political": true,
+      "lean": {
+        "score": -0.9,
+        "rationale_fr": "Présentation de l'Avenir en commun, programme de la gauche radicale (révolution fiscale, République écologique).",
+        "rationale_en": "Promotes the Avenir en commun programme of radical left (fiscal revolution, ecological republic)."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Annonce de meeting avec ton enthousiaste, sans attaque populiste marquée.",
+        "rationale_en": "Meeting announcement with enthusiastic tone, no marked populist attack."
+      },
+      "check": null,
+      "postTime": "2026-11-05T07:47:38.786Z"
+    },
+    "yt:fm5exzINmM8": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:15.331Z",
+      "storyItems": [
+        "ad50f7387657",
+        "d22432d23d96",
+        "b78d3c43c488",
+        "ec88731ef639",
+        "1e142ccee986",
+        "50751336c8fb"
+      ],
+      "storyTitle": "Budget 2027: l'Assemblée rejette à l'unanimité la partie \"recettes\", le projet de loi de finances va être transmis au Sénat",
+      "political": true,
+      "lean": {
+        "score": -0.4,
+        "rationale_fr": "Critique d'un budget jugé insuffisamment crédible, rejet du texte ; position de gauche sur les recettes et la dépense.",
+        "rationale_en": "Criticises the budget as lacking credibility and coherence; left-leaning stance on revenue and spending."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Présente le budget comme dénué de crédibilité et de soutien, sans argument chiffré détaillé.",
+        "rationale_en": "Presents the budget as lacking credibility and support, without detailed quantified argument."
+      },
+      "check": null,
+      "postTime": "2026-11-05T07:00:09.000Z"
+    },
+    "bsky:at://did:plc:fakceyj3l3pen4wtnjhgudd3/app.bsky.feed.post/3mzjh2yhx6s2a": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:15.331Z",
+      "storyItems": [
+        "ad50f7387657",
+        "d22432d23d96",
+        "b78d3c43c488",
+        "ec88731ef639",
+        "1e142ccee986",
+        "50751336c8fb"
+      ],
+      "storyTitle": "Budget 2027: l'Assemblée rejette à l'unanimité la partie \"recettes\", le projet de loi de finances va être transmis au Sénat",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Soutien à Mélenchon et rejet du budget gouvernemental ; positionnement de gauche radicale.",
+        "rationale_en": "Backs Mélenchon and rejects the government budget; radical-left positioning."
+      },
+      "populism": {
+        "score": 0.5,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Présente le gouvernement comme moribond et l'extrême droite comme complice ; ton polémique.",
+        "rationale_en": "Describes government as moribund and far right as complicit; polemical tone."
+      },
+      "check": null,
+      "postTime": "2026-11-04T22:54:11.515Z"
+    },
+    "bsky:at://did:plc:7qlw6gig76xhkjjkxl35xpxe/app.bsky.feed.post/3mzjft6m4sk2p": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:15.331Z",
+      "storyItems": [
+        "ad50f7387657",
+        "d22432d23d96",
+        "b78d3c43c488",
+        "ec88731ef639",
+        "1e142ccee986",
+        "50751336c8fb"
+      ],
+      "storyTitle": "Budget 2027: l'Assemblée rejette à l'unanimité la partie \"recettes\", le projet de loi de finances va être transmis au Sénat",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Critique du budget et des cadeaux aux riches, appel à la sortie du gouvernement ; gauche.",
+        "rationale_en": "Criticises the budget and tax breaks for the rich, calls for government to go; left-leaning."
+      },
+      "populism": {
+        "score": 0.6,
+        "markers": [
+          "peuple_vs_elites",
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Oppose la mobilisation populaire aux riches et au gouvernement, présenté comme illégitime ; appel à partir.",
+        "rationale_en": "Opposes popular mobilisation to the rich and to a government framed as illegitimate; calls for it to leave."
+      },
+      "check": null,
+      "postTime": "2026-11-04T22:31:55.787Z"
+    },
+    "yt:HUlDeEQl8_0": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:15.331Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Présentation pratique d'un rapport parlementaire sur les subventions aux collectivités.",
+        "rationale_en": "Practical presentation of a parliamentary report on grants to local authorities."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-04T21:47:04.000Z"
+    },
+    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3mzjcbuwy2c2d": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:15.331Z",
+      "storyItems": [
+        "72cc7fef130b",
+        "fefb065b845b"
+      ],
+      "storyTitle": "« 10 milliards, ni plus, ni moins » : d'où vient ce montant brandi par les syndicats étudiants ?",
+      "political": true,
+      "lean": {
+        "score": -0.3,
+        "rationale_fr": "Interpelle le ministre sur la dette et compare aux recettes de 2017 ; critique de gauche de la politique budgétaire.",
+        "rationale_en": "Challenges the minister on debt and compares with 2017 revenues; left critique of budget policy."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Interpellation directe du ministre, ton polémique modéré.",
+        "rationale_en": "Direct challenge to the minister, moderately polemical tone."
+      },
+      "check": null,
+      "postTime": "2026-11-04T21:28:34.001Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3mzj2giiflk2n": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:15.331Z",
+      "storyItems": [
+        "49e39d5e7aea"
+      ],
+      "storyTitle": "\"Nous avons été livrés aux casseurs\": devant les députés, les commerçants évoquent leur \"solitude\" face aux pillages du 17 octobre",
+      "political": true,
+      "lean": {
+        "score": -0.1,
+        "rationale_fr": "Critique de la gestion gouvernementale de la sécurité des commerçants lors du 17 octobre ; enjeu sécuritaire traité sans positionnement idéologique marqué.",
+        "rationale_en": "Criticises government handling of shopkeepers' security on 17 October; security issue without marked ideological positioning."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Accuse le gouvernement d'avoir abandonné les commerçants, formulation accusatoire.",
+        "rationale_en": "Accuses the government of abandoning shopkeepers, accusatory wording."
+      },
+      "check": null,
+      "postTime": "2026-11-04T19:07:58.779Z"
+    },
+    "yt:UsUipzkqKQo": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:26.340Z",
+      "storyItems": [
+        "ab45863302fa",
+        "04ba1168f518",
+        "bebc4e0cebfa",
+        "3838911abfb6",
+        "091b1e697554"
+      ],
+      "storyTitle": "Pétition contre CNews: le député Alexandre Portier (LR) nommé rapporteur, prochaine étape mardi en commission",
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "S'oppose à l'interdiction de CNews et met en avant la défense du pluralisme, position de droite libérale.",
+        "rationale_en": "Opposes banning CNews and stresses pluralism, a centre-right liberal position."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Oppose « ils veulent interdire » à un adversaire présenté comme menaçant, sans développement argumenté.",
+        "rationale_en": "Frames opponents as wanting to ban CNews, presented as a threat, without argument."
+      },
+      "check": null,
+      "postTime": "2026-11-04T19:05:57.000Z"
+    },
+    "yt:PsujVocn0Ew": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:26.340Z",
+      "storyItems": [
+        "ab45863302fa",
+        "04ba1168f518",
+        "bebc4e0cebfa",
+        "3838911abfb6",
+        "091b1e697554"
+      ],
+      "storyTitle": "Pétition contre CNews: le député Alexandre Portier (LR) nommé rapporteur, prochaine étape mardi en commission",
+      "political": true,
+      "lean": {
+        "score": 0.6,
+        "rationale_fr": "Vise la gauche et ses contradictions à propos de CNews, dans une logique de droite.",
+        "rationale_en": "Targets the left's contradictions over CNews, from a right-leaning stance."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Critique politique ciblée, sans rhétorique populiste marquée.",
+        "rationale_en": "Targeted political criticism without marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-04T17:39:14.000Z"
+    },
+    "bsky:at://did:plc:yphqj24zexmev436eeyx6gof/app.bsky.feed.post/3mzit3lcmss2e": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:26.340Z",
+      "storyItems": [
+        "fe6822e4c864"
+      ],
+      "storyTitle": "Au Bourget, Mélenchon veut-il enterrer Hollande ? «Chez Pol, l’émission» avec Thomas Legrand et Lucie Alexandre",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce pratique d'un meeting, sans contenu idéologique explicite.",
+        "rationale_en": "Practical meeting announcement with no explicit ideological content."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Appel à mobilisation enthousiaste, sans attaque des élites ni opposition au peuple.",
+        "rationale_en": "Enthusiastic call to mobilize, without attacking elites or pitting people against them."
+      },
+      "check": null,
+      "postTime": "2026-11-04T16:56:36.439Z"
+    },
+    "bsky:at://did:plc:7howemlmmr5kgkcif2zeob26/app.bsky.feed.post/3mzisdpggx22o": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:26.340Z",
+      "storyItems": [
+        "a9fe72941c82"
+      ],
+      "storyTitle": "17 octobre: Laurent Nuñez reconnaît \"un échec\" et \"un défaut d'anticipation\" qui ne se \"réduit pas à un simple sujet de chiffres\"",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Dénonce les propos du ministre de l'Intérieur sur l'État de droit, position de gauche radicale insoumise.",
+        "rationale_en": "Denounces the Interior Minister's remarks on the rule of law, a radical-left insoumise stance."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [],
+        "rationale_fr": "Critique institutionnelle argumentée, sans opposition frontale peuple contre élites.",
+        "rationale_en": "Argued institutional criticism, without a direct people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-04T16:43:15.460Z"
+    },
+    "bsky:at://did:plc:3jl4i7ervegs6md2tvxpgfvf/app.bsky.feed.post/3mzirpnwqa22m": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:26.340Z",
+      "storyItems": [
+        "ad50f7387657",
+        "d22432d23d96",
+        "b78d3c43c488",
+        "ec88731ef639",
+        "1e142ccee986",
+        "50751336c8fb"
+      ],
+      "storyTitle": "Budget 2027: l'Assemblée rejette à l'unanimité la partie \"recettes\", le projet de loi de finances va être transmis au Sénat",
+      "political": true,
+      "lean": {
+        "score": 0.4,
+        "rationale_fr": "Défend le rétablissement de 125 millions pour les CCI, soutien aux réseaux économiques, orientation libérale.",
+        "rationale_en": "Defends restoring 125 million euros for chambers of commerce, a pro-business liberal stance."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Message technique sur un amendement budgétaire, sans rhétorique populiste.",
+        "rationale_en": "Technical message on a budget amendment, with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-04T16:32:02.809Z"
+    },
+    "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3mzirlvxlos2d": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:26.340Z",
+      "storyItems": [
+        "fe6822e4c864"
+      ],
+      "storyTitle": "Au Bourget, Mélenchon veut-il enterrer Hollande ? «Chez Pol, l’émission» avec Thomas Legrand et Lucie Alexandre",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Invitation pratique à un meeting, sans position politique exprimée.",
+        "rationale_en": "Practical invitation to a meeting, with no political position expressed."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Simple annonce d'événement, sans rhétorique populiste.",
+        "rationale_en": "Simple event announcement, without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-04T16:29:56.995Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3mziqakjy2k2m": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T15:30:26.340Z",
+      "storyItems": [
+        "fe6822e4c864"
+      ],
+      "storyTitle": "Au Bourget, Mélenchon veut-il enterrer Hollande ? «Chez Pol, l’émission» avec Thomas Legrand et Lucie Alexandre",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Invitation pratique à un meeting, sans position politique précise.",
+        "rationale_en": "Practical invitation to a meeting, with no specific political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Annonce d'événement sans rhétorique populiste.",
+        "rationale_en": "Event announcement without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-04T16:05:42.184Z"
     }
   },
   "failures": {
-    "yt:iY0t_ck8Q0E": 1,
-    "bsky:at://did:plc:4yo5qhevwdkksmmxtvlben3v/app.bsky.feed.post/3mzloicgfkv2u": 1,
-    "yt:bXLvu3hYXN0": 1,
-    "bsky:at://did:plc:awp4pev7xbtmhlwvq6qfirpz/app.bsky.feed.post/3mzlnd6t23c2g": 1,
-    "bsky:at://did:plc:awp4pev7xbtmhlwvq6qfirpz/app.bsky.feed.post/3mzlmdhiwic2g": 1,
-    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3mzllfodoh22n": 1,
-    "bsky:at://did:plc:d57dxlliqj3ctzpgmentyyn3/app.bsky.feed.post/3mzljmcuabc24": 1,
-    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3mzlgkhddp22d": 1
+    "yt:iY0t_ck8Q0E": 1
   }
 }
