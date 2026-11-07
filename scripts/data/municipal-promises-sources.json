@@ -1,0 +1,5 @@
+{
+  "about": "Hand-curated register of official 'profession de foi' PDFs used by scripts/sync-municipal-promises.mjs. One entry per commune (INSEE code), for the WINNING list of the 2026 municipal election. Only add a URL you have opened yourself and checked is the official leaflet of that list (panel number = 'Numéro de panneau' in public/data/municipal/<dept>.json). The Ministry's site programme-candidats.interieur.gouv.fr is behind a bot challenge: open it in a normal browser, copy the PDF link, and optionally save the file as .cache/municipal/pdf/<code>.pdf.",
+  "format": { "<INSEE code>": { "pdf": "https://... (required, published as the source link)", "panel": "number (recommended; checked against the winning list)", "round": "1 or 2 (the round the leaflet was for)", "title": "optional", "publisher": "optional, default Ministère de l'Intérieur", "checked": "YYYY-MM-DD" } },
+  "sources": {}
+}

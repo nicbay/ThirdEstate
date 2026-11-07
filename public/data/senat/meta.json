@@ -1,0 +1,1881 @@
+{
+ "syncedAt": "2026-11-07T14:16:47.936Z",
+ "firstSession": "2023-2024",
+ "sources": {
+  "api": "https://www.senat.fr/api-senat/senateurs.json",
+  "general": "https://data.senat.fr/data/senateurs/ODSEN_GENERAL.json",
+  "mandats": "https://data.senat.fr/data/senateurs/ODSEN_ELUSEN.json",
+  "commissions": "https://data.senat.fr/data/senateurs/ODSEN_CUR_COMS.json",
+  "home": "https://www.senat.fr/",
+  "scrutinsIndex": "https://www.senat.fr/scrutin-public/scr<session>.html",
+  "scrutinPage": "https://www.senat.fr/scrutin-public/<session>/scr<session>-<n>.html",
+  "scrutinVotes": "https://www.senat.fr/scrutin-public/<session>/scr<session>-<n>.json",
+  "elections": "https://www.data.gouv.fr/api/1/datasets/elections-senatoriales-2026-resultats/",
+  "licence": "Licence Ouverte (data.senat.fr/licence, www.senat.fr); Licence Ouverte 2.0 (data.gouv.fr); CC0 (Wikidata)"
+ },
+ "checks": {
+  "senators": {
+   "api": 348,
+   "odsenActive": 348,
+   "expected": 348
+  },
+  "session2023": {
+   "listed": 215,
+   "max": 215
+  },
+  "session2024": {
+   "listed": 367,
+   "max": 367
+  },
+  "session2025": {
+   "listed": 340,
+   "max": 340
+  },
+  "session2026": {
+   "listed": 56,
+   "max": 56
+  },
+  "votes": {
+   "listed": 978,
+   "written": 978,
+   "fetchedThisRun": 33,
+   "failed": [],
+   "noNominativeList": [
+    "2023-100",
+    "2023-101",
+    "2023-87",
+    "2023-98",
+    "2023-99"
+   ],
+   "totalsMismatches": 33,
+   "unknownVoteCodes": {}
+  },
+  "totalsMismatches": [
+   {
+    "id": "2024-93",
+    "published": {
+     "pour": 115,
+     "contre": 205,
+     "abstention": 20,
+     "nppv": 7
+    },
+    "nominative": {
+     "P": 114,
+     "C": 206,
+     "A": 20,
+     "N": 7
+    },
+    "gap": 2,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-150",
+    "published": {
+     "pour": 220,
+     "contre": 117,
+     "abstention": 3,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 221,
+     "C": 117,
+     "A": 3,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-151",
+    "published": {
+     "pour": 207,
+     "contre": 112,
+     "abstention": 21,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 208,
+     "C": 112,
+     "A": 21,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-152",
+    "published": {
+     "pour": 112,
+     "contre": 228,
+     "abstention": 0,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 112,
+     "C": 229,
+     "A": 0,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-153",
+    "published": {
+     "pour": 228,
+     "contre": 112,
+     "abstention": 0,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 229,
+     "C": 112,
+     "A": 0,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-154",
+    "published": {
+     "pour": 340,
+     "contre": 0,
+     "abstention": 0,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 341,
+     "C": 0,
+     "A": 0,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-155",
+    "published": {
+     "pour": 222,
+     "contre": 101,
+     "abstention": 17,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 223,
+     "C": 101,
+     "A": 17,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-156",
+    "published": {
+     "pour": 2,
+     "contre": 320,
+     "abstention": 18,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 2,
+     "C": 321,
+     "A": 18,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-157",
+    "published": {
+     "pour": 114,
+     "contre": 226,
+     "abstention": 0,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 114,
+     "C": 227,
+     "A": 0,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-158",
+    "published": {
+     "pour": 115,
+     "contre": 225,
+     "abstention": 0,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 115,
+     "C": 226,
+     "A": 0,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-159",
+    "published": {
+     "pour": 115,
+     "contre": 225,
+     "abstention": 0,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 115,
+     "C": 226,
+     "A": 0,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-160",
+    "published": {
+     "pour": 115,
+     "contre": 205,
+     "abstention": 20,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 115,
+     "C": 206,
+     "A": 20,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-161",
+    "published": {
+     "pour": 135,
+     "contre": 205,
+     "abstention": 0,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 135,
+     "C": 206,
+     "A": 0,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-162",
+    "published": {
+     "pour": 135,
+     "contre": 205,
+     "abstention": 0,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 135,
+     "C": 206,
+     "A": 0,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-163",
+    "published": {
+     "pour": 98,
+     "contre": 225,
+     "abstention": 17,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 98,
+     "C": 226,
+     "A": 17,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-164",
+    "published": {
+     "pour": 240,
+     "contre": 99,
+     "abstention": 1,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 241,
+     "C": 99,
+     "A": 1,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-165",
+    "published": {
+     "pour": 115,
+     "contre": 222,
+     "abstention": 3,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 115,
+     "C": 223,
+     "A": 3,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-166",
+    "published": {
+     "pour": 112,
+     "contre": 226,
+     "abstention": 2,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 112,
+     "C": 227,
+     "A": 2,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-167",
+    "published": {
+     "pour": 111,
+     "contre": 229,
+     "abstention": 0,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 111,
+     "C": 230,
+     "A": 0,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-168",
+    "published": {
+     "pour": 147,
+     "contre": 190,
+     "abstention": 3,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 147,
+     "C": 191,
+     "A": 3,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-169",
+    "published": {
+     "pour": 113,
+     "contre": 227,
+     "abstention": 0,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 113,
+     "C": 228,
+     "A": 0,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-170",
+    "published": {
+     "pour": 114,
+     "contre": 223,
+     "abstention": 3,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 114,
+     "C": 224,
+     "A": 3,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-171",
+    "published": {
+     "pour": 118,
+     "contre": 219,
+     "abstention": 3,
+     "nppv": 8
+    },
+    "nominative": {
+     "P": 118,
+     "C": 220,
+     "A": 3,
+     "N": 7
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2024-196",
+    "published": {
+     "pour": 218,
+     "contre": 105,
+     "abstention": 13,
+     "nppv": 12
+    },
+    "nominative": {
+     "P": 218,
+     "C": 107,
+     "A": 13,
+     "N": 10
+    },
+    "gap": 2,
+    "positions": "kept"
+   },
+   {
+    "id": "2025-25",
+    "published": {
+     "pour": 102,
+     "contre": 239,
+     "abstention": 2,
+     "nppv": 5
+    },
+    "nominative": {
+     "P": 103,
+     "C": 239,
+     "A": 2,
+     "N": 4
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2025-26",
+    "published": {
+     "pour": 102,
+     "contre": 240,
+     "abstention": 0,
+     "nppv": 6
+    },
+    "nominative": {
+     "P": 103,
+     "C": 240,
+     "A": 0,
+     "N": 5
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2025-27",
+    "published": {
+     "pour": 115,
+     "contre": 227,
+     "abstention": 0,
+     "nppv": 6
+    },
+    "nominative": {
+     "P": 116,
+     "C": 227,
+     "A": 0,
+     "N": 5
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2025-28",
+    "published": {
+     "pour": 3,
+     "contre": 305,
+     "abstention": 34,
+     "nppv": 6
+    },
+    "nominative": {
+     "P": 3,
+     "C": 306,
+     "A": 34,
+     "N": 5
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2025-56",
+    "published": {
+     "pour": 226,
+     "contre": 104,
+     "abstention": 15,
+     "nppv": 3
+    },
+    "nominative": {
+     "P": 227,
+     "C": 104,
+     "A": 15,
+     "N": 2
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2025-293",
+    "published": {
+     "pour": 296,
+     "contre": 33,
+     "abstention": 14,
+     "nppv": 5
+    },
+    "nominative": {
+     "P": 297,
+     "C": 33,
+     "A": 14,
+     "N": 4
+    },
+    "gap": 1,
+    "positions": "kept"
+   },
+   {
+    "id": "2023-98",
+    "published": {
+     "pour": 191,
+     "contre": 102,
+     "abstention": 49,
+     "nppv": 6
+    },
+    "nominative": {
+     "P": 341,
+     "C": 0,
+     "A": 0,
+     "N": 7
+    },
+    "gap": 301,
+    "positions": "dropped"
+   },
+   {
+    "id": "2023-99",
+    "published": {
+     "pour": 341,
+     "contre": 0,
+     "abstention": 0,
+     "nppv": 7
+    },
+    "nominative": {
+     "P": 103,
+     "C": 228,
+     "A": 10,
+     "N": 7
+    },
+    "gap": 476,
+    "positions": "dropped"
+   },
+   {
+    "id": "2023-100",
+    "published": {
+     "pour": 103,
+     "contre": 228,
+     "abstention": 10,
+     "nppv": 7
+    },
+    "nominative": {
+     "P": 340,
+     "C": 0,
+     "A": 0,
+     "N": 8
+    },
+    "gap": 475,
+    "positions": "dropped"
+   }
+  ]
+ },
+ "groupes": {
+  "UMP": {
+   "couleur": "#2E70D1",
+   "sieges": 124,
+   "nom": "Groupe Les Républicains"
+  },
+  "UC": {
+   "couleur": "#7ACCEA",
+   "sieges": 63,
+   "nom": "Groupe Union Centriste et Indépendants"
+  },
+  "SOC": {
+   "couleur": "#FB6F99",
+   "sieges": 62,
+   "nom": "Groupe Socialiste, Écologiste et Républicain"
+  },
+  "CRC": {
+   "couleur": "#D90001",
+   "sieges": 18,
+   "nom": "Groupe Communiste Républicain Citoyen et Écologiste - Kanaky"
+  },
+  "RDSE": {
+   "couleur": "#814A97",
+   "sieges": 18,
+   "nom": "Groupe du Rassemblement Démocratique et Social Européen"
+  },
+  "LREM": {
+   "couleur": "#F1B608",
+   "sieges": 16,
+   "nom": "Groupe Rassemblement des démocrates, progressistes et indépendants"
+  },
+  "GEST": {
+   "couleur": "#5CB88D",
+   "sieges": 15,
+   "nom": "Groupe Écologiste - Solidarité et Territoires"
+  },
+  "RTLI": {
+   "couleur": "#C7DDE2",
+   "sieges": 14,
+   "nom": "Groupe Les Indépendants - République et Territoires"
+  },
+  "UNT": {
+   "couleur": "#173680",
+   "sieges": 15,
+   "nom": "Groupe Union Nationale pour les Territoires"
+  },
+  "NI": {
+   "couleur": "#000000",
+   "sieges": 3,
+   "nom": "Réunion administrative des Sénateurs ne figurant sur la liste d'aucun groupe"
+  }
+ },
+ "socials": {
+  "coverage": {
+   "senat": {
+    "twitter": 208,
+    "instagram": 34,
+    "linkedin": 113,
+    "facebook": 242,
+    "bluesky": 1,
+    "tiktok": 1,
+    "youtube": 3,
+    "mastodon": 0,
+    "website": 48
+   },
+   "wikidata": {
+    "twitter": 247,
+    "instagram": 47,
+    "linkedin": 127,
+    "facebook": 256,
+    "bluesky": 12,
+    "tiktok": 3,
+    "youtube": 7,
+    "mastodon": 2,
+    "website": 108
+   },
+   "site": {
+    "twitter": 247,
+    "instagram": 63,
+    "linkedin": 132,
+    "facebook": 260,
+    "bluesky": 15,
+    "tiktok": 6,
+    "youtube": 24,
+    "mastodon": 3,
+    "website": 108
+   },
+   "final": {
+    "twitter": 247,
+    "instagram": 63,
+    "linkedin": 132,
+    "facebook": 260,
+    "bluesky": 15,
+    "tiktok": 6,
+    "youtube": 24,
+    "mastodon": 3,
+    "website": 108
+   }
+  },
+  "withAnyAccount": 291,
+  "wikidataItems": 346,
+  "conflicts": [
+   {
+    "id": "20286Q",
+    "nom": "Amel Gacquerre",
+    "platform": "twitter",
+    "kept": "senat: https://x.com/amel_gacquerre",
+    "others": [
+     "wikidata: https://x.com/amelgd"
+    ]
+   },
+   {
+    "id": "20286Q",
+    "nom": "Amel Gacquerre",
+    "platform": "linkedin",
+    "kept": "senat: https://www.linkedin.com/in/amel-gacquerre-29a59086/",
+    "others": [
+     "wikidata: https://www.linkedin.com/in/amel-gacquerre-dahou-29a59086/"
+    ]
+   },
+   {
+    "id": "86034E",
+    "nom": "Gérard Larcher",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100060710991349",
+    "others": [
+     "senat: https://www.facebook.com/100068893342637"
+    ]
+   },
+   {
+    "id": "18083K",
+    "nom": "Guillaume Chevrollier",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100058218183022",
+    "others": [
+     "wikidata: https://www.facebook.com/chevrollier.guillaume"
+    ]
+   },
+   {
+    "id": "14327T",
+    "nom": "Bernard Delcros",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100008522839242",
+    "others": [
+     "site: https://www.facebook.com/people/Bernard-Delcros/100008522839242"
+    ]
+   },
+   {
+    "id": "19447X",
+    "nom": "Muriel Jourda",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100057969106426",
+    "others": [
+     "wikidata: https://www.facebook.com/Muriel.Jourda.Senat"
+    ]
+   },
+   {
+    "id": "19758L",
+    "nom": "Céline Brulin",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100057705595682",
+    "others": [
+     "wikidata: https://www.facebook.com/celine.brulin.1"
+    ]
+   },
+   {
+    "id": "08060W",
+    "nom": "Nicole Bonnefoy",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100010679208727",
+    "others": [
+     "site: https://www.facebook.com/nbonnefoy16"
+    ]
+   },
+   {
+    "id": "19820Y",
+    "nom": "Hervé Gillé",
+    "platform": "website",
+    "kept": "senat: http://herve-gille.fr/",
+    "others": [
+     "wikidata: https://herve-gille.fr/"
+    ]
+   },
+   {
+    "id": "14229S",
+    "nom": "Sylvie Robert",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/1668807611",
+    "others": [
+     "site: https://www.facebook.com/sylvie.robert.12139"
+    ]
+   },
+   {
+    "id": "04070G",
+    "nom": "Catherine Morin-Desailly",
+    "platform": "website",
+    "kept": "senat: https://catherine-morin-desailly.fr/",
+    "others": [
+     "wikidata: http://www.catherine-morin-desailly.com/"
+    ]
+   },
+   {
+    "id": "04033B",
+    "nom": "Bruno Retailleau",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100044178246660",
+    "others": [
+     "wikidata: https://www.facebook.com/BrunoRetailleau"
+    ]
+   },
+   {
+    "id": "04042C",
+    "nom": "Christian Cambon",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100008031431478",
+    "others": [
+     "site: https://www.facebook.com/senateur.christian.cambon"
+    ]
+   },
+   {
+    "id": "04042C",
+    "nom": "Christian Cambon",
+    "platform": "website",
+    "kept": "senat: https://christian-cambon.fr/",
+    "others": [
+     "wikidata: http://www.christian-cambon.fr/"
+    ]
+   },
+   {
+    "id": "08069G",
+    "nom": "Alain Houpert",
+    "platform": "website",
+    "kept": "senat: http://alain-houpert.fr/",
+    "others": [
+     "wikidata: http://www.alainhoupert.fr/"
+    ]
+   },
+   {
+    "id": "20046A",
+    "nom": "Marie-Claude Varaillas",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100068918781826",
+    "others": [
+     "site: https://www.facebook.com/MCVaraillas"
+    ]
+   },
+   {
+    "id": "19349W",
+    "nom": "Didier Rambaud",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100061302296422",
+    "others": [
+     "wikidata: https://www.facebook.com/didier.rambaud.35",
+     "site: https://www.facebook.com/DidierRambaudSenateur"
+    ]
+   },
+   {
+    "id": "19349W",
+    "nom": "Didier Rambaud",
+    "platform": "website",
+    "kept": "senat: https://www.didier-rambaud.fr/",
+    "others": [
+     "wikidata: http://www.didier-rambaud.fr/"
+    ]
+   },
+   {
+    "id": "20018V",
+    "nom": "Jean-Jacques Michau",
+    "platform": "website",
+    "kept": "senat: https://www.jeanjacquesmichau.com/",
+    "others": [
+     "wikidata: http://www.jeanjacquesmichau.com/"
+    ]
+   },
+   {
+    "id": "02042T",
+    "nom": "Renaud Muselier",
+    "platform": "twitter",
+    "kept": "wikidata: https://x.com/RenaudMuselier",
+    "others": [
+     "site: https://x.com/capsuravenir"
+    ]
+   },
+   {
+    "id": "02042T",
+    "nom": "Renaud Muselier",
+    "platform": "facebook",
+    "kept": "wikidata: https://www.facebook.com/muselierrenaud",
+    "others": [
+     "site: https://www.facebook.com/capsurlavenirsud"
+    ]
+   },
+   {
+    "id": "20062A",
+    "nom": "Laurent Somon",
+    "platform": "twitter",
+    "kept": "senat: https://x.com/Laurent_Somon",
+    "others": [
+     "wikidata: https://x.com/SomonLaurent"
+    ]
+   },
+   {
+    "id": "19679N",
+    "nom": "Frédérique Puissat",
+    "platform": "twitter",
+    "kept": "senat: https://x.com/f_puissat",
+    "others": [
+     "wikidata: https://x.com/frederiquep04"
+    ]
+   },
+   {
+    "id": "14223L",
+    "nom": "Brigitte Micouleau",
+    "platform": "website",
+    "kept": "senat: http://brigittemicouleau.fr/",
+    "others": [
+     "wikidata: http://www.brigittemicouleau.fr/"
+    ]
+   },
+   {
+    "id": "21071F",
+    "nom": "Marie-Do Aeschlimann",
+    "platform": "instagram",
+    "kept": "senat: https://www.instagram.com/www.instagram.com/",
+    "others": [
+     "site: https://www.instagram.com/mariedoaeschlimann/"
+    ]
+   },
+   {
+    "id": "21084L",
+    "nom": "Pierre Barros",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100092547395047",
+    "others": [
+     "senat: https://www.facebook.com/profile.php?id=100092547395047",
+     "wikidata: https://www.facebook.com/Pierre-Barros-100092547395047",
+     "site: https://www.facebook.com/profile.php?id=100092547395047"
+    ]
+   },
+   {
+    "id": "19489J",
+    "nom": "Éric Kerrouche",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/752244486",
+    "others": [
+     "site: https://www.facebook.com/eric.kerrouche"
+    ]
+   },
+   {
+    "id": "19489J",
+    "nom": "Éric Kerrouche",
+    "platform": "website",
+    "kept": "senat: https://erickerrouche.fr/",
+    "others": [
+     "wikidata: http://www.erickerrouche.fr/"
+    ]
+   },
+   {
+    "id": "20034V",
+    "nom": "Micheline Jacques",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100064316880925",
+    "others": [
+     "site: https://www.facebook.com/people/Micheline-Jacques/100064316880925"
+    ]
+   },
+   {
+    "id": "14053L",
+    "nom": "Agnès Canayer",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/1176894978",
+    "others": [
+     "site: https://www.facebook.com/agnes.canayer"
+    ]
+   },
+   {
+    "id": "20044X",
+    "nom": "Stéphane Sautarel",
+    "platform": "twitter",
+    "kept": "senat: https://x.com/SautarelS",
+    "others": [
+     "site: https://x.com/lesrep_senat"
+    ]
+   },
+   {
+    "id": "20044X",
+    "nom": "Stéphane Sautarel",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100051467599429",
+    "others": [
+     "site: https://www.facebook.com/stephane.sautarel.94",
+     "site: https://www.facebook.com/stephane.sautarel.cantal"
+    ]
+   },
+   {
+    "id": "21034A",
+    "nom": "Evelyne Corbière Naminzo",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100092330057501",
+    "others": [
+     "senat: https://www.facebook.com/profile.php?id=100092330057501"
+    ]
+   },
+   {
+    "id": "21088Q",
+    "nom": "Ian Brossat",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/BrossatIan",
+    "others": [
+     "wikidata: https://www.facebook.com/ian.brossat"
+    ]
+   },
+   {
+    "id": "11027H",
+    "nom": "Hélène Conway-Mouret",
+    "platform": "twitter",
+    "kept": "senat: https://x.com/hconwaymouret",
+    "others": [
+     "wikidata: https://x.com/HMouretConway"
+    ]
+   },
+   {
+    "id": "11027H",
+    "nom": "Hélène Conway-Mouret",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100058083039806",
+    "others": [
+     "site: https://www.facebook.com/helene.conway"
+    ]
+   },
+   {
+    "id": "21040X",
+    "nom": "Michel Masset",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/61553676331171",
+    "others": [
+     "senat: https://www.facebook.com/profile.php?id=61553676331171"
+    ]
+   },
+   {
+    "id": "07004J",
+    "nom": "Nathalie Goulet",
+    "platform": "website",
+    "kept": "senat: https://www.nathaliegoulet-senat.fr/",
+    "others": [
+     "wikidata: http://www.senateurgoulet.fr/"
+    ]
+   },
+   {
+    "id": "14255U",
+    "nom": "Olivier Cadic",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/727383815",
+    "others": [
+     "site: https://www.facebook.com/cadicolivier",
+     "site: https://www.facebook.com/people/Olivier-Cadic/727383815",
+     "site: https://www.facebook.com/udimonde"
+    ]
+   },
+   {
+    "id": "14255U",
+    "nom": "Olivier Cadic",
+    "platform": "youtube",
+    "kept": "site: https://www.youtube.com/@oliviercadic1571",
+    "others": [
+     "site: https://www.youtube.com/channel/UCOSPcmUzuP3AJx6rBI-nsbw"
+    ]
+   },
+   {
+    "id": "19533U",
+    "nom": "Stéphane Piednoir",
+    "platform": "linkedin",
+    "kept": "senat: https://www.linkedin.com/in/st%C3%A9phane-piednoir-58b05b54/",
+    "others": [
+     "wikidata: https://www.linkedin.com/in/senateurpiednoir/",
+     "site: https://www.linkedin.com/in/senateurpiednoir/"
+    ]
+   },
+   {
+    "id": "19533U",
+    "nom": "Stéphane Piednoir",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100057733554173",
+    "others": [
+     "wikidata: https://www.facebook.com/Senateurpiednoir",
+     "site: https://www.facebook.com/Senateurpiednoir"
+    ]
+   },
+   {
+    "id": "19533U",
+    "nom": "Stéphane Piednoir",
+    "platform": "youtube",
+    "kept": "wikidata: https://www.youtube.com/channel/UCchvqtHFECRudh4cHOJRlXw",
+    "others": [
+     "site: https://www.youtube.com/@piednoirstephane"
+    ]
+   },
+   {
+    "id": "14331P",
+    "nom": "Jean-François Rapin",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100058029069647",
+    "others": [
+     "site: https://www.facebook.com/JeanFrancois.Rapin62"
+    ]
+   },
+   {
+    "id": "21080G",
+    "nom": "Damien Michallet",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100009146313984",
+    "others": [
+     "senat: https://www.facebook.com/profile.php?id=100009146313984"
+    ]
+   },
+   {
+    "id": "19593H",
+    "nom": "Pierre Ouzoulias",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/POuzoulias",
+    "others": [
+     "wikidata: https://www.facebook.com/pierre.ouzoulias"
+    ]
+   },
+   {
+    "id": "20060X",
+    "nom": "Rémi Cardon",
+    "platform": "twitter",
+    "kept": "senat: https://x.com/Cardon_Remi",
+    "others": [
+     "wikidata: https://x.com/Remi_Cardon"
+    ]
+   },
+   {
+    "id": "18395Y",
+    "nom": "Karine Daniel",
+    "platform": "twitter",
+    "kept": "senat: https://x.com/KarineDaniel44",
+    "others": [
+     "wikidata: https://x.com/KarineDanielNts"
+    ]
+   },
+   {
+    "id": "18395Y",
+    "nom": "Karine Daniel",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/KarineDanielNantes",
+    "others": [
+     "wikidata: https://www.facebook.com/100009715560504"
+    ]
+   },
+   {
+    "id": "18395Y",
+    "nom": "Karine Daniel",
+    "platform": "website",
+    "kept": "senat: https://senatricekarinedaniel.fr/",
+    "others": [
+     "wikidata: http://karinedaniel2016.fr/"
+    ]
+   },
+   {
+    "id": "19693L",
+    "nom": "Laure Darcos",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100009109571748",
+    "others": [
+     "wikidata: https://www.facebook.com/lauredarcos"
+    ]
+   },
+   {
+    "id": "21404G",
+    "nom": "Sophie Briante Guillemont",
+    "platform": "instagram",
+    "kept": "senat: https://www.instagram.com/sbg_senat/",
+    "others": [
+     "wikidata: https://www.instagram.com/sophia_bg/"
+    ]
+   },
+   {
+    "id": "20128B",
+    "nom": "Ludovic Haye",
+    "platform": "twitter",
+    "kept": "wikidata: https://x.com/HayeLudovic",
+    "others": [
+     "wikidata: https://x.com/ludovichaye"
+    ]
+   },
+   {
+    "id": "19735D",
+    "nom": "Sonia de La Provôté",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/1407204158",
+    "others": [
+     "senat: https://www.facebook.com/sonia.delaprovote",
+     "wikidata: https://www.facebook.com/sonia.delaprovote"
+    ]
+   },
+   {
+    "id": "19749K",
+    "nom": "Dominique Vérien",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100058233634368",
+    "others": [
+     "wikidata: https://www.facebook.com/dominique.verien"
+    ]
+   },
+   {
+    "id": "20252E",
+    "nom": "Thierry Meignen",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100057822859263",
+    "others": [
+     "wikidata: https://www.facebook.com/Thierry-Meignen-637402119654388"
+    ]
+   },
+   {
+    "id": "21095P",
+    "nom": "Francis Szpiner",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100087130636110",
+    "others": [
+     "senat: https://www.facebook.com/profile.php?id=100087130636110"
+    ]
+   },
+   {
+    "id": "20096L",
+    "nom": "Laurence Muller-Bronn",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100005101215154",
+    "others": [
+     "site: https://www.facebook.com/profile.php?id=100005101215154"
+    ]
+   },
+   {
+    "id": "20102Q",
+    "nom": "Gérard Lahellec",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100060089481173",
+    "others": [
+     "site: https://www.facebook.com/gerard.lahellec"
+    ]
+   },
+   {
+    "id": "20102Q",
+    "nom": "Gérard Lahellec",
+    "platform": "website",
+    "kept": "senat: https://www.gerardlahellec.com/",
+    "others": [
+     "wikidata: https://gerardlahellec.com/"
+    ]
+   },
+   {
+    "id": "19331L",
+    "nom": "Saïd Omar Oili",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100064592356524",
+    "others": [
+     "senat: https://www.facebook.com/profile.php?id=100064592356524"
+    ]
+   },
+   {
+    "id": "20110Q",
+    "nom": "Guy Benarroche",
+    "platform": "website",
+    "kept": "senat: https://guy-benarroche.fr/",
+    "others": [
+     "wikidata: http://www.guy-benarroche.fr/"
+    ]
+   },
+   {
+    "id": "19347U",
+    "nom": "Guillaume Gontard",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100009151634114",
+    "others": [
+     "site: https://www.facebook.com/profile.php?id=100009151634114"
+    ]
+   },
+   {
+    "id": "20266L",
+    "nom": "Mélanie Vogel",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100078760544031",
+    "others": [
+     "wikidata: https://www.facebook.com/Melanie.Vogel.Senat",
+     "site: https://www.facebook.com/profile.php?id=100078760544031"
+    ]
+   },
+   {
+    "id": "21065H",
+    "nom": "Cédric Chevalier",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/61551806835411",
+    "others": [
+     "senat: https://www.facebook.com/profile.php?id=61551806835411"
+    ]
+   },
+   {
+    "id": "14042U",
+    "nom": "Élisabeth Doineau",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100057965834085",
+    "others": [
+     "site: https://www.facebook.com/elisabethdoineau"
+    ]
+   },
+   {
+    "id": "14205J",
+    "nom": "Anne-Catherine Loisier",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100058276531132",
+    "others": [
+     "site: https://www.facebook.com/acloisier"
+    ]
+   },
+   {
+    "id": "20024T",
+    "nom": "Bruno Belin",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/677350901",
+    "others": [
+     "site: https://www.facebook.com/bruno.belin.7"
+    ]
+   },
+   {
+    "id": "18153G",
+    "nom": "Daniel Gibbs",
+    "platform": "facebook",
+    "kept": "wikidata: https://www.facebook.com/DGibbs978",
+    "others": [
+     "wikidata: https://www.facebook.com/Team-Daniel-Gibbs-2012-334151066605825"
+    ]
+   },
+   {
+    "id": "20104S",
+    "nom": "Alain Cadec",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100058060989555",
+    "others": [
+     "wikidata: https://www.facebook.com/CadecAlain"
+    ]
+   },
+   {
+    "id": "21223D",
+    "nom": "Manon Bouquin",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/61565869145568",
+    "others": [
+     "senat: https://www.facebook.com/profile.php?id=61565869145568"
+    ]
+   },
+   {
+    "id": "20082E",
+    "nom": "Christian Redon-Sarrazy",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/1521879841",
+    "others": [
+     "senat: https://www.facebook.com/100088163585941",
+     "site: https://www.facebook.com/profile.php?id=100088163585941"
+    ]
+   },
+   {
+    "id": "20264J",
+    "nom": "Yan Chantrel",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100001635230244",
+    "others": [
+     "wikidata: https://www.facebook.com/yanchantrelCanada"
+    ]
+   },
+   {
+    "id": "20264J",
+    "nom": "Yan Chantrel",
+    "platform": "website",
+    "kept": "senat: https://www.yanchantrel.com/",
+    "others": [
+     "wikidata: http://yanchantrel.com/"
+    ]
+   },
+   {
+    "id": "11065P",
+    "nom": "Ronan Dantec",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100058201204685",
+    "others": [
+     "site: https://www.facebook.com/RonanDantec"
+    ]
+   },
+   {
+    "id": "11065P",
+    "nom": "Ronan Dantec",
+    "platform": "website",
+    "kept": "senat: http://ronandantec.eelv.fr/",
+    "others": [
+     "wikidata: https://www.ronandantec.fr/"
+    ]
+   },
+   {
+    "id": "21093M",
+    "nom": "Yannick Jadot",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/yjadot",
+    "others": [
+     "wikidata: https://www.facebook.com/yannick.jadot"
+    ]
+   },
+   {
+    "id": "20092G",
+    "nom": "Daniel Salmon",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100063760915054",
+    "others": [
+     "site: https://www.facebook.com/senateur.d.salmon"
+    ]
+   },
+   {
+    "id": "21092L",
+    "nom": "Antoinette Guhl",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/antoinette.guhl.perso",
+    "others": [
+     "site: https://www.facebook.com/antoinetteguhl"
+    ]
+   },
+   {
+    "id": "21073H",
+    "nom": "Akli Mellouli",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100057136281344",
+    "others": [
+     "senat: https://www.facebook.com/profile.php?id=100057136281344"
+    ]
+   },
+   {
+    "id": "11115U",
+    "nom": "Édouard Courtial",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100058240384691",
+    "others": [
+     "wikidata: https://www.facebook.com/EdouardCourtialDepute"
+    ]
+   },
+   {
+    "id": "20248J",
+    "nom": "Brigitte Devésa",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100001565787892",
+    "others": [
+     "wikidata: https://www.facebook.com/Brigitte-Devesa-104767821124478"
+    ]
+   },
+   {
+    "id": "17023S",
+    "nom": "Philippe Folliot",
+    "platform": "twitter",
+    "kept": "senat: https://x.com/philippefolliot",
+    "others": [
+     "site: https://x.com/SalwaLKF"
+    ]
+   },
+   {
+    "id": "17023S",
+    "nom": "Philippe Folliot",
+    "platform": "instagram",
+    "kept": "site: https://www.instagram.com/philippe.folliot/",
+    "others": [
+     "site: https://www.instagram.com/salwa_lkf/"
+    ]
+   },
+   {
+    "id": "17023S",
+    "nom": "Philippe Folliot",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/100057752665348",
+    "others": [
+     "wikidata: https://www.facebook.com/philippe.folliot.14",
+     "site: https://www.facebook.com/philippe.folliot.14",
+     "site: https://www.facebook.com/salwa.s.lakrafi"
+    ]
+   },
+   {
+    "id": "17023S",
+    "nom": "Philippe Folliot",
+    "platform": "youtube",
+    "kept": "site: https://www.youtube.com/@philippefolliot160",
+    "others": [
+     "site: https://www.youtube.com/channel/UClTVXwf_4HUHniaGAfbejJQ"
+    ]
+   },
+   {
+    "id": "21043B",
+    "nom": "Olivier Bitz",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/61556997327696",
+    "others": [
+     "senat: https://www.facebook.com/profile.php?id=61556997327696"
+    ]
+   },
+   {
+    "id": "21534R",
+    "nom": "Marie-Pierre Mouton",
+    "platform": "facebook",
+    "kept": "wikidata: https://www.facebook.com/Marie.Pierre.Mouton",
+    "others": [
+     "wikidata: https://www.facebook.com/mariepierremouton26"
+    ]
+   },
+   {
+    "id": "19768N",
+    "nom": "Sylviane Noël",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/835524589",
+    "others": [
+     "wikidata: https://www.facebook.com/sylviane.noel.10",
+     "site: https://www.facebook.com/sylviane.noel.10"
+    ]
+   },
+   {
+    "id": "21470S",
+    "nom": "Jean-Marc Delia",
+    "platform": "facebook",
+    "kept": "wikidata: https://www.facebook.com/deliajeanmarc",
+    "others": [
+     "wikidata: https://www.facebook.com/jeanmarc.delia.3"
+    ]
+   },
+   {
+    "id": "20390P",
+    "nom": "Edwige Diaz",
+    "platform": "facebook",
+    "kept": "wikidata: https://www.facebook.com/DiazEdwige",
+    "others": [
+     "site: https://www.facebook.com/400338823633387"
+    ]
+   }
+  ],
+  "rejected": [
+   {
+    "id": "19611R",
+    "nom": "Laurent Lafon",
+    "platform": "facebook",
+    "value": "https://www.facebook.com/ 100058103108525",
+    "source": "senat",
+    "reason": "not a Facebook page: https://www.facebook.com/ 100058103108525"
+   },
+   {
+    "id": "04042C",
+    "nom": "Christian Cambon",
+    "platform": "linkedin",
+    "value": "https://www.linkedin.com/search/results/all/?keywords=christian%20cambon&origin=RICH_QUERY_SUGGESTION&position=0&searchId=474f809b-4870-4f82-87cd-0472aa063e99",
+    "source": "senat",
+    "reason": "not a LinkedIn profile: https://www.linkedin.com/search/results/all/?keywords=christian%20cambon&origin=RICH_QUERY_SUGGESTION&position=0&searchId=474f809b-4870-4f82-87cd-0472aa063e99"
+   },
+   {
+    "id": "07004J",
+    "nom": "Nathalie Goulet",
+    "platform": null,
+    "value": "https://blogs.mediapart.fr/senateur-goulet/blog",
+    "source": "senat",
+    "reason": "unknown link type \"Sur Mediapart\""
+   },
+   {
+    "id": "07004J",
+    "nom": "Nathalie Goulet",
+    "platform": null,
+    "value": "http://www.huffingtonpost.fr/author/nathalie-goulet/",
+    "source": "senat",
+    "reason": "unknown link type \"Sur Huffpost\""
+   },
+   {
+    "id": "14069U",
+    "nom": "François Bonhomme",
+    "platform": "website",
+    "value": "http://www.senat.fr/",
+    "source": "senat",
+    "reason": "institution or party site, not the senator's own: http://www.senat.fr/"
+   },
+   {
+    "id": "19826F",
+    "nom": "Pascal Martin",
+    "platform": "facebook",
+    "value": "https://www.facebook.com/ 100057628916285",
+    "source": "senat",
+    "reason": "not a Facebook page: https://www.facebook.com/ 100057628916285"
+   },
+   {
+    "id": "07033P",
+    "nom": "Catherine Dumas",
+    "platform": "linkedin",
+    "value": "https://www.linkedin.com/search/results/all/?keywords=catherine%20dumas&origin=RICH_QUERY_SUGGESTION&position=0&searchId=53e08a40-ac6b-46c9-87de-8168a60014fd",
+    "source": "senat",
+    "reason": "not a LinkedIn profile: https://www.linkedin.com/search/results/all/?keywords=catherine%20dumas&origin=RICH_QUERY_SUGGESTION&position=0&searchId=53e08a40-ac6b-46c9-87de-8168a60014fd"
+   },
+   {
+    "id": "14219Q",
+    "nom": "Jean-François Longeot",
+    "platform": "facebook",
+    "value": "https://www.facebook.com/ 100058128217566",
+    "source": "senat",
+    "reason": "not a Facebook page: https://www.facebook.com/ 100058128217566"
+   },
+   {
+    "id": "21092L",
+    "nom": "Antoinette Guhl",
+    "platform": null,
+    "value": "https://www.threads.com/@guhlantoinette?hl=fr",
+    "source": "senat",
+    "reason": "unknown link type \"Sur Threads\""
+   },
+   {
+    "id": "21083K",
+    "nom": "Guislain Cambier",
+    "platform": "website",
+    "value": "http://www.senat.fr/",
+    "source": "senat",
+    "reason": "institution or party site, not the senator's own: http://www.senat.fr/"
+   },
+   {
+    "id": "12016W",
+    "nom": "Victorin Lurel",
+    "platform": "website",
+    "value": "http://lurel.parti-socialiste.fr",
+    "source": "wikidata",
+    "reason": "institution or party site, not the senator's own: http://lurel.parti-socialiste.fr"
+   },
+   {
+    "id": "17229F",
+    "nom": "Stéphane Demilly",
+    "platform": "facebook",
+    "value": "Stéphane-Demilly-1497343097190263",
+    "source": "wikidata",
+    "reason": "not a Facebook page: Stéphane-Demilly-1497343097190263"
+   },
+   {
+    "id": "20040T",
+    "nom": "Alain Duffourg",
+    "platform": "website",
+    "value": "http://www.senat.fr/senateur/duffourg_alain20040t.html",
+    "source": "wikidata",
+    "reason": "institution or party site, not the senator's own: http://www.senat.fr/senateur/duffourg_alain20040t.html"
+   },
+   {
+    "id": "11048N",
+    "nom": "Jean-François Husson",
+    "platform": "linkedin",
+    "value": "https://www.linkedin.com/in/t%C3%A9o-franoux/",
+    "source": "site",
+    "reason": "LinkedIn profile without the senator's name"
+   },
+   {
+    "id": "11048N",
+    "nom": "Jean-François Husson",
+    "platform": "linkedin",
+    "value": "https://www.linkedin.com/in/lucas-protch/",
+    "source": "site",
+    "reason": "LinkedIn profile without the senator's name"
+   },
+   {
+    "id": "11048N",
+    "nom": "Jean-François Husson",
+    "platform": "linkedin",
+    "value": "https://www.linkedin.com/in/mayer-quentin",
+    "source": "site",
+    "reason": "LinkedIn profile without the senator's name"
+   }
+  ],
+  "siteErrors": [
+   {
+    "id": "19711U",
+    "url": "http://www.christinelavarde.fr/",
+    "error": "robots.txt disallows"
+   },
+   {
+    "id": "19719D",
+    "url": "http://www.nathalie-delattre.fr/",
+    "error": "fetch failed for http://www.nathalie-delattre.fr/"
+   },
+   {
+    "id": "04008A",
+    "url": "http://www.mpdaubresse.com/",
+    "error": "fetch failed for http://www.mpdaubresse.com/"
+   },
+   {
+    "id": "18083K",
+    "url": "http://www.guillaumechevrollier.fr/",
+    "error": "fetch failed for http://www.guillaumechevrollier.fr/"
+   },
+   {
+    "id": "20070A",
+    "url": "http://www.thierrycozic.fr/",
+    "error": "HTTP 403"
+   },
+   {
+    "id": "19413M",
+    "url": "http://jc-tissot.fr/",
+    "error": "fetch failed for http://jc-tissot.fr/"
+   },
+   {
+    "id": "99004R",
+    "url": "http://www.rogerkaroutchi.info/",
+    "error": "fetch failed for http://www.rogerkaroutchi.info/"
+   },
+   {
+    "id": "20106U",
+    "url": "https://nadegehavet.bzh/",
+    "error": "robots.txt disallows"
+   },
+   {
+    "id": "19591F",
+    "url": "https://iacovelli.fr/",
+    "error": "fetch failed for https://iacovelli.fr/"
+   },
+   {
+    "id": "19611R",
+    "url": "http://laurentlafon.com/",
+    "error": "HTTP 404"
+   },
+   {
+    "id": "19697Q",
+    "url": "https://martinlevrier.fr/",
+    "error": "fetch failed for https://martinlevrier.fr/"
+   },
+   {
+    "id": "04070G",
+    "url": "https://catherine-morin-desailly.fr/",
+    "error": "HTTP 503 for https://catherine-morin-desailly.fr/"
+   },
+   {
+    "id": "14179A",
+    "url": "http://www.loicherve.fr/",
+    "error": "robots.txt disallows"
+   },
+   {
+    "id": "19295A",
+    "url": "https://www.catherineconconne.com/",
+    "error": "fetch failed for https://www.catherineconconne.com/"
+   },
+   {
+    "id": "20138D",
+    "url": "https://www.alexandraborchiofontimp.fr/",
+    "error": "robots.txt disallows"
+   },
+   {
+    "id": "14223L",
+    "url": "http://brigittemicouleau.fr/",
+    "error": "HTTP 404"
+   },
+   {
+    "id": "19111A",
+    "url": "https://www.isabelleflorennes.fr/",
+    "error": "fetch failed for https://www.isabelleflorennes.fr/"
+   },
+   {
+    "id": "14259Y",
+    "url": "http://www.mathieudarnaud.fr/",
+    "error": "HTTP 500 for http://www.mathieudarnaud.fr/"
+   },
+   {
+    "id": "21436Q",
+    "url": "https://marieangerousselot.fr/",
+    "error": "robots.txt disallows"
+   },
+   {
+    "id": "14193X",
+    "url": "http://www.cedricperrin.fr/",
+    "error": "fetch failed for http://www.cedricperrin.fr/"
+   },
+   {
+    "id": "14215L",
+    "url": "http://www.catherinedifolco.com/",
+    "error": "robots.txt disallows"
+   },
+   {
+    "id": "20064C",
+    "url": "http://mickaelvallet.fr/",
+    "error": "HTTP 503 for http://mickaelvallet.fr/"
+   },
+   {
+    "id": "21686H",
+    "url": "http://www.rodolphe-alexandre.net/",
+    "error": "fetch failed for http://www.rodolphe-alexandre.net/"
+   },
+   {
+    "id": "14187A",
+    "url": "http://www.dominiqueestrosisassone.com/",
+    "error": "fetch failed for http://www.dominiqueestrosisassone.com/"
+   },
+   {
+    "id": "07004J",
+    "url": "https://www.nathaliegoulet-senat.fr/",
+    "error": "robots.txt disallows"
+   },
+   {
+    "id": "18193Q",
+    "url": "http://www.annielehouerou.bzh/",
+    "error": "fetch failed for http://www.annielehouerou.bzh/"
+   },
+   {
+    "id": "21080G",
+    "url": "https://www.damienmichallet.fr/",
+    "error": "HTTP 403"
+   },
+   {
+    "id": "19954N",
+    "url": "http://www.catherinebelrhiti.fr/",
+    "error": "HTTP 403"
+   },
+   {
+    "id": "19683J",
+    "url": "http://bernardjomier.eelv.fr/",
+    "error": "fetch failed for http://bernardjomier.eelv.fr/"
+   },
+   {
+    "id": "20110Q",
+    "url": "https://guy-benarroche.fr/",
+    "error": "fetch failed for https://guy-benarroche.fr/"
+   },
+   {
+    "id": "20120S",
+    "url": "http://www.fabiengenet.fr/",
+    "error": "robots.txt disallows"
+   },
+   {
+    "id": "14237S",
+    "url": "http://www.cyrilpellevat.com/",
+    "error": "fetch failed for http://www.cyrilpellevat.com/"
+   },
+   {
+    "id": "19713W",
+    "url": "http://nadiasollogoub.fr/",
+    "error": "fetch failed for http://nadiasollogoub.fr/"
+   },
+   {
+    "id": "20172F",
+    "url": "https://www.laurencegarnier.fr/",
+    "error": "fetch failed for https://www.laurencegarnier.fr/"
+   },
+   {
+    "id": "18153G",
+    "url": "http://deputation.danielgibbs.fr/",
+    "error": "fetch failed for http://deputation.danielgibbs.fr/"
+   },
+   {
+    "id": "20264J",
+    "url": "https://www.yanchantrel.com/",
+    "error": "fetch failed for https://www.yanchantrel.com/"
+   },
+   {
+    "id": "21094N",
+    "url": "http://www.annesouyris.fr/",
+    "error": "fetch failed for http://www.annesouyris.fr/"
+   },
+   {
+    "id": "11115U",
+    "url": "http://edouard-courtial.fr/",
+    "error": "fetch failed for http://edouard-courtial.fr/"
+   },
+   {
+    "id": "19421M",
+    "url": "http://www.huguessaury.fr/",
+    "error": "fetch failed for http://www.huguessaury.fr/"
+   }
+  ]
+ }
+}

@@ -1,0 +1,5866 @@
+{
+ "generated": "2026-11-07",
+ "schemaVersion": 1,
+ "code": "31555",
+ "name": "Toulouse",
+ "granularity": "group",
+ "council": "Conseil municipal de Toulouse",
+ "mandate": "2026–2032",
+ "groups": [
+  {
+   "name": "Aimer Toulouse",
+   "family": "right",
+   "basis": "Group of the majority of mayor Jean-Luc Moudenc (winning list 'Avec Jean-Luc MOUDENC, Protégeons l'Avenir de Toulouse', nuance LDVD)."
+  },
+  {
+   "name": "Demain Toulouse",
+   "family": "radical_left",
+   "basis": "Same name as François Piquemal's first-round list 'Demain Toulouse à gauche et écologiste' (nuance LFI); merged second-round list LDVG."
+  },
+  {
+   "name": "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s",
+   "family": "left",
+   "basis": "Same name as the first-round list 'Vivre mieux La gauche unie, écologiste, citoyenne et solidaire' (nuance LUG); merged second-round list LDVG."
+  }
+ ],
+ "method": "Outcome from 'type_vote'. The 'vote' field lists, under 'Contre', 'Abstention' and 'Ne participe pas au vote', the groups (or individual councillors) concerned; votes in favour are not listed. byGroup therefore marks a group 'for' with implied=true when it is not listed and a vote took place. 'except' = members of the group who did not follow it (named in the source). Individual councillors named outside a group are in 'individuals'. Unanimous votes: every group 'for' (implied).",
+ "source": {
+  "name": "Délibérations à partir de mars 2026 - Mairie de Toulouse",
+  "publisher": "Toulouse Métropole / Mairie de Toulouse",
+  "url": "https://data.toulouse-metropole.fr/explore/dataset/deliberations-a-partir-de-mars-2026-mairie-de-toulouse/",
+  "api": "https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets/deliberations-a-partir-de-mars-2026-mairie-de-toulouse/records",
+  "licence": "Not stated in the dataset metadata (the 2020–2026 edition of the same dataset is under Licence Ouverte v2.0)",
+  "modified": "2026-05-19T14:24:46+00:00"
+ },
+ "deliberations": [
+  {
+   "id": "26-0246",
+   "date": "2026-06-19",
+   "order": 1.1,
+   "title": "Subvention pour les projets de classes de découvertes libres - Année 2025-2026",
+   "theme": "8 - Domaines de competences par themes 1 - Enseignement",
+   "rapporteur": "Marion LALANE-DE-LAUBADERE - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0247",
+   "date": "2026-06-19",
+   "order": 1.2,
+   "title": "Tisséo : Evolution du ticket tribu scolaire",
+   "theme": "8 - Domaines de competences par themes 1 - Enseignement",
+   "rapporteur": "Marion LALANE-DE-LAUBADERE - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0250",
+   "date": "2026-06-19",
+   "order": 1.3,
+   "title": "Convention de partenariat entre la ville de Toulouse et le Toulouse Foot Club pour la mise en œuvre d'un parcours éducatif",
+   "theme": "8 - Domaines de competences par themes 1 - Enseignement",
+   "rapporteur": "Marion LALANE-DE-LAUBADERE - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0261",
+   "date": "2026-06-19",
+   "order": 1.4,
+   "title": "Approbation d'une convention de responsabilité conjointe avec l'Éducation nationale relative au nouvel espace numérique de travail des écoles publiques",
+   "theme": "8 - Domaines de competences par themes 1 - Enseignement",
+   "rapporteur": "Marion LALANE-DE-LAUBADERE - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0233",
+   "date": "2026-06-19",
+   "order": 1.5,
+   "title": "Direction Enfance-Loisirs - Dispositif Aide aux Vacances Enfants (AVE) - Approbation de la convention avec VACAF",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Marion LALANE-DE-LAUBADERE - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0293",
+   "date": "2026-06-19",
+   "order": 2.1,
+   "title": "Dénomination de voie",
+   "theme": "8 - Domaines de competences par themes 3 - Voirie",
+   "rapporteur": "Jean-Michel LATTES - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0217",
+   "date": "2026-06-19",
+   "order": 3.1,
+   "title": "Attribution de subventions de fonctionnement à diverses associations intervenant dans le champ du logement – Exercice 2026",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Laurence KATZENMAYER - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "individuals": [
+    {
+     "name": "Fella ALLAL",
+     "position": "notVoting"
+    }
+   ],
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse\n\tFella ALLAL"
+  },
+  {
+   "id": "26-0194",
+   "date": "2026-06-19",
+   "order": 3.2,
+   "title": "Chambre Régionale des Comptes – Rapport d’observations définitives portant sur l’accès au logement social – Toulouse Métropole, Sicoval, Muretain Agglo, Grand Ouest Toulousain, Coteaux Bellevue (Haute-Garonne) - Exercices 2019 et suivants",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Laurence KATZENMAYER - Adjointe au Maire",
+   "outcome": "noted",
+   "unanimous": null,
+   "outcomeLabel": "Le Conseil Municipal prend acte",
+   "byGroup": null,
+   "voteText": null
+  },
+  {
+   "id": "26-0284",
+   "date": "2026-06-19",
+   "order": 3.3,
+   "title": "Chambre Régionale des Comptes – Rapport de synthèse thématique régional portant sur l’accès au logement social dans la grande agglomération toulousaine - Exercices 2019 et suivants",
+   "theme": "8 - Domaines de competences par themes 5 - Politique de la ville-habitat-logement",
+   "rapporteur": "Laurence KATZENMAYER - Adjointe au Maire",
+   "outcome": "noted",
+   "unanimous": null,
+   "outcomeLabel": "Le Conseil Municipal prend acte",
+   "byGroup": null,
+   "voteText": null
+  },
+  {
+   "id": "26-0061",
+   "date": "2026-06-19",
+   "order": 3.4,
+   "title": "Commission locale d'évaluation des transferts de charges (CLECT) - Approbation de la composition et désignation des représentants de la commune",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Laurence KATZENMAYER - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0269",
+   "date": "2026-06-19",
+   "order": 3.5,
+   "title": "Désignations des représentants du Conseil municipal au sein de divers organismes",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Laurence KATZENMAYER - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0179",
+   "date": "2026-06-19",
+   "order": 4.1,
+   "title": "Attribution de subventions aux associations intervenant auprès des jeunesses",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Sofiane OUMIHA - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0180",
+   "date": "2026-06-19",
+   "order": 4.2,
+   "title": "Attribution de subventions aux associations intervenant auprès de la vie étudiante",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Sofiane OUMIHA - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0290",
+   "date": "2026-06-19",
+   "order": 4.3,
+   "title": "Reprise d'activité transitoire de l'Accueil Jeunes Lalande en régie",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Sofiane OUMIHA - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0163",
+   "date": "2026-06-19",
+   "order": 5.1,
+   "title": "Archives - Accueil du public en salle de lecture – Mise à jour du règlement",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Nicole YARDENI - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0110",
+   "date": "2026-06-19",
+   "order": 5.1,
+   "title": "Subventions culturelles - Exercice 2026 - Fonctionnement",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Nicole YARDENI - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0111",
+   "date": "2026-06-19",
+   "order": 5.2,
+   "title": "Subventions culturelles - Exercice 2026 - Événements",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Nicole YARDENI - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0112",
+   "date": "2026-06-19",
+   "order": 5.3,
+   "title": "Subventions culturelles - Exercice 2026 - Actions spécifiques",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Nicole YARDENI - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0113",
+   "date": "2026-06-19",
+   "order": 5.4,
+   "title": "Subventions culturelles - Exercice 2026 - Investissement",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Nicole YARDENI - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0148",
+   "date": "2026-06-19",
+   "order": 5.5,
+   "title": "Play Music - Conservatoire à Rayonnement Régional de Toulouse : convention de partenariat entre ENEDIS et la Mairie de Toulouse",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Nicole YARDENI - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0260",
+   "date": "2026-06-19",
+   "order": 5.6,
+   "title": "Conservatoire à Rayonnement Régional : convention de coopération entre la Mairie de Toulouse, l’Association Q-U-E-N-A et le Conservatoire d’Ancon (Pérou) dans le cadre d'une procédure de don d'instruments",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Nicole YARDENI - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0278",
+   "date": "2026-06-19",
+   "order": 5.7,
+   "title": "Conservatoire à Rayonnement Régional – Demande de renouvellement d’agrément pour la préparation à l’entrée dans les établissements d’enseignement supérieur de la création artistique – Département de musiques traditionnelles",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Nicole YARDENI - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0125",
+   "date": "2026-06-19",
+   "order": 5.8,
+   "title": "Théâtre Jules Julien : approbation de la convention de résidence d'artiste de la compagnie Jean Balcon",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Nicole YARDENI - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0123",
+   "date": "2026-06-19",
+   "order": 5.9,
+   "title": "Festival de Toulouse 2026 : approbation de conventions de partenariat avec plusieurs structures pour la promotion de l'évènement",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Nicole YARDENI - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "abstain",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "abstain",
+     "implied": false
+    }
+   },
+   "individuals": [
+    {
+     "name": "Ahmed DAHROUR",
+     "position": "abstain"
+    }
+   ],
+   "voteText": "Abstention\n\n\tDemain Toulouse\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s\n\tAhmed DAHROUR"
+  },
+  {
+   "id": "26-0085",
+   "date": "2026-06-19",
+   "order": 6.1,
+   "title": "Attribution de subventions à différentes associations œuvrant dans le champ de la prévention de la délinquance",
+   "theme": "6 - Libertés publiques et pourvoirs de police 1 - Police municipale",
+   "rapporteur": "Emilion ESNAULT - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0271",
+   "date": "2026-06-19",
+   "order": 6.2,
+   "title": "Attribution d'une subvention dans le cadre du suivi du rappel à l'ordre",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Emilion ESNAULT - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0131",
+   "date": "2026-06-19",
+   "order": 7.1,
+   "title": "Emploi - Attribution d'une subvention à l'association La Passerelle pour l'exercice 2026",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Michel LACROIX - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0132",
+   "date": "2026-06-19",
+   "order": 7.2,
+   "title": "Emploi - Attribution de subventions à la Mission Locale de Toulouse pour l'exercice 2026",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Michel LACROIX - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0133",
+   "date": "2026-06-19",
+   "order": 7.3,
+   "title": "Emploi - Attribution de subventions aux associations (1ère tranche 2026)",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Michel LACROIX - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0264",
+   "date": "2026-06-19",
+   "order": 8.1,
+   "title": "Vie associative – Guichet Unique des Salles municipales : modification du règlement intérieur des salles municipales",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Cécile DUFRAISSE - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "against",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "against",
+     "implied": false
+    }
+   },
+   "voteText": "Contre\n\n\tDemain Toulouse\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s"
+  },
+  {
+   "id": "26-0262",
+   "date": "2026-06-19",
+   "order": 8.2,
+   "title": "Vie associative - Gestion des salles : modification de la liste des salles",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Cécile DUFRAISSE - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "against",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Contre\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0263",
+   "date": "2026-06-19",
+   "order": 8.3,
+   "title": "Vie associative : Maison des Associations – Modification du règlement intérieur",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Cécile DUFRAISSE - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "against",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Contre\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0154",
+   "date": "2026-06-19",
+   "order": 9.1,
+   "title": "Quartier La Cépière - Rétrocession à la société BELIN d'une emprise située 132 Avenue de Lombez",
+   "theme": "3 - Domaine et patrimoine 2 - Alienations",
+   "rapporteur": "Sacha BRIAND - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "abstain",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Abstention\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0225",
+   "date": "2026-06-19",
+   "order": 9.1,
+   "title": "Adoption du règlement budgétaire et financier",
+   "theme": "7 - Finances locales 1 - Decisions budgetaires",
+   "rapporteur": "Sacha BRIAND - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0166",
+   "date": "2026-06-19",
+   "order": 9.11,
+   "title": "Quartier Saint Simon : cession d’une emprise foncière destinée au projet du District Haute-Garonne de Football située chemin de la Saudrune - Toulouse",
+   "theme": "3 - Domaine et patrimoine 2 - Alienations",
+   "rapporteur": "Sacha BRIAND - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "abstain",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Abstention\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0185",
+   "date": "2026-06-19",
+   "order": 9.12,
+   "title": "Quartier Saint-Cyprien - Désaffectation et déclassement anticipé de la caserne Vion en vue de sa cession",
+   "theme": "3 - Domaine et patrimoine 2 - Alienations",
+   "rapporteur": "Sacha BRIAND - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "abstain",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "against",
+     "implied": false
+    }
+   },
+   "voteText": "Contre\n\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s\n\nAbstention\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0245",
+   "date": "2026-06-19",
+   "order": 9.13,
+   "title": "Quartier Jules-Julien : désaffectation et déclassement du domaine public du bien immobilier situé 93 avenue Jules-Julien",
+   "theme": "3 - Domaine et patrimoine 2 - Alienations",
+   "rapporteur": "Sacha BRIAND - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "against",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Contre\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0256",
+   "date": "2026-06-19",
+   "order": 9.14,
+   "title": "Quartier de la Salade Ponsan : désaffectation et déclassement d'emprises foncières situées rue Jean Boyssonne",
+   "theme": "3 - Domaine et patrimoine 2 - Alienations",
+   "rapporteur": "Sacha BRIAND - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "against",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Contre\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0270",
+   "date": "2026-06-19",
+   "order": 9.15,
+   "title": "Composition de la commission de contrôle financier",
+   "theme": "1 - Commande Publique 2 - Délégation de service public",
+   "rapporteur": "Sacha BRIAND - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0251",
+   "date": "2026-06-19",
+   "order": 9.16,
+   "title": "Convention de mise à disposition des parkings, du parvis et droit d'utilisation d'une partie de l'esplanade pour le public du Zénith de Toulouse les jours de spectacles et manifestations : adoption de l'avenant n°1 à la convention.",
+   "theme": "1 - Commande Publique 2 - Délégation de service public",
+   "rapporteur": "Sacha BRIAND - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0259",
+   "date": "2026-06-19",
+   "order": 9.17,
+   "title": "Agence d'Attractivité de Toulouse Métropole (Toulouse TEAM) – Approbation des statuts modifiés",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Sacha BRIAND - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "abstain",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "abstain",
+     "implied": false
+    }
+   },
+   "voteText": "Abstention\n\n\tDemain Toulouse\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s"
+  },
+  {
+   "id": "26-0226",
+   "date": "2026-06-19",
+   "order": 9.2,
+   "title": "Compte financier unique 2025 - Budget Principal",
+   "theme": "7 - Finances locales 1 - Decisions budgetaires",
+   "rapporteur": "Sacha BRIAND - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "against",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "against",
+     "implied": false
+    }
+   },
+   "voteText": "Contre\n\n\tDemain Toulouse\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s"
+  },
+  {
+   "id": "26-0227",
+   "date": "2026-06-19",
+   "order": 9.3,
+   "title": "Affectation au budget supplémentaire 2026 du résultat constaté au compte financier unique 2025",
+   "theme": "7 - Finances locales 1 - Decisions budgetaires",
+   "rapporteur": "Sacha BRIAND - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "against",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "against",
+     "implied": false
+    }
+   },
+   "voteText": "Contre\n\n\tDemain Toulouse\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s"
+  },
+  {
+   "id": "26-0228",
+   "date": "2026-06-19",
+   "order": 9.4,
+   "title": "Budget Supplémentaire 2026 - Budget Principal",
+   "theme": "7 - Finances locales 10 - Divers",
+   "rapporteur": "Sacha BRIAND - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "against",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "against",
+     "implied": false
+    }
+   },
+   "voteText": "Contre\n\n\tDemain Toulouse\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s"
+  },
+  {
+   "id": "26-0229",
+   "date": "2026-06-19",
+   "order": 9.5,
+   "title": "Révision des autorisations de programme / Crédits de paiement (1) Exercice 2026",
+   "theme": "7 - Finances locales 1 - Decisions budgetaires",
+   "rapporteur": "Sacha BRIAND - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "against",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "against",
+     "implied": false
+    }
+   },
+   "voteText": "Contre\n\n\tDemain Toulouse\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s"
+  },
+  {
+   "id": "26-0230",
+   "date": "2026-06-19",
+   "order": 9.6,
+   "title": "Demande d'admission en non-valeur de titres irrécouvrables sur le budget principal",
+   "theme": "7 - Finances locales 10 - Divers",
+   "rapporteur": "Sacha BRIAND - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "against",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Contre\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0231",
+   "date": "2026-06-19",
+   "order": 9.7,
+   "title": "Caisse de Crédit Municipal - Rapport annuel et compte financier 2025",
+   "theme": "7 - Finances locales 10 - Divers",
+   "rapporteur": "Sacha BRIAND - Adjoint au Maire",
+   "outcome": "noted",
+   "unanimous": null,
+   "outcomeLabel": "Le Conseil Municipal prend acte",
+   "byGroup": null,
+   "voteText": null
+  },
+  {
+   "id": "26-0232",
+   "date": "2026-06-19",
+   "order": 9.8,
+   "title": "Commission Communale des Impôts Directs : désignation des commissaires",
+   "theme": "7 - Finances locales 10 - Divers",
+   "rapporteur": "Sacha BRIAND - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "abstain",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "abstain",
+     "implied": false
+    }
+   },
+   "voteText": "Abstention\n\n\tDemain Toulouse\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s"
+  },
+  {
+   "id": "26-0152",
+   "date": "2026-06-19",
+   "order": 9.9,
+   "title": "Quartiers Montaudran - Le Mirail - La Roseraie et La Cépière - Adoption de conventions de servitudes sur le domaine public au profit d'Enedis",
+   "theme": "3 - Domaine et patrimoine 5 - Autres actes de gestion du domaine public",
+   "rapporteur": "Sacha BRIAND - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0187",
+   "date": "2026-06-19",
+   "order": 10.1,
+   "title": "Soutien aux actions en faveur de l'égalité entre les femmes et les hommes",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Julie ESCUDIER - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0145",
+   "date": "2026-06-19",
+   "order": 11.1,
+   "title": "Domaine agricole de Toulouse - Compte financier unique 2025",
+   "theme": "7 - Finances locales 6 - Contributions budgetaires",
+   "rapporteur": "Jean-Jacques BOLZAN - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "abstain",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "abstain",
+     "implied": false
+    }
+   },
+   "voteText": "Abstention\n\n\tDemain Toulouse\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s"
+  },
+  {
+   "id": "26-0144",
+   "date": "2026-06-19",
+   "order": 11.2,
+   "title": "Domaine agricole de Toulouse - Affectation au budget supplémentaire 2026 du résultat constaté au compte financier unique 2025",
+   "theme": "7 - Finances locales 6 - Contributions budgetaires",
+   "rapporteur": "Jean-Jacques BOLZAN - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "abstain",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "abstain",
+     "implied": false
+    }
+   },
+   "voteText": "Abstention\n\n\tDemain Toulouse\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s"
+  },
+  {
+   "id": "26-0146",
+   "date": "2026-06-19",
+   "order": 11.3,
+   "title": "Domaine agricole de Toulouse - Budget supplémentaire 2026",
+   "theme": "7 - Finances locales 1 - Decisions budgetaires",
+   "rapporteur": "Jean-Jacques BOLZAN - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "abstain",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "abstain",
+     "implied": false
+    }
+   },
+   "voteText": "Abstention\n\n\tDemain Toulouse\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s"
+  },
+  {
+   "id": "26-0255",
+   "date": "2026-06-19",
+   "order": 11.4,
+   "title": "Domaine Agricole de Toulouse - Actualisation de la grille tarifaire",
+   "theme": "7 - Finances locales 10 - Divers",
+   "rapporteur": "Jean-Jacques BOLZAN - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "abstain",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "abstain",
+     "implied": false
+    }
+   },
+   "voteText": "Abstention\n\n\tDemain Toulouse\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s"
+  },
+  {
+   "id": "26-0140",
+   "date": "2026-06-19",
+   "order": 12.1,
+   "title": "Lido - Centre municipal des Arts du Cirque : approbation d’une convention de partenariat avec l’USEP 31 et la DSDEN",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Valérie JACQUET VIOLLEAU - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0209",
+   "date": "2026-06-19",
+   "order": 12.1,
+   "title": "Appel à projets Passeport pour l'Art - Parcours culturels gratuits 2026-2027 : sélection des lauréats de l'appel à projets et attribution de subventions 2026",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Valérie JACQUET VIOLLEAU - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0174",
+   "date": "2026-06-19",
+   "order": 12.11,
+   "title": "Bibliothèques de Toulouse : approbation de l’adhésion à L’Agence Unique, Occitanie Culture",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Valérie JACQUET VIOLLEAU - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0175",
+   "date": "2026-06-19",
+   "order": 12.12,
+   "title": "Bibliothèques de Toulouse : approbation du don de vitrines au profit de la Direction de la Culture Scientifique, Technique et Industrielle (DCSTI)",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Valérie JACQUET VIOLLEAU - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0199",
+   "date": "2026-06-19",
+   "order": 12.13,
+   "title": "Bibliothèques de Toulouse : approbation de la convention de partenariat avec le Metronum dans le cadre du festival Rio Loco 2026",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Valérie JACQUET VIOLLEAU - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0176",
+   "date": "2026-06-19",
+   "order": 12.2,
+   "title": "Lido - Centre municipal des Arts du Cirque : approbation d’une convention de partenariat type avec les structures d'accueil pour l'organisation des représentations de l'école",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Valérie JACQUET VIOLLEAU - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0183",
+   "date": "2026-06-19",
+   "order": 12.3,
+   "title": "Lido - Centre municipal des Arts du Cirque : approbation d’une convention de partenariat avec l’association du May et l’association Impulsarte",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Valérie JACQUET VIOLLEAU - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0116",
+   "date": "2026-06-19",
+   "order": 12.4,
+   "title": "Centre culturel Bellegarde : approbation de la convention de partenariat avec les Musicophages (MAGMA)",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Valérie JACQUET VIOLLEAU - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0151",
+   "date": "2026-06-19",
+   "order": 12.5,
+   "title": "Centre culturel Saint-Cyprien : approbation des conventions de partenariats avec l’association ABC Actions Culturelles et Les Abattoirs - Musée FRAC Occitanie Toulouse",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Valérie JACQUET VIOLLEAU - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0164",
+   "date": "2026-06-19",
+   "order": 12.6,
+   "title": "Centre culturel Alban Minville et Médiathèque Grand M : approbation de la convention de partenariat sur la saison culturelle 2026-2027 avec l'association Tout un Monde",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Valérie JACQUET VIOLLEAU - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0040",
+   "date": "2026-06-19",
+   "order": 12.7,
+   "title": "Centre culturel Desbals : approbation de la convention de partenariat avec La Grainerie",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Valérie JACQUET VIOLLEAU - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0149",
+   "date": "2026-06-19",
+   "order": 12.8,
+   "title": "Micro Folie Itinérante : convention de partenariat entre ENEDIS et la Mairie de Toulouse",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Valérie JACQUET VIOLLEAU - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0150",
+   "date": "2026-06-19",
+   "order": 12.9,
+   "title": "Décroche le Son, Tremplin Musical : convention de partenariat entre ENEDIS et la Mairie de Toulouse",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Valérie JACQUET VIOLLEAU - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0122",
+   "date": "2026-06-19",
+   "order": 13.1,
+   "title": "Modification du tableau des emplois et des effectifs au sein de la Mairie de Toulouse",
+   "theme": "4 - Fonction publique 1 - Personnel titulaires et stagiaires de la F.P.T. 3 - Délibérations relatives aux titulaires et stagiaires",
+   "rapporteur": "Pierre ESPLUGAS-LABATUT - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0121",
+   "date": "2026-06-19",
+   "order": 13.2,
+   "title": "Avenant à la convention C-2004 entre le Fonds pour l'Insertion des Personnes Handicapées (FIPHFP) et la Mairie de Toulouse",
+   "theme": "4 - Fonction publique 1 - Personnel titulaires et stagiaires de la F.P.T. 3 - Délibérations relatives aux titulaires et stagiaires",
+   "rapporteur": "Pierre ESPLUGAS-LABATUT - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0142",
+   "date": "2026-06-19",
+   "order": 13.3,
+   "title": "Allongement de la période de dépassement réglementaire relatif aux heures supplémentaires pour l’indemnisation des travaux effectués dans le cadre de l’organisation des élections.",
+   "theme": "4 - Fonction publique 1 - Personnel titulaires et stagiaires de la F.P.T. 3 - Délibérations relatives aux titulaires et stagiaires",
+   "rapporteur": "Pierre ESPLUGAS-LABATUT - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0143",
+   "date": "2026-06-19",
+   "order": 13.4,
+   "title": "Ajustement des dispositifs d'astreintes DVA-DDC",
+   "theme": "4 - Fonction publique 1 - Personnel titulaires et stagiaires de la F.P.T. 2 - Gestion 2 - Néant",
+   "rapporteur": "Pierre ESPLUGAS-LABATUT - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0238",
+   "date": "2026-06-19",
+   "order": 14.1,
+   "title": "Attribution de subventions à diverses associations intervenant dans le domaine de la petite enfance au titre de l'année 2026",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Charlotte PUJO - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0239",
+   "date": "2026-06-19",
+   "order": 14.2,
+   "title": "Avis de l'Autorité Organisatrice (AO) de l'accueil du jeune enfant sur la demande de réduction de capacité d'accueil de l'Etablissement d'Accueil du Jeune Enfant LA MARELLE BORDELONGUE",
+   "theme": "8 - Domaines de competences par themes 2 - Aide sociale",
+   "rapporteur": "Charlotte PUJO - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0240",
+   "date": "2026-06-19",
+   "order": 14.3,
+   "title": "Avis de l'Autorité Organisatrice (AO) de l'accueil du jeune enfant sur la demande d'augmentation de capacité d'accueil de l'Etablissement d'Accueil du Jeune Enfant O BORD DE L'O",
+   "theme": "8 - Domaines de competences par themes 2 - Aide sociale",
+   "rapporteur": "Charlotte PUJO - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "abstain",
+     "implied": false
+    }
+   },
+   "individuals": [
+    {
+     "name": "Ahmed DAHROUR",
+     "position": "abstain"
+    }
+   ],
+   "voteText": "Abstention\n\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s\n\tAhmed DAHROUR"
+  },
+  {
+   "id": "26-0241",
+   "date": "2026-06-19",
+   "order": 14.4,
+   "title": "Mise à jour du règlement de fonctionnement des Etablissements d’Accueil du Jeune Enfant municipaux",
+   "theme": "8 - Domaines de competences par themes 1 - Enseignement",
+   "rapporteur": "Charlotte PUJO - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "abstain",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "abstain",
+     "implied": false
+    }
+   },
+   "voteText": "Abstention\n\n\tDemain Toulouse\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s"
+  },
+  {
+   "id": "26-0242",
+   "date": "2026-06-19",
+   "order": 14.5,
+   "title": "Mise en place du guichet unique d'attribution des places en crèches dans le cadre du service public petite enfance",
+   "theme": "8 - Domaines de competences par themes 1 - Enseignement",
+   "rapporteur": "Charlotte PUJO - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "individuals": [
+    {
+     "name": "Ahmed DAHROUR",
+     "position": "abstain"
+    }
+   ],
+   "voteText": "Abstention\n\n\tAhmed DAHROUR"
+  },
+  {
+   "id": "26-0172",
+   "date": "2026-06-19",
+   "order": 15.1,
+   "title": "Maintien de la gestion municipale du Centre de vaccination et engagement de la procédure d’habilitation auprès de l’Agence Régionale de Santé Occitanie 31",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Philippe ACAR - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0214",
+   "date": "2026-06-19",
+   "order": 15.2,
+   "title": "Mutuelle communale – Lancement de l’Appel à Partenariat",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Philippe ACAR - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0215",
+   "date": "2026-06-19",
+   "order": 15.3,
+   "title": "Santé : Attribution de subventions aux associations œuvrant dans le champ de la santé - 2ème tranche - Année 2026",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Philippe ACAR - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0170",
+   "date": "2026-06-19",
+   "order": 16.1,
+   "title": "Mise en œuvre d’un tarif spécifique d’adhésion au Centre Social Empalot pour les associations hébergeant des personnes sans ressource – Expérimentation",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Maroua BOUZAIDA-SYLLA - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0169",
+   "date": "2026-06-19",
+   "order": 16.2,
+   "title": "Attribution de subventions de la Mairie de Toulouse aux Espaces de Vie Sociale associatifs au titre de l'année 2026",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Maroua BOUZAIDA-SYLLA - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0171",
+   "date": "2026-06-19",
+   "order": 16.3,
+   "title": "Attribution d’une subvention de la Mairie de Toulouse au titre de l’année 2026 à l’association « Agissons En Laïcité Pour Des Loisirs Ludiques Et Educatifs Ensemble » (A.L.L.E.E), gestionnaire d’un Centre Social déployé sur deux sites situés 2 rue Gilbert Defer et 107 avenue des Arènes Romaines à Toulouse",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Maroua BOUZAIDA-SYLLA - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0216",
+   "date": "2026-06-19",
+   "order": 16.4,
+   "title": "Attribution de subventions aux associations intervenant dans le domaine de la lutte contre les exclusions, de la prévention et de l'accompagnement social",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Maroua BOUZAIDA-SYLLA - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0272",
+   "date": "2026-06-19",
+   "order": 16.5,
+   "title": "Attribution d'une subvention complémentaire de fonctionnement à l'association France Victimes 31 - Exercice 2026",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Maroua BOUZAIDA-SYLLA - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0222",
+   "date": "2026-06-19",
+   "order": 16.6,
+   "title": "Création d’un Service commun de la Direction Générale de la Cohésion Sociale - Avenant à la convention générale de mutualisation entre le Centre Communal d’Action Sociale (CCAS) de Toulouse, la Mairie et la Métropole de Toulouse",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Maroua BOUZAIDA-SYLLA - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "against",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "against",
+     "implied": false
+    }
+   },
+   "individuals": [
+    {
+     "name": "Ahmed DAHROUR",
+     "position": "abstain"
+    }
+   ],
+   "voteText": "Contre\n\n\tDemain Toulouse\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s\n\nAbstention\n\n\tAhmed DAHROUR"
+  },
+  {
+   "id": "26-0223",
+   "date": "2026-06-19",
+   "order": 16.7,
+   "title": "Avenant au volet « Service commun de la communication interne » de la Convention de coopération entre le Centre Communal d’Action Sociale (CCAS) de Toulouse, la Mairie et la Métropole de Toulouse",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Maroua BOUZAIDA-SYLLA - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "against",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "abstain",
+     "implied": false
+    }
+   },
+   "individuals": [
+    {
+     "name": "Ahmed DAHROUR",
+     "position": "abstain"
+    }
+   ],
+   "voteText": "Contre\n\n\tDemain Toulouse\n\nAbstention\n\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s\n\tAhmed DAHROUR"
+  },
+  {
+   "id": "26-0135",
+   "date": "2026-06-19",
+   "order": 17.1,
+   "title": "Appui à des associations toulousaines pour des projets à dimension internationale et européenne",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Djillali LAHIANI - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0136",
+   "date": "2026-06-19",
+   "order": 17.2,
+   "title": "International – Ukraine – Accueil d’enfants de Kyiv dans le cadre du jumelage",
+   "theme": "8 - Domaines de competences par themes 2 - Aide sociale",
+   "rapporteur": "Djillali LAHIANI - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0137",
+   "date": "2026-06-19",
+   "order": 17.3,
+   "title": "Europe - Programme européen Erasmus+ Jeunesse et Sports : approbation du projet de participation des jeunes VIVA et signature de la convention de subvention avec la Commission européenne",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Djillali LAHIANI - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0138",
+   "date": "2026-06-19",
+   "order": 17.4,
+   "title": "Europe - Toulouse lauréate de deux subventions du programme européen ERASMUS+ dans le cadre de l’accréditation jeunesse et de l’accréditation référents Europe international",
+   "theme": "8 - Domaines de competences par themes 1 - Enseignement",
+   "rapporteur": "Djillali LAHIANI - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0288",
+   "date": "2026-06-19",
+   "order": 17.5,
+   "title": "International – Participation au dispositif des congés solidaires mis en place par la métropole de Toulouse, en lien avec l’association Planète urgence",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Djillali LAHIANI - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0197",
+   "date": "2026-06-19",
+   "order": 18.1,
+   "title": "Stade Ernest Wallon : soutien de la demande de reconnaissance d’intérêt général de l’enceinte sportive",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Julie SERVAT - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0213",
+   "date": "2026-06-19",
+   "order": 18.2,
+   "title": "Stades des Fontaines, Toulouse-Lautrec et Arnauné - Projet Ballet Jogging : approbation de l'exonération de la redevance d'occupation au profit du Théâtre Garonne",
+   "theme": "7 - Finances locales 2 - Fiscalité",
+   "rapporteur": "Julie SERVAT - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0196",
+   "date": "2026-06-19",
+   "order": 18.3,
+   "title": "Piscine Alfred Nakache Eté : approbation de la convention de partenariat avec l’association Rotation",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Julie SERVAT - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0211",
+   "date": "2026-06-19",
+   "order": 18.4,
+   "title": "Convention relative aux modalités d'intervention de la Mairie de Toulouse en faveur des établissements spécialisés accueillant des personnes en situation de handicap : approbation de la convention cadre 2026/2031",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Julie SERVAT - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0124",
+   "date": "2026-06-19",
+   "order": 18.5,
+   "title": "Aides aux clubs sportifs et associations sportives : attribution de subventions d'investissement",
+   "theme": "7 - Finances locales 5 - Subventions 2 - Subventions d'investissement",
+   "rapporteur": "Julie SERVAT - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0265",
+   "date": "2026-06-19",
+   "order": 19.1,
+   "title": "Attribution de subventions pour les travaux de ravalement et de restauration des façades",
+   "theme": "3 - Domaine et patrimoine 5 - Autres actes de gestion du domaine public",
+   "rapporteur": "Claire NISON - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "abstain",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Abstention\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0186",
+   "date": "2026-06-19",
+   "order": 20.1,
+   "title": "Soutien aux actions en matière d’accès aux droits pour toutes et tous, de prévention et de lutte contre toutes les formes de discriminations et de promotion des droits humains",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Fella ALLAL - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0221",
+   "date": "2026-06-19",
+   "order": 21.1,
+   "title": "Attribution de subventions aux associations intervenant auprès du public en situation de handicap année 2026",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Christophe ALVES - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0282",
+   "date": "2026-06-19",
+   "order": 22.1,
+   "title": "Toulouse Fraternité - Conseil de la laïcité : composition et renouvellement des membres",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Jean-Paul BOUCHE - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0077",
+   "date": "2026-06-19",
+   "order": 23.1,
+   "title": "Construction du groupe scolaire Saint Simon - Marché n°22V0383 lot n°12 CVC plomberie géothermie - Réclamation de l'entreprise BOBION ET JOANIN - Approbation d'un protocole transactionnel",
+   "theme": "1 - Commande Publique 5 - Transactions /protocole d accord transactionnel",
+   "rapporteur": "Annick AMIGO BOUYSSOU - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0189",
+   "date": "2026-06-19",
+   "order": 23.2,
+   "title": "Achat de produits d'entretien : adoption d'une convention de groupement de commandes entre la Mairie de Toulouse, Toulouse Métropole, et des communes membres de Toulouse Métropole",
+   "theme": "1 - Commande Publique 1 - Marchés publics 2 - Délibérations ou décisions relatives aux marchés transmissibles au contrôle de légalité",
+   "rapporteur": "Annick AMIGO BOUYSSOU - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0237",
+   "date": "2026-06-19",
+   "order": 23.3,
+   "title": "Désignation du Médiateur interne des entreprises de la Ville de Toulouse",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Annick AMIGO BOUYSSOU - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0249",
+   "date": "2026-06-19",
+   "order": 24.1,
+   "title": "Financement en soutien aux Réseaux d'Education Prioritaires (REP) - Année 2026",
+   "theme": "8 - Domaines de competences par themes 1 - Enseignement",
+   "rapporteur": "Régine COCHET - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0248",
+   "date": "2026-06-19",
+   "order": 24.2,
+   "title": "Subvention exceptionnelle à l'opérateur associatif IZARDS ATTITUDE - Action d'accompagnement à la scolarité préfigurant la mise en œuvre du dispositif CLAS - Année scolaire 2025-2026",
+   "theme": "8 - Domaines de competences par themes 1 - Enseignement",
+   "rapporteur": "Régine COCHET - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0280",
+   "date": "2026-06-19",
+   "order": 24.3,
+   "title": "Sites extérieurs de la Mairie de Toulouse - Cités éducatives - Séjour de cohésion des classes de 6ème - Approbation de la convention type de mise à disposition",
+   "theme": "8 - Domaines de competences par themes 2 - Aide sociale",
+   "rapporteur": "Régine COCHET - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0285",
+   "date": "2026-06-19",
+   "order": 24.4,
+   "title": "Cités Éducatives Grand Mirail et Nord - Dispositif PasserelleS : adoption d'un avenant à la convention de partenariat entre la Mairie de Toulouse et l’Éducation Nationale",
+   "theme": "8 - Domaines de competences par themes 1 - Enseignement",
+   "rapporteur": "Régine COCHET - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0073",
+   "date": "2026-06-19",
+   "order": 25.1,
+   "title": "Ponts-Jumeaux - Approbation de la convention de portage avec l'EPFL du Grand Toulouse relative au bien 4 rue Ferdinand Lassalle cadastre 829 section AM n°104",
+   "theme": "3 - Domaine et patrimoine 1 - Acquisitions",
+   "rapporteur": "Jean-Baptiste DE SCORRAILLE - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "individuals": [
+    {
+     "name": "Fella ALLAL",
+     "position": "notVoting"
+    }
+   ],
+   "voteText": "Ne participe pas au vote\n\n\tFella ALLAL"
+  },
+  {
+   "id": "26-0191",
+   "date": "2026-06-19",
+   "order": 25.1,
+   "title": "Projet de Renouvellement Urbain Bellefontaine - Cité Jardin - Déclassement d'une emprise foncière du cheminement Francisco de Goya et ouverture d'une enquête publique",
+   "theme": "3 - Domaine et patrimoine 5 - Autres actes de gestion du domaine public",
+   "rapporteur": "Jean-Baptiste DE SCORRAILLE - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "abstain",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Abstention\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0074",
+   "date": "2026-06-19",
+   "order": 25.2,
+   "title": "Diffus équipement – Approbation de l'avenant 1 à la convention de portage 21-039 avec l’EPFL du Grand Toulouse relative a l’ensemble immobilier situé 2 rue Jean Tallien",
+   "theme": "3 - Domaine et patrimoine 1 - Acquisitions",
+   "rapporteur": "Jean-Baptiste DE SCORRAILLE - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "individuals": [
+    {
+     "name": "Fella ALLAL",
+     "position": "notVoting"
+    }
+   ],
+   "voteText": "Ne participe pas au vote\n\n\tFella ALLAL"
+  },
+  {
+   "id": "26-0156",
+   "date": "2026-06-19",
+   "order": 25.3,
+   "title": "Chemin de Croix Benite – Approbation de la convention de portage CP n°22-028 avec l’EPFL du Grand Toulouse",
+   "theme": "3 - Domaine et patrimoine 1 - Acquisitions",
+   "rapporteur": "Jean-Baptiste DE SCORRAILLE - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "individuals": [
+    {
+     "name": "Fella ALLAL",
+     "position": "notVoting"
+    }
+   ],
+   "voteText": "Ne participe pas au vote\n\n\tFella ALLAL"
+  },
+  {
+   "id": "26-0157",
+   "date": "2026-06-19",
+   "order": 25.4,
+   "title": "63 chemin de Croix Bénite – Approbation de la convention de portage CP n°22-027 avec l’EPFL du Grand Toulouse",
+   "theme": "3 - Domaine et patrimoine 1 - Acquisitions",
+   "rapporteur": "Jean-Baptiste DE SCORRAILLE - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "individuals": [
+    {
+     "name": "Fella ALLAL",
+     "position": "notVoting"
+    }
+   ],
+   "voteText": "Ne participe pas au vote\n\n\tFella ALLAL"
+  },
+  {
+   "id": "26-0158",
+   "date": "2026-06-19",
+   "order": 25.5,
+   "title": "51 Chemin de Croix Bénite – Approbation de la convention de portage CP n°22-040 avec l’EPFL Du Grand Toulouse",
+   "theme": "3 - Domaine et patrimoine 1 - Acquisitions",
+   "rapporteur": "Jean-Baptiste DE SCORRAILLE - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "individuals": [
+    {
+     "name": "Fella ALLAL",
+     "position": "notVoting"
+    }
+   ],
+   "voteText": "Ne participe pas au vote\n\n\tFella ALLAL"
+  },
+  {
+   "id": "26-0159",
+   "date": "2026-06-19",
+   "order": 25.6,
+   "title": "65 Chemin de Croix Bénite – Approbation de la convention de portage n°22-026 avec l’EPFL du Grand Toulouse",
+   "theme": "3 - Domaine et patrimoine 1 - Acquisitions",
+   "rapporteur": "Jean-Baptiste DE SCORRAILLE - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "individuals": [
+    {
+     "name": "Fella ALLAL",
+     "position": "notVoting"
+    }
+   ],
+   "voteText": "Ne participe pas au vote\n\n\tFella ALLAL"
+  },
+  {
+   "id": "26-0253",
+   "date": "2026-06-19",
+   "order": 25.7,
+   "title": "Arnaud Bernard - Projet de recyclage urbain : acquisition de trois studios au 14 rue Arnaud Bernard",
+   "theme": "3 - Domaine et patrimoine 1 - Acquisitions",
+   "rapporteur": "Jean-Baptiste DE SCORRAILLE - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0267",
+   "date": "2026-06-19",
+   "order": 25.8,
+   "title": "Centre d'Interprétation de l’Architecture et du Patrimoine : approbation de la convention de partenariat avec le lycée Joséphine Baker pour la conception d’une scénographie événementielle et d’une signalétique à l’occasion des Journées Européennes du Patrimoine",
+   "theme": "8 - Domaines de competences par themes 4 - Amenagement du territoire",
+   "rapporteur": "Jean-Baptiste DE SCORRAILLE - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0178",
+   "date": "2026-06-19",
+   "order": 25.9,
+   "title": "Secteur de Brouardel - PUP Béarnais-Sébastopol : adoption d’une convention de PUP avec NOLD et Toulouse Métropole et d’une convention de reversement",
+   "theme": "7 - Finances locales 2 - Fiscalité",
+   "rapporteur": "Jean-Baptiste DE SCORRAILLE - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0254",
+   "date": "2026-06-19",
+   "order": 26.1,
+   "title": "Dénomination du nouveau kiosque du Parc Picot de Lapeyrouse - Ile du Ramier - Kiosque Jacques Lévy",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Annamaria TRIPICCHIO ROGIER - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "against",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "abstain",
+     "implied": false
+    }
+   },
+   "individuals": [
+    {
+     "name": "Ahmed DAHROUR",
+     "position": "abstain"
+    }
+   ],
+   "voteText": "Contre\n\n\tDemain Toulouse\n\nAbstention\n\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s\n\tAhmed DAHROUR"
+  },
+  {
+   "id": "26-0277",
+   "date": "2026-06-19",
+   "order": 26.2,
+   "title": "Dénomination du Parc du Bord du Touch \"Parc Yvette de Férré\"",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Annamaria TRIPICCHIO ROGIER - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0281",
+   "date": "2026-06-19",
+   "order": 27.1,
+   "title": "Approbation de la convention de partenariat pour l'organisation du marathon 2026",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Jonnhy DUNAL - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0167",
+   "date": "2026-06-19",
+   "order": 28.1,
+   "title": "Attribution de subventions aux structures intervenant dans le champ de l'Economie Sociale et Solidaire - 2e tranche 2026",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Sonia GUILLEMET - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0219",
+   "date": "2026-06-19",
+   "order": 29.1,
+   "title": "Attribution d'une subvention à l'association Aide à Domicile aux Personnes Agées et Malades (ADPAM)",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Marine LEFEVRE - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0218",
+   "date": "2026-06-19",
+   "order": 29.2,
+   "title": "Attribution de subventions aux associations intervenant auprès des seniors - 2ème tranche 2026",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Marine LEFEVRE - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0220",
+   "date": "2026-06-19",
+   "order": 29.3,
+   "title": "Convention de partenariat dans le cadre de la manifestation annuelle la Semaine \"Seniors et +\" 2026",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Marine LEFEVRE - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0177",
+   "date": "2026-06-19",
+   "order": 30.1,
+   "title": "Grande exposition 2026 : approbation de l’avenant n°1 à la convention de coproduction avec Toulouse Métropole et le Syndicat Mixte Les Abattoirs",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Eric JEAN-FRANCOIS - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0115",
+   "date": "2026-06-19",
+   "order": 30.2,
+   "title": "Musée des Augustins : acquisition d'œuvres",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Eric JEAN-FRANCOIS - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0258",
+   "date": "2026-06-19",
+   "order": 30.3,
+   "title": "Musée Georges Labit : approbation de la convention de prêt pour l'exposition temporaire \"L'Asie en héritages. Chefs-d’œuvre du musée Georges Labit\" au musée Massey de Tarbes",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Eric JEAN-FRANCOIS - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0201",
+   "date": "2026-06-19",
+   "order": 30.4,
+   "title": "Direction des Musées et Monuments : approbation des conventions de partenariat avec les associations des amis du Musée des Augustins, du Musée Saint-Raymond, musée d'archéologie de Toulouse, du Musée des Arts précieux Paul-Dupuy et du Musée Georges Labit",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Eric JEAN-FRANCOIS - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0203",
+   "date": "2026-06-19",
+   "order": 30.5,
+   "title": "Direction des Musées et Monuments : approbation de la convention de partenariat avec le lycée polyvalent Marie-Louise Dissard Françoise pour des actions de médiations et prévention",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Eric JEAN-FRANCOIS - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0202",
+   "date": "2026-06-19",
+   "order": 30.6,
+   "title": "Pôle Monuments - Exposition \"Bal au grand Hôtel\" : approbation du contrat de coédition avec les éditions Privat",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Eric JEAN-FRANCOIS - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0208",
+   "date": "2026-06-19",
+   "order": 30.7,
+   "title": "Chapelle des Carmélites : approbation de la convention de mise à disposition avec La Place de la Danse – Centre de développement chorégraphique national Toulouse - Occitanie",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Eric JEAN-FRANCOIS - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0210",
+   "date": "2026-06-19",
+   "order": 30.8,
+   "title": "Chapelle des Carmélites : approbation des conventions de partenariat avec les associations culturelles dans le cadre de la programmation de la saison musicale 2026",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Eric JEAN-FRANCOIS - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0134",
+   "date": "2026-06-19",
+   "order": 31.1,
+   "title": "Commerce - Subvention pour les travaux de restauration des rez-de-chaussée commerciaux et de mise aux normes des enseignes",
+   "theme": "7 - Finances locales 5 - Subventions 2 - Subventions d'investissement",
+   "rapporteur": "Stéphanie RESPAUD HEZARD - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "25-0883",
+   "date": "2026-06-19",
+   "order": 32.1,
+   "title": "Quartier Cartoucherie - Signature d'un bail emphytéotique au profit de la Régie Municipale d'Electricité de Toulouse",
+   "theme": "3 - Domaine et patrimoine 3 - Locations",
+   "rapporteur": "Gaëtan COGNARD - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0119",
+   "date": "2026-06-19",
+   "order": 32.2,
+   "title": "Education à l’environnement et au développement durable : attribution de subventions pour l'année 2026",
+   "theme": "8 - Domaines de competences par themes 8 - Environnement",
+   "rapporteur": "Gaëtan COGNARD - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0126",
+   "date": "2026-06-19",
+   "order": 33.1,
+   "title": "Déplacement du marché de plein vent de Saint-Martin-du-Touch de la place Raymond Grimaud vers la rue André Turcat",
+   "theme": "3 - Domaine et patrimoine 5 - Autres actes de gestion du domaine public",
+   "rapporteur": "Guillaume DUVAL - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0204",
+   "date": "2026-06-19",
+   "order": 33.2,
+   "title": "Déplacement du marché des Trois Cocus de la place Micoulaud vers la place Chenane",
+   "theme": "3 - Domaine et patrimoine 5 - Autres actes de gestion du domaine public",
+   "rapporteur": "Guillaume DUVAL - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0205",
+   "date": "2026-06-19",
+   "order": 33.3,
+   "title": "Déplacement du marché de plein vent des Bouquinistes de la place Saint-Etienne vers les allées Jules Guesde",
+   "theme": "3 - Domaine et patrimoine 5 - Autres actes de gestion du domaine public",
+   "rapporteur": "Guillaume DUVAL - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0188",
+   "date": "2026-06-19",
+   "order": 34.1,
+   "title": "Soutien aux actions en matière de promotion des diversités culturelles et du vivre ensemble",
+   "theme": "7 - Finances locales 5 - Subventions 1 - Subventions de fonctionnement",
+   "rapporteur": "Gnadang OUSMANE - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0257",
+   "date": "2026-06-19",
+   "order": 35.1,
+   "title": "Aménagement du parking du Zénith de Toulouse - Création d'un parvis et d'espaces paysagers : adoption d'une convention de maîtrise d'ouvrage unique avec Toulouse Métropole",
+   "theme": "1 - Commande Publique 3 - Conventions de Mandat",
+   "rapporteur": "Clément RIQUET - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0206",
+   "date": "2026-06-19",
+   "order": 36.1,
+   "title": "Contrat de Ville 2024-2030 : soutien aux initiatives associatives - Programmation 2026.2",
+   "theme": "8 - Domaines de competences par themes 5 - Politique de la ville-habitat-logement",
+   "rapporteur": "Florian DELRIEU - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "notVoting",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "individuals": [
+    {
+     "name": "Fella ALLAL",
+     "position": "notVoting"
+    }
+   ],
+   "voteText": "Ne participe pas au vote\n\n\tDemain Toulouse\n\tFella ALLAL"
+  },
+  {
+   "id": "26-0207",
+   "date": "2026-06-19",
+   "order": 36.2,
+   "title": "Agir dans mon quartier - Fonds d'initiative et de participation des habitants : versement de la participation de la Mairie de Toulouse au Centre Communal d'Action Sociale (CCAS) au titre de l'exercice 2026",
+   "theme": "8 - Domaines de competences par themes 5 - Politique de la ville-habitat-logement",
+   "rapporteur": "Florian DELRIEU - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0295",
+   "date": "2026-06-19",
+   "order": 37.1,
+   "title": "Vœu du groupe Vivre Mieux Élu.e.s, socialistes, écologistes, communistes et citoyenn.e Pour le maintien des crédits de l'action 4 du programme 305 dédiés au soutien de l'Économie Sociale et Solidaire",
+   "theme": "9 - Autres domaines de competences 4 - Voeux et motions",
+   "rapporteur": "Maxime LE TEXIER - Conseiller Municipal",
+   "outcome": "withdrawn",
+   "unanimous": null,
+   "outcomeLabel": "Retiré de l'ordre du jour",
+   "byGroup": null,
+   "voteText": null
+  },
+  {
+   "id": "26-0297",
+   "date": "2026-06-19",
+   "order": 38.1,
+   "title": "Vœu du Conseil Municipal pour l’adhésion par la Police Municipale de Toulouse à la convention relative au renforcement de la tranquillité résidentielle et de la sécurité publique des résidents du parc des logements sociaux",
+   "theme": "9 - Autres domaines de competences 4 - Voeux et motions",
+   "rapporteur": "Emilion ESNAULT - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "against",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "notVoting",
+     "implied": false
+    }
+   },
+   "individuals": [
+    {
+     "name": "Ahmed DAHROUR",
+     "position": "abstain"
+    },
+    {
+     "name": "Fella ALLAL",
+     "position": "notVoting"
+    }
+   ],
+   "voteText": "Contre\n\n\tDemain Toulouse\n\nAbstention\n\n\tAhmed DAHROUR\n\nNe participe pas au vote\n\n\tVivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s\n\tFella ALLAL"
+  },
+  {
+   "id": "26-0298",
+   "date": "2026-06-19",
+   "order": 39.1,
+   "title": "Vœu du groupe Vivre mieux - Contre l’augmentation des droits d’inscription pour les étudiants étrangers à l’université François Briançon",
+   "theme": "9 - Autres domaines de competences 4 - Voeux et motions",
+   "rapporteur": "François BRIANÇON - Conseiller Municipal",
+   "outcome": "rejected",
+   "unanimous": false,
+   "outcomeLabel": "Rejeté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "against",
+     "implied": false
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Contre\n\n\tAimer Toulouse"
+  },
+  {
+   "id": "26-0299",
+   "date": "2026-06-19",
+   "order": 40.1,
+   "title": "Vœu du Conseil Municipal - Grandir en sécurité : poursuite et amplification des actions pour que la protection de l’enfance et des jeunes et de la santé mentale reste une priorité municipale à Toulouse",
+   "theme": "9 - Autres domaines de competences 4 - Voeux et motions",
+   "rapporteur": "Anne-Sophie DE SURGY - Conseillère Municipale",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0300",
+   "date": "2026-06-19",
+   "order": 41.1,
+   "title": "Vœu du groupe Demain Toulouse - Mise en place d’un dispositif de contrôle indépendant de la conformité PMR des logements",
+   "theme": "9 - Autres domaines de competences 4 - Voeux et motions",
+   "rapporteur": "Julien CADIEU - Conseiller Municipal",
+   "outcome": "rejected",
+   "unanimous": false,
+   "outcomeLabel": "Rejeté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "against",
+     "implied": false,
+     "except": [
+      "Fella ALLAL"
+     ]
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "individuals": [
+    {
+     "name": "Fella ALLAL",
+     "position": "notVoting"
+    }
+   ],
+   "voteText": "Contre\n\n\tAimer Toulouse sauf Fella ALLAL\n\nNe participe pas au vote\n\n\tFella ALLAL"
+  },
+  {
+   "id": "26-0301",
+   "date": "2026-06-19",
+   "order": 42.1,
+   "title": "Vœu du groupe Demain Toulouse pour afficher le soutien de la ville et de la métropole au peuple libanais",
+   "theme": "9 - Autres domaines de competences 4 - Voeux et motions",
+   "rapporteur": "François PIQUEMAL - Conseiller Municipal",
+   "outcome": "rejected",
+   "unanimous": false,
+   "outcomeLabel": "Rejeté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "against",
+     "implied": false
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Contre\n\n\tAimer Toulouse"
+  },
+  {
+   "id": "26-0302",
+   "date": "2026-06-19",
+   "order": 43.1,
+   "title": "Vœu du groupe Demain Toulouse Pour une meilleure reconnaissance des personnes trans et intersex",
+   "theme": "9 - Autres domaines de competences 4 - Voeux et motions",
+   "rapporteur": "Agathe ROBY - Conseillère Municipale",
+   "outcome": "withdrawn",
+   "unanimous": null,
+   "outcomeLabel": "Retiré de l'ordre du jour",
+   "byGroup": null,
+   "voteText": null
+  },
+  {
+   "id": "26-0096",
+   "date": "2026-04-30",
+   "order": 1.1,
+   "title": "Avenant N°2 à la convention du projet éducatif de Territoire de Toulouse 2022-2025",
+   "theme": "8 - Domaines de competences par themes 1 - Enseignement",
+   "rapporteur": "Marion LALANE-DE-LAUBADERE - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0098",
+   "date": "2026-04-30",
+   "order": 1.2,
+   "title": "Fusions d'écoles maternelles et élémentaire en groupe scolaire",
+   "theme": "8 - Domaines de competences par themes 1 - Enseignement",
+   "rapporteur": "Marion LALANE-DE-LAUBADERE - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "abstain",
+     "implied": false
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": "Abstention\n\n\tDemain Toulouse"
+  },
+  {
+   "id": "26-0097",
+   "date": "2026-04-30",
+   "order": 1.3,
+   "title": "Don de mobilier scolaire",
+   "theme": "8 - Domaines de competences par themes 1 - Enseignement",
+   "rapporteur": "Marion LALANE-DE-LAUBADERE - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0093",
+   "date": "2026-04-30",
+   "order": 1.4,
+   "title": "Approbation de la Convention Vacances Loisirs entre la Caisse d'Allocations Familiales de la Haute Garonne et la Mairie de Toulouse - 2026",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Marion LALANE-DE-LAUBADERE - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0120",
+   "date": "2026-04-30",
+   "order": 2.1,
+   "title": "Désignations des représentants du Conseil municipal au sein de divers organismes",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Laurence KATZENMAYER - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0128",
+   "date": "2026-04-30",
+   "order": 2.2,
+   "title": "Indemnités de fonction des membres du Conseil Municipal - Ajustements faisant suite aux évolutions des délégations de fonctions",
+   "theme": "5 - Institutions et vie politique 2 - Fonctionnement des assemblees",
+   "rapporteur": "Laurence KATZENMAYER - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0129",
+   "date": "2026-04-30",
+   "order": 2.3,
+   "title": "Indemnités de fonction des membres du Conseil Municipal - Commune chef-lieu de département et classée station de tourisme",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Laurence KATZENMAYER - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0063",
+   "date": "2026-04-30",
+   "order": 3.1,
+   "title": "Conservatoire à Rayonnement Régional : approbation d'une convention de partenariat pédagogique et artistique avec le Muséum d'histoire naturelle de Toulouse",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Nicole YARDENI - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0095",
+   "date": "2026-04-30",
+   "order": 3.2,
+   "title": "Lido - Centre Municipal des Arts du Cirque de Toulouse : approbation de conventions de partenariat avec la Fédération régionale des écoles de cirque (FREC)",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Nicole YARDENI - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0094",
+   "date": "2026-04-30",
+   "order": 3.3,
+   "title": "Lido - Centre Municipal des Arts du Cirque de Toulouse : approbation de conventions de partenariat pour la saison 2025-2026",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Nicole YARDENI - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0087",
+   "date": "2026-04-30",
+   "order": 4.1,
+   "title": "Garantie autonome à première demande au bénéfice de certains créanciers de l'Agence France Locale : modalités de mise en œuvre et autorisation de signer les engagements pour l'année 2026",
+   "theme": "7 - Finances locales 10 - Divers",
+   "rapporteur": "Emilion ESNAULT - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "individuals": [
+    {
+     "name": "Sacha BRIAND",
+     "position": "notVoting"
+    }
+   ],
+   "voteText": "Ne participe pas au vote\n\n\tSacha BRIAND"
+  },
+  {
+   "id": "26-0086",
+   "date": "2026-04-30",
+   "order": 5.1,
+   "title": "Vote des taux d'imposition pour 2026",
+   "theme": "7 - Finances locales 2 - Fiscalité",
+   "rapporteur": "Sacha BRIAND - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0130",
+   "date": "2026-04-30",
+   "order": 6.1,
+   "title": "Transfert des voies et équipements communs dans le domaine public de Toulouse : adoption d'une nouvelle convention type de Toulouse Métropole",
+   "theme": "8 - Domaines de competences par themes 3 - Voirie",
+   "rapporteur": "Jean-Jacques BOLZAN - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0039",
+   "date": "2026-04-30",
+   "order": 7.1,
+   "title": "Festival Le Nouveau Printemps - Edition 2026 : approbation des conventions de partenariat avec l’association « Le printemps de septembre »",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Valérie JACQUET VIOLLEAU - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0089",
+   "date": "2026-04-30",
+   "order": 7.2,
+   "title": "Festival \"Décroche le son !\" édition 2026 : approbation de conventions de partenariat pour la promotion de l'événement",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Valérie JACQUET VIOLLEAU - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0079",
+   "date": "2026-04-30",
+   "order": 7.3,
+   "title": "Bibliothèques de Toulouse : approbation de la convention de partenariat entre la Mairie de Toulouse, la Cité scolaire Rive gauche - Lycée Joséphine Baker et lycée professionnel Gisèle Halimi et l'ARCALT pour la sensibilisation des lycéens et lycéennes au cinéma documentaire pour l'année scolaire 2025-2026",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Valérie JACQUET VIOLLEAU - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0070",
+   "date": "2026-04-30",
+   "order": 8.1,
+   "title": "Modification du tableau des emplois et des effectifs au sein de la Mairie de Toulouse",
+   "theme": "4 - Fonction publique 1 - Personnel titulaires et stagiaires de la F.P.T. 3 - Délibérations relatives aux titulaires et stagiaires",
+   "rapporteur": "Pierre ESPLUGAS-LABATUT - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0099",
+   "date": "2026-04-30",
+   "order": 9.1,
+   "title": "Approbation de l’avenant à la convention d'objectifs et de financement pour le Relais Petite Enfance Pouvourville géré par la Mairie de Toulouse – Prestation de service et Bonus Territoire de la Caisse d’Allocations Familiales de la Haute-Garonne",
+   "theme": "7 - Finances locales 1 - Decisions budgetaires",
+   "rapporteur": "Charlotte PUJO - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0101",
+   "date": "2026-04-30",
+   "order": 9.2,
+   "title": "Approbation de la convention d'objectifs et de financement pour l’Etablissement Multi-Accueil Collectif et Familial Henri Desbals géré par la Mairie de Toulouse – Prestation de service et Bonus Territoire de la Caisse d’Allocations Familiales de la Haute-Garonne",
+   "theme": "7 - Finances locales 1 - Decisions budgetaires",
+   "rapporteur": "Charlotte PUJO - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0100",
+   "date": "2026-04-30",
+   "order": 9.3,
+   "title": "Approbation de la convention d'objectifs et de financement pour le Lieu d’Accueil Enfants-Parents Itinérant géré par la Mairie de Toulouse – Prestation de service et Bonus Territoire de la Caisse d’Allocations Familiales de la Haute-Garonne",
+   "theme": "7 - Finances locales 1 - Decisions budgetaires",
+   "rapporteur": "Charlotte PUJO - Adjointe au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0109",
+   "date": "2026-04-30",
+   "order": 10.1,
+   "title": "Adoption de la Convention avec la CPAM de la Haute-Garonne relative à la campagne nationale de vaccination contre les infections papillomavirus humain et infections invasives à méningocoques dans les collèges et les établissements médico-sociaux – Année 2026",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Jean-Charles PITEAU - Adjoint au Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0181",
+   "date": "2026-04-30",
+   "order": 11.1,
+   "title": "Protocole d'accord transactionnel avec MGC CHAUFFAGE CLIMATISATION - Rénovation de l'école Maurice Jacquier",
+   "theme": "1 - Commande Publique 1 - Marchés publics 2 - Délibérations ou décisions relatives aux marchés transmissibles au contrôle de légalité",
+   "rapporteur": "Annick AMIGO BOUYSSOU - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0069",
+   "date": "2026-04-30",
+   "order": 11.2,
+   "title": "Construction du groupe scolaire Daste Daubié Marie Marvingt - Marché n°23V0552 lot n°1 gros œuvre - Réclamation du groupement Eiffage Construction/PACHER - Protocole de transaction",
+   "theme": "1 - Commande Publique 5 - Transactions /protocole d accord transactionnel",
+   "rapporteur": "Annick AMIGO BOUYSSOU - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0041",
+   "date": "2026-04-30",
+   "order": 11.3,
+   "title": "Construction du groupe scolaire Daste Daubié Marie Marvingt - Marché n°24V0139 lot n°3 menuiseries extérieures aluminium - réclamation du titulaire LAUMOND FAURE MENUISERIE - Protocole d'accord",
+   "theme": "1 - Commande Publique 5 - Transactions /protocole d accord transactionnel",
+   "rapporteur": "Annick AMIGO BOUYSSOU - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0055",
+   "date": "2026-04-30",
+   "order": 11.4,
+   "title": "Construction du groupe scolaire Roquemaurel - Marché 23V0319 lot n°2 gros-œuvre - Réclamation du titulaire MAS BTP - Protocole de transaction",
+   "theme": "1 - Commande Publique 5 - Transactions /protocole d accord transactionnel",
+   "rapporteur": "Annick AMIGO BOUYSSOU - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0027",
+   "date": "2026-04-30",
+   "order": 12.1,
+   "title": "Archives municipales : approbation du contrat de dépôt d'un fonds photographique",
+   "theme": "3 - Domaine et patrimoine 1 - Acquisitions",
+   "rapporteur": "Eric JEAN-FRANCOIS - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0078",
+   "date": "2026-04-30",
+   "order": 12.2,
+   "title": "Couvent des Jacobins : approbation de la convention d'occupation à titre gratuit au profit de l'association Piano aux Jacobins pour l'organisation de son festival",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Eric JEAN-FRANCOIS - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0091",
+   "date": "2026-04-30",
+   "order": 12.3,
+   "title": "Eglise du Gesù : approbation de la convention d'occupation à titre gratuit au profit de l'association PRIMARY pour l'organisation de l'événement \"Les 12h du Gesù\"",
+   "theme": "8 - Domaines de competences par themes 9 - Culture",
+   "rapporteur": "Eric JEAN-FRANCOIS - Conseiller Municipal Délégué",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0104",
+   "date": "2026-04-30",
+   "order": 13.1,
+   "title": "Réserve naturelle régionale Confluence Garonne Ariège - Avis sur le projet de classement",
+   "theme": "8 - Domaines de competences par themes 8 - Environnement",
+   "rapporteur": "Magali DAT - Conseillère Municipale Déléguée",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0060",
+   "date": "2026-04-02",
+   "order": 1.1,
+   "title": "Formation des commissions municipales et désignation des élus du Conseil municipal au sein de ces commissions en vertu de l'article L.2122-22 du Code général des collectivités territoriales",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0022",
+   "date": "2026-04-02",
+   "order": 1.1,
+   "title": "Etablissements publics locaux de l'enseignement du second degré - Désignation au scrutin majoritaire des représentants du Conseil municipal au sein des conseils d'administration des collèges et des lycées",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0030",
+   "date": "2026-04-02",
+   "order": 1.11,
+   "title": "Etablissements de l'enseignement supérieur - Désignation au scrutin majoritaire des représentants du Conseil municipal au sein des conseils d'établissement",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0037",
+   "date": "2026-04-02",
+   "order": 1.12,
+   "title": "Centre de Congrès Pierre Baudis - Désignation au scrutin majoritaire de trois représentants du Conseil municipal au Comité consultatif de cet organe",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "withdrawn",
+   "unanimous": null,
+   "outcomeLabel": "Retiré de l'ordre du jour",
+   "byGroup": null,
+   "voteText": null
+  },
+  {
+   "id": "26-0032",
+   "date": "2026-04-02",
+   "order": 1.13,
+   "title": "Conservatoire à rayonnement régional - Désignation au scrutin majoritaire de trois représentants du Conseil municipal au Conseil d'établissement",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0031",
+   "date": "2026-04-02",
+   "order": 1.14,
+   "title": "Institut Supérieur des Arts de Toulouse (ISDAT) - Désignation au scrutin majoritaire de six représentants de la Mairie de Toulouse et de leurs suppléants au sein du Conseil d'administration de cet établissement -Habilitation à désigner les personnes qualifiées",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0023",
+   "date": "2026-04-02",
+   "order": 1.15,
+   "title": "Centre communal d'action sociale - Désignation de huit représentants du Conseil municipal à la représentation proportionnelle au plus fort reste au Conseil d'administration de cet organisme",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0038",
+   "date": "2026-04-02",
+   "order": 1.16,
+   "title": "Centres Sociaux - Conseil d'administration - Comités de pilotage - Désignation des représentants du Conseil municipal au sein de ces instances",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0043",
+   "date": "2026-04-02",
+   "order": 1.17,
+   "title": "Caisse des Ecoles - Désignation au scrutin majoritaire de huit délégués du Conseil municipal au Comité de cet établissement",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0056",
+   "date": "2026-04-02",
+   "order": 1.18,
+   "title": "Commissions de suivi de site - Désignation d'un représentant titulaire et d'un représentant suppléant au sein de chaque commission de suivi de site",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0057",
+   "date": "2026-04-02",
+   "order": 1.19,
+   "title": "Convention Armées - Collectivités - Partenariat entre le Ministère des Armées, Toulouse Métropole et la Mairie de Toulouse - Désignation d'un représentant de la Mairie de Toulouse au Comité de suivi",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0024",
+   "date": "2026-04-02",
+   "order": 1.2,
+   "title": "Syndicats mixtes - Désignation au scrutin majoritaire des représentants de la Mairie de Toulouse au sein de ces instances",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0053",
+   "date": "2026-04-02",
+   "order": 1.2,
+   "title": "Commissions municipales diverses",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0020",
+   "date": "2026-04-02",
+   "order": 1.21,
+   "title": "Régies de quartier - Reynerie Services - Bellefontaine Services - Desbals Services - Empalot Territoires et Services - Désignation de représentants du Conseil municipal au sein de chacune de ces régies",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0021",
+   "date": "2026-04-02",
+   "order": 1.22,
+   "title": "Régie Agricole de la Mairie de Toulouse - Désignation au scrutin majoritaire de cinq membres extérieurs et de six représentants de la Mairie de Toulouse au Conseil d'exploitation de cet organisme",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0015",
+   "date": "2026-04-02",
+   "order": 1.23,
+   "title": "Sociétés d'Economie Mixte Locales (SEML) - Sociétés Publiques Locales (SPL) - Désignation des représentants de la Mairie de Toulouse",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0048",
+   "date": "2026-04-02",
+   "order": 1.24,
+   "title": "Aéroport Toulouse Blagnac - Désignation au scrutin majoritaire d'un représentant du Conseil municipal pour exercer la mission de censeur",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0045",
+   "date": "2026-04-02",
+   "order": 1.25,
+   "title": "Caisse de Crédit Municipal - Désignation au scrutin majoritaire de trois représentants du Conseil municipal au Conseil d'Orientation et de Surveillance de cet organisme",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0033",
+   "date": "2026-04-02",
+   "order": 1.26,
+   "title": "Associations diverses Loi 1901 - Organismes extérieurs divers - Désignation des représentants de la Mairie de Toulouse au scrutin majoritaire",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0036",
+   "date": "2026-04-02",
+   "order": 1.27,
+   "title": "Concession du Casino municipal - Commission paritaire - Désignation au scrutin majoritaire de quatre représentants de la Mairie de Toulouse",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0059",
+   "date": "2026-04-02",
+   "order": 1.28,
+   "title": "Commission paritaire pour l'occupation de l'Hôtel d'Assezat et de Clémence Isaure - Désignation au scrutin majoritaire de deux délégués de la Mairie de Toulouse au sein de cette instance",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0042",
+   "date": "2026-04-02",
+   "order": 1.29,
+   "title": "Conseil Départemental de l'Environnement et des Risques Sanitaires et Technologiques (CODERST) - Désignation au scrutin public d'un délégué titulaire et d'un délégué suppléant du Conseil municipal pour siéger au sein de cette instance",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0046",
+   "date": "2026-04-02",
+   "order": 1.3,
+   "title": "Comités consultatifs - Désignation des élus et des membres extérieurs en vertu de l'article L.2143-2 du Code général des collectivités territoriales",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0058",
+   "date": "2026-04-02",
+   "order": 1.3,
+   "title": "Commission départementale de lutte contre la prostitution, le proxénétisme et la traite des êtres humains aux fins d'exploitation sexuelle - Désignation d'un représentant titulaire et d'un représentant suppléant au scrutin majoritaire",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0035",
+   "date": "2026-04-02",
+   "order": 1.31,
+   "title": "Agence France Locale - Désignation d'un représentant titulaire et d'un représentant suppléant du Conseil municipal à l'Assemblée Générale",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0044",
+   "date": "2026-04-02",
+   "order": 1.32,
+   "title": "Centre d'Etudes et d'Expertise sur les Risques, l'Environnement, la Mobilité et l'Aménagement (CEREMA) - Désignation d'un représentant de la Mairie de Toulouse au Comité d'Orientation Régional et toute autre instance du CEREMA",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0047",
+   "date": "2026-04-02",
+   "order": 1.33,
+   "title": "Comité des Oeuvres Sociales, Sportives et Culturelles des Agents de la Ville de Toulouse et Assimilés (COSAT) - Désignation au scrutin majoritaire de quatre représentants du Conseil municipal au sein du Conseil d'administration de cet organisme",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0082",
+   "date": "2026-04-02",
+   "order": 1.34,
+   "title": "Indemnités de fonction des membres du Conseil Municipal - Répartition",
+   "theme": "5 - Institutions et vie politique 6 - Exercice des mandats locaux",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0083",
+   "date": "2026-04-02",
+   "order": 1.35,
+   "title": "Indemnités de fonction des membres du Conseil Municipal - Commune chef-lieu de département et classée station de tourisme",
+   "theme": "5 - Institutions et vie politique 6 - Exercice des mandats locaux",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0076",
+   "date": "2026-04-02",
+   "order": 1.36,
+   "title": "Dispositif de prise en charge des frais exposés par les élus dans le cadre du mandat local et pour les personnalités extérieures invitées. Frais de représentation des emplois fonctionnels.",
+   "theme": "5 - Institutions et vie politique 2 - Fonctionnement des assemblees",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0088",
+   "date": "2026-04-02",
+   "order": 1.37,
+   "title": "Droit à la formation des membres du Conseil Municipal",
+   "theme": "5 - Institutions et vie politique 6 - Exercice des mandats locaux",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0080",
+   "date": "2026-04-02",
+   "order": 1.38,
+   "title": "Mise à disposition de moyens informatiques et de télécommunications nécessaires aux élus de la Mairie de Toulouse",
+   "theme": "5 - Institutions et vie politique 6 - Exercice des mandats locaux",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0081",
+   "date": "2026-04-02",
+   "order": 1.39,
+   "title": "Fonctionnement des groupes d'élus du Conseil Municipal",
+   "theme": "5 - Institutions et vie politique 2 - Fonctionnement des assemblees",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0075",
+   "date": "2026-04-02",
+   "order": 1.4,
+   "title": "Création d'emplois de collaborateurs de groupes",
+   "theme": "4 - Fonction publique 2 - Personnel contractuel 1 - Recrutement",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0049",
+   "date": "2026-04-02",
+   "order": 1.4,
+   "title": "Commission d'appel d'offres - Désignation de cinq représentants titulaires et de cinq représentants suppléants du Conseil municipal à la représentation proportionnelle au plus fort reste",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0026",
+   "date": "2026-04-02",
+   "order": 1.41,
+   "title": "Délégation au maire de certaines attributions du Conseil Municipal en application de l'article L 2122-22 du CGCT",
+   "theme": "5 - Institutions et vie politique 4 - Delegation de fonctions",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": false,
+   "outcomeLabel": "Adopté",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0084",
+   "date": "2026-04-02",
+   "order": 1.42,
+   "title": "Désignation du référent déontologue des élus du Conseil Municipal de Toulouse",
+   "theme": "9 - Autres domaines de competences 1 - Autres domaines de competences des communes",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0051",
+   "date": "2026-04-02",
+   "order": 1.5,
+   "title": "Commission des concessions de services - Désignation de cinq représentants titulaires et de cinq représentants suppléants à la représentation proportionnelle au plus fort reste",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0052",
+   "date": "2026-04-02",
+   "order": 1.6,
+   "title": "Commission communale pour l'Accessibilité - Création et composition",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0029",
+   "date": "2026-04-02",
+   "order": 1.7,
+   "title": "Commission consultative des services publics locaux - Désignation de 5 délégués du Conseil municipal à la représentation proportionnelle - Désignation des représentants des usagers et des habitants intéressés à la vie des services publics locaux",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0017",
+   "date": "2026-04-02",
+   "order": 1.8,
+   "title": "Etablissements d'enseignement privé du premier degré sous contrat d'association - Désignation au scrutin majoritaire de représentants du Conseil municipal au sein de ces établissements",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0016",
+   "date": "2026-04-02",
+   "order": 1.9,
+   "title": "Ecoles maternelles et élémentaires - Désignation au scrutin majoritaire des représentants du Conseil municipal au sein des conseils d'école",
+   "theme": "5 - Institutions et vie politique 3 - Designation de representants",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0025",
+   "date": "2026-03-27",
+   "order": 1.1,
+   "title": "Détermination du nombre d'adjoints au maire",
+   "theme": "5 - Institutions et vie politique 4 - Delegation de fonctions",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0050",
+   "date": "2026-03-27",
+   "order": 1.2,
+   "title": "Désignation des membres de la commission d'appel d'offres et de la commission des concessions de service - Conditions de dépôt des listes",
+   "theme": "5 - Institutions et vie politique 2 - Fonctionnement des assemblees",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  },
+  {
+   "id": "26-0068",
+   "date": "2026-03-27",
+   "order": 1.3,
+   "title": "Création d'emplois de collaborateurs de cabinet",
+   "theme": "4 - Fonction publique 2 - Personnel contractuel 1 - Recrutement 3 - collaborateur cabinet",
+   "rapporteur": "Jean-Luc MOUDENC - Maire",
+   "outcome": "adopted",
+   "unanimous": true,
+   "outcomeLabel": "Adopté à l'unanimité",
+   "byGroup": {
+    "Aimer Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Demain Toulouse": {
+     "position": "for",
+     "implied": true
+    },
+    "Vivre mieux, élu.e.s socialistes, écologistes, communistes et citoyen.ne.s": {
+     "position": "for",
+     "implied": true
+    }
+   },
+   "voteText": null
+  }
+ ]
+}

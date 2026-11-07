@@ -1,0 +1,117 @@
+{
+ "generated": "2026-11-07",
+ "schemaVersion": 1,
+ "note": "granularity: 'group' = position of each political group; 'totals' = for/against/abstention counts; 'outcome' = adopted/rejected only.",
+ "covered": [
+  {
+   "code": "31555",
+   "name": "Toulouse",
+   "granularity": "group",
+   "mandate": "2026–2032",
+   "deliberations": 223,
+   "from": "2026-03-27",
+   "to": "2026-06-19",
+   "source": "https://data.toulouse-metropole.fr/explore/dataset/deliberations-a-partir-de-mars-2026-mairie-de-toulouse/",
+   "licence": "Not stated in the dataset metadata (the 2020–2026 edition of the same dataset is under Licence Ouverte v2.0)"
+  },
+  {
+   "code": "33063",
+   "name": "Bordeaux",
+   "granularity": "outcome",
+   "mandate": "2026–2032",
+   "deliberations": 213,
+   "from": "2026-03-27",
+   "to": "2026-11-02",
+   "source": "https://opendata.bordeaux-metropole.fr/explore/dataset/bor_deliberations/",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)"
+  },
+  {
+   "code": "44109",
+   "name": "Nantes",
+   "granularity": "totals",
+   "mandate": "2020–2026 (no deliberation of the new council published yet)",
+   "deliberations": 304,
+   "from": "2025-02-10",
+   "to": "2026-02-19",
+   "source": "https://data.nantesmetropole.fr/explore/dataset/244400404_deliberations-instances-metropole-nantes/",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)"
+  }
+ ],
+ "notCovered": [
+  {
+   "code": "75056",
+   "name": "Paris",
+   "reason": "opendata.paris.fr has no deliberation/vote dataset (only Conseil de Paris agendas, last updated 2018). Votes are in the Bulletin officiel / minutes (PDF/HTML)."
+  },
+  {
+   "code": "13055",
+   "name": "Marseille",
+   "reason": "SCDL-like deliberation lists without votes (datasud.fr), last edition 2024."
+  },
+  {
+   "code": "69123",
+   "name": "Lyon",
+   "reason": "No deliberation dataset on data.grandlyon.com or data.gouv.fr."
+  },
+  {
+   "code": "06088",
+   "name": "Nice",
+   "reason": "No deliberation dataset found."
+  },
+  {
+   "code": "34172",
+   "name": "Montpellier",
+   "reason": "No deliberation dataset found."
+  },
+  {
+   "code": "67482",
+   "name": "Strasbourg",
+   "reason": "Only legal postings (publiactes) with PDF + OCR text; no structured votes."
+  },
+  {
+   "code": "59350",
+   "name": "Lille",
+   "reason": "Only a one-off June 2022 dataset; the MEL deliberation dataset has no votes."
+  },
+  {
+   "code": "35238",
+   "name": "Rennes",
+   "reason": "SCDL deliberations with vote totals stopped in 2021; current data is recusals (déports) only."
+  },
+  {
+   "code": "38185",
+   "name": "Grenoble",
+   "reason": "No deliberation dataset found (portal did not respond)."
+  },
+  {
+   "code": "49007",
+   "name": "Angers",
+   "reason": "Deliberations published (data.angers.fr, ODbL) but without any vote field."
+  },
+  {
+   "code": "63113",
+   "name": "Clermont-Ferrand",
+   "reason": "SCDL vote totals, but only 2020-02 to 2024-09 (stale)."
+  },
+  {
+   "code": "37261",
+   "name": "Tours",
+   "reason": "SCDL dataset, but every vote field is 0."
+  },
+  {
+   "code": "42218",
+   "name": "Saint-Étienne",
+   "reason": "SCDL file with vote totals but no dates; last update 2026-01 (previous mandate)."
+  },
+  {
+   "code": "29019",
+   "name": "Brest",
+   "reason": "SCDL files with empty vote fields."
+  },
+  {
+   "code": "25056",
+   "name": "Besançon",
+   "reason": "Agenda API with PDF links only, no votes."
+  }
+ ]
+}

@@ -652,3 +652,6 @@ figure.spectrum + p { margin-top: 0.7rem; }
   .facts { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .facts dt { line-height: 1.4; margin-top: 0.6rem; }
 }
+
+/* municipal winner line */
+.lead-result { border-left: 5px solid var(--c); padding: 0.3rem 0 0.3rem 0.8rem; margin: 0 0 1rem; }

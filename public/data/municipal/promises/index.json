@@ -1,0 +1,3516 @@
+{
+ "generated": "2026-11-07",
+ "schemaVersion": 1,
+ "scope": "Winning list of the 2026 municipal election in communes of 30,000+ inhabitants",
+ "sourceSite": {
+  "url": "https://programme-candidats.interieur.gouv.fr/",
+  "note": "Official e-propagande site (communes of 2,500+ inhabitants, publication voluntary for lists, online from 9 March 2026). It is behind a bot challenge, so PDFs are registered by hand in scripts/data/municipal-promises-sources.json.",
+  "probe": {
+   "url": "https://programme-candidats.interieur.gouv.fr/",
+   "status": 403,
+   "challenge": true,
+   "checked": "2026-11-07T14:03:52.820Z"
+  }
+ },
+ "aiLabel": {
+  "fr": "Résumés générés par IA (Claude Haiku) — toujours vérifier le document source.",
+  "en": "AI-generated summaries (Claude Haiku) — always check the source document."
+ },
+ "counts": {
+  "no_source": 291
+ },
+ "rows": [
+  {
+   "code": "75056",
+   "name": "Paris",
+   "department": "75",
+   "population": 2103778,
+   "winner": {
+    "label": "Paris est à vous! avec Emmanuel Grégoire L'union de la gauche et des écologistes",
+    "head": "Emmanuel GRÉGOIRE",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "13055",
+   "name": "Marseille",
+   "department": "13",
+   "population": 886040,
+   "winner": {
+    "label": "POUR MARSEILLE, LA GAUCHE, LES ECOLOGISTES ET LES CITOYENS RASSEMBLES",
+    "head": "Benoît PAYAN",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "69123",
+   "name": "Lyon",
+   "department": "69",
+   "population": 519127,
+   "winner": {
+    "label": "POUR VIVRE LYON, L'UNION DE LA GAUCHE ET DES ECOLOGISTES AVEC GREGORY DOUCET",
+    "head": "Grégory DOUCET",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "31555",
+   "name": "Toulouse",
+   "department": "31",
+   "population": 514819,
+   "winner": {
+    "label": "Avec Jean-Luc MOUDENC, Protégeons l'Avenir de Toulouse",
+    "head": "Jean-Luc MOUDENC",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "06088",
+   "name": "Nice",
+   "department": "06",
+   "population": 357737,
+   "winner": {
+    "label": "LE MEILLEUR EST A VENIR AVEC ERIC CIOTTI",
+    "head": "Eric CIOTTI",
+    "nuance": "LUXD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "44109",
+   "name": "Nantes",
+   "department": "44",
+   "population": 327734,
+   "winner": {
+    "label": "La gauche unie pour Nantes",
+    "head": "Johanna ROLLAND",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "34172",
+   "name": "Montpellier",
+   "department": "34",
+   "population": 310240,
+   "winner": {
+    "label": "DEMAIN MONTPELLIER",
+    "head": "Michaël DELAFOSSE",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "67482",
+   "name": "Strasbourg",
+   "department": "67",
+   "population": 293771,
+   "winner": {
+    "label": "Pour Strasbourg",
+    "head": "Catherine TRAUTMANN",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "33063",
+   "name": "Bordeaux",
+   "department": "33",
+   "population": 267991,
+   "winner": {
+    "label": "Faire Gagner Bordeaux",
+    "head": "Thomas CAZENAVE",
+    "nuance": "LUC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "59350",
+   "name": "Lille",
+   "department": "59",
+   "population": 238246,
+   "winner": {
+    "label": "TOUT POUR LILLE DEMAIN",
+    "head": "Arnaud DESLANDES",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "35238",
+   "name": "Rennes",
+   "department": "35",
+   "population": 230890,
+   "winner": {
+    "label": "RENNES SOLIDAIRE",
+    "head": "Nathalie APPÉRÉ",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "83137",
+   "name": "Toulon",
+   "department": "83",
+   "population": 179116,
+   "winner": {
+    "label": "TOULON MON PARTI",
+    "head": "Josée MASSI",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "51454",
+   "name": "Reims",
+   "department": "51",
+   "population": 177674,
+   "winner": {
+    "label": "VIVONS REIMS",
+    "head": "Arnaud ROBINET",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "42218",
+   "name": "Saint-Etienne",
+   "department": "42",
+   "population": 173136,
+   "winner": {
+    "label": "Rassembler Saint-Etienne",
+    "head": "Régis JUANICO",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "76351",
+   "name": "Le Havre",
+   "department": "76",
+   "population": 166687,
+   "winner": {
+    "label": "Le Havre !",
+    "head": "Edouard PHILIPPE",
+    "nuance": "LUC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "69266",
+   "name": "Villeurbanne",
+   "department": "69",
+   "population": 163684,
+   "winner": {
+    "label": "ENGAGE.E.S POUR VILLEURBANNE- LA GAUCHE SOCIALE, ECOLOGISTE ET CITOYENNE RASSEMBLEE",
+    "head": "Cédric VAN STYVENDAEL",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "21231",
+   "name": "Dijon",
+   "department": "21",
+   "population": 161830,
+   "winner": {
+    "label": "Dijon. écologique sociale attractive",
+    "head": "Nathalie KOENDERS",
+    "nuance": "LSOC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "49007",
+   "name": "Angers",
+   "department": "49",
+   "population": 159022,
+   "winner": {
+    "label": "Angers pour Vous",
+    "head": "Christophe BÉCHU",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "38185",
+   "name": "Grenoble",
+   "department": "38",
+   "population": 156140,
+   "winner": {
+    "label": "OUI GRENOBLE",
+    "head": "Laurence RUFFIN",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97411",
+   "name": "Saint-Denis",
+   "department": "974",
+   "population": 155634,
+   "winner": {
+    "label": "SAINT-DENIS POUR TOUS",
+    "head": "Ericka BAREIGTS",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "30189",
+   "name": "Nîmes",
+   "department": "30",
+   "population": 151839,
+   "winner": {
+    "label": "Nîmes en commun",
+    "head": "Vincent BOUGET",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "13001",
+   "name": "Aix-en-Provence",
+   "department": "13",
+   "population": 149695,
+   "winner": {
+    "label": "PASSIONNEMENT AIXOIS",
+    "head": "Sophie JOISSAINS",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93066",
+   "name": "Saint-Denis",
+   "department": "93",
+   "population": 149077,
+   "winner": {
+    "label": "Ensemble, retrouvons l'Espoir",
+    "head": "Bally BAGAYOKO",
+    "nuance": "LFI"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "63113",
+   "name": "Clermont-Ferrand",
+   "department": "63",
+   "population": 146351,
+   "winner": {
+    "label": "LE SURSAUT CLERMONTOIS",
+    "head": "Julien BONY",
+    "nuance": "LUD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "72181",
+   "name": "Le Mans",
+   "department": "72",
+   "population": 146249,
+   "winner": {
+    "label": "LE MANS NOUS RASSEMBLE",
+    "head": "Stéphane LE FOLL",
+    "nuance": "LSOC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "29019",
+   "name": "Brest",
+   "department": "29",
+   "population": 142346,
+   "winner": {
+    "label": "Une nouvelle histoire pour Brest",
+    "head": "Stéphane ROUDAUT",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "37261",
+   "name": "Tours",
+   "department": "37",
+   "population": 139259,
+   "winner": {
+    "label": "Tours inspire",
+    "head": "Emmanuel DENIS",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "80021",
+   "name": "Amiens",
+   "department": "80",
+   "population": 136449,
+   "winner": {
+    "label": "Pour Amiens en mieux, la Gauche unie, écologiste et citoyenne",
+    "head": "Frédéric FAUVET",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "74010",
+   "name": "Annecy",
+   "department": "74",
+   "population": 132117,
+   "winner": {
+    "label": "Acteurs d'Annecy avec Antoine ARMAND",
+    "head": "Antoine ARMAND",
+    "nuance": "LUC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "87085",
+   "name": "Limoges",
+   "department": "87",
+   "population": 129937,
+   "winner": {
+    "label": "LIMOGES EN PARTAGE",
+    "head": "Guillaume GUERIN",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "57463",
+   "name": "Metz",
+   "department": "57",
+   "population": 122572,
+   "winner": {
+    "label": "J'aime Metz",
+    "head": "François GROSDIDIER",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "66136",
+   "name": "Perpignan",
+   "department": "66",
+   "population": 121616,
+   "winner": {
+    "label": "CONTINUONS ENSEMBLE AVEC LOUIS ALIOT",
+    "head": "Louis ALIOT",
+    "nuance": "LRN"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92012",
+   "name": "Boulogne-Billancourt",
+   "department": "92",
+   "population": 119019,
+   "winner": {
+    "label": "Vivre à Boulogne-Billancourt",
+    "head": "Pierre-Christophe BAGUET",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "25056",
+   "name": "Besançon",
+   "department": "25",
+   "population": 118489,
+   "winner": {
+    "label": "ENSEMBLE BESANCON AVANCE",
+    "head": "Ludovic FAGAUT",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "76540",
+   "name": "Rouen",
+   "department": "76",
+   "population": 117662,
+   "winner": {
+    "label": "Fiers de Rouen",
+    "head": "Nicolas MAYER-ROSSIGNOL",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "45234",
+   "name": "Orléans",
+   "department": "45",
+   "population": 116357,
+   "winner": {
+    "label": "ICI C'EST ORLEANS",
+    "head": "Serge GROUARD",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93048",
+   "name": "Montreuil",
+   "department": "93",
+   "population": 111934,
+   "winner": {
+    "label": "VIVE MONTREUIL !",
+    "head": "Patrice BESSAC",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "14118",
+   "name": "Caen",
+   "department": "14",
+   "population": 109400,
+   "winner": {
+    "label": "CAEN PASSIONNEMENT AVEC ARISTIDE OLIVIER",
+    "head": "Aristide OLIVIER",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97415",
+   "name": "Saint-Paul",
+   "department": "974",
+   "population": 108088,
+   "winner": {
+    "label": "LISTE CONDUITE PAR EMMANUEL SÉRAPHIN",
+    "head": "Emmanuel SÉRAPHIN",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "95018",
+   "name": "Argenteuil",
+   "department": "95",
+   "population": 106130,
+   "winner": {
+    "label": "ARGENTEUIL TOUJOURS PLUS GRAND",
+    "head": "Georges MOTHRON",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "68224",
+   "name": "Mulhouse",
+   "department": "68",
+   "population": 104978,
+   "winner": {
+    "label": "Liste Citoyenne Pour Vous Pour Mulhouse Marquet 2026",
+    "head": "Frédéric MARQUET",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "54395",
+   "name": "Nancy",
+   "department": "54",
+   "population": 103671,
+   "winner": {
+    "label": "NANCY GRANDIT",
+    "head": "Mathieu KLEIN",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "59599",
+   "name": "Tourcoing",
+   "department": "59",
+   "population": 98772,
+   "winner": {
+    "label": "VIVE TOURCOING AVEC DORIANE BECUE",
+    "head": "Doriane BECUE",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "59512",
+   "name": "Roubaix",
+   "department": "59",
+   "population": 98286,
+   "winner": {
+    "label": "FIERS DE ROUBAIX",
+    "head": "David GUIRAUD",
+    "nuance": "LFI"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92050",
+   "name": "Nanterre",
+   "department": "92",
+   "population": 97783,
+   "winner": {
+    "label": "Choisir Nanterre",
+    "head": "Raphaël ADAM",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "94081",
+   "name": "Vitry-sur-Seine",
+   "department": "94",
+   "population": 93963,
+   "winner": {
+    "label": "Nouveau Front Populaire Vitry",
+    "head": "Pierre BELL-LLOCH",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92004",
+   "name": "Asnières-sur-Seine",
+   "department": "92",
+   "population": 93941,
+   "winner": {
+    "label": "100% Asnières",
+    "head": "Manuel AESCHLIMANN",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "94028",
+   "name": "Créteil",
+   "department": "94",
+   "population": 93397,
+   "winner": {
+    "label": "Bien Ensemble",
+    "head": "Laurent CATHALA",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "84007",
+   "name": "Avignon",
+   "department": "84",
+   "population": 92188,
+   "winner": {
+    "label": "Le bon sens pour Avignon",
+    "head": "Olivier GALZI",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92025",
+   "name": "Colombes",
+   "department": "92",
+   "population": 91053,
+   "winner": {
+    "label": "Colombes est une chance",
+    "head": "Joakim GIACOMONI",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "86194",
+   "name": "Poitiers",
+   "department": "86",
+   "population": 89916,
+   "winner": {
+    "label": "Anthony BROTTIER Notre priorité, c'est vous !",
+    "head": "Anthony BROTTIER",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93001",
+   "name": "Aubervilliers",
+   "department": "93",
+   "population": 88365,
+   "winner": {
+    "label": "Uni.e.s pour faire gagner Aubervilliers",
+    "head": "Sofienne KARROUMI",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93005",
+   "name": "Aulnay-sous-Bois",
+   "department": "93",
+   "population": 87599,
+   "winner": {
+    "label": "Protéger Aulnay, notre fierté",
+    "head": "Bruno BESCHIZZA",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "59183",
+   "name": "Dunkerque",
+   "department": "59",
+   "population": 86263,
+   "winner": {
+    "label": "Patrice Vergriete Bien vivre à Dunkerque",
+    "head": "Patrice VERGRIETE",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "98818",
+   "name": "Nouméa",
+   "department": "988",
+   "population": 85976,
+   "winner": {
+    "label": "AVEC VOUS POUR NOUMEA",
+    "head": "Sonia LAGARDE",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97416",
+   "name": "Saint-Pierre",
+   "department": "974",
+   "population": 85038,
+   "winner": {
+    "label": "SAINT-PIERRE UNE HISTOIRE D'AMOUR",
+    "head": "David LORION",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "78646",
+   "name": "Versailles",
+   "department": "78",
+   "population": 84095,
+   "winner": {
+    "label": "Liste d'Union pour VERSAILLES - François de MAZIÈRES 2026",
+    "head": "François DE MAZIÈRES",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92026",
+   "name": "Courbevoie",
+   "department": "92",
+   "population": 82902,
+   "winner": {
+    "label": "L'expérience et l'avenir pour Courbevoie",
+    "head": "Jacques KOSSOWSKI",
+    "nuance": "LUD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92063",
+   "name": "Rueil-Malmaison",
+   "department": "92",
+   "population": 82874,
+   "winner": {
+    "label": "L'Expérience pour l'avenir de Rueil",
+    "head": "Patrick OLLIER",
+    "nuance": "LUD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97422",
+   "name": "Le Tampon",
+   "department": "974",
+   "population": 82579,
+   "winner": {
+    "label": "NOUT VOIX, NOUT L'AVENIR !",
+    "head": "Alexis CHAUSSALET",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "34032",
+   "name": "Béziers",
+   "department": "34",
+   "population": 81545,
+   "winner": {
+    "label": "CHOISIR BÉZIERS",
+    "head": "Robert MÉNARD",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "64445",
+   "name": "Pau",
+   "department": "64",
+   "population": 80441,
+   "winner": {
+    "label": "NOUVELLE ÈRE",
+    "head": "Jérôme MARBOT",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "17300",
+   "name": "La Rochelle",
+   "department": "17",
+   "population": 79851,
+   "winner": {
+    "label": "POUR LES ROCHELAISES ET LES ROCHELAIS",
+    "head": "Olivier FALORNI",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "50129",
+   "name": "Cherbourg-en-Cotentin",
+   "department": "50",
+   "population": 78258,
+   "winner": {
+    "label": "Une maire pour rassembler",
+    "head": "Camille MARGUERITTE",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "33281",
+   "name": "Mérignac",
+   "department": "33",
+   "population": 78090,
+   "winner": {
+    "label": "ENSEMBLE, NOUS SOMMES MERIGNAC",
+    "head": "Thierry TRIJOULET",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "94017",
+   "name": "Champigny-sur-Marne",
+   "department": "94",
+   "population": 78072,
+   "winner": {
+    "label": "POUR CHAMPIGNY, AVEC LAURENT JEANNE",
+    "head": "Laurent JEANNE",
+    "nuance": "LUD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "06004",
+   "name": "Antibes",
+   "department": "06",
+   "population": 77637,
+   "winner": {
+    "label": "Ensemble pour Antibes Juan les Pins",
+    "head": "Jean LEONETTI",
+    "nuance": "LUD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "94068",
+   "name": "Saint-Maur-des-Fossés",
+   "department": "94",
+   "population": 76572,
+   "winner": {
+    "label": "Saint-Maur au coeur de nos choix",
+    "head": "Pierre-Michel DELECROIX",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "2A004",
+   "name": "Ajaccio",
+   "department": "2A",
+   "population": 76320,
+   "winner": {
+    "label": "FORZA AIACCIU !",
+    "head": "Stéphane SBRAGGIA",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97209",
+   "name": "Fort-de-France",
+   "department": "972",
+   "population": 75506,
+   "winner": {
+    "label": "DEMOCRATES ET PROGRESSISTES",
+    "head": "Didier LAGUERRE",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "44184",
+   "name": "Saint-Nazaire",
+   "department": "44",
+   "population": 74568,
+   "winner": {
+    "label": "Saint-Nazaire fraternelle, responsable et créative",
+    "head": "David SAMZUN",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "06029",
+   "name": "Cannes",
+   "department": "06",
+   "population": 74350,
+   "winner": {
+    "label": "CANNES GAGNE AVEC DAVID LISNARD",
+    "head": "David LISNARD",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93051",
+   "name": "Noisy-le-Grand",
+   "department": "93",
+   "population": 72978,
+   "winner": {
+    "label": "Projet Citoyen",
+    "head": "Vincent MONNIER",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93029",
+   "name": "Drancy",
+   "department": "93",
+   "population": 72390,
+   "winner": {
+    "label": "DRANCY TOUS ENSEMBLE",
+    "head": "Jean-Christophe LAGARDE",
+    "nuance": "LUDI"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97611",
+   "name": "Mamoudzou",
+   "department": "976",
+   "population": 71437,
+   "winner": {
+    "label": "ENCORE PLUS PROCHE DE VOUS",
+    "head": "Ambdilwahedou SOUMAILA",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "95127",
+   "name": "Cergy",
+   "department": "95",
+   "population": 70906,
+   "winner": {
+    "label": "CERGY C'EST NOUS",
+    "head": "Jean-Paul JEANDON",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92044",
+   "name": "Levallois-Perret",
+   "department": "92",
+   "population": 68092,
+   "winner": {
+    "label": "Levallois au Coeur",
+    "head": "Agnès POTTIER-DUMAS",
+    "nuance": "LUD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92040",
+   "name": "Issy-les-Moulineaux",
+   "department": "92",
+   "population": 67669,
+   "winner": {
+    "label": "ENSEMBLE POUR ISSY",
+    "head": "André SANTINI",
+    "nuance": "LUC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "62193",
+   "name": "Calais",
+   "department": "62",
+   "population": 67571,
+   "winner": {
+    "label": "Se battre pour Calais",
+    "head": "Natacha BOUCHART",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "33318",
+   "name": "Pessac",
+   "department": "33",
+   "population": 67339,
+   "winner": {
+    "label": "AVEC FRANCK RAYNAL, FIERS D'ÊTRE PESSACAIS",
+    "head": "Franck RAYNAL",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "68066",
+   "name": "Colmar",
+   "department": "68",
+   "population": 66970,
+   "winner": {
+    "label": "ERIC STRAUMANN, VOTRE MAIRE",
+    "head": "Eric STRAUMANN",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "91228",
+   "name": "Evry-Courcouronnes",
+   "department": "91",
+   "population": 66919,
+   "winner": {
+    "label": "Rassembler-Protéger-Avancer",
+    "head": "Stéphane BEAUDET",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "69259",
+   "name": "Vénissieux",
+   "department": "69",
+   "population": 65502,
+   "winner": {
+    "label": "FAISONS MIEUX POUR VENISSIEUX",
+    "head": "Idir BOUMERTIT",
+    "nuance": "LFI"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "94041",
+   "name": "Ivry-sur-Seine",
+   "department": "94",
+   "population": 65064,
+   "winner": {
+    "label": "Front Populaire Ivryen Solidaire Écologique Féministe",
+    "head": "Philippe BOUYSSOU",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "26362",
+   "name": "Valence",
+   "department": "26",
+   "population": 64458,
+   "winner": {
+    "label": "NICOLAS DARAGON POUR VALENCE NATURELLEMENT",
+    "head": "Nicolas DARAGON",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92024",
+   "name": "Clichy",
+   "department": "92",
+   "population": 64410,
+   "winner": {
+    "label": "REMI MUZEAU, CLICHY NATURELLEMENT",
+    "head": "Rémi MUZEAU",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "29232",
+   "name": "Quimper",
+   "department": "29",
+   "population": 64385,
+   "winner": {
+    "label": "Quimper ensemble",
+    "head": "Isabelle ASSIH",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92002",
+   "name": "Antony",
+   "department": "92",
+   "population": 64263,
+   "winner": {
+    "label": "ANTONY POUR TOUS avec Jean-Yves SÉNANT et Aude NODÉ-LANGLOIS",
+    "head": "Jean-Yves SÉNANT",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "18033",
+   "name": "Bourges",
+   "department": "18",
+   "population": 64186,
+   "winner": {
+    "label": "Avec Yann GALUT, Bourges pour toutes et tous",
+    "head": "Yann GALUT",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "83126",
+   "name": "La Seyne-sur-Mer",
+   "department": "83",
+   "population": 63732,
+   "winner": {
+    "label": "LA SEYNE D'ABORD !",
+    "head": "Dorian MUNOZ",
+    "nuance": "LUXD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "82121",
+   "name": "Montauban",
+   "department": "82",
+   "population": 62945,
+   "winner": {
+    "label": "Mon Parti Montauban",
+    "head": "Didier LALLEMAND",
+    "nuance": "LUXD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "59009",
+   "name": "Villeneuve-d'Ascq",
+   "department": "59",
+   "population": 62868,
+   "winner": {
+    "label": "Ensemble pour Villeneuve d'Ascq 2026",
+    "head": "Sylvain ESTAGER",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97302",
+   "name": "Cayenne",
+   "department": "973",
+   "population": 62675,
+   "winner": {
+    "label": "POUR CAYENNE, GARDONS NOTRE CAP",
+    "head": "Sandra TROCHIMARA",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93007",
+   "name": "Le Blanc-Mesnil",
+   "department": "93",
+   "population": 62376,
+   "winner": {
+    "label": "BLANC MESNIL UNI",
+    "head": "Demba TRAORE",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "10387",
+   "name": "Troyes",
+   "department": "10",
+   "population": 62088,
+   "winner": {
+    "label": "ENSEMBLE POUR TROYES",
+    "head": "François BAROIN",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93055",
+   "name": "Pantin",
+   "department": "93",
+   "population": 61929,
+   "winner": {
+    "label": "PANTIN AU COEUR",
+    "head": "Bertrand KERN",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "94076",
+   "name": "Villejuif",
+   "department": "94",
+   "population": 60183,
+   "winner": {
+    "label": "Ensemble pour Vlllejuif rassemblement de la gauche et des écologistes",
+    "head": "Pierre GARZON",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "73065",
+   "name": "Chambéry",
+   "department": "73",
+   "population": 59964,
+   "winner": {
+    "label": "Chambéry avance avec Thierry Repentin",
+    "head": "Thierry REPENTIN",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "79191",
+   "name": "Niort",
+   "department": "79",
+   "population": 59854,
+   "winner": {
+    "label": "Niort, c'est tous ensemble!",
+    "head": "Jérôme BALOGE",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "83061",
+   "name": "Fréjus",
+   "department": "83",
+   "population": 59719,
+   "winner": {
+    "label": "Notre Force c'est Fréjus",
+    "head": "David RACHLINE",
+    "nuance": "LRN"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92051",
+   "name": "Neuilly-sur-Seine",
+   "department": "92",
+   "population": 59538,
+   "winner": {
+    "label": "FROMANTIN 2026",
+    "head": "Jean-Christophe FROMANTIN",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "95585",
+   "name": "Sarcelles",
+   "department": "95",
+   "population": 59173,
+   "winner": {
+    "label": "SARCELLES UNIE POUR RÉUSSIR",
+    "head": "Bassi KONATE",
+    "nuance": "LDIV"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97409",
+   "name": "Saint-André",
+   "department": "974",
+   "population": 58885,
+   "winner": {
+    "label": "SAINT-ANDRE, HORIZON 2032",
+    "head": "Joé BEDIER",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92023",
+   "name": "Clamart",
+   "department": "92",
+   "population": 58576,
+   "winner": {
+    "label": "OK Clamart",
+    "head": "Jean-Didier BERGER",
+    "nuance": "LUD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "56121",
+   "name": "Lorient",
+   "department": "56",
+   "population": 58329,
+   "winner": {
+    "label": "Nous Lorientais",
+    "head": "Fabrice LOHER",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "11262",
+   "name": "Narbonne",
+   "department": "11",
+   "population": 57587,
+   "winner": {
+    "label": "Nouveau Narbonne 2026",
+    "head": "Bertrand MALQUIER",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93008",
+   "name": "Bobigny",
+   "department": "93",
+   "population": 56927,
+   "winner": {
+    "label": "BOBIGNY POPULAIRE",
+    "head": "Abdel SADI",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "77284",
+   "name": "Meaux",
+   "department": "77",
+   "population": 56905,
+   "winner": {
+    "label": "MEAUX POUR TOUS 2026",
+    "head": "Jean-François COPE",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "94046",
+   "name": "Maisons-Alfort",
+   "department": "94",
+   "population": 56799,
+   "winner": {
+    "label": "Avec Romain Maria, Maisons-Alfort D'abord",
+    "head": "Romain MARIA",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "83069",
+   "name": "Hyères",
+   "department": "83",
+   "population": 55858,
+   "winner": {
+    "label": "HYERES ENSEMBLE AVEC VERONIQUE BERNARDINI",
+    "head": "Véronique BERNARDINI",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "56260",
+   "name": "Vannes",
+   "department": "56",
+   "population": 55790,
+   "winner": {
+    "label": "Ici, c'est Vannes !",
+    "head": "David ROBO",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "60057",
+   "name": "Beauvais",
+   "department": "60",
+   "population": 55550,
+   "winner": {
+    "label": "Franck Pia, pour les Beauvaisiens",
+    "head": "Franck PIA",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97414",
+   "name": "Saint-Louis",
+   "department": "974",
+   "population": 54941,
+   "winner": {
+    "label": "AVEC VOUS, REUSSIR DEMAIN",
+    "head": "Juliana M'DOIHOMA",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "85191",
+   "name": "La Roche-sur-Yon",
+   "department": "85",
+   "population": 54849,
+   "winner": {
+    "label": "POUR La Roche",
+    "head": "Romain BOSSIS",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "77108",
+   "name": "Chelles",
+   "department": "77",
+   "population": 54620,
+   "winner": {
+    "label": "Restons bien ensemble à Chelles, avec Brice Rabaste",
+    "head": "Brice RABASTE",
+    "nuance": "LUD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "91174",
+   "name": "Corbeil-Essonnes",
+   "department": "91",
+   "population": 54471,
+   "winner": {
+    "label": "RECONCILIER CORBEIL-ESSONNES AVEC SON AVENIR !",
+    "head": "Samira KETFI",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97311",
+   "name": "Saint-Laurent-du-Maroni",
+   "department": "973",
+   "population": 54429,
+   "winner": {
+    "label": "NOTRE VILLE, NOTRE HISTOIRE, NOTRE AVENIR",
+    "head": "Lénaïck ADAM",
+    "nuance": "LDIV"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "49099",
+   "name": "Cholet",
+   "department": "49",
+   "population": 54404,
+   "winner": {
+    "label": "Cholet, un nouveau jour",
+    "head": "Isabelle LEROY",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "64102",
+   "name": "Bayonne",
+   "department": "64",
+   "population": 54306,
+   "winner": {
+    "label": "BAYONNE L'ESSENTIEL C'EST VOUS !",
+    "head": "Jean-René ETCHEGARAY",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "94033",
+   "name": "Fontenay-sous-Bois",
+   "department": "94",
+   "population": 53757,
+   "winner": {
+    "label": "Fontenay nous rassemble et nous ressemble avec Jean-Philippe GAUTRAIS",
+    "head": "Jean-Philippe GAUTRAIS",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93070",
+   "name": "Saint-Ouen-sur-Seine",
+   "department": "93",
+   "population": 53615,
+   "winner": {
+    "label": "saint-ouen je t'aime",
+    "head": "Karim BOUAMRANE",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "06027",
+   "name": "Cagnes-sur-Mer",
+   "department": "06",
+   "population": 53354,
+   "winner": {
+    "label": "UN NOUVEAU MAIRE POUR CAGNES-SUR-MER",
+    "head": "Bryan MASSON",
+    "nuance": "LUXD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "69256",
+   "name": "Vaulx-en-Velin",
+   "department": "69",
+   "population": 53069,
+   "winner": {
+    "label": "VAULX EN COMMUN AVEC ABDELKADER LAHMAR",
+    "head": "Abdelkader LAHMAR",
+    "nuance": "LFI"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93031",
+   "name": "Epinay-sur-Seine",
+   "department": "93",
+   "population": 52833,
+   "winner": {
+    "label": "EPINAY NATURELLEMENT",
+    "head": "Hervé CHEVREAU",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "02691",
+   "name": "Saint-Quentin",
+   "department": "02",
+   "population": 52813,
+   "winner": {
+    "label": "Frédérique MACAREZ, Avançons ensemble pour Saint-Quentin",
+    "head": "Frédérique MACAREZ",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "78586",
+   "name": "Sartrouville",
+   "department": "78",
+   "population": 52763,
+   "winner": {
+    "label": "Sartrouville, j'aime ma ville",
+    "head": "Pierre FOND",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93071",
+   "name": "Sevran",
+   "department": "93",
+   "population": 52535,
+   "winner": {
+    "label": "Sevran en grand avec Stéphane Blanchet, pour une ville plus solidaire, plus verte, plus belle",
+    "head": "Stéphane BLANCHET",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "13004",
+   "name": "Arles",
+   "department": "13",
+   "population": 51811,
+   "winner": {
+    "label": "ARLES AU COEUR",
+    "head": "Patrick DE CAROLIS",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "91377",
+   "name": "Massy",
+   "department": "91",
+   "population": 51729,
+   "winner": {
+    "label": "Massy pour vous",
+    "head": "Nicolas SAMSOEN",
+    "nuance": "LUC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "81004",
+   "name": "Albi",
+   "department": "81",
+   "population": 51290,
+   "winner": {
+    "label": "ALBI ENSEMBLE",
+    "head": "Stéphanie GUIRAUD-CHAUMEIL",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97101",
+   "name": "Les Abymes",
+   "department": "971",
+   "population": 51055,
+   "winner": {
+    "label": "SOYONS ABYMIENS TOUS ENSEMBLE",
+    "head": "Eric JALTON",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92036",
+   "name": "Gennevilliers",
+   "department": "92",
+   "population": 50979,
+   "winner": {
+    "label": "Union des Gennevillois.es",
+    "head": "Patrice LECLERC",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "44162",
+   "name": "Saint-Herblain",
+   "department": "44",
+   "population": 50973,
+   "winner": {
+    "label": "ENSEMBLE POUR SAINT HERBLAIN",
+    "head": "Bertrand AFFILÉ",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "06069",
+   "name": "Grasse",
+   "department": "06",
+   "population": 50970,
+   "winner": {
+    "label": "Avec Jérôme VIAUD, Grasse Gagnante",
+    "head": "Jérôme VIAUD",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93010",
+   "name": "Bondy",
+   "department": "93",
+   "population": 50595,
+   "winner": {
+    "label": "Avec Stephen Hervé, continuons ensemble pour l'avenir de Bondy",
+    "head": "Stephen HERVÉ",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "85194",
+   "name": "Les Sables-d'Olonne",
+   "department": "85",
+   "population": 49603,
+   "winner": {
+    "label": "AVEC NICOLAS CHÉNÉCHAUD, LES SABLES AU COEUR",
+    "head": "Nicolas CHÉNÉCHAUD",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "53130",
+   "name": "Laval",
+   "department": "53",
+   "population": 49400,
+   "winner": {
+    "label": "Laval à venir",
+    "head": "Florian BERCAULT",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "27229",
+   "name": "Evreux",
+   "department": "27",
+   "population": 49360,
+   "winner": {
+    "label": "UNIS POUR EVREUX",
+    "head": "Guy LEFRAND",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "69290",
+   "name": "Saint-Priest",
+   "department": "69",
+   "population": 49229,
+   "winner": {
+    "label": "SAINT-PRIEST NOTRE AVENIR",
+    "head": "Gilles GASCON",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92073",
+   "name": "Suresnes",
+   "department": "92",
+   "population": 48956,
+   "winner": {
+    "label": "Vivre bien à Suresnes",
+    "head": "Guillaume BOUDY",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "13056",
+   "name": "Martigues",
+   "department": "13",
+   "population": 48298,
+   "winner": {
+    "label": "GABY CHARROUX POUR MARTIGUES !",
+    "head": "Gaby CHARROUX",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "94080",
+   "name": "Vincennes",
+   "department": "94",
+   "population": 48193,
+   "winner": {
+    "label": "AVEC VOUS POUR VINCENNES",
+    "head": "Charlotte LIBERT",
+    "nuance": "LUC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "13005",
+   "name": "Aubagne",
+   "department": "13",
+   "population": 47529,
+   "winner": {
+    "label": "Aubagne en commun Aubagne mérite mieux",
+    "head": "Jean-Pierre SQUILLARI",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "35288",
+   "name": "Saint-Malo",
+   "department": "35",
+   "population": 47439,
+   "winner": {
+    "label": "Hissons Haut Saint-Malo",
+    "head": "Gilles LURTON",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93046",
+   "name": "Livry-Gargan",
+   "department": "93",
+   "population": 47228,
+   "winner": {
+    "label": "Livry-Gargan, notre énergie !",
+    "head": "Pierre-Yves MARTIN",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "41018",
+   "name": "Blois",
+   "department": "41",
+   "population": 47219,
+   "winner": {
+    "label": "En commun, prenons soin de l'avenir",
+    "head": "Marc GRICOURT",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93064",
+   "name": "Rosny-sous-Bois",
+   "department": "93",
+   "population": 47180,
+   "winner": {
+    "label": "ROSNY ÉCOLOGIQUE ET SOLIDAIRE",
+    "head": "Magalie THIBAULT",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93027",
+   "name": "La Courneuve",
+   "department": "93",
+   "population": 47167,
+   "winner": {
+    "label": "Nous La Courneuve en toujours plus grand !",
+    "head": "Aly DIOUARA",
+    "nuance": "LFI"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "19031",
+   "name": "Brive-la-Gaillarde",
+   "department": "19",
+   "population": 47095,
+   "winner": {
+    "label": "UN PROJET POUR BRIVE",
+    "head": "Frédéric SOULIER",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "2B033",
+   "name": "Bastia",
+   "department": "2B",
+   "population": 46867,
+   "winner": {
+    "label": "BASTIA INSEME Gilles Simeoni",
+    "head": "Gilles SIMEONI",
+    "nuance": "LREG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "33522",
+   "name": "Talence",
+   "department": "33",
+   "population": 46338,
+   "winner": {
+    "label": "Talence Ensemble",
+    "head": "Emmanuel SALLABERRY",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92048",
+   "name": "Meudon",
+   "department": "92",
+   "population": 46334,
+   "winner": {
+    "label": "Ensemble pour Meudon",
+    "head": "Denis LARGHERO",
+    "nuance": "LUC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92049",
+   "name": "Montrouge",
+   "department": "92",
+   "population": 46324,
+   "winner": {
+    "label": "MONTROUGE ENSEMBLE",
+    "head": "Etienne LENGEREAU",
+    "nuance": "LUC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "30007",
+   "name": "Alès",
+   "department": "30",
+   "population": 46125,
+   "winner": {
+    "label": "LISTE ALES",
+    "head": "Christophe RIVENQ",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "11069",
+   "name": "Carcassonne",
+   "department": "11",
+   "population": 46080,
+   "winner": {
+    "label": "Demain Carcassonne",
+    "head": "Christophe BARTHÈS",
+    "nuance": "LRN"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "77288",
+   "name": "Melun",
+   "department": "77",
+   "population": 45995,
+   "winner": {
+    "label": "MELUN, TERRE D'AVENIRS",
+    "head": "Kadir MEBAREK",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "94022",
+   "name": "Choisy-le-Roi",
+   "department": "94",
+   "population": 45946,
+   "winner": {
+    "label": "Choisy Rassemblé",
+    "head": "Tonino PANETTA",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "78551",
+   "name": "Saint-Germain-en-Laye",
+   "department": "78",
+   "population": 45931,
+   "winner": {
+    "label": "Union pour Saint-Germain Fourqueux",
+    "head": "Arnaud PERICARD",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "90010",
+   "name": "Belfort",
+   "department": "90",
+   "population": 45912,
+   "winner": {
+    "label": "Tous ensemble pour Belfort",
+    "head": "Damien MESLOT",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "08105",
+   "name": "Charleville-Mézières",
+   "department": "08",
+   "population": 45560,
+   "winner": {
+    "label": "CHARLEVILLE-MEZIERES, PLUS FORTE POUR VOUS!",
+    "head": "Boris RAVIGNON",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "94002",
+   "name": "Alfortville",
+   "department": "94",
+   "population": 45531,
+   "winner": {
+    "label": "Avec Luc Carvounas, Alfortville ville de bonheur et de partage",
+    "head": "Luc CARVOUNAS",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93053",
+   "name": "Noisy-le-Sec",
+   "department": "93",
+   "population": 45510,
+   "winner": {
+    "label": "\"Toujours Noisy\" votre liste de progrès social, écologique et solidaire",
+    "head": "Olivier SARRABEYROUSE",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "34301",
+   "name": "Sète",
+   "department": "34",
+   "population": 45337,
+   "winner": {
+    "label": "Protégeons l'avenir de Sète",
+    "head": "Hervé MARQUÈS",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "71076",
+   "name": "Chalon-sur-Saône",
+   "department": "71",
+   "population": 45102,
+   "winner": {
+    "label": "En avant Chalon",
+    "head": "Gilles PLATRET",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92007",
+   "name": "Bagneux",
+   "department": "92",
+   "population": 44572,
+   "winner": {
+    "label": "Libre, égale, fraternelle, Bagneux pour toutes et tous",
+    "head": "Hélène CILLIERES",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "65440",
+   "name": "Tarbes",
+   "department": "65",
+   "population": 44399,
+   "winner": {
+    "label": "TARBES LA FORCE D'AGIR",
+    "head": "Pascal CLAVERIE",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "22278",
+   "name": "Saint-Brieuc",
+   "department": "22",
+   "population": 44364,
+   "winner": {
+    "label": "Aimons Saint-Brieuc",
+    "head": "Victor BONNOT",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "13047",
+   "name": "Istres",
+   "department": "13",
+   "population": 44292,
+   "winner": {
+    "label": "ISTRES, DE TOUTE SON AME !",
+    "head": "Robin PRÉTOT",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "13103",
+   "name": "Salon-de-Provence",
+   "department": "13",
+   "population": 44194,
+   "winner": {
+    "label": "REUSSIR SALON",
+    "head": "Nicolas ISNARD",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92062",
+   "name": "Puteaux",
+   "department": "92",
+   "population": 44002,
+   "winner": {
+    "label": "Puteaux au coeur",
+    "head": "Joëlle CECCALDI-RAYNAUD",
+    "nuance": "LUD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "69034",
+   "name": "Caluire-et-Cuire",
+   "department": "69",
+   "population": 43597,
+   "winner": {
+    "label": "Caluire Coeur Battant",
+    "head": "Bastien JOINT",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "44143",
+   "name": "Rezé",
+   "department": "44",
+   "population": 43556,
+   "winner": {
+    "label": "Rezé citoyenne, une gauche unie et solidaire",
+    "head": "Agnès BOURGEAIS",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "78361",
+   "name": "Mantes-la-Jolie",
+   "department": "78",
+   "population": 43526,
+   "winner": {
+    "label": "DEBOUT POUR MANTES",
+    "head": "Adama GAYE",
+    "nuance": "LDIV"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "59606",
+   "name": "Valenciennes",
+   "department": "59",
+   "population": 43468,
+   "winner": {
+    "label": "VALENCIENNES POUR VOUS & AVEC VOUS",
+    "head": "Laurent DEGALLAIX",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "64024",
+   "name": "Anglet",
+   "department": "64",
+   "population": 43271,
+   "winner": {
+    "label": "NATURELLEMENT ANGLET",
+    "head": "Claude OLIVE",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93006",
+   "name": "Bagnolet",
+   "department": "93",
+   "population": 43086,
+   "winner": {
+    "label": "Bagnolet collectif",
+    "head": "Edouard DENOUEL",
+    "nuance": "LVEC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "69029",
+   "name": "Bron",
+   "department": "69",
+   "population": 42982,
+   "winner": {
+    "label": "Encore + toujours mieux avec Jérémie BREAUD",
+    "head": "Jérémie BRÉAUD",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "51108",
+   "name": "Châlons-en-Champagne",
+   "department": "51",
+   "population": 42971,
+   "winner": {
+    "label": "J'aime Châlons",
+    "head": "Benoist APPARU",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "36044",
+   "name": "Châteauroux",
+   "department": "36",
+   "population": 42963,
+   "winner": {
+    "label": "L'AUDACE D'AGIR",
+    "head": "Gil AVÉROUS",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "62041",
+   "name": "Arras",
+   "department": "62",
+   "population": 42875,
+   "winner": {
+    "label": "ARRAS AVEC VOUS",
+    "head": "Frédéric LETURQUE",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "57672",
+   "name": "Thionville",
+   "department": "57",
+   "population": 42658,
+   "winner": {
+    "label": "Thionville au coeur",
+    "head": "Pierre CUNY",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "33550",
+   "name": "Villenave-d'Ornon",
+   "department": "33",
+   "population": 42545,
+   "winner": {
+    "label": "Du Souffle, Du Sens",
+    "head": "Michel POIGNONEC",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "81065",
+   "name": "Castres",
+   "department": "81",
+   "population": 42505,
+   "winner": {
+    "label": "POUR L'AVENIR DE CASTRES",
+    "head": "Florian AZÉMA",
+    "nuance": "LRN"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "01053",
+   "name": "Bourg-en-Bresse",
+   "department": "01",
+   "population": 42372,
+   "winner": {
+    "label": "Bourg nous rassemble",
+    "head": "Jean-François DEBAT",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93032",
+   "name": "Gagny",
+   "department": "93",
+   "population": 42313,
+   "winner": {
+    "label": "Gagny Grandeur Nature",
+    "head": "Rolin CRANOLY",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "06030",
+   "name": "Le Cannet",
+   "department": "06",
+   "population": 41938,
+   "winner": {
+    "label": "MICHÈLE TABAROT CONTINUONS ENSEMBLE",
+    "head": "Michèle TABAROT",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "16015",
+   "name": "Angoulême",
+   "department": "16",
+   "population": 41908,
+   "winner": {
+    "label": "L'essentiel c'est vous !",
+    "head": "Xavier BONNEFONT",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "95268",
+   "name": "Garges-lès-Gonesse",
+   "department": "95",
+   "population": 41791,
+   "winner": {
+    "label": "FIERS DE GARGES",
+    "head": "Benoît JIMENEZ",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93078",
+   "name": "Villepinte",
+   "department": "93",
+   "population": 41470,
+   "winner": {
+    "label": "ENSEMBLE POUR VILLEPINTE",
+    "head": "Mélissa YOUSSOUF",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93072",
+   "name": "Stains",
+   "department": "93",
+   "population": 41388,
+   "winner": {
+    "label": "STAINS UNIE POUR DEMAIN",
+    "head": "Azzédine TAÏBI",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "05061",
+   "name": "Gap",
+   "department": "05",
+   "population": 41293,
+   "winner": {
+    "label": "GAP Demain en confiance",
+    "head": "Roger DIDIER",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "78498",
+   "name": "Poissy",
+   "department": "78",
+   "population": 40983,
+   "winner": {
+    "label": "ENSEMBLE POUR POISSY",
+    "head": "Sandrine BERNO DOS SANTOS",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "31149",
+   "name": "Colomiers",
+   "department": "31",
+   "population": 40882,
+   "winner": {
+    "label": "ESPRIT COLOMIERS 2026",
+    "head": "Karine TRAVAL-MICHELET",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "59650",
+   "name": "Wattrelos",
+   "department": "59",
+   "population": 40847,
+   "winner": {
+    "label": "UNIS, POUR WATTRELOS, LE COEUR GAGNANT!",
+    "head": "Dominique BAERT",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "83050",
+   "name": "Draguignan",
+   "department": "83",
+   "population": 40826,
+   "winner": {
+    "label": "Draguignan au coeur",
+    "head": "Richard STRAMBIO",
+    "nuance": "LUD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "60159",
+   "name": "Compiègne",
+   "department": "60",
+   "population": 40761,
+   "winner": {
+    "label": "L'ALLIANCE POUR L'AVENIR DE COMPIEGNE",
+    "head": "Philippe MARINI",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "26198",
+   "name": "Montélimar",
+   "department": "26",
+   "population": 40595,
+   "winner": {
+    "label": "MONTELIMAR AVANCE",
+    "head": "Julien CORNILLET",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "62160",
+   "name": "Boulogne-sur-Mer",
+   "department": "62",
+   "population": 40539,
+   "winner": {
+    "label": "BOULOGNE PLUS LOIN, PLUS FORT AVEC FREDERIC CUVILLIER",
+    "head": "Frédéric CUVILLIER",
+    "nuance": "LSOC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "59178",
+   "name": "Douai",
+   "department": "59",
+   "population": 40250,
+   "winner": {
+    "label": "DOUAI TOUJOURS !",
+    "head": "Frédéric CHÉREAU",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "59378",
+   "name": "Marcq-en-Baroeul",
+   "department": "59",
+   "population": 40184,
+   "winner": {
+    "label": "SERVIR L'AVENIR AVEC LOÏC CATHELAIN",
+    "head": "Loïc CATHELAIN",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93050",
+   "name": "Neuilly-sur-Marne",
+   "department": "93",
+   "population": 39800,
+   "winner": {
+    "label": "Neuilly revit, continuons ensemble!",
+    "head": "Zartoshte BAKHTIARI",
+    "nuance": "LUC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97213",
+   "name": "Le Lamentin",
+   "department": "972",
+   "population": 39400,
+   "winner": {
+    "label": "LE LAMENTIN PLUS GRAND",
+    "head": "David ZOBDA",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97412",
+   "name": "Saint-Joseph",
+   "department": "974",
+   "population": 39207,
+   "winner": {
+    "label": "ENSAMBAVEK POUR SAINT-JO",
+    "head": "Patrick LEBRETON",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "77373",
+   "name": "Pontault-Combault",
+   "department": "77",
+   "population": 39096,
+   "winner": {
+    "label": "Ensemble pour Pontault-Combault",
+    "head": "Gilles BORD",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97410",
+   "name": "Saint-Benoît",
+   "department": "974",
+   "population": 38604,
+   "winner": {
+    "label": "BÂTIR SAINT-BENOÎT ANSANM",
+    "head": "Patrice SELLY",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "13028",
+   "name": "La Ciotat",
+   "department": "13",
+   "population": 38477,
+   "winner": {
+    "label": "A JAMAIS CIOTADENS",
+    "head": "Alexandre DORIOL",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "37122",
+   "name": "Joué-lès-Tours",
+   "department": "37",
+   "population": 38423,
+   "winner": {
+    "label": "MON PARTI C'EST JOUÉ # AUGIS 2026",
+    "head": "Frederic AUGIS",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93073",
+   "name": "Tremblay-en-France",
+   "department": "93",
+   "population": 38348,
+   "winner": {
+    "label": "TREMBLAY ENSEMBLE",
+    "head": "Virginie DE CARVALHO",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "28085",
+   "name": "Chartres",
+   "department": "28",
+   "population": 38324,
+   "winner": {
+    "label": "CHARTRES DEMAIN",
+    "head": "Ladislas VERGNE",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "69149",
+   "name": "Oullins-Pierre-Bénite",
+   "department": "69",
+   "population": 38168,
+   "winner": {
+    "label": "Oullins Pierre Bénite + forts ensemble !",
+    "head": "Jérôme MOROGE",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "74281",
+   "name": "Thonon-les-Bains",
+   "department": "74",
+   "population": 37928,
+   "winner": {
+    "label": "THONON 2026",
+    "head": "Richard BAUD",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "95252",
+   "name": "Franconville",
+   "department": "95",
+   "population": 37754,
+   "winner": {
+    "label": "J'aime Franconville",
+    "head": "Xavier MELKI",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "38421",
+   "name": "Saint-Martin-d'Hères",
+   "department": "38",
+   "population": 37695,
+   "winner": {
+    "label": "SMH EN AVANT !",
+    "head": "David QUEIROS",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "74012",
+   "name": "Annemasse",
+   "department": "74",
+   "population": 37628,
+   "winner": {
+    "label": "Pour Annemasse Par Annemasse",
+    "head": "Gabriel DOUBLET",
+    "nuance": "LDIV"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "91589",
+   "name": "Savigny-sur-Orge",
+   "department": "91",
+   "population": 37601,
+   "winner": {
+    "label": "Rassemblés pour Savigny",
+    "head": "Alexis TEILLET",
+    "nuance": "LUD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "38151",
+   "name": "Echirolles",
+   "department": "38",
+   "population": 37491,
+   "winner": {
+    "label": "ECHIROLLES ENSEMBLE",
+    "head": "Amandine DEMORE",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "91477",
+   "name": "Palaiseau",
+   "department": "91",
+   "population": 37471,
+   "winner": {
+    "label": "100% Palaiseau avec Grégoire de Lasteyrie",
+    "head": "Grégoire DE LASTEYRIE",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "93063",
+   "name": "Romainville",
+   "department": "93",
+   "population": 37152,
+   "winner": {
+    "label": "Continuons ensemble",
+    "head": "François DECHY",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "83118",
+   "name": "Saint-Raphaël",
+   "department": "83",
+   "population": 37113,
+   "winner": {
+    "label": "Ensemble, aujourd'hui et pour demain.",
+    "head": "Frédéric MASQUELIER",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "83129",
+   "name": "Six-Fours-les-Plages",
+   "department": "83",
+   "population": 37109,
+   "winner": {
+    "label": "UN NOUVEL ÉLAN AVEC FRÉDÉRIC BOCCALETTI",
+    "head": "Frédéric BOCCALETTI",
+    "nuance": "LUXD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97418",
+   "name": "Sainte-Marie",
+   "department": "974",
+   "population": 37093,
+   "winner": {
+    "label": "Céline SITOUZE",
+    "head": "Céline SITOUZE",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "78172",
+   "name": "Conflans-Sainte-Honorine",
+   "department": "78",
+   "population": 36958,
+   "winner": {
+    "label": "Conflans naturellement !",
+    "head": "Raphaël PRATS",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "13117",
+   "name": "Vitrolles",
+   "department": "13",
+   "population": 36758,
+   "winner": {
+    "label": "ENSEMBLE POUR VITROLLES",
+    "head": "Loïc GACHON",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92020",
+   "name": "Châtillon",
+   "department": "92",
+   "population": 36705,
+   "winner": {
+    "label": "J'Aime Châtillon",
+    "head": "Nadège AZZAZ",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "69282",
+   "name": "Meyzieu",
+   "department": "69",
+   "population": 36687,
+   "winner": {
+    "label": "Meyzieu ensemble avec ISSAM BENZEGHIBA",
+    "head": "Issam BENZEGHIBA",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "91027",
+   "name": "Athis-Mons",
+   "department": "91",
+   "population": 36613,
+   "winner": {
+    "label": "Jean-Jacques GROUSSEAU Toujours à vos côtés pour Athis-Mons",
+    "head": "Jean-Jacques GROUSSEAU",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97408",
+   "name": "La Possession",
+   "department": "974",
+   "population": 36568,
+   "winner": {
+    "label": "LE CHANGEMENT C'EST NOUS",
+    "head": "Erick FONTAINE",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97307",
+   "name": "Matoury",
+   "department": "973",
+   "population": 36512,
+   "winner": {
+    "label": "Matoury 2026 - AVEC VOUS ENCORE PLUS LOIN",
+    "head": "Serge SMOCK",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "95063",
+   "name": "Bezons",
+   "department": "95",
+   "population": 36434,
+   "winner": {
+    "label": "BEZONS VILLE D'AVENIR",
+    "head": "Nessrine MENHAOUARA",
+    "nuance": "LSOC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "67180",
+   "name": "Haguenau",
+   "department": "67",
+   "population": 36391,
+   "winner": {
+    "label": "Claude STURNI - avec Vous, pour Haguenau",
+    "head": "Claude STURNI",
+    "nuance": "LDIV"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "60175",
+   "name": "Creil",
+   "department": "60",
+   "population": 36301,
+   "winner": {
+    "label": "Creil l'insoumise",
+    "head": "Omar YAQOOB",
+    "nuance": "LFI"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "94078",
+   "name": "Villeneuve-Saint-Georges",
+   "department": "94",
+   "population": 36221,
+   "winner": {
+    "label": "VILLENEUVE D'ABORD, C'EST NOTRE DIRECTION",
+    "head": "Kristell NIASME",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "69264",
+   "name": "Villefranche-sur-Saône",
+   "department": "69",
+   "population": 36172,
+   "winner": {
+    "label": "VILLEFRANCHE ENSEMBLE",
+    "head": "Thomas RAVIER",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97413",
+   "name": "Saint-Leu",
+   "department": "974",
+   "population": 36163,
+   "winner": {
+    "label": "UNION SAINT-LEUSIENNE",
+    "head": "Karim JUHOOR",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92019",
+   "name": "Châtenay-Malabry",
+   "department": "92",
+   "population": 35825,
+   "winner": {
+    "label": "Avec Carl SEGAUD, on est si bien ensemble à Châtenay-Malabry",
+    "head": "Carl SEGAUD",
+    "nuance": "LUD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "42207",
+   "name": "Saint-Chamond",
+   "department": "42",
+   "population": 35646,
+   "winner": {
+    "label": "AVEC VOUS, POUR SAINT-CHAMOND !",
+    "head": "Axel DUGUA",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "91549",
+   "name": "Sainte-Geneviève-des-Bois",
+   "department": "91",
+   "population": 35438,
+   "winner": {
+    "label": "Faire ensemble Sainte-Geneviève",
+    "head": "Frédéric PETITTA",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "42187",
+   "name": "Roanne",
+   "department": "42",
+   "population": 35409,
+   "winner": {
+    "label": "ROANNE PASSIONNEMENT",
+    "head": "Yves NICOLIN",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "94058",
+   "name": "Le Perreux-sur-Marne",
+   "department": "94",
+   "population": 35260,
+   "winner": {
+    "label": "LE PERREUX AVEC VOUS",
+    "head": "Christel ROYER",
+    "nuance": "LUD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "71270",
+   "name": "Mâcon",
+   "department": "71",
+   "population": 35177,
+   "winner": {
+    "label": "MÂCON, NATURELLEMENT !",
+    "head": "Jean-Patrick COURTOIS",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "89024",
+   "name": "Auxerre",
+   "department": "89",
+   "population": 35097,
+   "winner": {
+    "label": "DEMAIN LES AUXERROIS",
+    "head": "Mathieu DEBAIN",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "98805",
+   "name": "Dumbéa",
+   "department": "988",
+   "population": 34926,
+   "winner": {
+    "label": "UNIR POUR l'AVENIR",
+    "head": "Cynthia JAN NÉE METZDORF",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "67447",
+   "name": "Schiltigheim",
+   "department": "67",
+   "population": 34708,
+   "winner": {
+    "label": "SCHILICK EN COMMUN",
+    "head": "Nathalie JAMPOC BERTRAND",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "78621",
+   "name": "Trappes",
+   "department": "78",
+   "population": 34689,
+   "winner": {
+    "label": "Fier.e.s d'être Trappistes !",
+    "head": "Ali RABEH",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "78440",
+   "name": "Les Mureaux",
+   "department": "78",
+   "population": 34632,
+   "winner": {
+    "label": "LES MUREAUX, LE COEUR DU MOUVEMENT",
+    "head": "Damien VIGNIER",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "78311",
+   "name": "Houilles",
+   "department": "78",
+   "population": 33983,
+   "winner": {
+    "label": "Tous ensemble pour Houilles",
+    "head": "Romain BERTRAND",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97407",
+   "name": "Le Port",
+   "department": "974",
+   "population": 33969,
+   "winner": {
+    "label": "LO PORT, NOUT FAMIY",
+    "head": "Olivier HOARAU",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "13054",
+   "name": "Marignane",
+   "department": "13",
+   "population": 33692,
+   "winner": {
+    "label": "Marignane aux marignanais",
+    "head": "Eric LE DISSES",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "26281",
+   "name": "Romans-sur-Isère",
+   "department": "26",
+   "population": 33464,
+   "winner": {
+    "label": "Romans avance",
+    "head": "Marie-Hélène THORAVAL",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "94079",
+   "name": "Villiers-sur-Marne",
+   "department": "94",
+   "population": 33162,
+   "winner": {
+    "label": "POURSUIVONS ENSEMBLE LE RAYONNEMENT DE VILLIERS",
+    "head": "Jacques Alain BENISTI",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "03185",
+   "name": "Montluçon",
+   "department": "03",
+   "population": 33147,
+   "winner": {
+    "label": "UN NOUVEAU SOUFFLE POUR MONTLUÇON",
+    "head": "Philippe PERCHE",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "58194",
+   "name": "Nevers",
+   "department": "58",
+   "population": 33085,
+   "winner": {
+    "label": "Nevers à venir",
+    "head": "Denis THURIOT",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "62498",
+   "name": "Lens",
+   "department": "62",
+   "population": 32920,
+   "winner": {
+    "label": "LENS TOUJOURS",
+    "head": "Sylvain ROBERT",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "94073",
+   "name": "Thiais",
+   "department": "94",
+   "population": 32918,
+   "winner": {
+    "label": "ENSEMBLE POUR THIAIS",
+    "head": "Richard DELL'AGNOLA",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "33449",
+   "name": "Saint-Médard-en-Jalles",
+   "department": "33",
+   "population": 32910,
+   "winner": {
+    "label": "Saint-Medard-en-Jalles en Commun",
+    "head": "Stéphane DELPEYRAT-VINCENT",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "47001",
+   "name": "Agen",
+   "department": "47",
+   "population": 32801,
+   "winner": {
+    "label": "VIVEMENT AGEN",
+    "head": "Laurent BRUNEAU",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "78423",
+   "name": "Montigny-le-Bretonneux",
+   "department": "78",
+   "population": 32465,
+   "winner": {
+    "label": "MONTIGNY ENSEMBLE",
+    "head": "Lorrain MERCKAERT",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "94052",
+   "name": "Nogent-sur-Marne",
+   "department": "94",
+   "population": 32455,
+   "winner": {
+    "label": "MIEUX VIVRE A NOGENT AVEC GILLES HAGÈGE",
+    "head": "Gilles HAGEGE",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "73008",
+   "name": "Aix-les-Bains",
+   "department": "73",
+   "population": 32406,
+   "winner": {
+    "label": "Ensemble pour Aix",
+    "head": "Renaud BERETTI",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "88160",
+   "name": "Epinal",
+   "department": "88",
+   "population": 32251,
+   "winner": {
+    "label": "CHANGER POUR VOUS",
+    "head": "Benoît JOURDAIN",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "06123",
+   "name": "Saint-Laurent-du-Var",
+   "department": "06",
+   "population": 32172,
+   "winner": {
+    "label": "LA PROXIMITE AU COEUR DE NOTRE ENGAGEMENT",
+    "head": "Joseph SEGURA",
+    "nuance": "LUD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97610",
+   "name": "Koungou",
+   "department": "976",
+   "population": 32156,
+   "winner": {
+    "label": "LE BONHEUR SIMPLE",
+    "head": "Saïd Raos AHAMADI",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "95500",
+   "name": "Pontoise",
+   "department": "95",
+   "population": 31970,
+   "winner": {
+    "label": "UNION POUR PONTOISE",
+    "head": "Stéphanie VON EUW",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "33039",
+   "name": "Bègles",
+   "department": "33",
+   "population": 31831,
+   "winner": {
+    "label": "ESPOIR BÉGLAIS",
+    "head": "Christian BAGATE",
+    "nuance": "LDIV"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "78490",
+   "name": "Plaisir",
+   "department": "78",
+   "population": 31811,
+   "winner": {
+    "label": "PLAISIR, CŒUR DE VIE",
+    "head": "Sandrine CARNEIRO",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "95306",
+   "name": "Herblay-sur-Seine",
+   "department": "95",
+   "population": 31779,
+   "winner": {
+    "label": "Herblay-Sur-Seine Notre Ville",
+    "head": "Philippe ROULEAU",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "38544",
+   "name": "Vienne",
+   "department": "38",
+   "population": 31778,
+   "winner": {
+    "label": "Avec vous, pour vous, pour Vienne",
+    "head": "Thierry KOVACS",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "84031",
+   "name": "Carpentras",
+   "department": "84",
+   "population": 31619,
+   "winner": {
+    "label": "Pour Carpentras !",
+    "head": "Hervé DE LÉPINAU",
+    "nuance": "LRN"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "40192",
+   "name": "Mont-de-Marsan",
+   "department": "40",
+   "population": 31592,
+   "winner": {
+    "label": "MONT-DE-MARSAN AUTREMENT",
+    "head": "Frédéric DUTIN",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "28134",
+   "name": "Dreux",
+   "department": "28",
+   "population": 31543,
+   "winner": {
+    "label": "Dreux rassemblée",
+    "head": "Abdel-Kader GUERZA",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "91657",
+   "name": "Vigneux-sur-Seine",
+   "department": "91",
+   "population": 31466,
+   "winner": {
+    "label": "Ensemble pour Vigneux",
+    "head": "Thomas CHAZAL",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "69286",
+   "name": "Rillieux-la-Pape",
+   "department": "69",
+   "population": 31389,
+   "winner": {
+    "label": "Rillieux en Grand - Rillieux ensemble !",
+    "head": "Alexandre VINCENDET",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "95280",
+   "name": "Goussainville",
+   "department": "95",
+   "population": 31301,
+   "winner": {
+    "label": "L'AMBITION RETROUVÉE",
+    "head": "Abdelaziz HAMIDA",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "91521",
+   "name": "Ris-Orangis",
+   "department": "91",
+   "population": 31189,
+   "winner": {
+    "label": "RENOUVEAU CITOYEN RIS-ORANGIS",
+    "head": "Sonia BENAMEUR",
+    "nuance": "LDIV"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "94038",
+   "name": "L'Haÿ-les-Roses",
+   "department": "94",
+   "population": 31188,
+   "winner": {
+    "label": "Encore plus belle l'Haÿ",
+    "head": "Clément DECROUY",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "77445",
+   "name": "Savigny-le-Temple",
+   "department": "77",
+   "population": 31148,
+   "winner": {
+    "label": "SAVIGNY TOUT SIMPLEMENT",
+    "head": "Marie-Line PICHERY",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "59122",
+   "name": "Cambrai",
+   "department": "59",
+   "population": 31134,
+   "winner": {
+    "label": "CAMBRAI, LA NOUVELLE ÉNERGIE",
+    "head": "Emeric FRANÇOIS",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "94016",
+   "name": "Cachan",
+   "department": "94",
+   "population": 31103,
+   "winner": {
+    "label": "Cachan en commun 2026 avec Hélène de COMARMOND",
+    "head": "Hélène DE COMARMOND",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "86066",
+   "name": "Châtellerault",
+   "department": "86",
+   "population": 31003,
+   "winner": {
+    "label": "ENSEMBLE ASSURONS L'AVENIR DE CHÂTELLERAULT",
+    "head": "Anne-Florence BOURAT",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "97103",
+   "name": "Baie-Mahault",
+   "department": "971",
+   "population": 30924,
+   "winner": {
+    "label": "LE COEUR BAIE-MAHAULTIEN",
+    "head": "Michel MADO",
+    "nuance": "LDVC"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "91687",
+   "name": "Viry-Châtillon",
+   "department": "91",
+   "population": 30838,
+   "winner": {
+    "label": "AINSI VA LA VILLE",
+    "head": "Jérôme BERENGER",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "78158",
+   "name": "Le Chesnay-Rocquencourt",
+   "department": "78",
+   "population": 30689,
+   "winner": {
+    "label": "LE PROJET LCR 2026",
+    "head": "Anne PÈRE-BRILLAULT",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "06083",
+   "name": "Menton",
+   "department": "06",
+   "population": 30604,
+   "winner": {
+    "label": "Masson Pour Menton",
+    "head": "Alexandra MASSON",
+    "nuance": "LUXD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "78146",
+   "name": "Chatou",
+   "department": "78",
+   "population": 30598,
+   "winner": {
+    "label": "CHATOU CONTINUONS ENSEMBLE",
+    "head": "Eric DUMOULIN",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92046",
+   "name": "Malakoff",
+   "department": "92",
+   "population": 30557,
+   "winner": {
+    "label": "Ensemble pour Malakoff solidaire écologique et citoyenne",
+    "head": "Sonia FIGUERES",
+    "nuance": "LUG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "92035",
+   "name": "La Garenne-Colombes",
+   "department": "92",
+   "population": 30197,
+   "winner": {
+    "label": "Union pour la Majorité municipale",
+    "head": "Philippe JUVIN",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "31557",
+   "name": "Tournefeuille",
+   "department": "31",
+   "population": 30168,
+   "winner": {
+    "label": "Tournefeuille au coeur",
+    "head": "Frédéric PARRE",
+    "nuance": "LDVG"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "38053",
+   "name": "Bourgoin-Jallieu",
+   "department": "38",
+   "population": 30151,
+   "winner": {
+    "label": "Bourgoin-Jallieu de mieux en mieux",
+    "head": "Vincent CHRIQUI",
+    "nuance": "LDVD"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "91201",
+   "name": "Draveil",
+   "department": "91",
+   "population": 30098,
+   "winner": {
+    "label": "ENSEMBLE POUR DRAVEIL",
+    "head": "Anne-Marie JOURDANNEAU-FORT",
+    "nuance": "LLR"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "62510",
+   "name": "Liévin",
+   "department": "62",
+   "population": 30063,
+   "winner": {
+    "label": "LIEVIN POUR VOUS D'ABORD !",
+    "head": "Dany PAIVA",
+    "nuance": "LRN"
+   },
+   "status": "no_source"
+  },
+  {
+   "code": "95680",
+   "name": "Villiers-le-Bel",
+   "department": "95",
+   "population": 30053,
+   "winner": {
+    "label": "AVEC VOUS, POUR VOUS",
+    "head": "Djida TECHTACH",
+    "nuance": "LSOC"
+   },
+   "status": "no_source"
+  }
+ ]
+}
