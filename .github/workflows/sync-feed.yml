@@ -8,6 +8,9 @@ on:
   schedule:
     - cron: "41 */2 * * *" # every 2 hours, off the hour
   workflow_dispatch:
+  push: # TEMPORARY: one-off test run on this branch, remove before merging
+    branches: [claude/red-blue-feed-d2cf65]
+    paths: [.github/workflows/sync-feed.yml]
 
 permissions:
   contents: write
