@@ -12,6 +12,7 @@ import { combineOdds } from "../lib/markets";
 import { esc, safeColor } from "../util";
 import { arrowPaths, legend, unitsPerPx } from "./shifts";
 import { bindSearch, searchBox } from "./explore";
+import { countUp, heroViz } from "./hero";
 
 export async function renderHome(app: HTMLElement) {
   const [polls, markets, geo, deputes, shifts] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null), loadDepartements(), loadDeputes(), loadShifts().catch(() => null)]);
@@ -35,23 +36,37 @@ export async function renderHome(app: HTMLElement) {
 
   const feed = await loadFeed().catch(() => null);
   const stories = (feed?.stories ?? []).filter((s) => (s.reactions ?? []).some((r) => r.rating)).slice(0, 3);
-  void duels; void winner; void now; void pollValue;
-  const swing = shifts?.pairs.filter((p) => p.level === "district").at(-1)?.national.lr?.[2];
+  void duels; void winner; void now; void pollValue; void second;
+  const fav = combineOdds(markets?.markets ?? [])[0];
+  const viz = heroViz(geo, deputes, shifts?.pairs.filter((p) => p.level === "district").at(-1));
 
   app.innerHTML = `
     <section class="page home">
-      <header class="page-head hero welcome">
-        <p class="eyebrow">Third Estate · ${L("« Demander compte à tout agent public »", "“Ask every public official to account”")} <span class="eyebrow-cite">${L("Art. 15, Déclaration de 1789", "Art. 15, Declaration of 1789")}</span> <span class="live-badge" id="live-badge" hidden><i></i><span id="live-count"></span></span></p>
-        <h1>${L("Tout ce qui se décide là où vous vivez", "Everything being decided where you live")}</h1>
-        <p class="dek">${L("Vos élus, du maire au député et au sénateur, comment ils votent, ce qu’ils ont promis, et la vie de votre commune : emploi, écoles, sécurité, actualité, et ce qui en fait le charme.", "Your elected officials, from mayor to MP and senator, how they vote, what they promised, and life in your town: jobs, schools, safety, news, and what makes it a good place.")}</p>
-        ${searchBox(L("Votre adresse, votre ville ou votre code postal", "Your address, town or postcode"))}
-        <aside class="hero-stats" aria-label="${L("En chiffres", "In numbers")}">
-          ${leader ? `<a href="#/2027"><strong style="color:${meta(leader.name).color}">${leader.share.toFixed(0)} %</strong><span>${fr ? `${esc(leader.name)} en tête des sondages pour 2027` : `${esc(leader.name)} leads 2027 polling`}</span></a>` : ""}
-          ${(() => { const fav = combineOdds(markets?.markets ?? [])[0]; return fav?.win ? `<a href="#/2027"><strong style="color:${meta(fav.name).color}">${Math.round(fav.win.avg)} %</strong><span>${fr ? `de chances pour ${esc(fav.name)} de gagner en 2027, selon les marchés prédictifs` : `chance ${esc(fav.name)} wins in 2027, according to prediction markets`}</span></a>` : ""; })()}
-          ${swing ? `<a href="#/resultats/bascules"><strong style="color:${swing > 0 ? "var(--right)" : "var(--left)"}">${swing > 0 ? "+" : "−"}${Math.abs(swing).toFixed(1)}</strong><span>${L(`points de glissement ${swing > 0 ? "vers la droite" : "vers la gauche"}, législatives 2022 → 2024`, `points of swing to the ${swing > 0 ? "right" : "left"}, 2022 → 2024 legislative`)}</span></a>` : ""}
-          <a href="#/assemblee"><strong>${deputes.length || 577}</strong><span>${L("députés, leurs votes et leurs circonscriptions", "MPs, how they vote and the districts they represent")}</span></a>
-        </aside>
-      </header>
+      <section class="hero-x" aria-labelledby="hero-title">
+        <div class="hero-x-in">
+          <div class="hero-x-copy">
+            <p class="hero-kicker">${L("Présidentielle 2027 · Assemblée · Sénat · 34 920 communes", "2027 presidential · Assembly · Senate · 34,920 towns")} <span class="live-badge" id="live-badge" hidden><i></i><span id="live-count"></span></span></p>
+            <h1 id="hero-title"><span class="ln"><span>${L("La politique française,", "French politics,")}</span></span><span class="ln"><span><em>${L("en données.", "in data.")}</em></span></span></h1>
+            <p class="hero-dek">${L("Qui va gagner en 2027. Comment votent vos députés et sénateurs. Ce qui se passe dans votre commune. Et toutes les élections depuis 1848, archives à l’appui.", "Who will win in 2027. How your MPs and senators vote. What is happening in your town. And every election since 1848, with the archive footage.")}</p>
+            <p class="hero-search-label">${L("Commencez par chez vous", "Start with where you live")}</p>
+            ${searchBox(L("Votre ville ou votre code postal", "Your town or postcode"))}
+          </div>
+          <figure class="hero-x-viz">
+            ${viz.svg}
+            <figcaption>
+              <div class="hd-toggle" role="group" aria-label="${L("Vue", "View")}"><button type="button" data-hd="map">${L("577 circonscriptions", "577 districts")}</button><button type="button" data-hd="hemi">${L("577 sièges", "577 seats")}</button></div>
+              <p id="hd-caption"></p>
+              ${viz.legend}
+            </figcaption>
+          </figure>
+        </div>
+        <nav class="hero-x-doors" aria-label="${L("Rubriques", "Sections")}">
+          ${fav?.win ? `<a href="#/2027"><span class="hx-k">${L("Présidentielle 2027", "2027 presidential")}</span><strong data-count="${Math.round(fav.win.avg)}" data-suffix=" %">${Math.round(fav.win.avg)} %</strong><span>${fr ? `de chances pour ${esc(fav.name)} selon les marchés ; ${leader ? `${esc(meta(leader.name).surname)} à ${leader.share.toFixed(0)} % dans les sondages` : ""}` : `chance for ${esc(fav.name)} on prediction markets; ${leader ? `${esc(meta(leader.name).surname)} at ${leader.share.toFixed(0)}% in polls` : ""}`}</span></a>` : ""}
+          <a href="#/assemblee"><span class="hx-k">${L("Vos élus", "Your officials")}</span><strong data-count="${deputes.length || 577}">${deputes.length || 577}</strong><span>${L("députés et 348 sénateurs, chacun de leurs votes", "MPs and 348 senators, every vote they cast")}</span></a>
+          <a href="#/explorer"><span class="hx-k">${L("Ma commune", "My town")}</span><strong data-count="34920">34 920</strong><span>${L("communes : maire, conseil, quartiers, écoles, sécurité, actualité", "towns: mayor, council, neighbourhoods, schools, safety, news")}</span></a>
+          <a href="#/resultats"><span class="hx-k">${L("Histoire électorale", "Electoral history")}</span><strong>1848</strong><span>${L("chaque présidentielle depuis, avec l’annonce en vidéo ou à la radio", "every presidential election since, with the announcement on film or radio")}</span></a>
+        </nav>
+      </section>
 
       <section class="card where-block">
         <div class="pres-grid">
@@ -101,14 +116,14 @@ export async function renderHome(app: HTMLElement) {
           : ""
       }
 
-      <nav class="doors" aria-label="${L("Rubriques", "Sections")}">
-        <a class="door" href="#/explorer"><b>${L("Ma commune", "My town")}</b><span class="muted small">${L("Élus, actualité, quartiers, écoles, sécurité, prix de l’immobilier.", "Officials, news, neighbourhoods, schools, safety, property prices.")}</span></a>
-        <a class="door" href="#/2027"><b>${L("Présidentielle 2027", "2027 presidential")}</b><span class="muted small">${L("Sondages, marchés, simulateur de second tour.", "Polls, markets, runoff simulator.")}</span></a>
-        <a class="door" href="#/elus"><b>${L("Vos élus", "Your officials")}</b><span class="muted small">${L("Députés, sénateurs, maires : qui ils sont, comment ils votent.", "MPs, senators, mayors: who they are, how they vote.")}</span></a>
-        <a class="door" href="#/resultats"><b>${L("Histoire électorale", "Electoral history")}</b><span class="muted small">${L("Toutes les présidentielles depuis 1848, les bascules par territoire.", "Every presidential election since 1848, shifts by area.")}</span></a>
-      </nav>
+      <section class="charter">
+        <blockquote>${L("« La société a le droit de demander compte à tout agent public de son administration. »", "“Society has the right to ask every public official to account for their administration.”")}</blockquote>
+        <p>${L("Déclaration des droits de l’homme et du citoyen, article 15, 1789. Third Estate s’efforce de rendre ce droit praticable : des données publiques, une méthode ouverte, pour chacun.", "Declaration of the Rights of Man and of the Citizen, article 15, 1789. Third Estate tries to make that right practical: public data and an open method, for everyone.")}</p>
+      </section>
     </section>`;
   bindSearch(app);
+  viz.start(app);
+  countUp(app.querySelector<HTMLElement>(".hero-x-doors")!);
 
   // ---------- live map: departments → zoom into districts ----------
   const features = geo.features.map(rewind).filter((f) => f.properties!.code.length === 2);
