@@ -419,3 +419,39 @@ footer { max-width: var(--col); margin: 0 auto; padding: 1.5rem 16px 3rem; borde
 .cmp-better { color: var(--P); }
 .events { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; font-family: var(--sans); font-size: 0.92rem; }
 .events li { border-top: 1px solid var(--rule); padding-top: 0.5rem; }
+
+/* ---------- my town: search, explorer, town page ---------- */
+.town-search { position: relative; max-width: 560px; margin-top: 0.6rem; }
+.town-search input { width: 100%; font: 1.05rem var(--sans); padding: 0.75rem 0.9rem; border: 1px solid var(--ink); border-radius: 4px; background: var(--paper); color: var(--ink); }
+.suggest { position: absolute; z-index: 30; left: 0; right: 0; top: calc(100% + 4px); list-style: none; margin: 0; padding: 0; background: var(--paper); border: 1px solid var(--ink); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); font-family: var(--sans); }
+.suggest li { padding: 0.55rem 0.8rem; cursor: pointer; display: grid; border-top: 1px solid var(--rule); }
+.suggest li:first-child { border-top: 0; }
+.suggest li:hover { background: var(--wash); }
+.explore-bar { display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; align-items: center; font-family: var(--sans); }
+.explore-bar select { font: 0.9rem var(--sans); border: 1px solid #b9bcc2; border-radius: 3px; padding: 0.4rem 0.5rem; background: var(--paper); color: var(--ink); }
+.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 2rem; align-items: start; }
+.town-list { list-style: none; padding: 0; margin: 0; max-height: 78vh; overflow: auto; border-top: 1px solid var(--rule-strong); }
+.town-card { display: grid; gap: 0.3rem; padding: 0.8rem 0.4rem; border-bottom: 1px solid var(--rule); color: var(--ink); font-family: var(--sans); }
+.town-card:hover { background: var(--wash); text-decoration: none; }
+.tc-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.tc-head b { font: 600 1.15rem var(--serif); }
+.tc-stats { display: flex; flex-wrap: wrap; gap: 0.2rem 1.2rem; }
+.tc-stats i { font-style: normal; color: var(--ink-2); margin-right: 0.3rem; }
+.split-map { position: sticky; top: 72px; }
+#dep-map { width: 100%; height: auto; display: block; }
+.town { stroke: #fff; stroke-width: 0.6; }
+.town.hl, .town:hover { stroke: var(--ink); stroke-width: 2; }
+.legend-scale { display: flex; align-items: center; gap: 0.4rem; font: 0.8rem var(--sans); margin-top: 0.4rem; flex-wrap: wrap; }
+.legend-scale i { width: 28px; height: 10px; display: inline-block; }
+@media (max-width: 860px) { .split { grid-template-columns: 1fr; } .split-map { position: static; order: -1; } .town-list { max-height: none; } }
+.town-hero { display: grid; gap: 1.6rem; }
+.town-hero.has-photo { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); align-items: end; }
+.town-hero figure { margin: 0; }
+.town-hero img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+@media (max-width: 760px) { .town-hero.has-photo { grid-template-columns: 1fr; } }
+.mp-mini { display: flex; gap: 0.8rem; align-items: center; color: var(--ink); border-left: 4px solid var(--c); padding: 0.4rem 0.7rem; margin-bottom: 0.6rem; font-family: var(--sans); }
+.mp-mini:hover { background: var(--wash); text-decoration: none; }
+.mp-mini img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex: none; }
+.mp-mini b { font: 600 1.05rem var(--serif); }
+.officials, .positives { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; font-family: var(--sans); }
+.positives li { border-top: 1px solid var(--rule); padding-top: 0.5rem; }
