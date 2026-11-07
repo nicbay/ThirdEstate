@@ -182,10 +182,12 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
   const depCode: string = dep ?? "75";
   const [{ towns }, geo, bundle] = await Promise.all([
     loadDepartmentTowns(depCode),
-    fetchJson<GeoJSON.FeatureCollection>(`https://geo.api.gouv.fr/communes?codeDepartement=${dep}&format=geojson&geometry=contour&fields=nom,code,population`),
+    fetchJson<GeoJSON.FeatureCollection>(`https://geo.api.gouv.fr/communes?codeDepartement=${dep}&type=commune-actuelle,arrondissement-municipal&format=geojson&geometry=contour&fields=nom,code,population`),
     loadTownBundle(depCode),
   ]);
-  const features = geo.features.map(rewind);
+  // Paris, Lyon and Marseille: draw their arrondissements, not the city-wide outline on top of them.
+  const CITIES_WITH_ARR = new Set(["75056", "69123", "13055"]);
+  const features = geo.features.filter((f) => !CITIES_WITH_ARR.has(f.properties!.code)).map(rewind);
   const proj = geoMercator().fitExtent([[6, 6], [594, 594]], { type: "FeatureCollection", features } as GeoJSON.FeatureCollection);
   const path = geoPath(proj);
   const byDistrict = new Map(deputes.filter((d) => d.circo).map((d) => [d.circo!, d]));
