@@ -1,0 +1,38 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;width:1200px;background:#e9e8e3;font-family:Archivo,sans-serif}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px}
+.opt{background:#fff;border-radius:6px;overflow:hidden}
+.opt h3{margin:0;padding:12px 18px 0;font:500 13px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:#666}
+.opt p{margin:4px 18px 12px;font-size:14px;color:#444;line-height:1.35}
+.dark{background:#111216;color:#fff;padding:26px 22px;display:flex;align-items:center;gap:40px}
+.light{padding:22px;display:flex;align-items:center;gap:40px;border-top:1px solid #eee}
+.lock{display:flex;align-items:center;gap:12px}
+.sans{font-weight:850;font-stretch:75%;text-transform:uppercase;font-size:30px;letter-spacing:.01em;line-height:1}
+.sans span{font-weight:300;margin-left:.2em}
+.serif{font-family:Fraunces,serif;font-weight:700;font-size:32px;letter-spacing:-.01em;line-height:1}
+.serif i{font-weight:500}
+.fav{width:40px;height:40px;border-radius:8px;background:#111216;display:grid;place-items:center}
+.big svg{width:64px;height:64px}
+</style></head><body><div class="grid" id="g"></div>
+<script>
+const R='#e0313f',B='#2f6bdc',Rl='#ff5a6a',Bl='#5b8dff';
+// 1. Hemicycle: 3 rows of seats, red to blue
+function hemi(dark){let s='';const rows=[[10,7],[15,10],[20,13]];rows.forEach(([r,n])=>{for(let k=0;k<n;k++){const a=Math.PI-Math.PI*(k+.5)/n,t=k/(n-1);const c=t<.5?(dark?Rl:R):(dark?Bl:B);s+=`<circle cx="${24+r*Math.cos(a)}" cy="${40-r*Math.sin(a)}" r="1.9" fill="${c}" opacity="${t>.42&&t<.58?(dark?.9:1):1}"/>`}});return `<svg viewBox="0 12 48 30">${s}</svg>`}
+// 2. Roman III with serifs, third stem split
+function three(dark){const ink=dark?'#fff':'#111216';return `<svg viewBox="0 0 30 30"><rect x="2" y="3" width="26" height="3.2" fill="${ink}"/><rect x="2" y="23.8" width="26" height="3.2" fill="${ink}"/><rect x="5" y="6" width="4" height="18" fill="${ink}"/><rect x="13" y="6" width="4" height="18" fill="${ink}"/><rect x="21" y="6" width="2" height="18" fill="${dark?Rl:R}"/><rect x="23" y="6" width="2" height="18" fill="${dark?Bl:B}"/></svg>`}
+// 3. Ballot box with a slip half in, split red/blue
+function urne(dark){const ink=dark?'#fff':'#111216';return `<svg viewBox="0 0 30 30"><rect x="9" y="1" width="6" height="14" fill="${dark?Rl:R}"/><rect x="15" y="1" width="6" height="14" fill="${dark?Bl:B}"/><rect x="2" y="11" width="26" height="17" rx="2" fill="${ink}"/><rect x="7" y="13.5" width="16" height="2.4" rx="1.2" fill="${dark?'#111216':'#fff'}"/></svg>`}
+// 4. Cockade: the revolutionary rosette, red/white/blue rings, pleated edge
+function cocarde(dark){let pleats='';for(let i=0;i<24;i++){const a=i/24*2*Math.PI;pleats+=`<circle cx="${15+12.6*Math.cos(a)}" cy="${15+12.6*Math.sin(a)}" r="2.1" fill="${dark?Bl:B}"/>`}return `<svg viewBox="0 0 30 30">${pleats}<circle cx="15" cy="15" r="12.4" fill="${dark?Bl:B}"/><circle cx="15" cy="15" r="8.4" fill="#fff"/><circle cx="15" cy="15" r="4.6" fill="${dark?Rl:R}"/></svg>`}
+const opts=[
+ ['1 · Hémicycle','A semicircle of seats, left in red, right in blue. It echoes the homepage animation: the place where things are decided.',hemi,'sans'],
+ ['2 · Le chiffre III','The Roman numeral of the third estate, like a carved inscription; the third stroke is the people, split left and right. Serif wordmark, 18th-century print feel.',three,'serif'],
+ ['3 · L’urne','A ballot box with the ballot going in, half red, half blue. The most literal: this is about voting.',urne,'sans'],
+ ['4 · La cocarde','The 1789 cockade, the badge the Third Estate wore. Instantly French and revolutionary; serif wordmark.',cocarde,'serif'],
+];
+document.getElementById('g').innerHTML=opts.map(([t,d,f,w])=>{const word=w==='sans'?'<div class="sans">Third<span>Estate</span></div>':'<div class="serif">Third <i>Estate</i></div>';return `<div class="opt"><h3>${t}</h3><p>${d}</p>
+<div class="dark"><div class="lock"><div style="width:44px;height:${f===hemi?28:44}px">${f(true)}</div>${word}</div><div class="fav">${f(true).replace('<svg','<svg width="28" height="28"')}</div></div>
+<div class="light"><div class="lock"><div style="width:44px;height:${f===hemi?28:44}px">${f(false)}</div>${word.replace('class="','style="color:#111216" class="')}</div><div class="big">${f(false)}</div></div></div>`}).join('');
+</script></body></html>

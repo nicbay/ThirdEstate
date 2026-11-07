@@ -92,6 +92,7 @@ function renderChrome(path: string) {
 
 /** Presentation pass after each render: wide tables scroll inside their own box on small screens. */
 function enhance() {
+  sectionHero();
   app.querySelectorAll<HTMLTableElement>("table.table").forEach((t) => {
     if (t.parentElement?.classList.contains("table-scroll")) return;
     const box = document.createElement("div");
@@ -100,6 +101,56 @@ function enhance() {
     box.append(t);
   });
 }
+/**
+ * Every page opens like the homepage: its crumbs and header are lifted into one dark, full-width band,
+ * the headline rises in line by line and the clause after the first comma takes the red→blue gradient.
+ * Sections below fade up as they scroll into view.
+ */
+const reducedMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+const revealer = "IntersectionObserver" in window
+  ? new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("rv-in"); revealer!.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" })
+  : null;
+function sectionHero() {
+  const page = app.querySelector<HTMLElement>(":scope > .page");
+  if (!page || page.classList.contains("home") || page.dataset.hx) return;
+  const kids = [...page.children];
+  let i = 0;
+  const band: Element[] = [];
+  if (kids[i]?.matches(".crumbs")) band.push(kids[i++]);
+  if (!kids[i]?.matches(".page-head, .mp-head, .town-hero")) return;
+  band.push(kids[i]);
+  page.dataset.hx = "1";
+  const box = document.createElement("div");
+  box.className = "sec-hero";
+  const inner = document.createElement("div");
+  inner.className = "sec-hero-in";
+  box.append(inner);
+  band[0].before(box);
+  inner.append(...band);
+  const h1 = inner.querySelector("h1");
+  if (h1 && h1.children.length === 0 && h1.id !== "sim-h1") {
+    const text = h1.textContent ?? "";
+    const cut = text.search(/,\s|\s:\s/);
+    const lines = cut > 0 && cut < text.length - 4 ? [text.slice(0, cut + 1), text.slice(cut + 1).trim()] : [text];
+    h1.textContent = "";
+    lines.forEach((t, n) => {
+      const ln = document.createElement("span");
+      ln.className = "ln";
+      const sp = document.createElement("span");
+      if (n === 1) { const em = document.createElement("em"); em.textContent = t; sp.append(em); } else sp.textContent = t;
+      sp.style.animationDelay = `${n * 0.1}s`;
+      ln.append(sp);
+      h1.append(ln);
+    });
+  }
+  if (!revealer || reducedMotion()) return;
+  [...page.children].filter((el) => el !== box).forEach((el, n) => {
+    el.classList.add("rv");
+    (el as HTMLElement).style.setProperty("--rv-d", `${Math.min(n, 3) * 70}ms`);
+    revealer.observe(el);
+  });
+}
+
 let queued = false;
 new MutationObserver(() => {
   if (queued) return;
