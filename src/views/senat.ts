@@ -42,7 +42,7 @@ export async function renderSenat(app: HTMLElement) {
     <section class="page">
       <header class="page-head">
         <p class="eyebrow">${L("Sénat", "Senate")}</p>
-        <h1>${L("Les 348 sénateurs, leurs groupes et leurs votes", "The 348 senators, their groups and their votes")}</h1>
+        <h1>${(() => { const big = [...groups].sort((a, b) => count(b.id) - count(a.id))[0]; return big ? esc(L(`${big.abrev}, premier groupe du Sénat avec ${count(big.id)} sièges sur ${sens.length}`, `${big.abrev} is the Senate’s largest group, with ${count(big.id)} of ${sens.length} seats`)) : L("Les 348 sénateurs, leurs groupes et leurs votes", "The 348 senators, their groups and their votes"); })()}</h1>
         <p class="dek">${L("Élus au suffrage indirect par les grands électeurs de chaque département. Cherchez votre département pour trouver vos sénateurs.", "Elected indirectly by each department’s electoral college. Search your department to find your senators.")}</p>
       </header>
       <div class="pres-grid">

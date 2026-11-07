@@ -1,6 +1,6 @@
 // Polls & markets: trend, runoff match-ups, every poll, prediction markets.
 import { loadMarkets, loadPolls } from "../data";
-import { L, fmtDate, fmtNum } from "../i18n";
+import { L, fmtDate, fmtNum, getLang } from "../i18n";
 import { lineChart } from "../lib/chart";
 import { meta, registerParties } from "../lib/candidates";
 import { average, duelAverages, pollValue, trend } from "../lib/polls";
@@ -19,7 +19,7 @@ export async function renderPolls(app: HTMLElement) {
   app.innerHTML = `
     <section class="page">
       <div class="page-head">
-        <div><p class="eyebrow">${L("Présidentielle 2027", "2027 presidential election")}</p><h1>${L("Tous les sondages, et ce que parient les marchés", "Every poll, and what the betting markets say")}</h1>
+        <div><p class="eyebrow">${L("Présidentielle 2027", "2027 presidential election")}</p><h1>${current[0] ? (getLang() === "fr" ? `${esc(current[0].name)} à ${current[0].avg.toFixed(0)} % en moyenne, ${current[1] ? `${esc(meta(current[1].name).surname)} à ${current[1].avg.toFixed(0)} %` : ""}` : `${esc(current[0].name)} averages ${current[0].avg.toFixed(0)}%, ${current[1] ? `${esc(meta(current[1].name).surname)} ${current[1].avg.toFixed(0)}%` : ""}`) : L("Tous les sondages, et ce que parient les marchés", "Every poll, and what the betting markets say")}</h1>
           <p class="dek">${L("L’évolution des intentions de vote depuis 2025, chaque duel de second tour testé, la liste complète des sondages et les cotes de Kalshi et Polymarket.", "Voting intention since 2025, every runoff match-up tested, the full list of polls, and the odds on Kalshi and Polymarket.")}</p></div>
         <nav class="subnav">
           <a href="#/sondages#evolution">${L("Évolution", "Trend")}</a>

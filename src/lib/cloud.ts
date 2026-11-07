@@ -11,7 +11,8 @@ export const cloud: SupabaseClient | null = url && key ? createClient(url, key) 
 export const cloudEnabled = () => !!cloud;
 
 // ---------- where the visitor is from (asked, never inferred from the IP) ----------
-export interface Home { dep: string; depName: string; commune?: string }
+/** Where the reader lives: the department (shared anonymously with live presence) and, once chosen, their town. */
+export interface Home { dep: string; depName: string; commune?: string; code?: string }
 const HOME_KEY = "pv-home";
 export function getHome(): Home | null {
   try {

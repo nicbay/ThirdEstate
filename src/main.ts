@@ -15,11 +15,14 @@ import { renderFeed } from "./views/feed";
 import { renderRace } from "./views/race";
 import { renderSenat, renderSenateur } from "./views/senat";
 import { renderExplorer, renderTown } from "./views/explore";
+import { getHome, onHome } from "./lib/cloud";
+import { esc } from "./util";
 
 const app = document.getElementById("app")!;
 const nav = document.getElementById("nav")!;
 const langBtn = document.getElementById("lang") as HTMLButtonElement;
 const footer = document.getElementById("footer")!;
+const placeBtn = document.getElementById("place") as HTMLAnchorElement;
 
 // URL shape: #/<section>[/<param>][#<anchor>]
 const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
@@ -44,29 +47,56 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/ville\/(\w{5})$/, (m) => renderTown(app, m[1])],
 ];
 
-// Information architecture: local first (your town, your officials), then the national race,
-// the feed, and history. Sections with sub-pages get a second row of links.
-const SECTIONS: { href: string; match: RegExp; fr: string; en: string; children?: { href: string; match: RegExp; fr: string; en: string }[] }[] = [
-  { href: "#/explorer", match: /^#\/(explorer|ville)/, fr: "Ma commune", en: "My town" },
-  {
-    href: "#/elus", match: /^#\/(elus|assemblee|circo|depute|senat|senateur)/, fr: "Vos élus", en: "Your officials",
-    children: [
-      { href: "#/assemblee", match: /^#\/(elus|assemblee|circo|depute)/, fr: "Députés", en: "MPs" },
-      { href: "#/senat", match: /^#\/(senat|senateur)/, fr: "Sénateurs", en: "Senators" },
-      { href: "#/explorer", match: /^$/, fr: "Maires et conseils municipaux", en: "Mayors and town councils" },
-    ],
-  },
-  {
-    href: "#/2027", match: /^#\/(2027|sondages|simulateur)/, fr: "Présidentielle 2027", en: "2027 presidential",
-    children: [
-      { href: "#/2027", match: /^#\/2027/, fr: "Vue d’ensemble", en: "Overview" },
-      { href: "#/sondages", match: /^#\/sondages/, fr: "Sondages et marchés", en: "Polls and markets" },
-      { href: "#/simulateur", match: /^#\/simulateur/, fr: "Simulateur", en: "Simulator" },
-    ],
-  },
-  { href: "#/fil", match: /^#\/fil/, fr: "Fil rouge, fil bleu", en: "Red feed, blue feed" },
-  { href: "#/resultats", match: /^#\/(resultats|histoire)/, fr: "Histoire électorale", en: "Electoral history" },
-];
+// Information architecture: two doors, the site's promise "de votre mairie à l'Élysée".
+// 1. Chez vous: the reader's town (remembered), their officials, every town.
+// 2. 2027: the race (forecast, polls and markets, simulator, the red/blue feed).
+// Archives (results, every election since 1848) supports both.
+type Section = { href: string; match: RegExp; fr: string; en: string; children?: { href: string; match: RegExp; fr: string; en: string }[] };
+function sections(): Section[] {
+  const home = getHome();
+  const mine = home?.code ? `#/ville/${home.code}` : "#/explorer";
+  return [
+    {
+      href: mine, match: /^#\/(explorer|ville|elus|assemblee|circo|depute|senat|senateur)/, fr: "Chez vous", en: "Where you live",
+      children: [
+        ...(home?.code ? [{ href: mine, match: new RegExp(`^#\/ville\/${home.code}$`), fr: home.commune ?? "Ma commune", en: home.commune ?? "My town" }] : []),
+        { href: "#/assemblee", match: /^#\/(elus|assemblee|circo|depute)/, fr: "Députés", en: "MPs" },
+        { href: "#/senat", match: /^#\/(senat|senateur)/, fr: "Sénateurs", en: "Senators" },
+        { href: "#/explorer", match: home?.code ? new RegExp(`^#\/(explorer|ville\/(?!${home.code}$))`) : /^#\/(explorer|ville)/, fr: "Toutes les communes", en: "Every town" },
+      ],
+    },
+    {
+      href: "#/2027", match: /^#\/(2027|sondages|simulateur|fil)/, fr: "2027", en: "2027",
+      children: [
+        { href: "#/2027", match: /^#\/2027/, fr: "La course", en: "The race" },
+        { href: "#/sondages", match: /^#\/sondages/, fr: "Sondages et marchés", en: "Polls and markets" },
+        { href: "#/simulateur", match: /^#\/simulateur/, fr: "Simulateur", en: "Simulator" },
+        { href: "#/fil", match: /^#\/fil/, fr: "Fil rouge, fil bleu", en: "Red feed, blue feed" },
+      ],
+    },
+    { href: "#/resultats", match: /^#\/(resultats|histoire)/, fr: "Archives", en: "Archives" },
+  ];
+}
+
+/** Where to go next from each part of the site, so no page is a dead end. */
+function nextSteps(path: string) {
+  const home = getHome();
+  const mine = home?.code ? { href: `#/ville/${home.code}`, fr: `Votre commune, ${home.commune ?? ""}`, en: `Your town, ${home.commune ?? ""}` } : { href: "#/explorer", fr: "Trouver votre commune", en: "Find your town" };
+  const race = { href: "#/2027", fr: "Où en est la présidentielle 2027", en: "Where the 2027 race stands" };
+  const sim = { href: "#/simulateur", fr: "Simuler le second tour", en: "Simulate the runoff" };
+  const polls = { href: "#/sondages", fr: "Tous les sondages et les marchés", en: "Every poll and market" };
+  const mps = { href: "#/assemblee", fr: "Les 577 députés et leurs votes", en: "The 577 MPs and their votes" };
+  const hist = { href: "#/resultats", fr: "Toutes les élections depuis 1848", en: "Every election since 1848" };
+  const feed = { href: "#/fil", fr: "Ce que disent la gauche et la droite aujourd’hui", en: "What left and right are saying today" };
+  const pick = /^#\/(ville|explorer)/.test(path) ? [race, mps, hist]
+    : /^#\/(circo|depute|assemblee|elus|senat|senateur)/.test(path) ? [mine, race, feed]
+    : /^#\/(2027|sondages|simulateur)/.test(path) ? [mine, /simulateur/.test(path) ? polls : sim, hist]
+    : /^#\/fil/.test(path) ? [race, mps, mine]
+    : /^#\/(resultats|histoire)/.test(path) ? [race, mine, sim]
+    : null;
+  if (!pick) return "";
+  return `<nav class="next-steps" aria-label="${L("Et ensuite", "What next")}"><p>${L("Et ensuite", "What next")}</p>${pick.map((x) => `<a href="${x.href}">${esc(L(x.fr, x.en))}<span aria-hidden="true">→</span></a>`).join("")}</nav>`;
+}
 
 const split = () => {
   const h = location.hash || "#/";
@@ -75,8 +105,14 @@ const split = () => {
 };
 
 function renderChrome(path: string) {
+  const SECTIONS = sections();
   nav.innerHTML = SECTIONS.map((s) => `<a href="${s.href}" class="${s.match.test(path) ? "active" : ""}">${L(s.fr, s.en)}</a>`).join("");
   const current = SECTIONS.find((s) => s.match.test(path));
+  const home = getHome();
+  placeBtn.href = home?.code ? `#/ville/${home.code}` : "#/explorer";
+  placeBtn.innerHTML = `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.2a4.8 4.8 0 0 0-4.8 4.8c0 3.6 4.8 8.8 4.8 8.8s4.8-5.2 4.8-8.8A4.8 4.8 0 0 0 8 1.2Zm0 6.6a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6Z" fill="currentColor"/></svg><span>${home?.code ? esc(home.commune ?? home.depName) : L("Votre commune", "Your town")}</span>`;
+  placeBtn.title = home?.code ? L("Votre commune", "Your town") : L("Choisir votre commune", "Choose your town");
+  placeBtn.classList.toggle("is-set", !!home?.code);
   const sub = document.getElementById("subnav")!;
   sub.hidden = !current?.children;
   sub.innerHTML = current?.children ? `<div>${current.children.map((c) => `<a href="${c.href}" class="${c.match.test(path) ? "active" : ""}">${L(c.fr, c.en)}</a>`).join("")}</div>` : "";
@@ -171,6 +207,8 @@ async function route() {
       app.innerHTML = `<p class="muted pad">${t().loading}</p>`;
       try {
         await fn(m);
+        const page = app.querySelector(":scope > .page");
+        if (page && !page.querySelector(".next-steps")) page.insertAdjacentHTML("beforeend", nextSteps(path));
         if (anchor) document.getElementById(anchor)?.scrollIntoView();
         else window.scrollTo(0, 0);
       } catch (err) {
@@ -189,6 +227,7 @@ langBtn.addEventListener("click", () => {
   route();
 });
 window.addEventListener("hashchange", route);
+onHome(() => renderChrome(split().path));
 setLang(getLang());
 initTooltip();
 joinPresence();

@@ -6,6 +6,7 @@
 // per-town files from scripts/sync-communes.mjs (councillors, monuments, prices, photos).
 import { geoMercator, geoPath } from "d3-geo";
 import { fetchJson, loadDeputes, type Depute } from "../data";
+import { getHome, setHome } from "../lib/cloud";
 import { L, fmtDate, fmtNum, getLang } from "../i18n";
 import { rewind } from "../lib/map";
 import { esc, safeUrl, safeColor } from "../util";
@@ -13,12 +14,13 @@ import { PLATFORMS, age, presence } from "./assemblee";
 import { photoUrl } from "./deputes";
 import { renderTownLocal } from "./town-local";
 import { renderQuartiers } from "./quartiers";
+import { townBrief } from "./brief";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type Any = any;
 
 // ---------- data helpers ----------
-interface TownData {
+export interface TownData {
   code: string;
   name: string;
   pop: number;
@@ -34,7 +36,7 @@ interface TownData {
 const depCache = new Map<string, Promise<{ towns: Map<string, TownData>; profiles: Map<string, Any> }>>();
 
 /** Every town of a department, assembled from the district profiles that cover it. */
-function loadDepartmentTowns(dep: string) {
+export function loadDepartmentTowns(dep: string) {
   if (!depCache.has(dep)) {
     depCache.set(
       dep,
@@ -69,7 +71,7 @@ function loadDepartmentTowns(dep: string) {
   return depCache.get(dep)!;
 }
 let natP: Promise<Any> | null = null;
-const loadNational = () => (natP ??= fetchJson<Any>("/data/districts/index.json"));
+export const loadNational = () => (natP ??= fetchJson<Any>("/data/districts/index.json"));
 /** Optional per-town file from scripts/sync-communes.mjs (councillors, monuments, prices, photo). */
 const bundleCache = new Map<string, Promise<Any>>();
 /** All town files of a department (scripts/sync-communes.mjs + scripts/bundle-communes.mjs). */
@@ -104,7 +106,7 @@ export function townExtra(d: Any) {
 }
 const titleCase = (n: string) => String(n ?? "").replace(/\b([A-ZÀ-ÖØ-Ý][A-ZÀ-ÖØ-Ý'-]+)\b/g, (w) => (w.length > 1 && w === w.toUpperCase() ? w.charAt(0) + w.slice(1).toLowerCase() : w));
 const loadTownExtra = async (code: string) => townExtra((await loadTownBundle(depOf(code)))[code]);
-const depOf = (code: string) => (code.startsWith("97") ? code.slice(0, 3) : code.slice(0, 2));
+export const depOf = (code: string) => (code.startsWith("97") ? code.slice(0, 3) : code.slice(0, 2));
 
 // ---------- search (address, street or town) ----------
 export function searchBox(placeholder?: string) {
@@ -118,7 +120,11 @@ export function bindSearch(root: HTMLElement) {
     const input = form.querySelector("input")!;
     const list = form.querySelector<HTMLUListElement>(".suggest")!;
     let timer = 0, seq = 0;
-    const go = (code: string) => { list.hidden = true; location.hash = `#/ville/${code}`; };
+    const go = (code: string) => {
+      list.hidden = true;
+      try { sessionStorage.setItem("te-picked", code); } catch { /* private mode */ }
+      location.hash = `#/ville/${code}`;
+    };
     input.addEventListener("input", () => {
       clearTimeout(timer);
       const q = input.value.trim();
@@ -237,7 +243,7 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
 const fmt = (n: number) => (Math.abs(n) >= 1000 ? fmtNum(Math.round(n)) : n.toLocaleString(getLang() === "fr" ? "fr-FR" : "en-GB", { maximumFractionDigits: 1 }));
 
 // ---------- town page ----------
-const CRIME_LABELS: Record<string, [string, string]> = {
+export const CRIME_LABELS: Record<string, [string, string]> = {
   burglary: ["Cambriolages de logement", "Home burglaries"], theftFromPersons: ["Vols sans violence contre des personnes", "Non-violent theft from persons"],
   physicalViolenceOther: ["Violences physiques hors famille", "Physical violence outside the family"], physicalViolenceFamily: ["Violences intrafamiliales", "Domestic violence"],
   vehicleTheft: ["Vols de véhicules", "Vehicle theft"], criminalDamage: ["Destructions et dégradations", "Criminal damage"], drugTrafficking: ["Trafic de stupéfiants", "Drug trafficking"], fraud: ["Escroqueries", "Fraud"],
@@ -246,7 +252,7 @@ const CRIME_LABELS: Record<string, [string, string]> = {
 // ---------- crime over time: the town against France (SSMSI, every year since 2016) ----------
 interface CrimeHistory { years: number[]; national: Record<string, (number | null)[]>; department: Record<string, (number | null)[]>; communes: Record<string, Record<string, (number | null)[]>> }
 /** Paris, Lyon and Marseille are published as whole cities. */
-const plmCity = (c: string) => (/^751\d\d$/.test(c) ? "75056" : /^6938\d$/.test(c) ? "69123" : /^132\d\d$/.test(c) ? "13055" : c);
+export const plmCity = (c: string) => (/^751\d\d$/.test(c) ? "75056" : /^6938\d$/.test(c) ? "69123" : /^132\d\d$/.test(c) ? "13055" : c);
 const numFmt = (v: number) => v.toLocaleString(getLang() === "fr" ? "fr-FR" : "en-GB", { maximumFractionDigits: 1, minimumFractionDigits: v < 10 ? 1 : 0 });
 
 /** Polyline path that breaks across missing years. */
@@ -301,7 +307,7 @@ function niceStep(max: number) {
 }
 
 /** Paris, Lyon, Marseille as a whole: the district profiles list their arrondissements, so build the city from them. */
-function plmWhole(towns: Map<string, TownData>, code: string): TownData | undefined {
+export function plmWhole(towns: Map<string, TownData>, code: string): TownData | undefined {
   const arrs = [...towns.values()].filter((t) => t.code !== code && plmCity(t.code) === code);
   if (!arrs.length) return undefined;
   const districts = new Map<string, number>();
@@ -364,12 +370,19 @@ export async function renderTown(app: HTMLElement, code: string) {
           <h1>${esc(name)}</h1>
           <p class="dek">${info?.population ? `${fmtNum(info.population)} ${L("habitants", "inhabitants")}` : ""}${info?.codesPostaux?.length ? `, ${info.codesPostaux.slice(0, 3).join(", ")}` : ""}.${extra?.description?.text ? ` ${esc(extra.description.text)}` : ""}</p>
           ${extra?.description?.url ? `<p class="tiny muted">${L("Extrait de", "From")} <a href="${esc(safeUrl(extra.description.url))}" target="_blank" rel="noopener">Wikipédia</a> (CC BY-SA)</p>` : ""}
+          <div class="home-set" id="home-set"></div>
           ${searchBox(L("Chercher une autre adresse", "Search another address"))}
         </div>
       </header>
 
+      <section class="card brief">
+        <header class="card-head"><h2>${L(`${name} en bref`, `${name} in brief`)}</h2></header>
+        <div id="brief-text" class="brief-text"><p class="muted small">${L("Chargement…", "Loading…")}</p></div>
+        <nav class="jump" id="jump" aria-label="${L("Sur cette page", "On this page")}"></nav>
+      </section>
+
       <section class="card">
-        <header class="card-head"><h2>${L("Vos élus", "Your elected officials")}</h2></header>
+        <header class="card-head" id="elus"><h2>${L("Vos élus", "Your elected officials")}</h2></header>
         <div class="grid-2">
           <div>${mps.map(({ d, mp }) => `<a class="mp-mini" href="#/depute/${mp.id}" style="--c:${safeColor(mp.groupe?.couleur) ?? "#999"}"><img src="${photoUrl(mp.id)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"/><span><span class="muted small">${L("Député·e", "MP")}, ${esc(mp.departement ?? "")} ${d.code.slice(-2)}${d.share < 1 ? ` (${L("partie de la commune", "part of the town")})` : ""}</span><br><b>${esc(mp.prenom)} ${esc(mp.nom)}</b> <span class="chip">${esc(mp.groupe?.abrev ?? "")}</span><br><span class="small muted">${age(mp) ?? "?"} ${L("ans", "years old")}, ${L("participation aux votes", "votes attended")} ${Math.round(100 * mp.stats.participation)} %, ${L("présence en ligne", "online presence")} ${presence(mp)}/${PLATFORMS.length}</span></span></a>`).join("") || `<p class="muted">${L("Député non trouvé pour cette commune.", "No MP found for this town.")}</p>`}</div>
           <div>${
@@ -383,7 +396,7 @@ export async function renderTown(app: HTMLElement, code: string) {
       ${
         t
           ? `<section class="card">
-              <header class="card-head"><h2>${L("La commune en chiffres", "The town in figures")}</h2></header>
+              <header class="card-head" id="chiffres"><h2>${L("La commune en chiffres", "The town in figures")}</h2></header>
               <div class="local-kpis">
                 ${t.income ? `<div class="lk"><span class="muted small">${L("Niveau de vie médian", "Median standard of living")}</span><strong>${fmtNum(t.income)} €</strong><span class="small">${cmpPct(t.income, nat?.indicators?.["income.median"]?.median, false)}</span></div>` : ""}
                 ${t.poverty != null ? `<div class="lk"><span class="muted small">${L("Taux de pauvreté", "Poverty rate")}</span><strong>${fmt(t.poverty)} %</strong><span class="small">${cmpPct(t.poverty, nat?.indicators?.["income.poverty"]?.median)}</span></div>` : ""}
@@ -405,7 +418,7 @@ export async function renderTown(app: HTMLElement, code: string) {
           ${t?.events.length ? `<h3>${L("À venir", "Coming up")}</h3><ul class="events">${t.events.slice(0, 6).map((e: Any) => `<li><span class="muted small">${fmtDate(e.start)}</span><br><a href="${esc(safeUrl(e.url ?? e.datatourisme))}" target="_blank" rel="noopener">${esc(e.name)}</a></li>`).join("")}</ul>` : ""}
         </section>
         <section class="card">
-          <header class="card-head"><h2>${L("Sécurité", "Safety")}</h2><span class="muted small">${L("faits pour 1 000 habitants", "per 1,000 people")}</span></header>
+          <header class="card-head" id="securite"><h2>${L("Sécurité", "Safety")}</h2><span class="muted small">${L("faits pour 1 000 habitants", "per 1,000 people")}</span></header>
           ${isArr && t?.crime ? `<p class="muted small">${L(`Chiffres de ${cityName} entier : le ministère ne publie pas la délinquance par arrondissement.`, `Figures for the whole of ${cityName}: the ministry doesn’t publish crime by arrondissement.`)}</p>` : ""}
           ${
             t?.crime
@@ -420,7 +433,7 @@ export async function renderTown(app: HTMLElement, code: string) {
 
       ${
         t?.schools.length
-          ? `<section class="card"><header class="card-head"><h2>${L("Collèges et lycées", "Secondary schools")}</h2></header>
+          ? `<section class="card"><header class="card-head" id="ecoles"><h2>${L("Collèges et lycées", "Secondary schools")}</h2></header>
               <table class="table"><thead><tr><th>${L("Établissement", "School")}</th><th class="num">IPS</th><th class="num">${L("Réussite", "Pass rate")}</th><th class="num">VA</th></tr></thead><tbody>${t.schools
                 .map((s: Any) => { const r = s.dnb ?? s.bacGT ?? s.bacPro; return `<tr><td>${esc(s.name)}<br><span class="muted tiny">${s.type === "college" ? L("collège", "collège") : L("lycée", "lycée")}, ${s.sector === "private" ? L("privé", "private") : L("public", "public")}</span></td><td class="num">${s.ips?.value ?? "–"}</td><td class="num">${r?.successRate != null ? `${r.successRate} %` : "–"}</td><td class="num">${r?.successVA != null ? `${r.successVA > 0 ? "+" : ""}${r.successVA}` : "–"}</td></tr>`; })
                 .join("")}</tbody></table>
@@ -433,6 +446,37 @@ export async function renderTown(app: HTMLElement, code: string) {
       <nav class="doors">${mps.map(({ d }) => `<a class="door" href="#/circo/${d.code}"><b>${L("Toute la circonscription", "The whole district")} ${d.code.slice(-2)}</b><span class="muted small">${L("Résultats électoraux, député, chiffres détaillés", "Election results, MP, detailed figures")}</span></a>`).join("")}<a class="door" href="#/explorer/${dep}"><b>${L("Les autres communes du département", "Other towns in the department")}</b><span class="muted small">${L("Liste et carte", "List and map")}</span></a></nav>
     </section>`;
   bindSearch(app);
+  // "this is where I live": remembered on this device, and the department joins live presence
+  const homeBox = app.querySelector<HTMLElement>("#home-set");
+  const asHome = () => ({ dep, depName: info?.departement?.nom ?? dep, commune: name, code });
+  const drawHomeSet = (justSaved = false) => {
+    if (!homeBox) return;
+    const h = getHome();
+    homeBox.innerHTML = h?.code === code
+      ? `<span class="home-is"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.2a4.8 4.8 0 0 0-4.8 4.8c0 3.6 4.8 8.8 4.8 8.8s4.8-5.2 4.8-8.8A4.8 4.8 0 0 0 8 1.2Zm0 6.6a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6Z" fill="currentColor"/></svg>${justSaved ? L("Enregistrée comme votre commune", "Saved as your town") : L("Votre commune", "Your town")}</span> <button type="button" class="linkish" data-home="off">${justSaved ? L("Annuler", "Undo") : L("Ce n’est plus chez moi", "Not my town any more")}</button>`
+      : `<button type="button" class="home-btn" data-home="on">${L("C’est chez moi", "I live here")}</button> <span class="muted small">${h?.code ? L(`à la place de ${esc(h.commune ?? h.code)}`, `instead of ${esc(h.commune ?? h.code)}`) : L("pour retrouver votre commune, vos élus et votre circonscription partout sur le site", "to keep your town, officials and district one click away across the site")}</span>`;
+    homeBox.querySelector<HTMLButtonElement>("[data-home]")?.addEventListener("click", (e) => {
+      const on = (e.currentTarget as HTMLElement).dataset.home === "on";
+      setHome(on ? asHome() : null);
+      drawHomeSet(false);
+    });
+  };
+  let picked: string | null = null;
+  try { picked = sessionStorage.getItem("te-picked"); sessionStorage.removeItem("te-picked"); } catch { /* private mode */ }
+  if (picked === code && !getHome()?.code) { setHome(asHome()); drawHomeSet(true); } else drawHomeSet();
+  // in brief + "on this page" jump links
+  townBrief(code, name).then((b) => {
+    const box = app.querySelector<HTMLElement>("#brief-text");
+    if (box) box.innerHTML = b.sentences.length ? `<p>${b.sentences.join(" ")}</p>` : `<p class="muted small">${L("Pas assez de données publiées pour résumer cette commune.", "Not enough published data to sum up this town.")}</p>`;
+  }).catch(() => app.querySelector("#brief-text")?.remove());
+  const jumps: [string, string, string][] = [["elus", "Vos élus", "Officials"], ["chiffres", "Chiffres", "Figures"], ["securite", "Sécurité", "Safety"], ["ecoles", "Écoles", "Schools"], ["town-quartiers", "Quartiers", "Neighbourhoods"], ["town-local", "Vie locale", "Local life"]];
+  const drawJump = () => {
+    const nav = app.querySelector<HTMLElement>("#jump");
+    if (!nav) return;
+    nav.innerHTML = jumps.filter(([id]) => { const el = app.querySelector(`#${id}`); return el && (el.childElementCount > 0 || el.matches("header")); }).map(([id, f, e]) => `<a href="#/ville/${code}#${id}">${L(f, e)}</a>`).join("");
+  };
+  drawJump();
+  setTimeout(drawJump, 2500); // neighbourhoods and local life fill in asynchronously
   renderTownLocal(app.querySelector<HTMLElement>("#town-local")!, code, dep);
   renderQuartiers(app.querySelector<HTMLElement>("#town-quartiers")!, code);
   crimeHist.then((h) => {

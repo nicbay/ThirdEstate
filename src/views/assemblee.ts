@@ -15,11 +15,18 @@ export const age = (d: Depute) => (d.naissance ? Math.floor((Date.now() - Date.p
 let mapMode: "groupe" | "leg24" = "groupe";
 
 export async function renderAssemblee(app: HTMLElement, tab = "carte", dep?: string) {
+  const all = await loadDeputes().catch(() => [] as Depute[]);
+  const byGroup = new Map<string, number>();
+  for (const d of all) if (d.groupe?.abrev) byGroup.set(d.groupe.abrev, (byGroup.get(d.groupe.abrev) ?? 0) + 1);
+  const [bigG, bigN] = [...byGroup.entries()].sort((a, b) => b[1] - a[1])[0] ?? ["", 0];
+  const h1 = bigN && bigN < 289
+    ? L(`Aucune majorité : le premier groupe, ${bigG}, n’a que ${bigN} sièges sur 577`, `No majority: the largest group, ${bigG}, has only ${bigN} of 577 seats`)
+    : L("Qui siège à l’Assemblée, et pour qui ont voté leurs circonscriptions", "Who sits in the Assembly, and how their districts voted");
   app.innerHTML = `
     <section class="page">
       <div class="page-head">
         <p class="eyebrow">${L("Assemblée nationale, 17e législature", "National Assembly, 17th legislature")}</p>
-        <h1>${L("Qui siège à l’Assemblée, et pour qui ont voté leurs circonscriptions", "Who sits in the Assembly, and how their districts voted")}</h1>
+        <h1>${esc(h1)}</h1>
         <p class="dek">${L("Choisissez un département sur la carte pour voir ses circonscriptions, leur député et leur vote de 2024.", "Pick a department on the map to see its districts, their MP and how they voted in 2024.")}</p>
         <nav class="tabs">
           <a role="tab" href="#/assemblee" aria-selected="${tab === "carte"}">${L("Carte", "Map")}</a>

@@ -13,6 +13,7 @@ import { esc, safeColor } from "../util";
 import { arrowPaths, legend, unitsPerPx } from "./shifts";
 import { bindSearch, searchBox } from "./explore";
 import { countUp, heroViz } from "./hero";
+import { mpChip, townBrief } from "./brief";
 
 export async function renderHome(app: HTMLElement) {
   const [polls, markets, geo, deputes, shifts] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null), loadDepartements(), loadDeputes(), loadShifts().catch(() => null)]);
@@ -38,6 +39,7 @@ export async function renderHome(app: HTMLElement) {
   const stories = (feed?.stories ?? []).filter((s) => (s.reactions ?? []).some((r) => r.rating)).slice(0, 3);
   void duels; void winner; void now; void pollValue; void second;
   const fav = combineOdds(markets?.markets ?? [])[0];
+  const home = getHome();
   const viz = heroViz(geo, deputes, shifts?.pairs.filter((p) => p.level === "district").at(-1));
 
   app.innerHTML = `
@@ -48,7 +50,7 @@ export async function renderHome(app: HTMLElement) {
             <p class="hero-kicker">${L("Présidentielle 2027 · Assemblée · Sénat · 34 920 communes", "2027 presidential · Assembly · Senate · 34,920 towns")} <span class="live-badge" id="live-badge" hidden><i></i><span id="live-count"></span></span></p>
             <h1 id="hero-title"><span class="ln"><span>${L("La politique française,", "French politics,")}</span></span><span class="ln"><span><em>${L("en données.", "in data.")}</em></span></span></h1>
             <p class="hero-dek">${L("Qui va gagner en 2027. Comment votent vos députés et sénateurs. Ce qui se passe dans votre commune. Et toutes les élections depuis 1848, archives à l’appui.", "Who will win in 2027. How your MPs and senators vote. What is happening in your town. And every election since 1848, with the archive footage.")}</p>
-            <p class="hero-search-label">${L("Commencez par chez vous", "Start with where you live")}</p>
+            <p class="hero-search-label">${home?.code ? `${L("Votre commune", "Your town")} : <a href="#/ville/${home.code}">${esc(home.commune ?? home.code)}</a>. ${L("Ou cherchez ailleurs", "Or look somewhere else")}` : L("Commencez par chez vous", "Start with where you live")}</p>
             ${searchBox(L("Votre ville ou votre code postal", "Your town or postcode"))}
           </div>
           <figure class="hero-x-viz">
@@ -63,10 +65,12 @@ export async function renderHome(app: HTMLElement) {
         <nav class="hero-x-doors" aria-label="${L("Rubriques", "Sections")}">
           ${fav?.win ? `<a href="#/2027"><span class="hx-k">${L("Présidentielle 2027", "2027 presidential")}</span><strong data-count="${Math.round(fav.win.avg)}" data-suffix=" %">${Math.round(fav.win.avg)} %</strong><span>${fr ? `de chances pour ${esc(fav.name)} selon les marchés ; ${leader ? `${esc(meta(leader.name).surname)} à ${leader.share.toFixed(0)} % dans les sondages` : ""}` : `chance for ${esc(fav.name)} on prediction markets; ${leader ? `${esc(meta(leader.name).surname)} at ${leader.share.toFixed(0)}% in polls` : ""}`}</span></a>` : ""}
           <a href="#/assemblee"><span class="hx-k">${L("Vos élus", "Your officials")}</span><strong data-count="${deputes.length || 577}">${deputes.length || 577}</strong><span>${L("députés et 348 sénateurs, chacun de leurs votes", "MPs and 348 senators, every vote they cast")}</span></a>
-          <a href="#/explorer"><span class="hx-k">${L("Ma commune", "My town")}</span><strong data-count="34920">34 920</strong><span>${L("communes : maire, conseil, quartiers, écoles, sécurité, actualité", "towns: mayor, council, neighbourhoods, schools, safety, news")}</span></a>
-          <a href="#/resultats"><span class="hx-k">${L("Histoire électorale", "Electoral history")}</span><strong>1848</strong><span>${L("chaque présidentielle depuis, avec l’annonce en vidéo ou à la radio", "every presidential election since, with the announcement on film or radio")}</span></a>
+          <a href="${home?.code ? `#/ville/${home.code}` : "#/explorer"}"><span class="hx-k">${L("Chez vous", "Where you live")}</span><strong data-count="34920">34 920</strong><span>${L("communes : maire, conseil, quartiers, écoles, sécurité, actualité", "towns: mayor, council, neighbourhoods, schools, safety, news")}</span></a>
+          <a href="#/resultats"><span class="hx-k">${L("Archives", "Archives")}</span><strong>1848</strong><span>${L("chaque présidentielle depuis, avec l’annonce en vidéo ou à la radio", "every presidential election since, with the announcement on film or radio")}</span></a>
         </nav>
       </section>
+
+      <div id="mine"></div>
 
       <section class="card where-block">
         <div class="pres-grid">
@@ -123,6 +127,7 @@ export async function renderHome(app: HTMLElement) {
     </section>`;
   bindSearch(app);
   viz.start(app);
+  if (home?.code) drawMine(app.querySelector<HTMLElement>("#mine")!, home.code, home.commune ?? home.code);
   countUp(app.querySelector<HTMLElement>(".hero-x-doors")!);
 
   // ---------- live map: departments → zoom into districts ----------
@@ -277,6 +282,26 @@ export async function renderHome(app: HTMLElement) {
   // draw-in when scrolled into view
   const io = new IntersectionObserver((entries) => entries.forEach((e) => e.isIntersecting && (e.target.classList.add("in"), io.unobserve(e.target))), { threshold: 0.25 });
   app.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+}
+
+/** The reader's own town, first thing under the hero: the four-sentence brief, their MPs, shortcuts into the town page. */
+async function drawMine(box: HTMLElement, code: string, name: string) {
+  box.innerHTML = `<section class="card mine"><header class="card-head"><h2>${L("Chez vous", "Where you live")} : ${esc(name)}</h2><a href="#/ville/${code}">${L("Toute la commune", "The whole town")}</a></header><p class="muted small">${L("Chargement…", "Loading…")}</p></section>`;
+  try {
+    const b = await townBrief(code, name);
+    box.innerHTML = `<section class="card mine">
+      <header class="card-head"><h2>${L("Chez vous", "Where you live")} : <a href="#/ville/${code}">${esc(name)}</a></h2><a href="#/ville/${code}">${L("Toute la commune", "The whole town")}</a></header>
+      <div class="mine-grid">
+        <div class="brief-text">${b.sentences.length ? `<p>${b.sentences.join(" ")}</p>` : `<p class="muted">${L("Pas assez de données publiées pour résumer cette commune.", "Not enough published data to sum up this town.")}</p>`}</div>
+        <aside>
+          ${b.mps.length ? `<p class="mine-k">${L(b.mps.length > 1 ? "Vos députés" : "Votre député", b.mps.length > 1 ? "Your MPs" : "Your MP")}</p>${b.mps.slice(0, 3).map((x) => mpChip(x.mp)).join("")}` : ""}
+          <nav class="jump">${[["securite", "Sécurité", "Safety"], ["chiffres", "Chiffres", "Figures"], ["ecoles", "Écoles", "Schools"], ["town-quartiers", "Quartiers", "Neighbourhoods"]].map(([id, f, e]) => `<a href="#/ville/${code}#${id}">${L(f, e)}</a>`).join("")}${b.vote ? `<a href="#/circo/${b.vote.circo}">${L("Votre circonscription", "Your district")}</a>` : ""}</nav>
+        </aside>
+      </div>
+    </section>`;
+  } catch {
+    box.innerHTML = "";
+  }
 }
 
 export const shiftDays = (iso: string, d: number) => new Date(Date.parse(iso) + d * 86400000).toISOString().slice(0, 10);
