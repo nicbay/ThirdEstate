@@ -61,7 +61,7 @@ async function polymarket() {
       url: `https://polymarket.com/event/${e.slug}`,
       volume: Math.round(Number(e.volume ?? 0)),
       outcomes: (e.markets ?? [])
-        .filter((m) => !m.closed)
+        .filter((m) => !m.closed && Number(m.volumeNum ?? m.volume ?? 0) > 0) // untraded outcomes sit at a default 50 %
         .map((m) => ({ name: m.groupItemTitle || m.question, prob: Math.round(Number(JSON.parse(m.outcomePrices ?? "[0]")[0]) * 1000) / 10 }))
         .filter((o) => o.prob > 0 && !PLACEHOLDER.test(o.name))
         .sort((a, b) => b.prob - a.prob),
