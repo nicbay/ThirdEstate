@@ -4,8 +4,9 @@
 // works offline: scenarios are saved in the browser and the live map shows only this visit.
 import { createClient, type SupabaseClient, type User } from "@supabase/supabase-js";
 
-const url = import.meta.env.VITE_SUPABASE_URL as string | undefined;
-const key = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
+const env = import.meta.env;
+const url = (env.VITE_SUPABASE_URL ?? env.NEXT_PUBLIC_SUPABASE_URL) as string | undefined;
+const key = (env.VITE_SUPABASE_ANON_KEY ?? env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY) as string | undefined;
 export const cloud: SupabaseClient | null = url && key ? createClient(url, key) : null;
 export const cloudEnabled = () => !!cloud;
 
