@@ -8,6 +8,8 @@ import { esc, safeUrl, safeColor } from "../util";
 import { shiftDays } from "./home";
 import { ELECTION_DAY, MARKET_WEIGHT, forecast, type Forecast } from "../lib/forecast";
 import { sameOdds } from "../lib/scenario-odds";
+import { lineChart } from "../lib/chart";
+import { fetchJson } from "../data";
 
 export async function renderRace(app: HTMLElement) {
   const [polls, markets] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null)]);
@@ -128,6 +130,7 @@ export async function renderRace(app: HTMLElement) {
       </nav>
       <p class="source">${L("Sondages compilés par Wikipédia (CC BY-SA)", "Polls compiled by Wikipedia (CC BY-SA)")}, <a href="${esc(safeUrl(polls.source))}" target="_blank" rel="noopener">${L("page source", "source page")}</a>, ${L("mis à jour le", "updated")} ${fmtDate(polls.fetchedAt)}.</p>
     </section>`;
+  drawForecastTrend(app);
   // the "Method" link (and #/2027#methode links) open the method box
   const md = app.querySelector<HTMLDetailsElement>("#methode");
   app.querySelectorAll('a[href="#/2027#methode"]').forEach((x) => x.addEventListener("click", () => md && (md.open = true)));
@@ -174,6 +177,12 @@ function forecastCard(fc: Forecast) {
       </aside>
     </div>
     ${rest > 0 ? `<p class="muted tiny">${L(`${rest} autres noms sous 0,5 % de chances.`, `${rest} other names below a 0.5% chance.`)}</p>` : ""}
+    <div class="fc-trend" id="fc-trend" hidden>
+      <div class="fc-trend-head"><h3>${L("La prévision, jour après jour", "The forecast, day by day")}</h3>
+        <div class="small-tabs" role="group" aria-label="${L("Série", "Series")}"><button type="button" data-fcs="win" aria-pressed="true">${L("Prévision", "Forecast")}</button><button type="button" data-fcs="polls" aria-pressed="false">${L("Sondages seuls", "Polls only")}</button><button type="button" data-fcs="markets" aria-pressed="false">${L("Marchés seuls", "Markets only")}</button></div></div>
+      <div id="fc-chart"></div>
+      <p class="muted tiny" id="fc-trend-note"></p>
+    </div>
     <details class="fc-method" id="methode">
       <summary>${L("Comment la prévision est calculée", "How the forecast works")}</summary>
       <ol class="small">
@@ -197,4 +206,36 @@ function forecastCard(fc: Forecast) {
       <p class="small muted">${L("Les tailles d’erreur sont un jugement, pas une estimation tirée des présidentielles passées (trop peu nombreuses pour être ajustées). Ce n’est pas une prédiction certaine : un candidat à 70 % perd trois fois sur dix. Information, pas incitation à parier.", "Error sizes are a judgement, not estimated from past presidential elections (too few to fit). This isn’t a certainty: a candidate at 70% loses three times in ten. Information, not an invitation to bet.")}</p>
     </details>
   </section>`;
+}
+
+interface FcDay { date: string; live: boolean; sources: string[]; rows: { name: string; win: number; polls: number | null; markets: number | null }[] }
+/** The forecast over time (public/data/forecast/history.json, written daily by scripts/forecast-history.ts). */
+async function drawForecastTrend(app: HTMLElement) {
+  const h = await fetchJson<{ days: FcDay[] }>("/data/forecast/history.json").catch(() => null);
+  const box = app.querySelector<HTMLElement>("#fc-trend");
+  if (!h || !box || h.days.length < 2) return;
+  box.hidden = false;
+  const last = h.days.at(-1)!;
+  const names = last.rows.slice(0, 6).map((r) => r.name);
+  const draw = (key: "win" | "polls" | "markets") => {
+    app.querySelector("#fc-chart")!.innerHTML = lineChart(
+      names.map((n) => ({
+        name: n, label: meta(n).surname, color: meta(n).color,
+        // missing from a day's top rows = under 0.5 % (0); no poll or market figure = a gap
+        line: h.days.flatMap((d) => { const r = d.rows.find((x) => x.name === n); const v = r ? r[key] : key === "win" ? 0 : null; return v == null ? [] : [{ date: d.date, value: v }]; }),
+      })),
+      { height: 300, yMax: 100 },
+    );
+    box.querySelectorAll<HTMLButtonElement>("[data-fcs]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.fcs === key)));
+  };
+  box.querySelectorAll<HTMLButtonElement>("[data-fcs]").forEach((b) => b.addEventListener("click", () => draw(b.dataset.fcs as "win" | "polls" | "markets")));
+  draw("win");
+  const firstLive = h.days.find((d) => d.live)?.date;
+  const back = h.days.filter((d) => !d.live);
+  const kalshiOnly = back.some((d) => !d.sources.includes("Polymarket"));
+  app.querySelector("#fc-trend-note")!.textContent = [
+    L(`Chance de victoire, en %, chaque jour depuis le ${fmtDate(h.days[0].date)}.`, `Chance of winning, %, every day since ${fmtDate(h.days[0].date)}.`),
+    back.length && firstLive ? L(`Avant le ${fmtDate(firstLive)}, la prévision est reconstituée : le même modèle rejoué jour par jour avec les sondages connus ce jour-là et le cours de clôture des marchés${kalshiOnly ? " (Kalshi seul pour l’instant ; Polymarket sera ajouté)" : ""}.`, `Before ${fmtDate(firstLive)} the forecast is reconstructed: the same model replayed day by day with the polls known that day and each market's closing price${kalshiOnly ? " (Kalshi only for now; Polymarket will be added)" : ""}.`) : "",
+    L("Ensuite, enregistrée chaque jour.", "From then on, recorded daily."),
+  ].filter(Boolean).join(" ");
 }

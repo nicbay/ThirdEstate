@@ -1,4 +1,5 @@
-# Hourly refresh of polls (Wikipedia) and prediction markets (Kalshi, Polymarket).
+# Hourly refresh of polls (Wikipedia) and prediction markets (Kalshi, Polymarket), and the day's entry
+# in the forecast history (public/data/forecast/history.json).
 # Runs on GitHub's US servers, which can reach Polymarket (blocked from France).
 name: Sync polls and markets
 
@@ -35,9 +36,15 @@ jobs:
         run: npm run sync:markets
         continue-on-error: true # keep the last good file if every market source is down
 
+      # Today's forecast (polls + markets) into the daily record; also backfills past days with
+      # Polymarket price history, which this US runner can reach and a French machine can't.
+      - name: Forecast history
+        run: npm run sync:forecast
+        continue-on-error: true
+
       - name: Commit if the data changed
         run: |
-          files="public/data/markets.json $(ls public/data/polls/*.json)"
+          files="public/data/markets.json $(ls public/data/polls/*.json) public/data/forecast/history.json"
           node scripts/data-changed.mjs $files || exit 0
           git config user.name "github-actions[bot]"
           git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
