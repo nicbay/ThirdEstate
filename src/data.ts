@@ -205,7 +205,20 @@ export async function districtResults2024(circo: string) {
   return { url, rows: r.data.sort((a, b) => b.NbVoix - a.NbVoix) };
 }
 
+/**
+ * Data the bots refresh several times a day (polls, markets, forecast, red/blue feed, local news) is read
+ * in production straight from the public GitHub repo, so those commits don't need a new Vercel deployment
+ * (each one is ~360 MB; see `ignoreCommand` in vercel.json). Everything else ships with the site.
+ */
+const LIVE = /^\/data\/(markets\.json|polls\/|forecast\/|feed\/|news\/)/;
+const LIVE_BASE = "https://raw.githubusercontent.com/nicbay/projectview/main/public";
 export async function fetchJson<T>(url: string): Promise<T> {
+  if (import.meta.env.PROD && LIVE.test(url)) {
+    try {
+      const live = await fetch(`${LIVE_BASE}${url}`, { cache: "no-cache" });
+      if (live.ok) return (await live.json()) as T;
+    } catch { /* GitHub unreachable: fall back to the copy deployed with the site */ }
+  }
   const res = await fetch(url);
   if (!res.ok) throw new Error(`${res.status} ${url}`);
   return res.json() as Promise<T>;
