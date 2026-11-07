@@ -1,7 +1,7 @@
 // Front page. One orchestrated reveal (headline strip), then a live map you can zoom into,
 // the polling trend and the shift arrows, each drawn in as it scrolls into view.
 import { geoConicConformal, geoPath } from "d3-geo";
-import { loadCircoGeo, loadDepartements, loadDeputes, loadMarkets, loadPolls, loadShifts } from "../data";
+import { loadCircoGeo, loadDepartements, loadDeputes, loadFeed, loadMarkets, loadPolls, loadShifts } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
 import { lineChart } from "../lib/chart";
 import { meta, registerParties, spectrumRank } from "../lib/candidates";
@@ -10,6 +10,7 @@ import { rewind } from "../lib/map";
 import { average, duelAverages, pollValue, referenceLineup, trend, WINDOW } from "../lib/polls";
 import { esc } from "../util";
 import { arrowPaths } from "./shifts";
+import { bindSearch, searchBox } from "./explore";
 
 export async function renderHome(app: HTMLElement) {
   const [polls, markets, geo, deputes, shifts] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null), loadDepartements(), loadDeputes(), loadShifts().catch(() => null)]);
@@ -31,19 +32,18 @@ export async function renderHome(app: HTMLElement) {
       : `${leader.name} leads, ${meta(second.name).surname} second, six months before the first round`
     : L("Où en est la course", "Where the race stands");
 
+  const feed = await loadFeed().catch(() => null);
+  const stories = (feed?.stories ?? []).filter((s) => (s.reactions ?? []).some((r) => r.rating)).slice(0, 3);
+  void duels; void winner; void now; void pollValue;
+
   app.innerHTML = `
     <section class="page home">
-      <header class="page-head hero">
-        <p class="eyebrow">${L("Présidentielle 2027", "2027 presidential election")} <span class="live-badge" id="live-badge" hidden><i></i><span id="live-count"></span></span></p>
-        <h1>${esc(headline)}</h1>
-        <p class="dek">${L(`Moyenne des ${nPolls} sondages des ${WINDOW} derniers jours, au ${fmtDate(latest)}. Les candidats sont rangés de gauche à droite.`, `Average of the ${nPolls} polls from the last ${WINDOW} days, as of ${fmtDate(latest)}. Candidates run left to right.`)}</p>
+      <header class="page-head hero welcome">
+        <p class="eyebrow">ProjectView <span class="live-badge" id="live-badge" hidden><i></i><span id="live-count"></span></span></p>
+        <h1>${L("Tout ce qui se décide là où vous vivez", "Everything being decided where you live")}</h1>
+        <p class="dek">${L("Vos élus, du maire au député et au sénateur, comment ils votent, ce qu’ils ont promis, et la vie de votre commune : emploi, écoles, sécurité, actualité, et ce qui en fait le charme.", "Your elected officials, from mayor to MP and senator, how they vote, what they promised, and life in your town: jobs, schools, safety, news, and what makes it a good place.")}</p>
+        ${searchBox(L("Votre adresse, votre ville ou votre code postal", "Your address, town or postcode"))}
       </header>
-
-      <figure class="spectrum reveal-now" style="margin:0">
-        <div class="spectrum-bar">${strip.map((r, i) => `<span class="grow" style="flex:${r.share};background:${meta(r.name).color};--i:${i}" data-tip="${esc(`${r.name}${meta(r.name).party ? ` (${meta(r.name).party})` : ""}\n${r.share.toFixed(1)} %`)}"></span>`).join("")}</div>
-        <div class="spectrum-labels">${strip.map((r, i) => `<span class="fade" style="flex:${r.share};--i:${i}">${(100 * r.share) / sum >= 7 ? `<b>${r.share.toFixed(0)} %</b>${esc(meta(r.name).surname)}` : ""}</span>`).join("")}</div>
-        <div class="spectrum-axis"><span>${L("Gauche", "Left")}</span><span>${L("Droite", "Right")}</span></div>
-      </figure>
 
       <section class="card where-block">
         <div class="pres-grid">
@@ -56,10 +56,31 @@ export async function renderHome(app: HTMLElement) {
         </div>
       </section>
 
-      <section class="card reveal">
-        <header class="card-head"><h2>${L("Comment les intentions de vote ont bougé", "How voting intention has moved")}</h2><a href="#/sondages">${L("Tous les sondages", "All polls")}</a></header>
-        <div id="trend"></div>
+      <section class="card">
+        <header class="card-head"><h2>${esc(headline)}</h2><a href="#/2027">${L("La présidentielle 2027", "The 2027 race")}</a></header>
+        <figure class="spectrum reveal-now" style="margin:0">
+          <div class="spectrum-bar">${strip.map((r, i) => `<span class="grow" style="flex:${r.share};background:${meta(r.name).color};--i:${i}" data-tip="${esc(`${r.name}${meta(r.name).party ? ` (${meta(r.name).party})` : ""}\n${r.share.toFixed(1)} %`)}"></span>`).join("")}</div>
+          <div class="spectrum-labels">${strip.map((r, i) => `<span class="fade" style="flex:${r.share};--i:${i}">${(100 * r.share) / sum >= 7 ? `<b>${r.share.toFixed(0)} %</b>${esc(meta(r.name).surname)}` : ""}</span>`).join("")}</div>
+          <div class="spectrum-axis"><span>${L("Gauche", "Left")}</span><span>${L("Droite", "Right")}</span></div>
+        </figure>
+        <p class="muted small">${L(`Moyenne des ${nPolls} sondages des ${WINDOW} derniers jours, au ${fmtDate(latest)}.`, `Average of the ${nPolls} polls from the last ${WINDOW} days, as of ${fmtDate(latest)}.`)}</p>
+        <div id="trend" class="reveal"></div>
       </section>
+
+      ${
+        stories.length
+          ? `<section class="card">
+              <header class="card-head"><h2>${L("Fil rouge, fil bleu", "Red feed, blue feed")}</h2><a href="#/fil">${L("Tout le fil", "The whole feed")}</a></header>
+              <ul class="teaser-stories">${stories
+                .map((s) => {
+                  const rs = (s.reactions ?? []).filter((r) => r.rating);
+                  const l = rs.filter((r) => r.rating!.lean.score < 0).length, r = rs.length - l;
+                  return `<li><a href="#/fil"><b>${esc(s.items[0].title)}</b></a><span class="lean-split"><span style="flex:${l || 0.001};background:#c9302c"></span><span style="flex:${r || 0.001};background:#2e5fb8"></span></span><span class="muted small">${l} ${L("réactions à gauche", "left-leaning reactions")}, ${r} ${L("à droite", "right-leaning")}</span></li>`;
+                })
+                .join("")}</ul>
+            </section>`
+          : ""
+      }
 
       ${
         shifts
@@ -71,39 +92,14 @@ export async function renderHome(app: HTMLElement) {
           : ""
       }
 
-      <div class="grid-2">
-        <section class="card">
-          <header class="card-head"><h2>${L("Tous les candidats testés", "Every candidate polled")}</h2><a href="#/sondages">${L("Évolution", "Trend")}</a></header>
-          <p class="muted small">${L("Moyenne de chaque candidat dans les sondages où il figure ; le total dépasse 100 % car ils ne sont pas tous testés ensemble.", "Each candidate’s average in the polls that include them; the total exceeds 100% because they aren’t all tested together.")}</p>
-          <ol class="bars">${now.slice(0, 8).map((r) => `<li><div class="bar-label"><span>${esc(r.name)} <span class="muted">${meta(r.name).party ?? ""}</span></span><b>${r.avg.toFixed(1)} %</b></div><div class="bar"><div style="width:${(100 * r.avg) / now[0].avg}%;background:${meta(r.name).color}"></div></div></li>`).join("")}</ol>
-        </section>
-        <section class="card">
-          <header class="card-head"><h2>${L("Ce que parient les marchés", "What the betting markets say")}</h2><a href="#/sondages#marches">${L("Tous les marchés", "All markets")}</a></header>
-          ${winner ? `<p class="muted small">${L("Probabilité de victoire implicite", "Implied chance of winning")}, ${esc(winner.platform)}.</p><ol class="bars">${winner.outcomes.slice(0, 6).map((o) => `<li><div class="bar-label"><span>${esc(o.name)}</span><b>${o.prob.toFixed(0)} %</b></div><div class="bar"><div style="width:${o.prob}%;background:${meta(o.name).color}"></div></div></li>`).join("")}</ol>` : `<p class="muted">${L("Données indisponibles.", "Data unavailable.")}</p>`}
-        </section>
-      </div>
-
-      <div class="grid-2">
-        <section class="card">
-          <header class="card-head"><h2>${L("Les duels du second tour", "Runoff match-ups")}</h2><a href="#/simulateur">${L("Simuler le vôtre", "Simulate your own")}</a></header>
-          <table class="table"><tbody>${duels.map((d) => `<tr><td><i class="dot" style="background:${meta(d.winner).color}"></i><b>${esc(meta(d.winner).surname)} ${d.pw.toFixed(0)}</b> – ${d.pl.toFixed(0)} ${esc(meta(d.loser).surname)}</td><td class="num muted">${d.total} ${L("sondages", "polls")}</td></tr>`).join("")}</tbody></table>
-        </section>
-        <section class="card">
-          <header class="card-head"><h2>${L("Derniers sondages", "Latest polls")}</h2><a href="#/sondages#liste">${L("Tous", "All")}</a></header>
-          <table class="table"><tbody>${polls.firstRound.slice(0, 5).map((p) => {
-            const names = [...new Set(p.hyps.flatMap((h) => Object.keys(h)))];
-            const top3 = names.map((n) => [n, pollValue(p, n)!] as const).sort((a, b) => b[1] - a[1]).slice(0, 3);
-            return `<tr><td>${esc(p.pollster)}<br><span class="muted small">${fmtDate(p.end)}</span></td><td>${top3.map(([n, v]) => `${esc(meta(n).surname)} ${v.toFixed(0)}`).join(", ")}</td></tr>`;
-          }).join("")}</tbody></table>
-        </section>
-      </div>
-
       <nav class="doors" aria-label="${L("Rubriques", "Sections")}">
-        <a class="door" href="#/fil"><b>${L("Fil rouge, fil bleu", "Red feed, blue feed")}</b><span class="muted small">${L("L’actualité et les réactions des députés, de gauche et de droite.", "The news and MPs’ reactions, left and right.")}</span></a>
-        <a class="door" href="#/resultats"><b>${L("Toutes les présidentielles depuis 1848", "Every presidential election since 1848")}</b><span class="muted small">${L("Résultats, cartes et archives des soirs d’élection.", "Results, maps and election-night archives.")}</span></a>
-        <a class="door" href="#/assemblee"><b>${L("L’Assemblée nationale", "The National Assembly")}</b><span class="muted small">${L("577 circonscriptions, leurs députés et leurs votes.", "577 districts, their MPs and their votes.")}</span></a>
+        <a class="door" href="#/explorer"><b>${L("Ma commune", "My town")}</b><span class="muted small">${L("Élus, actualité, quartiers, écoles, sécurité, prix de l’immobilier.", "Officials, news, neighbourhoods, schools, safety, property prices.")}</span></a>
+        <a class="door" href="#/2027"><b>${L("Présidentielle 2027", "2027 presidential")}</b><span class="muted small">${L("Sondages, marchés, simulateur de second tour.", "Polls, markets, runoff simulator.")}</span></a>
+        <a class="door" href="#/elus"><b>${L("Vos élus", "Your officials")}</b><span class="muted small">${L("Députés, sénateurs, maires : qui ils sont, comment ils votent.", "MPs, senators, mayors: who they are, how they vote.")}</span></a>
+        <a class="door" href="#/resultats"><b>${L("Histoire électorale", "Electoral history")}</b><span class="muted small">${L("Toutes les présidentielles depuis 1848, les bascules par territoire.", "Every presidential election since 1848, shifts by area.")}</span></a>
       </nav>
     </section>`;
+  bindSearch(app);
 
   // ---------- live map: departments → zoom into districts ----------
   const features = geo.features.map(rewind).filter((f) => f.properties!.code.length === 2);

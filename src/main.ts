@@ -12,6 +12,7 @@ import { initTooltip } from "./lib/tooltip";
 import { joinPresence } from "./lib/cloud";
 import { renderElection } from "./views/history";
 import { renderFeed } from "./views/feed";
+import { renderRace } from "./views/race";
 import { renderExplorer, renderTown } from "./views/explore";
 
 const app = document.getElementById("app")!;
@@ -34,18 +35,34 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/sources$/, () => renderSources(app)],
   [/^#\/histoire\/([\w-]+)$/, (m) => renderElection(app, m[1])],
   [/^#\/fil$/, () => renderFeed(app)],
+  [/^#\/2027$/, () => renderRace(app)],
+  [/^#\/elus$/, () => renderAssemblee(app, "carte")],
   [/^#\/explorer(?:\/(\w{2,3}))?$/, (m) => renderExplorer(app, m[1])],
   [/^#\/ville\/(\w{5})$/, (m) => renderTown(app, m[1])],
 ];
 
-const SECTIONS = [
-  { href: "#/", match: /^#\/$/, fr: "2027", en: "2027" },
+// Information architecture: local first (your town, your officials), then the national race,
+// the feed, and history. Sections with sub-pages get a second row of links.
+const SECTIONS: { href: string; match: RegExp; fr: string; en: string; children?: { href: string; match: RegExp; fr: string; en: string }[] }[] = [
   { href: "#/explorer", match: /^#\/(explorer|ville)/, fr: "Ma commune", en: "My town" },
+  {
+    href: "#/elus", match: /^#\/(elus|assemblee|circo|depute|senat|senateur)/, fr: "Vos élus", en: "Your officials",
+    children: [
+      { href: "#/assemblee", match: /^#\/(elus|assemblee|circo|depute)/, fr: "Députés", en: "MPs" },
+      { href: "#/senat", match: /^#\/(senat|senateur)/, fr: "Sénateurs", en: "Senators" },
+      { href: "#/explorer", match: /^$/, fr: "Maires et conseils municipaux", en: "Mayors and town councils" },
+    ],
+  },
+  {
+    href: "#/2027", match: /^#\/(2027|sondages|simulateur)/, fr: "Présidentielle 2027", en: "2027 presidential",
+    children: [
+      { href: "#/2027", match: /^#\/2027/, fr: "Vue d’ensemble", en: "Overview" },
+      { href: "#/sondages", match: /^#\/sondages/, fr: "Sondages et marchés", en: "Polls and markets" },
+      { href: "#/simulateur", match: /^#\/simulateur/, fr: "Simulateur", en: "Simulator" },
+    ],
+  },
   { href: "#/fil", match: /^#\/fil/, fr: "Fil rouge, fil bleu", en: "Red feed, blue feed" },
-  { href: "#/sondages", match: /^#\/sondages/, fr: "Sondages", en: "Polls" },
-  { href: "#/simulateur", match: /^#\/simulateur/, fr: "Simulateur", en: "Simulator" },
-  { href: "#/resultats", match: /^#\/(resultats|histoire)/, fr: "Histoire et résultats", en: "History & results" },
-  { href: "#/assemblee", match: /^#\/(assemblee|circo|depute)/, fr: "Assemblée", en: "Parliament" },
+  { href: "#/resultats", match: /^#\/(resultats|histoire)/, fr: "Histoire électorale", en: "Electoral history" },
 ];
 
 const split = () => {
@@ -56,6 +73,10 @@ const split = () => {
 
 function renderChrome(path: string) {
   nav.innerHTML = SECTIONS.map((s) => `<a href="${s.href}" class="${s.match.test(path) ? "active" : ""}">${L(s.fr, s.en)}</a>`).join("");
+  const current = SECTIONS.find((s) => s.match.test(path));
+  const sub = document.getElementById("subnav")!;
+  sub.hidden = !current?.children;
+  sub.innerHTML = current?.children ? `<div>${current.children.map((c) => `<a href="${c.href}" class="${c.match.test(path) ? "active" : ""}">${L(c.fr, c.en)}</a>`).join("")}</div>` : "";
   langBtn.textContent = t().langSwitch;
   langBtn.setAttribute("aria-label", getLang() === "fr" ? "Switch to English" : "Passer en français");
   footer.innerHTML = `<a href="#/sources">${L("Sources et méthode", "Sources & method")}</a> · <a href="https://github.com/nicbay/projectview" target="_blank" rel="noopener">GitHub</a>`;

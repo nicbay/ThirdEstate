@@ -455,3 +455,16 @@ footer { max-width: var(--col); margin: 0 auto; padding: 1.5rem 16px 3rem; borde
 .mp-mini b { font: 600 1.05rem var(--serif); }
 .officials, .positives { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; font-family: var(--sans); }
 .positives li { border-top: 1px solid var(--rule); padding-top: 0.5rem; }
+
+/* ---------- second-level navigation ---------- */
+.subnav-bar { border-bottom: 1px solid var(--rule); background: var(--paper); position: sticky; top: 56px; z-index: 15; }
+.subnav-bar div { max-width: var(--col); margin: 0 auto; padding: 0 16px; display: flex; gap: 1.4rem; overflow-x: auto; scrollbar-width: none; font: 0.86rem var(--sans); }
+.subnav-bar a { color: var(--ink-2); padding: 0.55rem 0; white-space: nowrap; border-bottom: 2px solid transparent; }
+.subnav-bar a.active { color: var(--ink); border-color: var(--ink); font-weight: 600; }
+.subnav-bar a:hover { color: var(--ink); text-decoration: none; }
+.welcome h1 { max-width: 18ch; font-size: clamp(2.3rem, 1.4rem + 3vw, 3.4rem); }
+.welcome .town-search input { font-size: 1.15rem; padding: 0.95rem 1rem; }
+.teaser-stories { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.9rem; }
+.teaser-stories li { display: grid; gap: 0.3rem; border-top: 1px solid var(--rule); padding-top: 0.6rem; }
+.teaser-stories a { color: var(--ink); font-family: var(--serif); font-size: 1.08rem; }
+.lean-split { display: flex; height: 6px; gap: 2px; max-width: 360px; }
