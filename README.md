@@ -1,4 +1,4 @@
-# ProjectView
+# Third Estate
 
 French election and parliament tracker, in French and English.
 

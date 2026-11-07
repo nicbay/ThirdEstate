@@ -6,7 +6,7 @@
 
 import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 
-export const UA = "ProjectView/0.1 (github.com/nicbay/projectview)";
+export const UA = "ThirdEstate/0.1 (github.com/nicbay/projectview)";
 export const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 export async function fetchRetry(url, opts = {}, tries = 8) {

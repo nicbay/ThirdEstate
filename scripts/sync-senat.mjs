@@ -31,7 +31,7 @@ const OVERRIDES = new URL("data/senat-socials-overrides.csv", ROOT); // optional
 const args = new Set(process.argv.slice(2));
 const FULL = args.has("--full");
 const REFRESH = args.has("--refresh");
-const UA = "ProjectView-senat/1.0 (+https://github.com/nicbay/projectview)";
+const UA = "ThirdEstate-senat/1.0 (+https://github.com/nicbay/projectview)";
 
 // The Sénat has no legislature: it is renewed by half every three years (series 1 in 2023, series 2 in 2026).
 // We keep every vote since the session that opened after the 2023 renewal, so every sitting senator's
@@ -441,7 +441,7 @@ if (!args.has("--no-sites")) {
           for (const l of lines) {
             const [k, ...rest] = l.split(":");
             const v = rest.join(":").trim();
-            if (/^user-agent$/i.test(k.trim())) applies = v === "*" || /projectview/i.test(v);
+            if (/^user-agent$/i.test(k.trim())) applies = v === "*" || /thirdestate|projectview/i.test(v);
             else if (applies && /^disallow$/i.test(k.trim()) && v) dis.push(v);
           }
           return dis;

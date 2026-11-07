@@ -2,7 +2,7 @@
 //
 // The Ministry attributes a "nuance" to each list (circulaire on the attribution of nuances). The codes and the
 // official labels below come from the 2026 candidatures file (column "Nuance de liste") and, for codes that only exist
-// in 2020 (LREM, LRDG, LDLF, LGJ, LNC), from the 2020 nuance grid. The FAMILY grouping is ProjectView's own editorial
+// in 2020 (LREM, LRDG, LDLF, LGJ, LNC), from the 2020 nuance grid. The FAMILY grouping is Third Estate's own editorial
 // choice, documented in docs/data-municipal.md; it follows the usual French colour convention (left in red/pink,
 // ecologists in green, centre in orange, right in blue, far right in navy).
 

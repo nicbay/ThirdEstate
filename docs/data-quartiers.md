@@ -114,9 +114,9 @@ the same 2021 vintage as the IRIS values. Commune income figures are those of th
 | Photos | Wikimedia Commons API (`generator=geosearch` + `imageinfo/extmetadata`) | per file (`licence`, `author`; mostly CC BY / CC BY-SA, some public domain) |
 | AI descriptions (optional) | Claude Haiku 5.5 via `scripts/lib/claude.mjs` | generated text, labelled |
 
-Requests use the User-Agent `ProjectView/0.1 (github.com/nicbay/projectview)`, one queue per host with ≥ 650 ms between
+Requests use the User-Agent `ThirdEstate/0.1 (github.com/nicbay/projectview)`, one queue per host with ≥ 650 ms between
 requests (≤ ~90/min; Wikimedia allows 200/min for an identified client), and wait for `Retry-After` on HTTP 429.
-The Wikimedia budget is shared with the other ProjectView jobs that run from the same machine, so in practice the
+The Wikimedia budget is shared with the other Third Estate jobs that run from the same machine, so in practice the
 throughput is lower (see "Cost and time").
 
 Note: the 2023 census IRIS bases started to appear on 4 Nov 2026 (only *Logement* and *Couples-Familles-Ménages* so far,
@@ -175,7 +175,7 @@ switch the four URLs in `SOURCES` when the 2023 set is complete (column names wi
 | `index.json` | | 199 KB |
 
 The photo step is the bottleneck: one Commons request per IRIS, and the Wikimedia budget (200 requests/min per
-client) was shared with other ProjectView jobs, giving ~8–10 IRIS/min. Remaining for the top 50: ~4,100 IRIS
+client) was shared with other Third Estate jobs, giving ~8–10 IRIS/min. Remaining for the top 50: ~4,100 IRIS
 (≈ 7 h at that rate, ≈ 1 h when the budget is free). Resume with `node scripts/sync-quartiers.mjs --top=50`
 (cached answers are reused); then `--top=200` / `--all` the same way (all communes ≈ 16,000 requests for photos plus
 ≈ 2,500 for Wikipedia). Expected size with photos everywhere: roughly +2–3 KB per IRIS with photos (≈ +30–40 MB for
