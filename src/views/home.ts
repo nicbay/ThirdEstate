@@ -277,6 +277,7 @@ export async function renderHome(app: HTMLElement) {
     svgA.style.setProperty("--sw", `${(1.7 * k).toFixed(2)}px`);
     svgA.innerHTML = outlines.join("") + arrowPaths(pair, "lr", (p) => projA(p) as [number, number] | null, { k });
     app.querySelector("#home-legend")!.innerHTML = legend("lr", 2.2 / k);
+    svgA.addEventListener("click", (e) => { const href = (e.target as Element).closest<SVGGElement>(".arrow")?.dataset.href; if (href) location.hash = href; });
   }
 
   // draw-in when scrolled into view
