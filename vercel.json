@@ -1,0 +1,18 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Content-Security-Policy-Report-Only", "value": "default-src 'self'; script-src 'self' 'unsafe-hashes' 'sha256-2v15HA+jcUVSuZj1qG3oTd5Ic+VBbl+6+8wh+TEIxBI='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www2.assemblee-nationale.fr https://www.assemblee-nationale.fr https://upload.wikimedia.org https://commons.wikimedia.org; connect-src 'self' https://bxjparhlylqrbipnnyuu.supabase.co wss://bxjparhlylqrbipnnyuu.supabase.co https://data.geopf.fr https://geo.api.gouv.fr https://tabular-api.data.gouv.fr; frame-src https://www.youtube-nocookie.com https://player.ina.fr https://www.ina.fr; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=()" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    }
+  ]
+}

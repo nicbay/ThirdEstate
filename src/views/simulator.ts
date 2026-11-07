@@ -24,9 +24,30 @@ function defaultTransfer(from: Bloc | null, a: Bloc | null, b: Bloc | null): [nu
 let state: Scenario | null = null;
 let authHooked = false;
 const encode = (s: Scenario) => btoa(unescape(encodeURIComponent(JSON.stringify(s)))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+// Share links and saved scenarios are untrusted input: rebuild a clean Scenario from them,
+// dropping wrong types and clamping numbers, before anything reaches the page (security review H1).
+const num = (v: unknown, lo: number, hi: number) => {
+  const n = Number(v);
+  return Number.isFinite(n) ? Math.min(hi, Math.max(lo, n)) : lo;
+};
+const str = (v: unknown) => (typeof v === "string" ? v.slice(0, 80) : "");
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export function sanitizeScenario(raw: any): Scenario | null {
+  if (!raw || typeof raw !== "object" || !Array.isArray(raw.cands) || raw.cands.length > 30) return null;
+  const cands: Cand[] = raw.cands
+    .map((c: any) => ({ name: str(c?.name), share: num(c?.share, 0, 100), bloc: Number.isInteger(c?.bloc) && c.bloc >= 0 && c.bloc < BLOCS.length ? (c.bloc as Bloc) : null }))
+    .filter((c: Cand) => c.name);
+  const names = new Set(cands.map((c) => c.name));
+  const finalists = (Array.isArray(raw.finalists) ? raw.finalists.map(str) : []).filter((n: string) => names.has(n));
+  if (finalists.length !== 2 || finalists[0] === finalists[1]) return null;
+  const transfers: Record<string, [number, number]> = {};
+  for (const [k, v] of Object.entries(raw.transfers ?? {})) if (names.has(k) && Array.isArray(v)) transfers[k] = [num(v[0], 0, 100), num(v[1], 0, 100)];
+  const edited = (Array.isArray(raw.edited) ? raw.edited.map(str) : []).filter((n: string) => names.has(n) && transfers[n]);
+  return { cands, finalists: [finalists[0], finalists[1]], transfers, edited };
+}
 const decode = (t: string): Scenario | null => {
   try {
-    return JSON.parse(decodeURIComponent(escape(atob(t.replace(/-/g, "+").replace(/_/g, "/")))));
+    return sanitizeScenario(JSON.parse(decodeURIComponent(escape(atob(t.replace(/-/g, "+").replace(/_/g, "/"))))));
   } catch {
     return null;
   }
@@ -236,7 +257,7 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
       const link = `${location.origin}${location.pathname}#/simulateur/${encode(s)}`;
       try { await navigator.clipboard.writeText(link); msg(L("Lien copié.", "Link copied.")); } catch { msg(link); }
     });
-    box.querySelectorAll<HTMLButtonElement>("[data-load]").forEach((b) => b.addEventListener("click", () => { state = structuredClone(list[Number(b.dataset.load)].data); renderSimulator(app); }));
+    box.querySelectorAll<HTMLButtonElement>("[data-load]").forEach((b) => b.addEventListener("click", () => { const clean = sanitizeScenario(list[Number(b.dataset.load)].data); if (clean) { state = clean; renderSimulator(app); } }));
     box.querySelectorAll<HTMLButtonElement>("[data-del]").forEach((b) => b.addEventListener("click", async () => { await deleteScenario(list[Number(b.dataset.del)]); drawSaves(); }));
     box.querySelector("#logout")?.addEventListener("click", async () => { await signOut(); drawSaves(); });
     box.querySelector<HTMLFormElement>("#login")?.addEventListener("submit", async (e) => {

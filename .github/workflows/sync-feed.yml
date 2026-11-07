@@ -28,7 +28,7 @@ jobs:
           node-version: 24
           cache: npm
 
-      - run: npm ci
+      - run: npm ci --ignore-scripts
 
       - name: News (RSS)
         run: node scripts/sync-news.mjs

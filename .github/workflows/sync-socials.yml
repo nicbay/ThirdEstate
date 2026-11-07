@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: sync-socials
+  group: claude-budget # shares the Claude spending ledger with the feed job
   cancel-in-progress: false
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
           node-version: 24
           cache: npm
 
-      - run: npm ci
+      - run: npm ci --ignore-scripts
 
       - name: Social accounts
         run: node scripts/sync-socials.mjs
