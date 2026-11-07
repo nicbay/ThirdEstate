@@ -9,10 +9,14 @@
     "preview": "vite preview",
     "sync:an": "node scripts/sync-assemblee.mjs",
     "sync:geo": "node scripts/sync-geo.mjs",
-    "sync": "npm run sync:geo && npm run sync:an"
+    "sync": "npm run sync:geo && npm run sync:results && npm run sync:an && npm run sync:polls && npm run sync:markets",
+    "sync:polls": "node scripts/sync-polls.mjs",
+    "sync:markets": "node scripts/sync-markets.mjs",
+    "sync:results": "node scripts/sync-results.mjs"
   },
   "devDependencies": {
     "@types/d3-geo": "3.1.0",
+    "node-html-parser": "^6.1.13",
     "typescript": "5.6.3",
     "vite": "6.0.7"
   },

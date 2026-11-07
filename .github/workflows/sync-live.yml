@@ -1,0 +1,46 @@
+# Hourly refresh of polls (Wikipedia) and prediction markets (Kalshi, Polymarket).
+# Runs on GitHub's US servers, which can reach Polymarket (blocked from France).
+name: Sync polls and markets
+
+on:
+  schedule:
+    - cron: "17 * * * *" # every hour
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-live
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Polls
+        run: npm run sync:polls
+
+      - name: Markets
+        run: npm run sync:markets
+        continue-on-error: true # keep the last good file if every market source is down
+
+      - name: Commit if the data changed
+        run: |
+          files="public/data/markets.json $(ls public/data/polls/*.json)"
+          node scripts/data-changed.mjs $files || exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add $files
+          git commit -m "data: sync polls and markets ($(date -u +'%F %H:%M'))"
+          git push

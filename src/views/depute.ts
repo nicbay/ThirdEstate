@@ -1,5 +1,6 @@
 import { loadAnMeta, loadDeputes, loadScrutins, loadVotes, type Depute } from "../data";
-import { fmtDate, fmtNum, fmtPct, t } from "../i18n";
+import { L, fmtDate, fmtNum, fmtPct, t } from "../i18n";
+import { PLATFORMS, age, presence } from "./assemblee";
 import { esc } from "../util";
 import { photoUrl } from "./deputes";
 
@@ -33,13 +34,13 @@ export async function renderDepute(app: HTMLElement, id: string) {
 
   app.innerHTML = `
     <section class="page">
-      <a href="#/deputes" class="muted">${s.backToMPs}</a>
+      <p class="muted small crumbs"><a href="#/assemblee">${L("Assemblée", "Assembly")}</a> › ${d.numDepartement ? `<a href="#/assemblee/${d.numDepartement}">${esc(d.departement ?? d.numDepartement)}</a> › ` : ""}${d.circo ? `<a href="#/circo/${d.circo}">${L("Circonscription", "District")} ${d.numCirco}</a> › ` : ""}${esc(d.prenom)} ${esc(d.nom)}</p>
       <div class="mp-head card" style="--c:${d.groupe?.couleur ?? "#999"}">
         <img src="${photoUrl(d.id)}" alt="" onerror="this.style.visibility='hidden'" />
         <div class="mp-id">
           <h1>${esc(d.civ)} ${esc(d.prenom)} ${esc(d.nom)}</h1>
           <p><span class="chip">${esc(d.groupe?.abrev ?? "—")}</span> ${esc(d.groupe?.libelle ?? "")}</p>
-          <p class="muted">${d.departement && d.numCirco ? esc(s.district(d.departement, d.numCirco)) : ""}</p>
+          <p class="muted">${d.departement && d.numCirco ? `<a href="#/circo/${d.circo}">${esc(s.district(d.departement, d.numCirco))}</a>` : ""}</p>
         </div>
         <nav class="mp-nav small">
           ${prev ? `<a href="#/depute/${prev.id}">← ${esc(prev.prenom)} ${esc(prev.nom)}</a>` : "<span></span>"}
@@ -50,12 +51,17 @@ export async function renderDepute(app: HTMLElement, id: string) {
       <div class="mp-grid-2">
         <div class="card">
           <dl class="facts">
-            ${d.naissance ? `<dt>${s.born}</dt><dd>${fmtDate(d.naissance)}</dd>` : ""}
-            ${d.profession ? `<dt>${s.profession}</dt><dd>${esc(d.profession.replace(/^\(\d+\)\s*-\s*/, ""))}</dd>` : ""}
+            ${d.naissance ? `<dt>${s.born}</dt><dd>${fmtDate(d.naissance)} (${age(d)} ${L("ans", "years")})</dd>` : ""}
+            ${d.profession ? `<dt>${s.profession}</dt><dd>${esc(d.profession)}</dd>` : ""}
             ${d.catSocPro ? `<dt>${s.socioCategory}</dt><dd>${esc(d.famSocPro)} — ${esc(d.catSocPro)}</dd>` : ""}
-            ${d.hatvp ? `<dt>HATVP</dt><dd><a href="${esc(d.hatvp)}" target="_blank" rel="noopener">${s.hatvp} ↗</a></dd>` : ""}
+            ${d.hatvp ? `<dt>HATVP</dt><dd><a href="${esc(d.hatvp)}" target="_blank" rel="noopener">${s.hatvp} ↗</a> <span class="muted small">${L("parcours, activités et intérêts déclarés", "declared career, activities and interests")}</span></dd>` : ""}
+            <dt>LinkedIn</dt><dd>${
+              d.socials.linkedin
+                ? `<a href="${esc(SOCIAL_URL.linkedin(d.socials.linkedin))}" target="_blank" rel="noopener">${L("Profil déclaré à l’Assemblée", "Profile declared to the Assemblée")} ↗</a>`
+                : `<a href="https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(`${d.prenom} ${d.nom} député`)}" target="_blank" rel="noopener">${L("Rechercher sur LinkedIn", "Search LinkedIn")} ↗</a> <span class="muted small">${L("aucun profil déclaré", "no profile declared")}</span>`
+            }</dd>
           </dl>
-          <h3>${s.contact}</h3>
+          <h3>${s.contact} <span class="score" title="${L("Nombre de réseaux déclarés sur 5 (X, Facebook, Instagram, LinkedIn, site web)", "Channels declared out of 5 (X, Facebook, Instagram, LinkedIn, website)")}">${L("Présence numérique", "Digital presence")} ${presence(d)}/${PLATFORMS.length}</span></h3>
           <ul class="socials">
             ${d.email ? `<li><a href="mailto:${esc(d.email)}">✉ ${esc(d.email)}</a></li>` : ""}
             ${Object.entries(d.socials).map(([k, v]) => `<li><a href="${esc((SOCIAL_URL[k] ?? ((h: string) => h))(v))}" target="_blank" rel="noopener">${esc(k)} · ${esc(v)}</a></li>`).join("")}

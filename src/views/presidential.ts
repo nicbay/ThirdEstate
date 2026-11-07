@@ -1,6 +1,6 @@
 import { geoConicConformal, geoMercator, geoPath, type GeoProjection } from "d3-geo";
 import { ELECTIONS, loadDepartements, presidentialResults, type AreaResult, type Election, type RoundResult } from "../data";
-import { fmtNum, fmtPct, t } from "../i18n";
+import { L, fmtNum, fmtPct, t } from "../i18n";
 import { esc } from "../util";
 
 const OVERSEAS = ["971", "972", "973", "974", "976"];
@@ -11,10 +11,10 @@ export async function renderPresidential(app: HTMLElement, year?: number) {
   const [geo, rounds] = await Promise.all([loadDepartements(), presidentialResults(election)]);
   const s = t();
 
+  // Embeddable block (used inside the Results section).
   app.innerHTML = `
-    <section class="page">
-      <div class="page-head">
-        <h1>${s.presidentialTitle(election.year)}</h1>
+      <div class="card-head">
+        <h2>${s.presidentialTitle(election.year)} · ${L("résultats par département", "results by department")}</h2>
         <div class="tabs" role="tablist">
           <button role="tab" data-round="1">${s.round1}</button>
           <button role="tab" data-round="2">${s.round2}</button>
@@ -28,8 +28,7 @@ export async function renderPresidential(app: HTMLElement, year?: number) {
         </div>
         <aside id="panel" class="card panel"></aside>
       </div>
-      <p class="source muted">${s.sourceResults}</p>
-    </section>`;
+      <p class="source muted">${s.sourceResults}</p>`;
 
   const features = geo.features.map(rewind);
   const metro = { type: "FeatureCollection", features: features.filter((f) => f.properties!.code.length === 2) } as GeoJSON.FeatureCollection;

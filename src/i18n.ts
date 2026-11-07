@@ -107,6 +107,8 @@ const stored = (() => {
 let lang: Lang = stored === "en" || stored === "fr" ? stored : navigator.language.startsWith("fr") ? "fr" : "en";
 
 export const getLang = () => lang;
+/** Inline translation: L("Sondages", "Polls"). */
+export const L = (fr: string, en: string) => (lang === "fr" ? fr : en);
 export const t = () => dict[lang];
 export function setLang(l: Lang) {
   lang = l;

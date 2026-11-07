@@ -9,17 +9,17 @@ export async function renderDeputes(app: HTMLElement) {
   const s = t();
   const groupes = [...new Map(deputes.filter((d) => d.groupe).map((d) => [d.groupe!.id, d.groupe!])).values()].sort((a, b) => a.libelle.localeCompare(b.libelle, "fr"));
 
+  // Embedded in the Assemblée section (tab "Députés").
   app.innerHTML = `
-    <section class="page">
-      <div class="page-head"><h1>${s.mpsTitle}</h1></div>
+    <div class="card">
       <div class="filters">
         <input id="q" type="search" placeholder="${s.search}" value="${esc(filter.q)}" />
         <select id="g"><option value="">${s.allGroups}</option>${groupes.map((g) => `<option value="${g.id}" ${g.id === filter.groupe ? "selected" : ""}>${esc(g.abrev)} — ${esc(g.libelle)}</option>`).join("")}</select>
         <span id="count" class="muted"></span>
       </div>
       <div id="list" class="mp-grid"></div>
-      <p class="source muted">${s.sourceAN(fmtDate(meta.syncedAt))}</p>
-    </section>`;
+    </div>
+    <p class="source muted">${s.sourceAN(fmtDate(meta.syncedAt))}</p>`;
 
   const list = app.querySelector<HTMLElement>("#list")!;
   const draw = () => {
