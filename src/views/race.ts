@@ -3,6 +3,7 @@ import { loadMarkets, loadPolls } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
 import { meta, registerParties, spectrumRank } from "../lib/candidates";
 import { average, duelAverages, pollValue, referenceLineup, WINDOW } from "../lib/polls";
+import { combineOdds } from "../lib/markets";
 import { esc, safeUrl, safeColor } from "../util";
 import { shiftDays } from "./home";
 
@@ -45,6 +46,22 @@ export async function renderRace(app: HTMLElement) {
         <div class="spectrum-labels">${strip.map((r) => `<span style="flex:${r.share}">${(100 * r.share) / sum >= 7 ? `<b>${r.share.toFixed(0)} %</b>${esc(meta(r.name).surname)}` : ""}</span>`).join("")}</div>
         <div class="spectrum-axis"><span>${L("Gauche", "Left")}</span><span>${L("Droite", "Right")}</span></div>
       </figure>
+
+      <section class="card polls-vs-markets">
+        <header class="card-head"><h2>${L("Sondages ou paris : qui va gagner ?", "Polls or bets: who will win?")}</h2><a href="#/sondages#marches">${L("Détail des marchés", "Market details")}</a></header>
+        <p class="muted small">${L("Les sondages mesurent les intentions de vote au premier tour ; les marchés prédictifs donnent la probabilité, selon les parieurs, que chacun soit élu ou qualifié au second tour.", "Polls measure first-round voting intention; prediction markets give the probability, according to traders, that each candidate wins or reaches the runoff.")}</p>
+        <table class="table"><thead><tr><th>${L("Candidat", "Candidate")}</th><th class="num">${L("Sondages, 1er tour", "Polls, 1st round")}</th><th class="num">${L("Chance d’être qualifié", "Chance of reaching runoff")}</th><th class="num">${L("Chance de gagner", "Chance of winning")}</th><th class="num">Kalshi</th><th class="num">Polymarket</th></tr></thead>
+        <tbody>${(() => {
+          const odds = combineOdds(markets?.markets ?? []);
+          const pollOf = (n: string) => average(polls.firstRound, latest).find((r) => r.name.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase() === n.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase())?.avg;
+          return odds
+            .filter((o) => (o.win?.avg ?? 0) >= 1 || (o.runoff?.avg ?? 0) >= 5)
+            .slice(0, 10)
+            .map((o) => { const pv = pollOf(o.name); const w = o.win?.avg ?? 0; return `<tr><td><i class="dot" style="background:${meta(o.name).color}"></i><b>${esc(o.name)}</b></td><td class="num">${pv != null ? `${pv.toFixed(1)} %` : "–"}</td><td class="num">${o.runoff ? `${Math.round(o.runoff.avg)} %` : "–"}</td><td class="num"><span class="odds-bar"><i style="width:${w}%;background:${meta(o.name).color}"></i></span><b>${Math.round(w)} %</b></td><td class="num muted">${o.win?.kalshi != null ? `${Math.round(o.win.kalshi)} %` : "–"}</td><td class="num muted">${o.win?.polymarket != null ? `${Math.round(o.win.polymarket)} %` : "–"}</td></tr>`; })
+            .join("");
+        })()}</tbody></table>
+        <p class="muted tiny">${L("Kalshi et Polymarket, prix des contrats « oui ». Polymarket est bloqué en France ; il est interrogé depuis un serveur à l’étranger. Information, pas incitation à parier.", "Kalshi and Polymarket, price of “yes” contracts. Polymarket is blocked in France and is queried from a server abroad. Information only, not an invitation to bet.")}${markets?.fetchedAt ? ` ${L("Mis à jour le", "Updated")} ${fmtDate(markets.fetchedAt)}.` : ""}</p>
+      </section>
 
       <div class="grid-2">
         <section class="card">
