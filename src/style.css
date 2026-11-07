@@ -844,3 +844,25 @@ body { overflow-x: clip; }
 .hero-x .town-search { position: relative; z-index: 40; }
 .hero-x .suggest { --paper: #fff; --panel: #f1f0ec; --ink: #111216; --ink-2: #54565e; --ink-3: #6c6f78; --rule: #e1e0da; color: #111216; }
 .hero-x .suggest b, .hero-x .suggest strong { color: #111216; }
+
+/* History timeline: each row carries a small player for the decisive round's announcement, narrower than the result bar */
+.timeline .t-row { display: grid; grid-template-columns: minmax(0, 640px) 220px; justify-content: start; grid-template-areas: "row vid"; gap: 0 1.2rem; align-items: center; border-top: 1px solid var(--rule); }
+.timeline .t-row > a { grid-area: row; border-top: 0; }
+.timeline .t-row:has(> a:hover) { background: var(--panel); }
+.timeline .t-row:has(> a:hover) > a { background: none; }
+.t-vid { grid-area: vid; position: relative; width: 220px; aspect-ratio: 16 / 9; margin: 0.6rem 0.3rem 0.6rem 0; padding: 0; border: 0; border-radius: 3px; overflow: hidden; background: #111216; cursor: pointer; display: block; }
+.t-vid img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: opacity 0.15s, transform 0.3s; }
+.t-vid:hover img { opacity: 1; transform: scale(1.04); }
+.t-play { position: absolute; left: 50%; top: 50%; width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%; background: rgba(17, 18, 22, 0.78); box-shadow: 0 0 0 2px #fff; }
+.t-play::after { content: ""; position: absolute; left: 15px; top: 11px; border-style: solid; border-width: 8px 0 8px 13px; border-color: transparent transparent transparent #fff; }
+.t-vid:hover .t-play { background: #e0313f; }
+.t-vid-cap { position: absolute; left: 6px; bottom: 5px; font: 600 0.62rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: #fff; background: rgba(17, 18, 22, 0.7); padding: 0.1rem 0.3rem; border-radius: 2px; }
+.t-vid.is-audio { aspect-ratio: auto; height: 64px; }
+.t-vid.is-playing { cursor: auto; }
+.t-vid.is-playing iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.t-vid.is-audio.is-playing { height: 120px; }
+@media (max-width: 760px) {
+  .timeline .t-row { grid-template-columns: minmax(0, 1fr); grid-template-areas: "row" "vid"; }
+  .t-vid { width: min(100% - 0.6rem, 260px); margin: 0 0 0.8rem calc(6.5rem + 1.3rem); }
+}
+@media (max-width: 520px) { .t-vid { margin-left: 0.3rem; } }

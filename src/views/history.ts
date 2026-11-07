@@ -43,7 +43,12 @@ export async function renderHistoryList(pane: HTMLElement) {
           .map((e) => {
             const dec = e.rounds.find((r) => r.decisive) ?? e.rounds.at(-1)!;
             const [a, b] = dec.top;
-            return `<li><a href="#/histoire/${e.id}">
+            const m = dec.media;
+            const yt = m?.url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/)?.[1];
+            const vid = m
+              ? `<button type="button" class="t-vid${m.type === "radio" ? " is-audio" : ""}" data-el="${esc(e.id)}" aria-label="${esc(`${L("Lire l’annonce", "Play the announcement")} ${e.id}`)}">${yt ? `<img src="https://i.ytimg.com/vi/${yt}/mqdefault.jpg" alt="" loading="lazy"/>` : ""}<span class="t-play"></span><span class="t-vid-cap">${esc(L(...(MEDIA_LABEL[m.type] ?? [m.type, m.type])))}</span></button>`
+              : "";
+            return `<li class="t-row">${vid}<a href="#/histoire/${e.id}">
               <span class="t-year">${e.id.replace("-01", " (janv.)").replace("-09", " (sept.)")}</span>
               <span class="t-body"><b>${esc(e.winner.name)}</b> <span class="muted">${esc(e.winner.party)}</span>
                 <span class="t-bar">${a ? `<span style="width:${a.pct}%;background:${sideColor(a.side)}"></span>` : ""}${b ? `<span style="width:${b.pct}%;background:${sideColor(b.side)};opacity:.45"></span>` : ""}</span>
@@ -53,8 +58,25 @@ export async function renderHistoryList(pane: HTMLElement) {
           .join("")}</ol>
       </section>`,
     )
-    .join("") + `<p class="source">${L("Résultats nationaux : tableaux de Wikipédia, chacun relié à sa source officielle (Conseil constitutionnel, Journal officiel). Départements : CDSP Sciences Po et ministère de l’Intérieur (data.gouv.fr), Cagé–Piketty pour 1848. Archives : INA, TF1 INFO, Gallica.", "National results: Wikipedia tables, each tied to its official source (Constitutional Council, Journal officiel). Departments: Sciences Po CDSP and the Ministry of the Interior (data.gouv.fr), Cagé–Piketty for 1848. Archives: INA, TF1 INFO, Gallica.")}</p>`;
+    .join("") + LIST_SOURCE();
+  // each row's small player: the decisive round's announcement, loaded only when clicked
+  pane.querySelectorAll<HTMLButtonElement>(".t-vid").forEach((btn) =>
+    btn.addEventListener("click", async () => {
+      const el = await loadHistElection(btn.dataset.el!).catch(() => null);
+      const r = el?.rounds.find((x) => x.decisive) ?? el?.rounds.at(-1);
+      const src = r?.media ? embedUrl(r.media) : null;
+      if (!r?.media) return;
+      if (!src) { window.open(safeUrl(r.media.url), "_blank", "noopener"); return; }
+      const auto = /youtube-nocookie/.test(src) ? `${src}${src.includes("?") ? "&" : "?"}autoplay=1` : src;
+      const box = document.createElement("div");
+      box.className = `t-vid is-playing${btn.classList.contains("is-audio") ? " is-audio" : ""}`;
+      box.innerHTML = `<iframe src="${esc(safeUrl(auto))}" title="${esc(r.media.title ?? btn.dataset.el!)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+      btn.replaceWith(box);
+    }),
+  );
 }
+
+const LIST_SOURCE = () => `<p class="source">${L("Résultats nationaux : tableaux de Wikipédia, chacun relié à sa source officielle (Conseil constitutionnel, Journal officiel). Départements : CDSP Sciences Po et ministère de l’Intérieur (data.gouv.fr), Cagé–Piketty pour 1848. Archives : INA, TF1 INFO, Gallica.", "National results: Wikipedia tables, each tied to its official source (Constitutional Council, Journal officiel). Departments: Sciences Po CDSP and the Ministry of the Interior (data.gouv.fr), Cagé–Piketty for 1848. Archives: INA, TF1 INFO, Gallica.")}</p>`;
 
 const mediaIcon = (t?: string) => (t ? L(...(MEDIA_LABEL[t] ?? [t, t])).toLowerCase() : "");
 
