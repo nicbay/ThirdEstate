@@ -132,11 +132,25 @@ export function bindSearch(root: HTMLElement) {
       timer = window.setTimeout(async () => {
         const my = ++seq;
         try {
-          const r = await fetch(`https://data.geopf.fr/geocodage/search?q=${encodeURIComponent(q)}&limit=6&autocomplete=1`);
-          const j = await r.json();
+          // a postcode: every town that shares it (some cover 20+), largest first; otherwise the address/town geocoder
+          const items: { code: string; label: string; context: string }[] = /^\d{5}$/.test(q)
+            ? ((await (await fetch(`https://geo.api.gouv.fr/communes?codePostal=${q}&fields=nom,code,population,departement,region`)).json()) as Any[])
+                .sort((a, b) => (b.population ?? 0) - (a.population ?? 0))
+                .map((c) => ({ code: c.code, label: c.nom, context: `${c.departement?.code ?? ""}, ${c.departement?.nom ?? ""}, ${c.region?.nom ?? ""}` }))
+            : await (async () => {
+                // towns by name first (accent-insensitive, biggest first), then street addresses
+                const [towns, addr] = await Promise.all([
+                  fetch(`https://geo.api.gouv.fr/communes?nom=${encodeURIComponent(q)}&fields=nom,code,population,departement,region&boost=population&limit=6`).then((r) => r.json()).catch(() => []) as Promise<Any[]>,
+                  fetch(`https://data.geopf.fr/geocodage/search?q=${encodeURIComponent(q)}&limit=6&autocomplete=1`).then((r) => r.json()).then((j) => (j.features ?? []) as Any[]).catch(() => [] as Any[]),
+                ]);
+                const t = towns.map((c) => ({ code: c.code, label: c.nom, context: `${c.departement?.code ?? ""}, ${c.departement?.nom ?? ""}, ${c.region?.nom ?? ""}` }));
+                const a = addr
+                  .filter((f) => f.properties.type !== "municipality" || !t.some((x) => x.code === f.properties.citycode))
+                  .map((f) => ({ code: f.properties.citycode, label: f.properties.label, context: f.properties.context ?? "" }));
+                return [...t, ...a].slice(0, 9);
+              })();
           if (my !== seq) return;
-          const items = (j.features ?? []) as Any[];
-          list.innerHTML = items.map((f, i) => `<li role="option" data-code="${esc(f.properties.citycode)}" data-i="${i}"><b>${esc(f.properties.label)}</b><span class="muted small">${esc(f.properties.context ?? "")}</span></li>`).join("");
+          list.innerHTML = items.map((f, i) => `<li role="option" data-code="${esc(f.code)}" data-i="${i}"><b>${esc(f.label)}</b><span class="muted small">${esc(f.context)}</span></li>`).join("");
           list.hidden = !items.length;
           list.querySelectorAll<HTMLLIElement>("li").forEach((li) => li.addEventListener("mousedown", (e) => { e.preventDefault(); go(li.dataset.code!); }));
         } catch { list.hidden = true; }
