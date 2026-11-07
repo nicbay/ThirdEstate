@@ -1,5 +1,5 @@
 {
- "syncedAt": "2026-11-07T14:16:47.936Z",
+ "syncedAt": "2026-11-07T15:28:14.351Z",
  "firstSession": "2023-2024",
  "sources": {
   "api": "https://www.senat.fr/api-senat/senateurs.json",
@@ -562,23 +562,6 @@
     "positions": "kept"
    },
    {
-    "id": "2023-98",
-    "published": {
-     "pour": 191,
-     "contre": 102,
-     "abstention": 49,
-     "nppv": 6
-    },
-    "nominative": {
-     "P": 341,
-     "C": 0,
-     "A": 0,
-     "N": 7
-    },
-    "gap": 301,
-    "positions": "dropped"
-   },
-   {
     "id": "2023-99",
     "published": {
      "pour": 341,
@@ -593,6 +576,23 @@
      "N": 7
     },
     "gap": 476,
+    "positions": "dropped"
+   },
+   {
+    "id": "2023-98",
+    "published": {
+     "pour": 191,
+     "contre": 102,
+     "abstention": 49,
+     "nppv": 6
+    },
+    "nominative": {
+     "P": 341,
+     "C": 0,
+     "A": 0,
+     "N": 7
+    },
+    "gap": 301,
     "positions": "dropped"
    },
    {
@@ -612,7 +612,16 @@
     "gap": 475,
     "positions": "dropped"
    }
-  ]
+  ],
+  "elections": {
+   "departements": 64,
+   "sieges": 178,
+   "elus": 178,
+   "linkedToSenator": 177,
+   "unmatched": [
+    "Françoise GATEL (Ille-et-Vilaine): no sitting senator with that name and birth date"
+   ]
+  }
  },
  "groupes": {
   "UMP": {
