@@ -8,7 +8,7 @@ import { meta, registerParties, spectrumRank } from "../lib/candidates";
 import { cloudEnabled, getHome, lookupPostcode, onHome, onPresence, setHome } from "../lib/cloud";
 import { rewind } from "../lib/map";
 import { average, duelAverages, pollValue, referenceLineup, trend, WINDOW } from "../lib/polls";
-import { combineOdds } from "../lib/markets";
+import { forecast } from "../lib/forecast";
 import { esc, safeColor } from "../util";
 import { arrowPaths, legend, unitsPerPx } from "./shifts";
 import { bindSearch, searchBox } from "./explore";
@@ -38,7 +38,7 @@ export async function renderHome(app: HTMLElement) {
   const feed = await loadFeed().catch(() => null);
   const stories = (feed?.stories ?? []).filter((s) => (s.reactions ?? []).some((r) => r.rating)).slice(0, 3);
   void duels; void winner; void now; void pollValue; void second;
-  const fav = combineOdds(markets?.markets ?? [])[0];
+  const fav = forecast(polls.firstRound, polls.secondRound, markets?.markets ?? [], new Date().toISOString().slice(0, 10)).rows[0];
   const home = getHome();
   const viz = heroViz(geo, deputes, shifts?.pairs.filter((p) => p.level === "district").at(-1));
 
@@ -63,7 +63,7 @@ export async function renderHome(app: HTMLElement) {
           </figure>
         </div>
         <nav class="hero-x-doors" aria-label="${L("Rubriques", "Sections")}">
-          ${fav?.win ? `<a href="#/2027"><span class="hx-k">${L("Présidentielle 2027", "2027 presidential")}</span><strong data-count="${Math.round(fav.win.avg)}" data-suffix=" %">${Math.round(fav.win.avg)} %</strong><span>${fr ? `de chances pour ${esc(fav.name)} selon les marchés ; ${leader ? `${esc(meta(leader.name).surname)} à ${leader.share.toFixed(0)} % dans les sondages` : ""}` : `chance for ${esc(fav.name)} on prediction markets; ${leader ? `${esc(meta(leader.name).surname)} at ${leader.share.toFixed(0)}% in polls` : ""}`}</span></a>` : ""}
+          ${fav ? `<a href="#/2027"><span class="hx-k">${L("Présidentielle 2027", "2027 presidential")}</span><strong data-count="${Math.round(fav.win)}" data-suffix=" %">${Math.round(fav.win)} %</strong><span>${fr ? `de chances pour ${esc(fav.name)} selon notre prévision (sondages et marchés)` : `chance for ${esc(fav.name)} in our forecast (polls and markets)`}</span></a>` : ""}
           <a href="#/assemblee"><span class="hx-k">${L("Vos élus", "Your officials")}</span><strong data-count="${deputes.length || 577}">${deputes.length || 577}</strong><span>${L("députés et 348 sénateurs, chacun de leurs votes", "MPs and 348 senators, every vote they cast")}</span></a>
           <a href="${home?.code ? `#/ville/${home.code}` : "#/explorer"}"><span class="hx-k">${L("Chez vous", "Where you live")}</span><strong data-count="34920">34 920</strong><span>${L("communes : maire, conseil, quartiers, écoles, sécurité, actualité", "towns: mayor, council, neighbourhoods, schools, safety, news")}</span></a>
           <a href="#/resultats"><span class="hx-k">${L("Archives", "Archives")}</span><strong>1848</strong><span>${L("chaque présidentielle depuis, avec l’annonce en vidéo ou à la radio", "every presidential election since, with the announcement on film or radio")}</span></a>

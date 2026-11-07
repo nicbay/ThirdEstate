@@ -6,6 +6,8 @@ import { average, duelAverages, pollValue, referenceLineup, WINDOW } from "../li
 import { combineOdds, marketMeta } from "../lib/markets";
 import { esc, safeUrl, safeColor } from "../util";
 import { shiftDays } from "./home";
+import { ELECTION_DAY, MARKET_WEIGHT, forecast, type Forecast } from "../lib/forecast";
+import { sameOdds } from "../lib/scenario-odds";
 
 export async function renderRace(app: HTMLElement) {
   const [polls, markets] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null)]);
@@ -24,11 +26,17 @@ export async function renderRace(app: HTMLElement) {
   const [leader, second] = ranked;
   const nPolls = polls.firstRound.filter((p) => p.end > shiftDays(latest, -WINDOW)).length;
 
-  const headline = leader
+  const fc = forecast(polls.firstRound, polls.secondRound, markets?.markets ?? [], new Date().toISOString().slice(0, 10));
+  const fav = fc.rows[0];
+  const fem = (n: string) => /^(Marine|Christine|Ségolène|Marion|Nathalie|Valérie|Clémentine|Sandrine|Yaël|Élisabeth|Marie|Anne)\b/.test(n);
+  const headline = fav
     ? getLang() === "fr"
-      ? `${leader.name} en tête des intentions de vote${second ? `, ${meta(second.name).surname} deuxième` : ""}`
-      : `${leader.name} leads first-round polling${second ? `, with ${meta(second.name).surname} second` : ""}`
-    : L("Où en est la course", "Where the race stands");
+      ? `${fav.name} ${fem(fav.name) ? "favorite" : "favori"}, ${Math.round(fav.win)} % de chances d’être ${fem(fav.name) ? "élue" : "élu"}`
+      : `${fav.name} is the favourite, with a ${Math.round(fav.win)}% chance of winning`
+    : leader
+      ? L(`${leader.name} en tête des intentions de vote`, `${leader.name} leads first-round polling`)
+      : L("Où en est la course", "Where the race stands");
+  void second;
 
   app.innerHTML = `
     <section class="page">
@@ -36,34 +44,20 @@ export async function renderRace(app: HTMLElement) {
         <p class="eyebrow">${L("Présidentielle 2027", "2027 presidential election")}</p>
         <h1>${esc(headline)}</h1>
         <p class="dek">${L(
-          `Moyenne des ${nPolls} sondages publiés ces ${WINDOW} derniers jours, au ${fmtDate(latest)}, pour l’hypothèse de candidatures la plus testée. Les candidats sont rangés de gauche à droite.`,
-          `Average of the ${nPolls} polls published in the last ${WINDOW} days, as of ${fmtDate(latest)}, for the most-tested candidate line-up. Candidates run left to right.`,
+          `Notre prévision mêle deux lectures indépendantes : ${nPolls} sondages récents, passés dans 20 000 simulations des deux tours, et ce que parient les marchés prédictifs (Kalshi, Polymarket). À ${fc.daysToGo} jours du premier tour.`,
+          `Our forecast blends two independent reads: ${nPolls} recent polls, run through 20,000 simulations of both rounds, and what prediction markets are betting (Kalshi, Polymarket). ${fc.daysToGo} days to the first round.`,
         )}</p>
       </header>
 
+      ${forecastCard(fc)}
+
+      <h2 class="sec-k">${L("Les sondages aujourd’hui, de gauche à droite", "The polls today, left to right")}</h2>
       <figure class="spectrum" style="margin:0" aria-label="${L("Intentions de vote, de gauche à droite", "Voting intention, left to right")}">
         <div class="spectrum-bar">${strip.map((r) => `<span style="flex:${r.share};background:${meta(r.name).color}" data-tip="${esc(`${r.name}${meta(r.name).party ? ` (${meta(r.name).party})` : ""}\n${r.share.toFixed(1)} %`)}"></span>`).join("")}</div>
         <div class="spectrum-labels">${strip.map((r) => `<span style="flex:${r.share}">${(100 * r.share) / sum >= 7 ? `<b>${r.share.toFixed(0)} %</b>${esc(meta(r.name).surname)}` : ""}</span>`).join("")}</div>
         <div class="spectrum-axis"><span>${L("Gauche", "Left")}</span><span>${L("Droite", "Right")}</span></div>
       </figure>
 
-      <section class="card polls-vs-markets">
-        <header class="card-head"><h2>${L("Sondages ou paris : qui va gagner ?", "Polls or bets: who will win?")}</h2><a href="#/sondages#marches">${L("Détail des marchés", "Market details")}</a></header>
-        <p class="muted small">${L("Les sondages mesurent les intentions de vote au premier tour ; les marchés prédictifs donnent la probabilité, selon les parieurs, que chacun soit élu ou qualifié au second tour.", "Polls measure first-round voting intention; prediction markets give the probability, according to traders, that each candidate wins or reaches the runoff.")}</p>
-        <table class="table"><thead><tr><th>${L("Candidat", "Candidate")}</th><th class="num">${L("Sondages, 1er tour", "Polls, 1st round")}</th><th class="num">${L("Chance d’être qualifié", "Chance of reaching runoff")}</th><th class="num">${L("Chance de gagner", "Chance of winning")}</th><th class="num">${L("S’il est qualifié", "If qualified")}</th><th class="num">Kalshi</th><th class="num">Polymarket</th></tr></thead>
-        <tbody>${(() => {
-          const odds = combineOdds(markets?.markets ?? []);
-          const pollOf = (n: string) => average(polls.firstRound, latest).find((r) => r.name.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase() === n.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase())?.avg;
-          return odds
-            .filter((o) => (o.win?.avg ?? 0) >= 1 || (o.runoff?.avg ?? 0) >= 5)
-            .slice(0, 10)
-            .map((o) => { const pv = pollOf(o.name); const w = o.win?.avg ?? 0; return `<tr><td><i class="dot" style="background:${meta(o.name).color}"></i><b>${esc(o.name)}</b></td><td class="num">${pv != null ? `${pv.toFixed(1)} %` : "–"}</td><td class="num">${o.runoff ? `${Math.round(o.runoff.avg)} %` : "–"}</td><td class="num"><span class="odds-bar"><i style="width:${w}%;background:${meta(o.name).color}"></i></span><b>${Math.round(w)} %</b></td><td class="num">${o.ifQualified != null ? `${Math.round(o.ifQualified)} %` : "–"}</td><td class="num muted">${o.win?.kalshi != null ? `${Math.round(o.win.kalshi)} %` : "–"}</td><td class="num muted">${o.win?.polymarket != null ? `${Math.round(o.win.polymarket)} %` : "–"}</td></tr>`; })
-            .join("");
-        })()}</tbody></table>
-        <p class="small"><b>${L("Comment lire :", "How to read it:")}</b> ${L("un candidat peut avoir de bonnes chances d’être qualifié mais peu de chances de gagner (s’il perdrait le second tour), ou l’inverse. La colonne « s’il est qualifié » donne ses chances de l’emporter une fois au second tour.", "a candidate can be likely to reach the runoff yet unlikely to win (if they would lose it), or the reverse. The “if qualified” column gives their chance of winning once in the runoff.")}</p>
-        <p class="muted tiny">${L("Cotes « vainqueur » ramenées à 100 % pour retirer la marge des plateformes, cotes « qualifiés » telles quelles ; puis moyenne des deux plateformes pondérée par les montants échangés.", "Winner prices rescaled to 100% to remove the platforms’ margin, runoff prices as quoted; then averaged across platforms weighted by traded volume.")} ${marketMeta(markets?.markets ?? []).map((x) => `${esc(x.platform)} ${x.kind === "win" ? L("vainqueur", "winner") : L("qualifiés", "runoff")} : ${Math.round(x.volume / 1000).toLocaleString()} k$${x.thin ? ` (${L("marché peu liquide", "thin market")})` : ""}`).join(", ")}.</p>
-        <p class="muted tiny">${L("Kalshi et Polymarket, prix des contrats « oui ». Polymarket est bloqué en France ; il est interrogé depuis un serveur à l’étranger. Information, pas incitation à parier.", "Kalshi and Polymarket, price of “yes” contracts. Polymarket is blocked in France and is queried from a server abroad. Information only, not an invitation to bet.")}${markets?.fetchedAt ? ` <b>${L("Cotes du", "Prices as of")} ${fmtDate(markets.fetchedAt)} ${new Date(markets.fetchedAt).toLocaleTimeString(getLang() === "fr" ? "fr-FR" : "en-GB", { hour: "2-digit", minute: "2-digit" })}.</b>` : ""}</p>
-      </section>
 
       <div class="grid-2">
         <section class="card">
@@ -134,6 +128,73 @@ export async function renderRace(app: HTMLElement) {
       </nav>
       <p class="source">${L("Sondages compilés par Wikipédia (CC BY-SA)", "Polls compiled by Wikipedia (CC BY-SA)")}, <a href="${esc(safeUrl(polls.source))}" target="_blank" rel="noopener">${L("page source", "source page")}</a>, ${L("mis à jour le", "updated")} ${fmtDate(polls.fetchedAt)}.</p>
     </section>`;
+  // the "Method" link (and #/2027#methode links) open the method box
+  const md = app.querySelector<HTMLDetailsElement>("#methode");
+  app.querySelectorAll('a[href="#/2027#methode"]').forEach((x) => x.addEventListener("click", () => md && (md.open = true)));
+  if (md && location.hash.endsWith("#methode")) md.open = true;
 }
 
 
+
+/** The forecast: one chance per candidate, with the two sources it blends shown underneath. */
+function forecastCard(fc: Forecast) {
+  const fr = getLang() === "fr";
+  const shown = fc.rows.filter((r) => r.win >= 0.5).slice(0, 9);
+  const rest = fc.rows.length - shown.length;
+  const max = Math.max(...shown.map((r) => r.win), 1);
+  const fmt = (v: number) => (v < 1 ? "<1" : v > 99 ? ">99" : Math.round(v).toString());
+  const fav = fc.rows[0];
+  const odd = fav ? sameOdds(fav.win / 100) : null;
+  const pair = fc.pairs[0];
+  const sur = (n: string) => meta(n).surname;
+  const pairWinner = pair ? (pair.aWins >= 50 ? pair.a : pair.b) : "";
+  const pairPct = pair ? fmt(Math.max(pair.aWins, 100 - pair.aWins)) : "";
+  const added = fc.added.map(esc).join(", ");
+  return `<section class="card forecast" id="prevision">
+    <header class="card-head"><h2>${L("Qui sera élu en 2027 ?", "Who will win in 2027?")}</h2><a href="#/2027#methode">${L("Méthode", "Method")}</a></header>
+    <div class="fc-grid">
+      <ol class="fc-rows">${shown
+        .map((r) => {
+          const c = meta(r.name).color;
+          const party = meta(r.name).party;
+          return `<li>
+            <div class="fc-name"><i class="dot" style="background:${c}"></i><b>${esc(r.name)}</b>${party ? ` <span class="muted small">${esc(party)}</span>` : ""}</div>
+            <div class="fc-pct"><strong>${fmt(r.win)}</strong><span>%</span></div>
+            <div class="fc-bar"><div style="width:${(100 * r.win) / max}%;background:${c}"></div></div>
+            <div class="fc-src small muted">${L("Sondages", "Polls")} <b>${r.polls ? `${fmt(r.polls.win)} %` : L("non testé", "not polled")}</b> · ${L("Marchés", "Markets")} <b>${r.markets?.win != null ? `${fmt(r.markets.win)} %` : "–"}</b>${r.qualify != null ? ` · ${L("au second tour", "reaches runoff")} <b>${fmt(r.qualify)} %</b>` : ""}</div>
+          </li>`;
+        })
+        .join("")}</ol>
+      <aside class="fc-side">
+        ${fav && odd ? `<p class="fc-odd">${fr ? `${Math.round(fav.win)} %, c’est à peu près la chance de ${odd.fr}.` : `${Math.round(fav.win)}% is about the chance of ${odd.en}.`}</p>` : ""}
+        ${pair ? `<p class="mine-k">${L("Le second tour le plus probable", "The most likely runoff")}</p><p class="fc-pair"><b>${esc(sur(pair.a))} – ${esc(sur(pair.b))}</b><br><span class="muted small">${fr ? `${Math.round(pair.p)} % des simulations ; ${esc(sur(pairWinner))} l’emporte dans ${pairPct} % d’entre elles.` : `${Math.round(pair.p)}% of simulations; ${esc(sur(pairWinner))} wins ${pairPct}% of them.`}</span></p>` : ""}
+        <p class="mine-k">${L("Pourquoi deux sources", "Why two sources")}</p>
+        <p class="small">${L("Les sondages disent comment les Français voteraient aujourd’hui si ces candidats se présentaient. Les marchés ajoutent ce que les sondages ne voient pas : qui se présentera vraiment, les procès, les retraits. Quand les deux divergent, c’est une information.", "Polls say how people would vote today if these candidates ran. Markets add what polls can’t see: who will actually stand, trials, withdrawals. When the two disagree, that is information.")}</p>
+        <a class="button" href="#/simulateur">${L("Faire votre propre scénario", "Build your own scenario")}</a>
+      </aside>
+    </div>
+    ${rest > 0 ? `<p class="muted tiny">${L(`${rest} autres noms sous 0,5 % de chances.`, `${rest} other names below a 0.5% chance.`)}</p>` : ""}
+    <details class="fc-method" id="methode">
+      <summary>${L("Comment la prévision est calculée", "How the forecast works")}</summary>
+      <ol class="small">
+        <li>${fr
+          ? `<b>Sondages.</b> Point de départ : la moyenne des sondages pour la liste de candidats la plus testée (${fc.nLineupPolls} sondages ces trois dernières semaines)${added ? `, plus ${added}, que les marchés jugent crédible${fc.added.length > 1 ? "s" : ""}, à sa moyenne dans les sondages où il figure ; ses points sont pris aux candidats les plus proches politiquement` : ""}.`
+          : `<b>Polls.</b> Starting point: the polling average for the most-tested line-up (${fc.nLineupPolls} polls over the last three weeks)${added ? `, plus ${added}, whom the markets rate as credible, at their average in the polls that test them, with the points taken from the politically closest candidates` : ""}.`}</li>
+        <li>${fr
+          ? `<b>20 000 simulations.</b> À chaque tirage, chaque candidat reçoit une erreur de sondage aléatoire : une part commune à sa famille politique (σ = 1,5 point) et une part propre (σ = ${fc.sd1.toFixed(1).replace(".", ",")} points à ${fc.daysToGo} jours ; elle se resserre jusqu’à 2 points la veille). Les deux premiers vont au second tour.`
+          : `<b>20,000 simulations.</b> In each draw every candidate gets a random polling error: a part shared with their political family (σ = 1.5 pts) and their own part (σ = ${fc.sd1.toFixed(1)} pts at ${fc.daysToGo} days out, narrowing to 2 pts on the eve). The top two go to the runoff.`}</li>
+        <li>${fr
+          ? `<b>Second tour.</b> Le score attendu vient des sondages de second tour pour ce duel s’ils existent, sinon d’un modèle de reports de voix selon la proximité politique (le même que le simulateur). On y ajoute une erreur (σ = ${fc.sd2.toFixed(1).replace(".", ",")} points aujourd’hui) : les duels sondés avant le premier tour se trompent souvent de beaucoup.`
+          : `<b>Runoff.</b> The expected score comes from runoff polls for that pairing when they exist, otherwise from a vote-transfer model based on political proximity (the same as the simulator). An error is added (σ = ${fc.sd2.toFixed(1)} pts today): runoff polls taken before the first round often miss by a lot.`}</li>
+        <li>${L(
+          "<b>Marchés.</b> Les cotes « vainqueur » de Kalshi et Polymarket, ramenées à 100 % pour retirer la marge des plateformes, puis moyennées en pondérant par les montants échangés.",
+          "<b>Markets.</b> Kalshi and Polymarket “winner” prices, rescaled to 100% to remove the platforms’ margin, then averaged weighted by traded volume.",
+        )}</li>
+        <li>${fr
+          ? `<b>Mélange.</b> ${Math.round(100 * (1 - MARKET_WEIGHT))} % sondages, ${Math.round(100 * MARKET_WEIGHT)} % marchés. Un nom que seuls les marchés couvrent (non testé par les instituts) ne garde que la moitié « marchés ». Premier tour supposé le ${fmtDate(ELECTION_DAY)} (date à fixer par décret, entre mi et fin avril).`
+          : `<b>Blend.</b> ${Math.round(100 * (1 - MARKET_WEIGHT))}% polls, ${Math.round(100 * MARKET_WEIGHT)}% markets. A name only the markets cover (not tested by pollsters) keeps only the markets half. First round assumed on ${fmtDate(ELECTION_DAY)} (the date is set by decree, mid to late April).`}</li>
+      </ol>
+      <p class="small muted">${L("Les tailles d’erreur sont un jugement, pas une estimation tirée des présidentielles passées (trop peu nombreuses pour être ajustées). Ce n’est pas une prédiction certaine : un candidat à 70 % perd trois fois sur dix. Information, pas incitation à parier.", "Error sizes are a judgement, not estimated from past presidential elections (too few to fit). This isn’t a certainty: a candidate at 70% loses three times in ten. Information, not an invitation to bet.")}</p>
+    </details>
+  </section>`;
+}
