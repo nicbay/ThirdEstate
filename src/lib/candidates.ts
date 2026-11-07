@@ -34,6 +34,7 @@ const PARTY: Record<string, { color: string; bloc: Bloc | null }> = {
   RN: { color: "#1c2c6c", bloc: 4 },
   "R!": { color: "#4a2c1d", bloc: 4 },
   REC: { color: "#4a2c1d", bloc: 4 },
+  NE: { color: "#3f72c4", bloc: 3 }, // Nouvelle Énergie (David Lisnard)
   DIV: { color: "#9aa3b2", bloc: null },
 };
 
@@ -53,10 +54,12 @@ export function surname(full: string) {
 }
 
 let extraParties: Record<string, string> = {};
+// Candidates the poll tables list without a party label.
+const KNOWN_PARTIES: Record<string, string> = { "David Lisnard": "NE" };
 export const registerParties = (p: Record<string, string>) => (extraParties = { ...extraParties, ...p });
 
 export function meta(name: string): CandidateMeta {
-  const party = extraParties[name] ?? null;
+  const party = extraParties[name] ?? KNOWN_PARTIES[name] ?? null;
   const p = party ? PARTY[party] : undefined;
   return { name, surname: surname(name), party, color: p?.color ?? hashColor(name), bloc: p?.bloc ?? null };
 }

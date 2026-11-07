@@ -1,7 +1,8 @@
 // Scenario planner as a funnel: first-round votes (left) flow into the two finalists or into
 // abstention (right). Sliders update the funnel live; scenarios can be saved (browser, or account
 // when signed in) and shared by link.
-import { loadPolls } from "../data";
+import { loadMarkets, loadPolls } from "../data";
+import { combineOdds, oddsFor } from "../lib/markets";
 import { L, fmtDate, getLang } from "../i18n";
 import { BLOCS, meta, registerParties, spectrumRank, type Bloc } from "../lib/candidates";
 import { average, duelAverages, referenceLineup } from "../lib/polls";
@@ -22,6 +23,34 @@ function defaultTransfer(from: Bloc | null, a: Bloc | null, b: Bloc | null): [nu
 }
 
 let state: Scenario | null = null;
+let autoBalance = true;
+/** Always in the default line-up when they are polled. */
+const LIKELY = ["David Lisnard"];
+
+/** How much of a candidate's moving vote goes to another, by political distance (unknown family = middling). */
+const proximity = (a: Bloc | null, b: Bloc | null) => (a == null || b == null ? 0.3 : AFFINITY[Math.abs(a - b)]);
+/**
+ * Spread `delta` points (positive = to take from others, negative = to give to others) over every
+ * candidate except `who`, weighted by political proximity × current share, never below 0.
+ */
+function rebalance(cands: Cand[], who: Cand, delta: number) {
+  let left = delta;
+  for (let pass = 0; pass < 4 && Math.abs(left) > 0.01; pass++) {
+    const pool = cands.filter((c) => c !== who && (left < 0 || c.share > 0));
+    // closeness matters most (squared); size only a little (square root), so a big but distant candidate gets few points
+    const w = pool.map((c) => proximity(who.bloc, c.bloc) ** 2 * Math.sqrt(Math.max(c.share, 0.5)));
+    const sum = w.reduce((x, y) => x + y, 0);
+    if (!sum) break;
+    let used = 0;
+    pool.forEach((c, i) => {
+      const want = (left * w[i]) / sum;
+      const next = Math.max(0, c.share - want);
+      used += c.share - next;
+      c.share = Math.round(next * 10) / 10;
+    });
+    left -= used;
+  }
+}
 let authHooked = false;
 const encode = (s: Scenario) => btoa(unescape(encodeURIComponent(JSON.stringify(s)))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 // Share links and saved scenarios are untrusted input: rebuild a clean Scenario from them,
@@ -54,7 +83,8 @@ const decode = (t: string): Scenario | null => {
 };
 
 export async function renderSimulator(app: HTMLElement, shared?: string) {
-  const polls = await loadPolls("2027");
+  const [polls, markets] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null)]);
+  const odds = combineOdds(markets?.markets ?? []);
   registerParties(polls.parties);
   const latest = polls.firstRound[0]?.end ?? new Date().toISOString().slice(0, 10);
   const avg = average(polls.firstRound, latest, undefined, 0);
@@ -62,6 +92,16 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
 
   const fromPolls = (): Scenario => {
     const cands = referenceLineup(polls.firstRound, latest).rows.map((r) => ({ name: r.name, share: Math.round(r.share * 10) / 10, bloc: meta(r.name).bloc }));
+    // Likely candidates the most-tested line-up leaves out (e.g. David Lisnard, second favourite on
+    // the betting markets): add them at their polling average, taking the points from their neighbours.
+    for (const name of LIKELY) {
+      if (cands.some((c) => c.name === name)) continue;
+      const share = Math.round((avg.find((r) => r.name === name)?.avg ?? 0) * 10) / 10;
+      if (!share) continue;
+      const c = { name, share, bloc: meta(name).bloc };
+      cands.push(c);
+      rebalance(cands, c, share);
+    }
     const top = [...cands].sort((a, b) => b.share - a.share);
     return { cands, finalists: [top[0].name, top[1].name], transfers: {}, edited: [] };
   };
@@ -87,11 +127,12 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
         </header>
 
         <div class="sim-result" id="sim-result"></div>
+        <div class="sim-markets" id="sim-markets"></div>
         <figure class="funnel-fig"><svg id="funnel" viewBox="0 0 960 520" role="img" aria-label="${L("Reports de voix", "Vote transfers")}"></svg></figure>
 
         <section class="card">
           <header class="card-head"><h2>${L("Candidats et reports", "Candidates and transfers")}</h2>
-            <span class="small"><button type="button" class="linkish" id="reset">${L("Repartir des sondages", "Reset to polls")}</button></span></header>
+            <span class="small sim-tools"><label class="check"><input type="checkbox" id="auto" ${autoBalance ? "checked" : ""}/> ${L("Reporter automatiquement les points vers les candidats proches", "Move points to and from nearby candidates automatically")}</label> <button type="button" class="linkish" id="reset">${L("Repartir des sondages", "Reset to polls")}</button></span></header>
           <p class="muted small">${L("Cliquez sur « Qualifier » pour choisir les deux finalistes. Les reports par défaut sont des hypothèses fondées sur la proximité politique, pas des données.", "Click “Qualify” to pick the two finalists. Default transfers are assumptions based on political proximity, not data.")}</p>
           <div class="sim-rows">${ordered
             .map((c) => {
@@ -100,7 +141,7 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
               return `<div class="sim-row ${fin ? "is-finalist" : ""}" data-row="${esc(c.name)}" style="--c:${m.color}">
                 <div class="sim-name"><b>${esc(c.name)}</b> <span class="muted small">${esc(m.party ?? "")}</span>
                   <select data-bloc="${esc(c.name)}" aria-label="${L("Famille politique", "Political family")}"><option value="">?</option>${BLOCS.map((_, i) => `<option value="${i}" ${c.bloc === i ? "selected" : ""}>${blocName(i as Bloc)}</option>`).join("")}</select></div>
-                <label class="sim-share"><span class="muted small">${L("1er tour", "1st round")}</span><input type="range" min="0" max="45" step="0.5" value="${c.share}" data-share="${esc(c.name)}"/><output data-share-out="${esc(c.name)}">${c.share.toFixed(1)} %</output></label>
+                <label class="sim-share"><span class="muted small">${L("1er tour", "1st round")}</span><input type="range" min="0" max="45" step="0.1" value="${c.share}" data-share="${esc(c.name)}"/><output data-share-out="${esc(c.name)}">${c.share.toFixed(1)} %</output></label>
                 ${
                   fin
                     ? `<div class="sim-transfer muted small">${L("Finaliste : garde ses voix", "Finalist: keeps their votes")}</div>`
@@ -146,6 +187,14 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
     app.querySelector("#sim-result")!.innerHTML = `
       <div class="duel big"><span style="width:${pa}%;background:${ma.color}">${esc(ma.surname)} ${pa.toFixed(1)}</span><span style="width:${pb}%;background:${mb.color}">${pb.toFixed(1)} ${esc(mb.surname)}</span></div>
       <p class="muted small">${L("Abstention, blancs et nuls supplémentaires", "Extra abstention, blank and void")} : ${((100 * lost) / total).toFixed(0)} % ${L("des voix du premier tour", "of first-round votes")}. ${poll ? `${L("Les sondages sur ce duel donnent", "Polls of this match-up give")} ${esc(meta(poll.winner).surname)} ${poll.pw.toFixed(0)}–${poll.pl.toFixed(0)} (${poll.total} ${L("sondages", "polls")}, ${L("dernier le", "latest")} ${fmtDate(poll.last)}).` : L("Aucun sondage n’a testé ce duel.", "No poll has tested this match-up.")} ${Math.abs(total - 100) > 0.5 ? `<span class="warn">${L("Total du premier tour", "First-round total")} : ${total.toFixed(1)} %.</span>` : ""}</p>`;
+    const oa = oddsFor(odds, fa), ob = oddsFor(odds, fb);
+    const pct = (v?: number) => (v == null ? "–" : `${Math.round(v)} %`);
+    app.querySelector("#sim-markets")!.innerHTML = odds.length
+      ? `<div class="mk-head"><b>${L("Ce que parient les marchés", "What the betting markets say")}</b> <span class="muted small">Kalshi, Polymarket${markets?.fetchedAt ? `, ${fmtDate(markets.fetchedAt)}` : ""}</span></div>
+         <div class="mk-grid">${[fa, fb].map((n, k) => { const o = k ? ob : oa; const m = meta(n); return `<div class="mk-card" style="--c:${m.color}"><span class="muted small">${esc(m.surname)}</span><strong>${pct(o?.win?.avg)}</strong><span class="small">${L("de chances de gagner", "chance of winning")}</span><span class="muted tiny">${L("qualifié au 2nd tour", "reaches the runoff")} : ${pct(o?.runoff?.avg)}</span></div>`; }).join("")}
+         <div class="mk-card mk-wide"><span class="muted small">${L("Favoris des marchés", "Market favourites")}</span><ol class="bars compact">${odds.slice(0, 5).map((o) => `<li><div class="bar-label"><span>${esc(meta(o.name).surname)}</span><b>${pct(o.win?.avg)}</b></div><div class="bar"><div style="width:${o.win?.avg ?? 0}%;background:${meta(o.name).color}"></div></div></li>`).join("")}</ol></div></div>
+         <p class="muted tiny">${L("Probabilités implicites des contrats, moyenne des deux plateformes quand les deux cotent le candidat. Ce ne sont pas des sondages.", "Implied probabilities from contract prices, averaged across both platforms when both list the candidate. These aren’t polls.")}</p>`
+      : "";
     drawFunnel(flows, total, fa, fb, va, vb, lost);
     for (const c of s.cands) {
       const o = app.querySelector(`[data-share-out="${CSS.escape(c.name)}"]`);
@@ -199,7 +248,18 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
 
   const bind = () => {
     const on = (sel: string, ev: string, fn: (el: HTMLInputElement) => void) => app.querySelectorAll<HTMLInputElement>(sel).forEach((el) => el.addEventListener(ev, () => fn(el)));
-    on("[data-share]", "input", (el) => { s.cands.find((c) => c.name === el.dataset.share)!.share = Number(el.value); update(); });
+    on("[data-share]", "input", (el) => {
+      const c = s.cands.find((x) => x.name === el.dataset.share)!;
+      const next = Number(el.value);
+      const delta = next - c.share;
+      c.share = next;
+      if (autoBalance && delta) {
+        rebalance(s.cands, c, delta);
+        for (const o of s.cands) { const inp = app.querySelector<HTMLInputElement>(`[data-share="${CSS.escape(o.name)}"]`); if (inp && o !== c) inp.value = String(o.share); }
+      }
+      update();
+    });
+    app.querySelector<HTMLInputElement>("#auto")?.addEventListener("change", (e) => { autoBalance = (e.target as HTMLInputElement).checked; });
     on("[data-ta]", "input", (el) => setT(el.dataset.ta!, 0, Number(el.value)));
     on("[data-tb]", "input", (el) => setT(el.dataset.tb!, 1, Number(el.value)));
     on("[data-bloc]", "change", (el) => { s.cands.find((c) => c.name === el.dataset.bloc)!.bloc = el.value === "" ? null : (Number(el.value) as Bloc); fillDefaults(); shell(); });

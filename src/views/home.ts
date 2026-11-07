@@ -8,6 +8,7 @@ import { meta, registerParties, spectrumRank } from "../lib/candidates";
 import { cloudEnabled, getHome, lookupPostcode, onHome, onPresence, setHome } from "../lib/cloud";
 import { rewind } from "../lib/map";
 import { average, duelAverages, pollValue, referenceLineup, trend, WINDOW } from "../lib/polls";
+import { combineOdds } from "../lib/markets";
 import { esc, safeColor } from "../util";
 import { arrowPaths, legend, unitsPerPx } from "./shifts";
 import { bindSearch, searchBox } from "./explore";
@@ -46,6 +47,7 @@ export async function renderHome(app: HTMLElement) {
         ${searchBox(L("Votre adresse, votre ville ou votre code postal", "Your address, town or postcode"))}
         <aside class="hero-stats" aria-label="${L("En chiffres", "In numbers")}">
           ${leader ? `<a href="#/2027"><strong style="color:${meta(leader.name).color}">${leader.share.toFixed(0)} %</strong><span>${fr ? `${esc(leader.name)} en tête des sondages pour 2027` : `${esc(leader.name)} leads 2027 polling`}</span></a>` : ""}
+          ${(() => { const fav = combineOdds(markets?.markets ?? [])[0]; return fav?.win ? `<a href="#/2027"><strong style="color:${meta(fav.name).color}">${Math.round(fav.win.avg)} %</strong><span>${fr ? `de chances pour ${esc(fav.name)} de gagner en 2027, selon les marchés prédictifs` : `chance ${esc(fav.name)} wins in 2027, according to prediction markets`}</span></a>` : ""; })()}
           ${swing ? `<a href="#/resultats/bascules"><strong style="color:${swing > 0 ? "var(--right)" : "var(--left)"}">${swing > 0 ? "+" : "−"}${Math.abs(swing).toFixed(1)}</strong><span>${L(`points de glissement ${swing > 0 ? "vers la droite" : "vers la gauche"}, législatives 2022 → 2024`, `points of swing to the ${swing > 0 ? "right" : "left"}, 2022 → 2024 legislative`)}</span></a>` : ""}
           <a href="#/assemblee"><strong>${deputes.length || 577}</strong><span>${L("députés, leurs votes et leurs circonscriptions", "MPs, how they vote and the districts they represent")}</span></a>
         </aside>

@@ -661,3 +661,15 @@ figure.spectrum + p { margin-top: 0.7rem; }
 .town-card.has-photo > :not(.tc-photo) { grid-column: 2; }
 .tc-photo { grid-row: 1 / span 4; width: 132px; height: 96px; object-fit: cover; display: block; background: var(--wash, #eee); }
 @media (max-width: 480px) { .town-card.has-photo { grid-template-columns: 96px 1fr; } .tc-photo { width: 96px; height: 76px; } }
+
+/* ---------- prediction markets, prominent ---------- */
+.sim-markets { margin-top: 0.4rem; }
+.mk-head { display: flex; gap: 0.8rem; align-items: baseline; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.mk-grid { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 0.8rem; }
+.mk-card { display: grid; gap: 0.15rem; border-top: 4px solid var(--c, var(--ink)); background: var(--panel, #f4f2ee); padding: 0.6rem 0.75rem; }
+.mk-card strong { font-size: 2rem; line-height: 1; font-weight: 800; }
+.mk-wide { --c: var(--ink); }
+@media (max-width: 720px) { .mk-grid { grid-template-columns: 1fr 1fr; } .mk-wide { grid-column: 1 / -1; } }
+.polls-vs-markets .odds-bar { display: inline-block; vertical-align: middle; width: 90px; height: 8px; background: var(--wash, #eee); margin-right: 0.5rem; position: relative; }
+.polls-vs-markets .odds-bar i { position: absolute; inset: 0 auto 0 0; }
+.sim-tools { display: inline-flex; flex-wrap: wrap; gap: 0.4rem 1rem; align-items: center; }
