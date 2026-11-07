@@ -232,10 +232,10 @@ async function drawForecastTrend(app: HTMLElement) {
   draw("win");
   const firstLive = h.days.find((d) => d.live)?.date;
   const back = h.days.filter((d) => !d.live);
-  const kalshiOnly = back.some((d) => !d.sources.includes("Polymarket"));
+  const kalshiOnly = back.filter((d) => !d.sources.includes("Polymarket")).length;
   app.querySelector("#fc-trend-note")!.textContent = [
     L(`Chance de victoire, en %, chaque jour depuis le ${fmtDate(h.days[0].date)}.`, `Chance of winning, %, every day since ${fmtDate(h.days[0].date)}.`),
-    back.length && firstLive ? L(`Avant le ${fmtDate(firstLive)}, la prévision est reconstituée : le même modèle rejoué jour par jour avec les sondages connus ce jour-là et le cours de clôture des marchés${kalshiOnly ? " (Kalshi seul pour l’instant ; Polymarket sera ajouté)" : ""}.`, `Before ${fmtDate(firstLive)} the forecast is reconstructed: the same model replayed day by day with the polls known that day and each market's closing price${kalshiOnly ? " (Kalshi only for now; Polymarket will be added)" : ""}.`) : "",
+    back.length && firstLive ? L(`Avant le ${fmtDate(firstLive)}, la prévision est reconstituée : le même modèle rejoué jour par jour avec les sondages connus ce jour-là et le cours de clôture des marchés${kalshiOnly ? ` (Kalshi seul ${kalshiOnly > 1 ? `${kalshiOnly} jours` : "un jour"}, faute de cours Polymarket)` : ""}.`, `Before ${fmtDate(firstLive)} the forecast is reconstructed: the same model replayed day by day with the polls known that day and each market's closing price${kalshiOnly ? ` (Kalshi only on ${kalshiOnly > 1 ? `${kalshiOnly} days` : "one day"} with no Polymarket price)` : ""}.`) : "",
     L("Ensuite, enregistrée chaque jour.", "From then on, recorded daily."),
   ].filter(Boolean).join(" ");
 }
