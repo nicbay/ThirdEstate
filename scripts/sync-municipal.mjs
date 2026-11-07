@@ -370,7 +370,7 @@ async function main() {
       {
         generated: TODAY,
         schemaVersion: SCHEMA_VERSION,
-        note: "Political families are ProjectView's grouping of the Ministry of the Interior nuance codes (see docs/data-municipal.md). Colours follow the French convention: left red/pink, ecologists green, centre orange, right blue, far right navy.",
+        note: "Political families are Third Estate's grouping of the Ministry of the Interior nuance codes (see docs/data-municipal.md). Colours follow the French convention: left red/pink, ecologists green, centre orange, right blue, far right navy.",
         families: FAMILIES,
         nuances: NUANCES,
         sources: SOURCES,

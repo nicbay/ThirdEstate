@@ -28,7 +28,7 @@ const ARGS = new Set(process.argv.slice(2));
 const EVENTS_ONLY = ARGS.has("--events");
 const REFRESH = ARGS.has("--refresh");
 const TODAY = new Date().toISOString().slice(0, 10);
-const UA = { "User-Agent": "ProjectView data sync (github.com/nicbay/projectview)" };
+const UA = { "User-Agent": "ThirdEstate data sync (github.com/nicbay/projectview)" };
 
 // ---------------------------------------------------------------- sources
 const LO = "Licence Ouverte / Open Licence v2.0 (Etalab)";

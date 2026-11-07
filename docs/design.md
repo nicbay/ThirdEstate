@@ -1,4 +1,16 @@
-# ProjectView design system
+# Third Estate design system
+
+## Name and mark
+
+**Third Estate** (*le tiers état*): in 1789 the commoners, everyone who was neither clergy nor nobility,
+claimed their place in the Estates-General. Sieyès: *What is the Third Estate? Everything. What has it been
+until now? Nothing. What does it ask? To become something.* The site is for that reader: the citizen, not
+the insider. The name is English and reads instantly in French.
+
+The mark is three rising bars, Sieyès' *nothing, something, everything*, which also reads as a bar chart.
+The third bar is the people, split red (left) and blue (right) in the French convention, the same split as
+the active-tab underline. Wordmark: Archivo 850 condensed **THIRD** + 300 **ESTATE**, uppercase. Favicon:
+the mark on the ink tile. Share image: `public/og.png` (1200×630).
 
 A data desk, not a blog template. The page is a black-framed news product: one grotesk for
 everything people read, a monospace for everything that annotates, a 3px ink rule to open

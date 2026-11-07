@@ -41,7 +41,7 @@ A stronger source wins. Weaker sources that agree go into `confirmedBy`, and wea
 1. **Assemblée**: what the MP declared, already in `deputes.json`. Some declared values can't be used: about 60 Facebook values are just a name ("Pouria Amirshahi"), plus a few broken Instagram and X values. These are rejected, and the reason is recorded.
 2. **Wikidata**: one SPARQL POST for every MP, joined on P4123 (the Assemblée id). 543 of the 574 MPs have an item. Properties used: P2002 (X), P2003 (Instagram), P6634 (LinkedIn), P2013 (Facebook), P12361 (Bluesky), P7085 (TikTok), P2397 (YouTube), P4033 (Mastodon), P856 (website).
 3. **MPs' own websites**: the declared site, the Wikidata P856 site, the previous-term site, or a guessed domain (see below). The script fetches the homepage and up to two same-site contact or about pages, then extracts the social links.
-   - It respects robots.txt, sends `User-Agent: ProjectView-socials/1.0 (+https://github.com/nicbay/projectview)`, waits at least 1.2 s between requests to the same host, and caches pages for 7 days.
+   - It respects robots.txt, sends `User-Agent: ThirdEstate-socials/1.0 (+https://github.com/nicbay/projectview)`, waits at least 1.2 s between requests to the same host, and caches pages for 7 days.
    - It ignores share buttons, links to individual posts, and the Assemblée's or a party's own accounts.
    - An account linked from two or more MPs' sites is treated as a party account and dropped.
    - **Guessed domains**: for MPs with no known site, it tries `prenomnom.fr`, `prenom-nom.fr`, `prenomnom.com` and `prenom-nom.com`. A domain is kept only if its homepage contains the MP's full name and "député(e)". This found 36 sites, including `alexandreallegretpilot.fr`.

@@ -117,7 +117,7 @@ winner is null for communes under 1,000 in 2020, for PLM, and for merged commune
 ### Nuances → political families (colour convention)
 
 Nuances are **assigned by the prefectures** (circular on the attribution of nuances), not chosen by the lists. Official labels
-are taken from the 2026 candidatures file; 2020-only codes from the 2020 grid. The family grouping is ProjectView's editorial
+are taken from the 2026 candidatures file; 2020-only codes from the 2020 grid. The family grouping is Third Estate's editorial
 choice:
 
 | Family | Colour | Nuance codes |

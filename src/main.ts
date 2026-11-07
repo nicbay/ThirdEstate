@@ -84,7 +84,8 @@ function renderChrome(path: string) {
   langBtn.setAttribute("aria-label", getLang() === "fr" ? "Switch to English" : "Passer en français");
   footer.innerHTML = `<div class="foot">
     <div>${document.querySelector(".topbar .brand")!.outerHTML}
-      <p>${L("Données électorales françaises, de la commune à l’Élysée. Sources publiques, méthode ouverte, code libre.", "French election data, from your town hall to the Élysée. Public sources, open method, open code.")}</p></div>
+      <p>${L("Données électorales françaises, de la commune à l’Élysée. Sources publiques, méthode ouverte, code libre.", "French election data, from your town hall to the Élysée. Public sources, open method, open code.")}</p>
+      <p class="foot-quote">${L("« Qu’est-ce que le tiers état ? Tout. Qu’a-t-il été jusqu’à présent dans l’ordre politique ? Rien. Que demande-t-il ? À y devenir quelque chose. »", "“What is the Third Estate? Everything. What has it been until now in the political order? Nothing. What does it ask? To become something.”")} <span>Sieyès, 1789</span></p></div>
     <nav aria-label="${L("Pied de page", "Footer")}"><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/resultats/bascules">${L("Bascules", "Shifts")}</a><a href="#/2027">2027</a><a href="https://github.com/nicbay/projectview" target="_blank" rel="noopener">GitHub</a></nav>
   </div>`;
 }

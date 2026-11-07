@@ -1,4 +1,4 @@
-/* ProjectView — data-desk design system. See docs/design.md.
+/* Third Estate — data-desk design system. See docs/design.md.
    One grotesk family (Archivo, variable width) for words and numbers, IBM Plex Mono for
    annotation (kickers, axes, sources). Black masthead and 3px ink section rules give the frame;
    colour is reserved for data, and political colour follows the French convention:
@@ -106,9 +106,9 @@ p.muted.pad { font-family: var(--mono); font-size: 0.8rem; text-transform: upper
   background: var(--ink); color: #fff;
 }
 .brand { display: inline-flex; align-items: center; gap: 0.55rem; color: #fff; text-decoration: none; white-space: nowrap; font-family: var(--display); font-size: 1.28rem; letter-spacing: -0.01em; line-height: 1; }
-.brand svg { flex: none; width: 28px; height: 23px; }
+.brand svg { flex: none; width: 24px; height: 22px; }
 .brand b { font-weight: 850; font-stretch: 75%; text-transform: uppercase; letter-spacing: 0.01em; }
-.brand b span { font-weight: 300; color: #d8d9de; }
+.brand b span { font-weight: 300; color: #d8d9de; margin-left: 0.22em; }
 .brand:hover { text-decoration: none; }
 #nav { display: flex; gap: 0.2rem; flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; font-size: 0.9rem; height: 100%; }
 #nav::-webkit-scrollbar { display: none; }
@@ -711,3 +711,5 @@ figure.spectrum + p { margin-top: 0.7rem; }
 .q-card { all: unset; display: block; cursor: pointer; width: 100%; border-top: 1px solid var(--rule); padding-top: 0.6rem; }
 .q-card:hover .q-name { text-decoration: underline; }
 .q-card:focus-visible { outline: 2px solid var(--focus, #4b2fd0); outline-offset: 3px; }
+footer .foot-quote { font-style: italic; color: #8e919b; font-size: 0.82rem; }
+footer .foot-quote span { font-style: normal; font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; margin-left: 0.3rem; }

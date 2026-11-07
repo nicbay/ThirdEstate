@@ -1,4 +1,4 @@
--- ProjectView: Supabase schema. Run once in the Supabase SQL editor (Project → SQL → New query).
+-- Third Estate: Supabase schema. Run once in the Supabase SQL editor (Project → SQL → New query).
 -- Accounts use Supabase Auth (email magic link). Live visitors use Realtime Presence (no table).
 
 -- Saved simulator scenarios. Each user sees and edits only their own; shared ones are readable by link.
