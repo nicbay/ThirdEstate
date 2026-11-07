@@ -79,7 +79,7 @@ X has no free read API, and paid options (the official pay-per-use API, reseller
 2. **Claude web search on x.com** (Anthropic budget). For the day's biggest stories (≥ 3 outlets, each story at most once a day), one Haiku request runs the server-side `web_search_20250305` tool, limited to x.com and twitter.com with `max_uses: 1`. Status URLs are taken straight from the search results and kept only if the author is an MP and the post is under 72 h old. The story is offered to the rating step as a candidate, and Haiku confirms or rejects it. Search engines index only part of X, often late, so expect few hits.
    - Cost: $0.01 per search plus the result tokens, about $0.013 a search in total. That is roughly $4/month at the default `X_SEARCHES_PER_DAY=10`, with at most `X_SEARCHES_PER_RUN=2` per run.
    - Guards: a separate share, `X_MONTHLY_USD=4` (ledger job `feed-x`), and the run stops when less than $1 is left on the shared cap. The shared client now counts web-search fees (`usage.server_tool_use.web_search_requests` × $0.01) and includes them in its worst-case check before each call.
-   - **Not yet tested live** (no key locally): the first run will show whether Haiku 5.5 accepts the web search tool. If it doesn't, the step logs the error and stops, and the article route keeps working.
+   - **Tested live on 2026-11-07:** Haiku 5.5 accepts `web_search_20250305`. Two searches returned 10 and 11 results (17 x.com post URLs) and 1 recent MP post, which the article route had already found. The cost was $0.0119 and $0.0115 per search. The yield is low, as expected: judge after a week from `x-search.json`, and set `X_SEARCHES_PER_DAY=0` to stop it.
 
 `data/feed/x-search.json` logs every search (query, results, MP posts found, cost) and the articles already scanned, so the yield of each route can be judged after a few days. Without `ANTHROPIC_API_KEY`, only route 1 runs. `node scripts/sync-x-sample.mjs --urls <x.com post URL>…` tests the oEmbed step by hand.
 
@@ -102,7 +102,7 @@ On 2026-11-07, of 178 posts in the window, 22–29 matched surely, about 60 were
 
 ## Rating (Claude Haiku 5.5)
 
-Calls go through the shared client `scripts/lib/claude.mjs`. The model is `claude-haiku-5-5` only, with a hard **$15/month cap across all jobs** and the ledger in `data/usage/`. Requests use `output_config: { effort: "low", format: { type: "json_schema", … } }` (structured output) and carry **8 posts per request**. The prompt and schema are `SYSTEM` and `ratingSchema` in `scripts/rate-reactions.mjs`, prompt version **`feed-rating-v1`**. The system prompt is written in French, which matches the posts.
+Calls go through the shared client `scripts/lib/claude.mjs`. The model is `claude-haiku-5-5` only, with a hard **$15/month cap across all jobs** and the ledger in `data/usage/`. Requests use `output_config: { effort: "low", format: { type: "json_schema", … } }` (structured output) and carry **8 posts per request**. The prompt and schema are `SYSTEM` and `ratingSchema` in `scripts/rate-reactions.mjs`, prompt version **`feed-rating-v2`** (v1 was used for the first 86 ratings on 2026-11-07, and those keep their label). The system prompt is written in French, which matches the posts.
 
 Per post the model returns:
 
@@ -136,21 +136,17 @@ When any guard trips, the run stops cleanly. Unrated posts wait for the next run
 
 ## Budget math
 
-Measured on the 2026-11-07 dry run: a batch of 8 posts is about 18,000 characters of user prompt plus a 3,400-character system prompt, so roughly **6,000 input tokens** at ~3.5 characters per French token. The output is about 8 × 220 tokens of JSON plus a little low-effort thinking, roughly **2,500 output tokens**.
+**Measured** on the first live run (2026-11-07, GitHub Actions): 86 posts rated in 12 requests (11 batches of 8 and one of 6) for **$0.0327**, so **≈ $0.00038 per post** and ≈ $0.003 per batch. That is about 1.6× the dry-run estimate of $0.00024, mostly because output with low-effort thinking is longer than the JSON alone. One batch hit `max_tokens` and was retried, so `max_tokens` is now 3,000 + 600 per post. The X web search costs ≈ **$0.012 per search** ($0.01 fee plus result tokens). Ledger after the run: $0.056 spent of $15.
 
-At Haiku 5.5 prices ($0.10 / M input, $0.50 / M output):
+At Haiku 5.5 prices ($0.10 / M input, $0.50 / M output, $10 / 1,000 searches):
 
-- per batch: 6,000 × $0.10/M + 2,500 × $0.50/M ≈ **$0.0019**
-- per post: ≈ **$0.00024**
+| Scenario | Rated posts/day | Rating $/month | X search $/month | Total |
+|---|---|---|---|---|
+| Measured volume (~55 new posts/day, ~50 % matched) | ~28 | ~$0.32 | ~$3.60 (10 searches/day) | **~$4** |
+| socials.json triples the accounts and the campaign doubles activity | ~170 | ~$1.95 | ~$3.60 | ~$5.5 |
+| Ceiling | 1,440 (120/run × 12 runs) | stopped at the $6 feed share | stopped at the $4 X share | ≤ $10 |
 
-| Scenario | Rated posts/day | $/day | $/month |
-|---|---|---|---|
-| Measured now (~55 posts/day, ~50 % matched) | ~28 | ~$0.007 | **~$0.20** |
-| socials.json triples the accounts and the campaign doubles activity | ~170 | ~$0.04 | ~$1.25 |
-| X sample web search (default 10 searches a day) | — | ~$0.13 | ~$4, capped by `X_MONTHLY_USD` |
-| Hard ceiling from the per-run cap (120 × 12 runs) | 1,440 | $0.35 | stopped at the $6 feed share |
-
-These are estimates: no API key was available when this was written, so no live call has been measured. Real spend is in `data/usage/claude-YYYY-MM.json` → `byJob.feed`, and once the first runs land it is worth checking against the table.
+The X search is most of the cost. Turning it off (`X_SEARCHES_PER_DAY=0`) brings the feed down to well under $1/month at today's volume. The first run rated a 72-hour backlog of 86 posts, while a normal run rates only the few posts that are new.
 
 ## Output schema
 
@@ -184,7 +180,7 @@ These are estimates: no API key was available when this was written, so no live 
         "lean": { "score": -0.7, "rationale_fr": "…", "rationale_en": "…" },
         "populism": { "score": 0.4, "markers": ["anti_elites"], "rationale_fr": "…", "rationale_en": "…" },
         "check": null | { "claim": "…", "why_fr": "…", "why_en": "…", "sources": [{ "title", "url" }] },
-        "model": "claude-haiku-5-5", "promptVersion": "feed-rating-v1", "ratedAt": "…"
+        "model": "claude-haiku-5-5", "promptVersion": "feed-rating-v2", "ratedAt": "…"
       }
     }],
     "stats": { "reactions", "rated", "leanAvg", "left", "right", "checks" }
