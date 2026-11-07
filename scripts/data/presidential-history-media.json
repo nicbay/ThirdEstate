@@ -1,0 +1,1283 @@
+[
+ {
+  "round": "1848-t1",
+  "media": null,
+  "searched": "Not reached: Gallica began serving an ALTCHA/Cloudflare bot-verification page ('Je ne suis pas un robot') before the 1848 search (Le Temps did not exist in 1848; Journal des débats / Le Constitutionnel / Le Siècle planned). Gallica blocks curl/node outright (HTTP 403 Cloudflare)."
+ },
+ {
+  "round": "1873-t1",
+  "media": null,
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1873-05-24; candidate issue arks (date verified from Issues XML only): bpt6k225389b 1873-05-25; bpt6k2253908 + bpt6k225391n 1873-05-26 (two arks); bpt6k2253921 1873-05-27. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "leads": [
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k225389b",
+    "date": "1873-05-25",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k2253908",
+    "date": "1873-05-26",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k225391n",
+    "date": "1873-05-26",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k2253921",
+    "date": "1873-05-27",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   }
+  ]
+ },
+ {
+  "round": "1879-t1",
+  "media": null,
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1879-01-30; candidate issue arks (date verified from Issues XML only): bpt6k227542g 1879-01-31; bpt6k227543v 1879-02-01; bpt6k2275447 1879-02-02. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "leads": [
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k227542g",
+    "date": "1879-01-31",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k227543v",
+    "date": "1879-02-01",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k2275447",
+    "date": "1879-02-02",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   }
+  ]
+ },
+ {
+  "round": "1885-t1",
+  "media": null,
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1885-12-28; candidate issue arks (date verified from Issues XML only): bpt6k2308946 1885-12-29; bpt6k230895k 1885-12-30; bpt6k230896z 1885-12-31. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "leads": [
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k2308946",
+    "date": "1885-12-29",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k230895k",
+    "date": "1885-12-30",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k230896z",
+    "date": "1885-12-31",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   }
+  ]
+ },
+ {
+  "round": "1887-t2",
+  "media": null,
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1887-12-03; candidate issue arks (date verified from Issues XML only): bpt6k231604r 1887-12-04; bpt6k2316054 1887-12-05; bpt6k231606h 1887-12-06. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "leads": [
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k231604r",
+    "date": "1887-12-04",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k2316054",
+    "date": "1887-12-05",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k231606h",
+    "date": "1887-12-06",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   }
+  ]
+ },
+ {
+  "round": "1894-t1",
+  "media": null,
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1894-06-27; candidate issue arks (date verified from Issues XML only): bpt6k2341431 1894-06-28; bpt6k234144d 1894-06-29; bpt6k234145s 1894-06-30. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "leads": [
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k2341431",
+    "date": "1894-06-28",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k234144d",
+    "date": "1894-06-29",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k234145s",
+    "date": "1894-06-30",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   }
+  ]
+ },
+ {
+  "round": "1895-t1",
+  "media": null,
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1895-01-17; candidate issue arks (date verified from Issues XML only): bpt6k234357h 1895-01-18; bpt6k234358w 1895-01-19; bpt6k2343598 1895-01-20. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "leads": [
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k234357h",
+    "date": "1895-01-18",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k234358w",
+    "date": "1895-01-19",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k2343598",
+    "date": "1895-01-20",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   }
+  ]
+ },
+ {
+  "round": "1899-t1",
+  "media": null,
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1899-02-18; candidate issue arks (date verified from Issues XML only): bpt6k235922q 1899-02-19; bpt6k2359233 1899-02-20; bpt6k235924g 1899-02-21. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "leads": [
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k235922q",
+    "date": "1899-02-19",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k2359233",
+    "date": "1899-02-20",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k235924g",
+    "date": "1899-02-21",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   }
+  ]
+ },
+ {
+  "round": "1906-t1",
+  "media": null,
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1906-01-17; candidate issue arks (date verified from Issues XML only): bpt6k2385017 1906-01-18; bpt6k238502m 1906-01-19; bpt6k2385030 1906-01-20. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "leads": [
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k2385017",
+    "date": "1906-01-18",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k238502m",
+    "date": "1906-01-19",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k2385030",
+    "date": "1906-01-20",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   }
+  ]
+ },
+ {
+  "round": "1913-t2",
+  "media": null,
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1913-01-17; candidate issue arks (date verified from Issues XML only): bpt6k241105t 1913-01-18; bpt6k2411066 1913-01-19; bpt6k241107k 1913-01-20. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "leads": [
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k241105t",
+    "date": "1913-01-18",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k2411066",
+    "date": "1913-01-19",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k241107k",
+    "date": "1913-01-20",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   }
+  ]
+ },
+ {
+  "round": "1920-01-t1",
+  "media": null,
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1920-01-17; candidate issue arks (date verified from Issues XML only): bpt6k2438948 1920-01-18; bpt6k243895n 1920-01-19; bpt6k2438961 1920-01-20. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "leads": [
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k2438948",
+    "date": "1920-01-18",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k243895n",
+    "date": "1920-01-19",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k2438961",
+    "date": "1920-01-20",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   }
+  ]
+ },
+ {
+  "round": "1920-09-t1",
+  "media": null,
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1920-09-23; candidate issue arks (date verified from Issues XML only): bpt6k244144n 1920-09-24; bpt6k2441451 1920-09-25; bpt6k244146d 1920-09-26 (also two issues dated 09-23: bpt6k2441438, bpt6k244142w). OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "leads": [
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k244144n",
+    "date": "1920-09-24",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k2441451",
+    "date": "1920-09-25",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k244146d",
+    "date": "1920-09-26",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   }
+  ]
+ },
+ {
+  "round": "1924-t1",
+  "media": null,
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1924-06-13; candidate issue arks (date verified from Issues XML only): bpt6k245501n 1924-06-14; bpt6k2455021 1924-06-15; bpt6k245503d 1924-06-16. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "leads": [
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k245501n",
+    "date": "1924-06-14",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k2455021",
+    "date": "1924-06-15",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "publisher": "Le Temps",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k245503d",
+    "date": "1924-06-16",
+    "status": "issue date verified (Gallica Issues service); content NOT verified"
+   }
+  ]
+ },
+ {
+  "round": "1931-t2",
+  "media": {
+   "type": "newspaper",
+   "provider": "Gallica (BnF)",
+   "url": "https://gallica.bnf.fr/ark:/12148/bpt6k248338j/f1.item",
+   "embed": null,
+   "title": "Le Temps",
+   "publisher": "Le Temps",
+   "date": "1931-05-15",
+   "evidence": "OAIRecord dc:date 1931-05-15 (Numéro 25466); f1.item title 'Le Temps | 1931-05-15'. Gallica ContentSearch page 1: \"L'Assemblée nationale a élu, hier, M. Paul Doumer, président de la République\" (headline 'L'ÉLECTION DE M. PAUL DOUMER à la présidence de la République').",
+   "verifiedAt": "2026-11-07"
+  },
+  "alternatives": [
+   {
+    "type": "newsreel",
+    "provider": "British Movietone (YouTube)",
+    "url": "https://www.youtube.com/watch?v=McKqwAUg7oc",
+    "embed": "https://www.youtube-nocookie.com/embed/McKqwAUg7oc",
+    "title": "President-Elect Of France Poses",
+    "publisher": "British Movietone",
+    "date": "1931-05-18",
+    "evidence": "FALLBACK newsreel (no radio found). oEmbed 200, author 'British Movietone' (AP Archive official channel); description: '(18 May 1931) M Doumer, who secured nomination in competition with M Briand, makes his screen debut.' Shows the president-elect days after the vote; short English item, not a French announcement of the result.",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "INA ina.fr search (audio+video: 'Doumer', 'Paul Doumer', 'élection Doumer', 'Doumer 1931', 'Doumer élu', 'Versailles 1931') - only unrelated 1930-31 newsreels and 1967 radio; Gallica SRU sound recordings 'Doumer' = 0 records; YouTube ('Paul Doumer élu président 1931', 'Doumer elected president 1931 Versailles', 'élection Paul Doumer 1931 actualités Gaumont', ArchivesRadio) - only British Pathé/Movietone items on his June 1931 installation (dsh3lz2Vo3o, ihuVuDwax3k) and this president-elect item. No radio recording of the 13 May 1931 Congress found. Le Temps dated 14 May 1931 (bpt6k2483375) went to press before the result."
+ },
+ {
+  "round": "1932-t1",
+  "media": {
+   "type": "newsreel",
+   "provider": "British Pathé (YouTube)",
+   "url": "https://www.youtube.com/watch?v=HSjgTN90WxI",
+   "embed": "https://www.youtube-nocookie.com/embed/HSjgTN90WxI",
+   "title": "France's New President (1932)",
+   "publisher": "British Pathé",
+   "date": null,
+   "evidence": "FALLBACK newsreel (no radio found). oEmbed 200, author 'British Pathé' (official channel); description full title: 'France's New President. 61 year-old M. Albert Lebrun - of peasant stock from Lorraine - elected to succeed late M. Paul Doumer.' Exact release date not stated (May 1932).",
+   "verifiedAt": "2026-11-07"
+  },
+  "alternatives": [
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k248780g/f1.item",
+    "embed": null,
+    "title": "Le Temps",
+    "publisher": "Le Temps",
+    "date": "1932-05-12",
+    "evidence": "OAIRecord dc:date 1932-05-12 (Numéro 25827); f1.item title 'Le Temps | 1932-05-12'. ContentSearch page 1: 'Majorité absolue 389 Ont obtenu MM. ALBERT LEBRUN 633 suffrages' (OCR 'C33'); page 2: 'Lebrun est donc élu par le consentement de tous les partis'. (Le Temps is an evening paper dated the following day; the issue dated 11 May, bpt6k248779j, went to press before the vote.)",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "newsreel",
+    "provider": "ArchivesRadio (YouTube)",
+    "url": "https://www.youtube.com/watch?v=5AoKUP19-jE",
+    "embed": "https://www.youtube-nocookie.com/embed/5AoKUP19-jE",
+    "title": "Pathe-Journal - Election du Président de la République française, Albert Lebrun (10 mai 1932)",
+    "publisher": "ArchivesRadio",
+    "date": "1932-05-10",
+    "evidence": "French Pathé-Journal newsreel. oEmbed 200, author 'ArchivesRadio' (private archive channel = reupload, not Pathé/INA official); description: 'Le 10 mai 1932, après l'assassinat de Paul Doumer, il est élu président de la République'.",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "INA ina.fr search (audio+video: 'Lebrun', 'Albert Lebrun', 'élection Lebrun', 'Lebrun élu', 'Lebrun 1932', 'Versailles 1932') - no 1932 election audio or newsreel online; Gallica SRU sound recordings 'Lebrun' (only unrelated records); YouTube ('Albert Lebrun élu président 1932', ArchivesRadio) - British Pathé (chosen), ArchivesRadio Pathé-Journal copy, Archivio Luce VWy9ErNfplE (Italian Giornale Luce of 20/05/1932)."
+ },
+ {
+  "round": "1939-t1",
+  "media": {
+   "type": "newsreel",
+   "provider": "British Pathé (YouTube)",
+   "url": "https://www.youtube.com/watch?v=QTYJH6KDCwE",
+   "embed": "https://www.youtube-nocookie.com/embed/QTYJH6KDCwE",
+   "title": "France Aka M Lebrun Re-Elected (1939)",
+   "publisher": "British Pathé",
+   "date": null,
+   "evidence": "FALLBACK newsreel (no radio found). oEmbed 200, author 'British Pathé' (official channel); description: 'politicians cheering and clapping inside the National Assembly building as the announcement is made of the President Albert Lebrun re-election'. Exact release date not stated (April 1939).",
+   "verifiedAt": "2026-11-07"
+  },
+  "alternatives": [
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k263899n/f1.item",
+    "embed": null,
+    "title": "Le Temps",
+    "publisher": "Le Temps",
+    "date": "1939-04-07",
+    "evidence": "OAIRecord dc:date 1939-04-07 (Numéro 28330); f1.item title 'Le Temps | 1939-04-07'. ContentSearch page 1 headline: 'LA RÉÉLECTION DE M. ALBERT LEBRUN à la présidence de la République'. (Issue dated 6 Apr, bpt6k2638988, predates the vote.)",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "newsreel",
+    "provider": "British Movietone (YouTube)",
+    "url": "https://www.youtube.com/watch?v=RMsv9F88ufI",
+    "embed": "https://www.youtube-nocookie.com/embed/RMsv9F88ufI",
+    "title": "President Lebrun Re-Elected",
+    "publisher": "British Movietone",
+    "date": "1939-04-13",
+    "evidence": "oEmbed 200, author 'British Movietone' (AP Archive official channel); description: '(13 Apr 1939) He is re-elected for a second term as President of France.'",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "INA ina.fr search (audio+video: 'Lebrun', 'Albert Lebrun réélu', 'réélection Lebrun', 'président Lebrun', 'élection 1939', 'Versailles 1939') - only a 1939 Montélimar speech (phd85007927), nothing on the 5 Apr election; Gallica SRU sound recordings; YouTube ('Lebrun réélu 1939 président', 'Pathé journal 1939 élection président Lebrun Versailles') - British Pathé, British Movietone, Reuters SQWaTu_SKXc (British Paramount newsreel, 10 Apr 1939) found."
+ },
+ {
+  "round": "1947-t1",
+  "media": {
+   "type": "radio",
+   "provider": "ina.fr",
+   "url": "https://www.ina.fr/ina-eclaire-actu/audio/phd85000595/election-du-premier-president-de-la-iveme-republique",
+   "embed": null,
+   "title": "Election du premier président de la IVème République",
+   "publisher": "INA (radio reportage by Pierre Crenesse)",
+   "date": "1947-01-16",
+   "evidence": "ina.fr page 200, <title>/og:title 'Election du premier président de la IVème République | INA', JSON-LD uploadDate 1947-01-16, duration 35:26, description: 'Reportage de Pierre CRENESSE lors du premier congrès de la 4e république, à Versailles ... C'est Vincent Auriol ... qui est élu.' JW player present on page, no login wall seen.",
+   "verifiedAt": "2026-11-07"
+  },
+  "alternatives": [
+   {
+    "type": "newsreel",
+    "provider": "ina.fr",
+    "url": "https://www.ina.fr/ina-eclaire-actu/video/afe85002298/l-election-du-president-de-la-republique",
+    "embed": null,
+    "title": "L'élection du président de la République",
+    "publisher": "Les Actualités Françaises (INA)",
+    "date": "1947-01-23",
+    "evidence": "ina.fr page 200, og:title \"L'élection du président de la République | INA\", JSON-LD uploadDate 1947-01-23, 1:53; description: 'Arrivée à Versailles du nouveau président de la IVème République Vincent AURIOL, investi par Jacques DUCLOS'.",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k47390500/f1.item",
+    "embed": null,
+    "title": "L'Humanité : journal socialiste quotidien",
+    "publisher": "L'Humanité",
+    "date": "1947-01-17",
+    "evidence": "OAIRecord dc:date 1947-01-17; f1.item title \"L'Humanité : journal socialiste quotidien | 1947-01-17\". ContentSearch page 1 headline: 'VINCENT AURIOL EST ÉLU Président de la République par 452 voix sur 883 votants'. (Le Figaro of 17 Jan 1947, bd6t564182m, page 1 also has 'Vincent Auriol (soc.) 452 voix'.)",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "INA ina.fr search audio ('élection Vincent Auriol', 'Auriol élu', 'Vincent Auriol', 'élection du président de la République'): 2 radio hits - phd85000595 (chosen) and phd85002898 'Election de Vincent Auriol à la présidence de la République' (16/01/1947, 6:02, Auriol thanks Blum and Parliament after being elected; https://www.ina.fr/ina-eclaire-actu/audio/phd85002898/election-de-vincent-auriol-a-la-presidence-de-la-republique, page verified 200). Video: AFE afe85002298. YouTube: RoisPresidents reupload ATqzzCbA6I0, British Pathé dXObyl3-a1I, Reuters NBj8dgiPYIE (not used)."
+ },
+ {
+  "round": "1953-t13",
+  "media": {
+   "type": "newsreel",
+   "provider": "ina.fr",
+   "url": "https://www.ina.fr/ina-eclaire-actu/video/afe85005407/rene-coty-elu-president",
+   "embed": null,
+   "title": "René Coty élu Président",
+   "publisher": "Les Actualités Françaises (INA)",
+   "date": "1953-12-24",
+   "evidence": "FALLBACK newsreel (no radio of the 23 Dec result found). ina.fr page 200, og:title 'René Coty élu Président | INA', JSON-LD uploadDate 1953-12-24, 1:46; description: 'Reportage sur l'élection du Président René COTY'.",
+   "verifiedAt": "2026-11-07"
+  },
+  "alternatives": [
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "url": "https://gallica.bnf.fr/ark:/12148/bd6t571578z/f1.item",
+    "embed": null,
+    "title": "Figaro : journal non politique",
+    "publisher": "Le Figaro",
+    "date": "1953-12-24",
+    "evidence": "OAIRecord dc:date 1953-12-24; f1.item title 'Figaro : journal non politique | 1953-12-24'. ContentSearch page 1 (OCR): 'RENÉ COTY A ETC ELU président de la République' (OCR 'ETC' = ÉTÉ), elected at the 13th ballot.",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "newsreel",
+    "provider": "British Pathé (YouTube)",
+    "url": "https://www.youtube.com/watch?v=n-tWFSWtayA",
+    "embed": "https://www.youtube-nocookie.com/embed/n-tWFSWtayA",
+    "title": "New French President  (1953)",
+    "publisher": "British Pathé",
+    "date": null,
+    "evidence": "oEmbed 200, author 'British Pathé' (official channel); description: 'Mr Andre Le Troquer, President of the Congress announces results and election of Mr Rene Coty. Members stand up and loudly applaud'.",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "INA ina.fr search audio ('René Coty', 'Coty élu', 'Coty élu président', 'élection présidentielle 1953', 'décembre 1953', 'treizième tour', 'Paris vous parle Coty', 'Coty 23 décembre') - only later Coty speeches (1956-59), no radio of the election; video: AFE afe85005407 (chosen), afe85005406 'Le congrès de Versailles' (24/12/1953), afe03004257 'Discours de René Coty après son élection' (unused rushes), JT 20H items of 16/17/19/21/22 Dec 1953 (caf97513514, caf89036803, caf97513517, caf89036805, caf97513523) but none for 23 Dec. Gallica SRU sound 'Coty' (1 unrelated record). YouTube: RoisPresidents reupload jz7UxX06SAU (AFE extract), British Pathé 9PCqLH6dWgQ and n-tWFSWtayA."
+ },
+ {
+  "round": "1958-t1",
+  "media": {
+   "type": "newsreel",
+   "provider": "ina.fr",
+   "url": "https://www.ina.fr/ina-eclaire-actu/video/afe85008136/charles-de-gaulle-president-de-la-republique",
+   "embed": null,
+   "title": "Charles de Gaulle Président de la République",
+   "publisher": "Les Actualités Françaises (INA)",
+   "date": "1958-12-24",
+   "evidence": "ina.fr page fetched 200, <title> \"Charles de Gaulle Président de la République | INA\"; page shows \"Journal Les Actualités Françaises - 24.12.1958 - 00:41 - vidéo\" and summary \"Election du premier Président de la Cinquième République par le collège des grands électeurs\". No TV/JT item found; cinema newsreel used.",
+   "verifiedAt": "2026-11-07"
+  },
+  "alternatives": [
+   {
+    "type": "newsreel",
+    "provider": "British Movietone (YouTube)",
+    "url": "https://www.youtube.com/watch?v=0qXcSZdf3y0",
+    "embed": "https://www.youtube-nocookie.com/embed/0qXcSZdf3y0",
+    "title": "France: Charles de Gaulle Elected - 1958 | Today in History | 21 Dec 16",
+    "publisher": "British Movietone",
+    "date": null,
+    "evidence": "oEmbed 200, playableInEmbed true; description: \"On December 21, 1958, Charles de Gaulle was elected the first president of France's Fifth Republic.\" Not INA (official AP/Movietone archive channel).",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "YouTube: \"INA 21 décembre 1958 de Gaulle élu président\", \"De Gaulle élu président collège électoral 1958 actualités françaises\", \"Les Actualités Françaises du 24/12/1958\", \"élection présidentielle 1958 grands électeurs INA\"; ina.fr search \"de gaulle élu président 1958\" → ina-eclaire-actu article \"Charles de Gaulle, le 1er Président de la Ve République\" embedding AFE85008136."
+ },
+ {
+  "round": "1965-t1",
+  "media": {
+   "type": "tv",
+   "provider": "INA (YouTube)",
+   "url": "https://www.youtube.com/watch?v=k8_qVgr9Q7c",
+   "embed": "https://www.youtube-nocookie.com/embed/k8_qVgr9Q7c",
+   "title": "Election présidentielle 1965 : la grande nuit du premier tour | Archive INA",
+   "publisher": "INA Politique",
+   "date": "1965-12-08",
+   "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; description: \"08/12/1965 Reportage sur le premier tour de l'élection présidentielle de 1965\" — journalists at the ministère de l'Intérieur, crowd before a TV screen showing the soirée électorale, Mitterrand declaration. (Date is the Actualités Françaises newsreel issue.)",
+   "verifiedAt": "2026-11-07"
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "INA (YouTube)",
+    "url": "https://www.youtube.com/watch?v=rvApHXLuxmA",
+    "embed": "https://www.youtube-nocookie.com/embed/rvApHXLuxmA",
+    "title": "1er tour des présidentielles : Les annonces des résultats de 1965 à 2017 | Archive INA",
+    "publisher": "INA Politique",
+    "date": null,
+    "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; official INA compilation of 20h first-round announcements; description chapter \"00:00 1965 : Annonce des résultats du 1er tour des élections présidentielles\" — URL/embed start at that chapter.",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "YouTube: \"INA élection présidentielle 1965 premier tour résultats\", \"INA 5 décembre 1965\"; INA Politique/INA Histoire results checked."
+ },
+ {
+  "round": "1965-t2",
+  "media": {
+   "type": "tv",
+   "provider": "INA (YouTube)",
+   "url": "https://www.youtube.com/watch?v=YfzncBfAj4M",
+   "embed": "https://www.youtube-nocookie.com/embed/YfzncBfAj4M?start=0",
+   "title": "2nd tour des présidentielles : Les annonces des résultats de 1965 à 2017 | Archive INA",
+   "publisher": "INA Politique",
+   "date": null,
+   "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; INA compilation of second-round announcements, description chapter \"00:00 1965 : Annonce des résultats du 2nd tour des élections présidentielles\" (segment 00:00–01:46).",
+   "verifiedAt": "2026-11-07",
+   "start": 0
+  },
+  "alternatives": [
+   {
+    "type": "newsreel",
+    "provider": "INA (YouTube)",
+    "url": "https://www.youtube.com/watch?v=MBv7Koj3aOs",
+    "embed": "https://www.youtube-nocookie.com/embed/MBv7Koj3aOs",
+    "title": "De Gaulle réélu avec 55 % des suffrages : Les Actualités Françaises du 22/12/1965",
+    "publisher": "INA Histoire",
+    "date": "1965-12-22",
+    "evidence": "oEmbed 200 (author INA Histoire), playableInEmbed true; description: \"Au terme du second tour, le général de Gaulle l'emporte avec 55 % des voix. Soirée électorale au ministère de l'Intérieur…\" (full 10-min newsreel issue; result is the first item).",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "YouTube: \"INA 19 décembre 1965 de Gaulle réélu second tour\", \"soirée électorale 19 décembre 1965 résultats second tour\", \"INA élection présidentielle 1965 de Gaulle réélu résultats second tour télévision\". No standalone INA 19/12/1965 TV clip found."
+ },
+ {
+  "round": "1969-t1",
+  "media": {
+   "type": "tv",
+   "provider": "INA (YouTube)",
+   "url": "https://www.youtube.com/watch?v=rvApHXLuxmA&t=75s",
+   "embed": "https://www.youtube-nocookie.com/embed/rvApHXLuxmA?start=75",
+   "title": "1er tour des présidentielles : Les annonces des résultats de 1965 à 2017 | Archive INA",
+   "publisher": "INA Politique",
+   "date": null,
+   "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; official INA compilation of 20h first-round announcements; description chapter \"01:15 1969 : Annonce des résultats du 1er tour des élections présidentielles\" — URL/embed start at that chapter.",
+   "verifiedAt": "2026-11-07",
+   "start": 75
+  },
+  "searched": "YouTube: \"INA 1er juin 1969 premier tour présidentielle résultats\", \"élection présidentielle 1969 premier tour soirée électorale Archive INA\", \"1969 Pompidou Poher ballottage premier tour résultats télévision\", \"JT 20H émission du 1 juin 1969\"; ina.fr search \"premier tour 1969 présidentielle\". Only the INA compilation segment found (other hits are fan reuploads)."
+ },
+ {
+  "round": "1969-t2",
+  "media": {
+   "type": "tv",
+   "provider": "INA (YouTube)",
+   "url": "https://www.youtube.com/watch?v=YfzncBfAj4M&t=106s",
+   "embed": "https://www.youtube-nocookie.com/embed/YfzncBfAj4M?start=106",
+   "title": "2nd tour des présidentielles : Les annonces des résultats de 1965 à 2017 | Archive INA",
+   "publisher": "INA Politique",
+   "date": null,
+   "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; official INA compilation of second-round announcements; description chapter \"01:46 1969 : Annonce des résultats du 2nd tour des élections présidentielles\" — URL/embed start at that chapter.",
+   "verifiedAt": "2026-11-07",
+   "start": 106
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "INA (YouTube)",
+    "url": "https://www.youtube.com/watch?v=KkOWaDydH_M",
+    "embed": "https://www.youtube-nocookie.com/embed/KkOWaDydH_M",
+    "title": "ELECTIONS PRESIDENTIELLES : DECLARATION ALAIN POHER",
+    "publisher": "INA Politique",
+    "date": "1969-06-16",
+    "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; description: \"16 juin 1969 Déclaration d'ALAIN POHER… au lendemain de l'élection de Georges Pompidou\" — loser's concession, not the announcement itself.",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "YouTube: \"INA 15 juin 1969 Pompidou élu\", \"Pompidou Poher second tour 1969 soirée électorale\", \"Soirée électorale élection présidentielle 1969 ORTF Pompidou\", \"JT 20H émission du 16 juin 1969\"; ina.fr search \"pompidou élu 1969\". British Pathé MNFGa0Nl5x0 (election-night newsreel, no INA) also exists."
+ },
+ {
+  "round": "1974-t1",
+  "media": {
+   "type": "tv",
+   "provider": "INA (YouTube)",
+   "url": "https://www.youtube.com/watch?v=rvApHXLuxmA&t=148s",
+   "embed": "https://www.youtube-nocookie.com/embed/rvApHXLuxmA?start=148",
+   "title": "1er tour des présidentielles : Les annonces des résultats de 1965 à 2017 | Archive INA",
+   "publisher": "INA Politique",
+   "date": null,
+   "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; official INA compilation of 20h first-round announcements; description chapter \"02:28 1974 : Annonce des résultats du 1er tour des élections présidentielles\" — URL/embed start at that chapter.",
+   "verifiedAt": "2026-11-07",
+   "start": 148
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "INA (YouTube)",
+    "url": "https://www.youtube.com/watch?v=KNQJSWbPg2s",
+    "embed": "https://www.youtube-nocookie.com/embed/KNQJSWbPg2s",
+    "title": "JT 20H : émission du 6 mai 1974",
+    "publisher": "INA Actu",
+    "date": "1974-05-06",
+    "evidence": "oEmbed 200 (author INA Actu), playableInEmbed true; description \"6 mai 1974\" — full ORTF 20h news the day after the first round (39 min); not the election-night broadcast itself.",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "YouTube: \"1974 premier tour présidentielle résultats Mitterrand Giscard 5 mai INA\", \"Soirée électorale élection présidentielle 1er tour 1974 ORTF\", \"JT 20H émission du 5 mai 1974\" (only JT 13H of 5 May exists on INA Actu)."
+ },
+ {
+  "round": "1974-t2",
+  "media": {
+   "type": "tv",
+   "provider": "INA (YouTube)",
+   "url": "https://www.youtube.com/watch?v=mY8267pz_Bw",
+   "embed": "https://www.youtube-nocookie.com/embed/mY8267pz_Bw",
+   "title": "1974 : Valéry Giscard d'Estaing remporte l'élection présidentielle | Archive INA",
+   "publisher": "INA Politique",
+   "date": "1974-05-19",
+   "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; description: \"Soirée électorale : élection présidentielle 2ème tour | ORTF … Michel Pericard … confirme les résultats du deuxième tour … remportée par Valéry Giscard d'Estaing avec 50,81% des suffrages.\"",
+   "verifiedAt": "2026-11-07"
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "INA (YouTube)",
+    "url": "https://www.youtube.com/watch?v=YfzncBfAj4M&t=328s",
+    "embed": "https://www.youtube-nocookie.com/embed/YfzncBfAj4M?start=328",
+    "title": "2nd tour des présidentielles : Les annonces des résultats de 1965 à 2017 | Archive INA",
+    "publisher": "INA Politique",
+    "date": null,
+    "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; official INA compilation of second-round announcements; description chapter \"05:28 1974 : Annonce des résultats du 2nd tour des élections présidentielles\" — URL/embed start at that chapter.",
+    "verifiedAt": "2026-11-07",
+    "start": 328
+   }
+  ],
+  "searched": "YouTube: \"19 mai 1974 Giscard d'Estaing élu résultats INA\", \"JT 20H émission du 19 mai 1974\"."
+ },
+ {
+  "round": "1981-t1",
+  "media": {
+   "type": "tv",
+   "provider": "INA (YouTube)",
+   "url": "https://www.youtube.com/watch?v=rc9EpOZPgKo",
+   "embed": "https://www.youtube-nocookie.com/embed/rc9EpOZPgKo",
+   "title": "JA2 20H : EMISSION DU 26 AVRIL 1981",
+   "publisher": "INA Actu",
+   "date": "1981-04-26",
+   "evidence": "oEmbed 200 (author INA Actu), playableInEmbed true; description \"26 avril 1981\" — Antenne 2 20h broadcast on first-round election night (9:32).",
+   "verifiedAt": "2026-11-07"
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "INA (YouTube)",
+    "url": "https://www.youtube.com/watch?v=rvApHXLuxmA&t=227s",
+    "embed": "https://www.youtube-nocookie.com/embed/rvApHXLuxmA?start=227",
+    "title": "1er tour des présidentielles : Les annonces des résultats de 1965 à 2017 | Archive INA",
+    "publisher": "INA Politique",
+    "date": null,
+    "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; official INA compilation of 20h first-round announcements; description chapter \"03:47 1981 : Annonce des résultats du 1er tour des élections présidentielles\" — URL/embed start at that chapter.",
+    "verifiedAt": "2026-11-07",
+    "start": 227
+   }
+  ],
+  "searched": "YouTube: \"26 avril 1981 premier tour résultats INA\"; also found INA Politique bb_kwMP99vg (27/04/1981 results table, day after)."
+ },
+ {
+  "round": "1981-t2",
+  "media": {
+   "type": "tv",
+   "provider": "INA (YouTube)",
+   "url": "https://www.youtube.com/watch?v=mkJ6_L47MWo",
+   "embed": "https://www.youtube-nocookie.com/embed/mkJ6_L47MWo",
+   "title": "10 mai 1981 : Soirée électorale, élection présidentielle 2ème tour | Archive INA",
+   "publisher": "INA Politique",
+   "date": "1981-05-10",
+   "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; description: \"Soirée Électorale | Antenne 2 Europe 1 | 10/05/1981 … A 20h, le visage de François Mitterrand apparaît sur les écrans.\" (full 4h26 broadcast).",
+   "verifiedAt": "2026-11-07"
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "INA (YouTube)",
+    "url": "https://www.youtube.com/watch?v=YfzncBfAj4M&t=387s",
+    "embed": "https://www.youtube-nocookie.com/embed/YfzncBfAj4M?start=387",
+    "title": "2nd tour des présidentielles : Les annonces des résultats de 1965 à 2017 | Archive INA",
+    "publisher": "INA Politique",
+    "date": null,
+    "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; official INA compilation of second-round announcements; description chapter \"06:27 1981 : Annonce des résultats du 2nd tour des élections présidentielles\" — URL/embed start at that chapter.",
+    "verifiedAt": "2026-11-07",
+    "start": 387
+   }
+  ],
+  "searched": "YouTube: \"10 mai 1981 20h annonce résultat Mitterrand INA\", \"TF1 20H 10 mai 1981 élection\"."
+ },
+ {
+  "round": "1988-t1",
+  "media": {
+   "type": "tv",
+   "provider": "INA (YouTube)",
+   "url": "https://www.youtube.com/watch?v=u9XJOLf47kI",
+   "embed": "https://www.youtube-nocookie.com/embed/u9XJOLf47kI",
+   "title": "JA2 20H : EMISSION DU 24 AVRIL 1988",
+   "publisher": "INA Actu",
+   "date": "1988-04-24",
+   "evidence": "oEmbed 200 (author INA Actu), playableInEmbed true; description \"24 avril 1988\" — Antenne 2 20h on first-round election night (20:18).",
+   "verifiedAt": "2026-11-07"
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "INA (YouTube)",
+    "url": "https://www.youtube.com/watch?v=rvApHXLuxmA&t=312s",
+    "embed": "https://www.youtube-nocookie.com/embed/rvApHXLuxmA?start=312",
+    "title": "1er tour des présidentielles : Les annonces des résultats de 1965 à 2017 | Archive INA",
+    "publisher": "INA Politique",
+    "date": null,
+    "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; official INA compilation of 20h first-round announcements; description chapter \"05:12 1988 : Annonce des résultats du 1er tour des élections présidentielles\" — URL/embed start at that chapter.",
+    "verifiedAt": "2026-11-07",
+    "start": 312
+   }
+  ],
+  "searched": "YouTube: \"24 avril 1988 premier tour résultats INA\", \"élection présidentielle 1988 premier tour soirée électorale Archive INA\", \"JA2 20H émission du 24 avril 1988\"."
+ },
+ {
+  "round": "1988-t2",
+  "media": {
+   "type": "tv",
+   "provider": "INA (YouTube)",
+   "url": "https://www.youtube.com/watch?v=OjEtEMIFx-4",
+   "embed": "https://www.youtube-nocookie.com/embed/OjEtEMIFx-4",
+   "title": "JA2 20H : EMISSION DU 8 MAI 1988",
+   "publisher": "INA Actu",
+   "date": "1988-05-08",
+   "evidence": "oEmbed 200 (author INA Actu), playableInEmbed true; description \"8 mai 1988\" — Antenne 2 20h on second-round election night (20:48).",
+   "verifiedAt": "2026-11-07"
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "INA (YouTube)",
+    "url": "https://www.youtube.com/watch?v=YfzncBfAj4M&t=452s",
+    "embed": "https://www.youtube-nocookie.com/embed/YfzncBfAj4M?start=452",
+    "title": "2nd tour des présidentielles : Les annonces des résultats de 1965 à 2017 | Archive INA",
+    "publisher": "INA Politique",
+    "date": null,
+    "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; official INA compilation of second-round announcements; description chapter \"07:32 1988 : Annonce des résultats du 2nd tour des élections présidentielles\" — URL/embed start at that chapter.",
+    "verifiedAt": "2026-11-07",
+    "start": 452
+   }
+  ],
+  "searched": "YouTube: \"8 mai 1988 Mitterrand réélu 20h INA\", \"8 mai 1988 soirée électorale Mitterrand réélu Archive INA\", \"JA2 20H émission du 8 mai 1988\"; also INA Politique NPGf94KyQIM (9/5/1988 FR3 soirée synthesis)."
+ },
+ {
+  "round": "1995-t1",
+  "media": {
+   "type": "tv",
+   "provider": "INA (YouTube)",
+   "url": "https://www.youtube.com/watch?v=D9X8PoM52Nw",
+   "embed": "https://www.youtube-nocookie.com/embed/D9X8PoM52Nw",
+   "title": "Annonce des résultats",
+   "publisher": "INA Politique",
+   "date": "1995-04-23",
+   "evidence": "oEmbed 200 (author \"INA Politique\"); description: \"23 avril 1995 — La soirée électorale du premier tour ... animée par Henri SANNIER et Gilles LECLERC. A 20h, ils annoncent des premières estimations\" (Jospin 22,7 %, Chirac 20,7 %, Balladur 20,2 % ...). Sannier/Leclerc = France 3 soirée.",
+   "verifiedAt": "2026-11-07"
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "INA (YouTube)",
+    "url": "https://www.youtube.com/watch?v=rvApHXLuxmA&t=414s",
+    "embed": "https://www.youtube-nocookie.com/embed/rvApHXLuxmA?start=414",
+    "title": "1er tour des présidentielles : Les annonces des résultats de 1965 à 2017 | Archive INA",
+    "publisher": "INA Politique",
+    "date": "1995-04-23",
+    "evidence": "oEmbed 200 (author \"INA Politique\"); INA Politique compilation of 1st-round 8 pm announcements 1965–2017; description chapter \"06:54 1995 : Annonce des résultats du 1er tour des élections présidentielles\" (start offset 414s); published 2022-04-10.",
+    "verifiedAt": "2026-11-07",
+    "start": 414
+   },
+   {
+    "type": "tv",
+    "provider": "INA (YouTube)",
+    "url": "https://www.youtube.com/watch?v=nKLEDx8f7wQ",
+    "embed": "https://www.youtube-nocookie.com/embed/nKLEDx8f7wQ",
+    "title": "1995 : Résultats du 1er tour de l'élection présidentielle | Archive INA",
+    "publisher": "INA Politique",
+    "date": "1995-04-24",
+    "evidence": "oEmbed 200 (author \"INA Politique\"); description: \"Le Journal de 20H | France 2 | 24/04/1995\" — day-after analysis of 1st-round results (not the live 8 pm announcement).",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "YouTube: \"INA présidentielle 1995 premier tour 20h résultats\"; INA Politique/INA Actu channels."
+ },
+ {
+  "round": "1995-t2",
+  "media": {
+   "type": "tv",
+   "provider": "INA (YouTube)",
+   "url": "https://www.youtube.com/watch?v=04a1r4oX6QM",
+   "embed": "https://www.youtube-nocookie.com/embed/04a1r4oX6QM",
+   "title": "Annonce des résultats",
+   "publisher": "INA Politique",
+   "date": "1995-05-07",
+   "evidence": "oEmbed 200 (author \"INA Politique\"); description: \"7 mai 1995 — ... A 20h, ils annoncent l'estimation du résultat. Jacques CHIRAC (RPR) est élu président de la République avec 52 % des voix\". Same clip on ina.fr (CAC05011288, producer France 3).",
+   "verifiedAt": "2026-11-07"
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "INA (YouTube)",
+    "url": "https://www.youtube.com/watch?v=3RACgs_WasY",
+    "embed": "https://www.youtube-nocookie.com/embed/3RACgs_WasY",
+    "title": "07/05/1995 : Jacques Chirac élu Président de la République | Archive INA",
+    "publisher": "INA Politique",
+    "date": "1995-05-07",
+    "evidence": "oEmbed 200 (author \"INA Politique\"); description: \"Soirée électorale : élection présidentielle 2ème tour | France 2 | 07/05/1995 ... 20h - Le visage de CHIRAC (52 %) apparaît à l'écran\".",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "tv",
+    "provider": "ina.fr",
+    "url": "https://www.ina.fr/ina-eclaire-actu/video/cac05011288/annonce-des-resultats",
+    "embed": null,
+    "title": "Annonce des résultats",
+    "publisher": "INA (France 3)",
+    "date": "1995-05-07",
+    "evidence": "Page 200; <title> \"Annonce des résultats\"; uploadDate 1995-05-07T10:00:00+02:00; duration PT1M2S; producer France 3; description \"A 20h, ils annoncent l'estimation du résultat. Jacques Chirac, RPR, est élu président de la République avec 52 %\".",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "YouTube: \"7 mai 1995 Chirac élu 20h INA\"; ina.fr via web search (CAC05011288)."
+ },
+ {
+  "round": "2002-t1",
+  "media": {
+   "type": "tv",
+   "provider": "ina.fr",
+   "url": "https://www.ina.fr/ina-eclaire-actu/video/i17103686/annonce-des-premieres-estimations-du-premier-tour-des-elections",
+   "embed": null,
+   "title": "Annonce des premières estimations du premier tour des élections présidentielles de 2002",
+   "publisher": "INA (France 2)",
+   "date": "2002-04-21",
+   "evidence": "Page 200; <title> \"Annonce des premières estimations du premier tour des élections présidentielles de 2002\"; uploadDate 2002-04-21T10:00:00+02:00; duration PT2M8S; producer France 2, presenter David Pujadas; description \"Annonce des résultats du premier tour ... Jean Marie Le Pen devance Lionel Jospin et se qualifie pour le deuxième tour\".",
+   "verifiedAt": "2026-11-07"
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "INA (YouTube)",
+    "url": "https://www.youtube.com/watch?v=rvApHXLuxmA&t=482s",
+    "embed": "https://www.youtube-nocookie.com/embed/rvApHXLuxmA?start=482",
+    "title": "1er tour des présidentielles : Les annonces des résultats de 1965 à 2017 | Archive INA",
+    "publisher": "INA Politique",
+    "date": "2002-04-21",
+    "evidence": "oEmbed 200 (author \"INA Politique\"); INA Politique compilation of 1st-round 8 pm announcements 1965–2017; description chapter \"08:02 2002 : Annonce des résultats du 1er tour des élections présidentielles\" (start offset 482s); published 2022-04-10.",
+    "verifiedAt": "2026-11-07",
+    "start": 482
+   },
+   {
+    "type": "tv",
+    "provider": "ina.fr",
+    "url": "https://www.ina.fr/ina-eclaire-actu/video/i06184163/annonce-des-resultats-du-premier-tour-a-l-election-presidentielle-2002",
+    "embed": null,
+    "title": "Annonce des résultats du premier tour à l'élection présidentielle 2002",
+    "publisher": "INA (France 3)",
+    "date": "2002-04-21",
+    "evidence": "Page 200; <title> \"Annonce des résultats du premier tour à l'élection présidentielle 2002\"; uploadDate 2002-04-21T10:00:00+02:00; duration PT2M20S; France 3 (Elise Lucet, Gilles Leclerc) announcement of the 1st-round estimates (Chirac / Le Pen finalists, abstention 28,6 %).",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "YouTube: \"21 avril 2002 Le Pen 20h annonce INA\", \"INA Politique annonce des résultats 21 avril 2002\" (only Le Pen/Jospin reaction clips and full JT found on YouTube); ina.fr via web search: i17103686, i06184163, i07122348, i17110758."
+ },
+ {
+  "round": "2002-t2",
+  "media": {
+   "type": "tv",
+   "provider": "ina.fr",
+   "url": "https://www.ina.fr/ina-eclaire-actu/video/i06185214/presidentielle-2002-2eme-tour",
+   "embed": null,
+   "title": "Présidentielle 2002 : 2ème tour",
+   "publisher": "INA (France 2)",
+   "date": "2002-05-05",
+   "evidence": "Page 200; <title> \"Présidentielle 2002 : 2ème tour\"; uploadDate 2002-05-05T10:00:00+02:00; duration PT0M57S; producer France 2; description \"Annonce en direct des résultats de l'élection présidentielle 2002 entre Jacques Chirac, RPR, et Jean-Marie Le Pen, FN. Jacques Chirac est élu avec 82,1% des voix.\"",
+   "verifiedAt": "2026-11-07"
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "INA (YouTube)",
+    "url": "https://www.youtube.com/watch?v=YfzncBfAj4M&t=607s",
+    "embed": "https://www.youtube-nocookie.com/embed/YfzncBfAj4M?start=607",
+    "title": "2nd tour des présidentielles : Les annonces des résultats de 1965 à 2017 | Archive INA",
+    "publisher": "INA Politique",
+    "date": "2002-05-05",
+    "evidence": "oEmbed 200 (author \"INA Politique\"); INA Politique compilation of 2nd-round 8 pm announcements 1965–2017; description chapter \"10:07 2002 : Annonce des résultats du 2nd tour des élections présidentielles\" (start offset 607s); published 2022-04-24.",
+    "verifiedAt": "2026-11-07",
+    "start": 607
+   },
+   {
+    "type": "tv",
+    "provider": "ina.fr",
+    "url": "https://www.ina.fr/ina-eclaire-actu/video/2013911001/presidentielle-2002-2eme-tour",
+    "embed": null,
+    "title": "Présidentielle 2002 : 2ème tour",
+    "publisher": "INA (France 2)",
+    "date": "2002-05-05",
+    "evidence": "Page 200; <title> \"Présidentielle 2002 : 2ème tour\"; uploadDate 2002-05-05T10:00:00+02:00; duration PT3H56M44S; full France 2 election-night programme (3h56) incl. the 20h estimate.",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "YouTube: \"5 mai 2002 Chirac réélu 20h INA\", \"2002 Chirac réélu second tour 82% annonce résultat Archive INA\" (INA Actu 20h of 5 May 2002 bGoat7aNDrw is pre-20h only); ina.fr via web search."
+ },
+ {
+  "round": "2007-t1",
+  "media": {
+   "type": "tv",
+   "provider": "INA (YouTube)",
+   "url": "https://www.youtube.com/watch?v=rvApHXLuxmA&t=538s",
+   "embed": "https://www.youtube-nocookie.com/embed/rvApHXLuxmA?start=538",
+   "title": "1er tour des présidentielles : Les annonces des résultats de 1965 à 2017 | Archive INA",
+   "publisher": "INA Politique",
+   "date": "2007-04-22",
+   "evidence": "oEmbed 200 (author \"INA Politique\"); INA Politique compilation of 1st-round 8 pm announcements 1965–2017; description chapter \"08:58 2007 : Annonce des résultats du 1er tour des élections présidentielles\" (start offset 538s); published 2022-04-10. Date = date of the round segment (compilation itself published 2022).",
+   "verifiedAt": "2026-11-07",
+   "start": 538
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "ina.fr",
+    "url": "https://www.ina.fr/ina-eclaire-actu/video/3334022001/elysee-2007-1er-tour-22-avril-2007",
+    "embed": null,
+    "title": "Elysée 2007 1er tour : 22 avril 2007",
+    "publisher": "INA (France 2, France 3, Société francaise de Production)",
+    "date": "2007-04-22",
+    "evidence": "Page 200; <title> \"Elysée 2007 1er tour : 22 avril 2007\"; uploadDate 2007-04-22T10:00:00+02:00; duration PT5H7M49S; full France 2/France 3 special \"Elysée 2007\" (5h07, Pujadas/Lucet) containing the 8 pm estimates; no isolated clip found.",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "tv",
+    "provider": "INA (YouTube)",
+    "url": "https://www.youtube.com/watch?v=rXQy4Q60lh4",
+    "embed": "https://www.youtube-nocookie.com/embed/rXQy4Q60lh4",
+    "title": "Election présidentielle 1er tour : 3ème partie",
+    "publisher": "INA Politique",
+    "date": "2007-04-22",
+    "evidence": "oEmbed 200 (author \"INA Politique\"); description \"22 avril 2007 — Emission spéciale élection présidentielle 1er tour ... Le grand gagnant est Nicolas SARKOZY, UMP, suivi par Ségolène ROYAL\" (part 3 of the special, later in the evening).",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "YouTube: \"20 heures émission du 22 avril 2007 INA\" (INA Actu upload UJvCnPcg6ps is an unrelated non-election 20h), \"INA soirée électorale 22 avril 2007\"; ina.fr web search (no standalone 1st-round 2007 estimates clip; Jalons InaEdu04801 is the 23 Apr JT, not the announcement)."
+ },
+ {
+  "round": "2007-t2",
+  "media": {
+   "type": "tv",
+   "provider": "ina.fr",
+   "url": "https://www.ina.fr/ina-eclaire-actu/video/i08128486/elysee-2007-2eme-tour-6-mai-2007",
+   "embed": null,
+   "title": "Elysée 2007 2ème tour : 6 mai 2007",
+   "publisher": "INA (France 2)",
+   "date": "2007-05-06",
+   "evidence": "Page 200; <title> \"Elysée 2007 2ème tour : 6 mai 2007\"; uploadDate 2007-05-06T10:00:00+02:00; duration PT1M15S; producer France 2, presenters David Pujadas; description \"Annonce des premières estimations de l'élection présidentielle 2007. Nicolas Sarkozy bat Ségolène Royal.\" (1m15s). Old slug \"annonce-des-estimations-election-presidentielle-2007\" redirects here.",
+   "verifiedAt": "2026-11-07"
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "INA (YouTube)",
+    "url": "https://www.youtube.com/watch?v=pYZpGG9TFbk",
+    "embed": "https://www.youtube-nocookie.com/embed/pYZpGG9TFbk",
+    "title": "[Les grands moments de la victoire de Nicolas Sarkozy]",
+    "publisher": "INA Politique",
+    "date": "2007-05-07",
+    "evidence": "oEmbed 200 (author \"INA Politique\"); description \"7 mai 2007 — Reportage retraçant les moments clés de la soirée du second tour ... la victoire de Nicolas SARKOZY\" (recap report, not the live 8 pm reveal).",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "YouTube: \"6 mai 2007 Sarkozy élu 20h annonce\", \"INA soirée électorale 6 mai 2007\" (INA Actu 20h upload HYm6TfDhYJw is unrelated); INA 2nd-round compilation YfzncBfAj4M has the 2007 chapter mislabelled \"01:23\" so not used; ina.fr via web search."
+ },
+ {
+  "round": "2012-t1",
+  "media": {
+   "type": "tv",
+   "provider": "INA (YouTube)",
+   "url": "https://www.youtube.com/watch?v=rvApHXLuxmA&t=636s",
+   "embed": "https://www.youtube-nocookie.com/embed/rvApHXLuxmA?start=636",
+   "title": "1er tour des présidentielles : Les annonces des résultats de 1965 à 2017 | Archive INA",
+   "publisher": "INA Politique",
+   "date": "2012-04-22",
+   "evidence": "oEmbed 200 (author \"INA Politique\"); INA Politique compilation of 1st-round 8 pm announcements 1965–2017; description chapter \"10:36 2012 : Annonce des résultats du 1er tour des élections présidentielles\" (start offset 636s); published 2022-04-10. Date = date of the round segment (compilation itself published 2022).",
+   "verifiedAt": "2026-11-07",
+   "start": 636
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "Public Sénat (YouTube)",
+    "url": "https://www.youtube.com/watch?v=sbPamU00SnI",
+    "embed": "https://www.youtube-nocookie.com/embed/sbPamU00SnI",
+    "title": "Estimation des résultats du premier tour de l'élection présidentielle 2012",
+    "publisher": "Public Sénat",
+    "date": "2012-04-22",
+    "evidence": "oEmbed 200 (author \"Public Sénat\"); Public Sénat (official parliamentary channel; no standalone INA clip found); description \"premiers résultats estimés ... François Hollande (28,4%) devance Nicolas Sarkozy (25,5%)\"; published 2012-04-22.",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "YouTube: \"22 avril 2012 premier tour Hollande Sarkozy 20h annonce\", \"2012 premier tour résultats Archive INA\"; ina.fr web search (only full JT pages, no isolated announcement)."
+ },
+ {
+  "round": "2012-t2",
+  "media": {
+   "type": "tv",
+   "provider": "INA (YouTube)",
+   "url": "https://www.youtube.com/watch?v=YfzncBfAj4M&t=714s",
+   "embed": "https://www.youtube-nocookie.com/embed/YfzncBfAj4M?start=714",
+   "title": "2nd tour des présidentielles : Les annonces des résultats de 1965 à 2017 | Archive INA",
+   "publisher": "INA Politique",
+   "date": "2012-05-06",
+   "evidence": "oEmbed 200 (author \"INA Politique\"); INA Politique compilation of 2nd-round 8 pm announcements 1965–2017; description chapter \"11:54 2012 : Annonce des résultats du 2nd tour des élections présidentielles\" (start offset 714s); published 2022-04-24. Date = date of the round segment (compilation itself published 2022).",
+   "verifiedAt": "2026-11-07",
+   "start": 714
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "ina.fr",
+    "url": "https://www.ina.fr/ina-eclaire-actu/video/4704862001/election-presidentielle-2012-2eme-tour-1ere-partie",
+    "embed": null,
+    "title": "Election présidentielle 2012 2ème tour : 1ère partie",
+    "publisher": "INA (France Télévisions)",
+    "date": "2012-05-06",
+    "evidence": "Page 200; <title> \"Election présidentielle 2012 2ème tour : 1ère partie\"; uploadDate 2012-05-06T10:00:00+02:00; duration PT20M1S; France Télévisions election night part 1 (Lucet/Pujadas/Delahousse, 20 min) covering the 2nd-round results.",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "tv",
+    "provider": "Public Sénat (YouTube)",
+    "url": "https://www.youtube.com/watch?v=ylGP_FyW1Oo",
+    "embed": "https://www.youtube-nocookie.com/embed/ylGP_FyW1Oo",
+    "title": "Soirée électorale des élections présidentielles : 2ème tour - EVENEMENT (06/05/2012)",
+    "publisher": "Public Sénat",
+    "date": "2012-05-06",
+    "evidence": "oEmbed 200 (author \"Public Sénat\"); Public Sénat/LCP full election-night programme 19h30–22h, 06/05/2012 (5h31).",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "YouTube: \"6 mai 2012 Hollande élu 20h annonce France 2\" (only third-party reuploads of France 2), \"2012 Hollande élu président Archive INA\", Public Sénat/LCP queries; ina.fr web search."
+ },
+ {
+  "round": "2017-t1",
+  "media": {
+   "type": "tv",
+   "provider": "INA (YouTube)",
+   "url": "https://www.youtube.com/watch?v=rvApHXLuxmA&t=681s",
+   "embed": "https://www.youtube-nocookie.com/embed/rvApHXLuxmA?start=681",
+   "title": "1er tour des présidentielles : Les annonces des résultats de 1965 à 2017 | Archive INA",
+   "publisher": "INA Politique",
+   "date": "2017-04-23",
+   "evidence": "oEmbed 200 (author \"INA Politique\"); INA Politique compilation of 1st-round 8 pm announcements 1965–2017; description chapter \"11:21 2017 : Annonce des résultats du 1er tour des élections présidentielles\" (start offset 681s); published 2022-04-10. Date = date of the round segment (compilation itself published 2022).",
+   "verifiedAt": "2026-11-07",
+   "start": 681
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "Public Sénat (YouTube)",
+    "url": "https://www.youtube.com/watch?v=_ASql8LfDFk",
+    "embed": "https://www.youtube-nocookie.com/embed/_ASql8LfDFk",
+    "title": "Election présidentielle 2017 🇫🇷 - résultats du 1er tour (estimations de 20h)",
+    "publisher": "Public Sénat",
+    "date": "2017-04-23",
+    "evidence": "oEmbed 200 (author \"Public Sénat\"); Public Sénat (official broadcaster) \"résultats du 1er tour (estimations de 20h)\"; description \"Le candidat d'En Marche (23,7%) et la candidate du Front national (21,7%) sont qualifiés pour le second tour\"; published 2017-04-23.",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "YouTube: \"23 avril 2017 premier tour Macron Le Pen 20h annonce\", \"2017 premier tour résultats Archive INA\", franceinfo queries (no franceinfo 1st-round 20h clip found; J1HkyYErubM is a private reupload)."
+ },
+ {
+  "round": "2017-t2",
+  "media": {
+   "type": "tv",
+   "provider": "INA (YouTube)",
+   "url": "https://www.youtube.com/watch?v=YfzncBfAj4M&t=759s",
+   "embed": "https://www.youtube-nocookie.com/embed/YfzncBfAj4M?start=759",
+   "title": "2nd tour des présidentielles : Les annonces des résultats de 1965 à 2017 | Archive INA",
+   "publisher": "INA Politique",
+   "date": "2017-05-07",
+   "evidence": "oEmbed 200 (author \"INA Politique\"); INA Politique compilation of 2nd-round 8 pm announcements 1965–2017; description chapter \"12:39 2017 : Annonce des résultats du 2nd tour des élections présidentielles\" (start offset 759s); published 2022-04-24. Date = date of the round segment (compilation itself published 2022).",
+   "verifiedAt": "2026-11-07",
+   "start": 759
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "franceinfo (YouTube)",
+    "url": "https://www.youtube.com/watch?v=apLzCw5MDjk",
+    "embed": "https://www.youtube-nocookie.com/embed/apLzCw5MDjk",
+    "title": "\"Présidentielle 2017\" : L'annonce des résultats du second tour – 7 mai 2017 (France 2)",
+    "publisher": "franceinfo",
+    "date": "2017-05-07",
+    "evidence": "oEmbed 200 (author \"franceinfo\"); franceinfo (France Télévisions, official) \"L'annonce des résultats du second tour – 7 mai 2017 (France 2)\"; published 2017-05-07; 0:45.",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "tv",
+    "provider": "Public Sénat (YouTube)",
+    "url": "https://www.youtube.com/watch?v=UNaWMFJhnxs",
+    "embed": "https://www.youtube-nocookie.com/embed/UNaWMFJhnxs",
+    "title": "Élection présidentielle 2017 - résultats du 2nd tour (estimations de 20h)",
+    "publisher": "Public Sénat",
+    "date": "2017-05-07",
+    "evidence": "oEmbed 200 (author \"Public Sénat\"); Public Sénat \"résultats du 2nd tour (estimations de 20h)\"; published 2017-05-07.",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "YouTube: \"7 mai 2017 Macron élu 20h annonce France 2\", \"INA 2017 Macron élu 20h\", Public Sénat queries."
+ },
+ {
+  "round": "2022-t1",
+  "media": {
+   "type": "tv",
+   "provider": "TF1 INFO (YouTube)",
+   "url": "https://www.youtube.com/watch?v=gFocUvSngx0",
+   "embed": "https://www.youtube-nocookie.com/embed/gFocUvSngx0",
+   "title": "Résultat Premier Tour : E. Macron à 28,6% contre M. Le Pen à 23,9%",
+   "publisher": "TF1 INFO",
+   "date": "2022-04-10",
+   "evidence": "oEmbed 200 (author \"TF1 INFO\"); TF1 INFO (official TF1 channel; no INA copy found on YouTube or ina.fr); title \"Résultat Premier Tour : E. Macron à 28,6% contre M. Le Pen à 23,9%\"; published 2022-04-10 20:03 CEST.",
+   "verifiedAt": "2026-11-07"
+  },
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "TF1 INFO (YouTube)",
+    "url": "https://www.youtube.com/watch?v=qaNK0BPTLgU",
+    "embed": "https://www.youtube-nocookie.com/embed/qaNK0BPTLgU",
+    "title": "Présidentielle 2022 : les candidats qualifiés pour le second tour sont…",
+    "publisher": "TF1 INFO",
+    "date": "2022-04-10",
+    "evidence": "oEmbed 200 (author \"TF1 INFO\"); TF1 INFO \"Présidentielle 2022 : les candidats qualifiés pour le second tour sont…\"; published 2022-04-10.",
+    "verifiedAt": "2026-11-07"
+   }
+  ],
+  "searched": "YouTube: \"10 avril 2022 premier tour 20h annonce résultats\", \"INA présidentielle 2022 annonce résultats 20h\", franceinfo/Public Sénat/LCP queries (no official France 2 or parliamentary-channel 20h clip found; jPhToG_QSxA is a third-party \"teleclips\" reupload); ina.fr web search (only catalogue.ina.fr records, not viewable)."
+ },
+ {
+  "round": "2022-t2",
+  "media": {
+   "type": "tv",
+   "provider": "TF1 INFO (YouTube)",
+   "url": "https://www.youtube.com/watch?v=jQz1NPbKhpQ",
+   "embed": "https://www.youtube-nocookie.com/embed/jQz1NPbKhpQ",
+   "title": "Le résultat du second tour de l’élection présidentielle 2022",
+   "publisher": "TF1 INFO",
+   "date": "2022-04-24",
+   "evidence": "oEmbed 200 (author \"TF1 INFO\"); TF1 INFO (official TF1 channel; no INA copy found); title \"Le résultat du second tour de l’élection présidentielle 2022\"; 0:29; uploaded 2022-04-25 02:13 CEST.",
+   "verifiedAt": "2026-11-07"
+  },
+  "searched": "YouTube: \"24 avril 2022 Macron réélu 20h annonce France 2\", \"franceinfo Emmanuel Macron réélu président annonce 20h\", Public Sénat/LCP/Élysée queries (only third-party reuploads such as W•Médias of France 2); ina.fr web search (catalogue records only)."
+ }
+]
