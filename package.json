@@ -12,10 +12,12 @@
     "sync": "npm run sync:geo && npm run sync:results && npm run sync:an && npm run sync:polls && npm run sync:markets",
     "sync:polls": "node scripts/sync-polls.mjs",
     "sync:markets": "node scripts/sync-markets.mjs",
-    "sync:results": "node scripts/sync-results.mjs"
+    "sync:results": "node scripts/sync-results.mjs",
+    "sync:forecast": "esbuild scripts/forecast-history.ts --bundle --platform=node --format=esm --outfile=.cache/forecast-history.mjs --log-level=warning && node .cache/forecast-history.mjs"
   },
   "devDependencies": {
     "@types/d3-geo": "3.1.0",
+    "esbuild": "0.25.12",
     "node-html-parser": "^6.1.13",
     "typescript": "5.6.3",
     "vite": "^6.4.5"
