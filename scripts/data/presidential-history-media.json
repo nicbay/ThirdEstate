@@ -2,12 +2,12 @@
  {
   "round": "1848-t1",
   "media": null,
-  "searched": "Not reached: Gallica began serving an ALTCHA/Cloudflare bot-verification page ('Je ne suis pas un robot') before the 1848 search (Le Temps did not exist in 1848; Journal des débats / Le Constitutionnel / Le Siècle planned). Gallica blocks curl/node outright (HTTP 403 Cloudflare)."
+  "searched": "Not reached: Gallica began serving an ALTCHA/Cloudflare bot-verification page ('Je ne suis pas un robot') before the 1848 search (Le Temps did not exist in 1848; Journal des débats / Le Constitutionnel / Le Siècle planned). Gallica blocks curl/node outright (HTTP 403 Cloudflare). | 2026-11-07: no film or sound can exist (1848). Gallica still blocked (ALTCHA + 429), so no front page could be confirmed."
  },
  {
   "round": "1873-t1",
   "media": null,
-  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1873-05-24; candidate issue arks (date verified from Issues XML only): bpt6k225389b 1873-05-25; bpt6k2253908 + bpt6k225391n 1873-05-26 (two arks); bpt6k2253921 1873-05-27. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1873-05-24; candidate issue arks (date verified from Issues XML only): bpt6k225389b 1873-05-25; bpt6k2253908 + bpt6k225391n 1873-05-26 (two arks); bpt6k2253921 1873-05-27. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'. | 2026-11-07 embeddable pass: no film or sound exists for this vote (before newsreels). Gallica re-tried in Playwright: the Cloudflare page cleared but OCR (.texteBrut) requests got the ALTCHA 'Vérification de sécurité' page, then HTTP 429; not bypassed, so the leads stay unverified.",
   "leads": [
    {
     "type": "newspaper",
@@ -46,7 +46,7 @@
  {
   "round": "1879-t1",
   "media": null,
-  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1879-01-30; candidate issue arks (date verified from Issues XML only): bpt6k227542g 1879-01-31; bpt6k227543v 1879-02-01; bpt6k2275447 1879-02-02. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1879-01-30; candidate issue arks (date verified from Issues XML only): bpt6k227542g 1879-01-31; bpt6k227543v 1879-02-01; bpt6k2275447 1879-02-02. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'. | 2026-11-07 embeddable pass: no film or sound exists for this vote (before newsreels). Gallica re-tried in Playwright: the Cloudflare page cleared but OCR (.texteBrut) requests got the ALTCHA 'Vérification de sécurité' page, then HTTP 429; not bypassed, so the leads stay unverified.",
   "leads": [
    {
     "type": "newspaper",
@@ -77,7 +77,7 @@
  {
   "round": "1885-t1",
   "media": null,
-  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1885-12-28; candidate issue arks (date verified from Issues XML only): bpt6k2308946 1885-12-29; bpt6k230895k 1885-12-30; bpt6k230896z 1885-12-31. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1885-12-28; candidate issue arks (date verified from Issues XML only): bpt6k2308946 1885-12-29; bpt6k230895k 1885-12-30; bpt6k230896z 1885-12-31. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'. | 2026-11-07 embeddable pass: no film or sound exists for this vote (before newsreels). Gallica re-tried in Playwright: the Cloudflare page cleared but OCR (.texteBrut) requests got the ALTCHA 'Vérification de sécurité' page, then HTTP 429; not bypassed, so the leads stay unverified.",
   "leads": [
    {
     "type": "newspaper",
@@ -108,7 +108,7 @@
  {
   "round": "1887-t2",
   "media": null,
-  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1887-12-03; candidate issue arks (date verified from Issues XML only): bpt6k231604r 1887-12-04; bpt6k2316054 1887-12-05; bpt6k231606h 1887-12-06. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1887-12-03; candidate issue arks (date verified from Issues XML only): bpt6k231604r 1887-12-04; bpt6k2316054 1887-12-05; bpt6k231606h 1887-12-06. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'. | 2026-11-07 embeddable pass: no film or sound exists for this vote (before newsreels). Gallica re-tried in Playwright: the Cloudflare page cleared but OCR (.texteBrut) requests got the ALTCHA 'Vérification de sécurité' page, then HTTP 429; not bypassed, so the leads stay unverified.",
   "leads": [
    {
     "type": "newspaper",
@@ -139,7 +139,7 @@
  {
   "round": "1894-t1",
   "media": null,
-  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1894-06-27; candidate issue arks (date verified from Issues XML only): bpt6k2341431 1894-06-28; bpt6k234144d 1894-06-29; bpt6k234145s 1894-06-30. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1894-06-27; candidate issue arks (date verified from Issues XML only): bpt6k2341431 1894-06-28; bpt6k234144d 1894-06-29; bpt6k234145s 1894-06-30. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'. | 2026-11-07 embeddable pass: no film or sound exists for this vote (before newsreels). Gallica re-tried in Playwright: the Cloudflare page cleared but OCR (.texteBrut) requests got the ALTCHA 'Vérification de sécurité' page, then HTTP 429; not bypassed, so the leads stay unverified.",
   "leads": [
    {
     "type": "newspaper",
@@ -170,7 +170,7 @@
  {
   "round": "1895-t1",
   "media": null,
-  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1895-01-17; candidate issue arks (date verified from Issues XML only): bpt6k234357h 1895-01-18; bpt6k234358w 1895-01-19; bpt6k2343598 1895-01-20. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1895-01-17; candidate issue arks (date verified from Issues XML only): bpt6k234357h 1895-01-18; bpt6k234358w 1895-01-19; bpt6k2343598 1895-01-20. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'. | 2026-11-07 embeddable pass: no film or sound exists for this vote (before newsreels). Gallica re-tried in Playwright: the Cloudflare page cleared but OCR (.texteBrut) requests got the ALTCHA 'Vérification de sécurité' page, then HTTP 429; not bypassed, so the leads stay unverified.",
   "leads": [
    {
     "type": "newspaper",
@@ -201,7 +201,7 @@
  {
   "round": "1899-t1",
   "media": null,
-  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1899-02-18; candidate issue arks (date verified from Issues XML only): bpt6k235922q 1899-02-19; bpt6k2359233 1899-02-20; bpt6k235924g 1899-02-21. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1899-02-18; candidate issue arks (date verified from Issues XML only): bpt6k235922q 1899-02-19; bpt6k2359233 1899-02-20; bpt6k235924g 1899-02-21. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'. | 2026-11-07 embeddable pass: no film or sound exists for this vote (before newsreels). Gallica re-tried in Playwright: the Cloudflare page cleared but OCR (.texteBrut) requests got the ALTCHA 'Vérification de sécurité' page, then HTTP 429; not bypassed, so the leads stay unverified.",
   "leads": [
    {
     "type": "newspaper",
@@ -232,7 +232,7 @@
  {
   "round": "1906-t1",
   "media": null,
-  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1906-01-17; candidate issue arks (date verified from Issues XML only): bpt6k2385017 1906-01-18; bpt6k238502m 1906-01-19; bpt6k2385030 1906-01-20. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1906-01-17; candidate issue arks (date verified from Issues XML only): bpt6k2385017 1906-01-18; bpt6k238502m 1906-01-19; bpt6k2385030 1906-01-20. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'. | 2026-11-07 embeddable pass: YouTube (British Pathé 'Fallieres' = 1912 royal visit dXv7ApV3Pxo; British Movietone bLgQuDeA0i0 'PRESIDENT FALLIERES OF FRANCE - NO SOUND' undated; Footage Farm sLJP99BQEyw undated compilation), Reuters Connect, Albert-Kahn portal ('Fallières': nothing), ina.fr video ('Fallières'), Commons, Europeana (TYPE:VIDEO): no footage of the 17 Jan 1906 vote or its day. Gaumont Pathé Archives needs a login (no public embed). Gallica blocked (ALTCHA + 429).",
   "leads": [
    {
     "type": "newspaper",
@@ -263,7 +263,7 @@
  {
   "round": "1913-t2",
   "media": null,
-  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1913-01-17; candidate issue arks (date verified from Issues XML only): bpt6k241105t 1913-01-18; bpt6k2411066 1913-01-19; bpt6k241107k 1913-01-20. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1913-01-17; candidate issue arks (date verified from Issues XML only): bpt6k241105t 1913-01-18; bpt6k2411066 1913-01-19; bpt6k241107k 1913-01-20. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'. | 2026-11-07 embeddable pass: YouTube (British Pathé 'Poincare' items are 1912–1920 visits; mBwJV4oJUqQ is a state visit to Britain; Reuters Connect has nothing dated Jan 1913), Albert-Kahn portal ('Poincaré AND 1913': 0), ina.fr video, Commons, Europeana: no footage of the 17 Jan 1913 vote. Gaumont Pathé Archives needs a login. Gallica blocked (ALTCHA + 429).",
   "leads": [
    {
     "type": "newspaper",
@@ -293,8 +293,18 @@
  },
  {
   "round": "1920-01-t1",
-  "media": null,
-  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1920-01-17; candidate issue arks (date verified from Issues XML only): bpt6k2438948 1920-01-18; bpt6k243895n 1920-01-19; bpt6k2438961 1920-01-20. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "media": {
+   "type": "newsreel",
+   "provider": "Wikimedia Commons (Musée départemental Albert-Kahn)",
+   "url": "https://commons.wikimedia.org/wiki/File:Election_du_pr%C3%A9sident_Deschanel_-_AI101097.webm",
+   "embed": "https://commons.wikimedia.org/wiki/File:Election_du_pr%C3%A9sident_Deschanel_-_AI101097.webm?embedplayer=yes",
+   "title": "Election du président Deschanel",
+   "publisher": "Archives de la Planète (Albert Kahn), operator Camille Sauvageot",
+   "date": null,
+   "evidence": "Commons API imageinfo: file 'Election du président Deschanel - AI101097.webm', duration 734 s (12:14); description 'Lieu : Paris, St Cloud, Versailles … Thème : Vie politique … Sous-thème : Election / investiture'; date January 1920; credit = Albert-Kahn notice https://collections.albert-kahn.hauts-de-seine.fr/document/election-du-president-deschanel/617aa7e1cf8b8968b338cf45 (the Kahn portal search 'élection AND président' lists it, dated 01/1920, Paris/Versailles/Saint-Cloud). Silent film; exact shooting day not given. Commons embed (?embedplayer=yes) loaded in a cross-origin iframe on 2026-11-07: <video> element present with the transcoded file and the expected duration. Licence CC BY-SA 4.0 (Commons file page).",
+   "verifiedAt": "2026-11-07"
+  },
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1920-01-17; candidate issue arks (date verified from Issues XML only): bpt6k2438948 1920-01-18; bpt6k243895n 1920-01-19; bpt6k2438961 1920-01-20. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'. | 2026-11-07 embeddable pass: Albert-Kahn collections portal ('élection AND président'), Wikimedia Commons (filetype:video), YouTube (British Pathé, Reuters Connect Gaumont Graphic, 'Deschanel élu président 1920'); also seen but not used: Le JT du Siècle vR3ezBvcGNw (2020 reading of the 18 Jan 1920 press, not an archive). Gallica leads still unverified (Cloudflare ALTCHA + 429 again on 2026-11-07).",
   "leads": [
    {
     "type": "newspaper",
@@ -320,12 +330,57 @@
     "date": "1920-01-20",
     "status": "issue date verified (Gallica Issues service); content NOT verified"
    }
+  ],
+  "alternatives": [
+   {
+    "type": "newsreel",
+    "provider": "Reuters Connect (YouTube)",
+    "url": "https://www.youtube.com/watch?v=MEdx0Y0NJSw",
+    "embed": "https://www.youtube-nocookie.com/embed/MEdx0Y0NJSw",
+    "title": "1920 M. Deschanel becomes new French President",
+    "publisher": "Gaumont Graphic (Reuters)",
+    "date": "1920-01-19",
+    "evidence": "oEmbed 200, title \"1920 M. Deschanel becomes new French President\", author_name \"Reuters Connect\". Description: 'Date: 19th January 1920 … GAUMONT GRAPHIC NEWSREEL (REUTERS) … Issue sheet title: NEW PRESIDENT OF THE FRENCH REPUBLIC? M DESCHANEL WHO IS PRESIDENT OF THE CHAMBER OF DEPUTIES'. 32 s. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "newsreel",
+    "provider": "British Pathé (YouTube)",
+    "url": "https://www.youtube.com/watch?v=MuCdLqM343o",
+    "embed": "https://www.youtube-nocookie.com/embed/MuCdLqM343o",
+    "title": "M Paul Deschanel New President Of The French Republic (1920)",
+    "publisher": "British Pathé",
+    "date": null,
+    "evidence": "oEmbed 200, title \"M Paul Deschanel New President Of The French Republic (1920)\", author_name \"British Pathé\". Description: 'M. Paul Deschanel the new President of the French Republic installed by the retiring President, M. Poincare' (Paris, Elysée; i.e. the 18 Feb 1920 handover, not election day). 2:08. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "newsreel",
+    "provider": "Wikimedia Commons (Musée départemental Albert-Kahn)",
+    "url": "https://commons.wikimedia.org/wiki/File:Transmission_des_pouvoirs_pr%C3%A9sidentiels_entre_MM._Poincar%C3%A9_et_Deschanel_-_AI101131.webm",
+    "embed": "https://commons.wikimedia.org/wiki/File:Transmission_des_pouvoirs_pr%C3%A9sidentiels_entre_MM._Poincar%C3%A9_et_Deschanel_-_AI101131.webm?embedplayer=yes",
+    "title": "Transmission des pouvoirs présidentiels entre MM. Poincaré et Deschanel",
+    "publisher": "Archives de la Planète (Albert Kahn)",
+    "date": "1920-02-18",
+    "evidence": "Commons API imageinfo: duration 82 s; date 18 February 1920; persons Poincaré, Deschanel; sub-theme 'Election / investiture'; Albert-Kahn notice 617aa7e1cf8b8968b338cf48. Handover a month after the vote. Commons embed (?embedplayer=yes) loaded in a cross-origin iframe on 2026-11-07: <video> element present with the transcoded file and the expected duration. Licence CC BY-SA 4.0 (Commons file page).",
+    "verifiedAt": "2026-11-07"
+   }
   ]
  },
  {
   "round": "1920-09-t1",
-  "media": null,
-  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1920-09-23; candidate issue arks (date verified from Issues XML only): bpt6k244144n 1920-09-24; bpt6k2441451 1920-09-25; bpt6k244146d 1920-09-26 (also two issues dated 09-23: bpt6k2441438, bpt6k244142w). OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "media": {
+   "type": "newsreel",
+   "provider": "Reuters Connect (YouTube)",
+   "url": "https://www.youtube.com/watch?v=IuPp5Ok07jI",
+   "embed": "https://www.youtube-nocookie.com/embed/IuPp5Ok07jI",
+   "title": "1920 Presidential election at Versailles",
+   "publisher": "Gaumont Graphic (Reuters)",
+   "date": "1920-10-02",
+   "evidence": "oEmbed 200, title \"1920 Presidential election at Versailles\", author_name \"Reuters Connect\". Description: 'Date: 2nd October 1920 … GAUMONT GRAPHIC NEWSREEL (REUTERS) SLATE INFORMATION: Presidential Election at Versailles … Issue sheet title: PRESIDENTIAL ELECTION AT VERSAILLES. M MILLERAND'S OVERWHELMING SUCCESS AT THE POLLS.' Only 14 s (silent); 2 Oct is the issue date, the vote was 23 Sep 1920. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+   "verifiedAt": "2026-11-07"
+  },
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1920-09-23; candidate issue arks (date verified from Issues XML only): bpt6k244144n 1920-09-24; bpt6k2441451 1920-09-25; bpt6k244146d 1920-09-26 (also two issues dated 09-23: bpt6k2441438, bpt6k244142w). OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'. | 2026-11-07 embeddable pass: YouTube (British Pathé, Reuters Connect, 'Millerand élu président 1920'), Albert-Kahn portal ('Millerand': only his trips as president), Commons, ina.fr video search ('Millerand'): only this 14 s Gaumont Graphic item covers the vote. Gallica leads still unverified (blocked).",
   "leads": [
    {
     "type": "newspaper",
@@ -355,8 +410,18 @@
  },
  {
   "round": "1924-t1",
-  "media": null,
-  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1924-06-13; candidate issue arks (date verified from Issues XML only): bpt6k245501n 1924-06-14; bpt6k2455021 1924-06-15; bpt6k245503d 1924-06-16. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'.",
+  "media": {
+   "type": "newsreel",
+   "provider": "British Pathé (YouTube)",
+   "url": "https://www.youtube.com/watch?v=UoL3sa0v85Y",
+   "embed": "https://www.youtube-nocookie.com/embed/UoL3sa0v85Y",
+   "title": "New French President (1924)",
+   "publisher": "British Pathé",
+   "date": "1924-06-13",
+   "evidence": "oEmbed 200, title \"New French President (1924)\", author_name \"British Pathé\". Description: 'Versailles, France. Title: \"NEW FRENCH PRESIDENT. M. Gaston Doumergue elected on Friday 13th June - 13th Chamber of the 3rd French Republic\". … crowds outside the Palace … The President steps forward … C/U of Prime Minister, Edouard Herriot.' 5:14, silent. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+   "verifiedAt": "2026-11-07"
+  },
+  "searched": "Le Temps (Gallica periodical ark:/12148/cb34431794k). Issues XML fetched in-browser 2026-11-07 for vote 1924-06-13; candidate issue arks (date verified from Issues XML only): bpt6k245501n 1924-06-14; bpt6k2455021 1924-06-15; bpt6k245503d 1924-06-16. OCR (.texteBrut) check NOT completed: Gallica rate-limited (Cloudflare 1015) then required an ALTCHA human-verification checkbox, which was not bypassed. Next step: open https://gallica.bnf.fr/ark:/12148/<ark>.texteBrut for the first candidate and confirm the winner's name + 'élu'. | 2026-11-07 embeddable pass: YouTube (British Pathé 'Doumergue 1924', Reuters Connect 1924), Albert-Kahn portal ('Doumergue': no 1924 Congress film), ina.fr ('Doumergue': only 1929–31 items). Also British Pathé MF3wYTE3Gi8 'Doumergue (1924)' (24 s portrait, not used). Gallica leads still unverified (blocked).",
   "leads": [
    {
     "type": "newspaper",
@@ -382,19 +447,32 @@
     "date": "1924-06-16",
     "status": "issue date verified (Gallica Issues service); content NOT verified"
    }
+  ],
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "France 3 Occitanie (YouTube)",
+    "url": "https://www.youtube.com/watch?v=W6UmiDBwak4",
+    "embed": "https://www.youtube-nocookie.com/embed/W6UmiDBwak4",
+    "title": "Gard : il y a 100 ans Gaston Doumergue devenait Président de la République",
+    "publisher": "France 3 Occitanie",
+    "date": "2024-06-17",
+    "evidence": "oEmbed 200, title \"Gard : il y a 100 ans Gaston Doumergue devenait Président de la République\", author_name \"France 3 Occitanie\". Description: 'Le 13 juin 1924, l'Assemblée nationale élisait un président de la République originaire du Gard : Gaston Doumergue …'. A 2024 centenary report (not 1924 footage), 1:49. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+    "verifiedAt": "2026-11-07"
+   }
   ]
  },
  {
   "round": "1931-t2",
   "media": {
-   "type": "newspaper",
-   "provider": "Gallica (BnF)",
-   "url": "https://gallica.bnf.fr/ark:/12148/bpt6k248338j/f1.item",
-   "embed": null,
-   "title": "Le Temps",
-   "publisher": "Le Temps",
-   "date": "1931-05-15",
-   "evidence": "OAIRecord dc:date 1931-05-15 (Numéro 25466); f1.item title 'Le Temps | 1931-05-15'. Gallica ContentSearch page 1: \"L'Assemblée nationale a élu, hier, M. Paul Doumer, président de la République\" (headline 'L'ÉLECTION DE M. PAUL DOUMER à la présidence de la République').",
+   "type": "newsreel",
+   "provider": "Wikimedia Commons (Musée départemental Albert-Kahn)",
+   "url": "https://commons.wikimedia.org/wiki/File:Congr%C3%A8s_pour_l%27%C3%A9lection_du_Pr%C3%A9sident_de_la_R%C3%A9publique_-_AI101187.webm",
+   "embed": "https://commons.wikimedia.org/wiki/File:Congr%C3%A8s_pour_l%27%C3%A9lection_du_Pr%C3%A9sident_de_la_R%C3%A9publique_-_AI101187.webm?embedplayer=yes",
+   "title": "Congrès pour l'élection du Président de la République",
+   "publisher": "Archives de la Planète (Albert Kahn), operator Camille Sauvageot",
+   "date": "1931-05-13",
+   "evidence": "Commons API imageinfo: duration 186 s (3:05); date 13 May 1931; place Versailles; sub-theme 'Election / investiture'; persons represented 'Doumergue, Gaston; Doumer, Paul'; Albert-Kahn notice https://collections.albert-kahn.hauts-de-seine.fr/document/congres-pour-l-election-du-president-de-la-republique/617aa7e1cf8b8968b338cf52 (dated 13/05/1931). Silent film shot on the day of the vote. Commons embed (?embedplayer=yes) loaded in a cross-origin iframe on 2026-11-07: <video> element present with the transcoded file and the expected duration. Licence CC BY-SA 4.0 (Commons file page).",
    "verifiedAt": "2026-11-07"
   },
   "alternatives": [
@@ -408,9 +486,31 @@
     "date": "1931-05-18",
     "evidence": "FALLBACK newsreel (no radio found). oEmbed 200, author 'British Movietone' (AP Archive official channel); description: '(18 May 1931) M Doumer, who secured nomination in competition with M Briand, makes his screen debut.' Shows the president-elect days after the vote; short English item, not a French announcement of the result.",
     "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k248338j/f1.item",
+    "embed": null,
+    "title": "Le Temps",
+    "publisher": "Le Temps",
+    "date": "1931-05-15",
+    "evidence": "OAIRecord dc:date 1931-05-15 (Numéro 25466); f1.item title 'Le Temps | 1931-05-15'. Gallica ContentSearch page 1: \"L'Assemblée nationale a élu, hier, M. Paul Doumer, président de la République\" (headline 'L'ÉLECTION DE M. PAUL DOUMER à la présidence de la République').",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "newsreel",
+    "provider": "British Pathé (YouTube)",
+    "url": "https://www.youtube.com/watch?v=dsh3lz2Vo3o",
+    "embed": "https://www.youtube-nocookie.com/embed/dsh3lz2Vo3o",
+    "title": "France's New President - Sound Version (1931)",
+    "publisher": "British Pathé",
+    "date": null,
+    "evidence": "oEmbed 200, title \"France's New President - Sound Version (1931)\", author_name \"British Pathé\". Description: 'Paris. France's new President, Monsieur Paul Doumer, takes over official duties of the Republic.' Doumer reads a speech, drives with Laval; i.e. the June 1931 installation. 1:14, with sound. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+    "verifiedAt": "2026-11-07"
    }
   ],
-  "searched": "INA ina.fr search (audio+video: 'Doumer', 'Paul Doumer', 'élection Doumer', 'Doumer 1931', 'Doumer élu', 'Versailles 1931') - only unrelated 1930-31 newsreels and 1967 radio; Gallica SRU sound recordings 'Doumer' = 0 records; YouTube ('Paul Doumer élu président 1931', 'Doumer elected president 1931 Versailles', 'élection Paul Doumer 1931 actualités Gaumont', ArchivesRadio) - only British Pathé/Movietone items on his June 1931 installation (dsh3lz2Vo3o, ihuVuDwax3k) and this president-elect item. No radio recording of the 13 May 1931 Congress found. Le Temps dated 14 May 1931 (bpt6k2483375) went to press before the result."
+  "searched": "INA ina.fr search (audio+video: 'Doumer', 'Paul Doumer', 'élection Doumer', 'Doumer 1931', 'Doumer élu', 'Versailles 1931') - only unrelated 1930-31 newsreels and 1967 radio; Gallica SRU sound recordings 'Doumer' = 0 records; YouTube ('Paul Doumer élu président 1931', 'Doumer elected president 1931 Versailles', 'élection Paul Doumer 1931 actualités Gaumont', ArchivesRadio) - only British Pathé/Movietone items on his June 1931 installation (dsh3lz2Vo3o, ihuVuDwax3k) and this president-elect item. No radio recording of the 13 May 1931 Congress found. Le Temps dated 14 May 1931 (bpt6k2483375) went to press before the result. | 2026-11-07: the Albert-Kahn film of the 13 May 1931 Congress (Commons) is now the primary; British Movietone ihuVuDwax3k (installation, 18 Jun 1931) and Kinolibrary d7w7Cs4HIos (re-upload) not used. Still no radio."
  },
  {
   "round": "1932-t1",
@@ -486,6 +586,17 @@
     "date": "1939-04-13",
     "evidence": "oEmbed 200, author 'British Movietone' (AP Archive official channel); description: '(13 Apr 1939) He is re-elected for a second term as President of France.'",
     "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "newsreel",
+    "provider": "Reuters Connect (YouTube)",
+    "url": "https://www.youtube.com/watch?v=SQWaTu_SKXc",
+    "embed": "https://www.youtube-nocookie.com/embed/SQWaTu_SKXc",
+    "title": "1939 FRANCE / POLITICS: Monsieur Lebrun re-elected President",
+    "publisher": "British Paramount News (Reuters)",
+    "date": "1939-04-10",
+    "evidence": "oEmbed 200, title \"1939 FRANCE / POLITICS: Monsieur Lebrun re-elected President\", author_name \"Reuters Connect\". Description: 'Date: 10th April 1939 Location: VERSAILLES … BRITISH PARAMOUNT NEWSREEL (REUTERS) … members walking … Flandin, Blum, Bonnet and Edouard Daladier INT General view pan National Assembly / M. Jeanneney speaking … Lebrun'. 1:17, inside the Congress. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+    "verifiedAt": "2026-11-07"
    }
   ],
   "searched": "INA ina.fr search (audio+video: 'Lebrun', 'Albert Lebrun réélu', 'réélection Lebrun', 'président Lebrun', 'élection 1939', 'Versailles 1939') - only a 1939 Montélimar speech (phd85007927), nothing on the 5 Apr election; Gallica SRU sound recordings; YouTube ('Lebrun réélu 1939 président', 'Pathé journal 1939 élection président Lebrun Versailles') - British Pathé, British Movietone, Reuters SQWaTu_SKXc (British Paramount newsreel, 10 Apr 1939) found."
@@ -494,25 +605,36 @@
   "round": "1947-t1",
   "media": {
    "type": "radio",
-   "provider": "ina.fr",
+   "provider": "INA (ina.fr player)",
    "url": "https://www.ina.fr/ina-eclaire-actu/audio/phd85000595/election-du-premier-president-de-la-iveme-republique",
-   "embed": null,
+   "embed": "https://player.ina.fr/embed/PHD85000595",
    "title": "Election du premier président de la IVème République",
    "publisher": "INA (radio reportage by Pierre Crenesse)",
    "date": "1947-01-16",
-   "evidence": "ina.fr page 200, <title>/og:title 'Election du premier président de la IVème République | INA', JSON-LD uploadDate 1947-01-16, duration 35:26, description: 'Reportage de Pierre CRENESSE lors du premier congrès de la 4e république, à Versailles ... C'est Vincent Auriol ... qui est élu.' JW player present on page, no login wall seen.",
+   "evidence": "ina.fr page 200, <title>/og:title 'Election du premier président de la IVème République | INA', JSON-LD uploadDate 1947-01-16, duration 35:26, description: 'Reportage de Pierre CRENESSE lors du premier congrès de la 4e république, à Versailles ... C'est Vincent Auriol ... qui est élu.' JW player present on page, no login wall seen. INA player embed https://player.ina.fr/embed/PHD85000595 checked 2026-11-07: the embed page's asset-details API returns title \"Election du premier président de la IVème République\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
    "verifiedAt": "2026-11-07"
   },
   "alternatives": [
    {
     "type": "newsreel",
-    "provider": "ina.fr",
+    "provider": "INA (ina.fr player)",
     "url": "https://www.ina.fr/ina-eclaire-actu/video/afe85002298/l-election-du-president-de-la-republique",
-    "embed": null,
+    "embed": "https://player.ina.fr/embed/AFE85002298",
     "title": "L'élection du président de la République",
     "publisher": "Les Actualités Françaises (INA)",
     "date": "1947-01-23",
-    "evidence": "ina.fr page 200, og:title \"L'élection du président de la République | INA\", JSON-LD uploadDate 1947-01-23, 1:53; description: 'Arrivée à Versailles du nouveau président de la IVème République Vincent AURIOL, investi par Jacques DUCLOS'.",
+    "evidence": "ina.fr page 200, og:title \"L'élection du président de la République | INA\", JSON-LD uploadDate 1947-01-23, 1:53; description: 'Arrivée à Versailles du nouveau président de la IVème République Vincent AURIOL, investi par Jacques DUCLOS'. INA player embed https://player.ina.fr/embed/AFE85002298 checked 2026-11-07: the embed page's asset-details API returns title \"L'élection du président de la République\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "radio",
+    "provider": "INA (ina.fr player)",
+    "url": "https://www.ina.fr/ina-eclaire-actu/audio/phd85002898/election-de-vincent-auriol-a-la-presidence-de-la-republique",
+    "embed": "https://player.ina.fr/embed/PHD85002898",
+    "title": "Election de Vincent Auriol à la présidence de la République",
+    "publisher": "INA (radio)",
+    "date": "1947-01-16",
+    "evidence": "ina.fr search (audio) hit; asset description: 'Plage 1 : Vincent AURIOL, très ému, remercie Léon BLUM et les membres du Parlement qui l'ont élu Président de la République (1'40)…'; 6:02, broadcast 16/01/1947. INA player embed https://player.ina.fr/embed/PHD85002898 checked 2026-11-07: the embed page's asset-details API returns title \"Election de Vincent Auriol à la présidence de la République\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
     "verifiedAt": "2026-11-07"
    },
    {
@@ -527,31 +649,76 @@
     "verifiedAt": "2026-11-07"
    }
   ],
-  "searched": "INA ina.fr search audio ('élection Vincent Auriol', 'Auriol élu', 'Vincent Auriol', 'élection du président de la République'): 2 radio hits - phd85000595 (chosen) and phd85002898 'Election de Vincent Auriol à la présidence de la République' (16/01/1947, 6:02, Auriol thanks Blum and Parliament after being elected; https://www.ina.fr/ina-eclaire-actu/audio/phd85002898/election-de-vincent-auriol-a-la-presidence-de-la-republique, page verified 200). Video: AFE afe85002298. YouTube: RoisPresidents reupload ATqzzCbA6I0, British Pathé dXObyl3-a1I, Reuters NBj8dgiPYIE (not used)."
+  "searched": "INA ina.fr search audio ('élection Vincent Auriol', 'Auriol élu', 'Vincent Auriol', 'élection du président de la République'): 2 radio hits - phd85000595 (chosen) and phd85002898 'Election de Vincent Auriol à la présidence de la République' (16/01/1947, 6:02, Auriol thanks Blum and Parliament after being elected; https://www.ina.fr/ina-eclaire-actu/audio/phd85002898/election-de-vincent-auriol-a-la-presidence-de-la-republique, page verified 200). Video: AFE afe85002298. YouTube: RoisPresidents reupload ATqzzCbA6I0, British Pathé dXObyl3-a1I, Reuters NBj8dgiPYIE (not used). | 2026-11-07: Reuters Connect NBj8dgiPYIE (Gaumont British, 23 Jan 1947, Auriol at the Arc de Triomphe) and British Pathé rvnuL4FEXec (unissued, Versailles/Elysée, Jan 1947) also verified embeddable but not used (cap of 3 alternatives)."
+ },
+ {
+  "round": "1953-t2",
+  "media": {
+   "type": "tv",
+   "provider": "INA (ina.fr player)",
+   "url": "https://www.ina.fr/ina-eclaire-actu/video/caf89036803/l-election-presidentielle-l-apres-midi-au-congres-de-versailles",
+   "embed": "https://player.ina.fr/embed/CAF89036803",
+   "title": "L'élection présidentielle : l'après midi au congrès de Versailles",
+   "publisher": "RTF, JT 20H (INA)",
+   "date": "1953-12-17",
+   "evidence": "ina.fr search hit 'JT 20H - 17/12/1953 - 05:23'; asset description: 'Congrès de Versailles le 17 décembre 1953 afin d'élire un nouveau président de la République, le mandat de Vincent Auriol étant arrivé à son terme.' INA player embed https://player.ina.fr/embed/CAF89036803 checked 2026-11-07: the embed page's asset-details API returns title \"L'élection présidentielle : l'après midi au congrès de Versailles\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
+   "verifiedAt": "2026-11-07"
+  },
+  "searched": "2026-11-07: ina.fr video search 'élection présidentielle Versailles'. Non-decisive ballot; the TV report is of that day's sitting."
+ },
+ {
+  "round": "1953-t6",
+  "media": {
+   "type": "tv",
+   "provider": "INA (ina.fr player)",
+   "url": "https://www.ina.fr/ina-eclaire-actu/video/caf97513517/l-election-presidentielle-l-apres-midi-a-versailles",
+   "embed": "https://player.ina.fr/embed/CAF97513517",
+   "title": "L'ELECTION PRESIDENTIELLE : L'APRES-MIDI A VERSAILLES",
+   "publisher": "RTF, JT 20H (INA)",
+   "date": "1953-12-19",
+   "evidence": "ina.fr search hit 'JT 20H - 19/12/1953 - 03:14'; asset description lists the Congress (hémicycle, urnes, Laniel, Duclos, chanoine Kir…). INA player embed https://player.ina.fr/embed/CAF97513517 checked 2026-11-07: the embed page's asset-details API returns title \"L'ELECTION PRESIDENTIELLE : L'APRES-MIDI A VERSAILLES\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
+   "verifiedAt": "2026-11-07"
+  },
+  "searched": "2026-11-07: ina.fr video search 'élection présidentielle Versailles'. Non-decisive ballot; the TV report is of that day's sitting."
+ },
+ {
+  "round": "1953-t10",
+  "media": {
+   "type": "tv",
+   "provider": "INA (ina.fr player)",
+   "url": "https://www.ina.fr/ina-eclaire-actu/video/caf89036805/l-election-presidentielle-l-apres-midi-a-versailles",
+   "embed": "https://player.ina.fr/embed/CAF89036805",
+   "title": "L'élection présidentielle : l'après-midi à Versailles",
+   "publisher": "RTF, JT 20H (INA)",
+   "date": "1953-12-21",
+   "evidence": "ina.fr search hit 'JT 20H - 21/12/1953 - 02:03'; asset description: '… n'ayant pas permis de dégager une majorité, le Congrès se réunit à nouveau pour un second vote au terme duquel René COTY sera élu.' INA player embed https://player.ina.fr/embed/CAF89036805 checked 2026-11-07: the embed page's asset-details API returns title \"L'élection présidentielle : l'après-midi à Versailles\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
+   "verifiedAt": "2026-11-07"
+  },
+  "searched": "2026-11-07: ina.fr video search 'élection présidentielle Versailles'. Non-decisive ballot; the TV report is of that day's sitting."
  },
  {
   "round": "1953-t13",
   "media": {
    "type": "newsreel",
-   "provider": "ina.fr",
+   "provider": "INA (ina.fr player)",
    "url": "https://www.ina.fr/ina-eclaire-actu/video/afe85005407/rene-coty-elu-president",
-   "embed": null,
+   "embed": "https://player.ina.fr/embed/AFE85005407",
    "title": "René Coty élu Président",
    "publisher": "Les Actualités Françaises (INA)",
    "date": "1953-12-24",
-   "evidence": "FALLBACK newsreel (no radio of the 23 Dec result found). ina.fr page 200, og:title 'René Coty élu Président | INA', JSON-LD uploadDate 1953-12-24, 1:46; description: 'Reportage sur l'élection du Président René COTY'.",
+   "evidence": "FALLBACK newsreel (no radio of the 23 Dec result found). ina.fr page 200, og:title 'René Coty élu Président | INA', JSON-LD uploadDate 1953-12-24, 1:46; description: 'Reportage sur l'élection du Président René COTY'. INA player embed https://player.ina.fr/embed/AFE85005407 checked 2026-11-07: the embed page's asset-details API returns title \"René Coty élu Président\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
    "verifiedAt": "2026-11-07"
   },
   "alternatives": [
    {
-    "type": "newspaper",
-    "provider": "Gallica (BnF)",
-    "url": "https://gallica.bnf.fr/ark:/12148/bd6t571578z/f1.item",
-    "embed": null,
-    "title": "Figaro : journal non politique",
-    "publisher": "Le Figaro",
+    "type": "newsreel",
+    "provider": "INA (ina.fr player)",
+    "url": "https://www.ina.fr/ina-eclaire-actu/video/afe85005406/le-congres-de-versailles",
+    "embed": "https://player.ina.fr/embed/AFE85005406",
+    "title": "Le congrès de Versailles",
+    "publisher": "Les Actualités Françaises (INA)",
     "date": "1953-12-24",
-    "evidence": "OAIRecord dc:date 1953-12-24; f1.item title 'Figaro : journal non politique | 1953-12-24'. ContentSearch page 1 (OCR): 'RENÉ COTY A ETC ELU président de la République' (OCR 'ETC' = ÉTÉ), elected at the 13th ballot.",
+    "evidence": "ina.fr search hit 'Le congrès de Versailles, Journal Les Actualités Françaises - 24/12/1953 - 02:27'; asset description: 'Le congrès de Versailles pour l'élection du deuxième président de la IVème République, René COTY.' INA player embed https://player.ina.fr/embed/AFE85005406 checked 2026-11-07: the embed page's asset-details API returns title \"Le congrès de Versailles\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
     "verifiedAt": "2026-11-07"
    },
    {
@@ -564,21 +731,32 @@
     "date": null,
     "evidence": "oEmbed 200, author 'British Pathé' (official channel); description: 'Mr Andre Le Troquer, President of the Congress announces results and election of Mr Rene Coty. Members stand up and loudly applaud'.",
     "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "newspaper",
+    "provider": "Gallica (BnF)",
+    "url": "https://gallica.bnf.fr/ark:/12148/bd6t571578z/f1.item",
+    "embed": null,
+    "title": "Figaro : journal non politique",
+    "publisher": "Le Figaro",
+    "date": "1953-12-24",
+    "evidence": "OAIRecord dc:date 1953-12-24; f1.item title 'Figaro : journal non politique | 1953-12-24'. ContentSearch page 1 (OCR): 'RENÉ COTY A ETC ELU président de la République' (OCR 'ETC' = ÉTÉ), elected at the 13th ballot.",
+    "verifiedAt": "2026-11-07"
    }
   ],
-  "searched": "INA ina.fr search audio ('René Coty', 'Coty élu', 'Coty élu président', 'élection présidentielle 1953', 'décembre 1953', 'treizième tour', 'Paris vous parle Coty', 'Coty 23 décembre') - only later Coty speeches (1956-59), no radio of the election; video: AFE afe85005407 (chosen), afe85005406 'Le congrès de Versailles' (24/12/1953), afe03004257 'Discours de René Coty après son élection' (unused rushes), JT 20H items of 16/17/19/21/22 Dec 1953 (caf97513514, caf89036803, caf97513517, caf89036805, caf97513523) but none for 23 Dec. Gallica SRU sound 'Coty' (1 unrelated record). YouTube: RoisPresidents reupload jz7UxX06SAU (AFE extract), British Pathé 9PCqLH6dWgQ and n-tWFSWtayA."
+  "searched": "INA ina.fr search audio ('René Coty', 'Coty élu', 'Coty élu président', 'élection présidentielle 1953', 'décembre 1953', 'treizième tour', 'Paris vous parle Coty', 'Coty 23 décembre') - only later Coty speeches (1956-59), no radio of the election; video: AFE afe85005407 (chosen), afe85005406 'Le congrès de Versailles' (24/12/1953), afe03004257 'Discours de René Coty après son élection' (unused rushes), JT 20H items of 16/17/19/21/22 Dec 1953 (caf97513514, caf89036803, caf97513517, caf89036805, caf97513523) but none for 23 Dec. Gallica SRU sound 'Coty' (1 unrelated record). YouTube: RoisPresidents reupload jz7UxX06SAU (AFE extract), British Pathé 9PCqLH6dWgQ and n-tWFSWtayA. | 2026-11-07: ina.fr also has RTF JT 20H reports on the earlier days of the Congress (17, 19, 21 and 22 Dec 1953), attached to the last ballot of 17, 19 and 21 Dec; the 22 Dec report (caf97513523) is not attached because the source table has no ballot on 22 Dec. No radio of the 23 Dec result found on ina.fr (audio search 'Coty', '23 décembre 1953', 'élection président 1953')."
  },
  {
   "round": "1958-t1",
   "media": {
    "type": "newsreel",
-   "provider": "ina.fr",
+   "provider": "INA (ina.fr player)",
    "url": "https://www.ina.fr/ina-eclaire-actu/video/afe85008136/charles-de-gaulle-president-de-la-republique",
-   "embed": null,
+   "embed": "https://player.ina.fr/embed/AFE85008136",
    "title": "Charles de Gaulle Président de la République",
    "publisher": "Les Actualités Françaises (INA)",
    "date": "1958-12-24",
-   "evidence": "ina.fr page fetched 200, <title> \"Charles de Gaulle Président de la République | INA\"; page shows \"Journal Les Actualités Françaises - 24.12.1958 - 00:41 - vidéo\" and summary \"Election du premier Président de la Cinquième République par le collège des grands électeurs\". No TV/JT item found; cinema newsreel used.",
+   "evidence": "ina.fr page fetched 200, <title> \"Charles de Gaulle Président de la République | INA\"; page shows \"Journal Les Actualités Françaises - 24.12.1958 - 00:41 - vidéo\" and summary \"Election du premier Président de la Cinquième République par le collège des grands électeurs\". No TV/JT item found; cinema newsreel used. INA player embed https://player.ina.fr/embed/AFE85008136 checked 2026-11-07: the embed page's asset-details API returns title \"Charles de Gaulle Président de la République\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
    "verifiedAt": "2026-11-07"
   },
   "alternatives": [
@@ -620,9 +798,31 @@
     "date": null,
     "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; official INA compilation of 20h first-round announcements; description chapter \"00:00 1965 : Annonce des résultats du 1er tour des élections présidentielles\" — URL/embed start at that chapter.",
     "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "radio",
+    "provider": "Europe 1 (YouTube)",
+    "url": "https://www.youtube.com/watch?v=ntZ4H9TJAVs",
+    "embed": "https://www.youtube-nocookie.com/embed/ntZ4H9TJAVs",
+    "title": "Élection présidentielle de 1965 : De Gaulle en ballotage",
+    "publisher": "Europe 1",
+    "date": "1965-12-05",
+    "evidence": "oEmbed 200, title \"Élection présidentielle de 1965 : De Gaulle en ballotage\", author_name \"Europe 1\". Europe 1 'Dans le jour où' (2023): description 'grâce à ses archives, la rédaction d'Europe 1 fait le récit d'un événement'. A 2:36 radio retrospective built on Europe 1's archive sound of the first round, not the full broadcast. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "newsreel",
+    "provider": "INA Histoire (YouTube)",
+    "url": "https://www.youtube.com/watch?v=BZ5WxILTOxQ",
+    "embed": "https://www.youtube-nocookie.com/embed/BZ5WxILTOxQ",
+    "title": "L’élection présidentielle de 1965 : Les Actualités Françaises du 08/12/1965 | INA Histoire",
+    "publisher": "Les Actualités Françaises (INA Histoire)",
+    "date": "1965-12-08",
+    "evidence": "oEmbed 200, title \"L’élection présidentielle de 1965 : Les Actualités Françaises du 08/12/1965 | INA Histoire\", author_name \"INA Histoire\". Description includes the segment 'Élection présidentielle : la grande nuit du premier tour. Images des bureaux de vote … de la presse mobilisée au ministère de l’Intérieur … François Mitterrand réagit depuis Château-Chinon'. Full 7:41 newsreel issue. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+    "verifiedAt": "2026-11-07"
    }
   ],
-  "searched": "YouTube: \"INA élection présidentielle 1965 premier tour résultats\", \"INA 5 décembre 1965\"; INA Politique/INA Histoire results checked."
+  "searched": "YouTube: \"INA élection présidentielle 1965 premier tour résultats\", \"INA 5 décembre 1965\"; INA Politique/INA Histoire results checked. | 2026-11-07: ina.fr audio has 'Inter actualités de 20H00 du 6 décembre 1965' (phf06020146) but its record has no description, so the content was not confirmed and it is not used; British Movietone srzMH9Yb6xo 'SHOCK FOR DE GAULLE' (9 Dec 1965) also embeddable, not used (cap)."
  },
  {
   "round": "1965-t2",
@@ -649,9 +849,31 @@
     "date": "1965-12-22",
     "evidence": "oEmbed 200 (author INA Histoire), playableInEmbed true; description: \"Au terme du second tour, le général de Gaulle l'emporte avec 55 % des voix. Soirée électorale au ministère de l'Intérieur…\" (full 10-min newsreel issue; result is the first item).",
     "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "radio",
+    "provider": "Europe 1 (YouTube)",
+    "url": "https://www.youtube.com/watch?v=AdhOVZxDdIU",
+    "embed": "https://www.youtube-nocookie.com/embed/AdhOVZxDdIU",
+    "title": "19 décembre 1965, la réélection de Charles de Gaulle",
+    "publisher": "Europe 1",
+    "date": "1965-12-19",
+    "evidence": "oEmbed 200, title \"19 décembre 1965, la réélection de Charles de Gaulle\", author_name \"Europe 1\". Europe 1 'Aujourd'hui dans l'histoire' by Franck Ferrand (2014), 2:37: a radio retrospective of the night, not the original broadcast. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "newsreel",
+    "provider": "British Movietone (YouTube)",
+    "url": "https://www.youtube.com/watch?v=-XTnDYJqrBg",
+    "embed": "https://www.youtube-nocookie.com/embed/-XTnDYJqrBg",
+    "title": "PRESIDENTIAL ELECTIONS - NO SOUND",
+    "publisher": "British Movietone",
+    "date": "1965-12-19",
+    "evidence": "oEmbed 200, title \"PRESIDENTIAL ELECTIONS - NO SOUND\", author_name \"British Movietone\". Description: '(19 Dec 1965) Various shots of the voting offices in Paris … Shots of the press. … MR. & MRS. POMPIDOU are seen Voting … Colombey Les Deux Eglises - DE Gaulle voting.' Polling day, silent, 3:26. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+    "verifiedAt": "2026-11-07"
    }
   ],
-  "searched": "YouTube: \"INA 19 décembre 1965 de Gaulle réélu second tour\", \"soirée électorale 19 décembre 1965 résultats second tour\", \"INA élection présidentielle 1965 de Gaulle réélu résultats second tour télévision\". No standalone INA 19/12/1965 TV clip found."
+  "searched": "YouTube: \"INA 19 décembre 1965 de Gaulle réélu second tour\", \"soirée électorale 19 décembre 1965 résultats second tour\", \"INA élection présidentielle 1965 de Gaulle réélu résultats second tour télévision\". No standalone INA 19/12/1965 TV clip found. | 2026-11-07: ina.fr audio search for Inter actualités of 19–20 Dec 1965 found only the 13H00 of 19 Dec (before the result)."
  },
  {
   "round": "1969-t1",
@@ -667,7 +889,20 @@
    "verifiedAt": "2026-11-07",
    "start": 75
   },
-  "searched": "YouTube: \"INA 1er juin 1969 premier tour présidentielle résultats\", \"élection présidentielle 1969 premier tour soirée électorale Archive INA\", \"1969 Pompidou Poher ballottage premier tour résultats télévision\", \"JT 20H émission du 1 juin 1969\"; ina.fr search \"premier tour 1969 présidentielle\". Only the INA compilation segment found (other hits are fan reuploads)."
+  "searched": "YouTube: \"INA 1er juin 1969 premier tour présidentielle résultats\", \"élection présidentielle 1969 premier tour soirée électorale Archive INA\", \"1969 Pompidou Poher ballottage premier tour résultats télévision\", \"JT 20H émission du 1 juin 1969\"; ina.fr search \"premier tour 1969 présidentielle\". Only the INA compilation segment found (other hits are fan reuploads). | 2026-11-07: ina.fr audio 'Inter actualités 1er juin 1969' (19H00 edition = before 8 pm, not used); Europe 1 has no item for this round.",
+  "alternatives": [
+   {
+    "type": "radio",
+    "provider": "INA (ina.fr player)",
+    "url": "https://www.ina.fr/ina-eclaire-actu/audio/phf06054342/inter-actualites-de-20h00-du-2-juin-1969",
+    "embed": "https://player.ina.fr/embed/PHF06054342",
+    "title": "Inter actualités de 20H00 du 2 juin 1969",
+    "publisher": "France Inter, Inter actualités (INA)",
+    "date": "1969-06-02",
+    "evidence": "ina.fr audio search; asset description: 'Politique Intérieure - Elections présidentielles au lendemain du 1er tour (Commentaire : Yves MOUROUSI) : Le second tour des présidentielles et les déclarations pour le report des voix …'. 21:53, the evening after the first round. INA player embed https://player.ina.fr/embed/PHF06054342 checked 2026-11-07: the embed page's asset-details API returns title \"Inter actualités de 20H00 du 2 juin 1969\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
+    "verifiedAt": "2026-11-07"
+   }
+  ]
  },
  {
   "round": "1969-t2",
@@ -685,6 +920,17 @@
   },
   "alternatives": [
    {
+    "type": "radio",
+    "provider": "INA (ina.fr player)",
+    "url": "https://www.ina.fr/ina-eclaire-actu/audio/phf06054362/inter-actualites-de-20h00-du-15-juin-1969",
+    "embed": "https://player.ina.fr/embed/PHF06054362",
+    "title": "Inter actualités de 20H00 du 15 juin 1969",
+    "publisher": "France Inter, Inter actualités (INA)",
+    "date": "1969-06-15",
+    "evidence": "ina.fr audio search; asset description: 'Elections présidentielles, deuxième tour de scrutin (Commentaire : Yves MOUROUSI) : Au Ministère de l'intérieur … premiers résultats … Interview de René REMOND, Alain LANCELOT … Interview de Michel DEBRE … sa satisfaction des résultats'. 55:56, the live election-night bulletin. INA player embed https://player.ina.fr/embed/PHF06054362 checked 2026-11-07: the embed page's asset-details API returns title \"Inter actualités de 20H00 du 15 juin 1969\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
+    "verifiedAt": "2026-11-07"
+   },
+   {
     "type": "tv",
     "provider": "INA (YouTube)",
     "url": "https://www.youtube.com/watch?v=KkOWaDydH_M",
@@ -694,9 +940,20 @@
     "date": "1969-06-16",
     "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; description: \"16 juin 1969 Déclaration d'ALAIN POHER… au lendemain de l'élection de Georges Pompidou\" — loser's concession, not the announcement itself.",
     "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "tv",
+    "provider": "AP Archive (YouTube)",
+    "url": "https://www.youtube.com/watch?v=Jh7NTMtt6Sg",
+    "embed": "https://www.youtube-nocookie.com/embed/Jh7NTMtt6Sg",
+    "title": "SYND 16/06/1969 POMPIDOU WINS FRENCH ELECTION",
+    "publisher": "AP Archive (UPITN)",
+    "date": "1969-06-16",
+    "evidence": "oEmbed 200, title \"SYND 16/06/1969 POMPIDOU WINS FRENCH ELECTION\", author_name \"AP Archive\". Description: '(16 Jun 1969) STORY Gaullist party candidate George Pompidou has been elected President of France'. 2:02, English-language agency footage. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+    "verifiedAt": "2026-11-07"
    }
   ],
-  "searched": "YouTube: \"INA 15 juin 1969 Pompidou élu\", \"Pompidou Poher second tour 1969 soirée électorale\", \"Soirée électorale élection présidentielle 1969 ORTF Pompidou\", \"JT 20H émission du 16 juin 1969\"; ina.fr search \"pompidou élu 1969\". British Pathé MNFGa0Nl5x0 (election-night newsreel, no INA) also exists."
+  "searched": "YouTube: \"INA 15 juin 1969 Pompidou élu\", \"Pompidou Poher second tour 1969 soirée électorale\", \"Soirée électorale élection présidentielle 1969 ORTF Pompidou\", \"JT 20H émission du 16 juin 1969\"; ina.fr search \"pompidou élu 1969\". British Pathé MNFGa0Nl5x0 (election-night newsreel, no INA) also exists. | 2026-11-07: also Europe 1 DZx6COU08Kc '15 juin 1969 : Georges Pompidou président' (2023 archive retrospective) and Inter actualités 20H00 16 juin 1969 (phf04011726, 'Election de Georges POMPIDOU …') verified but not used (cap of 3)."
  },
  {
   "round": "1974-t1",
@@ -722,6 +979,17 @@
     "publisher": "INA Actu",
     "date": "1974-05-06",
     "evidence": "oEmbed 200 (author INA Actu), playableInEmbed true; description \"6 mai 1974\" — full ORTF 20h news the day after the first round (39 min); not the election-night broadcast itself.",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "radio",
+    "provider": "INA (ina.fr player)",
+    "url": "https://www.ina.fr/ina-eclaire-actu/audio/phf05003619/inter-actualites-de-08h00-du-6-mai-1974",
+    "embed": "https://player.ina.fr/embed/PHF05003619",
+    "title": "Inter actualités de 08H00 du 6 mai 1974",
+    "publisher": "France Inter, Inter actualités (INA)",
+    "date": "1974-05-06",
+    "evidence": "ina.fr audio search; asset description: 'Premier tour de l'élection présidentielle - Les résultats : Interview de Laurent CAYROL … Déclaration de François MITTERRAND, qui analyse son score … Déclaration de Valéry GISCARD D'ESTAING, à la Mairie de Chamalières … Jacques CHABAN DELMAS'. 23:53, the morning after. INA player embed https://player.ina.fr/embed/PHF05003619 checked 2026-11-07: the embed page's asset-details API returns title \"Inter actualités de 08H00 du 6 mai 1974\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
     "verifiedAt": "2026-11-07"
    }
   ],
@@ -752,6 +1020,28 @@
     "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; official INA compilation of second-round announcements; description chapter \"05:28 1974 : Annonce des résultats du 2nd tour des élections présidentielles\" — URL/embed start at that chapter.",
     "verifiedAt": "2026-11-07",
     "start": 328
+   },
+   {
+    "type": "radio",
+    "provider": "INA (ina.fr player)",
+    "url": "https://www.ina.fr/ina-eclaire-actu/audio/phf08004804/inter-actualites-de-19h00-du-20-mai-1974",
+    "embed": "https://player.ina.fr/embed/PHF08004804",
+    "title": "Inter actualités de 19H00 du 20 mai 1974",
+    "publisher": "France Inter, Inter actualités (INA)",
+    "date": "1974-05-20",
+    "evidence": "ina.fr audio search; asset description: \"L'élection du Président de la République : Les résultats du suffrage - Interview de Valéry GISCARD D'ESTAING, Président de la République … Interview de François MITTERRAND …\". 50:38, the day after. INA player embed https://player.ina.fr/embed/PHF08004804 checked 2026-11-07: the embed page's asset-details API returns title \"Inter actualités de 19H00 du 20 mai 1974\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "newsreel",
+    "provider": "British Movietone (YouTube)",
+    "url": "https://www.youtube.com/watch?v=7eGHL9AQfkc",
+    "embed": "https://www.youtube-nocookie.com/embed/7eGHL9AQfkc",
+    "title": "Valery Giscard d'Estaing - 1974 | Movietone Moment | 19 May 2023",
+    "publisher": "British Movietone",
+    "date": null,
+    "evidence": "oEmbed 200, title \"Valery Giscard d'Estaing - 1974 | Movietone Moment | 19 May 2023\", author_name \"British Movietone\". Description: 'On this day in 1974, Valery Giscard d'Estaing was elected President of France … a British Movietone report showing highlights from the French elections.' 1:12. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+    "verifiedAt": "2026-11-07"
    }
   ],
   "searched": "YouTube: \"19 mai 1974 Giscard d'Estaing élu résultats INA\", \"JT 20H émission du 19 mai 1974\"."
@@ -810,9 +1100,31 @@
     "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; official INA compilation of second-round announcements; description chapter \"06:27 1981 : Annonce des résultats du 2nd tour des élections présidentielles\" — URL/embed start at that chapter.",
     "verifiedAt": "2026-11-07",
     "start": 387
+   },
+   {
+    "type": "radio",
+    "provider": "Europe 1 (YouTube)",
+    "url": "https://www.youtube.com/watch?v=CXqR2hqsvJs",
+    "embed": "https://www.youtube-nocookie.com/embed/CXqR2hqsvJs",
+    "title": "Quand la gauche arrive au pouvoir en 1981",
+    "publisher": "Europe 1",
+    "date": "1981-05-10",
+    "evidence": "oEmbed 200, title \"Quand la gauche arrive au pouvoir en 1981\", author_name \"Europe 1\". Europe 1 archive retrospective (2023), 2:42: 'grâce à ses archives, la rédaction d'Europe 1 fait le récit d'un événement'. Not the original broadcast. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "tv",
+    "provider": "Radio-Canada Archives (YouTube)",
+    "url": "https://www.youtube.com/watch?v=WH57yTYvs_E",
+    "embed": "https://www.youtube-nocookie.com/embed/WH57yTYvs_E",
+    "title": "En 1981, François Mitterrand élu président de la France",
+    "publisher": "Radio-Canada",
+    "date": "1981-05-10",
+    "evidence": "oEmbed 200, title \"En 1981, François Mitterrand élu président de la France\", author_name \"Radio-Canada Archives\". Description: 'Le 10 mai 1981 … Radio-Canada diffuse une émission spéciale, «Les élections présidentielles françaises». Notre extrait montre le discours de François Mitterrand prononcé tout de suite après que sa victoire…'. 3:53, foreign coverage. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+    "verifiedAt": "2026-11-07"
    }
   ],
-  "searched": "YouTube: \"10 mai 1981 20h annonce résultat Mitterrand INA\", \"TF1 20H 10 mai 1981 élection\"."
+  "searched": "YouTube: \"10 mai 1981 20h annonce résultat Mitterrand INA\", \"TF1 20H 10 mai 1981 élection\". | 2026-11-07: also AP Archive QPb5zaw1eWI (cuts, 12 May 1981, 21 min) and RTS Archives DLDtIRDylmU (two Swiss families learn the result) verified embeddable, not used (cap)."
  },
  {
   "round": "1988-t1",
@@ -868,9 +1180,20 @@
     "evidence": "oEmbed 200 (author INA Politique), playableInEmbed true; official INA compilation of second-round announcements; description chapter \"07:32 1988 : Annonce des résultats du 2nd tour des élections présidentielles\" — URL/embed start at that chapter.",
     "verifiedAt": "2026-11-07",
     "start": 452
+   },
+   {
+    "type": "tv",
+    "provider": "INA Politique (YouTube)",
+    "url": "https://www.youtube.com/watch?v=ETZyoaS5HlQ",
+    "embed": "https://www.youtube-nocookie.com/embed/ETZyoaS5HlQ",
+    "title": "[Images fortes de la nuit suite à la réélection de François Mitterrand]",
+    "publisher": "INA Politique",
+    "date": "1988-05-09",
+    "evidence": "oEmbed 200, title \"[Images fortes de la nuit suite à la réélection de François Mitterrand]\", author_name \"INA Politique\". Description: '9 mai 1988 Election Présidentielle, réélection de François MITTERRAND. Rediffusion des images fortes de la nuit précédente, avec notamment la fête Place de la République…'. 2:34. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+    "verifiedAt": "2026-11-07"
    }
   ],
-  "searched": "YouTube: \"8 mai 1988 Mitterrand réélu 20h INA\", \"8 mai 1988 soirée électorale Mitterrand réélu Archive INA\", \"JA2 20H émission du 8 mai 1988\"; also INA Politique NPGf94KyQIM (9/5/1988 FR3 soirée synthesis)."
+  "searched": "YouTube: \"8 mai 1988 Mitterrand réélu 20h INA\", \"8 mai 1988 soirée électorale Mitterrand réélu Archive INA\", \"JA2 20H émission du 8 mai 1988\"; also INA Politique NPGf94KyQIM (9/5/1988 FR3 soirée synthesis). | 2026-11-07: no 1988 radio found (ina.fr audio 'Mitterrand réélu 1988', '1988 résultats'; YouTube Europe 1/RTL archives)."
  },
  {
   "round": "1995-t1",
@@ -908,6 +1231,17 @@
     "date": "1995-04-24",
     "evidence": "oEmbed 200 (author \"INA Politique\"); description: \"Le Journal de 20H | France 2 | 24/04/1995\" — day-after analysis of 1st-round results (not the live 8 pm announcement).",
     "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "tv",
+    "provider": "AP Archive (YouTube)",
+    "url": "https://www.youtube.com/watch?v=f7iHo0V1Eyc",
+    "embed": "https://www.youtube-nocookie.com/embed/f7iHo0V1Eyc",
+    "title": "France - Jospin's First Round Victory",
+    "publisher": "AP Archive",
+    "date": "1995-04-24",
+    "evidence": "oEmbed 200, title \"France - Jospin's First Round Victory\", author_name \"AP Archive\". Description: '(24 Apr 1995) … Lionel Jospin, confounded all predictions to come top of the poll in Sunday's … first round of voting.' 1:52, English-language agency footage. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+    "verifiedAt": "2026-11-07"
    }
   ],
   "searched": "YouTube: \"INA présidentielle 1995 premier tour 20h résultats\"; INA Politique/INA Actu channels."
@@ -939,13 +1273,24 @@
    },
    {
     "type": "tv",
-    "provider": "ina.fr",
+    "provider": "INA (ina.fr player)",
     "url": "https://www.ina.fr/ina-eclaire-actu/video/cac05011288/annonce-des-resultats",
-    "embed": null,
+    "embed": "https://player.ina.fr/embed/CAC05011288",
     "title": "Annonce des résultats",
     "publisher": "INA (France 3)",
     "date": "1995-05-07",
-    "evidence": "Page 200; <title> \"Annonce des résultats\"; uploadDate 1995-05-07T10:00:00+02:00; duration PT1M2S; producer France 3; description \"A 20h, ils annoncent l'estimation du résultat. Jacques Chirac, RPR, est élu président de la République avec 52 %\".",
+    "evidence": "Page 200; <title> \"Annonce des résultats\"; uploadDate 1995-05-07T10:00:00+02:00; duration PT1M2S; producer France 3; description \"A 20h, ils annoncent l'estimation du résultat. Jacques Chirac, RPR, est élu président de la République avec 52 %\". INA player embed https://player.ina.fr/embed/CAC05011288 checked 2026-11-07: the embed page's asset-details API returns title \"Annonce des résultats\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "radio",
+    "provider": "Europe 1 (YouTube)",
+    "url": "https://www.youtube.com/watch?v=aoIadN-b3Ho",
+    "embed": "https://www.youtube-nocookie.com/embed/aoIadN-b3Ho",
+    "title": "7 mai 1995 : Jacques Chirac devient président de la République",
+    "publisher": "Europe 1",
+    "date": "1995-05-07",
+    "evidence": "oEmbed 200, title \"7 mai 1995 : Jacques Chirac devient président de la République\", author_name \"Europe 1\". Europe 1 'Dans le jour où' (2024), 2:20: archive-based radio retrospective ('grâce à ses archives'). Another Europe 1 piece, 2oRBZ12FAiE '7 mai 1995 : Jacques Chirac président de la République' (2025, 'les grands moments … de notre radio'), also verified; AP Archive JDRfB1m8cLQ (8 May 1995) also embeddable. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
     "verifiedAt": "2026-11-07"
    }
   ],
@@ -955,13 +1300,13 @@
   "round": "2002-t1",
   "media": {
    "type": "tv",
-   "provider": "ina.fr",
+   "provider": "INA (ina.fr player)",
    "url": "https://www.ina.fr/ina-eclaire-actu/video/i17103686/annonce-des-premieres-estimations-du-premier-tour-des-elections",
-   "embed": null,
+   "embed": "https://player.ina.fr/embed/I17103686",
    "title": "Annonce des premières estimations du premier tour des élections présidentielles de 2002",
    "publisher": "INA (France 2)",
    "date": "2002-04-21",
-   "evidence": "Page 200; <title> \"Annonce des premières estimations du premier tour des élections présidentielles de 2002\"; uploadDate 2002-04-21T10:00:00+02:00; duration PT2M8S; producer France 2, presenter David Pujadas; description \"Annonce des résultats du premier tour ... Jean Marie Le Pen devance Lionel Jospin et se qualifie pour le deuxième tour\".",
+   "evidence": "Page 200; <title> \"Annonce des premières estimations du premier tour des élections présidentielles de 2002\"; uploadDate 2002-04-21T10:00:00+02:00; duration PT2M8S; producer France 2, presenter David Pujadas; description \"Annonce des résultats du premier tour ... Jean Marie Le Pen devance Lionel Jospin et se qualifie pour le deuxième tour\". INA player embed https://player.ina.fr/embed/I17103686 checked 2026-11-07: the embed page's asset-details API returns title \"Annonce des premières estimations du premier tour des élections présidentielles de 2002\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
    "verifiedAt": "2026-11-07"
   },
   "alternatives": [
@@ -979,13 +1324,13 @@
    },
    {
     "type": "tv",
-    "provider": "ina.fr",
+    "provider": "INA (ina.fr player)",
     "url": "https://www.ina.fr/ina-eclaire-actu/video/i06184163/annonce-des-resultats-du-premier-tour-a-l-election-presidentielle-2002",
-    "embed": null,
+    "embed": "https://player.ina.fr/embed/I06184163",
     "title": "Annonce des résultats du premier tour à l'élection présidentielle 2002",
     "publisher": "INA (France 3)",
     "date": "2002-04-21",
-    "evidence": "Page 200; <title> \"Annonce des résultats du premier tour à l'élection présidentielle 2002\"; uploadDate 2002-04-21T10:00:00+02:00; duration PT2M20S; France 3 (Elise Lucet, Gilles Leclerc) announcement of the 1st-round estimates (Chirac / Le Pen finalists, abstention 28,6 %).",
+    "evidence": "Page 200; <title> \"Annonce des résultats du premier tour à l'élection présidentielle 2002\"; uploadDate 2002-04-21T10:00:00+02:00; duration PT2M20S; France 3 (Elise Lucet, Gilles Leclerc) announcement of the 1st-round estimates (Chirac / Le Pen finalists, abstention 28,6 %). INA player embed https://player.ina.fr/embed/I06184163 checked 2026-11-07: the embed page's asset-details API returns title \"Annonce des résultats du premier tour à l'élection présidentielle 2002\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
     "verifiedAt": "2026-11-07"
    }
   ],
@@ -995,13 +1340,13 @@
   "round": "2002-t2",
   "media": {
    "type": "tv",
-   "provider": "ina.fr",
+   "provider": "INA (ina.fr player)",
    "url": "https://www.ina.fr/ina-eclaire-actu/video/i06185214/presidentielle-2002-2eme-tour",
-   "embed": null,
+   "embed": "https://player.ina.fr/embed/I06185214",
    "title": "Présidentielle 2002 : 2ème tour",
    "publisher": "INA (France 2)",
    "date": "2002-05-05",
-   "evidence": "Page 200; <title> \"Présidentielle 2002 : 2ème tour\"; uploadDate 2002-05-05T10:00:00+02:00; duration PT0M57S; producer France 2; description \"Annonce en direct des résultats de l'élection présidentielle 2002 entre Jacques Chirac, RPR, et Jean-Marie Le Pen, FN. Jacques Chirac est élu avec 82,1% des voix.\"",
+   "evidence": "Page 200; <title> \"Présidentielle 2002 : 2ème tour\"; uploadDate 2002-05-05T10:00:00+02:00; duration PT0M57S; producer France 2; description \"Annonce en direct des résultats de l'élection présidentielle 2002 entre Jacques Chirac, RPR, et Jean-Marie Le Pen, FN. Jacques Chirac est élu avec 82,1% des voix.\" INA player embed https://player.ina.fr/embed/I06185214 checked 2026-11-07: the embed page's asset-details API returns title \"Présidentielle 2002 : 2ème tour\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
    "verifiedAt": "2026-11-07"
   },
   "alternatives": [
@@ -1019,13 +1364,24 @@
    },
    {
     "type": "tv",
-    "provider": "ina.fr",
+    "provider": "INA (ina.fr player)",
     "url": "https://www.ina.fr/ina-eclaire-actu/video/2013911001/presidentielle-2002-2eme-tour",
-    "embed": null,
+    "embed": "https://player.ina.fr/embed/2013911001",
     "title": "Présidentielle 2002 : 2ème tour",
     "publisher": "INA (France 2)",
     "date": "2002-05-05",
-    "evidence": "Page 200; <title> \"Présidentielle 2002 : 2ème tour\"; uploadDate 2002-05-05T10:00:00+02:00; duration PT3H56M44S; full France 2 election-night programme (3h56) incl. the 20h estimate.",
+    "evidence": "Page 200; <title> \"Présidentielle 2002 : 2ème tour\"; uploadDate 2002-05-05T10:00:00+02:00; duration PT3H56M44S; full France 2 election-night programme (3h56) incl. the 20h estimate. INA player embed https://player.ina.fr/embed/2013911001 checked 2026-11-07: the embed page's asset-details API returns title \"Présidentielle 2002 : 2ème tour\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "tv",
+    "provider": "AP Archive (YouTube)",
+    "url": "https://www.youtube.com/watch?v=sFRu_9sX720",
+    "embed": "https://www.youtube-nocookie.com/embed/sFRu_9sX720",
+    "title": "Headlines, vox pops, following Chirac election victory",
+    "publisher": "AP Archive",
+    "date": "2002-05-06",
+    "evidence": "oEmbed 200, title \"Headlines, vox pops, following Chirac election victory\", author_name \"AP Archive\". Description: '(6 May 2002) … Various of newspaper front pages about Chirac landslide … Vox pop'. 2:31, the morning after (foreign agency). nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
     "verifiedAt": "2026-11-07"
    }
   ],
@@ -1048,13 +1404,13 @@
   "alternatives": [
    {
     "type": "tv",
-    "provider": "ina.fr",
+    "provider": "INA (ina.fr player)",
     "url": "https://www.ina.fr/ina-eclaire-actu/video/3334022001/elysee-2007-1er-tour-22-avril-2007",
-    "embed": null,
+    "embed": "https://player.ina.fr/embed/3334022001",
     "title": "Elysée 2007 1er tour : 22 avril 2007",
     "publisher": "INA (France 2, France 3, Société francaise de Production)",
     "date": "2007-04-22",
-    "evidence": "Page 200; <title> \"Elysée 2007 1er tour : 22 avril 2007\"; uploadDate 2007-04-22T10:00:00+02:00; duration PT5H7M49S; full France 2/France 3 special \"Elysée 2007\" (5h07, Pujadas/Lucet) containing the 8 pm estimates; no isolated clip found.",
+    "evidence": "Page 200; <title> \"Elysée 2007 1er tour : 22 avril 2007\"; uploadDate 2007-04-22T10:00:00+02:00; duration PT5H7M49S; full France 2/France 3 special \"Elysée 2007\" (5h07, Pujadas/Lucet) containing the 8 pm estimates; no isolated clip found. INA player embed https://player.ina.fr/embed/3334022001 checked 2026-11-07: the embed page's asset-details API returns title \"Elysée 2007 1er tour : 22 avril 2007\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
     "verifiedAt": "2026-11-07"
    },
    {
@@ -1075,13 +1431,13 @@
   "round": "2007-t2",
   "media": {
    "type": "tv",
-   "provider": "ina.fr",
+   "provider": "INA (ina.fr player)",
    "url": "https://www.ina.fr/ina-eclaire-actu/video/i08128486/elysee-2007-2eme-tour-6-mai-2007",
-   "embed": null,
+   "embed": "https://player.ina.fr/embed/I08128486",
    "title": "Elysée 2007 2ème tour : 6 mai 2007",
    "publisher": "INA (France 2)",
    "date": "2007-05-06",
-   "evidence": "Page 200; <title> \"Elysée 2007 2ème tour : 6 mai 2007\"; uploadDate 2007-05-06T10:00:00+02:00; duration PT1M15S; producer France 2, presenters David Pujadas; description \"Annonce des premières estimations de l'élection présidentielle 2007. Nicolas Sarkozy bat Ségolène Royal.\" (1m15s). Old slug \"annonce-des-estimations-election-presidentielle-2007\" redirects here.",
+   "evidence": "Page 200; <title> \"Elysée 2007 2ème tour : 6 mai 2007\"; uploadDate 2007-05-06T10:00:00+02:00; duration PT1M15S; producer France 2, presenters David Pujadas; description \"Annonce des premières estimations de l'élection présidentielle 2007. Nicolas Sarkozy bat Ségolène Royal.\" (1m15s). Old slug \"annonce-des-estimations-election-presidentielle-2007\" redirects here. INA player embed https://player.ina.fr/embed/I08128486 checked 2026-11-07: the embed page's asset-details API returns title \"Elysée 2007 2ème tour : 6 mai 2007\", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
    "verifiedAt": "2026-11-07"
   },
   "alternatives": [
@@ -1094,6 +1450,17 @@
     "publisher": "INA Politique",
     "date": "2007-05-07",
     "evidence": "oEmbed 200 (author \"INA Politique\"); description \"7 mai 2007 — Reportage retraçant les moments clés de la soirée du second tour ... la victoire de Nicolas SARKOZY\" (recap report, not the live 8 pm reveal).",
+    "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "tv",
+    "provider": "AP Archive (YouTube)",
+    "url": "https://www.youtube.com/watch?v=n5HHmbqygrw",
+    "embed": "https://www.youtube-nocookie.com/embed/n5HHmbqygrw",
+    "title": "Reaction to Sarkozy victory in presidential election",
+    "publisher": "AP Archive",
+    "date": "2007-05-07",
+    "evidence": "oEmbed 200, title \"Reaction to Sarkozy victory in presidential election\", author_name \"AP Archive\". Description: '(7 May 2007) … Les Echos newspaper headline reading (French) \"Sarkozy president …\"'. 3:02, the morning after (foreign agency). nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
     "verifiedAt": "2026-11-07"
    }
   ],
@@ -1145,13 +1512,13 @@
   "alternatives": [
    {
     "type": "tv",
-    "provider": "ina.fr",
+    "provider": "INA (ina.fr player)",
     "url": "https://www.ina.fr/ina-eclaire-actu/video/4704862001/election-presidentielle-2012-2eme-tour-1ere-partie",
-    "embed": null,
+    "embed": "https://player.ina.fr/embed/4704862001",
     "title": "Election présidentielle 2012 2ème tour : 1ère partie",
     "publisher": "INA (France Télévisions)",
     "date": "2012-05-06",
-    "evidence": "Page 200; <title> \"Election présidentielle 2012 2ème tour : 1ère partie\"; uploadDate 2012-05-06T10:00:00+02:00; duration PT20M1S; France Télévisions election night part 1 (Lucet/Pujadas/Delahousse, 20 min) covering the 2nd-round results.",
+    "evidence": "Page 200; <title> \"Election présidentielle 2012 2ème tour : 1ère partie\"; uploadDate 2012-05-06T10:00:00+02:00; duration PT20M1S; France Télévisions election night part 1 (Lucet/Pujadas/Delahousse, 20 min) covering the 2nd-round results. INA player embed https://player.ina.fr/embed/4704862001 checked 2026-11-07: the embed page's asset-details API returns title \"Election présidentielle 2012 2ème tour :  1ère partie \", restrictions [], a media resourceUrl; the embed serves CSP frame-ancestors * and was loaded in a cross-origin iframe (plays).",
     "verifiedAt": "2026-11-07"
    },
    {
@@ -1233,6 +1600,17 @@
     "date": "2017-05-07",
     "evidence": "oEmbed 200 (author \"Public Sénat\"); Public Sénat \"résultats du 2nd tour (estimations de 20h)\"; published 2017-05-07.",
     "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "tv",
+    "provider": "AP Archive (YouTube)",
+    "url": "https://www.youtube.com/watch?v=gYOV7eUqtSY",
+    "embed": "https://www.youtube-nocookie.com/embed/gYOV7eUqtSY",
+    "title": "Macron supporters celebrate as poll shows win",
+    "publisher": "AP Archive",
+    "date": "2017-05-07",
+    "evidence": "oEmbed 200, title \"Macron supporters celebrate as poll shows win\", author_name \"AP Archive\". Description: '(7 May 2017) … Emmanuel Macron supporters celebrating Macron's projected win in the election, waving French flags outside Louvre museum'. 1:50. nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+    "verifiedAt": "2026-11-07"
    }
   ],
   "searched": "YouTube: \"7 mai 2017 Macron élu 20h annonce France 2\", \"INA 2017 Macron élu 20h\", Public Sénat queries."
@@ -1261,6 +1639,17 @@
     "date": "2022-04-10",
     "evidence": "oEmbed 200 (author \"TF1 INFO\"); TF1 INFO \"Présidentielle 2022 : les candidats qualifiés pour le second tour sont…\"; published 2022-04-10.",
     "verifiedAt": "2026-11-07"
+   },
+   {
+    "type": "tv",
+    "provider": "Radio-Canada Info (YouTube)",
+    "url": "https://www.youtube.com/watch?v=WrRKOtQtUbw",
+    "embed": "https://www.youtube-nocookie.com/embed/WrRKOtQtUbw",
+    "title": "Émission spéciale : le 1er tour des présidentielles françaises",
+    "publisher": "Radio-Canada (ICI RDI)",
+    "date": "2022-04-10",
+    "evidence": "oEmbed 200, title \"Émission spéciale : le 1er tour des présidentielles françaises\", author_name \"Radio-Canada Info\". Description: 'Le président sortant … Emmanuel Macron, est arrivé en tête du premier tour … (10 avril 2022), selon les premières estimations…'. 3:35:00 recorded live special (foreign coverage). nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+    "verifiedAt": "2026-11-07"
    }
   ],
   "searched": "YouTube: \"10 avril 2022 premier tour 20h annonce résultats\", \"INA présidentielle 2022 annonce résultats 20h\", franceinfo/Public Sénat/LCP queries (no official France 2 or parliamentary-channel 20h clip found; jPhToG_QSxA is a third-party \"teleclips\" reupload); ina.fr web search (only catalogue.ina.fr records, not viewable)."
@@ -1278,6 +1667,19 @@
    "evidence": "oEmbed 200 (author \"TF1 INFO\"); TF1 INFO (official TF1 channel; no INA copy found); title \"Le résultat du second tour de l’élection présidentielle 2022\"; 0:29; uploaded 2022-04-25 02:13 CEST.",
    "verifiedAt": "2026-11-07"
   },
-  "searched": "YouTube: \"24 avril 2022 Macron réélu 20h annonce France 2\", \"franceinfo Emmanuel Macron réélu président annonce 20h\", Public Sénat/LCP/Élysée queries (only third-party reuploads such as W•Médias of France 2); ina.fr web search (catalogue records only)."
+  "searched": "YouTube: \"24 avril 2022 Macron réélu 20h annonce France 2\", \"franceinfo Emmanuel Macron réélu président annonce 20h\", Public Sénat/LCP/Élysée queries (only third-party reuploads such as W•Médias of France 2); ina.fr web search (catalogue records only).",
+  "alternatives": [
+   {
+    "type": "tv",
+    "provider": "Radio-Canada Info (YouTube)",
+    "url": "https://www.youtube.com/watch?v=vOhCPx3SeIg",
+    "embed": "https://www.youtube-nocookie.com/embed/vOhCPx3SeIg",
+    "title": "Émission spéciale : le 2e tour des élections présidentielles en France",
+    "publisher": "Radio-Canada (ICI RDI)",
+    "date": "2022-04-24",
+    "evidence": "oEmbed 200, title \"Émission spéciale : le 2e tour des élections présidentielles en France\", author_name \"Radio-Canada Info\". Description: 'Le président français Emmanuel Macron a été nettement réélu dimanche (24 avril 2022) …'. 3:32:14 recorded live special (foreign coverage). nocookie embed loaded in a cross-origin iframe (with a referrer) on 2026-11-07: player shown, no error; watch page playableInEmbed=true, playabilityStatus OK.",
+    "verifiedAt": "2026-11-07"
+   }
+  ]
  }
 ]
