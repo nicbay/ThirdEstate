@@ -4198,6 +4198,142 @@
       },
       "check": null,
       "postTime": "2026-11-04T16:05:42.184Z"
+    },
+    "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3mzqfxs4qs22i": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T17:51:43.699Z",
+      "storyItems": [
+        "ad50f7387657",
+        "d22432d23d96",
+        "b78d3c43c488",
+        "ec88731ef639",
+        "1e142ccee986",
+        "50751336c8fb"
+      ],
+      "storyTitle": "Budget 2027: l'Assemblée rejette à l'unanimité la partie \"recettes\", le projet de loi de finances va être transmis au Sénat",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Oppose son programme et projet de budget à ceux des autres, sans idée économique précise ; orientation de gauche implicite via le cadre LFI.",
+        "rationale_en": "Contrasts her group's programme and budget project with rivals; left-leaning implicitly via LFI framing, no detailed economic idea stated."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Moquerie envers les autres partis (« n'ont même pas choisi leur candidat ») sans fond argumentatif.",
+        "rationale_en": "Mocks other parties (\"haven't even chosen their candidate\") without substantive argument."
+      },
+      "check": null,
+      "postTime": "2026-11-07T17:23:08.639Z"
+    },
+    "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3mzqftd3vsk2i": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T17:51:43.699Z",
+      "storyItems": [
+        "a6356f1c7b49",
+        "9663236cd2a9",
+        "207004f1622c",
+        "b8612f349b2f",
+        "1f7d7f6d68a1",
+        "c1a3bb52f2c9"
+      ],
+      "storyTitle": "Présidentielle 2027: ce qui change dans le nouveau programme de Jean-Luc Mélenchon",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Présente le programme « L'Avenir en commun » de LFI, rupture anticapitaliste et révolution citoyenne selon les articles.",
+        "rationale_en": "Presents LFI's \"L'Avenir en commun\" programme, anticapitalist rupture and citizen revolution per the articles."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "souverainete_populaire"
+        ],
+        "rationale_fr": "Mise en avant d'un projet porté par « nous » face à l'élection, sans attaque directe majeure.",
+        "rationale_en": "Frames the programme as carried by \"us\" for the election, without major direct attack."
+      },
+      "check": null,
+      "postTime": "2026-11-07T17:20:38.662Z"
+    },
+    "bsky:at://did:plc:k3duvs7l7xsp7varh7eoajnq/app.bsky.feed.post/3mzqfbjcc7s2z": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T17:51:43.699Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message purement festif et pratique sur une course camarguaise, sans contenu politique.",
+        "rationale_en": "Purely festive and practical post about a bull event, no political content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-07T17:10:41.179Z"
+    },
+    "bsky:at://did:plc:i27lvonqvridxzfgstsqw6p2/app.bsky.feed.post/3mzqdcwtkos2a": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T17:51:43.699Z",
+      "storyItems": [
+        "727187b137a3",
+        "1c36e4854631",
+        "dce2bac29685",
+        "007da6cf642e",
+        "162e08e5f0f8"
+      ],
+      "storyTitle": "Attentat de Trappes : les obsèques de Pengo Bossio Wangi se dérouleront samedi",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Engagement antiraciste et contre l'extrême droite, centré sur la lutte contre le racisme.",
+        "rationale_en": "Antiracist stance and opposition to the far right, focused on combating racism."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Formulations émotionnelles (« l'horreur a frappé », « poison mortel ») pour appuyer le propos.",
+        "rationale_en": "Emotional wording (\"horror struck\", \"deadly poison\") supports the message."
+      },
+      "check": null,
+      "postTime": "2026-11-07T16:35:41.322Z"
+    },
+    "yt:3FuZzyuBQOo": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T17:51:43.699Z",
+      "storyItems": [
+        "e811e1598606"
+      ],
+      "storyTitle": "Débat budgétaire : un jeu de rôles dont tout le monde sort perdant",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Annonce un programme de rupture avec « le vieux monde » ; cadre de gauche radicale selon le contexte LFI.",
+        "rationale_en": "Announces a programme breaking with \"the old world\"; radical-left framing given the LFI context."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "anti_elites",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Oppose « le vieux monde » au futur gouvernement, avec une rhétorique épique plutôt qu'argumentée.",
+        "rationale_en": "Opposes \"the old world\" to the future government with epic rhetoric rather than argument."
+      },
+      "check": null,
+      "postTime": "2026-11-07T15:27:58.000Z"
     }
   },
   "failures": {
