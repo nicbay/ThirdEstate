@@ -1,0 +1,406 @@
+{
+ "generated": "2026-11-07",
+ "schemaVersion": 1,
+ "note": "Every block in a commune file names its source with `source: <key>`; the key's entry here gives the dataset name, url, licence and year/period. See docs/data-communes.md.",
+ "sources": {
+  "cog": {
+   "name": "INSEE — Code officiel géographique (COG) 2026 : communes, arrondissements municipaux, cantons",
+   "url": "https://www.insee.fr/fr/information/8740222",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)",
+   "year": 2026
+  },
+  "geoapi": {
+   "name": "API Découpage administratif (geo.api.gouv.fr) — codes postaux (La Poste) et centre des communes (IGN Admin Express)",
+   "url": "https://geo.api.gouv.fr/decoupage-administratif",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)",
+   "retrieved": "2026-11-07"
+  },
+  "population": {
+   "name": "INSEE — Populations de référence (population municipale), via l'API Melodi",
+   "url": "https://catalogue-donnees.insee.fr/fr/catalogue/recherche/DS_POPULATIONS_REFERENCE",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)",
+   "year": 2023,
+   "note": "Population municipale, as used in public/data/districts. Missing communes fall back to geo.api.gouv.fr (latest legal population)."
+  },
+  "districtsMap": {
+   "name": "Commune → legislative district shares, built in public/data/districts from the Ministère de l'Intérieur 2024 polling-station results",
+   "url": "https://www.data.gouv.fr/datasets/elections-legislatives-des-30-juin-et-7-juillet-2024-resultats-definitifs-du-1er-tour",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)",
+   "year": 2024,
+   "doc": "docs/data-district-profiles.md"
+  },
+  "crime": {
+   "name": "SSMSI (Ministère de l'Intérieur) — Base statistique communale de la délinquance enregistrée par la police et la gendarmerie nationales",
+   "url": "https://www.data.gouv.fr/datasets/bases-statistiques-communale-departementale-et-regionale-de-la-delinquance-enregistree-par-la-police-et-la-gendarmerie-nationales",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)",
+   "file": "https://static.data.gouv.fr/resources/bases-statistiques-communale-departementale-et-regionale-de-la-delinquance-enregistree-par-la-police-et-la-gendarmerie-nationales/20260709-115942/donnee-data.gouv-2025-geographie2026-produit-le2026-06-25.csv.gz",
+   "documentation": "https://static.data.gouv.fr/resources/bases-statistiques-communale-departementale-et-regionale-de-la-delinquance-enregistree-par-la-police-et-la-gendarmerie-nationales/20260709-120136/fichier-metadonnees-data-gouv-geographie-delinquance-juillet2026.pdf",
+   "year": 2025,
+   "method": "Commune values as published by SSMSI (count, rate per 1,000 inhabitants; burglary per 1,000 dwellings). Paris, Lyon and Marseille: whole city.",
+   "via": "public/data/districts (scripts/sync-district-profiles.mjs)"
+  },
+  "census": {
+   "name": "INSEE — Recensement de la population, Population active et chômage (DS_RP_EMPLOI_LR_PRINC), via l'API Melodi",
+   "url": "https://catalogue-donnees.insee.fr/fr/catalogue/recherche/DS_RP_EMPLOI_LR_PRINC",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)",
+   "year": 2023,
+   "definition": "Census unemployment rate of people aged 15–64 (self-declared, census definition — differs from the ILO rate). Census 2023 = annual surveys 2021–2025.",
+   "via": "public/data/districts (scripts/sync-district-profiles.mjs)"
+  },
+  "ilo": {
+   "name": "INSEE — Taux de chômage localisés par département (BDM, série TAUX-CHOMAGE, CVS)",
+   "url": "https://www.insee.fr/fr/statistiques/series/102760732",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)",
+   "definition": "INSEE localised unemployment rate (ILO definition, quarterly average, seasonally adjusted).",
+   "via": "public/data/districts (scripts/sync-district-profiles.mjs)"
+  },
+  "filosofi": {
+   "name": "INSEE — Filosofi : niveau de vie médian et taux de pauvreté (DS_FILOSOFI_CC), via l'API Melodi",
+   "url": "https://catalogue-donnees.insee.fr/fr/catalogue/recherche/DS_FILOSOFI_CC",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)",
+   "file": "https://api.insee.fr/melodi/file/DS_FILOSOFI_CC/DS_FILOSOFI_CC_2023_CSV_FR",
+   "year": 2023,
+   "definition": "Median standard of living (disposable income per consumption unit, € per year) and poverty rate (% of people below 60 % of the metropolitan median).",
+   "via": "public/data/districts (scripts/sync-district-profiles.mjs)"
+  },
+  "ofgl": {
+   "name": "OFGL — Comptes consolidés des communes (budget principal + budgets annexes), source DGFiP",
+   "url": "https://data.ofgl.fr/explore/dataset/ofgl-base-communes-consolidee/",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)",
+   "year": 2025,
+   "unit": "€ per inhabitant (OFGL/DGF total population)",
+   "via": "public/data/districts (scripts/sync-district-profiles.mjs)"
+  },
+  "schools": {
+   "name": "Éducation nationale — Annuaire de l'éducation, IPS, IVAC (DNB), IVAL (bac)",
+   "url": "https://data.education.gouv.fr/explore/dataset/fr-en-annuaire-education/",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)",
+   "years": {
+    "ipsCollege": "2025-2026",
+    "ipsLycee": "2025-2026",
+    "dnb": "2025",
+    "bacGT": "2025",
+    "bacPro": "2025"
+   },
+   "sources": {
+    "directory": {
+     "name": "Éducation nationale — Annuaire de l'éducation",
+     "url": "https://data.education.gouv.fr/explore/dataset/fr-en-annuaire-education/",
+     "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)"
+    },
+    "ipsCollege": {
+     "name": "Éducation nationale — Indices de position sociale des collèges (à partir de 2023)",
+     "url": "https://data.education.gouv.fr/explore/dataset/fr-en-ips-colleges-ap2023/",
+     "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)"
+    },
+    "ipsLycee": {
+     "name": "Éducation nationale — Indices de position sociale des lycées (à partir de 2023)",
+     "url": "https://data.education.gouv.fr/explore/dataset/fr-en-ips-lycees-ap2023/",
+     "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)"
+    },
+    "dnb": {
+     "name": "Éducation nationale — Indicateurs de valeur ajoutée des collèges (IVAC, DNB)",
+     "url": "https://data.education.gouv.fr/explore/dataset/fr-en-indicateurs-valeur-ajoutee-colleges/",
+     "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)"
+    },
+    "bacGT": {
+     "name": "Éducation nationale — Indicateurs de valeur ajoutée des lycées d'enseignement général et technologique (IVAL)",
+     "url": "https://data.education.gouv.fr/explore/dataset/fr-en-indicateurs-de-resultat-des-lycees-gt_v2/",
+     "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)"
+    },
+    "bacPro": {
+     "name": "Éducation nationale — Indicateurs de valeur ajoutée des lycées d'enseignement professionnel (IVAL)",
+     "url": "https://data.education.gouv.fr/explore/dataset/fr-en-indicateurs-de-resultat-des-lycees-pro_v2/",
+     "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)"
+    }
+   },
+   "note": "Indicators as published by the ministry (IPS = social position index of pupils' families; VA = value added: observed minus expected result given the pupils' profile). The ministry publishes no ranking and none is computed here.",
+   "via": "public/data/districts (scripts/sync-district-profiles.mjs)"
+  },
+  "rne": {
+   "name": "Ministère de l'Intérieur — Répertoire national des élus (RNE)",
+   "url": "https://www.data.gouv.fr/datasets/repertoire-national-des-elus-1",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)",
+   "updated": "2026-08-11",
+   "files": {
+    "cm": "https://static.data.gouv.fr/resources/repertoire-national-des-elus-1/20260811-154802/elus-conseiller-municipal-cm.csv",
+    "mai": "https://static.data.gouv.fr/resources/repertoire-national-des-elus-1/20260811-155100/elus-maire-mai.csv",
+    "cd": "https://static.data.gouv.fr/resources/repertoire-national-des-elus-1/20260811-154909/elus-conseiller-departemental-cd.csv",
+    "cr": "https://static.data.gouv.fr/resources/repertoire-national-des-elus-1/20260811-154932/elus-conseiller-regional-cr.csv",
+    "sen": "https://static.data.gouv.fr/resources/repertoire-national-des-elus-1/20260811-155016/elus-senateur-sen.csv",
+    "ca": "https://static.data.gouv.fr/resources/repertoire-national-des-elus-1/20260811-154541/elus-conseiller-darrondissement-ca.csv",
+    "ma": "https://static.data.gouv.fr/resources/repertoire-national-des-elus-1/20260811-154945/elus-membre-dune-assemblee-ma.csv"
+   },
+   "note": "Only public-role fields are kept (name, function, start of mandate/function). The RNE does not publish political lists or nuances."
+  },
+  "merimee": {
+   "name": "Ministère de la Culture — Immeubles protégés au titre des Monuments historiques (base Mérimée)",
+   "url": "https://www.data.gouv.fr/datasets/immeubles-proteges-au-titre-des-monuments-historiques-2",
+   "file": "https://ministere-culture.s3.sbg.io.cloud.ovh.net/POP/merimee.csv",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)",
+   "updated": "2026-11-05",
+   "noticeUrl": "https://pop.culture.gouv.fr/notice/merimee/{ref}"
+  },
+  "museofile": {
+   "name": "Ministère de la Culture — Répertoire des Musées de France (base Muséofile)",
+   "url": "https://www.data.gouv.fr/datasets/musees-de-france-base-museofile",
+   "file": "https://ministere-culture.s3.sbg.io.cloud.ovh.net/POP/museofile.csv",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)",
+   "updated": "2026-10-26",
+   "noticeUrl": "https://pop.culture.gouv.fr/notice/museo/{id}",
+   "method": "The file has no INSEE code: each museum is placed by its postcode and town name; when a postcode covers several communes, or is unknown, by the commune whose centre is nearest to the museum coordinates (within the department, ~10 km)."
+  },
+  "libraries": {
+   "name": "Ministère de la Culture (Service du livre et de la lecture) — Les bibliothèques des collectivités territoriales : adresses et données d'activité",
+   "url": "https://www.data.gouv.fr/datasets/adresses-des-bibliotheques-publiques-2",
+   "file": "https://static.data.gouv.fr/resources/adresses-des-bibliotheques-publiques-2/20250827-130718/adresses-des-bibliotheques-publiques.csv",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)",
+   "updated": "2025-08-27",
+   "method": "Libraries whose address type is 'Bâtiment ouvert' (open to the public); county lending services (bibliothèques départementales) excluded."
+  },
+  "dataes": {
+   "name": "Ministère chargé des Sports — Data ES, recensement des équipements sportifs et lieux de pratique",
+   "url": "https://www.data.gouv.fr/datasets/data-es-recensement-des-equipements-sportifs-et-lieux-de-pratique-complet-1",
+   "file": "https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/data-es-recensement-des-equipements-sportifs-et-lieux-de-pratique-complet/exports/json",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)",
+   "updated": "2026-11-06",
+   "method": "Count of sports equipments (a facility, e.g. a sports complex, can hold several) by family, excluding installations marked out of service."
+  },
+  "apl": {
+   "name": "DREES — Indicateur d'accessibilité potentielle localisée (APL) aux médecins généralistes",
+   "url": "https://www.data.gouv.fr/datasets/accessibilite-potentielle-localisee-apl-aux-professionnels-de-sante",
+   "file": "https://data.drees.solidarites-sante.gouv.fr/api/v2/catalog/datasets/530_l-accessibilite-potentielle-localisee-apl/attachments/indicateur_d_apl_aux_medecins_generalistes_xlsx",
+   "methodology": "https://data.drees.solidarites-sante.gouv.fr/explore/dataset/530_l-accessibilite-potentielle-localisee-apl/information/",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)",
+   "year": 2024,
+   "updated": "2026-07-21",
+   "unit": "consultations/visits accessible per standardised inhabitant per year",
+   "method": "Commune value as published. For communes merged after the source's geography, the mean of the former communes weighted by standardised population (DREES's recommended aggregation) — flagged method: 'merged'.",
+   "national": {
+    "meanWeighted": 3.72,
+    "shareOfPopulationBelow2_5": 18.2,
+    "note": "Computed here from the same file: mean weighted by standardised population; share of the population living in communes with APL < 2.5."
+   }
+  },
+  "arcep": {
+   "name": "ARCEP — Le marché du haut et très haut débit fixe (déploiements) : observatoire, onglets Communes et Arrondissements",
+   "url": "https://www.data.gouv.fr/datasets/le-marche-du-haut-et-tres-haut-debit-fixe-deploiements",
+   "file": "https://static.data.gouv.fr/resources/le-marche-du-haut-et-tres-haut-debit-fixe-deploiements/20260910-162110/2026t2-obs-hd-thd-deploiement-vf.xlsx",
+   "licence": "Licence Ouverte (fr-lo)",
+   "period": "2026-T2",
+   "updated": "2026-09-10",
+   "method": "share = 100 × premises connectable to FttH (locaux raccordables, latest quarter) / ARCEP's best estimate of the number of premises (capped at 100)."
+  },
+  "dvf": {
+   "name": "DGFiP — Demandes de valeurs foncières géolocalisées (DVF), 2025",
+   "url": "https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres-geolocalisees",
+   "file": "https://files.data.gouv.fr/geo-dvf/latest/csv/2025/full.csv.gz",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)",
+   "year": 2025,
+   "period": [
+    "2025-01-01",
+    "2025-12-31"
+   ],
+   "method": "Computed here with the Etalab 'Statistiques DVF' rules: sales, off-plan sales (VEFA) and auctions of a single house or apartment (outbuildings ignored); price per m² = sale value / built surface (surface réelle bâtie); prices above 100,000 €/m² dropped; median per commune (arrondissement in Paris, Lyon, Marseille). Medians on few sales are volatile: check `sales`.",
+   "coverage": "DVF does not cover Alsace-Moselle (Bas-Rhin, Haut-Rhin, Moselle: Livre foncier) or Mayotte."
+  },
+  "dvfStats": {
+   "name": "data.gouv.fr (Etalab) — Statistiques DVF, statistiques totales (10 derniers semestres)",
+   "url": "https://www.data.gouv.fr/datasets/statistiques-dvf",
+   "file": "https://data-pipeline-open.s3.sbg.io.cloud.ovh.net/dvf/stats_whole_period.csv",
+   "licence": "Licence Ouverte / Open Licence v2.0 (Etalab)",
+   "updated": "2026-10-21",
+   "note": "Official pre-aggregated medians over the whole available period (5 years); there is no official per-year median file (only monthly medians)."
+  },
+  "wikidata": {
+   "name": "Wikidata — items with an INSEE municipality code (P374): image (P18) and French Wikipedia sitelink",
+   "url": "https://www.wikidata.org/wiki/Property:P374",
+   "licence": "CC0 1.0",
+   "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "retrieved": "2026-11-07"
+  },
+  "commons": {
+   "name": "Wikimedia Commons — file pages (author, licence) via the MediaWiki API",
+   "url": "https://commons.wikimedia.org/",
+   "licence": "per file (see image.licence)",
+   "retrieved": "2026-11-07",
+   "pendingFiles": 25782
+  },
+  "wikipedia": {
+   "name": "Wikipédia en français — introduction of the commune's article (first sentences), via the MediaWiki API",
+   "url": "https://fr.wikipedia.org/",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+   "attribution": "Text from the French Wikipedia article (see url), by its contributors (history: url + '?action=history'), licensed CC BY-SA 4.0; shortened.",
+   "retrieved": "2026-11-07",
+   "pendingArticles": 33400
+  }
+ },
+ "definitions": {
+  "crime": {
+   "physicalViolenceFamily": {
+    "fr": "Violences physiques intrafamiliales",
+    "en": "Domestic physical violence",
+    "unit": "Victime",
+    "per": "1,000 inhabitants"
+   },
+   "physicalViolenceOther": {
+    "fr": "Violences physiques hors cadre familial",
+    "en": "Physical violence outside the family",
+    "unit": "Victime",
+    "per": "1,000 inhabitants"
+   },
+   "sexualViolence": {
+    "fr": "Violences sexuelles",
+    "en": "Sexual violence",
+    "unit": "Victime",
+    "per": "1,000 inhabitants"
+   },
+   "armedRobbery": {
+    "fr": "Vols avec armes",
+    "en": "Armed robbery",
+    "unit": "Infraction",
+    "per": "1,000 inhabitants"
+   },
+   "violentTheft": {
+    "fr": "Vols violents sans arme",
+    "en": "Violent theft without a weapon",
+    "unit": "Infraction",
+    "per": "1,000 inhabitants"
+   },
+   "theftFromPersons": {
+    "fr": "Vols sans violence contre des personnes",
+    "en": "Theft from persons without violence",
+    "unit": "Victime entendue",
+    "per": "1,000 inhabitants"
+   },
+   "burglary": {
+    "fr": "Cambriolages de logement",
+    "en": "Residential burglary",
+    "unit": "Infraction",
+    "per": "1,000 dwellings"
+   },
+   "vehicleTheft": {
+    "fr": "Vols de véhicule",
+    "en": "Vehicle theft",
+    "unit": "Véhicule",
+    "per": "1,000 inhabitants"
+   },
+   "theftFromVehicles": {
+    "fr": "Vols dans les véhicules",
+    "en": "Theft from vehicles",
+    "unit": "Véhicule",
+    "per": "1,000 inhabitants"
+   },
+   "vehicleAccessoryTheft": {
+    "fr": "Vols d'accessoires sur véhicules",
+    "en": "Theft of vehicle accessories",
+    "unit": "Véhicule",
+    "per": "1,000 inhabitants"
+   },
+   "criminalDamage": {
+    "fr": "Destructions et dégradations volontaires",
+    "en": "Criminal damage",
+    "unit": "Infraction",
+    "per": "1,000 inhabitants"
+   },
+   "drugUse": {
+    "fr": "Usage de stupéfiants",
+    "en": "Drug use",
+    "unit": "Mis en cause",
+    "per": "1,000 inhabitants"
+   },
+   "drugUseFixedFine": {
+    "fr": "Usage de stupéfiants (AFD)",
+    "en": "Drug use (fixed fines)",
+    "unit": "Mis en cause",
+    "per": "1,000 inhabitants"
+   },
+   "drugTrafficking": {
+    "fr": "Trafic de stupéfiants",
+    "en": "Drug trafficking",
+    "unit": "Mis en cause",
+    "per": "1,000 inhabitants"
+   },
+   "fraud": {
+    "fr": "Escroqueries et fraudes aux moyens de paiement",
+    "en": "Fraud and payment fraud",
+    "unit": "Victime",
+    "per": "1,000 inhabitants"
+   },
+   "homicide": {
+    "fr": "Homicides",
+    "en": "Homicide",
+    "unit": "Victime",
+    "per": "1,000 inhabitants"
+   },
+   "attemptedHomicide": {
+    "fr": "Tentatives d'homicide",
+    "en": "Attempted homicide",
+    "unit": "Victime",
+    "per": "1,000 inhabitants"
+   }
+  },
+  "localSpending": {
+   "total": {
+    "fr": "Dépenses totales hors remb",
+    "en": "Total spending (excluding debt repayment)"
+   },
+   "operating": {
+    "fr": "Dépenses de fonctionnement",
+    "en": "Operating spending"
+   },
+   "investment": {
+    "fr": "Dépenses d'investissement hors remb",
+    "en": "Investment spending (excluding debt repayment)"
+   },
+   "debt": {
+    "fr": "Encours de dette",
+    "en": "Outstanding debt"
+   },
+   "stateTransfers": {
+    "fr": "Concours de l'Etat",
+    "en": "State transfers received (DGF and other State grants) — a receipt, not State spending"
+   }
+  },
+  "gpAccess": {
+   "fr": "Accessibilité potentielle localisée (APL) aux médecins généralistes",
+   "en": "Local potential accessibility to general practitioners",
+   "unit": "consultations/visits per standardised inhabitant per year",
+   "under65": "Same, counting only GPs aged 65 or under"
+  },
+  "ftth": {
+   "fr": "Locaux raccordables à la fibre (FttH)",
+   "en": "Premises where fibre to the home can be connected",
+   "share": "% of premises"
+  },
+  "property": {
+   "medianPerM2": "Median price per m² (€), single-property sales",
+   "sales": "Number of qualifying sales"
+  }
+ },
+ "failures": {},
+ "coverage": {
+  "files": 34920,
+  "mayor": 34788,
+  "council": 34888,
+  "departmental": 34371,
+  "regional": 34903,
+  "senators": 34864,
+  "monuments>0": 16219,
+  "museums>0": 867,
+  "libraries>0": 13983,
+  "sports>0": 28401,
+  "gpAccess": 34890,
+  "ftth": 34920,
+  "property.apartment": 7267,
+  "property.house": 30384,
+  "crime": 34903,
+  "unemployment": 34889,
+  "income": 34800,
+  "localSpending": 34813,
+  "schools>0": 4243,
+  "image": 8608,
+  "wikipedia": 1520
+ }
+}

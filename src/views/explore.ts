@@ -69,7 +69,39 @@ function loadDepartmentTowns(dep: string) {
 let natP: Promise<Any> | null = null;
 const loadNational = () => (natP ??= fetchJson<Any>("/data/districts/index.json"));
 /** Optional per-town file from scripts/sync-communes.mjs (councillors, monuments, prices, photo). */
-const loadTownExtra = (code: string) => fetchJson<Any>(`/data/communes/${code}.json`).catch(() => null);
+const bundleCache = new Map<string, Promise<Any>>();
+/** All town files of a department (scripts/sync-communes.mjs + scripts/bundle-communes.mjs). */
+export const loadTownBundle = (dep: string) => {
+  if (!bundleCache.has(dep)) bundleCache.set(dep, fetchJson<Any>(`/data/communes-dep/${dep}.json`).then((b) => b.communes ?? {}).catch(() => ({})));
+  return bundleCache.get(dep)!;
+};
+/** Map a town file onto the shape the town page renders. */
+export function townExtra(d: Any) {
+  if (!d) return null;
+  const ok = (x: Any) => x && x.status === "ok";
+  const img = d.media?.image, wiki = d.media?.wikipedia, el = d.elected ?? {}, as = d.assets ?? {};
+  return {
+    photo: ok(img) ? { url: img.thumb, author: img.author, licence: img.licence, page: img.page } : null,
+    description: ok(wiki) ? { text: String(wiki.extract ?? "").split(/(?<=\.)\s/).slice(0, 2).join(" "), url: wiki.url } : null,
+    officials: {
+      mayor: ok(el.mayor) ? { name: titleCase(el.mayor.name), since: el.mayor.since } : null,
+      councillors: ok(el.council) ? { count: el.council.count } : null,
+      departmental: ok(el.departmental) ? el.departmental.cantons?.flatMap((c: Any) => c.councillors.map((x: Any) => titleCase(x.name))) : null,
+      senators: ok(el.senators) ? el.senators.list.map((x: Any) => ({ name: titleCase(x.name) })) : [],
+    },
+    assets: {
+      monuments: ok(as.monuments) ? { count: as.monuments.count, names: as.monuments.list?.filter((m: Any) => m.level === "classé").map((m: Any) => m.name) ?? [] } : null,
+      museums: ok(as.museums) ? { count: as.museums.count, names: as.museums.list?.map((m: Any) => m.name) ?? [] } : null,
+      sports: ok(as.sports) ? { count: as.sports.count } : null,
+      libraries: ok(as.libraries) ? { count: as.libraries.count } : null,
+    },
+    prices: ok(d.property) ? { year: d.property.year, apartment: d.property.apartment?.medianPerM2 ? { median: d.property.apartment.medianPerM2, sales: d.property.apartment.sales } : null, house: d.property.house?.medianPerM2 ? { median: d.property.house.medianPerM2, sales: d.property.house.sales } : null } : null,
+    health: ok(d.health?.gpAccess) ? { apl: d.health.gpAccess.value, national: d.health.gpAccess.national } : null,
+    broadband: ok(d.broadband?.ftth) ? { fibre: d.broadband.ftth.share } : null,
+  };
+}
+const titleCase = (n: string) => String(n ?? "").replace(/\b([A-ZÀ-ÖØ-Ý][A-ZÀ-ÖØ-Ý'-]+)\b/g, (w) => (w.length > 1 && w === w.toUpperCase() ? w.charAt(0) + w.slice(1).toLowerCase() : w));
+const loadTownExtra = async (code: string) => townExtra((await loadTownBundle(depOf(code)))[code]);
 const depOf = (code: string) => (code.startsWith("97") ? code.slice(0, 3) : code.slice(0, 2));
 
 // ---------- search (address, street or town) ----------
@@ -148,9 +180,10 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
   app.querySelector<HTMLSelectElement>("#dep")!.addEventListener("change", (e) => (location.hash = `#/explorer/${(e.target as HTMLSelectElement).value}`));
 
   const depCode: string = dep ?? "75";
-  const [{ towns }, geo] = await Promise.all([
+  const [{ towns }, geo, bundle] = await Promise.all([
     loadDepartmentTowns(depCode),
     fetchJson<GeoJSON.FeatureCollection>(`https://geo.api.gouv.fr/communes?codeDepartement=${dep}&format=geojson&geometry=contour&fields=nom,code,population`),
+    loadTownBundle(depCode),
   ]);
   const features = geo.features.map(rewind);
   const proj = geoMercator().fitExtent([[6, 6], [594, 594]], { type: "FeatureCollection", features } as GeoJSON.FeatureCollection);
@@ -179,7 +212,9 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
       .slice(0, 150)
       .map((t) => {
         const mp = byDistrict.get(t.districts[0]?.code);
-        return `<li><a href="#/ville/${t.code}" class="town-card" data-code="${t.code}">
+        const ex = townExtra(bundle[t.code]);
+        return `<li><a href="#/ville/${t.code}" class="town-card${ex?.photo ? " has-photo" : ""}" data-code="${t.code}">
+          ${ex?.photo ? `<img class="tc-photo" src="${esc(safeUrl(ex.photo.url))}" alt="" loading="lazy"/>` : ""}
           <span class="tc-head"><b>${esc(t.name)}</b><span class="muted small">${fmtNum(t.pop)} ${L("hab.", "people")}</span></span>
           <span class="tc-stats small">${t.income ? `<span><i>${L("Niveau de vie", "Living standard")}</i>${fmtNum(t.income)} €</span>` : ""}${t.unemployment != null ? `<span><i>${L("Chômage", "Unemployment")}</i>${fmt(t.unemployment)} %</span>` : ""}${t.schools.length ? `<span><i>${L("Écoles", "Schools")}</i>${t.schools.length}</span>` : ""}${t.events.length ? `<span><i>${L("Événements", "Events")}</i>${t.events.length}</span>` : ""}</span>
           ${mp ? `<span class="small muted">${L("Député·e", "MP")} : ${esc(mp.prenom)} ${esc(mp.nom)} <span class="chip" style="--c:${safeColor(mp.groupe?.couleur) ?? "#999"}">${esc(mp.groupe?.abrev ?? "")}</span></span>` : ""}
@@ -257,7 +292,7 @@ export async function renderTown(app: HTMLElement, code: string) {
           <div>${mps.map(({ d, mp }) => `<a class="mp-mini" href="#/depute/${mp.id}" style="--c:${safeColor(mp.groupe?.couleur) ?? "#999"}"><img src="${photoUrl(mp.id)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"/><span><span class="muted small">${L("Député·e", "MP")}, ${esc(mp.departement ?? "")} ${d.code.slice(-2)}${d.share < 1 ? ` (${L("partie de la commune", "part of the town")})` : ""}</span><br><b>${esc(mp.prenom)} ${esc(mp.nom)}</b> <span class="chip">${esc(mp.groupe?.abrev ?? "")}</span><br><span class="small muted">${age(mp) ?? "?"} ${L("ans", "years old")}, ${L("participation aux votes", "votes attended")} ${Math.round(100 * mp.stats.participation)} %, ${L("présence en ligne", "online presence")} ${presence(mp)}/${PLATFORMS.length}</span></span></a>`).join("") || `<p class="muted">${L("Député non trouvé pour cette commune.", "No MP found for this town.")}</p>`}</div>
           <div>${
             extra?.officials
-              ? `<ul class="officials">${extra.officials.mayor ? `<li><span class="muted small">${L("Maire", "Mayor")}</span><br><b>${esc(extra.officials.mayor.name)}</b>${extra.officials.mayor.nuance ? ` <span class="muted small">${esc(extra.officials.mayor.nuance)}</span>` : ""}</li>` : ""}${extra.officials.councillors ? `<li><span class="muted small">${L("Conseil municipal", "Town council")}</span><br><b>${extra.officials.councillors.count ?? extra.officials.councillors.length}</b> ${L("élus", "councillors")}</li>` : ""}${extra.officials.senators?.length ? `<li><span class="muted small">${L("Sénateurs du département", "Senators for the department")}</span><br>${extra.officials.senators.slice(0, 6).map((s: Any) => esc(s.name)).join(", ")}</li>` : ""}</ul>`
+              ? `<ul class="officials">${extra.officials.mayor ? `<li><span class="muted small">${L("Maire", "Mayor")}${extra.officials.mayor.since ? `, ${L("depuis le", "since")} ${fmtDate(extra.officials.mayor.since)}` : ""}</span><br><b>${esc(extra.officials.mayor.name)}</b></li>` : ""}${extra.officials.councillors ? `<li><span class="muted small">${L("Conseil municipal", "Town council")}</span><br><b>${extra.officials.councillors.count}</b> ${L("élus", "councillors")}</li>` : ""}${extra.officials.departmental?.length ? `<li><span class="muted small">${L("Conseillers départementaux", "Departmental councillors")}</span><br>${extra.officials.departmental.slice(0, 6).map((n: string) => esc(n)).join(", ")}</li>` : ""}</ul><p class="muted tiny">${L("Répertoire national des élus (ministère de l’Intérieur).", "National register of elected officials (Ministry of the Interior).")}</p>`
               : `<p class="muted small">${L("Maire, conseil municipal et sénateurs : bientôt, depuis le Répertoire national des élus.", "Mayor, town council and senators: coming soon, from the national register of elected officials.")}</p>`
           }</div>
         </div>
