@@ -980,3 +980,28 @@ body { overflow-x: clip; }
 .sec-hero::after { top: 0; height: 100%; }
 .sec-hero .town-search { position: relative; z-index: 40; }
 .suggest { max-height: min(60vh, 460px); overflow-y: auto; }
+
+/* ---------- Shift map: whole map on screen, zoom and pan, arrows open their district ---------- */
+.shift-wrap { max-width: none; }
+#shift-svg { max-height: calc(100vh - var(--bar-h) - 60px); width: 100%; height: auto; margin: 0 auto; background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; touch-action: pan-y; cursor: zoom-in; user-select: none; -webkit-user-select: none; }
+#shift-svg.is-zoomed { cursor: grab; }
+#shift-svg.is-zoomed:active { cursor: grabbing; }
+#shift-svg .shift-base { stroke-width: 0.9; vector-effect: non-scaling-stroke; transition: fill 0.15s; }
+#shift-svg .shift-base:hover { fill: var(--wash); }
+#shift-svg .paris-box { vector-effect: non-scaling-stroke; }
+.arrow[data-href] { cursor: pointer; }
+.arrow[data-href]:hover .shaft { stroke-width: calc(var(--sw, 1.7px) * 2.4); }
+.shift-wrap.drawn .arrow { animation: none !important; transform: none !important; }
+.map-ctrl { position: absolute; top: 0.6rem; right: 0.6rem; display: flex; flex-direction: column; gap: 0.3rem; align-items: flex-end; }
+.map-ctrl button { min-width: 2.2rem; height: 2.2rem; font: 700 1.15rem/1 var(--text); color: var(--ink); background: var(--paper); border: 1px solid var(--rule-2); border-radius: 3px; cursor: pointer; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); }
+.map-ctrl button:hover { border-color: var(--ink); }
+.map-ctrl .map-reset { font: 600 0.74rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; padding: 0 0.6rem; }
+.map-hint { position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%); margin: 0; padding: 0.6rem 0.9rem; border-radius: 4px; background: rgba(17, 18, 22, 0.86); color: #fff; font: 600 0.88rem var(--text); pointer-events: none; opacity: 0; transition: opacity 0.2s; }
+.map-hint.on { opacity: 1; }
+.map-help { margin: 0.6rem 0 0.2rem; color: var(--ink-2); }
+.home-arrows .arrow { cursor: pointer; }
+#shift-svg .shift-circo { fill: transparent; stroke: #c9c6bd; stroke-width: 0.8; vector-effect: non-scaling-stroke; }
+#shift-svg .circo-link:hover .shift-circo { fill: rgba(75, 47, 208, 0.07); stroke: var(--accent); }
+#shift-svg .circo-num { font: 600 var(--fs, 4px) var(--mono); fill: var(--ink-3); text-anchor: middle; pointer-events: none; }
+#shift-svg a, #shift-svg a:hover { text-decoration: none; }
+@media (max-width: 760px) { .place-pill:not(.is-set) span { display: none; } .place-pill:not(.is-set) { padding: 0.3rem; } }

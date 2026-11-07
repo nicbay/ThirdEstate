@@ -11,6 +11,7 @@ import { loadCircoGeo, loadDepartements, loadShifts, type ShiftPair, type ShiftU
 import { L, fmtDate, getLang } from "../i18n";
 import { rewind } from "../lib/map";
 import { esc } from "../util";
+import { zoomable, type Zoomable } from "../lib/zoom";
 
 export type Metric = "lr" | "farRight" | "turnout";
 type Side = [fr: string, en: string, color: string];
@@ -36,7 +37,12 @@ export async function renderShifts(pane: HTMLElement) {
   const metro = { type: "FeatureCollection", features: deps.filter((f) => f.properties!.code.length === 2) } as GeoJSON.FeatureCollection;
   const proj = geoConicConformal().parallels([44, 49]).rotate([-3, 0]).fitExtent([[10, 10], [790, 770]], metro);
   const base = geoPath(proj);
-  const outlines = metro.features.map((f) => `<path d="${base(f)}" class="shift-base"/>`).join("");
+  const outlines = metro.features.map((f) => `<path d="${base(f)}" class="shift-base" data-dep="${f.properties!.code}"/>`).join("");
+  const depBounds = new Map(metro.features.map((f) => [f.properties!.code as string, base.bounds(f)]));
+  let zoom: Zoomable | null = null;
+  // district outlines, loaded per department when the reader zooms in (district-level maps only)
+  const circoLayers = new Map<string, string>();
+  let isDistrictMap = true;
 
   // Paris inset: district outlines of the four inner departments, at their own projection.
   const parisGeo = await Promise.all(PARIS.map((c) => loadCircoGeo(c).catch(() => null)));
@@ -48,6 +54,7 @@ export async function renderShifts(pane: HTMLElement) {
 
   const unitLabel = (code: string, u: ShiftUnit) => u.name ?? (code.length >= 4 ? `${depName.get(code.slice(0, -2).padStart(2, "0")) ?? code.slice(0, -2)} · ${Number(code.slice(-2))}${L("e", "")}` : depName.get(code) ?? code);
 
+  let drawArrows = (_z: number) => {};
   const draw = () => {
     const pair = pairs.find((p) => key(p) === ui.pair)!;
     const m = METRICS[ui.metric];
@@ -56,6 +63,13 @@ export async function renderShifts(pane: HTMLElement) {
     const k = unitsPerPx(svg, 800);
     const scale = pair.level === "district" ? 2.2 : 3;
     const district = pair.level === "district";
+    drawArrows = (z: number) => {
+      const box = district ? `<rect class="paris-box" x="${(px0 - 6).toFixed(1)}" y="${(py0 - 6).toFixed(1)}" width="${(px1 - px0 + 12).toFixed(1)}" height="${(py1 - py0 + 12).toFixed(1)}" fill="none" stroke="var(--ink)" stroke-width="${((1.2 * k) / z).toFixed(2)}"/>` : "";
+      svg.style.setProperty("--sw", `${((1.7 * k) / z).toFixed(2)}px`);
+      svg.style.setProperty("--fs", `${((11 * k) / z).toFixed(2)}px`);
+      const circos = district ? [...circoLayers.values()].join("") : "";
+      svg.innerHTML = outlines + circos + arrowPaths(pair, ui.metric, proj, { scale: scale / z, k: k / z, cap: 90 / z }) + box;
+    };
 
     const nat = pair.national[ui.metric];
     const sorted = [...units].sort((a, b) => b[1][ui.metric][2] - a[1][ui.metric][2]);
@@ -68,9 +82,8 @@ export async function renderShifts(pane: HTMLElement) {
       ${nat ? `<div class="shift-stat"><strong style="color:${nat[2] > 0 ? m.pos[2] : m.neg[2]}">${signed(nat[2])}</strong><span><b>${L("points au niveau national", "points nationally")}</b> · ${natWord} <span class="muted">(${fmt1(nat[0])} → ${fmt1(nat[1])})</span></span></div>` : ""}
       <p class="muted small">${fr ? `${nPos} ${what} sur ${units.length} : ${m.pos[0].toLowerCase()}` : `${nPos} of ${units.length} ${what}: ${m.pos[1].toLowerCase()}`}. ${L("Premier tour des législatives.", "Legislative first round.")}</p>`;
 
-    const box = district ? `<rect x="${(px0 - 6).toFixed(1)}" y="${(py0 - 6).toFixed(1)}" width="${(px1 - px0 + 12).toFixed(1)}" height="${(py1 - py0 + 12).toFixed(1)}" fill="none" stroke="var(--ink)" stroke-width="${(1.2 * k).toFixed(2)}"/>` : "";
-    svg.style.setProperty("--sw", `${(1.7 * k).toFixed(2)}px`);
-    svg.innerHTML = outlines + arrowPaths(pair, ui.metric, proj, { scale, k }) + box;
+    isDistrictMap = district;
+    drawArrows(zoom?.level() ?? 1);
 
     // the inset keeps the same on-screen length per point as the main map
     const inset = pane.querySelector<HTMLElement>("#paris-inset")!;
@@ -100,7 +113,7 @@ export async function renderShifts(pane: HTMLElement) {
       .map(([side, list]) => `<section><h3><span class="mover-bar" style="width:18px;background:${side[2]}"></span>${L(side[0], side[1])}</h3>${
         list.length
           ? `<table class="table"><thead><tr><th>${district ? L("Circonscription", "District") : L("Département", "Department")}</th><th class="num">${L("Variation", "Change")}</th></tr></thead><tbody>${list
-              .map(([code, u]) => { const d = u[ui.metric][2]; return `<tr><td>${esc(unitLabel(code, u))}</td><td class="num"><span class="mover-bar" style="width:${Math.round((48 * Math.abs(d)) / maxAbs)}px;background:${side[2]}"></span>${signed(d)}</td></tr>`; })
+              .map(([code, u]) => { const d = u[ui.metric][2]; return `<tr><td><a href="${unitHref(code)}">${esc(unitLabel(code, u))}</a></td><td class="num"><span class="mover-bar" style="width:${Math.round((48 * Math.abs(d)) / maxAbs)}px;background:${side[2]}"></span>${signed(d)}</td></tr>`; })
               .join("")}</tbody></table>`
           : `<p class="muted small">${L("Aucune.", "None.")}</p>`
       }</section>`)
@@ -125,6 +138,12 @@ export async function renderShifts(pane: HTMLElement) {
       <div class="shift-layout">
         <div class="shift-wrap reveal">
           <svg id="shift-svg" viewBox="0 0 800 780" role="img" aria-label="${L("Carte des bascules", "Shift map")}"></svg>
+          <div class="map-ctrl" role="group" aria-label="${L("Zoom", "Zoom")}">
+            <button type="button" data-z="in" aria-label="${L("Zoomer", "Zoom in")}">+</button>
+            <button type="button" data-z="out" aria-label="${L("Dézoomer", "Zoom out")}">−</button>
+            <button type="button" data-z="reset" class="map-reset" hidden>${L("France entière", "All of France")}</button>
+          </div>
+          <p class="map-hint" id="map-hint" aria-live="polite"></p>
         </div>
         <aside class="shift-key">
           <figure class="paris-inset" id="paris-inset" style="margin:0">
@@ -133,6 +152,7 @@ export async function renderShifts(pane: HTMLElement) {
           </figure>
         </aside>
       </div>
+      <p class="small map-help">${L("Cliquez sur une flèche pour ouvrir la circonscription : résultats et député élu. Cliquez sur un département, double-cliquez ou pincez pour zoomer ; glissez pour vous déplacer.", "Click an arrow to open its district: results and the elected MP. Click a department, double-click or pinch to zoom; drag to move around.")}</p>
       <p class="muted small" id="shift-caption"></p>
     </section>
     <section class="card movers"><header class="card-head"><h2>${L("Les plus fortes bascules", "Biggest moves")}</h2></header><div class="grid-2" id="movers"></div></section>
@@ -143,7 +163,55 @@ export async function renderShifts(pane: HTMLElement) {
   draw();
   revealOnScroll(pane);
   redrawOnResize(pane, draw);
+
+  // ---- zoom, pan, and arrows → district pages
+  const svg = pane.querySelector<SVGSVGElement>("#shift-svg")!;
+  const wrap = svg.parentElement!;
+  const hint = pane.querySelector<HTMLElement>("#map-hint")!;
+  let hintT = 0;
+  const showHint = (t: string) => { hint.textContent = t; hint.classList.add("on"); clearTimeout(hintT); hintT = window.setTimeout(() => hint.classList.remove("on"), 1600); };
+  zoom = zoomable(svg, {
+    maxZoom: 12,
+    onChange: (z, settled) => {
+      pane.querySelector<HTMLElement>(".map-reset")!.hidden = z <= 1.001;
+      wrap.classList.add("drawn"); // no grow-in animation once the map has been touched
+      if (settled) {
+        drawArrows(z);
+        if (z >= 2.5 && isDistrictMap) {
+          const v = svg.viewBox.baseVal, cx = v.x + v.width / 2, cy = v.y + v.height / 2;
+          for (const [d, b] of depBounds) if (b[1][0] > v.x && b[0][0] < v.x + v.width && b[1][1] > v.y && b[0][1] < v.y + v.height && Math.hypot((b[0][0] + b[1][0]) / 2 - cx, (b[0][1] + b[1][1]) / 2 - cy) < v.width) loadCircos(d);
+        }
+      }
+    },
+    onHint: () => showHint(L("Ctrl + molette (⌘ sur Mac) pour zoomer", "Ctrl + scroll (⌘ on Mac) to zoom")),
+  });
+  pane.querySelectorAll<HTMLButtonElement>("[data-z]").forEach((b) => b.addEventListener("click", () => (b.dataset.z === "in" ? zoom!.zoomBy(2) : b.dataset.z === "out" ? zoom!.zoomBy(0.5) : zoom!.reset())));
+  const loadCircos = async (dep: string) => {
+    if (!isDistrictMap || circoLayers.has(dep)) return;
+    circoLayers.set(dep, "");
+    const g = await loadCircoGeo(dep).catch(() => null);
+    if (!g) return;
+    const path = geoPath(proj);
+    circoLayers.set(dep, g.features.map(rewind).map((cf) => {
+      const c = cf.properties!.code as string;
+      const [x, y] = path.centroid(cf);
+      return `<a href="#/circo/${c}" class="circo-link"><path class="shift-circo" d="${path(cf)}" data-tip="${esc(`${depName.get(dep) ?? dep}, ${L("circonscription", "district")} ${Number(c.slice(-2))}\n${L("Cliquez : résultats et député", "Click: results and MP")}`)}"/><text class="circo-num" x="${x.toFixed(1)}" y="${y.toFixed(1)}">${Number(c.slice(-2))}</text></a>`;
+    }).join(""));
+    drawArrows(zoom!.level());
+  };
+  svg.addEventListener("click", (e) => {
+    if (zoom!.wasDrag()) { e.preventDefault(); return; }
+    const t = e.target as Element;
+    const a = t.closest<SVGGElement>(".arrow");
+    if (a?.dataset.href) { location.hash = a.dataset.href; return; }
+    const dep = t.closest<SVGPathElement>("[data-dep]")?.dataset.dep;
+    const b = dep && depBounds.get(dep);
+    if (b) { zoom!.zoomToBox(b[0][0], b[0][1], b[1][0], b[1][1]); loadCircos(dep!); }
+  });
 }
+
+/** Where an arrow (or a movers row) leads: the district page (results, elected MP) or the department's MPs. */
+export const unitHref = (code: string) => (code.length >= 4 ? `#/circo/${code}` : `#/assemblee/${code.padStart(2, "0")}`);
 
 /** Units drawn on the mainland map (mainland France + Corsica). */
 export const mainland = (pair: ShiftPair, metric: Metric) => Object.entries(pair.units).filter(([, u]) => u[metric] && u.lon > -6 && u.lon < 10 && u.lat > 41 && u.lat < 52);
@@ -190,9 +258,9 @@ export function arrowPaths(
       const { shaft, head } = arrowGeometry(p[0], p[1], d, m.axis, len, k);
       const color = d > 0 ? m.pos[2] : m.neg[2];
       const dir = d > 0 ? L(m.pos[0], m.pos[1]) : L(m.neg[0], m.neg[1]);
-      const tip = `${u.name ?? labelFor(code)}\n${dir}\n${tip3(u, metric, pair)}`;
+      const tip = `${u.name ?? labelFor(code)}\n${dir}\n${tip3(u, metric, pair)}\n${code.length >= 4 ? L("Cliquez : résultats et député", "Click: results and MP") : L("Cliquez : les députés du département", "Click: the department's MPs")}`;
       const delay = Math.round((p[0] / 800) * 700);
-      return `<g class="arrow" data-tip="${esc(tip)}" stroke="${color}" fill="${color}" style="--ox:${f(p[0])}px;--oy:${f(p[1])}px;--d:${delay}">${shaft ? `<path class="shaft" d="${shaft}"/>` : ""}<path class="head" d="${head}"/><circle cx="${f(p[0])}" cy="${f(p[1])}" r="${f(6 * k)}" class="hit"/></g>`;
+      return `<g class="arrow" data-href="${unitHref(code)}" data-tip="${esc(tip)}" stroke="${color}" fill="${color}" style="--ox:${f(p[0])}px;--oy:${f(p[1])}px;--d:${delay}">${shaft ? `<path class="shaft" d="${shaft}"/>` : ""}<path class="head" d="${head}"/><circle cx="${f(p[0])}" cy="${f(p[1])}" r="${f(6 * k)}" class="hit"/></g>`;
     })
     .join("");
 }
