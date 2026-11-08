@@ -73,7 +73,7 @@ export function foxBusy(on: boolean) {
 }
 
 // ---------- page transitions ----------
-type VTDocument = Document & { startViewTransition?: (cb: () => Promise<unknown>) => { ready: Promise<void>; finished: Promise<void>; updateCallbackDone: Promise<void> } };
+type VTDocument = Document & { startViewTransition?: (cb: () => Promise<unknown>) => { ready: Promise<void>; finished: Promise<void>; updateCallbackDone: Promise<void>; skipTransition?: () => void } };
 
 /**
  * Run a route render inside a view transition: the old page slides out, the new one in, the dark
@@ -83,12 +83,26 @@ type VTDocument = Document & { startViewTransition?: (cb: () => Promise<unknown>
  */
 export function pageTransition(update: () => Promise<unknown>, cap = 320): Promise<unknown> {
   const d = document as VTDocument;
-  if (!d.startViewTransition || still()) return update();
+  // hidden tabs get no frames, so a transition would hold the update back until the tab is shown again
+  if (!d.startViewTransition || still() || document.visibilityState !== "visible") return update();
   const root = document.documentElement;
   root.classList.add("mo-vt");
   return new Promise((resolve) => {
     let late = 0;
+    // The browser runs the update on its next painted frame. Where frames stall (an occluded or
+    // throttled window), never let the page wait on them: after 100 ms, skip the transition and render.
+    let started = false;
+    const fallback = window.setTimeout(() => {
+      if (started) return;
+      started = true;
+      try { vt.skipTransition?.(); } catch { /* already finished */ }
+      root.classList.remove("mo-vt");
+      update().catch(() => {}).then(() => resolve(undefined));
+    }, 100);
     const vt = d.startViewTransition!(() => {
+      if (started) return Promise.resolve(); // the fallback already rendered
+      started = true;
+      clearTimeout(fallback);
       const p = update().catch(() => {});
       late = window.setTimeout(() => root.classList.add("mo-late"), cap);
       p.then(() => {
