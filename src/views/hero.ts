@@ -3,7 +3,7 @@
 // is decided. Hover a dot for its MP, click it for the district page.
 import { geoConicConformal, geoPath } from "d3-geo";
 import type { Depute, ShiftPair } from "../data";
-import { L, getLang } from "../i18n";
+import { L } from "../i18n";
 import { AN_SEATS, seatRank, seatSummary } from "../lib/hemicycle";
 import { rewind } from "../lib/map";
 import { esc, safeColor } from "../util";
@@ -135,19 +135,3 @@ export function heroViz(geo: GeoJSON.FeatureCollection, deputes: Depute[], pair:
   return { svg, legend, start };
 }
 
-/** Count numbers up from zero once, when shown. */
-export function countUp(root: HTMLElement) {
-  root.querySelectorAll<HTMLElement>("[data-count]").forEach((el, i) => {
-    const target = Number(el.dataset.count), suffix = el.dataset.suffix ?? "";
-    const fmt = (v: number) => `${Math.round(v).toLocaleString(getLang() === "fr" ? "fr-FR" : "en-GB").replace(/ /g, " ")}${suffix}`;
-    if (reduced() || !Number.isFinite(target)) { el.textContent = fmt(target); return; }
-    const t0 = performance.now() + 500 + i * 120, dur = 1100;
-    const step = (t: number) => {
-      const k = Math.max(0, Math.min(1, (t - t0) / dur));
-      el.textContent = fmt(target * (1 - Math.pow(1 - k, 4)));
-      if (k < 1) requestAnimationFrame(step);
-    };
-    el.textContent = fmt(0);
-    requestAnimationFrame(step);
-  });
-}

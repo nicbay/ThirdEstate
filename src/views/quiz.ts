@@ -384,7 +384,6 @@ async function results(stage: HTMLElement, d: QuizData, a: Answers) {
     </section>` : `<p class="muted small">${L("Enregistrez votre commune pour voir aussi les députés de votre département.", "Save your town to also see the MPs from your département.")} <a href="#/explorer">${L("Choisir ma commune", "Choose my town")}</a></p>`}
   </div>`;
 
-  countUp(stage);
   stage.querySelector(".quiz-restart")!.addEventListener("click", () => {
     st = { step: 0, a: fresh(d.questions.length), started: true };
     if (location.hash !== "#/quiz") location.hash = "#/quiz";
@@ -435,20 +434,6 @@ async function drawCandidates(box: HTMLElement, groups: { g: string; sc: Score }
       ${r.map.note ? `<span class="quiz-note">* ${esc(L(r.map.note[0], r.map.note[1]))}</span>` : ""}</li>`;
   }).join("")}</ol>
   <p class="muted small">${L("Candidats testés dans les dix derniers sondages de premier tour. Chacun reçoit le score du groupe de son parti à l’Assemblée.", "Candidates tested in the ten latest first-round polls. Each gets the score of their party’s group in the Assembly.")}</p>`;
-}
-
-function countUp(root: HTMLElement) {
-  if (reduced()) return;
-  root.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => {
-    const to = Number(el.dataset.count);
-    const t0 = performance.now();
-    const tick = (t: number) => {
-      const p = Math.min(1, (t - t0) / 900);
-      el.textContent = fmtPct(Math.round(to * (1 - (1 - p) ** 3)), 0);
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  });
 }
 
 function methodNote(d: QuizData) {
