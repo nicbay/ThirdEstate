@@ -2,7 +2,7 @@
 // Data: scripts/sync-senat.mjs (Sénat open data and senat.fr, Licence Ouverte).
 import { fetchJson } from "../data";
 import { L, fmtDate, fmtNum, fmtPct } from "../i18n";
-import { hemicycle } from "../lib/hemicycle";
+import { SENATE_SEATS, hemicycle, senateSeatRank } from "../lib/hemicycle";
 import { esc, safeColor, safeUrl } from "../util";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -18,13 +18,6 @@ export const loadSenateurs = () => (senP ??= fetchJson<Senateur[]>("/data/senat/
 let scrP: Promise<any[]> | null = null;
 const loadScrutins = () => (scrP ??= fetchJson<any[]>("/data/senat/scrutins.json"));
 
-// Seating, left → right (by keywords in the group name, so renamed groups still sort sensibly).
-const ORDER = ["CRCE", "Écologiste", "Socialiste", "RDPI", "Rassemblement des démocrates", "RDSE", "Union centriste", "Les Indépendants", "Républicains", "Union des droites", "UNT", "Non inscrit"];
-const rank = (g?: { libelle: string; abrev: string }) => {
-  const s = `${g?.libelle ?? ""} ${g?.abrev ?? ""}`;
-  const i = ORDER.findIndex((k) => s.includes(k));
-  return i < 0 ? ORDER.length : i;
-};
 const age = (s: Senateur) => (s.naissance ? Math.floor((Date.now() - Date.parse(s.naissance)) / (365.25 * 86400000)) : null);
 export const senPhoto = (s: Senateur) => (s.photo ? esc(safeUrl(s.photo)) : "");
 const PARTICIPATION_NOTE = () =>
@@ -36,17 +29,17 @@ const PARTICIPATION_NOTE = () =>
 const filter = { q: "", g: "" };
 export async function renderSenat(app: HTMLElement) {
   const sens = await loadSenateurs();
-  const groups = [...new Map(sens.filter((s) => s.groupe).map((s) => [s.groupe!.id, s.groupe!])).values()].sort((a, b) => rank(a) - rank(b));
+  const groups = [...new Map(sens.filter((s) => s.groupe).map((s) => [s.groupe!.id, s.groupe!])).values()].sort((a, b) => senateSeatRank(a) - senateSeatRank(b));
   const count = (id: string) => sens.filter((s) => s.groupe?.id === id).length;
   app.innerHTML = `
     <section class="page">
       <header class="page-head">
         <p class="eyebrow">${L("Sénat", "Senate")}</p>
-        <h1>${(() => { const big = [...groups].sort((a, b) => count(b.id) - count(a.id))[0]; return big ? esc(L(`${big.abrev}, premier groupe du Sénat avec ${count(big.id)} sièges sur ${sens.length}`, `${big.abrev} is the Senate’s largest group, with ${count(big.id)} of ${sens.length} seats`)) : L("Les 348 sénateurs, leurs groupes et leurs votes", "The 348 senators, their groups and their votes"); })()}</h1>
+        <h1>${(() => { const big = [...groups].sort((a, b) => count(b.id) - count(a.id))[0]; return big ? esc(L(`${big.abrev}, premier groupe du Sénat avec ${count(big.id)} sièges sur ${SENATE_SEATS}`, `${big.abrev} is the Senate’s largest group, with ${count(big.id)} of ${SENATE_SEATS} seats`)) : L(`Les ${SENATE_SEATS} sénateurs, leurs groupes et leurs votes`, `The ${SENATE_SEATS} senators, their groups and their votes`); })()}</h1>
         <p class="dek">${L("Élus au suffrage indirect par les grands électeurs de chaque département. Cherchez votre département pour trouver vos sénateurs.", "Elected indirectly by each department’s electoral college. Search your department to find your senators.")}</p>
       </header>
       <div class="pres-grid">
-        <section class="card">${hemicycle(groups.map((g) => ({ label: g.libelle, color: safeColor(g.couleur), seats: count(g.id) })))}</section>
+        <section class="card">${hemicycle(groups.map((g) => ({ label: g.libelle, color: safeColor(g.couleur), seats: count(g.id) })), SENATE_SEATS)}</section>
         <section class="card"><ul class="legend-list">${groups.map((g) => `<li><i class="dot" style="background:${safeColor(g.couleur)}"></i>${esc(g.abrev)} <span class="muted">${esc(g.libelle)}</span><b>${count(g.id)}</b></li>`).join("")}</ul></section>
       </div>
       <section class="card">
@@ -92,7 +85,7 @@ export async function renderSenateur(app: HTMLElement, id: string) {
           <ul class="socials">${s.url ? `<li><a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${L("Fiche officielle", "Official page")}</a></li>` : ""}${s.hatvp ? `<li><a href="${esc(safeUrl(s.hatvp))}" target="_blank" rel="noopener">HATVP</a></li>` : ""}${Object.entries(s.socials ?? {}).map(([k, v]) => `<li><a href="${esc(safeUrl(v.url))}" target="_blank" rel="noopener">${esc(k)}</a></li>`).join("")}</ul>
         </div>
         <div class="card">
-          ${st ? `<div class="kpis kpis-4"><div><span class="muted">${L("Scrutins", "Votes")}</span><strong>${fmtNum(st.scrutins)}</strong></div><div><span class="muted">${label.P}</span><strong class="pos-P">${fmtNum(st.pour)}</strong></div><div><span class="muted">${label.C}</span><strong class="pos-C">${fmtNum(st.contre)}</strong></div><div><span class="muted">${label.A}</span><strong class="pos-A">${fmtNum(st.abstention)}</strong></div></div><p class="small">${L("Position enregistrée", "Position recorded")} : <b>${fmtPct(100 * st.participation, 0)}</b></p>` : ""}
+          ${st ? `<div class="kpis kpis-4"><div><span class="muted">${L("Scrutins", "Votes")}</span><strong>${fmtNum(st.scrutins)}</strong></div><div><span class="muted">${label.P}</span><strong class="pos-P">${fmtNum(st.pour)}</strong></div><div><span class="muted">${label.C}</span><strong class="pos-C">${fmtNum(st.contre)}</strong></div><div><span class="muted">${label.A}</span><strong class="pos-A">${fmtNum(st.abstention)}</strong></div></div><p class="small">${L("Position enregistrée : ", "Position recorded: ")}<b>${fmtPct(100 * st.participation, 0)}</b></p>` : ""}
           <p class="muted tiny">${PARTICIPATION_NOTE()}</p>
         </div>
       </div>

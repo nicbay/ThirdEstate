@@ -1126,3 +1126,22 @@ body { overflow-x: clip; }
 .debt-teaser strong { font: 850 clamp(1.7rem, 1rem + 3.4vw, 2.9rem)/1 var(--display); font-stretch: 72%; letter-spacing: -0.02em; font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
 .debt-teaser span:last-child { font-size: 0.9rem; color: #c9cad0; }
 .debt-teaser span:last-child::after { content: " →"; }
+
+/* ---------- Parliament: vacant seats, MPs vs workforce, digital-presence table ---------- */
+.hemicycle .seat-vacant { fill: none; stroke: var(--ink-3); stroke-width: 1; }
+.pcs-table th[scope="row"] { font: 500 0.86rem/1.3 var(--sans, inherit); text-transform: none; letter-spacing: 0; color: var(--ink); border-bottom: 1px solid var(--rule); padding-right: 0.8rem; }
+.pcs-table td.pcs-cell { width: 34%; }
+.pcs-cell > div { display: flex; align-items: center; gap: 0.4rem; }
+.pcs-cell .num { flex: none; min-width: 3.2em; text-align: right; }
+.pcs-track { flex: 1; min-width: 28px; display: block; }
+.pcs-bar { display: block; height: 10px; min-width: 1px; border-radius: 1px; }
+.pcs-bar.is-an, .dot.pcs-an { background: var(--ink); }
+.pcs-bar.is-pop, .dot.pcs-pop { background: var(--ink-3); }
+.pcs-table thead .dot { margin-right: 0.3rem; }
+.presence-table abbr { text-decoration: none; cursor: help; }
+@media (max-width: 480px) {
+  .presence-table { font-size: 0.82rem; }
+  .presence-table th, .presence-table td { padding-right: 0.4rem; }
+  .pcs-table { font-size: 0.82rem; }
+  .pcs-table th, .pcs-table td { padding-right: 0.4rem; }
+}
