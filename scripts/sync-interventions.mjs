@@ -596,6 +596,12 @@ for (const id of ranked) {
 await mkdir(new URL("ranks/", OUT), { recursive: true });
 for (let i = 0; i < SHARDS; i++) await writeFile(new URL(`ranks/${String(i).padStart(2, "0")}.json`, OUT), JSON.stringify({ ids, w: shards[i] }));
 console.log(`✓ MP rankings for ${ranked.size} words`);
+
+// words-index.json: every ranked word with its chamber count, most said first, for the site-wide search
+// (src/lib/search.ts matches typed text against it, exact or prefix, then opens the word's ranking).
+const index = [...ranked].map((id) => [termText(id), chamber.get(id) ?? 0]).sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1));
+await writeFile(new URL("words-index.json", OUT), JSON.stringify(index));
+console.log(`✓ search index of ${index.length} words`);
 speeches.length = 0;
 
 // Data files only change when the record does (the daily workflow commits only real changes);
