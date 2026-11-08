@@ -196,7 +196,7 @@ export default {
             note: { fr: "Effets directs et statiques ; ne compte pas les 26 Md€ de lutte contre la fraude retenus par le candidat. Soit environ 7,2 points de PIB de déficit en plus.", en: "Direct, static effects; leaves out the €26bn of anti-fraud receipts the candidate counted. About 7.2 GDP points of extra deficit." },
             url: "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese" },
         ] },
-      { id: "nfp2024", year: 2024, label: { fr: "Législatives 2024 — programme du Nouveau Front populaire (LFI, PS, Écologistes, PCF)", en: "2024 legislative — New Popular Front programme (LFI, PS, Greens, PCF)" },
+      { id: "nfp2024", year: 2024, coalition: true, label: { fr: "Législatives 2024 — programme du Nouveau Front populaire (LFI, PS, Écologistes, PCF)", en: "2024 legislative — New Popular Front programme (LFI, PS, Greens, PCF)" },
         horizon: { fr: "par an, à l’horizon 2027", en: "a year, by 2027" },
         announced: { by: "NFP", spending: 150, revenue: 150, net: 0, date: "2024-06-21",
           note: { fr: "« Nos dépenses correspondent exactement aux recettes supplémentaires » (Éric Coquerel). Les recettes détaillées ce jour-là totalisent environ 80 Md€.", en: "Coquerel said spending ‘exactly matches’ the extra revenue. The revenue items detailed that day add up to about €80bn." },
