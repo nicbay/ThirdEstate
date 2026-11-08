@@ -17,6 +17,7 @@ import { renderSenat, renderSenateur } from "./views/senat";
 import { renderExplorer, renderTown } from "./views/explore";
 import { getHome, onHome } from "./lib/cloud";
 import { esc } from "./util";
+import { renderEconomy } from "./views/economy";
 
 const app = document.getElementById("app")!;
 const nav = document.getElementById("nav")!;
@@ -45,6 +46,7 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/elus$/, () => renderAssemblee(app, "carte")],
   [/^#\/explorer(?:\/(\w{2,3}))?$/, (m) => renderExplorer(app, m[1])],
   [/^#\/ville\/(\w{5})$/, (m) => renderTown(app, m[1])],
+  [/^#\/chiffres$/, () => renderEconomy(app)],
 ];
 
 // Information architecture: two doors, the site's promise "de votre mairie à l'Élysée".
@@ -75,6 +77,7 @@ function sections(): Section[] {
         { href: "#/fil", match: /^#\/fil/, fr: "Fil rouge, fil bleu", en: "Red feed, blue feed" },
       ],
     },
+    { href: "#/chiffres", match: /^#\/chiffres/, fr: "En chiffres", en: "In numbers" },
     { href: "#/resultats", match: /^#\/(resultats|histoire)/, fr: "Archives", en: "Archives" },
   ];
 }
@@ -94,6 +97,7 @@ function nextSteps(path: string) {
     : /^#\/(2027|sondages|simulateur)/.test(path) ? [mine, /simulateur/.test(path) ? polls : sim, hist]
     : /^#\/fil/.test(path) ? [race, mps, mine]
     : /^#\/(resultats|histoire)/.test(path) ? [race, mine, sim]
+    : /^#\/chiffres/.test(path) ? [race, mps, mine]
     : null;
   if (!pick) return "";
   return `<nav class="next-steps" aria-label="${L("Et ensuite", "What next")}"><p>${L("Et ensuite", "What next")}</p>${pick.map((x) => `<a href="${x.href}">${esc(L(x.fr, x.en))}<span aria-hidden="true">→</span></a>`).join("")}</nav>`;
@@ -123,7 +127,7 @@ function renderChrome(path: string) {
     <div>${document.querySelector(".topbar .brand")!.outerHTML}
       <p>${L("Données électorales françaises, de la commune à l’Élysée. Sources publiques, méthode ouverte, code libre.", "French election data, from your town hall to the Élysée. Public sources, open method, open code.")}</p>
       <p class="foot-quote">${L("« Qu’est-ce que le tiers état ? Tout. Qu’a-t-il été jusqu’à présent dans l’ordre politique ? Rien. Que demande-t-il ? À y devenir quelque chose. »", "“What is the Third Estate? Everything. What has it been until now in the political order? Nothing. What does it ask? To become something.”")} <span>Sieyès, 1789</span></p></div>
-    <nav aria-label="${L("Pied de page", "Footer")}"><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/resultats/bascules">${L("Bascules", "Shifts")}</a><a href="#/2027">2027</a><a href="https://github.com/nicbay/projectview" target="_blank" rel="noopener">GitHub</a></nav>
+    <nav aria-label="${L("Pied de page", "Footer")}"><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/resultats/bascules">${L("Bascules", "Shifts")}</a><a href="#/2027">2027</a><a href="#/chiffres">${L("La France en chiffres", "France in numbers")}</a><a href="https://github.com/nicbay/projectview" target="_blank" rel="noopener">GitHub</a></nav>
   </div>`;
 }
 

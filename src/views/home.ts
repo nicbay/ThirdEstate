@@ -14,6 +14,7 @@ import { arrowPaths, legend, unitsPerPx } from "./shifts";
 import { bindSearch, searchBox } from "./explore";
 import { countUp, heroViz } from "./hero";
 import { mpChip, townBrief } from "./brief";
+import { mountDebtTeaser } from "./economy";
 
 export async function renderHome(app: HTMLElement) {
   const [polls, markets, geo, deputes, shifts] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null), loadDepartements(), loadDeputes(), loadShifts().catch(() => null)]);
@@ -120,6 +121,8 @@ export async function renderHome(app: HTMLElement) {
           : ""
       }
 
+      <div id="home-debt"></div>
+
       <section class="charter">
         <blockquote>${L("« La société a le droit de demander compte à tout agent public de son administration. »", "“Society has the right to ask every public official to account for their administration.”")}</blockquote>
         <p>${L("Déclaration des droits de l’homme et du citoyen, article 15, 1789. Third Estate s’efforce de rendre ce droit praticable : des données publiques, une méthode ouverte, pour chacun.", "Declaration of the Rights of Man and of the Citizen, article 15, 1789. Third Estate tries to make that right practical: public data and an open method, for everyone.")}</p>
@@ -127,6 +130,7 @@ export async function renderHome(app: HTMLElement) {
     </section>`;
   bindSearch(app);
   viz.start(app);
+  mountDebtTeaser(app.querySelector<HTMLElement>("#home-debt"));
   if (home?.code) drawMine(app.querySelector<HTMLElement>("#mine")!, home.code, home.commune ?? home.code);
   countUp(app.querySelector<HTMLElement>(".hero-x-doors")!);
 
