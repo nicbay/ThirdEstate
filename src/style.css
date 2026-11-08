@@ -1056,3 +1056,23 @@ body { overflow-x: clip; }
 .theme-mps a:hover { text-decoration: underline; }
 .theme-mps .bar { margin-top: 0.3rem; }
 #th-group { max-width: 100%; }
+
+/* clickable cloud words and the panel under the cloud (src/views/speeches.ts) */
+.wordcloud .wc-pick { cursor: pointer; outline: none; transition: opacity 0.15s; }
+.wordcloud:has(.wc-pick[aria-pressed="true"]) .wc-pick:not([aria-pressed="true"]) { opacity: 0.32; }
+.wordcloud .wc-pick:focus-visible { text-decoration: underline; }
+.word-panel { position: relative; border-top: 2px solid var(--ink); margin: 0.4rem 0 1rem; padding: 0.9rem 0 0.2rem; }
+.word-panel h3 { margin: 0 2rem 0.2rem 0; font-size: 1.35rem; }
+.word-panel h4 { margin: 1.1rem 0 0.4rem; font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-2); }
+.word-close { position: absolute; top: 0.6rem; right: 0; border: 0; background: none; font-size: 1.5rem; line-height: 1; cursor: pointer; color: var(--ink-2); }
+.word-mps { list-style: none; padding: 0; margin: 0.6rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 0.9rem 0.8rem; }
+.word-mps a { display: grid; justify-items: center; text-align: center; gap: 0.2rem; color: var(--ink); text-decoration: none; font-size: 0.8rem; line-height: 1.25; }
+.word-mps a:hover .wm-name { text-decoration: underline; }
+.word-mps img { width: 64px; height: 64px; object-fit: cover; object-position: top; border-radius: 50%; background: var(--wash); }
+.word-mps .wm-meta { display: flex; gap: 0.35rem; align-items: center; font-variant-numeric: tabular-nums; }
+.word-mps .bar { display: block; width: 80%; height: 4px; background: var(--wash); }
+.word-mps .bar span { display: block; height: 100%; }
+.word-quotes { list-style: none; padding: 0; margin: 0.4rem 0 0; display: grid; gap: 0.9rem; }
+.word-quotes blockquote { margin: 0 0 0.25rem; padding-left: 0.8rem; border-left: 3px solid var(--rule); font-size: 0.92rem; line-height: 1.5; }
+.word-quotes mark { background: color-mix(in srgb, var(--accent) 22%, transparent); color: inherit; padding: 0 0.1em; }
+@media (max-width: 480px) { .word-mps { grid-template-columns: repeat(3, minmax(0, 1fr)); } .word-mps img { width: 52px; height: 52px; } }
