@@ -7,8 +7,9 @@ import { lineChart } from "../lib/chart";
 import { meta, registerParties, spectrumRank } from "../lib/candidates";
 import { cloudEnabled, getHome, lookupPostcode, onHome, onPresence, setHome } from "../lib/cloud";
 import { rewind } from "../lib/map";
-import { average, duelAverages, pollValue, referenceLineup, trend, WINDOW } from "../lib/polls";
-import { forecast } from "../lib/forecast";
+import { average, pollsInWindow, trend, WINDOW } from "../lib/polls";
+import { ELECTION_DAY, forecast } from "../lib/forecast";
+import { colon, pct } from "../lib/format";
 import { esc, safeColor } from "../util";
 import { arrowPaths, legend, unitsPerPx } from "./shifts";
 import { bindSearch, searchBox } from "./explore";
@@ -21,25 +22,24 @@ export async function renderHome(app: HTMLElement) {
   registerParties(polls.parties);
   const fr = getLang() === "fr";
   const latest = polls.firstRound[0]?.end ?? new Date().toISOString().slice(0, 10);
-  const lineup = referenceLineup(polls.firstRound, latest);
-  const strip = [...lineup.rows].sort((a, b) => spectrumRank(a.name) - spectrumRank(b.name));
-  const sum = strip.reduce((s, r) => s + r.share, 0) || 1;
-  const [leader, second] = [...lineup.rows].sort((a, b) => b.share - a.share);
-  const nPolls = polls.firstRound.filter((p) => p.end > shiftDays(latest, -WINDOW)).length;
+  // the strip and the headline use the site-wide polling average (lib/polls average), not one line-up
   const now = average(polls.firstRound, latest);
-  const duels = duelAverages(polls.secondRound).slice(0, 5);
-  const winner = markets?.markets.find((m) => m.id.startsWith("KXFRENCHPRES")) ?? markets?.markets[0];
+  const strip = now.filter((r) => r.avg >= 0.5).sort((a, b) => spectrumRank(a.name) - spectrumRank(b.name));
+  const sum = strip.reduce((s, r) => s + r.avg, 0) || 1;
+  const [leader, second] = now;
+  const nPolls = pollsInWindow(polls.firstRound, latest).length;
+  const today = new Date().toISOString().slice(0, 10);
+  const daysToGo = Math.max(0, Math.round((Date.parse(ELECTION_DAY) - Date.parse(today)) / 86400000));
 
-  const headline = leader
+  const headline = leader && second
     ? fr
-      ? `${leader.name} en tête, ${meta(second.name).surname} deuxième à six mois du premier tour`
-      : `${leader.name} leads, ${meta(second.name).surname} second, six months before the first round`
+      ? `${leader.name} en tête, ${meta(second.name).surname} deuxième, à ${daysToGo} jours du premier tour`
+      : `${leader.name} leads, ${meta(second.name).surname} second, ${daysToGo} days before the first round`
     : L("Où en est la course", "Where the race stands");
 
   const feed = await loadFeed().catch(() => null);
   const stories = (feed?.stories ?? []).filter((s) => (s.reactions ?? []).some((r) => r.rating)).slice(0, 3);
-  void duels; void winner; void now; void pollValue; void second;
-  const fav = forecast(polls.firstRound, polls.secondRound, markets?.markets ?? [], new Date().toISOString().slice(0, 10)).rows[0];
+  const fav = forecast(polls.firstRound, polls.secondRound, markets?.markets ?? [], today).rows[0];
   const home = getHome();
   const viz = heroViz(geo, deputes, shifts?.pairs.filter((p) => p.level === "district").at(-1));
 
@@ -51,7 +51,7 @@ export async function renderHome(app: HTMLElement) {
             <p class="hero-kicker">${L("Présidentielle 2027 · Assemblée · Sénat · 34 920 communes", "2027 presidential · Assembly · Senate · 34,920 towns")} <span class="live-badge" id="live-badge" hidden><i></i><span id="live-count"></span></span></p>
             <h1 id="hero-title"><span class="ln"><span>${L("La politique française,", "French politics,")}</span></span><span class="ln"><span><em>${L("en données.", "in data.")}</em></span></span></h1>
             <p class="hero-dek">${L("Qui va gagner en 2027. Comment votent vos députés et sénateurs. Ce qui se passe dans votre commune. Et toutes les élections depuis 1848, archives à l’appui.", "Who will win in 2027. How your MPs and senators vote. What is happening in your town. And every election since 1848, with the archive footage.")}</p>
-            <p class="hero-search-label">${home?.code ? `${L("Votre commune", "Your town")} : <a href="#/ville/${home.code}">${esc(home.commune ?? home.code)}</a>. ${L("Ou cherchez ailleurs", "Or look somewhere else")}` : L("Commencez par chez vous", "Start with where you live")}</p>
+            <p class="hero-search-label">${home?.code ? `${L("Votre commune", "Your town")}${colon()}<a href="#/ville/${home.code}">${esc(home.commune ?? home.code)}</a>. ${L("Ou cherchez ailleurs", "Or look somewhere else")}` : L("Commencez par chez vous", "Start with where you live")}</p>
             ${searchBox(L("Votre ville ou votre code postal", "Your town or postcode"))}
           </div>
           <figure class="hero-x-viz">
@@ -64,9 +64,9 @@ export async function renderHome(app: HTMLElement) {
           </figure>
         </div>
         <nav class="hero-x-doors" aria-label="${L("Rubriques", "Sections")}">
-          ${fav ? `<a href="#/2027"><span class="hx-k">${L("Présidentielle 2027", "2027 presidential")}</span><strong data-count="${Math.round(fav.win)}" data-suffix=" %">${Math.round(fav.win)} %</strong><span>${fr ? `de chances pour ${esc(fav.name)} selon notre prévision (sondages et marchés)` : `chance for ${esc(fav.name)} in our forecast (polls and markets)`}</span></a>` : ""}
+          ${fav ? `<a href="#/2027"><span class="hx-k">${L("Présidentielle 2027", "2027 presidential")}</span><strong data-count="${Math.round(fav.win)}" data-suffix="${fr ? " %" : "%"}">${pct(fav.win, 0)}</strong><span>${fr ? `de chances pour ${esc(fav.name)} selon notre prévision (sondages et marchés)` : `chance for ${esc(fav.name)} in our forecast (polls and markets)`}</span></a>` : ""}
           <a href="#/assemblee"><span class="hx-k">${L("Vos élus", "Your officials")}</span><strong data-count="${deputes.length || 577}">${deputes.length || 577}</strong><span>${L("députés et 348 sénateurs, chacun de leurs votes", "MPs and 348 senators, every vote they cast")}</span></a>
-          <a href="${home?.code ? `#/ville/${home.code}` : "#/explorer"}"><span class="hx-k">${L("Chez vous", "Where you live")}</span><strong data-count="34920">34 920</strong><span>${L("communes : maire, conseil, quartiers, écoles, sécurité, actualité", "towns: mayor, council, neighbourhoods, schools, safety, news")}</span></a>
+          <a href="${home?.code ? `#/ville/${home.code}` : "#/explorer"}"><span class="hx-k">${L("Chez vous", "Where you live")}</span><strong data-count="34920">${L("34 920", "34,920")}</strong><span>${L("communes : maire, conseil, quartiers, écoles, sécurité, actualité", "towns: mayor, council, neighbourhoods, schools, safety, news")}</span></a>
           <a href="#/resultats"><span class="hx-k">${L("Archives", "Archives")}</span><strong>1848</strong><span>${L("chaque présidentielle depuis, avec l’annonce en vidéo ou à la radio", "every presidential election since, with the announcement on film or radio")}</span></a>
         </nav>
       </section>
@@ -87,11 +87,11 @@ export async function renderHome(app: HTMLElement) {
       <section class="card">
         <header class="card-head"><h2>${esc(headline)}</h2><a href="#/2027">${L("La présidentielle 2027", "The 2027 race")}</a></header>
         <figure class="spectrum reveal-now" style="margin:0">
-          <div class="spectrum-bar">${strip.map((r, i) => `<span class="grow" style="flex:${r.share};background:${meta(r.name).color};--i:${i}" data-tip="${esc(`${r.name}${meta(r.name).party ? ` (${meta(r.name).party})` : ""}\n${r.share.toFixed(1)} %`)}"></span>`).join("")}</div>
-          <div class="spectrum-labels">${strip.map((r, i) => `<span class="fade" style="flex:${r.share};--i:${i}">${(100 * r.share) / sum >= 7 ? `<b>${r.share.toFixed(0)} %</b>${esc(meta(r.name).surname)}` : ""}</span>`).join("")}</div>
+          <div class="spectrum-bar">${strip.map((r, i) => `<span class="grow" style="flex:${r.avg};background:${meta(r.name).color};--i:${i}" data-tip="${esc(`${r.name}${meta(r.name).party ? ` (${meta(r.name).party})` : ""}\n${pct(r.avg)}`)}"></span>`).join("")}</div>
+          <div class="spectrum-labels">${strip.map((r, i) => `<span class="fade" style="flex:${r.avg};--i:${i}">${(100 * r.avg) / sum >= 6 ? `<b>${pct(r.avg)}</b>${esc(meta(r.name).surname)}` : ""}</span>`).join("")}</div>
           <div class="spectrum-axis"><span>${L("Gauche", "Left")}</span><span>${L("Droite", "Right")}</span></div>
         </figure>
-        <p class="muted small">${L(`Moyenne des ${nPolls} sondages des ${WINDOW} derniers jours, au ${fmtDate(latest)}.`, `Average of the ${nPolls} polls from the last ${WINDOW} days, as of ${fmtDate(latest)}.`)}</p>
+        <p class="muted small">${L(`Moyenne des ${nPolls} sondages des ${WINDOW} derniers jours, au ${fmtDate(latest)}, de chaque candidat dans les sondages où il figure (le total dépasse donc 100 %).`, `Average of the ${nPolls} polls from the last ${WINDOW} days, as of ${fmtDate(latest)}, for each candidate in the polls that include them (so the total exceeds 100%).`)}</p>
         <div id="trend" class="reveal"></div>
       </section>
 
@@ -227,7 +227,7 @@ export async function renderHome(app: HTMLElement) {
       }
       ${
         dep
-          ? `<h3>${esc(depName.get(dep) ?? dep)} : ${mps.length} ${L("circonscriptions", "districts")}</h3>
+          ? `<h3>${esc(depName.get(dep) ?? dep)}${colon()}${mps.length} ${L("circonscriptions", "districts")}</h3>
              <ul class="circo-list">${mps.map((d) => `<li><a href="#/circo/${d.circo}"><span class="num-badge">${d.numCirco}</span><span><b>${esc(d.prenom)} ${esc(d.nom)}</b> <span class="chip" style="--c:${safeColor(d.groupe?.couleur) ?? "#999"}">${esc(d.groupe?.abrev ?? "")}</span></span></a></li>`).join("")}</ul>`
           : `<p class="muted small">${L("Ou cliquez sur un département pour zoomer sur ses circonscriptions.", "Or click a department to zoom into its districts.")}</p>`
       }`;
@@ -291,11 +291,11 @@ export async function renderHome(app: HTMLElement) {
 
 /** The reader's own town, first thing under the hero: the four-sentence brief, their MPs, shortcuts into the town page. */
 async function drawMine(box: HTMLElement, code: string, name: string) {
-  box.innerHTML = `<section class="card mine"><header class="card-head"><h2>${L("Chez vous", "Where you live")} : ${esc(name)}</h2><a href="#/ville/${code}">${L("Toute la commune", "The whole town")}</a></header><p class="muted small">${L("Chargement…", "Loading…")}</p></section>`;
+  box.innerHTML = `<section class="card mine"><header class="card-head"><h2>${L("Chez vous", "Where you live")}${colon()}${esc(name)}</h2><a href="#/ville/${code}">${L("Toute la commune", "The whole town")}</a></header><p class="muted small">${L("Chargement…", "Loading…")}</p></section>`;
   try {
     const b = await townBrief(code, name);
     box.innerHTML = `<section class="card mine">
-      <header class="card-head"><h2>${L("Chez vous", "Where you live")} : <a href="#/ville/${code}">${esc(name)}</a></h2><a href="#/ville/${code}">${L("Toute la commune", "The whole town")}</a></header>
+      <header class="card-head"><h2>${L("Chez vous", "Where you live")}${colon()}<a href="#/ville/${code}">${esc(name)}</a></h2><a href="#/ville/${code}">${L("Toute la commune", "The whole town")}</a></header>
       <div class="mine-grid">
         <div class="brief-text">${b.sentences.length ? `<p>${b.sentences.join(" ")}</p>` : `<p class="muted">${L("Pas assez de données publiées pour résumer cette commune.", "Not enough published data to sum up this town.")}</p>`}</div>
         <aside>

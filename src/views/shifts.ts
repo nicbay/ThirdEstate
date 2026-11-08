@@ -9,6 +9,7 @@
 import { geoConicConformal, geoPath, type GeoProjection } from "d3-geo";
 import { loadCircoGeo, loadDepartements, loadShifts, type ShiftPair, type ShiftUnit } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
+import { colon, dec, pct, signed as signedFmt } from "../lib/format";
 import { rewind } from "../lib/map";
 import { esc } from "../util";
 import { zoomable, type Zoomable } from "../lib/zoom";
@@ -57,6 +58,23 @@ export async function renderShifts(pane: HTMLElement) {
   let drawArrows = (_z: number) => {};
   const draw = () => {
     const pair = pairs.find((p) => key(p) === ui.pair)!;
+    // a mode with no data for these two elections (far right before 1956) is disabled, with a note
+    const missing = (Object.keys(METRICS) as Metric[]).filter((k) => !metricAvailable(pair, k));
+    const fellBack = !metricAvailable(pair, ui.metric) ? ui.metric : null;
+    if (fellBack) ui.metric = "lr";
+    pane.querySelectorAll<HTMLButtonElement>("[data-metric]").forEach((b) => {
+      const off = missing.includes(b.dataset.metric as Metric);
+      b.disabled = off;
+      b.title = off ? L(`Pas de données pour ${pair.from} → ${pair.to}`, `No data for ${pair.from} → ${pair.to}`) : "";
+    });
+    const note = pane.querySelector<HTMLElement>("#shift-note")!;
+    note.hidden = !missing.length;
+    note.textContent = missing.length
+      ? `${fellBack ? L(`« ${METRICS[fellBack].fr} » n’est pas disponible pour cette période : affichage gauche-droite. `, `“${METRICS[fellBack].en}” isn’t available for this period, showing left–right instead. `) : ""}${missing.map((k) => L(METRICS[k].fr, METRICS[k].en)).join(", ")}${L(
+          " : aucune liste de cette famille dans les résultats de l’une des deux élections, donc rien à comparer.",
+          ": no list of that family in the results of one of the two elections, so nothing to compare.",
+        )}`
+      : "";
     const m = METRICS[ui.metric];
     const units = mainland(pair, ui.metric);
     const svg = pane.querySelector<SVGSVGElement>("#shift-svg")!;
@@ -72,7 +90,7 @@ export async function renderShifts(pane: HTMLElement) {
     };
 
     const nat = pair.national[ui.metric];
-    const sorted = [...units].sort((a, b) => b[1][ui.metric][2] - a[1][ui.metric][2]);
+    const sorted = [...units].sort((a, b) => (b[1][ui.metric]?.[2] ?? 0) - (a[1][ui.metric]?.[2] ?? 0));
     const nPos = units.filter(([, u]) => u[ui.metric][2] > 0).length;
     const fr = getLang() === "fr";
     const what = district ? L("circonscriptions", "districts") : L("départements", "departments");
@@ -133,6 +151,7 @@ export async function renderShifts(pane: HTMLElement) {
           .join("")}</select>
         <div class="tabs small-tabs" role="tablist">${(Object.keys(METRICS) as Metric[]).map((k) => `<button type="button" role="tab" data-metric="${k}">${L(METRICS[k].fr, METRICS[k].en)}</button>`).join("")}</div>
       </div>
+      <p class="muted small" id="shift-note" role="status" hidden></p>
       <div id="shift-head" class="shift-head"></div>
       <div class="shift-legend" id="shift-legend"></div>
       <div class="shift-layout">
@@ -159,7 +178,7 @@ export async function renderShifts(pane: HTMLElement) {
     <p class="source">${L("Résultats : ministère de l’Intérieur (data.gouv.fr) depuis 2012 ; Cagé et Piketty, « Une histoire du conflit politique », pour les élections antérieures. Méthode détaillée dans le dépôt.", "Results: Ministry of the Interior (data.gouv.fr) since 2012; Cagé and Piketty, “Une histoire du conflit politique”, for earlier elections. Full method in the repository.")}</p>`;
 
   pane.querySelector<HTMLSelectElement>("#pair")!.addEventListener("change", (e) => { ui.pair = (e.target as HTMLSelectElement).value; draw(); });
-  pane.querySelectorAll<HTMLButtonElement>("[data-metric]").forEach((b) => b.addEventListener("click", () => { ui.metric = b.dataset.metric as Metric; draw(); }));
+  pane.querySelectorAll<HTMLButtonElement>("[data-metric]").forEach((b) => b.addEventListener("click", () => { if (b.disabled) return; ui.metric = b.dataset.metric as Metric; draw(); }));
   draw();
   revealOnScroll(pane);
   redrawOnResize(pane, draw);
@@ -305,12 +324,21 @@ export function redrawOnResize(root: HTMLElement, draw: () => void) {
   window.addEventListener("resize", on);
 }
 
+/** SVG coordinate (not display text). */
 const f = (n: number) => n.toFixed(1);
-const fmt1 = (n: number) => n.toLocaleString(getLang() === "fr" ? "fr-FR" : "en-GB", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-const signed = (n: number) => `${n > 0 ? "+" : n < 0 ? "−" : ""}${fmt1(Math.abs(n))}`;
+const fmt1 = (n: number | null | undefined) => dec(n, 1);
+const signed = (n: number | null | undefined) => signedFmt(n, 1);
 const labelFor = (code: string) => (code.length >= 4 ? `${code.slice(0, -2)} · ${Number(code.slice(-2))}` : code);
 function tip3(u: ShiftUnit, m: Metric, p: ShiftPair) {
-  const [a, b, d] = u[m];
-  if (m === "lr") return `${L("Écart droite − gauche", "Right − left margin")} : ${fmt1(a)} → ${fmt1(b)} (${signed(d)})\n${L("Gauche", "Left")} ${fmt1(u.left[0])} → ${fmt1(u.left[1])} · ${L("droite", "right")} ${fmt1(u.right[0])} → ${fmt1(u.right[1])}`;
-  return `${p.from} : ${fmt1(a)} % · ${p.to} : ${fmt1(b)} % (${signed(d)})`;
+  const [a, b, d] = u[m] ?? [];
+  if (m === "lr") return `${L("Écart droite − gauche", "Right − left margin")}${colon()}${fmt1(a)} → ${fmt1(b)} (${signed(d)})\n${L("Gauche", "Left")} ${fmt1(u.left?.[0])} → ${fmt1(u.left?.[1])} · ${L("droite", "right")} ${fmt1(u.right?.[0])} → ${fmt1(u.right?.[1])}`;
+  return `${p.from}${colon()}${pct(a)} · ${p.to}${colon()}${pct(b)} (${signed(d)})`;
+}
+
+/** Whether a metric has data for both elections of a pair. The build marks a category nobody stood
+ *  under (e.g. no far-right lists before 1956) as `absent`, and its figures are then zeros, not data. */
+export function metricAvailable(pair: ShiftPair, metric: Metric) {
+  const absent = (pair.national as { absent?: string[] }).absent ?? [];
+  if (metric === "lr") return true;
+  return !absent.includes(`${metric}@${pair.fromId}`) && !absent.includes(`${metric}@${pair.toId}`) && !!pair.national[metric];
 }

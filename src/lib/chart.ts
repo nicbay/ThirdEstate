@@ -1,6 +1,7 @@
 // Minimal SVG line chart: polling-average lines with individual poll dots.
 import { esc } from "../util";
 import { fmtDate } from "../i18n";
+import { dec, pct } from "./format";
 
 export interface Series {
   name: string;
@@ -26,7 +27,7 @@ export function lineChart(series: Series[], opts: { height?: number; yMax?: numb
   const y = (v: number) => T + (1 - v / yMax) * (H - T - B);
 
   const grid = [];
-  for (let v = 0; v <= yMax; v += yMax > 40 ? 10 : 5) grid.push(`<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" class="grid${v === 0 ? " base" : ""}"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end" class="axis">${v}${v + (yMax > 40 ? 10 : 5) > yMax ? " %" : ""}</text>`);
+  for (let v = 0; v <= yMax; v += yMax > 40 ? 10 : 5) grid.push(`<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" class="grid${v === 0 ? " base" : ""}"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end" class="axis">${v + (yMax > 40 ? 10 : 5) > yMax ? pct(v, 0) : v}</text>`);
   // month ticks (at most ~8)
   const months: string[] = [];
   const d = new Date(x0);
@@ -50,7 +51,7 @@ export function lineChart(series: Series[], opts: { height?: number; yMax?: numb
     for (let i = ends.length - 2; i >= 0; i--) if (ends[i + 1].y - ends[i].y < gap) ends[i].y = ends[i + 1].y - gap;
   }
 
-  return `<svg viewBox="0 0 ${W} ${H}" class="chart${compact ? " compact" : ""}" role="img" aria-label="${esc(series.map((s) => `${s.label} ${s.line.at(-1)?.value.toFixed(1) ?? ""}`).join(", "))}">
+  return `<svg viewBox="0 0 ${W} ${H}" class="chart${compact ? " compact" : ""}" role="img" aria-label="${esc(series.map((s) => `${s.label} ${dec(s.line.at(-1)?.value)}`).join(", "))}">
     ${grid.join("")}${ticks.join("")}
     ${series
       .map(
@@ -62,6 +63,6 @@ export function lineChart(series: Series[], opts: { height?: number; yMax?: numb
         </g>`,
       )
       .join("")}
-    ${ends.map(({ s, y: yy }) => `<text x="${W - R + 8}" y="${yy + 4}" class="end-label" fill="${s.color}"><title>${esc(s.label)}</title>${esc(compact && s.label.length > 14 ? `${s.label.slice(0, 13).trim()}…` : s.label)} <tspan class="v">${s.line.at(-1)!.value.toFixed(1)}</tspan></text>`).join("")}
+    ${ends.map(({ s, y: yy }) => `<text x="${W - R + 8}" y="${yy + 4}" class="end-label" fill="${s.color}"><title>${esc(s.label)}</title>${esc(compact && s.label.length > 14 ? `${s.label.slice(0, 13).trim()}…` : s.label)} <tspan class="v">${dec(s.line.at(-1)!.value)}</tspan></text>`).join("")}
   </svg>`;
 }
