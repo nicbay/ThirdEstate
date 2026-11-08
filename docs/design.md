@@ -10,11 +10,11 @@ the insider. The name is English and reads instantly in French.
 The mark is a **pixel-art fox head**, 16×16, drawn as `<rect>`s with `shape-rendering="crispEdges"`
 (grid and `foxSvg(size, onDark)` in `src/lib/fox.ts`; `node scripts/build-brand.mjs` regenerates the favicon and
 the share card from the same grid). Why a fox: alert, quick, hard to fool, the reader the site wants to equip when
-someone in office explains themselves. The face is split down the middle: left fur bleu France `#000091`, right fur
-rouge Marianne `#e1000f`, in flag order as the viewer sees it, with a white blaze and muzzle (`#ffffff`), white inner
-ears, ink outline and eyes `#111216` and an ink nose. On the black masthead and footer the outline and eyes turn
-`#f2f2f4`; the nose stays ink on the white muzzle. The blue-left fox is the flag; the red-left/blue-right split bar
-(active tab, kickers) is the political convention, and the two are never mixed in one element. Keep the grid exact;
+someone in office explains themselves. The head is symmetrical: a bleu France outline `#000091`, rouge Marianne fur `#e1000f` on both sides,
+a white blaze, snout and inner ears (`#ffffff`), ink eyes `#111216` and an ink nose: the three colours of the flag in one
+face. On the black masthead and footer the outline takes a lighter blue `#5470ff` (bleu France would vanish on ink);
+everything else stays. The red-left/blue-right split bar (active tab, kickers) is the political convention and is not
+part of the mark. Keep the grid exact;
 render it at multiples of 16px (24, 28, 32, 112) so pixels stay square. Wordmark: Archivo 850 condensed **THIRD** +
 300 **ESTATE**, uppercase. Favicon: the fox on a rounded ink tile (`public/favicon.svg`). Pixel type (Silkscreen) is
 allowed only for tiny accents, never for text people read; the site currently uses none. The 12×12 section icons of
