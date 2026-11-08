@@ -616,6 +616,7 @@ const out = {
   sections: Object.fromEntries(Object.entries(sectionsOut).map(([v, t]) => [v, t.list])),
   summary,
   highlights,
+  ...(cfg.costing ? { costing: cfg.costing } : {}),
   votes,
   themeWeights,
   lineages: outLineages,
