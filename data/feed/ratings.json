@@ -5613,6 +5613,239 @@
       },
       "check": null,
       "postTime": "2026-11-05T18:49:40.800Z"
+    },
+    "bsky:at://did:plc:i27lvonqvridxzfgstsqw6p2/app.bsky.feed.post/3mzthfysgpc2r": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T22:28:43.051Z",
+      "storyItems": [
+        "4973bd30e93d"
+      ],
+      "storyTitle": "La mobilisation impose les revendications sociales dans le débat, au grand dam du gouvernement et de l’extrême droite",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Demande de 10 milliards pour l'éducation, suppression de Parcoursup, hausse des salaires et dégel du point d'indice : revendications de gauche sociale.",
+        "rationale_en": "Calls for 10 billion for education, scrapping Parcoursup, higher wages and unfreezing civil service pay: left-wing social demands."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Accuse le gouvernement de mépriser le mouvement social, formulation émotionnelle sans argumentation détaillée.",
+        "rationale_en": "Accuses the government of despising the social movement, an emotionally charged framing without detailed argument."
+      },
+      "check": null,
+      "postTime": "2026-11-08T22:26:58.361Z"
+    },
+    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3mztevlhvtk2m": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T22:28:43.051Z",
+      "storyItems": [
+        "81c836f98d17",
+        "4dbafea05e73",
+        "3cf10450960e",
+        "a8ee85703f9a"
+      ],
+      "storyTitle": "Essonne : la députée Insoumise Farida Amrani touchée par un tir de mortier chez le coiffeur",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de soutien sans contenu idéologique.",
+        "rationale_en": "Support message with no ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-08T21:42:00.026Z"
+    },
+    "bsky:at://did:plc:dzhhf6dtekdyjpcvm5xr6jeb/app.bsky.feed.post/3mztdxojmqs2n": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T22:28:43.051Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Se réclame d'un « Goëlo ouvert et solidaire » et s'oppose à l'extrême droite, positionnement de gauche.",
+        "rationale_en": "Invokes an 'open and supportive' local community and opposes the far right, a left-leaning stance."
+      },
+      "populism": {
+        "score": 0.05,
+        "markers": [],
+        "rationale_fr": "Message festif, sans attaque d'élites ni appel à la peur.",
+        "rationale_en": "Festive message with no attack on elites or fear appeal."
+      },
+      "check": null,
+      "postTime": "2026-11-08T21:25:16.591Z"
+    },
+    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3mztct4xa7s2m": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T22:28:43.051Z",
+      "storyItems": [
+        "4ed16c3f9f16",
+        "394e1045d328",
+        "355ea91498d5",
+        "e37804dd5742",
+        "7078b807c902",
+        "ab45863302fa"
+      ],
+      "storyTitle": "Une pétition appelant à fermer CNews atteint un million de signatures sur le site de l'Assemblée nationale",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Soutien à la fermeture de CNews, critique d'un média jugé d'extrême droite, orientation de gauche.",
+        "rationale_en": "Supports closing CNews, a channel criticized as far right, a left-leaning position."
+      },
+      "populism": {
+        "score": 0.15,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Réaction brève et enthousiaste, sans argumentation développée.",
+        "rationale_en": "Brief enthusiastic reaction without developed argument."
+      },
+      "check": null,
+      "postTime": "2026-11-08T21:04:50.208Z"
+    },
+    "yt:v1XNJwFdgt4": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T22:28:43.051Z",
+      "storyItems": [
+        "21a0307b06c8",
+        "496f6e509cec",
+        "bf480087ea04",
+        "45f7f21c8650",
+        "a723d0c9eb9e",
+        "0ef9b7fdc4d5"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": -1,
+        "rationale_fr": "Programme de la France insoumise présenté comme « Nouvelle France », avec rupture avec l'ordre économique actuel.",
+        "rationale_en": "Presents the La France insoumise programme as a 'New France', implying a break with the current economic order."
+      },
+      "populism": {
+        "score": 0.5,
+        "markers": [
+          "anti_elites",
+          "peuple_vs_elites",
+          "souverainete_populaire"
+        ],
+        "rationale_fr": "Discours de convention militante opposant le peuple à un système présenté comme dominant.",
+        "rationale_en": "Movement convention speech opposing the people to a system presented as dominant."
+      },
+      "check": null,
+      "postTime": "2026-11-08T19:35:23.000Z"
+    },
+    "yt:TUB2oRyN7-8": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T22:28:43.051Z",
+      "storyItems": [
+        "841603580841",
+        "244355df5900",
+        "06dda69fe17d"
+      ],
+      "storyTitle": "En dessous de 1 700 euros net, toute revalorisation du Smic équivaudrait à \"des miettes accordées par des gens qui ont distribué des milliards aux plus riches\", déclare le député LFI Antoine Léaument",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Propose de financer un SMIC à 1700 euros net, critique des plus riches et de la redistribution inverse, orientation de gauche radicale.",
+        "rationale_en": "Proposes funding a 1,700 euro net minimum wage, critiquing the wealthy and reverse redistribution: far-left orientation."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "anti_elites",
+          "peuple_vs_elites"
+        ],
+        "rationale_fr": "Oppose les gens ordinaires aux plus riches et au gouvernement, dans un registre de rupture.",
+        "rationale_en": "Opposes ordinary people to the wealthy and the government, in a rupture register."
+      },
+      "check": null,
+      "postTime": "2026-11-08T18:21:47.000Z"
+    },
+    "bsky:at://did:plc:fakceyj3l3pen4wtnjhgudd3/app.bsky.feed.post/3mzsvjri5qc2g": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T22:28:43.051Z",
+      "storyItems": [
+        "e7e1e2621962",
+        "727187b137a3",
+        "1c36e4854631",
+        "dce2bac29685",
+        "007da6cf642e",
+        "162e08e5f0f8"
+      ],
+      "storyTitle": "Attentat de Trappes : les obsèques de Pengo Bossio Wangi se dérouleront samedi",
+      "political": true,
+      "lean": {
+        "score": -0.4,
+        "rationale_fr": "Engagement antiraciste et défense d'une France plurielle, positionnement de gauche.",
+        "rationale_en": "Anti-racism and defence of a plural France, left-leaning positioning."
+      },
+      "populism": {
+        "score": 0.05,
+        "markers": [],
+        "rationale_fr": "Message de deuil et de principe, sans rhétorique populiste.",
+        "rationale_en": "Message of mourning and principle, without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-08T17:06:57.523Z"
+    },
+    "yt:bZG3p06ak8Y": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T22:28:43.051Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce d'une intervention médiatique, sans prise de position développée dans le texte.",
+        "rationale_en": "Announces a media appearance, with no developed position in the text."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste dans le texte.",
+        "rationale_en": "No populist rhetoric in the text."
+      },
+      "check": null,
+      "postTime": "2026-11-08T12:38:14.000Z"
+    },
+    "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3mzsd6h7jpc2w": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T22:28:44.644Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique du décrochage du pouvoir d'achat des travailleurs et référence à la durée du travail, cadrage de gauche sur le travail et les salaires.",
+        "rationale_en": "Criticizes the decline in workers' purchasing power and compares working hours, a left-leaning framing on wages and labour."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Constat économique sans opposition peuple contre élites ni appel émotionnel marqué.",
+        "rationale_en": "Economic observation without people-versus-elites opposition or strong emotional appeal."
+      },
+      "check": null,
+      "postTime": "2026-11-08T11:38:30.329Z"
     }
   },
   "failures": {
