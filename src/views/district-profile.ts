@@ -2,7 +2,7 @@
 // (crime, unemployment, income, local spending, schools, events), each figure compared with
 // the national distribution across districts. Data: scripts/sync-district-profiles.mjs.
 import { fetchJson } from "../data";
-import { L, fmtDate, fmtNum, getLang } from "../i18n";
+import { L, colon, fmtDate, fmtNum, getLang } from "../i18n";
 import { esc, safeUrl } from "../util";
 
 type Bench = { fr: string; en: string; unit: string; year?: number; n: number; median: number; deciles: number[]; min: number; max: number };
@@ -32,7 +32,7 @@ function scale(b: Bench | undefined, v: number | null | undefined) {
   if (!b || v == null) return "";
   const lo = b.deciles[0], hi = b.deciles[8];
   const pct = (x: number) => Math.max(0, Math.min(100, ((x - lo) / (hi - lo || 1)) * 100));
-  return `<span class="scale" data-tip="${esc(`${L("Médiane des circonscriptions", "District median")} : ${fmt(b.median)}\n${L("1er–9e décile", "1st–9th decile")} : ${fmt(lo)} – ${fmt(hi)}`)}"><i class="med" style="left:${pct(b.median)}%"></i><i class="val" style="left:${pct(v)}%"></i></span>`;
+  return `<span class="scale" data-tip="${esc(`${L("Médiane des circonscriptions", "District median")}${colon()}${fmt(b.median)}\n${L("1er–9e décile", "1st–9th decile")}${colon()}${fmt(lo)} – ${fmt(hi)}`)}"><i class="med" style="left:${pct(b.median)}%"></i><i class="val" style="left:${pct(v)}%"></i></span>`;
 }
 const fmt = (n: number) => (Math.abs(n) >= 1000 ? fmtNum(Math.round(n)) : n.toLocaleString(getLang() === "fr" ? "fr-FR" : "en-GB", { maximumFractionDigits: 1 }));
 const src = (s: { name: string; url?: string } | undefined, year?: number | string) => (s ? `<a href="${s.url ? esc(safeUrl(s.url)) : "#"}" target="_blank" rel="noopener">${esc(s.name.split(" — ")[0])}</a>${year ? ` ${year}` : ""}` : "");
@@ -91,7 +91,7 @@ export async function renderDistrictProfile(box: HTMLElement, code: string) {
     <section class="card">
       <header class="card-head"><h2>${L("La circonscription en chiffres", "The district in figures")}</h2><span class="muted small">${L("Comparé aux 577 circonscriptions", "Compared with all 577 districts")}</span></header>
       ${k.length ? `<div class="local-kpis">${k.join("")}</div>` : `<p class="muted">${L("Pas d’indicateurs disponibles ici.", "No indicators available here.")}</p>`}
-      <p class="muted small">${L("Le trait noir sur chaque barre marque la médiane des circonscriptions, le point la valeur d’ici.", "On each bar, the black line marks the median district and the dot this district.")} ${p.geography?.units?.length ? `${L("Communes", "Communes")} : ${p.geography.units.slice(0, 12).map((u: any) => esc(u.name)).join(", ")}${p.geography.units.length > 12 ? "…" : ""}.` : ""}</p>
+      <p class="muted small">${L("Le trait noir sur chaque barre marque la médiane des circonscriptions, le point la valeur d’ici.", "On each bar, the black line marks the median district and the dot this district.")} ${p.geography?.units?.length ? `${L("Communes", "Communes")}${colon()}${p.geography.units.slice(0, 12).map((u: any) => esc(u.name)).join(", ")}${p.geography.units.length > 12 ? "…" : ""}.` : ""}</p>
     </section>
 
     ${

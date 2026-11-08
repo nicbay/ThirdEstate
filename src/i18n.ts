@@ -107,8 +107,15 @@ const stored = (() => {
 let lang: Lang = stored === "en" || stored === "fr" ? stored : navigator.language.startsWith("fr") ? "fr" : "en";
 
 export const getLang = () => lang;
-/** Inline translation: L("Sondages", "Polls"). */
-export const L = (fr: string, en: string) => (lang === "fr" ? fr : en);
+/** French typography: a no-break space before : ; ! ? » and after «, so the mark never starts a line. */
+const frSpaces = (s: string) => s.replace(/ ([:;!?»])/g, " $1").replace(/« /g, "« ");
+/** Inline translation: L("Sondages", "Polls"). French strings get no-break spaces before : ; ! ? ». */
+export const L = (fr: string, en: string) => (lang === "fr" ? frSpaces(fr) : en);
+/** "Label : value" in French (no-break space), "Label: value" in English. */
+export const colon = () => (lang === "fr" ? " : " : ": ");
+/** The singular or plural noun for n: French uses the singular for 0 and 1, English only for 1.
+ *  plural(3, ["bibliothèque", "bibliothèques"], ["library", "libraries"]) */
+export const plural = (n: number, fr: [string, string], en: [string, string]) => (lang === "fr" ? (Math.abs(n) < 2 ? fr[0] : fr[1]) : Math.abs(n) === 1 ? en[0] : en[1]);
 export const t = () => dict[lang];
 export function setLang(l: Lang) {
   lang = l;

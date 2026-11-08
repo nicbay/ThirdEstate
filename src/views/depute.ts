@@ -135,7 +135,7 @@ export async function renderDepute(app: HTMLElement, id: string) {
         return `<li>
           <div class="vote-meta muted small">${fmtDate(date)} · n° ${num} · <span class="sort-${sort === "adopté" ? "ok" : "ko"}">${sort === "adopté" ? s.adopted : s.rejected}</span> (${p}–${c}–${a})</div>
           <div class="vote-title"><a href="https://www.assemblee-nationale.fr/dyn/17/scrutins/${num}" target="_blank" rel="noopener">${esc(titre)}</a></div>
-          ${dem ? `<div class="muted small">${s.requestedBy} : ${esc(dem)}</div>` : ""}
+          ${dem ? `<div class="muted small">${s.requestedBy}${L(" :", ":")} ${esc(dem)}</div>` : ""}
           <span class="pos pos-${pos} bg-${pos}">${label[pos]}</span>
         </li>`;
       })

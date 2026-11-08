@@ -3,7 +3,7 @@
 // Data: scripts/sync-quartiers.mjs (IGN contours, INSEE census and Filosofi, Wikimedia Commons, Wikipedia).
 import { geoMercator, geoPath } from "d3-geo";
 import { fetchJson } from "../data";
-import { L, fmtNum, getLang } from "../i18n";
+import { L, colon, fmtNum, getLang } from "../i18n";
 import { rewind } from "../lib/map";
 import { esc, safeUrl } from "../util";
 
@@ -23,12 +23,23 @@ const LABELS: Record<Key, [string, string, string]> = {
 };
 let metric: Key = "medianIncome";
 
+/** index.json (scripts/sync-quartiers.mjs) lists every commune with a neighbourhood file, and each indicator's year. */
+let indexP: Promise<Any> | null = null;
+const loadIndex = () => (indexP ??= fetchJson<Any>("/data/quartiers/index.json").catch(() => null));
+
 export async function renderQuartiers(box: HTMLElement, code: string) {
+  const index = await loadIndex();
+  // only request the files of communes the index lists (no 404 for the ~33,000 towns without neighbourhoods)
+  if (!index?.communes?.some((c: Any) => c.code === code)) { box.innerHTML = ""; return; }
   const [data, geo] = await Promise.all([fetchJson<Any>(`/data/quartiers/${code}.json`).catch(() => null), fetchJson<GeoJSON.FeatureCollection>(`/data/quartiers/${code}.geojson`).catch(() => null)]);
   if (!data?.iris?.length || !geo || data.iris.length < 2) { box.innerHTML = ""; return; }
   const fr = getLang() === "fr";
   const byCode = new Map<string, Any>(data.iris.map((i: Any) => [i.code, i]));
+  // The neighbourhoods are compared with the town for the same vintage (Filosofi 2021, census 2022), not with the
+  // newer town-wide figures of "The town in figures" (Filosofi 2023, census 2023): hence the year on each reference.
   const town = data.comparison?.commune ?? {};
+  const townLabel = town.label === "arrondissement" ? L("arrondissement", "arrondissement") : L("commune", "town");
+  const year = (k: Key) => index.indicators?.[k]?.year;
   const features = geo.features.map(rewind);
   const proj = geoMercator().fitExtent([[6, 6], [494, 394]], { type: "FeatureCollection", features } as GeoJSON.FeatureCollection);
   const path = geoPath(proj);
@@ -44,7 +55,7 @@ export async function renderQuartiers(box: HTMLElement, code: string) {
         <div id="q-detail" class="q-detail"></div>
       </div>
       <ol class="q-cards" id="q-cards"></ol>
-      <p class="source">${L("INSEE, recensement 2022 et Filosofi 2021 ; contours IGN ; photos Wikimedia Commons et descriptions Wikipédia, crédités sur chaque élément.", "INSEE, 2022 census and Filosofi 2021; IGN outlines; photos from Wikimedia Commons and descriptions from Wikipedia, credited on each item.")}</p>
+      <p class="source">${L(`INSEE, recensement 2022 et Filosofi 2021 ; contours IGN ; photos Wikimedia Commons et descriptions Wikipédia, crédités sur chaque élément. Chaque quartier est comparé à ${town.label === "arrondissement" ? "l’arrondissement" : "la commune"} pour les mêmes années (2021-2022) ; « La commune en chiffres » montre des données plus récentes (2023), d’où un léger écart.`, `INSEE, 2022 census and Filosofi 2021; IGN outlines; photos from Wikimedia Commons and descriptions from French Wikipedia, credited on each item. Each neighbourhood is compared with the ${town.label === "arrondissement" ? "arrondissement" : "town"} for the same years (2021–2022); “The town in figures” shows newer data (2023), hence a small gap.`)}</p>
     </section>`;
 
   const ramp = ["#f1eef6", "#cfc4e0", "#a996c9", "#7d68ad", "#4f3f86"];
@@ -55,9 +66,9 @@ export async function renderQuartiers(box: HTMLElement, code: string) {
     const name = i.quartier?.name && !String(i.name).includes(i.quartier.name.replace(/^Quartier (de la |du |de l’|des |de )?/i, "")) ? `${i.name} <span class="muted small">(${esc(i.quartier.name)})</span>` : esc(i.name);
     return `${photos.length ? `<div class="q-photos${big ? " big" : ""}">${photos.slice(0, big ? 4 : 1).map((p) => `<figure><img src="${esc(safeUrl(big ? p.thumb : String(p.thumb).replace("/960px-", "/500px-")))}" alt="${esc(p.title ?? "")}" loading="lazy"/><figcaption class="tiny"><a href="${esc(safeUrl(p.page))}" target="_blank" rel="noopener">${esc(p.author ?? "")}</a>, ${esc(p.licence ?? "")}</figcaption></figure>`).join("")}</div>` : ""}
       <div class="q-body"><b class="q-name">${name}</b> <span class="muted small">${f.population ? `${fmtNum(f.population)} ${L("hab.", "people")}` : ""}</span>
-      ${i.description?.text ? `<p class="small">${esc(i.description.text)} <a class="tiny" href="${esc(safeUrl(i.description.url))}" target="_blank" rel="noopener">Wikipédia</a></p>` : ""}
-      <dl class="q-figs small">${(big ? KEYS : (["medianIncome", "unemployment", "socialHousing"] as Key[])).map((k) => { const v = f[k], t = town[k]; const d = v != null && t ? v - t : null; return `<div><dt>${L(LABELS[k][0], LABELS[k][1])}</dt><dd><b>${fmt(k, v)}</b>${d != null && big ? ` <span class="muted tiny">${L("commune", "town")} ${fmt(k, t)}</span>` : ""}</dd></div>`; }).join("")}</dl>
-      ${big && i.places?.length ? `<p class="small muted">${L("À voir", "Worth seeing")} : ${i.places.slice(0, 5).map((p: Any) => `<a href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">${esc(p.title)}</a>`).join(", ")}</p>` : ""}
+      ${i.description?.text ? `<p class="small" lang="fr">${esc(i.description.text)} <a class="tiny" href="${esc(safeUrl(i.description.url))}" target="_blank" rel="noopener">${L("Wikipédia", "French Wikipedia, in French")}</a></p>` : ""}
+      <dl class="q-figs small">${(big ? KEYS : (["medianIncome", "unemployment", "socialHousing"] as Key[])).map((k) => { const v = f[k], t = town[k]; const d = v != null && t ? v - t : null; return `<div><dt>${L(LABELS[k][0], LABELS[k][1])}${big && year(k) ? ` <span class="muted tiny">${year(k)}</span>` : ""}</dt><dd><b>${fmt(k, v)}</b>${d != null && big ? ` <span class="muted tiny">${townLabel} ${fmt(k, t)}</span>` : ""}</dd></div>`; }).join("")}</dl>
+      ${big && i.places?.length ? `<p class="small muted">${L("À voir", "Worth seeing")}${colon()}${i.places.slice(0, 5).map((p: Any) => `<a href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">${esc(p.title)}</a>`).join(", ")}</p>` : ""}
       ${f.population && f.population < 300 ? `<p class="muted tiny">${L("Peu d’habitants : chiffres fragiles.", "Few residents: figures are fragile.")}</p>` : ""}</div>`;
   };
   const draw = () => {
@@ -66,7 +77,7 @@ export async function renderQuartiers(box: HTMLElement, code: string) {
     const breaks = [0.2, 0.4, 0.6, 0.8].map(q);
     const colour = (v?: number | null) => (v == null ? "var(--wash, #eee)" : ramp[breaks.filter((b) => v > b).length]);
     box.querySelector("#q-map")!.innerHTML = features
-      .map((f) => { const i = byCode.get(f.properties!.code); const v = i?.figures?.[metric]; return `<path class="area q-area${f.properties!.code === selected ? " selected" : ""}" data-code="${f.properties!.code}" d="${path(f)}" fill="${colour(v)}" data-tip="${esc(`${f.properties!.name}\n${L(LABELS[metric][0], LABELS[metric][1])} : ${fmt(metric, v)}`)}"/>`; })
+      .map((f) => { const i = byCode.get(f.properties!.code); const v = i?.figures?.[metric]; return `<path class="area q-area${f.properties!.code === selected ? " selected" : ""}" data-code="${f.properties!.code}" d="${path(f)}" fill="${colour(v)}" data-tip="${esc(`${f.properties!.name}\n${L(LABELS[metric][0], LABELS[metric][1])}${colon()}${fmt(metric, v)}`)}"/>`; })
       .join("");
     box.querySelector("#q-legend")!.innerHTML = `<span>${L(LABELS[metric][0], LABELS[metric][1])}</span>${ramp.map((c) => `<i style="background:${c}"></i>`).join("")}<span class="muted">${vals.length ? `${fmt(metric, vals[0])} – ${fmt(metric, vals[vals.length - 1])}` : ""}</span>`;
     const sel = selected ? byCode.get(selected) : [...data.iris].sort((a: Any, b: Any) => (b.photos?.length ?? 0) - (a.photos?.length ?? 0) || (b.figures?.population ?? 0) - (a.figures?.population ?? 0))[0];

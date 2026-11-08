@@ -1,6 +1,6 @@
 // Past elections: official results and how far off the final polls were.
 import { ELECTIONS, loadLeg24, loadPolls, presidentialResults } from "../data";
-import { L, fmtDate, fmtNum, getLang } from "../i18n";
+import { L, colon, fmtDate, fmtNum, getLang } from "../i18n";
 import { lineChart } from "../lib/chart";
 import { LEG_BLOCS, NUANCE_LABEL, meta, nuanceColor, registerParties } from "../lib/candidates";
 import { pollValue, trend, type Poll } from "../lib/polls";
@@ -73,7 +73,7 @@ async function presidential2022(pane: HTMLElement) {
     label: meta(r.n).surname,
     color: meta(r.n).color,
     line: pts.filter((p) => p.values[r.n] != null).map((p) => ({ date: p.date, value: p.values[r.n] })),
-    final: { date: day, value: r.res, title: `${r.n} : ${L("résultat", "result")} ${r.res.toFixed(1)} %` },
+    final: { date: day, value: r.res, title: `${r.n}${colon()}${L("résultat", "result")} ${r.res.toFixed(1)} %` },
   }));
 
   pane.querySelector("#acc")!.innerHTML = `
@@ -135,7 +135,7 @@ async function legislatives(pane: HTMLElement) {
   const pts = trend(polls.firstRound, "2024-06-01", 7);
   const series = main.map((k) => {
     const b = LEG_BLOCS.find((x) => x.key === k)!;
-    return { name: k, label: getLang() === "fr" ? b.fr : b.en, color: b.color, line: pts.filter((p) => p.values[k] != null).map((p) => ({ date: p.date, value: p.values[k] })), final: { date: day, value: blocPct(k)!, title: `${b.fr} : ${blocPct(k)!.toFixed(1)} %` } };
+    return { name: k, label: getLang() === "fr" ? b.fr : b.en, color: b.color, line: pts.filter((p) => p.values[k] != null).map((p) => ({ date: p.date, value: p.values[k] })), final: { date: day, value: blocPct(k)!, title: `${getLang() === "fr" ? b.fr : b.en}${colon()}${blocPct(k)!.toFixed(1)} %` } };
   });
   const nuances = Object.entries(n.nuances).sort((a, b) => b[1] - a[1]);
 
