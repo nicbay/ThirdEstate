@@ -6,6 +6,8 @@
 import { fetchJson } from "../data";
 import { L, fmtDate, fmtNum, fmtPct } from "../i18n";
 import { esc, safeUrl } from "../util";
+import { flowSvg, type FlowSpec } from "../lib/programme-flow";
+import { measureTable, mountMeasureTable, type Assessed, type Feas, type Legal } from "../lib/measure-table";
 
 type VersionId = "a22" | "e25" | "w27" | string;
 type Status = "maintained" | "modified" | "new2025" | "new2027" | "dropped";
@@ -18,6 +20,10 @@ interface VoteLink { lineage: string; topic: { fr: string; en: string }; note: {
 type Counts = Record<Status, number>;
 interface CostLine { by: string; spending: number; revenue: number; net: number; date: string; note: { fr: string; en: string }; url: string }
 interface CostRound { id: string; year: number; label: { fr: string; en: string }; horizon: { fr: string; en: string }; announced: CostLine; estimates: CostLine[] }
+interface AssessEntry {
+  id: string; short: { fr: string; en: string } | null; cost: number | null; low: number | null; high: number | null; party: number | null; by: string | null;
+  basis: string | null; sources: { title: string; url: string }[]; legal: Legal; legalNote: string | null; feasibility: Feas; feasibilityNote: string | null; broadBenefit: boolean; key: boolean;
+}
 interface ProgrammeFile {
   slug: string; candidate: string; party: string; programme: string; group: string; generatedAt: string;
   themes: { id: string; fr: string; en: string }[];
@@ -26,6 +32,7 @@ interface ProgrammeFile {
   summary: { overall: Counts & { total: number; changed: number }; byTheme: Record<string, Counts> };
   highlights: { lineage: string; kind: string; fr: string; en: string }[];
   costing?: { rounds: CostRound[]; checked: string };
+  assessment?: AssessEntry[];
   votes: VoteLink[];
   themeWeights: { programme: Record<string, Record<string, number>>; speeches: Record<string, number> | null; chamber: Record<string, number> | null; speechesPeriod: { from: string; to: string } | null; speechesCount: number | null };
   lineages: Lineage[];
@@ -107,68 +114,27 @@ interface State { q: string; theme: string; status: Status | ""; branch: BranchI
 const state: State = { q: "", theme: "", status: "", branch: "", key: false, votes: false, shown: 30, focus: null, flowTheme: "", flowPick: "drop22" };
 const fold = (s: string) => s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
 
-// ---------- flow view: a node graph (source versions → switches → branches → 2027 / dropped) ----------
-interface FlowNode { id: string; x: number; y: number; w: number; h: number; kind: "source" | "switch" | "branch" | "sink"; icon: string; title: string; sub: string; branch?: BranchId; drop?: boolean }
-function flowSvg(f: ProgrammeFile, ls: Lineage[], pick: BranchId | "") {
+// ---------- flow view (src/lib/programme-flow.ts): 2022 booklet, 2025 edition, 2027 site → branches → 2027 / dropped ----------
+export function melenchonFlowSpec(f: ProgrammeFile, ls: Lineage[]): FlowSpec {
   const n = Object.fromEntries((Object.keys(BRANCH) as BranchId[]).map((b) => [b, ls.filter(BRANCH[b]).length])) as Record<BranchId, number>;
-  const inA = ls.filter((l) => l.a).length, inE = ls.filter((l) => l.e).length, newE = ls.filter((l) => l.e && !l.a).length, inW = ls.filter((l) => l.w).length;
-  const [va, ve, vw] = f.versions;
+  const inA = ls.filter((l) => l.a).length, inE = ls.filter((l) => l.e).length, inW = ls.filter((l) => l.w).length;
+  const [, ve, vw] = f.versions;
   const items = (k: number) => `${fmtNum(k)} ${k > 1 ? L("mesures", "measures") : L("mesure", "measure")}`;
-  const N: FlowNode[] = [
-    { id: "s22", x: 10, y: 92, w: 168, h: 64, kind: "source", icon: "22", title: L("Abrégé 2022", "2022 booklet"), sub: items(inA) },
-    { id: "s25", x: 10, y: 292, w: 168, h: 64, kind: "source", icon: "25", title: L("Édition 2025", "2025 edition"), sub: items(inE) },
-    { id: "s27", x: 10, y: 432, w: 168, h: 64, kind: "source", icon: "27", title: L("Site 2027", "2027 website"), sub: L("textes nouveaux", "new texts") },
-    { id: "if22", x: 226, y: 96, w: 150, h: 56, kind: "switch", icon: "?", title: L("Toujours en 2027 ?", "Still in 2027?"), sub: L("aiguillage", "switch") },
-    { id: "if25", x: 226, y: 296, w: 150, h: 56, kind: "switch", icon: "?", title: L("Toujours en 2027 ?", "Still in 2027?"), sub: L("aiguillage", "switch") },
-    { id: "kept", x: 424, y: 14, w: 214, h: 58, kind: "branch", icon: "=", title: branchLabel("kept"), sub: items(n.kept), branch: "kept" },
-    { id: "changed", x: 424, y: 94, w: 214, h: 58, kind: "branch", icon: "≠", title: branchLabel("changed"), sub: items(n.changed), branch: "changed" },
-    { id: "drop22", x: 424, y: 174, w: 214, h: 58, kind: "branch", icon: "−", title: branchLabel("drop22"), sub: items(n.drop22), branch: "drop22", drop: true },
-    { id: "add25", x: 424, y: 264, w: 214, h: 58, kind: "branch", icon: "+", title: branchLabel("add25"), sub: items(n.add25), branch: "add25" },
-    { id: "drop25", x: 424, y: 344, w: 214, h: 58, kind: "branch", icon: "−", title: branchLabel("drop25"), sub: items(n.drop25), branch: "drop25", drop: true },
-    { id: "new27", x: 424, y: 434, w: 214, h: 58, kind: "branch", icon: "★", title: branchLabel("new27"), sub: items(n.new27), branch: "new27" },
-    { id: "w27", x: 712, y: 150, w: 186, h: 70, kind: "sink", icon: "✓", title: L("Programme 2027", "2027 programme"), sub: items(inW) },
-    { id: "gone", x: 712, y: 300, w: 186, h: 70, kind: "sink", icon: "×", title: L("Abandonnées", "Dropped"), sub: items(n.drop22 + n.drop25), drop: true },
-  ];
-  const byId = Object.fromEntries(N.map((x) => [x.id, x]));
-  const E: [string, string, number][] = [
-    ["s22", "if22", inA], ["if22", "kept", n.kept], ["if22", "changed", n.changed], ["if22", "drop22", n.drop22],
-    ["s25", "if25", newE], ["if25", "add25", n.add25], ["if25", "drop25", n.drop25],
-    ["s27", "new27", n.new27],
-    ["kept", "w27", n.kept], ["changed", "w27", n.changed], ["add25", "w27", n.add25], ["new27", "w27", n.new27],
-    ["drop22", "gone", n.drop22], ["drop25", "gone", n.drop25],
-  ];
-  const max = Math.max(1, ...E.map((e) => e[2]));
-  const edges = E.map(([a, b, k], i) => {
-    const A = byId[a], B = byId[b];
-    const x1 = A.x + A.w, y1 = A.y + A.h / 2, x2 = B.x, y2 = B.y + B.h / 2, dx = Math.max(30, (x2 - x1) / 2);
-    const d = `M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}`;
-    const w = k ? 1.6 + 9 * Math.sqrt(k / max) : 1;
-    const drop = !!(B.drop || A.drop);
-    const on = pick && (A.branch === pick || B.branch === pick);
-    const dots = k ? Array.from({ length: Math.min(3, 1 + Math.floor(Math.log10(k + 1))) }, (_, j) => `<circle class="flow-dot" r="${Math.min(4, 1.6 + w / 4).toFixed(1)}"><animateMotion dur="${(2.6 + (i % 3) * 0.4).toFixed(1)}s" begin="${(j * 0.9).toFixed(1)}s" repeatCount="indefinite" path="${d}"/></circle>`).join("") : "";
-    const t = B.kind === "sink" ? 0.28 : 0.5, u = 1 - t; // labels on edges into a sink sit early, away from where they converge
-    const mx = u * u * u * x1 + 3 * u * u * t * (x1 + dx) + 3 * u * t * t * (x2 - dx) + t * t * t * x2;
-    const my = u * u * u * y1 + 3 * u * u * t * y1 + 3 * u * t * t * y2 + t * t * t * y2;
-    return `<g class="flow-edge${drop ? " is-drop" : ""}${on ? " is-on" : ""}${k ? "" : " is-empty"}">
-      <path d="${d}" style="stroke-width:${w.toFixed(1)}"/>${dots}
-      <g class="flow-elabel" transform="translate(${mx.toFixed(0)},${my.toFixed(0)})"><rect x="-21" y="-9" width="42" height="18" rx="9"/><text y="4">${fmtNum(k)}</text></g></g>`;
-  }).join("");
-  const nodes = N.map((x) => {
-    const btn = x.branch ? ` role="button" tabindex="0" data-branch="${x.branch}" aria-pressed="${pick === x.branch}" aria-label="${esc(`${x.title}, ${x.sub}`)}"` : "";
-    const ports = `${x.kind !== "source" ? `<circle class="flow-port" cx="0" cy="${x.h / 2}" r="4.5"/>` : ""}${x.kind !== "sink" ? `<circle class="flow-port" cx="${x.w}" cy="${x.h / 2}" r="4.5"/>` : ""}`;
-    const tile = x.kind === "switch" ? 0 : 44;
-    return `<g class="flow-node is-${x.kind}${x.drop ? " is-drop" : ""}${pick && x.branch === pick ? " is-on" : ""}" transform="translate(${x.x},${x.y})"${btn}>
-      <rect class="flow-box" width="${x.w}" height="${x.h}" rx="${x.kind === "switch" ? 28 : 10}"/>
-      ${tile ? `<rect class="flow-tile" x="10" y="${(x.h - 34) / 2}" width="34" height="34" rx="7"/><text class="flow-icon" x="27" y="${x.h / 2 + 6}">${esc(x.icon)}</text>` : `<text class="flow-icon is-q" x="22" y="${x.h / 2 + 6}">?</text>`}
-      <text class="flow-title" x="${tile ? 54 : 38}" y="${x.h / 2 - 3}">${esc(x.title)}</text>
-      <text class="flow-sub" x="${tile ? 54 : 38}" y="${x.h / 2 + 14}">${esc(x.sub)}</text>
-      ${ports}</g>`;
-  }).join("");
-  const label = L(`Flux des engagements : ${inA} dans l’abrégé 2022 (${va.year}), ${inE} dans l’édition ${ve.year}, ${inW} dans le programme ${vw.year}.`, `Flow of commitments: ${inA} in the 2022 booklet, ${inE} in the ${ve.year} edition, ${inW} in the ${vw.year} programme.`);
-  return `<svg class="flow-svg" viewBox="0 0 910 510" role="group" aria-label="${esc(label)}">${edges}${nodes}</svg>`;
+  const icon: Record<BranchId, string> = { kept: "=", changed: "≠", drop22: "−", add25: "+", drop25: "−", new27: "★" };
+  const order: BranchId[] = ["kept", "changed", "drop22", "add25", "drop25", "new27"];
+  return {
+    sources: [
+      { id: "s22", icon: "22", title: L("Abrégé 2022", "2022 booklet"), sub: items(inA), out: ["kept", "changed", "drop22"] },
+      { id: "s25", icon: "25", title: L("Édition 2025", "2025 edition"), sub: items(inE), out: ["add25", "drop25"] },
+      { id: "s27", icon: "27", title: L("Site 2027", "2027 website"), sub: L("textes nouveaux", "new texts"), out: ["new27"] },
+    ],
+    branches: order.map((b) => ({ id: b, icon: icon[b], title: branchLabel(b), n: n[b], drop: b === "drop22" || b === "drop25" })),
+    keepTitle: L(`Programme ${vw.year}`, `${vw.year} programme`), keepN: inW, goneN: n.drop22 + n.drop25,
+    label: L(`Flux des engagements : ${inA} dans l’abrégé 2022, ${inE} dans l’édition ${ve.year}, ${inW} dans le programme ${vw.year}.`, `Flow of commitments: ${inA} in the 2022 booklet, ${inE} in the ${ve.year} edition, ${inW} in the ${vw.year} programme.`),
+  };
 }
 
-function costCard(f: ProgrammeFile) {
+function costCard(f: { slug: string; costing?: { rounds: CostRound[]; checked: string } | null }) {
   const c = f.costing;
   if (!c?.rounds.length) return "";
   const nets = c.rounds.flatMap((r) => [r.announced.net, ...r.estimates.map((e) => e.net)]);
@@ -188,7 +154,10 @@ function costCard(f: ProgrammeFile) {
   const m22 = r22?.estimates[0];
   const gap22 = r22 && m22 ? r22.announced.net - m22.net : null;
   const ests = c.rounds.flatMap((r) => r.estimates.map((e) => e.net));
-  const verdict = r22 && m22 && r24 && r27 && gap22 != null ? `
+  const generic = c.rounds.filter((r) => r.announced && r.estimates.length).map((r) => L(
+    `En ${r.year}, ${r.estimates.map((e) => `${e.by} estime le solde à ${md(e.net)}`).join(", ")}, contre ${md(r.announced.net)} annoncés par ${r.announced.by}.`,
+    `In ${r.year}, ${r.estimates.map((e) => `${e.by} put the balance at ${md(e.net)}`).join(", ")}, against ${md(r.announced.net)} claimed by ${r.announced.by}.`));
+  const verdict = f.slug !== "melenchon" ? (generic.length ? `<div class="cost-verdict"><p class="eyebrow">${L("En résumé", "In short")}</p>${generic.map((g) => `<p>${esc(g)}</p>`).join("")}</div>` : "") : r22 && m22 && r24 && r27 && gap22 != null ? `
     <div class="cost-verdict">
       <p class="eyebrow">${L("Conclusion", "Conclusion")}</p>
       <p><b>${L(
@@ -216,6 +185,7 @@ function costCard(f: ProgrammeFile) {
 
 export async function renderProgramme(app: HTMLElement, slug: string) {
   const f = await load(slug).catch(() => null);
+  if (f && (f as unknown as LiteFile).lite) return renderLite(app, f as unknown as LiteFile);
   if (!f) {
     app.innerHTML = `<section class="page"><div class="page-head"><h1>${L("Programme introuvable", "Programme not found")}</h1><p class="dek">${L("Aucune analyse de programme n’est disponible pour ce candidat pour l’instant.", "No programme analysis is available for this candidate yet.")}</p></div></section>`;
     return;
@@ -271,6 +241,16 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
       <td class="nowrap">${POS[s.expect]()}</td>
       <td>${verdict}</td></tr>`;
   }).join("");
+  const assessRows: Assessed[] = (f.assessment ?? []).flatMap((a) => {
+    const l = byId.get(a.id);
+    if (!l?.w) return [];
+    const st = l.status === "new2025" ? "new2025" : l.status;
+    return [{
+      id: a.id, label: a.short ? L(a.short.fr, a.short.en) : l.w.t.split(/[:;,(]/)[0].slice(0, 90), text: l.w.t, theme: l.theme, status: st, statusLabel: statusLabel(st as Status, true),
+      cost: a.cost, low: a.low, high: a.high, party: a.party, by: a.by, basis: a.basis, sources: a.sources,
+      legal: a.legal, legalNote: a.legalNote, feasibility: a.feasibility, feasibilityNote: a.feasibilityNote, broadBenefit: a.broadBenefit,
+    }];
+  });
   const nVoteScrutins = f.votes.reduce((s, v) => s + v.scrutins.length, 0);
   const nAgree = f.votes.reduce((s, v) => s + v.scrutins.filter((x) => x.agrees === true).length, 0);
   const nDisagree = f.votes.reduce((s, v) => s + v.scrutins.filter((x) => x.agrees === false).length, 0);
@@ -287,6 +267,7 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
         <nav class="prog-jump" aria-label="${L("Sur cette page", "On this page")}">
           <a href="#/programmes/${esc(f.slug)}#parcours">${L("Le parcours des mesures", "Where measures went")}</a>
           ${f.costing ? `<a href="#/programmes/${esc(f.slug)}#cout">${L("Le coût annoncé et estimé", "Claimed vs estimated cost")}</a>` : ""}
+          ${f.assessment?.length ? `<a href="#/programmes/${esc(f.slug)}#evaluation">${L("Coût, faisabilité, droit", "Cost, feasibility, law")}</a>` : ""}
           <a href="#/programmes/${esc(f.slug)}#mesures">${L("Toutes les mesures", "Every measure")}</a>
           <a href="#/programmes/${esc(f.slug)}#assemblee">${L("Les votes à l’Assemblée", "Assembly votes")}</a>
         </nav>
@@ -326,6 +307,12 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
       </article>
 
       ${costCard(f)}
+
+      ${assessRows.length ? `<article class="card" id="evaluation">
+        <header class="card-head"><h2>${L("Mesure par mesure : coût, faisabilité, Constitution", "Measure by measure: cost, feasibility, constitution")}</h2></header>
+        <p class="prog-lede">${L(`Les ${fmtNum(assessRows.length)} mesures du programme 2027 qui sont soit des « mesures clés », soit chiffrées par l’Institut Montaigne en 2022. Le chiffre de Montaigne est conservé quand la mesure n’a pas changé de montant ; sinon, et pour les mesures nouvelles, l’estimation est la nôtre, calcul et sources à l’appui. Cliquez une ligne pour le détail.`, `The ${fmtNum(assessRows.length)} measures of the 2027 programme that are either ‘key measures’ or were costed by Institut Montaigne in 2022. Montaigne’s figure is kept where the measure’s amount hasn’t changed; otherwise, and for new measures, the estimate is ours, with its calculation and sources. Click a row for details.`)}</p>
+        ${measureTable(assessRows, { id: "mt-mel", partyName: f.candidate })}
+      </article>` : ""}
 
       <article class="card" id="mesures">
         <header class="card-head"><h2>${L("Toutes les mesures, version par version", "Every measure, version by version")}</h2></header>
@@ -462,6 +449,7 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
   app.querySelectorAll<HTMLButtonElement>(".prog-row").forEach((b) => b.addEventListener("click", () => { state.theme = b.dataset.theme!; themeSel.value = state.theme; reset(); toList(); }));
   app.querySelectorAll<HTMLButtonElement>(".prog-goto").forEach((b) => b.addEventListener("click", () => { state.focus = b.dataset.id!; draw(); toList(); }));
   draw();
+  mountMeasureTable(app, "mt-mel", assessRows);
 
   // ---------- flow view ----------
   const canvas = app.querySelector<HTMLElement>("#fcanvas")!;
@@ -469,7 +457,8 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
   const flowSel = app.querySelector<HTMLSelectElement>("#ft")!;
   const drawFlow = () => {
     const ls = state.flowTheme ? f.lineages.filter((l) => l.theme === state.flowTheme) : f.lineages;
-    canvas.innerHTML = flowSvg(f, ls, state.flowPick);
+    if (canvas.firstChild) canvas.classList.add("flow-static"); // draw-in plays once, not on every click
+    canvas.innerHTML = flowSvg(melenchonFlowSpec(f, ls), state.flowPick);
     const b = state.flowPick;
     const rows = ls.filter(BRANCH[b]).sort((x, y) => (y.key ?? 0) - (x.key ?? 0));
     const ver = (l: Lineage) => (b === "drop22" ? l.a : b === "drop25" ? l.e : l.w)!;
@@ -495,4 +484,116 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
   };
   flowSel.addEventListener("change", () => { state.flowTheme = flowSel.value; drawFlow(); });
   drawFlow();
+}
+
+// ---------- "lite" programme files: candidates whose programme is curated by hand (selected measures, sourced) ----------
+type LiteStatus = "maintained" | "modified" | "new" | "dropped";
+interface LiteMeasure {
+  id: string; theme: string; status: LiteStatus; texts: Record<string, string>; change: { fr: string; en: string } | null;
+  sources: { title: string; url: string }[];
+  cost: { value: number; low?: number | null; high?: number | null; by: string; url?: string; note?: { fr: string; en: string } } | null;
+  legal: Legal; legalNote: { fr: string; en: string } | null; feasibility: Feas; feasibilityNote: { fr: string; en: string } | null; broadBenefit: boolean;
+  short?: { fr: string; en: string };
+}
+interface LiteFile {
+  slug: string; candidate: string; party: string; lite: true; status: "published" | "partial" | "none";
+  statusNote: { fr: string; en: string }; summary: { fr: string; en: string };
+  versions: { id: string; year: number; label: { fr: string; en: string }; title: string; date: string; url?: string; kind: string }[];
+  measures: LiteMeasure[]; costing: { rounds: CostRound[]; checked: string } | null;
+}
+const LITE_STATUS: LiteStatus[] = ["maintained", "modified", "new", "dropped"];
+const liteLabel = (s: LiteStatus) => ({ maintained: L("Gardées", "Kept"), modified: L("Modifiées", "Changed"), new: L("Nouvelles", "New"), dropped: L("Abandonnées", "Dropped") })[s];
+const THEME_NAMES: Record<string, [string, string]> = {
+  securite: ["Sécurité", "Security"], immigration: ["Immigration", "Immigration"], sante: ["Santé", "Health"], social: ["Social, famille", "Welfare & family"], education: ["Éducation", "Education"],
+  travail: ["Travail, retraites", "Work & pensions"], economie: ["Économie", "Economy"], budget: ["Budget, impôts", "Budget & tax"], ecologie: ["Écologie, énergie", "Ecology & energy"], agriculture: ["Agriculture", "Agriculture"],
+  logement: ["Logement", "Housing"], international: ["International, défense", "International & defence"], justice: ["Justice", "Justice"], europe: ["Europe", "Europe"], institutions: ["Institutions", "Institutions"], outremer: ["Outre-mer", "Overseas"], culture: ["Culture", "Culture"],
+};
+const themeLabel = (t: string) => (THEME_NAMES[t] ? L(THEME_NAMES[t][0], THEME_NAMES[t][1]) : t);
+
+function renderLite(app: HTMLElement, f: LiteFile) {
+  const vs = f.versions, first = vs[0], last = vs[vs.length - 1];
+  const latestText = (m: LiteMeasure) => m.texts[last.id] ?? m.texts[first.id] ?? Object.values(m.texts)[0] ?? "";
+  const c = Object.fromEntries(LITE_STATUS.map((s) => [s, f.measures.filter((m) => m.status === s).length])) as Record<LiteStatus, number>;
+  const items = (k: number) => `${fmtNum(k)} ${k > 1 ? L("mesures", "measures") : L("mesure", "measure")}`;
+  const spec: FlowSpec | null = vs.length > 1 && f.measures.length ? {
+    sources: [
+      { id: "old", icon: String(first.year).slice(2), title: L(first.label.fr, first.label.en), sub: items(c.maintained + c.modified + c.dropped), out: ["maintained", "modified", "dropped"] },
+      { id: "nw", icon: String(last.year).slice(2), title: L(last.label.fr, last.label.en), sub: L("propositions nouvelles", "new proposals"), out: ["new"] },
+    ],
+    branches: (["maintained", "modified", "dropped", "new"] as LiteStatus[]).map((s) => ({ id: s, icon: { maintained: "=", modified: "≠", dropped: "−", new: "★" }[s], title: liteLabel(s), n: c[s], drop: s === "dropped" })),
+    keepTitle: L(`Programme ${last.year}`, `${last.year} programme`), keepN: c.maintained + c.modified + c.new, goneN: c.dropped,
+    label: L(`${f.measures.length} mesures suivies de ${first.year} à ${last.year}`, `${f.measures.length} measures followed from ${first.year} to ${last.year}`),
+  } : null;
+  const rows: Assessed[] = f.measures.map((m) => ({
+    id: m.id, label: m.short ? L(m.short.fr, m.short.en) : latestText(m).split(/[.;:]/)[0].slice(0, 90), text: latestText(m), theme: m.theme,
+    cost: m.cost?.value ?? null, low: m.cost?.low ?? null, high: m.cost?.high ?? null, by: m.cost?.by ?? null, url: m.cost?.url ?? null,
+    basis: m.cost?.note ? L(m.cost.note.fr, m.cost.note.en) : null,
+    legal: m.legal ?? "unknown", legalNote: m.legalNote ? L(m.legalNote.fr, m.legalNote.en) : null,
+    feasibility: m.feasibility ?? null, feasibilityNote: m.feasibilityNote ? L(m.feasibilityNote.fr, m.feasibilityNote.en) : null,
+    broadBenefit: !!m.broadBenefit, sources: m.sources, status: m.status, statusLabel: liteLabel(m.status),
+  }));
+  let pick: LiteStatus | "" = "";
+  const statusTxt = { published: L("Programme publié", "Programme published"), partial: L("Annonces partielles", "Partial announcements"), none: L("Pas encore de programme", "No programme yet") }[f.status];
+  app.innerHTML = `
+    <section class="page prog">
+      <div class="page-head">
+        <p class="eyebrow">${L("Programmes 2027", "2027 programmes")} · ${esc(f.candidate)} · ${esc(f.party)}</p>
+        <h1>${L(`Le programme de ${f.candidate}, de ${first.year} à ${last.year}`, `${f.candidate}’s programme, ${first.year} to ${last.year}`)}</h1>
+        <p class="dek">${esc(L(f.summary.fr, f.summary.en))}</p>
+        <p class="prog-status-note"><span class="prog-chip">${esc(statusTxt)}</span> ${esc(L(f.statusNote.fr, f.statusNote.en))}</p>
+        <nav class="prog-jump" aria-label="${L("Sur cette page", "On this page")}">
+          ${spec ? `<a href="#/programmes/${esc(f.slug)}#parcours">${L("Le parcours des mesures", "Where measures went")}</a>` : ""}
+          <a href="#/programmes/${esc(f.slug)}#evaluation">${L("Coût, faisabilité, droit", "Cost, feasibility, law")}</a>
+          ${f.costing?.rounds.length ? `<a href="#/programmes/${esc(f.slug)}#cout">${L("Le coût annoncé et estimé", "Claimed vs estimated cost")}</a>` : ""}
+          <a href="#/programmes/${esc(f.slug)}#mesures">${L("Toutes les mesures", "Every measure")}</a>
+          <a href="#/candidat/${esc(f.slug)}">${L("La fiche du candidat", "Candidate profile")}</a>
+        </nav>
+      </div>
+      ${spec ? `<article class="card flow-card" id="parcours">
+        <header class="card-head"><h2>${L(`Le parcours des mesures, de ${first.year} à ${last.year}`, `Where the measures went, ${first.year} to ${last.year}`)}</h2></header>
+        <p class="prog-lede">${L("Une sélection des mesures principales, suivies d’une version à l’autre. Cliquez une branche pour filtrer la liste.", "A selection of the main measures, followed from one version to the next. Click a branch to filter the list.")}</p>
+        <div class="flow-canvas" id="fcanvas"></div>
+      </article>` : ""}
+      <article class="card" id="evaluation">
+        <header class="card-head"><h2>${L("Mesure par mesure : coût, faisabilité, Constitution", "Measure by measure: cost, feasibility, constitution")}</h2></header>
+        ${measureTable(rows, { id: "mt-lite", partyName: f.candidate })}
+      </article>
+      ${f.costing?.rounds.length ? costCard({ slug: f.slug, costing: f.costing }) : ""}
+      <article class="card" id="mesures">
+        <header class="card-head"><h2>${L("Les mesures, version par version", "The measures, version by version")}</h2></header>
+        <p id="lcount" class="muted small"></p>
+        <ol class="prog-list" id="llist"></ol>
+      </article>
+      <article class="card prose prog-method">
+        <header class="card-head"><h2>${L("Sources", "Sources")}</h2></header>
+        <ul>${vs.map((v) => `<li><b>${esc(L(v.label.fr, v.label.en))}</b> — ${esc(v.title)} (${esc(v.date)})${v.url ? ` · <a href="${esc(safeUrl(v.url))}" target="_blank" rel="noopener">${L("source", "source")}</a>` : ""}</li>`).join("")}</ul>
+        <p>${L("Sélection des mesures principales de chaque version, citées depuis les documents du candidat ou les comptes rendus de presse indiqués. Le statut compare la plus ancienne et la plus récente version. Chaque mesure a ses sources.", "A selection of each version’s main measures, quoted from the candidate’s documents or the press reports listed. The status compares the oldest and newest versions. Every measure lists its sources.")}</p>
+      </article>
+    </section>`;
+  mountMeasureTable(app, "mt-lite", rows);
+  const list = app.querySelector<HTMLOListElement>("#llist")!;
+  const canvas = app.querySelector<HTMLElement>("#fcanvas");
+  const draw = () => {
+    const ms = f.measures.filter((m) => !pick || m.status === pick);
+    app.querySelector("#lcount")!.innerHTML = `${fmtNum(ms.length)} ${L("mesures", "measures")}${pick ? ` · ${esc(liteLabel(pick))} <button type="button" class="linkish" id="lclr">${L("tout afficher", "show all")}</button>` : ""}`;
+    app.querySelector("#lclr")?.addEventListener("click", () => { pick = ""; draw(); drawFlow(); });
+    list.innerHTML = ms.map((m) => `<li class="prog-item" id="m-${esc(m.id)}">
+      <div class="prog-item-head"><span class="prog-chip prog-${m.status === "new" ? "new2027" : m.status}">${esc(liteLabel(m.status))}</span><span class="prog-theme">${esc(themeLabel(m.theme))}</span></div>
+      <div class="prog-vers">${vs.map((v) => `<div class="prog-ver${m.texts[v.id] ? "" : " prog-absent"}"><p class="prog-year">${v.year}</p><p class="prog-text${m.texts[v.id] ? "" : " muted"}" lang="fr">${m.texts[v.id] ? esc(m.texts[v.id]) : L("Absente", "Absent")}</p></div>`).join("")}</div>
+      ${m.change ? `<p class="prog-change">${esc(L(m.change.fr, m.change.en))}</p>` : ""}
+      <p class="prog-an small">${m.sources.map((s) => `<a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join(" · ")}</p>
+    </li>`).join("");
+  };
+  function drawFlow() {
+    if (!canvas || !spec) return;
+    if (canvas.firstChild) canvas.classList.add("flow-static");
+    canvas.innerHTML = flowSvg(spec, pick);
+    canvas.querySelectorAll<SVGGElement>("[data-branch]").forEach((g) => {
+      const go = () => { pick = pick === g.dataset.branch ? "" : (g.dataset.branch as LiteStatus); drawFlow(); draw(); };
+      g.addEventListener("click", go);
+      g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+    });
+  }
+  drawFlow();
+  draw();
 }

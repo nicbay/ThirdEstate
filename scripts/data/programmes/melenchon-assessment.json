@@ -1,0 +1,3781 @@
+[
+ {
+  "id": "L7fefc2",
+  "short": {
+   "fr": "Convoquer une Assemblée constituante",
+   "en": "Convene a constituent assembly"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Mesure institutionnelle ; le coût d'organisation des scrutins (≈ 0,2 Md€ par scrutin national) est négligeable.",
+  "sources": [],
+  "legal": "constitutional-revision-needed",
+  "legalNote": "La Constitution de 1958 ne prévoit pas de Constituante ; passage par l'art. 11 (précédent contesté de 1962) ou révision par l'art. 89.",
+  "feasibility": "low",
+  "feasibilityNote": "Exige un référendum ou des majorités parlementaires qualifiées ; le Sénat peut bloquer la voie de l'art. 89.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Lacda68",
+  "short": {
+   "fr": "Passer à une 6e République",
+   "en": "Move to a Sixth Republic"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Réforme institutionnelle sans effet budgétaire direct.",
+  "sources": [],
+  "legal": "constitutional-revision-needed",
+  "legalNote": "Changement de régime : il faut une nouvelle Constitution, donc réviser ou remplacer celle de 1958.",
+  "feasibility": "low",
+  "feasibilityNote": "Dépend de la Constituante et d'un référendum ; calendrier sur plusieurs années.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L5f3e26",
+  "short": {
+   "fr": "Séparer l'argent et l'État",
+   "en": "Separate money and the State"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Règles de déontologie et de prévention des conflits d'intérêts ; pas de coût direct chiffrable.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Conflits d'intérêts encadrables par la loi ordinaire ; contrôle de proportionnalité au regard de la liberté d'entreprendre.",
+  "feasibility": "medium",
+  "feasibilityNote": "Contenu peu précisé ; mise en œuvre par des lois de déontologie.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L5d6aaa",
+  "short": {
+   "fr": "Référendum d'initiative citoyenne (RIC)",
+   "en": "Citizens' initiative referendum"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Mesure institutionnelle ; coût des scrutins marginal.",
+  "sources": [],
+  "legal": "constitutional-revision-needed",
+  "legalNote": "Le RIC révocatoire, législatif et constitutionnel n'existe pas dans la Constitution (art. 3, 11, 89) : révision nécessaire.",
+  "feasibility": "low",
+  "feasibilityNote": "La révision exige l'accord du Sénat ou un référendum.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L544998",
+  "short": {
+   "fr": "Primauté des communs sur la propriété privée",
+   "en": "Commons above private property"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Mesure de principe sans effet budgétaire direct ; risque d'indemnisations contentieuses non chiffrable.",
+  "sources": [],
+  "legal": "constitutional-revision-needed",
+  "legalNote": "Le droit de propriété (DDHC art. 2 et 17) a valeur constitutionnelle ; le faire céder suppose une révision.",
+  "feasibility": "low",
+  "feasibilityNote": "Révision constitutionnelle nécessaire, plus des contentieux devant la CEDH (art. 1 du Protocole 1).",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L2b6c45",
+  "short": {
+   "fr": "Renationaliser aéroports, autoroutes, FDJ",
+   "en": "Reverse privatisations (airports, motorways, FDJ)"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Opérations patrimoniales ponctuelles, pas un flux annuel : rachat anticipé des concessions autoroutières (échéances 2031-2036) et de parts d'ADP et de la FDJ, plusieurs dizaines de Md€ en capital, en partie compensés par les péages et dividendes. Non annualisable sérieusement.",
+  "sources": [
+   {
+    "title": "Conseil constitutionnel, décision 81-132 DC du 16/01/1982 (nationalisations)",
+    "url": "https://www.conseil-constitutionnel.fr/decision/1982/81132DC.htm"
+   }
+  ],
+  "legal": "risk",
+  "legalNote": "Nationaliser est possible, mais une « juste et préalable indemnité » est exigée (DDHC art. 17, 81-132 DC du 16/01/1982).",
+  "feasibility": "low",
+  "feasibilityNote": "Indemnisations élevées ; attendre la fin des concessions réduirait la facture.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Le070e2",
+  "short": {
+   "fr": "Droit de préemption des salariés en Scop",
+   "en": "Employee pre-emption right to form co-ops"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Pas d'effet budgétaire direct (d'éventuels prêts de la BPI ne sont pas chiffrés).",
+  "sources": [
+   {
+    "title": "Conseil constitutionnel, décision 2015-476 QPC du 17/07/2015",
+    "url": "https://www.conseil-constitutionnel.fr/decision/2015/2015476QPC.htm"
+   }
+  ],
+  "legal": "risk",
+  "legalNote": "La 2015-476 QPC (17/07/2015) a censuré la nullité de la cession pour défaut d'information des salariés (liberté d'entreprendre) ; une préemption va plus loin.",
+  "feasibility": "medium",
+  "feasibilityNote": "Il faut financer les reprises et organiser les délais de cession.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L01d93d",
+  "short": {
+   "fr": "Commune cellule de base, libre association",
+   "en": "Communes as basic democratic unit"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Réorganisation territoriale ; effet budgétaire non chiffrable.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "L'organisation des collectivités relève de la loi (art. 34 et 72 C.) ; la libre administration doit être respectée.",
+  "feasibility": "medium",
+  "feasibilityNote": "Remet en cause l'intercommunalité obligatoire ; transition longue.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L263fe1",
+  "short": {
+   "fr": "Non-marchandisation du corps et libre disposition de soi",
+   "en": "Non-commodification of the body"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Principe constitutionnel sans coût.",
+  "sources": [],
+  "legal": "constitutional-revision-needed",
+  "legalNote": "La mesure prévoit elle-même de « constitutionnaliser » : révision par l'art. 89 nécessaire.",
+  "feasibility": "medium",
+  "feasibilityNote": "Révision nécessaire ; l'inscription de l'IVG en 2024 montre qu'un consensus est possible sur certains points.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Lb1d28d",
+  "short": {
+   "fr": "Plan contre les violences anti-LGBTI",
+   "en": "Plan against anti-LGBTI violence"
+  },
+  "cost": -0.1,
+  "low": -0.2,
+  "high": -0.05,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Plan de prévention et de formation, de l'ordre des plans nationaux existants (quelques dizaines de M€). Estimation propre, base faible.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Politique publique relevant de la loi et du règlement.",
+  "feasibility": "high",
+  "feasibilityNote": "Mise en œuvre administrative simple.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Lf78290",
+  "short": {
+   "fr": "Nouvelle stratégie antiterroriste",
+   "en": "New counter-terrorism strategy"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Contenu non précisé ; pas de base de chiffrage.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Contenu non précisé ; devra respecter les libertés (contrôle habituel du CC).",
+  "feasibility": "medium",
+  "feasibilityNote": "Dépend d'un contenu non détaillé.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L19560e",
+  "short": {
+   "fr": "Refonder le service public de la police",
+   "en": "Rebuild the public police service"
+  },
+  "cost": -1,
+  "low": -3,
+  "high": -0.5,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Formation allongée (IM 2022 : 0,1 Md€) et redéploiement ; périmètre non précisé, d'où une fourchette large.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "L'organisation de la police relève de la loi et du règlement.",
+  "feasibility": "medium",
+  "feasibilityNote": "Recruter et former prend plusieurs années.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Lebff2d",
+  "short": {
+   "fr": "Éradiquer l'illettrisme d'ici 2032",
+   "en": "Eradicate illiteracy by 2032"
+  },
+  "cost": -3.4,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Éradiquer l’illettrisme pour les jeunes sortis du système scolaire et les adultes à l’horizon 2027 ») : -3,4 Md€ par an. Notre estimation actualisée pour la formulation 2027 : -1,5 Md€.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Politique de formation sans difficulté juridique.",
+  "feasibility": "medium",
+  "feasibilityNote": "Public difficile à atteindre ; dépend des régions et des organismes de formation.",
+  "broadBenefit": false,
+  "key": true,
+  "montaigne": {
+   "cost": -3.4,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Éradiquer l’illettrisme pour les jeunes sortis du système scolaire et les adultes à l’horizon 2027",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "L1875be",
+  "short": {
+   "fr": "Gratuité réelle de l'école (cantine, transport…)",
+   "en": "Truly free public schooling (canteen, transport…)"
+  },
+  "cost": -7.2,
+  "low": null,
+  "high": -8.7,
+  "party": -7.9,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Assurer la gratuité de l'éducation publique et du matériel scolaire ») : -7,2 Md€ par an, contre -7,9 Md€ pour le candidat. Notre estimation actualisée pour la formulation 2027 : -13 Md€.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/assurer-la-gratuite-de-leducation-publique-et-du-materiel-scolaire/"
+   },
+   {
+    "title": "Institut Montaigne 2024 : gratuité intégrale à l'école",
+    "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/proposer-la-gratuite-integrale-a-lecole-cantine-scolaire-fournitures-transports-activites-periscolaires/"
+   },
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   },
+   {
+    "title": "Public Sénat, budget LFI 2027 (14/10/2026)",
+    "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2027-jean-luc-melenchon-table-sur-106-milliards-de-recettes-supplementaires-et-82-milliards-de-depenses-nouvelles-pour-2027"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Gratuité conforme au 13e alinéa du Préambule de 1946 ; compensation due aux collectivités (art. 72-2 C.).",
+  "feasibility": "medium",
+  "feasibilityNote": "Compensation des communes et départements ; capacité des cantines.",
+  "broadBenefit": true,
+  "key": true,
+  "montaigne": {
+   "cost": -7.2,
+   "candidate": -7.9,
+   "low": null,
+   "high": -8.7,
+   "title": "Assurer la gratuité de l'éducation publique et du matériel scolaire",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/assurer-la-gratuite-de-leducation-publique-et-du-materiel-scolaire/",
+   "feasibility": "Nécessite une concertation avec les collectivités territoriales et une loi de finances.",
+   "legal": "Une exclusion de ces établissements pourrait générer un contentieux."
+  }
+ },
+ {
+  "id": "Lb52b66",
+  "short": {
+   "fr": "Rattraper le gel du point d'indice",
+   "en": "Catch up on the civil-service pay-point freeze"
+  },
+  "cost": -13.4,
+  "low": -12.2,
+  "high": -16,
+  "party": -11,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Rattraper le gel du point d'indice depuis 2010 et revaloriser les grilles salariales des enseignants ») : -13,4 Md€ par an, contre -11 Md€ pour le candidat. Notre estimation actualisée pour la formulation 2027 : -30 Md€.",
+  "sources": [
+   {
+    "title": "Acteurs publics : coût d'une hausse du point d'indice",
+    "url": "https://acteurspublics.fr/articles/1-2-ou-3-de-hausse-du-point-dindice-quel-impact-sur-les-finances-publiques"
+   },
+   {
+    "title": "Institut Montaigne, micro-chiffrages NFP 2024 (PDF)",
+    "url": "https://www.institutmontaigne.org/ressources/documents/synthese-legislatives-2024-micro-chiffrages-institut-montaigne-nfp.pdf"
+   },
+   {
+    "title": "Institut Montaigne 2022 : rattrapage du point d'indice",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/rattraper-le-gel-du-point-dindice-depuis-2010-et-revaloriser-les-grilles-salariales-des-enseignants/"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "La rémunération des agents est fixée par décret ; aucune difficulté juridique.",
+  "feasibility": "medium",
+  "feasibilityNote": "Coût élevé ; ampleur renvoyée à la négociation, étalement probable.",
+  "broadBenefit": true,
+  "key": true,
+  "montaigne": {
+   "cost": -13.4,
+   "candidate": -11,
+   "low": -12.2,
+   "high": -16,
+   "title": "Rattraper le gel du point d'indice depuis 2010 et revaloriser les grilles salariales des enseignants",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/rattraper-le-gel-du-point-dindice-depuis-2010-et-revaloriser-les-grilles-salariales-des-enseignants/",
+   "feasibility": "Aucune barrière significative, si ce n’est le coût financier de la mesure.",
+   "legal": null
+  }
+ },
+ {
+  "id": "Lf5faa4",
+  "short": {
+   "fr": "Plus de lycées pro et agricoles publics",
+   "en": "More public vocational and agricultural schools"
+  },
+  "cost": -0.5,
+  "low": -1.5,
+  "high": -0.3,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Construction (régions) et postes d'enseignants ; ordre de grandeur estimé, sans chiffrage externe.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Compétence partagée entre l'État et les régions ; aucune difficulté juridique.",
+  "feasibility": "medium",
+  "feasibilityNote": "Délais de construction et recrutement d'enseignants.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Le277a5",
+  "short": {
+   "fr": "Rehausser l'investissement public dans la recherche",
+   "en": "Raise public research investment"
+  },
+  "cost": -10.5,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Réhausser le niveau d’investissement public dans la recherche ») : -10,5 Md€ par an. Notre estimation actualisée pour la formulation 2027 : -7,5 Md€.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté juridique.",
+  "feasibility": "medium",
+  "feasibilityNote": "Montée en charge et recrutements progressifs.",
+  "broadBenefit": false,
+  "key": true,
+  "montaigne": {
+   "cost": -10.5,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Réhausser le niveau d’investissement public dans la recherche",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "L0920a1",
+  "short": {
+   "fr": "Fin de Parcoursup, accès sans sélection",
+   "en": "End Parcoursup, non-selective access"
+  },
+  "cost": -1.5,
+  "low": -3,
+  "high": -0.5,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Ouvrir des places dans les filières en tension (≈ 10 k€ par étudiant et par an) ; estimation propre.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "La sélection relève de la loi (loi ORE de 2018, loi de 2016 sur le master) : modifiable par une loi.",
+  "feasibility": "low",
+  "feasibilityNote": "Capacités d'accueil limitées dans les filières demandées.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Ld17b4e",
+  "short": {
+   "fr": "Conscription citoyenne écologique",
+   "en": "Ecological civic conscription"
+  },
+  "cost": -15,
+  "low": -18.5,
+  "high": -5,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "IM 2022 chiffrait 9 mois payés au SMIC pour les moins de 25 ans à 18,5 Md€/an ; durée et rémunération non précisées en 2027.",
+  "sources": [
+   {
+    "title": "Institut Montaigne 2022 : conscription citoyenne",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/mettre-en-place-une-conscription-citoyenne-de-9-mois-remuneree-au-smic-pour-les-moins-de-25-ans/"
+   }
+  ],
+  "legal": "risk",
+  "legalNote": "Le travail forcé est interdit (CEDH art. 4), sauf service militaire ou « obligations civiques normales ».",
+  "feasibility": "low",
+  "feasibilityNote": "Encadrer et héberger ≈ 800 000 jeunes par an.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L76abf3",
+  "short": {
+   "fr": "Pôle public bancaire, BPI banque des besoins",
+   "en": "Public banking hub, BPI refocus"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Opérations en capital (prises de participation), sans coût annuel clair ; non chiffrable sans périmètre.",
+  "sources": [],
+  "legal": "eu-law",
+  "legalNote": "Les aides d'État (art. 107 TFUE) et les règles prudentielles de l'UE encadrent les banques publiques.",
+  "feasibility": "medium",
+  "feasibilityNote": "Les éventuelles nationalisations seraient coûteuses ; la BPI existe déjà.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Lcb8551",
+  "short": {
+   "fr": "Nouveaux indicateurs de progrès humain",
+   "en": "New human-progress indicators"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Travail statistique (INSEE) au coût négligeable.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "high",
+  "feasibilityNote": "Des indicateurs existent déjà au titre de la loi Sas (2015).",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L187c63",
+  "short": {
+   "fr": "Réviser TFUE et statut BCE (dette publique)",
+   "en": "Treaty change: ECB buys public debt"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Pas de coût national direct.",
+  "sources": [],
+  "legal": "eu-law",
+  "legalNote": "Contraire à l'art. 123 TFUE (interdiction du financement monétaire) ; la révision exige l'unanimité des 27.",
+  "feasibility": "low",
+  "feasibilityNote": "Unanimité des États membres hors d'atteinte.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L846994",
+  "short": {
+   "fr": "Impôt sur le revenu à 14 tranches",
+   "en": "14-bracket income tax"
+  },
+  "cost": 4.7,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Rendre l'impôt sur le revenu plus progressif avec un barème à 14 tranches ») : +4,7 Md€ par an.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, micro-chiffrages NFP 2024 (PDF)",
+    "url": "https://www.institutmontaigne.org/ressources/documents/synthese-legislatives-2024-micro-chiffrages-institut-montaigne-nfp.pdf"
+   },
+   {
+    "title": "Institut Montaigne 2022 : IR à 14 tranches",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/rendre-limpot-sur-le-revenu-plus-progressif-avec-un-bareme-a-14-tranches/"
+   },
+   {
+    "title": "Conseil constitutionnel, décision 2012-662 DC du 29/12/2012",
+    "url": "https://www.conseil-constitutionnel.fr/decision/2012/2012662DC.htm"
+   }
+  ],
+  "legal": "risk",
+  "legalNote": "Des taux marginaux cumulés très élevés ont été jugés confiscatoires (2012-662 DC du 29/12/2012, taxe à 75 % censurée).",
+  "feasibility": "high",
+  "feasibilityNote": "Barème modifiable en loi de finances ; risque d'optimisation.",
+  "broadBenefit": true,
+  "key": true,
+  "montaigne": {
+   "cost": 4.7,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Rendre l'impôt sur le revenu plus progressif avec un barème à 14 tranches",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/rendre-limpot-sur-le-revenu-plus-progressif-avec-un-bareme-a-14-tranches/",
+   "feasibility": "Immédiate.",
+   "legal": null
+  }
+ },
+ {
+  "id": "L23ee77",
+  "short": {
+   "fr": "Plan d'investissement pour les services publics d'Outre-mer",
+   "en": "Overseas public services investment plan"
+  },
+  "cost": -2,
+  "low": -5,
+  "high": -1,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Pas de montant précisé ; ordre de grandeur tiré du plan Guyane de 2017 (≈ 1 Md€ d'engagements par an). Estimation incertaine.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté juridique.",
+  "feasibility": "medium",
+  "feasibilityNote": "Capacité d'exécution locale limitée.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L720457",
+  "short": {
+   "fr": "Généraliser l'ESS, protéger les associations",
+   "en": "Expand social economy, protect non-profits"
+  },
+  "cost": -0.5,
+  "low": -1.5,
+  "high": -0.2,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Subventions et soutiens aux associations ; pas de chiffrage externe.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "high",
+  "feasibilityNote": "Leviers budgétaires simples.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L2b42fa",
+  "short": {
+   "fr": "Garantie d'autonomie au seuil de pauvreté",
+   "en": "Income floor at the poverty line"
+  },
+  "cost": -30,
+  "low": -45,
+  "high": -15,
+  "party": -9.5,
+  "by": "Third Estate",
+  "basis": "OFCE (2026) : combler l'écart entre le revenu de tous les ménages pauvres et le seuil coûterait ≈ 26 Md€ (2023), avant effets sur l'emploi ; IM 2022 : 12 à 15 Md€ pour les seules versions jeunes ; LFI inscrit 9,5 Md€ (jeunes) en 2027. L’Institut Montaigne chiffrait en 2022 la version d’alors (« Créer une garantie d’autonomie ») à -15 Md€ ; le chiffre a changé depuis dans le programme.",
+  "sources": [
+   {
+    "title": "OFCE (mars 2026) : pauvreté monétaire, coût de l'écart au seuil",
+    "url": "https://ofce.sciences-po.fr/blog2024/fr/2026/20260327_PIM/index.html"
+   },
+   {
+    "title": "Institut Montaigne 2022 : garantie d'autonomie des jeunes",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/financer-lautonomie-des-jeunes-detaches-du-foyer-fiscal-parental-grace-a-la-garantie-dautonomie"
+   },
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   },
+   {
+    "title": "Public Sénat, budget LFI 2027 (14/10/2026)",
+    "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2027-jean-luc-melenchon-table-sur-106-milliards-de-recettes-supplementaires-et-82-milliards-de-depenses-nouvelles-pour-2027"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Prestation fixée par la loi ; les conditions de résidence devront être justifiées (principe d'égalité).",
+  "feasibility": "medium",
+  "feasibilityNote": "Gestion par les CAF possible ; montée en charge et effets sur l'emploi.",
+  "broadBenefit": true,
+  "key": true,
+  "montaigne": {
+   "cost": -15,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Créer une garantie d’autonomie",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "Lab3602",
+  "short": {
+   "fr": "Aide juridictionnelle et justice de proximité",
+   "en": "Legal aid and local courts"
+  },
+  "cost": -0.5,
+  "low": -1,
+  "high": -0.2,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Aide juridictionnelle ≈ 0,7 Md€ (programme 101) ; hausse et réouverture de tribunaux de proximité : estimation propre.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Recrutement de magistrats et de greffiers sur plusieurs années.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Lb831e1",
+  "short": {
+   "fr": "Débat annuel du Parlement sur la politique pénale",
+   "en": "Annual parliamentary vote on penal policy"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Procédure parlementaire sans coût.",
+  "sources": [],
+  "legal": "risk",
+  "legalNote": "Possible par loi organique, mais l'art. 20 C. confie la conduite de la politique au Gouvernement ; indépendance de l'autorité judiciaire (art. 64 C.).",
+  "feasibility": "high",
+  "feasibilityNote": "Procédure simple.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L65223a",
+  "short": {
+   "fr": "Police de proximité, dissolution BAC et BRAV-M",
+   "en": "Community policing, disband BAC/BRAV-M"
+  },
+  "cost": -0.83,
+  "low": null,
+  "high": null,
+  "party": -0.346,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Rétablir la police de proximité et supprimer les brigades anti-criminalité (BAC) ») : -0,83 Md€ par an, contre -0,346 Md€ pour le candidat.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/retablir-la-police-de-proximite-et-supprimer-les-brigades-anti-criminalite-bac/"
+   },
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Les services de police sont organisés par décret.",
+  "feasibility": "medium",
+  "feasibilityNote": "Redéploiement des effectifs ; résistances syndicales.",
+  "broadBenefit": false,
+  "key": true,
+  "montaigne": {
+   "cost": -0.83,
+   "candidate": -0.346,
+   "low": null,
+   "high": null,
+   "title": "Rétablir la police de proximité et supprimer les brigades anti-criminalité (BAC)",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/retablir-la-police-de-proximite-et-supprimer-les-brigades-anti-criminalite-bac/",
+   "feasibility": "Nécessite une concertation avec la Police nationale et les collectivités territoriales et une loi de finances.",
+   "legal": null
+  }
+ },
+ {
+  "id": "L86eca6",
+  "short": {
+   "fr": "Garantie d'emploi au SMIC",
+   "en": "Job guarantee at minimum wage"
+  },
+  "cost": -14.3,
+  "low": -8.2,
+  "high": -20.4,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Créer une garantie d'emploi au Smic pour les chômeurs de longue durée dans un secteur d'urgence ») : -14,3 Md€ par an. Notre estimation actualisée pour la formulation 2027 : -10 Md€.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/creer-une-garantie-demploi-au-smic-pour-les-chomeurs-de-longue-duree-dans-un-secteur-durgence/"
+   },
+   {
+    "title": "Institut Montaigne 2022 : garantie d'emploi",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/creer-une-garantie-demploi-au-smic-pour-les-chomeurs-de-longue-duree-dans-un-secteur-durgence"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Dispositif volontaire, pas d'obstacle juridique identifié.",
+  "feasibility": "medium",
+  "feasibilityNote": "Trouver des activités utiles et des employeurs à grande échelle.",
+  "broadBenefit": true,
+  "key": true,
+  "montaigne": {
+   "cost": -14.3,
+   "candidate": null,
+   "low": -8.2,
+   "high": -20.4,
+   "title": "Créer une garantie d'emploi au Smic pour les chômeurs de longue durée dans un secteur d'urgence",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/creer-une-garantie-demploi-au-smic-pour-les-chomeurs-de-longue-duree-dans-un-secteur-durgence/",
+   "feasibility": "Le dispositif, déjà expérimenté au travers des territoires zéro chômeur de longue durée (TZCLD), pourrait être généralisé. Le groupe La France Insoumise a soumis une proposition de loi en ce sens en mars 2021.",
+   "legal": null
+  }
+ },
+ {
+  "id": "L80e85c",
+  "short": {
+   "fr": "35 heures réelles, 32 h métiers pénibles",
+   "en": "Real 35-hour week, higher overtime pay, 32h in arduous jobs"
+  },
+  "cost": null,
+  "low": -3,
+  "high": 3,
+  "party": null,
+  "by": null,
+  "basis": "Effets contraires : la fin des exonérations sur les heures supplémentaires (« cotisations incluses ») rapporte (≈ 2-3 Md€ de cotisations et d'IR) ; les 32 h à l'hôpital et dans les métiers de nuit publics coûtent. Solde indéterminé.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "La durée du travail est fixée par la loi (art. 34 C.) ; aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Pénurie de personnels pour appliquer les 32 h à l'hôpital.",
+  "broadBenefit": true,
+  "key": true
+ },
+ {
+  "id": "L895597",
+  "short": {
+   "fr": "Quota maximal de contrats précaires",
+   "en": "Cap on precarious contracts"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Mesure de droit du travail sans effet budgétaire direct.",
+  "sources": [
+   {
+    "title": "Conseil constitutionnel, décision 2001-455 DC du 12/01/2002",
+    "url": "https://www.conseil-constitutionnel.fr/decision/2002/2001455DC.htm"
+   }
+  ],
+  "legal": "risk",
+  "legalNote": "Atteinte à la liberté d'entreprendre à justifier (cf. 2001-455 DC du 12/01/2002, censure de la définition du licenciement économique).",
+  "feasibility": "medium",
+  "feasibilityNote": "Contrôle par l'inspection du travail ; secteurs saisonniers à traiter à part.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Lc140d0",
+  "short": {
+   "fr": "SMIC à 1 700 € net, salaires indexés",
+   "en": "€1,700 net minimum wage, wage indexation"
+  },
+  "cost": -25,
+  "low": -32,
+  "high": -20,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "IM 2024 : SMIC à 1 600 € net (+14,4 %) = 19 Md€/an (17-21), soit allègements de cotisations (21,5) + masse salariale publique (3,7) − recettes en retour (6) ; 1 700 € (+18 % sur ≈ 1 443 € en 2026) ≈ 23-25 Md€, plus l'indexation publique. Pertes d'emploi non incluses. L’Institut Montaigne chiffrait en 2022 la version d’alors (« Augmenter le Smic à 1 400 € net ») à -2,7 Md€ ; le chiffre a changé depuis dans le programme.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/augmenter-le-smic-a-1-400-e-net/"
+   },
+   {
+    "title": "Institut Montaigne 2024 : SMIC à 1 600 € net",
+    "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/augmenter-le-smic-a-1600-e-net/"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "SMIC fixé par décret ; l'indexation, interdite par l'art. L112-2 du Code monétaire et financier, est modifiable par la loi.",
+  "feasibility": "medium",
+  "feasibilityNote": "Choc pour les TPE ; refonte des allègements de cotisations.",
+  "broadBenefit": true,
+  "key": true,
+  "montaigne": {
+   "cost": -2.7,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Augmenter le Smic à 1 400 € net",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/augmenter-le-smic-a-1-400-e-net/",
+   "feasibility": "Immédiate par décret, accompagnée le cas échéant d’une mesure de financement.",
+   "legal": null
+  }
+ },
+ {
+  "id": "Laeafa2",
+  "short": {
+   "fr": "Annuler les réformes Macron de l'assurance chômage",
+   "en": "Reverse Macron unemployment-insurance reforms"
+  },
+  "cost": -6,
+  "low": -9,
+  "high": -4,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Économies attendues des réformes de 2019, 2023 et 2025 selon l'Unédic : ≈ 2 + 4 + 1,5 Md€/an ; les annuler coûte autant. Estimation agrégée.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Règles d'indemnisation fixées par la loi et le décret.",
+  "feasibility": "high",
+  "feasibilityNote": "Simple changement de paramètres à l'Unédic.",
+  "broadBenefit": true,
+  "key": true
+ },
+ {
+  "id": "L20a7be",
+  "short": {
+   "fr": "Droits attachés à la personne (formation, ancienneté)",
+   "en": "Portable personal rights"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Réforme du droit du travail ; coût éventuel pour les employeurs, pas pour l'État.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Mécanisme de transfert entre employeurs à créer.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L2a64e0",
+  "short": {
+   "fr": "Objectif zéro mort au travail",
+   "en": "Zero deaths at work"
+  },
+  "cost": -0.2,
+  "low": -0.5,
+  "high": -0.1,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Recrutement d'inspecteurs du travail (≈ 2 000 postes ≈ 0,1-0,2 Md€) ; estimation propre.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Former les inspecteurs, renforcer les sanctions.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L919a7c",
+  "short": {
+   "fr": "Abroger les 64 ans, retraite à 60 ans",
+   "en": "Repeal 64, then retirement at 60"
+  },
+  "cost": -85.8,
+  "low": -36,
+  "high": -112.8,
+  "party": -71.5,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Rétablir la retraite à 60 ans après 40 années de cotisation et porter à minima au niveau du SMIC toutes les pensions ») : -85,8 Md€ par an, contre -71,5 Md€ pour le candidat. Notre estimation actualisée pour la formulation 2027 : -58 Md€.",
+  "sources": [
+   {
+    "title": "Institut Montaigne 2024 : retraite à 60 ans",
+    "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/abroger-la-reforme-des-retraites-restaurer-la-retraite-a-60-ans-en-prenant-en-compte-le-rsa-en-portant-le-minimum-contributif-au-smic/"
+   },
+   {
+    "title": "Institut Montaigne 2022 : retraite à 60 ans",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/retablir-la-retraite-a-60-ans-apres-40-ans-annees-de-cotisation/"
+   },
+   {
+    "title": "Moneyvox : coût d'une abrogation de la réforme 2023",
+    "url": "https://www.moneyvox.fr/retraite/actualites/98707/abroger-la-reforme-des-retraites-et-le-depart-a-64-ans-combien-ca-coute"
+   },
+   {
+    "title": "Public Sénat, budget LFI 2027 (14/10/2026)",
+    "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2027-jean-luc-melenchon-table-sur-106-milliards-de-recettes-supplementaires-et-82-milliards-de-depenses-nouvelles-pour-2027"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "L'âge légal est fixé par la loi (art. 34 C.) ; aucune difficulté.",
+  "feasibility": "low",
+  "feasibilityNote": "Le financement exige de fortes hausses de cotisations, alors que le système est déjà très déficitaire.",
+  "broadBenefit": true,
+  "key": true,
+  "montaigne": {
+   "cost": -85.8,
+   "candidate": -71.5,
+   "low": -36,
+   "high": -112.8,
+   "title": "Rétablir la retraite à 60 ans après 40 années de cotisation et porter à minima au niveau du SMIC toutes les pensions",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/retablir-la-retraite-a-60-ans-apres-40-ans-annees-de-cotisation/",
+   "feasibility": "Disposition législative.",
+   "legal": null
+  }
+ },
+ {
+  "id": "L8292ff",
+  "short": {
+   "fr": "Bloquer les prix des produits de première nécessité",
+   "en": "Freeze essential prices"
+  },
+  "cost": -15,
+  "low": -38,
+  "high": -9,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "IM 2024 : 9 Md€ au minimum (coût des boucliers énergie en 2024, Cour des comptes), 24 en médiane, 38 en cas de choc comparable à 2023 ; un blocage non compensé reporte le coût sur les entreprises.",
+  "sources": [
+   {
+    "title": "Institut Montaigne 2024 : blocage des prix",
+    "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/bloquer-les-prix-des-produits-de-premiere-necessite/"
+   }
+  ],
+  "legal": "eu-law",
+  "legalNote": "Tarifs réglementés encadrés (CJUE ANODE C-121/15, 2016 ; directive 2019/944) ; blocage par décret limité à 6 mois (art. L410-2 C. com.).",
+  "feasibility": "low",
+  "feasibilityNote": "Risque de pénuries ; contrôle de milliers de prix.",
+  "broadBenefit": true,
+  "key": true
+ },
+ {
+  "id": "Lc3cbb5",
+  "short": {
+   "fr": "Mesures antidumping d'urgence (acier, auto, pharma)",
+   "en": "Emergency anti-dumping measures"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Pas d'effet budgétaire direct ; les droits de douane reviennent à l'UE.",
+  "sources": [],
+  "legal": "eu-law",
+  "legalNote": "La politique commerciale est une compétence exclusive de l'UE (art. 3 et 207 TFUE) : impossible au seul niveau national.",
+  "feasibility": "low",
+  "feasibilityNote": "Exige une décision de la Commission et du Conseil.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Lc2a3aa",
+  "short": {
+   "fr": "Relocaliser les productions essentielles",
+   "en": "Reshore essential production"
+  },
+  "cost": null,
+  "low": -3,
+  "high": -0.5,
+  "party": null,
+  "by": null,
+  "basis": "Aides industrielles non précisées (France 2030 représente déjà ≈ 5 Md€/an) ; fourchette indicative.",
+  "sources": [],
+  "legal": "risk",
+  "legalNote": "Aides d'État encadrées (art. 107 TFUE).",
+  "feasibility": "medium",
+  "feasibilityNote": "Coûts de production et délais d'investissement.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L68ff75",
+  "short": {
+   "fr": "Adapter les infrastructures au changement climatique",
+   "en": "Climate-proof infrastructure"
+  },
+  "cost": -2.5,
+  "low": -5,
+  "high": -1.5,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Les estimations publiques (I4CE) chiffrent les besoins supplémentaires d'adaptation à quelques Md€ par an ; une partie recoupe le plan d'investissement.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Capacité d'ingénierie des collectivités.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L07da7a",
+  "short": {
+   "fr": "Loi contre les violences sexistes, 3 Md€",
+   "en": "Law on gender violence, €3bn"
+  },
+  "cost": -2.5,
+  "low": -3,
+  "high": -1,
+  "party": -3,
+  "by": "Third Estate",
+  "basis": "Montant inscrit dans la mesure (3 Md€ demandés par les associations) ; IM 2022 chiffrait 1 Md€ ; une partie est déjà financée. L’Institut Montaigne chiffrait en 2022 la version d’alors (« Adopter une loi contre le sexisme et les violences faites aux femmes, allocation d’1 Md€ aux associations concernées ») à -1 Md€ ; le chiffre a changé depuis dans le programme.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "high",
+  "feasibilityNote": "Montant fixé ; dépend des associations et de la justice.",
+  "broadBenefit": false,
+  "key": true,
+  "montaigne": {
+   "cost": -1,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Adopter une loi contre le sexisme et les violences faites aux femmes, allocation d’1 Md€ aux associations concernées",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "Lfb730d",
+  "short": {
+   "fr": "Lutter contre le temps partiel contraint",
+   "en": "Fight involuntary part-time work"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Mesure de droit du travail.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Négociation par branches.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Lc454dc",
+  "short": {
+   "fr": "Mères isolées : ASF revalorisée, pensions défiscalisées",
+   "en": "Single mothers: higher family support allowance"
+  },
+  "cost": -1.5,
+  "low": -3,
+  "high": -0.8,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "ASF ≈ 1,8 Md€ ; revalorisation, déconjugalisation et défiscalisation des pensions alimentaires (≈ 0,5 Md€ d'IR) : estimation propre.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "high",
+  "feasibilityNote": "Changements simples dans les paramètres CAF et fiscaux.",
+  "broadBenefit": true,
+  "key": true
+ },
+ {
+  "id": "L8150ee",
+  "short": {
+   "fr": "Effectivité de l'IVG, fin de la double clause",
+   "en": "Effective abortion access, end double conscience clause"
+  },
+  "cost": -0.05,
+  "low": -0.1,
+  "high": 0,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Coût marginal (centres IVG).",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "La clause spécifique, créée par la loi, peut être supprimée ; la clause générale reste protégée (liberté de conscience).",
+  "feasibility": "high",
+  "feasibilityNote": "Loi simple.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "La30f80",
+  "short": {
+   "fr": "Droit du sol intégral",
+   "en": "Full birthright citizenship"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Pas d'effet budgétaire.",
+  "sources": [
+   {
+    "title": "Conseil constitutionnel, décision 2018-770 DC du 06/09/2018 (Mayotte)",
+    "url": "https://www.conseil-constitutionnel.fr/decision/2018/2018770DC.htm"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Le CC a jugé la restriction à Mayotte constitutionnelle sans l'imposer (2018-770 DC du 06/09/2018) : retour possible par la loi.",
+  "feasibility": "high",
+  "feasibilityNote": "Loi simple.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "La1f8cd",
+  "short": {
+   "fr": "Récépissé de contrôle d'identité",
+   "en": "Receipts for police ID checks"
+  },
+  "cost": -0.05,
+  "low": -0.1,
+  "high": -0.02,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Équipement et formation ; coût faible.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "high",
+  "feasibilityNote": "Les outils numériques existent.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L2ff8d5",
+  "short": {
+   "fr": "4 février jour férié (esclavage)",
+   "en": "4 February public holiday"
+  },
+  "cost": -1.5,
+  "low": -3,
+  "high": -0.5,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Un jour travaillé de moins réduit l'activité et les recettes ; la journée de solidarité rapporte ≈ 3 Md€ de CSA, ordre de grandeur de la perte. Estimation incertaine.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Les jours fériés sont fixés par la loi (art. L3133-1 C. trav.).",
+  "feasibility": "high",
+  "feasibilityNote": "Loi simple.",
+  "broadBenefit": true,
+  "key": true
+ },
+ {
+  "id": "Lf5cf7a",
+  "short": {
+   "fr": "Plan contre le racisme, 1 Md€",
+   "en": "Anti-racism plan, €1bn"
+  },
+  "cost": -1,
+  "low": -1,
+  "high": -0.5,
+  "party": -1,
+  "by": "Third Estate",
+  "basis": "Montant inscrit dans la mesure.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "high",
+  "feasibilityNote": "Budget fixé.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L8e3f8e",
+  "short": {
+   "fr": "Service public de la dépendance",
+   "en": "Public elderly care service"
+  },
+  "cost": -7.4,
+  "low": -12,
+  "high": -5,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "IM 2022 : 210 000 recrutements dans la dépendance = 7,4 Md€/an ; rapport Libault (2019) : besoins de +9 Md€ en 2030.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "low",
+  "feasibilityNote": "Pénurie de soignants ; reprise des EHPAD privés.",
+  "broadBenefit": true,
+  "key": true
+ },
+ {
+  "id": "Ldc0fbb",
+  "short": {
+   "fr": "AAH au niveau du SMIC",
+   "en": "Disability benefit at minimum wage"
+  },
+  "cost": -0.7,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Assurer l’autonomie financière des personnes en situation de handicap, en revalorisant et en versant l’AAH indépendamment des revenus du conjoint ») : -0,7 Md€ par an. Notre estimation actualisée pour la formulation 2027 : -9 Md€.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   },
+   {
+    "title": "Institut Montaigne 2024 : AAH au niveau du SMIC",
+    "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/porter-lallocation-dautonomie-handicapee-aah-au-niveau-du-smic-de-1600e-net"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Prestation fixée par la loi.",
+  "feasibility": "high",
+  "feasibilityNote": "Simple changement de paramètres CAF.",
+  "broadBenefit": true,
+  "key": true,
+  "montaigne": {
+   "cost": -0.7,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Assurer l’autonomie financière des personnes en situation de handicap, en revalorisant et en versant l’AAH indépendamment des revenus du conjoint",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "L70d3dd",
+  "short": {
+   "fr": "Culture à 1 % du PIB",
+   "en": "Culture spending at 1% of GDP"
+  },
+  "cost": -3,
+  "low": null,
+  "high": null,
+  "party": -1.7,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Porter le budget consacré à l’art, à la culture et à la création à 1 % du PIB par an ») : -3 Md€ par an, contre -1,7 Md€ pour le candidat.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/porter-le-budget-consacre-a-lart-a-la-culture-et-a-la-creation-a-1-du-pib-par-an/"
+   },
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Le périmètre de l'objectif est flou.",
+  "broadBenefit": false,
+  "key": true,
+  "montaigne": {
+   "cost": -3,
+   "candidate": -1.7,
+   "low": null,
+   "high": null,
+   "title": "Porter le budget consacré à l’art, à la culture et à la création à 1 % du PIB par an",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/porter-le-budget-consacre-a-lart-a-la-culture-et-a-la-creation-a-1-du-pib-par-an/",
+   "feasibility": "Mise en œuvre envisageable lors du vote du prochain projet de loi de finances.",
+   "legal": null
+  }
+ },
+ {
+  "id": "Lb4af29",
+  "short": {
+   "fr": "Association sportive et culturelle dans chaque école",
+   "en": "Sports and culture club in every primary school"
+  },
+  "cost": -1.5,
+  "low": -3,
+  "high": -0.5,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "≈ 45 000 écoles primaires avec encadrement professionnel : estimation propre.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Recrutement d'animateurs qualifiés.",
+  "broadBenefit": true,
+  "key": true
+ },
+ {
+  "id": "L5042ff",
+  "short": {
+   "fr": "Gratuité des activités sportives pour les plus pauvres",
+   "en": "Free sport for the poorest"
+  },
+  "cost": -1,
+  "low": -4.6,
+  "high": -0.5,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "IM 2022 : gratuité de tous les sports = 4,6 Md€ ; la version 2027 est ciblée (« en priorité »), d'où un montant plus bas.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "high",
+  "feasibilityNote": "Extension du Pass'Sport existant.",
+  "broadBenefit": true,
+  "key": true
+ },
+ {
+  "id": "La047ad",
+  "short": {
+   "fr": "Règle verte dans la Constitution",
+   "en": "Green rule in the Constitution"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Principe constitutionnel ; effets indirects non chiffrables.",
+  "sources": [],
+  "legal": "constitutional-revision-needed",
+  "legalNote": "L'inscrire dans la Constitution suppose une révision par l'art. 89.",
+  "feasibility": "medium",
+  "feasibilityNote": "La révision exige le Congrès ou un référendum.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L087d07",
+  "short": {
+   "fr": "Éco-régions à la place des régions",
+   "en": "Eco-regions replacing regions"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Réorganisation administrative ; coûts de transition non chiffrés.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Les limites et catégories de collectivités sont fixées par la loi (art. 72 C.).",
+  "feasibility": "low",
+  "feasibilityNote": "Refonte de la carte de 2015 ; résistances locales.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Lef0e32",
+  "short": {
+   "fr": "Outre-mer pilotes de la planification écologique",
+   "en": "Overseas territories as ecological pilots"
+  },
+  "cost": -1,
+  "low": -2,
+  "high": -0.3,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Pas de montant ; estimation indicative, qui recoupe le plan d'investissement.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté (art. 73-74 C.).",
+  "feasibility": "medium",
+  "feasibilityNote": "Investissements énergétiques lourds en zones insulaires.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Lac3534",
+  "short": {
+   "fr": "Grand plan d'investissements écologiques et sociaux",
+   "en": "Major green and social investment plan"
+  },
+  "cost": -29,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Lancer un plan de 200 Md€ d'investissements écologiquement et socialement utiles ») : -29 Md€ par an.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/lancer-un-plan-de-200-mde-dinvestissements-ecologiquement-et-socialement-utiles/"
+   },
+   {
+    "title": "Institut Montaigne 2022 : plan de 200 Md€ d'investissements",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/lancer-un-plan-de-200-mde-dinvestissements-ecologiquement-et-socialement-utiles"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Les règles budgétaires de l'UE (pacte révisé en 2024) contraignent sans relever du juge.",
+  "feasibility": "medium",
+  "feasibilityNote": "Capacité du BTP et règles budgétaires européennes.",
+  "broadBenefit": false,
+  "key": true,
+  "montaigne": {
+   "cost": -29,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Lancer un plan de 200 Md€ d'investissements écologiquement et socialement utiles",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/lancer-un-plan-de-200-mde-dinvestissements-ecologiquement-et-socialement-utiles/",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "L40674f",
+  "short": {
+   "fr": "Pôle public des transports",
+   "en": "Public transport and mobility hub"
+  },
+  "cost": -1,
+  "low": -3,
+  "high": 0,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "IM 2022 : 1 Md€/an pour maintenir lignes et guichets ; la structure elle-même coûte peu.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "risk",
+  "legalNote": "Le 4e paquet ferroviaire de l'UE impose l'ouverture à la concurrence.",
+  "feasibility": "medium",
+  "feasibilityNote": "Réorganisation de la SNCF et des contrats régionaux.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L9e7e21",
+  "short": {
+   "fr": "100 % d'énergies renouvelables",
+   "en": "100% renewable energy"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Objectif de planification ; investissements comptés dans le plan d'investissement.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté juridique.",
+  "feasibility": "low",
+  "feasibilityNote": "Sortie implicite du nucléaire ; horizon très long.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Lb10f16",
+  "short": {
+   "fr": "Rénover 700 000 logements par an",
+   "en": "Insulate 700,000 homes a year"
+  },
+  "cost": -2.2,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Refaire l’isolation d’au moins 700 000 logements par an ») : -2,2 Md€ par an. Notre estimation actualisée pour la formulation 2027 : -4 Md€.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Pénurie d'artisans qualifiés.",
+  "broadBenefit": false,
+  "key": true,
+  "montaigne": {
+   "cost": -2.2,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Refaire l’isolation d’au moins 700 000 logements par an",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "L806b0c",
+  "short": {
+   "fr": "Service public du réemploi",
+   "en": "Public reuse service"
+  },
+  "cost": -0.2,
+  "low": -0.5,
+  "high": -0.1,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Formations et structures ; estimation propre.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Filière à créer.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L38aa3e",
+  "short": {
+   "fr": "Agriculture écologique, 500 000 emplois agricoles",
+   "en": "Ecological farming, 500,000 farm jobs"
+  },
+  "cost": -3,
+  "low": -8,
+  "high": -1,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Aides à l'installation et au revenu ; aucune base de chiffrage solide, fourchette large.",
+  "sources": [],
+  "legal": "risk",
+  "legalNote": "La PAC (compétence de l'UE) encadre les aides agricoles.",
+  "feasibility": "low",
+  "feasibilityNote": "Accès au foncier, attractivité du métier.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Lc3fc48",
+  "short": {
+   "fr": "Fonds pour victimes des pollutions et lanceurs d'alerte",
+   "en": "Fund for pollution victims and whistleblowers"
+  },
+  "cost": 0,
+  "low": -0.2,
+  "high": 0,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Abondé par une taxe sur les consommations polluantes, donc en principe neutre.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "high",
+  "feasibilityNote": "Fonds à créer.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L29cfdb",
+  "short": {
+   "fr": "Règle bleue pour l'eau",
+   "en": "Blue rule for water"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Principe constitutionnel ou législatif.",
+  "sources": [],
+  "legal": "constitutional-revision-needed",
+  "legalNote": "Calquée sur la règle verte constitutionnelle : révision nécessaire.",
+  "feasibility": "medium",
+  "feasibilityNote": "Révision constitutionnelle.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L8f0771",
+  "short": {
+   "fr": "Eau potable pour tous en Outre-mer",
+   "en": "Drinking water for all overseas"
+  },
+  "cost": -0.3,
+  "low": -0.6,
+  "high": -0.1,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Plan eau DOM : réseaux de Guadeloupe et Mayotte, besoins ≈ 1-2 Md€ sur plusieurs années.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Gouvernance défaillante des syndicats d'eau locaux.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L029420",
+  "short": {
+   "fr": "Interdire les coupes rases",
+   "en": "Ban clear-cutting"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Pas d'effet budgétaire direct.",
+  "sources": [],
+  "legal": "risk",
+  "legalNote": "La restriction du droit de propriété forestière doit être justifiée par l'intérêt général.",
+  "feasibility": "high",
+  "feasibilityNote": "Loi simple ; contrôle par l'ONF.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L23a63e",
+  "short": {
+   "fr": "Interdire les fermes-usines",
+   "en": "Ban factory farms"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Pas d'effet budgétaire, hors éventuelles indemnisations.",
+  "sources": [],
+  "legal": "risk",
+  "legalNote": "Liberté d'entreprendre (2001-455 DC) et indemnisation des exploitations existantes.",
+  "feasibility": "medium",
+  "feasibilityNote": "Définir les seuils, organiser la transition.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L706fd3",
+  "short": {
+   "fr": "Interdire les brevets sur le vivant",
+   "en": "Ban patents on living organisms"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Pas d'effet budgétaire.",
+  "sources": [],
+  "legal": "eu-law",
+  "legalNote": "La directive 98/44/CE et la Convention sur le brevet européen autorisent certains brevets biotechnologiques.",
+  "feasibility": "low",
+  "feasibilityNote": "Exige de réviser la directive et la Convention.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L46d874",
+  "short": {
+   "fr": "Pandémies reconnues catastrophes naturelles",
+   "en": "Pandemics as natural disasters"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Engagement conditionnel : la garantie de l'État à la CCR pourrait être énorme (pertes d'exploitation du Covid de plusieurs dizaines de Md€) ; non annualisable.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Régime CatNat fixé par la loi (art. L125-1 C. assur.).",
+  "feasibility": "medium",
+  "feasibilityNote": "Il faudrait relever fortement la surprime CatNat.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L171b77",
+  "short": {
+   "fr": "« 100 % Sécu »",
+   "en": "Full public health-insurance coverage"
+  },
+  "cost": -17.1,
+  "low": -15,
+  "high": -26,
+  "party": 0,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Instaurer le 100 % Sécu en remboursant 100 % les soins de santé prescrits et en intégrant les mutuelles dans la Sécurité sociale ») : -17,1 Md€ par an, contre 0 Md€ pour le candidat. Notre estimation actualisée pour la formulation 2027 : -20 Md€.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/instaurer-le-100-secu-en-remboursant-100-les-soins-de-sante-prescrits-et-en-integrant-les-mutuelles-dans-la-securite-soc/"
+   },
+   {
+    "title": "Institut Montaigne 2022 : 100 % Sécu",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/instaurer-le-100-secu-en-remboursant-100-les-soins-de-sante-prescrits-et-en-integrant-les-mutuelles-dans-la-securite-sociale/"
+   },
+   {
+    "title": "Vie-publique : rapport HCAAM « Grande Sécu » (janv. 2022)",
+    "url": "https://www.vie-publique.fr/en-bref/283255-securite-sociale-remise-du-rapport-sur-la-grande-secu"
+   }
+  ],
+  "legal": "risk",
+  "legalNote": "Monopole de sécurité sociale admis (CJCE Poucet et Pistre, 1993) ; intégrer les complémentaires porte atteinte à la liberté d'entreprendre.",
+  "feasibility": "medium",
+  "feasibilityNote": "Reprise de ≈ 30 Md€ de cotisations et des emplois des mutuelles.",
+  "broadBenefit": true,
+  "key": true,
+  "montaigne": {
+   "cost": -17.1,
+   "candidate": 0,
+   "low": -15,
+   "high": -26,
+   "title": "Instaurer le 100 % Sécu en remboursant 100 % les soins de santé prescrits et en intégrant les mutuelles dans la Sécurité sociale",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/instaurer-le-100-secu-en-remboursant-100-les-soins-de-sante-prescrits-et-en-integrant-les-mutuelles-dans-la-securite-soc/",
+   "feasibility": "Nécessite une loi.",
+   "legal": null
+  }
+ },
+ {
+  "id": "L1d7d12",
+  "short": {
+   "fr": "Renforcer les CMP et CMPP",
+   "en": "Strengthen public mental-health centres"
+  },
+  "cost": -0.5,
+  "low": -1,
+  "high": -0.3,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Psychiatrie publique ; estimation propre.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "low",
+  "feasibilityNote": "Pénurie de psychiatres.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L55602e",
+  "short": {
+   "fr": "Monopole d'État du cannabis",
+   "en": "State cannabis monopoly"
+  },
+  "cost": 1.44,
+  "low": 1.16,
+  "high": 1.75,
+  "party": 2,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Légaliser et encadrer par un monopole d'État la vente, production et consommation de cannabis à des fins récréatives ») : +1,44 Md€ par an, contre +2 Md€ pour le candidat.",
+  "sources": [
+   {
+    "title": "Institut Montaigne 2022 : monopole d'État du cannabis",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/legaliser-et-encadrer-par-un-monopole-detat-la-vente-production-et-consommation-de-cannabis-a-des-fins-recreatives/"
+   }
+  ],
+  "legal": "eu-law",
+  "legalNote": "La décision-cadre 2004/757/JAI, l'art. 71 de la convention Schengen et la Convention ONU de 1961 imposent de réprimer le trafic.",
+  "feasibility": "medium",
+  "feasibilityNote": "Filière et réseau de vente publics à créer.",
+  "broadBenefit": false,
+  "key": true,
+  "montaigne": {
+   "cost": 1.44,
+   "candidate": 2,
+   "low": 1.16,
+   "high": 1.75,
+   "title": "Légaliser et encadrer par un monopole d'État la vente, production et consommation de cannabis à des fins récréatives",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/legaliser-et-encadrer-par-un-monopole-detat-la-vente-production-et-consommation-de-cannabis-a-des-fins-recreatives/",
+   "feasibility": "La création par l’État d’une chaîne d’approvisionnement légale complète est incertaine. Par ailleurs, l’instauration d’un monopole d’État sur la vente de cannabis implique la création d’institutions adaptées et la disponibilité de ressources humaines qualifiées.",
+   "legal": null
+  }
+ },
+ {
+  "id": "L49ea88",
+  "short": {
+   "fr": "Ministère de la Production alimentaire",
+   "en": "Food production ministry"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Réorganisation gouvernementale par décret, coût négligeable.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "high",
+  "feasibilityNote": "Décret.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Lec7cbb",
+  "short": {
+   "fr": "Sortir de l'OTAN",
+   "en": "Leave NATO"
+  },
+  "cost": 0.3,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Se retirer immédiatement du commandement intégré de l’OTAN puis, par étapes, de l’organisation elle-même ») : +0,3 Md€ par an.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Retrait possible (art. 13 du traité de l'Atlantique Nord) ; prérogative présidentielle.",
+  "feasibility": "medium",
+  "feasibilityNote": "Coût diplomatique ; défense européenne à réorganiser.",
+  "broadBenefit": false,
+  "key": true,
+  "montaigne": {
+   "cost": 0.3,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Se retirer immédiatement du commandement intégré de l’OTAN puis, par étapes, de l’organisation elle-même",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "Le0ca0c",
+  "short": {
+   "fr": "L'ONU seul organe de sécurité collective",
+   "en": "UN as sole collective-security body"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Position diplomatique.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "high",
+  "feasibilityNote": "Déclaratif.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L483a3e",
+  "short": {
+   "fr": "Faire appliquer les décisions CPI et CIJ",
+   "en": "Enforce ICC warrants and ICJ measures"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Position diplomatique et judiciaire.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Conforme au Statut de Rome ratifié.",
+  "feasibility": "high",
+  "feasibilityNote": "Dépend de la coopération internationale.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L7f0c54",
+  "short": {
+   "fr": "Rupture néolibérale au FMI, BM, OMC",
+   "en": "Reform IMF, World Bank, WTO"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Position diplomatique.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "low",
+  "feasibilityNote": "Exige des majorités internationales.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L2a6c98",
+  "short": {
+   "fr": "Crime d'écocide",
+   "en": "Ecocide as a crime"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Infraction pénale sans coût.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Le principe de légalité des délits exige une définition précise.",
+  "feasibility": "high",
+  "feasibilityNote": "Loi pénale ; un délit d'écocide existe depuis 2021.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Ldabea2",
+  "short": {
+   "fr": "Visas facilités, carte de séjour de 10 ans",
+   "en": "Easier visas, 10-year residence card"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Pas de coût direct ; effets indirects non chiffrables.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Carte de séjour nationale ; visas de court séjour encadrés par le code des visas de l'UE (règl. 810/2009).",
+  "feasibility": "medium",
+  "feasibilityNote": "Charge pour les préfectures.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L005f54",
+  "short": {
+   "fr": "Politique internationale depuis les Outre-mer",
+   "en": "International policy from overseas territories"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Orientation diplomatique.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Déclaratif.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Lc679d8",
+  "short": {
+   "fr": "Aide au développement à 0,7 % du RNB",
+   "en": "Development aid at 0.7% of GNI"
+  },
+  "cost": -3.6,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Consacrer 0,7 % du revenu national brut à une aide publique au développement débarrassée du carcan néolibéral ») : -3,6 Md€ par an. Notre estimation actualisée pour la formulation 2027 : -8 Md€.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Montée en charge progressive.",
+  "broadBenefit": false,
+  "key": true,
+  "montaigne": {
+   "cost": -3.6,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Consacrer 0,7 % du revenu national brut à une aide publique au développement débarrassée du carcan néolibéral",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "Ldc026f",
+  "short": {
+   "fr": "Réseau d'universités méditerranéennes",
+   "en": "Mediterranean university network"
+  },
+  "cost": -0.05,
+  "low": -0.1,
+  "high": -0.02,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Coopération universitaire, coût faible.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Partenariats internationaux.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "La059d6",
+  "short": {
+   "fr": "Nouvelle politique africaine",
+   "en": "New Africa policy"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Orientation diplomatique.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Déclaratif.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Ldd7065",
+  "short": {
+   "fr": "Défendre le français à l'international",
+   "en": "Defend French in international bodies"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Coût négligeable.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "high",
+  "feasibilityNote": "Action diplomatique.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L91a605",
+  "short": {
+   "fr": "Droit international de la biodiversité marine",
+   "en": "International marine biodiversity law"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Action diplomatique (traité BBNJ).",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "high",
+  "feasibilityNote": "Le traité BBNJ a été adopté en 2023.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Ld897d6",
+  "short": {
+   "fr": "45 GW d'éolien en mer en 2050",
+   "en": "45 GW of offshore wind by 2050"
+  },
+  "cost": null,
+  "low": -2,
+  "high": 0,
+  "party": null,
+  "by": null,
+  "basis": "Soutien par compléments de rémunération, dont le coût dépend des prix de marché ; recoupe le plan d'investissement. Non chiffré.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Délais de raccordement, contentieux locaux.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Lfd91f7",
+  "short": {
+   "fr": "Contre la course à l'armement spatial",
+   "en": "Against the space arms race"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Orientation diplomatique et de défense.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Action diplomatique.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Le3a07e",
+  "short": {
+   "fr": "Renforcer le CNES",
+   "en": "Strengthen CNES space agency"
+  },
+  "cost": -0.4,
+  "low": -0.8,
+  "high": -0.2,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "IM 2022 : 0,4 Md€/an (avec la renationalisation d'Arianespace).",
+  "sources": [
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "high",
+  "feasibilityNote": "Mesure budgétaire.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L33b6f7",
+  "short": {
+   "fr": "Traité de démilitarisation de l'espace",
+   "en": "Space demilitarisation treaty, ratify Moon Treaty"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Action diplomatique.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Ratification autorisée par la loi (art. 53 C.).",
+  "feasibility": "medium",
+  "feasibilityNote": "Peu de puissances spatiales signataires.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L0e792e",
+  "short": {
+   "fr": "Accès minimal gratuit à Internet",
+   "en": "Free minimum internet access"
+  },
+  "cost": -7.2,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Garantir le droit à un accès minimal gratuit à Internet ») : -7,2 Md€ par an. Notre estimation actualisée pour la formulation 2027 : -3 Md€.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Service universel encadré par le code européen des communications électroniques (dir. 2018/1972).",
+  "feasibility": "medium",
+  "feasibilityNote": "Négociation avec les opérateurs.",
+  "broadBenefit": true,
+  "key": true,
+  "montaigne": {
+   "cost": -7.2,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Garantir le droit à un accès minimal gratuit à Internet",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "L0f7b1f",
+  "short": {
+   "fr": "Neutralité du Net",
+   "en": "Net neutrality"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Pas de coût.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Déjà garantie par le règlement UE 2015/2120.",
+  "feasibility": "high",
+  "feasibilityNote": "Déjà largement en vigueur.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L5ed9d5",
+  "short": {
+   "fr": "Mission nationale de maîtrise de l'IA",
+   "en": "National AI mission"
+  },
+  "cost": -0.05,
+  "low": -0.2,
+  "high": -0.02,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Structure de pilotage ; coût faible.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "high",
+  "feasibilityNote": "Décret.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L3a1236",
+  "short": {
+   "fr": "Liberté de conscience et laïcité stricte",
+   "en": "Freedom of conscience, strict secularism"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Pas de coût.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Loi de 1905 et art. 1 C. ; le régime d'Alsace-Moselle est protégé (2012-297 QPC).",
+  "feasibility": "high",
+  "feasibilityNote": "Déclaratif.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "La8a556",
+  "short": {
+   "fr": "Démanteler les empires médiatiques",
+   "en": "Break up billionaires' media empires"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Pas de coût budgétaire direct.",
+  "sources": [
+   {
+    "title": "Conseil constitutionnel, décision 84-181 DC des 10-11/10/1984 (presse)",
+    "url": "https://www.conseil-constitutionnel.fr/decision/1984/84181DC.htm"
+   }
+  ],
+  "legal": "unconstitutional-precedent",
+  "legalNote": "84-181 DC (10-11/10/1984) : les seuils anti-concentration ne s'appliquent pas aux situations existantes, sauf acquisition illicite ou atteinte au pluralisme.",
+  "feasibility": "low",
+  "feasibilityNote": "Cessions forcées contentieuses ; indemnisations.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L80375e",
+  "short": {
+   "fr": "Services publics à 15-30 minutes de chacun",
+   "en": "Public services within 15-30 minutes"
+  },
+  "cost": -2,
+  "low": -5,
+  "high": -1,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Maintien ou réouverture de gares, écoles, bureaux de poste et maternités ; IM 2022 : 1 Md€ pour le seul ferroviaire. Estimation propre.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "low",
+  "feasibilityNote": "Pénurie de médecins ; coût élevé des petites structures.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L2b0705",
+  "short": {
+   "fr": "Hébergement d'urgence, zéro sans-abri",
+   "en": "Emergency shelter, zero homelessness"
+  },
+  "cost": -4,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Atteindre l’objectif de zéro sans-abri ») : -4 Md€ par an.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Droit déjà reconnu (art. L345-2-2 CASF).",
+  "feasibility": "medium",
+  "feasibilityNote": "Manque de logements disponibles.",
+  "broadBenefit": false,
+  "key": true,
+  "montaigne": {
+   "cost": -4,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Atteindre l’objectif de zéro sans-abri",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "L451309",
+  "short": {
+   "fr": "Taxe réelle sur les transactions financières",
+   "en": "Real financial transactions tax"
+  },
+  "cost": 9,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Instaurer une taxe réelle sur les transactions financières ») : +9 Md€ par an. Notre estimation actualisée pour la formulation 2027 : +3 Md€.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/instaurer-une-taxe-reelle-sur-les-transactions-financieres/"
+   },
+   {
+    "title": "Institut Montaigne 2024 : taxe sur les transactions financières",
+    "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/instaurer-une-taxation-renforcee-sur-les-transactions-financieres/"
+   },
+   {
+    "title": "Institut Montaigne 2022 : TTF",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/instaurer-une-taxe-reelle-sur-les-transactions-financieres"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Une taxe nationale est possible ; l'harmonisation européenne (coopération renforcée) est enlisée.",
+  "feasibility": "medium",
+  "feasibilityNote": "Risque de délocalisation des transactions.",
+  "broadBenefit": false,
+  "key": true,
+  "montaigne": {
+   "cost": 9,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Instaurer une taxe réelle sur les transactions financières",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/instaurer-une-taxe-reelle-sur-les-transactions-financieres/",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "L59f13e",
+  "short": {
+   "fr": "Sanctions des retards de paiement aux PME",
+   "en": "Penalties for late payment to SMEs"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Amendes DGCCRF marginales.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Amendes à plafonner de façon proportionnée ; directive 2011/7/UE.",
+  "feasibility": "high",
+  "feasibilityNote": "Loi simple.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L808bb1",
+  "short": {
+   "fr": "Plan contre les violences sexuelles sur enfants",
+   "en": "Plan against child sexual abuse (Ciivise)"
+  },
+  "cost": -1,
+  "low": -2,
+  "high": -0.3,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Soins, formation et justice selon les recommandations de la Ciivise (2023) ; pas de chiffrage officiel du plan, estimation propre.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "L'imprescriptibilité recommandée par la Ciivise pourrait poser des questions constitutionnelles.",
+  "feasibility": "medium",
+  "feasibilityNote": "Prise en charge par les soins et la justice.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Lc8a820",
+  "short": {
+   "fr": "Office pour l'autonomie des jeunes",
+   "en": "Youth autonomy office"
+  },
+  "cost": -0.05,
+  "low": -0.1,
+  "high": -0.02,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Structure administrative de coordination.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "high",
+  "feasibilityNote": "Décret.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L160378",
+  "short": {
+   "fr": "Espaces de gratuité dans les communes",
+   "en": "Free public spaces in communes"
+  },
+  "cost": -0.5,
+  "low": -2,
+  "high": -0.1,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Contenu peu précisé ; estimation indicative.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Dépend des communes.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L83f387",
+  "short": {
+   "fr": "Service public de la petite enfance",
+   "en": "Public early-childhood service"
+  },
+  "cost": -5.7,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Créer un service public de la petite enfance et ouvrir 500 000 places en crèche ») : -5,7 Md€ par an.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/creer-un-service-public-de-la-petite-enfance-et-ouvrir-500-000-places-en-creche/"
+   },
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté ; la compétence communale devra être compensée.",
+  "feasibility": "low",
+  "feasibilityNote": "Pénurie de professionnelles de la petite enfance.",
+  "broadBenefit": true,
+  "key": true,
+  "montaigne": {
+   "cost": -5.7,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Créer un service public de la petite enfance et ouvrir 500 000 places en crèche",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/creer-un-service-public-de-la-petite-enfance-et-ouvrir-500-000-places-en-creche/",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "L2ffe44",
+  "short": {
+   "fr": "Défense : investir dans les capacités stratégiques",
+   "en": "Defence: invest in strategic capabilities"
+  },
+  "cost": -1,
+  "low": -5,
+  "high": -0.5,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Non chiffré dans la mesure ; peut recouper la LPM existante. Base faible.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Développement industriel long.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "Lb4e0d2",
+  "short": {
+   "fr": "Évaluation santé-environnement des projets et lois",
+   "en": "Health-environment impact assessments"
+  },
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Procédure au coût négligeable.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Les études d'impact des lois relèvent d'une loi organique (art. 39 C.).",
+  "feasibility": "high",
+  "feasibilityNote": "Procédure administrative.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L0a8f9a",
+  "short": {
+   "fr": "Reconstruire l'hôpital public, contre les déserts médicaux",
+   "en": "Rebuild public hospitals, fight medical deserts"
+  },
+  "cost": -5,
+  "low": -11,
+  "high": -3,
+  "party": -3,
+  "by": "Third Estate",
+  "basis": "LFI inscrit 3 Md€ en 2027 (dont 10 000 soignants) ; IM 2024 : 5,2 Md€ (recrutements, travail de nuit) ; IM 2022 : 11 Md€ (salaires et titularisations).",
+  "sources": [
+   {
+    "title": "Public Sénat, budget LFI 2027 (14/10/2026)",
+    "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2027-jean-luc-melenchon-table-sur-106-milliards-de-recettes-supplementaires-et-82-milliards-de-depenses-nouvelles-pour-2027"
+   },
+   {
+    "title": "Institut Montaigne, micro-chiffrages NFP 2024 (PDF)",
+    "url": "https://www.institutmontaigne.org/ressources/documents/synthese-legislatives-2024-micro-chiffrages-institut-montaigne-nfp.pdf"
+   },
+   {
+    "title": "Institut Montaigne, chiffrage Mélenchon 2022 (synthèse)",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "ok",
+  "legalNote": "Réguler l'installation des médecins limite la liberté d'entreprendre, mais reste admissible.",
+  "feasibility": "low",
+  "feasibilityNote": "Pénurie de soignants ; 10 ans pour former un médecin.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L17e343",
+  "short": {
+   "fr": "Institut Océan de l'université de l'ONU",
+   "en": "UN University Ocean institute"
+  },
+  "cost": -0.05,
+  "low": -0.1,
+  "high": -0.02,
+  "party": null,
+  "by": "Third Estate",
+  "basis": "Institut et navire-université ; coût faible.",
+  "sources": [],
+  "legal": "ok",
+  "legalNote": "Aucune difficulté.",
+  "feasibility": "medium",
+  "feasibilityNote": "Accord de l'ONU nécessaire.",
+  "broadBenefit": false,
+  "key": true
+ },
+ {
+  "id": "L81d78e",
+  "short": null,
+  "cost": null,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": null,
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Annuler la libéralisation du marché de l'électricité et du gaz en renationalisant EDF et Engie ») : ? par an. Net five-year cost of buying back EDF/Engie shares minus dividends; EU competition law and constitutional compensation for expropriation are obstacles.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/annuler-la-liberalisation-du-marche-de-lelectricite-et-du-gaz-en-renationalisant-edf-et-engie/"
+   }
+  ],
+  "legal": "eu-law",
+  "legalNote": "Institut Montaigne : L’octroi du statut d’EPIC à EDF et Engie pourrait poser des difficultés de compatibilité avec le droit européen.",
+  "feasibility": "low",
+  "feasibilityNote": "Institut Montaigne : Faible, lié notamment au risque d’opposition politique et de contentieux juridiques au niveau européen, lié au cadre de concurrence. Sous cette réserve, la mesure nécessiterait par ailleurs une disposition législative en loi de finances.",
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": null,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Annuler la libéralisation du marché de l'électricité et du gaz en renationalisant EDF et Engie",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/annuler-la-liberalisation-du-marche-de-lelectricite-et-du-gaz-en-renationalisant-edf-et-engie/",
+   "feasibility": "Faible, lié notamment au risque d’opposition politique et de contentieux juridiques au niveau européen, lié au cadre de concurrence. Sous cette réserve, la mesure nécessiterait par ailleurs une disposition législative en loi de finances.",
+   "legal": "L’octroi du statut d’EPIC à EDF et Engie pourrait poser des difficultés de compatibilité avec le droit européen."
+  }
+ },
+ {
+  "id": "L94d5f1",
+  "short": null,
+  "cost": -4.2,
+  "low": -15.5,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Annuler les hausses de tarif du gaz depuis 2017 ») : -4,2 Md€ par an. A refund is incompatible with Code de commerce L410-2 and would need a law. A sector levy to fund it risks being confiscatory. The page labels 15,5 Md€ as the low estimate.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/annuler-les-hausses-de-tarif-du-gaz-depuis-2017/"
+   }
+  ],
+  "legal": "risk",
+  "legalNote": "Institut Montaigne : Au vu des montants en jeu, ce prélèvement pourrait être qualifié de confiscatoire et donc inconstitutionnel.",
+  "feasibility": "medium",
+  "feasibilityNote": "Institut Montaigne : Applicable jusqu’en juillet 2023 seulement (extinction des tarifs réglementés du gaz).",
+  "broadBenefit": true,
+  "key": false,
+  "montaigne": {
+   "cost": -4.2,
+   "candidate": null,
+   "low": -15.5,
+   "high": null,
+   "title": "Annuler les hausses de tarif du gaz depuis 2017",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/annuler-les-hausses-de-tarif-du-gaz-depuis-2017/",
+   "feasibility": "Applicable jusqu’en juillet 2023 seulement (extinction des tarifs réglementés du gaz).",
+   "legal": "Au vu des montants en jeu, ce prélèvement pourrait être qualifié de confiscatoire et donc inconstitutionnel."
+  }
+ },
+ {
+  "id": "L5e0934",
+  "short": null,
+  "cost": 9,
+  "low": 7,
+  "high": 11,
+  "party": 10,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Augmenter les droits de succession sur les plus hauts patrimoines et créer un héritage maximal de 12 M€ ») : +9 Md€ par an, contre +10 Md€ pour le candidat. A 100 % marginal rate above 12 M€ is likely to be censured as confiscatory. Tax-residence changes would also erode the base.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/augmenter-les-droits-de-succession-sur-les-plus-hauts-patrimoines-et-creer-un-heritage-maximal-de-12-me/"
+   }
+  ],
+  "legal": "risk",
+  "legalNote": "Institut Montaigne : Il existe un risque très important d’inconstitutionnalité d’une telle mesure, qui créerait un impôt confiscatoire.",
+  "feasibility": "medium",
+  "feasibilityNote": "Institut Montaigne : Nécessite une loi mais présente un risque très important d’inconstitutionnalité.",
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": 9,
+   "candidate": 10,
+   "low": 7,
+   "high": 11,
+   "title": "Augmenter les droits de succession sur les plus hauts patrimoines et créer un héritage maximal de 12 M€",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/augmenter-les-droits-de-succession-sur-les-plus-hauts-patrimoines-et-creer-un-heritage-maximal-de-12-me/",
+   "feasibility": "Nécessite une loi mais présente un risque très important d’inconstitutionnalité.",
+   "legal": "Il existe un risque très important d’inconstitutionnalité d’une telle mesure, qui créerait un impôt confiscatoire."
+  }
+ },
+ {
+  "id": "Lb24fc7",
+  "short": null,
+  "cost": 0,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Encadrer les loyers partout sur le territoire et à la baisse dans les grandes villes ») : 0 Md€ par an. Regulatory measure with an 'a priori' zero fiscal impact (no figure shown). It needs a law generalising the ELAN experimental rent cap.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/encadrer-les-loyers-partout-sur-le-territoire-et-a-la-baisse-dans-les-grandes-villes/"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": "medium",
+  "feasibilityNote": "Institut Montaigne : Mise en œuvre conditionnée par le vote d’une loi au parlement afin de modifier la législation existante. Une fois la loi votée, l’application par les collectivités et le représentant de l’État dans le département peut être immédiate.",
+  "broadBenefit": true,
+  "key": false,
+  "montaigne": {
+   "cost": 0,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Encadrer les loyers partout sur le territoire et à la baisse dans les grandes villes",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/encadrer-les-loyers-partout-sur-le-territoire-et-a-la-baisse-dans-les-grandes-villes/",
+   "feasibility": "Mise en œuvre conditionnée par le vote d’une loi au parlement afin de modifier la législation existante. Une fois la loi votée, l’application par les collectivités et le représentant de l’État dans le département peut être immédiate.",
+   "legal": null
+  }
+ },
+ {
+  "id": "L696fa1",
+  "short": null,
+  "cost": -14.8,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Financer l'autonomie des jeunes détachés du foyer fiscal parental grâce à la garantie d'autonomie ») : -14,8 Md€ par an. Figure only; no detailed analysis published.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/financer-lautonomie-des-jeunes-detaches-du-foyer-fiscal-parental-grace-a-la-garantie-dautonomie/"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": null,
+  "feasibilityNote": null,
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": -14.8,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Financer l'autonomie des jeunes détachés du foyer fiscal parental grâce à la garantie d'autonomie",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/financer-lautonomie-des-jeunes-detaches-du-foyer-fiscal-parental-grace-a-la-garantie-dautonomie/",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "Lefdefe",
+  "short": null,
+  "cost": -1.6,
+  "low": -1.3,
+  "high": -1.9,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Généraliser une sixième semaine de congés payés pour tous les salariés ») : -1,6 Md€ par an. Costed as a one-week cut in working time for all employees and civil servants, with no reduction in pay.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/generaliser-une-sixieme-semaine-de-conges-payes-pour-tous-les-salaries/"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": "medium",
+  "feasibilityNote": "Institut Montaigne : Une application à l’ensemble des salariés et fonctionnaires nécessite une évolution de la législation (code du travail pour les premiers, décrets pour les seconds).",
+  "broadBenefit": true,
+  "key": false,
+  "montaigne": {
+   "cost": -1.6,
+   "candidate": null,
+   "low": -1.3,
+   "high": -1.9,
+   "title": "Généraliser une sixième semaine de congés payés pour tous les salariés",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/generaliser-une-sixieme-semaine-de-conges-payes-pour-tous-les-salaries/",
+   "feasibility": "Une application à l’ensemble des salariés et fonctionnaires nécessite une évolution de la législation (code du travail pour les premiers, décrets pour les seconds).",
+   "legal": null
+  }
+ },
+ {
+  "id": "Lb9633f",
+  "short": null,
+  "cost": -0.4,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Instaurer la gratuité de l'ESR, de la licence au doctorat ») : -0,4 Md€ par an. About 400 M€ in lost enrolment fees, settable by ministerial order. The synthesis separately lists a 1,3 Md€ 'gratuité de l'enseignement supérieur' line.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/instaurer-la-gratuite-de-lesr-de-la-licence-au-doctorat/"
+   }
+  ],
+  "legal": "risk",
+  "legalNote": "Institut Montaigne : le Conseil constitutionnel a étendu au supérieur le principe de gratuité",
+  "feasibility": "medium",
+  "feasibilityNote": "Institut Montaigne : Dispositions réglementaires ou législatives à prendre selon le périmètre de la mesure.",
+  "broadBenefit": true,
+  "key": false,
+  "montaigne": {
+   "cost": -0.4,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Instaurer la gratuité de l'ESR, de la licence au doctorat",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/instaurer-la-gratuite-de-lesr-de-la-licence-au-doctorat/",
+   "feasibility": "Dispositions réglementaires ou législatives à prendre selon le périmètre de la mesure.",
+   "legal": "le Conseil constitutionnel a étendu au supérieur le principe de gratuité"
+  }
+ },
+ {
+  "id": "Ld698bb",
+  "short": null,
+  "cost": 18,
+  "low": 2.2,
+  "high": 26,
+  "party": 26,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Instaurer un impôt universel sur les entreprises (basant leur taxation sur l’activité effectivement réalisée en France) ») : +18 Md€ par an, contre +26 Md€ pour le candidat. A 25 % floor versus the 15 % OECD deal; tax treaties make it hard to apply. The estimate relies on EU Tax Observatory work.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/instaurer-un-impot-universel-sur-les-entreprises-et-sur-les-revenus-des-particuliers-faire-face-a-levasion-fiscale/"
+   }
+  ],
+  "legal": "risk",
+  "legalNote": "Institut Montaigne : La mise en œuvre de la mesure pourrait impliquer de changer la position française dans le cadre d’un accord international récemment conclu",
+  "feasibility": "low",
+  "feasibilityNote": "Institut Montaigne : Peu aisée, en raison des conventions internationales conclues par la France.",
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": 18,
+   "candidate": 26,
+   "low": 2.2,
+   "high": 26,
+   "title": "Instaurer un impôt universel sur les entreprises (basant leur taxation sur l’activité effectivement réalisée en France)",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/instaurer-un-impot-universel-sur-les-entreprises-et-sur-les-revenus-des-particuliers-faire-face-a-levasion-fiscale/",
+   "feasibility": "Peu aisée, en raison des conventions internationales conclues par la France.",
+   "legal": "La mise en œuvre de la mesure pourrait impliquer de changer la position française dans le cadre d’un accord international récemment conclu"
+  }
+ },
+ {
+  "id": "Le535b8",
+  "short": null,
+  "cost": -18.5,
+  "low": -18,
+  "high": -19.5,
+  "party": -7.4,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Mettre en place une conscription citoyenne de 9 mois, rémunérée au Smic, pour les moins de 25 ans ») : -18,5 Md€ par an, contre -7,4 Md€ pour le candidat. 680 000 conscripts a year (85 % of an age cohort). Smic pay alone is 10,8 Md€ and the training budget is uncertain.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/mettre-en-place-une-conscription-citoyenne-de-9-mois-remuneree-au-smic-pour-les-moins-de-25-ans/"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": "medium",
+  "feasibilityNote": "Institut Montaigne : Processus lourd à mettre en place par son envergure (680 000 personnes concernées). Vote d’une loi.",
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": -18.5,
+   "candidate": -7.4,
+   "low": -18,
+   "high": -19.5,
+   "title": "Mettre en place une conscription citoyenne de 9 mois, rémunérée au Smic, pour les moins de 25 ans",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/mettre-en-place-une-conscription-citoyenne-de-9-mois-remuneree-au-smic-pour-les-moins-de-25-ans/",
+   "feasibility": "Processus lourd à mettre en place par son envergure (680 000 personnes concernées). Vote d’une loi.",
+   "legal": null
+  }
+ },
+ {
+  "id": "Le4b9b7",
+  "short": null,
+  "cost": 7.2,
+  "low": null,
+  "high": 10,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Mettre fin au quotient conjugal ») : +7,2 Md€ par an. Median assumes limited tax optimisation. 6,8 M couples lose about 1 584 €/yr each.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/mettre-fin-au-quotient-conjugal/"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": "high",
+  "feasibilityNote": "Institut Montaigne : Mise en œuvre envisageable lors du vote du prochain projet de loi de finances.",
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": 7.2,
+   "candidate": null,
+   "low": null,
+   "high": 10,
+   "title": "Mettre fin au quotient conjugal",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/mettre-fin-au-quotient-conjugal/",
+   "feasibility": "Mise en œuvre envisageable lors du vote du prochain projet de loi de finances.",
+   "legal": null
+  }
+ },
+ {
+  "id": "L6a85f5",
+  "short": null,
+  "cost": -2.3,
+  "low": null,
+  "high": null,
+  "party": -1.188,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Porter à 100 % la part de l'alimentation biologique et locale dans les cantines scolaires ») : -2,3 Md€ par an, contre -1,188 Md€ pour le candidat. Short-term supply of local organic food is insufficient without imports.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/porter-lalimentation-de-la-cantine-scolaire-a-100-biologique-et-locale/"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": "low",
+  "feasibilityNote": "Institut Montaigne : Cette mesure pourrait être freinée à court terme en raison d´une production insuffisante d´aliments bio locaux en France sans recourir aux importations. Comme les surfaces agricoles bio augmentent fortement en France (+11,6 % en 2020), cette difficulté devrait se régler […]",
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": -2.3,
+   "candidate": -1.188,
+   "low": null,
+   "high": null,
+   "title": "Porter à 100 % la part de l'alimentation biologique et locale dans les cantines scolaires",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/porter-lalimentation-de-la-cantine-scolaire-a-100-biologique-et-locale/",
+   "feasibility": "Cette mesure pourrait être freinée à court terme en raison d´une production insuffisante d´aliments bio locaux en France sans recourir aux importations. Comme les surfaces agricoles bio augmentent fortement en France (+11,6 % en 2020), cette difficulté devrait se régler […]",
+   "legal": null
+  }
+ },
+ {
+  "id": "L563048",
+  "short": null,
+  "cost": -4.4,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Recruter 100 000 soignants ») : -4,4 Md€ par an. Floor estimate assuming 20 000 hires a year. Training capacity and the length of studies limit feasibility.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/recruter-100-000-soignants/"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": "medium",
+  "feasibilityNote": "Institut Montaigne : Les capacités de formation et d’accueil devront être revues à la hausse ; la durée des études en santé pourrait limiter significativement l’ampleur réel des recrutements.",
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": -4.4,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Recruter 100 000 soignants",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/recruter-100-000-soignants/",
+   "feasibility": "Les capacités de formation et d’accueil devront être revues à la hausse ; la durée des études en santé pourrait limiter significativement l’ampleur réel des recrutements.",
+   "legal": null
+  }
+ },
+ {
+  "id": "L8e6d31",
+  "short": null,
+  "cost": 0,
+  "low": null,
+  "high": null,
+  "party": 0,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Réduire la TVA sur les produits de première nécessité et réinstaurer une TVA grand luxe pour la financer ») : 0 Md€ par an, contre 0 Md€ pour le candidat. The EU VAT directive forbids a surcharged luxury rate and a third reduced rate. The campaign said it would disobey EU law.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/reduire-la-tva-sur-les-produits-de-premiere-necessite-et-reinstaurer-une-tva-grand-luxe-pour-la-financer/"
+   }
+  ],
+  "legal": "eu-law",
+  "legalNote": "Institut Montaigne : Cette mesure apparaît donc impossible en l’état du droit européen.",
+  "feasibility": "low",
+  "feasibilityNote": "Institut Montaigne : Incompatible avec le droit de l’Union européenne.",
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": 0,
+   "candidate": 0,
+   "low": null,
+   "high": null,
+   "title": "Réduire la TVA sur les produits de première nécessité et réinstaurer une TVA grand luxe pour la financer",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/reduire-la-tva-sur-les-produits-de-premiere-necessite-et-reinstaurer-une-tva-grand-luxe-pour-la-financer/",
+   "feasibility": "Incompatible avec le droit de l’Union européenne.",
+   "legal": "Cette mesure apparaît donc impossible en l’état du droit européen."
+  }
+ },
+ {
+  "id": "L982b1f",
+  "short": null,
+  "cost": -6.8,
+  "low": -4.6,
+  "high": -11,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Réduire les effectifs à 19 élèves par classe ») : -6,8 Md€ par an. Needs about 186 554 hires and new classrooms; about 7,5 Md€/yr at cruising speed.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/reduire-les-effectifs-a-19-eleves-par-classe/"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": "medium",
+  "feasibilityNote": "Institut Montaigne : Des dispositions législatives seront nécessaires.",
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": -6.8,
+   "candidate": null,
+   "low": -4.6,
+   "high": -11,
+   "title": "Réduire les effectifs à 19 élèves par classe",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/reduire-les-effectifs-a-19-eleves-par-classe/",
+   "feasibility": "Des dispositions législatives seront nécessaires.",
+   "legal": null
+  }
+ },
+ {
+  "id": "Lff91bd",
+  "short": null,
+  "cost": 0.013,
+  "low": null,
+  "high": 0.026,
+  "party": 0.04,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Réformer l'enseignement privé par l'abrogation de la loi Carle, et interdire les subventions extralégales des collectivités territoriales ») : +0,013 Md€ par an, contre +0,04 Md€ pour le candidat. Small saving; repealing the loi Carle is sensitive and likely to revive litigation.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/reformer-lenseignement-prive-par-labrogation-de-la-loi-carle-et-interdire-les-subventions-extralegales-des-collectivites/"
+   }
+  ],
+  "legal": "risk",
+  "legalNote": "Institut Montaigne : Une nouvelle évolution de la législation sur ce sujet sensible risque de générer de nouveau un contentieux significatif",
+  "feasibility": "medium",
+  "feasibilityNote": "Institut Montaigne : Nécessite une loi.",
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": 0.013,
+   "candidate": 0.04,
+   "low": null,
+   "high": 0.026,
+   "title": "Réformer l'enseignement privé par l'abrogation de la loi Carle, et interdire les subventions extralégales des collectivités territoriales",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/reformer-lenseignement-prive-par-labrogation-de-la-loi-carle-et-interdire-les-subventions-extralegales-des-collectivites/",
+   "feasibility": "Nécessite une loi.",
+   "legal": "Une nouvelle évolution de la législation sur ce sujet sensible risque de générer de nouveau un contentieux significatif"
+  }
+ },
+ {
+  "id": "L38b88f",
+  "short": null,
+  "cost": 3.5,
+  "low": null,
+  "high": null,
+  "party": 10,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Rétablir et renforcer l'ISF incluant un volet climatique ») : +3,5 Md€ par an, contre +10 Md€ pour le candidat. Low precision (1/4). Expatriation could sharply cut the yield, and the climate malus needs data the tax office lacks.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/retablir-et-renforcer-lisf-incluant-un-volet-climatique/"
+   }
+  ],
+  "legal": "risk",
+  "legalNote": "Institut Montaigne : Sur le plan juridique, l’une des difficultés de mise en œuvre résiderait toutefois dans le fait que l’administration fiscale n’a pas accès à la nature des placements",
+  "feasibility": "high",
+  "feasibilityNote": "Institut Montaigne : Mise en œuvre possible dès 2023 par loi de finances.",
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": 3.5,
+   "candidate": 10,
+   "low": null,
+   "high": null,
+   "title": "Rétablir et renforcer l'ISF incluant un volet climatique",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/retablir-et-renforcer-lisf-incluant-un-volet-climatique/",
+   "feasibility": "Mise en œuvre possible dès 2023 par loi de finances.",
+   "legal": "Sur le plan juridique, l’une des difficultés de mise en œuvre résiderait toutefois dans le fait que l’administration fiscale n’a pas accès à la nature des placements"
+  }
+ },
+ {
+  "id": "L0781ec",
+  "short": null,
+  "cost": 2.1,
+  "low": 1.5,
+  "high": 2.3,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Supprimer la flat tax et imposer les revenus du capital comme ceux du travail ») : +2,1 Md€ par an. 1,5 Md€ after behavioural effects on dividend payouts.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/supprimer-la-flat-tax-et-imposer-les-revenus-du-capital-comme-ceux-du-travail/"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": "high",
+  "feasibilityNote": "Institut Montaigne : En loi de finances.",
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": 2.1,
+   "candidate": null,
+   "low": 1.5,
+   "high": 2.3,
+   "title": "Supprimer la flat tax et imposer les revenus du capital comme ceux du travail",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/supprimer-la-flat-tax-et-imposer-les-revenus-du-capital-comme-ceux-du-travail/",
+   "feasibility": "En loi de finances.",
+   "legal": null
+  }
+ },
+ {
+  "id": "L55498a",
+  "short": null,
+  "cost": 0,
+  "low": null,
+  "high": null,
+  "party": -5,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Supprimer la tarification à l’acte ») : 0 Md€ par an, contre -5 Md€ pour le candidat. A funding-allocation change with no cost in itself; alternatives risk misaligning resources with hospital spending.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/supprimer-la-tarification-a-lacte/"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": "medium",
+  "feasibilityNote": "Institut Montaigne : Fort risque d’inadéquation entre ressources et dépenses hospitalières.",
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": 0,
+   "candidate": -5,
+   "low": null,
+   "high": null,
+   "title": "Supprimer la tarification à l’acte",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/supprimer-la-tarification-a-lacte/",
+   "feasibility": "Fort risque d’inadéquation entre ressources et dépenses hospitalières.",
+   "legal": null
+  }
+ },
+ {
+  "id": "L2d2675",
+  "short": null,
+  "cost": -7.4,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Former, qualifier et recruter en nombre suffisant le personnel nécessaire pour lutter contre la dépendance (au moins 210 000 personnes) ») : -7,4 Md€ par an. Listed only in the synthesis 'Autres mesures' footnote; no measure page or analysis found.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": null,
+  "feasibilityNote": null,
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": -7.4,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Former, qualifier et recruter en nombre suffisant le personnel nécessaire pour lutter contre la dépendance (au moins 210 000 personnes)",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "Lf7eec2",
+  "short": null,
+  "cost": -3.8,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Augmenter immédiatement [le Smic et] les minima sociaux ») : -3,8 Md€ par an. Listed only in the synthesis 'Autres mesures' footnote; no measure page or analysis found.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": null,
+  "feasibilityNote": null,
+  "broadBenefit": true,
+  "key": false,
+  "montaigne": {
+   "cost": -3.8,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Augmenter immédiatement [le Smic et] les minima sociaux",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "L1032af",
+  "short": null,
+  "cost": -2.3,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Mettre en place une garantie universelle des loyers ») : -2,3 Md€ par an. Listed only in the synthesis 'Autres mesures' footnote; no measure page or analysis found.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": null,
+  "feasibilityNote": null,
+  "broadBenefit": true,
+  "key": false,
+  "montaigne": {
+   "cost": -2.3,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Mettre en place une garantie universelle des loyers",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "L7042e7",
+  "short": null,
+  "cost": -2.1,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Construire 200 000 logements publics par an pendant cinq ans aux normes écologiques les plus ambitieuses ») : -2,1 Md€ par an. Listed only in the synthesis 'Autres mesures' footnote; no measure page or analysis found.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": null,
+  "feasibilityNote": null,
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": -2.1,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Construire 200 000 logements publics par an pendant cinq ans aux normes écologiques les plus ambitieuses",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "Ldd3388",
+  "short": null,
+  "cost": -1,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Refuser la suppression des lignes ferroviaires du quotidien et en réouvrir, augmenter le nombre de trains et garantir des tarifs accessibles, maintenir des guichets physiques dans les gares ») : -1 Md€ par an. Listed only in the synthesis 'Autres mesures' footnote; no measure page or analysis found.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": null,
+  "feasibilityNote": null,
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": -1,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Refuser la suppression des lignes ferroviaires du quotidien et en réouvrir, augmenter le nombre de trains et garantir des tarifs accessibles, maintenir des guichets physiques dans les gares",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "L3f3e6c",
+  "short": null,
+  "cost": -0.9,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Rendre obligatoire la prise en charge par un contrat jeune majeur de tous les enfants issus de l’Aide sociale à l’enfance (ASE) ») : -0,9 Md€ par an. Listed only in the synthesis 'Autres mesures' footnote; no measure page or analysis found.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": null,
+  "feasibilityNote": null,
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": -0.9,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Rendre obligatoire la prise en charge par un contrat jeune majeur de tous les enfants issus de l’Aide sociale à l’enfance (ASE)",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "Lde43eb",
+  "short": null,
+  "cost": -0.8,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Instaurer un « emploi spécifique jeune » d’une durée de cinq ans, dans le secteur non marchand et public, pour éliminer le chômage des jeunes (trois fois supérieur à celui de leurs aînés à diplôme égal) ») : -0,8 Md€ par an. Listed only in the synthesis 'Autres mesures' footnote; no measure page or analysis found.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": null,
+  "feasibilityNote": null,
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": -0.8,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Instaurer un « emploi spécifique jeune » d’une durée de cinq ans, dans le secteur non marchand et public, pour éliminer le chômage des jeunes (trois fois supérieur à celui de leurs aînés à diplôme égal)",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "L211ec1",
+  "short": null,
+  "cost": -0.7,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Garantir le maintien du revenu en cas de reconversion ou de formation ») : -0,7 Md€ par an. Listed only in the synthesis 'Autres mesures' footnote; no measure page or analysis found.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": null,
+  "feasibilityNote": null,
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": -0.7,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Garantir le maintien du revenu en cas de reconversion ou de formation",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "Ld65d27",
+  "short": null,
+  "cost": -0.6,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Réduire la population carcérale et favoriser la réinsertion de personnes détenues ») : -0,6 Md€ par an. Listed only in the synthesis 'Autres mesures' footnote; no measure page or analysis found.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": null,
+  "feasibilityNote": null,
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": -0.6,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Réduire la population carcérale et favoriser la réinsertion de personnes détenues",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "L418a17",
+  "short": null,
+  "cost": -0.3,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Garantir la gratuité des procédures les plus courantes comme le divorce ») : -0,3 Md€ par an. Listed only in the synthesis 'Autres mesures' footnote; no measure page or analysis found.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": null,
+  "feasibilityNote": null,
+  "broadBenefit": true,
+  "key": false,
+  "montaigne": {
+   "cost": -0.3,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Garantir la gratuité des procédures les plus courantes comme le divorce",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "L77dd98",
+  "short": null,
+  "cost": -0.3,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Abaisser l’âge légal du droit de vote à 16 ans ») : -0,3 Md€ par an. Listed only in the synthesis 'Autres mesures' footnote; no measure page or analysis found.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": null,
+  "feasibilityNote": null,
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": -0.3,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Abaisser l’âge légal du droit de vote à 16 ans",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "Lfaf624",
+  "short": null,
+  "cost": -0.2,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Relancer les ports français et moderniser les infrastructures portuaires dans une logique multimodale mer-rail-fluvial ») : -0,2 Md€ par an. Listed only in the synthesis 'Autres mesures' footnote; no measure page or analysis found.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": null,
+  "feasibilityNote": null,
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": -0.2,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Relancer les ports français et moderniser les infrastructures portuaires dans une logique multimodale mer-rail-fluvial",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "L0419fc",
+  "short": null,
+  "cost": -0.1,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Créer 10 000 places en EHPAD publics par an pendant cinq ans ») : -0,1 Md€ par an. Listed only in the synthesis 'Autres mesures' footnote; no measure page or analysis found.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": null,
+  "feasibilityNote": null,
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": -0.1,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Créer 10 000 places en EHPAD publics par an pendant cinq ans",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "L223ebc",
+  "short": null,
+  "cost": -0.1,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Porter à deux ans la formation des élèves gardiens de la paix, réviser son contenu, et réouvrir des écoles nationales pour les activités de police ») : -0,1 Md€ par an. Listed only in the synthesis 'Autres mesures' footnote; no measure page or analysis found.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": null,
+  "feasibilityNote": null,
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": -0.1,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Porter à deux ans la formation des élèves gardiens de la paix, réviser son contenu, et réouvrir des écoles nationales pour les activités de police",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "La89ef7",
+  "short": null,
+  "cost": 1,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Instaurer une taxe kilométrique aux frontières de la France ») : +1 Md€ par an. Listed only in the synthesis 'Autres mesures' footnote; no measure page or analysis found.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": null,
+  "feasibilityNote": null,
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": 1,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Instaurer une taxe kilométrique aux frontières de la France",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "L92cfdd",
+  "short": null,
+  "cost": 0.3,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Augmenter la taxation sur les retransmissions sportives à la télévision pour financer le sport amateur ») : +0,3 Md€ par an. Listed only in the synthesis 'Autres mesures' footnote; no measure page or analysis found.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": null,
+  "feasibilityNote": null,
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": 0.3,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Augmenter la taxation sur les retransmissions sportives à la télévision pour financer le sport amateur",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ },
+ {
+  "id": "Lac2d3a",
+  "short": null,
+  "cost": 0.1,
+  "low": null,
+  "high": null,
+  "party": null,
+  "by": "Institut Montaigne 2022",
+  "basis": "Chiffrage de l’Institut Montaigne en 2022 (« Requalifier les travailleurs des plateformes numériques en contrat de travail salarié ») : +0,1 Md€ par an. Listed only in the synthesis 'Autres mesures' footnote; no measure page or analysis found.",
+  "sources": [
+   {
+    "title": "Institut Montaigne, présidentielle 2022",
+    "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese"
+   }
+  ],
+  "legal": "unknown",
+  "legalNote": null,
+  "feasibility": null,
+  "feasibilityNote": null,
+  "broadBenefit": false,
+  "key": false,
+  "montaigne": {
+   "cost": 0.1,
+   "candidate": null,
+   "low": null,
+   "high": null,
+   "title": "Requalifier les travailleurs des plateformes numériques en contrat de travail salarié",
+   "url": "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese",
+   "feasibility": null,
+   "legal": null
+  }
+ }
+]
