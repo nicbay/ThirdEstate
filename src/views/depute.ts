@@ -3,6 +3,7 @@ import { L, fmtDate, fmtNum, fmtPct, t } from "../i18n";
 import { PLATFORMS, age, presence } from "./assemblee";
 import { esc, safeUrl, safeColor } from "../util";
 import { photoUrl } from "./deputes";
+import { renderMpSpeech } from "./speeches";
 
 const PAGE = 20;
 const href = (platform: string, v: string) => (v.startsWith("http") ? v : (SOCIAL_URL[platform] ?? ((h: string) => h))(v));
@@ -94,6 +95,8 @@ export async function renderDepute(app: HTMLElement, id: string) {
         </div>
       </div>
 
+      <div id="mp-speech"></div>
+
       <div class="card">
         <div class="filters">
           <input id="vq" type="search" placeholder="${s.searchVotes}" />
@@ -140,6 +143,7 @@ export async function renderDepute(app: HTMLElement, id: string) {
   on("#vq", "input", (v) => { f.q = v; f.page = 1; });
   on("#vpos", "change", (v) => { f.pos = v; f.page = 1; });
   on("#vsort", "change", (v) => { f.sort = v; f.page = 1; });
+  void renderMpSpeech(app.querySelector<HTMLElement>("#mp-speech")!, d).catch(console.error);
   app.querySelector("#vprev")!.addEventListener("click", () => { f.page--; draw(); });
   app.querySelector("#vnext")!.addEventListener("click", () => { f.page++; draw(); });
   draw();
