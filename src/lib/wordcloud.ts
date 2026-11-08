@@ -12,6 +12,8 @@ export interface CloudWord {
   /** tooltip text */
   tip?: string;
   href?: string;
+  /** makes the word a button: <text data-key> that callers listen to */
+  key?: string;
 }
 
 let ctx: CanvasRenderingContext2D | null = null;
@@ -55,7 +57,7 @@ export function wordCloud(words: CloudWord[], opts: { width?: number; height?: n
     }
     if (!placed) continue;
     boxes.push({ ...placed, w, h });
-    const text = `<text x="${(placed.x + w / 2).toFixed(1)}" y="${(placed.y + h / 2 + size * 0.34).toFixed(1)}" font-size="${size}" font-weight="${fw}" fill="${wd.color}"${wd.tip ? ` data-tip="${esc(wd.tip)}"` : ""}>${esc(wd.text)}</text>`;
+    const text = `<text x="${(placed.x + w / 2).toFixed(1)}" y="${(placed.y + h / 2 + size * 0.34).toFixed(1)}" font-size="${size}" font-weight="${fw}" fill="${wd.color}"${wd.tip ? ` data-tip="${esc(wd.tip)}"` : ""}${wd.key != null ? ` data-key="${esc(wd.key)}" class="wc-pick" tabindex="0" role="button" aria-pressed="false"` : ""}>${esc(wd.text)}</text>`;
     out.push(wd.href ? `<a href="${esc(wd.href)}">${text}</a>` : text);
   }
   return `<svg viewBox="0 0 ${W} ${H}" class="wordcloud" role="img" aria-label="${esc(opts.label ?? sorted.slice(0, 20).map((w) => w.text).join(", "))}">${out.join("")}</svg>`;

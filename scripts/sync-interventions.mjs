@@ -238,6 +238,10 @@ const titleThemes = (txt) => {
 };
 
 let sittings = 0;
+const sitMeta = []; // sitting index -> { uid, iso }
+const debateTitles = []; // agenda item titles, referenced by index from speeches
+const titleIdx = new Map();
+const plain = (x) => clean(x).replace(/\s+/g, " ").replace(/\s+([,.)])/g, "$1").trim();
 for (const name of names) {
   sittings++;
   const xml = strFromU8(files[name]);
@@ -245,6 +249,8 @@ for (const name of names) {
   const date = xml.match(/<dateSeance>(\d{8})/)?.[1];
   if (!date) continue;
   const iso = `${date.slice(0, 4)}-${date.slice(4, 6)}-${date.slice(6, 8)}`;
+  const sit = sitMeta.push({ uid: xml.match(/<uid>([^<]+)<\/uid>/)?.[1] ?? "", iso }) - 1;
+  let debate = -1;
   if (iso < firstDate) firstDate = iso;
   if (iso > lastDate) lastDate = iso;
   const titles = [null, new Float32Array(T), new Float32Array(T)];
@@ -253,7 +259,12 @@ for (const name of names) {
       const lvl = Number(m[1]);
       if (lvl <= 2 && m[2]) {
         titles[lvl] = titleThemes(m[2]);
-        if (lvl === 1) titles[2] = new Float32Array(T);
+        if (lvl === 1) {
+          titles[2] = new Float32Array(T);
+          const t = plain(m[2]).replace(/\s*\(n[o°]?\s*[\d\s,et]*\)\s*$/i, "");
+          if (!titleIdx.has(t)) titleIdx.set(t, debateTitles.push(t) - 1);
+          debate = titleIdx.get(t);
+        }
       }
       continue;
     }
@@ -263,7 +274,8 @@ for (const name of names) {
     const body = m[4].match(/<texte[^>]*>([\s\S]*?)<\/texte>/)?.[1];
     if (!body) continue;
     const surf = [];
-    const seq = tokenize(clean(body), surf);
+    const text = clean(body);
+    const seq = tokenize(text, surf);
     const words = seq.reduce((n, x) => n + (x >= 0 ? 1 : 0), 0);
     const st = mpStat.get(mp) ?? { n: 0, inter: 0, words: 0, first: iso, last: iso };
     mpStat.set(mp, st);
@@ -297,7 +309,7 @@ for (const name of names) {
         themes = sc;
       }
     }
-    speeches.push({ sit: sittings, mp, seq: Int32Array.from(seq), surf: Int32Array.from(seq, (x, i) => (x >= 0 ? surf[i] : -1)), words, themes, weight: Math.sqrt(Math.min(words, 800)) });
+    speeches.push({ sit, debate, pid: attr(a, "id_syceron"), text, mp, seq: Int32Array.from(seq), surf: Int32Array.from(seq, (x, i) => (x >= 0 ? surf[i] : -1)), words, themes, weight: Math.sqrt(Math.min(words, 800)) });
   }
 }
 console.log(`✓ ${speeches.length} speeches by ${mpStat.size} sitting MPs (${firstDate} → ${lastDate}), ${lemmas.length} distinct words`);
@@ -384,7 +396,6 @@ for (const s of speeches) {
     }
   }
 }
-speeches.length = 0;
 
 // a word's theme: from the lexicon, else the theme of the speeches it mostly appears in
 const themeOfTerm = (id) => {
@@ -440,19 +451,11 @@ function topTerms(counts, score, n = TOP_TERMS) {
   return picked.map(([id, s]) => [id, s / max]);
 }
 
-await rm(OUT, { recursive: true, force: true });
-await mkdir(OUT, { recursive: true });
-const mps = {};
-let written = 0;
-for (const [mp, st] of mpStat) {
+const mpTerms = new Map();
+for (const mp of mpStat.keys()) {
   const mc = mpCounts.get(mp) ?? new Map();
   const total = [...mc.values()].reduce((s, x) => s + x, 0) || 1;
-  const terms = topTerms(mc, (id, c) => (c < 3 ? 0 : (c / total) * Math.log((N + 1) / ((df.get(id) ?? 1) + 0.5)) * (isPair(id) ? 1.4 : 1)));
-  const th = mpThemes.get(mp);
-  const sh = shares(th);
-  mps[mp] = { n: st.n, i: st.inter, w: st.words, c: mpClassified.get(mp) ?? 0, t: THEMES.map(([id]) => sh[id]) };
-  await writeFile(new URL(`${mp}.json`, OUT), JSON.stringify({ id: mp, speeches: st.n, interjections: st.inter, words: st.words, classified: mpClassified.get(mp) ?? 0, first: st.first, last: st.last, terms: pack(terms), themes: sh }));
-  written++;
+  mpTerms.set(mp, topTerms(mc, (id, c) => (c < 3 ? 0 : (c / total) * Math.log((N + 1) / ((df.get(id) ?? 1) + 0.5)) * (isPair(id) ? 1.4 : 1))));
 }
 
 // chamber: frequent words weighted by how topical they are (rare across sittings = more topical)
@@ -461,6 +464,7 @@ const chamberTotal = [...chamber.values()].reduce((s, x) => s + x, 0);
 const chamberTerms = topTerms(chamber, (id, c) => (c < 50 ? 0 : c * Math.log((S + 1) / (sittingDf.get(id) ?? S)) * (isPair(id) ? 1.5 : 1)), 80);
 // groups: words a group uses far more than the chamber as a whole (log-ratio keyness)
 const groups = {};
+const groupTerms = new Map();
 for (const [g, gc] of groupCounts) {
   const d = deputes.find((x) => (x.groupe?.abrev ?? "NI") === g);
   const gTotal = [...gc.values()].reduce((s, x) => s + x, 0) || 1;
@@ -469,6 +473,7 @@ for (const [g, gc] of groupCounts) {
     const ratio = c / gTotal / ((chamber.get(id) ?? 1) / chamberTotal);
     return ratio > 1.2 ? c * Math.log(ratio) : 0;
   }, 60);
+  groupTerms.set(g, terms);
   const members = deputes.filter((x) => (x.groupe?.abrev ?? "NI") === g).map((x) => x.id);
   groups[g] = {
     libelle: d?.groupe?.libelle ?? g,
@@ -480,6 +485,92 @@ for (const [g, gc] of groupCounts) {
     terms: pack(terms),
   };
 }
+
+// ---------- sources: where each cloud word was said ----------
+// For every word in an MP's cloud, their two most recent speeches using it; for every word in the
+// chamber and group clouds, the MPs who say it most and three recent quotes by different MPs.
+// Each quote links to its paragraph in the official record (the anchor is the paragraph's id_syceron).
+const wantMp = new Map([...mpTerms].map(([mp, t]) => [mp, new Set(t.map(([id]) => id))]));
+const wantAll = new Set([...chamberTerms, ...[...groupTerms.values()].flat()].map(([id]) => id));
+const mpSrc = new Map(); // "mp|id" -> [[speech, pos]] newest first
+const allSrc = new Map(); // id -> [[speech, pos]] newest first
+const isoOf = (si) => sitMeta[speeches[si].sit].iso;
+/** Keeps the k newest refs, skipping one that clashes (same sitting, or same MP) with a kept one. */
+function keepNewest(list, ref, k, clash) {
+  if (list.length >= k && isoOf(ref[0]) <= isoOf(list[k - 1][0])) return list;
+  const i = list.findIndex((r) => clash(speeches[r[0]]));
+  if (i >= 0) {
+    if (isoOf(ref[0]) <= isoOf(list[i][0])) return list;
+    list.splice(i, 1);
+  }
+  list.push(ref);
+  list.sort((a, b) => (isoOf(b[0]) < isoOf(a[0]) ? -1 : isoOf(b[0]) > isoOf(a[0]) ? 1 : 0));
+  if (list.length > k) list.length = k;
+  return list;
+}
+speeches.forEach((s, si) => {
+  if (s.words < 8) return; // a heckle makes a poor quote
+  const mine = wantMp.get(s.mp);
+  const seen = new Set();
+  const visit = (id, pos, pos2 = -1) => {
+    if (seen.has(id)) return;
+    seen.add(id);
+    if (mine?.has(id)) {
+      const key = `${s.mp}|${id}`;
+      mpSrc.set(key, keepNewest(mpSrc.get(key) ?? [], [si, pos, pos2], 2, (o) => o.sit === s.sit));
+    }
+    if (wantAll.has(id)) allSrc.set(id, keepNewest(allSrc.get(id) ?? [], [si, pos, pos2], 3, (o) => o.mp === s.mp));
+  };
+  s.seq.forEach((id, i) => { if (id >= 0) visit(id, i); });
+  for (const [k, i, j] of pairs(s.seq, true)) { const pid = pairIds.get(k); if (pid !== undefined) visit(pid, i, j); }
+});
+const reEsc = (w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+/** A ~200-character extract around the word, with the word's span in it. */
+function quote([si, pos, pos2], withMp) {
+  const s = speeches[si];
+  const surf = surfList[s.surf[pos]] ?? "";
+  const surf2 = pos2 >= 0 ? surfList[s.surf[pos2]] ?? "" : "";
+  const text = s.text.replace(/\s+/g, " ").replace(/\s+([,.;:!?)])/g, "$1").trim();
+  // a phrase: both words, with "de", "d’", "l’"… allowed in between
+  const word = (w) => `(?<![\\p{L}])${reEsc(w)}(?![\\p{L}])`;
+  const link = "[\\s’'\\-]+(?:(?:de|du|des|d|l|la)[\\s’']+){0,2}";
+  const m = (surf2 ? new RegExp(`${word(surf)}${link}${word(surf2)}`, "iu").exec(text) : null) ?? (surf ? new RegExp(word(surf), "iu").exec(text) : null);
+  const at = m ? m.index : 0, len = m ? m[0].length : 0;
+  let a = Math.max(0, at - 80), b = Math.min(text.length, at + len + 80);
+  if (a > 0) a = text.indexOf(" ", a) + 1 || a;
+  if (b < text.length) { const sp = text.lastIndexOf(" ", b); if (sp > at + len) b = sp; }
+  const lead = a > 0 ? "…" : "";
+  const x = `${lead}${text.slice(a, b)}${b < text.length ? "…" : ""}`;
+  const sm = sitMeta[s.sit];
+  const out = { d: sm.iso, t: debateTitles[s.debate] ?? "", u: `${sm.uid}#${s.pid}`, x, h: m ? [at - a + lead.length, at - a + lead.length + len] : null };
+  if (withMp) out.m = s.mp;
+  return out;
+}
+const packMp = (mp, list) => {
+  const mc = mpCounts.get(mp) ?? new Map();
+  return list.map(([id, w]) => [termText(id), r3(w), themeOfTerm(id) >= 0 ? THEMES[themeOfTerm(id)][0] : null, mc.get(id) ?? 0, (mpSrc.get(`${mp}|${id}`) ?? []).map((r) => quote(r))]);
+};
+
+await rm(OUT, { recursive: true, force: true });
+await mkdir(OUT, { recursive: true });
+const mps = {};
+let written = 0;
+for (const [mp, st] of mpStat) {
+  const sh = shares(mpThemes.get(mp));
+  mps[mp] = { n: st.n, i: st.inter, w: st.words, c: mpClassified.get(mp) ?? 0, t: THEMES.map(([id]) => sh[id]) };
+  await writeFile(new URL(`${mp}.json`, OUT), JSON.stringify({ id: mp, speeches: st.n, interjections: st.inter, words: st.words, classified: mpClassified.get(mp) ?? 0, first: st.first, last: st.last, terms: packMp(mp, mpTerms.get(mp)), themes: sh }));
+  written++;
+}
+// words.json: every chamber/group cloud word: how often, how many MPs, who says it most, quotes
+const words = {};
+for (const id of wantAll) {
+  const by = [];
+  for (const [mp, mc] of mpCounts) { const c = mc.get(id); if (c) by.push([mp, c]); }
+  by.sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1));
+  words[termText(id)] = { n: chamber.get(id) ?? 0, m: by.length, top: by.slice(0, 24), src: (allSrc.get(id) ?? []).map((r) => quote(r, true)) };
+}
+await writeFile(new URL("words.json", OUT), JSON.stringify(words));
+speeches.length = 0;
 
 // Data files only change when the record does (the daily workflow commits only real changes);
 // sync time and source timestamp go to meta.json.

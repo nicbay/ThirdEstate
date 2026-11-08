@@ -9,8 +9,12 @@ import { fontsReady, wordCloud } from "../lib/wordcloud";
 import { esc, safeColor } from "../util";
 import { photoUrl } from "./deputes";
 
-/** [text, weight 0–1, theme id | null] */
-type Term = [string, number, string | null];
+/** A quote: sitting date, debate title, record anchor (compte rendu uid#paragraph), extract, the word's span in it, the MP (chamber words) */
+interface Src { d: string; t: string; u: string; x: string; h: [number, number] | null; m?: string }
+/** [text, weight 0–1, theme id | null, and on an MP's cloud: times they said it, their latest quotes] */
+type Term = [string, number, string | null, number?, Src[]?];
+/** Chamber and group cloud words: times said, by how many MPs, the MPs who say it most, recent quotes */
+type Words = Record<string, { n: number; m: number; top: [string, number][]; src: Src[] }>;
 type Shares = Record<string, number>;
 interface Theme { id: string; fr: string; en: string }
 interface Summary {
@@ -27,6 +31,8 @@ interface MpSpeech { id: string; speeches: number; interjections: number; words:
 let summaryP: Promise<Summary> | null = null;
 const loadSummary = () => (summaryP ??= fetchJson<Summary>("/data/an/interventions/summary.json"));
 const loadMp = (id: string) => fetchJson<MpSpeech>(`/data/an/interventions/${id}.json`);
+let wordsP: Promise<Words> | null = null;
+const loadWords = () => (wordsP ??= fetchJson<Words>("/data/an/interventions/words.json").catch(() => ({}) as Words));
 
 /** One colour per theme, dark enough to read as text on white. */
 const THEME_COLOR: Record<string, string> = {
@@ -43,14 +49,99 @@ const themeName = (s: Summary, id: string | null) => {
 const pct = (x: number, d = 0) => fmtPct(100 * x, d);
 
 /** Lays the cloud out at the slot's real width, so type sizes are the same on every screen. */
-function fillCloud(slot: HTMLElement | null, s: Summary, terms: Term[], label: string) {
+function fillCloud(slot: HTMLElement | null, s: Summary, terms: Term[], label: string, pick?: { tip: (t: Term) => string; open: (t: Term) => string }) {
   if (!slot) return;
   const width = Math.round(Math.max(300, Math.min(1000, slot.clientWidth || 600)));
   const height = Math.round(width > 700 ? width * 0.5 : width > 480 ? width * 0.74 : width * 1.05);
   slot.innerHTML = wordCloud(
-    terms.map(([text, weight, theme]) => ({ text, weight, color: color(theme), tip: theme ? `${text} · ${themeName(s, theme)}` : text })),
+    terms.map((t, i) => ({ text: t[0], weight: t[1], color: color(t[2]), tip: pick ? pick.tip(t) : t[2] ? `${t[0]} · ${themeName(s, t[2])}` : t[0], key: pick ? String(i) : undefined })),
     { width, height, min: width < 420 ? 10 : 11, max: Math.round(Math.min(50, Math.max(26, width / 20))), label },
   );
+  if (!pick) return;
+  // the panel under the cloud: who says the word, and where
+  const panel = document.createElement("div");
+  panel.className = "word-panel";
+  panel.hidden = true;
+  slot.after(panel);
+  const choose = (el: Element | null) => {
+    const k = (el as SVGElement | null)?.dataset?.key;
+    if (k == null) return;
+    const same = el!.getAttribute("aria-pressed") === "true";
+    slot.querySelectorAll("[data-key]").forEach((x) => x.setAttribute("aria-pressed", "false"));
+    if (same) { panel.hidden = true; return; }
+    el!.setAttribute("aria-pressed", "true");
+    panel.innerHTML = `<button type="button" class="word-close" aria-label="${L("Fermer", "Close")}">×</button>${pick.open(terms[Number(k)])}`;
+    panel.hidden = false;
+    panel.querySelector(".word-close")!.addEventListener("click", () => { panel.hidden = true; slot.querySelectorAll("[data-key]").forEach((x) => x.setAttribute("aria-pressed", "false")); });
+    if (panel.getBoundingClientRect().top > innerHeight - 120) panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  };
+  slot.addEventListener("click", (e) => choose((e.target as Element).closest("[data-key]")));
+  slot.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); choose((e.target as Element).closest("[data-key]")); } });
+}
+
+// ---------- quotes and counts behind each word ----------
+const AN_CR = "https://www.assemblee-nationale.fr/dyn/17/comptes-rendus/seance/";
+const times = (n: number) => (n === 1 ? L("1 fois", "once") : L(`${fmtNum(n)} fois`, `${fmtNum(n)} times`));
+const mpName = (d?: Depute) => (d ? `${d.prenom} ${d.nom}` : "");
+/** The extract with the word marked. */
+function quoteHtml(q: Src) {
+  const x = q.h ? `${esc(q.x.slice(0, q.h[0]))}<mark>${esc(q.x.slice(q.h[0], q.h[1]))}</mark>${esc(q.x.slice(q.h[1]))}` : esc(q.x);
+  return `« ${x} »`;
+}
+function quotesHtml(list: Src[], byId?: Map<string, Depute>) {
+  if (!list.length) return "";
+  return `<ul class="word-quotes">${list
+    .map((q) => {
+      const d = q.m ? byId?.get(q.m) : undefined;
+      return `<li><blockquote>${quoteHtml(q)}</blockquote>
+        <div class="muted small">${d ? `<a href="#/depute/${d.id}"><b>${esc(mpName(d))}</b></a> <span class="chip" style="--c:${safeColor(d.groupe?.couleur) ?? NEUTRAL}">${esc(d.groupe?.abrev ?? "—")}</span> · ` : ""}${fmtDate(q.d)}${q.t ? ` · ${esc(q.t)}` : ""} · <a href="${AN_CR}${esc(q.u)}" target="_blank" rel="noopener">${L("compte rendu", "official record")} ↗</a></div></li>`;
+    })
+    .join("")}</ul>`;
+}
+/** Hover text: the word, its theme, how often, and the latest quote. */
+function tipText(s: Summary, t: Term, line: string, q?: Src, who?: string) {
+  const head = t[2] ? `${t[0]} · ${themeName(s, t[2])}` : t[0];
+  const quote = q ? `\n\n« ${q.x} »\n— ${who ? `${who}, ` : ""}${fmtDate(q.d)}${q.t ? `, ${q.t}` : ""}` : "";
+  return `${head}\n${line}${quote}\n\n${L("Cliquez pour le détail", "Click for details")}`;
+}
+/** Chamber and group clouds: hover = count and a quote; click = the MPs who say it most, with photos, and quotes. */
+function chamberPick(s: Summary, words: Words, byId: Map<string, Depute>) {
+  return {
+    tip: (t: Term) => {
+      const w = words[t[0]];
+      if (!w) return t[2] ? `${t[0]} · ${themeName(s, t[2])}` : t[0];
+      return tipText(s, t, L(`Prononcé ${times(w.n)} par ${fmtNum(w.m)} députés`, `Said ${times(w.n)} by ${fmtNum(w.m)} MPs`), w.src[0], mpName(byId.get(w.src[0]?.m ?? "")));
+    },
+    open: (t: Term) => {
+      const w = words[t[0]];
+      if (!w) return `<p class="muted">${L("Pas de détail pour ce mot.", "No details for this word.")}</p>`;
+      const top = w.top.filter(([id]) => byId.has(id));
+      const max = top[0]?.[1] || 1;
+      return `<h3><span style="color:${color(t[2])}">${esc(t[0])}</span>${t[2] ? ` <span class="muted small">${esc(themeName(s, t[2]))}</span>` : ""}</h3>
+        <p class="muted small">${L(`Prononcé ${times(w.n)} en séance par ${fmtNum(w.m)} députés. Ceux qui l’emploient le plus :`, `Said ${times(w.n)} in the chamber by ${fmtNum(w.m)} MPs. Those who use it most:`)}</p>
+        <ol class="word-mps">${top
+          .map(([id, n]) => {
+            const d = byId.get(id)!;
+            return `<li><a href="#/depute/${d.id}" data-tip="${esc(`${mpName(d)} (${d.groupe?.abrev ?? "—"})\n${times(n)}`)}">
+              <img src="${photoUrl(d.id)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'" />
+              <span class="wm-name">${esc(d.prenom)} ${esc(d.nom)}</span>
+              <span class="wm-meta"><span class="chip" style="--c:${safeColor(d.groupe?.couleur) ?? NEUTRAL}">${esc(d.groupe?.abrev ?? "—")}</span> <b>${fmtNum(n)}</b></span>
+              <span class="bar"><span style="width:${(100 * n) / max}%;background:${color(t[2])}"></span></span></a></li>`;
+          })
+          .join("")}</ol>
+        ${w.src.length ? `<h4>${L("Derniers extraits", "Latest quotes")}</h4>${quotesHtml(w.src, byId)}` : ""}`;
+    },
+  };
+}
+/** An MP's cloud: hover = how often they said it and their latest quote; click = their quotes, linked to the record. */
+function mpPick(s: Summary, d: Depute) {
+  const said = (t: Term) => L(`${d.civ === "Mme" ? "Elle l’a dit" : "Il l’a dit"} ${times(t[3] ?? 0)} en séance`, `Said ${times(t[3] ?? 0)} in the chamber`);
+  return {
+    tip: (t: Term) => (t[3] == null ? (t[2] ? `${t[0]} · ${themeName(s, t[2])}` : t[0]) : tipText(s, t, said(t), t[4]?.[0])),
+    open: (t: Term) => `<h3><span style="color:${color(t[2])}">${esc(t[0])}</span>${t[2] ? ` <span class="muted small">${esc(themeName(s, t[2]))}</span>` : ""}</h3>
+      <p class="muted small">${said(t)}. ${t[4]?.length ? L("Ses dernières interventions qui l’emploient :", "Their latest speeches using it:") : ""}</p>
+      ${quotesHtml(t[4] ?? [])}`,
+  };
 }
 function legend(s: Summary, terms: Term[]) {
   const used = new Set(terms.map((t) => t[2]).filter(Boolean));
@@ -102,14 +193,14 @@ export async function renderMpSpeech(el: HTMLElement, d: Depute) {
       </div>` : `<p class="muted">${L("Trop peu de mots prononcés pour un nuage.", "Too few words spoken for a cloud.")}</p>`}
       <p class="muted small">${methodNote()} ${L("Interventions du", "Speeches from")} ${fmtDate(m.first)} ${L("au", "to")} ${fmtDate(m.last)}.</p>
     </article>`;
-  fillCloud(el.querySelector("#mp-cloud"), s, m.terms, L(`Mots les plus caractéristiques de ${d.prenom} ${d.nom}`, `Most distinctive words of ${d.prenom} ${d.nom}`));
+  fillCloud(el.querySelector("#mp-cloud"), s, m.terms, L(`Mots les plus caractéristiques de ${d.prenom} ${d.nom}`, `Most distinctive words of ${d.prenom} ${d.nom}`), mpPick(s, d));
 }
 
 // ---------- the whole chamber ----------
 const view = { group: "", theme: "" };
 
 export async function renderThemes(pane: HTMLElement) {
-  const [s, deputes] = await Promise.all([loadSummary(), loadDeputes()]);
+  const [s, deputes, words] = await Promise.all([loadSummary(), loadDeputes(), loadWords()]);
   await fontsReady();
   const byId = new Map(deputes.map((d) => [d.id, d]));
   const groups = Object.entries(s.groups).sort((a, b) => seatRank(a[0]) - seatRank(b[0]));
@@ -120,8 +211,8 @@ export async function renderThemes(pane: HTMLElement) {
     <article class="card">
       <header class="card-head"><h2>${L("Ce dont parle l’Assemblée", "What the Assembly talks about")}</h2></header>
       <p class="muted small">${L(
-        `${fmtNum(s.chamber.speeches)} interventions de députés en séance publique, ${fmtNum(s.period.sittings)} séances du ${fmtDate(s.period.from)} au ${fmtDate(s.period.to)}. Les mots les plus présents, pondérés par leur concentration sur certains débats.`,
-        `${fmtNum(s.chamber.speeches)} speeches by MPs in public sitting, ${fmtNum(s.period.sittings)} sittings from ${fmtDate(s.period.from)} to ${fmtDate(s.period.to)}. The most used words, weighted by how concentrated they are in particular debates.`,
+        `${fmtNum(s.chamber.speeches)} interventions de députés en séance publique, ${fmtNum(s.period.sittings)} séances du ${fmtDate(s.period.from)} au ${fmtDate(s.period.to)}. Les mots les plus présents, pondérés par leur concentration sur certains débats. Survolez un mot pour un extrait, cliquez pour voir qui le prononce.`,
+        `${fmtNum(s.chamber.speeches)} speeches by MPs in public sitting, ${fmtNum(s.period.sittings)} sittings from ${fmtDate(s.period.from)} to ${fmtDate(s.period.to)}. The most used words, weighted by how concentrated they are in particular debates. Hover a word for a quote, click it to see who says it.`,
       )}</p>
       <div class="cloud-slot" id="th-cloud"></div>
       ${legend(s, s.chamber.terms)}
@@ -169,7 +260,7 @@ export async function renderThemes(pane: HTMLElement) {
         ${g ? `<p class="muted small">${L("Trait : moyenne de l’Assemblée.", "Tick: whole-house average.")} ${fmtNum(g.speeches)} ${L("interventions", "speeches")}, ${g.mps} ${L("députés", "MPs")}.</p>` : ""}</div>
       <div><h3>${g ? L(`Les mots propres au groupe ${view.group}`, `Words typical of ${view.group}`) : L("Choisissez un groupe pour voir ses mots", "Pick a group to see its words")}</h3>
         ${g ? `<div class="cloud-slot" id="th-gcloud"></div>${legend(s, terms)}` : `<p class="muted small">${L("Les mots qu’un groupe emploie nettement plus que l’ensemble de l’Assemblée.", "The words a group uses far more than the house as a whole.")}</p>`}</div>`;
-    if (g) fillCloud(pane.querySelector("#th-gcloud"), s, terms, L(`Mots du groupe ${view.group}`, `Words of ${view.group}`));
+    if (g) fillCloud(pane.querySelector("#th-gcloud"), s, terms, L(`Mots du groupe ${view.group}`, `Words of ${view.group}`), chamberPick(s, words, byId));
   };
   const drawMps = () => {
     const ti = s.themes.findIndex((t) => t.id === view.theme);
@@ -196,7 +287,7 @@ export async function renderThemes(pane: HTMLElement) {
       drawMps();
     }),
   );
-  fillCloud(pane.querySelector("#th-cloud"), s, s.chamber.terms, L("Nuage de mots de l’Assemblée", "Assembly word cloud"));
+  fillCloud(pane.querySelector("#th-cloud"), s, s.chamber.terms, L("Nuage de mots de l’Assemblée", "Assembly word cloud"), chamberPick(s, words, byId));
   drawGroup();
   drawMps();
 }
