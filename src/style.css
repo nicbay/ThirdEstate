@@ -1008,3 +1008,29 @@ body { overflow-x: clip; }
 #shift-svg .circo-num { font: 600 var(--fs, 4px) var(--mono); fill: var(--ink-3); text-anchor: middle; pointer-events: none; }
 #shift-svg a, #shift-svg a:hover { text-decoration: none; }
 @media (max-width: 760px) { .place-pill:not(.is-set) span { display: none; } .place-pill:not(.is-set) { padding: 0.3rem; } }
+
+/* ---------- group loyalty (src/views/loyalty.ts) ---------- */
+.loy-scale { margin: 1rem 0 0.6rem; }
+.loy-scale svg { display: block; width: 100%; height: auto; overflow: visible; }
+.loy-ends { display: flex; justify-content: space-between; gap: 1rem; font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-2); margin-bottom: 0.2rem; }
+.loy-tick { font: 500 13px var(--mono); fill: var(--ink-2); }
+.loy-bar { display: inline-block; width: 90px; height: 8px; background: var(--wash); margin-right: 0.5rem; vertical-align: 0.05em; overflow: hidden; }
+.loy-bar div { height: 100%; }
+.loy-cell { white-space: nowrap; }
+.loy-groups .loy-avg { padding-left: 1.2rem; }
+.loy-table td:first-child, .loy-table th:first-child { padding-right: 0.8rem; }
+.loy-table th[data-k] { cursor: pointer; user-select: none; }
+.loy-table th[data-k]:hover { color: var(--ink); }
+.loy-table th[aria-sort="ascending"]::after { content: " ↑"; }
+.loy-table th[aria-sort="descending"]::after { content: " ↓"; }
+.loy-groups tr[data-g] { cursor: pointer; }
+.loy-method { margin-top: 0.8rem; }
+.loy-method summary, .loy-unranked summary { cursor: pointer; font-weight: 700; }
+.loy-method ul { margin: 0.5rem 0 0; padding-left: 1.1rem; color: var(--ink-2); }
+.loy-method li { margin-bottom: 0.3rem; }
+.loy-list { list-style: none; padding: 0; margin: 0.8rem 0 0; columns: 2 280px; }
+.loy-list li { padding: 0.25rem 0; break-inside: avoid; }
+.loy-mp .card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.loy-mp .kpis strong small { font-size: 0.55em; color: var(--ink-3); }
+.loy-rebels li { padding-right: 0; }
+@media (max-width: 560px) { .loy-bar { width: 48px; } .loy-cell .muted { display: none; } }

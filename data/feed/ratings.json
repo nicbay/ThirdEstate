@@ -4334,6 +4334,465 @@
       },
       "check": null,
       "postTime": "2026-11-07T15:27:58.000Z"
+    },
+    "bsky:at://did:plc:bnulcjvue27qpnwzup3y7hv3/app.bsky.feed.post/3mzqrwdparc2j": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T22:17:54.011Z",
+      "storyItems": [
+        "7f0f771935fa",
+        "5c2baf7027c5",
+        "a78452c6d0dd",
+        "588a0dc615ee",
+        "de7371b74b3a",
+        "78b4523b8287"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Présentation d'un programme de gauche radicale ; mise en avant de la dynamique de LFI pour 2027.",
+        "rationale_en": "Promotes a far-left programme and LFI's 2027 momentum; no specific policy detail in the post."
+      },
+      "populism": {
+        "score": 0.6,
+        "markers": [
+          "souverainete_populaire",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Mise en avant d'un « élan populaire gigantesque » et d'une enthousiasme émotionnel plutôt que d'arguments.",
+        "rationale_en": "Stresses a 'gigantic popular momentum' and emotional enthusiasm rather than arguments."
+      },
+      "check": {
+        "claim": "Plus de 20 000 personnes au Bourget",
+        "why_fr": "Le chiffre semble provenir des organisateurs ; d'autres sources pourraient donner une estimation différente.",
+        "why_en": "The figure appears to come from organisers; other sources may give a different estimate.",
+        "sources": [
+          {
+            "title": "En direct - meeting au Bourget (Le Parisien)",
+            "url": "https://www.leparisien.fr/elections/presidentielle/ici-est-la-force-depuis-le-bourget-jean-luc-melenchon-pret-a-decoller-pour-le-second-tour-de-la-presidentielle-07-11-2026-5AP5ZDQ7V5CATKZPLLC7VKHT6I.php"
+          }
+        ]
+      },
+      "postTime": "2026-11-07T20:57:04.858Z"
+    },
+    "bsky:at://did:plc:ymrgrrgrkf6jk23dg6w4c36d/app.bsky.feed.post/3mzqqzy42wk2w": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T22:17:54.012Z",
+      "storyItems": [
+        "7f0f771935fa",
+        "5c2baf7027c5",
+        "a78452c6d0dd",
+        "588a0dc615ee",
+        "de7371b74b3a",
+        "78b4523b8287"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de soutien sans contenu idéologique précis.",
+        "rationale_en": "Supportive message with no specific ideological content."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Enthousiasme mis en avant (« incroyable démonstration de force ») sans argument.",
+        "rationale_en": "Enthusiasm ('incredible show of force') without arguments."
+      },
+      "check": {
+        "claim": "Plus de 20 000 personnes au meeting du Bourget",
+        "why_fr": "Le chiffre semble provenir des organisateurs ; d'autres estimations peuvent différer.",
+        "why_en": "The figure appears to come from organisers; other estimates may differ.",
+        "sources": [
+          {
+            "title": "En direct - meeting au Bourget (Le Parisien)",
+            "url": "https://www.leparisien.fr/elections/presidentielle/ici-est-la-force-depuis-le-bourget-jean-luc-melenchon-pret-a-decoller-pour-le-second-tour-de-la-presidentielle-07-11-2026-5AP5ZDQ7V5CATKZPLLC7VKHT6I.php"
+          }
+        ]
+      },
+      "postTime": "2026-11-07T20:41:13.175Z"
+    },
+    "bsky:at://did:plc:fakceyj3l3pen4wtnjhgudd3/app.bsky.feed.post/3mzqnsmsbc22o": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T22:17:54.012Z",
+      "storyItems": [
+        "7f0f771935fa",
+        "5c2baf7027c5",
+        "a78452c6d0dd",
+        "588a0dc615ee",
+        "de7371b74b3a",
+        "78b4523b8287"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de mobilisation sans contenu idéologique précis.",
+        "rationale_en": "Mobilisation message with no specific ideological content."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Slogans et ton exalté (« ON VA GAGNER ») plutôt que arguments.",
+        "rationale_en": "Exalted slogans ('WE WILL WIN') rather than arguments."
+      },
+      "check": {
+        "claim": "Plus de 20 000 sur place et plus de 70 000 suivis en ligne",
+        "why_fr": "Ces chiffres semblent provenir des organisateurs ; les audiences en ligne ne sont pas vérifiées par une source indépendante.",
+        "why_en": "These figures appear to come from organisers; online audience numbers are not independently verified.",
+        "sources": [
+          {
+            "title": "En direct - meeting au Bourget (Le Parisien)",
+            "url": "https://www.leparisien.fr/elections/presidentielle/ici-est-la-force-depuis-le-bourget-jean-luc-melenchon-pret-a-decoller-pour-le-second-tour-de-la-presidentielle-07-11-2026-5AP5ZDQ7V5CATKZPLLC7VKHT6I.php"
+          }
+        ]
+      },
+      "postTime": "2026-11-07T19:43:25.203Z"
+    },
+    "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3mzqnskec6c2j": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T22:17:54.012Z",
+      "storyItems": [
+        "7f0f771935fa",
+        "5c2baf7027c5",
+        "a78452c6d0dd",
+        "588a0dc615ee",
+        "de7371b74b3a",
+        "78b4523b8287"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Promotion du programme de LFI, de gauche radicale, avec des valeurs républicaines mises en avant.",
+        "rationale_en": "Promotes LFI's far-left programme while framing it around republican values."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Appel militant (« faites le gagner ») sans rhétorique anti-élite marquée.",
+        "rationale_en": "Militant call ('help him win') without marked anti-elite rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-07T19:43:22.654Z"
+    },
+    "yt:tYJw4hFCYKI": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T22:17:54.012Z",
+      "storyItems": [
+        "7f0f771935fa",
+        "5c2baf7027c5",
+        "a78452c6d0dd",
+        "588a0dc615ee",
+        "de7371b74b3a",
+        "78b4523b8287"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Présentation du programme de gouvernement de LFI, orientation de gauche radicale.",
+        "rationale_en": "Presents LFI's government programme, far-left orientation."
+      },
+      "populism": {
+        "score": 0.5,
+        "markers": [
+          "souverainete_populaire",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Référence à « la force insoumise, c'est vous » et ton d'exaltation collective.",
+        "rationale_en": "'The insoumise force is you' and collective exaltation."
+      },
+      "check": {
+        "claim": "Plus de 20 000 personnes au Bourget",
+        "why_fr": "Le chiffre semble provenir des organisateurs ; d'autres sources peuvent donner une estimation différente.",
+        "why_en": "The figure appears to come from organisers; other sources may give a different estimate.",
+        "sources": [
+          {
+            "title": "En direct - meeting au Bourget (Le Parisien)",
+            "url": "https://www.leparisien.fr/elections/presidentielle/ici-est-la-force-depuis-le-bourget-jean-luc-melenchon-pret-a-decoller-pour-le-second-tour-de-la-presidentielle-07-11-2026-5AP5ZDQ7V5CATKZPLLC7VKHT6I.php"
+          }
+        ]
+      },
+      "postTime": "2026-11-07T19:02:14.000Z"
+    },
+    "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3mzqj4onrfc2s": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T22:17:54.012Z",
+      "storyItems": [
+        "7f0f771935fa",
+        "5c2baf7027c5",
+        "a78452c6d0dd",
+        "588a0dc615ee",
+        "de7371b74b3a",
+        "78b4523b8287"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Présentation de L'Avenir en commun, programme de gauche radicale de LFI.",
+        "rationale_en": "Presents L'Avenir en commun, a far-left LFI programme."
+      },
+      "populism": {
+        "score": 0.5,
+        "markers": [
+          "appel_emotionnel",
+          "souverainete_populaire"
+        ],
+        "rationale_fr": "Ton d'exaltation (« HISTORIQUE ! ») et mise en avant d'un élan collectif.",
+        "rationale_en": "Exalted tone ('HISTORIC!') and stress on collective momentum."
+      },
+      "check": {
+        "claim": "Plus de 20 000 personnes au Bourget",
+        "why_fr": "Le chiffre semble provenir des organisateurs ; d'autres estimations peuvent différer.",
+        "why_en": "The figure appears to come from organisers; other estimates may differ.",
+        "sources": [
+          {
+            "title": "En direct - meeting au Bourget (Le Parisien)",
+            "url": "https://www.leparisien.fr/elections/presidentielle/ici-est-la-force-depuis-le-bourget-jean-luc-melenchon-pret-a-decoller-pour-le-second-tour-de-la-presidentielle-07-11-2026-5AP5ZDQ7V5CATKZPLLC7VKHT6I.php"
+          }
+        ]
+      },
+      "postTime": "2026-11-07T18:19:33.995Z"
+    },
+    "bsky:at://did:plc:bnulcjvue27qpnwzup3y7hv3/app.bsky.feed.post/3mznpv2i7k22n": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T22:17:54.012Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Critique de la politique française envers Gaza et appel à un embargo militaire, orientation de gauche.",
+        "rationale_en": "Calls for a military embargo on Israel and questions French complicity, left-leaning position."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Indignation mise en avant (« génocide », « complicité ») sans rhétorique populiste structurée.",
+        "rationale_en": "Outrage stressed ('genocide', 'complicity') without structured populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-06T15:42:34.938Z"
+    },
+    "bsky:at://did:plc:otrocyu2h7akfbiurwlqxxl6/app.bsky.feed.post/3mznjwopnss2b": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T22:17:54.012Z",
+      "storyItems": [
+        "4973bd30e93d"
+      ],
+      "storyTitle": "La mobilisation impose les revendications sociales dans le débat, au grand dam du gouvernement et de l’extrême droite",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Soutien aux revendications sociales portées par la mobilisation contre la vie chère.",
+        "rationale_en": "Supports social demands of the cost-of-living protest movement."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message bref, sans rhétorique populiste marquée.",
+        "rationale_en": "Brief message without marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-06T13:56:07.207Z"
+    },
+    "x:2118352807841431937": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T22:18:00.701Z",
+      "storyItems": [
+        "66d1743db79f",
+        "cd0c14b79821",
+        "56031080e33c",
+        "abaf3290c789",
+        "7b8c1671b04f"
+      ],
+      "storyTitle": "Présidentielle: la moitié des députés communistes choisit Jean-Luc Mélenchon plutôt que Fabien Roussel",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Soutien à la candidature de Jean-Luc Mélenchon (LFI) et dénonciation de politiques qui « creusent les inégalités », positions de gauche.",
+        "rationale_en": "Backs Jean-Luc Mélenchon (LFI) and denounces policies that widen inequalities, positions on the left."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Met en avant la « menace de l'extrême droite » pour justifier l'engagement, sans rhétorique anti-élites marquée.",
+        "rationale_en": "Invokes the threat of the far right to justify the choice, without strong anti-elite rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-05T14:40:41.138Z"
+    },
+    "masto:https://piaille.fr/users/LisaBelluco/statuses/117563024352579195": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T22:18:00.701Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.3,
+        "rationale_fr": "Défense des territoires et des dessertes ferroviaires face aux fermetures de gares, sans position idéologique tranchée.",
+        "rationale_en": "Defends regional territories and rail services against station closures, without a clearly ideological stance."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Formule de constat (« nos territoires ont été abandonnés ») sans opposition peuple contre élites.",
+        "rationale_en": "Statement of grievance (our territories were abandoned) without a people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-05T09:03:10.145Z"
+    },
+    "bsky:at://did:plc:mnpjan3axuklugfc4c36ove5/app.bsky.feed.post/3mzkj3jo6ls2j": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-07T22:18:00.701Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.3,
+        "rationale_fr": "Défense des territoires et des dessertes ferroviaires face aux fermetures de gares, sans position idéologique tranchée.",
+        "rationale_en": "Defends regional territories and rail services against station closures, without a clearly ideological stance."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Formule de constat (« nos territoires ont été abandonnés ») sans opposition peuple contre élites.",
+        "rationale_en": "Statement of grievance (our territories were abandoned) without a people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-05T09:02:56.785Z"
+    },
+    "yt:5RRVE4HdjnU": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T01:48:34.218Z",
+      "storyItems": [
+        "5cea37f4f40f",
+        "7f0f771935fa",
+        "5c2baf7027c5",
+        "a78452c6d0dd",
+        "588a0dc615ee",
+        "de7371b74b3a"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de communication sur un chiffre de participation, sans position politique exprimée.",
+        "rationale_en": "Post reporting an attendance figure, with no political position expressed."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste dans ce message court.",
+        "rationale_en": "No populist rhetoric in this short message."
+      },
+      "check": null,
+      "postTime": "2026-11-07T23:43:58.000Z"
+    },
+    "yt:99bV2j5fNzk": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T01:48:34.218Z",
+      "storyItems": [
+        "5cea37f4f40f",
+        "7f0f771935fa",
+        "5c2baf7027c5",
+        "a78452c6d0dd",
+        "588a0dc615ee",
+        "de7371b74b3a"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Appel à rejoindre le meeting et à « changer ce pays », sans contenu idéologique précis.",
+        "rationale_en": "Call to join the rally and to 'change the country', with no specific ideological content."
+      },
+      "populism": {
+        "score": 0.15,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Mise en avant de l'enthousiasme de la foule pour mobiliser, sans attaque d'adversaires.",
+        "rationale_en": "Emphasis on the crowd's enthusiasm to mobilise, without attacking opponents."
+      },
+      "check": null,
+      "postTime": "2026-11-07T19:10:25.000Z"
+    },
+    "yt:KGlqniahM5I": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T01:48:34.218Z",
+      "storyItems": [
+        "5cea37f4f40f",
+        "7f0f771935fa",
+        "5c2baf7027c5",
+        "a78452c6d0dd",
+        "588a0dc615ee",
+        "de7371b74b3a"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Soutien à la campagne de Jean-Luc Mélenchon, sans contenu idéologique explicite.",
+        "rationale_en": "Support for Jean-Luc Mélenchon's campaign, with no explicit ideological content."
+      },
+      "populism": {
+        "score": 0.15,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Ton enthousiaste et slogan (« historique », « jusqu'à la victoire ») plutôt que argumentation.",
+        "rationale_en": "Enthusiastic tone and slogans ('historic', 'until victory') rather than argument."
+      },
+      "check": null,
+      "postTime": "2026-11-07T18:23:12.000Z"
+    },
+    "yt:SKa6T75hV_c": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T01:48:34.218Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce d'une intervention médiatique, sans position politique.",
+        "rationale_en": "Announcement of a media appearance, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-07T17:49:08.000Z"
     }
   },
   "failures": {

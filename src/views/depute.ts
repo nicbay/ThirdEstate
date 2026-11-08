@@ -3,6 +3,7 @@ import { L, fmtDate, fmtNum, fmtPct, t } from "../i18n";
 import { PLATFORMS, age, presence } from "./assemblee";
 import { esc, safeUrl, safeColor } from "../util";
 import { photoUrl } from "./deputes";
+import { mountMpLoyalty } from "./loyalty";
 
 const PAGE = 20;
 const href = (platform: string, v: string) => (v.startsWith("http") ? v : (SOCIAL_URL[platform] ?? ((h: string) => h))(v));
@@ -110,6 +111,7 @@ export async function renderDepute(app: HTMLElement, id: string) {
       <p class="source muted">${s.sourceAN(fmtDate(meta.syncedAt))}</p>
     </section>`;
 
+  void mountMpLoyalty(app.querySelector(".mp-grid-2")!, d); // group-loyalty card (src/views/loyalty.ts)
   const label: Record<string, string> = { P: s.for, C: s.against, A: s.abstention, N: s.nonVoting, "-": s.absent };
   const draw = () => {
     const q = f.q.toLowerCase();
