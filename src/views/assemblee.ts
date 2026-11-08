@@ -6,6 +6,7 @@ import { OVERSEAS_DEPS, abroadInset, insetFigure, mapPaths, rewind } from "../li
 import { esc, groupBy, safeColor } from "../util";
 import { hemicycle, seatRank } from "../lib/hemicycle";
 import { renderDeputes } from "./deputes";
+import { renderThemes } from "./speeches";
 
 export const PLATFORMS = ["twitter", "facebook", "instagram", "linkedin", "website"] as const;
 /** Digital presence: how many of the 5 main channels the MP declares to the Assemblée (0–5). */
@@ -32,6 +33,7 @@ export async function renderAssemblee(app: HTMLElement, tab = "carte", dep?: str
           <a role="tab" href="#/assemblee" aria-selected="${tab === "carte"}">${L("Carte", "Map")}</a>
           <a role="tab" href="#/assemblee/deputes" aria-selected="${tab === "deputes"}">${L("Députés", "MPs")}</a>
           <a role="tab" href="#/assemblee/composition" aria-selected="${tab === "composition"}">${L("Qui sont les députés ?", "Who are the MPs?")}</a>
+          <a role="tab" href="#/assemblee/themes" aria-selected="${tab === "themes"}">${L("De quoi parlent-ils ?", "What do they talk about?")}</a>
         </nav>
       </div>
       <div id="pane"></div>
@@ -39,6 +41,7 @@ export async function renderAssemblee(app: HTMLElement, tab = "carte", dep?: str
   const pane = app.querySelector<HTMLElement>("#pane")!;
   if (tab === "deputes") return renderDeputes(pane);
   if (tab === "composition") return composition(pane);
+  if (tab === "themes") return renderThemes(pane);
   return mapView(pane, dep);
 }
 
