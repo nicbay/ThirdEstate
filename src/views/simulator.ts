@@ -3,7 +3,7 @@
 // when signed in) and shared by link.
 import { loadMarkets, loadPolls } from "../data";
 import { combineOdds, oddsFor } from "../lib/markets";
-import { ROUND1_SD, ROUND2_SD, buildModel, sameOdds } from "../lib/scenario-odds";
+import { ROUND1_SD, ROUND2_SD, RUNS, buildModel, oddsSentence } from "../lib/scenario-odds";
 import { L, fmtDate, getLang } from "../i18n";
 import { BLOCS, meta, registerParties, spectrumRank, type Bloc } from "../lib/candidates";
 import { average, duelAverages, referenceLineup } from "../lib/polls";
@@ -217,7 +217,9 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
       const loser = winner === fa ? fb : fa;
       const p1 = model.pRound1(fa, fb), p2 = model.pRound2(winner, loser), p = p1 * p2;
       const show = (x: number) => (x > 0.99 ? L("plus de 99 %", "over 99%") : x < 0.0001 ? L("moins de 0,01 %", "under 0.01%") : x < 0.01 ? `${(x * 100).toFixed(2).replace(".", fr ? "," : ".")} %` : `${Math.round(x * 100)} %`);
-      const ev = sameOdds(p);
+      // p1 = 0 means no simulated run produced this pair: only an upper bound is known
+      // (rule of three: < 3/RUNS at 95 % confidence), so the comparison says "less likely than".
+      const oddsLine = p1 > 0 ? oddsSentence(p, fr) : oddsSentence((3 / RUNS) * p2, fr, true);
       app.querySelector("#sim-odds")!.innerHTML = `
         <div class="odds-headline">
           <div class="odds-num"><span class="muted small">${L("Probabilité de votre scénario", "Probability of your scenario")}</span><strong>${show(p)}</strong></div>
@@ -225,7 +227,7 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
             <span><b>${L("1er tour", "Round 1")}</b> ${esc(meta(fa).surname)} ${L("et", "and")} ${esc(meta(fb).surname)} ${L("qualifiés", "qualify")} : <b>${show(p1)}</b></span>
             <span><b>${L("2nd tour", "Round 2")}</b> ${esc(meta(winner).surname)} ${L("l’emporte", "wins")} : <b>${show(p2)}</b></span>
           </div>
-          <p class="odds-fun">${fr ? `Aussi probable que ${/^qu/.test(ev.fr) ? "" : "de "}${esc(ev.fr)}.` : `As likely as ${esc(ev.en)}.`}</p>
+          <p class="odds-fun">${esc(oddsLine)}</p>
           <p class="muted tiny">${L(`Selon les sondages actuels, pas selon vos curseurs : chaque candidat peut s’écarter de sa moyenne d’environ ${String(ROUND1_SD).replace(".", ",")} points au 1er tour et le duel de ${ROUND2_SD} points au 2nd tour (20 000 simulations). Estimation indicative.`, `Based on current polls, not your sliders: each candidate can miss their average by about ${ROUND1_SD} points in round 1 and the runoff by ${ROUND2_SD} points (20,000 simulations). Indicative estimate.`)}</p>
         </div>`;
     }
