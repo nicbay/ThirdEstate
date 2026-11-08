@@ -4793,6 +4793,278 @@
       },
       "check": null,
       "postTime": "2026-11-07T17:49:08.000Z"
+    },
+    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3mzrzkb3s3k2k": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T09:27:41.925Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Moquerie visant le Front national et une pancarte, sans contenu idéologique précis.",
+        "rationale_en": "Jab at the Front National and a sign, with no specific ideological content."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Ton ironique, sans rhétorique populiste.",
+        "rationale_en": "Ironic tone, no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-08T08:46:09.145Z"
+    },
+    "yt:793lEPBVgaE": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T09:27:41.925Z",
+      "storyItems": [
+        "244355df5900",
+        "06dda69fe17d"
+      ],
+      "storyTitle": "Politique : \"Je n'attends plus grand-chose de ce gouvernement, à part de le remplacer par nous-mêmes\", tacle le député LFI Antoine Léaument",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Défend le blocage des prix, un SMIC à 1 700 € net et une redistribution forte, positions de gauche radicale.",
+        "rationale_en": "Defends price freezes, a 1,700 euro net minimum wage and strong redistribution, far-left positions."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "anti_elites"
+        ],
+        "rationale_fr": "Oppose le peuple appauvri aux « plus riches » et à Emmanuel Macron, sans excès particulier.",
+        "rationale_en": "Contrasts an impoverished population with the richest and Emmanuel Macron, without extreme framing."
+      },
+      "check": null,
+      "postTime": "2026-11-08T08:22:00.000Z"
+    },
+    "masto:https://piaille.fr/users/cyrielle_chatelain/statuses/117579847487490833": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T09:27:41.925Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Constat social sur des lycéens qui travaillent, sans position idéologique explicite.",
+        "rationale_en": "Social observation about students working, with no explicit ideological position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Relais de témoignages, sans rhétorique populiste.",
+        "rationale_en": "Relays testimonies, no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-08T08:21:30.812Z"
+    },
+    "bsky:at://did:plc:vjwqkzs27ge527nmwckanige/app.bsky.feed.post/3mzqsnviwd226": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T09:27:41.925Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.4,
+        "rationale_fr": "Défend la liberté de choisir son école et les écoles privées sous contrat, position de droite libérale.",
+        "rationale_en": "Defends school choice and private contract schools, a liberal-conservative position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Argumentation générale, sans opposition peuple contre élites.",
+        "rationale_en": "General argument, no people versus elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-07T21:10:15.281Z"
+    },
+    "yt:GWemcz4Rejg": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T09:27:41.925Z",
+      "storyItems": [
+        "61da60e29cb2",
+        "46a98464772b",
+        "65004675d19b",
+        "33846d81499c",
+        "6232a9149881",
+        "0158c21b68fa"
+      ],
+      "storyTitle": "\"Il n'y en a qu'un qui ne veut pas de cette primaire\" : Édouard Philippe peut-il encore échapper à une primaire de la droite et du centre ?",
+      "political": true,
+      "lean": {
+        "score": 0.3,
+        "rationale_fr": "Appelle à une primaire de la droite et du centre, positionnement centre-droit.",
+        "rationale_en": "Calls for a centre-right primary, a centre-right positioning."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Plaidoyer pour une primaire, avec un ton peu populiste.",
+        "rationale_en": "Advocacy for a primary, with a non-populist tone."
+      },
+      "check": null,
+      "postTime": "2026-11-07T18:45:46.000Z"
+    },
+    "yt:kKFS__TeKmU": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T09:27:41.926Z",
+      "storyItems": [
+        "93a01468f3e7",
+        "e66acba0a737",
+        "c9efaa7a800f",
+        "5cea37f4f40f",
+        "7f0f771935fa",
+        "5c2baf7027c5"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Présente un programme de rupture avec des propositions de gauche radicale sur la transformation sociale.",
+        "rationale_en": "Presents a rupture programme with far-left proposals on social transformation."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Mise en avant de « HISTORIQUE » et d'une mobilisation chiffrée pour susciter l'enthousiasme.",
+        "rationale_en": "Uses 'HISTORIC' and a headcount to stir enthusiasm."
+      },
+      "check": {
+        "claim": "Plus de 20 000 personnes au meeting du Bourget.",
+        "why_fr": "Le chiffre est présenté comme un fait, mais il semble correspondre à un décompte des organisateurs ; d'autres sources ou décomptes peuvent différer.",
+        "why_en": "The figure is stated as fact but appears to come from the organisers' count; other sources or counts may differ.",
+        "sources": [
+          {
+            "title": "Présidentielle 2027 : au Bourget, Jean-Luc Mélenchon mise sur la rupture pour conquérir l'Elysée",
+            "url": "https://www.lexpress.fr/economie/presidentielle-2027-au-bourget-jean-luc-melenchon-mise-sur-la-rupture-pour-conquerir-lelysee-LOUEYCV6DVAEZOJYYRZHQ5V3CI/"
+          }
+        ]
+      },
+      "postTime": "2026-11-07T18:43:39.000Z"
+    },
+    "yt:gPAWKfSU6WQ": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T09:27:41.926Z",
+      "storyItems": [
+        "93a01468f3e7",
+        "e66acba0a737",
+        "c9efaa7a800f",
+        "5cea37f4f40f",
+        "7f0f771935fa",
+        "5c2baf7027c5"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de mobilisation autour du meeting, sans contenu idéologique précis.",
+        "rationale_en": "Mobilisation message around the rally, with no specific ideological content."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Ton d'enthousiasme et de victoire annoncée, sans arguments développés.",
+        "rationale_en": "Enthusiastic tone and announced victory, without developed arguments."
+      },
+      "check": {
+        "claim": "Plus de 20 000 personnes réunies au meeting de présentation du programme.",
+        "why_fr": "Le chiffre est présenté comme un fait, mais il semble provenir des organisateurs ; d'autres décomptes peuvent différer.",
+        "why_en": "The figure is stated as fact but seems to come from the organisers; other counts may differ.",
+        "sources": [
+          {
+            "title": "Présidentielle 2027 : au Bourget, Jean-Luc Mélenchon mise sur la rupture pour conquérir l'Elysée",
+            "url": "https://www.lexpress.fr/economie/presidentielle-2027-au-bourget-jean-luc-melenchon-mise-sur-la-rupture-pour-conquerir-lelysee-LOUEYCV6DVAEZOJYYRZHQ5V3CI/"
+          }
+        ]
+      },
+      "postTime": "2026-11-07T18:37:07.000Z"
+    },
+    "bsky:at://did:plc:fd2jc6zti4gpnk64f7rpftk7/app.bsky.feed.post/3mznmx2eqsk2t": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T09:27:41.926Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Soutien à des agents en grève et critique de la réintégration d'un président, position de gauche sur le service public.",
+        "rationale_en": "Supports striking staff and criticises reinstating a president, a left-leaning public service stance."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Demande un rapport et une audition, sans rhétorique populiste.",
+        "rationale_en": "Requests a report and hearings, no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-06T14:50:00.708Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3mzn26gl2s42v": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T09:27:48.652Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique de la politique de l'offre et de la gestion de la dette sous Macron, au nom d'une approche plutôt sociale-démocrate.",
+        "rationale_en": "Criticizes supply-side policy and the record on debt under Macron, from a social-democratic angle."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "simplisme"
+        ],
+        "rationale_fr": "Bilan présenté de façon condamnatoire (« un échec ») sans nuance, mais sans opposition peuple contre élites.",
+        "rationale_en": "Verdict presented as a flat failure without nuance, but no people-versus-elites framing."
+      },
+      "check": {
+        "claim": "Dette en hausse de plus de 50 % en dix ans ; richesse par habitant passée sous la moyenne européenne ; défaillances d'entreprises à un niveau record.",
+        "why_fr": "La période de comparaison et l'indicateur retenu (PIB par habitant en standard de pouvoir d'achat ou non, dette en valeur ou en % du PIB) ne sont pas précisés, ce qui change sensiblement le résultat. Les chiffres méritent d'être confrontés aux séries officielles.",
+        "why_en": "The comparison period and the indicator (GDP per capita in PPS or not, debt in value or as % of GDP) are not specified, which changes the result significantly. The figures should be checked against official series.",
+        "sources": [
+          {
+            "title": "INSEE, page d'accueil",
+            "url": "https://www.insee.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-06T09:14:07.270Z"
+    },
+    "yt:YAj_GTUMFWI": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T09:27:48.652Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de promotion d'une vidéo sur le harcèlement, sans position politique.",
+        "rationale_en": "Promotional message for a video on harassment, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste dans ce message.",
+        "rationale_en": "No populist rhetoric in this message."
+      },
+      "check": null,
+      "postTime": "2026-11-05T09:59:06.000Z"
     }
   },
   "failures": {
