@@ -137,24 +137,26 @@ export function melenchonFlowSpec(f: ProgrammeFile, ls: Lineage[]): FlowSpec {
 function costCard(f: { slug: string; costing?: { rounds: CostRound[]; checked: string } | null }) {
   const c = f.costing;
   if (!c?.rounds.length) return "";
-  const nets = c.rounds.flatMap((r) => [r.announced.net, ...r.estimates.map((e) => e.net)]);
+  const nets = c.rounds.flatMap((r) => [r.announced?.net, ...r.estimates.map((e) => e.net)]).filter((v): v is number => typeof v === "number");
   const lo = Math.min(-20, ...nets), hi = Math.max(40, ...nets), span = hi - lo;
   const pos = (v: number) => (100 * (v - lo)) / span;
   const md = (v: number) => { const sg = v > 0 ? "+" : v < 0 ? "−" : ""; return L(`${sg}${fmtNum(Math.abs(v))} Md€`, `${sg}€${fmtNum(Math.abs(v))}bn`); };
-  const bar = (e: CostLine, kind: "ann" | "est") => {
+  const bar = (e: CostLine | null, kind: "ann" | "est") => {
+    if (!e) return "";
+    if (e.net == null) return `<div class="cost-row is-${kind}"><span class="cost-who">${kind === "ann" ? L("Annoncé", "Announced") : L("Estimé", "Estimated")} · <a href="${esc(safeUrl(e.url))}" target="_blank" rel="noopener">${esc(e.by)}</a></span><span class="cost-detail muted small">${L("Pas de solde chiffré", "No overall balance given")} — ${esc(L(e.note.fr, e.note.en))}</span></div>`;
     const a = pos(Math.min(0, e.net)), b = pos(Math.max(0, e.net));
     return `<div class="cost-row is-${kind}">
       <span class="cost-who">${kind === "ann" ? L("Annoncé", "Announced") : L("Estimé", "Estimated")} · <a href="${esc(safeUrl(e.url))}" target="_blank" rel="noopener">${esc(e.by)}</a></span>
       <span class="cost-track"><i class="cost-zero" style="left:${pos(0).toFixed(1)}%"></i><i class="cost-bar${e.net < 0 ? " is-neg" : ""}" style="left:${a.toFixed(1)}%;width:${Math.max(0.6, b - a).toFixed(1)}%"></i></span>
       <b class="cost-net${e.net < 0 ? " is-neg" : ""}">${md(e.net)}</b>
-      <span class="cost-detail muted small">${L("dépenses", "spending")} ${md(e.spending).replace("+", "")} · ${L("recettes", "revenue")} ${md(e.revenue).replace("+", "")} — ${esc(L(e.note.fr, e.note.en))}</span>
+      <span class="cost-detail muted small">${L("dépenses", "spending")} ${e.spending == null ? "—" : md(e.spending).replace("+", "")} · ${L("recettes", "revenue")} ${e.revenue == null ? "—" : md(e.revenue).replace("+", "")} — ${esc(L(e.note.fr, e.note.en))}</span>
     </div>`;
   };
   const [r22, r24, r27] = [c.rounds.find((r) => r.year === 2022), c.rounds.find((r) => r.year === 2024), c.rounds.find((r) => r.year === 2027)];
   const m22 = r22?.estimates[0];
   const gap22 = r22 && m22 ? r22.announced.net - m22.net : null;
   const ests = c.rounds.flatMap((r) => r.estimates.map((e) => e.net));
-  const generic = c.rounds.filter((r) => r.announced && r.estimates.length).map((r) => L(
+  const generic = c.rounds.filter((r) => r.announced?.net != null && r.estimates.length).map((r) => L(
     `En ${r.year}, ${r.estimates.map((e) => `${e.by} estime le solde à ${md(e.net)}`).join(", ")}, contre ${md(r.announced.net)} annoncés par ${r.announced.by}.`,
     `In ${r.year}, ${r.estimates.map((e) => `${e.by} put the balance at ${md(e.net)}`).join(", ")}, against ${md(r.announced.net)} claimed by ${r.announced.by}.`));
   const verdict = f.slug !== "melenchon" ? (generic.length ? `<div class="cost-verdict"><p class="eyebrow">${L("En résumé", "In short")}</p>${generic.map((g) => `<p>${esc(g)}</p>`).join("")}</div>` : "") : r22 && m22 && r24 && r27 && gap22 != null ? `
@@ -176,10 +178,10 @@ function costCard(f: { slug: string; costing?: { rounds: CostRound[]; checked: s
     ${c.rounds.map((r) => `<section class="cost-round">
       <h3>${esc(L(r.label.fr, r.label.en))} <span class="muted small">· ${esc(L(r.horizon.fr, r.horizon.en))}</span></h3>
       ${bar(r.announced, "ann")}
-      ${r.estimates.map((e) => bar(e, "est")).join("") || `<p class="cost-none muted small">${L("Pas encore d’estimation indépendante : le chiffrage complet est annoncé pour début 2027.", "No independent estimate yet: the full costing is due in early 2027.")}</p>`}
+      ${r.estimates.map((e) => bar(e, "est")).join("") || `<p class="cost-none muted small">${f.slug === "melenchon" ? L("Pas encore d’estimation indépendante : le chiffrage complet est annoncé pour début 2027.", "No independent estimate yet: the full costing is due in early 2027.") : L("Pas encore d’estimation indépendante.", "No independent estimate yet.")}</p>`}
     </section>`).join("")}
     ${verdict}
-    <p class="muted small">${L(`Estimations « statiques » : effets directs des mesures, sans effet sur la croissance. Les auteurs n’utilisent pas la même trajectoire de référence, d’où des écarts entre eux. Le NFP de 2024 était une coalition ; son programme n’est pas celui de LFI seule. Sources vérifiées le ${fmtDate(c.checked)}.`, `‘Static’ estimates: direct effects of the measures, no growth feedback. The authors use different baselines, hence differences between them. The 2024 NFP was a coalition; its programme is not LFI’s alone. Sources checked on ${fmtDate(c.checked)}.`)}</p>
+    <p class="muted small">${L(`Estimations « statiques » : effets directs des mesures, sans effet sur la croissance. Les auteurs n’utilisent pas la même trajectoire de référence, d’où des écarts entre eux.${f.slug === "melenchon" ? " Le NFP de 2024 était une coalition ; son programme n’est pas celui de LFI seule." : ""} Sources vérifiées le ${fmtDate(c.checked)}.`, `‘Static’ estimates: direct effects of the measures, no growth feedback. The authors use different baselines, hence differences between them.${f.slug === "melenchon" ? " The 2024 NFP was a coalition; its programme is not LFI’s alone." : ""} Sources checked on ${fmtDate(c.checked)}.`)}</p>
   </article>`;
 }
 
@@ -517,8 +519,8 @@ function renderLite(app: HTMLElement, f: LiteFile) {
   const items = (k: number) => `${fmtNum(k)} ${k > 1 ? L("mesures", "measures") : L("mesure", "measure")}`;
   const spec: FlowSpec | null = vs.length > 1 && f.measures.length ? {
     sources: [
-      { id: "old", icon: String(first.year).slice(2), title: L(first.label.fr, first.label.en), sub: items(c.maintained + c.modified + c.dropped), out: ["maintained", "modified", "dropped"] },
-      { id: "nw", icon: String(last.year).slice(2), title: L(last.label.fr, last.label.en), sub: L("propositions nouvelles", "new proposals"), out: ["new"] },
+      { id: "old", icon: String(first.year).slice(2), title: L(`Socle ${first.year}`, `${first.year} baseline`), sub: items(c.maintained + c.modified + c.dropped), out: ["maintained", "modified", "dropped"] },
+      { id: "nw", icon: String(last.year).slice(2), title: L(`Propositions ${last.year}`, `${last.year} proposals`), sub: L("propositions nouvelles", "new proposals"), out: ["new"] },
     ],
     branches: (["maintained", "modified", "dropped", "new"] as LiteStatus[]).map((s) => ({ id: s, icon: { maintained: "=", modified: "≠", dropped: "−", new: "★" }[s], title: liteLabel(s), n: c[s], drop: s === "dropped" })),
     keepTitle: L(`Programme ${last.year}`, `${last.year} programme`), keepN: c.maintained + c.modified + c.new, goneN: c.dropped,
