@@ -91,5 +91,5 @@ export async function townBrief(code: string, name: string): Promise<Brief> {
 
 /** Small MP card used by the homepage block. */
 export function mpChip(mp: Depute) {
-  return `<a class="brief-mp" href="#/depute/${mp.id}" style="--c:${safeColor(mp.groupe?.couleur) ?? "#999"}"><img src="${photoUrl(mp.id)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"/><span><b>${esc(mp.prenom)} ${esc(mp.nom)}</b><span class="muted small">${esc(mp.groupe?.abrev ?? "")}, ${L("circ.", "district")} ${Number(mp.circo?.slice(-2))}</span></span></a>`;
+  return `<a class="brief-mp" href="#/depute/${mp.id}" style="--c:${safeColor(mp.groupe?.couleur) ?? "#999"}"><img src="${photoUrl(mp.id)}" alt="" loading="lazy" data-hide-broken/><span><b>${esc(mp.prenom)} ${esc(mp.nom)}</b><span class="muted small">${esc(mp.groupe?.abrev ?? "")}, ${L("circ.", "district")} ${Number(mp.circo?.slice(-2))}</span></span></a>`;
 }

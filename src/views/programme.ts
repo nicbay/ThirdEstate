@@ -514,6 +514,8 @@ interface LiteFile {
   versions: { id: string; year: number; label: { fr: string; en: string }; title: string; date: string; url?: string; kind: string }[];
   measures: LiteMeasure[]; costing: { rounds: CostRound[]; checked: string } | null;
 }
+/** Values from data files used as CSS class suffixes: letters, digits and dashes only. */
+const cls = (v: unknown) => String(v ?? "").replace(/[^w-]/g, "");
 const LITE_STATUS: LiteStatus[] = ["maintained", "modified", "new", "dropped"];
 const liteLabel = (s: LiteStatus) => ({ maintained: L("Gardées", "Kept"), modified: L("Modifiées", "Changed"), new: L("Nouvelles", "New"), dropped: L("Abandonnées", "Dropped") })[s];
 const THEME_NAMES: Record<string, [string, string]> = {
@@ -591,7 +593,7 @@ function renderLite(app: HTMLElement, f: LiteFile) {
     app.querySelector("#lcount")!.innerHTML = `${fmtNum(ms.length)} ${L("mesures", "measures")}${pick ? ` · ${esc(liteLabel(pick))} <button type="button" class="linkish" id="lclr">${L("tout afficher", "show all")}</button>` : ""}`;
     app.querySelector("#lclr")?.addEventListener("click", () => { pick = ""; draw(); drawFlow(); });
     list.innerHTML = ms.map((m) => `<li class="prog-item" id="m-${esc(m.id)}">
-      <div class="prog-item-head"><span class="prog-chip prog-${m.status === "new" ? "new2027" : m.status}">${esc(liteLabel(m.status))}</span><span class="prog-theme">${esc(themeLabel(m.theme))}</span></div>
+      <div class="prog-item-head"><span class="prog-chip prog-${m.status === "new" ? "new2027" : cls(m.status)}">${esc(liteLabel(m.status))}</span><span class="prog-theme">${esc(themeLabel(m.theme))}</span></div>
       <div class="prog-vers">${vs.map((v) => `<div class="prog-ver${m.texts[v.id] ? "" : " prog-absent"}"><p class="prog-year">${v.year}</p><p class="prog-text${m.texts[v.id] ? "" : " muted"}" lang="fr">${m.texts[v.id] ? esc(m.texts[v.id]) : L("Absente", "Absent")}</p></div>`).join("")}</div>
       ${m.change ? `<p class="prog-change">${esc(L(m.change.fr, m.change.en))}</p>` : ""}
       <p class="prog-an small">${m.sources.map((s) => `<a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join(" · ")}</p>

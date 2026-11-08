@@ -16,7 +16,14 @@ export interface Home { dep: string; depName: string; commune?: string; code?: s
 const HOME_KEY = "pv-home";
 export function getHome(): Home | null {
   try {
-    return JSON.parse(localStorage.getItem(HOME_KEY) ?? "null");
+    // re-validate what comes back from storage: these values end up in links and regexes
+    const h = JSON.parse(localStorage.getItem(HOME_KEY) ?? "null") as Home | null;
+    if (!h || typeof h.dep !== "string" || !/^(\d{2,3}|2[AB])$/.test(h.dep)) return null;
+    return {
+      dep: h.dep, depName: String(h.depName ?? h.dep).slice(0, 80),
+      ...(typeof h.commune === "string" ? { commune: h.commune.slice(0, 80) } : {}),
+      ...(typeof h.code === "string" && /^(\d{5}|2[AB]\d{3})$/.test(h.code) ? { code: h.code } : {}),
+    };
   } catch {
     return null;
   }

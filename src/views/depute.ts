@@ -46,7 +46,7 @@ export async function renderDepute(app: HTMLElement, id: string) {
     <section class="page">
       <p class="muted small crumbs"><a href="#/assemblee">${L("Assemblée", "Assembly")}</a> › ${d.numDepartement ? `<a href="#/assemblee/${d.numDepartement}">${esc(d.departement ?? d.numDepartement)}</a> › ` : ""}${d.circo ? `<a href="#/circo/${d.circo}">${L("Circonscription", "District")} ${d.numCirco}</a> › ` : ""}${esc(d.prenom)} ${esc(d.nom)}</p>
       <div class="mp-head card" style="--c:${safeColor(d.groupe?.couleur) ?? "#999"}">
-        <img src="${photoUrl(d.id)}" alt="" onerror="this.style.visibility='hidden'" />
+        <img src="${photoUrl(d.id)}" alt="" data-hide-broken />
         <div class="mp-id">
           <h1>${esc(d.civ)} ${esc(d.prenom)} ${esc(d.nom)}</h1>
           <p><span class="chip">${esc(d.groupe?.abrev ?? "—")}</span> ${esc(d.groupe?.libelle ?? "")}</p>

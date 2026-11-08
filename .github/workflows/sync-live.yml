@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: sync-live
@@ -17,12 +17,16 @@ concurrency:
 
 jobs:
   sync:
+    permissions:
+      contents: write # push the refreshed data
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false # the token is given only to the push step
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: 24
           cache: npm
@@ -43,6 +47,8 @@ jobs:
         continue-on-error: true
 
       - name: Commit if the data changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           files="public/data/markets.json $(ls public/data/polls/*.json) public/data/forecast/history.json"
           node scripts/data-changed.mjs $files || exit 0
@@ -50,4 +56,5 @@ jobs:
           git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
           git add $files
           git commit -m "data: sync polls and markets ($(date -u +'%F %H:%M'))"
-          git push
+          git pull --rebase --autostash
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:${GITHUB_REF_NAME}"

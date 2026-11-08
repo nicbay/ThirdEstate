@@ -19,6 +19,7 @@
 // article is geolocated inside the commune AND its first sentence says it is a quartier/district. AI text (optional)
 // is labelled as such and is given only the figures and the names of geolocated Wikipedia articles.
 
+import { noEmail } from "./lib/no-email.mjs";
 import { mkdir, readFile, writeFile, readdir, stat } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { unzipSync, strFromU8 } from "fflate";
@@ -510,7 +511,7 @@ async function commonsPhotos(irisCode, geom, placeNames, center) {
       const m = ii.extmetadata ?? {};
       return {
         title: p.title, lat: co.lat, lon: co.lon, mime: ii.mime, width: ii.width, height: ii.height, thumb: ii.thumburl, thumbWidth: ii.thumbwidth,
-        page: ii.descriptionurl, author: stripHtml(m.Artist?.value).slice(0, 160) || null, licence: m.LicenseShortName?.value ?? null,
+        page: ii.descriptionurl, author: noEmail(stripHtml(m.Artist?.value)).slice(0, 160) || null, licence: m.LicenseShortName?.value ?? null,
         licenceUrl: m.LicenseUrl?.value ?? null, categories: m.Categories?.value ?? "", assessments: m.Assessments?.value ?? "",
       };
     }).filter(Boolean);

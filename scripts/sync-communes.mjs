@@ -18,6 +18,8 @@
 // Only free official sources (+ Wikidata / Wikimedia Commons / Wikipedia for the photo and description, with their
 // licence and author recorded). Nothing is invented: a missing value is { status: "unavailable", reason }.
 
+import { noEmail } from "./lib/no-email.mjs";
+import { safeName } from "./lib/safe-name.mjs";
 import { mkdir, readFile, writeFile, readdir, unlink } from "node:fs/promises";
 import { createReadStream } from "node:fs";
 import { createGunzip } from "node:zlib";
@@ -744,7 +746,7 @@ function ingestCommons(j, info) {
     const md = ii.extmetadata ?? {};
     info[from] = {
       page: ii.descriptionurl, url: ii.url, thumb: ii.thumburl ?? null, width: ii.thumbwidth ?? null, height: ii.thumbheight ?? null,
-      author: stripHtml(md.Artist?.value).slice(0, 200) || null, credit: stripHtml(md.Credit?.value).slice(0, 200) || null,
+      author: noEmail(stripHtml(md.Artist?.value)).slice(0, 200) || null, credit: stripHtml(md.Credit?.value).slice(0, 200) || null,
       licence: stripHtml(md.LicenseShortName?.value) || null, licenceUrl: md.LicenseUrl?.value ?? null,
     };
   }
@@ -1111,7 +1113,7 @@ for (const code of targets) {
   const s = JSON.stringify(f);
   bytes += s.length;
   if (s.length > maxSize[0]) maxSize = [s.length, code];
-  await writeFile(new URL(`${code}.json`, OUT), s);
+  if (safeName(code)) await writeFile(new URL(`${code}.json`, OUT), s);
   count("mayor", f.elected.mayor?.status === "ok");
   count("council", f.elected.council?.status === "ok");
   count("departmental", f.elected.departmental?.status === "ok");

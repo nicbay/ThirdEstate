@@ -20,6 +20,8 @@ export interface Assessed {
   legal: Legal; legalNote?: string | null; feasibility: Feas; feasibilityNote?: string | null; broadBenefit: boolean;
   sources?: { title: string; url: string }[];
 }
+/** Values from data files used as CSS class suffixes: letters, digits and dashes only. */
+const cls = (v: unknown) => String(v ?? "").replace(/[^w-]/g, "");
 export type Pop = "yes" | "partly" | "no";
 
 export function populism(m: Assessed): Pop {
@@ -71,11 +73,11 @@ export function measureTable(rows: Assessed[], opts: { id: string; partyName: st
       <tbody>${[...rows].sort((a, b) => Math.abs(b.cost ?? 0) - Math.abs(a.cost ?? 0)).map((m) => {
         const p = populism(m);
         return `<tr class="mt-row" data-id="${esc(m.id)}" tabindex="0" aria-expanded="false">
-          <td><b>${esc(m.label)}</b>${m.statusLabel ? ` <span class="prog-chip prog-${esc(m.status === "new" ? "new2027" : m.status ?? "")}">${esc(m.statusLabel)}</span>` : ""}</td>
+          <td><b>${esc(m.label)}</b>${m.statusLabel ? ` <span class="prog-chip prog-${cls(m.status === "new" ? "new2027" : m.status)}">${esc(m.statusLabel)}</span>` : ""}</td>
           <td class="num">${m.cost == null ? `<span class="muted">—</span>` : `<b class="${m.cost < 0 ? "mt-neg" : "mt-pos"}">${md(m.cost)}</b>${m.low != null && m.high != null ? `<br><span class="muted small">${md(m.low)} / ${md(m.high)}</span>` : ""}${m.by ? `<br><span class="muted small">${esc(m.by)}</span>` : ""}`}</td>
-          <td><span class="mt-f f-${m.feasibility ?? "na"}">${esc(feasLabel(m.feasibility))}</span></td>
-          <td><span class="mt-l l-${m.legal}">${esc(legalLabel(m.legal))}</span></td>
-          <td><span class="mt-p p-${p}">${esc(popLabel(p))}</span></td>
+          <td><span class="mt-f f-${cls(m.feasibility ?? "na")}">${esc(feasLabel(m.feasibility))}</span></td>
+          <td><span class="mt-l l-${cls(m.legal)}">${esc(legalLabel(m.legal))}</span></td>
+          <td><span class="mt-p p-${cls(p)}">${esc(popLabel(p))}</span></td>
         </tr>
         <tr class="mt-detail" hidden><td colspan="5">
           ${m.text ? `<p class="prog-quote" lang="fr">« ${esc(m.text)} »</p>` : ""}

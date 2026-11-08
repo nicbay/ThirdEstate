@@ -10,7 +10,7 @@ on:
   workflow_dispatch: # allow a manual run from the Actions tab
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: sync-senat
@@ -18,12 +18,16 @@ concurrency:
 
 jobs:
   sync:
+    permissions:
+      contents: write # push the refreshed data
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false # the token is given only to the push step
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: 24
           cache: npm
@@ -33,6 +37,8 @@ jobs:
       - run: node scripts/sync-senat.mjs
 
       - name: Commit if anything changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # meta.json always changes (sync timestamp) and elections-2026.json carries fetchedAt:
           # commit only when real data changed (scripts/data-changed.mjs ignores fetchedAt).
@@ -49,4 +55,4 @@ jobs:
           git commit -m "data: sync Sénat ($(date -u +%F))"
           # other jobs push to the same branch: rebase before pushing
           git pull --rebase
-          git push
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:${GITHUB_REF_NAME}"

@@ -25,7 +25,7 @@ export async function renderCirco(app: HTMLElement, code: string) {
           ${
             d
               ? `<article class="card mp-head" style="--c:${safeColor(d.groupe?.couleur) ?? "#999"}">
-              <img src="${photoUrl(d.id)}" alt="" onerror="this.style.visibility='hidden'" />
+              <img src="${photoUrl(d.id)}" alt="" data-hide-broken />
               <div class="mp-id">
                 <p class="eyebrow">${L("Député·e", "MP")}</p>
                 <h2><a href="#/depute/${d.id}">${esc(d.prenom)} ${esc(d.nom)}</a></h2>

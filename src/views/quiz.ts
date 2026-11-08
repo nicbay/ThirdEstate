@@ -309,7 +309,7 @@ async function results(stage: HTMLElement, d: QuizData, a: Answers) {
 
   const mpRow = (r: { m: QuizMp; sc: Score }, i: number | null) => `<li${i == null ? ` class="quiz-solo"` : ""}>
       ${i != null ? `<span class="quiz-rk">${i + 1}</span>` : ""}
-      <img src="${photoUrl(r.m[0])}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'" />
+      <img src="${photoUrl(r.m[0])}" alt="" loading="lazy" referrerpolicy="no-referrer" data-hide-broken />
       <span class="quiz-who"><a href="#/depute/${esc(r.m[0])}">${esc(r.m[1])}</a> <span class="chip" style="--c:${gcol(r.m[2])}">${esc(r.m[2])}</span></span>
       <span class="quiz-bar"><span style="width:${(100 * r.sc.s).toFixed(1)}%;background:${gcol(r.m[2])}"></span></span>
       <b>${pctS(r.sc.s)}</b></li>`;
@@ -325,7 +325,7 @@ async function results(stage: HTMLElement, d: QuizData, a: Answers) {
     ${best ? `<section class="quiz-match" style="--c:${gcol(best.m[2])}">
       <p class="quiz-kicker">${L("Votre député le plus proche", "Your closest MP")}</p>
       <div class="quiz-match-in">
-        <img src="${photoUrl(best.m[0])}" alt="" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'" />
+        <img src="${photoUrl(best.m[0])}" alt="" referrerpolicy="no-referrer" data-hide-broken />
         <div>
           <h2><a href="#/depute/${esc(best.m[0])}">${esc(best.m[1])}</a></h2>
           <p><span class="chip" style="--c:${gcol(best.m[2])}">${esc(best.m[2])}</span> ${esc(d.groups[best.m[2]]?.libelle ?? "")}</p>
@@ -379,7 +379,7 @@ async function results(stage: HTMLElement, d: QuizData, a: Answers) {
       ${mine.length ? `<ol class="quiz-rank">${mine
         .map((m) => ({ m, sc: score(m[4], m[5], a) }))
         .sort((x, y) => (y.sc && y.sc.n >= min ? y.sc.s : -1) - (x.sc && x.sc.n >= min ? x.sc.s : -1))
-        .map((r) => r.sc && r.sc.n >= min ? mpRow(r as { m: QuizMp; sc: Score }, null) : `<li class="quiz-na"><img src="${photoUrl(r.m[0])}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'" /><span class="quiz-who"><a href="#/depute/${esc(r.m[0])}">${esc(r.m[1])}</a> <span class="chip" style="--c:${gcol(r.m[2])}">${esc(r.m[2])}</span></span><span class="muted small">${L("trop peu de votes en commun", "too few votes in common")}</span></li>`)
+        .map((r) => r.sc && r.sc.n >= min ? mpRow(r as { m: QuizMp; sc: Score }, null) : `<li class="quiz-na"><img src="${photoUrl(r.m[0])}" alt="" loading="lazy" referrerpolicy="no-referrer" data-hide-broken /><span class="quiz-who"><a href="#/depute/${esc(r.m[0])}">${esc(r.m[1])}</a> <span class="chip" style="--c:${gcol(r.m[2])}">${esc(r.m[2])}</span></span><span class="muted small">${L("trop peu de votes en commun", "too few votes in common")}</span></li>`)
         .join("")}</ol>` : `<p class="muted">${L("Aucun député trouvé pour ce département.", "No MP found for this département.")}</p>`}
     </section>` : `<p class="muted small">${L("Enregistrez votre commune pour voir aussi les députés de votre département.", "Save your town to also see the MPs from your département.")} <a href="#/explorer">${L("Choisir ma commune", "Choose my town")}</a></p>`}
   </div>`;

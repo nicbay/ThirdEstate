@@ -202,7 +202,13 @@ export async function districtResults2024(circo: string) {
   const code = circo.startsWith("99") ? "ZZ" + circo.slice(2) : circo;
   const url = `${TABULAR}/a04f8cae-c94d-4ade-804d-ec024ee554ac/data/?page_size=50&CodCirElec__exact=${code}`;
   const r = await fetchJson<{ data: { NomPsn: string; PrenomPsn: string; CodNuaCand: string; NbVoix: number; RapportExprimes: number; Elu: string; Inscrits: number; Votants: number; Exprimes: number }[] }>(url);
-  const rows = r.data.map((x) => ({ ...x, NomPsn: repairDosMojibake(x.NomPsn ?? ""), PrenomPsn: repairDosMojibake(x.PrenomPsn ?? "") }));
+  // third-party data at runtime: coerce every field to the type it is used as (some end up in style attributes)
+  const num = (v: unknown) => { const n = Number(v); return Number.isFinite(n) ? n : 0; };
+  const rows = (Array.isArray(r?.data) ? r.data : []).map((x) => ({
+    NomPsn: repairDosMojibake(String(x.NomPsn ?? "")), PrenomPsn: repairDosMojibake(String(x.PrenomPsn ?? "")), CodNuaCand: String(x.CodNuaCand ?? ""),
+    NbVoix: num(x.NbVoix), RapportExprimes: Math.max(0, Math.min(100, num(x.RapportExprimes))), Elu: String(x.Elu ?? ""),
+    Inscrits: num(x.Inscrits), Votants: num(x.Votants), Exprimes: num(x.Exprimes),
+  }));
   return { url, rows: rows.sort((a, b) => b.NbVoix - a.NbVoix) };
 }
 

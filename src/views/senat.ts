@@ -57,7 +57,7 @@ export async function renderSenat(app: HTMLElement, dep?: string) {
     const rows = sens.filter((s) => (!filter.g || s.groupe?.id === filter.g) && (filter.dep ? s.numDepartement === filter.dep : !q || norm(`${s.prenom} ${s.nom} ${s.circonscription} ${s.numDepartement}`).includes(q))).sort((a, b) => a.alpha.localeCompare(b.alpha, "fr"));
     app.querySelector("#count")!.textContent = `${rows.length} ${L("sénateurs", "senators")}`;
     app.querySelector("#list")!.innerHTML = rows
-      .map((s) => `<a class="mp-card card" href="#/senateur/${esc(s.id)}" style="--c:${safeColor(s.groupe?.couleur)}"><img src="${senPhoto(s)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"/><div><strong>${esc(s.prenom)} ${esc(s.nom)}</strong><span class="chip">${esc(s.groupe?.abrev ?? "")}</span><div class="muted small">${esc(s.circonscription)}</div></div></a>`)
+      .map((s) => `<a class="mp-card card" href="#/senateur/${esc(s.id)}" style="--c:${safeColor(s.groupe?.couleur)}"><img src="${senPhoto(s)}" alt="" loading="lazy" data-hide-broken/><div><strong>${esc(s.prenom)} ${esc(s.nom)}</strong><span class="chip">${esc(s.groupe?.abrev ?? "")}</span><div class="muted small">${esc(s.circonscription)}</div></div></a>`)
       .join("");
   };
   app.querySelector<HTMLInputElement>("#q")!.addEventListener("input", (e) => { filter.q = (e.target as HTMLInputElement).value; filter.dep = ""; draw(); });
@@ -78,7 +78,7 @@ export async function renderSenateur(app: HTMLElement, id: string) {
     <section class="page">
       <p class="crumbs"><a href="#/senat">${L("Sénat", "Senate")}</a></p>
       <div class="mp-head card" style="--c:${safeColor(s.groupe?.couleur)}">
-        <img src="${senPhoto(s)}" alt="" onerror="this.style.visibility='hidden'"/>
+        <img src="${senPhoto(s)}" alt="" data-hide-broken/>
         <div class="mp-id"><p class="eyebrow">${L("Sénateur·rice", "Senator")}, ${esc(s.circonscription)}</p><h1>${esc(s.civ)} ${esc(s.prenom)} ${esc(s.nom)}</h1><p><span class="chip">${esc(s.groupe?.abrev ?? "")}</span> ${esc(s.groupe?.libelle ?? "")}</p>
         <p class="muted small">${age(s) ?? "?"} ${L("ans", "years old")}${s.profession ? `, ${esc(s.profession)}` : ""}${s.commission ? `. ${esc(s.commission.libelle)}${s.commission.fonction ? ` (${esc(s.commission.fonction)})` : ""}` : ""}</p></div>
       </div>
