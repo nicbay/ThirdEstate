@@ -14,6 +14,7 @@
     "sync:polls": "node scripts/sync-polls.mjs",
     "sync:markets": "node scripts/sync-markets.mjs",
     "sync:results": "node scripts/sync-results.mjs",
+    "sync:economy": "node scripts/sync-economy.mjs",
     "sync:forecast": "esbuild scripts/forecast-history.ts --bundle --platform=node --format=esm --outfile=.cache/forecast-history.mjs --log-level=warning && node .cache/forecast-history.mjs"
   },
   "devDependencies": {

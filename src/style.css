@@ -1056,3 +1056,54 @@ body { overflow-x: clip; }
 .theme-mps a:hover { text-decoration: underline; }
 .theme-mps .bar { margin-top: 0.3rem; }
 #th-group { max-width: 100%; }
+
+/* ---------- La France en chiffres (#/chiffres): live debt counter, "since you opened this page", indicators ---------- */
+.debt-live { margin-top: 0.8rem; border-top: 1px solid var(--rule-2); padding-top: 1rem; display: grid; gap: 0.5rem; }
+.debt-k, .debt-per dt, .since-t { font: 600 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-2); margin: 0; }
+.debt-n { margin: 0; font: 850 clamp(1.9rem, 0.9rem + 5.6vw, 4.6rem)/1 var(--display); font-stretch: 72%; letter-spacing: -0.02em; font-variant-numeric: tabular-nums lining-nums; color: var(--ink); white-space: nowrap; }
+.debt-per { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.8rem 1.6rem; margin: 0.6rem 0 0; }
+.debt-per div { border-top: 1px solid var(--rule-2); padding-top: 0.45rem; min-width: 0; }
+.debt-per dd { margin: 0.15rem 0 0; font: 800 1.3rem/1.15 var(--display); font-stretch: 80%; font-variant-numeric: tabular-nums lining-nums; color: var(--ink); }
+@media (max-width: 760px) { .debt-per { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.since-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 1.6rem 3rem; align-items: start; }
+.since-grid > div:first-child { position: sticky; top: calc(var(--bar-h) + 56px); }
+@media (max-width: 820px) { .since-grid { grid-template-columns: 1fr; } .since-grid > div:first-child { position: static; } }
+.since-n { margin: 0; font: 850 clamp(2.4rem, 1.4rem + 4vw, 4rem)/1 var(--display); font-stretch: 72%; letter-spacing: -0.02em; font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+.since-what { margin: 0.7rem 0 0; font-size: 1.1rem; line-height: 1.4; color: var(--ink-2); max-width: 32ch; min-height: 2.8em; }
+.since-list { list-style: none; margin: 0; padding: 0; display: grid; }
+.since-list li { border-top: 1px solid var(--rule); padding: 0.55rem 0 0.6rem; transition: opacity 0.4s; }
+.since-list li.locked { opacity: 0.5; }
+.sl-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.sl-name { font-weight: 700; }
+.sl-n { font: 700 0.95rem var(--display); font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+.since-list li.locked .sl-n { font: 500 0.74rem var(--mono); color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.05em; }
+.sl-src { margin: 0.15rem 0 0; font: 0.7rem/1.45 var(--mono); color: var(--ink-3); }
+.sl-src a { color: var(--ink-3); }
+.sl-src b { color: var(--ink-2); font-weight: 600; }
+
+.eco-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr)); gap: 1.6rem 2rem; }
+.eco-kpi { border-top: 2px solid var(--ink); padding-top: 0.5rem; display: grid; align-content: start; gap: 0.2rem; min-width: 0; }
+.eco-kpi h3 { margin: 0; font: 600 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-2); }
+.eco-v { margin: 0.1rem 0 0; font: 800 1.9rem/1.1 var(--display); font-stretch: 80%; letter-spacing: -0.015em; font-variant-numeric: tabular-nums lining-nums; }
+.eco-p, .eco-sub { margin: 0; font-size: 0.86rem; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.eco-sub { color: var(--ink); font-weight: 600; }
+.eco-spark { width: 100%; max-width: 240px; height: 34px; display: block; margin-top: 0.35rem; }
+.eco-spark path { fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.eco-spark circle { fill: var(--accent); }
+.eco-spark .z { stroke: var(--rule-2); stroke-width: 1; stroke-dasharray: 2 2; vector-effect: non-scaling-stroke; }
+.eco-range { margin: 0; font: 0.66rem var(--mono); color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.05em; }
+.eco-note { margin: 0.35rem 0 0; font-size: 0.8rem; line-height: 1.45; color: var(--ink-2); }
+.eco-src { margin: 0.2rem 0 0; font: 0.68rem/1.45 var(--mono); color: var(--ink-3); }
+.eco-src a { color: var(--ink-2); }
+.eco-method summary { cursor: pointer; font-weight: 700; }
+.eco-method ul { padding-left: 1.2rem; max-width: var(--measure); }
+.eco-method li { margin: 0.4rem 0; }
+
+/* homepage teaser */
+#home-debt:empty { display: none; }
+.debt-teaser { display: grid; gap: 0.25rem; background: #111216; color: #fff; padding: 1.2rem var(--gutter) 1.3rem; text-decoration: none; border-radius: 2px; }
+.debt-teaser:hover { text-decoration: none; background: #1b1c22; }
+.debt-teaser strong { font: 850 clamp(1.7rem, 1rem + 3.4vw, 2.9rem)/1 var(--display); font-stretch: 72%; letter-spacing: -0.02em; font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+.debt-teaser span:last-child { font-size: 0.9rem; color: #c9cad0; }
+.debt-teaser span:last-child::after { content: " →"; }
