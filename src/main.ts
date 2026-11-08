@@ -31,7 +31,7 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/simulateur(?:\/([\w-]+))?$/, (m) => renderSimulator(app, m[1])],
   [/^#\/resultats(?:\/([\w-]+))?$/, (m) => renderResults(app, m[1])],
   [/^#\/presidentielle(?:\/\d{4})?$/, () => void (location.hash = "#/resultats/presidentielle-2022")], // old links
-  [/^#\/assemblee(?:\/(deputes|composition|loyaute))?$/, (m) => renderAssemblee(app, m[1] ?? "carte")],
+  [/^#\/assemblee(?:\/(deputes|composition|loyaute|themes))?$/, (m) => renderAssemblee(app, m[1] ?? "carte")],
   [/^#\/assemblee\/(\w{2,3})$/, (m) => renderAssemblee(app, "carte", m[1])],
   [/^#\/deputes$/, () => void (location.hash = "#/assemblee/deputes")], // old links
   [/^#\/circo\/(\w{4,5})$/, (m) => renderCirco(app, m[1])],
