@@ -1,4 +1,4 @@
-// The Third Estate mark: a 16×16 pixel-art fox head, split bleu France / rouge Marianne.
+// The Third Estate mark: a 16×16 pixel-art fox head, symmetrical: bleu France outline, rouge Marianne fur, white snout.
 // One grid drives every use: the masthead and footer (onDark), the favicon and the share image
 // (scripts/build-brand.mjs imports this file), and docs/design.md describes it.
 // Rows top to bottom; '.' is transparent.
@@ -21,10 +21,11 @@ export const FOX_GRID = [
   ".......KK.......",
 ];
 
-/** K outline, L left fur (bleu France), R right fur (rouge Marianne), I inner ear, M muzzle, E eye, N nose. */
-const LIGHT: Record<string, string> = { K: "#111216", L: "#000091", R: "#e1000f", I: "#ffffff", M: "#ffffff", E: "#111216", N: "#111216" };
-/** On the black masthead the outline and eyes turn white; the nose stays black on the white muzzle. */
-const DARK: Record<string, string> = { ...LIGHT, K: "#f2f2f4", E: "#f2f2f4" };
+/** K outline (bleu France), L and R fur (rouge Marianne, both sides: the head is symmetrical), I inner ear, M muzzle, E eye, N nose.
+ *  L and R stay separate letters so the grid still reads left/right, but they share one colour. */
+const LIGHT: Record<string, string> = { K: "#000091", L: "#e1000f", R: "#e1000f", I: "#ffffff", M: "#ffffff", E: "#111216", N: "#111216" };
+/** On the black masthead bleu France (#000091) would vanish: the outline takes a lighter blue of the same hue. */
+const DARK: Record<string, string> = { ...LIGHT, K: "#5470ff" };
 
 /** The fox as <rect>s (horizontal runs merged), in a 16-unit box, offset by (x, y). */
 export function foxRects(onDark = false, x = 0, y = 0) {
