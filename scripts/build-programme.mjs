@@ -1,3 +1,4 @@
+import { existsSync, readFileSync } from "node:fs";
 // Campaign-programme analysis: extracts every measure from each version of a candidate's programme,
 // matches them across versions, labels what changed, and cross-checks with Assembly votes and speeches.
 //
@@ -617,6 +618,7 @@ const out = {
   summary,
   highlights,
   ...(cfg.costing ? { costing: cfg.costing } : {}),
+  ...(existsSync(new URL(`scripts/data/programmes/${slug}-assessment.json`, ROOT)) ? { assessment: JSON.parse(readFileSync(new URL(`scripts/data/programmes/${slug}-assessment.json`, ROOT), "utf8")) } : {}),
   votes,
   themeWeights,
   lineages: outLineages,

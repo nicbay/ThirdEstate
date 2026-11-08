@@ -1,11 +1,11 @@
-// Front page. One orchestrated reveal (headline strip), then a live map you can zoom into,
+// Front page. The hero and a live ticker, then the story of the moment (the 2027 programmes, with posts),
 // the polling trend and the shift arrows, each drawn in as it scrolls into view.
 import { geoConicConformal, geoPath } from "d3-geo";
-import { loadCircoGeo, loadDepartements, loadDeputes, loadFeed, loadMarkets, loadPolls, loadShifts } from "../data";
+import { loadDepartements, loadDeputes, loadFeed, loadMarkets, loadPolls, loadShifts } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
 import { lineChart } from "../lib/chart";
 import { meta, registerParties, spectrumRank } from "../lib/candidates";
-import { cloudEnabled, getHome, lookupPostcode, onHome, onPresence, setHome } from "../lib/cloud";
+import { cloudEnabled, getHome, onPresence } from "../lib/cloud";
 import { rewind } from "../lib/map";
 import { average, pollsInWindow, trend, WINDOW } from "../lib/polls";
 import { ELECTION_DAY, forecast } from "../lib/forecast";
@@ -16,6 +16,7 @@ import { bindSearch, searchBox } from "./explore";
 import { heroViz } from "./hero";
 import { mpChip, townBrief } from "./brief";
 import { mountDebtTeaser } from "./economy";
+import { mountProgrammesFeature, startTicker, tickerHtml, type TickerItem } from "./home-programmes";
 
 export async function renderHome(app: HTMLElement) {
   const [polls, markets, geo, deputes, shifts] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null), loadDepartements(), loadDeputes(), loadShifts().catch(() => null)]);
@@ -43,6 +44,13 @@ export async function renderHome(app: HTMLElement) {
   const home = getHome();
   const viz = heroViz(geo, deputes, shifts?.pairs.filter((p) => p.level === "district").at(-1));
 
+  const ticker: TickerItem[] = [
+    ...(leader ? [{ k: L("Sondages", "Polls"), html: esc(fr ? `${leader.name} en tête (${pct(leader.avg)})${second ? `, ${meta(second.name).surname} ${pct(second.avg)}` : ""}` : `${leader.name} leads (${pct(leader.avg)})${second ? `, ${meta(second.name).surname} ${pct(second.avg)}` : ""}`) }] : []),
+    { k: L("Programmes", "Programmes"), html: `<a href="#/programmes/melenchon">${L("Mélenchon : 5e version de L’Avenir en commun, passée au crible", "Mélenchon: 5th edition of L’Avenir en commun, examined")}</a>` },
+    ...(fav ? [{ k: L("Prévision", "Forecast"), html: esc(fr ? `${fav.name} : ${pct(fav.win, 0)} de chances` : `${fav.name}: ${pct(fav.win, 0)} chance`) }] : []),
+    ...(feed?.stories ?? []).slice(0, 4).map((st) => ({ k: L("Actualité", "News"), html: `<a href="#/fil">${esc(st.items[0].title)}</a>` })),
+    { k: L("Quiz", "Quiz"), html: `<a href="#/quiz">${L("Quel député vous ressemble ?", "Which MP is most like you?")}</a>` },
+  ];
   app.innerHTML = `
     <section class="page home">
       <section class="hero-x" aria-labelledby="hero-title">
@@ -50,6 +58,7 @@ export async function renderHome(app: HTMLElement) {
           <div class="hero-x-copy">
             <p class="hero-kicker">${L("Présidentielle 2027 · Assemblée · Sénat · 34 920 communes", "2027 presidential · Assembly · Senate · 34,920 towns")} <span class="live-badge" id="live-badge" hidden><i></i><span id="live-count"></span></span></p>
             <h1 id="hero-title"><span class="ln"><span>${L("La politique française,", "French politics,")}</span></span><span class="ln"><span><em>${L("en données.", "in data.")}</em></span></span></h1>
+            <a class="hero-story" href="#home-programmes" id="hero-story"><i aria-hidden="true"></i><span>${L("Le dossier du moment", "The story right now")}</span>${L("Les programmes 2027 passés au crible : ce qui change, ce que ça coûte", "The 2027 programmes examined: what changes, what it costs")} →</a>
             <p class="hero-dek">${L("Qui va gagner en 2027. Comment votent vos députés et sénateurs. Ce qui se passe dans votre commune. Et toutes les élections depuis 1848, archives à l’appui.", "Who will win in 2027. How your MPs and senators vote. What is happening in your town. And every election since 1848, with the archive footage.")}</p>
             <p class="hero-search-label">${home?.code ? `${L("Votre commune", "Your town")}${colon()}<a href="#/ville/${home.code}">${esc(home.commune ?? home.code)}</a>. ${L("Ou cherchez ailleurs", "Or look somewhere else")}` : L("Commencez par chez vous", "Start with where you live")}</p>
             ${searchBox(L("Votre ville ou votre code postal", "Your town or postcode"))}
@@ -70,21 +79,12 @@ export async function renderHome(app: HTMLElement) {
           <a href="#/chiffres"><span class="hx-k">${L("La France", "France")}</span><strong data-count="101">101</strong><span>${L("départements, et le pays en chiffres : dette en direct, emploi, prix, bascules gauche-droite", "departments, and the country in numbers: live debt, jobs, prices, left–right shifts")}</span></a>
           <a href="#/resultats"><span class="hx-k">${L("Archives", "Archives")}</span><strong>1848</strong><span>${L("chaque présidentielle depuis, avec l’annonce en vidéo ou à la radio", "every presidential election since, with the announcement on film or radio")}</span></a>
         </nav>
+        ${tickerHtml(ticker)}
       </section>
 
+      <div id="home-programmes" class="home-programmes"></div>
       <div id="mine"></div>
       <a class="quiz-teaser" href="#/quiz"><span class="quiz-teaser-k">${L("Quiz", "Quiz")}</span><strong>${L("Qui vous ressemble ?", "Who’s closest to you?")}</strong><span>${L("Répondez à de vrais votes de l’Assemblée : découvrez le député, le groupe et le candidat 2027 les plus proches de vous.", "Answer real Assembly votes: find the MP, group and 2027 candidate closest to you.")}</span></a>
-
-      <section class="card where-block">
-        <div class="pres-grid">
-          <div>
-            <header class="card-head"><h2 id="map-title">${L("La France qui suit l’élection", "France following the election")}</h2><button type="button" class="linkish" id="map-back" hidden>${L("Revenir à la France entière", "Back to all of France")}</button></header>
-            <svg id="live-map" viewBox="0 0 600 600" role="img" aria-label="${L("Carte de France", "Map of France")}"><g id="deps"></g><g id="districts"></g><g id="dots"></g></svg>
-            <p class="muted small" id="map-note"></p>
-          </div>
-          <aside class="panel" id="where-panel"></aside>
-        </div>
-      </section>
 
       <section class="card">
         <header class="card-head"><h2>${esc(headline)}</h2><a href="#/2027">${L("La présidentielle 2027", "The 2027 race")}</a></header>
@@ -135,133 +135,19 @@ export async function renderHome(app: HTMLElement) {
   mountDebtTeaser(app.querySelector<HTMLElement>("#home-debt"));
   if (home?.code) drawMine(app.querySelector<HTMLElement>("#mine")!, home.code, home.commune ?? home.code);
 
-  // ---------- live map: departments → zoom into districts ----------
   const features = geo.features.map(rewind).filter((f) => f.properties!.code.length === 2);
   const fc = { type: "FeatureCollection", features } as GeoJSON.FeatureCollection;
-  const proj = geoConicConformal().parallels([44, 49]).rotate([-3, 0]).fitExtent([[8, 8], [592, 592]], fc);
-  const path = geoPath(proj);
-  const centroid = new Map(features.map((f) => [f.properties!.code as string, path.centroid(f)]));
-  const svg = app.querySelector<SVGSVGElement>("#live-map")!;
-  const depName = new Map(features.map((f) => [f.properties!.code as string, f.properties!.nom as string]));
-  let counts = new Map<string, number>();
-  let total = 1;
-  let zoomed: string | null = null;
 
-  const drawDeps = () => {
-    const home = getHome()?.dep;
-    const max = Math.max(1, ...counts.values());
-    svg.querySelector("#deps")!.innerHTML = features
-      .map((f) => {
-        const code = f.properties!.code as string;
-        const n = counts.get(code) ?? 0;
-        return `<path class="area live-dep${code === home ? " is-home" : ""}${code === zoomed ? " selected" : ""}" data-code="${code}" d="${path(f)}" style="--a:${n ? 0.15 + (0.55 * n) / max : 0}" data-tip="${esc(`${f.properties!.nom}${n ? `\n${n} ${L(n > 1 ? "visiteurs en ce moment" : "visiteur en ce moment", n > 1 ? "visitors right now" : "visitor right now")}` : ""}`)}"/>`;
-      })
-      .join("");
-    svg.querySelector("#dots")!.innerHTML = zoomed
-      ? ""
-      : [...counts.entries()].map(([code, n]) => { const c = centroid.get(code); return c ? `<circle class="live-dot" cx="${c[0].toFixed(1)}" cy="${c[1].toFixed(1)}" r="${(3 + 3 * Math.sqrt(n)).toFixed(1)}"/>` : ""; }).join("");
-    svg.querySelectorAll<SVGPathElement>("#deps [data-code]").forEach((el) => el.addEventListener("click", () => zoomTo(el.dataset.code!)));
-  };
-
-  // animate the viewBox to a department's bounds, then draw its districts at the same projection
-  let anim = 0;
-  const animateViewBox = (to: [number, number, number, number]) => {
-    const from = svg.viewBox.baseVal;
-    const start = [from.x, from.y, from.width, from.height];
-    const t0 = performance.now(), dur = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 650;
-    cancelAnimationFrame(anim);
-    const step = (t: number) => {
-      const k = dur ? Math.min(1, (t - t0) / dur) : 1;
-      const e = 1 - Math.pow(1 - k, 3);
-      svg.setAttribute("viewBox", start.map((v, i) => v + (to[i] - v) * e).join(" "));
-      if (k < 1) anim = requestAnimationFrame(step);
-    };
-    anim = requestAnimationFrame(step);
-  };
-  const zoomTo = async (code: string | null) => {
-    zoomed = code;
-    const back = app.querySelector<HTMLButtonElement>("#map-back")!;
-    back.hidden = !code;
-    app.querySelector("#map-title")!.textContent = code ? depName.get(code) ?? code : L("La France qui suit l’élection", "France following the election");
-    svg.querySelector("#districts")!.innerHTML = "";
-    drawDeps();
-    drawPanel();
-    if (!code) return animateViewBox([0, 0, 600, 600]);
-    const f = features.find((x) => x.properties!.code === code);
-    if (!f) return;
-    const [[x0, y0], [x1, y1]] = path.bounds(f);
-    const pad = Math.max(x1 - x0, y1 - y0) * 0.12;
-    const side = Math.max(x1 - x0, y1 - y0) + 2 * pad;
-    animateViewBox([(x0 + x1) / 2 - side / 2, (y0 + y1) / 2 - side / 2, side, side]);
-    try {
-      const g = await loadCircoGeo(code);
-      if (zoomed !== code) return;
-      const byCirco = new Map(deputes.filter((d) => d.circo).map((d) => [d.circo!, d]));
-      svg.querySelector("#districts")!.innerHTML = g.features
-        .map(rewind)
-        .map((cf) => {
-          const c = cf.properties!.code as string;
-          const d = byCirco.get(c);
-          const pc = path.centroid(cf);
-          return `<a href="#/circo/${c}"><path class="district" d="${path(cf)}" fill="${safeColor(d?.groupe?.couleur) ?? "#ccc"}" data-tip="${esc(`${L("Circonscription", "District")} ${Number(c.slice(-2))}\n${d ? `${d.prenom} ${d.nom} (${d.groupe?.abrev ?? ""})` : ""}`)}"/><text x="${pc[0]}" y="${pc[1]}" class="district-num" style="font-size:${(side / 40).toFixed(1)}px">${Number(c.slice(-2))}</text></a>`;
-        })
-        .join("");
-    } catch {
-      /* no district outlines (e.g. abroad) */
-    }
-  };
-  app.querySelector("#map-back")!.addEventListener("click", () => zoomTo(null));
-
-  // ---------- "where are you from?" panel ----------
-  const drawPanel = () => {
-    const panel = app.querySelector<HTMLElement>("#where-panel")!;
-    const home = getHome();
-    const dep = zoomed ?? home?.dep ?? null;
-    const mps = dep ? deputes.filter((d) => d.numDepartement === dep).sort((a, b) => (a.numCirco ?? 0) - (b.numCirco ?? 0)) : [];
-    panel.innerHTML = `
-      ${
-        home
-          ? `<p class="small muted">${L("Vous suivez l’élection depuis", "You’re following from")} <b>${esc(home.commune ?? home.depName)}</b>${home.commune ? ` (${esc(home.depName)})` : ""}. <button type="button" class="linkish" id="home-change">${L("Changer", "Change")}</button></p>`
-          : `<h2>${L("D’où suivez-vous l’élection ?", "Where are you following from?")}</h2>
-             <form id="where-form" class="where-form"><label for="cp" class="small muted">${L("Votre code postal, pour voir votre circonscription et apparaître sur la carte. Seul votre département est partagé, de façon anonyme.", "Your postcode, to see your district and appear on the map. Only your department is shared, anonymously.")}</label>
-             <div><input id="cp" inputmode="numeric" pattern="[0-9AB]{5}" maxlength="5" placeholder="84000" autocomplete="postal-code"/><button class="button" type="submit">${L("Valider", "Go")}</button></div><p id="where-msg" class="small" role="status"></p></form>`
-      }
-      ${
-        dep
-          ? `<h3>${esc(depName.get(dep) ?? dep)}${colon()}${mps.length} ${L("circonscriptions", "districts")}</h3>
-             <ul class="circo-list">${mps.map((d) => `<li><a href="#/circo/${d.circo}"><span class="num-badge">${d.numCirco}</span><span><b>${esc(d.prenom)} ${esc(d.nom)}</b> <span class="chip" style="--c:${safeColor(d.groupe?.couleur) ?? "#999"}">${esc(d.groupe?.abrev ?? "")}</span></span></a></li>`).join("")}</ul>`
-          : `<p class="muted small">${L("Ou cliquez sur un département pour zoomer sur ses circonscriptions.", "Or click a department to zoom into its districts.")}</p>`
-      }`;
-    panel.querySelector("#home-change")?.addEventListener("click", () => setHome(null));
-    panel.querySelector<HTMLFormElement>("#where-form")?.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const cp = panel.querySelector<HTMLInputElement>("#cp")!.value.trim();
-      const msg = panel.querySelector("#where-msg")!;
-      try {
-        const communes = await lookupPostcode(cp);
-        if (!communes.length) { msg.textContent = L("Code postal inconnu.", "Unknown postcode."); return; }
-        const c = communes[0];
-        setHome({ dep: c.codeDepartement, depName: c.departement?.nom ?? depName.get(c.codeDepartement) ?? c.codeDepartement, commune: communes.length === 1 ? c.nom : undefined });
-      } catch {
-        msg.textContent = L("Le service geo.api.gouv.fr ne répond pas, réessayez.", "geo.api.gouv.fr isn’t responding, try again.");
-      }
-    });
-  };
-
-  const off1 = onHome((h) => { if (!document.body.contains(svg)) return off1(); zoomTo(h?.dep ?? null); });
-  const off2 = onPresence((c, t) => {
-    if (!document.body.contains(svg)) return off2();
-    counts = c;
-    total = t;
-    const badge = app.querySelector<HTMLElement>("#live-badge")!;
-    badge.hidden = false;
-    app.querySelector("#live-count")!.textContent = cloudEnabled() ? (fr ? `${total} ${total > 1 ? "personnes" : "personne"} en ce moment` : `${total} ${total > 1 ? "people" : "person"} here now`) : L("en direct dès la mise en ligne", "live once online");
-    app.querySelector("#map-note")!.textContent = cloudEnabled() ? L("Les points montrent d’où les visiteurs suivent le site en ce moment.", "Dots show where visitors are following from right now.") : L("Les visiteurs en direct apparaîtront ici une fois le site en ligne.", "Live visitors will appear here once the site is online.");
-    if (!zoomed) drawDeps();
+  // ---------- live visitors: the badge in the hero ----------
+  const badge = app.querySelector<HTMLElement>("#live-badge")!;
+  const off = onPresence((_c, total) => {
+    if (!document.body.contains(badge)) return off();
+    badge.hidden = !cloudEnabled();
+    app.querySelector("#live-count")!.textContent = fr ? `${total} ${total > 1 ? "personnes" : "personne"} en ce moment` : `${total} ${total > 1 ? "people" : "person"} here now`;
   });
-  drawDeps();
-  drawPanel();
-  if (getHome()) zoomTo(getHome()!.dep);
+  startTicker(app, ELECTION_DAY);
+  app.querySelector("#hero-story")?.addEventListener("click", (e) => { e.preventDefault(); app.querySelector("#home-programmes")?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); });
+  mountProgrammesFeature(app.querySelector<HTMLElement>("#home-programmes"));
 
   // ---------- trend chart ----------
   const from = shiftDays(latest, -365);

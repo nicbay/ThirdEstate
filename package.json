@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/check-candidates.mjs && tsc && vite build",
+    "build": "node scripts/check-candidates.mjs && node scripts/build-programmes-index.mjs && tsc && vite build",
     "check:candidates": "node scripts/check-candidates.mjs",
     "preview": "vite preview",
     "sync:an": "node scripts/sync-assemblee.mjs",
