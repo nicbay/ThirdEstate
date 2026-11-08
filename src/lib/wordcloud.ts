@@ -1,7 +1,8 @@
 // Small SVG word cloud: words placed largest first along an Archimedean spiral from the centre,
 // each one in the first spot where its box doesn't overlap a word already placed.
 // Widths are measured with a canvas in the page's own font, so call it after fonts have loaded
-// (see `fontsReady`). Words that can't be placed are left out.
+// (see `fontsReady`). Words that can't be placed are left out. Each word carries its placement rank (--i),
+// so src/lib/motion.ts can drop them in in spiral order.
 import { esc } from "../util";
 
 export interface CloudWord {
@@ -57,7 +58,7 @@ export function wordCloud(words: CloudWord[], opts: { width?: number; height?: n
     }
     if (!placed) continue;
     boxes.push({ ...placed, w, h });
-    const text = `<text x="${(placed.x + w / 2).toFixed(1)}" y="${(placed.y + h / 2 + size * 0.34).toFixed(1)}" font-size="${size}" font-weight="${fw}" fill="${wd.color}"${wd.tip ? ` data-tip="${esc(wd.tip)}"` : ""}${wd.key != null ? ` data-key="${esc(wd.key)}" class="wc-pick" tabindex="0" role="button" aria-pressed="false"` : ""}>${esc(wd.text)}</text>`;
+    const text = `<text x="${(placed.x + w / 2).toFixed(1)}" y="${(placed.y + h / 2 + size * 0.34).toFixed(1)}" font-size="${size}" font-weight="${fw}" fill="${wd.color}" style="--i:${out.length}"${wd.tip ? ` data-tip="${esc(wd.tip)}"` : ""}${wd.key != null ? ` data-key="${esc(wd.key)}" class="wc-pick" tabindex="0" role="button" aria-pressed="false"` : ""}>${esc(wd.text)}</text>`;
     out.push(wd.href ? `<a href="${esc(wd.href)}">${text}</a>` : text);
   }
   return `<svg viewBox="0 0 ${W} ${H}" class="wordcloud" role="img" aria-label="${esc(opts.label ?? sorted.slice(0, 20).map((w) => w.text).join(", "))}">${out.join("")}</svg>`;

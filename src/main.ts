@@ -23,6 +23,7 @@ import { loadDeputes } from "./data";
 import { foxSvg } from "./lib/fox";
 import { pixelIcon, type PixelIcon } from "./lib/pixel-icons";
 import { initSearch, openSearch } from "./lib/search";
+import { foxBusy, initFox, initMotion, pageTransition } from "./lib/motion";
 
 const app = document.getElementById("app")!;
 const nav = document.getElementById("nav")!;
@@ -33,6 +34,8 @@ const quizBtn = document.getElementById("quiz-cta") as HTMLAnchorElement;
 const tabbar = document.getElementById("tabbar")!;
 const skip = document.getElementById("skip") as HTMLAnchorElement;
 document.querySelector(".topbar .brand")!.insertAdjacentHTML("afterbegin", foxSvg(28, true));
+initFox(document.querySelector<SVGSVGElement>(".topbar .brand .fox"));
+initMotion(app);
 
 // Full-bleed bands size themselves on --vw: the viewport minus a classic (non-overlay) scrollbar, which 100vw includes.
 const setVw = () => document.documentElement.style.setProperty("--vw", `${document.documentElement.clientWidth}px`);
@@ -271,12 +274,8 @@ function enhance() {
 /**
  * Every page opens like the homepage: its crumbs and header are lifted into one dark, full-width band,
  * the headline rises in line by line and the clause after the first comma takes the red→blue gradient.
- * Sections below fade up as they scroll into view.
+ * That is the page's one entrance; what moves below it (figures, seats, lines) is in src/lib/motion.ts.
  */
-const reducedMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
-const revealer = "IntersectionObserver" in window
-  ? new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("rv-in"); revealer!.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" })
-  : null;
 function sectionHero() {
   const page = app.querySelector<HTMLElement>(":scope > .page");
   if (!page || page.classList.contains("home") || page.dataset.hx) return;
@@ -312,12 +311,6 @@ function sectionHero() {
       h1.append(ln);
     });
   }
-  if (!revealer || reducedMotion()) return;
-  [...page.children].filter((el) => el !== box).forEach((el, n) => {
-    el.classList.add("rv");
-    (el as HTMLElement).style.setProperty("--rv-d", `${Math.min(n, 3) * 70}ms`);
-    revealer.observe(el);
-  });
 }
 
 let queued = false;
@@ -332,12 +325,18 @@ async function route() {
   const { path, anchor } = split();
   // in-page anchor on the same page: just scroll
   if (path === lastPath && anchor) return document.getElementById(anchor)?.scrollIntoView({ behavior: "smooth" });
+  const firstRender = !lastPath;
   lastPath = path;
+  // the first page just appears (the fox is assembling); later ones cross over with the masthead held still
+  return firstRender ? render(path, anchor) : pageTransition(() => render(path, anchor));
+}
+async function render(path: string, anchor: string | undefined) {
   renderChrome(path);
   for (const [re, fn] of routes) {
     const m = path.match(re);
     if (m) {
       app.innerHTML = `<p class="muted pad">${t().loading}</p>`;
+      foxBusy(true);
       try {
         await fn(m);
         const page = app.querySelector(":scope > .page");
@@ -347,6 +346,8 @@ async function route() {
       } catch (err) {
         console.error(err);
         app.innerHTML = `<p class="error pad">${t().error} — ${(err as Error).message}</p>`;
+      } finally {
+        foxBusy(false);
       }
       return;
     }
