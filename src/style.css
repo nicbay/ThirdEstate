@@ -1144,4 +1144,17 @@ body { overflow-x: clip; }
   .presence-table th, .presence-table td { padding-right: 0.4rem; }
   .pcs-table { font-size: 0.82rem; }
   .pcs-table th, .pcs-table td { padding-right: 0.4rem; }
+/* ---- elections: simulator flows as a list on phones (the 960-wide funnel shrinks labels to ~5px) ---- */
+.flow-list { display: none; }
+@media (max-width: 639px) {
+  .funnel-fig #funnel { display: none; }
+  .flow-list { display: block; font-size: 14px; }
+  .flow-list .fl-k { font: 500 12px var(--mono); color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 6px; }
+  .flow-list ol { list-style: none; margin: 0; padding: 0; }
+  .flow-list li { padding: 8px 0 8px 10px; border-left: 4px solid var(--c); border-bottom: 1px solid var(--rule, rgba(127, 127, 127, 0.2)); }
+  .flow-list .fl-head { display: flex; justify-content: space-between; gap: 8px; }
+  .flow-list .fl-bar { display: flex; height: 8px; margin: 6px 0 4px; border-radius: 2px; overflow: hidden; background: var(--wash); }
+  .flow-list .fl-split { margin: 0; font-size: 13px; color: var(--ink-2); }
+  .flow-list .fl-total { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 10px 0 0; font-size: 14px; }
+  .flow-list .fl-total span { border-left: 4px solid var(--c); padding-left: 6px; }
 }

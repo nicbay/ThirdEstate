@@ -20,7 +20,7 @@
 // to fit). The method is shown in full on the 2027 page.
 import type { Market } from "../data";
 import { meta, type Bloc } from "./candidates";
-import { combineOdds } from "./markets";
+import { combineOdds, winShare } from "./markets";
 import { average, duelAverages, referenceLineup, type Duel, type Poll } from "./polls";
 
 /** First round of the 2027 presidential election. The decree isn't out yet: the Constitution puts it
@@ -88,13 +88,12 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
   const { sd1, sd2, bloc: sdBloc } = errors(daysToGo);
   const lineup = referenceLineup(firstRound, asOf);
   const base = lineup.rows.map((r) => ({ name: r.name, share: r.share, bloc: meta(r.name).bloc }));
-  const duels = duelAverages(secondRound);
+  const duels = duelAverages(secondRound, undefined, asOf).filter((d) => !d.stale);
   const odds = combineOdds(markets);
-  const winTotal = odds.reduce((s, o) => s + (o.win?.avg ?? 0), 0) || 1;
   const added: string[] = [];
   const polled = average(firstRound, asOf, undefined, 0);
   for (const o of odds) {
-    if ((100 * (o.win?.avg ?? 0)) / winTotal < 3 || base.some((c) => norm(c.name) === norm(o.name))) continue;
+    if ((winShare(odds, o) ?? 0) < 3 || base.some((c) => norm(c.name) === norm(o.name))) continue;
     const pv = polled.find((r) => norm(r.name) === norm(o.name));
     if (!pv || pv.avg < 1) continue;
     const nb = meta(pv.name).bloc;
@@ -155,7 +154,7 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
     const o = odds.find((x) => norm(x.name) === k);
     const pw = c ? (100 * (wins.get(c.name) ?? 0)) / RUNS : 0;
     const pq = c ? (100 * (quals.get(c.name) ?? 0)) / RUNS : 0;
-    const mw = o?.win ? (100 * o.win.avg) / winTotal : 0;
+    const mw = winShare(odds, o) ?? 0;
     const mq = o?.runoff?.avg ?? null;
     const qualify = c && mq != null ? (1 - wm) * pq + wm * mq : c ? pq : mq;
     return {
