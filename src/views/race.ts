@@ -2,8 +2,9 @@
 import { loadMarkets, loadPolls } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
 import { meta, registerParties, spectrumRank } from "../lib/candidates";
-import { average, duelAverages, pollValue, referenceLineup, WINDOW } from "../lib/polls";
-import { combineOdds, marketMeta } from "../lib/markets";
+import { average, duelAverages, pollValue, pollsInWindow } from "../lib/polls";
+import { combineOdds, platformShare, winShare } from "../lib/markets";
+import { dec, pair100, pct, signed } from "../lib/format";
 import { esc, safeUrl, safeColor } from "../util";
 import { shiftDays } from "./home";
 import { ELECTION_DAY, MARKET_WEIGHT, forecast, type Forecast } from "../lib/forecast";
@@ -16,29 +17,30 @@ export async function renderRace(app: HTMLElement) {
   registerParties(polls.parties);
   const latest = polls.firstRound[0]?.end ?? new Date().toISOString().slice(0, 10);
   const now = average(polls.firstRound, latest);
-  const before = new Map(average(polls.firstRound, shiftDays(latest, -30), WINDOW, 0).map((r) => [r.name, r.avg]));
+  // 30 days earlier, same average; minShare 0 so a candidate tested then is never missing a comparison point
+  const before = new Map(average(polls.firstRound, shiftDays(latest, -30), undefined, 0).map((r) => [r.name, r.avg]));
   const top = now.slice(0, 10);
   const max = Math.max(...top.map((r) => r.avg), 1);
-  const duels = duelAverages(polls.secondRound).slice(0, 5);
-  const winner = markets?.markets.find((m) => m.id.startsWith("KXFRENCHPRES")) ?? markets?.markets.find((m) => /winner|next french presidential election$/i.test(m.question));
-  const lineup = referenceLineup(polls.firstRound, latest);
-  const strip = [...lineup.rows].sort((a, b) => spectrumRank(a.name) - spectrumRank(b.name));
-  const sum = strip.reduce((s, r) => s + r.share, 0) || 1;
-  const ranked = [...lineup.rows].sort((a, b) => b.share - a.share);
-  const [leader, second] = ranked;
-  const nPolls = polls.firstRound.filter((p) => p.end > shiftDays(latest, -WINDOW)).length;
+  const duels = duelAverages(polls.secondRound).filter((d) => !d.stale).slice(0, 5);
+  // the market card shows the same blended figure as the forecast: both platforms, volume-weighted, rescaled to 100
+  const odds = combineOdds(markets?.markets ?? []).filter((o) => o.win);
+  const platforms = [...new Set((markets?.markets ?? []).filter((m) => /^KXFRENCHPRES-/.test(m.id) || /^next french presidential election$/i.test(m.question.trim())).map((m) => m.platform))];
+  const strip = now.filter((r) => r.avg >= 0.5).sort((a, b) => spectrumRank(a.name) - spectrumRank(b.name));
+  const sum = strip.reduce((s, r) => s + r.avg, 0) || 1;
+  const leader = now[0];
+  const nPolls = pollsInWindow(polls.firstRound, latest).length;
 
+  const fr = getLang() === "fr";
   const fc = forecast(polls.firstRound, polls.secondRound, markets?.markets ?? [], new Date().toISOString().slice(0, 10));
   const fav = fc.rows[0];
   const fem = (n: string) => /^(Marine|Christine|Ségolène|Marion|Nathalie|Valérie|Clémentine|Sandrine|Yaël|Élisabeth|Marie|Anne)\b/.test(n);
   const headline = fav
     ? getLang() === "fr"
-      ? `${fav.name} ${fem(fav.name) ? "favorite" : "favori"}, ${Math.round(fav.win)} % de chances d’être ${fem(fav.name) ? "élue" : "élu"}`
-      : `${fav.name} is the favourite, with a ${Math.round(fav.win)}% chance of winning`
+      ? `${fav.name} ${fem(fav.name) ? "favorite" : "favori"}, ${pct(fav.win, 0)} de chances d’être ${fem(fav.name) ? "élue" : "élu"}`
+      : `${fav.name} is the favourite, with a ${pct(fav.win, 0)} chance of winning`
     : leader
       ? L(`${leader.name} en tête des intentions de vote`, `${leader.name} leads first-round polling`)
       : L("Où en est la course", "Where the race stands");
-  void second;
 
   app.innerHTML = `
     <section class="page">
@@ -55,8 +57,8 @@ export async function renderRace(app: HTMLElement) {
 
       <h2 class="sec-k">${L("Les sondages aujourd’hui, de gauche à droite", "The polls today, left to right")}</h2>
       <figure class="spectrum" style="margin:0" aria-label="${L("Intentions de vote, de gauche à droite", "Voting intention, left to right")}">
-        <div class="spectrum-bar">${strip.map((r) => `<span style="flex:${r.share};background:${meta(r.name).color}" data-tip="${esc(`${r.name}${meta(r.name).party ? ` (${meta(r.name).party})` : ""}\n${r.share.toFixed(1)} %`)}"></span>`).join("")}</div>
-        <div class="spectrum-labels">${strip.map((r) => `<span style="flex:${r.share}">${(100 * r.share) / sum >= 7 ? `<b>${r.share.toFixed(0)} %</b>${esc(meta(r.name).surname)}` : ""}</span>`).join("")}</div>
+        <div class="spectrum-bar">${strip.map((r) => `<span style="flex:${r.avg};background:${meta(r.name).color}" data-tip="${esc(`${r.name}${meta(r.name).party ? ` (${meta(r.name).party})` : ""}\n${pct(r.avg)}`)}"></span>`).join("")}</div>
+        <div class="spectrum-labels">${strip.map((r) => `<span style="flex:${r.avg}">${(100 * r.avg) / sum >= 6 ? `<b>${pct(r.avg)}</b>${esc(meta(r.name).surname)}` : ""}</span>`).join("")}</div>
         <div class="spectrum-axis"><span>${L("Gauche", "Left")}</span><span>${L("Droite", "Right")}</span></div>
       </figure>
 
@@ -70,10 +72,11 @@ export async function renderRace(app: HTMLElement) {
               .map((r) => {
                 const m = meta(r.name);
                 const prev = before.get(r.name);
-                const delta = prev != null ? r.avg - prev : null;
+                // the change is always shown when there is a figure 30 days back (a stable average reads "0,0")
+                const delta = prev != null ? Math.round(10 * r.avg) / 10 - Math.round(10 * prev) / 10 : null;
                 return `<li>
                   <div class="bar-label"><span>${esc(r.name)} <span class="muted">${esc(m.party ?? "")}</span></span>
-                  <span>${delta != null && Math.abs(delta) >= 0.1 ? `<span class="${delta > 0 ? "up" : "down"}">${delta > 0 ? "+" : ""}${delta.toFixed(1)}</span> ` : ""}<b>${r.avg.toFixed(1)} %</b></span></div>
+                  <span>${delta != null ? `<span class="${Math.abs(delta) < 0.05 ? "muted" : delta > 0 ? "up" : "down"}" title="${L("sur 30 jours", "over 30 days")}">${signed(delta)}</span> ` : `<span class="muted small">${L("nouveau", "new")}</span> `}<b>${pct(r.avg)}</b></span></div>
                   <div class="bar"><div style="width:${(100 * r.avg) / max}%;background:${m.color}"></div></div>
                 </li>`;
               })
@@ -84,11 +87,17 @@ export async function renderRace(app: HTMLElement) {
         <section class="card">
           <header class="card-head"><h2>${L("Ce que parient les marchés", "What the betting markets say")}</h2><a href="#/sondages#marches">${L("Tous les marchés", "All markets")}</a></header>
           ${
-            winner
-              ? `<p class="muted small">${L("Probabilité de victoire implicite", "Implied chance of winning")}, ${esc(winner.platform)}, ${fmtDate(markets!.fetchedAt)}.</p>
-                 <ol class="bars">${winner.outcomes
+            odds.length
+              ? `<p class="muted small">${fr
+                  ? `Probabilité de victoire implicite, moyenne ${platforms.length > 1 ? `de ${platforms.map(esc).join(" et ")} pondérée par les montants échangés` : `de ${platforms.map(esc).join("")}`}, ramenée à 100 % (le chiffre « Marchés » de la prévision), ${fmtDate(markets!.fetchedAt)}.`
+                  : `Implied chance of winning, ${platforms.length > 1 ? `${platforms.map(esc).join(" and ")} averaged by traded volume` : platforms.map(esc).join("")}, rescaled to 100% (the forecast’s “Markets” figure), ${fmtDate(markets!.fetchedAt)}.`}</p>
+                 <ol class="bars">${odds
                    .slice(0, 7)
-                   .map((o) => `<li><div class="bar-label"><span>${esc(o.name)}</span><b>${o.prob.toFixed(0)} %</b></div><div class="bar"><div style="width:${o.prob}%;background:${meta(o.name).color}"></div></div></li>`)
+                   .map((o) => {
+                     const v = winShare(odds, o) ?? 0;
+                     const detail = (["kalshi", "polymarket"] as const).map((pl) => { const x = platformShare(odds, o, pl); return x == null ? "" : `${pl === "kalshi" ? "Kalshi" : "Polymarket"} ${pct(x, 0)}`; }).filter(Boolean).join(" · ");
+                     return `<li><div class="bar-label"><span>${esc(o.name)}${detail ? ` <span class="muted small">${detail}</span>` : ""}</span><b>${pct(v, 0)}</b></div><div class="bar"><div style="width:${v}%;background:${meta(o.name).color}"></div></div></li>`;
+                   })
                    .join("")}</ol>`
               : `<p class="muted">${L("Données de marché indisponibles.", "Market data unavailable.")}</p>`
           }
@@ -101,7 +110,7 @@ export async function renderRace(app: HTMLElement) {
           <table class="table">
             <thead><tr><th>${L("Duel testé", "Match-up")}</th><th class="num">${L("Écart", "Margin")}</th><th class="num">${L("Sondages", "Polls")}</th></tr></thead>
             <tbody>${duels
-              .map((d) => `<tr><td><i class="dot" style="background:${meta(d.winner).color}"></i><b>${esc(meta(d.winner).surname)} ${d.pw.toFixed(0)}</b> – ${d.pl.toFixed(0)} ${esc(meta(d.loser).surname)}</td><td class="num">+${(d.pw - d.pl).toFixed(0)}</td><td class="num muted">${d.total}</td></tr>`)
+              .map((d) => { const [rw, rl] = pair100(d.pw, d.pl); return `<tr><td><i class="dot" style="background:${meta(d.winner).color}"></i><b>${esc(meta(d.winner).surname)} ${rw}</b> – ${rl} ${esc(meta(d.loser).surname)}</td><td class="num">+${rw - rl}</td><td class="num muted">${d.total}</td></tr>`; })
               .join("")}</tbody>
           </table>
           <a class="button" href="#/simulateur">${L("Simuler un second tour", "Simulate a runoff")}</a>
@@ -116,7 +125,7 @@ export async function renderRace(app: HTMLElement) {
               .map((p) => {
                 const names = [...new Set(p.hyps.flatMap((h) => Object.keys(h)))];
                 const top3 = names.map((n) => [n, pollValue(p, n)!] as const).sort((a, b) => b[1] - a[1]).slice(0, 3);
-                return `<tr><td>${esc(p.pollster)}</td><td class="muted">${fmtDate(p.end)}</td><td>${top3.map(([n, v]) => `${esc(meta(n).surname)} ${v.toFixed(0)}`).join(", ")}</td></tr>`;
+                return `<tr><td>${esc(p.pollster)}</td><td class="muted">${fmtDate(p.end)}</td><td>${top3.map(([n, v]) => `${esc(meta(n).surname)} ${dec(v, 0)}`).join(", ")}</td></tr>`;
               })
               .join("")}</tbody>
           </table>
@@ -146,6 +155,7 @@ function forecastCard(fc: Forecast) {
   const rest = fc.rows.length - shown.length;
   const max = Math.max(...shown.map((r) => r.win), 1);
   const fmt = (v: number) => (v < 1 ? "<1" : v > 99 ? ">99" : Math.round(v).toString());
+  const fmtP = (v: number) => `${fmt(v)}${L(" %", "%")}`;
   const fav = fc.rows[0];
   const pair = fc.pairs[0];
   const sur = (n: string) => meta(n).surname;
@@ -165,7 +175,7 @@ function forecastCard(fc: Forecast) {
             <div class="fc-name"><i class="dot" style="background:${c}"></i><b>${esc(r.name)}</b>${party ? ` <span class="muted small">${esc(party)}</span>` : ""}</div>
             <div class="fc-pct"><strong>${fmt(r.win)}</strong><span>%</span></div>
             <div class="fc-bar"><div style="width:${(100 * r.win) / max}%;background:${c}"></div></div>
-            <div class="fc-src small muted">${L("Sondages", "Polls")} <b>${r.polls ? `${fmt(r.polls.win)} %` : L("non testé", "not polled")}</b> · ${L("Marchés", "Markets")} <b>${r.markets?.win != null ? `${fmt(r.markets.win)} %` : "–"}</b>${r.qualify != null ? ` · ${L("au second tour", "reaches runoff")} <b>${fmt(r.qualify)} %</b>` : ""}</div>
+            <div class="fc-src small muted">${L("Sondages", "Polls")} <b>${r.polls ? `${fmtP(r.polls.win)}` : L("non testé", "not polled")}</b> · ${L("Marchés", "Markets")} <b>${r.markets?.win != null ? `${fmtP(r.markets.win)}` : "–"}</b>${r.qualify != null ? ` · ${L("au second tour", "reaches runoff")} <b>${fmtP(r.qualify)}</b>` : ""}</div>
           </li>`;
         })
         .join("")}</ol>
@@ -191,11 +201,11 @@ function forecastCard(fc: Forecast) {
           ? `<b>Sondages.</b> Point de départ : la moyenne des sondages pour la liste de candidats la plus testée (${fc.nLineupPolls} sondages ces trois dernières semaines)${added ? `, plus ${added}, que les marchés jugent crédible${fc.added.length > 1 ? "s" : ""}, à sa moyenne dans les sondages où il figure ; ses points sont pris aux candidats les plus proches politiquement` : ""}.`
           : `<b>Polls.</b> Starting point: the polling average for the most-tested line-up (${fc.nLineupPolls} polls over the last three weeks)${added ? `, plus ${added}, whom the markets rate as credible, at their average in the polls that test them, with the points taken from the politically closest candidates` : ""}.`}</li>
         <li>${fr
-          ? `<b>20 000 simulations.</b> À chaque tirage, chaque candidat reçoit une erreur de sondage aléatoire : une part commune à sa famille politique (σ = 1,5 point) et une part propre (σ = ${fc.sd1.toFixed(1).replace(".", ",")} points à ${fc.daysToGo} jours ; elle se resserre jusqu’à 2 points la veille). Les deux premiers vont au second tour.`
-          : `<b>20,000 simulations.</b> In each draw every candidate gets a random polling error: a part shared with their political family (σ = 1.5 pts) and their own part (σ = ${fc.sd1.toFixed(1)} pts at ${fc.daysToGo} days out, narrowing to 2 pts on the eve). The top two go to the runoff.`}</li>
+          ? `<b>20 000 simulations.</b> À chaque tirage, chaque candidat reçoit une erreur de sondage aléatoire : une part commune à sa famille politique (σ = 1,5 point) et une part propre (σ = ${dec(fc.sd1)} points à ${fc.daysToGo} jours ; elle se resserre jusqu’à 2 points la veille). Les deux premiers vont au second tour.`
+          : `<b>20,000 simulations.</b> In each draw every candidate gets a random polling error: a part shared with their political family (σ = 1.5 pts) and their own part (σ = ${dec(fc.sd1)} pts at ${fc.daysToGo} days out, narrowing to 2 pts on the eve). The top two go to the runoff.`}</li>
         <li>${fr
-          ? `<b>Second tour.</b> Le score attendu vient des sondages de second tour pour ce duel s’ils existent, sinon d’un modèle de reports de voix selon la proximité politique (le même que le simulateur). On y ajoute une erreur (σ = ${fc.sd2.toFixed(1).replace(".", ",")} points aujourd’hui) : les duels sondés avant le premier tour se trompent souvent de beaucoup.`
-          : `<b>Runoff.</b> The expected score comes from runoff polls for that pairing when they exist, otherwise from a vote-transfer model based on political proximity (the same as the simulator). An error is added (σ = ${fc.sd2.toFixed(1)} pts today): runoff polls taken before the first round often miss by a lot.`}</li>
+          ? `<b>Second tour.</b> Le score attendu vient des sondages de second tour pour ce duel s’ils existent, sinon d’un modèle de reports de voix selon la proximité politique (le même que le simulateur). On y ajoute une erreur (σ = ${dec(fc.sd2)} points aujourd’hui) : les duels sondés avant le premier tour se trompent souvent de beaucoup.`
+          : `<b>Runoff.</b> The expected score comes from runoff polls for that pairing when they exist, otherwise from a vote-transfer model based on political proximity (the same as the simulator). An error is added (σ = ${dec(fc.sd2)} pts today): runoff polls taken before the first round often miss by a lot.`}</li>
         <li>${L(
           "<b>Marchés.</b> Les cotes « vainqueur » de Kalshi et Polymarket, ramenées à 100 % pour retirer la marge des plateformes, puis moyennées en pondérant par les montants échangés.",
           "<b>Markets.</b> Kalshi and Polymarket “winner” prices, rescaled to 100% to remove the platforms’ margin, then averaged weighted by traded volume.",

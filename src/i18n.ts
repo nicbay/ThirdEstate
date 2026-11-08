@@ -119,6 +119,8 @@ export function setLang(l: Lang) {
     /* ignore */
   }
 }
-export const fmtNum = (n: number) => n.toLocaleString(lang === "fr" ? "fr-FR" : "en-GB");
-export const fmtPct = (n: number, digits = 1) => `${n.toLocaleString(lang === "fr" ? "fr-FR" : "en-GB", { minimumFractionDigits: digits, maximumFractionDigits: digits })} %`.replace(" %", lang === "fr" ? " %" : "%");
+export const fmtNum = (n: number | null | undefined) => (typeof n === "number" && Number.isFinite(n) ? n.toLocaleString(lang === "fr" ? "fr-FR" : "en-GB") : "—");
+/** FR "59,6 %" (narrow no-break space), EN "59.6%"; missing values show "—". */
+export const fmtPct = (n: number | null | undefined, digits = 1) =>
+  typeof n === "number" && Number.isFinite(n) ? `${n.toLocaleString(lang === "fr" ? "fr-FR" : "en-GB", { minimumFractionDigits: digits, maximumFractionDigits: digits })}${lang === "fr" ? " %" : "%"}` : "—";
 export const fmtDate = (iso: string) => new Date(iso).toLocaleDateString(lang === "fr" ? "fr-FR" : "en-GB", { day: "numeric", month: "short", year: "numeric" });

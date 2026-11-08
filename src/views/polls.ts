@@ -3,7 +3,8 @@ import { loadMarkets, loadPolls } from "../data";
 import { L, fmtDate, fmtNum, getLang } from "../i18n";
 import { lineChart } from "../lib/chart";
 import { meta, registerParties } from "../lib/candidates";
-import { average, duelAverages, pollValue, trend } from "../lib/polls";
+import { WINDOW, average, duelAverages, pollValue, pollsterName, trend } from "../lib/polls";
+import { colon, dec, pair100, pct } from "../lib/format";
 import { esc, safeUrl } from "../util";
 import { shiftDays } from "./home";
 
@@ -14,12 +15,15 @@ export async function renderPolls(app: HTMLElement) {
   registerParties(polls.parties);
   const latest = polls.firstRound[0]?.end ?? new Date().toISOString().slice(0, 10);
   const current = average(polls.firstRound, latest);
-  const pollsters = [...new Set(polls.firstRound.map((p) => p.pollster))].sort();
+  const pollsters = [...new Set(polls.firstRound.map((p) => pollsterName(p.pollster)))].sort();
+  const allDuels = duelAverages(polls.secondRound);
+  const duels = allDuels.filter((d) => !d.stale);
+  const nStale = allDuels.length - duels.length;
 
   app.innerHTML = `
     <section class="page">
       <div class="page-head">
-        <div><p class="eyebrow">${L("Présidentielle 2027", "2027 presidential election")}</p><h1>${current[0] ? (getLang() === "fr" ? `${esc(current[0].name)} à ${current[0].avg.toFixed(0)} % en moyenne, ${current[1] ? `${esc(meta(current[1].name).surname)} à ${current[1].avg.toFixed(0)} %` : ""}` : `${esc(current[0].name)} averages ${current[0].avg.toFixed(0)}%, ${current[1] ? `${esc(meta(current[1].name).surname)} ${current[1].avg.toFixed(0)}%` : ""}`) : L("Tous les sondages, et ce que parient les marchés", "Every poll, and what the betting markets say")}</h1>
+        <div><p class="eyebrow">${L("Présidentielle 2027", "2027 presidential election")}</p><h1>${current[0] ? (getLang() === "fr" ? `${esc(current[0].name)} à ${pct(current[0].avg)} en moyenne${current[1] ? `, ${esc(meta(current[1].name).surname)} à ${pct(current[1].avg)}` : ""}` : `${esc(current[0].name)} averages ${pct(current[0].avg)}${current[1] ? `, ${esc(meta(current[1].name).surname)} ${pct(current[1].avg)}` : ""}`) : L("Tous les sondages, et ce que parient les marchés", "Every poll, and what the betting markets say")}</h1>
           <p class="dek">${L("L’évolution des intentions de vote depuis 2025, chaque duel de second tour testé, la liste complète des sondages et les cotes de Kalshi et Polymarket.", "Voting intention since 2025, every runoff match-up tested, the full list of polls, and the odds on Kalshi and Polymarket.")}</p></div>
         <nav class="subnav">
           <a href="#/sondages#evolution">${L("Évolution", "Trend")}</a>
@@ -35,23 +39,24 @@ export async function renderPolls(app: HTMLElement) {
         </header>
         <div id="chart"></div>
         <div class="legend" id="legend"></div>
-        <p class="muted small">${L("Lignes : moyenne mobile sur 30 jours. Points : sondages individuels (moyenne des hypothèses testées).", "Lines: 30-day rolling average. Dots: individual polls (mean across tested line-ups).")} <a href="#/sources">${L("Méthode", "Method")}</a></p>
+        <p class="muted small">${L(`Lignes : moyenne des sondages sur ${WINDOW} jours glissants, la même que partout sur le site. Points : sondages individuels (moyenne des hypothèses testées).`, `Lines: ${WINDOW}-day rolling polling average, the same one used across the site. Dots: individual polls (mean across tested line-ups).`)} <a href="#/sources">${L("Méthode", "Method")}</a></p>
       </article>
 
       <article class="card" id="second-tour">
         <header class="card-head"><h2>${L("Second tour : tous les duels testés", "Runoff: every match-up polled")}</h2></header>
         <table class="table">
           <thead><tr><th>${L("Duel", "Match-up")}</th><th class="num">${L("Moyenne", "Average")}</th><th class="num">${L("Sondages", "Polls")}</th><th>${L("Dernier", "Latest")}</th></tr></thead>
-          <tbody>${duelAverages(polls.secondRound)
+          <tbody>${duels
             .map((d) => {
               const w = meta(d.winner), l = meta(d.loser);
+              const [rw, rl] = pair100(d.pw, d.pl);
               return `<tr><td><b>${esc(d.winner)}</b> ${L("contre", "vs")} ${esc(d.loser)}</td>
-                <td class="num"><div class="duel"><span style="width:${d.pw}%;background:${w.color}">${d.pw.toFixed(0)}</span><span style="width:${d.pl}%;background:${l.color}">${d.pl.toFixed(0)}</span></div></td>
+                <td class="num"><div class="duel"><span style="width:${rw}%;background:${w.color}">${rw}</span><span style="width:${rl}%;background:${l.color}">${rl}</span></div></td>
                 <td class="num muted">${d.total}</td><td class="muted">${fmtDate(d.last)}</td></tr>`;
             })
             .join("")}</tbody>
         </table>
-        <p class="muted small">${L("Moyenne des sondages des 60 jours précédant le dernier sondage du duel.", "Average of polls in the 60 days before each match-up’s latest poll.")}</p>
+        <p class="muted small">${L("Moyenne des sondages des 60 jours précédant le dernier sondage du duel, ramenée à 100 entre les deux candidats.", "Average of polls in the 60 days before each match-up’s latest poll, scaled so the two add up to 100.")}${nStale ? ` ${L(`${nStale} ${nStale > 1 ? "duels non sondés" : "duel non sondé"} depuis plus d’un an ${nStale > 1 ? "sont masqués" : "est masqué"}.`, `${nStale} match-up${nStale > 1 ? "s" : ""} not polled for over a year ${nStale > 1 ? "are" : "is"} hidden.`)}` : ""}</p>
       </article>
 
       <article class="card" id="liste">
@@ -84,7 +89,7 @@ export async function renderPolls(app: HTMLElement) {
           line: pts.filter((p) => p.values[n] != null).map((p) => ({ date: p.date, value: p.values[n] })),
           dots: polls.firstRound.filter((p) => p.end >= from).flatMap((p) => {
             const v = pollValue(p, n);
-            return v == null ? [] : [{ date: p.end, value: v, title: `${p.pollster} · ${fmtDate(p.end)} · ${n} ${v.toFixed(1)} %` }];
+            return v == null ? [] : [{ date: p.end, value: v, title: `${p.pollster} · ${fmtDate(p.end)} · ${n} ${pct(v)}` }];
           }),
         };
       })
@@ -104,7 +109,7 @@ export async function renderPolls(app: HTMLElement) {
   };
 
   const drawList = () => {
-    const rows = polls.firstRound.filter((p) => !ui.pollster || p.pollster === ui.pollster).slice(0, 60);
+    const rows = polls.firstRound.filter((p) => !ui.pollster || pollsterName(p.pollster) === ui.pollster).slice(0, 60);
     app.querySelector("#list")!.innerHTML = `<ul class="poll-list">${rows
       .map(
         (p) => `<li>
@@ -113,7 +118,7 @@ export async function renderPolls(app: HTMLElement) {
             .map(
               (h) => `<div class="hyp">${Object.entries(h)
                 .sort((a, b) => b[1] - a[1])
-                .map(([n, v]) => `<span class="pill" style="--c:${meta(n).color}">${esc(meta(n).surname)} <b>${v}</b></span>`)
+                .map(([n, v]) => `<span class="pill" style="--c:${meta(n).color}">${esc(meta(n).surname)} <b>${dec(v, Number.isInteger(v) ? 0 : 1)}</b></span>`)
                 .join("")}</div>`,
             )
             .join("")}
@@ -148,11 +153,11 @@ function marketsHtml(data: NonNullable<Awaited<ReturnType<typeof loadMarkets>>>)
           <h3><span class="tag">${esc(m.platform)}</span> ${esc(m.question)}</h3>
           <ol class="bars compact">${m.outcomes
             .slice(0, 8)
-            .map((o) => `<li><div class="bar-label"><span>${esc(o.name)}</span><b>${o.prob.toFixed(0)} %</b></div><div class="bar"><div style="width:${o.prob}%;background:${meta(o.name).color}"></div></div></li>`)
+            .map((o) => `<li><div class="bar-label"><span>${esc(o.name)}</span><b>${pct(o.prob, 0)}</b></div><div class="bar"><div style="width:${o.prob}%;background:${meta(o.name).color}"></div></div></li>`)
             .join("")}</ol>
           <p class="muted small">${L("Volume", "Volume")} ${fmtNum(m.volume)} · <a href="${esc(safeUrl(m.url))}" target="_blank" rel="noopener">${esc(m.platform)} ↗</a></p>
         </div>`,
       )
       .join("")}</div>
-    ${data.errors.length ? `<p class="muted small">${L("Non joignable lors de la dernière mise à jour", "Unreachable at last update")} : ${data.errors.map((e) => esc(e.platform)).join(", ")}</p>` : ""}`;
+    ${data.errors.length ? `<p class="muted small">${L("Non joignable lors de la dernière mise à jour", "Unreachable at last update")}${colon()}${data.errors.map((e) => esc(e.platform)).join(", ")}</p>` : ""}`;
 }

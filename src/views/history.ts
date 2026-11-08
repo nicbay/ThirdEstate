@@ -2,7 +2,8 @@
 // with each round's result, the archive announcement (video, radio, newspaper) and, where
 // available, results by department.
 import { loadDepartements, loadHistElection, loadHistIndex, type HistCandidate, type HistMedia, type HistRound, type Side } from "../data";
-import { L, fmtDate, fmtNum, getLang } from "../i18n";
+import { L, fmtDate, fmtNum, fmtPct, getLang } from "../i18n";
+import { pct } from "../lib/format";
 import { mapPaths, rewind } from "../lib/map";
 import { esc, safeUrl } from "../util";
 
@@ -27,6 +28,50 @@ const MEDIA_LABEL: Record<string, [string, string]> = {
   newsreel: ["Actualités filmées", "Newsreel"],
   newspaper: ["À la une le lendemain", "Next day’s front page"],
 };
+/** Lower-case form used inside a sentence ("TV" keeps its capitals). */
+const MEDIA_INLINE: Record<string, [string, string]> = {
+  tv: ["annonce télévisée", "TV announcement"],
+  radio: ["archive radio", "radio archive"],
+  newsreel: ["actualités filmées", "newsreel"],
+  newspaper: ["une du lendemain", "next day’s front page"],
+};
+const mediaInline = (t?: string) => (t ? L(...(MEDIA_INLINE[t] ?? [t, t])) : "");
+/** Accessible name for an archive item, from its type, the election year and its title. */
+function mediaAlt(type: string, year: number | string, winner: string, title?: string) {
+  const kind = L(...(MEDIA_LABEL[type] ?? [type, type]));
+  const what = L(`élection de ${winner}, ${year}`, `${winner}’s election, ${year}`);
+  return `${kind}${L(" : ", ": ")}${what}${title ? L(` (« ${title} »)`, ` (“${title}”)`) : ""}`;
+}
+
+/** English names for the historical party labels in the results files (French stays as published).
+ *  Acronyms (SFIO, MRP, RPR…) are proper names and stay as they are in both languages. */
+const PARTY_EN: Record<string, string> = {
+  "Bonapartiste": "Bonapartist",
+  "Conservateur": "Conservative",
+  "Divers gauche": "Miscellaneous left",
+  "Démocrate-socialiste": "Democratic socialist",
+  "Extrême gauche": "Far left",
+  "Gauche démocratique": "Democratic left",
+  "Indépendant": "Independent",
+  "Ind": "Independent",
+  "IND": "Independent",
+  "Légitimiste": "Legitimist",
+  "Parti nationaliste": "Nationalist party",
+  "Parti nationaliste / Groupe de la Défense nationale": "Nationalist party / National Defence group",
+  "Parti orléaniste": "Orléanist party",
+  "Républicain modéré": "Moderate republican",
+  "Républicains modérés": "Moderate republicans",
+  "Républicains de gauche": "Left republicans",
+  "Républicains de gouvernement": "Government republicans",
+  "Républicains progressistes": "Progressive republicans",
+  "Républicains radicaux": "Radical republicans",
+  "Républicains ralliés": "Rallied republicans",
+  "Sans étiquette": "No party",
+  "Socialiste": "Socialist",
+  "Union républicaine": "Republican Union",
+  "Les Verts (RP&S)": "The Greens (RP&S)",
+};
+export const partyLabel = (p: string | undefined) => (p ? (getLang() === "en" ? PARTY_EN[p] ?? p : p) : "");
 
 export async function renderHistoryList(pane: HTMLElement) {
   const idx = await loadHistIndex();
@@ -45,14 +90,17 @@ export async function renderHistoryList(pane: HTMLElement) {
             const [a, b] = dec.top;
             const m = dec.media;
             const yt = m?.url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/)?.[1];
+            // the thumbnail is decorative (alt=""): the button's accessible name describes the item
+            const alt = m ? mediaAlt(m.type, e.year, e.winner.name, (m as { title?: string }).title) : "";
             const vid = m
-              ? `<button type="button" class="t-vid${m.type === "radio" ? " is-audio" : ""}" data-el="${esc(e.id)}" aria-label="${esc(`${L("Lire l’annonce", "Play the announcement")} ${e.id}`)}">${yt ? `<img src="https://i.ytimg.com/vi/${yt}/mqdefault.jpg" alt="" loading="lazy"/>` : ""}<span class="t-play"></span><span class="t-vid-cap">${esc(L(...(MEDIA_LABEL[m.type] ?? [m.type, m.type])))}</span></button>`
+              ? `<button type="button" class="t-vid${m.type === "radio" ? " is-audio" : ""}" data-el="${esc(e.id)}" aria-label="${esc(`${L("Lire", "Play")}${L(" : ", ": ")}${alt}`)}" title="${esc(alt)}">${yt ? `<img src="https://i.ytimg.com/vi/${yt}/mqdefault.jpg" alt="" loading="lazy"/>` : ""}<span class="t-play" aria-hidden="true"></span><span class="t-vid-cap" aria-hidden="true">${esc(L(...(MEDIA_LABEL[m.type] ?? [m.type, m.type])))}</span></button>`
               : "";
+            const shown = m?.type ?? e.rounds.map((r) => r.media?.type).find(Boolean);
             return `<li class="t-row">${vid}<a href="#/histoire/${e.id}">
-              <span class="t-year">${e.id.replace("-01", " (janv.)").replace("-09", " (sept.)")}</span>
-              <span class="t-body"><b>${esc(e.winner.name)}</b> <span class="muted">${esc(e.winner.party)}</span>
+              <span class="t-year">${e.id.replace("-01", L(" (janv.)", " (Jan.)")).replace("-09", L(" (sept.)", " (Sept.)"))}</span>
+              <span class="t-body"><b>${esc(e.winner.name)}</b> <span class="muted">${esc(partyLabel(e.winner.party))}</span>
                 <span class="t-bar">${a ? `<span style="width:${a.pct}%;background:${sideColor(a.side)}"></span>` : ""}${b ? `<span style="width:${b.pct}%;background:${sideColor(b.side)};opacity:.45"></span>` : ""}</span>
-                <span class="muted small">${a ? `${esc(a.name)} ${a.pct.toFixed(1)} %` : ""}${b ? `, ${esc(b.name)} ${b.pct.toFixed(1)} %` : ""}${e.rounds.length > 1 ? `, ${e.rounds.length} ${e.direct ? L("tours", "rounds") : L("scrutins", "ballots")}` : ""}${e.rounds.some((r) => r.media) ? `, ${L("archive", "archive")} ${mediaIcon(e.rounds.map((r) => r.media?.type).find(Boolean))}` : ""}</span>
+                <span class="muted small">${a ? `${esc(a.name)} ${pct(a.pct)}` : ""}${b ? `, ${esc(b.name)} ${pct(b.pct)}` : ""}${e.rounds.length > 1 ? `, ${e.rounds.length} ${e.direct ? L("tours", "rounds") : L("scrutins", "ballots")}` : ""}${shown ? `, ${L("en archive", "on file")}${L(" : ", ": ")}${esc(mediaInline(shown))}` : ""}</span>
               </span></a></li>`;
           })
           .join("")}</ol>
@@ -70,7 +118,7 @@ export async function renderHistoryList(pane: HTMLElement) {
       const auto = /youtube-nocookie/.test(src) ? `${src}${src.includes("?") ? "&" : "?"}autoplay=1` : src;
       const box = document.createElement("div");
       box.className = `t-vid is-playing${btn.classList.contains("is-audio") ? " is-audio" : ""}`;
-      box.innerHTML = `<iframe src="${esc(safeUrl(auto))}" title="${esc(r.media.title ?? btn.dataset.el!)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+      box.innerHTML = `<iframe src="${esc(safeUrl(auto))}" title="${esc(r.media.title ?? btn.title ?? btn.dataset.el!)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
       btn.replaceWith(box);
     }),
   );
@@ -78,7 +126,6 @@ export async function renderHistoryList(pane: HTMLElement) {
 
 const LIST_SOURCE = () => `<p class="source">${L("Résultats nationaux : tableaux de Wikipédia, chacun relié à sa source officielle (Conseil constitutionnel, Journal officiel). Départements : CDSP Sciences Po et ministère de l’Intérieur (data.gouv.fr), Cagé–Piketty pour 1848. Archives : INA, TF1 INFO, Gallica.", "National results: Wikipedia tables, each tied to its official source (Constitutional Council, Journal officiel). Departments: Sciences Po CDSP and the Ministry of the Interior (data.gouv.fr), Cagé–Piketty for 1848. Archives: INA, TF1 INFO, Gallica.")}</p>`;
 
-const mediaIcon = (t?: string) => (t ? L(...(MEDIA_LABEL[t] ?? [t, t])).toLowerCase() : "");
 
 export async function renderElection(app: HTMLElement, id: string) {
   const [e, geo, idx] = await Promise.all([loadHistElection(id), loadDepartements(), loadHistIndex()]);
@@ -93,7 +140,7 @@ export async function renderElection(app: HTMLElement, id: string) {
       <header class="page-head">
         <p class="eyebrow">${esc(L(...(REGIMES[regime] ?? [regime, regime])))}, ${esc(fr ? e.method.fr : e.method.en)}</p>
         <h1>${esc(fr ? `${e.winner.name} élu président en ${e.year}` : `${e.winner.name} elected president in ${e.year}`)}</h1>
-        <p class="dek">${esc(e.winner.party)}${e.rounds.length > 1 ? `, ${fr ? `après ${e.rounds.length} ${e.direct ? "tours" : "scrutins"}` : `after ${e.rounds.length} ${e.direct ? "rounds" : "ballots"}`}` : ""}.</p>
+        <p class="dek">${esc(partyLabel(e.winner.party))}${e.rounds.length > 1 ? `, ${fr ? `après ${e.rounds.length} ${e.direct ? "tours" : "scrutins"}` : `after ${e.rounds.length} ${e.direct ? "rounds" : "ballots"}`}` : ""}.</p>
       </header>
       ${[...e.rounds].reverse().map((r) => roundBlock(r, e.direct)).join("")}
       <nav class="mp-nav">${prev ? `<a href="#/histoire/${prev.id}">${prev.id}</a>` : "<span></span>"}${next ? `<a href="#/histoire/${next.id}">${next.id}</a>` : ""}</nav>
@@ -118,8 +165,8 @@ export async function renderElection(app: HTMLElement, id: string) {
       const c = byId.get(lead[0]);
       const pct = (100 * lead[1]) / row.exprimes;
       const margin = second ? pct - (100 * second[1]) / row.exprimes : pct;
-      return { fill: sideColor(c?.side), opacity: Math.min(1, 0.3 + margin / 40), title: `${row.name}\n${c?.name ?? lead[0]} ${pct.toFixed(1)} %` };
-    })}</svg><p class="muted small">${L("Candidat en tête par département ; couleur plus franche = écart plus large.", "Leading candidate in each department; stronger colour = wider lead.")} ${r.departments.coveragePct ? `${L("Couverture", "Coverage")} ${r.departments.coveragePct} %.` : ""}</p>`;
+      return { fill: sideColor(c?.side), opacity: Math.min(1, 0.3 + margin / 40), title: `${row.name}\n${c?.name ?? lead[0]} ${fmtPct(pct)}` };
+    })}</svg><p class="muted small">${L("Candidat en tête par département ; couleur plus franche = écart plus large.", "Leading candidate in each department; stronger colour = wider lead.")} ${r.departments.coveragePct ? `${L("Couverture", "Coverage")} ${fmtPct(r.departments.coveragePct, 0)}.` : ""}</p>`;
   }
 }
 
@@ -129,7 +176,7 @@ function roundBlock(r: HistRound, direct: boolean) {
   const max = Math.max(...r.candidates.map((c) => c.pct), 1);
   return `
     <section class="card">
-      <header class="card-head"><h2>${label}, ${fmtDate(r.date)}</h2>${r.turnoutPct ? `<span class="muted small">${L("Participation", "Turnout")} ${r.turnoutPct.toFixed(1)} %, ${fmtNum(r.totals.exprimes)} ${L("suffrages exprimés", "valid votes")}</span>` : `<span class="muted small">${fmtNum(r.totals.exprimes)} ${L("voix exprimées", "votes cast")}</span>`}</header>
+      <header class="card-head"><h2>${label}, ${fmtDate(r.date)}</h2>${r.turnoutPct ? `<span class="muted small">${L("Participation", "Turnout")} ${fmtPct(r.turnoutPct)}, ${fmtNum(r.totals.exprimes)} ${L("suffrages exprimés", "valid votes")}</span>` : `<span class="muted small">${fmtNum(r.totals.exprimes)} ${L("voix exprimées", "votes cast")}</span>`}</header>
       <div class="pres-grid">
         <div>
           <ol class="bars">${r.candidates.map((c) => candidateBar(c, max)).join("")}</ol>
@@ -143,7 +190,7 @@ function roundBlock(r: HistRound, direct: boolean) {
 }
 
 function candidateBar(c: HistCandidate, max: number) {
-  return `<li><div class="bar-label"><span>${c.elected ? "<b>" : ""}${esc(c.name)}${c.elected ? "</b>" : ""} <span class="muted">${esc(c.other ? "" : c.party)}</span>${c.elected ? ` <span class="tag">${L("élu", "elected")}</span>` : c.qualified ? ` <span class="tag">${L("qualifié", "qualified")}</span>` : ""}</span><b>${c.pct.toFixed(2)} %</b></div><div class="bar"><div style="width:${(100 * c.pct) / max}%;background:${sideColor(c.side)}"></div></div></li>`;
+  return `<li><div class="bar-label"><span>${c.elected ? "<b>" : ""}${esc(c.name)}${c.elected ? "</b>" : ""} <span class="muted">${esc(c.other ? "" : partyLabel(c.party))}</span>${c.elected ? ` <span class="tag">${L("élu", "elected")}</span>` : c.qualified ? ` <span class="tag">${L("qualifié", "qualified")}</span>` : ""}</span><b>${fmtPct(c.pct, 2)}</b></div><div class="bar"><div style="width:${(100 * c.pct) / max}%;background:${sideColor(c.side)}"></div></div></li>`;
 }
 
 /** The playable URL for a media item: its embed, or a YouTube watch/short link turned into a nocookie embed. */
