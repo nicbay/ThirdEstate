@@ -1,0 +1,362 @@
+{
+  "slug": "dupont-aignan",
+  "candidate": "Nicolas Dupont-Aignan",
+  "party": "Debout la France",
+  "lite": true,
+  "status": "partial",
+  "statusNote": {
+    "fr": "Nicolas Dupont-Aignan a lancé sa quatrième campagne présidentielle lors de sa rentrée politique à Yerres le 19 septembre 2026 ; le site de Debout la France indique que le programme est « en cours d'actualisation » pour 2027, plusieurs pages thématiques étant déjà mises à jour, sans date de publication du projet complet.",
+    "en": "Nicolas Dupont-Aignan launched his fourth presidential campaign at his political rentrée in Yerres on 19 September 2026; Debout la France's website says the programme is 'being updated' for 2027, with several theme pages already revised, and no date given for the full project."
+  },
+  "versions": [
+    { "id": "p22", "year": 2022, "label": { "fr": "Programme 2022", "en": "2022 programme" }, "title": "Projet présidentiel 2022-2027 de Debout la France (et son chiffrage)", "date": "2022-04", "url": "https://www.debout-la-france.fr/wp-content/uploads/2022/07/Le-chiffrage-du-projet_VFIN.pdf", "kind": "pdf" },
+    { "id": "p27", "year": 2027, "label": { "fr": "Projet 2027 (en cours)", "en": "2027 project (in progress)" }, "title": "Le Projet de Debout la France (pages thématiques actualisées) et discours de Yerres", "date": "2026-09", "url": "https://www.debout-la-france.fr/notre-projet/", "kind": "site" }
+  ],
+  "measures": [
+    {
+      "id": "d01", "theme": "europe", "status": "new",
+      "texts": { "p27": "« Organiser un référendum sur l'appartenance de la France à l'Union européenne » ; sortir « politiquement » de l'Union et créer une « Europe des Nations libres et des coopérations concrètes »." },
+      "change": { "fr": "En 2026, la sortie de l'UE est présentée comme une nécessité. La position du programme 2022 sur l'UE n'a pas pu être vérifiée dans une source datée (en 2017, il proposait de renégocier les traités puis, en cas d'échec, un référendum).", "en": "In 2026 leaving the EU is presented as a necessity. The 2022 programme's EU position could not be checked in a dated source (in 2017 he proposed renegotiating the treaties, then a referendum if that failed)." },
+      "sources": [
+        { "title": "Debout la France — Affaires européennes", "url": "https://www.debout-la-france.fr/projet/affaires-europeennes/" },
+        { "title": "Europe 1, 19 septembre 2026 — Nicolas Dupont-Aignan promet de « décoloniser la France » en sortant de l'UE", "url": "https://www.europe1.fr/politique/presidentielle-2027-nicolas-dupont-aignan-promet-de-decoloniser-la-france-en-sortant-de-lue-1089125" }
+      ],
+      "cost": null,
+      "legal": "constitutional-revision-needed",
+      "legalNote": { "fr": "Le retrait suit l'article 50 du traité sur l'Union européenne (négociation d'un accord, deux ans par défaut) ; l'article 88-1 de la Constitution, qui fonde la participation de la France à l'Union, devrait être révisé.", "en": "Withdrawal follows Article 50 of the Treaty on European Union (negotiated agreement, two years by default); Article 88-1 of the Constitution, which grounds France's EU membership, would need revising." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "d02", "theme": "immigration", "status": "new",
+      "texts": { "p27": "« Rétablir le contrôle aux frontières en sortant de Schengen » (recrutement de 10 000 agents)." },
+      "change": null,
+      "sources": [
+        { "title": "Debout la France — Immigration et assimilation", "url": "https://www.debout-la-france.fr/projet/immigration-et-assimilation/" },
+        { "title": "Debout la France — Affaires européennes", "url": "https://www.debout-la-france.fr/projet/affaires-europeennes/" }
+      ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": { "fr": "Le code frontières Schengen (règlement (UE) 2016/399) ne permet que des réintroductions temporaires des contrôles intérieurs ; une sortie de Schengen suppose de sortir de l'acquis de l'UE.", "en": "The Schengen Borders Code (Regulation (EU) 2016/399) only allows temporary reintroduction of internal checks; leaving Schengen means leaving that part of EU law." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "d03", "theme": "europe", "status": "new",
+      "texts": { "p27": "« Supprimer la contribution nette de la France » au budget européen ; sortie de l'UE : 15 Md€ d'économies de contribution nette." },
+      "change": null,
+      "sources": [
+        { "title": "Debout la France — Économie et travail", "url": "https://www.debout-la-france.fr/projet/economie-travail/" },
+        { "title": "Debout la France — Affaires européennes", "url": "https://www.debout-la-france.fr/projet/affaires-europeennes/" }
+      ],
+      "cost": { "value": 15.0, "low": 10.0, "high": 15.0, "by": "Candidate", "url": "https://www.debout-la-france.fr/projet/economie-travail/", "note": { "fr": "15 Md€ sur la page Économie, 10 Md€ de contribution nette sur la page Affaires européennes ; suppose la sortie de l'UE.", "en": "€15bn on the Economy page, €10bn net contribution on the European Affairs page; assumes leaving the EU." } },
+      "legal": "eu-law",
+      "legalNote": { "fr": "Tant que la France est membre, la contribution découle de la décision relative aux ressources propres (décision (UE, Euratom) 2020/2053).", "en": "While France is a member, the contribution follows from the Own Resources Decision (Decision (EU, Euratom) 2020/2053)." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "d04", "theme": "international", "status": "new",
+      "texts": { "p27": "Arrêt de l'aide à l'Ukraine (environ 7 Md€ par an)." },
+      "change": null,
+      "sources": [
+        { "title": "Debout la France — Économie et travail", "url": "https://www.debout-la-france.fr/projet/economie-travail/" },
+        { "title": "Europe 1, 19 septembre 2026", "url": "https://www.europe1.fr/politique/presidentielle-2027-nicolas-dupont-aignan-promet-de-decoloniser-la-france-en-sortant-de-lue-1089125" }
+      ],
+      "cost": { "value": 7.0, "low": null, "high": null, "by": "Candidate", "url": "https://www.debout-la-france.fr/projet/economie-travail/", "note": { "fr": "Montant annoncé par Debout la France, non vérifié.", "en": "Amount announced by Debout la France, unverified." } },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "high", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "d05", "theme": "social", "status": "modified",
+      "texts": {
+        "p22": "« Je souhaite maintenir l'âge minimum de départ à la retraite et la durée de cotisations actuelle » (62 ans, réforme de 2010).",
+        "p27": "Âge de départ à 62 ans et neuf mois ; « minimum retraite par capitalisation » ; fonds souverain « à la norvégienne »."
+      },
+      "change": { "fr": "62 ans (2022) → 62 ans et 9 mois (2026), avec un étage de capitalisation.", "en": "62 (2022) → 62 years and 9 months (2026), with a funded tier." },
+      "sources": [
+        { "title": "Previssima, 1er avril 2022 — Nicolas Dupont-Aignan répond à nos questions en matière de protection sociale", "url": "https://www.previssima.fr/actualite/presidentielle-2022-nicolas-dupont-aignan-repond-a-nos-questions-en-matiere-de-protection-sociale.html" },
+        { "title": "Europe 1, 19 septembre 2026", "url": "https://www.europe1.fr/politique/presidentielle-2027-nicolas-dupont-aignan-promet-de-decoloniser-la-france-en-sortant-de-lue-1089125" }
+      ],
+      "cost": null,
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "d06", "theme": "social", "status": "maintained",
+      "texts": {
+        "p22": "Indexer les retraites au minimum sur l'inflation.",
+        "p27": "« Indexer les retraites à minima sur l'inflation » ; refus de toute baisse des pensions par la désindexation."
+      },
+      "change": null,
+      "sources": [
+        { "title": "Previssima, 1er avril 2022", "url": "https://www.previssima.fr/actualite/presidentielle-2022-nicolas-dupont-aignan-repond-a-nos-questions-en-matiere-de-protection-sociale.html" },
+        { "title": "Debout la France — Retraites", "url": "https://www.debout-la-france.fr/projet/retraites/" },
+        { "title": "Europe 1, 19 septembre 2026", "url": "https://www.europe1.fr/politique/presidentielle-2027-nicolas-dupont-aignan-promet-de-decoloniser-la-france-en-sortant-de-lue-1089125" }
+      ],
+      "cost": null,
+      "legal": "ok", "legalNote": null,
+      "feasibility": "high", "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "d07", "theme": "social", "status": "maintained",
+      "texts": {
+        "p22": "Rétablir la demi-part fiscale pour les veuves et s'opposer à toute baisse des pensions de réversion.",
+        "p27": "« Rétablir complètement la 1/2 part fiscale pour les veuves »."
+      },
+      "change": null,
+      "sources": [
+        { "title": "Previssima, 1er avril 2022", "url": "https://www.previssima.fr/actualite/presidentielle-2022-nicolas-dupont-aignan-repond-a-nos-questions-en-matiere-de-protection-sociale.html" },
+        { "title": "Debout la France — Retraites", "url": "https://www.debout-la-france.fr/projet/retraites/" }
+      ],
+      "cost": null,
+      "legal": "ok", "legalNote": null,
+      "feasibility": "high", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "d08", "theme": "social", "status": "new",
+      "texts": { "p27": "Ouvrir pour chaque nouveau-né français un capital de 10 000 €, bloqué jusqu'à la retraite (environ 6 Md€ par an ; environ 400 €/mois projetés à 60 ans)." },
+      "change": null,
+      "sources": [
+        { "title": "Debout la France — Économie et travail", "url": "https://www.debout-la-france.fr/projet/economie-travail/" },
+        { "title": "Debout la France — page d'accueil", "url": "https://www.debout-la-france.fr/" }
+      ],
+      "cost": { "value": -6.0, "low": null, "high": null, "by": "Candidate", "url": "https://www.debout-la-france.fr/projet/economie-travail/", "note": { "fr": "Coût annoncé par Debout la France.", "en": "Cost announced by Debout la France." } },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "d09", "theme": "social", "status": "modified",
+      "texts": {
+        "p22": "Exiger une résidence de « plus de 5 ans » pour que les étrangers touchent les allocations familiales (contre six mois).",
+        "p27": "Exiger 5 ans de résidence pour les aides non contributives (page Économie) ; « Supprimer les aides sociales non contributives pour les étrangers » (page Immigration)."
+      },
+      "change": { "fr": "Condition de 5 ans pour les allocations familiales (2022) → 5 ans pour toutes les aides non contributives, voire suppression pour les étrangers (2026 ; les deux formulations coexistent sur le site).", "en": "Five-year condition for family allowances (2022) → five years for all non-contributory aid, or abolition for foreigners (2026; both wordings coexist on the site)." },
+      "sources": [
+        { "title": "Previssima, 1er avril 2022", "url": "https://www.previssima.fr/actualite/presidentielle-2022-nicolas-dupont-aignan-repond-a-nos-questions-en-matiere-de-protection-sociale.html" },
+        { "title": "Debout la France — Économie et travail", "url": "https://www.debout-la-france.fr/projet/economie-travail/" },
+        { "title": "Debout la France — Immigration et assimilation", "url": "https://www.debout-la-france.fr/projet/immigration-et-assimilation/" }
+      ],
+      "cost": { "value": 5.0, "low": null, "high": null, "by": "Candidate", "url": "https://www.debout-la-france.fr/projet/economie-travail/", "note": { "fr": "5 Md€ d'économies « migratoires » annoncées, incluant la suppression de l'AME ; non vérifié.", "en": "€5bn of 'migration' savings announced, including abolishing AME; unverified." } },
+      "legal": "unconstitutional-precedent",
+      "legalNote": { "fr": "Le Conseil constitutionnel a jugé disproportionnée l'exigence de cinq ans de résidence ou de trente mois d'affiliation pour des prestations non contributives (n° 2024-6 RIP, 11 avril 2024) ; l'exclusion des étrangers réguliers d'une prestation de solidarité méconnaît le principe d'égalité (n° 89-269 DC, 22 janvier 1990).", "en": "The Conseil constitutionnel held a five-year residence or 30-month affiliation requirement for non-contributory benefits disproportionate (no. 2024-6 RIP, 11 April 2024); excluding lawful foreigners from a solidarity benefit breaches equality (no. 89-269 DC, 22 January 1990)." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "d10", "theme": "sante", "status": "new",
+      "texts": { "p27": "« Supprimer l'Aide Médicale d'État (AME) »." },
+      "change": null,
+      "sources": [ { "title": "Debout la France — Immigration et assimilation", "url": "https://www.debout-la-france.fr/projet/immigration-et-assimilation/" } ],
+      "cost": null,
+      "legal": "unknown", "legalNote": null,
+      "feasibility": "high", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "d11", "theme": "immigration", "status": "new",
+      "texts": { "p27": "« Supprimer le droit du sol via un référendum » ; « limiter strictement le regroupement familial et supprimer le régime d'exception accordé aux Algériens »." },
+      "change": null,
+      "sources": [ { "title": "Debout la France — Immigration et assimilation", "url": "https://www.debout-la-france.fr/projet/immigration-et-assimilation/" } ],
+      "cost": null,
+      "legal": "risk",
+      "legalNote": { "fr": "Le droit du sol n'a pas été qualifié de principe à valeur constitutionnelle ; une restriction propre à Mayotte a été validée (n° 2018-770 DC, 6 septembre 2018). Le régime des Algériens relève de l'accord franco-algérien du 27 décembre 1968, qu'il faudrait dénoncer ou renégocier.", "en": "Birthright citizenship has not been classed as a constitutional principle; a Mayotte-specific restriction was upheld (no. 2018-770 DC, 6 September 2018). The Algerian regime stems from the Franco-Algerian agreement of 27 December 1968, which would have to be denounced or renegotiated." },
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "d12", "theme": "economie", "status": "new",
+      "texts": { "p27": "Diviser par deux le prix de l'électricité la première année : sortir du marché européen de l'électricité, rétablir le monopole d'EDF, tarif réglementé à 100 €/MWh." },
+      "change": null,
+      "sources": [
+        { "title": "Debout la France — Économie et travail", "url": "https://www.debout-la-france.fr/projet/economie-travail/" },
+        { "title": "Debout la France — Affaires européennes", "url": "https://www.debout-la-france.fr/projet/affaires-europeennes/" }
+      ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": { "fr": "La directive (UE) 2019/944 (marché intérieur de l'électricité) encadre les tarifs réglementés et l'ouverture à la concurrence ; un monopole d'EDF et un prix fixé hors marché supposent la sortie de l'UE ou une dérogation.", "en": "Directive (EU) 2019/944 (internal electricity market) frames regulated tariffs and competition; an EDF monopoly and an off-market price would require leaving the EU or a derogation." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "d13", "theme": "economie", "status": "new",
+      "texts": { "p27": "Baisser le carburant de 40 centimes par litre et le gaz de 20 % ; supprimer les zones à faibles émissions (ZFE)." },
+      "change": null,
+      "sources": [ { "title": "Debout la France — Économie et travail", "url": "https://www.debout-la-france.fr/projet/economie-travail/" } ],
+      "cost": null,
+      "legal": "unknown", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "d14", "theme": "travail", "status": "new",
+      "texts": { "p27": "Défiscaliser les heures supplémentaires au-delà de 1 607 heures par an, dans la limite de 300 heures." },
+      "change": null,
+      "sources": [
+        { "title": "Debout la France — Économie et travail", "url": "https://www.debout-la-france.fr/projet/economie-travail/" },
+        { "title": "Europe 1, 19 septembre 2026", "url": "https://www.europe1.fr/politique/presidentielle-2027-nicolas-dupont-aignan-promet-de-decoloniser-la-france-en-sortant-de-lue-1089125" }
+      ],
+      "cost": null,
+      "legal": "ok", "legalNote": null,
+      "feasibility": "high", "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "d15", "theme": "economie", "status": "new",
+      "texts": { "p27": "Supprimer les droits de succession sur la résidence principale et sur les 100 premiers hectares de terres agricoles ; exonération des transmissions d'entreprise portée de 75 % à 90 %." },
+      "change": null,
+      "sources": [
+        { "title": "Debout la France — Économie et travail", "url": "https://www.debout-la-france.fr/projet/economie-travail/" },
+        { "title": "Debout la France — Retraites", "url": "https://www.debout-la-france.fr/projet/retraites/" }
+      ],
+      "cost": null,
+      "legal": "ok", "legalNote": null,
+      "feasibility": "high", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "d16", "theme": "economie", "status": "new",
+      "texts": { "p27": "TVA à zéro sur 50 produits de première nécessité et baisse des frais bancaires." },
+      "change": null,
+      "sources": [ { "title": "Debout la France — Économie et travail", "url": "https://www.debout-la-france.fr/projet/economie-travail/" } ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": { "fr": "La directive TVA 2006/112/CE, révisée en 2022, limite les taux réduits et le taux zéro à des catégories listées ; une liste de 50 produits devra s'y conformer.", "en": "The VAT Directive 2006/112/EC, revised in 2022, limits reduced and zero rates to listed categories; a list of 50 products would have to fit them." },
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "d17", "theme": "economie", "status": "new",
+      "texts": { "p27": "« BUY French Act » : réserver la commande publique (200 Md€ par an) aux producteurs français tant que leur prix ne dépasse pas de plus de 50 % celui du produit étranger." },
+      "change": null,
+      "sources": [ { "title": "Debout la France — Économie et travail", "url": "https://www.debout-la-france.fr/projet/economie-travail/" } ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": { "fr": "Contraire à l'interdiction des discriminations fondées sur la nationalité (art. 18 TFUE) et aux directives marchés publics (directive 2014/24/UE) tant que la France est membre de l'UE.", "en": "Conflicts with the ban on nationality discrimination (Art. 18 TFEU) and the public procurement directives (Directive 2014/24/EU) while France is an EU member." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "d18", "theme": "social", "status": "new",
+      "texts": { "p27": "Plafonner le cumul des aides sociales en dessous du salaire minimum." },
+      "change": null,
+      "sources": [ { "title": "Europe 1, 19 septembre 2026", "url": "https://www.europe1.fr/politique/presidentielle-2027-nicolas-dupont-aignan-promet-de-decoloniser-la-france-en-sortant-de-lue-1089125" } ],
+      "cost": null,
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "d19", "theme": "institutions", "status": "new",
+      "texts": { "p27": "Recourir au référendum d'initiative citoyenne pour « contourner le gouvernement des juges » et « redonner le pouvoir au peuple »." },
+      "change": null,
+      "sources": [ { "title": "Europe 1, 19 septembre 2026", "url": "https://www.europe1.fr/politique/presidentielle-2027-nicolas-dupont-aignan-promet-de-decoloniser-la-france-en-sortant-de-lue-1089125" } ],
+      "cost": null,
+      "legal": "constitutional-revision-needed",
+      "legalNote": { "fr": "Le RIC n'existe pas dans la Constitution (seul le référendum d'initiative partagée de l'article 11 existe) ; sa création suppose une révision par l'article 89.", "en": "The citizens' initiative referendum does not exist in the Constitution (only Article 11's shared-initiative referendum does); creating it requires an Article 89 revision." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "d20", "theme": "travail", "status": "modified",
+      "texts": {
+        "p22": "Exonération de charges pendant 5 ans pour le CDI d'un chômeur de longue durée (coût estimé à 3 milliards d'euros).",
+        "p27": "Exonération de charges pendant 2 ans pour l'embauche de chômeurs de longue durée ; exonération pour le premier CDI d'un jeune de moins de 26 ans."
+      },
+      "change": { "fr": "Durée d'exonération : 5 ans (2022) → 2 ans (2026) ; ajout d'une exonération pour le premier CDI des moins de 26 ans.", "en": "Exemption period: 5 years (2022) → 2 years (2026); an exemption for under-26s' first permanent contract is added." },
+      "sources": [
+        { "title": "Previssima, 1er avril 2022", "url": "https://www.previssima.fr/actualite/presidentielle-2022-nicolas-dupont-aignan-repond-a-nos-questions-en-matiere-de-protection-sociale.html" },
+        { "title": "Debout la France — Économie et travail", "url": "https://www.debout-la-france.fr/projet/economie-travail/" }
+      ],
+      "cost": { "value": -3.0, "low": null, "high": null, "by": "Candidate", "url": "https://www.previssima.fr/actualite/presidentielle-2022-nicolas-dupont-aignan-repond-a-nos-questions-en-matiere-de-protection-sociale.html", "note": { "fr": "Coût annoncé par le candidat en 2022 pour la version à 5 ans.", "en": "Cost stated by the candidate in 2022 for the 5-year version." } },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "high", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "d21", "theme": "sante", "status": "maintained",
+      "texts": { "p22": "Reprise par l'État de la totalité de la dette hospitalière, 20 000 lits supplémentaires et fin de la tarification à l'acte ; production nationale d'au moins 50 % des médicaments les plus remboursés." },
+      "change": { "fr": "Pas de version 2027 publiée à ce stade (page Santé non vérifiée comme actualisée) ; mesure 2022 non révisée publiquement.", "en": "No 2027 version published yet (Health page not confirmed as updated); 2022 measure not publicly revised." },
+      "sources": [ { "title": "Previssima, 1er avril 2022", "url": "https://www.previssima.fr/actualite/presidentielle-2022-nicolas-dupont-aignan-repond-a-nos-questions-en-matiere-de-protection-sociale.html" } ],
+      "cost": null,
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "d22", "theme": "social", "status": "maintained",
+      "texts": { "p22": "Faire de la dépendance une cinquième branche de la Sécurité sociale ; 110 000 places en résidences autonomie et 50 000 en résidences services seniors ; congé parental de 3 ans rémunéré à 75 % du SMIC net." },
+      "change": { "fr": "Le congé parental à 75 % du SMIC figure toujours sur la page Retraites du site ; le reste n'a pas été vérifié pour 2027.", "en": "The parental leave at 75% of the minimum wage still appears on the site's Pensions page; the rest was not checked for 2027." },
+      "sources": [
+        { "title": "Previssima, 1er avril 2022", "url": "https://www.previssima.fr/actualite/presidentielle-2022-nicolas-dupont-aignan-repond-a-nos-questions-en-matiere-de-protection-sociale.html" },
+        { "title": "Debout la France — Retraites", "url": "https://www.debout-la-france.fr/projet/retraites/" }
+      ],
+      "cost": null,
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "d23", "theme": "budget", "status": "new",
+      "texts": { "p27": "Emprunter auprès de la Banque de France à 0 % et économiser 10 Md€ d'intérêts par an." },
+      "change": null,
+      "sources": [ { "title": "Debout la France — Économie et travail", "url": "https://www.debout-la-france.fr/projet/economie-travail/" } ],
+      "cost": { "value": 10.0, "low": null, "high": null, "by": "Candidate", "url": "https://www.debout-la-france.fr/projet/economie-travail/", "note": { "fr": "Économie annoncée, non vérifiée.", "en": "Announced saving, unverified." } },
+      "legal": "eu-law",
+      "legalNote": { "fr": "L'article 123 TFUE interdit aux banques centrales nationales de l'Eurosystème d'accorder des crédits à l'État.", "en": "Article 123 TFEU bars Eurosystem national central banks from lending to governments." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "d24", "theme": "budget", "status": "new",
+      "texts": { "p27": "Économiser 40 Md€ par an sur 5 ans (agences, échelons régional et intercommunal, subventions aux associations) ; lutte contre la fraude sociale (20 Md€) et fiscale (20 Md€)." },
+      "change": null,
+      "sources": [ { "title": "Debout la France — Économie et travail", "url": "https://www.debout-la-france.fr/projet/economie-travail/" } ],
+      "cost": { "value": 80.0, "low": null, "high": null, "by": "Candidate", "url": "https://www.debout-la-france.fr/projet/economie-travail/", "note": { "fr": "Somme des trois montants affichés (40 + 20 + 20 Md€), non vérifiée.", "en": "Sum of the three amounts shown (40 + 20 + 20 €bn), unverified." } },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "d25", "theme": "justice", "status": "new",
+      "texts": { "p27": "« Instaurer des peines planchers d'une implacable sévérité » ; « Instaurer une double peine automatique quelle que soit la situation familiale »." },
+      "change": null,
+      "sources": [ { "title": "Debout la France — Immigration et assimilation", "url": "https://www.debout-la-france.fr/projet/immigration-et-assimilation/" } ],
+      "cost": null,
+      "legal": "unconstitutional-precedent",
+      "legalNote": { "fr": "Les peines planchers ont été validées parce que le juge pouvait y déroger (n° 2007-554 DC, 9 août 2007) ; une peine appliquée automatiquement sans être prononcée par le juge méconnaît le principe d'individualisation des peines (n° 2010-6/7 QPC, 11 juin 2010). La CEDH (art. 8) impose un examen de la situation familiale avant l'expulsion.", "en": "Minimum sentences were upheld because judges could depart from them (no. 2007-554 DC, 9 August 2007); a penalty applied automatically without being pronounced by a judge breaches individualisation of sentences (no. 2010-6/7 QPC, 11 June 2010). The ECHR (Art. 8) requires family circumstances to be weighed before removal." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "d26", "theme": "travail", "status": "new",
+      "texts": { "p27": "Réduire les gaspillages pour baisser les cotisations salariales et porter le SMIC net à 1 600 € (vidéo du 7 novembre 2026)." },
+      "change": null,
+      "sources": [ { "title": "Debout la France — page d'accueil", "url": "https://www.debout-la-france.fr/" } ],
+      "cost": null,
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": true
+    }
+  ],
+  "costing": {
+    "rounds": [
+      {
+        "id": "p2027", "year": 2027, "label": { "fr": "Projet 2027 (pages actualisées)", "en": "2027 project (updated pages)" },
+        "horizon": { "fr": "par an", "en": "a year" },
+        "announced": { "by": "Debout la France", "spending": null, "revenue": 147, "net": null, "date": "2026-11", "note": { "fr": "Somme, faite par Third Estate, des économies et recettes chiffrées sur la page Économie (UE 15, Ukraine 7, fraude sociale 20, immigration 5, renouvelables 10, administration 40, fraude fiscale 20, fiscalité des multinationales et du numérique 20, intérêts 10 Md€). Les dépenses ne sont pas totalisées par le parti. Aucun chiffrage indépendant. Le chiffrage 2022 du parti (PDF) n'a pas pu être lu.", "en": "Third Estate's sum of the savings and revenues costed on the Economy page (EU 15, Ukraine 7, social fraud 20, immigration 5, renewables 10, administration 40, tax fraud 20, multinational and digital taxation 20, interest 10 €bn). The party gives no spending total. No independent costing. The party's 2022 costing (PDF) could not be read." }, "url": "https://www.debout-la-france.fr/projet/economie-travail/" },
+        "estimates": []
+      }
+    ],
+    "checked": "2026-11-08"
+  },
+  "summary": {
+    "fr": "Le projet de Debout la France repose sur la souveraineté nationale (référendum sur l'appartenance à l'UE, sortie de Schengen, primauté du droit national), le protectionnisme et la baisse des prix de l'énergie. Par rapport à 2022, la sortie de l'Union est désormais présentée comme une nécessité et l'âge de départ proposé passe de 62 ans à 62 ans et 9 mois, avec un étage de capitalisation. Aucun organisme indépendant (Institut Montaigne, iFRAP) n'a chiffré le programme en 2022 ni en 2026 ; plusieurs mesures supposent la sortie de l'UE (art. 123 TFUE, directive 2019/944).",
+    "en": "Debout la France's project centres on national sovereignty (a referendum on EU membership, leaving Schengen, primacy of national law), protectionism and lower energy prices. Compared with 2022, leaving the EU is now presented as a necessity and the proposed retirement age moves from 62 to 62 years and 9 months, with a funded tier. No independent body (Institut Montaigne, iFRAP) costed the programme in 2022 or 2026; several measures assume leaving the EU (Art. 123 TFEU, Directive 2019/944)."
+  }
+}

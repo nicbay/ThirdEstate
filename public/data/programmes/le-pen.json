@@ -1,0 +1,1004 @@
+{
+  "slug": "le-pen",
+  "candidate": "Marine Le Pen",
+  "party": "Rassemblement national",
+  "lite": true,
+  "status": "partial",
+  "statusNote": {
+    "fr": "Le 7 juillet 2026, la cour d'appel de Paris a confirmé la condamnation de Marine Le Pen (affaire des assistants parlementaires européens) : trois ans de prison dont un an sous bracelet électronique, 100 000 € d'amende et une inéligibilité réduite (15 mois ferme ; 45 mois dont 30 avec sursis selon France 24). Elle reste éligible, s'est pourvue en cassation et a confirmé sa candidature le soir même, Jordan Bardella étant annoncé comme son Premier ministre. Aucun programme complet n'est publié au 8 novembre 2026 : le RN a présenté un contre-budget le 6 octobre 2026 et des annonces thématiques.",
+    "en": "On 7 July 2026 the Paris appeal court upheld Marine Le Pen's conviction (European Parliament assistants case): three years in prison including one year under electronic tag, a €100,000 fine and a shorter ineligibility (15 months; reported by France 24 as 45 months with 30 suspended). She remains eligible, has appealed to the Cour de cassation and confirmed her candidacy that evening, with Jordan Bardella named as her future Prime Minister. No full programme has been published as of 8 November 2026: the RN presented a counter-budget on 6 October 2026 plus thematic announcements."
+  },
+  "versions": [
+    {
+      "id": "p22",
+      "year": 2022,
+      "label": {
+        "fr": "Programme 2022",
+        "en": "2022 programme"
+      },
+      "title": "M la France — 22 mesures pour 2022",
+      "date": "2022-02",
+      "url": "https://mlafrance.fr/programme",
+      "kind": "site"
+    },
+    {
+      "id": "p24",
+      "year": 2024,
+      "label": {
+        "fr": "Législatives 2024 (RN)",
+        "en": "2024 legislative (RN)"
+      },
+      "title": "Programme du Rassemblement national, législatives 2024 (mesures recensées par l'Institut Montaigne)",
+      "date": "2024-06",
+      "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/synthese",
+      "kind": "site"
+    },
+    {
+      "id": "p27",
+      "year": 2027,
+      "label": {
+        "fr": "Annonces 2026",
+        "en": "2026 announcements"
+      },
+      "title": "Contre-budget du 6 octobre 2026 et annonces de campagne",
+      "date": "2026-10",
+      "url": "https://www.publicsenat.fr/actualites/politique/140-milliards-deuros-deconomies-dici-2032-leffort-radical-propose-par-marine-le-pen-pour-redresser-les-f",
+      "kind": "announcements"
+    }
+  ],
+  "measures": [
+    {
+      "id": "m01",
+      "theme": "immigration",
+      "status": "modified",
+      "texts": {
+        "p22": "Stopper l'immigration incontrôlée, par référendum.",
+        "p27": "Inscrire la préférence nationale dans la Constitution ; inscrire le principe de « communauté nationale » dans la Constitution ; respecter la volonté des citoyens « notamment par référendum »."
+      },
+      "change": {
+        "fr": "Référendum sur l'immigration (2022) → inscription de la préférence nationale et de la « communauté nationale » dans la Constitution (2026), procédure non détaillée.",
+        "en": "Immigration referendum (2022) → writing national preference and the 'national community' into the Constitution (2026), procedure not detailed."
+      },
+      "sources": [
+        {
+          "title": "M la France — Le programme (22 mesures pour 2022)",
+          "url": "https://mlafrance.fr/programme"
+        },
+        {
+          "title": "Public Sénat, 9 octobre 2026 — Préférence nationale : la proposition du RN de taxer l'embauche de travailleurs étrangers",
+          "url": "https://www.publicsenat.fr/actualites/politique/preference-nationale-la-proposition-du-rn-de-taxer-lembauche-de-travailleurs-etrangers-inquiete-les-entrepreneurs"
+        },
+        {
+          "title": "Europe 1, 25 octobre 2026 — Congrès du RN à Orléans",
+          "url": "https://www.europe1.fr/politique/congres-du-rn-a-orleans-ce-quil-faut-retenir-du-premier-discours-de-campagne-de-marine-le-pen-1181118"
+        }
+      ],
+      "cost": null,
+      "legal": "constitutional-revision-needed",
+      "legalNote": {
+        "fr": "Le Conseil constitutionnel a jugé contraire au principe d'égalité l'exclusion des étrangers en situation régulière d'une prestation de solidarité (n° 89-269 DC, 22 janvier 1990) et reconnu leurs droits à la protection sociale et à une vie familiale normale (n° 93-325 DC, 13 août 1993). Une révision suppose la procédure de l'article 89 (vote des deux assemblées) ; le recours direct à l'article 11 pour réviser la Constitution est contesté, et le Conseil s'estime incompétent pour contrôler une loi adoptée par référendum (n° 62-20 DC, 6 novembre 1962). Le droit de l'UE (directive 2003/109/CE, art. 11, égalité de traitement des résidents de longue durée) resterait applicable.",
+        "en": "The Conseil constitutionnel held that excluding lawfully resident foreigners from a solidarity benefit breaches equality (no. 89-269 DC, 22 January 1990) and recognised their rights to social protection and family life (no. 93-325 DC, 13 August 1993). A revision requires the Article 89 procedure (both chambers); using Article 11 directly to amend the Constitution is disputed, and the Council declines to review laws adopted by referendum (no. 62-20 DC, 6 November 1962). EU law (Directive 2003/109/EC, Art. 11, equal treatment of long-term residents) would still apply."
+      },
+      "feasibility": "low",
+      "feasibilityNote": {
+        "fr": "Dépend d'une révision constitutionnelle votée par un Sénat où le RN n'a pas de majorité, ou d'un référendum à la procédure contestée.",
+        "en": "Depends on a constitutional revision passed by a Senate where the RN has no majority, or on a referendum whose procedure is disputed."
+      },
+      "broadBenefit": false
+    },
+    {
+      "id": "m02",
+      "theme": "logement",
+      "status": "new",
+      "texts": {
+        "p27": "Priorité nationale dans l'attribution des logements sociaux (annonce d'Hénin-Beaumont, 13 septembre 2026) ; « nous mettrons simplement une condition supplémentaire sur la nationalité » (Laurent Jacobelli)."
+      },
+      "change": {
+        "fr": "Annoncée en septembre 2026. La priorité nationale figurait déjà dans le projet RN de 2022, mais sa formulation 2022 sur le logement n'a pas été vérifiée ici.",
+        "en": "Announced September 2026. National priority was already part of the RN's 2022 project, but its 2022 wording on housing was not checked here."
+      },
+      "sources": [
+        {
+          "title": "Public Sénat, 14 septembre 2026 — « La première mesure sociale sera de garantir à tous les Français d'être prioritaires chez eux »",
+          "url": "https://www.publicsenat.fr/actualites/politique/la-premiere-mesure-sociale-sera-de-garantir-a-tous-les-francais-detre-prioritaires-chez-eux-defend-laurent-jacobelli"
+        }
+      ],
+      "cost": null,
+      "legal": "unconstitutional-precedent",
+      "legalNote": {
+        "fr": "Une condition de nationalité pour une aide sociale a été censurée au nom du principe d'égalité (n° 89-269 DC, 22 janvier 1990) ; un allongement de la durée de résidence exigée pour des prestations a été jugé disproportionné (n° 2024-6 RIP, 11 avril 2024). Sans révision constitutionnelle, risque élevé de censure.",
+        "en": "A nationality condition for social aid was struck down on equality grounds (no. 89-269 DC, 22 January 1990); a long residence requirement for benefits was held disproportionate (no. 2024-6 RIP, 11 April 2024). Without a constitutional revision, censure is likely."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m03",
+      "theme": "social",
+      "status": "maintained",
+      "texts": {
+        "p22": "Accorder les prestations familiales aux seuls foyers dont au moins un des parents est Français.",
+        "p24": "Accorder les prestations familiales aux seuls foyers dont au moins un des parents est français."
+      },
+      "change": {
+        "fr": "Reprise à l'identique en 2024 ; non détaillée mesure par mesure dans les annonces 2026 (le contre-budget attribue 15 Md€ d'économies à l'immigration en 2027).",
+        "en": "Repeated unchanged in 2024; not itemised in the 2026 announcements (the counter-budget attributes €15bn of savings to immigration in 2027)."
+      },
+      "sources": [
+        {
+          "title": "Institut Montaigne 2022 — Accorder les prestations familiales aux seuls foyers dont au moins un des parents est Français",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/accorder-les-prestations-familiales-aux-seuls-foyers-dont-au-moins-un-des-parents-est-francais/"
+        },
+        {
+          "title": "Institut Montaigne 2024 — idem (RN)",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/accorder-les-prestations-familiales-aux-seuls-foyers-dont-au-moins-un-des-parents-est-francais/"
+        }
+      ],
+      "cost": {
+        "value": 3.8,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/synthese",
+        "note": {
+          "fr": "Économie estimée à 3,8 Md€/an en 2024 ; 3,1 Md€/an en 2022 (fourchette 2,5–3,9 Md€).",
+          "en": "Saving estimated at €3.8bn a year in 2024; €3.1bn a year in 2022 (range €2.5–3.9bn)."
+        }
+      },
+      "legal": "unconstitutional-precedent",
+      "legalNote": {
+        "fr": "L'Institut Montaigne juge la mesure de « forte complexité juridique » : elle suppose une révision constitutionnelle et la dénonciation de textes internationaux (CEDH art. 8 et 14, Convention des droits de l'enfant art. 3-1). Précédents : n° 89-269 DC (22 janvier 1990) et n° 93-325 DC (13 août 1993).",
+        "en": "Institut Montaigne rates it 'highly complex legally': it would need a constitutional revision and denunciation of treaties (ECHR Arts 8 and 14, Convention on the Rights of the Child Art. 3-1). Precedents: no. 89-269 DC (22 January 1990) and no. 93-325 DC (13 August 1993)."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m04",
+      "theme": "social",
+      "status": "maintained",
+      "texts": {
+        "p22": "Réserver le RSA et les prestations de solidarité aux étrangers ayant travaillé au moins 5 ans en France.",
+        "p24": "Réserver le bénéfice du RSA et des prestations de solidarité aux étrangers ayant au moins 5 ans d'équivalent temps plein travaillé en France."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Institut Montaigne 2022 — Réserver le RSA aux étrangers ayant travaillé au moins 5 ans",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/reserver-le-rsa-et-les-prestations-de-solidarites-aux-etrangers-ayant-travaille-au-moins-5-ans-en-france-2/"
+        },
+        {
+          "title": "Institut Montaigne 2024 — idem (RN)",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/reserver-le-benefice-du-rsa-et-des-prestations-de-solidarites-aux-etrangers-ayant-au-moins-5-ans-dequivalent-temps-plein-travaille-en-france/"
+        }
+      ],
+      "cost": {
+        "value": 2.6,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/synthese",
+        "note": {
+          "fr": "2,6 Md€/an (chiffrage 2024) ; 2,5 Md€/an en 2022.",
+          "en": "€2.6bn a year (2024 costing); €2.5bn a year in 2022."
+        }
+      },
+      "legal": "unconstitutional-precedent",
+      "legalNote": {
+        "fr": "Le Conseil constitutionnel a jugé disproportionnée l'exigence de cinq ans de résidence ou de trente mois d'affiliation au titre d'une activité pour des prestations non contributives (n° 2024-6 RIP, 11 avril 2024). Le Conseil d'État avait admis en 2015 une condition de cinq ans pour le RSA seul (n° 375887).",
+        "en": "The Conseil constitutionnel held a five-year residence or 30-month work-affiliation requirement for non-contributory benefits disproportionate (no. 2024-6 RIP, 11 April 2024). The Conseil d'État had accepted a five-year condition for the RSA alone in 2015 (no. 375887)."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m05",
+      "theme": "sante",
+      "status": "maintained",
+      "texts": {
+        "p22": "Remplacer l'aide médicale d'État par une « aide d'urgence vitale ».",
+        "p24": "Suppression de l'aide médicale d'État (AME) et remplacement par l'aide d'urgence vitale."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Institut Montaigne 2022 — Suppression de l'AME",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/suppression-de-laide-medicale-detat-ame-remplacement-par-laide-durgence-vitale/"
+        },
+        {
+          "title": "Institut Montaigne 2024 — Suppression de l'AME (RN)",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/suppression-de-laide-medicale-detat-ame-et-remplacement-par-laide-durgence-vitale/"
+        }
+      ],
+      "cost": {
+        "value": 0.7,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2022",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/synthese",
+        "note": {
+          "fr": "0,7 Md€/an en 2022 comme en 2024.",
+          "en": "€0.7bn a year in both 2022 and 2024."
+        }
+      },
+      "legal": "unknown",
+      "legalNote": null,
+      "feasibility": "high",
+      "feasibilityNote": {
+        "fr": "Relève de la loi ordinaire.",
+        "en": "Can be done by ordinary law."
+      },
+      "broadBenefit": false
+    },
+    {
+      "id": "m06",
+      "theme": "social",
+      "status": "modified",
+      "texts": {
+        "p22": "Restaurer la retraite à 60 ans à taux plein avec 40 annuités et revaloriser le minimum vieillesse.",
+        "p24": "Abroger la réforme des retraites et, pour ceux ayant commencé à travailler avant 20 ans, partir à 40 annuités de cotisations.",
+        "p27": "Ramener l'âge légal à 62 ans avec 42 annuités ; départ à 60 ans avec 40 annuités pour ceux ayant commencé avant 20 ans ; « véritable pilier de capitalisation »."
+      },
+      "change": {
+        "fr": "60 ans/40 annuités (2022) → abrogation de la réforme de 2023 (2024) → 62 ans/42 annuités, 60 ans pour les carrières longues (2026). Coût annoncé par la candidate : 9 Md€/an en année pleine.",
+        "en": "60/40 years of contributions (2022) → repeal of the 2023 reform (2024) → 62 with 42 years, 60 for long careers (2026). Candidate's own cost: €9bn a year at full effect."
+      },
+      "sources": [
+        {
+          "title": "Institut Montaigne 2022 — Restaurer la retraite à 60 ans",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/restaurer-la-retraite-a-60-ans-a-taux-plein-avec-40-annuites-et-revaloriser-le-minimum-vieillesse/"
+        },
+        {
+          "title": "Institut Montaigne 2024 — Abroger la réforme des retraites (RN)",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/abroger-la-reforme-des-retraites-et-pour-ceux-ayant-commence-a-travailler-avant-20-ans-partir-a-40-annuites-de-cotisations/"
+        },
+        {
+          "title": "Public Sénat, 30 septembre 2026 — Ce que proposent les principaux candidats sur les retraites",
+          "url": "https://www.publicsenat.fr/actualites/politique/reculer-ou-avancer-lage-legal-avec-ou-sans-capitalisation-ce-que-proposent-les-principaux-candidats-a-lelection-presidentielle-sur-les-retraites"
+        },
+        {
+          "title": "Europe 1, 6 octobre 2026 — Budget 2027 : Marine Le Pen promet 140 milliards d'euros nets d'économies",
+          "url": "https://www.europe1.fr/politique/budget-2027-marine-le-pen-promet-140-milliards-deuros-nets-deconomies-dici-2032-pour-eviter-a-la-france-le-defaut-de-paiement-1126400"
+        }
+      ],
+      "cost": {
+        "value": -34.7,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/synthese",
+        "note": {
+          "fr": "Chiffrage Institut Montaigne de la version 2024 (abrogation de la réforme 2023) : 34,7 Md€/an ; version 2022 : 26,5 Md€/an. La version 2026 n'a pas été chiffrée indépendamment ; la candidate l'évalue à 9 Md€/an.",
+          "en": "Institut Montaigne costing of the 2024 version (repeal of the 2023 reform): €34.7bn a year; 2022 version: €26.5bn a year. The 2026 version has no independent costing; the candidate puts it at €9bn a year."
+        }
+      },
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "m07",
+      "theme": "economie",
+      "status": "maintained",
+      "texts": {
+        "p22": "Baisser la TVA de 20 à 5,5 % pour les carburants, l'électricité, le gaz et le fioul domestique.",
+        "p24": "Baisser la TVA de 20 à 5,5 % pour les carburants, l'électricité, le gaz et le fioul domestique.",
+        "p27": "« La baisse non seulement de la TVA de 20 à 5,5 % » sur les carburants (1er avril 2026)."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Institut Montaigne 2022 — Baisser la TVA sur l'énergie",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/baisser-la-tva-de-20-a-55-pour-les-carburants-lelectricite-le-gaz-et-le-fioul-domestique/"
+        },
+        {
+          "title": "Institut Montaigne 2024 — idem (RN)",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/baisser-la-tva-de-20-a-55-pour-les-carburants-lelectricite-le-gaz-et-le-fioul-domestique/"
+        },
+        {
+          "title": "Europe 1, 1er avril 2026 — Carburants : Marine Le Pen dénonce des « mensonges » du gouvernement",
+          "url": "https://www.europe1.fr/politique/carburants-marine-le-pen-denonce-des-mensonges-du-gouvernement-sur-les-recettes-fiscales-supplementaires-919765"
+        },
+        {
+          "title": "Moneyvox, 11 mars 2026 — Baisser la TVA sur les carburants à 5,5 %, une idée contraire au droit européen",
+          "url": "https://www.moneyvox.fr/votre-argent/actualites/107946/baisser-la-tva-sur-les-carburants-a-5-5-une-idee-contraire-au-droit-europeen"
+        }
+      ],
+      "cost": {
+        "value": -11.3,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/synthese",
+        "note": {
+          "fr": "11,3 Md€/an (chiffrage 2024) ; 10,3 Md€/an en 2022.",
+          "en": "€11.3bn a year (2024 costing); €10.3bn a year in 2022."
+        }
+      },
+      "legal": "eu-law",
+      "legalNote": {
+        "fr": "La directive TVA 2006/112/CE (révisée en avril 2022) ne permet pas de taux réduit sur les carburants ; selon le ministère des Comptes publics cité par Moneyvox, « l'application des taux réduits de TVA est interdite pour les carburants et les combustibles ».",
+        "en": "The VAT Directive 2006/112/EC (revised April 2022) does not allow a reduced rate on motor fuels; the public accounts ministry, quoted by Moneyvox, says reduced VAT rates are prohibited for fuels."
+      },
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "m08",
+      "theme": "travail",
+      "status": "maintained",
+      "texts": {
+        "p22": "Exonérer de cotisations patronales les hausses de 10 % des salaires inférieurs à 3 SMIC.",
+        "p24": "Exonérer les entreprises des cotisations patronales sur les hausses de 10 % des grilles de salaires pour tous les salariés sous 3 SMIC."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Institut Montaigne 2022 — Exonérer de cotisations patronales les hausses de 10 %",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/exonerer-de-cotisations-patronales-les-hausses-de-10-des-salaires-inferieurs-a-3-smic/"
+        },
+        {
+          "title": "Institut Montaigne 2024 — idem (RN)",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/exonerer-les-entreprises-des-cotisations-patronales-sur-les-hausses-de-10-des-grilles-de-salaires-pour-tous-les-salaries-sous-3-smic/"
+        }
+      ],
+      "cost": {
+        "value": -0.8,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/synthese",
+        "note": {
+          "fr": "0,8 Md€/an dans le chiffrage 2024 ; 10,5 Md€/an dans celui de 2022 (hypothèses de recours différentes).",
+          "en": "€0.8bn a year in the 2024 costing; €10.5bn a year in the 2022 one (different take-up assumptions)."
+        }
+      },
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "high",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m09",
+      "theme": "economie",
+      "status": "maintained",
+      "texts": {
+        "p22": "Exonérer d'impôt sur le revenu les moins de 30 ans.",
+        "p24": "Exonération d'impôt sur le revenu pour les moins de 30 ans."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Institut Montaigne 2022 — Synthèse Marine Le Pen",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/synthese"
+        },
+        {
+          "title": "Institut Montaigne 2024 — micro-chiffrages RN (PDF)",
+          "url": "https://institutmontaigne.org/ressources/documents/synthese-legislatives-2024-micro-chiffrages-institut-montaigne-rn.pdf"
+        }
+      ],
+      "cost": {
+        "value": -3.7,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2022",
+        "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/synthese",
+        "note": {
+          "fr": "3,7 Md€/an en 2022 et en 2024.",
+          "en": "€3.7bn a year in 2022 and 2024."
+        }
+      },
+      "legal": "risk",
+      "legalNote": {
+        "fr": "Une exonération fondée sur l'âge devra être justifiée au regard de l'égalité devant les charges publiques (art. 13 de la Déclaration de 1789) ; pas de décision du Conseil sur ce dispositif précis.",
+        "en": "An age-based exemption would have to be justified under equality before public charges (Art. 13 of the 1789 Declaration); no Council ruling on this specific scheme."
+      },
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "m10",
+      "theme": "social",
+      "status": "new",
+      "texts": {
+        "p24": "Instituer une part fiscale complète dès le deuxième enfant.",
+        "p27": "« Part fiscale pleine dès le deuxième enfant » (discours d'Orléans, 25 octobre 2026)."
+      },
+      "change": {
+        "fr": "Absente des 22 mesures de 2022 vérifiées ici ; apparaît en 2024 et est reprise en 2026.",
+        "en": "Not among the 22 measures of 2022 checked here; appears in 2024 and is repeated in 2026."
+      },
+      "sources": [
+        {
+          "title": "Institut Montaigne 2024 — Part fiscale complète dès le deuxième enfant (RN)",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/instituer-une-part-fiscale-complete-des-le-deuxieme-enfant/"
+        },
+        {
+          "title": "Europe 1, 25 octobre 2026 — Congrès du RN à Orléans",
+          "url": "https://www.europe1.fr/politique/congres-du-rn-a-orleans-ce-quil-faut-retenir-du-premier-discours-de-campagne-de-marine-le-pen-1181118"
+        }
+      ],
+      "cost": {
+        "value": -3.4,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/synthese",
+        "note": {
+          "fr": "Chiffrage 2024 (législatives).",
+          "en": "2024 (legislative) costing."
+        }
+      },
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "high",
+      "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "m11",
+      "theme": "economie",
+      "status": "maintained",
+      "texts": {
+        "p22": "Transformer l'impôt sur la fortune immobilière (IFI) en un impôt sur la fortune financière (IFF).",
+        "p24": "Remplacer l'IFI par un impôt sur la fortune financière (IFF)."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Institut Montaigne 2022 — Rétablir l'ISF en instaurant un IFF",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/retablir-lisf-en-instaurant-un-impot-sur-la-fortune-financiere-iff/"
+        },
+        {
+          "title": "Institut Montaigne 2024 — Synthèse RN",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/synthese"
+        }
+      ],
+      "cost": {
+        "value": 1.9,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2022",
+        "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/synthese",
+        "note": {
+          "fr": "Recette nette de 1,9 Md€/an en 2022 ; non chiffrée en 2024.",
+          "en": "Net revenue of €1.9bn a year in 2022; not costed in 2024."
+        }
+      },
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "high",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m12",
+      "theme": "logement",
+      "status": "maintained",
+      "texts": {
+        "p22": "Proposer un prêt de l'État jusqu'à 100 000 euros à taux zéro pour les jeunes couples, non remboursé après le 3e enfant.",
+        "p24": "Prêt public à taux zéro transformé en subvention pour les couples ayant un troisième enfant."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Institut Montaigne 2022 — Prêt de l'État jusqu'à 100 000 euros à taux zéro",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/proposer-un-pret-de-letat-jusque-100-000-euros-a-un-taux-zero-plus-rembourse-apres-le-3e-enfant/"
+        },
+        {
+          "title": "Institut Montaigne 2024 — micro-chiffrages RN (PDF)",
+          "url": "https://institutmontaigne.org/ressources/documents/synthese-legislatives-2024-micro-chiffrages-institut-montaigne-rn.pdf"
+        }
+      ],
+      "cost": {
+        "value": -12.6,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2022",
+        "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/synthese",
+        "note": {
+          "fr": "12,6 Md€/an en 2022 et en 2024.",
+          "en": "€12.6bn a year in 2022 and 2024."
+        }
+      },
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m13",
+      "theme": "culture",
+      "status": "maintained",
+      "texts": {
+        "p22": "Supprimer la redevance audiovisuelle en privatisant les principales chaînes publiques.",
+        "p24": "Privatiser l'audiovisuel public."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Institut Montaigne 2024 — Privatiser l'audiovisuel public (RN)",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/privatiser-laudiovisuel-public/"
+        }
+      ],
+      "cost": {
+        "value": 2.0,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/synthese",
+        "note": {
+          "fr": "Économie de 2 Md€/an (tableau 2024 ; 1,6 Md€ dans le texte de la synthèse) ; coût de 0,1 Md€/an dans le chiffrage 2022.",
+          "en": "Saving of €2bn a year (2024 table; €1.6bn in the synthesis text); cost of €0.1bn a year in the 2022 costing."
+        }
+      },
+      "legal": "risk",
+      "legalNote": {
+        "fr": "L'Institut Montaigne note que « la faisabilité juridique et politique demeure incertaine » (pluralisme des courants d'expression, objectif de valeur constitutionnelle).",
+        "en": "Institut Montaigne notes that legal and political feasibility 'remains uncertain' (pluralism of opinion is a constitutional objective)."
+      },
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m14",
+      "theme": "sante",
+      "status": "maintained",
+      "texts": {
+        "p22": "Supprimer les ARS et réduire à 10 % les postes administratifs dans les hôpitaux.",
+        "p24": "Supprimer les agences régionales de santé (ARS) et réduire à 10 % les postes administratifs dans les hôpitaux."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Institut Montaigne 2022 — Supprimer les ARS",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/supprimer-les-ars-et-reduire-a-10-les-postes-administratifs-dans-les-hopitaux"
+        },
+        {
+          "title": "Institut Montaigne 2024 — micro-chiffrages RN (PDF)",
+          "url": "https://institutmontaigne.org/ressources/documents/synthese-legislatives-2024-micro-chiffrages-institut-montaigne-rn.pdf"
+        }
+      ],
+      "cost": {
+        "value": 3.6,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2022",
+        "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/synthese",
+        "note": {
+          "fr": "3,6 Md€/an en 2022 et en 2024.",
+          "en": "€3.6bn a year in 2022 and 2024."
+        }
+      },
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m15",
+      "theme": "justice",
+      "status": "maintained",
+      "texts": {
+        "p22": "Atteindre 85 000 places de prison d'ici 2027.",
+        "p24": "Construire des places de prison d'ici 2027."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Institut Montaigne 2022 — Synthèse Marine Le Pen",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/synthese"
+        },
+        {
+          "title": "Institut Montaigne 2024 — Synthèse RN",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/synthese"
+        }
+      ],
+      "cost": {
+        "value": -1.5,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/synthese",
+        "note": {
+          "fr": "1,5 Md€/an en 2024 ; 5,5 Md€/an pour l'objectif de 85 000 places en 2022.",
+          "en": "€1.5bn a year in 2024; €5.5bn a year for the 85,000-place target in 2022."
+        }
+      },
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m16",
+      "theme": "education",
+      "status": "maintained",
+      "texts": {
+        "p22": "Revaloriser le salaire des enseignants.",
+        "p24": "Revaloriser le salaire des enseignants à partir de la fin de carrière."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Institut Montaigne 2022 — Synthèse Marine Le Pen",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/synthese"
+        },
+        {
+          "title": "Institut Montaigne 2024 — Synthèse RN",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/synthese"
+        }
+      ],
+      "cost": {
+        "value": -5.8,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2022",
+        "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/synthese",
+        "note": {
+          "fr": "5,8 Md€/an en 2022 et en 2024.",
+          "en": "€5.8bn a year in 2022 and 2024."
+        }
+      },
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "high",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m17",
+      "theme": "immigration",
+      "status": "new",
+      "texts": {
+        "p24": "Suppression du droit du sol."
+      },
+      "change": {
+        "fr": "Recensée dans le programme législatif 2024 (coût jugé marginal par l'Institut Montaigne).",
+        "en": "Listed in the 2024 legislative programme (cost rated marginal by Institut Montaigne)."
+      },
+      "sources": [
+        {
+          "title": "Institut Montaigne 2024 — Synthèse RN",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/synthese"
+        }
+      ],
+      "cost": null,
+      "legal": "risk",
+      "legalNote": {
+        "fr": "Le Conseil constitutionnel n'a pas qualifié le droit du sol de principe fondamental reconnu par les lois de la République ; il a validé une restriction propre à Mayotte au titre de l'article 73 (n° 2018-770 DC, 6 septembre 2018). Une suppression générale par loi ordinaire n'a jamais été jugée.",
+        "en": "The Conseil constitutionnel has not classed birthright citizenship as a fundamental principle recognised by the laws of the Republic; it upheld a Mayotte-specific restriction under Article 73 (no. 2018-770 DC, 6 September 2018). A general abolition by ordinary law has never been ruled on."
+      },
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m18",
+      "theme": "institutions",
+      "status": "modified",
+      "texts": {
+        "p22": "Instaurer le référendum d'initiative citoyenne et la proportionnelle.",
+        "p27": "Scrutin proportionnel avec prime majoritaire pour « dégager des majorités » ; gouvernement d'« union nationale » dirigé par Jordan Bardella."
+      },
+      "change": {
+        "fr": "Proportionnelle → proportionnelle avec prime majoritaire ; le RIC n'est pas repris explicitement dans le discours du 25 octobre 2026.",
+        "en": "Proportional representation → proportional with a majority bonus; the citizens' initiative referendum is not explicitly restated in the 25 October 2026 speech."
+      },
+      "sources": [
+        {
+          "title": "M la France — Le programme",
+          "url": "https://mlafrance.fr/programme"
+        },
+        {
+          "title": "Europe 1, 25 octobre 2026 — Congrès du RN à Orléans",
+          "url": "https://www.europe1.fr/politique/congres-du-rn-a-orleans-ce-quil-faut-retenir-du-premier-discours-de-campagne-de-marine-le-pen-1181118"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": {
+        "fr": "Le mode de scrutin législatif relève de la loi ; le RIC supposerait en revanche une révision constitutionnelle.",
+        "en": "The legislative voting system is set by law; a citizens' initiative referendum would require a constitutional revision."
+      },
+      "feasibility": "high",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m19",
+      "theme": "budget",
+      "status": "new",
+      "texts": {
+        "p27": "140 Md€ d'économies nettes d'ici 2032 ; 30 Md€ de baisses nettes d'impôts sur le quinquennat ; déficit sous 3 % en 2030 ; règle d'or inscrite dans la Constitution par référendum."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Europe 1, 6 octobre 2026 — Marine Le Pen promet 140 milliards d'euros nets d'économies d'ici 2032",
+          "url": "https://www.europe1.fr/politique/budget-2027-marine-le-pen-promet-140-milliards-deuros-nets-deconomies-dici-2032-pour-eviter-a-la-france-le-defaut-de-paiement-1126400"
+        },
+        {
+          "title": "Public Sénat, 6 octobre 2026 — 140 milliards d'euros d'économies d'ici 2032",
+          "url": "https://www.publicsenat.fr/actualites/politique/140-milliards-deuros-deconomies-dici-2032-leffort-radical-propose-par-marine-le-pen-pour-redresser-les-f"
+        }
+      ],
+      "cost": null,
+      "legal": "constitutional-revision-needed",
+      "legalNote": {
+        "fr": "Une règle d'or constitutionnelle suppose une révision ; par la voie de l'article 89, le texte doit d'abord être voté en termes identiques par les deux assemblées.",
+        "en": "A constitutional golden rule requires a revision; under Article 89 the text must first pass both chambers in identical terms."
+      },
+      "feasibility": "low",
+      "feasibilityNote": {
+        "fr": "Édouard Philippe et Paul Midy contestent la crédibilité des économies (Public Sénat).",
+        "en": "Édouard Philippe and Paul Midy dispute the credibility of the savings (Public Sénat)."
+      },
+      "broadBenefit": false
+    },
+    {
+      "id": "m20",
+      "theme": "budget",
+      "status": "new",
+      "texts": {
+        "p27": "Suppression de « la quasi-totalité des agences et autres organismes parasites » (3,4 Md€ en 2027) et réorganisation de l'État (20,7 Md€ en 2027)."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Public Sénat, 6 octobre 2026 — 140 milliards d'euros d'économies d'ici 2032",
+          "url": "https://www.publicsenat.fr/actualites/politique/140-milliards-deuros-deconomies-dici-2032-leffort-radical-propose-par-marine-le-pen-pour-redresser-les-f"
+        }
+      ],
+      "cost": {
+        "value": 3.4,
+        "low": 0.5,
+        "high": 3.4,
+        "by": "Candidate",
+        "url": "https://www.publicsenat.fr/actualites/politique/140-milliards-deuros-deconomies-dici-2032-leffort-radical-propose-par-marine-le-pen-pour-redresser-les-f",
+        "note": {
+          "fr": "3,4 Md€ selon le RN ; une commission d'enquête du Sénat sur les agences estimait l'économie possible à environ 0,5 Md€ sans suppression de politiques publiques.",
+          "en": "€3.4bn according to the RN; a Senate inquiry on agencies put achievable savings at about €0.5bn without cutting public policies."
+        }
+      },
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m21",
+      "theme": "europe",
+      "status": "new",
+      "texts": {
+        "p27": "Réduire la contribution française au budget de l'Union européenne (9 Md€ d'économies selon Jordan Bardella)."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Public Sénat, 6 octobre 2026 — 140 milliards d'euros d'économies d'ici 2032",
+          "url": "https://www.publicsenat.fr/actualites/politique/140-milliards-deuros-deconomies-dici-2032-leffort-radical-propose-par-marine-le-pen-pour-redresser-les-f"
+        }
+      ],
+      "cost": {
+        "value": 9.0,
+        "low": null,
+        "high": null,
+        "by": "Candidate",
+        "url": "https://www.publicsenat.fr/actualites/politique/140-milliards-deuros-deconomies-dici-2032-leffort-radical-propose-par-marine-le-pen-pour-redresser-les-f",
+        "note": {
+          "fr": "Montant annoncé par le RN, non vérifié.",
+          "en": "Amount announced by the RN, not verified."
+        }
+      },
+      "legal": "eu-law",
+      "legalNote": {
+        "fr": "La contribution découle de la décision relative aux ressources propres (décision (UE, Euratom) 2020/2053), adoptée à l'unanimité ; une réduction unilatérale n'est pas prévue par les traités.",
+        "en": "The contribution follows from the Own Resources Decision (Decision (EU, Euratom) 2020/2053), adopted unanimously; the treaties provide no unilateral reduction."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m22",
+      "theme": "immigration",
+      "status": "new",
+      "texts": {
+        "p27": "« Taxe de 1 000 euros par an à l'embauche d'un extra-européen » (contre-budget, amendement de Jean-Philippe Tanguy au PLF 2027)."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Public Sénat, 9 octobre 2026 — Préférence nationale : la proposition du RN de taxer l'embauche de travailleurs étrangers",
+          "url": "https://www.publicsenat.fr/actualites/politique/preference-nationale-la-proposition-du-rn-de-taxer-lembauche-de-travailleurs-etrangers-inquiete-les-entrepreneurs"
+        }
+      ],
+      "cost": {
+        "value": 1.3,
+        "low": null,
+        "high": null,
+        "by": "Candidate",
+        "url": "https://www.publicsenat.fr/actualites/politique/preference-nationale-la-proposition-du-rn-de-taxer-lembauche-de-travailleurs-etrangers-inquiete-les-entrepreneurs",
+        "note": {
+          "fr": "Rendement d'environ 1,3 Md€/an sur la base de 1,3 million de salariés extra-européens, sans tenir compte de la baisse de l'immigration légale.",
+          "en": "Yield of about €1.3bn a year based on 1.3 million non-EU employees, before any fall in legal immigration."
+        }
+      },
+      "legal": "risk",
+      "legalNote": {
+        "fr": "Une taxe liée à la nationalité du salarié peut se heurter au principe d'égalité et, pour les résidents de longue durée, à l'égalité de traitement en matière d'emploi (directive 2003/109/CE, art. 11). Une taxe existe déjà sur l'embauche de travailleurs étrangers (CESEDA, art. L. 436-10).",
+        "en": "A tax tied to the employee's nationality may conflict with equality and, for long-term residents, with equal treatment in employment (Directive 2003/109/EC, Art. 11). A tax on hiring foreign workers already exists (CESEDA, Art. L. 436-10)."
+      },
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m23",
+      "theme": "ecologie",
+      "status": "new",
+      "texts": {
+        "p27": "Abroger la « stupide loi Hulot » qui interdit la recherche d'hydrocarbures sur le sol français ; neutralité carbone « avant 2050 »."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Europe 1, 25 octobre 2026 — Congrès du RN à Orléans",
+          "url": "https://www.europe1.fr/politique/congres-du-rn-a-orleans-ce-quil-faut-retenir-du-premier-discours-de-campagne-de-marine-le-pen-1181118"
+        },
+        {
+          "title": "Europe 1, 6 octobre 2026 — Budget 2027",
+          "url": "https://www.europe1.fr/politique/budget-2027-marine-le-pen-promet-140-milliards-deuros-nets-deconomies-dici-2032-pour-eviter-a-la-france-le-defaut-de-paiement-1126400"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "high",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m24",
+      "theme": "economie",
+      "status": "maintained",
+      "texts": {
+        "p22": "Créer un fonds souverain français.",
+        "p27": "Un fonds souverain pour les entreprises françaises ; dispense d'impôt sur le revenu pour les entrepreneurs (25 octobre 2026)."
+      },
+      "change": {
+        "fr": "Le fonds souverain est repris ; s'y ajoute une dispense d'impôt sur le revenu pour les entrepreneurs (périmètre non précisé).",
+        "en": "The sovereign fund is kept; an income-tax exemption for entrepreneurs is added (scope not specified)."
+      },
+      "sources": [
+        {
+          "title": "M la France — Le programme",
+          "url": "https://mlafrance.fr/programme"
+        },
+        {
+          "title": "Europe 1, 25 octobre 2026 — Congrès du RN à Orléans",
+          "url": "https://www.europe1.fr/politique/congres-du-rn-a-orleans-ce-quil-faut-retenir-du-premier-discours-de-campagne-de-marine-le-pen-1181118"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    }
+  ],
+  "costing": {
+    "rounds": [
+      {
+        "id": "p2022",
+        "year": 2022,
+        "label": {
+          "fr": "Présidentielle 2022",
+          "en": "2022 presidential"
+        },
+        "horizon": {
+          "fr": "par an",
+          "en": "a year"
+        },
+        "announced": {
+          "by": "Marine Le Pen",
+          "spending": 68.3,
+          "revenue": 55.0,
+          "net": -13.3,
+          "date": "2022-03",
+          "note": {
+            "fr": "Chiffrage de la candidate, tel que reproduit par l'Institut Montaigne.",
+            "en": "Candidate's own costing, as shown by Institut Montaigne."
+          },
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/synthese"
+        },
+        "estimates": [
+          {
+            "by": "Institut Montaigne",
+            "spending": 119.6,
+            "revenue": 17.8,
+            "net": -101.8,
+            "date": "2022-04",
+            "note": {
+              "fr": "Hors réindexation des pensions sur l'inflation (droit existant), qui ajouterait 11,2 Md€/an.",
+              "en": "Excludes re-indexing pensions to inflation (existing law), which would add €11.2bn a year."
+            },
+            "url": "https://www.institutmontaigne.org/presidentielle-2022/marine-le-pen/synthese"
+          }
+        ]
+      },
+      {
+        "id": "l2024",
+        "year": 2024,
+        "label": {
+          "fr": "Législatives 2024 (RN)",
+          "en": "2024 legislative (RN)"
+        },
+        "horizon": {
+          "fr": "par an",
+          "en": "a year"
+        },
+        "announced": null,
+        "estimates": [
+          {
+            "by": "Institut Montaigne",
+            "spending": 85,
+            "revenue": 14,
+            "net": -71,
+            "date": "2024-06",
+            "note": {
+              "fr": "La page présente 85 Md€ à la fois « par an » et « sur 3 ans », et les lignes détaillées totalisent environ 97 Md€ ; le chiffre de synthèse est repris tel quel.",
+              "en": "The page describes €85bn both as 'a year' and 'over 3 years', and the itemised lines add up to about €97bn; the headline figure is used as published."
+            },
+            "url": "https://www.institutmontaigne.org/legislatives-2024/rassemblement-national/synthese"
+          }
+        ]
+      },
+      {
+        "id": "p2027",
+        "year": 2027,
+        "label": {
+          "fr": "Contre-budget 2026",
+          "en": "2026 counter-budget"
+        },
+        "horizon": {
+          "fr": "économies nettes atteintes en 2032 par rapport à 2026",
+          "en": "net savings reached by 2032 compared with 2026"
+        },
+        "announced": {
+          "by": "Rassemblement national",
+          "spending": null,
+          "revenue": null,
+          "net": 140,
+          "date": "2026-10",
+          "note": {
+            "fr": "140 Md€ d'économies nettes d'ici 2032 et 30 Md€ de baisses nettes d'impôts sur le quinquennat ; dette ramenée de 121 % à 112 % du PIB. Le document détaillé n'est pas public ; aucun chiffrage indépendant publié à ce jour.",
+            "en": "€140bn of net savings by 2032 and €30bn of net tax cuts over the term; debt from 121% to 112% of GDP. The detailed document is not public; no independent costing published yet."
+          },
+          "url": "https://www.publicsenat.fr/actualites/politique/140-milliards-deuros-deconomies-dici-2032-leffort-radical-propose-par-marine-le-pen-pour-redresser-les-f"
+        },
+        "estimates": []
+      }
+    ],
+    "checked": "2026-11-08"
+  },
+  "summary": {
+    "fr": "Le projet du RN repose sur la priorité nationale (prestations, logement social, emploi), la baisse de la TVA sur l'énergie et un retour partiel sur la réforme des retraites. L'âge de départ proposé est passé de 60 ans (2022) à 62 ans avec 60 ans pour les carrières longues (2026), et le RN met désormais en avant un contre-budget de 140 Md€ d'économies d'ici 2032 avec une règle d'or. L'Institut Montaigne estimait le coût net à 101,8 Md€/an en 2022 et 71 Md€/an pour le programme législatif de 2024 ; plusieurs mesures sur les étrangers se heurtent à des décisions du Conseil constitutionnel (n° 89-269 DC, n° 2024-6 RIP).",
+    "en": "The RN's project centres on national priority (benefits, social housing, jobs), lower VAT on energy and a partial rollback of the pension reform. The proposed retirement age has moved from 60 (2022) to 62, with 60 for long careers (2026), and the RN now leads with a counter-budget of €140bn in savings by 2032 and a golden rule. Institut Montaigne put the net cost at €101.8bn a year in 2022 and €71bn a year for the 2024 legislative programme; several measures on foreigners conflict with Conseil constitutionnel rulings (no. 89-269 DC, no. 2024-6 RIP)."
+  }
+}

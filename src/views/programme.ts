@@ -137,12 +137,15 @@ export function melenchonFlowSpec(f: ProgrammeFile, ls: Lineage[]): FlowSpec {
 function costCard(f: { slug: string; costing?: { rounds: CostRound[]; checked: string } | null }) {
   const c = f.costing;
   if (!c?.rounds.length) return "";
-  const nets = c.rounds.flatMap((r) => [r.announced?.net, ...r.estimates.map((e) => e.net)]).filter((v): v is number => typeof v === "number");
+  // a round given as a multi-year total (e.g. "cumulé jusqu’en 2032") can’t sit on the per-year axis
+  const annual = (r: CostRound) => !/cumul|quinquennat|d’ici|jusqu|atteint|en 20\d\d par rapport/i.test(r.horizon.fr);
+  const nets = c.rounds.filter((r) => annual(r)).flatMap((r) => [r.announced?.net, ...r.estimates.map((e) => e.net)]).filter((v): v is number => typeof v === "number");
   const lo = Math.min(-20, ...nets), hi = Math.max(40, ...nets), span = hi - lo;
   const pos = (v: number) => (100 * (v - lo)) / span;
   const md = (v: number) => { const sg = v > 0 ? "+" : v < 0 ? "−" : ""; return L(`${sg}${fmtNum(Math.abs(v))} Md€`, `${sg}€${fmtNum(Math.abs(v))}bn`); };
-  const bar = (e: CostLine | null, kind: "ann" | "est") => {
+  const bar = (e: CostLine | null, kind: "ann" | "est", perYear = true) => {
     if (!e) return "";
+    if (!perYear && e.net != null) return `<div class="cost-row is-${kind}"><span class="cost-who">${kind === "ann" ? L("Annoncé", "Announced") : L("Estimé", "Estimated")} · <a href="${esc(safeUrl(e.url))}" target="_blank" rel="noopener">${esc(e.by)}</a></span><span class="cost-detail small"><b>${md(e.net)}</b> ${L("au total sur la période, pas par an : non comparable aux barres ci-dessus", "in total over the period, not per year: not comparable with the bars above")} — <span class="muted">${esc(L(e.note.fr, e.note.en))}</span></span></div>`;
     if (e.net == null) return `<div class="cost-row is-${kind}"><span class="cost-who">${kind === "ann" ? L("Annoncé", "Announced") : L("Estimé", "Estimated")} · <a href="${esc(safeUrl(e.url))}" target="_blank" rel="noopener">${esc(e.by)}</a></span><span class="cost-detail muted small">${L("Pas de solde chiffré", "No overall balance given")} — ${esc(L(e.note.fr, e.note.en))}</span></div>`;
     const a = pos(Math.min(0, e.net)), b = pos(Math.max(0, e.net));
     return `<div class="cost-row is-${kind}">
@@ -177,8 +180,8 @@ function costCard(f: { slug: string; costing?: { rounds: CostRound[]; checked: s
     <p class="prog-lede">${L("Solde des mesures pour les finances publiques, en milliards d’euros par an : à droite du zéro, les recettes nouvelles dépassent les dépenses nouvelles ; à gauche, le programme creuse le déficit.", "Balance of the measures for public finances, in billions of euros a year: right of zero, new revenue exceeds new spending; left of zero, the programme widens the deficit.")}</p>
     ${c.rounds.map((r) => `<section class="cost-round">
       <h3>${esc(L(r.label.fr, r.label.en))} <span class="muted small">· ${esc(L(r.horizon.fr, r.horizon.en))}</span></h3>
-      ${bar(r.announced, "ann")}
-      ${r.estimates.map((e) => bar(e, "est")).join("") || `<p class="cost-none muted small">${f.slug === "melenchon" ? L("Pas encore d’estimation indépendante : le chiffrage complet est annoncé pour début 2027.", "No independent estimate yet: the full costing is due in early 2027.") : L("Pas encore d’estimation indépendante.", "No independent estimate yet.")}</p>`}
+      ${bar(r.announced, "ann", annual(r))}
+      ${r.estimates.map((e) => bar(e, "est", annual(r))).join("") || `<p class="cost-none muted small">${f.slug === "melenchon" ? L("Pas encore d’estimation indépendante : le chiffrage complet est annoncé pour début 2027.", "No independent estimate yet: the full costing is due in early 2027.") : L("Pas encore d’estimation indépendante.", "No independent estimate yet.")}</p>`}
     </section>`).join("")}
     ${verdict}
     <p class="muted small">${L(`Estimations « statiques » : effets directs des mesures, sans effet sur la croissance. Les auteurs n’utilisent pas la même trajectoire de référence, d’où des écarts entre eux.${f.slug === "melenchon" ? " Le NFP de 2024 était une coalition ; son programme n’est pas celui de LFI seule." : ""} Sources vérifiées le ${fmtDate(c.checked)}.`, `‘Static’ estimates: direct effects of the measures, no growth feedback. The authors use different baselines, hence differences between them.${f.slug === "melenchon" ? " The 2024 NFP was a coalition; its programme is not LFI’s alone." : ""} Sources checked on ${fmtDate(c.checked)}.`)}</p>

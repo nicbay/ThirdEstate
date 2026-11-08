@@ -1,0 +1,309 @@
+{
+  "slug": "retailleau",
+  "candidate": "Bruno Retailleau",
+  "party": "Les Républicains",
+  "lite": true,
+  "status": "partial",
+  "statusNote": {
+    "fr": "Candidat déclaré pour Les Républicains (premier meeting de campagne le 20 juin 2026), Bruno Retailleau présente son projet par thèmes, dont un plan de 197 Md€ d'économies le 12 octobre 2026 ; il annonçait un projet complet « à l'automne », non publié à notre connaissance au 8 novembre 2026. La version 2022 ci-dessous est le programme de Valérie Pécresse, candidate LR en 2022, retenu comme référence du parti et non comme programme de Bruno Retailleau.",
+    "en": "Declared Les Républicains candidate (first campaign rally on 20 June 2026), Bruno Retailleau is presenting his project theme by theme, including a €197bn savings plan on 12 October 2026; he announced a full project 'in the autumn', not published to our knowledge as of 8 November 2026. The 2022 version below is the programme of Valérie Pécresse, LR's 2022 candidate, used as the party baseline and not as Bruno Retailleau's programme."
+  },
+  "versions": [
+    { "id": "p22", "year": 2022, "label": { "fr": "LR 2022 (programme Pécresse, référence du parti)", "en": "LR 2022 (Pécresse programme, party baseline)" }, "title": "Programme de Valérie Pécresse, présidentielle 2022 (mesures recensées par l'Institut Montaigne)", "date": "2022-03", "url": "https://www.institutmontaigne.org/presidentielle-2022/valerie-pecresse/synthese", "kind": "site" },
+    { "id": "p27", "year": 2027, "label": { "fr": "Annonces 2026 de Bruno Retailleau", "en": "Bruno Retailleau's 2026 announcements" }, "title": "Annonces thématiques et plan d'économies du 12 octobre 2026", "date": "2026-10", "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-2027-bruno-retailleau-sengage-sur-un-plan-deconomies-de-pres-de-200-milliards-deuros-sil-est-elu", "kind": "announcements" }
+  ],
+  "measures": [
+    {
+      "id": "r01", "theme": "social", "status": "modified",
+      "texts": {
+        "p22": "Repousser l'âge de la retraite à 65 ans, avec des exceptions pour la pénibilité et les carrières longues.",
+        "p27": "Âge minimal de départ à 63 ans ; taux plein à 65 ans, décote de 7 % par an en cas de départ à 63 ans ; pour les nouveaux entrants, une part de capitalisation de 25 à 30 % « dans un premier temps »."
+      },
+      "change": { "fr": "Âge légal 65 ans (Pécresse 2022) → âge minimal 63 ans et taux plein à 65 ans avec décote, plus capitalisation partielle (Retailleau 2026).", "en": "Legal age 65 (Pécresse 2022) → minimum age 63 and full rate at 65 with a penalty, plus a partial funded pillar (Retailleau 2026)." },
+      "sources": [
+        { "title": "Institut Montaigne 2022 — Repousser l'âge de la retraite à 65 ans (Pécresse)", "url": "https://www.institutmontaigne.org/presidentielle-2022/valerie-pecresse/repousser-lage-de-la-retraite-a-65-ans/" },
+        { "title": "Public Sénat, 30 septembre 2026 — Ce que proposent les principaux candidats sur les retraites", "url": "https://www.publicsenat.fr/actualites/politique/reculer-ou-avancer-lage-legal-avec-ou-sans-capitalisation-ce-que-proposent-les-principaux-candidats-a-lelection-presidentielle-sur-les-retraites" },
+        { "title": "Public Sénat, 12 octobre 2026 — Plan d'économies de près de 200 milliards d'euros", "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-2027-bruno-retailleau-sengage-sur-un-plan-deconomies-de-pres-de-200-milliards-deuros-sil-est-elu" }
+      ],
+      "cost": { "value": 8.0, "low": null, "high": null, "by": "Candidate", "url": "https://www.publicsenat.fr/actualites/politique/reculer-ou-avancer-lage-legal-avec-ou-sans-capitalisation-ce-que-proposent-les-principaux-candidats-a-lelection-presidentielle-sur-les-retraites", "note": { "fr": "Le candidat annonce 40 Md€ d'économies cumulées sur cinq ans (soit 8 Md€/an en moyenne, division Third Estate) ; le plan du 12 octobre retient 42 Md€ pour les retraites, dont 12 Md€ issus de la décote. L'Institut Montaigne chiffrait la version Pécresse à 4,6 Md€/an d'économies en 2027.", "en": "The candidate claims €40bn of savings cumulated over five years (€8bn a year on average, Third Estate's division); the 12 October plan counts €42bn for pensions, of which €12bn from the penalty. Institut Montaigne costed the Pécresse version at €4.6bn a year of savings by 2027." } },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "r02", "theme": "budget", "status": "modified",
+      "texts": {
+        "p22": "Supprimer 200 000 postes de fonctionnaires administratifs.",
+        "p27": "Ne pas remplacer environ 400 000 fonctionnaires partant à la retraite d'ici 2032 : « La suppression sera la règle, la prolongation d'activité sera l'exception »."
+      },
+      "change": { "fr": "200 000 postes (Pécresse 2022) → environ 400 000 départs non remplacés d'ici 2032 (Retailleau, octobre 2026 ; 200 000 à 250 000 évoqués plus tôt dans l'année).", "en": "200,000 posts (Pécresse 2022) → about 400,000 retirements not replaced by 2032 (Retailleau, October 2026; 200,000–250,000 mentioned earlier in the year)." },
+      "sources": [
+        { "title": "Institut Montaigne 2022 — Supprimer 200 000 postes de fonctionnaires administratifs (Pécresse)", "url": "https://www.institutmontaigne.org/presidentielle-2022/valerie-pecresse/supprimer-200-000-postes-de-fonctionnaires-administratifs/" },
+        { "title": "Public Sénat, 12 octobre 2026", "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-2027-bruno-retailleau-sengage-sur-un-plan-deconomies-de-pres-de-200-milliards-deuros-sil-est-elu" }
+      ],
+      "cost": { "value": 25.0, "low": null, "high": null, "by": "Candidate", "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-2027-bruno-retailleau-sengage-sur-un-plan-deconomies-de-pres-de-200-milliards-deuros-sil-est-elu", "note": { "fr": "25 Md€ selon le plan du candidat, au sein d'un total cumulé à 2032 (le caractère annuel ou cumulé de ce montant n'est pas précisé). L'Institut Montaigne chiffrait la version Pécresse à 5,9 Md€/an.", "en": "€25bn in the candidate's plan, within a total cumulated to 2032 (whether this figure is annual or cumulative is not stated). Institut Montaigne costed the Pécresse version at €5.9bn a year." } },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "r03", "theme": "immigration", "status": "maintained",
+      "texts": {
+        "p22": "Instaurer un minimum de 5 ans sur le territoire pour toucher les prestations sociales financées en dehors des cotisations salariales.",
+        "p27": "Condition de cinq ans de résidence et de travail pour les prestations non contributives et traitement des demandes d'asile hors de France (4,5 Md€), dans un volet immigration de 10 Md€ conditionné à une révision constitutionnelle par référendum."
+      },
+      "change": { "fr": "La condition de cinq ans est maintenue, désormais adossée à une révision constitutionnelle ; s'y ajoute l'examen de l'asile hors de France.", "en": "The five-year condition is kept, now tied to a constitutional revision; offshore asylum processing is added." },
+      "sources": [
+        { "title": "Institut Montaigne 2022 — Minimum de 5 ans sur le territoire pour les prestations (Pécresse)", "url": "https://www.institutmontaigne.org/presidentielle-2022/valerie-pecresse/instaurer-un-minimum-de-5-ans-sur-le-territoire-pour-toucher-les-prestations-sociales-financees-en-dehors-des-cotisations-salariales/" },
+        { "title": "Public Sénat, 12 octobre 2026", "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-2027-bruno-retailleau-sengage-sur-un-plan-deconomies-de-pres-de-200-milliards-deuros-sil-est-elu" }
+      ],
+      "cost": { "value": 2.1, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/valerie-pecresse/synthese", "note": { "fr": "2,1 Md€/an pour la version Pécresse 2022 ; le candidat annonce 4,5 Md€ avec l'asile externalisé.", "en": "€2.1bn a year for the 2022 Pécresse version; the candidate claims €4.5bn including offshore asylum." } },
+      "legal": "unconstitutional-precedent",
+      "legalNote": { "fr": "Le Conseil constitutionnel a déclaré non conforme la proposition de loi référendaire des parlementaires LR exigeant cinq ans de résidence ou trente mois d'affiliation pour les prestations non contributives (n° 2024-6 RIP, 11 avril 2024) : d'où le recours annoncé à une révision constitutionnelle.", "en": "The Conseil constitutionnel ruled against the LR MPs' referendum bill requiring five years' residence or 30 months' affiliation for non-contributory benefits (no. 2024-6 RIP, 11 April 2024): hence the announced constitutional revision." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "r04", "theme": "social", "status": "new",
+      "texts": { "p27": "Créer un « compte social unique » et plafonner le total des aides à 70 % du SMIC (exemple : un couple avec deux enfants passerait de 2 375 € à 1 685 €)." },
+      "change": null,
+      "sources": [
+        { "title": "Public Sénat, 7 janvier 2026 — « La fête est finie » : Bruno Retailleau veut supprimer les 35 heures", "url": "https://www.publicsenat.fr/actualites/politique/la-fete-est-finie-bruno-retailleau-veut-supprimer-les-35-heures-inciter-a-la-reprise-dactivite-et-plafonner-les-aides-sociales-pour-relancer-lemploi" },
+        { "title": "LCP, 20 juin 2026 — « J'irai jusqu'au bout »", "url": "https://lcp.fr/actualites/j-irai-jusqu-au-bout-bruno-retailleau-lance-sa-conquete-de-l-elysee-devant-une-droite" }
+      ],
+      "cost": null,
+      "legal": "risk",
+      "legalNote": { "fr": "Le plafonnement doit respecter les exigences des alinéas 10 et 11 du Préambule de 1946 (moyens convenables d'existence) ; pas de décision du Conseil sur un plafond global.", "en": "The cap must respect paragraphs 10 and 11 of the 1946 Preamble (adequate means of existence); no Council ruling on an overall cap." },
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "r05", "theme": "social", "status": "new",
+      "texts": { "p27": "Fusionner RSA, prime d'activité et ASS dans un « revenu d'incitation à l'activité » réduit de 30 %, avec 15 heures d'activité hebdomadaires obligatoires." },
+      "change": null,
+      "sources": [ { "title": "Public Sénat, 7 janvier 2026", "url": "https://www.publicsenat.fr/actualites/politique/la-fete-est-finie-bruno-retailleau-veut-supprimer-les-35-heures-inciter-a-la-reprise-dactivite-et-plafonner-les-aides-sociales-pour-relancer-lemploi" } ],
+      "cost": null,
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "r06", "theme": "travail", "status": "modified",
+      "texts": {
+        "p22": "Réformer l'assurance chômage : dégressivité des allocations au bout de 6 mois pour les chômeurs de moins de 50 ans qui touchaient plus de 2 000 euros.",
+        "p27": "Aligner l'assurance chômage sur les « normes européennes » ; fin des allocations après un troisième refus d'offre ; encadrer les ruptures conventionnelles."
+      },
+      "change": { "fr": "Dégressivité ciblée (2022) → alignement général sur les normes européennes et sanctions des refus d'offre (2026).", "en": "Targeted tapering (2022) → general alignment on European norms and sanctions for refused offers (2026)." },
+      "sources": [
+        { "title": "Institut Montaigne 2022 — Réformer l'assurance chômage (Pécresse)", "url": "https://www.institutmontaigne.org/presidentielle-2022/valerie-pecresse/reformer-lassurance-chomage-au-bout-de-6-mois-degressivite-des-allocations-pour-les-chomeurs-de-moins-de-50-ans-qui-touchaient-plus-de-2000-euros/" },
+        { "title": "Public Sénat, 7 janvier 2026", "url": "https://www.publicsenat.fr/actualites/politique/la-fete-est-finie-bruno-retailleau-veut-supprimer-les-35-heures-inciter-a-la-reprise-dactivite-et-plafonner-les-aides-sociales-pour-relancer-lemploi" },
+        { "title": "Public Sénat, 12 octobre 2026", "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-2027-bruno-retailleau-sengage-sur-un-plan-deconomies-de-pres-de-200-milliards-deuros-sil-est-elu" }
+      ],
+      "cost": { "value": 3.2, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/valerie-pecresse/synthese", "note": { "fr": "3,2 Md€/an pour la version Pécresse 2022 ; le plan 2026 annonce 30 Md€ (cumulés à 2032) pour l'assurance chômage et le plafond des aides à 70 % du SMIC réunis.", "en": "€3.2bn a year for the 2022 Pécresse version; the 2026 plan claims €30bn (cumulated to 2032) for unemployment insurance and the 70%-of-minimum-wage cap combined." } },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "high", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "r07", "theme": "travail", "status": "modified",
+      "texts": {
+        "p22": "Défiscaliser les heures supplémentaires.",
+        "p27": "Fin des 35 heures par annualisation de 1 607 à 1 623 heures ; heures au-delà de 1 607 heures exonérées de cotisations et d'impôt sur le revenu (hors CSG-CRDS)."
+      },
+      "change": { "fr": "Défiscalisation des heures supplémentaires (2022) → fin des 35 heures et exonération sociale et fiscale au-delà de 1 607 heures (2026).", "en": "Tax-free overtime (2022) → end of the 35-hour week and social and tax exemption beyond 1,607 hours (2026)." },
+      "sources": [
+        { "title": "Institut Montaigne 2022 — Défiscaliser les heures supplémentaires (Pécresse)", "url": "https://www.institutmontaigne.org/presidentielle-2022/valerie-pecresse/defiscaliser-les-heures-supplementaires/" },
+        { "title": "Public Sénat, 7 janvier 2026", "url": "https://www.publicsenat.fr/actualites/politique/la-fete-est-finie-bruno-retailleau-veut-supprimer-les-35-heures-inciter-a-la-reprise-dactivite-et-plafonner-les-aides-sociales-pour-relancer-lemploi" }
+      ],
+      "cost": { "value": -4.0, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/valerie-pecresse/synthese", "note": { "fr": "4 Md€/an pour la version Pécresse 2022 ; la version 2026 n'est pas chiffrée indépendamment.", "en": "€4bn a year for the 2022 Pécresse version; the 2026 version has no independent costing." } },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "high", "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "r08", "theme": "economie", "status": "modified",
+      "texts": {
+        "p22": "Supprimer la contribution sociale de solidarité des sociétés (C3S).",
+        "p27": "Supprimer les impôts de production ; 30 Md€ rendus aux entreprises, « il n'y aura pas d'impôt nouveau »."
+      },
+      "change": { "fr": "Suppression de la C3S (2022) → suppression des impôts de production (2026).", "en": "Abolition of the C3S (2022) → abolition of production taxes (2026)." },
+      "sources": [
+        { "title": "Institut Montaigne 2022 — Supprimer la C3S (Pécresse)", "url": "https://www.institutmontaigne.org/presidentielle-2022/valerie-pecresse/supprimer-la-contribution-sociale-de-solidarite-des-entreprises/" },
+        { "title": "LCP, 12 octobre 2026 — Retailleau présente un plan d'économies", "url": "https://lcp.fr/actualites/face-a-une-france-quasiment-en-faillite-bruno-retailleau-presente-un-plan-d-economies-de" }
+      ],
+      "cost": { "value": -3.2, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/valerie-pecresse/synthese", "note": { "fr": "3,2 Md€/an pour la C3S (2022) ; la version 2026 fait partie des 30 Md€ de baisses pour les entreprises annoncées par le candidat.", "en": "€3.2bn a year for the C3S (2022); the 2026 version is part of the €30bn of business tax cuts announced by the candidate." } },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "r09", "theme": "institutions", "status": "new",
+      "texts": { "p27": "Étendre le référendum de l'article 11 à « toute question législative » (dont l'immigration et la politique pénale) ; abaisser le seuil du référendum d'initiative partagée de 5 à 2,5 millions de signatures ; soumettre ce « pacte constitutionnel » à référendum « dès la rentrée 2027 »." },
+      "change": null,
+      "sources": [
+        { "title": "Public Sénat, 3 septembre 2026 — Bruno Retailleau propose une « révolution copernicienne »", "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2027-bruno-retailleau-propose-une-revolution-copernicienne-dans-laquelle-la-constitution-ne-serait-plus-le-bouclier-qui-prote" },
+        { "title": "Europe 1 — Bruno Retailleau dévoile les grandes lignes de son programme", "url": "https://www.europe1.fr/politique/je-trace-ma-route-candidat-a-la-presidentielle-2027-bruno-retailleau-devoile-les-grandes-lignes-de-son-programme-895492" }
+      ],
+      "cost": null,
+      "legal": "constitutional-revision-needed",
+      "legalNote": { "fr": "Révision par l'article 89 : le texte doit être adopté en termes identiques par les deux assemblées avant le référendum ; en 2023, une proposition similaire de Bruno Retailleau sur l'article 11 et l'immigration a été retirée faute de soutien centriste.", "en": "Article 89 revision: the text must pass both chambers in identical terms before the referendum; in 2023 a similar Retailleau bill on Article 11 and immigration was withdrawn for lack of centrist support." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "r10", "theme": "institutions", "status": "new",
+      "texts": { "p27": "Permettre au président, après une censure du Conseil constitutionnel, de consulter le peuple par référendum ou le Parlement en Congrès pour « censurer la censure »." },
+      "change": null,
+      "sources": [ { "title": "Public Sénat, 3 septembre 2026", "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2027-bruno-retailleau-propose-une-revolution-copernicienne-dans-laquelle-la-constitution-ne-serait-plus-le-bouclier-qui-prote" } ],
+      "cost": null,
+      "legal": "constitutional-revision-needed",
+      "legalNote": { "fr": "Suppose une révision de l'article 61 et du titre VII ; le constitutionnaliste Mathieu Carpentier juge l'appel à la souveraineté populaire « totalement fantasmé ». La proposition vise notamment la censure partielle de la loi immigration (n° 2023-863 DC, 25 janvier 2024).", "en": "Requires revising Article 61 and Title VII; constitutional lawyer Mathieu Carpentier calls the appeal to popular sovereignty 'totally fanciful'. It targets in particular the partial censure of the immigration law (no. 2023-863 DC, 25 January 2024)." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "r11", "theme": "europe", "status": "new",
+      "texts": { "p27": "« Charte de l'ordre républicain » à valeur constitutionnelle, formant un « bouclier constitutionnel » contre les jurisprudences européennes « contraire[s] à nos intérêts fondamentaux » (expulsions, vie privée et familiale) ; peines planchers ; fin du droit au mariage pour les personnes sous OQTF." },
+      "change": null,
+      "sources": [ { "title": "Public Sénat, 3 septembre 2026", "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2027-bruno-retailleau-propose-une-revolution-copernicienne-dans-laquelle-la-constitution-ne-serait-plus-le-bouclier-qui-prote" } ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": { "fr": "La primauté du droit de l'UE (CJUE, Costa c/ ENEL, aff. 6/64, 1964) et la force obligatoire des arrêts de la CEDH (art. 46 de la Convention) ne peuvent être écartées par une norme nationale ; selon Nicolas Hervieu (Sciences Po), la France s'exposerait à des condamnations. Les peines planchers ne sont admises que si le juge peut y déroger (n° 2007-554 DC, 9 août 2007).", "en": "EU-law primacy (CJEU, Costa v ENEL, Case 6/64, 1964) and the binding force of ECHR judgments (Art. 46 of the Convention) cannot be set aside by national law; according to Nicolas Hervieu (Sciences Po), France would face adverse rulings. Minimum sentences are allowed only if judges can depart from them (no. 2007-554 DC, 9 August 2007)." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "r12", "theme": "immigration", "status": "new",
+      "texts": { "p27": "Supprimer le droit du sol en soumettant la question aux électeurs par référendum (annonce du 8 septembre 2026), après une révision constitutionnelle ouvrant le référendum aux questions migratoires." },
+      "change": null,
+      "sources": [
+        { "title": "Le Club des juristes, 9 septembre 2026 — Bruno Retailleau veut supprimer le droit du sol par référendum", "url": "https://www.leclubdesjuristes.com/en-bref/presidentielle-2027-bruno-retailleau-veut-supprimer-le-droit-du-sol-par-referendum-17273/" },
+        { "title": "Public Sénat, 3 septembre 2026", "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2027-bruno-retailleau-propose-une-revolution-copernicienne-dans-laquelle-la-constitution-ne-serait-plus-le-bouclier-qui-prote" }
+      ],
+      "cost": null,
+      "legal": "constitutional-revision-needed",
+      "legalNote": { "fr": "Le candidat lie la mesure à une révision préalable de l'article 11. Sur le fond, le Conseil a validé une restriction du droit du sol propre à Mayotte (n° 2018-770 DC, 6 septembre 2018) sans qualifier le droit du sol de principe constitutionnel.", "en": "The candidate ties the measure to a prior revision of Article 11. On substance, the Council upheld a Mayotte-specific restriction (no. 2018-770 DC, 6 September 2018) without classing birthright citizenship as a constitutional principle." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "r13", "theme": "securite", "status": "new",
+      "texts": { "p27": "« État d'urgence anti-trafics » : boucler « 24h/24 » 50 à 60 quartiers touchés par le narcotrafic, y compris en coupant les télécommunications ; allonger la détention provisoire ; « courtes peines » dès les premiers délits pour les mineurs ; réforme de la Constitution pour rendre ces mesures applicables." },
+      "change": null,
+      "sources": [ { "title": "France 24 / AFP, 23 avril 2026 — Retailleau veut « boucler » les quartiers du narcotrafic", "url": "https://www.france24.com/fr/info-en-continu/20260423-pr%C3%A9sidentielle-retailleau-lr-veut-boucler-les-quartiers-du-narcotrafic" } ],
+      "cost": null,
+      "legal": "constitutional-revision-needed",
+      "legalNote": { "fr": "Le candidat prévoit lui-même une révision constitutionnelle ; la liberté d'aller et venir et la liberté individuelle (art. 66) encadrent les mesures de bouclage et de détention, comme l'a rappelé la censure de l'allongement de la rétention à 180–210 jours (n° 2025-895 DC, 7 août 2025).", "en": "The candidate himself plans a constitutional revision; freedom of movement and individual liberty (Art. 66) constrain lockdown and detention measures, as shown by the censure of extending administrative detention to 180–210 days (no. 2025-895 DC, 7 August 2025)." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "r14", "theme": "justice", "status": "modified",
+      "texts": {
+        "p22": "20 000 places de prison supplémentaires et rénovation ; augmenter les moyens de la justice de 50 % en cinq ans.",
+        "p27": "Peines planchers inscrites dans une charte constitutionnelle ; « courtes peines » pour les mineurs dès les premiers délits."
+      },
+      "change": { "fr": "Priorité aux moyens (places de prison, budget de la justice) en 2022 → priorité au durcissement des peines en 2026.", "en": "Focus on resources (prison places, justice budget) in 2022 → focus on tougher sentencing in 2026." },
+      "sources": [
+        { "title": "Institut Montaigne 2022 — Synthèse Valérie Pécresse", "url": "https://www.institutmontaigne.org/presidentielle-2022/valerie-pecresse/synthese" },
+        { "title": "Public Sénat, 3 septembre 2026", "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2027-bruno-retailleau-propose-une-revolution-copernicienne-dans-laquelle-la-constitution-ne-serait-plus-le-bouclier-qui-prote" },
+        { "title": "France 24 / AFP, 23 avril 2026", "url": "https://www.france24.com/fr/info-en-continu/20260423-pr%C3%A9sidentielle-retailleau-lr-veut-boucler-les-quartiers-du-narcotrafic" }
+      ],
+      "cost": { "value": -2.2, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/valerie-pecresse/synthese", "note": { "fr": "2,2 Md€/an pour les 20 000 places (Pécresse 2022) ; plus 1,9 Md€/an pour la hausse des moyens de la justice. La version 2026 n'est pas chiffrée.", "en": "€2.2bn a year for the 20,000 places (Pécresse 2022); plus €1.9bn a year for the justice budget increase. The 2026 version is not costed." } },
+      "legal": "risk",
+      "legalNote": { "fr": "Peines planchers validées à condition que le juge puisse y déroger (n° 2007-554 DC, 9 août 2007).", "en": "Minimum sentences upheld provided judges can depart from them (no. 2007-554 DC, 9 August 2007)." },
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "r15", "theme": "budget", "status": "new",
+      "texts": { "p27": "Plan de 197 Md€ d'économies cumulées d'ici 2032 (État 96, protection sociale 91, collectivités 10) ; déficit sous 3 % en 2031 et 2,2 % en 2032 ; règle d'or inscrite dans la Constitution par référendum." },
+      "change": null,
+      "sources": [
+        { "title": "LCP, 12 octobre 2026", "url": "https://lcp.fr/actualites/face-a-une-france-quasiment-en-faillite-bruno-retailleau-presente-un-plan-d-economies-de" },
+        { "title": "Public Sénat, 12 octobre 2026", "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-2027-bruno-retailleau-sengage-sur-un-plan-deconomies-de-pres-de-200-milliards-deuros-sil-est-elu" }
+      ],
+      "cost": null,
+      "legal": "constitutional-revision-needed",
+      "legalNote": { "fr": "La règle d'or reprendrait le projet de loi constitutionnelle de 2011 sur l'équilibre des finances publiques, à faire adopter par référendum.", "en": "The golden rule would revive the 2011 constitutional bill on balanced public finances, to be adopted by referendum." },
+      "feasibility": "low", "feasibilityNote": { "fr": "Public Sénat relève que les postes « État » détaillés totalisent environ 101 Md€ et non 96 Md€.", "en": "Public Sénat notes that the itemised 'State' lines add up to about €101bn, not €96bn." },
+      "broadBenefit": false
+    },
+    {
+      "id": "r16", "theme": "budget", "status": "new",
+      "texts": { "p27": "Suppression d'opérateurs de l'État (5 Md€ par départs volontaires et non-renouvellements, 7,5 Md€ par la règle « la suppression sera la règle ») ; budget base zéro (11,5 Md€)." },
+      "change": null,
+      "sources": [ { "title": "Public Sénat, 12 octobre 2026", "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-2027-bruno-retailleau-sengage-sur-un-plan-deconomies-de-pres-de-200-milliards-deuros-sil-est-elu" } ],
+      "cost": { "value": 7.5, "low": 0.5, "high": 7.5, "by": "Candidate", "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-2027-bruno-retailleau-sengage-sur-un-plan-deconomies-de-pres-de-200-milliards-deuros-sil-est-elu", "note": { "fr": "7,5 Md€ selon le candidat pour la suppression d'organismes ; une commission d'enquête sénatoriale de 2025 (Christine Lavarde) estimait l'économie possible à environ 0,5 Md€.", "en": "€7.5bn according to the candidate for abolishing bodies; a 2025 Senate inquiry (Christine Lavarde) put achievable savings at about €0.5bn." } },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "r17", "theme": "ecologie", "status": "new",
+      "texts": { "p27": "Fin du soutien aux nouvelles installations solaires et éoliennes, baisse de l'aide au développement, réduction de la culture et de l'audiovisuel public, fin du SNU et de MaPrimeRénov' (environ 23 Md€ au total)." },
+      "change": null,
+      "sources": [ { "title": "Public Sénat, 12 octobre 2026", "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-2027-bruno-retailleau-sengage-sur-un-plan-deconomies-de-pres-de-200-milliards-deuros-sil-est-elu" } ],
+      "cost": { "value": 23.0, "low": null, "high": null, "by": "Candidate", "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-2027-bruno-retailleau-sengage-sur-un-plan-deconomies-de-pres-de-200-milliards-deuros-sil-est-elu", "note": { "fr": "Montant global annoncé (cumulé à 2032), sans ventilation par poste.", "en": "Overall amount announced (cumulated to 2032), not broken down by item." } },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "r18", "theme": "sante", "status": "new",
+      "texts": { "p27": "Réduire les arrêts maladie (environ 4 Md€) : contrôles périodiques, suivi des prescriptions et un jour de carence « d'ordre public » non indemnisable dans le privé." },
+      "change": null,
+      "sources": [ { "title": "Public Sénat, 12 octobre 2026", "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-2027-bruno-retailleau-sengage-sur-un-plan-deconomies-de-pres-de-200-milliards-deuros-sil-est-elu" } ],
+      "cost": { "value": 4.0, "low": null, "high": null, "by": "Candidate", "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-2027-bruno-retailleau-sengage-sur-un-plan-deconomies-de-pres-de-200-milliards-deuros-sil-est-elu", "note": { "fr": "Montant annoncé, non vérifié.", "en": "Announced amount, unverified." } },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "high", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "r19", "theme": "sante", "status": "maintained",
+      "texts": { "p22": "Restreindre l'aide médicale d'État aux opérations les plus urgentes." },
+      "change": { "fr": "Non mentionnée dans le plan du 12 octobre 2026 ; pas de position 2027 publiée sur ce point.", "en": "Not mentioned in the 12 October 2026 plan; no 2027 position published on this point." },
+      "sources": [ { "title": "Institut Montaigne 2022 — Restreindre l'AME (Pécresse)", "url": "https://www.institutmontaigne.org/presidentielle-2022/valerie-pecresse/restreindre-laide-medicale-detat-aux-operations-les-plus-urgentes/" } ],
+      "cost": { "value": 0.7, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/valerie-pecresse/synthese", "note": null },
+      "legal": "unknown", "legalNote": null,
+      "feasibility": "high", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "r20", "theme": "economie", "status": "new",
+      "texts": { "p27": "Supprimer des normes pour les entreprises : « On ne simplifie pas une règle, on l'abroge »." },
+      "change": null,
+      "sources": [
+        { "title": "LCP, 12 octobre 2026", "url": "https://lcp.fr/actualites/face-a-une-france-quasiment-en-faillite-bruno-retailleau-presente-un-plan-d-economies-de" },
+        { "title": "Europe 1 — Bruno Retailleau dévoile les grandes lignes de son programme", "url": "https://www.europe1.fr/politique/je-trace-ma-route-candidat-a-la-presidentielle-2027-bruno-retailleau-devoile-les-grandes-lignes-de-son-programme-895492" }
+      ],
+      "cost": null,
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": false
+    }
+  ],
+  "costing": {
+    "rounds": [
+      {
+        "id": "p2022", "year": 2022, "label": { "fr": "Présidentielle 2022 — LR (Valérie Pécresse)", "en": "2022 presidential — LR (Valérie Pécresse)" },
+        "horizon": { "fr": "par an", "en": "a year" },
+        "announced": { "by": "Valérie Pécresse (LR)", "spending": 42, "revenue": 84, "net": 42, "date": "2022-03", "note": { "fr": "Programme de la candidate LR de 2022, pas de Bruno Retailleau ; chiffrage de la candidate tel que reproduit par l'Institut Montaigne (incluant fraude 15 Md€, niches 15 Md€, administration 5 Md€ non retenus par l'Institut).", "en": "Programme of LR's 2022 candidate, not Bruno Retailleau's; candidate's costing as shown by Institut Montaigne (including fraud €15bn, tax breaks €15bn and administration €5bn that the Institute did not count)." }, "url": "https://www.institutmontaigne.org/presidentielle-2022/valerie-pecresse/synthese" },
+        "estimates": [
+          { "by": "Institut Montaigne", "spending": 51.6, "revenue": 16.5, "net": -35.1, "date": "2022-04", "note": { "fr": "Environ 1,2 point de PIB de déficit supplémentaire, ramené à 0,6–0,8 point avec effet de bouclage keynésien.", "en": "About 1.2 points of GDP of extra deficit, 0.6–0.8 points with a Keynesian feedback effect." }, "url": "https://www.institutmontaigne.org/presidentielle-2022/valerie-pecresse/synthese" }
+        ]
+      },
+      {
+        "id": "p2027", "year": 2027, "label": { "fr": "Plan d'économies 2026 (Bruno Retailleau)", "en": "2026 savings plan (Bruno Retailleau)" },
+        "horizon": { "fr": "cumulé sur le quinquennat, jusqu'en 2032", "en": "cumulated over the term, to 2032" },
+        "announced": { "by": "Bruno Retailleau", "spending": 51, "revenue": 197, "net": 146, "date": "2026-10", "note": { "fr": "197 Md€ d'économies (État 96, protection sociale 91, collectivités 10), dont 51 Md€ rendus en baisses d'impôts (ménages 21, entreprises 30) et 146 Md€ affectés au désendettement ; « il n'y aura pas d'impôt nouveau ». Public Sénat donne aussi 56 Md€ de baisses dans son introduction. Aucun chiffrage indépendant publié.", "en": "€197bn of savings (State 96, social protection 91, local authorities 10), of which €51bn returned as tax cuts (households 21, businesses 30) and €146bn for deficit and debt reduction; 'there will be no new tax'. Public Sénat also gives €56bn of tax cuts in its introduction. No independent costing published." }, "url": "https://lcp.fr/actualites/face-a-une-france-quasiment-en-faillite-bruno-retailleau-presente-un-plan-d-economies-de" },
+        "estimates": []
+      }
+    ],
+    "checked": "2026-11-08"
+  },
+  "summary": {
+    "fr": "Les annonces de Bruno Retailleau portent sur la réduction de la dépense publique (197 Md€ cumulés d'ici 2032), le travail (fin des 35 heures, plafond des aides à 70 % du SMIC) et une révision constitutionnelle élargissant le référendum à l'immigration et à la politique pénale. Par rapport au programme LR de 2022 porté par Valérie Pécresse, l'âge de 65 ans devient un âge minimal de 63 ans avec taux plein à 65 ans, et l'objectif de non-remplacement des fonctionnaires double (200 000 → environ 400 000). Aucun chiffrage indépendant du plan 2026 n'est publié ; l'Institut Montaigne estimait le programme Pécresse à 35,1 Md€/an de déficit supplémentaire, et la condition de cinq ans pour les prestations a été censurée sous sa forme référendaire (n° 2024-6 RIP).",
+    "en": "Bruno Retailleau's announcements focus on cutting public spending (€197bn cumulated to 2032), work (end of the 35-hour week, benefits capped at 70% of the minimum wage) and a constitutional revision extending referendums to immigration and criminal policy. Compared with LR's 2022 programme led by Valérie Pécresse, age 65 becomes a minimum age of 63 with full rate at 65, and the target for not replacing civil servants doubles (200,000 → about 400,000). No independent costing of the 2026 plan is published; Institut Montaigne estimated the Pécresse programme at €35.1bn a year of extra deficit, and the five-year condition for benefits was struck down in its referendum form (no. 2024-6 RIP)."
+  }
+}
