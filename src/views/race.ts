@@ -7,7 +7,7 @@ import { combineOdds, marketMeta } from "../lib/markets";
 import { esc, safeUrl, safeColor } from "../util";
 import { shiftDays } from "./home";
 import { ELECTION_DAY, MARKET_WEIGHT, forecast, type Forecast } from "../lib/forecast";
-import { sameOdds } from "../lib/scenario-odds";
+import { oddsSentence } from "../lib/scenario-odds";
 import { lineChart } from "../lib/chart";
 import { fetchJson } from "../data";
 
@@ -147,9 +147,10 @@ function forecastCard(fc: Forecast) {
   const max = Math.max(...shown.map((r) => r.win), 1);
   const fmt = (v: number) => (v < 1 ? "<1" : v > 99 ? ">99" : Math.round(v).toString());
   const fav = fc.rows[0];
-  const odd = fav ? sameOdds(fav.win / 100) : null;
   const pair = fc.pairs[0];
   const sur = (n: string) => meta(n).surname;
+  // e.g. "Les 34 % de Bardella : autant de chances que de recevoir au moins un as dans une main de cinq cartes."
+  const odd = fav ? esc(oddsSentence(fav.win / 100, fr)).replace(/^./, (c) => c.toLowerCase()) : "";
   const pairWinner = pair ? (pair.aWins >= 50 ? pair.a : pair.b) : "";
   const pairPct = pair ? fmt(Math.max(pair.aWins, 100 - pair.aWins)) : "";
   const added = fc.added.map(esc).join(", ");
@@ -169,7 +170,7 @@ function forecastCard(fc: Forecast) {
         })
         .join("")}</ol>
       <aside class="fc-side">
-        ${fav && odd ? `<p class="fc-odd">${fr ? `${Math.round(fav.win)} %, c’est à peu près la chance de ${odd.fr}.` : `${Math.round(fav.win)}% is about the chance of ${odd.en}.`}</p>` : ""}
+        ${fav && odd ? `<p class="fc-odd">${fr ? `Les ${Math.round(fav.win)} % de ${esc(sur(fav.name))} : ${odd}` : `${esc(sur(fav.name))}’s ${Math.round(fav.win)}%: ${odd}`}</p>` : ""}
         ${pair ? `<p class="mine-k">${L("Le second tour le plus probable", "The most likely runoff")}</p><p class="fc-pair"><b>${esc(sur(pair.a))} – ${esc(sur(pair.b))}</b><br><span class="muted small">${fr ? `${Math.round(pair.p)} % des simulations ; ${esc(sur(pairWinner))} l’emporte dans ${pairPct} % d’entre elles.` : `${Math.round(pair.p)}% of simulations; ${esc(sur(pairWinner))} wins ${pairPct}% of them.`}</span></p>` : ""}
         <p class="mine-k">${L("Pourquoi deux sources", "Why two sources")}</p>
         <p class="small">${L("Les sondages disent comment les Français voteraient aujourd’hui si ces candidats se présentaient. Les marchés ajoutent ce que les sondages ne voient pas : qui se présentera vraiment, les procès, les retraits. Quand les deux divergent, c’est une information.", "Polls say how people would vote today if these candidates ran. Markets add what polls can’t see: who will actually stand, trials, withdrawals. When the two disagree, that is information.")}</p>
