@@ -4684,6 +4684,115 @@
       },
       "check": null,
       "postTime": "2026-11-05T09:02:56.785Z"
+    },
+    "yt:5RRVE4HdjnU": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T01:48:34.218Z",
+      "storyItems": [
+        "5cea37f4f40f",
+        "7f0f771935fa",
+        "5c2baf7027c5",
+        "a78452c6d0dd",
+        "588a0dc615ee",
+        "de7371b74b3a"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de communication sur un chiffre de participation, sans position politique exprimée.",
+        "rationale_en": "Post reporting an attendance figure, with no political position expressed."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste dans ce message court.",
+        "rationale_en": "No populist rhetoric in this short message."
+      },
+      "check": null,
+      "postTime": "2026-11-07T23:43:58.000Z"
+    },
+    "yt:99bV2j5fNzk": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T01:48:34.218Z",
+      "storyItems": [
+        "5cea37f4f40f",
+        "7f0f771935fa",
+        "5c2baf7027c5",
+        "a78452c6d0dd",
+        "588a0dc615ee",
+        "de7371b74b3a"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Appel à rejoindre le meeting et à « changer ce pays », sans contenu idéologique précis.",
+        "rationale_en": "Call to join the rally and to 'change the country', with no specific ideological content."
+      },
+      "populism": {
+        "score": 0.15,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Mise en avant de l'enthousiasme de la foule pour mobiliser, sans attaque d'adversaires.",
+        "rationale_en": "Emphasis on the crowd's enthusiasm to mobilise, without attacking opponents."
+      },
+      "check": null,
+      "postTime": "2026-11-07T19:10:25.000Z"
+    },
+    "yt:KGlqniahM5I": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T01:48:34.218Z",
+      "storyItems": [
+        "5cea37f4f40f",
+        "7f0f771935fa",
+        "5c2baf7027c5",
+        "a78452c6d0dd",
+        "588a0dc615ee",
+        "de7371b74b3a"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Soutien à la campagne de Jean-Luc Mélenchon, sans contenu idéologique explicite.",
+        "rationale_en": "Support for Jean-Luc Mélenchon's campaign, with no explicit ideological content."
+      },
+      "populism": {
+        "score": 0.15,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Ton enthousiaste et slogan (« historique », « jusqu'à la victoire ») plutôt que argumentation.",
+        "rationale_en": "Enthusiastic tone and slogans ('historic', 'until victory') rather than argument."
+      },
+      "check": null,
+      "postTime": "2026-11-07T18:23:12.000Z"
+    },
+    "yt:SKa6T75hV_c": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T01:48:34.218Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce d'une intervention médiatique, sans position politique.",
+        "rationale_en": "Announcement of a media appearance, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-07T17:49:08.000Z"
     }
   },
   "failures": {
