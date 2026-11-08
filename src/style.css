@@ -1450,3 +1450,67 @@ body { overflow-x: clip; }
   .quiz-progress span, .quiz-ans, .quiz-theme, .quiz-teaser { transition: none; }
   .quiz-ans:hover, .quiz-theme:hover:not(:disabled), .quiz-teaser:hover { transform: none; }
 }
+/* ---------- public debt, president by president (#/chiffres, src/views/economy.ts) ---------- */
+.debtp-lede { margin: 0.2rem 0 0.4rem; font-size: 1.08rem; font-weight: 600; line-height: 1.45; max-width: 62ch; font-variant-numeric: tabular-nums lining-nums; }
+.debtp-controls { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0 0.2rem; }
+.debtp-read { margin: 0.5rem 0 0.2rem; min-height: 1.5em; font: 500 0.78rem/1.4 var(--mono); color: var(--ink-2); font-variant-numeric: tabular-nums lining-nums; }
+.debtp-read b { color: var(--ink); font-weight: 700; }
+.debtp-read b, .debtp-read span { white-space: nowrap; }
+.debtp-chart { position: relative; width: 100%; touch-action: pan-y; cursor: crosshair; user-select: none; -webkit-user-select: none; }
+.debtp-chart:focus-visible { outline-offset: 4px; }
+.debtp-svg { display: block; width: 100%; height: auto; overflow: visible; font-variant-numeric: tabular-nums lining-nums; }
+.debtp-band { fill: transparent; }
+.debtp-band.alt { fill: var(--panel); }
+.debtp-band.top { fill: color-mix(in srgb, var(--accent) 9%, transparent); }
+.debtp-sep { stroke: var(--rule-2); stroke-width: 1; stroke-dasharray: 2 3; }
+.debtp-bl { font: 500 11px var(--mono); fill: var(--ink-2); text-transform: uppercase; letter-spacing: 0.02em; }
+.debtp-bl.top { fill: var(--accent); font-weight: 700; }
+.debtp-grid { stroke: var(--rule); stroke-width: 1; }
+.debtp-grid.zero { stroke: var(--ink); }
+.debtp-ax { font: 500 11px var(--mono); fill: var(--ink-3); }
+.debtp-halo { fill: none; stroke: var(--paper); stroke-width: 6; stroke-linejoin: round; stroke-linecap: round; }
+.debtp-line { fill: none; stroke-width: 2.6; stroke-linejoin: round; stroke-linecap: round; }
+.debtp-line.fr { stroke: var(--ink); }
+.debtp-line.de { stroke: var(--ink-3); stroke-width: 2; }
+.debtp-line.q { stroke-dasharray: 3 3; }
+.debtp-line.draw { stroke-dasharray: 1; stroke-dashoffset: 0; animation: debtp-draw 1.1s var(--ease) both; }
+@keyframes debtp-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.debtp-end.fr { fill: var(--ink); }
+.debtp-end.de { fill: var(--ink-3); }
+.debtp-el { font: 500 11px var(--mono); fill: var(--ink-2); text-transform: uppercase; }
+.debtp-ev { font: 800 13px var(--display); font-stretch: 80%; fill: var(--ink); }
+.debtp-ev.de { fill: var(--ink-2); }
+.debtp-tick { stroke: var(--ink-3); stroke-width: 1; }
+.debtp-note { font: 500 10.5px var(--mono); fill: var(--ink-2); paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
+.debtp-cross line { stroke: var(--ink); stroke-width: 1; stroke-dasharray: 2 2; }
+.debtp-cross circle { stroke: var(--paper); stroke-width: 2; }
+.debtp-cross circle.fr { fill: var(--ink); }
+.debtp-cross circle.de { fill: var(--ink-3); }
+.debtp-h3 { margin: 1.6rem 0 0.5rem; font: 600 0.74rem var(--mono); text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-2); }
+.debtp-mode button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.debtp-bars { list-style: none; padding: 0; margin: 0.8rem 0 0; display: grid; gap: 0.15rem; }
+.debtp-bars li { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 6.6rem; grid-template-areas: "n t v" "n s s"; align-items: center; gap: 0.1rem 0.9rem; padding: 0.45rem 0; border-bottom: 1px solid var(--rule); }
+.debtp-bn { grid-area: n; font-weight: 700; line-height: 1.25; min-width: 0; }
+.debtp-by { display: block; font: 500 0.7rem var(--mono); color: var(--ink-3); letter-spacing: 0.03em; }
+.debtp-bt { grid-area: t; position: relative; height: 10px; background: var(--wash); }
+.debtp-bt span { position: absolute; top: 0; bottom: 0; background: var(--ink); transform-origin: left; animation: debtp-grow 0.7s var(--ease) both; }
+@keyframes debtp-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.debtp-bars li.is-top .debtp-bt span { background: var(--accent); }
+.debtp-bars li.is-top .debtp-bv { color: var(--accent); }
+.debtp-bv { grid-area: v; text-align: right; font: 800 1.15rem/1.1 var(--display); font-stretch: 80%; font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; padding-right: 2px; }
+.debtp-bs { grid-area: s; font: 500 0.7rem/1.35 var(--mono); color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.debtp-de { margin-top: 1.4rem; }
+.debtp-de summary { cursor: pointer; font-weight: 700; }
+.debtp-table { margin-top: 0.6rem; font-variant-numeric: tabular-nums lining-nums; }
+.debtp-table small { font: 500 0.66rem var(--mono); color: var(--ink-3); }
+.debtp-src { margin-top: 1.2rem; }
+@media (max-width: 640px) {
+  .debtp-lede { font-size: 1rem; }
+  .debtp-read { min-height: 2.8em; }
+  .debtp-bl, .debtp-ax, .debtp-el { font-size: 10px; }
+  .debtp-bars li { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "n v" "t t" "s s"; gap: 0.25rem 0.6rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .debtp-line.draw, .debtp-bt span { animation: none; }
+}
+
