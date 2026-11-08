@@ -84,7 +84,7 @@ function reaction(r: FeedReaction, fr: boolean) {
       </div>
       ${
         rt.check
-          ? `<div class="verify"><b>${L("À vérifier", "To verify")}</b> : « ${esc(rt.check.claim)} » ${esc(fr ? rt.check.why_fr : rt.check.why_en)}${rt.check.sources.length ? ` <span class="small">${rt.check.sources.map((s) => `<a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("; ")}</span>` : ""}</div>`
+          ? `<div class="verify"><b>${L("À vérifier :", "To verify:")}</b> « ${esc(rt.check.claim)} » ${esc(fr ? rt.check.why_fr : rt.check.why_en)}${rt.check.sources.length ? ` <span class="small">${rt.check.sources.map((s) => `<a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("; ")}</span>` : ""}</div>`
           : ""
       }
     </div>`;

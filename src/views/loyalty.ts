@@ -2,7 +2,7 @@
 // (always with the group, i.e. blind obedience) to "frondeur" (rebel). Data: public/data/an/loyalty.json,
 // computed by scripts/lib/loyalty.mjs during `npm run sync:an`.
 import { fetchJson, loadAnMeta, loadDeputes, loadScrutins, type Depute, type Scrutin } from "../data";
-import { L, fmtDate, fmtNum, fmtPct, t } from "../i18n";
+import { L, colon, fmtDate, fmtNum, fmtPct, t } from "../i18n";
 import { esc, safeColor } from "../util";
 
 type Pos = "P" | "C" | "A";
@@ -184,7 +184,7 @@ export async function renderLoyalty(pane: HTMLElement) {
         const w = (100 * (m.loyalty! - 0.6)) / 0.4;
         return `<tr>
           <td class="num">${m.rank}</td>
-          <td><a href="#/depute/${m.id}">${esc(names.get(m.id))}</a>${m.moved ? ` <span class="muted small" title="${esc(m.moved.map(([g, k]) => `${g} : ${k}`).join(" · "))}">${L("a changé de groupe", "switched group")}</span>` : ""}</td>
+          <td><a href="#/depute/${m.id}">${esc(names.get(m.id))}</a>${m.moved ? ` <span class="muted small" title="${esc(m.moved.map(([g, k]) => `${g}${colon()}${k}`).join(" · "))}">${L("a changé de groupe", "switched group")}</span>` : ""}</td>
           <td>${chip(m.g)}</td>
           <td class="loy-cell"><div class="loy-bar"><div style="width:${Math.max(0, w)}%;background:${colors.get(m.g!) ?? "var(--other)"}"></div></div><b>${pct(m.loyalty!)}</b> <span class="muted small">${esc(tier(m.loyalty!))}</span></td>
           <td class="num">${fmtNum(m.n - m.ok)}</td>

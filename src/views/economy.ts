@@ -2,7 +2,7 @@
 // a live public-debt counter extrapolated from the latest quarterly Maastricht figure, and the debt added
 // since the reader opened the page, translated into things public money buys (src/lib/equivalents.ts).
 import { fetchJson } from "../data";
-import { L, fmtDate, getLang } from "../i18n";
+import { L, colon, fmtDate, getLang } from "../i18n";
 import { EQUIVALENTS, type Equivalent } from "../lib/equivalents";
 import { esc, safeUrl } from "../util";
 
@@ -182,7 +182,7 @@ export async function renderEconomy(app: HTMLElement) {
         <p class="eyebrow">${L("La France en chiffres", "France in numbers")}</p>
         <h1>${L("La dette publique, à la seconde près", "The public debt, to the second")}</h1>
         <p class="dek">${fr
-          ? `Le dernier chiffre officiel date de la fin du ${period(e.debt.period)} : ${big(e.debt.eur)}. Depuis, elle a continué. Estimation à cet instant, au rythme de l’année écoulée, soit environ ${eur(Math.round(perSec))} par seconde, nuits et week-ends compris.`
+          ? `Le dernier chiffre officiel date de la fin du ${period(e.debt.period)}\u00a0: ${big(e.debt.eur)}. Depuis, elle a continué. Estimation à cet instant, au rythme de l’année écoulée, soit environ ${eur(Math.round(perSec))} par seconde, nuits et week-ends compris.`
           : `The latest official figure is for the end of ${period(e.debt.period)}: ${big(e.debt.eur)}. It has carried on since. Estimated as of now, at the past year’s pace: about ${eur(Math.round(perSec))} a second, nights and weekends included.`}</p>
         <div class="debt-live" aria-live="off">
           <p class="debt-k">${L("Dette publique estimée", "Estimated public debt")}</p>
@@ -222,17 +222,17 @@ export async function renderEconomy(app: HTMLElement) {
         <summary>${L("Comment le compteur est calculé", "How the counter works")}</summary>
         <ul class="small">
           <li>${fr
-            ? `Point de départ : la dette publique au sens de Maastricht à la fin du ${period(e.debt.period)}, ${eur(e.debt.eur)}, publiée par l’INSEE et Eurostat environ trois mois plus tard.`
+            ? `Point de départ\u00a0: la dette publique au sens de Maastricht à la fin du ${period(e.debt.period)}, ${eur(e.debt.eur)}, publiée par l’INSEE et Eurostat environ trois mois plus tard.`
             : `Starting point: Maastricht public debt at the end of ${period(e.debt.period)}, ${eur(e.debt.eur)}, published by INSEE and Eurostat about three months later.`}</li>
           <li>${fr
-            ? `Rythme : ${basis}, soit ${big(e.debt.ratePerYear)} sur un an, réparti uniformément à la seconde.`
+            ? `Rythme\u00a0: ${basis}, soit ${big(e.debt.ratePerYear)} sur un an, réparti uniformément à la seconde.`
             : `Pace: ${basis}, ${big(e.debt.ratePerYear)} over a year, spread evenly over every second.`}</li>
           <li>${L(
             "En réalité, la dette ne monte pas en ligne droite : elle suit le calendrier des émissions de l’Agence France Trésor et la trésorerie de l’État, et peut baisser d’un trimestre à l’autre. Le compteur donne un ordre de grandeur, pas un relevé.",
             "In reality the debt does not rise in a straight line: it follows the Agence France Trésor’s issuance calendar and the state’s cash position, and can fall from one quarter to the next. The counter gives an order of magnitude, not a reading.",
           )}</li>
           <li>${fr
-            ? `Par habitant : ${num(population)} habitants au 1er janvier ${e.people.populationPeriod}. Par personne en emploi : ${num(employed)} personnes en emploi en ${e.people.employedPeriod} (comptes nationaux).`
+            ? `Par habitant\u00a0: ${num(population)} habitants au 1er janvier ${e.people.populationPeriod}. Par personne en emploi\u00a0: ${num(employed)} personnes en emploi en ${e.people.employedPeriod} (comptes nationaux).`
             : `Per resident: ${num(population)} residents on 1 January ${e.people.populationPeriod}. Per person in work: ${num(employed)} people in employment in ${e.people.employedPeriod} (national accounts).`}</li>
           <li>${L(
             "Les équivalents sont des coûts publiés et datés, cités sous chaque ligne. Ils servent d’échelle, pas de proposition budgétaire.",
@@ -241,7 +241,7 @@ export async function renderEconomy(app: HTMLElement) {
         </ul>
       </details>
 
-      <p class="source">${L("Sources", "Sources")} : Eurostat (API de diffusion), INSEE (Banque de données macroéconomiques). ${L("Données mises à jour le", "Data refreshed")} ${fmtDate(e.fetchedAt)}.</p>
+      <p class="source">${L("Sources", "Sources")}${colon()}Eurostat (API de diffusion), INSEE (Banque de données macroéconomiques). ${L("Données mises à jour le", "Data refreshed")} ${fmtDate(e.fetchedAt)}.</p>
     </section>`;
 
   // ---------- live ----------

@@ -25,6 +25,11 @@ const langBtn = document.getElementById("lang") as HTMLButtonElement;
 const footer = document.getElementById("footer")!;
 const placeBtn = document.getElementById("place") as HTMLAnchorElement;
 
+// Full-bleed bands size themselves on --vw: the viewport minus a classic (non-overlay) scrollbar, which 100vw includes.
+const setVw = () => document.documentElement.style.setProperty("--vw", `${document.documentElement.clientWidth}px`);
+setVw();
+new ResizeObserver(setVw).observe(document.documentElement);
+
 // URL shape: #/<section>[/<param>][#<anchor>]
 const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/$/, () => renderHome(app)],
@@ -171,8 +176,10 @@ function sectionHero() {
   const h1 = inner.querySelector("h1");
   if (h1 && h1.children.length === 0 && h1.id !== "sim-h1") {
     const text = h1.textContent ?? "";
-    const cut = text.search(/,\s|\s:\s/);
-    const lines = cut > 0 && cut < text.length - 4 ? [text.slice(0, cut + 1), text.slice(cut + 1).trim()] : [text];
+    // two lines after the first comma or colon; the colon (and the no-break space French puts before it) stays on line one
+    const m = /(,|\s?:)\s/.exec(text);
+    const cut = m ? m.index + m[1].length : -1;
+    const lines = cut > 0 && cut < text.length - 4 ? [text.slice(0, cut), text.slice(cut).trim()] : [text];
     h1.textContent = "";
     lines.forEach((t, n) => {
       const ln = document.createElement("span");
