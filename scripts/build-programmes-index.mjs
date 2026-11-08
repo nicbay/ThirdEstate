@@ -6,7 +6,8 @@ import { readdir, readFile, writeFile } from "node:fs/promises";
 
 const DIR = new URL("../public/data/programmes/", import.meta.url);
 const STATUS = new Set(["maintained", "modified", "new", "dropped"]);
-const files = (await readdir(DIR)).filter((f) => f.endsWith(".json") && !["index.json", "posts.json"].includes(f));
+// <slug>-household.json holds the household simulator's distribution data, not a programme
+const files = (await readdir(DIR)).filter((f) => f.endsWith(".json") && !["index.json", "posts.json"].includes(f) && !f.endsWith("-household.json"));
 const out = [];
 const errors = [];
 
