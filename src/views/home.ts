@@ -13,7 +13,7 @@ import { colon, pct } from "../lib/format";
 import { esc, safeColor } from "../util";
 import { arrowPaths, legend, unitsPerPx } from "./shifts";
 import { bindSearch, searchBox } from "./explore";
-import { countUp, heroViz } from "./hero";
+import { heroViz } from "./hero";
 import { mpChip, townBrief } from "./brief";
 import { mountDebtTeaser } from "./economy";
 
@@ -134,7 +134,6 @@ export async function renderHome(app: HTMLElement) {
   viz.start(app);
   mountDebtTeaser(app.querySelector<HTMLElement>("#home-debt"));
   if (home?.code) drawMine(app.querySelector<HTMLElement>("#mine")!, home.code, home.commune ?? home.code);
-  countUp(app.querySelector<HTMLElement>(".hero-x-doors")!);
 
   // ---------- live map: departments → zoom into districts ----------
   const features = geo.features.map(rewind).filter((f) => f.properties!.code.length === 2);

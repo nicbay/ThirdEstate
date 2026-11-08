@@ -37,6 +37,10 @@ every section, and colour spent only on data. Tokens live at the top of `src/sty
    where short.
 5. **Motion explains.** Bars grow from zero, the spectrum strip fills left to right, arrows grow from their
    origin in a west-to-east sweep, polling lines draw in. All of it is off under `prefers-reduced-motion`.
+   `src/lib/motion.ts` runs the rest: the fox assembles (once a session), blinks, and breathes while a page
+   loads; pages cross over under a still masthead (View Transitions); figures count up, hemicycles fill group by
+   group and word clouds fall into place the first time they come into view. Nothing waits hidden for an
+   observer: content is complete at rest, and moments start only on screen, in under ~400 ms.
 6. **Phone first for data.** Charts switch to a narrower canvas below 640px so labels stay legible; maps
    size arrowheads in screen pixels; wide tables scroll inside their own box; tab rows scroll sideways.
    Nothing makes the page scroll horizontally at 375px.

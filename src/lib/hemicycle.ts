@@ -1,4 +1,5 @@
 // Hemicycle seat chart: one dot per seat, groups placed left → right in the order they sit.
+// Each seat carries its group's rank (--g) so src/lib/motion.ts can fill the chamber group by group.
 import { esc } from "../util";
 import { L, fmtNum } from "../i18n";
 
@@ -92,7 +93,7 @@ export function hemicycle(groups: SeatGroup[], statutory?: number, rows = 12) {
     const tip = grp.color
       ? `${grp.label}\n${grp.seats} ${L("sièges", "seats")}`
       : `${grp.seats} ${grp.seats > 1 ? L("sièges vacants", "vacant seats") : L("siège vacant", "vacant seat")}`;
-    return `<circle class="seat${grp.color ? "" : " seat-vacant"}" cx="${s.x.toFixed(1)}" cy="${s.y.toFixed(1)}" r="${dot.toFixed(1)}"${grp.color ? ` fill="${grp.color}"` : ""} data-tip="${esc(tip)}"/>`;
+    return `<circle class="seat${grp.color ? "" : " seat-vacant"}" cx="${s.x.toFixed(1)}" cy="${s.y.toFixed(1)}" r="${dot.toFixed(1)}"${grp.color ? ` fill="${grp.color}"` : ""} style="--g:${g}" data-tip="${esc(tip)}"/>`;
   });
   const sub = sum.vacant
     ? `${fmtNum(sum.sitting)} ${L("pourvus", "filled")} · ${L("majorité", "majority")} ${sum.majority}`

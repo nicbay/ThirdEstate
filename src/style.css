@@ -928,12 +928,9 @@ body { overflow-x: clip; }
 .sec-hero table, .sec-hero .card { color: #fff; }
 @media (max-width: 760px) { .sec-hero-in { padding: 1.8rem var(--gutter) 2rem; } }
 
-.rv { opacity: 0; transform: translateY(22px); transition: opacity 0.7s var(--rv-d, 0ms), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) var(--rv-d, 0ms); }
-.rv.rv-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .sec-hero h1 .ln > span, .sec-hero .dek, .sec-hero .page-head > *, .sec-hero .mp-head img, .sec-hero .town-hero figure { animation: none !important; }
   .sec-hero::after { animation: none; }
-  .rv { opacity: 1; transform: none; transition: none; }
 }
 /* second-level menu joins the dark masthead */
 .subnav-bar { background: #111216; border-bottom: 1px solid #2c2e35; }
@@ -1513,7 +1510,7 @@ body { overflow-x: clip; }
 @media (prefers-reduced-motion: reduce) {
   .debtp-line.draw, .debtp-bt span { animation: none; }
 }
-/* ==========================================================================
+/* ===================================================================
    Scenario planner (#/simulateur, src/views/simulator.ts): three linked panels.
    Direct-manipulation bars, tabular numbers, colour only for candidates, mono annotations.
    ========================================================================== */
@@ -1732,4 +1729,73 @@ body { overflow-x: clip; }
 @media (prefers-reduced-motion: reduce) {
   .sim-page { --sim-t: 0s; }
   .sim-dock { animation: none; }
+=======
+
+/* ---------- motion (src/lib/motion.ts) — every rule prefixed .mo- or keyed to a class it adds ----------
+   Every animation explains a number or a change of place; at rest everything is drawn in full, and the
+   classes that start a moment (.mo-play, .mo-asm…) are only added once the element is on screen.
+   Fill mode is `backwards` throughout, so once a moment ends the element's own styles (hover, dimming) rule again. */
+.mo-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.mo-num { display: inline-block; font-variant-numeric: tabular-nums lining-nums; }
+.hemi-total, .hd-total, .quiz-big, .eco-v { font-variant-numeric: tabular-nums lining-nums; }
+
+/* the masthead fox: pixel assembly (first visit of a session), blink, breathing while a route loads */
+.fox rect { transform-box: fill-box; transform-origin: center; }
+.fox.mo-asm rect { animation: mo-px 110ms ease-out backwards; }
+@keyframes mo-px { from { opacity: 0; transform: scale(0.2); } }
+.fox.mo-blink .mo-e { fill: var(--fur); }
+.fox.mo-busy { animation: mo-breathe 0.9s ease-in-out infinite alternate; transform-origin: 50% 60%; }
+@keyframes mo-breathe { to { transform: scale(1.09); } }
+
+/* route changes: the dark masthead (and section bar, phone tab bar) stays put, the page crosses over */
+.topbar { view-transition-name: mo-top; }
+.subnav-bar { view-transition-name: mo-sub; }
+.tabbar { view-transition-name: mo-tab; }
+::view-transition-group(mo-top), ::view-transition-group(mo-sub), ::view-transition-group(mo-tab) { animation: none; }
+::view-transition-old(mo-top), ::view-transition-new(mo-top), ::view-transition-old(mo-tab), ::view-transition-new(mo-tab) { animation: none; }
+::view-transition-old(root) { animation: mo-vt-out 120ms ease-in both; }
+::view-transition-new(root) { animation: mo-vt-in 220ms var(--ease) both; }
+@keyframes mo-vt-out { to { opacity: 0; } }
+@keyframes mo-vt-in { from { opacity: 0; transform: translateY(10px); } }
+/* the transition already brings the page in; a page that lands after it (slow data) keeps its own entrance */
+html.mo-vt:not(.mo-late) .page { animation: none; }
+
+/* hemicycle: seats take their group's colour wedge by wedge, left to right */
+.hemicycle.mo-play .seat:not(.seat-vacant) { animation: mo-seat 170ms ease-out backwards; animation-delay: calc(var(--g, 0) * 22ms); }
+@keyframes mo-seat { from { fill: var(--wash); } }
+
+/* word clouds: words drop into place in the order the spiral placed them, biggest first */
+.wordcloud.mo-play text { animation: mo-fall 220ms var(--ease) backwards; animation-delay: calc(min(var(--i, 0), 40) * 5ms); }
+@keyframes mo-fall { from { opacity: 0; transform: translateY(-12px); } }
+
+/* line charts outside a .reveal (2027, polls, results): lines draw from their first poll (pathLength=1) */
+.chart.mo-play .line { animation: mo-draw 400ms ease-out backwards; }
+.chart.mo-play .series:nth-child(n + 4) .line { animation-delay: 40ms; }
+@keyframes mo-draw { from { stroke-dasharray: 1; stroke-dashoffset: 1; } to { stroke-dasharray: 1; stroke-dashoffset: 0; } }
+
+/* bars that didn't grow yet (loyalty, occupations, word ranks, timelines) grow from zero */
+.loy-bar.mo-play > div, .wr-bar.mo-play > span, .pw-bar.mo-play > span, .pcs-bar.mo-play, .t-bar.mo-play > * { transform-origin: left; animation: mo-grow 360ms var(--ease) backwards; }
+@keyframes mo-grow { from { transform: scaleX(0); } }
+
+/* micro-interactions: cards lift, links sweep an underline, buttons press */
+.door, .town-card, .mp-mini, .brief-mp, .debt-teaser { transition: background 0.15s, transform 0.15s var(--ease), box-shadow 0.15s var(--ease); }
+.door:hover, .mp-mini:hover, .brief-mp:hover { transform: translateY(-2px); box-shadow: 0 6px 16px -10px rgba(17, 18, 22, 0.45); }
+.debt-teaser:hover { transform: translateY(-2px); }
+.card-head > a, .crumbs a { text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size 0.2s var(--ease); }
+.card-head > a:hover, .crumbs a:hover { text-decoration: none; background-size: 100% 1px; }
+.button, .icon, .pager button, .map-ctrl button, .home-btn, .chip-toggle, .tabs button, .jump a, .search-btn, .lang, .quiz-next, .quiz-start, .quiz-back, .quiz-weight, .quiz-skip { transition-property: background, border-color, color, box-shadow, transform; transition-duration: 0.15s; }
+.button:active:not(:disabled), .pager button:active:not(:disabled), .map-ctrl button:active, .home-btn:active, .chip-toggle:active, .tabs button:active, .jump a:active, .search-btn:active, .lang:active, .quiz-next:active, .quiz-start:active, .quiz-back:active:not(:disabled), .quiz-weight:active, .quiz-skip:active { transform: translateY(1px) scale(0.98); transition-duration: 0.05s; }
+.icon:active:not(:disabled) { transform: scale(0.88); transition-duration: 0.05s; }
+.quiz-ans:active, .quiz-theme:active:not(:disabled) { transform: translateY(1px) scale(0.98); box-shadow: none; transition-duration: 0.05s; }
+.quiz-cta:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 0 var(--left), 2px 2px 0 0 var(--right); transition-duration: 0.05s; }
+input[type="range"] { cursor: grab; }
+input[type="range"]:active { cursor: grabbing; }
+
+@media (prefers-reduced-motion: reduce) {
+  .topbar, .subnav-bar, .tabbar { view-transition-name: none; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+  .door:hover, .mp-mini:hover, .brief-mp:hover, .debt-teaser:hover, .button:active, .icon:active, .pager button:active, .map-ctrl button:active, .home-btn:active, .chip-toggle:active, .tabs button:active, .jump a:active, .search-btn:active, .lang:active, .quiz-next:active, .quiz-start:active, .quiz-back:active, .quiz-weight:active, .quiz-skip:active, .quiz-ans:active, .quiz-theme:active, .quiz-cta:active { transform: none !important; }
+  .card-head > a:hover, .crumbs a:hover { background: none; text-decoration: underline; }
 }
+}
+
