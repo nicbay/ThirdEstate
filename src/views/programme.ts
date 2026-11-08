@@ -271,6 +271,11 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
           <a href="#/programmes/${esc(f.slug)}#mesures">${L("Toutes les mesures", "Every measure")}</a>
           <a href="#/programmes/${esc(f.slug)}#assemblee">${L("Les votes à l’Assemblée", "Assembly votes")}</a>
         </nav>
+        ${f.slug === "melenchon" ? `<a class="hh-callout" href="#/programmes/${esc(f.slug)}/simulateur">
+          <span class="hh-callout-k">${L("Nouveau · simulateur", "New · simulator")}</span>
+          <strong>${L("Simulez l’effet sur votre foyer", "Simulate the effect on your household")}</strong>
+          <span>${L("Revenus, enfants, logement, patrimoine : le gain ou la perte estimés, mesure par mesure, et qui paierait les hausses d’impôts.", "Income, children, housing, wealth: the estimated gain or loss, measure by measure, and who would pay the tax rises.")}</span>
+        </a>` : ""}
       </div>
 
       <article class="card flow-card" id="parcours">
@@ -448,6 +453,9 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
   const toList = () => app.querySelector("#mesures")?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   app.querySelectorAll<HTMLButtonElement>(".prog-row").forEach((b) => b.addEventListener("click", () => { state.theme = b.dataset.theme!; themeSel.value = state.theme; reset(); toList(); }));
   app.querySelectorAll<HTMLButtonElement>(".prog-goto").forEach((b) => b.addEventListener("click", () => { state.focus = b.dataset.id!; draw(); toList(); }));
+  // deep link to one measure (#/programmes/<slug>#m-<lineage>, used by the household simulator): show it in the list
+  const deep = /#m-(L[0-9a-f]+)$/.exec(location.hash)?.[1];
+  if (deep && byId.has(deep)) state.focus = deep;
   draw();
   mountMeasureTable(app, "mt-mel", assessRows);
 
