@@ -1,4 +1,5 @@
 import { loadAnMeta, loadDeputes, loadScrutins, loadVotes, type Depute } from "../data";
+import { entrySentence, entryTag } from "../lib/mandate";
 import { L, fmtDate, fmtNum, fmtPct, t } from "../i18n";
 import { PLATFORMS, age, presence } from "./assemblee";
 import { esc, safeUrl, safeColor } from "../util";
@@ -49,7 +50,8 @@ export async function renderDepute(app: HTMLElement, id: string) {
         <img src="${photoUrl(d.id)}" alt="" data-hide-broken />
         <div class="mp-id">
           <h1>${esc(d.civ)} ${esc(d.prenom)} ${esc(d.nom)}</h1>
-          <p><span class="chip">${esc(d.groupe?.abrev ?? "—")}</span> ${esc(d.groupe?.libelle ?? "")}</p>
+          <p><span class="chip">${esc(d.groupe?.abrev ?? "—")}</span> ${esc(d.groupe?.libelle ?? "")}${entryTag(d) ? ` <span class="tag mp-entry-tag">${esc(entryTag(d)!)}</span>` : ""}</p>
+          <p class="mp-entry small">${esc(entrySentence(d))}</p>
           <p class="muted">${d.departement && d.numCirco ? `<a href="#/circo/${d.circo}">${esc(s.district(d.departement, d.numCirco))}</a>` : ""}</p>
         </div>
         <nav class="mp-nav small">

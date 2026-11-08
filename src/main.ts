@@ -104,7 +104,7 @@ async function findMyMp(code: string) {
 
 // Information architecture: five sections, the site's promise "de votre mairie à l'Élysée".
 // 1. Chez vous: the reader's town (remembered), their MP and senators, every town.
-// 2. Parlement: the 577 MPs, how they vote and what they say, the Senate.
+// 2. Parlement: the MPs (577 seats), how they vote and what they say, the Senate.
 // 3. 2027: the race (forecast, polls and markets, simulator, the red/blue feed, the quiz).
 // 4. La France: the country in numbers and the left–right shift maps.
 // 5. Archives: results, every election since 1848.
@@ -128,7 +128,7 @@ function sections(): Section[] {
     {
       key: "parlement", icon: "parliament", short: ["Parlement", "Parliament"], href: "#/assemblee", match: /^#\/(assemblee|elus|circo|depute|senat|senateur)/, fr: "Parlement", en: "Parliament",
       children: [
-        { href: "#/assemblee", match: /^#\/(elus$|assemblee(\/\w{2,3})?$|circo\/)/, fr: "Les 577 députés", en: "The 577 MPs" },
+        { href: "#/assemblee", match: /^#\/(elus$|assemblee(\/\w{2,3})?$|circo\/)/, fr: "Les députés", en: "The MPs" },
         { href: "#/assemblee/deputes", match: /^#\/(assemblee\/deputes|depute\/)/, fr: "Liste", en: "List" },
         { href: "#/assemblee/loyaute", match: /^#\/assemblee\/loyaute/, fr: "Doigt sur la couture", en: "Toeing the line" },
         { href: "#/assemblee/themes", match: /^#\/assemblee\/themes/, fr: "Ce qu’ils disent", en: "What they say" },
@@ -172,7 +172,7 @@ function nextSteps(path: string) {
   const race = { href: "#/2027", fr: "Où en est la présidentielle 2027", en: "Where the 2027 race stands" };
   const sim = { href: "#/simulateur", fr: "Simuler le second tour", en: "Simulate the runoff" };
   const polls = { href: "#/sondages", fr: "Tous les sondages et les marchés", en: "Every poll and market" };
-  const mps = { href: "#/assemblee", fr: "Les 577 députés et leurs votes", en: "The 577 MPs and their votes" };
+  const mps = { href: "#/assemblee", fr: "Les députés et leurs votes", en: "The MPs and their votes" };
   const words = { href: "#/assemblee/themes", fr: "Ce que disent les députés en séance", en: "What MPs say in the chamber" };
   const hist = { href: "#/resultats", fr: "Toutes les élections depuis 1848", en: "Every election since 1848" };
   const feed = { href: "#/fil", fr: "Ce que disent la gauche et la droite aujourd’hui", en: "What left and right are saying today" };

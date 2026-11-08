@@ -19,7 +19,7 @@ interface Hit { kind: Kind; label: string; context: string; href?: string; word?
 const PAGES: { href: string; fr: string; en: string; k?: string }[] = [
   { href: "#/", fr: "Accueil", en: "Home", k: "une home" },
   { href: "#/explorer", fr: "Toutes les communes", en: "Every town", k: "chez vous ville commune town maire" },
-  { href: "#/assemblee", fr: "Les 577 députés, la carte", en: "The 577 MPs, the map", k: "parlement assemblée nationale assembly circonscriptions" },
+  { href: "#/assemblee", fr: "Les députés, la carte des 577 circonscriptions", en: "The MPs, the map of the 577 districts", k: "parlement assemblée nationale assembly circonscriptions" },
   { href: "#/assemblee/deputes", fr: "Liste des députés", en: "List of MPs", k: "parlement deputes mps" },
   { href: "#/assemblee/loyaute", fr: "Doigt sur la couture : la discipline de vote", en: "Toeing the line: party discipline", k: "loyauté loyalty rebelles frondeurs" },
   { href: "#/assemblee/themes", fr: "Ce qu’ils disent : les mots de l’hémicycle", en: "What they say: words in the chamber", k: "thèmes themes nuage cloud discours speeches" },

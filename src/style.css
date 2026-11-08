@@ -2277,3 +2277,7 @@ a.cand-card:hover { background: var(--wash); text-decoration: none; }
 .hh-keys dd { margin: 0; color: var(--ink-2); }
 #hypotheses .source { margin-top: 1rem; }
 @media (prefers-reduced-motion: reduce) { .hh-first .hh-bar span, .hh-first .hh-dbar i { animation: none; } .hh-bar span, .hh-callout, .pf-sim { transition: none; } }
+
+/* how an MP got the seat (src/lib/mandate.ts): substitutes, by-elections, returning ministers */
+.mp-entry { margin: 0.35rem 0 0; color: var(--ink-2); max-width: 62ch; line-height: 1.4; }
+.mp-entry-tag { background: #fbf0d6; color: #7a5a0c; border-color: transparent; }

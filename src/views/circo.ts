@@ -1,5 +1,6 @@
 // One legislative district: where it is, who represents it, how it voted in 2024.
 import { districtResults2024, loadCircoGeo, loadDepartements, loadDeputes } from "../data";
+import { entrySentence, entryTag } from "../lib/mandate";
 import { L, fmtNum, fmtPct } from "../i18n";
 import { NUANCE_LABEL, nuanceColor } from "../lib/candidates";
 import { mapPaths, rewind } from "../lib/map";
@@ -31,6 +32,7 @@ export async function renderCirco(app: HTMLElement, code: string) {
                 <h2><a href="#/depute/${d.id}">${esc(d.prenom)} ${esc(d.nom)}</a></h2>
                 <p><span class="chip">${esc(d.groupe?.abrev ?? "—")}</span> ${esc(d.groupe?.libelle ?? "")}</p>
                 <p class="muted small">${age(d) ?? "?"} ${L("ans", "years old")} · ${esc(d.profession ?? L("profession non déclarée", "no occupation stated"))}</p>
+                ${entryTag(d) ? `<p class="mp-entry small"><span class="tag mp-entry-tag">${esc(entryTag(d)!)}</span> ${esc(entrySentence(d))}</p>` : ""}
               </div>
             </article>
             <article class="card">

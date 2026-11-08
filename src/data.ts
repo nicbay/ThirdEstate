@@ -139,7 +139,12 @@ export interface Depute {
   numDepartement: string | null;
   numCirco: number | null;
   circo: string | null;
+  /** the day the MP took the seat (later than the election for substitutes and returning ministers) */
   debutMandat: string;
+  elected?: string;
+  entree?: "general" | "byelection" | "returned" | "substitute";
+  /** the Assembly's wording of how the seat was obtained */
+  cause?: string | null;
   stats: { pour: number; contre: number; abstention: number; nonVotant: number; scrutins: number; participation: number };
 }
 /** [numero, date, titre, sort, demandeur, pour, contre, abstentions] */
