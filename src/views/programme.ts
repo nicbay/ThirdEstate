@@ -157,7 +157,7 @@ function costCard(f: { slug: string; costing?: { rounds: CostRound[]; checked: s
   };
   const [r22, r24, r27] = [c.rounds.find((r) => r.year === 2022), c.rounds.find((r) => r.year === 2024), c.rounds.find((r) => r.year === 2027)];
   const m22 = r22?.estimates[0];
-  const gap22 = r22 && m22 ? r22.announced.net - m22.net : null;
+  const gap22 = r22?.announced && m22 ? r22.announced.net - m22.net : null;
   const ests = c.rounds.flatMap((r) => r.estimates.map((e) => e.net));
   const generic = c.rounds.filter((r) => r.announced?.net != null && r.estimates.length).map((r) => L(
     `En ${r.year}, ${r.estimates.map((e) => `${e.by} estime le solde à ${md(e.net)}`).join(", ")}, contre ${md(r.announced.net)} annoncés par ${r.announced.by}.`,

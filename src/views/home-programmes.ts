@@ -44,7 +44,7 @@ function teaserSpec(e: IndexEntry): FlowSpec | null {
   };
 }
 
-const STATUS_LABEL = { published: () => L("Programme analysé", "Programme analysed"), partial: () => L("Annonces partielles", "Partial announcements"), none: () => L("Pas encore publié", "Not yet published") };
+const STATUS_LABEL = { published: () => L("Programme publié", "Programme published"), partial: () => L("Annonces partielles", "Partial announcements"), none: () => L("Pas encore publié", "Not yet published") };
 
 export function postCard(p: Post, i = 0) {
   const initials = p.author.split(/\s+/).map((w) => w[0]).slice(0, 2).join("");
@@ -109,7 +109,7 @@ export async function mountProgrammesFeature(box: HTMLElement | null) {
       <div class="pf-rail" aria-label="${L("Les programmes de tous les candidats", "Every candidate’s programme")}">
         ${cardsList.map(({ c, p }, i) => `<a class="pf-cand${p ? ` is-${p.status}` : " is-none"}" style="--i:${i}" href="${p ? `#/programmes/${esc(c.slug)}` : `#/candidat/${esc(c.slug)}`}">
           ${c.photo ? `<img src="${esc(safeUrl(c.photo))}" alt="" loading="lazy" width="44" height="44">` : `<span class="pf-noimg"></span>`}
-          <span><b>${esc(c.name)}</b><span class="pf-st">${p ? esc(STATUS_LABEL[p.status]()) : STATUS_LABEL.none()}${p?.total ? ` · ${fmtNum(p.inLatest ?? p.total)} ${L("mesures", "measures")}` : ""}</span></span></a>`).join("")}
+          <span><b>${esc(c.name)}</b><span class="pf-st">${p ? (p.lite ? esc(STATUS_LABEL[p.status]()) : L("Analysé en détail", "Analysed in full")) : STATUS_LABEL.none()}${p?.total ? ` · ${fmtNum(p.inLatest ?? p.total)} ${p.lite ? L("mesures étudiées", "measures reviewed") : L("mesures", "measures")}` : ""}</span></span></a>`).join("")}
       </div>
     </section>`;
 
