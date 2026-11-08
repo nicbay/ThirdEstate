@@ -1,0 +1,56 @@
+{
+  "slug": "melenchon",
+  "checked": "2026-11-08",
+  "note": "Distribution of the programme's tax increases by standard-of-living group. Revenue per measure: LFI's own 'corrective budget' for 2027 (14 Oct 2026). Allocation keys: Third Estate, from France Stratégie (POTE data) where available, otherwise stated assumptions. IR 14-bracket line computed at run time with src/lib/household-rules.ts on a representative couple per group (field 'taxable').",
+  "households": 30000000,
+  "ucPerHousehold": 1.5,
+  "groups": [
+    { "id": "D1", "fr": "1er dixième", "en": "1st tenth", "share": 0.1, "nv": 9960, "lo": 0, "taxable": 8964 },
+    { "id": "D2", "fr": "2e dixième", "en": "2nd tenth", "share": 0.1, "nv": 15890, "lo": 13970, "taxable": 14301 },
+    { "id": "D3", "fr": "3e dixième", "en": "3rd tenth", "share": 0.1, "nv": 19400, "lo": 17645, "taxable": 23280 },
+    { "id": "D4", "fr": "4e dixième", "en": "4th tenth", "share": 0.1, "nv": 22430, "lo": 20915, "taxable": 33645 },
+    { "id": "D5", "fr": "5e dixième", "en": "5th tenth", "share": 0.1, "nv": 25310, "lo": 23870, "taxable": 37965 },
+    { "id": "D6", "fr": "6e dixième", "en": "6th tenth", "share": 0.1, "nv": 28290, "lo": 26740, "taxable": 42435 },
+    { "id": "D7", "fr": "7e dixième", "en": "7th tenth", "share": 0.1, "nv": 31670, "lo": 29980, "taxable": 47505 },
+    { "id": "D8", "fr": "8e dixième", "en": "8th tenth", "share": 0.1, "nv": 36040, "lo": 33855, "taxable": 54060 },
+    { "id": "D9", "fr": "9e dixième", "en": "9th tenth", "share": 0.1, "nv": 43010, "lo": 39525, "taxable": 64515 },
+    { "id": "P90", "fr": "10e, hors 1 %", "en": "10th, excl. top 1%", "share": 0.09, "nv": 67089, "lo": 48580, "taxable": 115729, "assumption": true },
+    { "id": "P99", "fr": "1 % (hors 0,1 %)", "en": "Top 1% (excl. 0.1%)", "share": 0.009, "nv": 150000, "lo": 110000, "taxable": 258750, "assumption": true },
+    { "id": "P999", "fr": "0,1 %", "en": "Top 0.1%", "share": 0.001, "nv": 308667, "lo": 280000, "taxable": 270000, "assumption": true }
+  ],
+  "measures": [
+    {
+      "id": "flat", "lineage": "L0781ec", "revenue": 9, "fr": "Fin de la flat tax", "en": "End of the flat tax",
+      "shares": { "D5": 0.002, "D6": 0.002, "D7": 0.002, "D8": 0.002, "D9": 0.003, "P90": 0.256, "P99": 0.258, "P999": 0.475 },
+      "keyFr": "Part de chaque groupe dans les revenus soumis au PFU (0,1 % les plus aisés : 39 000 foyers × 588 000 € de RFR × 54 % = 29 % du total ; 1 % hors 0,1 % ≈ 18 % ; reste réparti selon les tranches de dividendes et d’intérêts de France Stratégie), pondérée par l’écart entre le taux marginal du barème à 14 tranches et 12,8 %.",
+      "keyEn": "Each group's share of PFU-eligible income (top 0.1%: 39,000 tax households × €588,000 of reference income × 54% = 29% of the total; top 1% excl. 0.1% ≈ 18%; the rest spread using France Stratégie's dividend and interest bands), weighted by the gap between the 14-bracket marginal rate and 12.8%."
+    },
+    {
+      "id": "isf", "lineage": "L38b88f", "revenue": 10, "fr": "ISF climatique", "en": "Climate wealth tax",
+      "shares": { "D7": 0.005, "D8": 0.01, "D9": 0.015, "P90": 0.22, "P99": 0.35, "P999": 0.4 },
+      "keyFr": "Hypothèse Third Estate : en 2017, 358 000 foyers (≈ 1,2 % des ménages) payaient l’ISF ; le produit est réparti surtout sur le 1 % le plus aisé par le revenu, avec une part chez des ménages riches en patrimoine mais aux revenus moyens (retraités notamment). Aucune étude publique ne donne cette répartition par revenu.",
+      "keyEn": "Third Estate assumption: in 2017, 358,000 tax households (≈ 1.2% of households) paid the ISF; the yield is spread mostly over the top 1% by income, with a share among wealth-rich, middle-income households (retirees in particular). No public study gives this split by income."
+    },
+    {
+      "id": "zucman", "lineage": "L165b15", "revenue": 15, "fr": "Taxe Zucman", "en": "Zucman tax",
+      "shares": { "P999": 1 },
+      "keyFr": "Environ 1 800 foyers dont le patrimoine dépasse 100 M€, tous dans le 0,1 % le plus aisé.",
+      "keyEn": "About 1,800 tax households with wealth above €100m, all in the top 0.1%."
+    },
+    {
+      "id": "succ", "lineage": "L5e0934", "revenue": 20, "fr": "Successions", "en": "Inheritance",
+      "shares": { "D8": 0.02, "D9": 0.03, "P90": 0.2, "P99": 0.3, "P999": 0.45 },
+      "keyFr": "Hypothèse Third Estate : flux annuel payé par les héritiers des plus gros patrimoines (exonération sous 150 000 €, héritage maximal de 12 M€). La répartition des héritiers par revenu n’est pas publiée.",
+      "keyEn": "Third Estate assumption: an annual flow paid by heirs of the largest estates (no duty under €150,000, maximum inheritance €12m). The split of heirs by income is not published."
+    }
+  ],
+  "sources": [
+    { "title": "Public Sénat, 14 oct. 2026 — budget rectificatif 2027 de LFI (106 Md€ de recettes, 82 Md€ de dépenses)", "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2027-jean-luc-melenchon-table-sur-106-milliards-de-recettes-supplementaires-et-82-milliards-de-depenses-nouvelles-pour-2027" },
+    { "title": "Insee, niveau de vie moyen par dixième, 2024", "url": "https://www.insee.fr/fr/statistiques/2417897" },
+    { "title": "Insee Première n° 2117, Niveau de vie et pauvreté en 2024", "url": "https://www.insee.fr/fr/statistiques/9019316" },
+    { "title": "France Stratégie, « Les gros dividendes se sont maintenus en 2020 » (octobre 2022, données POTE)", "url": "https://www.strategie-plan.gouv.fr/files/files/Publications/Points%20de%20vue/2022-10-20%20-%20Point%20de%20vue%20Gros%20dividendes%20-%20Plus-values/FS-2022-PDV_Distribution%20dividendes%20en%202020_20oct.pdf" },
+    { "title": "Amendement LFI-NFP I-CF748, PLF 2025 (barème à 14 tranches)", "url": "https://www.assemblee-nationale.fr/dyn/17/amendements/0324A/CION_FIN/CF748.pdf" },
+    { "title": "Datan, scrutin n° 8857 (16 oct. 2026) — amendement n° 1069 rétablissant un ISF renforcé à volet climatique", "url": "https://datan.fr/votes/legislature-17/vote_8857" },
+    { "title": "Fondation iFRAP, 9 juil. 2024 — le programme fiscal du NFP par dixième (seule étude par dixième publiée, think tank libéral)", "url": "https://www.ifrap.org/budget-et-fiscalite/le-programme-fiscal-du-nfp-ferait-monter-de-20-les-impots-directs-des-menages" }
+  ]
+}

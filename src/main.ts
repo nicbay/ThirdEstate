@@ -69,6 +69,7 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/quiz(?:\/([\w-]+))?$/, (m) => renderQuiz(app, m[1])],
   // section names as paths, so a typed or shared section link lands somewhere
   [/^#\/(chez-vous|parlement|la-france|france|archives)$/, (m) => void (location.hash = { "chez-vous": homeHref(), parlement: "#/assemblee", "la-france": "#/chiffres", france: "#/chiffres", archives: "#/resultats" }[m[1]]!)],
+  [/^#\/programmes\/melenchon\/simulateur$/, () => import("./views/household").then((v) => v.renderHousehold(app))],
   [/^#\/programmes\/([\w-]+)$/, (m) => import("./views/programme").then((v) => v.renderProgramme(app, m[1]))],
 ];
 
