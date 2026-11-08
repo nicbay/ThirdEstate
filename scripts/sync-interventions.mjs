@@ -482,7 +482,8 @@ for (const [g, gc] of groupCounts) {
     speeches: members.reduce((s, id) => s + (mpStat.get(id)?.n ?? 0), 0),
     words: members.reduce((s, id) => s + (mpStat.get(id)?.words ?? 0), 0),
     themes: shares(groupThemes.get(g)),
-    terms: pack(terms),
+    // [text, weight, theme, times the group said it]
+    terms: pack(terms).map((t, i) => [...t, gc.get(terms[i][0]) ?? 0]),
   };
 }
 
@@ -561,15 +562,40 @@ for (const [mp, st] of mpStat) {
   await writeFile(new URL(`${mp}.json`, OUT), JSON.stringify({ id: mp, speeches: st.n, interjections: st.inter, words: st.words, classified: mpClassified.get(mp) ?? 0, first: st.first, last: st.last, terms: packMp(mp, mpTerms.get(mp)), themes: sh }));
   written++;
 }
-// words.json: every chamber/group cloud word: how often, how many MPs, who says it most, quotes
+// words.json: every chamber/group cloud word: how often, by how many MPs, recent quotes
 const words = {};
 for (const id of wantAll) {
-  const by = [];
-  for (const [mp, mc] of mpCounts) { const c = mc.get(id); if (c) by.push([mp, c]); }
-  by.sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1));
-  words[termText(id)] = { n: chamber.get(id) ?? 0, m: by.length, top: by.slice(0, 24), src: (allSrc.get(id) ?? []).map((r) => quote(r, true)) };
+  let m = 0;
+  for (const mc of mpCounts.values()) if (mc.has(id)) m++;
+  words[termText(id)] = { n: chamber.get(id) ?? 0, m, src: (allSrc.get(id) ?? []).map((r) => quote(r, true)) };
 }
 await writeFile(new URL("words.json", OUT), JSON.stringify(words));
+
+// ranks/NN.json: for every word in any cloud (chamber, group or MP), every MP who said it, most first.
+// Sharded by a hash of the word (same FNV-1a as src/views/speeches.ts) so a click loads ~1/32 of it.
+// MPs are written as indexes into the shard's `ids` list to keep files small.
+const SHARDS = 32;
+const shardOf = (text) => {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < text.length; i++) h = Math.imul(h ^ text.charCodeAt(i), 0x01000193) >>> 0;
+  return h % SHARDS;
+};
+const ids = [...mpCounts.keys()].sort();
+const idIndex = new Map(ids.map((id, i) => [id, i]));
+const ranked = new Set(wantAll);
+for (const list of mpTerms.values()) for (const [id] of list) ranked.add(id);
+const shards = Array.from({ length: SHARDS }, () => ({}));
+for (const id of ranked) {
+  const by = [];
+  for (const [mp, mc] of mpCounts) { const c = mc.get(id); if (c) by.push([idIndex.get(mp), c]); }
+  by.sort((a, b) => b[1] - a[1] || a[0] - b[0]);
+  const text = termText(id);
+  // n: times said in the chamber; then [mp index, times] for every MP who said it
+  shards[shardOf(text)][text] = [chamber.get(id) ?? 0, ...by.flat()];
+}
+await mkdir(new URL("ranks/", OUT), { recursive: true });
+for (let i = 0; i < SHARDS; i++) await writeFile(new URL(`ranks/${String(i).padStart(2, "0")}.json`, OUT), JSON.stringify({ ids, w: shards[i] }));
+console.log(`✓ MP rankings for ${ranked.size} words`);
 speeches.length = 0;
 
 // Data files only change when the record does (the daily workflow commits only real changes);
