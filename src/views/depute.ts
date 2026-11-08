@@ -3,6 +3,7 @@ import { L, fmtDate, fmtNum, fmtPct, t } from "../i18n";
 import { PLATFORMS, age, presence } from "./assemblee";
 import { esc, safeUrl, safeColor } from "../util";
 import { photoUrl } from "./deputes";
+import { pcsCategoryLabel, pcsGroup, pcsGroupLabel } from "../lib/pcs";
 import { mountMpLoyalty } from "./loyalty";
 import { renderMpSpeech } from "./speeches";
 
@@ -62,7 +63,7 @@ export async function renderDepute(app: HTMLElement, id: string) {
           <dl class="facts">
             ${d.naissance ? `<dt>${s.born}</dt><dd>${fmtDate(d.naissance)} (${age(d)} ${L("ans", "years")})</dd>` : ""}
             ${d.profession ? `<dt>${s.profession}</dt><dd>${esc(d.profession)}</dd>` : ""}
-            ${d.catSocPro ? `<dt>${s.socioCategory}</dt><dd>${esc(d.famSocPro)} — ${esc(d.catSocPro)}</dd>` : ""}
+            ${d.catSocPro ? `<dt>${s.socioCategory}</dt><dd>${pcsGroup(d.famSocPro) === "none" ? "" : `${esc(pcsGroupLabel(pcsGroup(d.famSocPro)))} — `}${esc(pcsCategoryLabel(d.catSocPro))}</dd>` : ""}
             ${d.hatvp ? `<dt>HATVP</dt><dd><a href="${esc(safeUrl(d.hatvp))}" target="_blank" rel="noopener">${s.hatvp} ↗</a> <span class="muted small">${L("parcours, activités et intérêts déclarés", "declared career, activities and interests")}</span></dd>` : ""}
             <dt>LinkedIn</dt><dd>${
               d.socials.linkedin
@@ -135,7 +136,7 @@ export async function renderDepute(app: HTMLElement, id: string) {
         return `<li>
           <div class="vote-meta muted small">${fmtDate(date)} · n° ${num} · <span class="sort-${sort === "adopté" ? "ok" : "ko"}">${sort === "adopté" ? s.adopted : s.rejected}</span> (${p}–${c}–${a})</div>
           <div class="vote-title"><a href="https://www.assemblee-nationale.fr/dyn/17/scrutins/${num}" target="_blank" rel="noopener">${esc(titre)}</a></div>
-          ${dem ? `<div class="muted small">${s.requestedBy} : ${esc(dem)}</div>` : ""}
+          ${dem ? `<div class="muted small">${s.requestedBy}${L(" : ", ": ")}${esc(dem)}</div>` : ""}
           <span class="pos pos-${pos} bg-${pos}">${label[pos]}</span>
         </li>`;
       })

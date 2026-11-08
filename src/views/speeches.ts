@@ -152,7 +152,7 @@ function themeBars(s: Summary, shares: Shares, opts: { top?: number; compare?: b
   const rows = s.themes.map((t) => ({ t, v: shares[t.id] ?? 0, ref: s.chamber.themes[t.id] ?? 0 })).sort((a, b) => b.v - a.v).slice(0, opts.top ?? s.themes.length);
   const max = Math.max(...rows.map((r) => Math.max(r.v, opts.compare ? r.ref : 0)), 0.01);
   return `<ul class="bars compact theme-bars">${rows
-    .map(({ t, v, ref }) => `<li data-tip="${esc(`${L(t.fr, t.en)} : ${pct(v, 1)}${opts.compare ? ` (${L("Assemblée", "whole house")} ${pct(ref, 1)})` : ""}`)}">
+    .map(({ t, v, ref }) => `<li data-tip="${esc(`${L(t.fr, t.en)}${L(" : ", ": ")}${pct(v, 1)}${opts.compare ? ` (${L("Assemblée", "whole house")} ${pct(ref, 1)})` : ""}`)}">
       <div class="bar-label"><span>${esc(L(t.fr, t.en))}</span><b>${pct(v)}</b></div>
       <div class="bar"><div style="width:${(100 * v) / max}%;background:${color(t.id)}"></div>${opts.compare ? `<i class="ref" style="left:${(100 * ref) / max}%"></i>` : ""}</div>
     </li>`)
@@ -236,7 +236,7 @@ export async function renderThemes(pane: HTMLElement) {
             const x = v.themes[t.id] ?? 0;
             const maxT = Math.max(...groups.map(([, w]) => w.themes[t.id] ?? 0), 0.001);
             const a = x / maxT;
-            return `<td class="num" style="background:${color(t.id)}${Math.round(a * 200).toString(16).padStart(2, "0")};color:${a > 0.55 ? "#fff" : "inherit"}" data-tip="${esc(`${g} · ${L(t.fr, t.en)} : ${pct(x, 1)}`)}">${pct(x)}</td>`;
+            return `<td class="num" style="background:${color(t.id)}${Math.round(a * 200).toString(16).padStart(2, "0")};color:${a > 0.55 ? "#fff" : "inherit"}" data-tip="${esc(`${g} · ${L(t.fr, t.en)}${L(" : ", ": ")}${pct(x, 1)}`)}">${pct(x)}</td>`;
           }).join("")}</tr>`).join("")}
         </tbody>
       </table>
@@ -255,7 +255,7 @@ export async function renderThemes(pane: HTMLElement) {
     const g = view.group ? s.groups[view.group] : null;
     const terms = g ? g.terms : s.chamber.terms;
     pane.querySelector("#th-pane")!.innerHTML = `
-      <div><h3>${g ? `${esc(view.group)} : ${L("part des interventions par thème", "share of speeches by theme")}` : L("Part des interventions par thème", "Share of speeches by theme")}</h3>
+      <div><h3>${g ? `${esc(view.group)}${L(" : part des interventions par thème", ": share of speeches by theme")}` : L("Part des interventions par thème", "Share of speeches by theme")}</h3>
         ${themeBars(s, g ? g.themes : s.chamber.themes, { compare: !!g })}
         ${g ? `<p class="muted small">${L("Trait : moyenne de l’Assemblée.", "Tick: whole-house average.")} ${fmtNum(g.speeches)} ${L("interventions", "speeches")}, ${g.mps} ${L("députés", "MPs")}.</p>` : ""}</div>
       <div><h3>${g ? L(`Les mots propres au groupe ${view.group}`, `Words typical of ${view.group}`) : L("Choisissez un groupe pour voir ses mots", "Pick a group to see its words")}</h3>

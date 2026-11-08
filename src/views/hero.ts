@@ -4,7 +4,7 @@
 import { geoConicConformal, geoPath } from "d3-geo";
 import type { Depute, ShiftPair } from "../data";
 import { L, getLang } from "../i18n";
-import { seatRank } from "../lib/hemicycle";
+import { AN_SEATS, seatRank, seatSummary } from "../lib/hemicycle";
 import { rewind } from "../lib/map";
 import { esc, safeColor } from "../util";
 
@@ -81,10 +81,12 @@ export function heroViz(geo: GeoJSON.FeatureCollection, deputes: Depute[], pair:
   order.forEach((d, i) => { d.hx = pos[i].x; d.hy = pos[i].y; });
   const maxX = Math.max(...dots.map((d) => d.mx));
   const seatIndex = new Map(order.map((d, i) => [d, i]));
+  // one dot per district = one per statutory seat; vacant seats are the dots without an MP
+  const sum = seatSummary(Math.max(order.length, AN_SEATS), order.filter((d) => d.mp).length);
 
   const svg = `<svg class="hero-dots" id="hero-dots" viewBox="0 0 ${W} ${H}" role="img" aria-label="${L("Les 577 circonscriptions sur la carte de France, puis les 577 sièges de l’Assemblée nationale", "The 577 districts on the map of France, then the 577 seats of the National Assembly")}">
     <g class="hd-map">${mainland.map((f) => `<path d="${geoPath(proj)(f)}"/>`).join("")}<text x="14" y="388" class="hd-note">${L("Outre-mer et étranger", "Overseas and abroad")}</text></g>
-    <g class="hd-hemi"><line x1="${W / 2}" x2="${W / 2}" y1="${H - 30 - 312}" y2="${H - 30 - 104}"/><text x="${W / 2}" y="${H - 72}" text-anchor="middle" class="hd-total">${order.length}</text><text x="${W / 2}" y="${H - 44}" text-anchor="middle" class="hd-note">${L("députés · majorité", "MPs · majority")} ${Math.floor(order.length / 2) + 1}</text></g>
+    <g class="hd-hemi"><line x1="${W / 2}" x2="${W / 2}" y1="${H - 30 - 312}" y2="${H - 30 - 104}"/><text x="${W / 2}" y="${H - 72}" text-anchor="middle" class="hd-total">${sum.statutory}</text><text x="${W / 2}" y="${H - 44}" text-anchor="middle" class="hd-note">${sum.vacant ? `${sum.sitting} ${L("députés", "MPs")} · ` : `${L("sièges", "seats")} · `}${L("majorité", "majority")} ${sum.majority}</text></g>
     ${dots
       .map((d) => {
         const tip = d.mp ? `${d.mp.prenom} ${d.mp.nom}\n${d.mp.groupe?.libelle ?? ""}\n${L("Circonscription", "District")} ${Number(d.code.slice(-2))}, ${d.code.startsWith("99") ? L("Français de l’étranger", "French abroad") : d.code.slice(0, d.code.length - 2)}` : `${L("Siège vacant", "Vacant seat")}\n${L("Circonscription", "District")} ${d.code}`;
@@ -95,7 +97,11 @@ export function heroViz(geo: GeoJSON.FeatureCollection, deputes: Depute[], pair:
 
   const groups = new Map<string, { abrev: string; label: string; color: string; n: number }>();
   for (const d of order) if (d.mp?.groupe) { const g = d.mp.groupe; const x = groups.get(g.abrev) ?? { abrev: g.abrev, label: g.libelle, color: onDark(safeColor(g.couleur) ?? "#999"), n: 0 }; x.n++; groups.set(g.abrev, x); }
-  const legend = `<ul class="hd-legend">${[...groups.values()].map((g) => `<li data-tip="${esc(g.label)}"><i style="background:${g.color}"></i>${esc(g.abrev)} <b>${g.n}</b></li>`).join("")}</ul>`;
+  const vacantTip = L(
+    `${sum.vacant > 1 ? "Sièges vacants" : "Siège vacant"}, en attente d’une élection partielle. Majorité absolue des ${sum.sitting} membres en exercice : ${sum.majority} (${sum.fullMajority} quand les ${sum.statutory} sièges sont pourvus).`,
+    `${sum.vacant > 1 ? "Vacant seats" : "Vacant seat"}, pending a by-election. Absolute majority of the ${sum.sitting} sitting members: ${sum.majority} (${sum.fullMajority} when all ${sum.statutory} seats are filled).`,
+  );
+  const legend = `<ul class="hd-legend">${[...groups.values()].map((g) => `<li data-tip="${esc(g.label)}"><i style="background:${g.color}"></i>${esc(g.abrev)} <b>${g.n}</b></li>`).join("")}${sum.vacant ? `<li data-tip="${esc(vacantTip)}"><i style="background:#5a5d66"></i>${L("Vacants", "Vacant")} <b>${sum.vacant}</b></li>` : ""}</ul>`;
 
   const start = (root: HTMLElement) => {
     const el = root.querySelector<SVGSVGElement>("#hero-dots");

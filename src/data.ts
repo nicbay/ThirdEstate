@@ -202,7 +202,24 @@ export async function districtResults2024(circo: string) {
   const code = circo.startsWith("99") ? "ZZ" + circo.slice(2) : circo;
   const url = `${TABULAR}/a04f8cae-c94d-4ade-804d-ec024ee554ac/data/?page_size=50&CodCirElec__exact=${code}`;
   const r = await fetchJson<{ data: { NomPsn: string; PrenomPsn: string; CodNuaCand: string; NbVoix: number; RapportExprimes: number; Elu: string; Inscrits: number; Votants: number; Exprimes: number }[] }>(url);
-  return { url, rows: r.data.sort((a, b) => b.NbVoix - a.NbVoix) };
+  const rows = r.data.map((x) => ({ ...x, NomPsn: repairDosMojibake(x.NomPsn ?? ""), PrenomPsn: repairDosMojibake(x.PrenomPsn ?? "") }));
+  return { url, rows: rows.sort((a, b) => b.NbVoix - a.NbVoix) };
+}
+
+/**
+ * The ministry's 2024 candidate file was written in a DOS code page (CP850) and read back as CP775 (Baltic
+ * DOS) before reaching data.gouv.fr, so "Naïma" arrives as "Naŗma", "Hélène" as "HélŖne", "François" as
+ * "Franćois". Both are single-byte code pages, so the damage is reversible: each CP775 letter that differs
+ * from CP850 maps back through its byte. These are the upper halves (0x80–0xFF) of both code pages, letters
+ * only, aligned by byte. None of the CP775 letters below occur in French names, so a string containing one
+ * is treated as mojibake and fully mapped back; clean strings are returned unchanged.
+ */
+const CP775 = "ĆāģćłēŖŗīŹōĢ¢ŚśĀĪŻżźĄČĘŲŪęėįųūž▐ŌŃķĻļņĒ";
+const CP850 = "ÇâàçêëèïîìôòûùÿáíúñÑÁÂÀãÃÊËÈÍÎÏÌÔÒÚÛÙýÝ";
+const DOS_FIX = new Map([...CP775].map((c, i) => [c, CP850[i]]));
+export function repairDosMojibake(s: string) {
+  if (![...s].some((c) => DOS_FIX.has(c))) return s;
+  return [...s].map((c) => DOS_FIX.get(c) ?? c).join("");
 }
 
 /**
