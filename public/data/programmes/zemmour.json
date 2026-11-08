@@ -1,0 +1,344 @@
+{
+  "slug": "zemmour",
+  "candidate": "Éric Zemmour",
+  "party": "Reconquête",
+  "lite": true,
+  "status": "partial",
+  "statusNote": {
+    "fr": "Éric Zemmour a confirmé le 17 septembre 2026 sur BFMTV qu'il serait candidat, la déclaration formelle étant annoncée pour l'automne ; aucun programme 2027 n'est publié, Reconquête menant une consultation en ligne (« Le Programme pour la France ») et Sarah Knafo publiant un plan d'économies (budget2027.fr).",
+    "en": "Éric Zemmour confirmed on BFMTV on 17 September 2026 that he will run, with a formal declaration announced for the autumn; no 2027 programme is published, Reconquête is running an online consultation ('Le Programme pour la France') and Sarah Knafo has published a savings plan (budget2027.fr)."
+  },
+  "versions": [
+    { "id": "p22", "year": 2022, "label": { "fr": "Programme 2022", "en": "2022 programme" }, "title": "Programme d'Éric Zemmour, présidentielle 2022 (Reconquête)", "date": "2022-03", "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2022-eric-zemmour-detaille-son-programme-et-assume-le-terme", "kind": "site" },
+    { "id": "p27", "year": 2027, "label": { "fr": "Annonces 2026", "en": "2026 announcements" }, "title": "Déclarations de campagne et plan budgétaire de Sarah Knafo", "date": "2026-09", "url": "https://www.publicsenat.fr/actualites/politique/eric-zemmour-officialise-sa-candidature-a-la-presidentielle-2027", "kind": "announcements" }
+  ],
+  "measures": [
+    {
+      "id": "z01", "theme": "institutions", "status": "maintained",
+      "texts": {
+        "p22": "Grand référendum sur l'immigration, la sécurité et la justice « dès les prochaines élections législatives » ; référendum obligatoire pour toute ratification de traité européen, toute révision constitutionnelle ou tout élargissement de l'UE.",
+        "p27": "Pétition de Reconquête pour un référendum sur l'immigration (stop-immigration.com)."
+      },
+      "change": { "fr": "L'appel au référendum sur l'immigration est maintenu (pétition du parti) ; pas de calendrier 2027 annoncé.", "en": "The call for an immigration referendum is kept (party petition); no 2027 timetable announced." },
+      "sources": [
+        { "title": "Public Sénat, mars 2022 — Éric Zemmour détaille son programme et assume le terme « remigration »", "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2022-eric-zemmour-detaille-son-programme-et-assume-le-terme" },
+        { "title": "Reconquête — site du parti", "url": "https://www.parti-reconquete.fr/" }
+      ],
+      "cost": null,
+      "legal": "constitutional-revision-needed",
+      "legalNote": { "fr": "L'article 11 ne vise que l'organisation des pouvoirs publics, les réformes économiques, sociales ou environnementales et la ratification des traités ; y inclure l'immigration et la justice pénale suppose une révision par l'article 89. Le Conseil constitutionnel se déclare incompétent pour contrôler une loi adoptée par référendum (n° 62-20 DC, 6 novembre 1962).", "en": "Article 11 covers only the organisation of public powers, economic, social or environmental reforms and treaty ratification; adding immigration and criminal justice requires an Article 89 revision. The Conseil constitutionnel declines to review laws adopted by referendum (no. 62-20 DC, 6 November 1962)." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "z02", "theme": "immigration", "status": "maintained",
+      "texts": {
+        "p22": "« Nous créerons un grand ministère de la remigration. »",
+        "p27": "« Tout étranger qui pèse sur les finances publiques doit être expulsé » ; pétition Reconquête sur la « remigration »."
+      },
+      "change": null,
+      "sources": [
+        { "title": "Public Sénat, mars 2022 — Éric Zemmour détaille son programme", "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2022-eric-zemmour-detaille-son-programme-et-assume-le-terme" },
+        { "title": "Public Sénat, 18 septembre 2026 — Éric Zemmour officialise sa candidature", "url": "https://www.publicsenat.fr/actualites/politique/eric-zemmour-officialise-sa-candidature-a-la-presidentielle-2027" }
+      ],
+      "cost": null,
+      "legal": "risk",
+      "legalNote": { "fr": "Les expulsions restent soumises à la CEDH (art. 3 et 8) et, pour les résidents de longue durée, à la directive 2003/109/CE (art. 12 : éloignement seulement en cas de menace réelle et suffisamment grave).", "en": "Removals remain subject to the ECHR (Arts 3 and 8) and, for long-term residents, Directive 2003/109/EC (Art. 12: removal only for an actual and sufficiently serious threat)." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "z03", "theme": "immigration", "status": "modified",
+      "texts": {
+        "p22": "Renvoyer les étrangers venus travailler au bout de 6 mois sans emploi.",
+        "p27": "Un étranger, même en situation régulière, doit être expulsé après un an de chômage."
+      },
+      "change": { "fr": "Délai : 6 mois sans emploi (2022) → un an de chômage (2026).", "en": "Threshold: 6 months without work (2022) → one year of unemployment (2026)." },
+      "sources": [
+        { "title": "Institut Montaigne 2022 — Renvoyer les étrangers venus travailler au bout de 6 mois sans emploi", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/renvoyer-les-etrangers-venus-travailler-au-bout-de-6-mois-sans-emploi/" },
+        { "title": "Public Sénat, 18 septembre 2026 — Éric Zemmour officialise sa candidature", "url": "https://www.publicsenat.fr/actualites/politique/eric-zemmour-officialise-sa-candidature-a-la-presidentielle-2027" }
+      ],
+      "cost": { "value": 1.8, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/synthese", "note": { "fr": "Chiffrage de la version 2022 (6 mois) ; la version 2026 n'est pas chiffrée.", "en": "Costing of the 2022 version (6 months); the 2026 version is not costed." } },
+      "legal": "eu-law",
+      "legalNote": { "fr": "Pour les résidents de longue durée, la directive 2003/109/CE (art. 12) n'autorise l'éloignement qu'en cas de menace réelle et suffisamment grave pour l'ordre public ; la perte d'emploi n'en est pas une.", "en": "For long-term residents, Directive 2003/109/EC (Art. 12) allows removal only for an actual and sufficiently serious threat to public order; job loss is not one." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "z04", "theme": "securite", "status": "maintained",
+      "texts": {
+        "p22": "Expulser les étrangers fichés S et les étrangers délinquants.",
+        "p27": "« Il faut renvoyer tous les étrangers qui sont dans les prisons françaises », ainsi que les étrangers condamnés exécutant leur peine hors de prison et ceux en situation irrégulière."
+      },
+      "change": null,
+      "sources": [
+        { "title": "Public Sénat, mars 2022 — Éric Zemmour détaille son programme", "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2022-eric-zemmour-detaille-son-programme-et-assume-le-terme" },
+        { "title": "MonVote2027 — Éric Zemmour (citation du 18 septembre 2026)", "url": "https://monvote2027.fr/candidat/zemmour" }
+      ],
+      "cost": null,
+      "legal": "risk",
+      "legalNote": { "fr": "Contrôle au cas par cas au titre des articles 3 et 8 de la CEDH ; l'éloignement suppose l'accord du pays de renvoi (laissez-passer consulaires).", "en": "Case-by-case review under ECHR Arts 3 and 8; removal requires the destination country's consent (consular passes)." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "z05", "theme": "social", "status": "modified",
+      "texts": {
+        "p22": "Retirer les aides sociales non contributives (RSA, allocations familiales, minimum vieillesse, aides au logement) aux étrangers extra-européens : « tout cela doit être réservé aux Français ».",
+        "p27": "Réserver les prestations non contributives (RSA, APL, allocations familiales) aux Français (plan de Sarah Knafo, 15 à 20 Md€)."
+      },
+      "change": { "fr": "Étrangers extra-européens (2022) → réservé aux Français (plan Knafo 2026, qui inclurait donc aussi les ressortissants de l'UE) ; la position propre d'Éric Zemmour en 2026 n'est pas détaillée.", "en": "Non-EU foreigners (2022) → French nationals only (2026 Knafo plan, which would also cover EU nationals); Éric Zemmour's own 2026 position is not detailed." },
+      "sources": [
+        { "title": "Institut Montaigne 2022 — Retirer les aides sociales non contributives aux étrangers extra-européens", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/retirer-les-aides-sociales-non-contributives-aux-etrangers-extra-europeens/" },
+        { "title": "budget2027.fr (Sarah Knafo)", "url": "https://www.budget2027.fr/" }
+      ],
+      "cost": { "value": 6.7, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/retirer-les-aides-sociales-non-contributives-aux-etrangers-extra-europeens/", "note": { "fr": "6,7 Md€/an selon l'Institut Montaigne, contre 20 Md€/an annoncés par le candidat en 2022 et 15–20 Md€ dans le plan Knafo 2026.", "en": "€6.7bn a year per Institut Montaigne, versus €20bn a year claimed by the candidate in 2022 and €15–20bn in the 2026 Knafo plan." } },
+      "legal": "unconstitutional-precedent",
+      "legalNote": { "fr": "L'Institut Montaigne juge que la mesure exigerait une révision constitutionnelle et la dénonciation de traités : le Conseil constitutionnel a reconnu l'égalité des droits sociaux des étrangers en situation régulière (n° 89-269 DC, 22 janvier 1990) et censuré une condition de cinq ans de résidence (n° 2024-6 RIP, 11 avril 2024). Exclure les ressortissants de l'UE contreviendrait en outre à l'article 18 TFUE et au règlement (CE) 883/2004.", "en": "Institut Montaigne finds it would require a constitutional revision and treaty denunciations: the Conseil constitutionnel recognised equal social rights for lawfully resident foreigners (no. 89-269 DC, 22 January 1990) and struck down a five-year residence condition (no. 2024-6 RIP, 11 April 2024). Excluding EU nationals would also breach Art. 18 TFEU and Regulation (EC) 883/2004." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "z06", "theme": "sante", "status": "maintained",
+      "texts": {
+        "p22": "Supprimer l'aide médicale d'État (AME), sauf urgences.",
+        "p27": "Fin de l'aide médicale d'État (plan de Sarah Knafo, 1,3 Md€)."
+      },
+      "change": null,
+      "sources": [
+        { "title": "Institut Montaigne 2022 — Supprimer l'AME", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/supprimer-laide-medicale-detat-ame" },
+        { "title": "budget2027.fr (Sarah Knafo)", "url": "https://www.budget2027.fr/" }
+      ],
+      "cost": { "value": 0.7, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/synthese", "note": { "fr": "0,7 Md€/an selon l'Institut Montaigne (2022) ; 1,3 Md€ dans le plan Knafo 2026.", "en": "€0.7bn a year per Institut Montaigne (2022); €1.3bn in the 2026 Knafo plan." } },
+      "legal": "unknown", "legalNote": null,
+      "feasibility": "high", "feasibilityNote": { "fr": "Relève de la loi ordinaire.", "en": "Can be done by ordinary law." },
+      "broadBenefit": false
+    },
+    {
+      "id": "z07", "theme": "immigration", "status": "maintained",
+      "texts": { "p22": "Supprimer le droit du sol." },
+      "change": { "fr": "Aucune position 2027 publiée à ce stade ; mesure du programme 2022 non révisée publiquement.", "en": "No 2027 position published yet; 2022 measure not publicly revised." },
+      "sources": [ { "title": "Public Sénat, mars 2022 — Éric Zemmour détaille son programme", "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2022-eric-zemmour-detaille-son-programme-et-assume-le-terme" } ],
+      "cost": null,
+      "legal": "risk",
+      "legalNote": { "fr": "Le droit du sol n'a pas été qualifié de principe fondamental reconnu par les lois de la République ; le Conseil a validé une restriction propre à Mayotte (n° 2018-770 DC, 6 septembre 2018). Une suppression générale n'a jamais été jugée.", "en": "Birthright citizenship has not been classed as a fundamental principle recognised by the laws of the Republic; the Council upheld a Mayotte-specific restriction (no. 2018-770 DC, 6 September 2018). A general abolition has never been ruled on." },
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "z08", "theme": "immigration", "status": "maintained",
+      "texts": { "p22": "Supprimer le regroupement familial." },
+      "change": { "fr": "Aucune position 2027 publiée à ce stade ; mesure du programme 2022 non révisée publiquement.", "en": "No 2027 position published yet; 2022 measure not publicly revised." },
+      "sources": [ { "title": "Public Sénat, mars 2022 — Éric Zemmour détaille son programme", "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2022-eric-zemmour-detaille-son-programme-et-assume-le-terme" } ],
+      "cost": null,
+      "legal": "unconstitutional-precedent",
+      "legalNote": { "fr": "Le Conseil constitutionnel reconnaît aux étrangers en séjour stable et régulier, « comme les nationaux, le droit de mener une vie familiale normale » (n° 93-325 DC, 13 août 1993, cons. 70) ; le regroupement familial est aussi garanti par la directive 2003/86/CE et la Charte des droits fondamentaux de l'UE.", "en": "The Conseil constitutionnel recognises that stably and lawfully resident foreigners have, 'like nationals, the right to a normal family life' (no. 93-325 DC, 13 August 1993, para. 70); family reunification is also guaranteed by Directive 2003/86/EC and the EU Charter of Fundamental Rights." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "z09", "theme": "europe", "status": "maintained",
+      "texts": { "p22": "Réviser l'article 55 de la Constitution pour faire primer les lois nationales nouvelles sur les textes internationaux et européens." },
+      "change": { "fr": "Aucune position 2027 publiée à ce stade ; mesure du programme 2022 non révisée publiquement.", "en": "No 2027 position published yet; 2022 measure not publicly revised." },
+      "sources": [ { "title": "Public Sénat, mars 2022 — Éric Zemmour détaille son programme", "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2022-eric-zemmour-detaille-son-programme-et-assume-le-terme" } ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": { "fr": "Révision constitutionnelle nécessaire ; la primauté du droit de l'UE est établie par la jurisprudence de la Cour de justice (Costa c/ ENEL, aff. 6/64, 1964), et Public Sénat rappelle le risque de sanctions comparables à celles visant la Pologne.", "en": "Requires a constitutional revision; EU-law primacy is settled Court of Justice case law (Costa v ENEL, Case 6/64, 1964), and Public Sénat notes the risk of sanctions like those faced by Poland." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "z10", "theme": "social", "status": "modified",
+      "texts": {
+        "p22": "Augmenter l'âge légal de la retraite à 64 ans d'ici 2030 et aligner les différents régimes.",
+        "p27": "Sarah Knafo (Reconquête) défend le passage à un système de retraite par capitalisation (14 septembre 2026)."
+      },
+      "change": { "fr": "L'âge de 64 ans a été fixé par la réforme de 2023 ; en 2026 la piste évoquée est la capitalisation, portée par Sarah Knafo et non par Éric Zemmour lui-même.", "en": "Age 64 was set by the 2023 reform; in 2026 the idea floated is a funded system, put forward by Sarah Knafo rather than Éric Zemmour himself." },
+      "sources": [
+        { "title": "Institut Montaigne 2022 — Augmenter l'âge légal de la retraite à 64 ans", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/augmenter-lage-legal-de-la-retraite-a-64-ans-et-aligner-les-differents-regimes-de-retraite/" },
+        { "title": "MonVote2027 — Éric Zemmour (renvoi à BFMTV, 14 septembre 2026)", "url": "https://monvote2027.fr/candidat/zemmour" }
+      ],
+      "cost": { "value": 10.7, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/synthese", "note": { "fr": "Économie de la version 2022.", "en": "Saving from the 2022 version." } },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "z11", "theme": "travail", "status": "maintained",
+      "texts": { "p22": "Créer une prime « zéro charges » au mérite." },
+      "change": { "fr": "Aucune position 2027 publiée à ce stade ; mesure du programme 2022 non révisée publiquement.", "en": "No 2027 position published yet; 2022 measure not publicly revised." },
+      "sources": [ { "title": "Institut Montaigne 2022 — Créer une prime zéro charges au mérite", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/creer-une-prime-zero-charges-au-merite" } ],
+      "cost": { "value": -28.0, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/synthese", "note": null },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "z12", "theme": "economie", "status": "maintained",
+      "texts": { "p22": "Baisser les impôts de production de 30 milliards d'euros supplémentaires." },
+      "change": { "fr": "Aucune position 2027 publiée à ce stade ; mesure du programme 2022 non révisée publiquement.", "en": "No 2027 position published yet; 2022 measure not publicly revised." },
+      "sources": [ { "title": "Institut Montaigne 2022 — Baisser les impôts de production de 30 milliards", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/baisser-les-impots-de-production-de-30-milliards-deuros-supplementaires/" } ],
+      "cost": { "value": -25.2, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/synthese", "note": null },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "z13", "theme": "travail", "status": "maintained",
+      "texts": { "p22": "Baisser le taux de la CSG sur les revenus d'activité de 9,2 % à 2,5 % pour les salaires modestes, l'équivalent d'un treizième mois." },
+      "change": { "fr": "Aucune position 2027 publiée à ce stade ; mesure du programme 2022 non révisée publiquement.", "en": "No 2027 position published yet; 2022 measure not publicly revised." },
+      "sources": [ { "title": "Institut Montaigne 2022 — Baisser le taux de la CSG de 9,2 à 2,5 %", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/baisser-le-taux-de-la-csg-sur-les-revenus-dactivite-de-92-a-25/" } ],
+      "cost": { "value": -18.5, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/synthese", "note": null },
+      "legal": "risk",
+      "legalNote": { "fr": "Le Conseil constitutionnel a censuré une réduction dégressive de CSG réservée aux bas salaires au nom de l'égalité devant l'impôt (n° 2000-437 DC, 19 décembre 2000) ; le dispositif devrait en tenir compte.", "en": "The Conseil constitutionnel struck down a sliding CSG cut for low earners on tax-equality grounds (no. 2000-437 DC, 19 December 2000); the scheme would have to take this into account." },
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "z14", "theme": "international", "status": "maintained",
+      "texts": { "p22": "Augmenter annuellement le budget de la défense jusqu'à 70 milliards d'euros en 2030." },
+      "change": { "fr": "Aucune position 2027 publiée à ce stade ; mesure du programme 2022 non révisée publiquement.", "en": "No 2027 position published yet; 2022 measure not publicly revised." },
+      "sources": [ { "title": "Institut Montaigne 2022 — Budget de la défense à 70 Md€ en 2030", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/augmenter-annuellement-le-budget-de-la-defense-jusqua-70-milliards-deuros-en-2030" } ],
+      "cost": { "value": -14.6, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/synthese", "note": null },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "z15", "theme": "sante", "status": "maintained",
+      "texts": { "p22": "Construire 400 000 nouvelles places en EHPAD à horizon 2030, en réservant 25 % de ces places aux familles modestes." },
+      "change": { "fr": "Aucune position 2027 publiée à ce stade ; mesure du programme 2022 non révisée publiquement.", "en": "No 2027 position published yet; 2022 measure not publicly revised." },
+      "sources": [ { "title": "Institut Montaigne 2022 — 400 000 nouvelles places en EHPAD", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/construire-400-000-nouvelles-places-en-ehpad-a-horizon-2030-reparties-sur-tout-le-territoire-en-reservant-25-de-ces-places-aux-familles-modestes" } ],
+      "cost": { "value": -12.4, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/synthese", "note": null },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "z16", "theme": "travail", "status": "maintained",
+      "texts": { "p22": "Exonérer les heures supplémentaires d'impôt et de charges sociales." },
+      "change": { "fr": "Aucune position 2027 publiée à ce stade ; mesure du programme 2022 non révisée publiquement.", "en": "No 2027 position published yet; 2022 measure not publicly revised." },
+      "sources": [ { "title": "Institut Montaigne 2022 — Synthèse Éric Zemmour", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/synthese" } ],
+      "cost": { "value": -4.0, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/synthese", "note": null },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "high", "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "z17", "theme": "ecologie", "status": "maintained",
+      "texts": { "p22": "Revenir sur la fermeture prévue de 12 réacteurs et construire 14 nouveaux EPR d'ici 2050." },
+      "change": { "fr": "Aucune position 2027 publiée à ce stade ; mesure du programme 2022 non révisée publiquement.", "en": "No 2027 position published yet; 2022 measure not publicly revised." },
+      "sources": [
+        { "title": "Public Sénat, mars 2022 — Éric Zemmour détaille son programme", "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2022-eric-zemmour-detaille-son-programme-et-assume-le-terme" },
+        { "title": "Institut Montaigne 2022 — Synthèse Éric Zemmour", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/synthese" }
+      ],
+      "cost": { "value": -0.4, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/synthese", "note": null },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "z18", "theme": "culture", "status": "modified",
+      "texts": {
+        "p22": "Supprimer la redevance audiovisuelle et privatiser les principales chaînes publiques.",
+        "p27": "Privatiser l'audiovisuel public : 4 Md€ d'économies plus les cessions (plan de Sarah Knafo)."
+      },
+      "change": { "fr": "La redevance a été supprimée en 2022 ; la privatisation est désormais présentée comme une économie de 4 Md€.", "en": "The licence fee was abolished in 2022; privatisation is now presented as a €4bn saving." },
+      "sources": [
+        { "title": "Institut Montaigne 2022 — Synthèse Éric Zemmour", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/synthese" },
+        { "title": "budget2027.fr (Sarah Knafo)", "url": "https://www.budget2027.fr/" }
+      ],
+      "cost": { "value": -1.2, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/synthese", "note": { "fr": "Coût net de 1,2 Md€/an en 2022 (perte de la redevance) ; le plan Knafo 2026 annonce une économie de 4 Md€, non vérifiée.", "en": "Net cost of €1.2bn a year in 2022 (lost licence fee); the 2026 Knafo plan claims a €4bn saving, unverified." } },
+      "legal": "risk",
+      "legalNote": { "fr": "Le pluralisme des courants d'expression est un objectif de valeur constitutionnelle ; faisabilité juridique jugée incertaine par l'Institut Montaigne pour une mesure comparable du RN en 2024.", "en": "Pluralism of opinion is a constitutional objective; Institut Montaigne rated legal feasibility uncertain for a comparable RN measure in 2024." },
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "z19", "theme": "international", "status": "modified",
+      "texts": {
+        "p22": "Supprimer les aides au développement pour les pays qui n'acceptent pas leurs ressortissants expulsés.",
+        "p27": "Fin de l'aide au développement et de l'AFD : 14 Md€ (plan de Sarah Knafo)."
+      },
+      "change": { "fr": "Suppression ciblée (2022) → suppression totale de l'aide au développement (plan Knafo 2026).", "en": "Targeted cut (2022) → ending development aid entirely (2026 Knafo plan)." },
+      "sources": [
+        { "title": "Institut Montaigne 2022 — Supprimer les aides au développement pour les pays qui n'acceptent pas leurs ressortissants expulsés", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/supprimer-les-aides-au-developpement-pour-les-pays-qui-nacceptent-pas-leurs-ressortissants-expulses/" },
+        { "title": "budget2027.fr (Sarah Knafo)", "url": "https://www.budget2027.fr/" }
+      ],
+      "cost": { "value": 0.4, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/synthese", "note": { "fr": "0,4 Md€/an pour la version 2022 ; 14 Md€ annoncés par le plan Knafo, non vérifiés.", "en": "€0.4bn a year for the 2022 version; €14bn claimed in the Knafo plan, unverified." } },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "high", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "z20", "theme": "budget", "status": "new",
+      "texts": { "p27": "Ne pas remplacer 800 000 départs dans l'administration sur le quinquennat (40 Md€) et gains de productivité par l'IA (5 Md€) — plan de Sarah Knafo." },
+      "change": null,
+      "sources": [ { "title": "budget2027.fr (Sarah Knafo)", "url": "https://www.budget2027.fr/" } ],
+      "cost": { "value": 40.0, "low": null, "high": null, "by": "Candidate", "url": "https://www.budget2027.fr/", "note": { "fr": "Montant affiché par le plan de Sarah Knafo (Reconquête), non vérifié ; non repris explicitement par Éric Zemmour dans les sources consultées.", "en": "Amount shown in Sarah Knafo's (Reconquête) plan, unverified; not explicitly endorsed by Éric Zemmour in the sources checked." } },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "z21", "theme": "travail", "status": "new",
+      "texts": { "p27": "« Des robots à la place des immigrés », pour les emplois « dont les Français ne veulent pas »." },
+      "change": null,
+      "sources": [ { "title": "Public Sénat, 18 septembre 2026 — Éric Zemmour officialise sa candidature", "url": "https://www.publicsenat.fr/actualites/politique/eric-zemmour-officialise-sa-candidature-a-la-presidentielle-2027" } ],
+      "cost": null,
+      "legal": "ok", "legalNote": null,
+      "feasibility": null, "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "z22", "theme": "institutions", "status": "modified",
+      "texts": {
+        "p22": "Interdire le voile dans l'espace public.",
+        "p27": "Interdire aussi la kippa dans l'espace public, en plus du voile (18 septembre 2026)."
+      },
+      "change": { "fr": "Extension de l'interdiction à la kippa.", "en": "Ban extended to the kippah." },
+      "sources": [
+        { "title": "Public Sénat, mars 2022 — Éric Zemmour détaille son programme", "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2022-eric-zemmour-detaille-son-programme-et-assume-le-terme" },
+        { "title": "MonVote2027 — Éric Zemmour (renvoi à Entrevue, 18 septembre 2026)", "url": "https://monvote2027.fr/candidat/zemmour" }
+      ],
+      "cost": null,
+      "legal": "risk",
+      "legalNote": { "fr": "Une interdiction générale de signes religieux dans tout l'espace public poserait une question de liberté de conscience (art. 10 de la Déclaration de 1789) et de liberté religieuse (CEDH, art. 9) ; la loi de 2010 sur la dissimulation du visage a été validée sous réserve (n° 2010-613 DC, 7 octobre 2010), mais elle ne visait pas des signes religieux en tant que tels.", "en": "A general ban on religious symbols across all public space would raise freedom of conscience (Art. 10 of the 1789 Declaration) and religious freedom (ECHR Art. 9) issues; the 2010 face-covering law was upheld with a reservation (no. 2010-613 DC, 7 October 2010), but it did not target religious symbols as such." },
+      "feasibility": "low", "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "z23", "theme": "international", "status": "maintained",
+      "texts": { "p22": "Sortir la France de l'OTAN." },
+      "change": { "fr": "Aucune position 2027 publiée à ce stade ; mesure du programme 2022 non révisée publiquement.", "en": "No 2027 position published yet; 2022 measure not publicly revised." },
+      "sources": [ { "title": "Institut Montaigne 2022 — Sortir la France de l'OTAN", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/sortir-la-france-de-lotan" } ],
+      "cost": { "value": 0.3, "low": null, "high": null, "by": "Institut Montaigne 2022", "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/synthese", "note": null },
+      "legal": "ok", "legalNote": null,
+      "feasibility": "medium", "feasibilityNote": null,
+      "broadBenefit": false
+    }
+  ],
+  "costing": {
+    "rounds": [
+      {
+        "id": "p2022", "year": 2022, "label": { "fr": "Présidentielle 2022", "en": "2022 presidential" },
+        "horizon": { "fr": "par an", "en": "a year" },
+        "announced": { "by": "Éric Zemmour", "spending": 60, "revenue": 80, "net": 20, "date": "2022-03", "note": { "fr": "Chiffrage du candidat tel que reproduit par l'Institut Montaigne ; l'écart porte surtout sur 15 Md€ chacun de lutte contre la fraude, d'économies administratives et de décentralisation, non vérifiables.", "en": "Candidate's costing as shown by Institut Montaigne; the gap is mainly €15bn each of anti-fraud, administrative and decentralisation savings that could not be verified." }, "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/synthese" },
+        "estimates": [
+          { "by": "Institut Montaigne", "spending": 167.8, "revenue": 22, "net": -145.8, "date": "2022-04", "note": { "fr": "Dont 58,3 Md€ de dépenses et 109,5 Md€ de baisses de recettes ; déficit 2027 estimé à 6,5–7,5 points de PIB dans le scénario central.", "en": "Of which €58.3bn spending and €109.5bn revenue cuts; 2027 deficit estimated at 6.5–7.5 points of GDP in the central scenario." }, "url": "https://www.institutmontaigne.org/presidentielle-2022/eric-zemmour/synthese" }
+        ]
+      },
+      {
+        "id": "p2027", "year": 2027, "label": { "fr": "Plan d'économies 2026 (Sarah Knafo)", "en": "2026 savings plan (Sarah Knafo)" },
+        "horizon": { "fr": "par an", "en": "a year" },
+        "announced": { "by": "Sarah Knafo (Reconquête)", "spending": null, "revenue": 140, "net": null, "date": "2026-09", "note": { "fr": "« Environ 140 milliards d'euros d'économies par an, au minimum », en 24 mesures (budget2027.fr, livre Le Casse du siècle). Plan publié par Sarah Knafo, qui fait campagne avec Éric Zemmour ; pas de montant de baisses d'impôts ni de cible de déficit ; aucun chiffrage indépendant.", "en": "'About €140bn of savings a year, at a minimum', in 24 measures (budget2027.fr, book Le Casse du siècle). Published by Sarah Knafo, who campaigns alongside Éric Zemmour; no tax-cut amount or deficit target; no independent costing." }, "url": "https://www.budget2027.fr/" },
+        "estimates": []
+      }
+    ],
+    "checked": "2026-11-08"
+  },
+  "summary": {
+    "fr": "Le programme de 2022 combinait une politique d'immigration très restrictive (référendum, ministère de la « remigration », fin du droit du sol et du regroupement familial) et d'importantes baisses de prélèvements (prime « zéro charges », impôts de production, CSG). En 2026, Éric Zemmour a confirmé sa candidature sans publier de programme, durci certaines mesures (expulsion après un an de chômage) et s'appuie sur le plan d'économies de Sarah Knafo (140 Md€/an annoncés). L'Institut Montaigne estimait le programme 2022 à 145,8 Md€/an de dégradation du solde public, contre une amélioration de 20 Md€ selon le candidat.",
+    "en": "The 2022 programme combined a very restrictive immigration policy (referendum, a 'remigration' ministry, ending birthright citizenship and family reunification) with large cuts in taxes and contributions ('zero-charge' bonus, production taxes, CSG). In 2026 Éric Zemmour confirmed his candidacy without publishing a programme, hardened some measures (removal after one year of unemployment) and relies on Sarah Knafo's savings plan (€140bn a year claimed). Institut Montaigne estimated the 2022 programme would worsen the public balance by €145.8bn a year, against a €20bn improvement claimed by the candidate."
+  }
+}
