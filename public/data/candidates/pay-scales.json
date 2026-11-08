@@ -1,0 +1,1761 @@
+{
+  "verified": "2026-11-08",
+  "currency": "EUR",
+  "note": {
+    "fr": "Barèmes bruts officiels servant à ESTIMER la rémunération publique des candidats (estimation : montants maximaux légaux, hors majorations facultatives, hors frais de mandat, avant écrêtement et prélèvements). Montants mensuels bruts sauf mention contraire. Les montants en francs sont convertis à 6,55957 F/€. Chaque valeur porte un statut : 'official' (montant lu dans une source officielle), 'derived' (calculé à partir d'une règle et de valeurs officielles), 'inferred' (cohérent mais non vérifié). Le champ 'date' des sources est la date de publication, ou la date de consultation (2026-11-08) pour les pages consolidées.",
+    "en": "Official gross pay scales used to ESTIMATE candidates' public remuneration (estimate: legal maximum amounts, excluding optional increases, expense allowances, before the cumulation cap and deductions). Monthly gross amounts unless stated. Franc amounts converted at 6.55957 FRF/EUR. Each value has a status: 'official' (read from an official source), 'derived' (computed from a rule and official values), 'inferred' (consistent but unverified). A source 'date' is its publication date, or the consultation date (2026-11-08) for consolidated pages."
+  },
+  "pointIndice": {
+    "unit": "valeur annuelle brute du point d'indice majoré (euros) = valeur annuelle de l'indice 100 / 100 ; mensuel = annuel / 12",
+    "changes": [
+      {
+        "from": "1984-11-01",
+        "annual": 38.5544,
+        "annualFRF": 252.9
+      },
+      {
+        "from": "1985-02-01",
+        "annual": 39.1321,
+        "annualFRF": 256.69
+      },
+      {
+        "from": "1985-07-01",
+        "annual": 39.7114,
+        "annualFRF": 260.49
+      },
+      {
+        "from": "1985-11-01",
+        "annual": 40.2892,
+        "annualFRF": 264.28
+      },
+      {
+        "from": "1987-03-01",
+        "annual": 40.5316,
+        "annualFRF": 265.87
+      },
+      {
+        "from": "1987-05-01",
+        "annual": 40.9341,
+        "annualFRF": 268.51
+      },
+      {
+        "from": "1987-08-01",
+        "annual": 41.1353,
+        "annualFRF": 269.83
+      },
+      {
+        "from": "1988-03-01",
+        "annual": 41.5469,
+        "annualFRF": 272.53
+      },
+      {
+        "from": "1988-09-01",
+        "annual": 41.9585,
+        "annualFRF": 275.23
+      },
+      {
+        "from": "1989-03-01",
+        "annual": 42.3778,
+        "annualFRF": 277.98
+      },
+      {
+        "from": "1989-09-01",
+        "annual": 42.8824,
+        "annualFRF": 281.29
+      },
+      {
+        "from": "1990-01-01",
+        "annual": 43.0973,
+        "annualFRF": 282.7
+      },
+      {
+        "from": "1990-04-01",
+        "annual": 43.6111,
+        "annualFRF": 286.07
+      },
+      {
+        "from": "1990-12-01",
+        "annual": 44.1691,
+        "annualFRF": 289.73
+      },
+      {
+        "from": "1991-08-01",
+        "annual": 44.3901,
+        "annualFRF": 291.18
+      },
+      {
+        "from": "1991-11-01",
+        "annual": 44.8322,
+        "annualFRF": 294.08
+      },
+      {
+        "from": "1992-02-01",
+        "annual": 45.4054,
+        "annualFRF": 297.84
+      },
+      {
+        "from": "1992-10-01",
+        "annual": 46.0244,
+        "annualFRF": 301.9
+      },
+      {
+        "from": "1993-02-01",
+        "annual": 46.8186,
+        "annualFRF": 307.11
+      },
+      {
+        "from": "1994-01-01",
+        "annual": 47.1464,
+        "annualFRF": 309.26
+      },
+      {
+        "from": "1994-08-01",
+        "annual": 47.3812,
+        "annualFRF": 310.8
+      },
+      {
+        "from": "1994-12-01",
+        "annual": 47.9025,
+        "annualFRF": 314.22
+      },
+      {
+        "from": "1995-03-01",
+        "annual": 48.4773,
+        "annualFRF": 317.99
+      },
+      {
+        "from": "1995-11-01",
+        "annual": 49.1557,
+        "annualFRF": 322.44
+      },
+      {
+        "from": "1997-03-01",
+        "annual": 49.4011,
+        "annualFRF": 324.05
+      },
+      {
+        "from": "1997-10-01",
+        "annual": 49.6481,
+        "annualFRF": 325.67
+      },
+      {
+        "from": "1998-04-01",
+        "annual": 50.046,
+        "annualFRF": 328.28
+      },
+      {
+        "from": "1998-11-01",
+        "annual": 50.2929,
+        "annualFRF": 329.9
+      },
+      {
+        "from": "1999-04-01",
+        "annual": 50.5445,
+        "annualFRF": 331.55
+      },
+      {
+        "from": "1999-12-01",
+        "annual": 50.9469,
+        "annualFRF": 334.19
+      },
+      {
+        "from": "2000-12-01",
+        "annual": 51.2015,
+        "annualFRF": 335.86
+      },
+      {
+        "from": "2001-05-01",
+        "annual": 51.4576,
+        "annualFRF": 337.54
+      },
+      {
+        "from": "2001-11-01",
+        "annual": 51.8174,
+        "annualFRF": 339.9
+      },
+      {
+        "from": "2002-03-01",
+        "annual": 52.1284
+      },
+      {
+        "from": "2002-12-01",
+        "annual": 52.4933
+      },
+      {
+        "from": "2004-01-01",
+        "annual": 52.7558
+      },
+      {
+        "from": "2005-02-01",
+        "annual": 53.0196
+      },
+      {
+        "from": "2005-07-01",
+        "annual": 53.2847
+      },
+      {
+        "from": "2005-11-01",
+        "annual": 53.711
+      },
+      {
+        "from": "2006-07-01",
+        "annual": 53.9795
+      },
+      {
+        "from": "2007-02-01",
+        "annual": 54.4113
+      },
+      {
+        "from": "2008-03-01",
+        "annual": 54.6834
+      },
+      {
+        "from": "2008-10-01",
+        "annual": 54.8475
+      },
+      {
+        "from": "2009-07-01",
+        "annual": 55.1217
+      },
+      {
+        "from": "2009-10-01",
+        "annual": 55.2871
+      },
+      {
+        "from": "2010-07-01",
+        "annual": 55.5635
+      },
+      {
+        "from": "2016-07-01",
+        "annual": 55.8969
+      },
+      {
+        "from": "2017-02-01",
+        "annual": 56.2323
+      },
+      {
+        "from": "2022-07-01",
+        "annual": 58.2004
+      },
+      {
+        "from": "2023-07-01",
+        "annual": 59.0734
+      }
+    ],
+    "frozenSince": "2023-07-01",
+    "note": "Aucune revalorisation du point entre le 1er juillet 2023 et le 8 novembre 2026 (IB 1027 toujours à 4 110,52 €/mois dans la note DGCL du 9 février 2026). La valeur 59,4645 parfois citée est erronée : la valeur au 1er juillet 2023 est 59,0734 €/an (4,92278 €/mois). Le 1er août 1987, la valeur initiale de 267,19 F a été remplacée rétroactivement (décret du 16 novembre 1987) ; la série retient la valeur définitive. Pas de revalorisation en 1996 ni entre juillet 2010 et juin 2016.",
+    "sources": [
+      {
+        "title": "Valeur du point d'indice majoré de la fonction publique (valeur de 100 points, avec lien Légifrance de chaque décret)",
+        "publisher": "data.gouv.fr (jeu de données produit par Épicycle)",
+        "url": "https://www.data.gouv.fr/datasets/61c7a154a23569c570f803b2",
+        "date": "2023-06-30"
+      },
+      {
+        "title": "Décret n° 2023-519 du 28 juin 2023 portant majoration de la rémunération des personnels civils et militaires de l’État, des collectivités territoriales et des établissements publics d’hospitalisation",
+        "publisher": "Légifrance",
+        "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000047749211",
+        "date": "2023-06-29"
+      },
+      {
+        "title": "Décret n° 2022-994 du 7 juillet 2022 portant majoration de la rémunération des personnels civils et militaires…",
+        "publisher": "Légifrance",
+        "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000046026212",
+        "date": "2022-07-08"
+      },
+      {
+        "title": "Décret n° 2016-670 du 25 mai 2016 portant majoration de la rémunération des personnels civils et militaires… (1er juillet 2016 et 1er février 2017)",
+        "publisher": "Légifrance",
+        "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000032584286",
+        "date": "2016-05-26"
+      },
+      {
+        "title": "Décret n° 2010-761 du 7 juillet 2010 portant majoration de la rémunération des personnels civils et militaires…",
+        "publisher": "Légifrance",
+        "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000022447551",
+        "date": "2010-07-08"
+      },
+      {
+        "title": "Note d’information DGCL/2026D/24 du 9 février 2026 relative aux indemnités de fonction issues de la loi n° 2025-1249 du 22 décembre 2025 portant création d’un statut de l’élu local",
+        "publisher": "Ministère de l’aménagement du territoire et de la décentralisation – DGCL (diffusée par le CDG 82)",
+        "url": "https://www.cdg82.fr/fileadmin/02_Gerer_ma_collectivite/03_La_remuneration/Note_information_indemnites_de_fonction.pdf",
+        "date": "2026-02-09"
+      }
+    ]
+  },
+  "parliament": {
+    "rule": {
+      "fr": "Indemnité de base = moyenne du traitement le plus bas et du plus élevé de la catégorie « hors échelle » de l'État (ordonnance n° 58-1210, art. 1er), soit base = point annuel × indice moyen / 12 ; indemnité de résidence = 3 % de la base ; indemnité de fonction = 25 % de (base + résidence) ; total = base × 1,2875. Identique pour députés et sénateurs.",
+      "en": "Base = average of the lowest and highest 'hors échelle' civil-service salaries (ordonnance 58-1210 art. 1), i.e. base = annual point × average index / 12; residence = 3% of base; function allowance = 25% of (base + residence); total = base × 1.2875. Same for deputies and senators."
+    },
+    "anchors": [
+      {
+        "from": "2001-11-01",
+        "base": 5138.56,
+        "residence": 154.16,
+        "fonction": 1323.18,
+        "total": 6615.9,
+        "avgIndice": 1190,
+        "status": "derived",
+        "how": "base = plafond de cumul local 7 707,85 € / 1,5 (circulaire préfectorale 2002/21) ; résidence et fonction calculées",
+        "sourceRefs": [
+          "hs2002_21"
+        ]
+      },
+      {
+        "from": "2002-03-01",
+        "base": 5169.4,
+        "residence": 155.08,
+        "fonction": 1331.12,
+        "total": 6655.6,
+        "avgIndice": 1190,
+        "status": "derived",
+        "how": "base = plafond de cumul local 7 754,10 € / 1,5 (circulaire 2002/30)",
+        "sourceRefs": [
+          "hs2002_30"
+        ]
+      },
+      {
+        "from": "2006-07-01",
+        "base": 5352.97,
+        "residence": 160.59,
+        "fonction": 1378.39,
+        "total": 6891.95,
+        "avgIndice": 1190,
+        "status": "derived",
+        "how": "base = plafond de cumul local 8 029,45 € / 1,5 (circulaire 2006-40)",
+        "sourceRefs": [
+          "hs2006_40"
+        ]
+      },
+      {
+        "from": "2008-03-01",
+        "base": 5427.33,
+        "residence": 162.82,
+        "fonction": 1397.54,
+        "total": 6987.69,
+        "avgIndice": 1191,
+        "status": "derived",
+        "how": "base = plafond de cumul local 8 140,99 € / 1,5 (préfecture de l’Oise)",
+        "sourceRefs": [
+          "oise2008"
+        ]
+      },
+      {
+        "from": "2010-07-01",
+        "base": 5514.68,
+        "residence": 165.44,
+        "fonction": 1420.03,
+        "total": 7100.15,
+        "avgIndice": 1191,
+        "status": "official",
+        "sourceRefs": [
+          "anAmdt277"
+        ]
+      },
+      {
+        "from": "2019-01-01",
+        "base": 5623.23,
+        "residence": 168.7,
+        "fonction": 1447.98,
+        "total": 7239.91,
+        "avgIndice": 1200,
+        "status": "derived",
+        "how": "base = plafond de cumul 8 434,85 € / 1,5 (note DGCL du 9 janvier 2019)",
+        "sourceRefs": [
+          "dgcl2019"
+        ]
+      },
+      {
+        "from": "2022-07-01",
+        "base": 5820.04,
+        "residence": 174.6,
+        "fonction": 1498.66,
+        "total": 7493.3,
+        "avgIndice": 1200,
+        "status": "official-total",
+        "how": "total 7 493,30 € cité par la note IPP n° 91 ; composantes recalculées",
+        "sourceRefs": [
+          "ippNote91"
+        ]
+      },
+      {
+        "from": "2023-07-01",
+        "base": 5907.34,
+        "residence": 177.22,
+        "fonction": 1521.14,
+        "total": 7605.7,
+        "avgIndice": 1200,
+        "status": "derived",
+        "how": "indice moyen 1200 × point du 1er juillet 2023 (aucune source officielle trouvée pour cette période de 6 mois)",
+        "sourceRefs": [
+          "d2023"
+        ]
+      },
+      {
+        "from": "2024-01-01",
+        "base": 5931.95,
+        "residence": 177.96,
+        "fonction": 1527.48,
+        "total": 7637.39,
+        "avgIndice": 1205,
+        "status": "official",
+        "how": "inchangé au 8 janvier 2026 (point gelé depuis le 1er juillet 2023)",
+        "sourceRefs": [
+          "anFiche7"
+        ]
+      }
+    ],
+    "avgIndice": [
+      {
+        "from": "2001-11-01",
+        "value": 1190,
+        "status": "verified",
+        "note": "vérifié par les plafonds de cumul 2001-2006 ; valeur antérieure non vérifiée"
+      },
+      {
+        "from": "2006-11-01",
+        "value": 1191,
+        "status": "date-inferred",
+        "note": "1190 vérifié au 1er juillet 2006, 1191 vérifié au 1er mars 2008 et au 1er juillet 2010 ; la date du changement (+1 point d’indice majoré uniforme, probablement le 1er novembre 2006) n’est pas vérifiée"
+      },
+      {
+        "from": "2017-01-01",
+        "value": 1195,
+        "status": "inferred",
+        "note": "cohérent avec le chiffre de 7 209,74 € couramment cité pour 2017 (source non officielle) et avec la réforme PPCR ; date non vérifiée"
+      },
+      {
+        "from": "2019-01-01",
+        "value": 1200,
+        "status": "verified",
+        "note": "vérifié au 1er janvier 2019 (plafond 8 434,85 €) et en juillet 2022 (7 493,30 €) ; date exacte du passage de 1195 à 1200 non vérifiée (PPCR, report 2018→2019 probable)"
+      },
+      {
+        "from": "2024-01-01",
+        "value": 1205,
+        "status": "verified",
+        "note": "+5 points d’indice majoré au 1er janvier 2024 (décret n° 2023-519) ; vérifié par la fiche AN"
+      }
+    ],
+    "index": true,
+    "formula": "base = pointIndice.annual(date) × avgIndice(date) / 12 ; total = base × 1.03 × 1.25",
+    "excluded": "Indemnités spéciales (président, questeurs, etc.), frais de mandat (AFM/DFP), crédit collaborateurs.",
+    "sources": [
+      {
+        "title": "Fiche n° 7 – La situation matérielle du député (actualisée janvier 2026)",
+        "publisher": "Assemblée nationale",
+        "url": "https://www.assemblee-nationale.fr/dyn/contenu/telechargement/631144/file/Fiche%207%20corrig%C3%A9e%20-%20Situation%20mat%C3%A9rielle%20du%20d%C3%A9put%C3%A9_actualis%C3%A9e%20080126.pdf",
+        "date": "2026-01-08"
+      },
+      {
+        "title": "Amendement n° 277 au projet de loi organique relatif à la transparence de la vie publique (n° 1108) – exposé sommaire donnant les indemnités « depuis le 1er juillet 2010 »",
+        "publisher": "Assemblée nationale",
+        "url": "https://www.assemblee-nationale.fr/14/amendements/1108/AN/277.pdf",
+        "date": "2013-06-13"
+      },
+      {
+        "title": "Ordonnance n° 58-1210 du 13 décembre 1958 portant loi organique relative à l’indemnité des membres du Parlement (texte annoté, art. 1er à 4)",
+        "publisher": "Sénat",
+        "url": "https://www.senat.fr/reglement/pouvoirs_publics64.html",
+        "date": "2026-11-08"
+      },
+      {
+        "title": "Note IPP n° 91 – Combien perçoivent vraiment les députés français pour leur activité parlementaire ? (« depuis juillet 2022 de 7 493,30 € bruts par mois »)",
+        "publisher": "Institut des politiques publiques",
+        "url": "https://www.ipp.eu/wp-content/uploads/2023/04/Note_IPP_Buge_Ollion-91_compressed.pdf",
+        "date": "2023-04-01"
+      },
+      {
+        "title": "Circulaire préfectorale n° 2002/21 – Indemnités de fonction des titulaires de mandats locaux, montants en euros au 1er novembre 2001 (plafond de cumul 7 707,85 €)",
+        "publisher": "Préfecture de la Haute-Savoie",
+        "url": "https://www.haute-savoie.gouv.fr/index.php/contenu/telechargement/1437/7531/file/circ_2002_021.pdf",
+        "date": "2002-02-25"
+      },
+      {
+        "title": "Circulaire préfectorale n° 2002/30 – Nouveaux montants au 1er mars 2002 (régime applicable depuis le 30 mars 1992 ; plafond de cumul 7 754,10 €)",
+        "publisher": "Préfecture de la Haute-Savoie",
+        "url": "https://www.haute-savoie.gouv.fr/index.php/contenu/telechargement/1439/7539/file/circ_2002_030.pdf",
+        "date": "2002-03-13"
+      },
+      {
+        "title": "Circulaire préfectorale n° 2006-40 – Nouveaux montants au 1er juillet 2006 (IB 1015 = 3 688,60 € ; plafond de cumul 8 029,45 €)",
+        "publisher": "Préfecture de la Haute-Savoie",
+        "url": "https://www.haute-savoie.gouv.fr/index.php/contenu/telechargement/1583/8126/file/circ_2006_40.pdf",
+        "date": "2006-08-03"
+      },
+      {
+        "title": "Indemnités de fonction des élus locaux au 1er mars 2008 (IB 1015 = 3 741,26 € ; plafond de cumul 8 140,99 €)",
+        "publisher": "Préfecture de l'Oise",
+        "url": "https://www.oise.gouv.fr/contenu/telechargement/1996/11822/file/2008_04_17_indemnites_fonctions_elus.pdf",
+        "date": "2008-04-17"
+      },
+      {
+        "title": "Note d’information DGCL du 9 janvier 2019 (NOR TERB1830058N) relative aux montants maximaux bruts mensuels des indemnités de fonction des titulaires de mandats locaux au 1er janvier 2019 (IB 1027 = 3 889,40 € ; plafond 8 434,85 €)",
+        "publisher": "Ministère de la cohésion des territoires – DGCL (copie publiée par une commune)",
+        "url": "https://www.le-crestois.fr/images/breves_2019/CIRCULAIRE_090119.pdf",
+        "date": "2019-01-09"
+      }
+    ]
+  },
+  "mep": {
+    "euSalaryFrom": "2009-07-14",
+    "before": "Jusqu'au 13 juillet 2009, les députés européens français percevaient l'indemnité parlementaire française (voir parliament).",
+    "rule": {
+      "fr": "Traitement mensuel brut = 38,5 % du traitement de base d'un juge de la Cour de justice (statut des députés, art. 10), lui-même égal à 112,5 % du traitement de base du grade 16, échelon 3, du statut des fonctionnaires de l'UE ; soit 0,433125 × grade 16/3. Valeurs calculées à partir des barèmes publiés au JOUE, aux dates d'effet des adaptations (rappels rétroactifs inclus). Avant impôt européen et cotisations.",
+      "en": "Gross monthly salary = 38.5% of a CJEU judge's basic salary (Statute for Members, art. 10), itself 112.5% of EU staff grade 16 step 3; i.e. 0.433125 × grade 16/3. Computed from OJ-published scales at the effective dates (retroactive back-pay included). Before EU tax and contributions."
+    },
+    "values": [
+      {
+        "from": "2009-07-14",
+        "monthly": 7948.92,
+        "grade16step3": 18352.49,
+        "sourceRefs": [
+          "eu2009b"
+        ],
+        "note": "Montant effectivement dû après régularisation rétroactive (Règl. 1190/2010, +3,7 % au 1er juillet 2009). Au début de la législature, le PE annonçait 7 665,31 € (barème 2008, grade 16/3 = 17 697,68 €) ; une adaptation provisoire de +1,85 % (Règl. 1296/2009) a été appliquée avant la régularisation de décembre 2010."
+      },
+      {
+        "from": "2010-07-01",
+        "monthly": 7956.87,
+        "grade16step3": 18370.84,
+        "sourceRefs": [
+          "eu2010"
+        ]
+      },
+      {
+        "from": "2011-07-01",
+        "monthly": 7956.87,
+        "grade16step3": 18370.84,
+        "sourceRefs": [
+          "eu2011"
+        ],
+        "note": "Adaptation 2011 fixée à 0 % (litige Commission/Conseil réglé en 2014)."
+      },
+      {
+        "from": "2012-07-01",
+        "monthly": 8020.53,
+        "grade16step3": 18517.81,
+        "sourceRefs": [
+          "eu2012"
+        ],
+        "note": "Adaptation 2012 de +0,8 % décidée en avril 2014 avec effet rétroactif ; gel 2013-2014 (Règl. 1023/2013)."
+      },
+      {
+        "from": "2015-07-01",
+        "monthly": 8213.02,
+        "grade16step3": 18962.24,
+        "sourceRefs": [
+          "eu2015"
+        ]
+      },
+      {
+        "from": "2016-07-01",
+        "monthly": 8484.05,
+        "grade16step3": 19587.99,
+        "sourceRefs": [
+          "eu2016"
+        ]
+      },
+      {
+        "from": "2017-07-01",
+        "monthly": 8611.31,
+        "grade16step3": 19881.81,
+        "sourceRefs": [
+          "eu2017"
+        ]
+      },
+      {
+        "from": "2018-07-01",
+        "monthly": 8757.7,
+        "grade16step3": 20219.8,
+        "sourceRefs": [
+          "eu2018"
+        ]
+      },
+      {
+        "from": "2019-07-01",
+        "monthly": 8932.86,
+        "grade16step3": 20624.2,
+        "sourceRefs": [
+          "eu2019"
+        ]
+      },
+      {
+        "from": "2020-07-01",
+        "monthly": 8995.39,
+        "grade16step3": 20768.57,
+        "sourceRefs": [
+          "eu2020"
+        ]
+      },
+      {
+        "from": "2021-07-01",
+        "monthly": 9166.3,
+        "grade16step3": 21163.17,
+        "sourceRefs": [
+          "eu2021"
+        ]
+      },
+      {
+        "from": "2022-01-01",
+        "monthly": 9386.29,
+        "grade16step3": 21671.09,
+        "sourceRefs": [
+          "eu2022i"
+        ],
+        "note": "Actualisation intermédiaire (inflation)."
+      },
+      {
+        "from": "2022-07-01",
+        "monthly": 9808.67,
+        "grade16step3": 22646.29,
+        "sourceRefs": [
+          "eu2022"
+        ]
+      },
+      {
+        "from": "2023-01-01",
+        "monthly": 9975.42,
+        "grade16step3": 23031.28,
+        "sourceRefs": [
+          "eu2023i"
+        ],
+        "note": "Actualisation intermédiaire (inflation)."
+      },
+      {
+        "from": "2023-07-01",
+        "monthly": 10075.18,
+        "grade16step3": 23261.59,
+        "sourceRefs": [
+          "eu2023"
+        ]
+      },
+      {
+        "from": "2024-01-01",
+        "monthly": 10377.43,
+        "grade16step3": 23959.44,
+        "sourceRefs": [
+          "eu2024i"
+        ],
+        "note": "Actualisation intermédiaire."
+      },
+      {
+        "from": "2024-07-01",
+        "monthly": 10802.91,
+        "grade16step3": 24941.78,
+        "sourceRefs": [
+          "eu2024"
+        ]
+      },
+      {
+        "from": "2025-04-01",
+        "monthly": 10927.44,
+        "grade16step3": 25229.29,
+        "sourceRefs": [
+          "eu2024b"
+        ],
+        "note": "Seconde tranche de l’actualisation 2024."
+      },
+      {
+        "from": "2025-07-01",
+        "monthly": 11255.26,
+        "grade16step3": 25986.17,
+        "sourceRefs": [
+          "eu2025"
+        ],
+        "note": "Dernière valeur publiée au 8 novembre 2026 (pas d’actualisation intermédiaire au 1er janvier 2026 ; l’actualisation 2026 n’est pas encore parue)."
+      }
+    ],
+    "check": "Valeurs connues par ailleurs : 7 665,31 € (barème 2008), 7 948,92 € (2009 après régularisation), 7 956,87 € (2010), 8 020,53 € (2012), 8 932,86 € (2019), 10 075,18 € (juillet 2023), 10 377,43 € (janvier 2024) : toutes reproduites par la formule. Le net de 8 772,70 € cité en octobre 2026 correspond au brut de 11 255,26 €.",
+    "transitional": "Les députés élus avant 2009 pouvaient opter pour le maintien du régime national (art. 25 du statut) ; non pris en compte.",
+    "sources": [
+      {
+        "title": "Décision 2005/684/CE, Euratom du Parlement européen portant adoption du statut des députés au Parlement européen (art. 10 : 38,5 % du traitement de base d’un juge de la Cour de justice)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32005D0684",
+        "date": "2005-10-07"
+      },
+      {
+        "title": "Règlement (UE, Euratom) 2016/300 du Conseil fixant le régime pécuniaire des titulaires de charge de haut niveau de l’UE (traitement de base d’un juge = 112,5 % du dernier échelon du grade 16)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32016R0300",
+        "date": "2016-03-03"
+      },
+      {
+        "title": "Règlement (CE, Euratom) n° 1323/2008 du Conseil – adaptation au 1er juillet 2008 des rémunérations (grade 16, échelon 3 : 17 697,68 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32008R1323",
+        "date": "2008-12-18"
+      },
+      {
+        "title": "Règlement (UE, Euratom) n° 1296/2009 – adaptation au 1er juillet 2009 (+1,85 %, grade 16/3 : 18 025,09 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32009R1296",
+        "date": "2009-12-23"
+      },
+      {
+        "title": "Règlement (UE, Euratom) n° 1190/2010 – adaptation corrigée au 1er juillet 2009 après l’arrêt C-40/10 (+3,7 %, grade 16/3 : 18 352,49 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32010R1190",
+        "date": "2010-12-15"
+      },
+      {
+        "title": "Règlement (UE, Euratom) n° 1239/2010 – adaptation au 1er juillet 2010 (grade 16/3 : 18 370,84 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32010R1239",
+        "date": "2010-12-20"
+      },
+      {
+        "title": "Règlement (UE) n° 422/2014 – adaptation au 1er juillet 2011 (0 %, grade 16/3 inchangé : 18 370,84 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32014R0422",
+        "date": "2014-04-16"
+      },
+      {
+        "title": "Règlement (UE) n° 423/2014 – adaptation au 1er juillet 2012 (+0,8 %, grade 16/3 : 18 517,81 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32014R0423",
+        "date": "2014-04-16"
+      },
+      {
+        "title": "Actualisation annuelle 2015 des rémunérations (au 1er juillet 2015, grade 16/3 : 18 962,24 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:52015XC1215(01)",
+        "date": "2015-12-15"
+      },
+      {
+        "title": "Actualisation annuelle 2016 (au 1er juillet 2016, grade 16/3 : 19 587,99 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:52016XC1214(01)",
+        "date": "2016-12-14"
+      },
+      {
+        "title": "Actualisation annuelle 2017 (au 1er juillet 2017, grade 16/3 : 19 881,81 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:52017XC1214(01)",
+        "date": "2017-12-14"
+      },
+      {
+        "title": "Actualisation annuelle 2018 (au 1er juillet 2018, grade 16/3 : 20 219,80 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:52018XC1214(01)",
+        "date": "2018-12-14"
+      },
+      {
+        "title": "Actualisation annuelle 2019 (au 1er juillet 2019, grade 16/3 : 20 624,20 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:52019XC1213(01)",
+        "date": "2019-12-13"
+      },
+      {
+        "title": "Actualisation annuelle 2020 (au 1er juillet 2020, grade 16/3 : 20 768,57 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:52020XC1211(01)",
+        "date": "2020-12-11"
+      },
+      {
+        "title": "Actualisation annuelle 2021 (au 1er juillet 2021, grade 16/3 : 21 163,17 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:52021XC1213(01)",
+        "date": "2021-12-13"
+      },
+      {
+        "title": "Actualisation intermédiaire 2022 (au 1er janvier 2022, grade 16/3 : 21 671,09 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:52022XC0615(01)",
+        "date": "2022-06-15"
+      },
+      {
+        "title": "Actualisation annuelle 2022 (au 1er juillet 2022, grade 16/3 : 22 646,29 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:52022XC1214(02)",
+        "date": "2022-12-14"
+      },
+      {
+        "title": "Actualisation intermédiaire 2023 (au 1er janvier 2023, grade 16/3 : 23 031,28 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:52023XC0615(01)",
+        "date": "2023-06-15"
+      },
+      {
+        "title": "Actualisation annuelle 2023 (au 1er juillet 2023, grade 16/3 : 23 261,59 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:52023XC01544",
+        "date": "2023-12-13"
+      },
+      {
+        "title": "Actualisation intermédiaire 2024 (au 1er janvier 2024, grade 16/3 : 23 959,44 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:52024XC04112",
+        "date": "2024-06-25"
+      },
+      {
+        "title": "Actualisation annuelle 2024 (au 1er juillet 2024, grade 16/3 : 24 941,78 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/eli/C/2024/7388/oj",
+        "date": "2024-12-11"
+      },
+      {
+        "title": "Actualisation annuelle 2024, seconde tranche (au 1er avril 2025, grade 16/3 : 25 229,29 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/eli/C/2025/2153/oj",
+        "date": "2025-04-11"
+      },
+      {
+        "title": "Actualisation annuelle 2025 (au 1er juillet 2025, grade 16/3 : 25 986,17 €)",
+        "publisher": "EUR-Lex",
+        "url": "https://eur-lex.europa.eu/eli/C/2025/6564/oj",
+        "date": "2025-12-11"
+      },
+      {
+        "title": "Exclusive: The Left group wants to halve MEP salaries (salaire net actuel 8 772,70 €)",
+        "publisher": "Euronews",
+        "url": "https://www.euronews.com/2026/10/07/exclusive-the-left-group-wants-to-halve-mep-salaries",
+        "date": "2026-10-07"
+      }
+    ]
+  },
+  "government": {
+    "rule": {
+      "fr": "Traitement brut = coefficient × moyenne des traitements hors échelle (la même moyenne que l'indemnité parlementaire de base), + indemnité de résidence 3 % + indemnité de fonction 25 % de (traitement + résidence). Du 8 mai 2002 au 14 mai 2012 (loi n° 2002-1050 art. 14 et décret n° 2002-1058) : ministres 2, secrétaires d'État 2 × 0,9 = 1,8, Premier ministre 2 × 1,5 = 3. Depuis le 15 mai 2012 (décret n° 2012-983, −30 %) : ministres et ministres délégués 1,4 ; Premier ministre 2 × 1,05 = 2,1 ; secrétaires d'État 1,33 (décret n° 2014-425). Total mensuel = coefficient × parliament.base × 1,2875.",
+      "en": "Gross salary = coefficient × average 'hors échelle' salary (same average as the parliamentary base), + 3% residence + 25% function allowance on (salary + residence). 8 May 2002 – 14 May 2012: ministers 2, secretaries of state 1.8, PM 3. From 15 May 2012 (decree 2012-983, −30%): ministers and ministres délégués 1.4, PM 2.1, secretaries of state 1.33. Monthly total = coefficient × parliament.base × 1.2875."
+    },
+    "coefficients": [
+      {
+        "from": "2002-05-08",
+        "pm": 3,
+        "ministre": 2,
+        "delegue": 2,
+        "secretaire": 1.8
+      },
+      {
+        "from": "2012-05-15",
+        "pm": 2.1,
+        "ministre": 1.4,
+        "delegue": 1.4,
+        "secretaire": 1.33
+      }
+    ],
+    "anchors": [
+      {
+        "from": "2002-05-08",
+        "pm": 19966.81,
+        "ministre": 13311.2,
+        "delegue": 13311.2,
+        "secretaire": 11980.09,
+        "parliamentBase": 5169.4,
+        "status": "derived",
+        "regime": "pre2012",
+        "note": "Coefficients × moyenne hors échelle (= base parlementaire 5 169,40 € au 1er mars 2002), + 3 % résidence + 25 % fonction."
+      },
+      {
+        "from": "2010-07-01",
+        "pm": 21300.45,
+        "ministre": 14200.3,
+        "delegue": 14200.3,
+        "secretaire": 12780.26,
+        "parliamentBase": 5514.68,
+        "status": "derived",
+        "regime": "pre2012",
+        "note": "Dernier niveau du régime 2002 (gel du point 2010-2012)."
+      },
+      {
+        "from": "2012-05-15",
+        "pm": 14910.31,
+        "ministre": 9940.21,
+        "delegue": 9940.21,
+        "secretaire": 9443.2,
+        "parliamentBase": 5514.68,
+        "status": "derived",
+        "regime": "post2012",
+        "note": "Baisse de 30 % (décret n° 2012-983, effet au 15 mai 2012). Contrôle : indemnité de fonction d’une ministre en 2013 = 1 988,03 € (QE 46252), soit 1,4 × 5 514,68 × 1,03 × 0,25 = 1 988,04 €."
+      },
+      {
+        "from": "2024-01-01",
+        "pm": 16038.51,
+        "ministre": 10692.34,
+        "delegue": 10692.34,
+        "secretaire": 10157.71,
+        "parliamentBase": 5931.95,
+        "status": "derived",
+        "regime": "post2012",
+        "note": "Correspond aux montants publiés par la presse (PM ≈ 16 038 €, ministre ≈ 10 692 €, secrétaire d’État ≈ 10 157 €)."
+      }
+    ],
+    "index": true,
+    "notes": [
+      "Le montant de 9 443 € parfois attribué aux ministres délégués en 2012 est celui des secrétaires d'État (1,33) ; les ministres délégués relèvent du coefficient 1,4 (art. 2 du décret 2012-983).",
+      "Le I de l'article 14 de la loi 2002-1050 a été déclaré contraire à la Constitution (décision 2012-654 DC du 9 août 2012) ; le décret 2012-983 a repris le dispositif à compter du 15 mai 2012.",
+      "Le +172 % de 2007 concernait le Président de la République (aligné sur le Premier ministre), pas les ministres.",
+      "Indemnité de six mois après la cessation des fonctions (ordonnance n° 58-1099, art. 5) non incluse."
+    ],
+    "sources": [
+      {
+        "title": "Traitement du Président de la République et des membres du Gouvernement : loi n° 2002-1050 art. 14 (censuré, décision 2012-654 DC), décret n° 2012-983 du 23 août 2012, décret n° 2014-425 du 25 avril 2014",
+        "publisher": "Sénat (recueil des textes relatifs aux pouvoirs publics)",
+        "url": "https://www.senat.fr/reglement/pouvoirs_publics22.html",
+        "date": "2026-11-08"
+      },
+      {
+        "title": "Question écrite n° 3399 (12e législature, R. Dosière) : décret n° 2002-1058 du 6 août 2002 – deux fois la moyenne hors échelle pour les ministres, abattement de 10 % pour les secrétaires d’État, effet au 8 mai 2002",
+        "publisher": "Assemblée nationale",
+        "url": "https://www.assemblee-nationale.fr/dyn/12/questions/QANR5L12QE3399",
+        "date": "2002-11-11"
+      },
+      {
+        "title": "Question écrite n° 7748 (14e législature) – réponse : décret n° 2012-983 du 23 août 2012, baisse de 30 % à compter du 15 mai 2012",
+        "publisher": "Assemblée nationale",
+        "url": "https://www.assemblee-nationale.fr/dyn/14/questions/QANR5L14QE7748",
+        "date": "2012-11-06"
+      },
+      {
+        "title": "Question écrite n° 46252 (14e législature) – indemnité de fonction d’une ministre en 2013 : 1 988,03 € bruts mensuels",
+        "publisher": "Assemblée nationale",
+        "url": "https://www.assemblee-nationale.fr/dyn/14/questions/QANR5L14QE46252",
+        "date": "2015-02-17"
+      },
+      {
+        "title": "Amendement n° 277 au projet de loi organique relatif à la transparence de la vie publique (n° 1108) – exposé sommaire donnant les indemnités « depuis le 1er juillet 2010 »",
+        "publisher": "Assemblée nationale",
+        "url": "https://www.assemblee-nationale.fr/14/amendements/1108/AN/277.pdf",
+        "date": "2013-06-13"
+      },
+      {
+        "title": "Fiche n° 7 – La situation matérielle du député (actualisée janvier 2026)",
+        "publisher": "Assemblée nationale",
+        "url": "https://www.assemblee-nationale.fr/dyn/contenu/telechargement/631144/file/Fiche%207%20corrig%C3%A9e%20-%20Situation%20mat%C3%A9rielle%20du%20d%C3%A9put%C3%A9_actualis%C3%A9e%20080126.pdf",
+        "date": "2026-01-08"
+      }
+    ]
+  },
+  "local": {
+    "rule": {
+      "fr": "Taux maximaux en % du traitement mensuel brut de l'indice brut terminal (IBT) de la fonction publique : montant = taux × point annuel × IM terminal / 12. Régime issu de la loi n° 92-108 du 3 février 1992, applicable depuis le 30 mars 1992 (circulaire NOR INTB9200118C du 15 avril 1992). Le régime antérieur à 1992 n'est pas estimé. Majorations non appliquées : communes chefs-lieux, sinistrées, stations de tourisme, attributaires de la DSU (L. 2123-22, R. 2123-23), majoration jusqu'à 40 % pour les maires de 100 000 habitants et plus (L. 2123-23), régimes de Paris, Lyon, Marseille, Corse et outre-mer.",
+      "en": "Maximum rates as % of the gross monthly salary of the terminal civil-service index (IBT): amount = rate × annual point × terminal IM / 12. Regime of loi 92-108 (3 Feb 1992), applicable from 30 March 1992. The pre-1992 regime is not estimated. Increases not applied: chef-lieu, tourist-resort and DSU communes (L2123-22, R2123-23), up to +40% for mayors of 100,000+ communes, special regimes of Paris/Lyon/Marseille, Corsica and overseas."
+    },
+    "indexTerminal": [
+      {
+        "from": "1992-03-30",
+        "ib": 1015,
+        "im": 820,
+        "status": "partly-verified",
+        "note": "IM 820 vérifié de novembre 2001 à juillet 2006 (IB 1015 = 3 540,86 € au 1er nov. 2001, 3 688,60 € au 1er juil. 2006) ; valeur 1992-2001 non vérifiée."
+      },
+      {
+        "from": "2006-11-01",
+        "ib": 1015,
+        "im": 821,
+        "status": "date-inferred",
+        "note": "IM 821 vérifié au 1er mars 2008 (3 741,26 €) et en 2010 ; date exacte du passage de 820 à 821 non vérifiée (probablement le +1 point uniforme du 1er novembre 2006)."
+      },
+      {
+        "from": "2017-01-01",
+        "ib": 1022,
+        "im": 826,
+        "status": "verified",
+        "note": "Décret n° 2017-85 du 26 janvier 2017, effet rétroactif au 1er janvier 2017."
+      },
+      {
+        "from": "2019-01-01",
+        "ib": 1027,
+        "im": 830,
+        "status": "verified",
+        "note": "Hausse prévue au 1er janvier 2018, reportée au 1er janvier 2019 (décret n° 2017-1736) ; IB 1027 = 3 889,40 €."
+      },
+      {
+        "from": "2024-01-01",
+        "ib": 1027,
+        "im": 835,
+        "status": "verified",
+        "note": "+5 points d’indice majoré (décret n° 2023-519) ; IB 1027 = 4 110,52 €."
+      }
+    ],
+    "maire": {
+      "article": "L. 2123-23 CGCT",
+      "from1992": {
+        "from": "1992-03-30",
+        "status": "attested-2001",
+        "note": "Barème « antérieur à la loi du 5 avril 2000 », toujours publié en 2001-2002 comme barème de référence des adjoints ; supposé inchangé depuis 1992.",
+        "tiers": [
+          {
+            "maxPop": 499,
+            "rate": 12
+          },
+          {
+            "maxPop": 999,
+            "rate": 17
+          },
+          {
+            "maxPop": 3499,
+            "rate": 31
+          },
+          {
+            "maxPop": 9999,
+            "rate": 43
+          },
+          {
+            "maxPop": 19999,
+            "rate": 55
+          },
+          {
+            "maxPop": 49999,
+            "rate": 65
+          },
+          {
+            "maxPop": 99999,
+            "rate": 75
+          },
+          {
+            "maxPop": 200000,
+            "rate": 90
+          },
+          {
+            "maxPop": null,
+            "rate": 95
+          }
+        ]
+      },
+      "from2000": {
+        "from": "2000-04-07",
+        "status": "verified",
+        "note": "Loi n° 2000-295 du 5 avril 2000 (date d'entrée en vigueur exacte non vérifiée : au lendemain de sa publication). Taux attestés au 1er novembre 2001, en 2019 et en 2024 pour les strates ≥ 3 500.",
+        "tiers": [
+          {
+            "maxPop": 499,
+            "rate": 17
+          },
+          {
+            "maxPop": 999,
+            "rate": 31
+          },
+          {
+            "maxPop": 3499,
+            "rate": 43
+          },
+          {
+            "maxPop": 9999,
+            "rate": 55
+          },
+          {
+            "maxPop": 19999,
+            "rate": 65
+          },
+          {
+            "maxPop": 49999,
+            "rate": 90
+          },
+          {
+            "maxPop": 99999,
+            "rate": 110
+          },
+          {
+            "maxPop": null,
+            "rate": 145
+          }
+        ]
+      },
+      "from2019": {
+        "from": "2019-12-29",
+        "status": "verified",
+        "note": "Loi n° 2019-1461 du 27 décembre 2019 « Engagement et proximité » (JO du 28 décembre 2019) : seules les trois premières strates changent.",
+        "tiers": [
+          {
+            "maxPop": 499,
+            "rate": 25.5
+          },
+          {
+            "maxPop": 999,
+            "rate": 40.3
+          },
+          {
+            "maxPop": 3499,
+            "rate": 51.6
+          },
+          {
+            "maxPop": 9999,
+            "rate": 55
+          },
+          {
+            "maxPop": 19999,
+            "rate": 65
+          },
+          {
+            "maxPop": 49999,
+            "rate": 90
+          },
+          {
+            "maxPop": 99999,
+            "rate": 110
+          },
+          {
+            "maxPop": null,
+            "rate": 145
+          }
+        ]
+      },
+      "from2025": {
+        "from": "2025-12-24",
+        "status": "verified",
+        "note": "Loi n° 2025-1249 du 22 décembre 2025 (JO du 23 décembre 2025) : hausse pour les communes de moins de 20 000 habitants, applicable dès la publication sauf délibération antérieure fixant un montant ; depuis, l'indemnité du maire est fixée de droit au maximum.",
+        "tiers": [
+          {
+            "maxPop": 499,
+            "rate": 28.1
+          },
+          {
+            "maxPop": 999,
+            "rate": 44.3
+          },
+          {
+            "maxPop": 3499,
+            "rate": 55.7
+          },
+          {
+            "maxPop": 9999,
+            "rate": 58.3
+          },
+          {
+            "maxPop": 19999,
+            "rate": 67.6
+          },
+          {
+            "maxPop": 49999,
+            "rate": 90
+          },
+          {
+            "maxPop": 99999,
+            "rate": 110
+          },
+          {
+            "maxPop": null,
+            "rate": 145
+          }
+        ]
+      }
+    },
+    "adjoint": {
+      "article": "L. 2123-24 CGCT",
+      "from1992": {
+        "from": "1992-03-30",
+        "status": "attested-2001",
+        "basis": "% du barème de référence du maire (from1992), et non de l’IBT",
+        "note": "Adjoints : 40 % du barème de référence pour les communes de moins de 100 000 habitants, 50 % au-delà (tableaux au 1er novembre 2001 et au 1er mars 2002).",
+        "tiers": [
+          {
+            "maxPop": 499,
+            "rate": 4.8
+          },
+          {
+            "maxPop": 999,
+            "rate": 6.8
+          },
+          {
+            "maxPop": 3499,
+            "rate": 12.4
+          },
+          {
+            "maxPop": 9999,
+            "rate": 17.2
+          },
+          {
+            "maxPop": 19999,
+            "rate": 22
+          },
+          {
+            "maxPop": 49999,
+            "rate": 26
+          },
+          {
+            "maxPop": 99999,
+            "rate": 30
+          },
+          {
+            "maxPop": 200000,
+            "rate": 45
+          },
+          {
+            "maxPop": null,
+            "rate": 47.5
+          }
+        ],
+        "ratesAre": "% de l’IBT après application des 40 % / 50 %"
+      },
+      "from2002": {
+        "from": "2002-03-01",
+        "status": "verified",
+        "note": "Art. 81 de la loi n° 2002-276 du 27 février 2002 (JO du 28 février) ; délibérations admises avec effet au 1er mars 2002.",
+        "tiers": [
+          {
+            "maxPop": 499,
+            "rate": 6.6
+          },
+          {
+            "maxPop": 999,
+            "rate": 8.25
+          },
+          {
+            "maxPop": 3499,
+            "rate": 16.5
+          },
+          {
+            "maxPop": 9999,
+            "rate": 22
+          },
+          {
+            "maxPop": 19999,
+            "rate": 27.5
+          },
+          {
+            "maxPop": 49999,
+            "rate": 33
+          },
+          {
+            "maxPop": 99999,
+            "rate": 44
+          },
+          {
+            "maxPop": 200000,
+            "rate": 66
+          },
+          {
+            "maxPop": null,
+            "rate": 72.5
+          }
+        ]
+      },
+      "from2019": {
+        "from": "2019-12-29",
+        "status": "verified",
+        "note": "Loi n° 2019-1461.",
+        "tiers": [
+          {
+            "maxPop": 499,
+            "rate": 9.9
+          },
+          {
+            "maxPop": 999,
+            "rate": 10.7
+          },
+          {
+            "maxPop": 3499,
+            "rate": 19.8
+          },
+          {
+            "maxPop": 9999,
+            "rate": 22
+          },
+          {
+            "maxPop": 19999,
+            "rate": 27.5
+          },
+          {
+            "maxPop": 49999,
+            "rate": 33
+          },
+          {
+            "maxPop": 99999,
+            "rate": 44
+          },
+          {
+            "maxPop": 200000,
+            "rate": 66
+          },
+          {
+            "maxPop": null,
+            "rate": 72.5
+          }
+        ]
+      },
+      "from2025": {
+        "from": "2025-12-24",
+        "status": "verified",
+        "note": "Loi n° 2025-1249.",
+        "tiers": [
+          {
+            "maxPop": 499,
+            "rate": 10.89
+          },
+          {
+            "maxPop": 999,
+            "rate": 11.77
+          },
+          {
+            "maxPop": 3499,
+            "rate": 21.38
+          },
+          {
+            "maxPop": 9999,
+            "rate": 23.32
+          },
+          {
+            "maxPop": 19999,
+            "rate": 28.6
+          },
+          {
+            "maxPop": 49999,
+            "rate": 33
+          },
+          {
+            "maxPop": 99999,
+            "rate": 44
+          },
+          {
+            "maxPop": 200000,
+            "rate": 66
+          },
+          {
+            "maxPop": null,
+            "rate": 72.5
+          }
+        ]
+      }
+    },
+    "conseillerMunicipal": {
+      "article": "L. 2123-24-1 CGCT",
+      "minPop": 100000,
+      "rate": 6,
+      "status": "attested 2001-11, 2002, 2019, 2024",
+      "note": "6 % de l'IBT dans les communes de 100 000 habitants et plus. Dans les communes plus petites, possible depuis la loi 2002-276 dans la limite de 6 % et à l'intérieur de l'enveloppe maire + adjoints : non estimé (dépend d'une délibération)."
+    },
+    "departement": {
+      "articles": "L. 3123-16, L. 3123-17 CGCT",
+      "conseiller": {
+        "status": "attested 2001-11, 2002-03, 2019, 2024",
+        "tiers": [
+          {
+            "maxPop": 249999,
+            "rate": 40
+          },
+          {
+            "maxPop": 499999,
+            "rate": 50
+          },
+          {
+            "maxPop": 999999,
+            "rate": 60
+          },
+          {
+            "maxPop": 1249999,
+            "rate": 65
+          },
+          {
+            "maxPop": null,
+            "rate": 70
+          }
+        ]
+      },
+      "president": [
+        {
+          "from": "1992-03-30",
+          "rate": 130,
+          "status": "attested-2001",
+          "note": "IB 1015 majoré de 30 %."
+        },
+        {
+          "from": "2002-03-01",
+          "rate": 145,
+          "status": "verified",
+          "note": "Art. 83 de la loi n° 2002-276 : « majoré de 45 % »."
+        }
+      ],
+      "vicePresident": "indemnité maximale de conseiller majorée de 40 % (VP ayant délégation de l’exécutif)",
+      "commissionPermanente": "indemnité de conseiller majorée de 10 %"
+    },
+    "region": {
+      "articles": "L. 4135-16, L. 4135-17 CGCT",
+      "conseiller": {
+        "status": "attested 2019 and 2024 only",
+        "tiers": [
+          {
+            "maxPop": 999999,
+            "rate": 40
+          },
+          {
+            "maxPop": 1999999,
+            "rate": 50
+          },
+          {
+            "maxPop": 2999999,
+            "rate": 60
+          },
+          {
+            "maxPop": null,
+            "rate": 70
+          }
+        ]
+      },
+      "president": [
+        {
+          "from": "1992-03-30",
+          "rate": 130,
+          "status": "inferred",
+          "note": "La loi 2002-276 a remplacé « majoré de 30 % » par « majoré de 45 % » aux art. L. 3123-17 et L. 4135-17."
+        },
+        {
+          "from": "2002-03-01",
+          "rate": 145,
+          "status": "verified"
+        }
+      ],
+      "vicePresident": "indemnité maximale de conseiller majorée de 40 % (VP ayant délégation de l’exécutif)",
+      "commissionPermanente": "indemnité de conseiller majorée de 10 %",
+      "note": "Population de la région ; le barème des conseillers régionaux avant 2019 n’a pas été vérifié directement."
+    },
+    "epci": {
+      "articles": "L. 5211-12, R. 5214-1 (communautés de communes), R. 5215-2-1 et R. 5216-1 (communautés urbaines, d’agglomération, métropoles)",
+      "status": "attested 2019 and 2024 ; rates in % of IBT fixed by décret after art. 99 of loi 2002-276 — exact start date not verified",
+      "communauteDeCommunes": {
+        "president": [
+          {
+            "maxPop": 499,
+            "rate": 12.75
+          },
+          {
+            "maxPop": 999,
+            "rate": 23.25
+          },
+          {
+            "maxPop": 3499,
+            "rate": 32.25
+          },
+          {
+            "maxPop": 9999,
+            "rate": 41.25
+          },
+          {
+            "maxPop": 19999,
+            "rate": 48.75
+          },
+          {
+            "maxPop": 49999,
+            "rate": 67.5
+          },
+          {
+            "maxPop": 99999,
+            "rate": 82.49
+          },
+          {
+            "maxPop": 199999,
+            "rate": 108.75
+          },
+          {
+            "maxPop": null,
+            "rate": 108.75
+          }
+        ],
+        "vicePresident": [
+          {
+            "maxPop": 499,
+            "rate": 4.95
+          },
+          {
+            "maxPop": 999,
+            "rate": 6.19
+          },
+          {
+            "maxPop": 3499,
+            "rate": 12.37
+          },
+          {
+            "maxPop": 9999,
+            "rate": 16.5
+          },
+          {
+            "maxPop": 19999,
+            "rate": 20.63
+          },
+          {
+            "maxPop": 49999,
+            "rate": 24.73
+          },
+          {
+            "maxPop": 99999,
+            "rate": 33
+          },
+          {
+            "maxPop": 199999,
+            "rate": 49.5
+          },
+          {
+            "maxPop": null,
+            "rate": 54.37
+          }
+        ]
+      },
+      "agglomerationUrbaineMetropole": {
+        "president": [
+          {
+            "minPop": 20000,
+            "maxPop": 49999,
+            "rate": 90
+          },
+          {
+            "maxPop": 99999,
+            "rate": 110
+          },
+          {
+            "maxPop": 199999,
+            "rate": 145
+          },
+          {
+            "maxPop": null,
+            "rate": 145
+          }
+        ],
+        "vicePresident": [
+          {
+            "minPop": 20000,
+            "maxPop": 49999,
+            "rate": 33
+          },
+          {
+            "maxPop": 99999,
+            "rate": 44
+          },
+          {
+            "maxPop": 199999,
+            "rate": 66
+          },
+          {
+            "maxPop": null,
+            "rate": 72.5
+          }
+        ]
+      },
+      "note": "Avant le décret d'application de la loi 2002-276, les indemnités des présidents d'EPCI étaient fixées par référence aux barèmes communaux (ex. 75 % du barème de référence du maire pour les communautés de communes, 100 % pour les communautés urbaines et d'agglomération) : non estimé. La loi 2025-1249 prévoit la fixation de droit au maximum, sous réserve d'un décret en Conseil d'État non paru au 9 février 2026."
+    },
+    "sources": [
+      {
+        "title": "Circulaire préfectorale n° 2002/21 – Indemnités de fonction des titulaires de mandats locaux, montants en euros au 1er novembre 2001 (plafond de cumul 7 707,85 €)",
+        "publisher": "Préfecture de la Haute-Savoie",
+        "url": "https://www.haute-savoie.gouv.fr/index.php/contenu/telechargement/1437/7531/file/circ_2002_021.pdf",
+        "date": "2002-02-25"
+      },
+      {
+        "title": "Circulaire préfectorale n° 2002/30 – Nouveaux montants au 1er mars 2002 (régime applicable depuis le 30 mars 1992 ; plafond de cumul 7 754,10 €)",
+        "publisher": "Préfecture de la Haute-Savoie",
+        "url": "https://www.haute-savoie.gouv.fr/index.php/contenu/telechargement/1439/7539/file/circ_2002_030.pdf",
+        "date": "2002-03-13"
+      },
+      {
+        "title": "Circulaire préfectorale n° 2002/38 – Dispositions de la loi n° 2002-276 du 27 février 2002 (démocratie de proximité) concernant le régime indemnitaire des élus locaux",
+        "publisher": "Préfecture de la Haute-Savoie",
+        "url": "https://www.haute-savoie.gouv.fr/index.php/contenu/telechargement/1442/7551/file/circ_2002_038.pdf",
+        "date": "2002-04-02"
+      },
+      {
+        "title": "Circulaire préfectorale n° 2006-40 – Nouveaux montants au 1er juillet 2006 (IB 1015 = 3 688,60 € ; plafond de cumul 8 029,45 €)",
+        "publisher": "Préfecture de la Haute-Savoie",
+        "url": "https://www.haute-savoie.gouv.fr/index.php/contenu/telechargement/1583/8126/file/circ_2006_40.pdf",
+        "date": "2006-08-03"
+      },
+      {
+        "title": "Indemnités de fonction des élus locaux au 1er mars 2008 (IB 1015 = 3 741,26 € ; plafond de cumul 8 140,99 €)",
+        "publisher": "Préfecture de l'Oise",
+        "url": "https://www.oise.gouv.fr/contenu/telechargement/1996/11822/file/2008_04_17_indemnites_fonctions_elus.pdf",
+        "date": "2008-04-17"
+      },
+      {
+        "title": "Question écrite n° 51306 (11e législature) – réponse : la loi n° 2000-295 du 5 avril 2000 relève le taux de chaque strate au niveau de la strate supérieure ; 145 % à partir de 100 000 habitants (IB 1015)",
+        "publisher": "Assemblée nationale",
+        "url": "https://www.assemblee-nationale.fr/dyn/11/questions/QANR5L11QE51306",
+        "date": "2000-11-20"
+      },
+      {
+        "title": "Question écrite n° 45830 (12e législature) – réponse : loi 2000-295 (maires) et art. 81 de la loi 2002-276 (adjoints)",
+        "publisher": "Assemblée nationale",
+        "url": "https://www.assemblee-nationale.fr/dyn/12/questions/QANR5L12QE45830",
+        "date": "2004-11-23"
+      },
+      {
+        "title": "Indemnités des élus : il faut désormais faire référence à l’indice brut terminal 1022 (IM 826) depuis le 1er janvier 2017",
+        "publisher": "Banque des Territoires (Caisse des dépôts)",
+        "url": "https://www.banquedesterritoires.fr/doit-desormais-faire-reference-lindice-terminal-brut-de-la-fonction-publique-1022-pour-la",
+        "date": "2017-03-01"
+      },
+      {
+        "title": "Note d’information DGCL du 9 janvier 2019 (NOR TERB1830058N) relative aux montants maximaux bruts mensuels des indemnités de fonction des titulaires de mandats locaux au 1er janvier 2019 (IB 1027 = 3 889,40 € ; plafond 8 434,85 €)",
+        "publisher": "Ministère de la cohésion des territoires – DGCL (copie publiée par une commune)",
+        "url": "https://www.le-crestois.fr/images/breves_2019/CIRCULAIRE_090119.pdf",
+        "date": "2019-01-09"
+      },
+      {
+        "title": "Engagement et proximité : la loi a été publiée (loi n° 2019-1461 du 27 décembre 2019, JO du 28 décembre 2019)",
+        "publisher": "Banque des Territoires (Caisse des dépôts)",
+        "url": "https://www.banquedesterritoires.fr/engagement-et-proximite-la-loi-ete-publiee",
+        "date": "2019-12-30"
+      },
+      {
+        "title": "Montants plafonds des indemnités de fonction des élus locaux (valeur du point au 1er janvier 2024, IB 1027 = 4 110,52 €)",
+        "publisher": "DGCL – collectivites-locales.gouv.fr",
+        "url": "https://www.collectivites-locales.gouv.fr/files/files/1.%20Connaitre%20les%20acteurs%20et%20les%20institutions/3.%20Elus%20locaux/Montants%20plafonds%20indemnit%C3%A9s%20%C3%A9lus%20locaux%20Autom%200723-1-2.pdf",
+        "date": "2024-01-01"
+      },
+      {
+        "title": "Indemnité de fonction (élus locaux) – cadre juridique, IB 1027 / IM 835, plafond 8 897,93 € au 1er janvier 2025",
+        "publisher": "DGCL – collectivites-locales.gouv.fr",
+        "url": "https://www.collectivites-locales.gouv.fr/connaitre-les-acteurs-et-les-institutions/elus-locaux/conditions-dexercice-des-mandats-locaux/indemnite-de-fonction",
+        "date": "2026-11-08"
+      },
+      {
+        "title": "Note d’information DGCL/2026D/24 du 9 février 2026 relative aux indemnités de fonction issues de la loi n° 2025-1249 du 22 décembre 2025 portant création d’un statut de l’élu local",
+        "publisher": "Ministère de l’aménagement du territoire et de la décentralisation – DGCL (diffusée par le CDG 82)",
+        "url": "https://www.cdg82.fr/fileadmin/02_Gerer_ma_collectivite/03_La_remuneration/Note_information_indemnites_de_fonction.pdf",
+        "date": "2026-02-09"
+      },
+      {
+        "title": "Les indemnités des maires, adjoints et conseillers municipaux (mise à jour 20 janvier 2026)",
+        "publisher": "Préfecture du Doubs",
+        "url": "https://www.doubs.gouv.fr/contenu/telechargement/29740/187923/file/Les%20indemnit%C3%A9s%20des%20maires_adjoints_et%20conseillers%20municipaux.pdf",
+        "date": "2026-01-20"
+      },
+      {
+        "title": "Loi n° 2025-1249 du 22 décembre 2025 portant création d’un statut de l’élu local (JO du 23 décembre 2025)",
+        "publisher": "Centre Inffo",
+        "url": "https://www.centre-inffo.fr/?p=505556",
+        "date": "2025-12-23"
+      }
+    ]
+  },
+  "ecretement": {
+    "rule": {
+      "fr": "Élus locaux (CGCT L. 2123-20, L. 3123-18, L. 4135-18, L. 5211-12, issus de la loi n° 92-108, régime applicable depuis le 30 mars 1992) : le total des rémunérations et indemnités de fonction perçues au titre de plusieurs mandats locaux (et de certains organismes) ne peut dépasser 1,5 × l'indemnité parlementaire de base (8 897,93 €/mois depuis le 1er janvier 2024). Parlementaires (ordonnance n° 58-1210, art. 4, issu de la loi organique n° 92-175 du 25 février 1992) : les indemnités locales ne peuvent se cumuler avec l'indemnité de base que dans la limite de 1,5 fois celle-ci, soit au plus 0,5 × base d'indemnités locales (2 965,98 €/mois depuis le 1er janvier 2024) ; les indemnités de résidence et de fonction ne sont pas comptées. Depuis le premier renouvellement suivant le 31 mars 2017 (loi organique n° 2014-125), un parlementaire ne peut plus exercer de fonction exécutive locale. Depuis 2013-2015, le reversement de la part écrêtée à un autre élu est interdit (non modélisé).",
+      "en": "Local officials (CGCT L2123-20 etc., from loi 92-108, applicable since 30 March 1992): total pay and allowances from several local mandates capped at 1.5 × the parliamentary base (€8,897.93/month since 1 Jan 2024). MPs (ordonnance 58-1210 art. 4, from organic law 92-175 of 25 Feb 1992): local allowances may be added to the base only up to 1.5 × base, i.e. at most 0.5 × base of local allowances (€2,965.98/month since 1 Jan 2024); residence and function allowances not counted. Since the first renewal after 31 March 2017 (organic law 2014-125) MPs may not hold local executive office."
+    },
+    "factor": 1.5,
+    "of": "parliament.base",
+    "localFrom": "1992-03-30",
+    "parliamentFrom": "1992-02-25",
+    "parliamentLocalShareMax": 0.5,
+    "ministers": "Aucune règle d'écrêtement propre aux membres du Gouvernement n'a été vérifiée ; ils ne peuvent cumuler leur fonction avec un mandat parlementaire (art. 23 de la Constitution). Le non-cumul avec une fonction exécutive locale relève d'une règle politique (gouvernements Jospin, puis charte de déontologie de 2012), non d'un texte vérifié ici : ne pas ajouter d'indemnité locale exécutive à un ministre, ou le signaler comme incertain.",
+    "checks": [
+      {
+        "date": "2001-11-01",
+        "cap": 7707.85,
+        "sourceRefs": [
+          "hs2002_21"
+        ]
+      },
+      {
+        "date": "2002-03-01",
+        "cap": 7754.1,
+        "sourceRefs": [
+          "hs2002_30"
+        ]
+      },
+      {
+        "date": "2006-07-01",
+        "cap": 8029.45,
+        "sourceRefs": [
+          "hs2006_40"
+        ]
+      },
+      {
+        "date": "2008-03-01",
+        "cap": 8140.99,
+        "sourceRefs": [
+          "oise2008"
+        ]
+      },
+      {
+        "date": "2019-01-01",
+        "cap": 8434.85,
+        "sourceRefs": [
+          "dgcl2019"
+        ]
+      },
+      {
+        "date": "2025-01-01",
+        "cap": 8897.93,
+        "sourceRefs": [
+          "dgclPage"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "Fiche n° 7 – La situation matérielle du député (actualisée janvier 2026)",
+        "publisher": "Assemblée nationale",
+        "url": "https://www.assemblee-nationale.fr/dyn/contenu/telechargement/631144/file/Fiche%207%20corrig%C3%A9e%20-%20Situation%20mat%C3%A9rielle%20du%20d%C3%A9put%C3%A9_actualis%C3%A9e%20080126.pdf",
+        "date": "2026-01-08"
+      },
+      {
+        "title": "Ordonnance n° 58-1210 du 13 décembre 1958 portant loi organique relative à l’indemnité des membres du Parlement (texte annoté, art. 1er à 4)",
+        "publisher": "Sénat",
+        "url": "https://www.senat.fr/reglement/pouvoirs_publics64.html",
+        "date": "2026-11-08"
+      },
+      {
+        "title": "Indemnité de fonction (élus locaux) – cadre juridique, IB 1027 / IM 835, plafond 8 897,93 € au 1er janvier 2025",
+        "publisher": "DGCL – collectivites-locales.gouv.fr",
+        "url": "https://www.collectivites-locales.gouv.fr/connaitre-les-acteurs-et-les-institutions/elus-locaux/conditions-dexercice-des-mandats-locaux/indemnite-de-fonction",
+        "date": "2026-11-08"
+      },
+      {
+        "title": "Circulaire préfectorale n° 2002/21 – Indemnités de fonction des titulaires de mandats locaux, montants en euros au 1er novembre 2001 (plafond de cumul 7 707,85 €)",
+        "publisher": "Préfecture de la Haute-Savoie",
+        "url": "https://www.haute-savoie.gouv.fr/index.php/contenu/telechargement/1437/7531/file/circ_2002_021.pdf",
+        "date": "2002-02-25"
+      },
+      {
+        "title": "Circulaire préfectorale n° 2002/30 – Nouveaux montants au 1er mars 2002 (régime applicable depuis le 30 mars 1992 ; plafond de cumul 7 754,10 €)",
+        "publisher": "Préfecture de la Haute-Savoie",
+        "url": "https://www.haute-savoie.gouv.fr/index.php/contenu/telechargement/1439/7539/file/circ_2002_030.pdf",
+        "date": "2002-03-13"
+      },
+      {
+        "title": "Note d’information DGCL du 9 janvier 2019 (NOR TERB1830058N) relative aux montants maximaux bruts mensuels des indemnités de fonction des titulaires de mandats locaux au 1er janvier 2019 (IB 1027 = 3 889,40 € ; plafond 8 434,85 €)",
+        "publisher": "Ministère de la cohésion des territoires – DGCL (copie publiée par une commune)",
+        "url": "https://www.le-crestois.fr/images/breves_2019/CIRCULAIRE_090119.pdf",
+        "date": "2019-01-09"
+      }
+    ]
+  },
+  "omitted": [
+    {
+      "what": "Indemnité parlementaire avant novembre 2001 (1986-2001)",
+      "why": "Aucune valeur officielle trouvée ; l'indice moyen hors échelle (1190 en 2001) n'est pas vérifié pour les années antérieures. Une extrapolation par pointIndice reste possible mais doit être signalée comme incertaine."
+    },
+    {
+      "what": "Date exacte des passages de l’indice moyen hors échelle 1190→1191, 1191→1195 et 1195→1200",
+      "why": "Seules des bornes sont vérifiées (juil. 2006 / mars 2008 ; juil. 2010 / 2017 ; 2017 / janv. 2019). Dates indiquées = hypothèses les plus probables."
+    },
+    {
+      "what": "Indemnité parlementaire juillet–décembre 2023 (7 605,70 €)",
+      "why": "Calculée (indice 1200 × point 2023) ; pas de document officiel trouvé pour cette période."
+    },
+    {
+      "what": "Rémunération des membres du Gouvernement avant le 8 mai 2002",
+      "why": "Régime antérieur (traitement plus faible complété par les fonds spéciaux) non documenté de façon fiable."
+    },
+    {
+      "what": "Secrétaires d’État du 15 mai 2012 au 25 avril 2014",
+      "why": "Le coefficient 1,33 est fixé par le décret n° 2014-425 ; le montant de 9 443 € publié en 2012 suggère qu’il s’appliquait déjà, mais le texte de 2012 n’a pas pu être lu (Légifrance inaccessible)."
+    },
+    {
+      "what": "IM de l’IB 1015 entre 1992 et 2001",
+      "why": "Non vérifié (820 supposé)."
+    },
+    {
+      "what": "Barèmes des conseillers régionaux et des EPCI avant 2019, et présidents d’EPCI avant le décret d’application de la loi 2002-276",
+      "why": "Non trouvés dans les sources consultées."
+    },
+    {
+      "what": "Taux des majorations facultatives (L. 2123-22, R. 2123-23) et +40 % des maires de 100 000 habitants et plus",
+      "why": "Facultatives, dépendent d'une délibération : non appliquées."
+    },
+    {
+      "what": "Régime des élus locaux avant le 30 mars 1992",
+      "why": "Antérieur à la loi n° 92-108 ; non estimé."
+    },
+    {
+      "what": "Écrêtement des députés européens et des ministres",
+      "why": "Règles françaises applicables non vérifiées."
+    },
+    {
+      "what": "Traitement MEP après le 1er juillet 2026",
+      "why": "L'actualisation annuelle 2026 n'était pas publiée au JOUE au 8 novembre 2026."
+    }
+  ]
+}
