@@ -68,6 +68,19 @@ function storyBlock(s: FeedStory, rs: FeedReaction[], outletName: Map<string, st
 }
 
 const PLATFORM: Record<string, string> = { bluesky: "Bluesky", youtube: "YouTube", mastodon: "Mastodon", twitter: "X", x: "X" };
+/** Populism markers emitted by scripts/rate-reactions.mjs (MARKERS), as readers see them. */
+const MARKER: Record<string, [string, string]> = {
+  anti_elites: ["anti-élites", "anti-elite"],
+  peuple_vs_elites: ["peuple contre élites", "people vs elites"],
+  peuple_homogene: ["le peuple comme un bloc", "the people as one bloc"],
+  souverainete_populaire: ["volonté du peuple contre les institutions", "popular will over institutions"],
+  delegitimation: ["délégitimation de l’adversaire", "delegitimising opponents"],
+  complot: ["complot", "conspiracy"],
+  simplisme: ["solution simpliste", "simplistic solution"],
+  nativisme: ["nativisme", "nativism"],
+  appel_emotionnel: ["appel à l’émotion", "emotional appeal"],
+};
+const markerLabel = (k: string) => (MARKER[k] ? L(...MARKER[k]) : k.replace(/_/g, " "));
 
 function reaction(r: FeedReaction, fr: boolean) {
   const rt = r.rating!;
@@ -79,12 +92,12 @@ function reaction(r: FeedReaction, fr: boolean) {
       <blockquote>${esc(r.text.length > 420 ? r.text.slice(0, 420) + "…" : r.text)}</blockquote>
       <div class="meters small">
         <span class="meter" data-tip="${esc(fr ? rt.lean.rationale_fr : rt.lean.rationale_en)}"><span class="meter-track"><i style="left:${((lean + 1) / 2) * 100}%"></i></span>${L("Gauche", "Left")} / ${L("droite", "right")}</span>
-        <span data-tip="${esc(fr ? rt.populism.rationale_fr : rt.populism.rationale_en)}">${L("Populisme", "Populism")} <b>${Math.round(pop * 10)}/10</b>${rt.populism.markers.length ? ` (${esc(rt.populism.markers.join(", "))})` : ""}</span>
+        <span data-tip="${esc(fr ? rt.populism.rationale_fr : rt.populism.rationale_en)}">${L("Populisme", "Populism")} <b>${Math.round(pop * 10)}/10</b>${rt.populism.markers.length ? ` (${esc(rt.populism.markers.map(markerLabel).join(", "))})` : ""}</span>
         <a href="${esc(safeUrl(r.url))}" target="_blank" rel="noopener">${L("Voir le message", "See the post")}</a>
       </div>
       ${
         rt.check
-          ? `<div class="verify"><b>${L("À vérifier", "To verify")}</b> : « ${esc(rt.check.claim)} » ${esc(fr ? rt.check.why_fr : rt.check.why_en)}${rt.check.sources.length ? ` <span class="small">${rt.check.sources.map((s) => `<a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("; ")}</span>` : ""}</div>`
+          ? `<div class="verify"><b>${L("À vérifier", "To verify")}</b>${L(" : « ", ": “")}${esc(rt.check.claim)}${L(" »", "”")} ${esc(fr ? rt.check.why_fr : rt.check.why_en)}${rt.check.sources.length ? ` <span class="small">${rt.check.sources.map((s) => `<a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("; ")}</span>` : ""}</div>`
           : ""
       }
     </div>`;

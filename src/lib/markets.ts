@@ -54,6 +54,20 @@ export function combineOdds(markets: Market[]): Odds[] {
     .filter((r) => r.win || r.runoff)
     .sort((a, b) => (b.win?.avg ?? 0) - (a.win?.avg ?? 0));
 }
+/** A candidate's market chance of winning, %: the volume-weighted average of the platforms, rescaled so
+ *  every listed candidate sums to 100. This is the "Markets" figure everywhere (forecast, 2027 card, simulator). */
+export function winShare(odds: Odds[], o: Odds | undefined | null): number | null {
+  if (!o?.win) return null;
+  const total = odds.reduce((s, x) => s + (x.win?.avg ?? 0), 0) || 1;
+  return (100 * o.win.avg) / total;
+}
+/** The same rescaling applied to one platform's own figure, for the per-platform detail. */
+export function platformShare(odds: Odds[], o: Odds, pl: "kalshi" | "polymarket"): number | null {
+  const v = o.win?.[pl];
+  if (v == null) return null;
+  const total = odds.reduce((s, x) => s + (x.win?.[pl] ?? 0), 0) || 1;
+  return (100 * v) / total;
+}
 export const oddsFor = (odds: Odds[], name: string) => odds.find((o) => norm(o.name) === norm(name));
 /** Volume and freshness per market, for the caption. */
 export const marketMeta = (markets: Market[]) => markets.filter((m) => isWinner(m) || isRunoff(m)).map((m) => ({ platform: m.platform, kind: isWinner(m) ? "win" : "runoff", volume: m.volume, thin: m.volume < THIN_VOLUME }));

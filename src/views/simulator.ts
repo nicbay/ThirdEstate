@@ -2,7 +2,8 @@
 // abstention (right). Sliders update the funnel live; scenarios can be saved (browser, or account
 // when signed in) and shared by link.
 import { loadMarkets, loadPolls } from "../data";
-import { combineOdds, oddsFor } from "../lib/markets";
+import { combineOdds, oddsFor, winShare } from "../lib/markets";
+import { colon, dec, pair100, pct, pts } from "../lib/format";
 import { ROUND1_SD, ROUND2_SD, RUNS, buildModel, oddsSentence } from "../lib/scenario-odds";
 import { L, fmtDate, getLang } from "../i18n";
 import { BLOCS, meta, registerParties, spectrumRank, type Bloc } from "../lib/candidates";
@@ -91,7 +92,7 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
   registerParties(polls.parties);
   const latest = polls.firstRound[0]?.end ?? new Date().toISOString().slice(0, 10);
   const avg = average(polls.firstRound, latest, undefined, 0);
-  const duels = duelAverages(polls.secondRound);
+  const duels = duelAverages(polls.secondRound).filter((d) => !d.stale);
 
   const fromPolls = (): Scenario => {
     const cands = referenceLineup(polls.firstRound, latest).rows.map((r) => ({ name: r.name, share: Math.round(r.share * 10) / 10, bloc: meta(r.name).bloc }));
@@ -146,7 +147,7 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
         <div class="sim-odds" id="sim-odds"></div>
         <div class="sim-result" id="sim-result"></div>
         <div class="sim-markets" id="sim-markets"></div>
-        <figure class="funnel-fig"><svg id="funnel" viewBox="0 0 960 520" role="img" aria-label="${L("Reports de voix", "Vote transfers")}"></svg></figure>
+        <figure class="funnel-fig"><svg id="funnel" viewBox="0 0 960 520" role="img" aria-label="${L("Reports de voix", "Vote transfers")}"></svg><div id="funnel-list" class="flow-list"></div></figure>
 
         <section class="card">
           <header class="card-head"><h2>${L("Candidats et reports", "Candidates and transfers")}</h2>
@@ -159,20 +160,20 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
               return `<div class="sim-row ${fin ? "is-finalist" : ""}" data-row="${esc(c.name)}" style="--c:${m.color}">
                 <div class="sim-name"><b>${esc(c.name)}</b> <span class="muted small">${esc(m.party ?? "")}</span>
                   <select data-bloc="${esc(c.name)}" aria-label="${L("Famille politique", "Political family")}"><option value="">?</option>${BLOCS.map((_, i) => `<option value="${i}" ${c.bloc === i ? "selected" : ""}>${blocName(i as Bloc)}</option>`).join("")}</select></div>
-                <label class="sim-share"><span class="muted small">${L("1er tour", "1st round")}</span><input type="range" min="0" max="45" step="0.1" value="${c.share}" data-share="${esc(c.name)}"/><output data-share-out="${esc(c.name)}">${c.share.toFixed(1)} %</output></label>
+                <label class="sim-share"><span class="muted small">${L("1er tour", "1st round")}</span><input type="range" min="0" max="45" step="0.1" value="${c.share}" data-share="${esc(c.name)}"/><output data-share-out="${esc(c.name)}">${pct(c.share)}</output></label>
                 ${
                   fin
                     ? `<div class="sim-transfer muted small">${L("Finaliste : garde ses voix", "Finalist: keeps their votes")}</div>`
                     : `<div class="sim-transfer">
-                        <label><span class="small">→ ${esc(meta(fa).surname)}</span><input type="range" min="0" max="100" step="5" value="${s.transfers[c.name][0]}" data-ta="${esc(c.name)}"/><output data-ta-out="${esc(c.name)}">${s.transfers[c.name][0]} %</output></label>
-                        <label><span class="small">→ ${esc(meta(fb).surname)}</span><input type="range" min="0" max="100" step="5" value="${s.transfers[c.name][1]}" data-tb="${esc(c.name)}"/><output data-tb-out="${esc(c.name)}">${s.transfers[c.name][1]} %</output></label>
+                        <label><span class="small">→ ${esc(meta(fa).surname)}</span><input type="range" min="0" max="100" step="5" value="${s.transfers[c.name][0]}" data-ta="${esc(c.name)}"/><output data-ta-out="${esc(c.name)}">${pct(s.transfers[c.name][0], 0)}</output></label>
+                        <label><span class="small">→ ${esc(meta(fb).surname)}</span><input type="range" min="0" max="100" step="5" value="${s.transfers[c.name][1]}" data-tb="${esc(c.name)}"/><output data-tb-out="${esc(c.name)}">${pct(s.transfers[c.name][1], 0)}</output></label>
                       </div>`
                 }
                 <div class="sim-actions">${fin ? `<span class="tag">${L("finaliste", "finalist")}</span>` : `<button type="button" class="linkish" data-qualify="${esc(c.name)}">${L("Qualifier", "Qualify")}</button><button type="button" class="icon" data-remove="${esc(c.name)}" title="${L("Retirer", "Remove")}">✕</button>`}</div>
               </div>`;
             })
             .join("")}</div>
-          <p><select id="add"><option value="">+ ${L("Ajouter un candidat testé dans les sondages", "Add a candidate tested in polls")}</option>${avg.filter((r) => !s.cands.some((c) => c.name === r.name)).map((r) => `<option value="${esc(r.name)}">${esc(r.name)} (${r.avg.toFixed(1)} %)</option>`).join("")}</select></p>
+          <p><select id="add"><option value="">+ ${L("Ajouter un candidat testé dans les sondages", "Add a candidate tested in polls")}</option>${avg.filter((r) => !s.cands.some((c) => c.name === r.name)).map((r) => `<option value="${esc(r.name)}">${esc(r.name)} (${pct(r.avg)})</option>`).join("")}</select></p>
         </section>
 
         <section class="card" id="saves"></section>
@@ -197,26 +198,29 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
       flows.push({ from: c, to: "a", v: a }, { from: c, to: "x", v: x }, { from: c, to: "b", v: b });
     }
     const pa = (100 * va) / (va + vb || 1), pb = 100 - pa;
+    // shown to one decimal, the two sides add up to exactly 100
+    const ra = Math.round(10 * pa) / 10, rb = (1000 - Math.round(10 * pa)) / 10;
     const ma = meta(fa), mb = meta(fb);
     const winner = pa >= pb ? fa : fb;
     const fr = getLang() === "fr";
-    app.querySelector("#sim-h1")!.textContent = fr ? `${winner} l’emporte avec ${Math.max(pa, pb).toFixed(1)} %` : `${winner} wins with ${Math.max(pa, pb).toFixed(1)}%`;
+    app.querySelector("#sim-h1")!.textContent = fr ? `${winner} l’emporte avec ${pct(Math.max(ra, rb))}` : `${winner} wins with ${pct(Math.max(ra, rb))}`;
     const poll = duels.find((d) => [d.winner, d.loser].sort().join() === [fa, fb].sort().join());
+    const pollPair = poll ? pair100(poll.pw, poll.pl) : null;
     app.querySelector("#sim-result")!.innerHTML = `
-      <div class="duel big"><span style="width:${pa}%;background:${ma.color}">${esc(ma.surname)} ${pa.toFixed(1)}</span><span style="width:${pb}%;background:${mb.color}">${pb.toFixed(1)} ${esc(mb.surname)}</span></div>
-      <p class="muted small">${L("Abstention, blancs et nuls supplémentaires", "Extra abstention, blank and void")} : ${((100 * lost) / total).toFixed(0)} % ${L("des voix du premier tour", "of first-round votes")}. ${poll ? `${L("Les sondages sur ce duel donnent", "Polls of this match-up give")} ${esc(meta(poll.winner).surname)} ${poll.pw.toFixed(0)}–${poll.pl.toFixed(0)} (${poll.total} ${L("sondages", "polls")}, ${L("dernier le", "latest")} ${fmtDate(poll.last)}).` : L("Aucun sondage n’a testé ce duel.", "No poll has tested this match-up.")} ${Math.abs(total - 100) > 0.5 ? `<span class="warn">${L("Total du premier tour", "First-round total")} : ${total.toFixed(1)} %.</span>` : ""}</p>`;
+      <div class="duel big"><span style="width:${pa}%;background:${ma.color}">${esc(ma.surname)} ${dec(ra)}</span><span style="width:${pb}%;background:${mb.color}">${dec(rb)} ${esc(mb.surname)}</span></div>
+      <p class="muted small">${L("Abstention, blancs et nuls supplémentaires", "Extra abstention, blank and void")}${colon()}${pct((100 * lost) / total, 0)} ${L("des voix du premier tour", "of first-round votes")}. ${poll && pollPair ? `${L("Les sondages sur ce duel donnent", "Polls of this match-up give")} ${esc(meta(poll.winner).surname)} ${pollPair[0]}–${pollPair[1]} (${poll.total} ${L("sondages", "polls")}, ${L("dernier le", "latest")} ${fmtDate(poll.last)}).` : L("Aucun sondage récent n’a testé ce duel.", "No recent poll has tested this match-up.")} ${Math.abs(total - 100) > 0.5 ? `<span class="warn">${L("Total du premier tour", "First-round total")}${colon()}${pct(total)}.</span>` : ""}</p>`;
     const oa = oddsFor(odds, fa), ob = oddsFor(odds, fb);
-    const pct = (v?: number) => (v == null ? "–" : `${Math.round(v)} %`);
+    const pc = (v?: number | null) => (v == null ? "–" : pct(v, 0));
     app.querySelector("#sim-markets")!.innerHTML = odds.length
       ? `<div class="mk-head"><b>${L("Ce que parient les marchés", "What the betting markets say")}</b> <span class="muted small">Kalshi, Polymarket${markets?.fetchedAt ? `, ${fmtDate(markets.fetchedAt)}` : ""}</span></div>
-         <div class="mk-grid">${[fa, fb].map((n, k) => { const o = k ? ob : oa; const m = meta(n); return `<div class="mk-card" style="--c:${m.color}"><span class="muted small">${esc(m.surname)}</span><strong>${pct(o?.win?.avg)}</strong><span class="small">${L("de chances de gagner", "chance of winning")}</span><span class="muted tiny">${L("qualifié au 2nd tour", "reaches the runoff")} : ${pct(o?.runoff?.avg)}</span></div>`; }).join("")}
-         <div class="mk-card mk-wide"><span class="muted small">${L("Favoris des marchés", "Market favourites")}</span><ol class="bars compact">${odds.slice(0, 5).map((o) => `<li><div class="bar-label"><span>${esc(meta(o.name).surname)}</span><b>${pct(o.win?.avg)}</b></div><div class="bar"><div style="width:${o.win?.avg ?? 0}%;background:${meta(o.name).color}"></div></div></li>`).join("")}</ol></div></div>
-         <p class="muted tiny">${L("Probabilités implicites des contrats, moyenne des deux plateformes quand les deux cotent le candidat. Ce ne sont pas des sondages.", "Implied probabilities from contract prices, averaged across both platforms when both list the candidate. These aren’t polls.")}</p>`
+         <div class="mk-grid">${[fa, fb].map((n, k) => { const o = k ? ob : oa; const m = meta(n); return `<div class="mk-card" style="--c:${m.color}"><span class="muted small">${esc(m.surname)}</span><strong>${pc(winShare(odds, o))}</strong><span class="small">${L("de chances de gagner", "chance of winning")}</span><span class="muted tiny">${L("qualifié au 2nd tour", "reaches the runoff")}${colon()}${pc(o?.runoff?.avg)}</span></div>`; }).join("")}
+         <div class="mk-card mk-wide"><span class="muted small">${L("Favoris des marchés", "Market favourites")}</span><ol class="bars compact">${odds.filter((o) => o.win).slice(0, 5).map((o) => `<li><div class="bar-label"><span>${esc(meta(o.name).surname)}</span><b>${pc(winShare(odds, o))}</b></div><div class="bar"><div style="width:${winShare(odds, o) ?? 0}%;background:${meta(o.name).color}"></div></div></li>`).join("")}</ol></div></div>
+         <p class="muted tiny">${L("Probabilités implicites des contrats, moyenne des deux plateformes pondérée par les montants échangés et ramenée à 100 % (le chiffre « Marchés » de la prévision). Ce ne sont pas des sondages.", "Implied probabilities from contract prices, averaged across both platforms by traded volume and rescaled to 100% (the forecast’s “Markets” figure). These aren’t polls.")}</p>`
       : "";
     {
       const loser = winner === fa ? fb : fa;
       const p1 = model.pRound1(fa, fb), p2 = model.pRound2(winner, loser), p = p1 * p2;
-      const show = (x: number) => (x > 0.99 ? L("plus de 99 %", "over 99%") : x < 0.0001 ? L("moins de 0,01 %", "under 0.01%") : x < 0.01 ? `${(x * 100).toFixed(2).replace(".", fr ? "," : ".")} %` : `${Math.round(x * 100)} %`);
+      const show = (x: number) => (x > 0.99 ? L("plus de 99 %", "over 99%") : x < 0.0001 ? L("moins de 0,01 %", "under 0.01%") : x < 0.01 ? pct(x * 100, 2) : pct(x * 100, 0));
       // p1 = 0 means no simulated run produced this pair: only an upper bound is known
       // (rule of three: < 3/RUNS at 95 % confidence), so the comparison says "less likely than".
       const oddsLine = p1 > 0 ? oddsSentence(p, fr) : oddsSentence((3 / RUNS) * p2, fr, true);
@@ -224,8 +228,8 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
         <div class="odds-headline">
           <div class="odds-num"><span class="muted small">${L("Probabilité de votre scénario", "Probability of your scenario")}</span><strong>${show(p)}</strong></div>
           <div class="odds-split small">
-            <span><b>${L("1er tour", "Round 1")}</b> ${esc(meta(fa).surname)} ${L("et", "and")} ${esc(meta(fb).surname)} ${L("qualifiés", "qualify")} : <b>${show(p1)}</b></span>
-            <span><b>${L("2nd tour", "Round 2")}</b> ${esc(meta(winner).surname)} ${L("l’emporte", "wins")} : <b>${show(p2)}</b></span>
+            <span><b>${L("1er tour", "Round 1")}</b> ${esc(meta(fa).surname)} ${L("et", "and")} ${esc(meta(fb).surname)} ${L("qualifiés", "qualify")}${colon()}<b>${show(p1)}</b></span>
+            <span><b>${L("2nd tour", "Round 2")}</b> ${esc(meta(winner).surname)} ${L("l’emporte", "wins")}${colon()}<b>${show(p2)}</b></span>
           </div>
           <p class="odds-fun">${esc(oddsLine)}</p>
           <p class="muted tiny">${L(`Selon les sondages actuels, pas selon vos curseurs : chaque candidat peut s’écarter de sa moyenne d’environ ${String(ROUND1_SD).replace(".", ",")} points au 1er tour et le duel de ${ROUND2_SD} points au 2nd tour (20 000 simulations). Estimation indicative.`, `Based on current polls, not your sliders: each candidate can miss their average by about ${ROUND1_SD} points in round 1 and the runoff by ${ROUND2_SD} points (20,000 simulations). Indicative estimate.`)}</p>
@@ -234,10 +238,10 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
     drawFunnel(flows, total, fa, fb, va, vb, lost);
     for (const c of s.cands) {
       const o = app.querySelector(`[data-share-out="${CSS.escape(c.name)}"]`);
-      if (o) o.textContent = `${c.share.toFixed(1)} %`;
+      if (o) o.textContent = pct(c.share);
       const t = s.transfers[c.name];
       const oa = app.querySelector(`[data-ta-out="${CSS.escape(c.name)}"]`), ob = app.querySelector(`[data-tb-out="${CSS.escape(c.name)}"]`);
-      if (t && oa && ob) { oa.textContent = `${t[0]} %`; ob.textContent = `${t[1]} %`; }
+      if (t && oa && ob) { oa.textContent = pct(t[0], 0); ob.textContent = pct(t[1], 0); }
     }
   };
 
@@ -267,19 +271,34 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
         const mx = (x1 + nodeW + x2) / 2;
         const d = `M${x1 + nodeW},${ya}C${mx},${ya} ${mx},${yb} ${x2},${yb}L${x2},${yb + h2}C${mx},${yb + h2} ${mx},${ya + h1} ${x1 + nodeW},${ya + h1}Z`;
         const dest = f.to === "a" ? fa : f.to === "b" ? fb : L("abstention", "abstention");
-        return `<path d="${d}" class="ribbon" fill="${meta(f.from.name).color}" data-tip="${esc(`${f.from.name} → ${dest}\n${f.v.toFixed(1)} ${L("points", "points")}`)}"/>`;
+        return `<path d="${d}" class="ribbon" fill="${meta(f.from.name).color}" data-tip="${esc(`${f.from.name} → ${dest}\n${pts(f.v)}`)}"/>`;
       })
       .join("");
     const leftNodes = ordered
-      .map((c) => { const l = left.get(c.name)!; return `<rect x="${x1}" y="${l.y}" width="${nodeW}" height="${Math.max(1, l.h)}" fill="${meta(c.name).color}"/><text x="${x1 - 8}" y="${l.y + l.h / 2 + 4}" text-anchor="end" class="f-label">${esc(meta(c.name).surname)} <tspan class="f-num">${c.share.toFixed(1)}</tspan></text>`; })
+      .map((c) => { const l = left.get(c.name)!; return `<rect x="${x1}" y="${l.y}" width="${nodeW}" height="${Math.max(1, l.h)}" fill="${meta(c.name).color}"/><text x="${x1 - 8}" y="${l.y + l.h / 2 + 4}" text-anchor="end" class="f-label">${esc(meta(c.name).surname)} <tspan class="f-num">${dec(c.share)}</tspan></text>`; })
       .join("");
     const rnode = (key: "a" | "b" | "x", label: string, color: string, v: number) =>
-      `<rect x="${x2}" y="${right[key].y}" width="${nodeW}" height="${Math.max(1, right[key].h)}" fill="${color}"/><text x="${x2 + nodeW + 10}" y="${right[key].y + right[key].h / 2}" class="f-label f-right">${esc(label)}</text><text x="${x2 + nodeW + 10}" y="${right[key].y + right[key].h / 2 + 18}" class="f-num">${v.toFixed(1)} ${L("pts", "pts")}</text>`;
+      `<rect x="${x2}" y="${right[key].y}" width="${nodeW}" height="${Math.max(1, right[key].h)}" fill="${color}"/><text x="${x2 + nodeW + 10}" y="${right[key].y + right[key].h / 2}" class="f-label f-right">${esc(label)}</text><text x="${x2 + nodeW + 10}" y="${right[key].y + right[key].h / 2 + 18}" class="f-num">${pts(v)}</text>`;
     app.querySelector("#funnel")!.innerHTML = `
       <text x="${x1 + nodeW / 2}" y="${H - 2}" text-anchor="middle" class="f-axis">${L("Premier tour", "First round")}</text>
       <text x="${x2 + nodeW / 2}" y="${H - 2}" text-anchor="middle" class="f-axis">${L("Second tour", "Runoff")}</text>
       ${ribbons}${leftNodes}${rnode("a", fa, meta(fa).color, va)}${rnode("x", L("Abstention, blanc", "Abstain, blank"), "#c4c7cc", lost)}${rnode("b", fb, meta(fb).color, vb)}`;
     void W;
+    // Phones: the 960-wide funnel would shrink its labels to ~5px, so the same flows are also written
+    // out as a list (one row per candidate: where their votes go); CSS shows one or the other.
+    const GREY = "#c4c7cc";
+    const row = (c: Cand) => {
+      const own = flows.filter((f) => f.from === c);
+      const v = (to: "a" | "b" | "x") => own.filter((f) => f.to === to).reduce((t, f) => t + f.v, 0);
+      const [a, x, b] = [v("a"), v("x"), v("b")];
+      const fin = c.name === fa || c.name === fb;
+      const share = (y: number) => pct(c.share ? (100 * y) / c.share : 0, 0);
+      return `<li style="--c:${meta(c.name).color}"><div class="fl-head"><b>${esc(meta(c.name).surname)}</b><span>${pct(c.share)}</span></div>
+        <div class="fl-bar" aria-hidden="true"><i style="flex:${a};background:${meta(fa).color}"></i><i style="flex:${x};background:${GREY}"></i><i style="flex:${b};background:${meta(fb).color}"></i></div>
+        <p class="fl-split">${fin ? L("Finaliste : garde ses voix", "Finalist: keeps their votes") : `→ ${esc(meta(fa).surname)} ${share(a)} · ${L("abstention", "abstain")} ${share(x)} · → ${esc(meta(fb).surname)} ${share(b)}`}</p></li>`;
+    };
+    app.querySelector("#funnel-list")!.innerHTML = `<p class="fl-k">${L("Premier tour → second tour", "First round → runoff")}</p><ol>${ordered.map(row).join("")}</ol>
+      <p class="fl-total"><span style="--c:${meta(fa).color}"><b>${esc(meta(fa).surname)}</b> ${pts(va)}</span><span style="--c:${GREY}">${L("Abstention, blanc", "Abstain, blank")} ${pts(lost)}</span><span style="--c:${meta(fb).color}"><b>${esc(meta(fb).surname)}</b> ${pts(vb)}</span></p>`;
   };
 
   const bind = () => {
@@ -342,7 +361,7 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
     const list = await listScenarios<Scenario>().catch(() => [] as SavedScenario<Scenario>[]);
     box.innerHTML = `
       <header class="card-head"><h2>${L("Vos scénarios", "Your scenarios")}</h2>
-        <span class="small muted">${user ? `${L("Connecté", "Signed in")} : ${esc(user.email ?? "")} <button type="button" class="linkish" id="logout">${L("Se déconnecter", "Sign out")}</button>` : cloudEnabled() ? L("Enregistrés dans ce navigateur", "Saved in this browser") : L("Enregistrés dans ce navigateur", "Saved in this browser")}</span></header>
+        <span class="small muted">${user ? `${L("Connecté", "Signed in")}${colon()}${esc(user.email ?? "")} <button type="button" class="linkish" id="logout">${L("Se déconnecter", "Sign out")}</button>` : cloudEnabled() ? L("Enregistrés dans ce navigateur", "Saved in this browser") : L("Enregistrés dans ce navigateur", "Saved in this browser")}</span></header>
       <div class="save-row">
         <input id="save-name" type="text" maxlength="80" placeholder="${L("Nom du scénario", "Scenario name")}" value="${esc(`${meta(s.finalists[0]).surname} – ${meta(s.finalists[1]).surname}`)}"/>
         <button type="button" class="button" id="save">${L("Enregistrer", "Save")}</button>
