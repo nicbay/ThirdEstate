@@ -26,9 +26,12 @@ const PARTICIPATION_NOTE = () =>
     "In the Senate, each group’s delegate casts the vote for all its members in ordinary public votes, so participation shows that a position was recorded, not attendance. By custom, the Senate President doesn’t vote.",
   );
 
-const filter = { q: "", g: "" };
-export async function renderSenat(app: HTMLElement) {
+const filter = { q: "", g: "", dep: "" };
+/** `dep`: open on one department's senators (#/senat/92, "Mes sénateurs" in the menu); typing in the box lifts it. */
+export async function renderSenat(app: HTMLElement, dep?: string) {
   const sens = await loadSenateurs();
+  filter.dep = dep && sens.some((s) => s.numDepartement === dep) ? dep : "";
+  if (filter.dep) filter.q = sens.find((s) => s.numDepartement === filter.dep)!.circonscription;
   const groups = [...new Map(sens.filter((s) => s.groupe).map((s) => [s.groupe!.id, s.groupe!])).values()].sort((a, b) => senateSeatRank(a) - senateSeatRank(b));
   const count = (id: string) => sens.filter((s) => s.groupe?.id === id).length;
   app.innerHTML = `
@@ -51,13 +54,13 @@ export async function renderSenat(app: HTMLElement) {
   const norm = (x: string) => x.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
   const draw = () => {
     const q = norm(filter.q);
-    const rows = sens.filter((s) => (!filter.g || s.groupe?.id === filter.g) && (!q || norm(`${s.prenom} ${s.nom} ${s.circonscription} ${s.numDepartement}`).includes(q))).sort((a, b) => a.alpha.localeCompare(b.alpha, "fr"));
+    const rows = sens.filter((s) => (!filter.g || s.groupe?.id === filter.g) && (filter.dep ? s.numDepartement === filter.dep : !q || norm(`${s.prenom} ${s.nom} ${s.circonscription} ${s.numDepartement}`).includes(q))).sort((a, b) => a.alpha.localeCompare(b.alpha, "fr"));
     app.querySelector("#count")!.textContent = `${rows.length} ${L("sénateurs", "senators")}`;
     app.querySelector("#list")!.innerHTML = rows
       .map((s) => `<a class="mp-card card" href="#/senateur/${esc(s.id)}" style="--c:${safeColor(s.groupe?.couleur)}"><img src="${senPhoto(s)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"/><div><strong>${esc(s.prenom)} ${esc(s.nom)}</strong><span class="chip">${esc(s.groupe?.abrev ?? "")}</span><div class="muted small">${esc(s.circonscription)}</div></div></a>`)
       .join("");
   };
-  app.querySelector<HTMLInputElement>("#q")!.addEventListener("input", (e) => { filter.q = (e.target as HTMLInputElement).value; draw(); });
+  app.querySelector<HTMLInputElement>("#q")!.addEventListener("input", (e) => { filter.q = (e.target as HTMLInputElement).value; filter.dep = ""; draw(); });
   app.querySelector<HTMLSelectElement>("#g")!.addEventListener("change", (e) => { filter.g = (e.target as HTMLSelectElement).value; draw(); });
   draw();
 }
