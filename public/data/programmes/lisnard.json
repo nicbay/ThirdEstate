@@ -1,0 +1,411 @@
+{
+  "slug": "lisnard",
+  "candidate": "David Lisnard",
+  "party": "Nouvelle Énergie",
+  "lite": true,
+  "status": "partial",
+  "statusNote": {
+    "fr": "Au 8 novembre 2026, Nouvelle Énergie publie une présentation du programme en trois axes et des fiches thématiques reprenant les déclarations du candidat (meeting de Saint-Raphaël du 3 juillet 2026, interventions de septembre-octobre) ; aucun document programme complet ni chiffrage mesure par mesure n'est publié.",
+    "en": "As of 8 November 2026, Nouvelle Énergie publishes a three-pillar programme overview and topic pages compiling the candidate's statements (Saint-Raphaël rally of 3 July 2026, September-October interventions); no full programme document or measure-by-measure costing has been published."
+  },
+  "versions": [
+    {
+      "id": "n21",
+      "year": 2021,
+      "label": { "fr": "Nouvelle Énergie : texte programmatique « Réussir une nouvelle ambition française » (issu de la note de 2021)", "en": "Nouvelle Énergie: policy text \"Réussir une nouvelle ambition française\" (from the 2021 note)" },
+      "title": "Réussir une nouvelle ambition française",
+      "date": "2021",
+      "url": "https://unenouvelleenergie.fr/notre-programme/reussir-une-nouvelle-ambition-francaise/",
+      "kind": "site"
+    },
+    {
+      "id": "p27",
+      "year": 2027,
+      "label": { "fr": "Propositions 2027 (site de Nouvelle Énergie et annonces)", "en": "2027 proposals (Nouvelle Énergie site and announcements)" },
+      "title": "Le programme de Nouvelle Énergie pour 2027",
+      "date": "2026-11",
+      "url": "https://www.unenouvelleenergie.fr/notre-programme/",
+      "kind": "announcements"
+    }
+  ],
+  "measures": [
+    {
+      "id": "m01",
+      "theme": "budget",
+      "status": "new",
+      "texts": { "p27": "200 milliards d'euros d'économies documentées en rythme de croisière, dont 80 milliards dès la première année ; objectif de 300 milliards" },
+      "change": null,
+      "sources": [
+        { "title": "Nouvelle Énergie — Le programme de David Lisnard est-il chiffré ?", "url": "https://www.unenouvelleenergie.fr/questions/le-programme-de-david-lisnard-est-il-chiffre/" },
+        { "title": "Europe 1, 3 novembre 2026", "url": "https://www.europe1.fr/politique/presidentielle-2027-david-lisnard-promet-un-gouvernement-commando-et-200-milliards-deconomies-1206317" }
+      ],
+      "cost": { "value": 200, "low": 200, "high": 300, "by": "Candidate", "url": "https://www.unenouvelleenergie.fr/questions/le-programme-de-david-lisnard-est-il-chiffre/", "note": { "fr": "Économies brutes revendiquées en rythme de croisière (environ 7 points de PIB) ; 160 Md€ seraient redistribués (cotisations et impôts de production). Liste détaillée des économies non publiée.", "en": "Gross savings claimed at full speed (about 7 GDP points); €160bn would be handed back (contributions and production taxes). Detailed list of savings not published." } },
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "low",
+      "feasibilityNote": { "fr": "Ampleur sans précédent (près de 12 % de la dépense publique) ; 100 Md€ de l'objectif de 300 Md€ restent à documenter selon le candidat.", "en": "Unprecedented scale (nearly 12% of public spending); €100bn of the €300bn target remains to be documented, per the candidate." },
+      "broadBenefit": false
+    },
+    {
+      "id": "m02",
+      "theme": "travail",
+      "status": "new",
+      "texts": { "p27": "120 milliards d'euros rendus aux actifs en salaire net par la baisse des cotisations — « environ 400 euros net de plus par mois et par salarié »" },
+      "change": null,
+      "sources": [
+        { "title": "Nouvelle Énergie — Quel candidat veut améliorer le pouvoir d'achat ?", "url": "https://www.unenouvelleenergie.fr/questions/quel-candidat-veut-ameliorer-le-pouvoir-d-achat/" },
+        { "title": "Nouvelle Énergie — Le programme de David Lisnard est-il chiffré ?", "url": "https://www.unenouvelleenergie.fr/questions/le-programme-de-david-lisnard-est-il-chiffre/" }
+      ],
+      "cost": { "value": -120, "low": null, "high": null, "by": "Candidate", "url": "https://www.unenouvelleenergie.fr/questions/le-programme-de-david-lisnard-est-il-chiffre/", "note": { "fr": "Financé par les économies de la mesure m01. Gain annoncé variable selon les interventions : environ 250 € par mois au salaire médian (29 août 2026) ou près de 400 € (janvier 2026). Répartition cotisations salariales / patronales non détaillée.", "en": "Funded by the savings in m01. Stated gain varies: about €250 a month at the median wage (29 Aug 2026) or nearly €400 (January 2026). Employee/employer split not detailed." } },
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "m03",
+      "theme": "economie",
+      "status": "modified",
+      "texts": {
+        "n21": "Supprimer la C3S et, si possible, la CVAE, ce qui « représenterait 11,5 milliards d'euros », pour diviser par deux les impôts de production",
+        "p27": "40 milliards d'euros consacrés à la réduction des impôts de production"
+      },
+      "change": { "fr": "Suppression de la C3S et de la CVAE (11,5 Md€) → enveloppe de 40 Md€ de baisse des impôts de production.", "en": "Abolishing the C3S and CVAE (€11.5bn) → a €40bn envelope of production-tax cuts." },
+      "sources": [
+        { "title": "Nouvelle Énergie — Réussir une nouvelle ambition française", "url": "https://unenouvelleenergie.fr/notre-programme/reussir-une-nouvelle-ambition-francaise/" },
+        { "title": "Atlantico, 23 octobre 2026 (H. Spring-Ragain, GenerationLibre)", "url": "https://atlantico.fr/article/decryptage/baisse-depenses-hausse-salaires-nets-ce-que-vaut-vraiment-plan-david-lisnard-presidentielle-2027-hugo-spring-ragain" }
+      ],
+      "cost": { "value": -40, "low": null, "high": null, "by": "Candidate", "url": "https://atlantico.fr/article/decryptage/baisse-depenses-hausse-salaires-nets-ce-que-vaut-vraiment-plan-david-lisnard-presidentielle-2027-hugo-spring-ragain", "note": { "fr": "Répartition des 200 Md€ d'économies : 120 Md€ salaires nets, 40 Md€ impôts de production, 40 Md€ dette ou modernisation de l'État.", "en": "Split of the €200bn of savings: €120bn net pay, €40bn production taxes, €40bn debt or state modernisation." } },
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m04",
+      "theme": "social",
+      "status": "modified",
+      "texts": {
+        "n21": "Relever l'âge de la retraite à 65 ans comme priorité immédiate ; basculer les autres régimes vers la capitalisation (environ 116 milliards d'euros, soit 40 % des pensions)",
+        "p27": "Ne pas revenir sur la réforme de 2023, jugée « réformette » ; instaurer une capitalisation obligatoire et collective"
+      },
+      "change": { "fr": "Âge de 65 ans (2021) → aucun âge précis défendu en 2026 ; la capitalisation obligatoire et collective devient l'axe principal.", "en": "Age 65 (2021) → no specific age defended in 2026; mandatory collective funded pensions become the main axis." },
+      "sources": [
+        { "title": "Nouvelle Énergie — Réussir une nouvelle ambition française", "url": "https://unenouvelleenergie.fr/notre-programme/reussir-une-nouvelle-ambition-francaise/" },
+        { "title": "Nouvelle Énergie — Quel âge de départ à la retraite David Lisnard défend-il ?", "url": "https://www.unenouvelleenergie.fr/questions/quel-age-de-depart-a-la-retraite-david-lisnard-defend-il/" }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "low",
+      "feasibilityNote": { "fr": "Le coût de transition d'un pilier par capitalisation n'est pas chiffré ; GenerationLibre le juge sous-financé (Atlantico, 23 octobre 2026).", "en": "The transition cost of a funded pillar is not costed; GenerationLibre considers it underfunded (Atlantico, 23 October 2026)." },
+      "broadBenefit": false
+    },
+    {
+      "id": "m05",
+      "theme": "social",
+      "status": "new",
+      "texts": { "p27": "Désindexer les pensions au-delà de 2 000 € par mois" },
+      "change": null,
+      "sources": [
+        { "title": "Nouvelle Énergie — Quel âge de départ à la retraite David Lisnard défend-il ?", "url": "https://www.unenouvelleenergie.fr/questions/quel-age-de-depart-a-la-retraite-david-lisnard-defend-il/" },
+        { "title": "Nouvelle Énergie — Quelles économies propose David Lisnard ?", "url": "https://unenouvelleenergie.fr/questions/quelles-economies-david-lisnard-propose-t-il-et-ou-exactement/" }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "high",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m06",
+      "theme": "immigration",
+      "status": "new",
+      "texts": { "p27": "Condition de cinq ans de résidence pour les prestations non contributives" },
+      "change": null,
+      "sources": [ { "title": "Nouvelle Énergie — Le programme de David Lisnard est-il chiffré ?", "url": "https://www.unenouvelleenergie.fr/questions/le-programme-de-david-lisnard-est-il-chiffre/" } ],
+      "cost": { "value": 8, "low": null, "high": null, "by": "Candidate", "url": "https://www.unenouvelleenergie.fr/questions/le-programme-de-david-lisnard-est-il-chiffre/", "note": { "fr": "8 Md€ d'économies par an selon le candidat ; seule mesure chiffrée individuellement.", "en": "€8bn a year of savings per the candidate; the only individually costed measure." } },
+      "legal": "unconstitutional-precedent",
+      "legalNote": { "fr": "Une condition de résidence d'au moins cinq ans pour certaines prestations a été jugée contraire au Préambule de 1946 (décision n° 2024-6 RIP du 11 avril 2024).", "en": "A residence condition of at least five years for certain benefits was held contrary to the 1946 Preamble (decision no. 2024-6 RIP, 11 April 2024)." },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m07",
+      "theme": "immigration",
+      "status": "new",
+      "texts": { "p27": "« Nous supprimons l'aide médicale d'État »" },
+      "change": null,
+      "sources": [ { "title": "Nouvelle Énergie — Quel candidat propose de supprimer l'AME ? (meeting de Saint-Raphaël, 3 juillet 2026)", "url": "https://www.unenouvelleenergie.fr/questions/quel-candidat-propose-de-supprimer-l-aide-medicale-d-etat/" } ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "high",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m08",
+      "theme": "immigration",
+      "status": "modified",
+      "texts": {
+        "n21": "Fixer des quotas d'immigration légale selon les besoins économiques ; supprimer toute possibilité d'être régularisé après être entré clandestinement ; réviser la Constitution ou les traités, avec référendum",
+        "p27": "« Couper le robinet de l'immigration, la diviser au moins par huit », en passant par des référendums"
+      },
+      "change": { "fr": "Quotas et fin des régularisations (2021) → objectif chiffré de division « au moins par huit » de l'immigration, par référendum.", "en": "Quotas and end of regularisations (2021) → a stated target of cutting immigration \"at least eightfold\", via referendum." },
+      "sources": [
+        { "title": "Nouvelle Énergie — Réussir une nouvelle ambition française", "url": "https://unenouvelleenergie.fr/notre-programme/reussir-une-nouvelle-ambition-francaise/" },
+        { "title": "Nouvelle Énergie — Que propose David Lisnard sur l'immigration ?", "url": "https://www.unenouvelleenergie.fr/questions/que-propose-david-lisnard-sur-l-immigration/" }
+      ],
+      "cost": null,
+      "legal": "constitutional-revision-needed",
+      "legalNote": { "fr": "Le programme prévoit une maîtrise migratoire « indépendante » des cours suprêmes, y compris européennes : cela suppose une révision constitutionnelle et se heurte au droit de l'UE et à la CEDH.", "en": "The programme seeks migration control \"independent\" of supreme courts, including European ones: this requires a constitutional amendment and conflicts with EU law and the ECHR." },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m09",
+      "theme": "social",
+      "status": "new",
+      "texts": { "p27": "Regrouper l'ensemble des aides en une allocation unique, plafonnée à un pourcentage du SMIC ; « quelqu'un qui travaille à temps plein doit gagner au moins 500 € de plus que quelqu'un qui ne travaille pas »" },
+      "change": null,
+      "sources": [ { "title": "Nouvelle Énergie — Allocation unique (meeting de Saint-Raphaël, 3 juillet 2026)", "url": "https://www.unenouvelleenergie.fr/questions/quel-candidat-veut-regrouper-les-aides-sociales-en-une-allocation-unique/" } ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": { "fr": "Pourcentage du SMIC non précisé.", "en": "SMIC percentage not specified." },
+      "broadBenefit": false
+    },
+    {
+      "id": "m10",
+      "theme": "social",
+      "status": "new",
+      "texts": { "p27": "Retirer logement social et aides sociales aux personnes condamnées pour délinquance ; mettre fin aux prestations non contributives versées à l'étranger" },
+      "change": null,
+      "sources": [ { "title": "Nouvelle Énergie — Allocation unique (meeting de Saint-Raphaël, 3 juillet 2026)", "url": "https://www.unenouvelleenergie.fr/questions/quel-candidat-veut-regrouper-les-aides-sociales-en-une-allocation-unique/" } ],
+      "cost": null,
+      "legal": "risk",
+      "legalNote": { "fr": "Une privation automatique de droits sociaux en raison d'une condamnation serait examinée au regard du principe d'individualisation des peines et du Préambule de 1946.", "en": "Automatically withdrawing social rights after a conviction would be reviewed against the individualisation of penalties and the 1946 Preamble." },
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m11",
+      "theme": "institutions",
+      "status": "new",
+      "texts": { "p27": "« Nous créerons les provinces à la place des départements et des régions »" },
+      "change": null,
+      "sources": [ { "title": "Nouvelle Énergie — Remplacer départements et régions (meeting de Saint-Raphaël, 3 juillet 2026)", "url": "https://www.unenouvelleenergie.fr/questions/quel-candidat-veut-remplacer-les-departements-et-les-regions/" } ],
+      "cost": null,
+      "legal": "constitutional-revision-needed",
+      "legalNote": { "fr": "L'article 72 de la Constitution nomme les départements et les régions.", "en": "Article 72 of the Constitution names départements and regions." },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m12",
+      "theme": "budget",
+      "status": "new",
+      "texts": { "p27": "Supprimer « l'essentiel de ces machins » : les quelque 1 200 agences et opérateurs (DREAL, DDTM, ARS visées ; autorités indépendantes conservées)" },
+      "change": null,
+      "sources": [ { "title": "Nouvelle Énergie — Quelles économies propose David Lisnard ?", "url": "https://unenouvelleenergie.fr/questions/quelles-economies-david-lisnard-propose-t-il-et-ou-exactement/" } ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": { "fr": "Le candidat évalue la dépense de ces organismes à 83-100 Md€, sans chiffrer l'économie nette.", "en": "The candidate puts these bodies' spending at €83-100bn, without costing the net saving." },
+      "broadBenefit": false
+    },
+    {
+      "id": "m13",
+      "theme": "budget",
+      "status": "new",
+      "texts": { "p27": "Garder une fonction publique sur tout ce qui est régalien et aligner le reste sur des contrats de droit privé ; permettre aux enseignants de choisir leur statut" },
+      "change": null,
+      "sources": [ { "title": "Nouvelle Énergie — Réformer le statut de la fonction publique", "url": "https://www.unenouvelleenergie.fr/questions/quel-candidat-veut-reformer-le-statut-de-la-fonction-publique/" } ],
+      "cost": null,
+      "legal": "risk",
+      "legalNote": { "fr": "Le statut relève de la loi, mais les droits acquis des fonctionnaires en poste limitent une bascule rapide.", "en": "The civil-service statute is set by law, but serving officials' acquired rights limit a rapid switch." },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m14",
+      "theme": "budget",
+      "status": "new",
+      "texts": { "p27": "Aligner la CSG des actifs (9,2 %) sur celle des inactifs (6,6 %)" },
+      "change": null,
+      "sources": [ { "title": "Nouvelle Énergie — Le programme de David Lisnard est-il chiffré ?", "url": "https://www.unenouvelleenergie.fr/questions/le-programme-de-david-lisnard-est-il-chiffre/" } ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": { "fr": "Coût non chiffré par le candidat.", "en": "Cost not given by the candidate." },
+      "broadBenefit": true
+    },
+    {
+      "id": "m15",
+      "theme": "travail",
+      "status": "new",
+      "texts": { "p27": "« Laisser les accords d'entreprise libérer le temps de travail », le Code du travail se limitant aux principes généraux ; travail volontaire le 1er mai « payé double »" },
+      "change": null,
+      "sources": [ { "title": "Nouvelle Énergie — Assouplir les 35 heures", "url": "https://unenouvelleenergie.fr/questions/quel-candidat-veut-assouplir-les-35-heures/" } ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": { "fr": "Encadré par la directive 2003/88/CE sur le temps de travail.", "en": "Bounded by Working Time Directive 2003/88/EC." },
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m16",
+      "theme": "travail",
+      "status": "new",
+      "texts": { "p27": "Dégressivité de l'assurance chômage, « et puis parallèlement renforcer la vraie formation des personnes en difficulté »" },
+      "change": null,
+      "sources": [ { "title": "Nouvelle Énergie — Réformer l'assurance chômage", "url": "https://www.unenouvelleenergie.fr/questions/quel-candidat-veut-reformer-l-assurance-chomage/" } ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "high",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m17",
+      "theme": "economie",
+      "status": "new",
+      "texts": { "p27": "Transmission d'entreprise « totalement libérée des droits de succession » ; taux marginal maximal de 20 % (contre 45 %) et 100 000 € transmissibles sans droits aux petits-enfants" },
+      "change": null,
+      "sources": [ { "title": "Nouvelle Énergie — Supprimer les droits de succession", "url": "https://www.unenouvelleenergie.fr/questions/quel-candidat-veut-supprimer-les-droits-de-succession/" } ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "high",
+      "feasibilityNote": { "fr": "Les chiffres de 20 % et 100 000 € proviennent du livre « Ainsi va la France » ; leur reprise dans le projet 2027 n'est pas confirmée.", "en": "The 20% and €100,000 figures come from the book \"Ainsi va la France\"; their inclusion in the 2027 platform is not confirmed." },
+      "broadBenefit": false
+    },
+    {
+      "id": "m18",
+      "theme": "education",
+      "status": "new",
+      "texts": { "p27": "Supprimer la carte scolaire, « au moins en milieu urbain », le financement public suivant l'élève ; laisser les chefs d'établissement constituer leurs équipes" },
+      "change": null,
+      "sources": [ { "title": "Nouvelle Énergie — Supprimer la carte scolaire", "url": "https://www.unenouvelleenergie.fr/questions/quel-candidat-veut-supprimer-la-carte-scolaire/" } ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m19",
+      "theme": "justice",
+      "status": "new",
+      "texts": { "p27": "« Rabaisser l'âge de la responsabilité des mineurs »" },
+      "change": null,
+      "sources": [ { "title": "Nouvelle Énergie — Propositions sur la sécurité (CNews, 7 octobre 2026)", "url": "https://www.unenouvelleenergie.fr/questions/quelles-sont-les-propositions-de-david-lisnard-sur-la-securite/" } ],
+      "cost": null,
+      "legal": "risk",
+      "legalNote": { "fr": "L'atténuation de la responsabilité pénale des mineurs selon l'âge est un principe fondamental reconnu par les lois de la République (décision n° 2002-461 DC du 29 août 2002 ; rappelé par la décision n° 2025-886 DC du 19 juin 2025).", "en": "Age-based reduction of minors' criminal responsibility is a fundamental principle recognised by the laws of the Republic (decision no. 2002-461 DC, 29 August 2002; restated in decision no. 2025-886 DC, 19 June 2025)." },
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m20",
+      "theme": "securite",
+      "status": "modified",
+      "texts": {
+        "n21": "Créer un corps de police territoriale, donner aux collectivités des pouvoirs de police accrus et le statut de police judiciaire aux polices décentralisées ; plan décennal de remise à niveau de la police nationale",
+        "p27": "Davantage de pouvoirs pour les polices municipales des communes qui le souhaitent (accès à certains fichiers sous contrôle du juge) ; armement non obligatoire"
+      },
+      "change": { "fr": "Police territoriale à statut de police judiciaire (2021) → pouvoirs accrus et facultatifs pour les polices municipales (2025-2026).", "en": "Territorial police with judicial-police status (2021) → extra, optional powers for municipal police (2025-2026)." },
+      "sources": [
+        { "title": "Nouvelle Énergie — Réussir une nouvelle ambition française", "url": "https://unenouvelleenergie.fr/notre-programme/reussir-une-nouvelle-ambition-francaise/" },
+        { "title": "Nouvelle Énergie — Propositions sur la sécurité", "url": "https://www.unenouvelleenergie.fr/questions/quelles-sont-les-propositions-de-david-lisnard-sur-la-securite/" }
+      ],
+      "cost": null,
+      "legal": "risk",
+      "legalNote": { "fr": "Le Conseil constitutionnel exige que la police judiciaire reste sous la direction et le contrôle de l'autorité judiciaire ; l'extension de prérogatives judiciaires aux polices municipales a été censurée pour ce motif (décision n° 2021-817 DC du 20 mai 2021).", "en": "The Constitutional Council requires judicial policing to remain under the direction and control of the judicial authority; extending judicial powers to municipal police was struck down on that ground (decision no. 2021-817 DC, 20 May 2021)." },
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m21",
+      "theme": "ecologie",
+      "status": "maintained",
+      "texts": {
+        "n21": "« Stopper tout de suite le plan pluriannuel de démantèlement de nos centrales nucléaires » et « engager une première série de construction de six EPR »",
+        "p27": "Une « électricité nucléaire décarbonée et pilotable » comme atout technologique de la France"
+      },
+      "change": { "fr": "Le chiffre de six EPR (tribune de 2021) n'a pas été repris explicitement en 2026.", "en": "The six-EPR figure (2021 op-ed) has not been explicitly restated in 2026." },
+      "sources": [ { "title": "Nouvelle Énergie — Construire de nouveaux réacteurs nucléaires", "url": "https://www.unenouvelleenergie.fr/questions/quel-candidat-veut-construire-de-nouveaux-reacteurs-nucleaires/" } ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m22",
+      "theme": "institutions",
+      "status": "new",
+      "texts": { "p27": "Un « gouvernement commando » resserré avec des feuilles de route pour les 200 premiers jours, ministres remplacés si les réformes ne sont pas engagées ; session parlementaire extraordinaire dès l'été 2027" },
+      "change": null,
+      "sources": [ { "title": "Europe 1, 3 novembre 2026", "url": "https://www.europe1.fr/politique/presidentielle-2027-david-lisnard-promet-un-gouvernement-commando-et-200-milliards-deconomies-1206317" } ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m23",
+      "theme": "economie",
+      "status": "new",
+      "texts": { "p27": "Moratoire sur les « normes stupides » et « choc massif de dérégulation »" },
+      "change": null,
+      "sources": [
+        { "title": "Europe 1, 3 novembre 2026", "url": "https://www.europe1.fr/politique/presidentielle-2027-david-lisnard-promet-un-gouvernement-commando-et-200-milliards-deconomies-1206317" },
+        { "title": "Le programme de Nouvelle Énergie pour 2027", "url": "https://www.unenouvelleenergie.fr/notre-programme/" }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    }
+  ],
+  "costing": {
+    "rounds": [
+      {
+        "id": "p2027",
+        "year": 2027,
+        "label": { "fr": "Présidentielle 2027 — plan annoncé par David Lisnard", "en": "2027 presidential — plan announced by David Lisnard" },
+        "horizon": { "fr": "par an, en rythme de croisière", "en": "a year, at full speed" },
+        "announced": { "by": "Nouvelle Énergie", "spending": 160, "revenue": 200, "net": 40, "date": "2026-10", "note": { "fr": "200 Md€ d'économies « documentées » (objectif 300 Md€) ; 120 Md€ rendus en baisse de cotisations et 40 Md€ en baisse d'impôts de production, 40 Md€ pour la dette ou la modernisation de l'État. Aucune estimation indépendante publiée ; l'Institut Montaigne chiffrera les candidats au 1er trimestre 2027.", "en": "€200bn of \"documented\" savings (target €300bn); €120bn returned as lower contributions and €40bn as lower production taxes, €40bn for debt or state modernisation. No independent estimate published; Institut Montaigne will cost candidates in Q1 2027." }, "url": "https://www.unenouvelleenergie.fr/questions/le-programme-de-david-lisnard-est-il-chiffre/" },
+        "estimates": []
+      }
+    ],
+    "checked": "2026-11-08"
+  },
+  "summary": {
+    "fr": "Le projet de David Lisnard repose sur 200 Md€ d'économies publiques par an en rythme de croisière, redistribués pour l'essentiel en baisse de cotisations (120 Md€, présentés comme un gain de 250 à 400 € nets par mois) et d'impôts de production (40 Md€), avec une réorganisation de l'État (provinces, suppression d'agences, statut de la fonction publique) et une politique migratoire passant par référendum. Par rapport au texte de Nouvelle Énergie de 2021, l'âge de départ à 65 ans n'est plus mis en avant au profit d'une capitalisation obligatoire, et la cible migratoire devient chiffrée (« au moins par huit »). Seule une mesure est chiffrée individuellement (8 Md€ pour la condition de cinq ans de résidence, jugée contraire à la Constitution dans une décision de 2024) et aucune estimation indépendante n'est publiée.",
+    "en": "David Lisnard's platform rests on €200bn a year of public savings at full speed, mostly handed back as lower social contributions (€120bn, presented as €250-400 more net a month) and production taxes (€40bn), with a reorganised state (provinces, abolished agencies, civil-service statute) and a migration policy routed through referendums. Compared with Nouvelle Énergie's 2021 text, the retirement age of 65 is no longer put forward in favour of mandatory funded pensions, and the migration target is now quantified (\"at least eightfold\"). Only one measure is individually costed (€8bn for a five-year residence condition, of a kind held unconstitutional in 2024) and no independent estimate has been published."
+  }
+}

@@ -11,6 +11,8 @@ export interface FlowSpec { sources: FlowSource[]; branches: FlowBranch[]; keepT
 
 interface Box { id: string; x: number; y: number; w: number; h: number; kind: "source" | "branch" | "sink"; icon: string; title: string; sub: string; branch?: string; drop?: boolean }
 
+/** Node titles must fit their box: cut at a word boundary and add an ellipsis (full text in the tooltip). */
+const clip = (t: string, n: number) => (t.length <= n ? t : `${t.slice(0, n).replace(/[s,:;(–-]+S*$/, "")}…`);
 const items = (k: number) => `${fmtNum(k)} ${k > 1 ? L("mesures", "measures") : L("mesure", "measure")}`;
 
 /** `pick`: the highlighted branch id. `compact`: no edge labels, no ports (homepage teaser). */
@@ -59,7 +61,7 @@ export function flowSvg(spec: FlowSpec, pick = "", compact = false) {
     return `<g class="flow-node is-${x.kind}${x.drop ? " is-drop" : ""}${pick && x.branch === pick ? " is-on" : ""}" transform="translate(${x.x},${x.y.toFixed(0)})" style="--i:${i}"${btn}>
       <rect class="flow-box" width="${x.w}" height="${x.h}" rx="10"/>
       <rect class="flow-tile" x="10" y="${(x.h - 34) / 2}" width="34" height="34" rx="7"/><text class="flow-icon" x="27" y="${x.h / 2 + 6}">${esc(x.icon)}</text>
-      <text class="flow-title" x="54" y="${x.h / 2 - 3}">${esc(x.title)}</text>
+      <text class="flow-title" x="54" y="${x.h / 2 - 3}">${esc(clip(x.title, x.kind === "branch" ? 24 : 19))}</text><title>${esc(`${x.title} — ${x.sub}`)}</title>
       <text class="flow-sub" x="54" y="${x.h / 2 + 14}">${esc(x.sub)}</text>
       ${ports}</g>`;
   }).join("");
