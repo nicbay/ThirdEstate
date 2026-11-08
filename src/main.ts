@@ -52,6 +52,7 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/explorer(?:\/(\w{2,3}))?$/, (m) => renderExplorer(app, m[1])],
   [/^#\/ville\/(\w{5})$/, (m) => renderTown(app, m[1])],
   [/^#\/chiffres$/, () => renderEconomy(app)],
+  [/^#\/programmes\/([\w-]+)$/, (m) => import("./views/programme").then((v) => v.renderProgramme(app, m[1]))],
 ];
 
 // Information architecture: two doors, the site's promise "de votre mairie à l'Élysée".
