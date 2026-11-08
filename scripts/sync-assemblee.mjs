@@ -8,9 +8,11 @@
 //   deputes.json     one entry per sitting MP (identity, group, district, socials, vote stats)
 //   scrutins.json    every public vote: [numero, date, titre, sort, demandeur, pour, contre, abst]
 //   votes/<PA>.json  that MP's position on each vote: { numero: "P" | "C" | "A" | "N" }
+//   loyalty.json     how often each MP votes with their group (method in scripts/lib/loyalty.mjs)
 
 import { mkdir, writeFile, rm } from "node:fs/promises";
 import { unzipSync, strFromU8 } from "fflate";
+import { loyaltyTracker } from "./lib/loyalty.mjs";
 
 const LEG = 17;
 const SOURCES = {
@@ -98,11 +100,13 @@ const scr = await fetchZip(SOURCES.scrutins);
 const scrutins = [];
 const votes = new Map(deputes.map((d) => [d.id, {}]));
 const POS = { pours: "P", contres: "C", abstentions: "A", nonVotants: "N" };
+const loyalty = loyaltyTracker({ sitting, organes, deputes });
 
 for (const data of Object.values(scr.files)) {
   const s = json(data).scrutin;
   const num = Number(s.numero);
   const d = s.syntheseVote?.decompte ?? {};
+  loyalty.add(s);
   scrutins.push([num, s.dateScrutin, s.titre ?? s.objet?.libelle ?? "", s.sort?.code ?? "", s.demandeur?.texte ?? "", Number(d.pour ?? 0), Number(d.contre ?? 0), Number(d.abstentions ?? 0)]);
   for (const grp of arr(s.ventilationVotes?.organe?.groupes?.groupe)) {
     const nominatif = grp.vote?.decompteNominatif ?? {};
@@ -131,6 +135,9 @@ await rm(new URL("votes/", OUT), { recursive: true, force: true });
 await mkdir(new URL("votes/", OUT), { recursive: true });
 await writeFile(new URL("deputes.json", OUT), JSON.stringify(deputes));
 await writeFile(new URL("scrutins.json", OUT), JSON.stringify(scrutins));
+const loyal = loyalty.result();
+await writeFile(new URL("loyalty.json", OUT), JSON.stringify(loyal));
+console.log(`✓ loyalty: ${loyal.ranked} MPs ranked`);
 for (const [id, v] of votes) await writeFile(new URL(`votes/${id}.json`, OUT), JSON.stringify(v));
 await writeFile(
   new URL("meta.json", OUT),

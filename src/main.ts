@@ -31,7 +31,7 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/simulateur(?:\/([\w-]+))?$/, (m) => renderSimulator(app, m[1])],
   [/^#\/resultats(?:\/([\w-]+))?$/, (m) => renderResults(app, m[1])],
   [/^#\/presidentielle(?:\/\d{4})?$/, () => void (location.hash = "#/resultats/presidentielle-2022")], // old links
-  [/^#\/assemblee(?:\/(deputes|composition))?$/, (m) => renderAssemblee(app, m[1] ?? "carte")],
+  [/^#\/assemblee(?:\/(deputes|composition|loyaute))?$/, (m) => renderAssemblee(app, m[1] ?? "carte")],
   [/^#\/assemblee\/(\w{2,3})$/, (m) => renderAssemblee(app, "carte", m[1])],
   [/^#\/deputes$/, () => void (location.hash = "#/assemblee/deputes")], // old links
   [/^#\/circo\/(\w{4,5})$/, (m) => renderCirco(app, m[1])],
@@ -60,7 +60,8 @@ function sections(): Section[] {
       href: mine, match: /^#\/(explorer|ville|elus|assemblee|circo|depute|senat|senateur)/, fr: "Chez vous", en: "Where you live",
       children: [
         ...(home?.code ? [{ href: mine, match: new RegExp(`^#\/ville\/${home.code}$`), fr: home.commune ?? "Ma commune", en: home.commune ?? "My town" }] : []),
-        { href: "#/assemblee", match: /^#\/(elus|assemblee|circo|depute)/, fr: "Députés", en: "MPs" },
+        { href: "#/assemblee", match: /^#\/(elus|assemblee(?!\/loyaute)|circo|depute)/, fr: "Députés", en: "MPs" },
+        { href: "#/assemblee/loyaute", match: /^#\/assemblee\/loyaute/, fr: "Doigt sur la couture", en: "Toeing the line" },
         { href: "#/senat", match: /^#\/(senat|senateur)/, fr: "Sénateurs", en: "Senators" },
         { href: "#/explorer", match: home?.code ? new RegExp(`^#\/(explorer|ville\/(?!${home.code}$))`) : /^#\/(explorer|ville)/, fr: "Toutes les communes", en: "Every town" },
       ],
