@@ -150,6 +150,14 @@ async function openWordPopup(o: PopupOpts) {
   dlg.querySelector<HTMLElement>(".word-rank .is-current")?.scrollIntoView({ block: "center" });
 }
 
+/** Opens the word popup from anywhere (the site-wide search): every MP who said `text`, with the chamber's latest quotes. */
+export async function openWordByText(text: string) {
+  const [s, deputes, words] = await Promise.all([loadSummary(), loadDeputes(), loadWords()]);
+  const known = [s.chamber.terms, ...Object.values(s.groups).map((g) => g.terms)].flat().find((t) => t[0] === text);
+  const byId = new Map(deputes.map((d) => [d.id, d]));
+  await openWordPopup({ s, term: [text, 1, known?.[2] ?? null], byId, quotes: words[text]?.src });
+}
+
 // ---------- quotes and counts behind each word ----------
 const AN_CR = "https://www.assemblee-nationale.fr/dyn/17/comptes-rendus/seance/";
 const times = (n: number) => (n === 1 ? L("1 fois", "once") : L(`${fmtNum(n)} fois`, `${fmtNum(n)} times`));
