@@ -275,12 +275,22 @@ function linePath(vals: (number | null)[], x: (i: number) => number, y: (v: numb
   vals.forEach((v, i) => { if (v == null) { pen = false; return; } d += `${pen ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`; pen = true; });
   return d;
 }
+/** Dashed bridges over missing years: from the last published year to the next one. */
+function gapPath(vals: (number | null)[], x: (i: number) => number, y: (v: number) => number) {
+  let d = "", prev = -1;
+  vals.forEach((v, i) => {
+    if (v == null) return;
+    if (prev >= 0 && i - prev > 1) d += `M${x(prev).toFixed(1)},${y(vals[prev]!).toFixed(1)}L${x(i).toFixed(1)},${y(v).toFixed(1)}`;
+    prev = i;
+  });
+  return d;
+}
 
 function crimeSpark(town: (number | null)[], france: (number | null)[]) {
   const W = 96, H = 26, all = [...town, ...france].filter((v): v is number => v != null);
   const max = Math.max(...all, 0.1), x = (i: number) => 2 + (i * (W - 4)) / (town.length - 1), y = (v: number) => H - 3 - (v / max) * (H - 6);
   const last = town.map((v, i) => [v, i] as const).filter(([v]) => v != null).at(-1);
-  return `<svg class="crime-spark" viewBox="0 0 ${W} ${H}" aria-hidden="true"><path class="fr" d="${linePath(france, x, y)}"/><path class="tw" d="${linePath(town, x, y)}"/>${last ? `<circle cx="${x(last[1]).toFixed(1)}" cy="${y(last[0]!).toFixed(1)}" r="2.2"/>` : ""}</svg>`;
+  return `<svg class="crime-spark" viewBox="0 0 ${W} ${H}" aria-hidden="true"><path class="fr" d="${linePath(france, x, y)}"/><path class="fr gap" d="${gapPath(france, x, y)}"/><path class="tw gap" d="${gapPath(town, x, y)}"/><path class="tw" d="${linePath(town, x, y)}"/>${last ? `<circle cx="${x(last[1]).toFixed(1)}" cy="${y(last[0]!).toFixed(1)}" r="2.2"/>` : ""}</svg>`;
 }
 
 function crimeChart(h: CrimeHistory, town: (number | null)[], key: string, name: string, label: string) {
@@ -302,12 +312,13 @@ function crimeChart(h: CrimeHistory, town: (number | null)[], key: string, name:
   const sep = L(" : ", ": ");
   const tickFmt = (t: number) => t.toLocaleString(getLang() === "fr" ? "fr-FR" : "en-GB", { maximumFractionDigits: Number.isInteger(step) ? 0 : 1 });
   return `<figure class="crime-chart">
-    <figcaption><b>${esc(label)}</b> <span class="muted small">${key === "burglary" ? L("pour 1 000 logements", "per 1,000 dwellings") : L("pour 1 000 habitants", "per 1,000 people")}, ${h.years[0]}–${h.years.at(-1)}</span></figcaption>
+    <figcaption><b>${esc(label)}</b> <span class="muted small">${key === "burglary" ? L("pour 1 000 logements", "per 1,000 dwellings") : L("pour 1 000 habitants", "per 1,000 people")}, ${h.years[0]}–${h.years.at(-1)}</span>${gapPath(town, (i) => i, (v) => v) ? ` <span class="muted small cc-gap-note">${L("· pointillés : années non publiées", "· dashed: years not published")}</span>` : ""}</figcaption>
     <svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(`${label}: ${name} ${L("et France", "and France")}`)}">
       ${ticks.map((t) => `<line class="grid${t === 0 ? " base" : ""}" x1="${m.l}" x2="${W - m.r}" y1="${y(t)}" y2="${y(t)}"/><text class="axis" x="${m.l - 6}" y="${y(t) + 4}" text-anchor="end">${tickFmt(t)}</text>`).join("")}
       ${h.years.map((yr, i) => (i % 2 === 0 || i === h.years.length - 1 ? `<text class="axis" x="${x(i)}" y="${H - 8}" text-anchor="middle">${yr}</text>` : "")).join("")}
-      <path class="cc-line dp" d="${linePath(dep, x, y)}"/>
-      <path class="cc-line fr" d="${linePath(france, x, y)}"/>
+      <path class="cc-line dp" d="${linePath(dep, x, y)}"/><path class="cc-line dp gap" d="${gapPath(dep, x, y)}"/>
+      <path class="cc-line fr" d="${linePath(france, x, y)}"/><path class="cc-line fr gap" d="${gapPath(france, x, y)}"/>
+      <path class="cc-line tw gap" d="${gapPath(town, x, y)}"/>
       <path class="cc-line tw" d="${linePath(town, x, y)}"/>
       ${town.map((v, i) => (v == null ? "" : `<circle class="cc-dot" cx="${x(i)}" cy="${y(v)}" r="3.2"/>`)).join("")}
       ${placed.map((l) => `<text class="end-label cc-${l.cls}" x="${x(l.i) + 8}" y="${l.ly}">${esc(l.txt.length > 14 ? `${l.txt.slice(0, 13)}…` : l.txt)} <tspan class="v">${numFmt(l.v)}</tspan></text>`).join("")}

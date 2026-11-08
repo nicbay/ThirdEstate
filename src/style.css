@@ -874,6 +874,8 @@ body { overflow-x: clip; }
 .cc-line.tw { stroke: var(--accent); stroke-width: 2.6; }
 .cc-line.fr { stroke: var(--ink); stroke-width: 1.8; stroke-dasharray: 5 4; }
 .cc-line.dp { stroke: var(--ink-3); stroke-width: 1.2; stroke-dasharray: 1.5 3; opacity: 0.8; }
+.cc-line.gap { stroke-dasharray: 3 5; opacity: 0.5; }
+.cc-line.tw.gap { stroke-width: 2; stroke-dasharray: 5 5; opacity: 0.6; }
 .cc-dot { fill: var(--accent); stroke: var(--paper); stroke-width: 1.5; }
 .chart .end-label.cc-tw { fill: var(--accent); }
 .chart .end-label.cc-fr { fill: var(--ink); }
@@ -884,6 +886,7 @@ body { overflow-x: clip; }
 .crime-spark path { fill: none; stroke-linejoin: round; }
 .crime-spark .tw { stroke: var(--accent); stroke-width: 1.8; }
 .crime-spark .fr { stroke: var(--ink-3); stroke-width: 1.2; stroke-dasharray: 3 2.5; }
+.crime-spark .gap { stroke-dasharray: 2 2.5; opacity: 0.55; }
 .crime-spark circle { fill: var(--accent); }
 .crime-table .spark-cell { width: 100px; padding-right: 0.4rem; }
 .crime-table tr[data-crime][tabindex] { cursor: pointer; }
