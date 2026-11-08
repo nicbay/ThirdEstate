@@ -1,0 +1,486 @@
+{
+  "slug": "arthaud",
+  "candidate": "Nathalie Arthaud",
+  "party": "Lutte ouvrière",
+  "lite": true,
+  "status": "published",
+  "statusNote": {
+    "fr": "Brochure de campagne « Présidentielle 2027 » diffusée par Lutte ouvrière en mai 2026 ; comme en 2022, le parti présente des revendications à imposer par les luttes, sans programme de gouvernement ni chiffrage.",
+    "en": "\"Présidentielle 2027\" campaign brochure released by Lutte ouvrière in May 2026; as in 2022, the party presents demands to be won through struggle, with no government programme or costing."
+  },
+  "versions": [
+    {
+      "id": "p22",
+      "year": 2022,
+      "label": {
+        "fr": "Brochure 2022",
+        "en": "2022 brochure"
+      },
+      "title": "Nathalie Arthaud, candidate à l'élection présidentielle",
+      "date": "2022-01",
+      "url": "https://audio.lutte-ouvriere.org/medias/document/fichiers/2022/03/brochure-janvier_2022_bd.pdf",
+      "kind": "pdf"
+    },
+    {
+      "id": "p27",
+      "year": 2026,
+      "label": {
+        "fr": "Brochure 2027",
+        "en": "2027 brochure"
+      },
+      "title": "Nathalie Arthaud — Présidentielle 2027",
+      "date": "2026-05",
+      "url": "https://www.lutte-ouvriere.org/medias/document/fichiers/2026/06/brochure_caravane_2026-01_-_couleur.pdf",
+      "kind": "pdf"
+    }
+  ],
+  "measures": [
+    {
+      "id": "m01",
+      "theme": "travail",
+      "status": "modified",
+      "texts": {
+        "p22": "Aucun salaire, aucune allocation, aucune pension ne doit être inférieur à 2 000 euros net par mois !",
+        "p27": "Aujourd'hui il faut gagner au moins 2 200 euros net par mois pour s'en sortir. Eh bien voilà ce que nous devons exiger !"
+      },
+      "change": {
+        "fr": "Plancher de revenu : 2 000 € net (2022) → 2 200 € net (2026), pour les salaires, pensions et allocations.",
+        "en": "Income floor: €2,000 net (2022) → €2,200 net (2026), for wages, pensions and benefits."
+      },
+      "sources": [
+        {
+          "title": "Lutte ouvrière — brochure de campagne « Nathalie Arthaud, candidate à l'élection présidentielle » (janvier 2022, PDF)",
+          "url": "https://audio.lutte-ouvriere.org/medias/document/fichiers/2022/03/brochure-janvier_2022_bd.pdf"
+        },
+        {
+          "title": "Lutte ouvrière — brochure « Nathalie Arthaud, Présidentielle 2027 » (fête annuelle, mai 2026, PDF)",
+          "url": "https://www.lutte-ouvriere.org/medias/document/fichiers/2026/06/brochure_caravane_2026-01_-_couleur.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": {
+        "fr": "Le Smic se fixe par décret ; un plancher pour l'ensemble des salaires, pensions et minima supposerait plusieurs lois.",
+        "en": "The minimum wage is set by decree; a floor for all wages, pensions and benefits would require several laws."
+      },
+      "feasibility": "low",
+      "feasibilityNote": {
+        "fr": "Lutte ouvrière présente ces mesures comme des revendications à imposer par les luttes, non comme un programme de gouvernement chiffré.",
+        "en": "Lutte ouvrière presents these as demands to be won through struggle, not as a costed government programme."
+      },
+      "broadBenefit": true
+    },
+    {
+      "id": "m02",
+      "theme": "social",
+      "status": "maintained",
+      "texts": {
+        "p22": "Face à l'inflation, il faut indexer les salaires sur les prix. Il faut que les salaires, les pensions et les allocations augmentent au rythme des hausses.",
+        "p27": "Nous devons imposer une augmentation massive des salaires, des allocations et des pensions et leur indexation sur la hausse des prix : quand les prix montent, notre salaire doit suivre !"
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Lutte ouvrière — brochure de campagne « Nathalie Arthaud, candidate à l'élection présidentielle » (janvier 2022, PDF)",
+          "url": "https://audio.lutte-ouvriere.org/medias/document/fichiers/2022/03/brochure-janvier_2022_bd.pdf"
+        },
+        {
+          "title": "Lutte ouvrière — brochure « Nathalie Arthaud, Présidentielle 2027 » (fête annuelle, mai 2026, PDF)",
+          "url": "https://www.lutte-ouvriere.org/medias/document/fichiers/2026/06/brochure_caravane_2026-01_-_couleur.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": {
+        "fr": "L'article L3231-3 du code du travail interdit les clauses d'indexation sur les prix dans les accords collectifs : une loi serait nécessaire.",
+        "en": "Article L3231-3 of the Labour Code bans price-indexation clauses in collective agreements: a law would be needed."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "m03",
+      "theme": "travail",
+      "status": "maintained",
+      "texts": {
+        "p22": "Il faut imposer la répartition du travail entre tous, sans baisse des salaires. Oui, il faut imposer de travailler moins pour travailler tous !",
+        "p27": "Pour que personne ne soit condamné au chômage, il faut recenser les besoins et imposer que le travail soit réparti entre tous. Il faut baisser le temps et la charge de travail sans perte de salaire."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Lutte ouvrière — brochure de campagne « Nathalie Arthaud, candidate à l'élection présidentielle » (janvier 2022, PDF)",
+          "url": "https://audio.lutte-ouvriere.org/medias/document/fichiers/2022/03/brochure-janvier_2022_bd.pdf"
+        },
+        {
+          "title": "Lutte ouvrière — brochure « Nathalie Arthaud, Présidentielle 2027 » (fête annuelle, mai 2026, PDF)",
+          "url": "https://www.lutte-ouvriere.org/medias/document/fichiers/2026/06/brochure_caravane_2026-01_-_couleur.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "unknown",
+      "legalNote": null,
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "m04",
+      "theme": "institutions",
+      "status": "maintained",
+      "texts": {
+        "p22": "Il faut rompre avec cette politique et imposer l'embauche de personnel dans tous les services publics indispensables à la population, à commencer par les hôpitaux et les Ehpad.",
+        "p27": "Si nous demandions au personnel des hôpitaux, des Ehpad, de l'éducation, des transports publics, d'établir une liste d'embauches dont ils auraient besoin, on arriverait à des centaines de milliers d'emplois à créer tout de suite !"
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Lutte ouvrière — brochure de campagne « Nathalie Arthaud, candidate à l'élection présidentielle » (janvier 2022, PDF)",
+          "url": "https://audio.lutte-ouvriere.org/medias/document/fichiers/2022/03/brochure-janvier_2022_bd.pdf"
+        },
+        {
+          "title": "Lutte ouvrière — brochure « Nathalie Arthaud, Présidentielle 2027 » (fête annuelle, mai 2026, PDF)",
+          "url": "https://www.lutte-ouvriere.org/medias/document/fichiers/2026/06/brochure_caravane_2026-01_-_couleur.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "m05",
+      "theme": "economie",
+      "status": "maintained",
+      "texts": {
+        "p22": "Les travailleurs doivent imposer leur contrôle sur l'économie et supprimer le secret industriel et commercial !",
+        "p27": "Levée du secret commercial et du secret des affaires pour rendre publics les comptes de ces grandes entreprises, y compris ceux qui sont cachés !"
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Lutte ouvrière — brochure de campagne « Nathalie Arthaud, candidate à l'élection présidentielle » (janvier 2022, PDF)",
+          "url": "https://audio.lutte-ouvriere.org/medias/document/fichiers/2022/03/brochure-janvier_2022_bd.pdf"
+        },
+        {
+          "title": "Lutte ouvrière — brochure « Nathalie Arthaud, Présidentielle 2027 » (fête annuelle, mai 2026, PDF)",
+          "url": "https://www.lutte-ouvriere.org/medias/document/fichiers/2026/06/brochure_caravane_2026-01_-_couleur.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": {
+        "fr": "Le secret des affaires est protégé par la directive (UE) 2016/943, transposée en droit français en 2018.",
+        "en": "Trade secrets are protected by Directive (EU) 2016/943, transposed into French law in 2018."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m06",
+      "theme": "economie",
+      "status": "modified",
+      "texts": {
+        "p22": "Les riverains des installations doivent pouvoir connaître et contrôler, au jour le jour, ce qui est rejeté dans l'atmosphère, les sols ou les nappes phréatiques.",
+        "p27": "Imposer que l'intégralité des comptes des grandes entreprises soit rendue publique ; imposer la transparence complète de leurs circuits financiers."
+      },
+      "change": {
+        "fr": "Contrôle par les travailleurs et les riverains (2022) → publication intégrale des comptes et des circuits financiers des grands groupes (2026).",
+        "en": "Control by workers and local residents (2022) → full publication of large groups' accounts and financial flows (2026)."
+      },
+      "sources": [
+        {
+          "title": "Lutte ouvrière — brochure de campagne « Nathalie Arthaud, candidate à l'élection présidentielle » (janvier 2022, PDF)",
+          "url": "https://audio.lutte-ouvriere.org/medias/document/fichiers/2022/03/brochure-janvier_2022_bd.pdf"
+        },
+        {
+          "title": "Lutte ouvrière — brochure « Nathalie Arthaud, Présidentielle 2027 » (fête annuelle, mai 2026, PDF)",
+          "url": "https://www.lutte-ouvriere.org/medias/document/fichiers/2026/06/brochure_caravane_2026-01_-_couleur.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "risk",
+      "legalNote": {
+        "fr": "Se heurte au secret des affaires (directive (UE) 2016/943) et au secret bancaire.",
+        "en": "Conflicts with trade secrecy (Directive (EU) 2016/943) and banking secrecy."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m07",
+      "theme": "budget",
+      "status": "new",
+      "texts": {
+        "p27": "Confiscation des bénéfices de ces profiteurs de guerre : les milliards pour les hôpitaux, les écoles, pas pour la guerre !"
+      },
+      "change": {
+        "fr": "Revendication nouvelle en 2026, visant les groupes pétroliers et d'armement.",
+        "en": "New 2026 demand, aimed at oil and arms groups."
+      },
+      "sources": [
+        {
+          "title": "Lutte ouvrière — brochure « Nathalie Arthaud, Présidentielle 2027 » (fête annuelle, mai 2026, PDF)",
+          "url": "https://www.lutte-ouvriere.org/medias/document/fichiers/2026/06/brochure_caravane_2026-01_-_couleur.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "unconstitutional-precedent",
+      "legalNote": {
+        "fr": "Le Conseil constitutionnel censure les prélèvements à caractère confiscatoire (décision n° 2012-662 DC du 29 décembre 2012).",
+        "en": "The Constitutional Council strikes down confiscatory levies (decision no. 2012-662 DC of 29 December 2012)."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m08",
+      "theme": "economie",
+      "status": "modified",
+      "texts": {
+        "p22": "L'avenir dépend de la prochaine révolution du monde du travail, de sa capacité à renverser le capitalisme, à exproprier la bourgeoisie et à prendre le pouvoir.",
+        "p27": "Expropriation sans indemnité ni rachat de leurs actionnaires en commençant par ceux de l'industrie pétrolière et des industries de guerre !"
+      },
+      "change": {
+        "fr": "Perspective générale d'expropriation (2022) → revendication ciblée sur le pétrole et l'armement, explicitement sans indemnité (2026).",
+        "en": "General aim of expropriation (2022) → demand targeting oil and arms, explicitly without compensation (2026)."
+      },
+      "sources": [
+        {
+          "title": "Lutte ouvrière — brochure de campagne « Nathalie Arthaud, candidate à l'élection présidentielle » (janvier 2022, PDF)",
+          "url": "https://audio.lutte-ouvriere.org/medias/document/fichiers/2022/03/brochure-janvier_2022_bd.pdf"
+        },
+        {
+          "title": "Lutte ouvrière — brochure « Nathalie Arthaud, Présidentielle 2027 » (fête annuelle, mai 2026, PDF)",
+          "url": "https://www.lutte-ouvriere.org/medias/document/fichiers/2026/06/brochure_caravane_2026-01_-_couleur.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "unconstitutional-precedent",
+      "legalNote": {
+        "fr": "Toute privation de propriété exige une « juste et préalable indemnité » (article 17 de la Déclaration de 1789) ; le Conseil constitutionnel l'a appliqué aux nationalisations (décision n° 81-132 DC du 16 janvier 1982).",
+        "en": "Any deprivation of property requires \"fair and prior compensation\" (Article 17 of the 1789 Declaration); the Constitutional Council applied this to nationalisations (decision no. 81-132 DC of 16 January 1982)."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m09",
+      "theme": "immigration",
+      "status": "modified",
+      "texts": {
+        "p22": "Les travailleuses et travailleurs immigrés sont nos sœurs et nos frères d'exploitation et de combat. La démagogie raciste, antimusulmans ou anti-immigrés est stupide et répugnante.",
+        "p27": "À bas les barbelés, les traques, les expulsions ! À bas l'Europe-forteresse ! Régularisation de tous les sans-papiers, liberté de circulation et d'installation pour chaque être humain de cette planète !"
+      },
+      "change": {
+        "fr": "Défense des travailleurs immigrés (2022) → régularisation de tous les sans-papiers et liberté de circulation et d'installation (2026).",
+        "en": "Defence of immigrant workers (2022) → regularising all undocumented migrants and freedom of movement and settlement (2026)."
+      },
+      "sources": [
+        {
+          "title": "Lutte ouvrière — brochure de campagne « Nathalie Arthaud, candidate à l'élection présidentielle » (janvier 2022, PDF)",
+          "url": "https://audio.lutte-ouvriere.org/medias/document/fichiers/2022/03/brochure-janvier_2022_bd.pdf"
+        },
+        {
+          "title": "Lutte ouvrière — brochure « Nathalie Arthaud, Présidentielle 2027 » (fête annuelle, mai 2026, PDF)",
+          "url": "https://www.lutte-ouvriere.org/medias/document/fichiers/2026/06/brochure_caravane_2026-01_-_couleur.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": {
+        "fr": "La liberté d'installation générale contredit le code frontières Schengen et le droit européen de l'asile et de l'immigration ; la régularisation relève, elle, du droit national.",
+        "en": "General freedom of settlement conflicts with the Schengen Borders Code and EU asylum and migration law; regularisation itself is national law."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m10",
+      "theme": "economie",
+      "status": "modified",
+      "texts": {
+        "p22": "Prétendre que la relocalisation serait synonyme de créations d'emploi est un mensonge.",
+        "p27": "Le protectionnisme ne protège ni l'emploi ni les salaires, il est une arme des capitalistes dans leur guerre contre d'autres capitalistes."
+      },
+      "change": {
+        "fr": "Critique de la relocalisation (2022) → rejet explicite du protectionnisme (2026).",
+        "en": "Criticism of reshoring (2022) → explicit rejection of protectionism (2026)."
+      },
+      "sources": [
+        {
+          "title": "Lutte ouvrière — brochure de campagne « Nathalie Arthaud, candidate à l'élection présidentielle » (janvier 2022, PDF)",
+          "url": "https://audio.lutte-ouvriere.org/medias/document/fichiers/2022/03/brochure-janvier_2022_bd.pdf"
+        },
+        {
+          "title": "Lutte ouvrière — brochure « Nathalie Arthaud, Présidentielle 2027 » (fête annuelle, mai 2026, PDF)",
+          "url": "https://www.lutte-ouvriere.org/medias/document/fichiers/2026/06/brochure_caravane_2026-01_-_couleur.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "unknown",
+      "legalNote": null,
+      "feasibility": null,
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m11",
+      "theme": "international",
+      "status": "modified",
+      "texts": {
+        "p22": "Il n'y a pas de solution dans le cadre de ce système capitaliste, pas de solution au chômage, aux inégalités, à la crise climatique, aux guerres.",
+        "p27": "Ministres et députés imposent l'austérité budgétaire mais votent 36 milliards de rallonge pour l'armée quasiment sans discussion. La seule guerre que les travailleurs doivent se préparer à mener, c'est celle contre le capitalisme."
+      },
+      "change": {
+        "fr": "Critique générale des guerres (2022) → opposition explicite à la hausse du budget militaire (2026).",
+        "en": "General criticism of wars (2022) → explicit opposition to higher military spending (2026)."
+      },
+      "sources": [
+        {
+          "title": "Lutte ouvrière — brochure de campagne « Nathalie Arthaud, candidate à l'élection présidentielle » (janvier 2022, PDF)",
+          "url": "https://audio.lutte-ouvriere.org/medias/document/fichiers/2022/03/brochure-janvier_2022_bd.pdf"
+        },
+        {
+          "title": "Lutte ouvrière — brochure « Nathalie Arthaud, Présidentielle 2027 » (fête annuelle, mai 2026, PDF)",
+          "url": "https://www.lutte-ouvriere.org/medias/document/fichiers/2026/06/brochure_caravane_2026-01_-_couleur.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "unknown",
+      "legalNote": null,
+      "feasibility": null,
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m12",
+      "theme": "ecologie",
+      "status": "maintained",
+      "texts": {
+        "p22": "Sur toutes les questions écologiques, une politique concertée et planifiée à l'échelle de la planète est indispensable.",
+        "p27": "La classe capitaliste entraîne toute l'humanité vers une catastrophe sociale, la destruction du climat et même vers une nouvelle guerre mondiale. La seule voie pour enrayer cette évolution mortifère, c'est arracher le pouvoir à cette classe irresponsable."
+      },
+      "change": {
+        "fr": "Planification écologique mondiale (2022) ; le climat est lié à la prise du pouvoir (2026).",
+        "en": "Global ecological planning (2022); climate tied to taking power (2026)."
+      },
+      "sources": [
+        {
+          "title": "Lutte ouvrière — brochure de campagne « Nathalie Arthaud, candidate à l'élection présidentielle » (janvier 2022, PDF)",
+          "url": "https://audio.lutte-ouvriere.org/medias/document/fichiers/2022/03/brochure-janvier_2022_bd.pdf"
+        },
+        {
+          "title": "Lutte ouvrière — brochure « Nathalie Arthaud, Présidentielle 2027 » (fête annuelle, mai 2026, PDF)",
+          "url": "https://www.lutte-ouvriere.org/medias/document/fichiers/2026/06/brochure_caravane_2026-01_-_couleur.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "unknown",
+      "legalNote": null,
+      "feasibility": null,
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m13",
+      "theme": "agriculture",
+      "status": "modified",
+      "texts": {
+        "p22": "Les travailleurs pourraient être leurs meilleurs alliés [des petits paysans] en rendant publiques les marges de tous les intermédiaires, notamment celles des groupes de la grande distribution.",
+        "p27": "Les prix des produits alimentaires sont négociés chaque année entre la grande distribution et les industriels de l'agroalimentaire. Chacun de ces géants prend sa marge et à la fin, les classes populaires paient toujours plus cher."
+      },
+      "change": {
+        "fr": "Publication des marges proposée en 2022 ; en 2026, constat sur les marges sans revendication spécifique distincte de la levée du secret des affaires.",
+        "en": "Publishing margins proposed in 2022; in 2026, a diagnosis of margins without a separate demand beyond lifting trade secrecy."
+      },
+      "sources": [
+        {
+          "title": "Lutte ouvrière — brochure de campagne « Nathalie Arthaud, candidate à l'élection présidentielle » (janvier 2022, PDF)",
+          "url": "https://audio.lutte-ouvriere.org/medias/document/fichiers/2022/03/brochure-janvier_2022_bd.pdf"
+        },
+        {
+          "title": "Lutte ouvrière — brochure « Nathalie Arthaud, Présidentielle 2027 » (fête annuelle, mai 2026, PDF)",
+          "url": "https://www.lutte-ouvriere.org/medias/document/fichiers/2026/06/brochure_caravane_2026-01_-_couleur.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "unknown",
+      "legalNote": null,
+      "feasibility": null,
+      "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "m14",
+      "theme": "institutions",
+      "status": "maintained",
+      "texts": {
+        "p22": "Je ne me présente pas avec un programme de gouvernement, parce que je ne veux pas être une gestionnaire de ce système qui ne fonctionne bien que pour les riches, je me bats pour le renverser !",
+        "p27": "Le programme que défend Nathalie Arthaud lors de l'élection présidentielle 2027 n'est pas un programme que l'on peut espérer réaliser par le biais des élections."
+      },
+      "change": {
+        "fr": "Même conception : des revendications à imposer par les luttes, pas un programme électoral.",
+        "en": "Same approach: demands to be won through struggle, not an electoral programme."
+      },
+      "sources": [
+        {
+          "title": "Lutte ouvrière — brochure de campagne « Nathalie Arthaud, candidate à l'élection présidentielle » (janvier 2022, PDF)",
+          "url": "https://audio.lutte-ouvriere.org/medias/document/fichiers/2022/03/brochure-janvier_2022_bd.pdf"
+        },
+        {
+          "title": "Lutte ouvrière — brochure « Nathalie Arthaud, Présidentielle 2027 » (fête annuelle, mai 2026, PDF)",
+          "url": "https://www.lutte-ouvriere.org/medias/document/fichiers/2026/06/brochure_caravane_2026-01_-_couleur.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "unknown",
+      "legalNote": null,
+      "feasibility": null,
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m15",
+      "theme": "economie",
+      "status": "modified",
+      "texts": {
+        "p22": "Dans les entreprises où l'activité est réduite, il faut baisser les cadences et le temps de travail, avec maintien intégral des salaires.",
+        "p27": "Selon la CGT, il y aurait quelque 500 plans de licenciements en cours ; aucun travailleur ne peut vivre sans salaire."
+      },
+      "change": {
+        "fr": "Réponse au chômage partiel (2022) → réponse aux plans de licenciements, y compris liés à l'intelligence artificielle (2026).",
+        "en": "Response to short-time work (2022) → response to redundancy plans, including AI-related ones (2026)."
+      },
+      "sources": [
+        {
+          "title": "Lutte ouvrière — brochure de campagne « Nathalie Arthaud, candidate à l'élection présidentielle » (janvier 2022, PDF)",
+          "url": "https://audio.lutte-ouvriere.org/medias/document/fichiers/2022/03/brochure-janvier_2022_bd.pdf"
+        },
+        {
+          "title": "Lutte ouvrière — brochure « Nathalie Arthaud, Présidentielle 2027 » (fête annuelle, mai 2026, PDF)",
+          "url": "https://www.lutte-ouvriere.org/medias/document/fichiers/2026/06/brochure_caravane_2026-01_-_couleur.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "unknown",
+      "legalNote": null,
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": true
+    }
+  ],
+  "costing": null,
+  "summary": {
+    "fr": "Les documents de Lutte ouvrière pour 2022 et 2027 avancent des revendications pour les salariés (plancher de revenu, indexation des salaires sur les prix, répartition du travail sans perte de salaire, embauches dans les services publics, levée du secret des affaires) dans une perspective de renversement du capitalisme, et non un programme de gouvernement. Entre 2022 et 2026, le plancher passe de 2 000 à 2 200 € net, et s'ajoutent la confiscation des bénéfices et l'expropriation sans indemnité des groupes pétroliers et d'armement, la régularisation de tous les sans-papiers et l'opposition à la hausse du budget militaire. Aucun organisme indépendant n'a chiffré ce programme : l'Institut Montaigne et l'iFRAP ne l'avaient pas inclus en 2022.",
+    "en": "Lutte ouvrière's 2022 and 2027 documents set out demands for workers (an income floor, wage indexation on prices, sharing work without pay loss, public-service hiring, lifting trade secrecy) with the aim of overthrowing capitalism, not a government programme. Between 2022 and 2026 the floor rises from €2,000 to €2,200 net, and new demands appear: confiscating profits and expropriating oil and arms groups without compensation, regularising all undocumented migrants and opposing higher military spending. No independent body has costed this programme: Institut Montaigne and iFRAP did not include it in 2022."
+  }
+}

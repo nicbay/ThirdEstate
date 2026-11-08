@@ -1,0 +1,1108 @@
+{
+  "slug": "roussel",
+  "candidate": "Fabien Roussel",
+  "party": "Parti communiste français",
+  "lite": true,
+  "status": "partial",
+  "statusNote": {
+    "fr": "Candidat investi par 72 % des adhérents du PCF le 6 septembre 2026 ; pas de programme 2027 complet publié à ce jour, seulement des annonces (industrie, électricité, salaires, fraude fiscale) ; aucune date de publication annoncée.",
+    "en": "Nominated by 72% of PCF members on 6 September 2026; no full 2027 programme published yet, only announcements (industry, electricity, wages, tax fraud); no publication date announced."
+  },
+  "versions": [
+    {
+      "id": "p22",
+      "year": 2022,
+      "label": {
+        "fr": "Programme 2022",
+        "en": "2022 programme"
+      },
+      "title": "La France des jours heureux",
+      "date": "2022-01",
+      "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394",
+      "kind": "pdf"
+    },
+    {
+      "id": "p24",
+      "year": 2024,
+      "label": {
+        "fr": "Contrat NFP 2024 (coalition)",
+        "en": "2024 NFP contract (coalition)"
+      },
+      "title": "Nouveau Front populaire — Contrat de législature",
+      "date": "2024-06",
+      "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf",
+      "kind": "pdf"
+    },
+    {
+      "id": "p27",
+      "year": 2026,
+      "label": {
+        "fr": "Annonces 2026-2027",
+        "en": "2026-2027 announcements"
+      },
+      "title": "Campagne « Vivre » — annonces",
+      "date": "2026-09",
+      "url": "https://lcp.fr/actualites/fabien-roussel-officiellement-candidat-du-pcf-a-l-election-presidentielle-de-2027-441389",
+      "kind": "announcements"
+    }
+  ],
+  "measures": [
+    {
+      "id": "m01",
+      "theme": "travail",
+      "status": "modified",
+      "texts": {
+        "p22": "Smic à 1 500 € net (1 923 € brut).",
+        "p24": "Augmenter les salaires par le passage du SMIC à 1600€ net.",
+        "p27": "Porter le Smic à « 2.200 euros brut », avec un « coup de pouce » et l'indexation des salaires."
+      },
+      "change": {
+        "fr": "Smic : 1 500 € net (2022) → 1 600 € net (NFP 2024) → 2 200 € brut (2026).",
+        "en": "Minimum wage: €1,500 net (2022) → €1,600 net (NFP 2024) → €2,200 gross (2026)."
+      },
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "Institut Montaigne 2022 — Revaloriser le Smic net à 1 500 € net",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/fabien-roussel/augmenter-le-smic-net-a-1-500e-net"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        },
+        {
+          "title": "Institut Montaigne 2024 — Augmenter le Smic à 1 600 € net",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/augmenter-le-smic-a-1600-e-net"
+        },
+        {
+          "title": "BFM TV (07/11/2026, titre repris par Shango) — Crise sociale : pour Fabien Roussel, il faut augmenter le Smic",
+          "url": "https://www.shango.media/bfm-tv-crise-sociale-pour-fabien-roussel-candidat-pcf-a-la-presidentielle-il-faut-augmenter-le-smic-12028931"
+        }
+      ],
+      "cost": {
+        "value": -19,
+        "low": -21,
+        "high": -17,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/augmenter-le-smic-a-1600-e-net",
+        "note": {
+          "fr": "Chiffrage du Smic à 1 600 € net (version NFP 2024), effets budgétaires à moyen terme. En 2022, Montaigne estimait le Smic à 1 500 € net à 4,7 Md€ par an. La version 2026 (2 200 € brut) n'est pas chiffrée.",
+          "en": "Costing of the €1,600 net minimum wage (NFP 2024 version), medium-term budget effects. In 2022 Montaigne put the €1,500 net version at €4.7bn a year. The 2026 version (€2,200 gross) has not been costed."
+        }
+      },
+      "legal": "ok",
+      "legalNote": {
+        "fr": "Revalorisation possible par décret.",
+        "en": "Can be raised by decree."
+      },
+      "feasibility": "medium",
+      "feasibilityNote": {
+        "fr": "Hausse rapide et importante du coût du travail ; l'Institut Montaigne relève des effets sur l'emploi et les exonérations de cotisations.",
+        "en": "Fast, large rise in labour costs; Institut Montaigne notes effects on jobs and on contribution exemptions."
+      },
+      "broadBenefit": true
+    },
+    {
+      "id": "m02",
+      "theme": "social",
+      "status": "modified",
+      "texts": {
+        "p22": "Augmentation générale des salaires, des minima sociaux, des pensions.",
+        "p24": "Indexer les salaires sur l'inflation.",
+        "p27": "Hausse de 5 % de tous les salaires et pensions inférieurs à 2 500 € net par mois et indexation de tous les salaires sur l'inflation (demande de mai 2026)."
+      },
+      "change": {
+        "fr": "Hausse générale non chiffrée (2022) → indexation sur l'inflation (2024) → +5 % sous 2 500 € net et indexation (2026).",
+        "en": "Unquantified general rise (2022) → indexation on inflation (2024) → +5% below €2,500 net plus indexation (2026)."
+      },
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        },
+        {
+          "title": "Institut Montaigne 2024 — Indexer les salaires sur l'inflation",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/indexer-les-salaires-sur-linflation"
+        },
+        {
+          "title": "Public Sénat (30/10/2026) — Présidentielle : que proposent les candidats pour augmenter les salaires ?",
+          "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-que-proposent-les-candidats-pour-augmenter-les-salaires"
+        }
+      ],
+      "cost": {
+        "value": -10.5,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/indexer-les-salaires-sur-linflation",
+        "note": {
+          "fr": "Coût pour les finances publiques de l'indexation des salaires (version NFP), à horizon 2027 (rémunérations publiques). La hausse de 5 % de 2026 n'est pas chiffrée.",
+          "en": "Public-finance cost of wage indexation (NFP version), by 2027 (public pay). The 2026 5% rise has not been costed."
+        }
+      },
+      "legal": "ok",
+      "legalNote": {
+        "fr": "L'article L3231-3 du code du travail interdit les clauses d'indexation sur les prix dans les accords collectifs : une loi serait nécessaire.",
+        "en": "Article L3231-3 of the Labour Code bans price-indexation clauses in collective agreements: a law would be needed."
+      },
+      "feasibility": "low",
+      "feasibilityNote": {
+        "fr": "Dans le privé, la hausse serait à la charge des employeurs.",
+        "en": "In the private sector the rise would be paid by employers."
+      },
+      "broadBenefit": true
+    },
+    {
+      "id": "m03",
+      "theme": "travail",
+      "status": "modified",
+      "texts": {
+        "p22": "Les salaires de la fonction publique seront augmentés de 30 %.",
+        "p24": "Hausse de 10% du point d'indice des fonctionnaires (intégralement compensée pour les collectivités territoriales)."
+      },
+      "change": {
+        "fr": "Fonction publique : +30 % (2022) → point d'indice +10 % (NFP 2024). Pas de chiffre 2027 sourcé.",
+        "en": "Civil service pay: +30% (2022) → index point +10% (NFP 2024). No sourced 2027 figure."
+      },
+      "sources": [
+        {
+          "title": "Institut Montaigne 2022 — Augmenter les salaires de la fonction publique de 30 %",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/fabien-roussel/augmenter-les-salaires-de-la-fonction-publique-de-30-2"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        }
+      ],
+      "cost": {
+        "value": -76,
+        "low": -91,
+        "high": -61,
+        "by": "Institut Montaigne 2022",
+        "url": "https://www.institutmontaigne.org/presidentielle-2022/fabien-roussel/augmenter-les-salaires-de-la-fonction-publique-de-30-2",
+        "note": {
+          "fr": "Version 2022 (+30 %). Bas : hors cotisations employeurs ; haut : avec cotisations.",
+          "en": "2022 version (+30%). Low: excluding employer contributions; high: including them."
+        }
+      },
+      "legal": "ok",
+      "legalNote": {
+        "fr": "Hausse du point d'indice par voie réglementaire et loi de finances.",
+        "en": "Index point rise via regulation and the budget law."
+      },
+      "feasibility": "low",
+      "feasibilityNote": {
+        "fr": "« Coût financier très significatif » (Institut Montaigne).",
+        "en": "\"Very significant financial cost\" (Institut Montaigne)."
+      },
+      "broadBenefit": false
+    },
+    {
+      "id": "m04",
+      "theme": "social",
+      "status": "modified",
+      "texts": {
+        "p22": "Une loi rétablira la retraite à 60 ans, à taux plein. La pension atteindra 75 % du revenu net d'activité, dans le secteur public comme dans le secteur privé.",
+        "p24": "Abroger immédiatement les décrets d'application de la réforme passant l'âge de départ à 64 ans ; réaffirmer l'objectif commun du droit à la retraite à 60 ans."
+      },
+      "change": {
+        "fr": "Loi de retour à 60 ans à taux plein (2022) → abrogation du passage à 64 ans et « objectif » de 60 ans (NFP 2024). Pas de texte 2027 sourcé.",
+        "en": "Law restoring retirement at 60 on a full pension (2022) → repeal of the move to 64 and an \"objective\" of 60 (NFP 2024). No sourced 2027 text."
+      },
+      "sources": [
+        {
+          "title": "Institut Montaigne 2022 — Restaurer la retraite à 60 ans à taux plein",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/fabien-roussel/restaurer-la-retraite-a-60-ans-a-taux-plein-porter-la-pension-a-75-du-revenu-net-des-dix-meilleures-annees-pour-le-public-et-le-prive"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        },
+        {
+          "title": "Institut Montaigne 2024 — Abroger la réforme des retraites, restaurer la retraite à 60 ans",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/abroger-la-reforme-des-retraites-restaurer-la-retraite-a-60-ans-en-prenant-en-compte-le-rsa-en-portant-le-minimum-contributif-au-smic"
+        }
+      ],
+      "cost": {
+        "value": -58,
+        "low": -67,
+        "high": -49,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/abroger-la-reforme-des-retraites-restaurer-la-retraite-a-60-ans-en-prenant-en-compte-le-rsa-en-portant-le-minimum-contributif-au-smic",
+        "note": {
+          "fr": "Version NFP 2024, à horizon 2027. La version 2022 (60 ans + pension à 75 %) était estimée à 87,7 Md€ par an (54,8 à 176,6), contre 30 à 40 Md€ selon le candidat.",
+          "en": "NFP 2024 version, by 2027. The 2022 version (60 + 75% pension) was put at €87.7bn a year (54.8 to 176.6), versus €30–40bn according to the candidate."
+        }
+      },
+      "legal": "ok",
+      "legalNote": {
+        "fr": "Disposition législative (loi de financement de la sécurité sociale).",
+        "en": "Requires legislation (social security financing law)."
+      },
+      "feasibility": "low",
+      "feasibilityNote": {
+        "fr": "Coût élevé et croissant avec le vieillissement.",
+        "en": "High cost, rising with population ageing."
+      },
+      "broadBenefit": true
+    },
+    {
+      "id": "m05",
+      "theme": "social",
+      "status": "modified",
+      "texts": {
+        "p22": "Aucune pension inférieure à 1 200 € net.",
+        "p24": "Augmenter le minimum contributif (pension de retraite pour une carrière complète) au niveau du SMIC et le minimum vieillesse au niveau du seuil de pauvreté."
+      },
+      "change": {
+        "fr": "Pension minimale 1 200 € net (2022) → minimum contributif au niveau du Smic (NFP 2024).",
+        "en": "Minimum pension €1,200 net (2022) → contributory minimum at minimum-wage level (NFP 2024)."
+      },
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "m06",
+      "theme": "travail",
+      "status": "modified",
+      "texts": {
+        "p22": "La semaine de travail passera à 32 heures, sans diminution de salaires.",
+        "p24": "Rétablissement de la durée effective hebdomadaire du travail à 35 heures, passage aux 32 heures dans les métiers pénibles ou de nuit immédiatement et son extension par la négociation collective."
+      },
+      "change": {
+        "fr": "32 h pour tous (2022) → 35 h effectives et 32 h pour les métiers pénibles ou de nuit (NFP 2024).",
+        "en": "32-hour week for all (2022) → effective 35 hours and 32 hours for arduous or night jobs (NFP 2024)."
+      },
+      "sources": [
+        {
+          "title": "Institut Montaigne 2022 — Passer à la semaine de travail à 32h",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/fabien-roussel/passer-a-la-semaine-de-travail-a-32h"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        }
+      ],
+      "cost": {
+        "value": -6.2,
+        "low": -7.4,
+        "high": -4.8,
+        "by": "Institut Montaigne 2022",
+        "url": "https://www.institutmontaigne.org/presidentielle-2022/fabien-roussel/passer-a-la-semaine-de-travail-a-32h",
+        "note": {
+          "fr": "Coût pour les finances publiques de la version 2022 (32 h pour tous les salariés et fonctionnaires).",
+          "en": "Public-finance cost of the 2022 version (32 hours for all employees and civil servants)."
+        }
+      },
+      "legal": "ok",
+      "legalNote": {
+        "fr": "Évolution de la législation et concertation avec les partenaires sociaux.",
+        "en": "Requires legislation and consultation with social partners."
+      },
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "m07",
+      "theme": "budget",
+      "status": "maintained",
+      "texts": {
+        "p22": "Triplement de l'impôt sur la fortune et baisse de l'impôt sur le revenu des tranches inférieures, réduction de la TVA.",
+        "p24": "Rétablir un impôt de solidarité sur la fortune (ISF) renforcé avec un volet climatique.",
+        "p27": "Financement des hausses de salaires en partie par le rétablissement d'un impôt sur la fortune et la taxation des profits des multinationales."
+      },
+      "change": {
+        "fr": "Impôt sur la fortune maintenu ; la mention d'un « triplement » (2022) n'apparaît plus.",
+        "en": "Wealth tax kept; the 2022 \"tripling\" wording no longer appears."
+      },
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        },
+        {
+          "title": "Public Sénat (21/06/2024) — 150 milliards de dépenses supplémentaires d'ici fin 2027 : le NFP détaille le coût de son programme",
+          "url": "https://www.publicsenat.fr/actualites/economie/150-milliards-de-depenses-supplementaires-dici-fin-2027-le-nouveau-front-populaire-detaille-le-cout-de-son-programme"
+        },
+        {
+          "title": "Public Sénat (30/10/2026) — Présidentielle : que proposent les candidats pour augmenter les salaires ?",
+          "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-que-proposent-les-candidats-pour-augmenter-les-salaires"
+        }
+      ],
+      "cost": {
+        "value": 15,
+        "low": null,
+        "high": null,
+        "by": "Candidate",
+        "url": "https://www.publicsenat.fr/actualites/economie/150-milliards-de-depenses-supplementaires-dici-fin-2027-le-nouveau-front-populaire-detaille-le-cout-de-son-programme",
+        "note": {
+          "fr": "Rendement annoncé par le NFP en 2024 pour l'ISF (« jusqu'à 15 Md€ »). Pas de chiffrage indépendant trouvé pour la version PCF.",
+          "en": "Yield announced by the NFP in 2024 for the wealth tax (\"up to €15bn\"). No independent costing found for the PCF version."
+        }
+      },
+      "legal": "risk",
+      "legalNote": {
+        "fr": "Le Conseil constitutionnel exige que l'imposition du patrimoine tienne compte des facultés contributives et ne revête pas de caractère confiscatoire (décision n° 2012-662 DC du 29 décembre 2012).",
+        "en": "The Constitutional Council requires wealth taxation to reflect ability to pay and not be confiscatory (decision no. 2012-662 DC of 29 December 2012)."
+      },
+      "feasibility": "high",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m08",
+      "theme": "education",
+      "status": "modified",
+      "texts": {
+        "p22": "Revenu étudiant d'un montant minimum de 850 euros/mois.",
+        "p24": "Mettre en place une garantie d'autonomie qui complète les revenus des ménages situés sous le seuil de pauvreté (accessible dès 18 ans pour les personnes indépendantes fiscalement)."
+      },
+      "change": {
+        "fr": "Revenu universel étudiant (2022) → garantie d'autonomie sous condition de ressources (NFP 2024).",
+        "en": "Universal student income (2022) → means-tested autonomy guarantee (NFP 2024)."
+      },
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "Institut Montaigne 2022 — Créer un revenu étudiant de 850 € par mois",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/fabien-roussel/creer-un-revenu-etudiant-de-850-e-par-mois"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        }
+      ],
+      "cost": {
+        "value": -28.4,
+        "low": -30.9,
+        "high": -22.3,
+        "by": "Institut Montaigne 2022",
+        "url": "https://www.institutmontaigne.org/presidentielle-2022/fabien-roussel/creer-un-revenu-etudiant-de-850-e-par-mois",
+        "note": {
+          "fr": "Version 2022, versée à environ 2,9 millions d'étudiants sans condition de ressources ; la temporalité n'est pas précisée sur la fiche (montant annuel implicite).",
+          "en": "2022 version, paid to about 2.9 million students without means test; the page does not state the period (implicitly annual)."
+        }
+      },
+      "legal": "ok",
+      "legalNote": {
+        "fr": "Loi de finances.",
+        "en": "Budget law."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m09",
+      "theme": "institutions",
+      "status": "modified",
+      "texts": {
+        "p22": "Développons [les services publics] par l'embauche de 500 000 nouveaux agents. Plan de développement de l'hôpital avec 100 000 emplois créés ; 90 000 recrutements dans l'Éducation nationale.",
+        "p24": "Lancer le rattrapage des postes manquants de fonctionnaires à l'hôpital public, dans le soin et le médico-social."
+      },
+      "change": {
+        "fr": "Objectif chiffré de 500 000 agents (2022) → rattrapage non chiffré (NFP 2024).",
+        "en": "500,000 new public employees (2022) → unquantified catch-up (NFP 2024)."
+      },
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "low",
+      "feasibilityNote": {
+        "fr": "Recrutement massif contraint par les capacités de formation.",
+        "en": "Mass hiring constrained by training capacity."
+      },
+      "broadBenefit": false
+    },
+    {
+      "id": "m10",
+      "theme": "ecologie",
+      "status": "modified",
+      "texts": {
+        "p22": "Un mix énergétique nucléaire et renouvelable ; un service public avec EDF et Engie renationalisés (dont la construction de 6 EPR au minimum).",
+        "p27": "Le « doublement de la production d'électricité nucléaire, renouvelable, hydraulique »."
+      },
+      "change": {
+        "fr": "Mix nucléaire + renouvelables (6 EPR au minimum, 2022) → doublement de la production d'électricité (2026). Le contrat NFP 2024 ne tranchait pas sur le nucléaire.",
+        "en": "Nuclear + renewables mix (at least 6 EPRs, 2022) → doubling electricity output (2026). The 2024 NFP contract took no position on nuclear."
+      },
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "Institut Montaigne 2022 — fiche candidat Fabien Roussel (liste des propositions)",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/fabien-roussel/"
+        },
+        {
+          "title": "France 3 Hauts-de-France (07/09/2026) — Le communiste Fabien Roussel entre dans la course à la présidentielle",
+          "url": "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/le-communiste-fabien-roussel-entre-dans-la-course-a-la-presidentielle-les-premieres-reactions-3412619.html"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "low",
+      "feasibilityNote": {
+        "fr": "Délais de construction de réacteurs supérieurs à un quinquennat.",
+        "en": "Reactor build times exceed a five-year term."
+      },
+      "broadBenefit": false
+    },
+    {
+      "id": "m11",
+      "theme": "economie",
+      "status": "modified",
+      "texts": {
+        "p22": "Un plan de 140 milliards d'euros pour l'emploi et le climat ; blocage des délocalisations.",
+        "p27": "« Doubler la part d'industrie dans le PIB »."
+      },
+      "change": {
+        "fr": "Plan d'investissement chiffré (2022) → objectif de part de l'industrie dans le PIB (2026).",
+        "en": "Costed investment plan (2022) → target for industry's share of GDP (2026)."
+      },
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "France 3 Hauts-de-France (07/09/2026) — Le communiste Fabien Roussel entre dans la course à la présidentielle",
+          "url": "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/le-communiste-fabien-roussel-entre-dans-la-course-a-la-presidentielle-les-premieres-reactions-3412619.html"
+        }
+      ],
+      "cost": null,
+      "legal": "unknown",
+      "legalNote": null,
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m12",
+      "theme": "justice",
+      "status": "modified",
+      "texts": {
+        "p22": "Supprimer le « verrou de Bercy » pour pouvoir poursuivre les fraudeurs fiscaux.",
+        "p24": "Faire de la lutte contre la fraude et l'évasion fiscales une priorité : débloquer les moyens humains et financiers nécessaires.",
+        "p27": "Priorité au combat contre la fraude et l'évasion fiscale ; prison, privation des droits civiques ou travaux d'intérêt général pour les fraudeurs (manque à gagner évoqué : 80 à 100 Md€)."
+      },
+      "change": {
+        "fr": "Levée du verrou de Bercy (2022) → moyens de contrôle (2024) → sanctions pénales renforcées (2026).",
+        "en": "Lifting the Bercy lock (2022) → enforcement resources (2024) → tougher criminal penalties (2026)."
+      },
+      "sources": [
+        {
+          "title": "Institut Montaigne 2022 — fiche candidat Fabien Roussel (liste des propositions)",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/fabien-roussel/"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        },
+        {
+          "title": "LCP (06/09/2026) — Fabien Roussel officiellement candidat du PCF à l'élection présidentielle de 2027",
+          "url": "https://lcp.fr/actualites/fabien-roussel-officiellement-candidat-du-pcf-a-l-election-presidentielle-de-2027-441389"
+        },
+        {
+          "title": "Journal du Net (07/09/2026) — Fabien Roussel officialise sa candidature, investi par 72 % des militants du PCF",
+          "url": "https://www.journaldunet.com/business/action-publique/1554447-fabien-roussel-officialise-sa-candidature-a-l-election-presidentielle-de-2027-investi-par-72-des-militants-du-pcf/"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": {
+        "fr": "Le rendement de la lutte contre la fraude est incertain et non chiffré.",
+        "en": "The yield of anti-fraud measures is uncertain and uncosted."
+      },
+      "broadBenefit": false
+    },
+    {
+      "id": "m13",
+      "theme": "logement",
+      "status": "maintained",
+      "texts": {
+        "p22": "Construction de 200 000 logements sociaux/an et rénovation énergétique de 700 000 logements/an.",
+        "p24": "Construire 200 000 logements publics par an pendant cinq ans aux normes écologiques les plus ambitieuses."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "low",
+      "feasibilityNote": {
+        "fr": "Rythme très supérieur à la production actuelle des bailleurs sociaux.",
+        "en": "Pace far above current social-landlord output."
+      },
+      "broadBenefit": true
+    },
+    {
+      "id": "m14",
+      "theme": "education",
+      "status": "maintained",
+      "texts": {
+        "p22": "Suppression de « Parcoursup » et de la sélection à l'université.",
+        "p24": "Démocratiser l'université en abolissant Parcoursup et la sélection dans l'université publique."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m15",
+      "theme": "institutions",
+      "status": "maintained",
+      "texts": {
+        "p22": "Fin de la monarchie présidentielle, mise en place de la proportionnelle et d'un statut de l'élu.",
+        "p24": "Instaurer la proportionnelle."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": {
+        "fr": "Le mode de scrutin des législatives relève de la loi.",
+        "en": "The legislative voting system is set by ordinary law."
+      },
+      "feasibility": "high",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m16",
+      "theme": "institutions",
+      "status": "maintained",
+      "texts": {
+        "p22": "Instaurer le droit de vote des étrangers aux élections locales et européennes.",
+        "p24": "Instituer le droit de vote des résidents étrangers aux élections locales."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Institut Montaigne 2022 — fiche candidat Fabien Roussel (liste des propositions)",
+          "url": "https://www.institutmontaigne.org/presidentielle-2022/fabien-roussel/"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "constitutional-revision-needed",
+      "legalNote": {
+        "fr": "Le droit de suffrage est réservé aux nationaux (article 3 de la Constitution) ; l'ouverture aux citoyens européens a exigé la révision de 1992 (décision n° 92-308 DC du 9 avril 1992, article 88-3).",
+        "en": "Voting rights are reserved to nationals (Article 3 of the Constitution); opening them to EU citizens required the 1992 revision (decision no. 92-308 DC of 9 April 1992, Article 88-3)."
+      },
+      "feasibility": "low",
+      "feasibilityNote": {
+        "fr": "Révision constitutionnelle (majorité des 3/5 au Congrès ou référendum).",
+        "en": "Constitutional revision (3/5 majority in Congress or referendum)."
+      },
+      "broadBenefit": false
+    },
+    {
+      "id": "m17",
+      "theme": "securite",
+      "status": "modified",
+      "texts": {
+        "p22": "Création d'une police nationale de proximité de 30 000 agents et plan de sauvetage de la justice française.",
+        "p24": "Assurer la sécurité de la population par le rétablissement de la police de proximité."
+      },
+      "change": {
+        "fr": "Effectif chiffré de 30 000 agents (2022) → principe non chiffré (NFP 2024).",
+        "en": "30,000 officers (2022) → unquantified principle (NFP 2024)."
+      },
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m18",
+      "theme": "economie",
+      "status": "modified",
+      "texts": {
+        "p22": "Création d'un pôle public financier par la nationalisation des grandes banques et compagnies d'assurance privée (BNP-Société générale-AXA).",
+        "p24": "Créer un pôle public bancaire s'appuyant sur la Caisse des dépôts et consignations et la Banque publique d'investissement."
+      },
+      "change": {
+        "fr": "Nationalisation de BNP, Société générale et AXA (2022) → pôle public bâti sur la CDC et Bpifrance, sans nationalisation (NFP 2024).",
+        "en": "Nationalising BNP, Société Générale and AXA (2022) → public pole built on CDC and Bpifrance, no nationalisation (NFP 2024)."
+      },
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "risk",
+      "legalNote": {
+        "fr": "Une nationalisation est possible par la loi mais impose une « juste et préalable indemnité » (article 17 de la Déclaration de 1789 ; décision n° 81-132 DC du 16 janvier 1982).",
+        "en": "Nationalisation is possible by law but requires \"fair and prior compensation\" (Article 17 of the 1789 Declaration; decision no. 81-132 DC of 16 January 1982)."
+      },
+      "feasibility": "low",
+      "feasibilityNote": {
+        "fr": "Coût d'acquisition non chiffré par le candidat.",
+        "en": "Acquisition cost not stated by the candidate."
+      },
+      "broadBenefit": false
+    },
+    {
+      "id": "m19",
+      "theme": "europe",
+      "status": "modified",
+      "texts": {
+        "p22": "Ouverture de négociations pour rompre avec les traités européens néolibéraux et proposition d'un pacte pour le climat et l'urgence sociale de 900 milliards d'euros.",
+        "p24": "Refuser les contraintes austéritaires du pacte budgétaire ; proposer un pacte européen pour le climat et l'urgence sociale."
+      },
+      "change": {
+        "fr": "Rupture avec les traités (2022) → refus du pacte budgétaire, sans mention de rupture des traités (NFP 2024).",
+        "en": "Breaking with the treaties (2022) → rejecting the fiscal pact, without the treaty-break wording (NFP 2024)."
+      },
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": {
+        "fr": "Modifier les traités exige l'unanimité des États membres (article 48 TUE).",
+        "en": "Amending the treaties requires unanimity of member states (Article 48 TEU)."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m20",
+      "theme": "justice",
+      "status": "maintained",
+      "texts": {
+        "p22": "Inscrire le droit à l'IVG dans la Constitution comme droit fondamental.",
+        "p24": "Garantir l'égal accès et l'effectivité du droit à l'interruption volontaire de grossesse (IVG), ainsi que le choix de la méthode."
+      },
+      "change": {
+        "fr": "De l'inscription constitutionnelle (2022) à l'effectivité de l'accès (NFP 2024).",
+        "en": "From constitutional entrenchment (2022) to effective access (NFP 2024)."
+      },
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "high",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m21",
+      "theme": "social",
+      "status": "maintained",
+      "texts": {
+        "p22": "Rendre effective l'égalité salariale dans l'année suivant l'élection.",
+        "p24": "Instaurer l'égalité salariale et créer un arrêt menstruel dans les entreprises et administrations."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m22",
+      "theme": "social",
+      "status": "modified",
+      "texts": {
+        "p22": "Un droit effectif à l'autonomie et la non prise en compte des revenus du conjoint pour le calcul de l'allocation adulte handicapé.",
+        "p24": "Porter l'Allocation aux adultes handicapés (AAH) au niveau du SMIC."
+      },
+      "change": {
+        "fr": "Déconjugalisation de l'AAH (2022) → AAH au niveau du Smic (NFP 2024).",
+        "en": "AAH no longer depending on partner's income (2022) → AAH at minimum-wage level (NFP 2024)."
+      },
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        },
+        {
+          "title": "Institut Montaigne 2024 — Porter l'AAH au niveau du Smic",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/porter-lallocation-dautonomie-handicapee-aah-au-niveau-du-smic-de-1600e-net"
+        }
+      ],
+      "cost": {
+        "value": -7.3,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/porter-lallocation-dautonomie-handicapee-aah-au-niveau-du-smic-de-1600e-net",
+        "note": {
+          "fr": "Version NFP 2024 (AAH à 1 600 € net).",
+          "en": "NFP 2024 version (AAH at €1,600 net)."
+        }
+      },
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m23",
+      "theme": "economie",
+      "status": "new",
+      "texts": {
+        "p24": "Bloquer les prix des biens de première nécessité dans l'alimentation, l'énergie et les carburants par décret."
+      },
+      "change": {
+        "fr": "Absent du programme 2022, présent dans le contrat NFP 2024.",
+        "en": "Not in the 2022 programme, present in the 2024 NFP contract."
+      },
+      "sources": [
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        },
+        {
+          "title": "Institut Montaigne 2024 — Bloquer les prix des produits de première nécessité",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/bloquer-les-prix-des-produits-de-premiere-necessite"
+        }
+      ],
+      "cost": {
+        "value": -24,
+        "low": -38,
+        "high": -9,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/bloquer-les-prix-des-produits-de-premiere-necessite",
+        "note": {
+          "fr": "Neutre si non compensé pour les producteurs ; coût estimé dans l'hypothèse d'une compensation publique.",
+          "en": "Neutral if producers are not compensated; cost estimated assuming public compensation."
+        }
+      },
+      "legal": "risk",
+      "legalNote": {
+        "fr": "Le code de commerce (article L410-2) ne permet une réglementation des prix par décret que de façon temporaire et en situation de crise.",
+        "en": "The Commercial Code (Article L410-2) only allows price regulation by decree temporarily and in a crisis."
+      },
+      "feasibility": "low",
+      "feasibilityNote": {
+        "fr": "Risque de pénuries si les prix bloqués sont inférieurs aux coûts (Institut Montaigne).",
+        "en": "Risk of shortages if frozen prices fall below costs (Institut Montaigne)."
+      },
+      "broadBenefit": true
+    },
+    {
+      "id": "m24",
+      "theme": "logement",
+      "status": "new",
+      "texts": {
+        "p24": "Revaloriser les APL de 10 %."
+      },
+      "change": {
+        "fr": "Mesure du contrat NFP 2024.",
+        "en": "NFP 2024 contract measure."
+      },
+      "sources": [
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        },
+        {
+          "title": "Institut Montaigne 2024 — Revaloriser les APL de 10 %",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/revaloriser-les-apl-de-10"
+        }
+      ],
+      "cost": {
+        "value": -1.5,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/revaloriser-les-apl-de-10",
+        "note": {
+          "fr": "Sur une base de 15,4 Md€ d'APL versées en 2022.",
+          "en": "On a base of €15.4bn of housing benefit paid in 2022."
+        }
+      },
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "high",
+      "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "m25",
+      "theme": "education",
+      "status": "modified",
+      "texts": {
+        "p22": "Création d'un fonds alimentaire de 10 milliards d'euros pour que chaque enfant mange sain et à sa faim à l'école (et généralisation du repas à 1 euro).",
+        "p24": "Faire les premiers pas pour la gratuité intégrale à l'école : cantine scolaire, fournitures, transports, activités périscolaires."
+      },
+      "change": {
+        "fr": "Fonds alimentaire et repas à 1 € (2022) → gratuité intégrale de l'école (NFP 2024).",
+        "en": "Food fund and €1 meals (2022) → fully free schooling (NFP 2024)."
+      },
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        },
+        {
+          "title": "Institut Montaigne 2024 — Gratuité intégrale à l'école",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/proposer-la-gratuite-integrale-a-lecole-cantine-scolaire-fournitures-transports-activites-periscolaires"
+        }
+      ],
+      "cost": {
+        "value": -13,
+        "low": -14.3,
+        "high": -11.8,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/proposer-la-gratuite-integrale-a-lecole-cantine-scolaire-fournitures-transports-activites-periscolaires",
+        "note": {
+          "fr": "Version NFP 2024 (gratuité intégrale).",
+          "en": "NFP 2024 version (fully free schooling)."
+        }
+      },
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": {
+        "fr": "Compétences partagées avec les collectivités (cantines, transports).",
+        "en": "Shared with local authorities (canteens, transport)."
+      },
+      "broadBenefit": true
+    },
+    {
+      "id": "m26",
+      "theme": "immigration",
+      "status": "modified",
+      "texts": {
+        "p22": "Accueil digne des migrants et respect du droit d'asile par une coordination nouvelle à l'échelle européenne.",
+        "p24": "Abroger les lois asile et immigration de Macron ; régulariser les travailleurs, étudiants, parents d'enfants scolarisés et instituer la carte de séjour de dix ans comme titre de séjour de référence."
+      },
+      "change": {
+        "fr": "Orientation générale (2022) → abrogation des lois et régularisations ciblées (NFP 2024).",
+        "en": "General orientation (2022) → repeal of laws and targeted regularisations (NFP 2024)."
+      },
+      "sources": [
+        {
+          "title": "Programme Fabien Roussel 2022 — « La France des jours heureux » (PDF, PCF)",
+          "url": "https://assets.nationbuilder.com/pcf/pages/13815/attachments/original/1643123394/document_-_exe_8p_programme_stc.pdf?1643123394"
+        },
+        {
+          "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
+          "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
+        },
+        {
+          "title": "Institut Montaigne 2024 — Abroger les lois asile et immigration",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/abroger-les-lois-asile-et-immigration-demmanuel-macron-et-autoriser-les-demandeurs-dasile-a-travailler"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    }
+  ],
+  "costing": {
+    "rounds": [
+      {
+        "id": "p2022",
+        "year": 2022,
+        "label": {
+          "fr": "Présidentielle 2022",
+          "en": "2022 presidential"
+        },
+        "horizon": {
+          "fr": "mesures chiffrées sur le quinquennat 2022-2027 (iFRAP)",
+          "en": "measures costed over the 2022-2027 term (iFRAP)"
+        },
+        "announced": null,
+        "estimates": [
+          {
+            "by": "Fondation iFRAP",
+            "spending": 287,
+            "revenue": 131.4,
+            "net": -155.6,
+            "date": "2022-03",
+            "note": {
+              "fr": "287 Md€ de dépenses supplémentaires et 131,4 Md€ d'impôts en plus ; le solde net est notre calcul. L'Institut Montaigne n'a pas publié de synthèse globale pour ce candidat (5 mesures chiffrées seulement).",
+              "en": "€287bn of extra spending and €131.4bn of extra taxes; the net balance is our calculation. Institut Montaigne published no overall synthesis for this candidate (only 5 measures costed)."
+            },
+            "url": "https://www.ifrap.org/la-revue/chiffrage-des-programmes-des-candidats-la-presidentielle-2022"
+          }
+        ]
+      },
+      {
+        "id": "l2024",
+        "year": 2024,
+        "label": {
+          "fr": "Législatives 2024 (Nouveau Front populaire)",
+          "en": "2024 legislative election (New Popular Front)"
+        },
+        "horizon": {
+          "fr": "par an (Institut Montaigne) ; à horizon fin 2027 (NFP)",
+          "en": "a year (Institut Montaigne); by end-2027 (NFP)"
+        },
+        "announced": {
+          "by": "Nouveau Front populaire",
+          "spending": 150,
+          "revenue": 150,
+          "net": 0,
+          "date": "2024-06",
+          "note": {
+            "fr": "Chiffrage présenté le 21 juin 2024 : environ 150 Md€ de dépenses supplémentaires d'ici 2027, compensées par autant de recettes (25 Md€ de mesures d'urgence, environ 100 Md€ dès 2025). Programme commun de la coalition, pas un programme propre au candidat.",
+            "en": "Costing presented on 21 June 2024: about €150bn of extra spending by 2027, matched by as much revenue (€25bn of emergency measures, about €100bn in 2025). Joint coalition programme, not the candidate's own."
+          },
+          "url": "https://www.publicsenat.fr/actualites/economie/150-milliards-de-depenses-supplementaires-dici-fin-2027-le-nouveau-front-populaire-detaille-le-cout-de-son-programme"
+        },
+        "estimates": [
+          {
+            "by": "Institut Montaigne",
+            "spending": 233,
+            "revenue": 54,
+            "net": -179,
+            "date": "2024-06",
+            "note": {
+              "fr": "Nouvelles dépenses et baisses d'impôts de 233 Md€, hausses de prélèvements de 54 Md€ : déficit public accru de 179 Md€ par an. La réforme des retraites de 2023 est prise comme référence.",
+              "en": "New spending and tax cuts of €233bn, tax rises of €54bn: public deficit up €179bn a year. The 2023 pension reform is taken as the baseline."
+            },
+            "url": "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/synthese"
+          }
+        ]
+      }
+    ],
+    "checked": "2026-11-08"
+  },
+  "summary": {
+    "fr": "Le programme 2022 « La France des jours heureux » reposait sur la hausse des salaires (Smic à 1 500 € net, +30 % dans la fonction publique), la retraite à 60 ans, la semaine de 32 heures, 500 000 embauches publiques, le nucléaire et la nationalisation de grandes banques. En 2024, le PCF a signé le contrat du Nouveau Front populaire, aux objectifs voisins mais formulés autrement (Smic à 1 600 € net, retraite à 60 ans comme objectif, pôle public bancaire sans nationalisation) ; pour 2027, seules des annonces existent (Smic à 2 200 € brut, doublement de l'industrie et de la production d'électricité, sanctions pénales contre la fraude). L'iFRAP chiffrait le programme 2022 à 287 Md€ de dépenses pour 131,4 Md€ de recettes, et l'Institut Montaigne le contrat NFP à un déficit supplémentaire de 179 Md€ par an.",
+    "en": "The 2022 programme \"La France des jours heureux\" centred on higher wages (€1,500 net minimum wage, +30% for civil servants), retirement at 60, a 32-hour week, 500,000 public hires, nuclear power and nationalising large banks. In 2024 the PCF signed the New Popular Front contract, with similar aims worded differently (€1,600 net minimum wage, retirement at 60 as an objective, a public banking pole without nationalisation); for 2027 there are only announcements (€2,200 gross minimum wage, doubling industry and electricity output, criminal penalties for tax fraud). iFRAP costed the 2022 programme at €287bn of spending against €131.4bn of revenue, and Institut Montaigne put the NFP contract at €179bn a year of extra deficit."
+  }
+}

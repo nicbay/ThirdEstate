@@ -1,0 +1,693 @@
+{
+  "slug": "glucksmann",
+  "candidate": "Raphaël Glucksmann",
+  "party": "Place publique",
+  "lite": true,
+  "status": "partial",
+  "statusNote": {
+    "fr": "Candidat déclaré le 23 août 2026, vainqueur de la primaire PS-Place publique le 11 octobre 2026 (66,17 %) ; pas de programme 2027 complet publié, seulement des annonces (fiscalité, salaires, école, retraites, immigration) ; la version de référence est le programme des européennes 2024, non présidentiel.",
+    "en": "Declared on 23 August 2026, won the PS-Place publique primary on 11 October 2026 (66.17%); no full 2027 programme published, only announcements (tax, wages, schools, pensions, immigration); the baseline is the 2024 European election programme, not a presidential one."
+  },
+  "versions": [
+    {
+      "id": "p24",
+      "year": 2024,
+      "label": {
+        "fr": "Programme européen 2024 (référence, non présidentiel)",
+        "en": "2024 European programme (baseline, not presidential)"
+      },
+      "title": "Réveiller l'Europe",
+      "date": "2024-05",
+      "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf",
+      "kind": "pdf"
+    },
+    {
+      "id": "p27",
+      "year": 2026,
+      "label": {
+        "fr": "Annonces 2026-2027",
+        "en": "2026-2027 announcements"
+      },
+      "title": "Candidature présidentielle — annonces",
+      "date": "2026-08",
+      "url": "https://www.publicsenat.fr/actualites/politique/fiscalite-ecole-immigration-ce-que-propose-raphael-glucksmann",
+      "kind": "announcements"
+    }
+  ],
+  "measures": [
+    {
+      "id": "m01",
+      "theme": "budget",
+      "status": "new",
+      "texts": {
+        "p27": "Taxer les 1 % des plus gros héritages (« méga-héritages ») pour récupérer 15 milliards d'euros, reversés aux salariés ; seuil évoqué : 2 millions d'euros."
+      },
+      "change": {
+        "fr": "Annonce de la campagne 2026 ; pas d'équivalent dans le programme européen 2024.",
+        "en": "2026 campaign announcement; no equivalent in the 2024 European programme."
+      },
+      "sources": [
+        {
+          "title": "France 24 (23/08/2026) — Raphaël Glucksmann annonce sa candidature à la présidentielle de 2027",
+          "url": "https://www.france24.com/fr/france/20260823-rapha%C3%ABl-glucksmann-annonce-sa-candidature-%C3%A0-la-pr%C3%A9sidentielle-de-2027"
+        },
+        {
+          "title": "Public Sénat (24/08/2026) — Fiscalité, école, immigration : ce que propose Raphaël Glucksmann",
+          "url": "https://www.publicsenat.fr/actualites/politique/fiscalite-ecole-immigration-ce-que-propose-raphael-glucksmann"
+        },
+        {
+          "title": "Public Sénat (30/10/2026) — Présidentielle : que proposent les candidats pour augmenter les salaires ?",
+          "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-que-proposent-les-candidats-pour-augmenter-les-salaires"
+        },
+        {
+          "title": "Senioractu (24/09/2026) — Au premier débat de la primaire socialiste, Faure et Glucksmann ont promis d'abroger la réforme des retraites",
+          "url": "https://www.senioractu.com/Pas-encore-retraite-Au-premier-debat-de-la-primaire-socialiste-Faure-et-Glucksmann-ont-promis-d-abroger-la-reforme-qui_a28076.html"
+        }
+      ],
+      "cost": {
+        "value": 15,
+        "low": null,
+        "high": null,
+        "by": "Candidate",
+        "url": "https://www.publicsenat.fr/actualites/politique/fiscalite-ecole-immigration-ce-que-propose-raphael-glucksmann",
+        "note": {
+          "fr": "Recette annoncée par le candidat, intégralement redistribuée via la baisse de cotisations (voir m02). Pas de chiffrage indépendant.",
+          "en": "Revenue announced by the candidate, fully returned through lower contributions (see m02). No independent costing."
+        }
+      },
+      "legal": "ok",
+      "legalNote": {
+        "fr": "Hausse de droits de succession possible par loi de finances, sous réserve de ne pas revêtir de caractère confiscatoire (décision n° 2012-662 DC du 29 décembre 2012).",
+        "en": "Higher inheritance tax can be set in a budget law, provided it is not confiscatory (decision no. 2012-662 DC of 29 December 2012)."
+      },
+      "feasibility": "medium",
+      "feasibilityNote": {
+        "fr": "Rendement contesté par des commentateurs ; risque d'optimisation.",
+        "en": "Yield disputed by commentators; avoidance risk."
+      },
+      "broadBenefit": false
+    },
+    {
+      "id": "m02",
+      "theme": "travail",
+      "status": "new",
+      "texts": {
+        "p27": "« Augmenter la rémunération nette des travailleurs » en baissant les cotisations salariales : barème de CSG progressif de 0,25 % à 10,2 %, jusqu'à « 200 euros nets sur la fiche de salaire » (environ 130 € par mois au Smic pour une personne seule)."
+      },
+      "change": {
+        "fr": "Annonce de la campagne 2026 ; pas d'équivalent dans le programme européen 2024.",
+        "en": "2026 campaign announcement; no equivalent in the 2024 European programme."
+      },
+      "sources": [
+        {
+          "title": "France 24 (23/08/2026) — Raphaël Glucksmann annonce sa candidature à la présidentielle de 2027",
+          "url": "https://www.france24.com/fr/france/20260823-rapha%C3%ABl-glucksmann-annonce-sa-candidature-%C3%A0-la-pr%C3%A9sidentielle-de-2027"
+        },
+        {
+          "title": "Public Sénat (24/08/2026) — Fiscalité, école, immigration : ce que propose Raphaël Glucksmann",
+          "url": "https://www.publicsenat.fr/actualites/politique/fiscalite-ecole-immigration-ce-que-propose-raphael-glucksmann"
+        },
+        {
+          "title": "Public Sénat (30/10/2026) — Présidentielle : que proposent les candidats pour augmenter les salaires ?",
+          "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-que-proposent-les-candidats-pour-augmenter-les-salaires"
+        },
+        {
+          "title": "Senioractu (24/09/2026) — Au premier débat de la primaire socialiste, Faure et Glucksmann ont promis d'abroger la réforme des retraites",
+          "url": "https://www.senioractu.com/Pas-encore-retraite-Au-premier-debat-de-la-primaire-socialiste-Faure-et-Glucksmann-ont-promis-d-abroger-la-reforme-qui_a28076.html"
+        }
+      ],
+      "cost": {
+        "value": -15,
+        "low": null,
+        "high": null,
+        "by": "Candidate",
+        "url": "https://www.publicsenat.fr/actualites/politique/fiscalite-ecole-immigration-ce-que-propose-raphael-glucksmann",
+        "note": {
+          "fr": "Baisse de prélèvements financée, selon le candidat, par les 15 Md€ de la taxation des héritages (voir m01).",
+          "en": "Cut in levies funded, according to the candidate, by the €15bn from the inheritance tax (see m01)."
+        }
+      },
+      "legal": "unconstitutional-precedent",
+      "legalNote": {
+        "fr": "Le Conseil constitutionnel a censuré en 2000 une réduction dégressive de CSG sur les bas salaires, faute de prendre en compte les revenus et charges de famille du foyer (décision n° 2000-437 DC du 19 décembre 2000). Un barème progressif devra en tenir compte.",
+        "en": "The Constitutional Council struck down a sliding CSG cut on low wages in 2000 for ignoring household income and family burdens (decision no. 2000-437 DC of 19 December 2000). A progressive schedule would need to address this."
+      },
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "m03",
+      "theme": "travail",
+      "status": "new",
+      "texts": {
+        "p27": "Porter le Smic à 1 700 euros net par mois ; gratification minimale des stages de plus de deux mois portée à 1 000 euros ; hausses non financées par « la casse du modèle social ou l'aggravation de la dette »."
+      },
+      "change": {
+        "fr": "Annonce de la campagne 2026 ; pas d'équivalent dans le programme européen 2024.",
+        "en": "2026 campaign announcement; no equivalent in the 2024 European programme."
+      },
+      "sources": [
+        {
+          "title": "Public Sénat (30/10/2026) — Présidentielle : que proposent les candidats pour augmenter les salaires ?",
+          "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-que-proposent-les-candidats-pour-augmenter-les-salaires"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": {
+        "fr": "Revalorisation du Smic par décret ; gratification des stages par la loi.",
+        "en": "Minimum wage by decree; internship pay by law."
+      },
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": true
+    },
+    {
+      "id": "m04",
+      "theme": "social",
+      "status": "new",
+      "texts": {
+        "p27": "Abroger la réforme des retraites de 2023 ; une « réforme juste et ambitieuse », sans retour à 60 ans, ceux qui ont une espérance de vie en bonne santé plus longue partant plus tard."
+      },
+      "change": {
+        "fr": "Annonce de la campagne 2026 ; pas d'équivalent dans le programme européen 2024.",
+        "en": "2026 campaign announcement; no equivalent in the 2024 European programme."
+      },
+      "sources": [
+        {
+          "title": "Public Sénat (24/08/2026) — Fiscalité, école, immigration : ce que propose Raphaël Glucksmann",
+          "url": "https://www.publicsenat.fr/actualites/politique/fiscalite-ecole-immigration-ce-que-propose-raphael-glucksmann"
+        },
+        {
+          "title": "Senioractu (24/09/2026) — Au premier débat de la primaire socialiste, Faure et Glucksmann ont promis d'abroger la réforme des retraites",
+          "url": "https://www.senioractu.com/Pas-encore-retraite-Au-premier-debat-de-la-primaire-socialiste-Faure-et-Glucksmann-ont-promis-d-abroger-la-reforme-qui_a28076.html"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": null,
+      "feasibilityNote": {
+        "fr": "Paramètres non précisés.",
+        "en": "Parameters not specified."
+      },
+      "broadBenefit": true
+    },
+    {
+      "id": "m05",
+      "theme": "education",
+      "status": "modified",
+      "texts": {
+        "p24": "La rénovation de toutes les écoles européennes d'ici 2030 (plan « Nos écoles »), afin de protéger nos enfants et les personnels éducatifs des vagues de froid et des canicules.",
+        "p27": "Un « plan de sauvetage de l'école publique » sur cinq ans : hausse de la rémunération des enseignants, moins d'élèves par classe en primaire, rénovation des bâtiments scolaires."
+      },
+      "change": {
+        "fr": "Rénovation des écoles à l'échelle européenne (2024) → plan national sur cinq ans incluant salaires et effectifs (2026).",
+        "en": "EU-wide school renovation (2024) → five-year national plan including pay and class sizes (2026)."
+      },
+      "sources": [
+        {
+          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
+          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+        },
+        {
+          "title": "France 24 (23/08/2026) — Raphaël Glucksmann annonce sa candidature à la présidentielle de 2027",
+          "url": "https://www.france24.com/fr/france/20260823-rapha%C3%ABl-glucksmann-annonce-sa-candidature-%C3%A0-la-pr%C3%A9sidentielle-de-2027"
+        },
+        {
+          "title": "Public Sénat (24/08/2026) — Fiscalité, école, immigration : ce que propose Raphaël Glucksmann",
+          "url": "https://www.publicsenat.fr/actualites/politique/fiscalite-ecole-immigration-ce-que-propose-raphael-glucksmann"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": null,
+      "feasibilityNote": {
+        "fr": "Montant non précisé.",
+        "en": "Amount not specified."
+      },
+      "broadBenefit": true
+    },
+    {
+      "id": "m06",
+      "theme": "education",
+      "status": "new",
+      "texts": {
+        "p27": "Un service civique obligatoire de dix mois effectué par « tous les jeunes Français » (Ehpad, écoles, services publics, associations) ; relance des colonies de vacances, avec un séjour collectif pour chaque enfant."
+      },
+      "change": {
+        "fr": "Annonce de la campagne 2026 ; pas d'équivalent dans le programme européen 2024.",
+        "en": "2026 campaign announcement; no equivalent in the 2024 European programme."
+      },
+      "sources": [
+        {
+          "title": "Public Sénat (24/08/2026) — Fiscalité, école, immigration : ce que propose Raphaël Glucksmann",
+          "url": "https://www.publicsenat.fr/actualites/politique/fiscalite-ecole-immigration-ce-que-propose-raphael-glucksmann"
+        }
+      ],
+      "cost": null,
+      "legal": "unknown",
+      "legalNote": {
+        "fr": "Une obligation de service civil généralisée hors défense nationale soulève une question constitutionnelle (article 34 et libertés individuelles) ; pas de décision du Conseil constitutionnel identifiée sur ce point.",
+        "en": "A general civil-service obligation outside national defence raises a constitutional question (Article 34 and individual liberties); no Constitutional Council decision on this point identified."
+      },
+      "feasibility": "low",
+      "feasibilityNote": {
+        "fr": "Financement et encadrement non précisés.",
+        "en": "Funding and supervision not specified."
+      },
+      "broadBenefit": false
+    },
+    {
+      "id": "m07",
+      "theme": "immigration",
+      "status": "modified",
+      "texts": {
+        "p24": "En créant des voies légales et sécurisées de migration ; en harmonisant les procédures d'asile via un espace européen de protection des demandeurs d'asile.",
+        "p27": "Une convention citoyenne sur l'immigration, composée de citoyens tirés au sort, dont les propositions seraient soumises au débat et au vote du Parlement."
+      },
+      "change": {
+        "fr": "Propositions européennes sur l'asile (2024) → méthode nationale par convention citoyenne (2026).",
+        "en": "EU asylum proposals (2024) → national citizens' convention (2026)."
+      },
+      "sources": [
+        {
+          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
+          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+        },
+        {
+          "title": "Public Sénat (24/08/2026) — Fiscalité, école, immigration : ce que propose Raphaël Glucksmann",
+          "url": "https://www.publicsenat.fr/actualites/politique/fiscalite-ecole-immigration-ce-que-propose-raphael-glucksmann"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "high",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m08",
+      "theme": "ecologie",
+      "status": "modified",
+      "texts": {
+        "p24": "Nous défendrons chaque texte d'un Pacte Vert ; réduction des émissions d'au moins 90 % à 92 % au plus tard en 2040, neutralité carbone au plus tard en 2050.",
+        "p27": "« La mise en place d'un état d'urgence écologique », préparée par Yannick Jadot ; appel à fonder « la République écologique »."
+      },
+      "change": {
+        "fr": "Objectifs européens chiffrés (2024) → « état d'urgence écologique » national, non détaillé (2026).",
+        "en": "Quantified EU targets (2024) → national \"ecological state of emergency\", not detailed (2026)."
+      },
+      "sources": [
+        {
+          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
+          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+        },
+        {
+          "title": "France 24 (23/08/2026) — Raphaël Glucksmann annonce sa candidature à la présidentielle de 2027",
+          "url": "https://www.france24.com/fr/france/20260823-rapha%C3%ABl-glucksmann-annonce-sa-candidature-%C3%A0-la-pr%C3%A9sidentielle-de-2027"
+        }
+      ],
+      "cost": null,
+      "legal": "unknown",
+      "legalNote": null,
+      "feasibility": null,
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m09",
+      "theme": "ecologie",
+      "status": "new",
+      "texts": {
+        "p24": "Le déclin rapide des énergies fossiles et le développement massif des énergies renouvelables, en conservant une part de nucléaire comme une énergie de transition dans notre mix énergétique."
+      },
+      "change": {
+        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
+        "en": "Measure from the 2024 European programme (only version available); no sourced 2027 position yet."
+      },
+      "sources": [
+        {
+          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
+          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": null,
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m10",
+      "theme": "international",
+      "status": "new",
+      "texts": {
+        "p24": "Nous saisirons la totalité des 206 milliards d'avoirs publics russes gelés dans les banques européennes pour les affecter au soutien à la résistance ukrainienne."
+      },
+      "change": {
+        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
+        "en": "Measure from the 2024 European programme (only version available); no sourced 2027 position yet."
+      },
+      "sources": [
+        {
+          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
+          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "risk",
+      "legalNote": {
+        "fr": "La confiscation d'avoirs d'une banque centrale étrangère se heurte au principe d'immunité des États.",
+        "en": "Confiscating a foreign central bank's assets runs into state immunity."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m11",
+      "theme": "international",
+      "status": "new",
+      "texts": {
+        "p24": "Un fonds européen de défense de 100 milliards d'euros financé par un emprunt commun pour investir dans nos industries de défense ; un « Buy European Act » de l'armement."
+      },
+      "change": {
+        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
+        "en": "Measure from the 2024 European programme (only version available); no sourced 2027 position yet."
+      },
+      "sources": [
+        {
+          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
+          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": {
+        "fr": "Emprunt commun et préférence européenne relèvent d'une décision de l'Union (unanimité pour les ressources propres, article 311 TFUE).",
+        "en": "Joint borrowing and European preference require EU decisions (unanimity for own resources, Article 311 TFEU)."
+      },
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m12",
+      "theme": "economie",
+      "status": "new",
+      "texts": {
+        "p24": "Une loi « acheter européen » (« Buy European Act ») qui conditionnera l'accès à tous les dispositifs de soutien public (commande publique, subvention, prix garantis) à une priorité donnée aux produits et services européens ; refus de tout nouvel accord de libre-échange."
+      },
+      "change": {
+        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
+        "en": "Measure from the 2024 European programme (only version available); no sourced 2027 position yet."
+      },
+      "sources": [
+        {
+          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
+          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": {
+        "fr": "Relève du législateur européen et des engagements de l'Union à l'OMC (accord sur les marchés publics).",
+        "en": "A matter for EU legislation and the EU's WTO commitments (Government Procurement Agreement)."
+      },
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m13",
+      "theme": "ecologie",
+      "status": "new",
+      "texts": {
+        "p24": "Généraliser le mécanisme d'ajustement carbone (taxe carbone) aux frontières de l'Union européenne à tous les produits et services qui causent une concurrence déloyale ; taxer le kérosène et réduire les vols court-courriers."
+      },
+      "change": {
+        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
+        "en": "Measure from the 2024 European programme (only version available); no sourced 2027 position yet."
+      },
+      "sources": [
+        {
+          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
+          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": {
+        "fr": "Compétence de l'Union ; la fiscalité de l'énergie exige l'unanimité.",
+        "en": "EU competence; energy taxation requires unanimity."
+      },
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m14",
+      "theme": "agriculture",
+      "status": "new",
+      "texts": {
+        "p24": "Garantir le revenu des agriculteurs via des prix planchers rémunérateurs et sortir l'agriculture du libre-échange ; plafonner les aides de la PAC à 100 000 € pour aider les petites exploitations."
+      },
+      "change": {
+        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
+        "en": "Measure from the 2024 European programme (only version available); no sourced 2027 position yet."
+      },
+      "sources": [
+        {
+          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
+          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": {
+        "fr": "Réforme de la PAC et de la politique commerciale, compétences de l'Union.",
+        "en": "CAP and trade-policy reform, EU competences."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m15",
+      "theme": "budget",
+      "status": "new",
+      "texts": {
+        "p24": "Une imposition minimale de 2 % sur le patrimoine des centi-millionnaires et des milliardaires ; taxation des multinationales portée de 15 % à 25 % ; taxation automatique des superprofits des multinationales et des profiteurs de guerre."
+      },
+      "change": {
+        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
+        "en": "Measure from the 2024 European programme (only version available); no sourced 2027 position yet."
+      },
+      "sources": [
+        {
+          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
+          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": {
+        "fr": "L'harmonisation fiscale exige l'unanimité au Conseil (article 115 TFUE) ; le programme demande la fin de cette unanimité.",
+        "en": "Tax harmonisation requires unanimity in the Council (Article 115 TFEU); the programme calls for ending it."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m16",
+      "theme": "europe",
+      "status": "new",
+      "texts": {
+        "p24": "Augmenter le budget européen pour atteindre 5 % du PIB, via de nouvelles ressources propres comme une contribution des grandes entreprises, notamment des géants du numérique ; mutualiser les dettes européennes."
+      },
+      "change": {
+        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
+        "en": "Measure from the 2024 European programme (only version available); no sourced 2027 position yet."
+      },
+      "sources": [
+        {
+          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
+          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": {
+        "fr": "Ressources propres : unanimité et ratification nationale (article 311 TFUE).",
+        "en": "Own resources: unanimity and national ratification (Article 311 TFEU)."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m17",
+      "theme": "europe",
+      "status": "new",
+      "texts": {
+        "p24": "Passer au vote à la majorité qualifiée au Conseil pour les questions encore soumises à l'unanimité ; donner le pouvoir d'initiative législative au Parlement européen."
+      },
+      "change": {
+        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
+        "en": "Measure from the 2024 European programme (only version available); no sourced 2027 position yet."
+      },
+      "sources": [
+        {
+          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
+          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": {
+        "fr": "Révision des traités (article 48 TUE), sauf usage des clauses passerelles.",
+        "en": "Treaty revision (Article 48 TEU), unless passerelle clauses are used."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m18",
+      "theme": "europe",
+      "status": "new",
+      "texts": {
+        "p24": "Inscrire le droit à l'IVG et à la contraception dans la Charte des droits fondamentaux."
+      },
+      "change": {
+        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
+        "en": "Measure from the 2024 European programme (only version available); no sourced 2027 position yet."
+      },
+      "sources": [
+        {
+          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
+          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": {
+        "fr": "Modifier la Charte exige l'accord unanime des États membres.",
+        "en": "Amending the Charter requires all member states' agreement."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m19",
+      "theme": "europe",
+      "status": "new",
+      "texts": {
+        "p24": "Soutenir l'élargissement aux pays candidats à l'accession à l'UE, notamment à l'Ukraine, en transformant notre Union, ses institutions comme ses politiques structurelles."
+      },
+      "change": {
+        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
+        "en": "Measure from the 2024 European programme (only version available); no sourced 2027 position yet."
+      },
+      "sources": [
+        {
+          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
+          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": {
+        "fr": "Adhésion à l'unanimité et ratification par chaque État (article 49 TUE).",
+        "en": "Accession by unanimity and ratification by each state (Article 49 TEU)."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m20",
+      "theme": "travail",
+      "status": "new",
+      "texts": {
+        "p24": "Favoriser l'équilibre vie professionnelle et vie personnelle avec la réduction du temps de travail et les expérimentations de la semaine de quatre jours."
+      },
+      "change": {
+        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
+        "en": "Measure from the 2024 European programme (only version available); no sourced 2027 position yet."
+      },
+      "sources": [
+        {
+          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
+          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": null,
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m21",
+      "theme": "sante",
+      "status": "new",
+      "texts": {
+        "p24": "Créer un service public du médicament ; soutenir la production en Europe de matériels, de masques et de médicaments."
+      },
+      "change": {
+        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
+        "en": "Measure from the 2024 European programme (only version available); no sourced 2027 position yet."
+      },
+      "sources": [
+        {
+          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
+          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "unknown",
+      "legalNote": null,
+      "feasibility": null,
+      "feasibilityNote": null,
+      "broadBenefit": false
+    },
+    {
+      "id": "m22",
+      "theme": "logement",
+      "status": "new",
+      "texts": {
+        "p24": "Stimuler une offre de logement abordable et durable ; renforcer le modèle « logement d'abord » ; le déficit annuel d'investissement dans le logement social et abordable dans l'UE est estimé à plus de 50 milliards d'euros."
+      },
+      "change": {
+        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
+        "en": "Measure from the 2024 European programme (only version available); no sourced 2027 position yet."
+      },
+      "sources": [
+        {
+          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
+          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": null,
+      "feasibilityNote": null,
+      "broadBenefit": true
+    }
+  ],
+  "costing": null,
+  "summary": {
+    "fr": "Le programme européen de 2024 « Réveiller l'Europe » portait sur la défense européenne et le soutien à l'Ukraine, la préférence européenne, la transition écologique et la fiscalité des plus riches à l'échelle de l'Union. Depuis sa candidature présidentielle (août 2026) et sa victoire à la primaire PS-Place publique (octobre 2026), les annonces portent sur des sujets nationaux : taxation des très gros héritages (15 Md€ annoncés) pour baisser la CSG des salariés, Smic à 1 700 € net, plan pour l'école publique, abrogation de la réforme des retraites de 2023, service civique obligatoire et convention citoyenne sur l'immigration. Aucun chiffrage indépendant de ces propositions n'a été publié à ce jour.",
+    "en": "The 2024 European programme \"Réveiller l'Europe\" focused on European defence and support for Ukraine, European preference, the ecological transition and EU-level taxation of the richest. Since his presidential bid (August 2026) and his PS-Place publique primary win (October 2026), announcements address national issues: taxing very large inheritances (€15bn announced) to cut employees' CSG, a €1,700 net minimum wage, a public-school plan, repeal of the 2023 pension reform, compulsory civic service and a citizens' convention on immigration. No independent costing of these proposals has been published so far."
+  }
+}
