@@ -1510,7 +1510,7 @@ body { overflow-x: clip; }
 @media (prefers-reduced-motion: reduce) {
   .debtp-line.draw, .debtp-bt span { animation: none; }
 }
-/* ===================================================================
+/* ============================================================
    Scenario planner (#/simulateur, src/views/simulator.ts): three linked panels.
    Direct-manipulation bars, tabular numbers, colour only for candidates, mono annotations.
    ========================================================================== */
@@ -1799,3 +1799,103 @@ input[type="range"]:active { cursor: grabbing; }
 }
 }
 
+=======
+/* ---------- campaign programme over time (#/programmes/<slug>, src/views/programme.ts) ----------
+   Status styles are deliberately neutral (ink, greys, hatching): colour is kept for politics. */
+.prog { --prog-kept: var(--ink-3); --prog-new25: var(--rule-2); --prog-new27: var(--ink); }
+.prog-stack .prog-maintained, .prog-sw.prog-maintained { background: var(--prog-kept); }
+.prog-stack .prog-modified, .prog-sw.prog-modified { background: repeating-linear-gradient(135deg, var(--ink) 0 2px, var(--ink-3) 2px 5px); }
+.prog-stack .prog-new2025, .prog-sw.prog-new2025 { background: var(--prog-new25); }
+.prog-stack .prog-new2027, .prog-sw.prog-new2027 { background: var(--prog-new27); }
+.prog-stack .prog-dropped, .prog-sw.prog-dropped { background: repeating-linear-gradient(45deg, var(--ink-3) 0 1.5px, var(--paper) 1.5px 5px); box-shadow: inset 0 0 0 1px var(--ink-3); }
+.prog-sw { display: inline-block; width: 0.85em; height: 0.85em; margin-right: 0.4em; vertical-align: -0.08em; border-radius: 1px; flex: none; }
+.prog-kpis { margin-top: 0.2rem; }
+.prog-legend { list-style: none; padding: 0; margin: 0 0 1.2rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0.6rem 1.4rem; font-size: 0.88rem; line-height: 1.35; }
+.prog-legend .small { font-size: 0.76rem; }
+.prog-bars { display: grid; gap: 0.35rem; margin-bottom: 0.8rem; }
+.prog-row { all: unset; box-sizing: border-box; display: grid; grid-template-columns: minmax(150px, 15rem) minmax(0, 1fr); align-items: center; gap: 0.8rem; cursor: pointer; padding: 0.2rem 0.3rem; border-radius: 2px; }
+.prog-row:hover { background: var(--panel); }
+.prog-row:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+.prog-row-label { font-size: 0.9rem; display: flex; justify-content: space-between; gap: 0.5rem; min-width: 0; }
+.prog-row-label b { font-variant-numeric: tabular-nums; }
+.prog-stack { display: flex; height: 14px; gap: 1px; min-width: 2px; transform-origin: left; animation: growX 0.8s var(--ease) both; }
+.prog-stack span { min-width: 2px; }
+@media (max-width: 640px) {
+  .prog-row { grid-template-columns: minmax(0, 1fr); gap: 0.25rem; }
+  .prog-row-label { font-size: 0.84rem; }
+}
+.prog-highlights { margin: 0; padding-left: 1.4rem; display: grid; gap: 0.7rem; max-width: 80ch; }
+.prog-highlights li { line-height: 1.45; }
+.prog-highlights .tag { margin: 0 0.35rem 0 0; }
+.prog-lede { max-width: var(--measure); margin: 0 0 1rem; }
+
+/* status chips: text labels with neutral borders and fills */
+.prog-chip { display: inline-block; font: 600 0.68rem/1.2 var(--mono); text-transform: uppercase; letter-spacing: 0.05em; padding: 0.18rem 0.45rem; border: 1px solid var(--ink-3); border-radius: 2px; color: var(--ink); background: var(--paper); white-space: nowrap; }
+.prog-chip.prog-maintained { background: var(--panel); border-color: var(--rule-2); color: var(--ink-2); }
+.prog-chip.prog-modified { border: 2px solid var(--ink); padding: 0.1rem 0.4rem; }
+.prog-chip.prog-new2025 { background: var(--wash); border-color: var(--wash); }
+.prog-chip.prog-new2027 { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.prog-chip.prog-dropped { border-style: dashed; color: var(--ink-2); text-decoration: line-through; text-decoration-thickness: 1px; }
+
+/* filters */
+.prog-filters input { flex: 1 1 260px; }
+.prog-filters select { flex: 0 1 260px; }
+.prog-status { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: -0.3rem 0 0.7rem; }
+.prog-status button { font: 600 0.8rem var(--text); color: var(--ink); background: var(--paper); border: 1px solid var(--rule-2); border-radius: 999px; padding: 0.34rem 0.75rem; cursor: pointer; display: inline-flex; align-items: center; white-space: nowrap; }
+.prog-status button span { font-weight: 400; color: var(--ink-2); margin-left: 0.35em; font-variant-numeric: tabular-nums; }
+.prog-status button:hover { border-color: var(--ink); }
+.prog-status button[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); background: var(--panel); }
+
+/* measure list: one commitment per item, its 2022 / 2025 / 2027 wordings side by side */
+.prog-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.prog-item { border-top: 1px solid var(--rule); padding: 0.9rem 0 0.8rem; scroll-margin-top: 5rem; }
+.prog-item-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; margin-bottom: 0.55rem; }
+.prog-theme { font: 500 0.7rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-2); margin-left: auto; }
+.prog-vers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem 1.4rem; }
+.prog-ver { min-width: 0; border-left: 2px solid var(--ink); padding-left: 0.7rem; }
+.prog-ver.prog-absent { border-left: 2px dotted var(--rule-2); }
+.prog-year { margin: 0 0 0.2rem; font: 700 0.72rem var(--mono); letter-spacing: 0.06em; color: var(--ink-2); }
+.prog-year .tag { margin-left: 0.25rem; }
+.prog-text { margin: 0 0 0.25rem; font-size: 0.94rem; line-height: 1.45; overflow-wrap: anywhere; }
+.prog-text ins { text-decoration: none; background: var(--wash); box-shadow: 0 2px 0 var(--ink); }
+.prog-text del { color: var(--ink-3); text-decoration: line-through; }
+.prog-loc { display: block; font: 0.7rem/1.4 var(--mono); color: var(--ink-3); overflow-wrap: anywhere; }
+.prog-loc a { color: var(--ink-2); }
+.prog-change { margin: 0.5rem 0 0; font: 600 0.74rem/1.4 var(--mono); color: var(--ink); }
+.prog-an { margin: 0.35rem 0 0; font: 0.72rem/1.4 var(--mono); color: var(--ink-3); }
+.prog-an a { color: var(--ink-2); }
+.prog-more { margin-top: 1rem; }
+@media (max-width: 760px) {
+  .prog-vers { grid-template-columns: minmax(0, 1fr); }
+  .prog-theme { margin-left: 0; width: 100%; }
+}
+
+/* Assembly cross-check */
+.prog-votes { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.8rem; }
+.prog-vote { min-width: 0; }
+.prog-vote h3 { margin: 0 0 0.3rem; }
+.prog-quote { margin: 0 0 0.4rem; font-size: 0.92rem; color: var(--ink-2); max-width: var(--measure); }
+.prog-vtable td { vertical-align: top; font-size: 0.84rem; }
+.prog-vtable td:nth-child(2) { min-width: 16rem; }
+.prog-verdict { font: 600 0.7rem/1.3 var(--mono); text-transform: uppercase; letter-spacing: 0.04em; }
+.prog-verdict.prog-yes { color: var(--ink); }
+.prog-verdict.prog-yes::before { content: "= "; }
+.prog-verdict.prog-no { color: var(--ink); text-decoration: underline; text-decoration-style: wavy; text-underline-offset: 3px; }
+.prog-verdict.prog-no::before { content: "≠ "; }
+.prog-verdict.prog-none { color: var(--ink-3); }
+
+/* programme weight vs speaking time */
+.prog-weights { display: grid; gap: 0.45rem; margin-bottom: 0.8rem; }
+.prog-wkey { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; font-size: 0.84rem; margin-bottom: 0.3rem; }
+.prog-wkey span { display: inline-flex; align-items: center; }
+.prog-sw.prog-wp, .prog-wbar.prog-wp { background: var(--ink); }
+.prog-sw.prog-ws, .prog-wbar.prog-ws { background: var(--ink-3); }
+.prog-wrow { display: grid; grid-template-columns: minmax(150px, 15rem) minmax(0, 1fr); gap: 0.8rem; align-items: center; }
+.prog-wlabel { font-size: 0.88rem; }
+.prog-wbars { display: grid; grid-template-columns: minmax(0, 1fr) 3rem; gap: 2px 0.5rem; align-items: center; }
+.prog-wbars b { font-size: 0.78rem; font-variant-numeric: tabular-nums; text-align: right; }
+.prog-wbar { display: block; height: 7px; min-width: 1px; transform-origin: left; animation: growX 0.8s var(--ease) both; }
+@media (max-width: 640px) { .prog-wrow { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; } }
+.prog-method ul { padding-left: 1.2rem; }
+.prog-method li { margin-bottom: 0.4rem; }
+@media (prefers-reduced-motion: reduce) { .prog-stack, .prog-wbar { animation: none; } }
