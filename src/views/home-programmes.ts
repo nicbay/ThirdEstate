@@ -106,6 +106,11 @@ export async function mountProgrammesFeature(box: HTMLElement | null) {
             : `<p class="muted small">${L("Les réactions arrivent.", "Reactions coming in.")}</p>`}
         </aside>
       </div>
+      ${lead.slug === "melenchon" ? `<a class="pf-sim" href="#/programmes/melenchon/simulateur">
+        <span class="pf-k">${L("Simulateur", "Simulator")}</span>
+        <strong>${L("Le programme de Mélenchon vous coûterait-il ou vous rapporterait-il ?", "Would Mélenchon’s programme cost you or pay you?")}</strong>
+        <span class="pf-sim-go">${L("Simulez l’effet sur votre foyer", "Simulate the effect on your household")} →</span>
+      </a>` : ""}
       <div class="pf-rail" aria-label="${L("Les programmes de tous les candidats", "Every candidate’s programme")}">
         ${cardsList.map(({ c, p }, i) => `<a class="pf-cand${p ? ` is-${p.status}` : " is-none"}" style="--i:${i}" href="${p ? `#/programmes/${esc(c.slug)}` : `#/candidat/${esc(c.slug)}`}">
           ${c.photo ? `<img src="${esc(safeUrl(c.photo))}" alt="" loading="lazy" width="44" height="44">` : `<span class="pf-noimg"></span>`}
