@@ -35,7 +35,7 @@ let wordsP: Promise<Words> | null = null;
 const loadWords = () => (wordsP ??= fetchJson<Words>("/data/an/interventions/words.json").catch(() => ({}) as Words));
 
 /** One colour per theme, dark enough to read as text on white. */
-const THEME_COLOR: Record<string, string> = {
+export const THEME_COLOR: Record<string, string> = {
   securite: "#23408e", immigration: "#7b3fa0", sante: "#c8264b", social: "#d0508f", education: "#a86f00", travail: "#9f3a22",
   economie: "#3a6a8e", budget: "#5a5e9a", ecologie: "#1b8448", agriculture: "#667f12", logement: "#c25a12", international: "#4a4f57",
   justice: "#86286a", europe: "#1f62c9", institutions: "#227780", outremer: "#0c8ea2", culture: "#7a5a2c",

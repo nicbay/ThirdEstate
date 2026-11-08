@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "sync:an": "node scripts/sync-assemblee.mjs",
     "sync:interventions": "node scripts/sync-interventions.mjs",
+    "build:quiz": "node scripts/build-quiz.mjs",
     "sync:geo": "node scripts/sync-geo.mjs",
     "sync": "npm run sync:geo && npm run sync:results && npm run sync:an && npm run sync:polls && npm run sync:markets",
     "sync:polls": "node scripts/sync-polls.mjs",

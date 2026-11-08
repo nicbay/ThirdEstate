@@ -72,6 +72,7 @@ export async function renderHome(app: HTMLElement) {
       </section>
 
       <div id="mine"></div>
+      <a class="quiz-teaser" href="#/quiz"><span class="quiz-teaser-k">${L("Quiz", "Quiz")}</span><strong>${L("Qui vous ressemble ?", "Who’s closest to you?")}</strong><span>${L("Répondez à de vrais votes de l’Assemblée : découvrez le député, le groupe et le candidat 2027 les plus proches de vous.", "Answer real Assembly votes: find the MP, group and 2027 candidate closest to you.")}</span></a>
 
       <section class="card where-block">
         <div class="pres-grid">
