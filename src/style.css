@@ -1170,3 +1170,47 @@ body { overflow-x: clip; }
   .sources-table tr:last-child { border-bottom: 0; }
   .sources-table td { display: block; width: auto !important; padding: 0.1rem 0; border: 0; }
 }
+
+/* ---------- word popup: every MP who said a word, and each group's words (src/views/speeches.ts) ---------- */
+.word-pop { width: min(680px, calc(100vw - 24px)); max-height: min(86vh, 900px); padding: 0; border: 0; border-radius: 4px; background: var(--paper, #fff); color: var(--ink); box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35); overflow: auto; overscroll-behavior: contain; }
+.word-pop::backdrop { background: rgba(10, 11, 14, 0.55); }
+.word-pop > * { margin-left: 1.1rem; margin-right: 1.1rem; }
+.word-pop .wp-top { position: sticky; top: 0; z-index: 1; margin: 0; padding: 0.9rem 1.1rem 0.6rem; background: var(--paper, #fff); border-bottom: 1px solid var(--rule); }
+.word-pop .wp-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.word-pop .wp-intro { margin: 0.35rem 0 0.5rem; }
+.wp-chip { font: 600 0.72rem var(--mono); padding: 0.18rem 0.5rem; border: 1px solid var(--rule); border-radius: 999px; background: var(--paper, #fff); color: var(--ink-2); cursor: pointer; }
+.wp-chip[data-g]:not([data-g=""])::before { content: ""; display: inline-block; width: 0.55em; height: 0.55em; margin-right: 0.3em; background: var(--c); border-radius: 1px; }
+.wp-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper, #fff); border-color: var(--ink); }
+.word-pop .wp-head h2 { margin: 0; font-size: 1.5rem; line-height: 1.15; }
+.word-pop .word-close { position: static; }
+.word-pop > p { margin-top: 0.7rem; }
+.wp-groups { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.word-rank { margin-top: 0.4rem !important; }
+.word-rank { list-style: none; padding: 0; margin-top: 0.2rem; margin-bottom: 0.8rem; }
+.word-rank li { display: grid; grid-template-columns: 2.1em 32px minmax(0, 1fr) auto minmax(50px, 120px) 3.2em; align-items: center; gap: 0.55rem; padding: 0.3rem 0.35rem; border-bottom: 1px solid var(--rule); font-size: 0.9rem; }
+.word-rank li[hidden] { display: none; }
+.word-rank li.is-current { background: color-mix(in srgb, var(--accent) 12%, transparent); box-shadow: inset 3px 0 0 var(--accent); }
+.word-rank .wr-rank { font: 500 0.75rem var(--mono); color: var(--ink-3); text-align: right; }
+.word-rank img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; object-position: top; background: var(--wash); }
+.word-rank .wr-name { color: var(--ink); text-decoration: none; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.word-rank .wr-name:hover { text-decoration: underline; }
+.word-rank .wr-bar { height: 6px; background: var(--wash); }
+.word-rank .wr-bar span { display: block; height: 100%; }
+.word-rank .wr-n { text-align: right; font-variant-numeric: tabular-nums; }
+.word-pop .wp-sub { font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-2); margin-top: 1.2rem; }
+.word-pop .word-quotes { margin-bottom: 1.2rem; }
+@media (max-width: 520px) {
+  .word-rank li { grid-template-columns: 1.8em 28px minmax(0, 1fr) auto 2.8em; }
+  .word-rank .wr-bar { display: none; }
+  .word-rank img { width: 28px; height: 28px; }
+}
+.party-words { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.3rem 1.6rem; margin-top: 0.6rem; }
+.pw-group h3 { margin: 0 0 0.4rem; font-size: 0.95rem; display: flex; gap: 0.4rem; align-items: baseline; flex-wrap: wrap; }
+.pw-group ol { list-style: none; padding: 0; margin: 0; counter-reset: pw; }
+.pw-group li { display: grid; grid-template-columns: 1.4em minmax(0, 1fr) 44px 3.2em; align-items: center; gap: 0.4rem; padding: 0.18rem 0; counter-increment: pw; border-bottom: 1px solid var(--rule); }
+.pw-group li::before { content: counter(pw); font: 500 0.7rem var(--mono); color: var(--ink-3); text-align: right; }
+.pw-word { all: unset; cursor: pointer; font-weight: 700; line-height: 1.2; overflow-wrap: anywhere; }
+.pw-word:hover, .pw-word:focus-visible { text-decoration: underline; }
+.pw-bar { height: 5px; background: var(--wash); }
+.pw-bar span { display: block; height: 100%; background: var(--c); }
+.pw-n { text-align: right; font-size: 0.82rem; font-variant-numeric: tabular-nums; }
