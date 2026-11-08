@@ -51,6 +51,8 @@
 
   --measure: 66ch;
   --col: 1160px;
+  /* viewport width without the classic scrollbar (set from JS in main.ts; 100vw includes it, so full-bleed bands overflowed) */
+  --vw: 100vw;
   --gutter: 16px;
   --bar-h: 56px;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -101,7 +103,7 @@ p.muted.pad { font-family: var(--mono); font-size: 0.8rem; text-transform: upper
 .topbar {
   position: sticky; top: 0; z-index: 20;
   display: flex; align-items: center; gap: 2rem;
-  padding: 0 max(var(--gutter), calc((100vw - var(--col)) / 2));
+  padding: 0 max(var(--gutter), calc((var(--vw) - var(--col)) / 2));
   height: var(--bar-h);
   background: var(--ink); color: #fff;
 }
@@ -717,7 +719,7 @@ footer .foot-quote span { font-style: normal; font-family: var(--mono); font-siz
 
 /* ---------- home hero (dark, full-bleed): dots map → hemicycle ---------- */
 body { overflow-x: clip; }
-.hero-x { margin: -2.4rem calc(50% - 50vw) 0; background: var(--ink); color: #fff; padding: 2rem max(var(--gutter), calc((100vw - var(--col)) / 2)) 0; position: relative; isolation: isolate; overflow: hidden; }
+.hero-x { margin: -2.4rem calc(50% - var(--vw) / 2) 0; background: var(--ink); color: #fff; padding: 2rem max(var(--gutter), calc((var(--vw) - var(--col)) / 2)) 0; position: relative; isolation: isolate; overflow: hidden; }
 .hero-x::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(60% 70% at 78% 40%, rgba(91, 141, 255, 0.13), transparent 70%), radial-gradient(45% 55% at 62% 65%, rgba(255, 90, 106, 0.1), transparent 70%); }
 .hero-x-in { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: 2.5rem; align-items: center; }
 .hero-kicker { font: 500 0.74rem var(--mono); text-transform: uppercase; letter-spacing: 0.09em; color: #a9abb3; margin: 0 0 1.1rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.8rem; }
@@ -791,7 +793,7 @@ body { overflow-x: clip; }
 .sec-hero {
   --ink: #ffffff; --ink-2: #c9cad0; --ink-3: #8e919b; --paper: #111216; --panel: #1b1c22; --wash: #24262d;
   --rule: #2c2e35; --rule-2: #3a3d46; --rule-strong: #ffffff; --link: #c4b5ff; --accent: #8f7bff;
-  margin: -2.4rem calc(50% - 50vw) 0; background: #111216; color: #fff; position: relative; isolation: isolate; overflow: hidden;
+  margin: -2.4rem calc(50% - var(--vw) / 2) 0; background: #111216; color: #fff; position: relative; isolation: isolate; overflow: hidden;
 }
 .sec-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(55% 90% at 85% 20%, rgba(91, 141, 255, 0.16), transparent 70%), radial-gradient(40% 80% at 65% 110%, rgba(255, 90, 106, 0.12), transparent 70%); }
 .sec-hero::after { content: ""; position: absolute; z-index: -1; right: -40px; top: -40px; width: min(52vw, 640px); height: 140%; background-image: radial-gradient(circle, rgba(255, 255, 255, 0.16) 1.3px, transparent 1.6px); background-size: 16px 16px; -webkit-mask-image: radial-gradient(closest-side, #000, transparent); mask-image: radial-gradient(closest-side, #000, transparent); animation: dotDrift 40s linear infinite; }
@@ -1144,6 +1146,7 @@ body { overflow-x: clip; }
   .presence-table th, .presence-table td { padding-right: 0.4rem; }
   .pcs-table { font-size: 0.82rem; }
   .pcs-table th, .pcs-table td { padding-right: 0.4rem; }
+}
 /* ---- elections: simulator flows as a list on phones (the 960-wide funnel shrinks labels to ~5px) ---- */
 .flow-list { display: none; }
 @media (max-width: 639px) {
@@ -1157,4 +1160,13 @@ body { overflow-x: clip; }
   .flow-list .fl-split { margin: 0; font-size: 13px; color: var(--ink-2); }
   .flow-list .fl-total { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 10px 0 0; font-size: 14px; }
   .flow-list .fl-total span { border-left: 4px solid var(--c); padding-left: 6px; }
+}
+/* ---------- sources page: three columns on desktop, stacked rows on phones ---------- */
+.sources-table td:first-child { width: 34%; }
+.sources-table td:last-child { width: 22%; }
+@media (max-width: 600px) {
+  .sources-table thead { display: none; }
+  .sources-table tr { display: block; padding: 0.55rem 0; border-bottom: 1px solid var(--rule); }
+  .sources-table tr:last-child { border-bottom: 0; }
+  .sources-table td { display: block; width: auto !important; padding: 0.1rem 0; border: 0; }
 }

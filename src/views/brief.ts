@@ -3,7 +3,7 @@
 // Everything comes from data the site already holds: district profiles (crime, income), the MPs,
 // and the 2022 → 2024 legislative first rounds by district.
 import { loadDeputes, loadShifts, type Depute } from "../data";
-import { L, fmtNum, getLang } from "../i18n";
+import { L, fmtNum, getLang, plural } from "../i18n";
 import { esc, safeColor } from "../util";
 import { photoUrl } from "./deputes";
 import { CRIME_LABELS, depOf, loadDepartmentTowns, loadNational, plmWhole, type TownData } from "./explore";
@@ -40,7 +40,7 @@ export async function townBrief(code: string, name: string): Promise<Brief> {
       : `Your MP is <a href="#/depute/${mp.id}">${esc(mp.prenom)} ${esc(mp.nom)}</a> (${esc(mp.groupe?.abrev ?? "")}), who took part in ${pct(100 * mp.stats.participation)} of the Assembly’s recorded votes.`);
   } else if (mps.length > 1) {
     const names = mps.slice(0, 4).map(({ mp }) => `<a href="#/depute/${mp.id}">${esc(mp.prenom)} ${esc(mp.nom)}</a> (${esc(mp.groupe?.abrev ?? "")})`);
-    s.push(fr ? `La commune est partagée entre ${mps.length} circonscriptions : ${list(names)}${mps.length > 4 ? "…" : ""}.` : `The town is split between ${mps.length} districts: ${list(names)}${mps.length > 4 ? "…" : ""}.`);
+    s.push(fr ? `La commune est partagée entre ${mps.length} circonscriptions\u00a0: ${list(names)}${mps.length > 4 ? "…" : ""}.` : `The town is split between ${mps.length} districts: ${list(names)}${mps.length > 4 ? "…" : ""}.`);
   }
 
   // 2. how its (main) district voted at the last legislative election, and the swing since the one before
@@ -49,9 +49,17 @@ export async function townBrief(code: string, name: string): Promise<Brief> {
   let vote: Brief["vote"];
   if (u && pair) {
     vote = { circo: mps[0].circo, year: pair.to, from: pair.from, left: u.left[1], centre: u.centre[1], farRight: u.farRight[1], farRightShift: u.farRight[2], leftShift: u.left[2] };
-    s.push(fr
-      ? `Au premier tour des législatives de ${pair.to}, ${mps.length > 1 ? "la principale circonscription" : "la circonscription"} a donné ${pct(vote.farRight)} à l’extrême droite (${pts(vote.farRightShift)} depuis ${pair.from}), ${pct(vote.left)} à la gauche (${pts(vote.leftShift)}) et ${pct(vote.centre)} au centre.`
-      : `In the ${pair.to} legislative first round, ${mps.length > 1 ? "its main district" : "the district"} gave the far right ${pct(vote.farRight)} (${pts(vote.farRightShift)} since ${pair.from}), the left ${pct(vote.left)} (${pts(vote.leftShift)}) and the centre ${pct(vote.centre)}.`);
+    // a bloc with no candidate (or under half a point) is left out rather than reported as "0 %"
+    const has = (v: number | null | undefined) => v != null && Math.round(v) > 0;
+    const blocs = [
+      has(vote.farRight) && (fr ? `${pct(vote.farRight)} à l’extrême droite (${pts(vote.farRightShift)} depuis ${pair.from})` : `the far right ${pct(vote.farRight)} (${pts(vote.farRightShift)} since ${pair.from})`),
+      has(vote.left) && (fr ? `${pct(vote.left)} à la gauche (${pts(vote.leftShift)}${has(vote.farRight) ? "" : ` depuis ${pair.from}`})` : `the left ${pct(vote.left)} (${pts(vote.leftShift)}${has(vote.farRight) ? "" : ` since ${pair.from}`})`),
+      has(vote.centre) && (fr ? `${pct(vote.centre)} au centre` : `the centre ${pct(vote.centre)}`),
+    ].filter((x): x is string => !!x);
+    if (blocs.length)
+      s.push(fr
+        ? `Au premier tour des législatives de ${pair.to}, ${mps.length > 1 ? "la principale circonscription" : "la circonscription"} a donné ${list(blocs)}.`
+        : `In the ${pair.to} legislative first round, ${mps.length > 1 ? "its main district" : "the district"} gave ${list(blocs)}.`);
   }
 
   // 3. how well off it is
@@ -71,10 +79,12 @@ export async function townBrief(code: string, name: string): Promise<Brief> {
     const above = rows.filter((r) => r.ratio > 1.1).length;
     const lab = CRIME_LABELS[worst.k][fr ? 0 : 1].toLowerCase();
     s.push(worst.ratio < 1.1
-      ? L(`La délinquance enregistrée y est sous la moyenne nationale sur ${rows.length === 8 ? "les huit" : `les ${rows.length}`} indicateurs publiés.`, `Recorded crime is below the national average on all ${rows.length} published indicators.`)
+      ? rows.length === 1
+        ? L("La délinquance enregistrée y est sous la moyenne nationale sur le seul indicateur publié.", "Recorded crime is below the national average on the only published indicator.")
+        : L(`La délinquance enregistrée y est sous la moyenne nationale sur ${rows.length === 8 ? "les huit" : `les ${rows.length}`} indicateurs publiés.`, `Recorded crime is below the national average on all ${rows.length} published indicators.`)
       : fr
-        ? `Côté sécurité, ${above} indicateur${above > 1 ? "s" : ""} sur ${rows.length} dépasse${above > 1 ? "nt" : ""} la moyenne nationale ; l’écart le plus net : ${lab}, ${worst.ratio >= 1.95 ? `${worst.ratio.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} fois la moyenne` : `+${Math.round(100 * (worst.ratio - 1))} %`}.`
-        : `On safety, ${above} of ${rows.length} indicators are above the national average; the widest gap is ${lab}, ${worst.ratio >= 1.95 ? `${worst.ratio.toLocaleString("en-GB", { maximumFractionDigits: 1 })} times the average` : `+${Math.round(100 * (worst.ratio - 1))}%`}.`);
+        ? `Côté sécurité, ${above} ${plural(above, ["indicateur", "indicateurs"], ["", ""])} sur ${rows.length} ${above > 1 ? "dépassent" : "dépasse"} la moyenne nationale ; l’écart le plus net : ${lab}, ${worst.ratio >= 1.95 ? `${worst.ratio.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} fois la moyenne` : `+${Math.round(100 * (worst.ratio - 1))} %`}.`
+        : `On safety, ${above} of ${rows.length} ${plural(rows.length, ["", ""], ["indicator", "indicators"])} ${above === 1 ? "is" : "are"} above the national average; the widest gap is ${lab}, ${worst.ratio >= 1.95 ? `${worst.ratio.toLocaleString("en-GB", { maximumFractionDigits: 1 })} times the average` : `+${Math.round(100 * (worst.ratio - 1))}%`}.`);
   }
   return { code, name, town: t, mps, vote, sentences: s };
 }
