@@ -5065,6 +5065,554 @@
       },
       "check": null,
       "postTime": "2026-11-05T09:59:06.000Z"
+    },
+    "bsky:at://did:plc:wu3up6kgql5q3v4wtdh2h624/app.bsky.feed.post/3mzsiiizom227": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:47:59.568Z",
+      "storyItems": [
+        "62864b91fc21"
+      ],
+      "storyTitle": "Le maire RN d’Hayange, le vice-consul de Russie et l’hommage aux soldats de la Grande Guerre",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Message de commémoration qui critique le nationalisme exacerbé, position de gauche sur les valeurs républicaines et la mémoire.",
+        "rationale_en": "Commemoration post criticizing exacerbated nationalism; left-leaning framing on republican and memorial values."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste, message mémoriel sobre.",
+        "rationale_en": "No populist rhetoric; sober commemorative message."
+      },
+      "check": null,
+      "postTime": "2026-11-08T13:13:36.481Z"
+    },
+    "yt:Q5ITKXh9XFk": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:47:59.569Z",
+      "storyItems": [
+        "bf480087ea04",
+        "45f7f21c8650",
+        "a723d0c9eb9e",
+        "0ef9b7fdc4d5",
+        "93a01468f3e7",
+        "e66acba0a737"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Mise en avant du programme « L'avenir en commun », programme de gauche radicale à orientation sociale-écologique.",
+        "rationale_en": "Promotes the 'L'avenir en commun' programme, a radical-left social-ecological platform."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Ton enthousiaste et triomphaliste (« historique », « on va gagner ») mettant l'élan militant en avant.",
+        "rationale_en": "Enthusiastic, triumphant tone ('historic', 'we will win') emphasizing militant momentum."
+      },
+      "check": null,
+      "postTime": "2026-11-08T13:10:29.000Z"
+    },
+    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3mzsi3rahfs2k": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:47:59.569Z",
+      "storyItems": [
+        "bf480087ea04",
+        "45f7f21c8650",
+        "a723d0c9eb9e",
+        "0ef9b7fdc4d5",
+        "93a01468f3e7",
+        "e66acba0a737"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Promotion du programme « L'avenir en commun », à orientation de gauche sociale et écologique.",
+        "rationale_en": "Promotes the 'L'avenir en commun' programme, with left social and ecological orientation."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Remerciements et ton mobilisateur, sans argument développé.",
+        "rationale_en": "Thanks and mobilizing tone, without developed argument."
+      },
+      "check": {
+        "claim": "Le meeting a réuni 20 000 personnes ou plus, dont des personnes ayant suivi à distance.",
+        "why_fr": "Ce chiffre semble émaner des organisateurs ; les sources indépendantes ou les décomptes officiels ne sont pas précisés.",
+        "why_en": "This figure appears to come from the organizers; independent or official counts are not specified.",
+        "sources": []
+      },
+      "postTime": "2026-11-08T13:06:28.890Z"
+    },
+    "yt:pUvuL98fMfk": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:47:59.569Z",
+      "storyItems": [
+        "bf480087ea04",
+        "45f7f21c8650",
+        "a723d0c9eb9e",
+        "0ef9b7fdc4d5",
+        "93a01468f3e7",
+        "e66acba0a737"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Simple annonce de retour sur un meeting, sans contenu idéologique explicite.",
+        "rationale_en": "Simple announcement of a meeting recap, with no explicit ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-08T13:06:07.000Z"
+    },
+    "bsky:at://did:plc:k3duvs7l7xsp7varh7eoajnq/app.bsky.feed.post/3mzsf27zbmk2z": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:47:59.569Z",
+      "storyItems": [
+        "42ba57359ccf",
+        "41d49f98a51b",
+        "7846f873309b",
+        "47340d4a1988",
+        "8b3d93ffc639",
+        "ee32244e873f"
+      ],
+      "storyTitle": "Des LFI appellent à fermer CNews, Jordan Bardella dénonce une «tentation totalitaire»",
+      "political": true,
+      "lean": {
+        "score": 1,
+        "rationale_fr": "Soutien à Marine Le Pen et Jordan Bardella, « renaissance de la France » sur fond de campagne du RN, droite nationaliste.",
+        "rationale_en": "Supports Marine Le Pen and Jordan Bardella, 'renaissance of France' RN campaign framing; nationalist right."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Ton militant et slogans mobilisateurs, sans argumentation détaillée.",
+        "rationale_en": "Militant tone and mobilizing slogans without detailed argument."
+      },
+      "check": null,
+      "postTime": "2026-11-08T12:11:56.044Z"
+    },
+    "yt:ZVb4Ei6KsFs": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:47:59.569Z",
+      "storyItems": [
+        "bf480087ea04",
+        "45f7f21c8650",
+        "a723d0c9eb9e",
+        "0ef9b7fdc4d5",
+        "93a01468f3e7",
+        "e66acba0a737"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce d'une intervention télévisée, message pratique sans position exprimée.",
+        "rationale_en": "Announcement of a TV appearance, practical message with no stated position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-08T12:06:36.000Z"
+    },
+    "bsky:at://did:plc:yiitgmldz3gwyxmz3p5fqcwv/app.bsky.feed.post/3mzsdsbavhs2r": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:47:59.569Z",
+      "storyItems": [
+        "06e2d1518a6d"
+      ],
+      "storyTitle": "Présidentielle 2027 : « Liberté, Égalité, Solidarité », Jean-Luc Mélenchon dévoile une nouvelle affiche de campagne",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Appel à plus de solidarité et promotion de La France insoumise, orientation de gauche radicale.",
+        "rationale_en": "Calls for more solidarity and promotes La France insoumise; radical-left orientation."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Formule de slogan émotionnel, sans argument précis.",
+        "rationale_en": "Emotional slogan without precise argument."
+      },
+      "check": null,
+      "postTime": "2026-11-08T11:49:35.169Z"
+    },
+    "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3mzsdfgis5c2w": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:47:59.569Z",
+      "storyItems": [
+        "1f7d7f6d68a1",
+        "66e19823719c",
+        "99fb717bb79e"
+      ],
+      "storyTitle": "Présidentielle 2027 : Le Pen pense que le programme de LFI est un « projet de démantèlement de la France »",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce de disponibilité commerciale d'un programme, sans position idéologique exprimée.",
+        "rationale_en": "Announcement of a programme's commercial availability, with no ideological position stated."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-08T11:42:24.466Z"
+    },
+    "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3mzsd4gc36s2w": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:48:14.777Z",
+      "storyItems": [
+        "433a43f48da2",
+        "71914aaed714",
+        "4a8fd2e66cb7"
+      ],
+      "storyTitle": "A Euronaval, Marine Le Pen plaide pour davantage de frégates dans la flotte française",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Oppose le « programme complet » de LFI à Marine Le Pen, accusée de poursuivre les « recettes macronistes », ce qui indique un positionnement de gauche.",
+        "rationale_en": "Contrasts LFI's 'complete programme' with Le Pen's continuation of 'Macronist recipes', indicating a left-wing position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Critique politique classique, sans opposition peuple contre élites ni rhétorique de menace.",
+        "rationale_en": "Standard political criticism, with no people-versus-elites or threat rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-08T11:37:22.256Z"
+    },
+    "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3mzscxknbh22w": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:48:14.777Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Dénonce la pauvreté et la hausse de la dette et plaide pour « une autre vision de l'économie », position de gauche anti-austérité.",
+        "rationale_en": "Cites poverty and rising debt and calls for 'another vision of the economy', a left-wing anti-austerity stance."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Pas de rhétorique populiste notable ; appel mesuré à une autre politique économique.",
+        "rationale_en": "No notable populist rhetoric; a measured call for a different economic policy."
+      },
+      "check": null,
+      "postTime": "2026-11-08T11:34:39.045Z"
+    },
+    "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3mzscpcp53c2w": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:48:14.777Z",
+      "storyItems": [
+        "3c4e015c0d79"
+      ],
+      "storyTitle": "Présidentielle 2027 : Macron maintient les dates malgré les craintes de violences",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Engagement d'action sans contenu idéologique explicite.",
+        "rationale_en": "Commitment to act with no explicit ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Message bref sans rhétorique populiste.",
+        "rationale_en": "Brief message with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-08T11:30:02.281Z"
+    },
+    "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3mzscksooes2w": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:48:14.777Z",
+      "storyItems": [
+        "4e6f28914f79",
+        "609ec2ffe698",
+        "a899cc02b93e"
+      ],
+      "storyTitle": "\"J'ai besoin de plus d'argent\" : dans les entreprises, patrons et salariés divisés sur une éventuelle hausse du Smic",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Défend la hausse du SMIC et critique la position de Marine Le Pen, orientation sociale-démocrate.",
+        "rationale_en": "Defends a SMIC increase and criticises Le Pen's position, a social-democratic orientation."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "« Les Français n'en peuvent plus » et « délirant » mobilisent l'émotion plutôt que des arguments détaillés.",
+        "rationale_en": "'The French can't take it anymore' and 'delirious' appeal to emotion rather than detailed arguments."
+      },
+      "check": null,
+      "postTime": "2026-11-08T11:27:31.272Z"
+    },
+    "yt:x5aBitRZSDY": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:48:14.777Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Met en avant la hausse des inégalités comme cause de la brutalité sociale, thème de gauche.",
+        "rationale_en": "Presents rising inequality as a cause of social brutality, a left-wing theme."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Critique sociale sans opposition peuple contre élites explicite.",
+        "rationale_en": "Social critique without explicit people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-08T10:56:19.000Z"
+    },
+    "bsky:at://did:plc:acgikw5qlvyil2hucces4she/app.bsky.feed.post/3mzs7zwd6v22y": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:48:14.778Z",
+      "storyItems": [
+        "bf480087ea04",
+        "45f7f21c8650",
+        "a723d0c9eb9e",
+        "0ef9b7fdc4d5",
+        "93a01468f3e7",
+        "e66acba0a737"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Soutient le programme « L'Avenir en commun » de LFI, projet de rupture à gauche radicale.",
+        "rationale_en": "Supports LFI's 'L'Avenir en commun' programme, a radical left project."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [],
+        "rationale_fr": "Mise en avant de la force de la France insoumise et du soutien à son candidat, sans attaque d'adversaires.",
+        "rationale_en": "Highlights the strength of LFI and its candidate's support, without attacking opponents."
+      },
+      "check": {
+        "claim": "20 000 personnes présentes au meeting du Bourget",
+        "why_fr": "Ce chiffre semble être celui des organisateurs ; d'autres sources peuvent donner un décompte différent.",
+        "why_en": "This figure appears to be the organisers' count; other sources may give a different estimate.",
+        "sources": [
+          {
+            "title": "La « Nouvelle France » rassemblée au meeting de Mélenchon au Bourget",
+            "url": "https://www.liberation.fr/politique/elections/la-nouvelle-france-rassemblee-au-meeting-de-melenchon-au-bourget-une-realite-a-ne-pas-minimiser-20261108_CSFT2KNSAVFNTBBTO7EVTHKF5A/"
+          }
+        ]
+      },
+      "postTime": "2026-11-08T10:42:17.107Z"
+    },
+    "bsky:at://did:plc:dzhhf6dtekdyjpcvm5xr6jeb/app.bsky.feed.post/3mzs5wy6jbc22": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:48:14.778Z",
+      "storyItems": [
+        "bf480087ea04",
+        "45f7f21c8650",
+        "a723d0c9eb9e",
+        "0ef9b7fdc4d5",
+        "93a01468f3e7",
+        "e66acba0a737"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Promeut le programme « L'Avenir en commun » de LFI, projet de gauche radicale.",
+        "rationale_en": "Promotes LFI's 'L'Avenir en commun' programme, a radical left project."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Slogan militant sans attaque d'élites ni opposition peuple contre élites.",
+        "rationale_en": "Militant slogan with no attack on elites or people-versus-elites framing."
+      },
+      "check": {
+        "claim": "Plus de 20 000 personnes au Bourget pour le meeting de présentation du programme",
+        "why_fr": "Ce chiffre semble être celui des organisateurs ; d'autres sources peuvent donner un décompte différent.",
+        "why_en": "This figure appears to be the organisers' count; other sources may give a different estimate.",
+        "sources": [
+          {
+            "title": "La « Nouvelle France » rassemblée au meeting de Mélenchon au Bourget",
+            "url": "https://www.liberation.fr/politique/elections/la-nouvelle-france-rassemblee-au-meeting-de-melenchon-au-bourget-une-realite-a-ne-pas-minimiser-20261108_CSFT2KNSAVFNTBBTO7EVTHKF5A/"
+          }
+        ]
+      },
+      "postTime": "2026-11-08T10:04:50.976Z"
+    },
+    "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3mzs3ztj2fs2w": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:48:14.778Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message purement pratique annonçant une intervention télévisée.",
+        "rationale_en": "Purely practical message announcing a TV appearance."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-08T09:30:39.255Z"
+    },
+    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3mzs3tli5ck23": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:48:20.314Z",
+      "storyItems": [
+        "bf480087ea04",
+        "45f7f21c8650",
+        "a723d0c9eb9e",
+        "0ef9b7fdc4d5",
+        "93a01468f3e7",
+        "e66acba0a737"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Présentation d'un programme de la France insoumise, défense de la candidature Mélenchon ; orientation de gauche radicale.",
+        "rationale_en": "Presents the La France insoumise programme and backs Mélenchon's candidacy; far-left orientation."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Ton d'enthousiasme et de certitude de victoire, sans rhétorique anti-élites explicite.",
+        "rationale_en": "Enthusiastic, certain-of-victory tone, without explicit anti-elite rhetoric."
+      },
+      "check": {
+        "claim": "Plus de 20.000 personnes présentes au meeting du Bourget",
+        "why_fr": "Le chiffre provient de l'auteur·e et ne figure pas dans les articles fournis ; les décomptes de meetings varient souvent selon les sources (organisateurs, police).",
+        "why_en": "The figure comes from the author and is not in the provided articles; meeting attendance counts often vary by source (organisers, police).",
+        "sources": [
+          {
+            "title": "Liberté, Le Monde, Le Parisien : couverture du meeting du Bourget",
+            "url": "https://www.leparisien.fr/elections/presidentielle/meeting-de-melenchon-au-bourget-une-creation-artistique-collective-illustrera-le-programme-presidentiel-de-lfi-06-11-2026-JBQI7V3K5VH4LLASGP2ZVT6BKY.php"
+          }
+        ]
+      },
+      "postTime": "2026-11-08T09:27:09.512Z"
+    },
+    "yt:qFM3qnzm540": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:48:20.314Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de partage de témoignages de lycéens, sans position politique explicite.",
+        "rationale_en": "Shares high-school students' testimonies, with no explicit political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste repérable.",
+        "rationale_en": "No discernible populist rhetoric."
+      },
+      "check": {
+        "claim": "1 lycéen sur 4 travaille en parallèle de ses études, selon le Céreq en mars 2026",
+        "why_fr": "Le chiffre est attribué au Céreq sans lien vers la publication ; il mérite une vérification auprès de la source originale.",
+        "why_en": "The figure is attributed to the Céreq without a link to the publication; it deserves checking against the original source.",
+        "sources": []
+      },
+      "postTime": "2026-11-08T08:15:12.000Z"
+    },
+    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3mzlliaf53s2f": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:48:20.314Z",
+      "storyItems": [
+        "071b1dad67e5"
+      ],
+      "storyTitle": "Présidentielle : Mélenchon balaie l'offre de débat de Philippe sur le «racisme» et l'«antisémitisme»",
+      "political": true,
+      "lean": {
+        "score": -0.3,
+        "rationale_fr": "Soutien à une saisine judiciaire contre un propos raciste ; position de gauche écologiste sur la lutte contre le racisme.",
+        "rationale_en": "Supports a judicial referral over racist remarks; left-ecologist position on fighting racism."
+      },
+      "populism": {
+        "score": 0.05,
+        "markers": [],
+        "rationale_fr": "Appel au droit et à la justice, sans opposition peuple contre élites.",
+        "rationale_en": "Appeals to law and justice, without people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-05T19:18:30.484Z"
+    },
+    "bsky:at://did:plc:i27lvonqvridxzfgstsqw6p2/app.bsky.feed.post/3mzljuotjh22i": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-08T16:48:20.314Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce d'une participation télévisée, sans contenu idéologique.",
+        "rationale_en": "Announces a TV appearance, with no ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Message purement pratique, sans rhétorique populiste.",
+        "rationale_en": "Purely practical message, with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-05T18:49:40.800Z"
     }
   },
   "failures": {
