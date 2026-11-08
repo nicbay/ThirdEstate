@@ -1,4 +1,5 @@
 import { loadAnMeta, loadDeputes, type Depute } from "../data";
+import { entryTag } from "../lib/mandate";
 import { fmtDate, fmtPct, t } from "../i18n";
 import { esc, safeColor } from "../util";
 
@@ -50,7 +51,7 @@ function card(d: Depute) {
       <img src="${photoUrl(d.id)}" alt="" loading="lazy" data-hide-broken />
       <div>
         <strong>${esc(d.prenom)} ${esc(d.nom)}</strong>
-        <span class="chip">${esc(d.groupe?.abrev ?? "—")}</span>
+        <span class="chip">${esc(d.groupe?.abrev ?? "—")}</span>${entryTag(d) ? ` <span class="tag mp-entry-tag">${esc(entryTag(d)!)}</span>` : ""}
         <div class="muted small">${d.departement && d.numCirco ? esc(s.district(d.departement, d.numCirco)) : ""}</div>
         <div class="muted small">${s.participation} ${fmtPct(100 * d.stats.participation, 0)}</div>
       </div>

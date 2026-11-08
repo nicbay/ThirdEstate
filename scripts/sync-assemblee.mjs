@@ -49,6 +49,12 @@ for (const [path, data] of Object.entries(amo.files)) {
 
 const SOCIAL = { Twitter: "twitter", Instagram: "instagram", Facebook: "facebook", LinkedIn: "linkedin", Linkedin: "linkedin", Bluesky: "bluesky", TikTok: "tiktok", Youtube: "youtube", YouTube: "youtube", "Site internet": "website" };
 
+const entreeOf = (cause) =>
+  !cause || /^élections générales/i.test(cause) ? "general"
+  : /^élection partielle/i.test(cause) ? "byelection"
+  : /^reprise/i.test(cause) ? "returned"
+  : /^remplacement/i.test(cause) ? "substitute"
+  : "general";
 const deputes = [];
 for (const a of acteurs) {
   const mandats = arr(a.mandats?.mandat);
@@ -90,7 +96,13 @@ for (const a of acteurs) {
     numCirco: lieu.numCirco ? Number(lieu.numCirco) : null,
     // district code shared with the map and results: department + 2-digit district ("0104", "97101", "9901")
     circo: depNum && lieu.numCirco ? depNum + String(lieu.numCirco).padStart(2, "0") : null,
-    debutMandat: an.dateDebut,
+    // when the MP actually took the seat: for a substitute or a returning minister this is later than the election
+    debutMandat: str(an.mandature?.datePriseFonction) ?? an.dateDebut,
+    elected: an.dateDebut,
+    // how they got the seat: won it in June–July 2024 ("general"), at a by-election, back from government,
+    // or as the substitute (suppléant) of the MP elected on the ballot, who left (minister, incompatibility, death…)
+    entree: entreeOf(str(an.election?.causeMandat)),
+    cause: str(an.election?.causeMandat),
   });
 }
 const sitting = new Set(deputes.map((d) => d.id));
