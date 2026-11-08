@@ -7,7 +7,7 @@
 import { geoMercator, geoPath } from "d3-geo";
 import { fetchJson, loadDeputes, type Depute } from "../data";
 import { getHome, setHome } from "../lib/cloud";
-import { L, fmtDate, fmtNum, getLang } from "../i18n";
+import { L, colon, fmtDate, fmtNum, getLang, plural } from "../i18n";
 import { rewind } from "../lib/map";
 import { esc, safeUrl, safeColor } from "../util";
 import { PLATFORMS, age, presence } from "./assemblee";
@@ -28,6 +28,8 @@ export interface TownData {
   unemployment?: number;
   income?: number;
   poverty?: number;
+  /** vintage of the figures above (INSEE census / Filosofi year published in the district profiles) */
+  years?: { unemployment?: number; income?: number };
   crime?: Record<string, [number, number]>;
   spending?: number[];
   schools: Any[];
@@ -54,6 +56,7 @@ export function loadDepartmentTowns(dep: string) {
             const t: TownData = towns.get(u.code) ?? { code: u.code, name: u.name, pop: u.pop ?? 0, districts: [], schools: [], events: [] };
             t.districts.push({ code: c, share: u.share });
             t.unemployment ??= I.unemploymentCensus?.communes?.[u.code];
+            t.years ??= { unemployment: I.unemploymentCensus?.year, income: I.income?.year };
             const inc = I.income?.communes?.[u.code];
             if (inc) { t.income ??= inc[0]; t.poverty ??= inc[1]; }
             // Paris, Lyon, Marseille: SSMSI publishes the whole city only, keyed by the city code
@@ -88,8 +91,16 @@ export function townExtra(d: Any) {
     photo: ok(img) ? { url: img.thumb, author: img.author, licence: img.licence, page: img.page } : null,
     description: ok(wiki) ? { text: String(wiki.extract ?? "").split(/(?<=\.)\s/).slice(0, 2).join(" "), url: wiki.url } : null,
     officials: {
-      mayor: ok(el.mayor) ? { name: titleCase(el.mayor.name), since: el.mayor.since } : null,
-      councillors: ok(el.council) ? { count: el.council.count } : null,
+      // Paris, Lyon, Marseille arrondissements: the RNE mayor and council are the whole city's (level "city")
+      mayor: ok(el.mayor) ? { name: titleCase(el.mayor.name), since: el.mayor.since, city: el.mayor.level === "city" } : null,
+      councillors: ok(el.council) ? { count: el.council.count, city: el.council.level === "city" } : null,
+      arrondissement: ok(el.arrondissementCouncil)
+        ? {
+            count: el.arrondissementCouncil.count,
+            sector: /secteur\s*(\d+)/i.exec(el.arrondissementCouncil.sector ?? "")?.[1] ?? null,
+            mayor: (() => { const m = el.arrondissementCouncil.list?.find((x: Any) => /^maire d.arrondissement$/i.test(x.role ?? "")); return m ? titleCase(m.name) : null; })(),
+          }
+        : null,
       departmental: ok(el.departmental) ? el.departmental.cantons?.flatMap((c: Any) => c.councillors.map((x: Any) => titleCase(x.name))) : null,
       senators: ok(el.senators) ? el.senators.list.map((x: Any) => ({ name: titleCase(x.name) })) : [],
     },
@@ -108,7 +119,70 @@ const titleCase = (n: string) => String(n ?? "").replace(/\b([A-ZÀ-ÖØ-Ý][A-Z
 const loadTownExtra = async (code: string) => townExtra((await loadTownBundle(depOf(code)))[code]);
 export const depOf = (code: string) => (code.startsWith("97") ? code.slice(0, 3) : code.slice(0, 2));
 
-// ---------- search (address, street or town) ----------
+// ---------- search (address, street, town, postcode or INSEE code) ----------
+type Place = { code: string; label: string; context: string };
+const GEO = "https://geo.api.gouv.fr/communes";
+const GEO_FIELDS = "fields=nom,code,population,departement,region";
+const GEO_TYPES = "type=commune-actuelle,arrondissement-municipal";
+const placeOf = (c: Any, prefix = ""): Place => ({ code: c.code, label: c.nom, context: prefix + [c.departement?.code, c.departement?.nom, c.region?.nom].filter(Boolean).join(", ") });
+const getJson = (url: string): Promise<Any> => fetch(url).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+/** Lower case, no accents, punctuation as spaces, ordinals folded: "11ème", "11eme", "11e" → "11e"; "1re" → "1er". */
+const normPlace = (s: string) =>
+  s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").replace(/\b(\d{1,2}) ?(eme|e|er|re)\b/g, (_, n) => (n === "1" ? "1er" : `${n}e`)).trim();
+const PLM: Record<string, { max: number; code: (n: number) => string }> = {
+  paris: { max: 20, code: (n) => `751${String(n).padStart(2, "0")}` },
+  lyon: { max: 9, code: (n) => `6938${n}` },
+  marseille: { max: 16, code: (n) => `132${String(n).padStart(2, "0")}` },
+};
+/** "Paris 11e", "paris 11", "Lyon 3ème arrondissement", "11e arrondissement de Paris" → the arrondissement's INSEE code. */
+export function arrondissementCode(q: string): string | null {
+  const s = normPlace(q).replace(/\b(arrondissement|arrdt|arr|de|du)\b/g, " ").replace(/\s+/g, " ").trim();
+  const m = /^(paris|lyon|marseille) (\d{1,2})(?:er|e)?$/.exec(s), r = /^(\d{1,2})(?:er|e)? (paris|lyon|marseille)$/.exec(s);
+  const [city, n] = m ? [m[1], Number(m[2])] : r ? [r[2], Number(r[1])] : ["", 0];
+  const p = PLM[city];
+  return p && n >= 1 && n <= p.max ? p.code(n) : null;
+}
+/** How well a town name answers the query: exact, prefix, every word a word-prefix (first word first), or not at all. */
+function nameScore(q: string, name: string) {
+  const a = normPlace(q), b = normPlace(name);
+  if (a === b) return 4;
+  if (b.startsWith(a)) return 3;
+  const qt = a.split(" "), nt = b.split(" ");
+  if (qt.every((t) => nt.some((w) => w.startsWith(t)))) return nt[0].startsWith(qt[0]) ? 2 : 1;
+  return 0;
+}
+export async function searchPlaces(q: string): Promise<Place[]> {
+  const code = q.trim().toUpperCase();
+  if (/^(\d{5}|2[AB]\d{3})$/.test(code)) {
+    // a postcode: every town sharing it (some cover 20+), the arrondissement(s) of Paris, Lyon or Marseille first, then
+    // the city, then the largest; and the town whose INSEE code it is ("2A004" Ajaccio, "13001" is also Aix-en-Provence)
+    const [byPost, byCode] = await Promise.all([/^\d{5}$/.test(code) ? getJson(`${GEO}?codePostal=${code}&${GEO_TYPES}&${GEO_FIELDS}`) : null, getJson(`${GEO}?code=${code}&${GEO_TYPES}&${GEO_FIELDS}`)]);
+    const isArr = (c: Any) => plmCity(c.code) !== c.code;
+    const post = ((byPost ?? []) as Any[]).sort((a, b) => Number(isArr(b)) - Number(isArr(a)) || (b.population ?? 0) - (a.population ?? 0));
+    const exact = ((byCode ?? []) as Any[]).filter((c) => !post.some((p) => p.code === c.code));
+    return [...post.map((c) => placeOf(c)), ...exact.map((c) => placeOf(c, `${L("code INSEE", "INSEE code")} ${c.code} · `))];
+  }
+  // towns by name (arrondissements included, accent-insensitive, re-ranked: exact, prefix, word prefixes; then size),
+  // an arrondissement typed as "Paris 11e" first and its city second, then street addresses
+  const arr = arrondissementCode(q);
+  const [arrInfo, cityInfo, towns, addr] = await Promise.all([
+    arr ? getJson(`${GEO}/${arr}?${GEO_FIELDS}`) : null,
+    arr ? getJson(`${GEO}/${plmCity(arr)}?${GEO_FIELDS}`) : null,
+    getJson(`${GEO}?nom=${encodeURIComponent(q)}&${GEO_TYPES}&${GEO_FIELDS}&boost=population&limit=20`),
+    getJson(`https://data.geopf.fr/geocodage/search?q=${encodeURIComponent(q)}&limit=6&autocomplete=1`),
+  ]);
+  const ranked = ((towns ?? []) as Any[])
+    .map((c, i) => ({ c, i, s: nameScore(q, c.nom) }))
+    .sort((a, b) => b.s - a.s || (a.s ? (b.c.population ?? 0) - (a.c.population ?? 0) : a.i - b.i))
+    .map((x) => x.c);
+  const first = [arrInfo, cityInfo].filter((c) => c?.code);
+  const t = [...first, ...ranked.filter((c) => !first.some((f) => f.code === c.code))].slice(0, 6).map((c) => placeOf(c));
+  const a = ((addr?.features ?? []) as Any[])
+    .filter((f) => f.properties.type !== "municipality" || !t.some((x) => x.code === f.properties.citycode))
+    .map((f) => ({ code: f.properties.citycode, label: f.properties.label, context: f.properties.context ?? "" }));
+  return [...t, ...a].slice(0, 9);
+}
+
 export function searchBox(placeholder?: string) {
   return `<form class="town-search" role="search" autocomplete="off">
     <input type="search" name="q" placeholder="${esc(placeholder ?? L("Une adresse, une ville, un code postal", "An address, a town, a postcode"))}" aria-label="${L("Rechercher", "Search")}"/>
@@ -132,23 +206,7 @@ export function bindSearch(root: HTMLElement) {
       timer = window.setTimeout(async () => {
         const my = ++seq;
         try {
-          // a postcode: every town that shares it (some cover 20+), largest first; otherwise the address/town geocoder
-          const items: { code: string; label: string; context: string }[] = /^\d{5}$/.test(q)
-            ? ((await (await fetch(`https://geo.api.gouv.fr/communes?codePostal=${q}&fields=nom,code,population,departement,region`)).json()) as Any[])
-                .sort((a, b) => (b.population ?? 0) - (a.population ?? 0))
-                .map((c) => ({ code: c.code, label: c.nom, context: `${c.departement?.code ?? ""}, ${c.departement?.nom ?? ""}, ${c.region?.nom ?? ""}` }))
-            : await (async () => {
-                // towns by name first (accent-insensitive, biggest first), then street addresses
-                const [towns, addr] = await Promise.all([
-                  fetch(`https://geo.api.gouv.fr/communes?nom=${encodeURIComponent(q)}&fields=nom,code,population,departement,region&boost=population&limit=6`).then((r) => r.json()).catch(() => []) as Promise<Any[]>,
-                  fetch(`https://data.geopf.fr/geocodage/search?q=${encodeURIComponent(q)}&limit=6&autocomplete=1`).then((r) => r.json()).then((j) => (j.features ?? []) as Any[]).catch(() => [] as Any[]),
-                ]);
-                const t = towns.map((c) => ({ code: c.code, label: c.nom, context: `${c.departement?.code ?? ""}, ${c.departement?.nom ?? ""}, ${c.region?.nom ?? ""}` }));
-                const a = addr
-                  .filter((f) => f.properties.type !== "municipality" || !t.some((x) => x.code === f.properties.citycode))
-                  .map((f) => ({ code: f.properties.citycode, label: f.properties.label, context: f.properties.context ?? "" }));
-                return [...t, ...a].slice(0, 9);
-              })();
+          const items = await searchPlaces(q);
           if (my !== seq) return;
           list.innerHTML = items.map((f, i) => `<li role="option" data-code="${esc(f.code)}" data-i="${i}"><b>${esc(f.label)}</b><span class="muted small">${esc(f.context)}</span></li>`).join("");
           list.hidden = !items.length;
@@ -225,13 +283,13 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
       .map((f) => {
         const t = towns.get(f.properties!.code);
         const v = t ? m.get(t) : undefined;
-        return `<path class="area town" data-code="${f.properties!.code}" d="${path(f)}" fill="${colour(v)}" data-tip="${esc(`${f.properties!.nom}\n${L(m.fr, m.en)} : ${v != null ? `${fmt(v)} ${m.unit}` : "–"}`)}"/>`;
+        return `<path class="area town" data-code="${f.properties!.code}" d="${path(f)}" fill="${colour(v)}" data-tip="${esc(`${f.properties!.nom}\n${L(m.fr, m.en)}${colon()}${v != null ? `${fmt(v)} ${m.unit}` : "–"}`)}"/>`;
       })
       .join("");
     app.querySelector("#legend")!.innerHTML = `<span>${L(m.fr, m.en)}</span>${ramp.map((c, i) => `<i style="background:${c}" title="${i ? `> ${fmt(breaks[i - 1])}` : `≤ ${fmt(breaks[0])}`}"></i>`).join("")}<span class="muted">${vals.length ? `${fmt(vals[0])} – ${fmt(vals[vals.length - 1])} ${m.unit}` : ""}</span>`;
     const sorter = ui.sort === "name" ? (a: TownData, b: TownData) => a.name.localeCompare(b.name, "fr") : (a: TownData, b: TownData) => (METRICS[ui.sort as Metric].get(b) ?? -1) - (METRICS[ui.sort as Metric].get(a) ?? -1);
     const list = [...towns.values()].sort(sorter);
-    app.querySelector("#count")!.textContent = `${list.length} ${L("communes", "towns")}`;
+    app.querySelector("#count")!.textContent = `${fmtNum(list.length)} ${plural(list.length, ["commune", "communes"], ["town", "towns"])}`;
     app.querySelector("#towns")!.innerHTML = list
       .slice(0, 150)
       .map((t) => {
@@ -241,7 +299,7 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
           ${ex?.photo ? `<img class="tc-photo" src="${esc(safeUrl(ex.photo.url))}" alt="" loading="lazy"/>` : ""}
           <span class="tc-head"><b>${esc(t.name)}</b><span class="muted small">${fmtNum(t.pop)} ${L("hab.", "people")}</span></span>
           <span class="tc-stats small">${t.income ? `<span><i>${L("Niveau de vie", "Living standard")}</i>${fmtNum(t.income)} €</span>` : ""}${t.unemployment != null ? `<span><i>${L("Chômage", "Unemployment")}</i>${fmt(t.unemployment)} %</span>` : ""}${t.schools.length ? `<span><i>${L("Écoles", "Schools")}</i>${t.schools.length}</span>` : ""}${t.events.length ? `<span><i>${L("Événements", "Events")}</i>${t.events.length}</span>` : ""}</span>
-          ${mp ? `<span class="small muted">${L("Député·e", "MP")} : ${esc(mp.prenom)} ${esc(mp.nom)} <span class="chip" style="--c:${safeColor(mp.groupe?.couleur) ?? "#999"}">${esc(mp.groupe?.abrev ?? "")}</span></span>` : ""}
+          ${mp ? `<span class="small muted">${L("Député·e", "MP")}${colon()}${esc(mp.prenom)} ${esc(mp.nom)} <span class="chip" style="--c:${safeColor(mp.groupe?.couleur) ?? "#999"}">${esc(mp.groupe?.abrev ?? "")}</span></span>` : ""}
         </a></li>`;
       })
       .join("") + (list.length > 150 ? `<li class="muted small">${L("Les 150 premières ; cherchez une commune pour les autres.", "First 150 shown; search for others.")}</li>` : "");
@@ -254,6 +312,32 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
   app.querySelector<HTMLSelectElement>("#sort")!.addEventListener("change", (e) => { ui.sort = (e.target as HTMLSelectElement).value as Metric; draw(); });
   draw();
 }
+/** Mayor and councils. In a Paris, Lyon or Marseille arrondissement (city given) the RNE mayor and council are the
+ *  whole city's: say so, and list the arrondissement's own mayor and council (Marseille: its sector's) first. */
+function officialsList(o: NonNullable<ReturnType<typeof townExtra>>["officials"], city: string | null) {
+  const li = (label: string, body: string) => `<li><span class="muted small">${label}</span><br>${body}</li>`;
+  const out: string[] = [];
+  const a = city ? o.arrondissement : null;
+  if (a) {
+    const where = a.sector && city === "Marseille" ? L(`du secteur ${a.sector}`, `of sector ${a.sector}`) : L("d’arrondissement", "of the arrondissement");
+    if (a.mayor) out.push(li(L(`Maire ${where}`, `Mayor ${where}`), `<b>${esc(a.mayor)}</b>`));
+    out.push(li(a.sector && city === "Marseille" ? L(`Conseil ${where}`, `Council ${where}`) : L("Conseil d’arrondissement", "Arrondissement council"), `<b>${fmtNum(a.count)}</b> ${plural(a.count, ["élu", "élus"], ["councillor", "councillors"])}`));
+  }
+  if (o.mayor) {
+    const label = city && o.mayor.city ? L(`Maire de ${city}`, `Mayor of ${city}`) : L("Maire", "Mayor");
+    out.push(li(`${label}${o.mayor.since ? `, ${L("depuis le", "since")} ${fmtDate(o.mayor.since)}` : ""}`, `<b>${esc(o.mayor.name)}</b>`));
+  }
+  if (o.councillors) {
+    const whole = !!(city && o.councillors.city);
+    const label = whole ? (city === "Paris" ? L("Conseil de Paris", "Conseil de Paris (city council)") : L(`Conseil municipal de ${city}`, `${city} city council`)) : L("Conseil municipal", "Town council");
+    out.push(li(label, `<b>${fmtNum(o.councillors.count)}</b> ${plural(o.councillors.count, ["élu", "élus"], ["councillor", "councillors"])}${whole ? ` ${L("pour toute la ville", "for the whole city")}` : ""}`));
+  }
+  return out.join("");
+}
+/** "75001, 75002" in full; a longer list as "75001, 75002, 75003… (20 codes postaux)". */
+const yr = (y?: number) => (y ? ` <span class="muted tiny">${y}</span>` : "");
+const postcodes = (codes: string[]) =>
+  codes.length <= 4 ? codes.join(", ") : `<span title="${esc(codes.join(", "))}">${codes.slice(0, 3).join(", ")}… (${codes.length} ${L("codes postaux", "postcodes")})</span>`;
 const fmt = (n: number) => (Math.abs(n) >= 1000 ? fmtNum(Math.round(n)) : n.toLocaleString(getLang() === "fr" ? "fr-FR" : "en-GB", { maximumFractionDigits: 1 }));
 
 // ---------- town page ----------
@@ -371,19 +455,20 @@ export async function renderTown(app: HTMLElement, code: string) {
     const d = ((v - ref) / ref) * 100;
     if (Math.abs(d) < 10) return `<span class="cmp">${L("proche de la moyenne nationale", "close to the national average")}</span>`;
     const good = higherIsWorse ? d < 0 : d > 0;
-    return `<span class="cmp ${good ? "cmp-better" : "cmp-worse"}">${d > 0 ? "+" : ""}${Math.round(d)} % ${L("vs France", "vs France")}</span>`;
+    return `<span class="cmp ${good ? "cmp-better" : "cmp-worse"}">${d > 0 ? "+" : ""}${Math.round(d)}${L(" %", "%")} ${L("vs France", "vs France")}</span>`;
   };
   const photo = extra?.photo;
   const positives: string[] = [];
   if (extra?.assets) {
     const a = extra.assets;
-    if (a.monuments?.count) positives.push(`<li><b>${a.monuments.count}</b> ${L("monuments historiques", "historic monuments")}${a.monuments.names?.length ? ` : ${a.monuments.names.slice(0, 4).map(esc).join(", ")}` : ""}</li>`);
-    if (a.museums?.count) positives.push(`<li><b>${a.museums.count}</b> ${L("musées de France", "museums")}${a.museums.names?.length ? ` : ${a.museums.names.slice(0, 3).map(esc).join(", ")}` : ""}</li>`);
-    if (a.sports?.count) positives.push(`<li><b>${a.sports.count}</b> ${L("équipements sportifs", "sports facilities")}</li>`);
-    if (a.libraries?.count) positives.push(`<li><b>${a.libraries.count}</b> ${L("bibliothèques", "libraries")}</li>`);
+    const n = (k: number) => `<b>${fmtNum(k)}</b>`;
+    if (a.monuments?.count) positives.push(`<li>${n(a.monuments.count)} ${plural(a.monuments.count, ["monument historique", "monuments historiques"], ["historic monument", "historic monuments"])}${a.monuments.names?.length ? `${colon()}${a.monuments.names.slice(0, 4).map(esc).join(", ")}` : ""}</li>`);
+    if (a.museums?.count) positives.push(`<li>${n(a.museums.count)} ${plural(a.museums.count, ["musée de France", "musées de France"], ["museum", "museums"])}${a.museums.names?.length ? `${colon()}${a.museums.names.slice(0, 3).map(esc).join(", ")}` : ""}</li>`);
+    if (a.sports?.count) positives.push(`<li>${n(a.sports.count)} ${plural(a.sports.count, ["équipement sportif", "équipements sportifs"], ["sports facility", "sports facilities"])}</li>`);
+    if (a.libraries?.count) positives.push(`<li>${n(a.libraries.count)} ${plural(a.libraries.count, ["bibliothèque", "bibliothèques"], ["library", "libraries"])}</li>`);
   }
-  if (t?.schools.length) positives.push(`<li><b>${t.schools.length}</b> ${L("collèges et lycées", "secondary schools")}</li>`);
-  if (t?.events.length) positives.push(`<li><b>${t.events.length}</b> ${L("événements à venir", "upcoming events")}</li>`);
+  if (t?.schools.length) positives.push(`<li><b>${t.schools.length}</b> ${plural(t.schools.length, ["collège ou lycée", "collèges et lycées"], ["secondary school", "secondary schools"])}</li>`);
+  if (t?.events.length) positives.push(`<li><b>${t.events.length}</b> ${plural(t.events.length, ["événement à venir", "événements à venir"], ["upcoming event", "upcoming events"])}</li>`);
 
   app.innerHTML = `
     <section class="page town">
@@ -393,8 +478,8 @@ export async function renderTown(app: HTMLElement, code: string) {
         <div>
           <p class="eyebrow">${esc(info?.departement?.nom ?? "")}${info?.region?.nom ? `, ${esc(info.region.nom)}` : ""}</p>
           <h1>${esc(name)}</h1>
-          <p class="dek">${info?.population ? `${fmtNum(info.population)} ${L("habitants", "inhabitants")}` : ""}${info?.codesPostaux?.length ? `, ${info.codesPostaux.slice(0, 3).join(", ")}` : ""}.${extra?.description?.text ? ` ${esc(extra.description.text)}` : ""}</p>
-          ${extra?.description?.url ? `<p class="tiny muted">${L("Extrait de", "From")} <a href="${esc(safeUrl(extra.description.url))}" target="_blank" rel="noopener">Wikipédia</a> (CC BY-SA)</p>` : ""}
+          <p class="dek">${[info?.population ? `${fmtNum(info.population)} ${L("habitants", "inhabitants")}` : "", postcodes(info?.codesPostaux ?? [])].filter(Boolean).join(", ")}.${extra?.description?.text ? ` <span lang="fr">${esc(extra.description.text)}</span>` : ""}</p>
+          ${extra?.description?.url ? `<p class="tiny muted">${L("Extrait de", "From")} <a href="${esc(safeUrl(extra.description.url))}" target="_blank" rel="noopener">${L("Wikipédia", "French Wikipedia")}</a> (CC BY-SA)${fr ? "" : ", text in French"}</p>` : ""}
           <div class="home-set" id="home-set"></div>
           ${searchBox(L("Chercher une autre adresse", "Search another address"))}
         </div>
@@ -412,7 +497,7 @@ export async function renderTown(app: HTMLElement, code: string) {
           <div>${mps.map(({ d, mp }) => `<a class="mp-mini" href="#/depute/${mp.id}" style="--c:${safeColor(mp.groupe?.couleur) ?? "#999"}"><img src="${photoUrl(mp.id)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"/><span><span class="muted small">${L("Député·e", "MP")}, ${esc(mp.departement ?? "")} ${d.code.slice(-2)}${d.share < 1 ? ` (${L("partie de la commune", "part of the town")})` : ""}</span><br><b>${esc(mp.prenom)} ${esc(mp.nom)}</b> <span class="chip">${esc(mp.groupe?.abrev ?? "")}</span><br><span class="small muted">${age(mp) ?? "?"} ${L("ans", "years old")}, ${L("participation aux votes", "votes attended")} ${Math.round(100 * mp.stats.participation)} %, ${L("présence en ligne", "online presence")} ${presence(mp)}/${PLATFORMS.length}</span></span></a>`).join("") || `<p class="muted">${L("Député non trouvé pour cette commune.", "No MP found for this town.")}</p>`}</div>
           <div>${
             extra?.officials
-              ? `<ul class="officials">${extra.officials.mayor ? `<li><span class="muted small">${L("Maire", "Mayor")}${extra.officials.mayor.since ? `, ${L("depuis le", "since")} ${fmtDate(extra.officials.mayor.since)}` : ""}</span><br><b>${esc(extra.officials.mayor.name)}</b></li>` : ""}${extra.officials.councillors ? `<li><span class="muted small">${L("Conseil municipal", "Town council")}</span><br><b>${extra.officials.councillors.count}</b> ${L("élus", "councillors")}</li>` : ""}${extra.officials.departmental?.length ? `<li><span class="muted small">${L("Conseillers départementaux", "Departmental councillors")}</span><br>${extra.officials.departmental.slice(0, 6).map((n: string) => esc(n)).join(", ")}</li>` : ""}</ul><p class="muted tiny">${L("Répertoire national des élus (ministère de l’Intérieur).", "National register of elected officials (Ministry of the Interior).")}</p>`
+              ? `<ul class="officials">${officialsList(extra.officials, isArr ? cityName : null)}${extra.officials.departmental?.length ? `<li><span class="muted small">${L("Conseillers départementaux", "Departmental councillors")}</span><br>${extra.officials.departmental.slice(0, 6).map((n: string) => esc(n)).join(", ")}</li>` : ""}</ul><p class="muted tiny">${L("Répertoire national des élus (ministère de l’Intérieur).", "National register of elected officials (Ministry of the Interior).")}</p>`
               : `<p class="muted small">${L("Maire, conseil municipal et sénateurs : bientôt, depuis le Répertoire national des élus.", "Mayor, town council and senators: coming soon, from the national register of elected officials.")}</p>`
           }</div>
         </div>
@@ -423,14 +508,14 @@ export async function renderTown(app: HTMLElement, code: string) {
           ? `<section class="card">
               <header class="card-head" id="chiffres"><h2>${L("La commune en chiffres", "The town in figures")}</h2></header>
               <div class="local-kpis">
-                ${t.income ? `<div class="lk"><span class="muted small">${L("Niveau de vie médian", "Median standard of living")}</span><strong>${fmtNum(t.income)} €</strong><span class="small">${cmpPct(t.income, nat?.indicators?.["income.median"]?.median, false)}</span></div>` : ""}
-                ${t.poverty != null ? `<div class="lk"><span class="muted small">${L("Taux de pauvreté", "Poverty rate")}</span><strong>${fmt(t.poverty)} %</strong><span class="small">${cmpPct(t.poverty, nat?.indicators?.["income.poverty"]?.median)}</span></div>` : ""}
-                ${t.unemployment != null ? `<div class="lk"><span class="muted small">${L("Chômage (recensement)", "Unemployment (census)")}</span><strong>${fmt(t.unemployment)} %</strong><span class="small">${cmpPct(t.unemployment, nat?.national?.unemploymentCensus?.france)}</span></div>` : ""}
+                ${t.income ? `<div class="lk"><span class="muted small">${L("Niveau de vie médian", "Median standard of living")}${yr(t.years?.income)}</span><strong>${fmtNum(t.income)} €</strong><span class="small">${cmpPct(t.income, nat?.indicators?.["income.median"]?.median, false)}</span></div>` : ""}
+                ${t.poverty != null ? `<div class="lk"><span class="muted small">${L("Taux de pauvreté", "Poverty rate")}${yr(t.years?.income)}</span><strong>${fmt(t.poverty)}${L(" %", "%")}</strong><span class="small">${cmpPct(t.poverty, nat?.indicators?.["income.poverty"]?.median)}</span></div>` : ""}
+                ${t.unemployment != null ? `<div class="lk"><span class="muted small">${L("Chômage (recensement)", "Unemployment (census)")}${yr(t.years?.unemployment)}</span><strong>${fmt(t.unemployment)}${L(" %", "%")}</strong><span class="small">${cmpPct(t.unemployment, nat?.national?.unemploymentCensus?.france)}</span></div>` : ""}
                 ${t.spending ? `<div class="lk"><span class="muted small">${L("Dépense de la commune", "Town spending")}</span><strong>${fmtNum(t.spending[0])} €</strong><span class="muted tiny">${L("par habitant", "per inhabitant")}</span></div>` : ""}
                 ${extra?.prices?.apartment?.median ? `<div class="lk"><span class="muted small">${L("Prix au m², appartements", "Price per m², flats")}</span><strong>${fmtNum(extra.prices.apartment.median)} €</strong><span class="muted tiny">DVF ${esc(String(extra.prices.year ?? ""))}</span></div>` : ""}
                 ${extra?.prices?.house?.median ? `<div class="lk"><span class="muted small">${L("Prix au m², maisons", "Price per m², houses")}</span><strong>${fmtNum(extra.prices.house.median)} €</strong><span class="muted tiny">DVF ${esc(String(extra.prices.year ?? ""))}</span></div>` : ""}
                 ${extra?.health?.apl != null ? `<div class="lk"><span class="muted small">${L("Accès aux médecins généralistes", "Access to GPs")}</span><strong>${fmt(extra.health.apl)}</strong><span class="muted tiny">${L("consultations / an / habitant (APL)", "consultations / year / person (APL)")}</span></div>` : ""}
-                ${extra?.broadband?.fibre != null ? `<div class="lk"><span class="muted small">${L("Locaux raccordables à la fibre", "Premises with fibre")}</span><strong>${fmt(extra.broadband.fibre)} %</strong><span class="muted tiny">ARCEP</span></div>` : ""}
+                ${extra?.broadband?.fibre != null ? `<div class="lk"><span class="muted small">${L("Locaux raccordables à la fibre", "Premises with fibre")}</span><strong>${fmt(extra.broadband.fibre)}${L(" %", "%")}</strong><span class="muted tiny">ARCEP</span></div>` : ""}
               </div>
             </section>`
           : ""

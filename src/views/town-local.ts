@@ -3,7 +3,7 @@
 // senators, and local news from regional press.
 // Data: scripts/sync-municipal*.mjs, scripts/sync-senat.mjs, scripts/sync-local-news.mjs.
 import { fetchJson } from "../data";
-import { L, fmtDate, fmtNum, getLang } from "../i18n";
+import { L, colon, fmtDate, fmtNum, getLang, plural } from "../i18n";
 import { esc, safeColor, safeUrl } from "../util";
 import { loadSenateurs, senPhoto } from "./senat";
 
@@ -15,13 +15,22 @@ const once = (url: string) => {
   return cache.get(url)!;
 };
 
+/** Council votes and campaign promises exist for a handful of towns only. Their index files (written by
+ *  scripts/sync-municipal-councils.mjs and sync-municipal-promises.mjs) say which, so a town page never
+ *  requests a file that isn't there. */
+async function optionalFiles(code: string): Promise<[Any, Any]> {
+  const [councils, promises] = await Promise.all([once("/data/municipal/councils/index.json"), once("/data/municipal/promises/index.json")]);
+  const hasCouncil = (councils?.covered ?? []).some((c: Any) => c.code === code);
+  const hasPromises = (promises?.rows ?? []).some((r: Any) => r.code === code && r.status === "summarised");
+  return Promise.all([hasCouncil ? once(`/data/municipal/councils/${code}.json`) : null, hasPromises ? once(`/data/municipal/promises/${code}.json`) : null]);
+}
+
 export async function renderTownLocal(box: HTMLElement, code: string, dep: string) {
-  const [muni, fams, news, council, promises, sens] = await Promise.all([
+  const [muni, fams, news, [council, promises], sens] = await Promise.all([
     once(`/data/municipal/${dep}.json`),
     once("/data/municipal/families.json"),
     once(`/data/news/${dep}.json`),
-    fetchJson<Any>(`/data/municipal/councils/${code}.json`).catch(() => null),
-    fetchJson<Any>(`/data/municipal/promises/${code}.json`).catch(() => null),
+    optionalFiles(code),
     loadSenateurs().catch(() => [] as Any[]),
   ]);
   const fr = getLang() === "fr";
@@ -59,16 +68,19 @@ export async function renderTownLocal(box: HTMLElement, code: string, dep: strin
         .slice(0, 8)
         .map((l: Any) => `<li><div class="bar-label"><span>${esc(l.label ?? l.head?.name ?? "")} <span class="muted small">${l.head?.name ? esc(titleName(l.head.name)) : ""}${l.family && l.family !== "unclassified" ? `, ${esc(famName(l.family))}` : ""}</span></span><b>${(l.pctExpressed ?? 0).toFixed(1)} %</b></div><div class="bar"><div style="width:${l.pctExpressed ?? 0}%;background:${famColor(l.family)}"></div></div></li>`)
         .join("")}</ol>
-      ${prevWinner ? `<p class="muted small">${L("En 2020", "In 2020")} : ${esc(prevWinner.label ?? "")}${prevWinner.head?.name ? ` (${esc(titleName(prevWinner.head.name))})` : ""}, ${esc(famName(prevWinner.family))}.${prevWinner.family && w?.family && prevWinner.family !== w.family && prevWinner.family !== "unclassified" && w.family !== "unclassified" ? ` <b>${L("La mairie a changé de camp.", "The town hall changed hands.")}</b>` : ""}</p>` : ""}
+      ${prevWinner ? `<p class="muted small">${L("En 2020", "In 2020")}${colon()}${esc(prevWinner.label ?? "")}${prevWinner.head?.name ? ` (${esc(titleName(prevWinner.head.name))})` : ""}, ${esc(famName(prevWinner.family))}.${prevWinner.family && w?.family && prevWinner.family !== w.family && prevWinner.family !== "unclassified" && w.family !== "unclassified" ? ` <b>${L("La mairie a changé de camp.", "The town hall changed hands.")}</b>` : ""}</p>` : ""}
       <p class="muted tiny">${L("Étiquettes politiques attribuées par le ministère de l’Intérieur aux listes des communes de 3 500 habitants et plus. Le maire est élu ensuite par le conseil municipal.", "Political labels assigned by the Ministry of the Interior to lists in towns of 3,500+. The mayor is then elected by the town council.")}</p>
     </section>`);
   }
 
   // ---------- campaign promises ----------
-  if (promises?.summary?.length) {
+  // file shape (scripts/sync-municipal-promises.mjs): { summary: { bullets: [{ fr, en, theme }], label }, source: { pdf } }
+  const bullets: Any[] = promises?.summary?.bullets ?? [];
+  if (bullets.length) {
     parts.push(`<section class="card"><header class="card-head"><h2>${L("Les promesses de la liste élue", "The winning list’s promises")}</h2><span class="tag">${L("résumé par IA", "AI summary")}</span></header>
-      <ul class="positives">${promises.summary.map((p: Any) => `<li>${esc(fr ? p.fr ?? p.text : p.en ?? p.text)}</li>`).join("")}</ul>
-      ${promises.source ? `<p class="source"><a href="${esc(safeUrl(promises.source))}" target="_blank" rel="noopener">${L("Profession de foi officielle", "Official campaign leaflet")}</a></p>` : ""}</section>`);
+      <ul class="positives">${bullets.map((p: Any) => `<li>${esc(fr ? p.fr : p.en ?? p.fr)}</li>`).join("")}</ul>
+      ${promises.summary.label ? `<p class="muted tiny">${esc(fr ? promises.summary.label.fr : promises.summary.label.en)}</p>` : ""}
+      ${promises.source?.pdf ? `<p class="source"><a href="${esc(safeUrl(promises.source.pdf))}" target="_blank" rel="noopener">${L("Profession de foi officielle", "Official campaign leaflet")}</a></p>` : ""}</section>`);
   } else if (c?.population >= 2500) {
     parts.push(`<p class="muted small">${L("Les professions de foi des listes sont consultables sur", "The lists’ campaign leaflets can be read on")} <a href="https://programme-candidats.interieur.gouv.fr/" target="_blank" rel="noopener">programme-candidats.interieur.gouv.fr</a>.</p>`);
   }
@@ -84,11 +96,11 @@ export async function renderTownLocal(box: HTMLElement, code: string, dep: strin
     }
     const contested = council.deliberations.filter((d: Any) => !d.unanimous).slice(0, 6);
     parts.push(`<section class="card">
-      <header class="card-head"><h2>${L("Comment vote le conseil municipal", "How the town council votes")}</h2><span class="muted small">${council.deliberations.length} ${L("délibérations", "decisions")}</span></header>
+      <header class="card-head"><h2>${L("Comment vote le conseil municipal", "How the town council votes")}</h2><span class="muted small">${fmtNum(council.deliberations.length)} ${plural(council.deliberations.length, ["délibération", "délibérations"], ["decision", "decisions"])}</span></header>
       <table class="table"><thead><tr><th>${L("Groupe", "Group")}</th><th class="num">${L("Pour", "For")}</th><th class="num">${L("Contre", "Against")}</th><th class="num">${L("Abst.", "Abst.")}</th></tr></thead><tbody>${groups
         .map((g) => { const t = tally.get(g.name) ?? { for: 0, against: 0, abstain: 0, nv: 0 }; return `<tr><td><i class="dot" style="background:${famColor(g.family)}"></i>${esc(g.name)}</td><td class="num">${t.for}</td><td class="num">${t.against}</td><td class="num">${t.abstain}</td></tr>`; })
         .join("")}</tbody></table>
-      ${contested.length ? `<h3>${L("Derniers votes disputés", "Latest contested votes")}</h3><ul class="events">${contested.map((d: Any) => `<li><span class="muted small">${fmtDate(d.date)}, ${esc(d.outcomeLabel ?? d.outcome ?? "")}</span><br>${esc(d.title)}<br><span class="small">${Object.entries<Any>(d.byGroup ?? {}).map(([g, v]) => `${esc(g.split(",")[0])} : <b>${esc(v.position === "for" ? L("pour", "for") : v.position === "against" ? L("contre", "against") : v.position === "abstain" ? L("abstention", "abstain") : L("ne vote pas", "not voting"))}</b>`).join(" ; ")}</span></li>`).join("")}</ul>` : ""}
+      ${contested.length ? `<h3>${L("Derniers votes disputés", "Latest contested votes")}</h3><ul class="events">${contested.map((d: Any) => `<li><span class="muted small">${fmtDate(d.date)}, ${esc(d.outcomeLabel ?? d.outcome ?? "")}</span><br>${esc(d.title)}<br><span class="small">${Object.entries<Any>(d.byGroup ?? {}).map(([g, v]) => `${esc(g.split(",")[0])}${colon()}<b>${esc(v.position === "for" ? L("pour", "for") : v.position === "against" ? L("contre", "against") : v.position === "abstain" ? L("abstention", "abstain") : L("ne vote pas", "not voting"))}</b>`).join(" ; ")}</span></li>`).join("")}</ul>` : ""}
       <p class="muted tiny">${L("Source : open data de la ville. Le vote « pour » est déduit quand un groupe n’est cité ni contre ni en abstention.", "Source: the city’s open data. A “for” vote is inferred when a group isn’t listed as against or abstaining.")}</p>
     </section>`);
   }
