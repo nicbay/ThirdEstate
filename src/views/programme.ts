@@ -16,6 +16,8 @@ interface Version { id: VersionId; year: number; label: { fr: string; en: string
 interface VoteItem { num: number; date: string; title: string; result: string; total: { P: number; C: number; A: number }; group: { P: number; C: number; A: number }; majority: "P" | "C" | "A" | null; expect: "P" | "C"; agrees: boolean | null }
 interface VoteLink { lineage: string; topic: { fr: string; en: string }; note: { fr: string; en: string } | null; scrutins: VoteItem[] }
 type Counts = Record<Status, number>;
+interface CostLine { by: string; spending: number; revenue: number; net: number; date: string; note: { fr: string; en: string }; url: string }
+interface CostRound { id: string; year: number; label: { fr: string; en: string }; horizon: { fr: string; en: string }; announced: CostLine; estimates: CostLine[] }
 interface ProgrammeFile {
   slug: string; candidate: string; party: string; programme: string; group: string; generatedAt: string;
   themes: { id: string; fr: string; en: string }[];
@@ -23,6 +25,7 @@ interface ProgrammeFile {
   sections: Record<string, [string | null, string, string | null, string | null][]>;
   summary: { overall: Counts & { total: number; changed: number }; byTheme: Record<string, Counts> };
   highlights: { lineage: string; kind: string; fr: string; en: string }[];
+  costing?: { rounds: CostRound[]; checked: string };
   votes: VoteLink[];
   themeWeights: { programme: Record<string, Record<string, number>>; speeches: Record<string, number> | null; chamber: Record<string, number> | null; speechesPeriod: { from: string; to: string } | null; speechesCount: number | null };
   lineages: Lineage[];
@@ -72,9 +75,144 @@ function diff(a: string, b: string): [string, string] {
   return [join(outA, "del"), join(outB, "ins")];
 }
 
-interface State { q: string; theme: string; status: Status | ""; key: boolean; votes: boolean; shown: number; focus: string | null }
-const state: State = { q: "", theme: "", status: "", key: false, votes: false, shown: 30, focus: null };
+// Branches of the flow view: where each commitment went between the versions.
+type BranchId = "kept" | "changed" | "drop22" | "add25" | "drop25" | "new27";
+const BRANCH: Record<BranchId, (l: Lineage) => boolean> = {
+  kept: (l) => l.status === "maintained",
+  changed: (l) => l.status === "modified",
+  drop22: (l) => l.status === "dropped" && !!l.a,
+  add25: (l) => l.status === "new2025",
+  drop25: (l) => l.status === "dropped" && !l.a,
+  new27: (l) => l.status === "new2027",
+};
+const branchLabel = (b: BranchId) => ({
+  kept: L("Gardées telles quelles", "Kept as is"),
+  changed: L("Modifiées", "Changed"),
+  drop22: L("Retirées", "Dropped"),
+  add25: L("Ajoutées, gardées en 2027", "Added, kept in 2027"),
+  drop25: L("Ajoutées, retirées en 2027", "Added, dropped in 2027"),
+  new27: L("Nouvelles en 2027", "New in 2027"),
+})[b];
+const branchHelp = (b: BranchId) => ({
+  kept: L("Dans l’abrégé 2022 et en 2027, même engagement, mêmes chiffres.", "In the 2022 booklet and in 2027, same commitment, same figures."),
+  changed: L("Dans l’abrégé 2022 et en 2027, mais un chiffre ou la formulation a changé.", "In the 2022 booklet and in 2027, but a figure or the wording changed."),
+  drop22: L("Dans l’abrégé 2022, plus dans le programme 2027 (retirées dès 2025 ou en 2027).", "In the 2022 booklet, no longer in the 2027 programme (dropped in 2025 or in 2027)."),
+  add25: L("Absentes de l’abrégé 2022, ajoutées dans l’édition 2025, toujours là en 2027.", "Not in the 2022 booklet, added in the 2025 edition, still there in 2027."),
+  drop25: L("Ajoutées dans l’édition 2025, plus dans le programme 2027.", "Added in the 2025 edition, no longer in the 2027 programme."),
+  new27: L("Sans équivalent dans les versions précédentes : n’apparaissent qu’en 2027.", "No match in earlier versions: only in 2027."),
+})[b];
+const BRANCH_STATUS: Record<BranchId, Status> = { kept: "maintained", changed: "modified", drop22: "dropped", add25: "new2025", drop25: "dropped", new27: "new2027" };
+
+interface State { q: string; theme: string; status: Status | ""; branch: BranchId | ""; key: boolean; votes: boolean; shown: number; focus: string | null; flowTheme: string; flowPick: BranchId }
+const state: State = { q: "", theme: "", status: "", branch: "", key: false, votes: false, shown: 30, focus: null, flowTheme: "", flowPick: "drop22" };
 const fold = (s: string) => s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
+
+// ---------- flow view: a node graph (source versions → switches → branches → 2027 / dropped) ----------
+interface FlowNode { id: string; x: number; y: number; w: number; h: number; kind: "source" | "switch" | "branch" | "sink"; icon: string; title: string; sub: string; branch?: BranchId; drop?: boolean }
+function flowSvg(f: ProgrammeFile, ls: Lineage[], pick: BranchId | "") {
+  const n = Object.fromEntries((Object.keys(BRANCH) as BranchId[]).map((b) => [b, ls.filter(BRANCH[b]).length])) as Record<BranchId, number>;
+  const inA = ls.filter((l) => l.a).length, inE = ls.filter((l) => l.e).length, newE = ls.filter((l) => l.e && !l.a).length, inW = ls.filter((l) => l.w).length;
+  const [va, ve, vw] = f.versions;
+  const items = (k: number) => `${fmtNum(k)} ${k > 1 ? L("mesures", "measures") : L("mesure", "measure")}`;
+  const N: FlowNode[] = [
+    { id: "s22", x: 10, y: 92, w: 168, h: 64, kind: "source", icon: "22", title: L("Abrégé 2022", "2022 booklet"), sub: items(inA) },
+    { id: "s25", x: 10, y: 292, w: 168, h: 64, kind: "source", icon: "25", title: L("Édition 2025", "2025 edition"), sub: items(inE) },
+    { id: "s27", x: 10, y: 432, w: 168, h: 64, kind: "source", icon: "27", title: L("Site 2027", "2027 website"), sub: L("textes nouveaux", "new texts") },
+    { id: "if22", x: 226, y: 96, w: 150, h: 56, kind: "switch", icon: "?", title: L("Toujours en 2027 ?", "Still in 2027?"), sub: L("aiguillage", "switch") },
+    { id: "if25", x: 226, y: 296, w: 150, h: 56, kind: "switch", icon: "?", title: L("Toujours en 2027 ?", "Still in 2027?"), sub: L("aiguillage", "switch") },
+    { id: "kept", x: 424, y: 14, w: 214, h: 58, kind: "branch", icon: "=", title: branchLabel("kept"), sub: items(n.kept), branch: "kept" },
+    { id: "changed", x: 424, y: 94, w: 214, h: 58, kind: "branch", icon: "≠", title: branchLabel("changed"), sub: items(n.changed), branch: "changed" },
+    { id: "drop22", x: 424, y: 174, w: 214, h: 58, kind: "branch", icon: "−", title: branchLabel("drop22"), sub: items(n.drop22), branch: "drop22", drop: true },
+    { id: "add25", x: 424, y: 264, w: 214, h: 58, kind: "branch", icon: "+", title: branchLabel("add25"), sub: items(n.add25), branch: "add25" },
+    { id: "drop25", x: 424, y: 344, w: 214, h: 58, kind: "branch", icon: "−", title: branchLabel("drop25"), sub: items(n.drop25), branch: "drop25", drop: true },
+    { id: "new27", x: 424, y: 434, w: 214, h: 58, kind: "branch", icon: "★", title: branchLabel("new27"), sub: items(n.new27), branch: "new27" },
+    { id: "w27", x: 712, y: 150, w: 186, h: 70, kind: "sink", icon: "✓", title: L("Programme 2027", "2027 programme"), sub: items(inW) },
+    { id: "gone", x: 712, y: 300, w: 186, h: 70, kind: "sink", icon: "×", title: L("Abandonnées", "Dropped"), sub: items(n.drop22 + n.drop25), drop: true },
+  ];
+  const byId = Object.fromEntries(N.map((x) => [x.id, x]));
+  const E: [string, string, number][] = [
+    ["s22", "if22", inA], ["if22", "kept", n.kept], ["if22", "changed", n.changed], ["if22", "drop22", n.drop22],
+    ["s25", "if25", newE], ["if25", "add25", n.add25], ["if25", "drop25", n.drop25],
+    ["s27", "new27", n.new27],
+    ["kept", "w27", n.kept], ["changed", "w27", n.changed], ["add25", "w27", n.add25], ["new27", "w27", n.new27],
+    ["drop22", "gone", n.drop22], ["drop25", "gone", n.drop25],
+  ];
+  const max = Math.max(1, ...E.map((e) => e[2]));
+  const edges = E.map(([a, b, k], i) => {
+    const A = byId[a], B = byId[b];
+    const x1 = A.x + A.w, y1 = A.y + A.h / 2, x2 = B.x, y2 = B.y + B.h / 2, dx = Math.max(30, (x2 - x1) / 2);
+    const d = `M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}`;
+    const w = k ? 1.6 + 9 * Math.sqrt(k / max) : 1;
+    const drop = !!(B.drop || A.drop);
+    const on = pick && (A.branch === pick || B.branch === pick);
+    const dots = k ? Array.from({ length: Math.min(3, 1 + Math.floor(Math.log10(k + 1))) }, (_, j) => `<circle class="flow-dot" r="${Math.min(4, 1.6 + w / 4).toFixed(1)}"><animateMotion dur="${(2.6 + (i % 3) * 0.4).toFixed(1)}s" begin="${(j * 0.9).toFixed(1)}s" repeatCount="indefinite" path="${d}"/></circle>`).join("") : "";
+    const t = B.kind === "sink" ? 0.28 : 0.5, u = 1 - t; // labels on edges into a sink sit early, away from where they converge
+    const mx = u * u * u * x1 + 3 * u * u * t * (x1 + dx) + 3 * u * t * t * (x2 - dx) + t * t * t * x2;
+    const my = u * u * u * y1 + 3 * u * u * t * y1 + 3 * u * t * t * y2 + t * t * t * y2;
+    return `<g class="flow-edge${drop ? " is-drop" : ""}${on ? " is-on" : ""}${k ? "" : " is-empty"}">
+      <path d="${d}" style="stroke-width:${w.toFixed(1)}"/>${dots}
+      <g class="flow-elabel" transform="translate(${mx.toFixed(0)},${my.toFixed(0)})"><rect x="-21" y="-9" width="42" height="18" rx="9"/><text y="4">${fmtNum(k)}</text></g></g>`;
+  }).join("");
+  const nodes = N.map((x) => {
+    const btn = x.branch ? ` role="button" tabindex="0" data-branch="${x.branch}" aria-pressed="${pick === x.branch}" aria-label="${esc(`${x.title}, ${x.sub}`)}"` : "";
+    const ports = `${x.kind !== "source" ? `<circle class="flow-port" cx="0" cy="${x.h / 2}" r="4.5"/>` : ""}${x.kind !== "sink" ? `<circle class="flow-port" cx="${x.w}" cy="${x.h / 2}" r="4.5"/>` : ""}`;
+    const tile = x.kind === "switch" ? 0 : 44;
+    return `<g class="flow-node is-${x.kind}${x.drop ? " is-drop" : ""}${pick && x.branch === pick ? " is-on" : ""}" transform="translate(${x.x},${x.y})"${btn}>
+      <rect class="flow-box" width="${x.w}" height="${x.h}" rx="${x.kind === "switch" ? 28 : 10}"/>
+      ${tile ? `<rect class="flow-tile" x="10" y="${(x.h - 34) / 2}" width="34" height="34" rx="7"/><text class="flow-icon" x="27" y="${x.h / 2 + 6}">${esc(x.icon)}</text>` : `<text class="flow-icon is-q" x="22" y="${x.h / 2 + 6}">?</text>`}
+      <text class="flow-title" x="${tile ? 54 : 38}" y="${x.h / 2 - 3}">${esc(x.title)}</text>
+      <text class="flow-sub" x="${tile ? 54 : 38}" y="${x.h / 2 + 14}">${esc(x.sub)}</text>
+      ${ports}</g>`;
+  }).join("");
+  const label = L(`Flux des engagements : ${inA} dans l’abrégé 2022 (${va.year}), ${inE} dans l’édition ${ve.year}, ${inW} dans le programme ${vw.year}.`, `Flow of commitments: ${inA} in the 2022 booklet, ${inE} in the ${ve.year} edition, ${inW} in the ${vw.year} programme.`);
+  return `<svg class="flow-svg" viewBox="0 0 910 510" role="group" aria-label="${esc(label)}">${edges}${nodes}</svg>`;
+}
+
+function costCard(f: ProgrammeFile) {
+  const c = f.costing;
+  if (!c?.rounds.length) return "";
+  const nets = c.rounds.flatMap((r) => [r.announced.net, ...r.estimates.map((e) => e.net)]);
+  const lo = Math.min(-20, ...nets), hi = Math.max(40, ...nets), span = hi - lo;
+  const pos = (v: number) => (100 * (v - lo)) / span;
+  const md = (v: number) => { const sg = v > 0 ? "+" : v < 0 ? "−" : ""; return L(`${sg}${fmtNum(Math.abs(v))} Md€`, `${sg}€${fmtNum(Math.abs(v))}bn`); };
+  const bar = (e: CostLine, kind: "ann" | "est") => {
+    const a = pos(Math.min(0, e.net)), b = pos(Math.max(0, e.net));
+    return `<div class="cost-row is-${kind}">
+      <span class="cost-who">${kind === "ann" ? L("Annoncé", "Announced") : L("Estimé", "Estimated")} · <a href="${esc(safeUrl(e.url))}" target="_blank" rel="noopener">${esc(e.by)}</a></span>
+      <span class="cost-track"><i class="cost-zero" style="left:${pos(0).toFixed(1)}%"></i><i class="cost-bar${e.net < 0 ? " is-neg" : ""}" style="left:${a.toFixed(1)}%;width:${Math.max(0.6, b - a).toFixed(1)}%"></i></span>
+      <b class="cost-net${e.net < 0 ? " is-neg" : ""}">${md(e.net)}</b>
+      <span class="cost-detail muted small">${L("dépenses", "spending")} ${md(e.spending).replace("+", "")} · ${L("recettes", "revenue")} ${md(e.revenue).replace("+", "")} — ${esc(L(e.note.fr, e.note.en))}</span>
+    </div>`;
+  };
+  const [r22, r24, r27] = [c.rounds.find((r) => r.year === 2022), c.rounds.find((r) => r.year === 2024), c.rounds.find((r) => r.year === 2027)];
+  const m22 = r22?.estimates[0];
+  const gap22 = r22 && m22 ? r22.announced.net - m22.net : null;
+  const ests = c.rounds.flatMap((r) => r.estimates.map((e) => e.net));
+  const verdict = r22 && m22 && r24 && r27 && gap22 != null ? `
+    <div class="cost-verdict">
+      <p class="eyebrow">${L("Conclusion", "Conclusion")}</p>
+      <p><b>${L(
+        `Chaque fois qu’un chiffrage indépendant existe, il trouve un trou que le parti n’annonce pas : ${fmtNum(-Math.max(...ests))} à ${fmtNum(-Math.min(...ests))} Md€ de déficit en plus par an, soit 5,5 à 7 points de PIB, là où LFI et le NFP annonçaient l’équilibre ou un excédent.`,
+        `Every time an independent costing exists, it finds a gap the party does not announce: €${fmtNum(-Math.max(...ests))}bn to €${fmtNum(-Math.min(...ests))}bn a year of extra deficit, 5.5 to 7 points of GDP, where LFI and the NFP announced balance or a surplus.`)}</b></p>
+      <p>${L(
+        `L’écart vient surtout des recettes. En 2022, l’Institut Montaigne retient ${fmtNum(m22.revenue)} Md€ de recettes sur les ${fmtNum(r22.announced.revenue)} annoncés : il ne compte ni la lutte contre la fraude ni le surplus de croissance attendu par LFI. Il chiffre aussi les dépenses plus haut (${fmtNum(m22.spending)} Md€ contre ${fmtNum(r22.announced.spending)}). Montaigne précise que l’effet de relance pourrait réduire la hausse du déficit de 30 à 50 % : même dans ce cas, il resterait 110 à 150 Md€ par an non financés.`,
+        `The gap is mostly about revenue. In 2022 Institut Montaigne counted €${fmtNum(m22.revenue)}bn of revenue out of the €${fmtNum(r22.announced.revenue)}bn announced: it counts neither the anti-fraud receipts nor the extra growth LFI expects. It also prices spending higher (€${fmtNum(m22.spending)}bn against ${fmtNum(r22.announced.spending)}). Montaigne notes the stimulus effect could cut the deficit increase by 30 to 50%: even then, €110–150bn a year would remain unfunded.`)}</p>
+      <p>${L(
+        `Le premier budget annoncé pour 2027 (${fmtNum(r27.announced.spending)} Md€ de dépenses nouvelles, ${fmtNum(r27.announced.revenue)} Md€ de recettes) est trois fois plus petit que le chiffrage de 2022, mais il ne couvre que la première année et une partie des mesures : le retour à 62 ans y coûte 9 Md€, alors que le programme 2027 vise toujours la retraite à 60 ans, que l’iFRAP chiffrait à 50 Md€ par an en 2024. Le chiffrage complet est annoncé pour début 2027 ; aucune évaluation indépendante n’existe encore. Rien ne permet donc de dire, à ce stade, que l’écart des deux campagnes précédentes s’est refermé.`,
+        `The first budget announced for 2027 (€${fmtNum(r27.announced.spending)}bn of new spending, €${fmtNum(r27.announced.revenue)}bn of revenue) is a third the size of the 2022 costing, but covers only the first year and part of the measures: going back to 62 costs €9bn in it, while the 2027 programme still aims for retirement at 60, which iFRAP put at €50bn a year in 2024. The full costing is due in early 2027; no independent assessment exists yet. Nothing so far shows that the gap of the last two campaigns has closed.`)}</p>
+    </div>` : "";
+  return `<article class="card" id="cout">
+    <header class="card-head"><h2>${L("Ce que coûte le programme : l’annonce et les estimations", "What the programme costs: the claim and the estimates")}</h2></header>
+    <p class="prog-lede">${L("Solde des mesures pour les finances publiques, en milliards d’euros par an : à droite du zéro, les recettes nouvelles dépassent les dépenses nouvelles ; à gauche, le programme creuse le déficit.", "Balance of the measures for public finances, in billions of euros a year: right of zero, new revenue exceeds new spending; left of zero, the programme widens the deficit.")}</p>
+    ${c.rounds.map((r) => `<section class="cost-round">
+      <h3>${esc(L(r.label.fr, r.label.en))} <span class="muted small">· ${esc(L(r.horizon.fr, r.horizon.en))}</span></h3>
+      ${bar(r.announced, "ann")}
+      ${r.estimates.map((e) => bar(e, "est")).join("") || `<p class="cost-none muted small">${L("Pas encore d’estimation indépendante : le chiffrage complet est annoncé pour début 2027.", "No independent estimate yet: the full costing is due in early 2027.")}</p>`}
+    </section>`).join("")}
+    ${verdict}
+    <p class="muted small">${L(`Estimations « statiques » : effets directs des mesures, sans effet sur la croissance. Les auteurs n’utilisent pas la même trajectoire de référence, d’où des écarts entre eux. Le NFP de 2024 était une coalition ; son programme n’est pas celui de LFI seule. Sources vérifiées le ${fmtDate(c.checked)}.`, `‘Static’ estimates: direct effects of the measures, no growth feedback. The authors use different baselines, hence differences between them. The 2024 NFP was a coalition; its programme is not LFI’s alone. Sources checked on ${fmtDate(c.checked)}.`)}</p>
+  </article>`;
+}
 
 export async function renderProgramme(app: HTMLElement, slug: string) {
   const f = await load(slug).catch(() => null);
@@ -146,7 +284,24 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
         <p class="dek">${L(
           `${fmtNum(f.lineages.length)} engagements suivis à travers trois versions du programme : l’abrégé de 2022 (${va.count} mesures), l’édition complète de 2025 (${ve.count}) et le programme 2027 en ligne (${vw.count}). ${fmtNum(o.maintained + o.modified)} figuraient déjà dans l’abrégé de 2022, ${fmtNum(o.new2027)} n’apparaissent qu’en 2027, ${fmtNum(o.dropped)} ne figurent plus dans la version 2027.`,
           `${fmtNum(f.lineages.length)} commitments tracked across three versions of the programme: the 2022 abridged booklet (${va.count} measures), the full 2025 edition (${ve.count}) and the online 2027 programme (${vw.count}). ${fmtNum(o.maintained + o.modified)} were already in the 2022 booklet, ${fmtNum(o.new2027)} appear only in 2027, ${fmtNum(o.dropped)} are no longer in the 2027 version.`)}</p>
+        <nav class="prog-jump" aria-label="${L("Sur cette page", "On this page")}">
+          <a href="#/programmes/${esc(f.slug)}#parcours">${L("Le parcours des mesures", "Where measures went")}</a>
+          ${f.costing ? `<a href="#/programmes/${esc(f.slug)}#cout">${L("Le coût annoncé et estimé", "Claimed vs estimated cost")}</a>` : ""}
+          <a href="#/programmes/${esc(f.slug)}#mesures">${L("Toutes les mesures", "Every measure")}</a>
+          <a href="#/programmes/${esc(f.slug)}#assemblee">${L("Les votes à l’Assemblée", "Assembly votes")}</a>
+        </nav>
       </div>
+
+      <article class="card flow-card" id="parcours">
+        <header class="card-head"><h2>${L("Le parcours des mesures, de 2022 à 2027", "Where the measures went, 2022 to 2027")}</h2></header>
+        <p class="prog-lede">${L("Chaque version du programme entre à gauche ; chaque mesure suit une branche : gardée, modifiée, ajoutée ou abandonnée. L’épaisseur d’un lien est proportionnelle au nombre de mesures. Cliquez une branche pour voir ses mesures.", "Each version of the programme enters on the left; each measure follows a branch: kept, changed, added or dropped. A link’s thickness is proportional to the number of measures. Click a branch to see its measures.")}</p>
+        <div class="flow-tools">
+          <label>${L("Thème", "Theme")} <select id="ft"><option value="">${L("Tous les thèmes", "All themes")}</option>${themeRows.map((r) => `<option value="${esc(r.t.id)}" ${state.flowTheme === r.t.id ? "selected" : ""}>${esc(L(r.t.fr, r.t.en))}</option>`).join("")}</select></label>
+          <span class="muted small flow-hint">${L("Faites glisser pour voir tout le schéma", "Swipe to see the whole diagram")}</span>
+        </div>
+        <div class="flow-canvas" id="fcanvas"></div>
+        <div class="flow-detail" id="fdetail" aria-live="polite"></div>
+      </article>
 
       <article class="card">
         <header class="card-head"><h2>${L("Le programme, thème par thème", "The programme, theme by theme")}</h2></header>
@@ -167,8 +322,10 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
       <article class="card">
         <header class="card-head"><h2>${L("Les changements les plus nets", "The biggest changes")}</h2></header>
         <ol class="prog-highlights">${f.highlights.map((h) => `<li><span class="tag">${esc(({ figure: L("chiffre", "figure"), new: L("nouveau", "new"), dropped: L("retiré", "dropped"), wording: L("formulation", "wording") } as Record<string, string>)[h.kind] ?? h.kind)}</span> ${esc(L(h.fr, h.en))} <button type="button" class="linkish prog-goto" data-id="${esc(h.lineage)}">${L("voir les textes", "see the texts")}</button></li>`).join("")}</ol>
-        ${va.financing ? `<p class="muted small">${L(`Chiffrage d’ensemble de 2022 (abrégé, p. ${va.financing.page}) : ${esc(va.financing.fr)}. Les éditions 2025 et 2027 étudiées ici ne donnent pas de chiffrage global équivalent.`, `Overall 2022 costing (booklet, p. ${va.financing.page}): ${esc(va.financing.en)}. The 2025 and 2027 editions studied here give no equivalent overall costing.`)}</p>` : ""}
+        ${va.financing && !f.costing ? `<p class="muted small">${L(`Chiffrage d’ensemble de 2022 (abrégé, p. ${va.financing.page}) : ${esc(va.financing.fr)}. Les éditions 2025 et 2027 étudiées ici ne donnent pas de chiffrage global équivalent.`, `Overall 2022 costing (booklet, p. ${va.financing.page}): ${esc(va.financing.en)}. The 2025 and 2027 editions studied here give no equivalent overall costing.`)}</p>` : ""}
       </article>
+
+      ${costCard(f)}
 
       <article class="card" id="mesures">
         <header class="card-head"><h2>${L("Toutes les mesures, version par version", "Every measure, version by version")}</h2></header>
@@ -278,7 +435,7 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
     if (state.focus) { const l = byId.get(state.focus); return l ? [l] : []; }
     const q = fold(state.q.trim());
     return f.lineages
-      .filter((l) => (!state.theme || l.theme === state.theme) && (!state.status || l.status === state.status) && (!state.key || l.key) && (!state.votes || votesBy.has(l.id)) && (!q || hay.get(l.id)!.includes(q)))
+      .filter((l) => (!state.theme || l.theme === state.theme) && (!state.status || l.status === state.status) && (!state.branch || BRANCH[state.branch](l)) && (!state.key || l.key) && (!state.votes || votesBy.has(l.id)) && (!q || hay.get(l.id)!.includes(q)))
       .sort((a, b) => (b.key ?? 0) - (a.key ?? 0) || order[a.status] - order[b.status]);
   };
   const draw = () => {
@@ -286,8 +443,9 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
     list.innerHTML = rows.slice(0, state.shown).map(item).join("") || `<li class="muted">${L("Aucune mesure ne correspond.", "No measure matches.")}</li>`;
     countEl.innerHTML = state.focus
       ? `${L("Une mesure affichée.", "One measure shown.")} <button type="button" class="linkish" id="pall">${L("Revenir à toute la liste", "Back to the full list")}</button>`
-      : `${fmtNum(rows.length)} ${rows.length > 1 ? L("engagements", "commitments") : L("engagement", "commitment")}${rows.length > state.shown ? L(`, ${state.shown} premiers affichés`, `, first ${state.shown} shown`) : ""}`;
+      : `${fmtNum(rows.length)} ${rows.length > 1 ? L("engagements", "commitments") : L("engagement", "commitment")}${rows.length > state.shown ? L(`, ${state.shown} premiers affichés`, `, first ${state.shown} shown`) : ""}${state.branch ? ` · ${L("branche", "branch")} « ${esc(branchLabel(state.branch))} » <button type="button" class="linkish" id="pbr">${L("retirer", "clear")}</button>` : ""}`;
     app.querySelector("#pall")?.addEventListener("click", () => { state.focus = null; draw(); });
+    app.querySelector("#pbr")?.addEventListener("click", () => { state.branch = ""; draw(); });
     more.hidden = state.focus != null || rows.length <= state.shown;
   };
   const reset = () => { state.shown = 30; state.focus = null; draw(); };
@@ -297,11 +455,44 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
   app.querySelector<HTMLInputElement>("#pk")!.addEventListener("change", (e) => { state.key = (e.target as HTMLInputElement).checked; reset(); });
   app.querySelector<HTMLInputElement>("#pv")!.addEventListener("change", (e) => { state.votes = (e.target as HTMLInputElement).checked; reset(); });
   const statusBtns = [...app.querySelectorAll<HTMLButtonElement>(".prog-status button")];
-  const setStatus = (s: Status | "") => { state.status = s; statusBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.s === s))); reset(); };
+  const setStatus = (s: Status | "") => { state.status = s; state.branch = ""; statusBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.s === s))); reset(); };
   statusBtns.forEach((b) => b.addEventListener("click", () => setStatus(b.dataset.s as Status | "")));
   more.addEventListener("click", () => { state.shown += 30; draw(); });
   const toList = () => app.querySelector("#mesures")?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   app.querySelectorAll<HTMLButtonElement>(".prog-row").forEach((b) => b.addEventListener("click", () => { state.theme = b.dataset.theme!; themeSel.value = state.theme; reset(); toList(); }));
   app.querySelectorAll<HTMLButtonElement>(".prog-goto").forEach((b) => b.addEventListener("click", () => { state.focus = b.dataset.id!; draw(); toList(); }));
   draw();
+
+  // ---------- flow view ----------
+  const canvas = app.querySelector<HTMLElement>("#fcanvas")!;
+  const detail = app.querySelector<HTMLElement>("#fdetail")!;
+  const flowSel = app.querySelector<HTMLSelectElement>("#ft")!;
+  const drawFlow = () => {
+    const ls = state.flowTheme ? f.lineages.filter((l) => l.theme === state.flowTheme) : f.lineages;
+    canvas.innerHTML = flowSvg(f, ls, state.flowPick);
+    const b = state.flowPick;
+    const rows = ls.filter(BRANCH[b]).sort((x, y) => (y.key ?? 0) - (x.key ?? 0));
+    const ver = (l: Lineage) => (b === "drop22" ? l.a : b === "drop25" ? l.e : l.w)!;
+    const themes = new Map<string, number>();
+    for (const l of rows) themes.set(l.theme, (themes.get(l.theme) ?? 0) + 1);
+    const top = [...themes].sort((x, y) => y[1] - x[1]).slice(0, 4);
+    detail.innerHTML = `
+      <div class="flow-detail-head">${tag(BRANCH_STATUS[b])}<h3>${esc(branchLabel(b))} · ${fmtNum(rows.length)}</h3></div>
+      <p class="muted small">${esc(branchHelp(b))}${top.length && !state.flowTheme ? ` ${L("Surtout :", "Mostly:")} ${top.map(([t, k]) => `${esc(themeName(t))} (${k})`).join(", ")}.` : ""}</p>
+      <ul class="flow-examples">${rows.slice(0, 5).map((l) => `<li lang="fr">${l.key ? `<span class="tag">${L("clé", "key")}</span> ` : ""}${esc(ver(l).t)} <button type="button" class="linkish prog-goto" data-id="${esc(l.id)}">${L("voir", "see")}</button></li>`).join("") || `<li class="muted">${L("Aucune mesure dans cette branche pour ce thème.", "No measure in this branch for this theme.")}</li>`}</ul>
+      ${rows.length > 5 ? `<button type="button" class="button" id="fall">${L(`Voir les ${fmtNum(rows.length)} mesures de cette branche`, `See all ${fmtNum(rows.length)} measures in this branch`)}</button>` : ""}`;
+    detail.querySelectorAll<HTMLButtonElement>(".prog-goto").forEach((x) => x.addEventListener("click", () => { state.focus = x.dataset.id!; draw(); toList(); }));
+    detail.querySelector("#fall")?.addEventListener("click", () => {
+      state.branch = b; state.status = ""; state.theme = state.flowTheme; themeSel.value = state.theme;
+      statusBtns.forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.s === "")));
+      reset(); toList();
+    });
+    canvas.querySelectorAll<SVGGElement>("[data-branch]").forEach((g) => {
+      const go = () => { state.flowPick = g.dataset.branch as BranchId; drawFlow(); canvas.querySelector<SVGGElement>(`[data-branch="${state.flowPick}"]`)?.focus(); };
+      g.addEventListener("click", go);
+      g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+    });
+  };
+  flowSel.addEventListener("change", () => { state.flowTheme = flowSel.value; drawFlow(); });
+  drawFlow();
 }

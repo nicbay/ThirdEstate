@@ -182,6 +182,43 @@ export default {
     ["a22-5827a7", "w27-8270f5"], ["a22-e63f41", "w27-248616"], ["a22-da5d84", "w27-0bd9c8"],
   ],
 
+  // Budget: what the party announced vs independent estimates, Md€ a year (static, direct effects).
+  // net = revenue - spending (positive = the programme would reduce the deficit). Every figure is quoted from its source.
+  costing: {
+    rounds: [
+      { id: "p2022", year: 2022, label: { fr: "Présidentielle 2022 — programme complet", en: "2022 presidential — full programme" },
+        horizon: { fr: "par an, en rythme de croisière", en: "a year, at full speed" },
+        announced: { by: "LFI", spending: 250, revenue: 267, net: 17, date: "2022-03",
+          note: { fr: "Chiffrage présenté en mars 2022 (40 économistes, hauts fonctionnaires et statisticiens), repris p. 28 de l’abrégé.", en: "Costing presented in March 2022 (40 economists, civil servants and statisticians), restated on p. 28 of the booklet." },
+          url: "https://melenchon2027.fr/comment-a-ete-concu-le-programme/" },
+        estimates: [
+          { by: "Institut Montaigne", spending: 331.6, revenue: 112.7, net: -218.9, date: "2022-04",
+            note: { fr: "Effets directs et statiques ; ne compte pas les 26 Md€ de lutte contre la fraude retenus par le candidat. Soit environ 7,2 points de PIB de déficit en plus.", en: "Direct, static effects; leaves out the €26bn of anti-fraud receipts the candidate counted. About 7.2 GDP points of extra deficit." },
+            url: "https://www.institutmontaigne.org/presidentielle-2022/jean-luc-melenchon/synthese" },
+        ] },
+      { id: "nfp2024", year: 2024, label: { fr: "Législatives 2024 — programme du Nouveau Front populaire (LFI, PS, Écologistes, PCF)", en: "2024 legislative — New Popular Front programme (LFI, PS, Greens, PCF)" },
+        horizon: { fr: "par an, à l’horizon 2027", en: "a year, by 2027" },
+        announced: { by: "NFP", spending: 150, revenue: 150, net: 0, date: "2024-06-21",
+          note: { fr: "« Nos dépenses correspondent exactement aux recettes supplémentaires » (Éric Coquerel). Les recettes détaillées ce jour-là totalisent environ 80 Md€.", en: "Coquerel said spending ‘exactly matches’ the extra revenue. The revenue items detailed that day add up to about €80bn." },
+          url: "https://www.publicsenat.fr/actualites/economie/150-milliards-de-depenses-supplementaires-dici-fin-2027-le-nouveau-front-populaire-detaille-le-cout-de-son-programme" },
+        estimates: [
+          { by: "Institut Montaigne", spending: 233, revenue: 54, net: -179, date: "2024-06",
+            note: { fr: "Mesures immédiates, sans effets de comportement ; 6,3 points de PIB.", en: "Immediate measures, no behavioural effects; 6.3 GDP points." },
+            url: "https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/synthese" },
+          { by: "Fondation iFRAP", spending: 215, revenue: 55, net: -160, date: "2024-06-27",
+            note: { fr: "Par rapport à la trajectoire du programme de stabilité ; dont 50 Md€ pour la retraite à 60 ans en 2027. Le déficit « s’alourdirait de près de 160 milliards ».", en: "Against the stability-programme path; including €50bn for retirement at 60 in 2027. Deficit up by ‘nearly 160 billion’." },
+            url: "https://www.ifrap.org/budget-et-fiscalite/le-vrai-cout-du-programme-du-nouveau-front-populaire" },
+        ] },
+      { id: "p2027", year: 2027, label: { fr: "Présidentielle 2027 — premier budget annoncé (2027)", en: "2027 presidential — first budget announced (for 2027)" },
+        horizon: { fr: "la première année seulement", en: "first year only" },
+        announced: { by: "LFI", spending: 81.7, revenue: 106.4, net: 24.7, date: "2026-10-14",
+          note: { fr: "« Budget rectificatif » pour 2027 présenté par Éric Coquerel et Jean-Luc Mélenchon : ISF climatique 10 Md€, taxe Zucman 15, successions 20, niches 22, fin de la flat tax 9 ; retraite à 62 ans 9, garantie d’autonomie 9,5, cantines gratuites 3,6, hôpital 3. Le chiffrage complet est annoncé pour début 2027.", en: "A ‘corrective budget’ for 2027 presented by Éric Coquerel and Jean-Luc Mélenchon: climate wealth tax €10bn, Zucman tax 15, inheritance 20, tax breaks 22, end of the flat tax 9; retirement at 62 9, youth income guarantee 9.5, free school meals 3.6, hospitals 3. The full costing is due in early 2027." },
+          url: "https://www.publicsenat.fr/actualites/politique/presidentielle-2027-jean-luc-melenchon-table-sur-106-milliards-de-recettes-supplementaires-et-82-milliards-de-depenses-nouvelles-pour-2027" },
+        estimates: [] },
+    ],
+    checked: "2026-11-08",
+  },
+
   // Neutral list of the most substantive changes (figures, flagships added or dropped), by measure or
   // lineage id. Facts only: what the texts say, in which version. kind: figure | new | dropped | wording.
   highlights: [
