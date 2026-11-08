@@ -7,15 +7,19 @@ claimed their place in the Estates-General. Sieyès: *What is the Third Estate? 
 until now? Nothing. What does it ask? To become something.* The site is for that reader: the citizen, not
 the insider. The name is English and reads instantly in French.
 
-The mark is a fighting bee diving into an attack, pitched 35° with speed lines behind (sheet:
-`docs/brand/bee-options.html`, variant B). Bees vote: a swarm chooses its new home by a debate among scouts
-(Seeley, *Honeybee Democracy*). The hive is the many who do the work, the Third Estate; the hexagon is
-l'Hexagone. Swept blade wings, horn antennae, narrowed eyes and a long stinger keep it combative, not cute.
-The abdomen carries two chevrons, red (left) and blue (right) in the French convention, the same split as
-the active-tab underline. On dark: white bee, light red/blue (`#ff5a6a`/`#5b8dff`). On white: ink bee,
-`#e0313f`/`#2f6bdc`. Wordmark: Archivo 850 condensed **THIRD** + 300 **ESTATE**, uppercase. Favicon: the
-bee without speed lines on a rounded ink tile. The tilted bee is wider than its box: keep the fitted
-transform (`translate(19.6 17.4) rotate(-35) scale(.92)` in a 32 viewBox) so wings and stinger aren't cut. Catchphrase: Article 15 of the 1789 Declaration, *« La société a le droit de demander compte à tout agent public de son administration »*, shortened on the homepage to « Demander compte à tout agent public ». Share image: `public/og.png` (1200×630).
+The mark is a **pixel-art fox head**, 16×16, drawn as `<rect>`s with `shape-rendering="crispEdges"`
+(grid and `foxSvg(size, onDark)` in `src/lib/fox.ts`; `node scripts/build-brand.mjs` regenerates the favicon and
+the share card from the same grid). Why a fox: alert, quick, hard to fool, the reader the site wants to equip when
+someone in office explains themselves. The face is split down the middle: left fur bleu France `#000091`, right fur
+rouge Marianne `#e1000f`, in flag order as the viewer sees it, with a white blaze and muzzle (`#ffffff`), white inner
+ears, ink outline and eyes `#111216` and an ink nose. On the black masthead and footer the outline and eyes turn
+`#f2f2f4`; the nose stays ink on the white muzzle. The blue-left fox is the flag; the red-left/blue-right split bar
+(active tab, kickers) is the political convention, and the two are never mixed in one element. Keep the grid exact;
+render it at multiples of 16px (24, 28, 32, 112) so pixels stay square. Wordmark: Archivo 850 condensed **THIRD** +
+300 **ESTATE**, uppercase. Favicon: the fox on a rounded ink tile (`public/favicon.svg`). Pixel type (Silkscreen) is
+allowed only for tiny accents, never for text people read; the site currently uses none. The 12×12 section icons of
+the phone tab bar and the search glyph (`src/lib/pixel-icons.ts`) share the fox's pixel style, drawn in currentColor.
+Catchphrase: Article 15 of the 1789 Declaration, *« La société a le droit de demander compte à tout agent public de son administration »*, shortened on the homepage to « Demander compte à tout agent public ». Share image: `public/og.png` (1200×630, screenshot of `docs/brand/og-source.html`).
 
 A data desk, not a blog template. The page is a black-framed news product: one grotesk for
 everything people read, a monospace for everything that annotates, a 3px ink rule to open
@@ -85,9 +89,15 @@ glyphs as well as colour.
 
 ## Components
 
-- **Masthead**: black bar, logo mark (a red arrow up-left and a blue arrow up-right from one origin, which
-  reads as a V), condensed wordmark, active section underlined with the red/blue split bar. Below 760px
-  the nav becomes a horizontal scroller with a fade at the edge.
+- **Masthead**: black bar, the fox and the condensed wordmark, five sections (Chez vous, Parlement, 2027, La France,
+  Archives), each a link plus a caret button that opens its menu (white panel, 3px ink rule; hover on desktop, click or
+  keyboard everywhere, Esc closes). Active section underlined with the red/blue split bar. Right side: search button
+  (Ctrl/⌘ K), the white "Qui vous ressemble ?" call to action (red/blue offset shadow) to `#/quiz`, FR/EN. The current
+  section's pages repeat in a row under the bar. Below 760px: one top row (mark, search, quiz, language), the section
+  pages as a sideways-scrolling row, and a fixed bottom tab bar with the five sections (pixel icon + short label,
+  safe-area padding).
+- **Search** (`src/lib/search.ts`): Ctrl/⌘ K or "/" opens a modal palette over towns, MPs, senators, chamber words and
+  pages; grouped results with mono type tags, ↑↓ Enter Esc, recent picks remembered. Data loads on first open.
 - **Section (`.card`)**: 3px ink rule, condensed `h2`, mono "→" link at the right.
 - **Tabs**: pill row (`.tabs`), segmented control for in-module switches (`.small-tabs`).
 - **Bars**: 10px on a `--wash` track, bold value right-aligned, grow-in animation.
@@ -96,9 +106,9 @@ glyphs as well as colour.
   in the left/right colours.
 - **Tables**: mono uppercase headers over a 2px ink rule, tabular right-aligned numbers, hover rows,
   auto-wrapped in `.table-scroll` by `src/main.ts`.
-- **Doors**: grey panels with an ink top rule and a violet arrow.
+- **Doors**: grey panels with an ink top rule and a violet arrow. The homepage hero has five, one per section (Chez vous, Parlement, 2027, La France, Archives).
 - **Tooltip**: ink background, white text, first line bold.
-- **Search**: 2px ink box with a hard offset shadow and a drawn magnifier; violet on focus.
+- **Town search box**: 2px ink box with a hard offset shadow and a drawn magnifier; violet on focus.
 - **Overseas insets**: 100×100 tiles with a mono caption. "French abroad" is a peer tile: a globe filled
   with the area's colour, same caption, same hover/selected strokes (`abroadInset()` in `src/lib/map.ts`).
 
