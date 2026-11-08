@@ -330,7 +330,12 @@ async function route() {
   // the first page just appears (the fox is assembling); later ones cross over with the masthead held still
   return firstRender ? render(path, anchor) : pageTransition(() => render(path, anchor));
 }
+let renderSeq = 0;
 async function render(path: string, anchor: string | undefined) {
+  // A view transition runs its update on the next painted frame, so a quick second navigation (or a
+  // background tab) can leave an older render queued: drop it if the address has moved on since.
+  if (split().path !== path) return;
+  const seq = ++renderSeq;
   renderChrome(path);
   for (const [re, fn] of routes) {
     const m = path.match(re);
@@ -339,6 +344,7 @@ async function render(path: string, anchor: string | undefined) {
       foxBusy(true);
       try {
         await fn(m);
+        if (seq !== renderSeq) return; // a newer navigation took over while this one loaded
         const page = app.querySelector(":scope > .page");
         if (page && !page.querySelector(".next-steps")) page.insertAdjacentHTML("beforeend", nextSteps(path));
         if (anchor) document.getElementById(anchor)?.scrollIntoView();
