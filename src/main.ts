@@ -24,6 +24,7 @@ import { foxSvg } from "./lib/fox";
 import { pixelIcon, type PixelIcon } from "./lib/pixel-icons";
 import { initSearch, openSearch } from "./lib/search";
 import { foxBusy, initFox, initMotion, pageTransition } from "./lib/motion";
+import { renderCandidate } from "./views/candidate";
 
 const app = document.getElementById("app")!;
 const nav = document.getElementById("nav")!;
@@ -59,6 +60,7 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/fil$/, () => renderFeed(app)],
   [/^#\/2027$/, () => renderRace(app)],
   [/^#\/senat(?:\/(\w{2,3}))?$/, (m) => renderSenat(app, m[1])],
+  [/^#\/candidat\/([\w-]+)$/, (m) => renderCandidate(app, m[1])],
   [/^#\/senateur\/([\w-]+)$/, (m) => renderSenateur(app, m[1])],
   [/^#\/elus$/, () => renderAssemblee(app, "carte")],
   [/^#\/explorer(?:\/(\w{2,3}))?$/, (m) => renderExplorer(app, m[1])],
@@ -127,7 +129,7 @@ function sections(): Section[] {
       ],
     },
     {
-      key: "2027", icon: "ballot", short: ["2027", "2027"], href: "#/2027", match: /^#\/(2027|sondages|simulateur|fil|quiz)/, fr: "2027", en: "2027",
+      key: "2027", icon: "ballot", short: ["2027", "2027"], href: "#/2027", match: /^#\/(2027|sondages|simulateur|fil|quiz|candidat|programmes)/, fr: "2027", en: "2027",
       children: [
         { href: "#/2027", match: /^#\/2027/, fr: "La course", en: "The race" },
         { href: "#/sondages", match: /^#\/sondages/, fr: "Sondages et marchés", en: "Polls and markets" },
