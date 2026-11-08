@@ -51,3 +51,13 @@ export function foxSvg(size: number, onDark = false, attrs = 'aria-hidden="true"
 export function foxFavicon() {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" shape-rendering="crispEdges"><rect width="20" height="20" rx="4" fill="#111216" shape-rendering="geometricPrecision"/>${foxRects(true, 2, 2)}</svg>`;
 }
+
+/** Every filled cell of the fox, one per pixel (src/lib/motion.ts assembles and blinks the masthead fox from these). */
+export function foxCells(onDark = false) {
+  const pal = onDark ? DARK : LIGHT;
+  const out: { x: number; y: number; ch: string; fill: string }[] = [];
+  FOX_GRID.forEach((row, y) => [...row].forEach((ch, x) => { if (pal[ch]) out.push({ x, y, ch, fill: pal[ch] }); }));
+  return out;
+}
+/** The fur colour each side of the muzzle: an eye "closes" by taking it. */
+export const foxFur = (x: number, onDark = false) => ((onDark ? DARK : LIGHT)[x < 8 ? "L" : "R"]);
