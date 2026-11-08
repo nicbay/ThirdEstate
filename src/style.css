@@ -1729,7 +1729,6 @@ body { overflow-x: clip; }
 @media (prefers-reduced-motion: reduce) {
   .sim-page { --sim-t: 0s; }
   .sim-dock { animation: none; }
-=======
 
 /* ---------- motion (src/lib/motion.ts) — every rule prefixed .mo- or keyed to a class it adds ----------
    Every animation explains a number or a change of place; at rest everything is drawn in full, and the
@@ -1799,7 +1798,6 @@ input[type="range"]:active { cursor: grabbing; }
 }
 }
 
-=======
 /* ---------- campaign programme over time (#/programmes/<slug>, src/views/programme.ts) ----------
    Status styles are deliberately neutral (ink, greys, hatching): colour is kept for politics. */
 .prog { --prog-kept: var(--ink-3); --prog-new25: var(--rule-2); --prog-new27: var(--ink); }
@@ -1899,7 +1897,6 @@ input[type="range"]:active { cursor: grabbing; }
 .prog-method ul { padding-left: 1.2rem; }
 .prog-method li { margin-bottom: 0.4rem; }
 @media (prefers-reduced-motion: reduce) { .prog-stack, .prog-wbar { animation: none; } }
-=======
 /* ---------- Candidate pages (#/candidat/<slug>) and the "Les candidats" cards on #/2027 ---------- */
 .cand-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr)); gap: 0.6rem; }
 .cand-card { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; align-items: center; gap: 0.75rem; padding: 0.6rem 0.75rem 0.6rem 0.6rem; background: var(--panel); border-left: 4px solid var(--c, var(--ink-3)); color: var(--ink); text-decoration: none; min-height: 68px; transition: background 0.15s; }
