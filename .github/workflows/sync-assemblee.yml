@@ -30,10 +30,14 @@ jobs:
 
       - run: npm run sync:an
 
+      # What MPs say in the chamber (word clouds, themes): ~60 MB zip of the verbatim record, ~30 s.
+      # Runs after sync:an because it reads the fresh deputes.json.
+      - run: npm run sync:interventions
+
       - name: Commit if anything changed
         run: |
-          # meta.json always changes (sync timestamp); only commit when real data changed
-          if git diff --quiet -- public/data/an ':!public/data/an/meta.json' && [ -z "$(git ls-files --others --exclude-standard public/data/an)" ]; then
+          # meta.json files always change (sync timestamp); only commit when real data changed
+          if git diff --quiet -- public/data/an ':!public/data/an/meta.json' ':!public/data/an/interventions/meta.json' &&[ -z "$(git ls-files --others --exclude-standard public/data/an)" ]; then
             echo "No new data."
             exit 0
           fi

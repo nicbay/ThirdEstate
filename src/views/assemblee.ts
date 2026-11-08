@@ -7,6 +7,7 @@ import { esc, groupBy, safeColor } from "../util";
 import { hemicycle, seatRank } from "../lib/hemicycle";
 import { renderDeputes } from "./deputes";
 import { renderLoyalty } from "./loyalty";
+import { renderThemes } from "./speeches";
 
 export const PLATFORMS = ["twitter", "facebook", "instagram", "linkedin", "website"] as const;
 /** Digital presence: how many of the 5 main channels the MP declares to the Assemblée (0–5). */
@@ -38,6 +39,7 @@ export async function renderAssemblee(app: HTMLElement, tab = "carte", dep?: str
           <a role="tab" href="#/assemblee/deputes" aria-selected="${tab === "deputes"}">${L("Députés", "MPs")}</a>
           <a role="tab" href="#/assemblee/composition" aria-selected="${tab === "composition"}">${L("Qui sont les députés ?", "Who are the MPs?")}</a>
           <a role="tab" href="#/assemblee/loyaute" aria-selected="${tab === "loyaute"}">${L("Doigt sur la couture", "Toeing the line")}</a>
+          <a role="tab" href="#/assemblee/themes" aria-selected="${tab === "themes"}">${L("De quoi parlent-ils ?", "What do they talk about?")}</a>
         </nav>
       </div>
       <div id="pane"></div>
@@ -46,6 +48,7 @@ export async function renderAssemblee(app: HTMLElement, tab = "carte", dep?: str
   if (tab === "deputes") return renderDeputes(pane);
   if (tab === "composition") return composition(pane);
   if (tab === "loyaute") return renderLoyalty(pane);
+  if (tab === "themes") return renderThemes(pane);
   return mapView(pane, dep);
 }
 
