@@ -108,7 +108,7 @@ export async function renderTownLocal(box: HTMLElement, code: string, dep: strin
   // ---------- senators of the department ----------
   if (mySens.length) {
     parts.push(`<section class="card"><header class="card-head"><h2>${L("Vos sénateurs", "Your senators")}</h2><a href="#/senat">${L("Tout le Sénat", "The whole Senate")}</a></header>
-      <div class="grid-2">${mySens.map((s: Any) => `<a class="mp-mini" href="#/senateur/${esc(s.id)}" style="--c:${safeColor(s.groupe?.couleur)}"><img src="${senPhoto(s)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"/><span><b>${esc(s.prenom)} ${esc(s.nom)}</b> <span class="chip">${esc(s.groupe?.abrev ?? "")}</span><br><span class="small muted">${s.stats ? `${fmtNum(s.stats.pour)} ${L("pour", "for")}, ${fmtNum(s.stats.contre)} ${L("contre", "against")}` : ""}</span></span></a>`).join("")}</div></section>`);
+      <div class="grid-2">${mySens.map((s: Any) => `<a class="mp-mini" href="#/senateur/${esc(s.id)}" style="--c:${safeColor(s.groupe?.couleur)}"><img src="${senPhoto(s)}" alt="" loading="lazy" data-hide-broken/><span><b>${esc(s.prenom)} ${esc(s.nom)}</b> <span class="chip">${esc(s.groupe?.abrev ?? "")}</span><br><span class="small muted">${s.stats ? `${fmtNum(s.stats.pour)} ${L("pour", "for")}, ${fmtNum(s.stats.contre)} ${L("contre", "against")}` : ""}</span></span></a>`).join("")}</div></section>`);
   }
   box.innerHTML = parts.join("");
 }

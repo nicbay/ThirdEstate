@@ -5,6 +5,8 @@
 import { fetchJson, loadDeputes, type Depute } from "../data";
 import { L, fmtNum, getLang } from "../i18n";
 import { esc, safeColor } from "../util";
+/** Recent searches come back from localStorage: only in-site routes are allowed as links. */
+const safeHref = (h: string | undefined) => (typeof h === "string" && /^#\/[\w\-/#.%]*$/.test(h) ? h : "#/assemblee/themes");
 import { searchPlaces } from "../views/explore";
 import { loadSenateurs, type Senateur } from "../views/senat";
 import { openWordByText } from "../views/speeches";
@@ -191,8 +193,8 @@ function draw(hits: Hit[], note = "", pending = false) {
       .map(([k, hs]) => `<div role="group" aria-labelledby="cmdk-g-${k}"><p class="cmdk-g" id="cmdk-g-${k}" role="presentation">${L(...KIND_LABEL[k])}</p>${hs
         .map((h) => {
           const n = i++;
-          return `<a role="option" id="cmdk-o-${n}" data-i="${n}" href="${esc(h.href ?? "#/assemblee/themes")}" aria-selected="false" tabindex="-1">
-            <span class="cmdk-t">${h.color ? `<i style="background:${h.color}"></i>` : ""}<b>${esc(h.label)}</b><span>${esc(h.context)}</span></span>
+          return `<a role="option" id="cmdk-o-${n}" data-i="${n}" href="${esc(safeHref(h.href))}" aria-selected="false" tabindex="-1">
+            <span class="cmdk-t">${safeColor(h.color) ? `<i style="background:${safeColor(h.color)}"></i>` : ""}<b>${esc(h.label)}</b><span>${esc(h.context)}</span></span>
             <span class="cmdk-k">${L(...KIND_TAG[h.kind])}</span></a>`;
         })
         .join("")}</div>`)

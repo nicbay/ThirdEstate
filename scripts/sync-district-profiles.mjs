@@ -11,6 +11,7 @@
 // Only free official sources: Ministère de l'Intérieur (elections, SSMSI), INSEE, Éducation nationale, OFGL,
 // ADN Tourisme (DATAtourisme). Nothing is estimated unless the field name says so ("…Estimated").
 
+import { safeName } from "./lib/safe-name.mjs";
 import { mkdir, readFile, writeFile, stat, readdir, unlink } from "node:fs/promises";
 import { createReadStream } from "node:fs";
 import { createGunzip } from "node:zlib";
@@ -688,6 +689,7 @@ async function buildEvents(shapes, districtCodes) {
   const source = cite(SRC.events, { file: fma.url, retrieved: TODAY });
   for (const [code, list] of byDistrict) {
     list.sort((a, b) => (a.start < b.start ? -1 : a.start > b.start ? 1 : a.end < b.end ? -1 : 1));
+    if (!safeName(code)) continue;
     await writeFile(new URL(`events/${code}.json`, OUT), JSON.stringify({ code, generated: TODAY, window: [TODAY, horizon], source, total: list.length, events: list.slice(0, 50) }));
   }
   console.log(`  events: ${kept} upcoming events located in a district (${unlocated} outside every outline, ${long} long-running offers skipped)`);

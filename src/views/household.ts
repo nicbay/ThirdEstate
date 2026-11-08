@@ -66,9 +66,25 @@ const INHERIT_BANDS: [number, T][] = [
 function loadState(): Household {
   try {
     const s = JSON.parse(localStorage.getItem(KEY) ?? "null") as Household | null;
-    if (s && Array.isArray(s.adults) && s.kids) return { ...DEFAULT_HOUSEHOLD, ...s };
+    if (s && Array.isArray(s.adults) && s.kids) return sanitize(s);
   } catch { /* storage blocked: defaults */ }
   return structuredClone(DEFAULT_HOUSEHOLD);
+}
+/** Saved state is untrusted (it can be edited by hand): keep only known values and finite, bounded numbers. */
+function sanitize(s: Partial<Household>): Household {
+  const d = DEFAULT_HOUSEHOLD;
+  const n = (v: unknown, def: number, max = 1e10) => { const x = Number(v); return Number.isFinite(x) ? Math.max(0, Math.min(max, x)) : def; };
+  const pick = <T extends string>(v: unknown, ok: readonly T[], def: T) => (ok.includes(v as T) ? (v as T) : def);
+  const JOBS = ["private", "public", "self", "retired", "unemployed", "student", "inactive"] as const;
+  const adults = (Array.isArray(s.adults) ? s.adults : d.adults).slice(0, 2).map((a) => ({ job: pick(a?.job, JOBS, "private"), net: n(a?.net, 1478, 1e7), ...(a?.fullCareer ? { fullCareer: true } : {}) }));
+  const k = (s.kids ?? d.kids) as Partial<Household["kids"]>;
+  return {
+    status: pick(s.status, ["single", "married", "cohab"] as const, "single"), adults: adults.length ? adults : structuredClone(d.adults),
+    kids: { u3: n(k.u3, 0, 12), k3_10: n(k.k3_10, 0, 12), k11_17: n(k.k11_17, 0, 12), s18_24: n(k.s18_24, 0, 12) },
+    housing: pick(s.housing, ["tenant", "owner", "other"] as const, "tenant"),
+    rent: n(s.rent, d.rent, 1e5), apl: n(s.apl, 0, 1e5), benefits: n(s.benefits, 0, 1e5), capital: n(s.capital, 0), wealth: n(s.wealth, 0, 1e12),
+    realEstate: n(s.realEstate, 0, 1e12), inheritance: n(s.inheritance, 0, 1e12), mutuelle: s.mutuelle == null ? null : n(s.mutuelle, 0, 1e4), canteen: s.canteen !== false,
+  };
 }
 function saveState(h: Household) { try { localStorage.setItem(KEY, JSON.stringify(h)); } catch { /* ignore */ } }
 
@@ -93,7 +109,7 @@ export async function renderHousehold(app: HTMLElement) {
       </div>
 
       <div class="hh-grid" id="hh-sim">
-        <form class="hh-form" id="hhf" autocomplete="off" onsubmit="return false">
+        <form class="hh-form" id="hhf" autocomplete="off">
           <fieldset>
             <legend>${L("Votre situation", "Your situation")}</legend>
             <div class="small-tabs hh-status" role="radiogroup" aria-label="${L("Situation familiale", "Family status")}">
@@ -133,7 +149,7 @@ export async function renderHousehold(app: HTMLElement) {
               <label>${L("Héritage attendu (votre part, en ligne directe)", "Expected inheritance (your share, from a parent)")}<select id="hh-inherit">${bandOptions(INHERIT_BANDS, h.inheritance)}</select></label>
             </div>
           </details>
-          <p class="muted small">${L("Rien n’est envoyé : le calcul se fait dans votre navigateur.", "Nothing is sent: the calculation runs in your browser.")}</p>
+          <p class="muted small">${L("Rien n’est envoyé : le calcul se fait dans votre navigateur, qui garde vos réponses pour votre prochaine visite.", "Nothing is sent: the calculation runs in your browser, which keeps your answers for your next visit.")} <button type="button" class="linkish" id="hh-clear">${L("Effacer mes réponses", "Clear my answers")}</button></p>
         </form>
         <div class="hh-out" id="hh-out" aria-live="polite"></div>
       </div>
@@ -152,6 +168,9 @@ export async function renderHousehold(app: HTMLElement) {
     </section>`;
 
   const form = app.querySelector<HTMLFormElement>("#hhf")!;
+  form.addEventListener("submit", (e) => e.preventDefault()); // no inline handler: the CSP allows no inline script
+  // income and wealth answers stay in this browser until cleared (shared computers): one click forgets them
+  app.querySelector("#hh-clear")?.addEventListener("click", () => { try { localStorage.removeItem(KEY); } catch { /* ignore */ } renderHousehold(app); });
   const out = app.querySelector<HTMLElement>("#hh-out")!;
   const adultsBox = app.querySelector<HTMLElement>("#hh-adults")!;
 
@@ -257,7 +276,7 @@ function lineHtml(l: Line, max: number): string {
   return `<li class="hh-line">
     <div class="hh-lh"><span class="hh-name">${esc(tr(l.label))}${l.assumption ? ` <span class="tag">${L("hypothèse", "assumption")}</span>` : ""}</span><b class="hh-amt is-${side}">${signedEur(l.amount)}</b></div>
     <div class="hh-bar" aria-hidden="true"><span class="is-${side}" style="--w:${w.toFixed(1)}%"></span></div>
-    <p class="hh-note">${esc(tr(l.note))} <a href="${measureHref(l.measure)}">${L("La mesure", "The measure")}</a></p>
+    <p class="hh-note">${esc(tr(l.note))} <a href="${esc(measureHref(l.measure))}">${L("La mesure", "The measure")}</a></p>
   </li>`;
 }
 
@@ -311,7 +330,7 @@ function distHtml(d: DistFile, r: Result): string {
     <p class="dek-s">${L(
       `Le programme chiffre ses nouvelles recettes pour 2027 à 106 Md€, dont ${fmtNum(totalRev)} Md€ pour quatre impôts sur le capital et le patrimoine. Ce graphique répartit ces quatre impôts, plus le barème à 14 tranches, entre les ménages classés par niveau de vie, en part de leur revenu disponible.`,
       `The programme puts its new revenue for 2027 at €106bn, of which €${fmtNum(totalRev)}bn from four taxes on capital and wealth. This chart spreads those four taxes, plus the 14-bracket scale, across households ranked by standard of living, as a share of their disposable income.`)}</p>
-    <ul class="hh-legend">${Object.keys(names).map((id) => `<li><i style="background:${COLORS[id]}"></i><a href="${measureHref(lineage[id])}">${esc(names[id])}</a></li>`).join("")}<li><b class="hh-me-key"></b>${L("Votre foyer", "Your household")}</li></ul>
+    <ul class="hh-legend">${Object.keys(names).map((id) => `<li><i style="background:${COLORS[id]}"></i><a href="${esc(measureHref(lineage[id]))}">${esc(names[id])}</a></li>`).join("")}<li><b class="hh-me-key"></b>${L("Votre foyer", "Your household")}</li></ul>
     <div class="hh-dist" role="img" aria-label="${esc(L("Hausses d’impôts par dixième de niveau de vie, en % du revenu disponible", "Tax rises by tenth of standard of living, as % of disposable income"))}">
       <div class="hh-axis"><span style="left:0">−${NEG} %</span><span style="left:${x0.toFixed(2)}%">0</span><span style="left:${(x0 + (100 * 6) / span).toFixed(2)}%">6 %</span><span style="left:100%">${SCALE} %</span></div>
       ${rows.map((row) => `<div class="hh-drow${row.g.id === mine.id ? " is-me" : ""}">
@@ -358,7 +377,7 @@ function notCounted(): string {
     ["L8e6d31", { fr: "« TVA grand luxe », plafond de 5 logements transmissibles, refonte de la taxe foncière : taux ou modalités non publiés.", en: "‘Luxury VAT’, cap of 5 homes that can be inherited, property-tax overhaul: rates or rules not published." }],
   ];
   return `<h3>${L("Ce qui n’est pas compté", "What is not counted")}</h3>
-    <ul class="hh-assume">${items.map(([id, x]) => `<li>${esc(tr(x))} <a href="${measureHref(id)}">${L("La mesure", "The measure")}</a></li>`).join("")}</ul>`;
+    <ul class="hh-assume">${items.map(([id, x]) => `<li>${esc(tr(x))} <a href="${esc(measureHref(id))}">${L("La mesure", "The measure")}</a></li>`).join("")}</ul>`;
 }
 
 function paramsBlock(): string {

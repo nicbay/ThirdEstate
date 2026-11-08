@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: claude-budget # shares the Claude spending ledger with the feed job
@@ -17,12 +17,16 @@ concurrency:
 
 jobs:
   sync:
+    permissions:
+      contents: write # push the refreshed data
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false # the token is given only to the push step
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: 24
           cache: npm
@@ -32,6 +36,7 @@ jobs:
       - name: Social accounts
         run: node scripts/sync-socials.mjs
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
       - name: Commit if anything changed
@@ -48,4 +53,4 @@ jobs:
           git commit -m "data: sync MPs' social accounts ($(date -u +%F))"
           # other jobs push to the same branch (and write data/usage): rebase before pushing
           git pull --rebase
-          git push
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:${GITHUB_REF_NAME}"

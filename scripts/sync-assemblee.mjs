@@ -10,6 +10,7 @@
 //   votes/<PA>.json  that MP's position on each vote: { numero: "P" | "C" | "A" | "N" }
 //   loyalty.json     how often each MP votes with their group (method in scripts/lib/loyalty.mjs)
 
+import { safeName } from "./lib/safe-name.mjs";
 import { mkdir, writeFile, rm } from "node:fs/promises";
 import { unzipSync, strFromU8 } from "fflate";
 import { loyaltyTracker } from "./lib/loyalty.mjs";
@@ -138,7 +139,7 @@ await writeFile(new URL("scrutins.json", OUT), JSON.stringify(scrutins));
 const loyal = loyalty.result();
 await writeFile(new URL("loyalty.json", OUT), JSON.stringify(loyal));
 console.log(`✓ loyalty: ${loyal.ranked} MPs ranked`);
-for (const [id, v] of votes) await writeFile(new URL(`votes/${id}.json`, OUT), JSON.stringify(v));
+for (const [id, v] of votes) { const n = safeName(id); if (n) await writeFile(new URL(`votes/${n}.json`, OUT), JSON.stringify(v)); }
 await writeFile(
   new URL("meta.json", OUT),
   JSON.stringify({ syncedAt: new Date().toISOString(), legislature: LEG, sources: { deputes: { url: SOURCES.deputes, lastModified: amo.lastModified }, scrutins: { url: SOURCES.scrutins, lastModified: scr.lastModified } } }, null, 2),

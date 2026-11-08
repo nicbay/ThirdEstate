@@ -41,13 +41,13 @@ export async function renderDeputes(app: HTMLElement) {
 
 const norm = (x: string) => x.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
 
-export const photoUrl = (id: string) => `https://www2.assemblee-nationale.fr/static/tribun/17/photos/carre/${id.slice(2)}.jpg`;
+export const photoUrl = (id: string) => `https://www2.assemblee-nationale.fr/static/tribun/17/photos/carre/${String(id).slice(2).replace(/D/g, "")}.jpg`;
 
 function card(d: Depute) {
   const s = t();
   return `
     <a class="mp-card card" href="#/depute/${d.id}" style="--c:${safeColor(d.groupe?.couleur) ?? "#999"}">
-      <img src="${photoUrl(d.id)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'" />
+      <img src="${photoUrl(d.id)}" alt="" loading="lazy" data-hide-broken />
       <div>
         <strong>${esc(d.prenom)} ${esc(d.nom)}</strong>
         <span class="chip">${esc(d.groupe?.abrev ?? "—")}</span>

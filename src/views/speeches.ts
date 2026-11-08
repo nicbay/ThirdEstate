@@ -6,7 +6,7 @@ import { fetchJson, loadDeputes, type Depute } from "../data";
 import { L, colon, fmtDate, fmtNum, fmtPct } from "../i18n";
 import { seatRank } from "../lib/hemicycle";
 import { fontsReady, wordCloud } from "../lib/wordcloud";
-import { esc, safeColor } from "../util";
+import { esc, safeColor, safeUrl } from "../util";
 import { photoUrl } from "./deputes";
 
 /** A quote: sitting date, debate title, record anchor (compte rendu uid#paragraph), extract, the word's span in it, the MP (chamber words) */
@@ -131,7 +131,7 @@ async function openWordPopup(o: PopupOpts) {
         const g = d.groupe?.abrev ?? "NI";
         return `<li data-g="${esc(g)}"${o.current?.id === id ? ` class="is-current" aria-current="true"` : ""}>
           <span class="wr-rank">${i + 1}</span>
-          <img src="${photoUrl(d.id)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'" />
+          <img src="${photoUrl(d.id)}" alt="" loading="lazy" data-hide-broken />
           <a href="#/depute/${d.id}" class="wr-name">${esc(d.prenom)} ${esc(d.nom)}</a>
           <span class="chip" style="--c:${safeColor(d.groupe?.couleur) ?? NEUTRAL}">${esc(g)}</span>
           <span class="wr-bar"><span style="width:${(100 * n) / max}%;background:${color(theme)}"></span></span>
@@ -330,7 +330,7 @@ export async function renderThemes(pane: HTMLElement) {
       <p class="muted small">${L("Classement par part de leurs interventions consacrée au thème, parmi les députés ayant au moins 30 interventions classées.", "Ranked by the share of their speeches devoted to the theme, among MPs with at least 30 classified speeches.")}</p>
     </article>
     <p class="muted small">${methodNote()}</p>
-    <p class="source muted">${L("Source : comptes rendus des débats de l’Assemblée nationale (open data, XML Syceron), jusqu’à la séance du", "Source: Assemblée nationale verbatim records (open data, Syceron XML), up to the sitting of")} ${fmtDate(s.period.to)} ·<a href="${esc(s.source.url)}" target="_blank" rel="noopener">${L("fichier source", "source file")} ↗</a></p>`;
+    <p class="source muted">${L("Source : comptes rendus des débats de l’Assemblée nationale (open data, XML Syceron), jusqu’à la séance du", "Source: Assemblée nationale verbatim records (open data, Syceron XML), up to the sitting of")} ${fmtDate(s.period.to)} ·<a href="${esc(safeUrl(s.source.url))}" target="_blank" rel="noopener">${L("fichier source", "source file")} ↗</a></p>`;
 
   const drawGroup = () => {
     const g = view.group ? s.groups[view.group] : null;
@@ -353,7 +353,7 @@ export async function renderThemes(pane: HTMLElement) {
     const max = rows[0]?.share || 1;
     pane.querySelector("#th-mps")!.innerHTML = `<ol class="theme-mps">${rows
       .map(({ d, share, n }) => `<li>
-        <img src="${photoUrl(d.id)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'" />
+        <img src="${photoUrl(d.id)}" alt="" loading="lazy" data-hide-broken />
         <div><a href="#/depute/${d.id}"><b>${esc(d.prenom)} ${esc(d.nom)}</b></a> <span class="chip" style="--c:${safeColor(d.groupe?.couleur) ?? NEUTRAL}">${esc(d.groupe?.abrev ?? "—")}</span>
           <div class="bar"><div style="width:${(100 * share) / max}%;background:${color(view.theme)}"></div></div></div>
         <span class="num"><b>${pct(share)}</b><span class="muted small"> · ${L(`≈ ${fmtNum(n)} interv.`, `≈ ${fmtNum(n)} speeches`)}</span></span>

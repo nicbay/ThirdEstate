@@ -208,7 +208,7 @@ function player(m: HistMedia, main: boolean) {
   const e = embedUrl(m);
   const audio = m.type === "radio";
   return `<figure class="media${main ? "" : " media-alt"}">
-      <figcaption><b>${kind}</b>${m.publisher ? `, ${esc(m.publisher)}` : ""}${m.date ? `, ${fmtDate(m.date)}` : ""}</figcaption>
+      <figcaption><b>${esc(kind)}</b>${m.publisher ? `, ${esc(m.publisher)}` : ""}${m.date ? `, ${fmtDate(m.date)}` : ""}</figcaption>
       ${e ? `<div class="${audio ? "audio" : "video"}"><iframe src="${esc(safeUrl(e))}" title="${esc(m.title ?? kind)}" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>` : ""}
       <p class="small"><a href="${esc(safeUrl(m.url))}" target="_blank" rel="noopener">${esc(m.title ?? m.url)}</a>${e ? "" : ` <span class="muted">(${L("à voir sur le site de la source", "watch on the source’s site")})</span>`}</p>
     </figure>`;

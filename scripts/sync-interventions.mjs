@@ -17,6 +17,7 @@
 //   meta.json      sync time and source timestamp (kept apart so data files only change with the data)
 //   <PA>.json      one MP: speech counts, top ~60 distinctive terms (TF-IDF vs the other MPs), theme shares
 
+import { safeName } from "./lib/safe-name.mjs";
 import { mkdir, readFile, rm, stat, writeFile } from "node:fs/promises";
 import { unzipSync, strFromU8 } from "fflate";
 
@@ -559,6 +560,7 @@ let written = 0;
 for (const [mp, st] of mpStat) {
   const sh = shares(mpThemes.get(mp));
   mps[mp] = { n: st.n, i: st.inter, w: st.words, c: mpClassified.get(mp) ?? 0, t: THEMES.map(([id]) => sh[id]) };
+  if (!safeName(mp)) continue;
   await writeFile(new URL(`${mp}.json`, OUT), JSON.stringify({ id: mp, speeches: st.n, interjections: st.inter, words: st.words, classified: mpClassified.get(mp) ?? 0, first: st.first, last: st.last, terms: packMp(mp, mpTerms.get(mp)), themes: sh }));
   written++;
 }

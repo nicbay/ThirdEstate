@@ -1,3 +1,4 @@
+import "./fonts.css";
 import "./style.css";
 import { L, getLang, setLang, t } from "./i18n";
 import { renderHome } from "./views/home";
@@ -37,6 +38,12 @@ const skip = document.getElementById("skip") as HTMLAnchorElement;
 document.querySelector(".topbar .brand")!.insertAdjacentHTML("afterbegin", foxSvg(28, true));
 initFox(document.querySelector<SVGSVGElement>(".topbar .brand .fox"));
 initMotion(app);
+// A portrait that fails to load disappears (instead of a broken-image icon). One capturing listener replaces
+// per-image onerror attributes, which the Content-Security-Policy forbids.
+document.addEventListener("error", (e) => {
+  const t = e.target;
+  if (t instanceof HTMLImageElement && t.hasAttribute("data-hide-broken")) t.style.visibility = "hidden";
+}, true);
 
 // Full-bleed bands size themselves on --vw: the viewport minus a classic (non-overlay) scrollbar, which 100vw includes.
 const setVw = () => document.documentElement.style.setProperty("--vw", `${document.documentElement.clientWidth}px`);
