@@ -6,11 +6,14 @@
 //     Maastricht debt (quarterly), deficit, spending, interest, tax burden, GDP, growth, trade, population, employment.
 //   - INSEE BDM, public SDMX endpoint https://bdm.insee.fr/series/sdmx/data/SERIES_BDM/<idbank>
 //     consumer prices (CPI, base 2025), ILO unemployment and employment rates.
+//   - INSEE annual Maastricht debt table, 1978 onwards (xlsx), Eurostat gov_10dd_edpt1 and the IMF Global Debt
+//     Database (datamapper API) for the long-run France/Germany debt-to-GDP chart (debtHistory, see below).
 // A source that fails keeps the value from the previous public/data/economy.json; with no previous file it falls
 // back to FALLBACK below (values read from the same APIs on 2026-11-08, so the page never ships empty).
 //
 // Output: public/data/economy.json
 //   { fetchedAt, debt: { eur, pct, ratePerYear, rateFrom, rateTo, asOf, ... }, people: { population, employed },
+//     debtHistory: { fr|de: { annual: [[year, pct]], latest: { period, value }, source(s) } },
 //     kpis: [{ id, value, unit, period, prev, series: [[period, value]], source: { name, dataset, url }, fallback? }] }
 
 import { mkdir, readFile, writeFile } from "node:fs/promises";
@@ -146,11 +149,90 @@ const debt = {
   rateBasis: yearAgo ? "4q" : "deficit",
 };
 
+// ---------- long-run debt-to-GDP, France and Germany (the "president by president" chart) ----------
+// France: INSEE, comptes nationaux annuels base 2020, Maastricht debt of general government in % of GDP at
+//   31 December, 1978 onwards (table "Dette des administrations publiques au sens de Maastricht par sous-secteur",
+//   sheet "Figure 2", row "Ensemble"). Nothing official on the same definition exists before 1978.
+// Germany: Eurostat gov_10dd_edpt1 (PC_GDP, S13, GD) from 1995; before that the IMF Global Debt Database
+//   (GG_DEBT_GDP, general government, West Germany until 1990), linked to the Eurostat level at 1995 by a ratio
+//   so the splice does not create a step.
+// Latest point for each: the latest quarter of Eurostat gov_10q_ggdebt (end of quarter, % of GDP over four quarters).
+// A part that fails keeps the previous file's series.
+const INSEE_DEBT_PAGE = "https://www.insee.fr/fr/statistiques/2830192";
+const INSEE_DEBT_XLSX = "https://www.insee.fr/fr/statistiques/fichier/2830192/econ-fin-pub-dette-adm-pub.xlsx";
+const IMF_GDD = "https://www.imf.org/external/datamapper/api/v1/GG_DEBT_GDP/DEU";
+
+async function getBuf(url) {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0 (third-estate; github.com/nicbay/projectview)" }, signal: AbortSignal.timeout(45000) });
+      if (!res.ok) throw new Error(`${res.status} ${url}`);
+      return Buffer.from(await res.arrayBuffer());
+    } catch (e) {
+      if (attempt >= 2) throw e;
+      await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
+    }
+  }
+}
+
+async function franceAnnual() {
+  const { readSheet } = await import("./lib/xlsx.mjs");
+  const rows = readSheet(await getBuf(INSEE_DEBT_XLSX), /Figure 2/);
+  const head = rows.find((r) => r.filter((v) => typeof v === "number" && v >= 1950 && v <= 2100).length > 10);
+  const tot = rows.find((r) => String(r[0]).trim() === "Ensemble");
+  if (!head || !tot) throw new Error("INSEE debt table: header or 'Ensemble' row not found");
+  const series = head.flatMap((y, i) => (typeof y === "number" && y >= 1950 && typeof tot[i] === "number" ? [[String(y), round(tot[i], 1)]] : []));
+  if (series.length < 40 || series[0][0] > "1980") throw new Error(`INSEE debt table: unexpected shape (${series.length} years from ${series[0]?.[0]})`);
+  return { series, source: { name: "INSEE", dataset: "Comptes nationaux annuels base 2020, dette des APU au sens de Maastricht (% du PIB)", url: INSEE_DEBT_PAGE } };
+}
+
+async function germanyAnnual() {
+  const es = await eurostat("gov_10dd_edpt1", { geo: "DE", unit: "PC_GDP", sector: "S13", na_item: "GD" }, 60);
+  const imf = JSON.parse(await get(IMF_GDD, "application/json"));
+  const raw = imf?.values?.GG_DEBT_GDP?.DEU;
+  if (!raw) throw new Error("IMF GDD: no DEU series");
+  const first = es.series[0];
+  const link = raw[first[0]] ? first[1] / raw[first[0]] : 1;
+  const early = Object.entries(raw).filter(([y]) => y < first[0] && y >= "1960").sort().map(([y, v]) => [y, round(v * link, 1)]);
+  return {
+    series: [...early, ...es.series.map(([y, v]) => [y, round(v, 1)])],
+    link: { year: first[0], factor: Math.round(link * 10000) / 10000 },
+    sources: [
+      { name: "Eurostat", dataset: "gov_10dd_edpt1", from: first[0], url: es.url },
+      { name: "FMI / IMF", dataset: "Global Debt Database, GG_DEBT_GDP", from: early[0]?.[0] ?? null, url: "https://www.imf.org/external/datamapper/GG_DEBT_GDP@GDD/DEU" },
+    ],
+  };
+}
+
+const debtHistory = { ...(previous?.debtHistory ?? {}) };
+for (const [key, fn] of [["fr", franceAnnual], ["de", germanyAnnual]]) {
+  try {
+    const r = await fn();
+    debtHistory[key] = { ...(debtHistory[key] ?? {}), annual: r.series, ...(r.source ? { source: r.source } : {}), ...(r.sources ? { sources: r.sources, link: r.link } : {}), stale: undefined };
+  } catch (e) {
+    errors.push({ id: `debt_history_${key}`, error: String(e.message ?? e) });
+    if (debtHistory[key]) debtHistory[key].stale = true;
+    console.warn(`! debt history ${key}: ${e.message ?? e}`);
+  }
+}
+// latest quarter: France from the KPI already fetched, Germany from the same dataset
+if (debtHistory.fr && by.debt_pct?.period && !by.debt_pct.fallback)
+  debtHistory.fr.latest = { period: by.debt_pct.period, value: by.debt_pct.value, source: { name: "Eurostat", dataset: "gov_10q_ggdebt", url: estatPage("gov_10q_ggdebt") } };
+try {
+  const q = await eurostat("gov_10q_ggdebt", { geo: "DE", unit: "PC_GDP", sector: "S13", na_item: "GD" }, 4);
+  const [period, value] = q.series.at(-1);
+  if (debtHistory.de) debtHistory.de.latest = { period, value: round(value, 1), source: { name: "Eurostat", dataset: "gov_10q_ggdebt", url: q.url } };
+} catch (e) {
+  errors.push({ id: "debt_history_de_q", error: String(e.message ?? e) });
+  console.warn(`! debt history de (quarterly): ${e.message ?? e}`);
+}
+
 const data = {
   fetchedAt: new Date().toISOString(),
   debt,
   people: { population: by.population.value, populationPeriod: by.population.period, employed: by.employed.value, employedPeriod: by.employed.period },
   kpis,
+  ...(debtHistory.fr || debtHistory.de ? { debtHistory } : {}),
   errors,
 };
 await mkdir(new URL(".", OUT), { recursive: true });
