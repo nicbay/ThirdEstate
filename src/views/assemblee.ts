@@ -6,6 +6,7 @@ import { OVERSEAS_DEPS, abroadInset, insetFigure, mapPaths, rewind } from "../li
 import { esc, groupBy, safeColor } from "../util";
 import { hemicycle, seatRank } from "../lib/hemicycle";
 import { renderDeputes } from "./deputes";
+import { renderLoyalty } from "./loyalty";
 
 export const PLATFORMS = ["twitter", "facebook", "instagram", "linkedin", "website"] as const;
 /** Digital presence: how many of the 5 main channels the MP declares to the Assemblée (0–5). */
@@ -19,7 +20,9 @@ export async function renderAssemblee(app: HTMLElement, tab = "carte", dep?: str
   const byGroup = new Map<string, number>();
   for (const d of all) if (d.groupe?.abrev) byGroup.set(d.groupe.abrev, (byGroup.get(d.groupe.abrev) ?? 0) + 1);
   const [bigG, bigN] = [...byGroup.entries()].sort((a, b) => b[1] - a[1])[0] ?? ["", 0];
-  const h1 = bigN && bigN < 289
+  const h1 = tab === "loyaute"
+    ? L("Du doigt sur la couture à la fronde, qui vote toujours comme son groupe", "From toeing the line to open rebellion, who always votes with their group")
+    : bigN && bigN < 289
     ? L(`Aucune majorité : le premier groupe, ${bigG}, n’a que ${bigN} sièges sur 577`, `No majority: the largest group, ${bigG}, has only ${bigN} of 577 seats`)
     : L("Qui siège à l’Assemblée, et pour qui ont voté leurs circonscriptions", "Who sits in the Assembly, and how their districts voted");
   app.innerHTML = `
@@ -27,11 +30,14 @@ export async function renderAssemblee(app: HTMLElement, tab = "carte", dep?: str
       <div class="page-head">
         <p class="eyebrow">${L("Assemblée nationale, 17e législature", "National Assembly, 17th legislature")}</p>
         <h1>${esc(h1)}</h1>
-        <p class="dek">${L("Choisissez un département sur la carte pour voir ses circonscriptions, leur député et leur vote de 2024.", "Pick a department on the map to see its districts, their MP and how they voted in 2024.")}</p>
+        <p class="dek">${tab === "loyaute"
+          ? L("Sur chaque scrutin public, chaque député comparé à la ligne de son groupe : du vote aveugle à la fronde.", "On every public vote, each MP compared with their group’s line: from blind obedience to open rebellion.")
+          : L("Choisissez un département sur la carte pour voir ses circonscriptions, leur député et leur vote de 2024.", "Pick a department on the map to see its districts, their MP and how they voted in 2024.")}</p>
         <nav class="tabs">
           <a role="tab" href="#/assemblee" aria-selected="${tab === "carte"}">${L("Carte", "Map")}</a>
           <a role="tab" href="#/assemblee/deputes" aria-selected="${tab === "deputes"}">${L("Députés", "MPs")}</a>
           <a role="tab" href="#/assemblee/composition" aria-selected="${tab === "composition"}">${L("Qui sont les députés ?", "Who are the MPs?")}</a>
+          <a role="tab" href="#/assemblee/loyaute" aria-selected="${tab === "loyaute"}">${L("Doigt sur la couture", "Toeing the line")}</a>
         </nav>
       </div>
       <div id="pane"></div>
@@ -39,6 +45,7 @@ export async function renderAssemblee(app: HTMLElement, tab = "carte", dep?: str
   const pane = app.querySelector<HTMLElement>("#pane")!;
   if (tab === "deputes") return renderDeputes(pane);
   if (tab === "composition") return composition(pane);
+  if (tab === "loyaute") return renderLoyalty(pane);
   return mapView(pane, dep);
 }
 
