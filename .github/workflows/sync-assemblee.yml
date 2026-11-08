@@ -34,6 +34,9 @@ jobs:
       # Runs after sync:an because it reads the fresh deputes.json.
       - run: npm run sync:interventions
 
+      # The quiz's compact dataset (public/data/an/quiz.json), from the files above: local only, ~2 s.
+      - run: npm run build:quiz
+
       - name: Commit if anything changed
         run: |
           # meta.json files always change (sync timestamp); only commit when real data changed

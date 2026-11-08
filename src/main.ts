@@ -18,6 +18,7 @@ import { renderExplorer, renderTown } from "./views/explore";
 import { getHome, onHome } from "./lib/cloud";
 import { esc } from "./util";
 import { renderEconomy } from "./views/economy";
+import { renderQuiz } from "./views/quiz";
 
 const app = document.getElementById("app")!;
 const nav = document.getElementById("nav")!;
@@ -52,6 +53,7 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/explorer(?:\/(\w{2,3}))?$/, (m) => renderExplorer(app, m[1])],
   [/^#\/ville\/(\w{5})$/, (m) => renderTown(app, m[1])],
   [/^#\/chiffres$/, () => renderEconomy(app)],
+  [/^#\/quiz(?:\/([\w-]+))?$/, (m) => renderQuiz(app, m[1])],
 ];
 
 // Information architecture: two doors, the site's promise "de votre mairie à l'Élysée".
@@ -64,11 +66,12 @@ function sections(): Section[] {
   const mine = home?.code ? `#/ville/${home.code}` : "#/explorer";
   return [
     {
-      href: mine, match: /^#\/(explorer|ville|elus|assemblee|circo|depute|senat|senateur)/, fr: "Chez vous", en: "Where you live",
+      href: mine, match: /^#\/(explorer|ville|elus|assemblee|circo|depute|senat|senateur|quiz)/, fr: "Chez vous", en: "Where you live",
       children: [
         ...(home?.code ? [{ href: mine, match: new RegExp(`^#\/ville\/${home.code}$`), fr: home.commune ?? "Ma commune", en: home.commune ?? "My town" }] : []),
         { href: "#/assemblee", match: /^#\/(elus|assemblee(?!\/loyaute)|circo|depute)/, fr: "Députés", en: "MPs" },
         { href: "#/assemblee/loyaute", match: /^#\/assemblee\/loyaute/, fr: "Doigt sur la couture", en: "Toeing the line" },
+        { href: "#/quiz", match: /^#\/quiz/, fr: "Qui vous ressemble ?", en: "Who’s closest to you?" },
         { href: "#/senat", match: /^#\/(senat|senateur)/, fr: "Sénateurs", en: "Senators" },
         { href: "#/explorer", match: home?.code ? new RegExp(`^#\/(explorer|ville\/(?!${home.code}$))`) : /^#\/(explorer|ville)/, fr: "Toutes les communes", en: "Every town" },
       ],
