@@ -11,9 +11,10 @@ import { ELECTION_DAY, MARKET_WEIGHT, forecast, type Forecast } from "../lib/for
 import { oddsSentence } from "../lib/scenario-odds";
 import { lineChart } from "../lib/chart";
 import { fetchJson } from "../data";
+import { loadCandidateIndex, type CandidateIndex } from "./candidate";
 
 export async function renderRace(app: HTMLElement) {
-  const [polls, markets] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null)]);
+  const [polls, markets, cindex] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null), loadCandidateIndex().catch(() => null)]);
   registerParties(polls.parties);
   const latest = polls.firstRound[0]?.end ?? new Date().toISOString().slice(0, 10);
   const now = average(polls.firstRound, latest);
@@ -103,6 +104,8 @@ export async function renderRace(app: HTMLElement) {
           }
         </section>
       </div>
+
+      ${candidatesSection(now, cindex)}
 
       <div class="grid-2">
         <section class="card">
@@ -249,4 +252,23 @@ async function drawForecastTrend(app: HTMLElement) {
     back.length && firstLive ? L(`Avant le ${fmtDate(firstLive)}, la prévision est reconstituée : le même modèle rejoué jour par jour avec les sondages connus ce jour-là et le cours de clôture des marchés${kalshiOnly ? ` (Kalshi seul ${kalshiOnly > 1 ? `${kalshiOnly} jours` : "un jour"}, faute de cours Polymarket)` : ""}.`, `Before ${fmtDate(firstLive)} the forecast is reconstructed: the same model replayed day by day with the polls known that day and each market's closing price${kalshiOnly ? ` (Kalshi only on ${kalshiOnly > 1 ? `${kalshiOnly} days` : "one day"} with no Polymarket price)` : ""}.`) : "",
     L("Ensuite, enregistrée chaque jour.", "From then on, recorded daily."),
   ].filter(Boolean).join(" ");
+}
+
+/** "Les candidats": one card per name in the polling average (the same set as every number above), linking to its page. */
+function candidatesSection(rows: { name: string; avg: number }[], idx: CandidateIndex | null) {
+  const by = new Map((idx?.candidates ?? []).map((c) => [c.pollName, c]));
+  return `<section class="card" id="candidats">
+    <header class="card-head"><h2>${L("Les candidats", "The candidates")}</h2><a href="#/sondages">${L("Sondages", "Polls")}</a></header>
+    <p class="muted small">${L("Chaque personne testée dans les sondages récents (celles qui comptent dans la moyenne). Leur fiche réunit patrimoine déclaré, condamnations, candidatures, argent public perçu et parcours, chaque ligne sourcée.", "Everyone tested in recent polls (those in the average). Each page gathers declared assets, convictions, elections contested, public money received and career, every line sourced.")}</p>
+    <ul class="cand-cards">${rows
+      .map((r) => {
+        const m = meta(r.name);
+        const c = by.get(r.name);
+        const inner = `${c?.photo ? `<img src="${esc(safeUrl(c.photo))}" alt="" width="64" height="64" loading="lazy" referrerpolicy="no-referrer">` : `<span class="cand-noimg" aria-hidden="true"></span>`}
+          <span class="cand-card-t"><b>${esc(r.name)}</b><span class="muted small">${esc(c ? L(c.party.fr, c.party.en) : m.party ?? "")}</span></span>
+          <span class="cand-card-v">${pct(r.avg)}</span>`;
+        return `<li style="--c:${safeColor(m.color)}">${c ? `<a class="cand-card" href="#/candidat/${esc(c.slug)}">${inner}</a>` : `<div class="cand-card">${inner}<span class="muted tiny">${L("Fiche à venir", "Page coming")}</span></div>`}</li>`;
+      })
+      .join("")}</ul>
+  </section>`;
 }

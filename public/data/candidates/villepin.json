@@ -1,0 +1,145 @@
+{
+  "slug": "villepin",
+  "name": "Dominique de Villepin",
+  "pollName": "Dominique de Villepin",
+  "verified": "2026-11-08",
+  "wikidata": "Q131660",
+  "born": {
+    "date": "1953-11-14",
+    "place": "Rabat (Maroc)",
+    "sources": [
+      { "title": "Dominique de Villepin (Q131660)", "publisher": "Wikidata", "url": "https://www.wikidata.org/wiki/Q131660", "date": "2026-11-08" }
+    ]
+  },
+  "photo": {
+    "file": "File:Dominique de Villepin (2010).jpg",
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Dominique_de_Villepin_(2010).jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Dominique_de_Villepin_(2010).jpg",
+    "author": "Georges Seguin (Okki)",
+    "licence": "CC BY-SA 3.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "year": 2010
+  },
+  "party": {
+    "fr": "La France humaniste",
+    "en": "La France humaniste",
+    "sources": [
+      { "title": "Former French Prime Minister Dominique de Villepin launches humanist political party", "publisher": "Euronews", "url": "https://www.euronews.com/2025/06/25/former-french-prime-minister-dominique-de-villepin-launches-humanist-political-party", "date": "2025-06-25" }
+    ]
+  },
+  "role": {
+    "fr": "Ancien Premier ministre, fondateur de La France humaniste",
+    "en": "Former Prime Minister, founder of La France humaniste",
+    "sources": [
+      { "title": "Former French Prime Minister Dominique de Villepin launches humanist political party", "publisher": "Euronews", "url": "https://www.euronews.com/2025/06/25/former-french-prime-minister-dominique-de-villepin-launches-humanist-political-party", "date": "2025-06-25" }
+    ]
+  },
+  "links": [
+    { "fr": "Les anciens Premiers ministres : Dominique de Villepin", "en": "Former Prime Ministers: Dominique de Villepin", "url": "https://www.info.gouv.fr/les-anciens-premiers-et-premieres-ministres-de-la-ve-republique/dominique-de-villepin", "kind": "gouv" },
+    { "fr": "Wikidata", "en": "Wikidata", "url": "https://www.wikidata.org/wiki/Q131660", "kind": "wikidata" }
+  ],
+  "an": null,
+  "wealth": {
+    "status": "none",
+    "declarations": [],
+    "explanation": {
+      "fr": "Dominique de Villepin a quitté le Gouvernement en 2007. La publication des déclarations de patrimoine des membres du Gouvernement n'a été instaurée que par la loi du 11 octobre 2013 ; les déclarations remises auparavant à la Commission pour la transparence financière de la vie politique (loi du 11 mars 1988) n'étaient pas publiées. Il n'exerce depuis aucune fonction soumise à déclaration auprès de la HATVP.",
+      "en": "Dominique de Villepin left the government in 2007. Publication of government members' asset declarations was introduced only by the law of 11 October 2013; declarations previously filed with the Commission pour la transparence financière de la vie politique (law of 11 March 1988) were not published. He has since held no office that requires a declaration to the HATVP."
+    },
+    "sources": [
+      { "title": "Loi n° 2013-907 du 11 octobre 2013 relative à la transparence de la vie publique", "publisher": "Journal officiel (Légifrance)", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000028056315", "date": "2013-10-12" },
+      { "title": "Loi n° 88-227 du 11 mars 1988 relative à la transparence financière de la vie politique", "publisher": "Journal officiel (Légifrance)", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000321646", "date": "1988-03-12" },
+      { "title": "Liste des déclarations publiées (open data) – aucune entrée à son nom", "publisher": "HATVP", "url": "https://www.hatvp.fr/livraison/opendata/liste.csv", "date": "2026-11-08" }
+    ]
+  },
+  "convictions": {
+    "definitive": [],
+    "pending": [],
+    "sources": [
+      { "title": "Recherche jurisprudence judiciaire", "publisher": "Légifrance", "url": "https://www.legifrance.gouv.fr/search/juri", "date": "2026-11-08" },
+      { "title": "Judilibre – recherche de décisions", "publisher": "Cour de cassation", "url": "https://www.courdecassation.fr/recherche-judilibre", "date": "2026-11-08" }
+    ]
+  },
+  "candidacies": [],
+  "mandates": [
+    {
+      "office": "fonctionnaire",
+      "label": { "fr": "Diplomate, ministère des Affaires étrangères (dont ambassades à Washington et New Delhi, directeur de cabinet du ministre Alain Juppé de 1993 à 1995)", "en": "Diplomat, Ministry of Foreign Affairs (including embassies in Washington and New Delhi; chief of staff to minister Alain Juppé 1993–1995)" },
+      "place": null,
+      "population": null,
+      "from": "1980",
+      "to": "1995-05-17",
+      "sources": [
+        { "title": "Dominique de Villepin", "publisher": "Wikipédia", "url": "https://fr.wikipedia.org/wiki/Dominique_de_Villepin", "date": "2026-11-08" }
+      ]
+    },
+    {
+      "office": "other",
+      "label": { "fr": "Secrétaire général de la présidence de la République", "en": "Secretary General of the Presidency of the Republic" },
+      "place": null,
+      "population": null,
+      "from": "1995-05-17",
+      "to": "2002-05-06",
+      "sources": [
+        { "title": "Dominique de Villepin", "publisher": "Wikipédia", "url": "https://fr.wikipedia.org/wiki/Dominique_de_Villepin", "date": "2026-11-08" }
+      ]
+    },
+    {
+      "office": "ministre",
+      "label": { "fr": "Ministre des Affaires étrangères, de la Coopération et de la Francophonie", "en": "Minister of Foreign Affairs, Cooperation and La Francophonie" },
+      "place": null,
+      "population": null,
+      "from": "2002-05-07",
+      "to": "2004-03-31",
+      "sources": [
+        { "title": "Décret du 7 mai 2002 relatif à la composition du Gouvernement", "publisher": "Journal officiel (Légifrance)", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000413109", "date": "2002-05-08" },
+        { "title": "Décret du 31 mars 2004 relatif à la composition du Gouvernement", "publisher": "Journal officiel (Légifrance)", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000797801", "date": "2004-04-01" }
+      ]
+    },
+    {
+      "office": "ministre",
+      "label": { "fr": "Ministre de l'Intérieur, de la Sécurité intérieure et des Libertés locales", "en": "Minister of the Interior, Internal Security and Local Freedoms" },
+      "place": null,
+      "population": null,
+      "from": "2004-03-31",
+      "to": "2005-05-31",
+      "sources": [
+        { "title": "Décret du 31 mars 2004 relatif à la composition du Gouvernement", "publisher": "Journal officiel (Légifrance)", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000797801", "date": "2004-04-01" },
+        { "title": "Décret du 31 mai 2005 relatif à la cessation des fonctions du Gouvernement", "publisher": "Journal officiel (Légifrance)", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000257756", "date": "2005-06-01" }
+      ]
+    },
+    {
+      "office": "premier-ministre",
+      "label": { "fr": "Premier ministre", "en": "Prime Minister" },
+      "place": null,
+      "population": null,
+      "from": "2005-05-31",
+      "to": "2007-05-17",
+      "sources": [
+        { "title": "Décret du 31 mai 2005 portant nomination du Premier ministre", "publisher": "Journal officiel (Légifrance)", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000809115", "date": "2005-06-01" },
+        { "title": "Décret du 15 mai 2007 relatif à la cessation des fonctions du Gouvernement", "publisher": "Journal officiel (Légifrance)", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000466054", "date": "2007-05-16" },
+        { "title": "Dominique de Villepin (Premier ministre jusqu'au 17 mai 2007)", "publisher": "Wikipédia", "url": "https://fr.wikipedia.org/wiki/Dominique_de_Villepin", "date": "2026-11-08" }
+      ]
+    }
+  ],
+  "partyFunding": [],
+  "programme": null,
+  "quiz": {
+    "groups": ["DEM", "DR"],
+    "note": {
+      "fr": "La France humaniste n’a pas de député : moyenne des Démocrates et de la Droite républicaine, notre approximation de son positionnement gaulliste et centriste.",
+      "en": "La France humaniste has no MPs: average of Les Démocrates and Droite républicaine, our approximation of his Gaullist, centrist stance."
+    }
+  },
+  "omitted": [
+    { "what": "Affaire Clearstream : mis en examen en 2007, relaxé par le tribunal correctionnel de Paris le 28 janvier 2010, relaxe confirmée par la cour d'appel de Paris le 14 septembre 2011.", "why": "Une relaxe n'est pas une condamnation ; affaire close." },
+    { "what": "Bombardement de Bouaké : demande de renvoi devant la Cour de justice de la République (2016), classement par la commission des requêtes le 22 mars 2019.", "why": "Aucune poursuite ; affaire close." },
+    { "what": "Affaire des statuettes : enquête préliminaire du parquet national financier ouverte le 19 mai 2026 (recel de détournement de fonds publics notamment) sur une statuette et un buste reçus lorsqu'il était ministre des Affaires étrangères ; entendu en audition libre mi-juillet 2026 (franceinfo, 27/07/2026).", "why": "Enquête préliminaire : il n'est ni mis en examen ni prévenu, donc pas partie au sens de nos règles. Communiqué du PNF du 20 mai 2026 inaccessible lors de la vérification. À réexaminer en cas de poursuites. Source : https://www.franceinfo.fr/politique/affaire-des-statuettes-dominique-de-villepin-a-ete-entendu-en-audition-libre-mi-juillet_8124329.html" },
+    { "what": "Candidature à l'élection présidentielle de 2012 (annoncée le 11 décembre 2011, retirée le 16 mars 2012 faute de 500 parrainages).", "why": "Jamais enregistrée par le Conseil constitutionnel : pas une candidature. Il ne s'est jamais présenté à une élection au suffrage universel." },
+    { "what": "Candidature à l'élection présidentielle de 2027.", "why": "Non officialisée à la date de vérification (« Je ne suis pas encore candidat », franceinfo, novembre 2026)." },
+    { "what": "Aide publique à La France humaniste.", "why": "Le parti ne figure pas dans le décret n° 2026-149 du 3 mars 2026 ; aucun financement public sourcé." },
+    { "what": "Position administrative au ministère des Affaires étrangères après 1995 (détachement, disponibilité, retraite).", "why": "Non établie par une source primaire ; mandat « fonctionnaire » arrêté à sa nomination à l'Élysée. Date de début (1980) connue à l'année seulement." },
+    { "what": "Activités professionnelles : avocat au barreau de Paris (2008–2015), activités de conseil (Villepin International).", "why": "Activités privées, pas des fonctions publiques ; dates non vérifiées dans une source primaire." },
+    { "what": "Présidence de République solidaire (2010–2012) ; rôle exact à La France humaniste (président d'honneur selon la presse).", "why": "Fonctions de parti, pas des mandats publics ; « role » s'en tient à « fondateur »." }
+  ]
+}

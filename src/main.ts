@@ -18,6 +18,7 @@ import { renderExplorer, renderTown } from "./views/explore";
 import { getHome, onHome } from "./lib/cloud";
 import { esc } from "./util";
 import { renderEconomy } from "./views/economy";
+import { renderCandidate } from "./views/candidate";
 
 const app = document.getElementById("app")!;
 const nav = document.getElementById("nav")!;
@@ -46,6 +47,7 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/histoire\/([\w-]+)$/, (m) => renderElection(app, m[1])],
   [/^#\/fil$/, () => renderFeed(app)],
   [/^#\/2027$/, () => renderRace(app)],
+  [/^#\/candidat\/([\w-]+)$/, (m) => renderCandidate(app, m[1])],
   [/^#\/senat$/, () => renderSenat(app)],
   [/^#\/senateur\/([\w-]+)$/, (m) => renderSenateur(app, m[1])],
   [/^#\/elus$/, () => renderAssemblee(app, "carte")],
