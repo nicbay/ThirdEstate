@@ -1,14 +1,14 @@
 {
- "generatedAt": "2026-11-07T12:13:22.734Z",
+ "generatedAt": "2026-11-09T19:15:18.152Z",
  "mps": 574,
  "coverage": {
   "twitter": 536,
-  "instagram": 353,
-  "linkedin": 217,
-  "facebook": 411,
-  "bluesky": 151,
+  "instagram": 357,
+  "linkedin": 218,
+  "facebook": 412,
+  "bluesky": 167,
   "tiktok": 45,
-  "youtube": 97,
+  "youtube": 102,
   "mastodon": 7,
   "website": 345,
   "anySocial": 550
@@ -45,28 +45,28 @@
   {
    "after": "site",
    "twitter": 536,
-   "instagram": 305,
+   "instagram": 310,
    "linkedin": 215,
-   "facebook": 363,
+   "facebook": 365,
    "bluesky": 75,
    "tiktok": 43,
-   "youtube": 97,
+   "youtube": 102,
    "mastodon": 7,
    "website": 345,
    "anySocial": 547,
    "sitesFetched": 345,
-   "sitesReached": 257,
-   "sharedAccountsExcluded": 2
+   "sitesReached": 270,
+   "sharedAccountsExcluded": 0
   },
   {
    "after": "group",
    "twitter": 536,
-   "instagram": 353,
+   "instagram": 356,
    "linkedin": 217,
-   "facebook": 404,
+   "facebook": 406,
    "bluesky": 75,
    "tiktok": 45,
-   "youtube": 97,
+   "youtube": 102,
    "mastodon": 7,
    "website": 345,
    "anySocial": 550,
@@ -76,7 +76,7 @@
    },
    "RN (deputes-rn.fr)": {
     "mps": 113,
-    "newAccounts": 71
+    "newAccounts": 69
    },
    "Horizons (horizonsleparti.fr)": {
     "mps": 28,
@@ -105,12 +105,12 @@
   {
    "after": "nosdeputes",
    "twitter": 536,
-   "instagram": 353,
+   "instagram": 356,
    "linkedin": 217,
-   "facebook": 411,
+   "facebook": 412,
    "bluesky": 75,
    "tiktok": 45,
-   "youtube": 97,
+   "youtube": 102,
    "mastodon": 7,
    "website": 345,
    "anySocial": 550,
@@ -119,12 +119,12 @@
   {
    "after": "bluesky",
    "twitter": 536,
-   "instagram": 353,
+   "instagram": 356,
    "linkedin": 217,
-   "facebook": 411,
+   "facebook": 412,
    "bluesky": 151,
    "tiktok": 45,
-   "youtube": 97,
+   "youtube": 102,
    "mastodon": 7,
    "website": 345,
    "anySocial": 550,
@@ -135,49 +135,49 @@
   {
    "after": "linkpages",
    "twitter": 536,
-   "instagram": 353,
+   "instagram": 356,
    "linkedin": 217,
-   "facebook": 411,
+   "facebook": 412,
    "bluesky": 151,
    "tiktok": 45,
-   "youtube": 97,
+   "youtube": 102,
    "mastodon": 7,
    "website": 345,
    "anySocial": 550,
    "bios": 144,
    "fromBios": 0,
-   "hubs": 106,
+   "hubs": 108,
    "fromHubs": 0,
-   "blockedByRobots": 106
+   "blockedByRobots": 108
   },
   {
    "after": "ai",
    "twitter": 536,
-   "instagram": 353,
+   "instagram": 356,
    "linkedin": 217,
-   "facebook": 411,
-   "bluesky": 151,
+   "facebook": 412,
+   "bluesky": 167,
    "tiktok": 45,
-   "youtube": 97,
+   "youtube": 102,
    "mastodon": 7,
    "website": 345,
    "anySocial": 550,
-   "candidates": 78,
-   "asked": 0,
-   "accepted": 0,
+   "candidates": 73,
+   "asked": 61,
+   "accepted": 16,
    "cached": 0,
-   "skipped": "ANTHROPIC_API_KEY not set",
-   "spentUsd": 0
+   "skipped": null,
+   "spentUsd": 0.0117
   },
   {
    "after": "override",
    "twitter": 536,
-   "instagram": 353,
-   "linkedin": 217,
-   "facebook": 411,
-   "bluesky": 151,
+   "instagram": 357,
+   "linkedin": 218,
+   "facebook": 412,
+   "bluesky": 167,
    "tiktok": 45,
-   "youtube": 97,
+   "youtube": 102,
    "mastodon": 7,
    "website": 345,
    "anySocial": 550,
@@ -186,9 +186,9 @@
  ],
  "bySource": {
   "instagram": {
-   "group": 48,
+   "group": 46,
    "assemblee": 235,
-   "site": 43,
+   "site": 49,
    "override": 1,
    "wikidata": 26
   },
@@ -196,8 +196,8 @@
    "group": 41,
    "assemblee": 262,
    "wikidata": 61,
-   "site": 40,
-   "nosdeputes": 7
+   "site": 42,
+   "nosdeputes": 6
   },
   "twitter": {
    "assemblee": 356,
@@ -207,6 +207,7 @@
   "bluesky": {
    "wikidata": 69,
    "bluesky": 76,
+   "ai": 16,
    "site": 6
   },
   "tiktok": {
@@ -215,7 +216,7 @@
    "group": 2
   },
   "youtube": {
-   "site": 57,
+   "site": 62,
    "wikidata": 40
   },
   "website": {
@@ -228,7 +229,7 @@
    "wikidata": 68,
    "override": 1,
    "assemblee": 120,
-   "site": 26,
+   "site": 27,
    "group": 2
   },
   "mastodon": {
@@ -237,78 +238,42 @@
  },
  "byConfidence": {
   "instagram": {
-   "high": 343,
-   "medium": 10
+   "high": 346,
+   "medium": 11
   },
   "facebook": {
-   "high": 371,
-   "medium": 39,
+   "high": 374,
+   "medium": 37,
    "low": 1
   },
   "twitter": {
    "high": 536
   },
   "bluesky": {
-   "high": 143,
-   "medium": 8
+   "high": 151,
+   "medium": 16
   },
   "tiktok": {
-   "high": 41,
-   "medium": 4
+   "high": 43,
+   "medium": 2
   },
   "youtube": {
-   "high": 66,
-   "medium": 31
+   "high": 68,
+   "medium": 34
   },
   "website": {
    "high": 278,
    "medium": 67
   },
   "linkedin": {
-   "high": 213,
-   "medium": 4
+   "high": 215,
+   "medium": 3
   },
   "mastodon": {
    "high": 7
   }
  },
  "conflicts": [
-  {
-   "mpId": "PA719550",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/lilianatanguy",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/LilianeTanguyAN",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA719550",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/liliana.tanguy.9",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/LilianeTanguyAN",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA795100",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/EMericmartineau",
-    "source": "wikidata"
-   },
-   "other": {
-    "url": "https://x.com/EricMartineau72",
-    "source": "wikidata"
-   }
-  },
   {
    "mpId": "PA1592",
    "platform": "facebook",
@@ -342,66 +307,6 @@
    },
    "other": {
     "url": "https://x.com/JoseBeaurain",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA1567",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/jeromeguedj",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/jerome.guedj",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA721062",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/DeputeRatenon",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/JhRatenon",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA721062",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/Depute.Ratenon",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/ratenon.depute.2017",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA722382",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/DirxBenjamin",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/benjamin.dirx.3",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA793756",
-   "platform": "linkedin",
-   "kept": {
-    "url": "https://www.linkedin.com/in/francois.piquemal%40assemblee-nationale.fr/",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.linkedin.com/in/fran%C3%A7ois-piquemal-010171188/",
     "source": "wikidata"
    }
   },
@@ -454,14 +359,170 @@
    }
   },
   {
-   "mpId": "PA795762",
+   "mpId": "PA721062",
    "platform": "twitter",
    "kept": {
-    "url": "https://x.com/2020Elie",
+    "url": "https://x.com/DeputeRatenon",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/JhRatenon",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA721062",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/Depute.Ratenon",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/ratenon.depute.2017",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA722382",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/DirxBenjamin",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/benjamin.dirx.3",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA266808",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/vincent.rolland.9",
     "source": "wikidata"
    },
    "other": {
-    "url": "https://x.com/ElieCalifer2022",
+    "url": "https://www.facebook.com/VincentRolland2017",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA721960",
+   "platform": "instagram",
+   "kept": {
+    "url": "https://www.instagram.com/deputee_obono/",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.instagram.com/camaradobono/",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA721960",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/DeputeeObono",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/dan.obono.5",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA719550",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/lilianatanguy",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/LilianeTanguyAN",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA719550",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/liliana.tanguy.9",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/LilianeTanguyAN",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA795100",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/EMericmartineau",
+    "source": "wikidata"
+   },
+   "other": {
+    "url": "https://x.com/EricMartineau72",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA1567",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/jeromeguedj",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/jerome.guedj",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA794206",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/MarionDepute41",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/CTHS_Marion_DG",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA719512",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/CorinneVignonDeputee",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/CorinneVignon.REM",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA842037",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/slappy_w",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/BerengerCernon",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA793756",
+   "platform": "linkedin",
+   "kept": {
+    "url": "https://www.linkedin.com/in/francois.piquemal%40assemblee-nationale.fr/",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.linkedin.com/in/fran%C3%A7ois-piquemal-010171188/",
     "source": "wikidata"
    }
   },
@@ -502,6 +563,18 @@
    }
   },
   {
+   "mpId": "PA795762",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/2020Elie",
+    "source": "wikidata"
+   },
+   "other": {
+    "url": "https://x.com/ElieCalifer2022",
+    "source": "wikidata"
+   }
+  },
+  {
    "mpId": "PA794082",
    "platform": "twitter",
    "kept": {
@@ -510,6 +583,306 @@
    },
    "other": {
     "url": "https://x.com/MHignet",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA791812",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/sochik75",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/chikirouparis",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA610002",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/_EvaSas",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/EvaSasAN",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA722150",
+   "platform": "linkedin",
+   "kept": {
+    "url": "https://www.linkedin.com/in/sacha/",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.linkedin.com/in/sacha-houli%C3%A9-a1892a72/",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA795644",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/NathCarvalho91",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/Natalie9106",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA840857",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/nadinelechon",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/NadineLechonRN",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA643089",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/JL_Thieriot",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/jlthieriot",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA794494",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/rvicot",
+    "source": "wikidata"
+   },
+   "other": {
+    "url": "https://x.com/Vicot2017",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA721896",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/elsafaucillondeputee",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/elsa.faucillon",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA719756",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/ChrisCloarec",
+    "source": "wikidata"
+   },
+   "other": {
+    "url": "https://x.com/ChrisLenabour",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA842045",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/OzenneJulie",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/argonaute1984",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA721234",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/Maud.Petit.off",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/MaudPetit.AN94",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA795672",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/Arnaud_LeGall",
+    "source": "wikidata"
+   },
+   "other": {
+    "url": "https://x.com/arnaudlg89",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA795722",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/karlolive",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/karl.olive",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA795722",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/karlolive",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/karlolivepoissy",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA796018",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/SimonnetDeputee",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/Simonnet2",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA332523",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/mariechristinedalloz",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/mariechristine.dalloz",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA795410",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/ROULLAUDBEATRIC",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/BeatriceRoulla2",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA607090",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/VigierJP",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/1413258195581316",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA794502",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/TaverneMichael",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/TaverneMichae",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA719632",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/SoPanonacle",
+    "source": "wikidata"
+   },
+   "other": {
+    "url": "https://x.com/SPanonacle",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA791824",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/S_Legrain",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/slegrain75",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA794994",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/Portier_A_",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/APortier_off",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA794434",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/ChristopheBentzDepute",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/christophe.bentz",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA794114",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/AvecMandon2022",
+    "source": "wikidata"
+   },
+   "other": {
+    "url": "https://x.com/EmmanuelMandon",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA794486",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/Vspillebout",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/VSpilleboutSNCF",
     "source": "wikidata"
    }
   },
@@ -610,242 +983,14 @@
    }
   },
   {
-   "mpId": "PA721426",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/veronique.riotton.2017",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/Veronique.Riotton74",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA793696",
+   "mpId": "PA795318",
    "platform": "twitter",
    "kept": {
-    "url": "https://x.com/Serge_Muller24",
+    "url": "https://x.com/LouisBoyard",
     "source": "assemblee"
    },
    "other": {
-    "url": "https://x.com/muller49_muller",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA335999",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/DelphineBatho",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/Delphine-BATHO-52641261852",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA331582",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/vigierphilippe",
-    "source": "wikidata"
-   },
-   "other": {
-    "url": "https://www.facebook.com/Philippe.Vigier.28",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA608826",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/vir.muller",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/virginiedubymuller",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA721234",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/Maud.Petit.off",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/MaudPetit.AN94",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA795672",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/Arnaud_LeGall",
-    "source": "wikidata"
-   },
-   "other": {
-    "url": "https://x.com/arnaudlg89",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA266808",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/vincent.rolland.9",
-    "source": "wikidata"
-   },
-   "other": {
-    "url": "https://www.facebook.com/VincentRolland2017",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA721960",
-   "platform": "instagram",
-   "kept": {
-    "url": "https://www.instagram.com/deputee_obono/",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.instagram.com/camaradobono/",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA721960",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/DeputeeObono",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/dan.obono.5",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA795722",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/karlolive",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/karl.olive",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA795722",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/karlolive",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/karlolivepoissy",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA796018",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/SimonnetDeputee",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/Simonnet2",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA794486",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/Vspillebout",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/VSpilleboutSNCF",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA794206",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/MarionDepute41",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/CTHS_Marion_DG",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA791812",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/sochik75",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/chikirouparis",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA794494",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/rvicot",
-    "source": "wikidata"
-   },
-   "other": {
-    "url": "https://x.com/Vicot2017",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA721896",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/elsafaucillondeputee",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/elsa.faucillon",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA719756",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/ChrisCloarec",
-    "source": "wikidata"
-   },
-   "other": {
-    "url": "https://x.com/ChrisLenabour",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA842045",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/OzenneJulie",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/argonaute1984",
+    "url": "https://x.com/l_boyard",
     "source": "wikidata"
    }
   },
@@ -862,38 +1007,50 @@
    }
   },
   {
-   "mpId": "PA332523",
+   "mpId": "PA721202",
    "platform": "facebook",
    "kept": {
-    "url": "https://www.facebook.com/mariechristinedalloz",
+    "url": "https://www.facebook.com/eric.coquerel.1",
     "source": "assemblee"
    },
    "other": {
-    "url": "https://www.facebook.com/mariechristine.dalloz",
+    "url": "https://www.facebook.com/EricCoquerelPG",
     "source": "wikidata"
    }
   },
   {
-   "mpId": "PA795410",
+   "mpId": "PA717379",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/sylvainmaillardparis",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/sylvain.maillard.14",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA719024",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/christopheblanchet",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/christopheblanchet2017",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA796078",
    "platform": "twitter",
    "kept": {
-    "url": "https://x.com/ROULLAUDBEATRIC",
+    "url": "https://x.com/DeputeeEstelle",
     "source": "assemblee"
    },
    "other": {
-    "url": "https://x.com/BeatriceRoulla2",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA607090",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/VigierJP",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/1413258195581316",
+    "url": "https://x.com/EYoussouffa",
     "source": "wikidata"
    }
   },
@@ -1018,378 +1175,6 @@
    }
   },
   {
-   "mpId": "PA719512",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/CorinneVignonDeputee",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/CorinneVignon.REM",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA842037",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/slappy_w",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/BerengerCernon",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA687214",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/berrios",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/sylvainberrios",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA795318",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/LouisBoyard",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/l_boyard",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA610002",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/_EvaSas",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/EvaSasAN",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA722150",
-   "platform": "linkedin",
-   "kept": {
-    "url": "https://www.linkedin.com/in/sacha/",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.linkedin.com/in/sacha-houli%C3%A9-a1892a72/",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA795644",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/NathCarvalho91",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/Natalie9106",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA840857",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/nadinelechon",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/NadineLechonRN",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA643089",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/JL_Thieriot",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/jlthieriot",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA719632",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/SoPanonacle",
-    "source": "wikidata"
-   },
-   "other": {
-    "url": "https://x.com/SPanonacle",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA791824",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/S_Legrain",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/slegrain75",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA794994",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/Portier_A_",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/APortier_off",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA794434",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/ChristopheBentzDepute",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/christophe.bentz",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA794114",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/AvecMandon2022",
-    "source": "wikidata"
-   },
-   "other": {
-    "url": "https://x.com/EmmanuelMandon",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA721202",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/eric.coquerel.1",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/EricCoquerelPG",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA717379",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/sylvainmaillardparis",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/sylvain.maillard.14",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA719024",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/christopheblanchet",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/christopheblanchet2017",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA796078",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/DeputeeEstelle",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/EYoussouffa",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA774958",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/gerard.leseul.1",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/Leseul.Gerard",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA841713",
-   "platform": "linkedin",
-   "kept": {
-    "url": "https://www.linkedin.com/in/Boris/",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.linkedin.com/in/boris-tavernier-910546104/",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA607395",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/StTRAVERT",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/Stravert",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA642764",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/profile.php?id=100001391067319",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/joel.aviragnet",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA719578",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/PrudhommeLoic",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/Prudhomme2017",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA719338",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/graziella.bourges",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/GraziellaMelchior",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA822617",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/MartineFrogerAN",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/martinefro09",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA822617",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/MartineFrogerAN",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/MartineFroger",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA718674",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/Page-politique-dOlga-Givernet-1118292008192135",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/olga.givernet",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA722102",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/AnnieVidal76",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/annie.vidal.169",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA840235",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/MoeraniFrebault",
-    "source": "wikidata"
-   },
-   "other": {
-    "url": "https://x.com/Vt_Trebuchet",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA720430",
-   "platform": "instagram",
-   "kept": {
-    "url": "https://www.instagram.com/ugobernalicis/",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.instagram.com/ugo_bernalicis/",
-    "source": "wikidata"
-   }
-  },
-  {
-   "mpId": "PA794502",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/TaverneMichael",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://x.com/TaverneMichae",
-    "source": "wikidata"
-   }
-  },
-  {
    "mpId": "PA793166",
    "platform": "linkedin",
    "kept": {
@@ -1510,6 +1295,222 @@
    }
   },
   {
+   "mpId": "PA721426",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/veronique.riotton.2017",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/Veronique.Riotton74",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA793696",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/Serge_Muller24",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/muller49_muller",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA335999",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/DelphineBatho",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/Delphine-BATHO-52641261852",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA331582",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/vigierphilippe",
+    "source": "wikidata"
+   },
+   "other": {
+    "url": "https://www.facebook.com/Philippe.Vigier.28",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA608826",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/vir.muller",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/virginiedubymuller",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA722102",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/AnnieVidal76",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/annie.vidal.169",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA840235",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/MoeraniFrebault",
+    "source": "wikidata"
+   },
+   "other": {
+    "url": "https://x.com/Vt_Trebuchet",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA720430",
+   "platform": "instagram",
+   "kept": {
+    "url": "https://www.instagram.com/ugobernalicis/",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.instagram.com/ugo_bernalicis/",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA774958",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/gerard.leseul.1",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/Leseul.Gerard",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA841713",
+   "platform": "linkedin",
+   "kept": {
+    "url": "https://www.linkedin.com/in/Boris/",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.linkedin.com/in/boris-tavernier-910546104/",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA607395",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/StTRAVERT",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/Stravert",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA642764",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/profile.php?id=100001391067319",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/joel.aviragnet",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA687214",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/berrios",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/sylvainberrios",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA719578",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/PrudhommeLoic",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/Prudhomme2017",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA719338",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/graziella.bourges",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/GraziellaMelchior",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA822617",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/MartineFrogerAN",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/martinefro09",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA822617",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/MartineFrogerAN",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://x.com/MartineFroger",
+    "source": "wikidata"
+   }
+  },
+  {
+   "mpId": "PA718674",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/Page-politique-dOlga-Givernet-1118292008192135",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/olga.givernet",
+    "source": "wikidata"
+   }
+  },
+  {
    "mpId": "PA719558",
    "platform": "facebook",
    "kept": {
@@ -1518,6 +1519,18 @@
    },
    "other": {
     "url": "https://www.facebook.com/erwanbalanantdepute",
+    "source": "site"
+   }
+  },
+  {
+   "mpId": "PA720256",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/geraldine.bannier.1",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/DeputeeGBannier",
     "source": "site"
    }
   },
@@ -1558,14 +1571,26 @@
    }
   },
   {
-   "mpId": "PA795762",
-   "platform": "twitter",
+   "mpId": "PA719032",
+   "platform": "facebook",
    "kept": {
-    "url": "https://x.com/2020Elie",
-    "source": "wikidata"
+    "url": "https://www.facebook.com/bertrandbouyx.fr",
+    "source": "assemblee"
    },
    "other": {
-    "url": "https://x.com/ElieCalifer",
+    "url": "https://www.facebook.com/bertrandbouyx",
+    "source": "site"
+   }
+  },
+  {
+   "mpId": "PA719032",
+   "platform": "instagram",
+   "kept": {
+    "url": "https://www.instagram.com/bertrandbouyx.fr/",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.instagram.com/bertrand_bouyx/",
     "source": "site"
    }
   },
@@ -1578,6 +1603,18 @@
    },
    "other": {
     "url": "https://www.facebook.com/cazeneuvejeanrene",
+    "source": "site"
+   }
+  },
+  {
+   "mpId": "PA795762",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/2020Elie",
+    "source": "wikidata"
+   },
+   "other": {
+    "url": "https://x.com/ElieCalifer",
     "source": "site"
    }
   },
@@ -1654,14 +1691,14 @@
    }
   },
   {
-   "mpId": "PA608826",
+   "mpId": "PA607193",
    "platform": "facebook",
    "kept": {
-    "url": "https://www.facebook.com/vir.muller",
-    "source": "assemblee"
+    "url": "https://www.facebook.com/SophieErrante",
+    "source": "wikidata"
    },
    "other": {
-    "url": "https://www.facebook.com/pages/Virginie-Duby-Muller/317995738254926",
+    "url": "https://www.facebook.com/sophie.errante.351",
     "source": "site"
    }
   },
@@ -1678,14 +1715,14 @@
    }
   },
   {
-   "mpId": "PA722284",
+   "mpId": "PA608826",
    "platform": "facebook",
    "kept": {
-    "url": "https://www.facebook.com/BrunoFuchsHautRhin2017",
+    "url": "https://www.facebook.com/vir.muller",
     "source": "assemblee"
    },
    "other": {
-    "url": "https://www.facebook.com/BrunoFuchsHautRhin",
+    "url": "https://www.facebook.com/pages/Virginie-Duby-Muller/317995738254926",
     "source": "site"
    }
   },
@@ -1698,6 +1735,18 @@
    },
    "other": {
     "url": "https://www.facebook.com/fugitjeanluc",
+    "source": "site"
+   }
+  },
+  {
+   "mpId": "PA722284",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/BrunoFuchsHautRhin2017",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/BrunoFuchsHautRhin",
     "source": "site"
    }
   },
@@ -1810,18 +1859,6 @@
    }
   },
   {
-   "mpId": "PA720022",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/2017Michel.Lauzzana",
-    "source": "wikidata"
-   },
-   "other": {
-    "url": "https://www.facebook.com/Michel.Lauzzana47",
-    "source": "site"
-   }
-  },
-  {
    "mpId": "PA795672",
    "platform": "twitter",
    "kept": {
@@ -1854,6 +1891,18 @@
    },
    "other": {
     "url": "https://www.facebook.com/sandrine.l.f",
+    "source": "site"
+   }
+  },
+  {
+   "mpId": "PA719756",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/ChristineCloarecLREM",
+    "source": "wikidata"
+   },
+   "other": {
+    "url": "https://www.facebook.com/profile.php?id=100087238074948",
     "source": "site"
    }
   },
@@ -1954,18 +2003,6 @@
    }
   },
   {
-   "mpId": "PA842045",
-   "platform": "facebook",
-   "kept": {
-    "url": "https://www.facebook.com/julie-ozenne",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.facebook.com/julieozennedeputee",
-    "source": "site"
-   }
-  },
-  {
    "mpId": "PA794830",
    "platform": "facebook",
    "kept": {
@@ -1990,18 +2027,6 @@
    }
   },
   {
-   "mpId": "PA793872",
-   "platform": "youtube",
-   "kept": {
-    "url": "https://www.youtube.com/channel/UC4PE-TUsXUGdtPR3nCc6KBg",
-    "source": "wikidata"
-   },
-   "other": {
-    "url": "https://www.youtube.com/@nathalieozioldeputee",
-    "source": "site"
-   }
-  },
-  {
    "mpId": "PA795722",
    "platform": "facebook",
    "kept": {
@@ -2010,6 +2035,30 @@
    },
    "other": {
     "url": "https://www.facebook.com/karlolivepoissy",
+    "source": "site"
+   }
+  },
+  {
+   "mpId": "PA842045",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/julie-ozenne",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/julieozennedeputee",
+    "source": "site"
+   }
+  },
+  {
+   "mpId": "PA793872",
+   "platform": "youtube",
+   "kept": {
+    "url": "https://www.youtube.com/channel/UC4PE-TUsXUGdtPR3nCc6KBg",
+    "source": "wikidata"
+   },
+   "other": {
+    "url": "https://www.youtube.com/@nathalieozioldeputee",
     "source": "site"
    }
   },
@@ -2122,18 +2171,6 @@
    }
   },
   {
-   "mpId": "PA795528",
-   "platform": "twitter",
-   "kept": {
-    "url": "https://x.com/charles_rodwell",
-    "source": "wikidata"
-   },
-   "other": {
-    "url": "https://x.com/charlesrodwell_",
-    "source": "site"
-   }
-  },
-  {
    "mpId": "PA841717",
    "platform": "twitter",
    "kept": {
@@ -2142,6 +2179,18 @@
    },
    "other": {
     "url": "https://x.com/themes_ancora",
+    "source": "site"
+   }
+  },
+  {
+   "mpId": "PA795528",
+   "platform": "twitter",
+   "kept": {
+    "url": "https://x.com/charles_rodwell",
+    "source": "wikidata"
+   },
+   "other": {
+    "url": "https://x.com/charlesrodwell_",
     "source": "site"
    }
   },
@@ -2170,14 +2219,14 @@
    }
   },
   {
-   "mpId": "PA720960",
-   "platform": "facebook",
+   "mpId": "PA722336",
+   "platform": "instagram",
    "kept": {
-    "url": "https://www.facebook.com/Olivier-SERVA-407236749324296",
+    "url": "https://www.instagram.com/vincent_thiebaut2024/",
     "source": "assemblee"
    },
    "other": {
-    "url": "https://www.facebook.com/Olivier.serva.oficiel1",
+    "url": "https://www.instagram.com/vincent_thiebaut_depute_lrem/",
     "source": "site"
    }
   },
@@ -2190,18 +2239,6 @@
    },
    "other": {
     "url": "https://www.linkedin.com/in/mikaele-seo/",
-    "source": "site"
-   }
-  },
-  {
-   "mpId": "PA722336",
-   "platform": "instagram",
-   "kept": {
-    "url": "https://www.instagram.com/vincent_thiebaut2024/",
-    "source": "assemblee"
-   },
-   "other": {
-    "url": "https://www.instagram.com/vincent_thiebaut_depute_lrem/",
     "source": "site"
    }
   },
@@ -2238,6 +2275,18 @@
    },
    "other": {
     "url": "https://www.linkedin.com/in/caroline-yadan-05259625a/",
+    "source": "site"
+   }
+  },
+  {
+   "mpId": "PA720960",
+   "platform": "facebook",
+   "kept": {
+    "url": "https://www.facebook.com/Olivier-SERVA-407236749324296",
+    "source": "assemblee"
+   },
+   "other": {
+    "url": "https://www.facebook.com/Olivier.serva.oficiel1",
     "source": "site"
    }
   },
@@ -3921,6 +3970,13 @@
    "reason": "not a Facebook page: Frédéric Pierre Vos"
   },
   {
+   "mpId": "PA794686",
+   "platform": "website",
+   "source": "wikidata",
+   "value": "https://x.com/mariannemaximi?lang=en",
+   "reason": "social link, not a website: https://x.com/mariannemaximi?lang=en"
+  },
+  {
    "mpId": "PA842155",
    "platform": "website",
    "source": "wikidata",
@@ -3928,11 +3984,46 @@
    "reason": "social link, not a website: https://x.com/alydiouara?lang=en"
   },
   {
-   "mpId": "PA794686",
+   "mpId": "PA842029",
    "platform": "website",
    "source": "wikidata",
-   "value": "https://x.com/mariannemaximi?lang=en",
-   "reason": "social link, not a website: https://x.com/mariannemaximi?lang=en"
+   "value": "https://x.com/clairemlejeune?lang=en",
+   "reason": "social link, not a website: https://x.com/clairemlejeune?lang=en"
+  },
+  {
+   "mpId": "PA841215",
+   "platform": "website",
+   "source": "wikidata",
+   "value": "https://x.com/mariemesmeur?lang=en",
+   "reason": "social link, not a website: https://x.com/mariemesmeur?lang=en"
+  },
+  {
+   "mpId": "PA721314",
+   "platform": "facebook",
+   "source": "wikidata",
+   "value": "Raphaël-Schellenberger-2017-843461165808658",
+   "reason": "not a Facebook page: Raphaël-Schellenberger-2017-843461165808658"
+  },
+  {
+   "mpId": "PA841183",
+   "platform": "facebook",
+   "source": "wikidata",
+   "value": "Hanane-Mansouri-Député-de-lIsère-61565244153846",
+   "reason": "not a Facebook page: Hanane-Mansouri-Député-de-lIsère-61565244153846"
+  },
+  {
+   "mpId": "PA795616",
+   "platform": "facebook",
+   "source": "wikidata",
+   "value": "Député-Carlos-Martens-Bilongo-100081114586234",
+   "reason": "not a Facebook page: Député-Carlos-Martens-Bilongo-100081114586234"
+  },
+  {
+   "mpId": "PA841023",
+   "platform": "website",
+   "source": "wikidata",
+   "value": "https://x.com/pycadalen?lang=en",
+   "reason": "social link, not a website: https://x.com/pycadalen?lang=en"
   },
   {
    "mpId": "PA795482",
@@ -3963,48 +4054,6 @@
    "reason": "social link, not a website: https://www.instagram.com/andreetaurinya/?hl=en"
   },
   {
-   "mpId": "PA342384",
-   "platform": "website",
-   "source": "wikidata",
-   "value": "https://www.instagram.com/elisamartingre/?hl=en",
-   "reason": "social link, not a website: https://www.instagram.com/elisamartingre/?hl=en"
-  },
-  {
-   "mpId": "PA795026",
-   "platform": "facebook",
-   "source": "wikidata",
-   "value": "Anne-Cécile_VIOLLAND",
-   "reason": "not a Facebook page: Anne-Cécile_VIOLLAND"
-  },
-  {
-   "mpId": "PA841023",
-   "platform": "website",
-   "source": "wikidata",
-   "value": "https://x.com/pycadalen?lang=en",
-   "reason": "social link, not a website: https://x.com/pycadalen?lang=en"
-  },
-  {
-   "mpId": "PA842029",
-   "platform": "website",
-   "source": "wikidata",
-   "value": "https://x.com/clairemlejeune?lang=en",
-   "reason": "social link, not a website: https://x.com/clairemlejeune?lang=en"
-  },
-  {
-   "mpId": "PA841215",
-   "platform": "website",
-   "source": "wikidata",
-   "value": "https://x.com/mariemesmeur?lang=en",
-   "reason": "social link, not a website: https://x.com/mariemesmeur?lang=en"
-  },
-  {
-   "mpId": "PA841183",
-   "platform": "facebook",
-   "source": "wikidata",
-   "value": "Hanane-Mansouri-Député-de-lIsère-61565244153846",
-   "reason": "not a Facebook page: Hanane-Mansouri-Député-de-lIsère-61565244153846"
-  },
-  {
    "mpId": "PA795318",
    "platform": "website",
    "source": "wikidata",
@@ -4033,20 +4082,6 @@
    "reason": "institution or party site, not the MP's own: https://www2.assemblee-nationale.fr/deputes/fiche/OMC_PA720038"
   },
   {
-   "mpId": "PA721314",
-   "platform": "facebook",
-   "source": "wikidata",
-   "value": "Raphaël-Schellenberger-2017-843461165808658",
-   "reason": "not a Facebook page: Raphaël-Schellenberger-2017-843461165808658"
-  },
-  {
-   "mpId": "PA795616",
-   "platform": "facebook",
-   "source": "wikidata",
-   "value": "Député-Carlos-Martens-Bilongo-100081114586234",
-   "reason": "not a Facebook page: Député-Carlos-Martens-Bilongo-100081114586234"
-  },
-  {
    "mpId": "PA720614",
    "platform": "website",
    "source": "wikidata",
@@ -4073,6 +4108,20 @@
    "source": "wikidata",
    "value": "Frédérique-Meunier-100014963402726",
    "reason": "not a Facebook page: Frédérique-Meunier-100014963402726"
+  },
+  {
+   "mpId": "PA342384",
+   "platform": "website",
+   "source": "wikidata",
+   "value": "https://www.instagram.com/elisamartingre/?hl=en",
+   "reason": "social link, not a website: https://www.instagram.com/elisamartingre/?hl=en"
+  },
+  {
+   "mpId": "PA795026",
+   "platform": "facebook",
+   "source": "wikidata",
+   "value": "Anne-Cécile_VIOLLAND",
+   "reason": "not a Facebook page: Anne-Cécile_VIOLLAND"
   },
   {
    "mpId": "PA796026",
@@ -4187,39 +4236,11 @@
    "reason": "shared by 2 MPs (avenirfrancais.fr): not the MP's own site"
   },
   {
-   "mpId": "PA795672",
-   "platform": "twitter",
-   "source": "site",
-   "value": "https://x.com/jlmelenchon",
-   "reason": "shared account (linked from 2 MPs' sites)"
-  },
-  {
-   "mpId": "PA795672",
-   "platform": "twitter",
-   "source": "site",
-   "value": "https://x.com/fiassemblee",
-   "reason": "shared account (linked from 2 MPs' sites)"
-  },
-  {
    "mpId": "PA721004",
    "platform": "linkedin",
    "source": "site",
    "value": "https://www.linkedin.com/in/amelialkf/",
    "reason": "LinkedIn profile on the MP's site without the MP's name (credit or staff link)"
-  },
-  {
-   "mpId": "PA793872",
-   "platform": "twitter",
-   "source": "site",
-   "value": "https://x.com/jlmelenchon",
-   "reason": "shared account (linked from 2 MPs' sites)"
-  },
-  {
-   "mpId": "PA793872",
-   "platform": "twitter",
-   "source": "site",
-   "value": "https://x.com/fiassemblee",
-   "reason": "shared account (linked from 2 MPs' sites)"
   },
   {
    "mpId": "PA718784",
@@ -4782,6 +4803,13 @@
    "reason": "name match only, no MP role in bio: \"Libertarianisme, science et nucléaire. Je viens voir comment ça se passe dans ce\""
   },
   {
+   "mpId": "PA774962",
+   "platform": "bluesky",
+   "source": "bluesky",
+   "value": "karinelebon.bsky.social",
+   "reason": "name match only, no MP role in bio: \"\""
+  },
+  {
    "mpId": "PA721852",
    "platform": "bluesky",
    "source": "bluesky",
@@ -4793,13 +4821,6 @@
    "platform": "bluesky",
    "source": "bluesky",
    "value": "marielebecque.bsky.social",
-   "reason": "name match only, no MP role in bio: \"\""
-  },
-  {
-   "mpId": "PA774962",
-   "platform": "bluesky",
-   "source": "bluesky",
-   "value": "karinelebon.bsky.social",
    "reason": "name match only, no MP role in bio: \"\""
   },
   {
@@ -5075,15 +5096,20 @@
    ]
   },
   {
-   "mpId": "PA841067",
+   "mpId": "PA795588",
    "platform": "facebook",
    "source": "site",
-   "context": "linked from https://alexandreallegretpilot.fr/, a website found by guessing the domain or from the previous term; the handle does not contain the MP's name",
+   "context": "links found on the MP's website https://www.whatsapp.com/channel/0029VaFXkii7DAX2fV0zCc3v",
    "candidates": [
     {
-     "url": "https://www.facebook.com/profile.php?id=61573958668533",
-     "handle": "61573958668533",
-     "page": "https://alexandreallegretpilot.fr/contact/"
+     "url": "https://www.facebook.com/brand",
+     "handle": "brand",
+     "page": "https://www.whatsapp.com/contact"
+    },
+    {
+     "url": "https://www.facebook.com/business",
+     "handle": "business",
+     "page": "https://www.whatsapp.com/contact"
     }
    ]
   },
@@ -5153,24 +5179,6 @@
      "url": "https://www.facebook.com/769637319718144",
      "handle": "769637319718144",
      "page": "https://sandra-delannoy.com/"
-    }
-   ]
-  },
-  {
-   "mpId": "PA719938",
-   "platform": "youtube",
-   "source": "site",
-   "context": "links found on the MP's website https://agriculture.gouv.fr/",
-   "candidates": [
-    {
-     "url": "https://www.youtube.com/@alimagriculture",
-     "handle": "@alimagriculture",
-     "page": "https://agriculture.gouv.fr/"
-    },
-    {
-     "url": "https://www.youtube.com/channel/UCqiJSHUcjlGIHcejo5B1NSA",
-     "handle": "UCqiJSHUcjlGIHcejo5B1NSA",
-     "page": "https://agriculture.gouv.fr/questions-frequentes-contacts"
     }
    ]
   },
@@ -5309,20 +5317,6 @@
    ]
   },
   {
-   "mpId": "PA795616",
-   "platform": "bluesky",
-   "source": "bluesky",
-   "context": "Bluesky accounts whose display name matches the MP's full name",
-   "candidates": [
-    {
-     "url": "https://bsky.app/profile/cmbilongo.bsky.social",
-     "handle": "cmbilongo.bsky.social",
-     "displayName": "Carlos Martens Bilongo",
-     "bio": "Député du Val d’Oise"
-    }
-   ]
-  },
-  {
    "mpId": "PA719024",
    "platform": "bluesky",
    "source": "bluesky",
@@ -5385,54 +5379,6 @@
    ]
   },
   {
-   "mpId": "PA793624",
-   "platform": "bluesky",
-   "source": "bluesky",
-   "context": "Bluesky accounts whose display name matches the MP's full name",
-   "candidates": [
-    {
-     "url": "https://bsky.app/profile/philippebrun.bsky.social",
-     "handle": "philippebrun.bsky.social",
-     "displayName": "Philippe Brun",
-     "bio": "Député socialiste de l'Eure, fondateur de l'Ecole de l'Engagement."
-    },
-    {
-     "url": "https://bsky.app/profile/piloubreizh.bsky.social",
-     "handle": "piloubreizh.bsky.social",
-     "displayName": "Jean-Philippe Bruneel",
-     "bio": ""
-    }
-   ]
-  },
-  {
-   "mpId": "PA842311",
-   "platform": "bluesky",
-   "source": "bluesky",
-   "context": "Bluesky accounts whose display name matches the MP's full name",
-   "candidates": [
-    {
-     "url": "https://bsky.app/profile/vincentcaure.bsky.social",
-     "handle": "vincentcaure.bsky.social",
-     "displayName": "Vincent Caure",
-     "bio": "Député des Français d’Europe du Nord | 🇬🇧🇮🇪🇸🇪🇳🇴🇩🇰🇫🇮🇮🇸🇱🇻🇪🇪🇱🇹 | Réserviste de la Marine nationale ⚓️ | Commission des lois 🇫🇷"
-    }
-   ]
-  },
-  {
-   "mpId": "PA795864",
-   "platform": "bluesky",
-   "source": "bluesky",
-   "context": "Bluesky accounts whose display name matches the MP's full name",
-   "candidates": [
-    {
-     "url": "https://bsky.app/profile/pierrecazeneuve.bsky.social",
-     "handle": "pierrecazeneuve.bsky.social",
-     "displayName": "Pierre Cazeneuve",
-     "bio": "Député des Hauts-de-Seine #Rueil #Garches #SaintCloud 🇨🇵🇪🇺 | Vice-Président du Groupe Ensemble Pour la République engagé pour le Climat | Républicain modéré, mais pas modérément républicain"
-    }
-   ]
-  },
-  {
    "mpId": "PA842037",
    "platform": "bluesky",
    "source": "bluesky",
@@ -5443,20 +5389,6 @@
      "handle": "slappy-w.bsky.social",
      "displayName": "Bérenger Cernon",
      "bio": "Député de l’Essonne - syndicaliste CGT - cheminot conducteur du RER D 🔻🔥✊"
-    }
-   ]
-  },
-  {
-   "mpId": "PA793394",
-   "platform": "bluesky",
-   "source": "bluesky",
-   "context": "Bluesky accounts whose display name matches the MP's full name",
-   "candidates": [
-    {
-     "url": "https://bsky.app/profile/arthurdelaporte.bsky.social",
-     "handle": "arthurdelaporte.bsky.social",
-     "displayName": "Arthur Delaporte",
-     "bio": "🌹 Député du Calvados • SN Parti Socialiste travail emploi • Porte-parole du groupe socialistes et apparentés "
     }
    ]
   },
@@ -5607,20 +5539,6 @@
    ]
   },
   {
-   "mpId": "PA722374",
-   "platform": "bluesky",
-   "source": "bluesky",
-   "context": "Bluesky accounts whose display name matches the MP's full name",
-   "candidates": [
-    {
-     "url": "https://bsky.app/profile/ci-s.bsky.social",
-     "handle": "ci-s.bsky.social",
-     "displayName": "Cyrille Isaac-Sibille",
-     "bio": "Député Métropole de Lyon"
-    }
-   ]
-  },
-  {
    "mpId": "PA335054",
    "platform": "bluesky",
    "source": "bluesky",
@@ -5727,6 +5645,20 @@
    ]
   },
   {
+   "mpId": "PA774962",
+   "platform": "bluesky",
+   "source": "bluesky",
+   "context": "Bluesky accounts whose display name matches the MP's full name",
+   "candidates": [
+    {
+     "url": "https://bsky.app/profile/karinelebon.bsky.social",
+     "handle": "karinelebon.bsky.social",
+     "displayName": "",
+     "bio": ""
+    }
+   ]
+  },
+  {
    "mpId": "PA721852",
    "platform": "bluesky",
    "source": "bluesky",
@@ -5742,20 +5674,6 @@
      "url": "https://bsky.app/profile/marielebecque.bsky.social",
      "handle": "marielebecque.bsky.social",
      "displayName": "marielebecque.bsky.social",
-     "bio": ""
-    }
-   ]
-  },
-  {
-   "mpId": "PA774962",
-   "platform": "bluesky",
-   "source": "bluesky",
-   "context": "Bluesky accounts whose display name matches the MP's full name",
-   "candidates": [
-    {
-     "url": "https://bsky.app/profile/karinelebon.bsky.social",
-     "handle": "karinelebon.bsky.social",
-     "displayName": "",
      "bio": ""
     }
    ]
@@ -5851,62 +5769,6 @@
    ]
   },
   {
-   "mpId": "PA720146",
-   "platform": "bluesky",
-   "source": "bluesky",
-   "context": "Bluesky accounts whose display name matches the MP's full name",
-   "candidates": [
-    {
-     "url": "https://bsky.app/profile/dmasseglia.bsky.social",
-     "handle": "dmasseglia.bsky.social",
-     "displayName": "Denis Masséglia",
-     "bio": "🇫🇷 🇪🇺 Député du Choletais et des Mauges\n💰 💶 Commission des Finances\n🗞️ 🎮 Médias, Audiovisuel Public, Industries Culturelles\n🎙️ 👾 Partenaire Twitch"
-    }
-   ]
-  },
-  {
-   "mpId": "PA795422",
-   "platform": "bluesky",
-   "source": "bluesky",
-   "context": "Bluesky accounts whose display name matches the MP's full name",
-   "candidates": [
-    {
-     "url": "https://bsky.app/profile/damienmaudet.bsky.social",
-     "handle": "damienmaudet.bsky.social",
-     "displayName": "Damien Maudet",
-     "bio": "« Tous ensemble on pourrait s'unir et changer le monde » · Député de Haute-Vienne · Membre @franceinsoumisean.bsky.social\n"
-    }
-   ]
-  },
-  {
-   "mpId": "PA607619",
-   "platform": "bluesky",
-   "source": "bluesky",
-   "context": "Bluesky accounts whose display name matches the MP's full name",
-   "candidates": [
-    {
-     "url": "https://bsky.app/profile/paulmolac.bsky.social",
-     "handle": "paulmolac.bsky.social",
-     "displayName": "Paul Molac",
-     "bio": "Député du Morbihan \nConseiller Régional de Bretagne \nPrésident de l'Office Publique de la Langue Bretonne"
-    }
-   ]
-  },
-  {
-   "mpId": "PA793174",
-   "platform": "bluesky",
-   "source": "bluesky",
-   "context": "Bluesky accounts whose display name matches the MP's full name",
-   "candidates": [
-    {
-     "url": "https://bsky.app/profile/yannickmonnet.bsky.social",
-     "handle": "yannickmonnet.bsky.social",
-     "displayName": "Yannick Monnet",
-     "bio": "Député de l’Allier\nConseiller municipal de Moulins"
-    }
-   ]
-  },
-  {
    "mpId": "PA793696",
    "platform": "bluesky",
    "source": "bluesky",
@@ -5969,48 +5831,6 @@
    ]
   },
   {
-   "mpId": "PA719528",
-   "platform": "bluesky",
-   "source": "bluesky",
-   "context": "Bluesky accounts whose display name matches the MP's full name",
-   "candidates": [
-    {
-     "url": "https://bsky.app/profile/jfportarrieu.bsky.social",
-     "handle": "jfportarrieu.bsky.social",
-     "displayName": "Jean-François Portarrieu",
-     "bio": "Député du Nord toulousain 🍇✈️\n\nCo-président de l'Association nationale des élus de la vigne et du vin (ANEV) ; Président de la commission prospective de Toulouse Métropole."
-    }
-   ]
-  },
-  {
-   "mpId": "PA607553",
-   "platform": "bluesky",
-   "source": "bluesky",
-   "context": "Bluesky accounts whose display name matches the MP's full name",
-   "candidates": [
-    {
-     "url": "https://bsky.app/profile/dominiquepotier.bsky.social",
-     "handle": "dominiquepotier.bsky.social",
-     "displayName": "",
-     "bio": "Député de Meurthe-et-Moselle"
-    }
-   ]
-  },
-  {
-   "mpId": "PA721916",
-   "platform": "bluesky",
-   "source": "bluesky",
-   "context": "Bluesky accounts whose display name matches the MP's full name",
-   "candidates": [
-    {
-     "url": "https://bsky.app/profile/nataliapouzyreff.bsky.social",
-     "handle": "nataliapouzyreff.bsky.social",
-     "displayName": "Natalia Pouzyreff ",
-     "bio": "French MP\n#Security&Defence #Nuclear #Russia #China #Sport "
-    }
-   ]
-  },
-  {
    "mpId": "PA793094",
    "platform": "bluesky",
    "source": "bluesky",
@@ -6045,20 +5865,6 @@
    ]
   },
   {
-   "mpId": "PA795876",
-   "platform": "bluesky",
-   "source": "bluesky",
-   "context": "Bluesky accounts whose display name matches the MP's full name",
-   "candidates": [
-    {
-     "url": "https://bsky.app/profile/davyrimane.bsky.social",
-     "handle": "davyrimane.bsky.social",
-     "displayName": "Davy Rimane",
-     "bio": "🔶 Député engagé de Guyane | Suppléante Clarisse DA SILVA  | 🏛️ Président de la Délégation #OutreMer de l’#AssembléeNationale"
-    }
-   ]
-  },
-  {
    "mpId": "PA795528",
    "platform": "bluesky",
    "source": "bluesky",
@@ -6073,20 +5879,6 @@
    ]
   },
   {
-   "mpId": "PA340343",
-   "platform": "bluesky",
-   "source": "bluesky",
-   "context": "Bluesky accounts whose display name matches the MP's full name",
-   "candidates": [
-    {
-     "url": "https://bsky.app/profile/hsaulignac.bsky.social",
-     "handle": "hsaulignac.bsky.social",
-     "displayName": "Hervé Saulignac ",
-     "bio": "Député de l’Ardèche\nMembre de la Commission des Lois\nAncien Président du Conseil Général "
-    }
-   ]
-  },
-  {
    "mpId": "PA720960",
    "platform": "bluesky",
    "source": "bluesky",
@@ -6097,20 +5889,6 @@
      "handle": "posf.bsky.social",
      "displayName": "Pierre-Olivier SERVAUD FRANGE ",
      "bio": ""
-    }
-   ]
-  },
-  {
-   "mpId": "PA841091",
-   "platform": "bluesky",
-   "source": "bluesky",
-   "context": "Bluesky accounts whose display name matches the MP's full name",
-   "candidates": [
-    {
-     "url": "https://bsky.app/profile/arnaudsimion.bsky.social",
-     "handle": "arnaudsimion.bsky.social",
-     "displayName": "Arnaud Simion",
-     "bio": "Député de la Haute-Garonne • groupe Socialistes & Apparentés 🇫🇷 Conseiller municipal de la ville de Colomiers"
     }
    ]
   },

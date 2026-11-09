@@ -1,5 +1,368 @@
 {
- "ai": {},
+ "ai": {
+  "PA793262:youtube:@laurentalexandre12,@laurentalexandre9868": {
+   "at": "2026-11-09T19:13:07.161Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "Both YouTube candidates are linked from the MP's own website, but the evidence does not show which, if either, is his personal account. The handles are generic and carry no name, party, or channel-description confirmation, and the two candidates come from different pages, so I cannot clearly tell a personal channel from a group or namesake account. Returning null rather than guessing."
+  },
+  "PA795588:facebook:brand,business": {
+   "at": "2026-11-09T19:13:08.975Z",
+   "url": null,
+   "confidence": "high",
+   "why": "Both candidates are generic Facebook paths (/brand, /business) found on a WhatsApp contact page, not the MP's personal account. The MP's website is a WhatsApp channel link, and nothing in the evidence links either candidate to Farida Amrani."
+  },
+  "PA793780:youtube:@ChristineArrighi-Deputee,@ChristineArrighi31": {
+   "at": "2026-11-09T19:13:11.313Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "Both YouTube candidates are linked from the MP's own contact page, but the evidence does not show which one is her personal account rather than an official or campaign channel. Neither candidate is clearly the personal account, so I cannot pick one."
+  },
+  "PA720822:youtube:@RassemblementNationalOfficiel": {
+   "at": "2026-11-09T19:13:12.987Z",
+   "url": null,
+   "confidence": "high",
+   "why": "The only candidate is a party-style channel (Rassemblement National Officiel), not a personal account of Bruno Bilde. The handle does not contain the MP's name, and the link comes from a website found by domain guessing or from a prior term, so there is no clear evidence it is his own account."
+  },
+  "PA840119:facebook:100067528573519,109902791249904,138416109662885,348617678589155,769637319718144,photo.php": {
+   "at": "2026-11-09T19:13:14.969Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only evidence is that these Facebook URLs appear as links on the MP's website. The candidates are bare numeric IDs or a generic photo.php link with no name, bio, or verification shown, so none can be clearly identified as the MP's personal account. Several could be party, group, or fan pages. Without clear evidence, the answer must be null."
+  },
+  "PA793556:facebook:olivierfalorni": {
+   "at": "2026-11-09T19:13:16.676Z",
+   "url": null,
+   "confidence": "high",
+   "why": "The only candidate is the handle 'olivierfalorni', which does not match the MP's name Sabine Gervais, and the handle does not contain her name. It was found on the MP's website contact page, which does not establish that this is her personal account, and the website itself was located by guessing the domain or from the previous term, so it is not reliable evidence. Nothing clearly links this account to the MP, so the answer is null."
+  },
+  "PA793556:twitter:@OlivierFalorni": {
+   "at": "2026-11-09T19:13:18.397Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate is @OlivierFalorni, a handle that does not match the MP's name Sabine Gervais, and the link comes from her website's contact page. The evidence does not show this is her own personal account, and the handle appears to belong to a different person, so I cannot confirm it. Answer is null."
+  },
+  "PA793556:youtube:UCdG9fUXIvfIyd17XQHw5diQ": {
+   "at": "2026-11-09T19:13:20.126Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate was found via a domain guessed by the pipeline or carried over from the previous term, and the channel handle is an opaque channel ID with no link to the MP's name. Nothing in the evidence clearly shows this YouTube channel is the MP's own personal account, so I cannot confirm it."
+  },
+  "PA793556:instagram:@olivierfalorni": {
+   "at": "2026-11-09T19:13:21.617Z",
+   "url": null,
+   "confidence": "high",
+   "why": "The only candidate, @olivierfalorni, is a handle belonging to a different name than the MP Sabine Gervais, and the link was found on her website's contact page with no evidence tying that account to her. The handle does not contain her name and the context notes the website was found by guessing the domain or from a previous term, so there is no clear proof this is her personal account. Choosing null."
+  },
+  "PA718784:linkedin:clément-fauriel-721222157": {
+   "at": "2026-11-09T19:13:22.762Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate is a LinkedIn profile for 'Clément Fauriel' whose slug does not match the MP's name. The evidence only shows it was found on the MP's contacts page, which does not establish that it is the MP's own personal account (it could be a staff or assistant account). The criteria require clear evidence, so the answer is null."
+  },
+  "PA793744:youtube:UCKHKSD-yanY2ZwwU_4Tgf0w": {
+   "at": "2026-11-09T19:13:24.283Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate is a YouTube channel ID found via a link on fi31.fr, a site located by guessing the domain or from the previous term. The handle contains no name, and nothing in the evidence confirms the channel is Anne Stambach-Terrenoir's personal account rather than a party, group or namesake account. The evidence is not clear enough to choose it."
+  },
+  "PA841495:bluesky:maximeamblard.bsky.social": {
+   "at": "2026-11-09T19:13:25.873Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate has an empty display name and empty bio, so nothing in the evidence links it to Maxime Amblard beyond the handle resembling his name. The handle alone is not clear proof it is his personal account, so I answer null."
+  },
+  "PA368:bluesky:michel-barnier.bsky.social": {
+   "at": "2026-11-09T19:13:31.089Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate has a matching display name and handle, but the bio is empty and there is no evidence linking it to the MP (no official link, verified status, or description). A name match alone is not clear enough to confirm this is his personal account, so the answer is null."
+  },
+  "PA805166:bluesky:annebergantz.bsky.social": {
+   "at": "2026-11-09T19:13:32.220Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate has an empty display name and empty bio, so nothing in the evidence links it to Anne Bergantz beyond the handle resembling her name. The pipeline collected no bio, no link to her website, and no confirmation, so I cannot clearly establish it is her personal account. Answering null."
+  },
+  "PA795616:bluesky:cmbilongo.bsky.social": {
+   "at": "2026-11-09T19:13:33.887Z",
+   "url": "https://bsky.app/profile/cmbilongo.bsky.social",
+   "confidence": "high",
+   "why": "The candidate's display name matches the MP's full name, and its bio states 'Député du Val d'Oise', matching his constituency (Val-d'Oise, 8th district). The handle cmbilongo fits his name and no evidence suggests a party, group, staff, or namesake account."
+  },
+  "PA719024:bluesky:christopheblanchet.bsky.social": {
+   "at": "2026-11-09T19:13:35.043Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate has an empty display name and empty bio, and the handle alone does not establish that it is this MP's personal account rather than a namesake. The evidence does not clearly show ownership, so I answer null."
+  },
+  "PA793444:bluesky:manuelbompard.bsky.social,mbompard.bsky.social": {
+   "at": "2026-11-09T19:13:37.370Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "Both candidates have the same display name and nearly identical bios (Député de Marseille, national coordinator of LFI, same linktree). The evidence does not show which account is the MP's personal one, and the MP's website is not linked from either bio, so I can't pick one without guessing."
+  },
+  "PA794710:bluesky:julienbrugerolles.bsky.social": {
+   "at": "2026-11-09T19:13:43.687Z",
+   "url": null,
+   "confidence": "medium"
+  },
+  "PA793624:bluesky:philippebrun.bsky.social,piloubreizh.bsky.social": {
+   "at": "2026-11-09T19:13:46.061Z",
+   "url": "https://bsky.app/profile/philippebrun.bsky.social",
+   "confidence": "medium",
+   "why": "Candidate 0 has the exact display name and a bio describing a deputy for the Eure, which matches the MP's department. The bio says 'socialiste' while the MP is listed as Non inscrit, and the account does not link to the MP's website, so the evidence is good but not conclusive. Candidate 1 is a different name and is not a match."
+  },
+  "PA842311:bluesky:vincentcaure.bsky.social": {
+   "at": "2026-11-09T19:13:48.702Z",
+   "url": "https://bsky.app/profile/vincentcaure.bsky.social",
+   "confidence": "high",
+   "why": "The display name matches the MP's full name, and the bio describes a sitting deputy for the Français d'Europe du Nord constituency, which fits the MP's district 3 of Français établis hors de France. The bio also mentions Commission des lois, consistent with the MP's role. It reads as a personal account, not a party, group or staff account."
+  },
+  "PA795864:bluesky:pierrecazeneuve.bsky.social": {
+   "at": "2026-11-09T19:13:51.411Z",
+   "url": "https://bsky.app/profile/pierrecazeneuve.bsky.social",
+   "confidence": "high",
+   "why": "The candidate's bio describes a Député des Hauts-de-Seine with Rueil, Garches and Saint-Cloud references and the Ensemble Pour la République group, matching the MP's department, group and constituency. The handle pierrecazeneuve matches the MP's official website domain, and the display name matches exactly. It reads as a personal first-person account rather than a party, group or staff account."
+  },
+  "PA842037:bluesky:slappy-w.bsky.social": {
+   "at": "2026-11-09T19:13:54.426Z",
+   "url": null,
+   "confidence": "medium"
+  },
+  "PA793394:bluesky:arthurdelaporte.bsky.social": {
+   "at": "2026-11-09T19:13:55.646Z",
+   "url": "https://bsky.app/profile/arthurdelaporte.bsky.social",
+   "confidence": "medium",
+   "why": "The candidate's display name matches the MP's full name, and the bio identifies them as Député du Calvados and spokesperson of the Socialistes et apparentés group, which matches the MP's profile. The handle contains the MP's name and the Calvados department matches. The bio is consistent with this MP's own personal account, though it is not an explicit link to the official website, so confidence is medium."
+  },
+  "PA794982:bluesky:juliedelpech.bsky.social": {
+   "at": "2026-11-09T19:13:57.261Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate has an empty display name and bio. Its handle juliedelpech resembles the MP's name, but that alone does not show it is her personal account rather than a namesake or staff account. The evidence is insufficient, so I answer null."
+  },
+  "PA720390:bluesky:jerendra.bsky.social": {
+   "at": "2026-11-09T19:13:58.581Z",
+   "url": null,
+   "confidence": "high",
+   "why": "The only candidate is displayed as 'Jérôme Endrass', a different surname from the MP's 'Jérôme End', and its bio describes a forensic psychologist and snowboarder, with no link to the MP's profession, district, or website. This looks like a namesake, so no account can be clearly attributed to the MP."
+  },
+  "PA722284:bluesky:brunofuchs.bsky.social": {
+   "at": "2026-11-09T19:14:02.354Z",
+   "url": null,
+   "confidence": "high",
+   "why": "The only candidate has the same display name, but its bio ('Circus bear on the run', links to holist.hu and a SoundCloud page) has no connection to the MP's profile as a Haut-Rhin deputy or entrepreneur, and it does not link to the MP's website bruno-fuchs.fr. Nothing in the evidence clearly shows it is this MP's personal account, so the answer is null."
+  },
+  "PA796070:bluesky:percevalgaillard.bsky.social": {
+   "at": "2026-11-09T19:14:03.992Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate has a handle matching the MP's name, but its display name and bio are empty. Nothing else in the evidence confirms it is his personal account rather than a namesake or other account, so I can't pick it."
+  },
+  "PA642734:bluesky:ericgerard.bsky.social": {
+   "at": "2026-11-09T19:14:05.527Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate has display name 'Eric GERARD' (no accent) and a generic bio 'Observateur sans lunettes' with no mention of being a deputy, Eure-et-Loir, pharmacy, or the Assemblée nationale. Nothing in the evidence clearly links it to Éric Gérard, MP for Eure-et-Loir's 3rd district, so the name match alone is insufficient and the answer is null."
+  },
+  "PA793362:bluesky:jonatita88.bsky.social,joseontheair.bsky.social": {
+   "at": "2026-11-09T19:14:07.173Z",
+   "url": null,
+   "confidence": "high",
+   "why": "Neither candidate shows evidence of being the MP's personal account. Candidate 0 is a wrestling/gaming broadcast personality, and candidate 1 is a Spanish nurse with Andalusian leftist politics, which does not match a French RN deputy from Bouches-du-Rhône. The name matches are namesakes only."
+  },
+  "PA842013:bluesky:steevygustave.bsky.social": {
+   "at": "2026-11-09T19:14:08.687Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate has an empty display name and empty bio, so nothing in the evidence links it to Steevy Gustave. The handle alone matches the name, but that is not enough to confirm it is the MP's own personal account, so the answer is null."
+  },
+  "PA1592:bluesky:wrenswatch.bsky.social": {
+   "at": "2026-11-09T19:14:11.603Z",
+   "url": null,
+   "confidence": "high",
+   "why": "The only candidate has display name 'David Habib' but a bio describing a tech executive and scrivener, a generic handle, and no link to the MP's website, Assemblée nationale profile, Pyrénées-Atlantiques constituency, or political activity. Nothing ties it to this MP, so it is likely a namesake and I cannot confirm it."
+  },
+  "PA722374:bluesky:ci-s.bsky.social": {
+   "at": "2026-11-09T19:14:16.652Z",
+   "url": "https://bsky.app/profile/ci-s.bsky.social",
+   "confidence": "medium",
+   "why": "The display name matches the MP's full name exactly and the bio ties it to the Lyon metropolitan area, consistent with his Rhône 12th district seat. However, the handle 'ci-s' is not an obvious personal handle and the bio is minimal, and the evidence does not link the account to the official website or an explicit personal statement, so the match is plausible but not conclusively established."
+  },
+  "PA335054:bluesky:mariettakaramanli.bsky.social": {
+   "at": "2026-11-09T19:14:18.318Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate has a handle matching the MP's name but no display name or bio, and nothing links it to her website or to verified official accounts. A handle match alone does not clearly establish that it is her personal account, so I cannot choose it."
+  },
+  "PA842125:bluesky:thomaslamadrid.bsky.social,thomaslamkin.bsky.social,thomaslampion.bsky.social,thomaslamy.bsky.social,tlambert0803.bsky.social,tlmp.bsky.social": {
+   "at": "2026-11-09T19:14:24.482Z",
+   "url": null,
+   "confidence": "high",
+   "why": "None of the candidates shows evidence of being the personal account of Thomas Lam, the MP for Hauts-de-Seine's 2nd district. The display names are either different surnames (Lamadrid, Lamkin, Lamy, Lampion, Lamprecht) or unrelated people with bios describing other professions and countries (a Rotterdam finance professor, a digital artist, a marine ecologist, an Austrian/Italian open source developer). No candidate mentions politics, the Assemblée nationale, Horizons, or the MP's business background."
+  },
+  "PA719388:bluesky:annaiglemeur.bsky.social": {
+   "at": "2026-11-09T19:14:26.407Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate has a display name matching the MP's name, but the bio is empty and nothing links it to her website, party, or parliamentary profile. That is not enough to rule out a namesake or fan account, so I cannot clearly confirm it is her personal account."
+  },
+  "PA774962:bluesky:karinelebon.bsky.social": {
+   "at": "2026-11-09T19:14:30.686Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate has the handle karinelebon.bsky.social but an empty display name and bio, so nothing links it to this MP beyond the name in the handle. The pipeline context requires a display-name match, and there is no bio or website link to confirm it is her personal account, so I can't select it."
+  },
+  "PA721852:bluesky:idamarielebech.bsky.social,marielebecque.bsky.social": {
+   "at": "2026-11-09T19:14:33.040Z",
+   "url": null,
+   "confidence": "high",
+   "why": "Candidate 0 is a Danish landscape architect in Aarhus, a different person with a near-namesake name. Candidate 1 has no display name, no bio, and only a handle that loosely resembles the MP's name, so nothing ties it to Marie Lebec. No candidate clearly shows this MP's personal account."
+  },
+  "PA712014:bluesky:vincent-ledoux59.bsky.social,vincent-lx.wsocial.eu": {
+   "at": "2026-11-09T19:14:36.021Z",
+   "url": null,
+   "confidence": "medium"
+  },
+  "PA342384:bluesky:elis2000.bsky.social,elisamarrobles.bsky.social,elisamartinez.bsky.social,elisamartinuzzi.bsky.social,linaisha.bsky.social,niisaaa.bsky.social": {
+   "at": "2026-11-09T19:14:37.382Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "None of the candidates clearly shows the MP's own personal account. The displayed names are different people (Martínez, Martinuzzi, Martins), and none of the bios mention French politics, Isère, the Assemblée nationale, La France insoumise, or a teaching/scientific profession in France. The MP's website is not linked from any candidate bio. Candidate 0 mentions teaching (profe en la UMH) but is a Spanish-language illustrator with a different surname form and no link to the MP, so it cannot be confirmed."
+  },
+  "PA841825:bluesky:patricemartin.bsky.social,patricemartin50.bsky.social,pjcmartin.wsocial.eu": {
+   "at": "2026-11-09T19:14:38.614Z",
+   "url": null,
+   "confidence": "high",
+   "why": "None of the candidates shows clear evidence of being the MP's own account. Candidate 0 has a bio tied to Cherbourg-en-Cotentin and CFDT union work, which contradicts the MP's Seine-Maritime district and farming profession, so it is likely a namesake. Candidate 1 has an empty bio and no identifying details matching the MP. Candidate 2 has no display name matching the MP and no bio, so it cannot be linked to him."
+  },
+  "PA720146:bluesky:dmasseglia.bsky.social": {
+   "at": "2026-11-09T19:14:40.426Z",
+   "url": "https://bsky.app/profile/dmasseglia.bsky.social",
+   "confidence": "high",
+   "why": "The display name matches the MP's full name, and the bio identifies a deputy for the Choletais and Mauges area (Maine-et-Loire, district 5), with Finance committee membership, consistent with this MP. The handle is a personal-style account, not a party or group account. No sign of a namesake or another country's parliament."
+  },
+  "PA795422:bluesky:damienmaudet.bsky.social": {
+   "at": "2026-11-09T19:14:41.704Z",
+   "url": "https://bsky.app/profile/damienmaudet.bsky.social",
+   "confidence": "high",
+   "why": "The candidate's display name matches the MP's full name, and the bio explicitly identifies it as 'Député de Haute-Vienne' and a member of La France insoumise, matching the MP's constituency and group. The handle damienmaudet matches the MP's name and personal website domain, so it appears to be his own account rather than a party, staff or namesake account."
+  },
+  "PA607619:bluesky:paulmolac.bsky.social": {
+   "at": "2026-11-09T19:14:43.183Z",
+   "url": "https://bsky.app/profile/paulmolac.bsky.social",
+   "confidence": "medium",
+   "why": "Display name matches the MP's full name and the bio states he is the Morbihan deputy, matching the MP's department. The handle is plausible and the MP's website is paulmolac.bzh, but the candidate does not link to that website in the evidence, so identity rests on the name and bio match rather than a verified link."
+  },
+  "PA793174:bluesky:yannickmonnet.bsky.social": {
+   "at": "2026-11-09T19:14:44.939Z",
+   "url": "https://bsky.app/profile/yannickmonnet.bsky.social",
+   "confidence": "high",
+   "why": "The candidate's display name matches the MP's full name, and the bio identifies him as Député de l'Allier and a Moulins municipal councillor, consistent with the MP's department and profession context. The handle yannickmonnet matches his official website domain, so it appears to be his own personal account."
+  },
+  "PA793696:bluesky:sergemuller.bsky.social": {
+   "at": "2026-11-09T19:14:46.218Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate has an empty display name and empty bio, so nothing in the evidence links it to Serge Muller the MP. The handle alone matches the name, but a handle match without corroborating profile details (bio, display name, links to his official website or party) is not clear enough to confirm it is his personal account, so the answer is null."
+  },
+  "PA795552:bluesky:julienodoul.bsky.social": {
+   "at": "2026-11-09T19:14:47.564Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate has an empty display name and empty bio, so nothing in the evidence links it to Julien Odoul as his personal account. The handle alone matches the name but is not enough to confirm identity, so I answer null."
+  },
+  "PA721182:bluesky:fpetit.bsky.social,fred4market.bsky.social": {
+   "at": "2026-11-09T19:14:50.109Z",
+   "url": null,
+   "confidence": "medium"
+  },
+  "PA793656:bluesky:lisettepollet.bsky.social": {
+   "at": "2026-11-09T19:14:51.955Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate has an empty display name and empty bio, so nothing in the evidence links it to the MP beyond the handle matching her name. A handle match alone is not clear enough to confirm it is her personal account rather than a namesake or other account."
+  },
+  "PA719528:bluesky:jfportarrieu.bsky.social": {
+   "at": "2026-11-09T19:14:54.344Z",
+   "url": "https://bsky.app/profile/jfportarrieu.bsky.social",
+   "confidence": "medium",
+   "why": "The display name matches the MP's full name, and the bio describes a deputy for the Nord toulousain, which fits Haute-Garonne's 5th district. It also lists roles consistent with his profile. The evidence does not link the account to his official website, so confidence is medium."
+  },
+  "PA607553:bluesky:dominiquepotier.bsky.social": {
+   "at": "2026-11-09T19:14:55.577Z",
+   "url": "https://bsky.app/profile/dominiquepotier.bsky.social",
+   "confidence": "medium",
+   "why": "The handle dominiquepotier.bsky.social matches the MP's name and the bio states he is the deputy for Meurthe-et-Moselle, which fits his constituency. However, the display name is empty and the evidence does not explicitly link the account to the MP's official website, so this is a plausible but not fully verified match."
+  },
+  "PA721916:bluesky:nataliapouzyreff.bsky.social": {
+   "at": "2026-11-09T19:14:58.080Z",
+   "url": "https://bsky.app/profile/nataliapouzyreff.bsky.social",
+   "confidence": "medium",
+   "why": "The handle matches the MP's full name, the display name matches exactly, and the bio describes the account as 'French MP' with defence-related topics that fit her parliamentary work. The evidence does not link the account to her website or another verified source, so confidence is only medium."
+  },
+  "PA793094:bluesky:boldfrontiers.bsky.social,nicolasray.bsky.social": {
+   "at": "2026-11-09T19:14:59.532Z",
+   "url": null,
+   "confidence": "high",
+   "why": "Neither candidate clearly matches. Candidate 0 has display name 'Nicolas Raymond', a different surname from 'Nicolas Ray', and a photography/codebreaker bio with no link to the MP's profession, department or party. Candidate 1 has display name 'Nicolas' only, and its bio describes an artist and photographer with no reference to the MP, Allier, or public finance. Nothing in the evidence shows either is this MP's personal account."
+  },
+  "PA341981:bluesky:mariercd.bsky.social": {
+   "at": "2026-11-09T19:15:00.918Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate has an empty bio, a handle (mariercd) that does not clearly tie to the MP's name, and no evidence linking it to the MP's website, district, or role. The display name alone matches a common name, so the evidence does not clearly show it is her personal account."
+  },
+  "PA795876:bluesky:davyrimane.bsky.social": {
+   "at": "2026-11-09T19:15:02.962Z",
+   "url": "https://bsky.app/profile/davyrimane.bsky.social",
+   "confidence": "high",
+   "why": "The candidate's display name matches the MP exactly, and the bio identifies a deputy from Guyane who is president of the Délégation Outre-mer of the Assemblée nationale, with a suppléante named Clarisse DA SILVA. This is consistent with Davy Rimane, deputy for Guyane's 2nd district (GDR group). The handle is a personal-style handle rather than a party or group account, so it is most likely his own account."
+  },
+  "PA795528:bluesky:leasview.bsky.social": {
+   "at": "2026-11-09T19:15:04.856Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate has the matching display name 'Charles Rodwell', but its handle 'leasview.bsky.social' bears no clear link to the MP, and its bio ('Painter and traveller') does not match the MP's profile as a public official in the Yvelines (a civil servant). Nothing in the evidence ties this account to the MP's own personal account, so a name match alone is insufficient and no account is chosen."
+  },
+  "PA340343:bluesky:hsaulignac.bsky.social": {
+   "at": "2026-11-09T19:15:06.921Z",
+   "url": "https://bsky.app/profile/hsaulignac.bsky.social",
+   "confidence": "medium",
+   "why": "Display name matches the MP's full name exactly, and the bio states he is the Député de l'Ardèche and a member of the Commission des Lois, with former departmental council presidency matching his public career. No party, staff, or fan indicators appear. The bio alone is self-description rather than verified ownership, and the account is not linked to the official website in the evidence, so confidence is medium rather than high."
+  },
+  "PA720960:bluesky:posf.bsky.social": {
+   "at": "2026-11-09T19:15:09.411Z",
+   "url": null,
+   "confidence": "high",
+   "why": "The only candidate is handle posf.bsky.social with display name 'Pierre-Olivier SERVAUD FRANGE', which is a different person's name (not Olivier Serva), has an empty bio, and no evidence links it to the MP or his website. Not a clear match, so null."
+  },
+  "PA841091:bluesky:arnaudsimion.bsky.social": {
+   "at": "2026-11-09T19:15:10.919Z",
+   "url": "https://bsky.app/profile/arnaudsimion.bsky.social",
+   "confidence": "high",
+   "why": "The candidate's display name matches the MP exactly, and its bio states he is the deputy for Haute-Garonne in the Socialistes & Apparentés group and a Colomiers municipal councillor, which matches the MP's record. The bio describes him in the first person as a deputy, so it reads as his own personal account rather than a party, group or staff account."
+  },
+  "PA795920:bluesky:priscathevenot.bsky.social": {
+   "at": "2026-11-09T19:15:12.252Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate has a matching display name and handle, but its bio contains only a flag emoji and there is no further evidence (such as a link to the Assemblée nationale profile, a verified account, or references to her parliamentary role) tying it to this specific MP rather than a namesake. Under the rule to never guess, I cannot pick it."
+  },
+  "PA841479:bluesky:peef2ve.wsocial.eu": {
+   "at": "2026-11-09T19:15:16.440Z",
+   "url": null,
+   "confidence": "high",
+   "why": "The only candidate has display name 'Pierre Frederic Weber' (a different first name order and an extra given name), an empty bio, and a generic wsocial.eu handle with no link to the MP's party, district, or profession. Nothing in the evidence shows it is Frédéric Weber's personal account, so I answer null."
+  },
+  "PA720992:bluesky:jiovannywilliam.bsky.social": {
+   "at": "2026-11-09T19:15:18.143Z",
+   "url": null,
+   "confidence": "medium",
+   "why": "The only candidate's handle resembles the MP's name, but its display name and bio are empty, so nothing links it to this MP beyond the handle. The pipeline's matching criterion (display name matching the full name) is not met, and no other evidence confirms it is his personal account."
+  }
+ },
  "nosdeputes": {
   "at": "2026-11-07T12:09:34.999Z",
   "rows": [
