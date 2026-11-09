@@ -5846,6 +5846,34 @@
       },
       "check": null,
       "postTime": "2026-11-08T11:38:30.329Z"
+    },
+    "yt:RoOt8wist6A": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T01:57:40.136Z",
+      "storyItems": [
+        "df8fc1bf5868",
+        "be48e1fcea21",
+        "3fb5feb41df0",
+        "f46184511c8c",
+        "623259491edf",
+        "6d55dda8d095"
+      ],
+      "storyTitle": "Présidentielle 2027 : Emmanuel Macron se dit en faveur d’une « coalition » de David Lisnard à Raphaël Glucksmann",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique de Macron comme symptôme d'une crise politique, positionnement de gauche critique du macronisme et de l'establishment centriste.",
+        "rationale_en": "Criticizes Macron as a symptom of a political crisis, a left-leaning critique of centrist establishment politics."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Critique politique sobre sans appel au peuple contre des élites ni rhétorique émotionnelle marquée.",
+        "rationale_en": "Measured political critique with no clear people-versus-elite framing or strong emotional appeal."
+      },
+      "check": null,
+      "postTime": "2026-11-08T20:04:00.000Z"
     }
   },
   "failures": {
