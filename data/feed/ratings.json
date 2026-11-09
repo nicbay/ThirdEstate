@@ -6117,6 +6117,1481 @@
       },
       "check": null,
       "postTime": "2026-11-06T17:36:46.000Z"
+    },
+    "bsky:at://did:plc:7qlw6gig76xhkjjkxl35xpxe/app.bsky.feed.post/3mzvobdhoc224": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:04.414Z",
+      "storyItems": [
+        "8456ee5312ec",
+        "d9c5a5f89d0e",
+        "70d01ee948eb",
+        "0d074767936b",
+        "62fb6109b85a",
+        "6d124f7c3aca"
+      ],
+      "storyTitle": "Pouvoir d’achat : Sébastien Lecornu annonce une hausse anticipée du Smic à 1 502 euros par mois dès le 1er décembre",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Demande de justice fiscale et rejet d'un budget gouvernemental, positions de gauche (redistribution, fiscalité).",
+        "rationale_en": "Calls for tax justice and rejects the government budget; left-leaning redistribution positions."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Présente le gouvernement comme passant en force et mobilise un « refus clair » de la rue, avec ton indigné.",
+        "rationale_en": "Portrays the government as forcing its way through and uses indignant framing of street opposition."
+      },
+      "check": null,
+      "postTime": "2026-11-09T19:34:57.439Z"
+    },
+    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3mzvmolykqk2b": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:04.414Z",
+      "storyItems": [
+        "76e105490fe3",
+        "48274ee5d18b",
+        "98955be8ed39",
+        "ed5cb4dedc94",
+        "0bba3eacae6c",
+        "7becb52fac44"
+      ],
+      "storyTitle": "Présidentielle 2027 : « Ni à droite ni à gauche », Teddy Riner, une candidature dans les pas d’Emmanuel Macron ?",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Pronostic personnel sur un second tour, sans contenu idéologique.",
+        "rationale_en": "Personal prediction about a runoff, with no ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T19:06:35.103Z"
+    },
+    "bsky:at://did:plc:yiitgmldz3gwyxmz3p5fqcwv/app.bsky.feed.post/3mzvm7pzddc2s": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:04.414Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Soutien aux syndicats de locataires, défense du droit au logement, positions de gauche.",
+        "rationale_en": "Support for tenant unions and the right to housing; left-leaning position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message sobre, sans opposition élites contre peuple.",
+        "rationale_en": "Measured message without elite-versus-people framing."
+      },
+      "check": null,
+      "postTime": "2026-11-09T18:58:15.999Z"
+    },
+    "yt:MItD89DUkcg": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:04.414Z",
+      "storyItems": [
+        "eaf6761cad13"
+      ],
+      "storyTitle": "Conférence sociale : pourquoi les entreprises françaises auront du mal à augmenter les salaires sans croissance",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Proposition d'encadrer les écarts de salaires de 1 à 20, favorable à une redistribution salariale de gauche.",
+        "rationale_en": "Proposes capping pay gaps at 1 to 20; left-leaning wage redistribution."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "anti_elites"
+        ],
+        "rationale_fr": "Critique les rémunérations des patrons, ton de mise en cause sans appel au peuple.",
+        "rationale_en": "Criticizes executive pay with a mildly anti-elite tone, without invoking the people."
+      },
+      "check": null,
+      "postTime": "2026-11-09T18:53:19.000Z"
+    },
+    "yt:yS3n86TsYQU": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:04.414Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Question générale sur l'IA, sans position politique explicite.",
+        "rationale_en": "General question about AI with no explicit political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T18:17:35.000Z"
+    },
+    "yt:y8BZe7y6tEY": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:04.414Z",
+      "storyItems": [
+        "841603580841",
+        "244355df5900",
+        "06dda69fe17d"
+      ],
+      "storyTitle": "Politique : \"Je n'attends plus grand-chose de ce gouvernement, à part de le remplacer par nous-mêmes\", tacle le député LFI Antoine Léaument",
+      "political": true,
+      "lean": {
+        "score": -0.9,
+        "rationale_fr": "Promotion du programme L'Avenir en commun, revalorisation du Smic à 1 700 euros, rupture avec le gouvernement.",
+        "rationale_en": "Promotes the L'Avenir en commun programme, a 1,700 euro minimum wage, and rupture with the government; far-left."
+      },
+      "populism": {
+        "score": 0.6,
+        "markers": [
+          "peuple_vs_elites",
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Oppose le gouvernement au « nous » mobilisé, appelle à le remplacer et parle de « colère sociale ».",
+        "rationale_en": "Sets the government against a mobilized 'we', calls to replace it, and invokes social anger."
+      },
+      "check": null,
+      "postTime": "2026-11-09T18:16:11.000Z"
+    },
+    "bsky:at://did:plc:47fzaypb7ahtgp3wxvc2ects/app.bsky.feed.post/3mzvhngjmnk2y": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:04.414Z",
+      "storyItems": [
+        "b5774a4ed47d",
+        "128f943a7f05",
+        "a694b33b7c75",
+        "9a5d28b2d427",
+        "9ce5239f7f72",
+        "f110ab54c7b5"
+      ],
+      "storyTitle": "Le gouvernement annonce une hausse du smic de 1,6 % à partir du 1ᵉʳ décembre",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique d'une hausse du Smic jugée insuffisante, revendication de revalorisation salariale, positions de gauche.",
+        "rationale_en": "Criticizes the minimum wage increase as insufficient and demands wage revaluation; left-leaning."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Accuse le gouvernement de mépris envers les salariés, ton indigné.",
+        "rationale_en": "Accuses the government of contempt toward workers, with indignant tone."
+      },
+      "check": {
+        "claim": "La hausse du Smic annoncée représente 24 euros au 1er décembre au lieu de 18 euros au 1er janvier.",
+        "why_fr": "Les chiffres diffèrent selon les articles (23 euros dans un titre, 1,6 % annoncé) ; la comparaison avec 18 euros n'est pas explicitée dans les sources fournies.",
+        "why_en": "Figures differ across articles (23 euros in one headline, 1.6% announced); the 18-euro comparison is not explained in the provided sources.",
+        "sources": [
+          {
+            "title": "Augmentation du smic, prime carburant : ce qu'il faut retenir des annonces du gouvernement",
+            "url": "https://www.leparisien.fr/politique/augmentation-du-smic-prime-carburant-ce-quil-faut-retenir-des-annonces-du-gouvernement-apres-la-conference-sociale-09-11-2026-4F67DVAXI5GUDD3ZLXEFLU2KTI.php"
+          }
+        ]
+      },
+      "postTime": "2026-11-09T17:36:27.110Z"
+    },
+    "yt:TV4uHUi5IXY": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:04.414Z",
+      "storyItems": [
+        "3e31a53a7042"
+      ],
+      "storyTitle": "Après un été de cyberattaques et un an de blocage, la loi « résilience » de retour à l’Assemblée nationale",
+      "political": true,
+      "lean": {
+        "score": 0,
+        "rationale_fr": "Critique du retard gouvernemental sur une directive de cybersécurité, sans orientation idéologique marquée.",
+        "rationale_en": "Criticizes government delay on a cybersecurity directive, without marked ideological orientation."
+      },
+      "populism": {
+        "score": 0.05,
+        "markers": [],
+        "rationale_fr": "Critique de l'action du gouvernement, factuelle et sans rhétorique populiste.",
+        "rationale_en": "Factual criticism of government action without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T17:24:50.000Z"
+    },
+    "bsky:at://did:plc:otrocyu2h7akfbiurwlqxxl6/app.bsky.feed.post/3mzvggjl7kc2f": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:13.548Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Demande de plus de moyens pour l'école publique, position de gauche sur les services publics.",
+        "rationale_en": "Calls for more funding for public schools, a left-leaning public services position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Message factuel, sans rhétorique populiste.",
+        "rationale_en": "Factual message with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T17:14:41.685Z"
+    },
+    "bsky:at://did:plc:7qlw6gig76xhkjjkxl35xpxe/app.bsky.feed.post/3mzvgbfeh7c25": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:13.548Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message pratique d'appel au don pour un refuge animalier.",
+        "rationale_en": "Practical call for donations to an animal shelter."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T17:11:49.493Z"
+    },
+    "yt:YKjmBo0lgww": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:13.548Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Simple liste de liens vers des comptes et réseaux sociaux.",
+        "rationale_en": "Simple list of links to social accounts."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T17:00:14.000Z"
+    },
+    "bsky:at://did:plc:k4zxrbhn35w47kyskzs3pse4/app.bsky.feed.post/3mzveq3xboc2h": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:13.548Z",
+      "storyItems": [
+        "b5774a4ed47d",
+        "128f943a7f05",
+        "a694b33b7c75",
+        "9a5d28b2d427",
+        "9ce5239f7f72",
+        "f110ab54c7b5"
+      ],
+      "storyTitle": "Le gouvernement annonce une hausse du smic de 1,6 % à partir du 1ᵉʳ décembre",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique du gouvernement sur la hausse du smic, en défense des travailleurs modestes, orientation sociale.",
+        "rationale_en": "Criticizes the government's minimum wage increase, defending low-wage workers; social-leaning."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Critique d'une politique sans opposition peuple contre élites.",
+        "rationale_en": "Criticizes a policy without people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-09T16:44:15.452Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3mzve5d2yyc26": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:13.548Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Dénonce les violences policières et la question du racisme dans l'institution, orientation de gauche.",
+        "rationale_en": "Denounces police violence and racism within the institution; left-leaning."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Qualifie la version policière de mensongère, sans développer d'argument.",
+        "rationale_en": "Calls the police version a lie without further argument."
+      },
+      "check": null,
+      "postTime": "2026-11-09T16:33:45.386Z"
+    },
+    "yt:J5K-WWZFGLc": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:13.548Z",
+      "storyItems": [
+        "e7e1e2621962",
+        "727187b137a3",
+        "1c36e4854631",
+        "dce2bac29685",
+        "007da6cf642e",
+        "162e08e5f0f8"
+      ],
+      "storyTitle": "Attentat de Trappes : les obsèques de Pengo Bossio Wangi se dérouleront samedi",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce de la diffusion d'une émission, sans position politique explicite.",
+        "rationale_en": "Announces an episode broadcast, with no explicit political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T16:22:37.000Z"
+    },
+    "bsky:at://did:plc:ymrgrrgrkf6jk23dg6w4c36d/app.bsky.feed.post/3mzvc6r36yk2v": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:13.549Z",
+      "storyItems": [
+        "0bbb42606103"
+      ],
+      "storyTitle": "Mobilisation de la jeunesse : Sébastien Lecornu recevra les représentants des lycéens et des étudiants lundi",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Soutien à la mobilisation jeunesse et appel à l'action publique sur la santé mentale étudiante, orientation de gauche.",
+        "rationale_en": "Supports youth mobilization and calls for public action on student mental health; left-leaning."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Chiffres mis en avant pour susciter l'inquiétude, sans complot ni opposition au peuple.",
+        "rationale_en": "Statistics highlighted to raise concern, without conspiracy or people-versus-elites framing."
+      },
+      "check": {
+        "claim": "41 % des étudiant·es présentent des troubles dépressifs et 30 % des pensées suicidaires.",
+        "why_fr": "Le message ne précise pas l'enquête ni la période de référence ; ces chiffres méritent d'être recoupés avec une source d'études sur la santé étudiante.",
+        "why_en": "The message does not specify the survey or reference period; these figures merit cross-checking with student health studies.",
+        "sources": [
+          {
+            "title": "Insee, portail général",
+            "url": "https://www.insee.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-09T15:58:46.145Z"
+    },
+    "bsky:at://did:plc:qbkihi5tj3ng2no6ycodztnp/app.bsky.feed.post/3mzvbp7tuv22c": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:13.549Z",
+      "storyItems": [
+        "b5774a4ed47d",
+        "128f943a7f05",
+        "a694b33b7c75",
+        "9a5d28b2d427",
+        "9ce5239f7f72",
+        "f110ab54c7b5"
+      ],
+      "storyTitle": "Le gouvernement annonce une hausse du smic de 1,6 % à partir du 1ᵉʳ décembre",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique de la hausse du smic jugée insuffisante, en faveur des salaires modestes, orientation sociale.",
+        "rationale_en": "Criticizes the minimum wage increase as insufficient, favoring low wages; social-leaning."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel",
+          "anti_elites"
+        ],
+        "rationale_fr": "Ton moqueur et indignation mise en avant ; cible le gouvernement sans opposer un peuple pur.",
+        "rationale_en": "Mocking tone and emphasized indignation; targets the government without pure-people framing."
+      },
+      "check": {
+        "claim": "Sur une hausse de 25 euros, 18 euros correspondent à la revalorisation automatique liée à l'inflation.",
+        "why_fr": "Le chiffre de 18 euros diffère de celui avancé par le gouvernement (23 euros) dans les articles fournis ; la décomposition mérite d'être vérifiée.",
+        "why_en": "The 18-euro figure differs from the government's 23-euro announcement in the provided articles; the breakdown merits checking.",
+        "sources": [
+          {
+            "title": "Le Parisien : hausse du smic de 23 euros annoncée par le gouvernement",
+            "url": "https://www.leparisien.fr/economie/une-mauvaise-reponse-le-patron-du-medef-reagit-a-la-hausse-du-smic-de-23-euros-annoncee-par-le-gouvernement-09-11-2026-6KEWHAOQ4JEFHNAEDDS5M665EE.php"
+          },
+          {
+            "title": "Franceinfo : quelles sont les propositions sur le smic",
+            "url": "https://www.franceinfo.fr/economie/barre-des-1-500-euros-10-d-augmentation-100-euros-en-plus-quelles-sont-les-propositions-du-gouvernement-et-des-syndicats-sur-le-smic_8270843.html"
+          }
+        ]
+      },
+      "postTime": "2026-11-09T15:50:04.760Z"
+    },
+    "bsky:at://did:plc:zfa6mn3lye2aaff3pelkw3zo/app.bsky.feed.post/3mzvb537yak2x": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:20.929Z",
+      "storyItems": [
+        "38e00388903e"
+      ],
+      "storyTitle": "Pollution aux pesticides : en restreignant la portée d’une taxe, le gouvernement a privé les agences de l’eau de plus de 90 millions d’euros de redevance",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique de l'action gouvernementale sur les pesticides et la protection de l'eau, position écologiste de gauche.",
+        "rationale_en": "Criticizes government pesticide policy and water protection, a left-ecologist position."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Qualifie l'action du gouvernement de scandale et accuse un lobby industriel, avec un ton indigné.",
+        "rationale_en": "Calls government action a scandal and accuses industrial lobbies, with an indignant tone."
+      },
+      "check": {
+        "claim": "Le gouvernement a privé les agences de l'eau de plus de 90 millions d'euros de redevance.",
+        "why_fr": "Le chiffre provient d'une analyse de Générations futures reprise par Le Monde ; l'ampleur et la période exacte méritent d'être confirmées auprès des sources officielles.",
+        "why_en": "The figure comes from a Générations futures analysis reported by Le Monde; the scale and exact period should be confirmed against official sources.",
+        "sources": [
+          {
+            "title": "Pollution aux pesticides : en restreignant la portée d'une taxe, le gouvernement a privé les agences de l'eau de plus de 90 millions d'euros de redevance",
+            "url": "https://www.lemonde.fr/planete/article/2026/11/09/pollution-aux-pesticides-en-restreignant-la-portee-d-une-taxe-le-gouvernement-a-prive-les-agences-de-l-eau-de-plus-de-90-millions-d-euros-de-redevance_6808615_3244.html"
+          }
+        ]
+      },
+      "postTime": "2026-11-09T15:39:55.936Z"
+    },
+    "yt:VP32vT9dnLk": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:20.929Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Appel à une politique européenne écologique de prévention et de planification, orientation écologiste de gauche.",
+        "rationale_en": "Calls for a European ecological prevention and planning policy, a left-ecologist orientation."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Insiste sur l'urgence et les conséquences sanitaires, sans rhétorique populiste marquée.",
+        "rationale_en": "Stresses urgency and health consequences without marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T15:21:37.000Z"
+    },
+    "bsky:at://did:plc:hiebgjpdm7uhdm2zjafcg5on/app.bsky.feed.post/3mzva2r4ngy2c": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:20.929Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Appel à une politique européenne écologique de prévention et de planification, orientation écologiste de gauche.",
+        "rationale_en": "Calls for a European ecological prevention and planning policy, a left-ecologist orientation."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Insiste sur l'urgence et les conséquences sanitaires, sans rhétorique populiste marquée.",
+        "rationale_en": "Stresses urgency and health consequences without marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T15:20:43.969Z"
+    },
+    "bsky:at://did:plc:47fzaypb7ahtgp3wxvc2ects/app.bsky.feed.post/3mzva2ej27s2t": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:20.929Z",
+      "storyItems": [
+        "df76dfa1eb96",
+        "1cbf2542a4a8"
+      ],
+      "storyTitle": "Bordeaux : la permanence RN incendiée en marge d'une manifestation",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de soutien à un proviseur agressé, sans contenu idéologique explicite.",
+        "rationale_en": "Support message for an attacked school principal, with no explicit ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T15:20:31.267Z"
+    },
+    "masto:https://piaille.fr/users/cyrielle_chatelain/statuses/117587148807900192": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:20.929Z",
+      "storyItems": [
+        "8456ee5312ec",
+        "d9c5a5f89d0e",
+        "70d01ee948eb",
+        "0d074767936b",
+        "62fb6109b85a",
+        "6d124f7c3aca"
+      ],
+      "storyTitle": "Pouvoir d’achat : Sébastien Lecornu annonce une hausse anticipée du Smic à 1 502 euros par mois dès le 1er décembre",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique d'une hausse du SMIC jugée insuffisante, défense du pouvoir d'achat des bas salaires.",
+        "rationale_en": "Criticizes the SMIC increase as insufficient, defending low-wage purchasing power."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "anti_elites",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Parle de mépris de classe et oppose les dirigeants aux travailleurs au SMIC, sur un ton indigné.",
+        "rationale_en": "Speaks of class contempt and opposes leaders to minimum-wage workers, in an indignant tone."
+      },
+      "check": null,
+      "postTime": "2026-11-09T15:18:20.120Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3mzv63nyycz2d": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:20.929Z",
+      "storyItems": [
+        "6c6b455a5047",
+        "c60557ac1a80",
+        "b3a98ea6f2fe",
+        "cb2d9f479af6",
+        "6b41bff9c5b8",
+        "b2c168751050"
+      ],
+      "storyTitle": "100% Sénat — 100% Sénat",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Défense de la probité et de l'exemple des élus, avec une sensibilité sociale de gauche sur les salaires.",
+        "rationale_en": "Defends probity and leading by example for elected officials, with a left-leaning social sensitivity on pay."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Position mesurée sur l'exemplarité des élus, sans opposition peuple contre élites.",
+        "rationale_en": "Measured position on elected officials' exemplarity, without people-versus-elite framing."
+      },
+      "check": null,
+      "postTime": "2026-11-09T14:45:27.280Z"
+    },
+    "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3mzv63dw6w22e": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:20.929Z",
+      "storyItems": [
+        "4af40a51ceee",
+        "211552770d64"
+      ],
+      "storyTitle": "Au lycée catholique Stanislas, des violences sexuelles sur mineurs et des années d’omerta",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Dénonciation de faits de violences dans un établissement, sans position idéologique explicite.",
+        "rationale_en": "Denounces violence at a school without explicit ideological position."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Qualifie l'établissement de climat sexiste, homophobe et raciste, avec un ton indigné.",
+        "rationale_en": "Describes the school as sexist, homophobic and racist, in an indignant tone."
+      },
+      "check": null,
+      "postTime": "2026-11-09T14:45:16.710Z"
+    },
+    "bsky:at://did:plc:yphqj24zexmev436eeyx6gof/app.bsky.feed.post/3mzv5rn6ufc2e": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:20.929Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Appel à témoignages, sans position idéologique.",
+        "rationale_en": "Call for testimonies, with no ideological position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste marquée.",
+        "rationale_en": "No marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T14:39:50.893Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3mzv5dobbdv2s": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:41.511Z",
+      "storyItems": [
+        "1bb47b5a4ac4",
+        "d1d543de6c1b",
+        "5e577b1ed9a8",
+        "7e4e571fb3ad",
+        "5fa6bcd85f8a",
+        "c3cdd84874f1"
+      ],
+      "storyTitle": "Présidentielle 2027 : Pour Marine Le Pen, la France est « le pays le moins raciste au monde »",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Conteste le déni de discriminations et affirme l'existence d'un racisme systémique, positions associées à la gauche sociale.",
+        "rationale_en": "Disputes the denial of discrimination and asserts systemic racism, positions typical of the social left."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Critique argumentée d'une responsable politique, sans opposition peuple contre élites.",
+        "rationale_en": "Argued criticism of a political leader, with no people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-09T14:32:02.240Z"
+    },
+    "bsky:at://did:plc:i27lvonqvridxzfgstsqw6p2/app.bsky.feed.post/3mzv4smo7l22z": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:41.511Z",
+      "storyItems": [
+        "b5774a4ed47d",
+        "128f943a7f05",
+        "a694b33b7c75",
+        "9a5d28b2d427",
+        "9ce5239f7f72",
+        "f110ab54c7b5"
+      ],
+      "storyTitle": "Le gouvernement annonce une hausse du smic de 1,6 % à partir du 1ᵉʳ décembre",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Réclame une hausse du salaire minimum et dénonce le gouvernement au nom de la colère sociale.",
+        "rationale_en": "Calls for a higher minimum wage and denounces the government in the name of social anger."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Mise sur l'indignation (« mépris », « colère ») plutôt que sur l'argumentation chiffrée.",
+        "rationale_en": "Relies on indignation (contempt, anger) rather than detailed argument."
+      },
+      "check": {
+        "claim": "Hausse mensuelle du smic d'environ 24 euros, soit environ 80 centimes par jour.",
+        "why_fr": "Un article fourni donne une hausse d'environ 23 euros ; l'écart est faible mais la version chiffrée diffère, et le calcul journalier dépend du nombre de jours retenu.",
+        "why_en": "A provided article gives a monthly increase of about 23 euros; the gap is small, and the daily figure depends on the number of days used.",
+        "sources": [
+          {
+            "title": "« Une mauvaise réponse » : le patron du Medef réagit à la hausse du smic de 23 euros annoncée par le gouvernement",
+            "url": "https://www.leparisien.fr/economie/une-mauvaise-reponse-le-patron-du-medef-reagit-a-la-hausse-du-smic-de-23-euros-annoncee-par-le-gouvernement-09-11-2026-6KEWHAOQ4JEFHNAEDDS5M665EE.php"
+          }
+        ]
+      },
+      "postTime": "2026-11-09T14:22:30.164Z"
+    },
+    "bsky:at://did:plc:f5ymvi2nsevpogvseolqk2yv/app.bsky.feed.post/3mzv4ldgipc2k": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:41.511Z",
+      "storyItems": [
+        "e0054132be03",
+        "5de09ba3705d",
+        "4ed16c3f9f16",
+        "394e1045d328",
+        "355ea91498d5",
+        "e37804dd5742"
+      ],
+      "storyTitle": "Une pétition appelant à fermer CNews atteint un million de signatures sur le site de l'Assemblée nationale",
+      "political": true,
+      "lean": {
+        "score": -0.4,
+        "rationale_fr": "Soutient la fermeture d'une chaîne d'information, position plutôt associée à la gauche sur la régulation des médias.",
+        "rationale_en": "Supports closing a news channel, a position more typical of the left on media regulation."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Qualifie la chaîne de « propagande raciste », présentant l'adversaire comme illégitime avec un ton indigné.",
+        "rationale_en": "Labels the channel as « racist propaganda », framing the opponent as illegitimate in an indignant tone."
+      },
+      "check": null,
+      "postTime": "2026-11-09T14:18:25.578Z"
+    },
+    "x:2119789761770491952": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:41.511Z",
+      "storyItems": [
+        "b5774a4ed47d",
+        "128f943a7f05",
+        "a694b33b7c75",
+        "9a5d28b2d427",
+        "9ce5239f7f72",
+        "f110ab54c7b5"
+      ],
+      "storyTitle": "Le gouvernement annonce une hausse du smic de 1,6 % à partir du 1ᵉʳ décembre",
+      "political": true,
+      "lean": {
+        "score": -0.3,
+        "rationale_fr": "Critique la hausse du smic jugée insuffisante face à l'inflation, position de gauche réformiste.",
+        "rationale_en": "Criticizes the minimum wage increase as insufficient against inflation, a reformist left position."
+      },
+      "populism": {
+        "score": 0.05,
+        "markers": [],
+        "rationale_fr": "Argumentation chiffrée et sobre, sans rhétorique populiste.",
+        "rationale_en": "Measured, figure-based argument with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T13:50:37.652Z"
+    },
+    "yt:lpOFxOif9mg": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:41.511Z",
+      "storyItems": [
+        "b5774a4ed47d",
+        "128f943a7f05",
+        "a694b33b7c75",
+        "9a5d28b2d427",
+        "9ce5239f7f72",
+        "f110ab54c7b5"
+      ],
+      "storyTitle": "Le gouvernement annonce une hausse du smic de 1,6 % à partir du 1ᵉʳ décembre",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Demande au moins 100 euros d'augmentation du smic et une hausse générale des salaires, position de gauche radicale.",
+        "rationale_en": "Demands at least 100 euros more for the minimum wage and general wage increases, a radical-left position."
+      },
+      "populism": {
+        "score": 0.25,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Qualifie la proposition de « honteuse » et invoque la dignité, sans argument chiffré détaillé.",
+        "rationale_en": "Calls the proposal « shameful » and invokes dignity, without detailed figures."
+      },
+      "check": null,
+      "postTime": "2026-11-09T13:49:04.000Z"
+    },
+    "bsky:at://did:plc:7qlw6gig76xhkjjkxl35xpxe/app.bsky.feed.post/3mzv26rvxzc2n": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:41.511Z",
+      "storyItems": [
+        "b5774a4ed47d",
+        "128f943a7f05",
+        "a694b33b7c75",
+        "9a5d28b2d427",
+        "9ce5239f7f72",
+        "f110ab54c7b5"
+      ],
+      "storyTitle": "Le gouvernement annonce une hausse du smic de 1,6 % à partir du 1ᵉʳ décembre",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Dénonce la politique salariale du gouvernement et soutient la grève, position de gauche radicale.",
+        "rationale_en": "Denounces the government's wage policy and backs the strike, a radical-left position."
+      },
+      "populism": {
+        "score": 0.45,
+        "markers": [
+          "anti_elites",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Oppose les travailleurs aux « milliardaires gavés » et accuse le Premier ministre de mépris, avec un ton émotionnel.",
+        "rationale_en": "Opposes workers to « gorged billionaires » and accuses the prime minister of contempt, in an emotional tone."
+      },
+      "check": {
+        "claim": "La hausse du smic « ne couvre même pas un litre d'essence par semaine ».",
+        "why_fr": "Le montant mensuel d'environ 23 à 24 euros représente environ 5 à 6 euros par semaine ; la comparaison dépend du prix du carburant retenu et de la période.",
+        "why_en": "The monthly amount of about 23 to 24 euros is roughly 5 to 6 euros per week; the comparison depends on the fuel price used and the period.",
+        "sources": [
+          {
+            "title": "« Une mauvaise réponse » : le patron du Medef réagit à la hausse du smic de 23 euros annoncée par le gouvernement",
+            "url": "https://www.leparisien.fr/economie/une-mauvaise-reponse-le-patron-du-medef-reagit-a-la-hausse-du-smic-de-23-euros-annoncee-par-le-gouvernement-09-11-2026-6KEWHAOQ4JEFHNAEDDS5M665EE.php"
+          }
+        ]
+      },
+      "postTime": "2026-11-09T13:35:37.089Z"
+    },
+    "bsky:at://did:plc:7howemlmmr5kgkcif2zeob26/app.bsky.feed.post/3mzuzsx4s3k2j": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:41.511Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce d'une interview, sans contenu idéologique.",
+        "rationale_en": "Announcement of an interview, with no ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Message purement pratique, sans rhétorique populiste.",
+        "rationale_en": "Purely practical message with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T13:28:59.894Z"
+    },
+    "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3mzuzsktuts2p": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:41.511Z",
+      "storyItems": [
+        "bd9ff492ea27",
+        "449c3d7ea11b"
+      ],
+      "storyTitle": "Mouvement lycéen : le ministère fiche les grévistes et ordonne de ne pas payer les professeurs refusant le distanciel",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Défend le droit de grève des enseignants et critique la répression administrative, position de gauche sociale.",
+        "rationale_en": "Defends teachers' right to strike and criticizes administrative repression, a social-left position."
+      },
+      "populism": {
+        "score": 0.05,
+        "markers": [],
+        "rationale_fr": "Démarche juridique formulée sobrement, sans opposition peuple contre élites.",
+        "rationale_en": "Formally worded legal step with no people-versus-elites framing."
+      },
+      "check": {
+        "claim": "Le ministère de l'Éducation nationale a demandé de signaler et de retenir le salaire des enseignants grévistes solidaires des lycéens.",
+        "why_fr": "Le fait repose sur un mail consulté par un seul journal, et une vérification publiée présente la question comme ouverte ; le contenu exact du message mérite d'être confronté aux textes.",
+        "why_en": "The fact rests on an email seen by a single newspaper, and a published fact-check frames the question as open; the exact content of the message should be checked against the documents.",
+        "sources": [
+          {
+            "title": "Vrai ou faux : le ministère de l'Éducation nationale a-t-il envoyé un mail demandant de signaler les enseignants grévistes solidaires de la mobilisation des lycéens ?",
+            "url": "https://www.franceinfo.fr/vrai-ou-fake/vrai-ou-faux-le-ministere-de-l-education-nationale-a-t-il-envoye-un-mail-demandant-de-signaler-les-enseignants-grevistes-solidaires-de-la-mobilisation-des-lyceens_8269187.html"
+          },
+          {
+            "title": "Mouvement lycéen : le ministère fiche les grévistes et ordonne de ne pas payer les professeurs refusant le distanciel",
+            "url": "https://www.humanite.fr/politique/droit-de-greve/mouvement-lyceen-le-ministere-fiche-les-grevistes-et-ordonne-de-ne-pas-payer-les-professeurs-refusant-le-distanciel"
+          }
+        ]
+      },
+      "postTime": "2026-11-09T13:28:47.025Z"
+    },
+    "bsky:at://did:plc:bnulcjvue27qpnwzup3y7hv3/app.bsky.feed.post/3mzuzbm4ots2d": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:59.594Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message d'agenda sans position politique exprimée.",
+        "rationale_en": "Agenda post listing events, with no political position expressed."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste : simple annonce d'événements.",
+        "rationale_en": "No populist rhetoric: simple announcement of events."
+      },
+      "check": null,
+      "postTime": "2026-11-09T13:19:17.929Z"
+    },
+    "x:2119781674569371775": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:59.594Z",
+      "storyItems": [
+        "b5774a4ed47d",
+        "128f943a7f05",
+        "a694b33b7c75",
+        "9a5d28b2d427",
+        "9ce5239f7f72",
+        "f110ab54c7b5"
+      ],
+      "storyTitle": "Le gouvernement annonce une hausse du smic de 1,6 % à partir du 1ᵉʳ décembre",
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Plaide pour une baisse de la dépense publique et des impôts, position de droite libérale.",
+        "rationale_en": "Calls for lower public spending and taxes, a center-right liberal position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Critique du fonctionnement de l'État sans opposer un peuple pur aux élites.",
+        "rationale_en": "Criticizes state functioning without opposing a pure people to elites."
+      },
+      "check": null,
+      "postTime": "2026-11-09T13:18:29.513Z"
+    },
+    "bsky:at://did:plc:awp4pev7xbtmhlwvq6qfirpz/app.bsky.feed.post/3mzuyhhsddk2z": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:59.594Z",
+      "storyItems": [
+        "b5774a4ed47d",
+        "128f943a7f05",
+        "a694b33b7c75",
+        "9a5d28b2d427",
+        "9ce5239f7f72",
+        "f110ab54c7b5"
+      ],
+      "storyTitle": "Le gouvernement annonce une hausse du smic de 1,6 % à partir du 1ᵉʳ décembre",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Demande un SMIC à 1 700 euros, revendication de gauche sociale.",
+        "rationale_en": "Demands a minimum wage of 1,700 euros, a social-left demand."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Formule urgente (« Vite ») et slogan, sans argumentation détaillée.",
+        "rationale_en": "Urgent phrasing (\"Vite\") and slogan, without detailed argument."
+      },
+      "check": null,
+      "postTime": "2026-11-09T13:04:40.989Z"
+    },
+    "x:2119775577515463123": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:59.594Z",
+      "storyItems": [
+        "b5774a4ed47d",
+        "128f943a7f05",
+        "a694b33b7c75",
+        "9a5d28b2d427",
+        "9ce5239f7f72",
+        "f110ab54c7b5"
+      ],
+      "storyTitle": "Le gouvernement annonce une hausse du smic de 1,6 % à partir du 1ᵉʳ décembre",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Juge la hausse du SMIC insuffisante et soutient la mobilisation syndicale, position de gauche sociale.",
+        "rationale_en": "Considers the minimum wage increase insufficient and backs union mobilization, a social-left position."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Qualifie la proposition de « indécent », ton indigné sans grande argumentation.",
+        "rationale_en": "Calls the proposal \"indécent\", an indignant tone with little argument."
+      },
+      "check": null,
+      "postTime": "2026-11-09T12:54:15.862Z"
+    },
+    "bsky:at://did:plc:k4zxrbhn35w47kyskzs3pse4/app.bsky.feed.post/3mzuxrou7ek2i": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:59.594Z",
+      "storyItems": [
+        "1bb47b5a4ac4",
+        "d1d543de6c1b",
+        "5e577b1ed9a8",
+        "7e4e571fb3ad",
+        "5fa6bcd85f8a",
+        "c3cdd84874f1"
+      ],
+      "storyTitle": "Présidentielle 2027 : Pour Marine Le Pen, la France est « le pays le moins raciste au monde »",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique d'un propos niant les discriminations, position antiraciste de gauche.",
+        "rationale_en": "Criticizes a claim denying discrimination, an antiracist left-leaning position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Présente le propos de Le Pen comme une manipulation, sans démonstration détaillée.",
+        "rationale_en": "Presents Le Pen's statement as manipulation, without detailed demonstration."
+      },
+      "check": null,
+      "postTime": "2026-11-09T12:52:30.192Z"
+    },
+    "bsky:at://did:plc:sgunesm6k7o2zrdzdico7ai7/app.bsky.feed.post/3mzuwu4k2322n": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:59.594Z",
+      "storyItems": [
+        "b5774a4ed47d",
+        "128f943a7f05",
+        "a694b33b7c75",
+        "9a5d28b2d427",
+        "9ce5239f7f72",
+        "f110ab54c7b5"
+      ],
+      "storyTitle": "Le gouvernement annonce une hausse du smic de 1,6 % à partir du 1ᵉʳ décembre",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Propose blocage des prix, SMIC à 1 700 euros, fin des cadeaux fiscaux aux grandes entreprises : gauche sociale.",
+        "rationale_en": "Proposes price freeze, a 1,700 euro minimum wage, and ending tax breaks for large firms: social-left."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "« Vite, qu'ils partent ! » délégitime le gouvernement et mobilise l'indignation.",
+        "rationale_en": "\"Vite, qu'ils partent!\" delegitimizes the government and mobilizes indignation."
+      },
+      "check": {
+        "claim": "La hausse du SMIC serait de 7 euros de plus que la revalorisation automatique du 1er janvier.",
+        "why_fr": "Un autre chiffre circule pour la même comparaison (5 euros entre 23 euros et 18 euros prévus). La base de comparaison mérite d'être précisée.",
+        "why_en": "Another figure circulates for the same comparison (5 euros, between 23 and 18 euros planned). The baseline for comparison should be clarified.",
+        "sources": [
+          {
+            "title": "Augmentation du smic, prime carburant… Ce qu'il faut retenir des annonces du gouvernement après la conférence sociale",
+            "url": "https://www.leparisien.fr/politique/augmentation-du-smic-prime-carburant-ce-quil-faut-retenir-des-annonces-du-gouvernement-apres-la-conference-sociale-09-11-2026-4F67DVAXI5GUDD3ZLXEFLU2KTI.php"
+          }
+        ]
+      },
+      "postTime": "2026-11-09T12:35:57.906Z"
+    },
+    "bsky:at://did:plc:ymrgrrgrkf6jk23dg6w4c36d/app.bsky.feed.post/3mzuwsyvups27": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:59.594Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Signale une étude sur la pollution sans position idéologique exprimée.",
+        "rationale_en": "Flags a pollution study without expressing an ideological position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T12:35:20.547Z"
+    },
+    "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3mzuwfopd4s27": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:04:59.594Z",
+      "storyItems": [
+        "b5774a4ed47d",
+        "128f943a7f05",
+        "a694b33b7c75",
+        "9a5d28b2d427",
+        "9ce5239f7f72",
+        "f110ab54c7b5"
+      ],
+      "storyTitle": "Le gouvernement annonce une hausse du smic de 1,6 % à partir du 1ᵉʳ décembre",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Juge la hausse du SMIC insuffisante et accuse le gouvernement de mépris, position de gauche sociale.",
+        "rationale_en": "Judges the minimum wage increase insufficient and accuses the government of contempt, a social-left position."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Accuse le gouvernement de mépris et parle de « provocation », ton indigné.",
+        "rationale_en": "Accuses the government of contempt and calls it a \"provocation\", an indignant tone."
+      },
+      "check": {
+        "claim": "La hausse du SMIC serait de 7 euros de plus que la hausse imposée par la loi au 1er janvier.",
+        "why_fr": "Un autre chiffre circule pour la même comparaison (5 euros entre 23 euros et 18 euros prévus). La base de comparaison mérite d'être précisée.",
+        "why_en": "Another figure circulates for the same comparison (5 euros, between 23 and 18 euros planned). The baseline for comparison should be clarified.",
+        "sources": [
+          {
+            "title": "« Une mauvaise réponse » : le patron du Medef réagit à la hausse du smic de 23 euros annoncée par le gouvernement",
+            "url": "https://www.leparisien.fr/economie/une-mauvaise-reponse-le-patron-du-medef-reagit-a-la-hausse-du-smic-de-23-euros-annoncee-par-le-gouvernement-09-11-2026-6KEWHAOQ4JEFHNAEDDS5M665EE.php"
+          }
+        ]
+      },
+      "postTime": "2026-11-09T12:27:53.636Z"
+    },
+    "x:2119766052477575608": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:05:19.911Z",
+      "storyItems": [
+        "b5774a4ed47d",
+        "128f943a7f05",
+        "a694b33b7c75",
+        "9a5d28b2d427",
+        "9ce5239f7f72",
+        "f110ab54c7b5"
+      ],
+      "storyTitle": "Le gouvernement annonce une hausse du smic de 1,6 % à partir du 1ᵉʳ décembre",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique gouvernementale centrée sur les bas salaires et une hausse du SMIC jugée insuffisante, avec une défense implicite de la revalorisation salariale.",
+        "rationale_en": "Criticizes the government's minimum wage increase as insufficient and defends wage revaluation for low earners."
+      },
+      "populism": {
+        "score": 0.15,
+        "markers": [],
+        "rationale_fr": "Ton polémique (« tromper ») sans opposition peuple contre élites ni appel émotionnel dominant.",
+        "rationale_en": "Polemical tone (\"deceive\") but no people-versus-elite framing or dominant emotional appeal."
+      },
+      "check": {
+        "claim": "Hausse du SMIC de 25 € brut, ramenée à 7 € nets d'inflation, dont 18 € de rattrapage légal au 1er janvier.",
+        "why_fr": "L'article fourni évoque une hausse de 23 euros ; le montant de 25 € et la décomposition en 7 € et 18 € diffèrent et méritent d'être précisés.",
+        "why_en": "The provided article reports a 23-euro increase; the 25-euro figure and the 7/18-euro breakdown differ and should be clarified.",
+        "sources": [
+          {
+            "title": "Une mauvaise réponse : le patron du Medef réagit à la hausse du smic de 23 euros annoncée par le gouvernement",
+            "url": "https://www.leparisien.fr/economie/une-mauvaise-reponse-le-patron-du-medef-reagit-a-la-hausse-du-smic-de-23-euros-annoncee-par-le-gouvernement-09-11-2026-6KEWHAOQ4JEFHNAEDDS5M665EE.php"
+          }
+        ]
+      },
+      "postTime": "2026-11-09T12:16:24.916Z"
+    },
+    "bsky:at://did:plc:yiitgmldz3gwyxmz3p5fqcwv/app.bsky.feed.post/3mzuunzc54c23": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:05:19.911Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Demande l'application de la réquisition de logements vides, mesure associée à la gauche sociale.",
+        "rationale_en": "Calls for applying requisition of empty housing, a measure associated with social-left politics."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Recours aux chiffres de décès et d'enfants à la rue pour susciter l'indignation.",
+        "rationale_en": "Uses death and child homelessness figures to provoke indignation."
+      },
+      "check": {
+        "claim": "929 personnes mortes à la rue l'an dernier, dont 16 enfants, et 10 logements vides pour une personne sans abri.",
+        "why_fr": "Les décomptes de personnes mortes à la rue proviennent surtout d'associations, et le ratio de logements vides dépend de la méthode de comptage utilisée.",
+        "why_en": "Homeless death counts mostly come from associations, and the vacant-housing ratio depends on the counting method used.",
+        "sources": [
+          {
+            "title": "Insee, site officiel",
+            "url": "https://www.insee.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-09T11:56:45.692Z"
+    },
+    "yt:NXJR5OhyXwU": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:05:19.911Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Demande l'application de la réquisition de logements vides, mesure associée à la gauche sociale.",
+        "rationale_en": "Calls for applying requisition of empty housing, a measure associated with social-left politics."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Recours aux chiffres de décès et d'enfants à la rue pour susciter l'indignation.",
+        "rationale_en": "Uses death and child homelessness figures to provoke indignation."
+      },
+      "check": {
+        "claim": "929 personnes mortes à la rue l'an dernier, dont 16 enfants, et 10 logements vides pour une personne sans abri.",
+        "why_fr": "Les décomptes de personnes mortes à la rue proviennent surtout d'associations, et le ratio de logements vides dépend de la méthode de comptage utilisée.",
+        "why_en": "Homeless death counts mostly come from associations, and the vacant-housing ratio depends on the counting method used.",
+        "sources": [
+          {
+            "title": "Insee, site officiel",
+            "url": "https://www.insee.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-09T11:53:47.000Z"
+    },
+    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3mzutjifb2k2v": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:05:19.911Z",
+      "storyItems": [
+        "1bb47b5a4ac4",
+        "d1d543de6c1b",
+        "5e577b1ed9a8",
+        "7e4e571fb3ad",
+        "5fa6bcd85f8a",
+        "c3cdd84874f1"
+      ],
+      "storyTitle": "Présidentielle 2027 : Pour Marine Le Pen, la France est « le pays le moins raciste au monde »",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique d'une candidate d'extrême droite sur le racisme et les discriminations, position typique de la gauche.",
+        "rationale_en": "Criticizes a far-right candidate on racism and discrimination, a typically left-wing position."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Ton sarcastique et indigné (« foutage de gueule ») plutôt qu'argumentation détaillée.",
+        "rationale_en": "Sarcastic, outraged tone (\"foutage de gueule\") rather than detailed argument."
+      },
+      "check": null,
+      "postTime": "2026-11-09T11:36:20.009Z"
+    },
+    "bsky:at://did:plc:ln2ibflz7bn3uttly7yepk4f/app.bsky.feed.post/3mzut3vxasc2o": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:05:19.911Z",
+      "storyItems": [
+        "a38a1d0ca3a0"
+      ],
+      "storyTitle": "Cybersécurité: les secteurs \"hautement critiques\" bientôt inscrits dans la loi",
+      "political": true,
+      "lean": {
+        "score": 0,
+        "rationale_fr": "Appel transpartisan à renforcer la protection des données et la cybersécurité, sans orientation idéologique marquée.",
+        "rationale_en": "Cross-party call to strengthen data protection and cybersecurity, with no marked ideological orientation."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Message technique et institutionnel, sans rhétorique populiste.",
+        "rationale_en": "Technical, institutional message with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T11:28:44.468Z"
+    },
+    "yt:56Z2jQEd6iM": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:05:19.911Z",
+      "storyItems": [
+        "b5774a4ed47d",
+        "128f943a7f05",
+        "a694b33b7c75",
+        "9a5d28b2d427",
+        "9ce5239f7f72",
+        "f110ab54c7b5"
+      ],
+      "storyTitle": "Le gouvernement annonce une hausse du smic de 1,6 % à partir du 1ᵉʳ décembre",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Demande un SMIC à 1 700 euros net, revendication de gauche radicale.",
+        "rationale_en": "Demands a 1,700-euro net minimum wage, a far-left demand."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Slogan revendicatif sans opposition peuple contre élites.",
+        "rationale_en": "Campaign slogan without people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-09T11:19:09.000Z"
+    },
+    "yt:-h6qkeRFVOA": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:05:19.911Z",
+      "storyItems": [
+        "b5774a4ed47d",
+        "128f943a7f05",
+        "a694b33b7c75",
+        "9a5d28b2d427",
+        "9ce5239f7f72",
+        "f110ab54c7b5"
+      ],
+      "storyTitle": "Le gouvernement annonce une hausse du smic de 1,6 % à partir du 1ᵉʳ décembre",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Propose un SMIC à 1 700 euros net et critique la hausse annoncée, programme de gauche radicale.",
+        "rationale_en": "Proposes a 1,700-euro net minimum wage and criticizes the announced increase; far-left program."
+      },
+      "populism": {
+        "score": 0.25,
+        "markers": [
+          "simplisme"
+        ],
+        "rationale_fr": "Présente une hausse de 1 700 euros comme solution évidente et dénigre la proposition gouvernementale en quelques mots.",
+        "rationale_en": "Presents a 1,700-euro minimum wage as an obvious fix and dismisses the government proposal in a few words."
+      },
+      "check": {
+        "claim": "Le gouvernement pourrait augmenter le SMIC de 8 euros par mois.",
+        "why_fr": "L'article fourni évoque une hausse de 23 euros ; le montant cité ici diffère et la période comme le périmètre sont à préciser.",
+        "why_en": "The provided article reports a 23-euro increase; the amount cited here differs, and the period and scope need clarifying.",
+        "sources": [
+          {
+            "title": "Une mauvaise réponse : le patron du Medef réagit à la hausse du smic de 23 euros annoncée par le gouvernement",
+            "url": "https://www.leparisien.fr/economie/une-mauvaise-reponse-le-patron-du-medef-reagit-a-la-hausse-du-smic-de-23-euros-annoncee-par-le-gouvernement-09-11-2026-6KEWHAOQ4JEFHNAEDDS5M665EE.php"
+          }
+        ]
+      },
+      "postTime": "2026-11-09T11:13:49.000Z"
+    },
+    "bsky:at://did:plc:of5lwk3kijgutdoyls2wrhpz/app.bsky.feed.post/3mzur3zfmok2s": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:05:19.911Z",
+      "storyItems": [
+        "e0054132be03",
+        "5de09ba3705d",
+        "4ed16c3f9f16",
+        "394e1045d328",
+        "355ea91498d5",
+        "e37804dd5742"
+      ],
+      "storyTitle": "Une pétition appelant à fermer CNews atteint un million de signatures sur le site de l'Assemblée nationale",
+      "political": true,
+      "lean": {
+        "score": -0.4,
+        "rationale_fr": "Soutient une pétition pour fermer une chaîne d'information et réclame un débat parlementaire, position plutôt de gauche.",
+        "rationale_en": "Supports a petition to close a news channel and calls for a parliamentary debate; leaning left."
+      },
+      "populism": {
+        "score": 0.15,
+        "markers": [],
+        "rationale_fr": "Mise en avant d'un seuil de signatures sans opposition peuple contre élites marquée.",
+        "rationale_en": "Highlights a signature milestone without a strong people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-09T10:53:00.558Z"
+    },
+    "yt:uQClkpwkv2E": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:05:23.078Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Propose de réduire de 10 % les indemnités parlementaires au nom de l'effort budgétaire ; position libérale-conservatrice sur les dépenses publiques.",
+        "rationale_en": "Proposes a 10% cut to parliamentary allowances to share budget efforts; fiscally conservative, liberal-right position on public spending."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Appel à l'exemplarité et à l'effort collectif, sans attaque directe contre des élites.",
+        "rationale_en": "Appeals to exemplarity and shared effort, without a direct attack on elites."
+      },
+      "check": null,
+      "postTime": "2026-11-09T10:37:58.000Z"
+    },
+    "bsky:at://did:plc:skhpi6tvodwwkygydxmka5tm/app.bsky.feed.post/3mzuq5olx6p2b": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:05:23.078Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message purement pratique annonçant un agenda.",
+        "rationale_en": "Purely practical message announcing an agenda."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T10:36:02.635Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3mzuii3kg6t26": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T21:05:23.078Z",
+      "storyItems": [
+        "1871159a7f4a"
+      ],
+      "storyTitle": "Les coups de pouce au smic sont-ils \"exceptionnels\", comme l'affirme le ministre du Travail ?",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Revendique que le travail permette de bien vivre, thème de justice salariale typique de la gauche sociale.",
+        "rationale_en": "Calls for work that allows a decent living, a typical social-left theme on wages."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Formule emphatique (« pas en survivre ») qui mise sur l'émotion plutôt que sur des arguments chiffrés.",
+        "rationale_en": "Emphatic phrasing (\"not survive\") relies on emotion rather than quantified arguments."
+      },
+      "check": null,
+      "postTime": "2026-11-09T08:18:41.816Z"
     }
   },
   "failures": {
