@@ -5874,6 +5874,249 @@
       },
       "check": null,
       "postTime": "2026-11-08T20:04:00.000Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3mzuow6hzeh2r": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T10:19:07.419Z",
+      "storyItems": [
+        "a6ee2149d22b"
+      ],
+      "storyTitle": "Flambée des produits pétroliers : faut-il miser sur une hausse durable des prix ?",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Propose contrôle des prix, contrôle des marges et taxe flottante sur les carburants, soit une intervention publique forte sur les marchés.",
+        "rationale_en": "Proposes price controls, margin controls and a floating fuel tax, a strong state intervention in markets."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "simplisme"
+        ],
+        "rationale_fr": "Présente des solutions présentées comme simples et sans coût pour l'État à un problème complexe.",
+        "rationale_en": "Presents simple solutions, costless for the state, to a complex problem."
+      },
+      "check": null,
+      "postTime": "2026-11-09T10:13:57.095Z"
+    },
+    "bsky:at://did:plc:qbkihi5tj3ng2no6ycodztnp/app.bsky.feed.post/3mzumfvabv22s": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T10:19:07.419Z",
+      "storyItems": [
+        "5de09ba3705d",
+        "4ed16c3f9f16",
+        "394e1045d328",
+        "355ea91498d5",
+        "e37804dd5742",
+        "7078b807c902"
+      ],
+      "storyTitle": "Une pétition appelant à fermer CNews atteint un million de signatures sur le site de l'Assemblée nationale",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Demande la fermeture de CNews et un débat sur la chaîne, position de gauche sur le contrôle des médias.",
+        "rationale_en": "Calls for CNews to be shut down and for an Assembly debate, a left-leaning position on media regulation."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "souverainete_populaire",
+          "delegitimation"
+        ],
+        "rationale_fr": "Invoque la pression populaire comme légitimité et qualifie la chaîne de « raciste ».",
+        "rationale_en": "Invokes popular pressure as legitimacy and labels the channel 'racist'."
+      },
+      "check": null,
+      "postTime": "2026-11-09T09:29:03.062Z"
+    },
+    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3mzul52xqp22l": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T10:19:07.419Z",
+      "storyItems": [
+        "bfa02044f7c0",
+        "6302203d6ceb",
+        "21a0307b06c8",
+        "496f6e509cec",
+        "bf480087ea04",
+        "45f7f21c8650"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de promotion d'une interview et du programme sans contenu idéologique explicite.",
+        "rationale_en": "Promotional message about an interview and the programme, with no explicit ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste dans ce message.",
+        "rationale_en": "No populist rhetoric in this message."
+      },
+      "check": {
+        "claim": "Le meeting du Bourget a réuni 20 000 personnes.",
+        "why_fr": "Ce chiffre semble être celui des organisateurs ; il devrait être recoupé avec d'autres sources avant d'être présenté comme un fait.",
+        "why_en": "This figure appears to come from the organisers and should be cross-checked with other sources before being stated as fact.",
+        "sources": [
+          {
+            "title": "Guillaume Tabard : «Jean-Luc Mélenchon, une stratégie efficace, une idéologie dangereuse»",
+            "url": "https://www.lefigaro.fr/elections/presidentielles/guillaume-tabard-jean-luc-melenchon-une-strategie-efficace-une-ideologie-dangereuse-20261109"
+          }
+        ]
+      },
+      "postTime": "2026-11-09T09:06:13.344Z"
+    },
+    "yt:nlcP1r4GJns": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T10:19:07.419Z",
+      "storyItems": [
+        "bfa02044f7c0",
+        "6302203d6ceb",
+        "21a0307b06c8",
+        "496f6e509cec",
+        "bf480087ea04",
+        "45f7f21c8650"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Présentation d'une interview et d'un meeting, sans position idéologique développée.",
+        "rationale_en": "Presents an interview and a rally, without a developed ideological position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Ton élogieux sans rhétorique populiste marquée.",
+        "rationale_en": "Laudatory tone without marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T08:57:54.000Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3mzujif4q4b2m": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T10:19:07.419Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Critique personnelle de Marine Le Pen sans contenu idéologique explicite.",
+        "rationale_en": "Personal criticism of Marine Le Pen without explicit ideological content."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Présente l'adversaire comme indigne de représenter le peuple, en rappelant sa condamnation.",
+        "rationale_en": "Presents the opponent as unworthy of representing ordinary people by citing her conviction."
+      },
+      "check": null,
+      "postTime": "2026-11-09T08:36:45.594Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3mzuiow3glg2r": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T10:19:07.419Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Défend l'idée que le travail doit être mieux rémunéré par rapport au capital, position de gauche sociale.",
+        "rationale_en": "Argues labour should be better rewarded relative to capital, a social-democratic left position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Citation sans rhétorique populiste.",
+        "rationale_en": "Quotation without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T08:22:30.942Z"
+    },
+    "bsky:at://did:plc:hiebgjpdm7uhdm2zjafcg5on/app.bsky.feed.post/3mzuhzl5zuq2j": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T10:19:07.419Z",
+      "storyItems": [
+        "fb92aa94b318",
+        "1e942ce39940",
+        "c6bd813b8fa6",
+        "bcfc1414a5a3"
+      ],
+      "storyTitle": "\"J'aimerais que la justice passe\" : Michel Zecler réclame un procès \"à la hauteur de la gravité des faits\" pour les policiers accusés de l'avoir roué de coups",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Soutien aux victimes de violences policières racistes, position de gauche sur la police et la justice.",
+        "rationale_en": "Support for victims of racist police violence, a left-leaning position on policing and justice."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Mise en avant de l'émotion et de l'indignation par un soutien symbolique.",
+        "rationale_en": "Emphasises emotion and indignation through symbolic support."
+      },
+      "check": null,
+      "postTime": "2026-11-09T08:10:34.648Z"
+    },
+    "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3mzuhea2sqc2o": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T10:19:07.419Z",
+      "storyItems": [
+        "bfa02044f7c0",
+        "6302203d6ceb",
+        "21a0307b06c8",
+        "496f6e509cec",
+        "bf480087ea04",
+        "45f7f21c8650"
+      ],
+      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce d'une passage sur LCI, message à visée pratique.",
+        "rationale_en": "Announces an appearance on LCI, a practical message."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-09T07:58:38.602Z"
+    },
+    "yt:odhmQ369N6s": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-09T10:19:08.588Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Invitation à un bilan de mandat, sans contenu idéologique.",
+        "rationale_en": "Invitation to a mandate review event, with no ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste dans cette annonce pratique.",
+        "rationale_en": "No populist rhetoric in this practical announcement."
+      },
+      "check": null,
+      "postTime": "2026-11-06T17:36:46.000Z"
     }
   },
   "failures": {
