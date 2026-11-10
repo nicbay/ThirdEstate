@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-11-08T11:02:53.185Z",
+ "fetchedAt": "2026-11-10T15:32:54.541Z",
  "debt": {
   "eur": 3595524900000,
   "pct": 119.1,
@@ -241,11 +241,10 @@
   {
    "id": "unemployment",
    "unit": "pct",
-   "period": "2026-Q2",
-   "value": 8.3,
-   "prev": 8.1,
+   "period": "2026-Q3",
+   "value": 8.2,
+   "prev": 8.3,
    "series": [
-    ["2022-Q3", 7.2],
     ["2022-Q4", 7.2],
     ["2023-Q1", 7.2],
     ["2023-Q2", 7.3],
@@ -259,10 +258,11 @@
     ["2025-Q2", 7.6],
     ["2025-Q3", 7.8],
     ["2025-Q4", 8],
-    ["2026-Q1", 8.1],
-    ["2026-Q2", 8.3]
+    ["2026-Q1", 8.2],
+    ["2026-Q2", 8.3],
+    ["2026-Q3", 8.2]
    ],
-   "updated": "2026-08-07",
+   "updated": "2026-11-10",
    "source": {
     "name": "INSEE",
     "dataset": "011818543 (Taux de chômage au sens du BIT - Ensemble - France entière - Données CVS)",
@@ -272,11 +272,10 @@
   {
    "id": "employment",
    "unit": "pct",
-   "period": "2026-Q2",
-   "value": 69,
-   "prev": 69.3,
+   "period": "2026-Q3",
+   "value": 69.1,
+   "prev": 69,
    "series": [
-    ["2022-Q3", 68.3],
     ["2022-Q4", 68.4],
     ["2023-Q1", 68.5],
     ["2023-Q2", 68.5],
@@ -286,14 +285,15 @@
     ["2024-Q2", 69],
     ["2024-Q3", 69.2],
     ["2024-Q4", 69],
-    ["2025-Q1", 69.4],
+    ["2025-Q1", 69.3],
     ["2025-Q2", 69.5],
     ["2025-Q3", 69.3],
     ["2025-Q4", 69.3],
     ["2026-Q1", 69.3],
-    ["2026-Q2", 69]
+    ["2026-Q2", 69],
+    ["2026-Q3", 69.1]
    ],
-   "updated": "2026-08-07",
+   "updated": "2026-11-10",
    "source": {
     "name": "INSEE",
     "dataset": "011818676 (Personnes en emploi (taux d'emploi) au sens du BIT - Ensemble des 15 à 64 ans - France entière - Données CVS)",
@@ -559,7 +559,8 @@
      "dataset": "gov_10q_ggdebt",
      "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10q_ggdebt/default/table?lang=fr"
     }
-   }
+   },
+   "stale": true
   },
   "de": {
    "annual": [
@@ -659,5 +660,10 @@
    }
   }
  },
- "errors": []
+ "errors": [
+  {
+   "id": "debt_history_fr",
+   "error": "Cannot find package 'fflate' imported from /home/runner/work/projectview/projectview/scripts/lib/xlsx.mjs"
+  }
+ ]
 }
