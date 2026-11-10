@@ -1,5 +1,5 @@
 {
- "syncedAt": "2026-11-08T13:30:00.105Z",
+ "syncedAt": "2026-11-10T14:57:27.173Z",
  "firstSession": "2023-2024",
  "sources": {
   "api": "https://www.senat.fr/api-senat/senateurs.json",
@@ -32,13 +32,13 @@
    "max": 340
   },
   "session2026": {
-   "listed": 56,
-   "max": 56
+   "listed": 65,
+   "max": 65
   },
   "votes": {
-   "listed": 978,
-   "written": 978,
-   "fetchedThisRun": 33,
+   "listed": 987,
+   "written": 987,
+   "fetchedThisRun": 36,
    "failed": [],
    "noNominativeList": [
     "2023-100",
@@ -726,6 +726,15 @@
   "wikidataItems": 346,
   "conflicts": [
    {
+    "id": "19591F",
+    "nom": "Xavier Iacovelli",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/iacoxavier",
+    "others": [
+     "senat: https://www.facebook.com/596443558"
+    ]
+   },
+   {
     "id": "20286Q",
     "nom": "Amel Gacquerre",
     "platform": "twitter",
@@ -870,6 +879,15 @@
     ]
    },
    {
+    "id": "11045K",
+    "nom": "Laurence Rossignol",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/RossignolLaurence",
+    "others": [
+     "senat: https://www.facebook.com/100058135596444"
+    ]
+   },
+   {
     "id": "19349W",
     "nom": "Didier Rambaud",
     "platform": "facebook",
@@ -940,6 +958,15 @@
     "kept": "senat: http://brigittemicouleau.fr/",
     "others": [
      "wikidata: http://www.brigittemicouleau.fr/"
+    ]
+   },
+   {
+    "id": "14193X",
+    "nom": "Cédric Perrin",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/cedric.perrin.330",
+    "others": [
+     "senat: https://www.facebook.com/100063778643519"
     ]
    },
    {
@@ -1139,6 +1166,15 @@
     ]
    },
    {
+    "id": "19954N",
+    "nom": "Catherine Belrhiti",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/p/Catherine-Belrhiti-S%C3%A9natrice-de-la-Moselle-100066793099399",
+    "others": [
+     "senat: https://www.facebook.com/100003094434363"
+    ]
+   },
+   {
     "id": "19593H",
     "nom": "Pierre Ouzoulias",
     "platform": "facebook",
@@ -1154,6 +1190,15 @@
     "kept": "senat: https://x.com/Cardon_Remi",
     "others": [
      "wikidata: https://x.com/Remi_Cardon"
+    ]
+   },
+   {
+    "id": "20060X",
+    "nom": "Rémi Cardon",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/RemiCardon80",
+    "others": [
+     "senat: https://www.facebook.com/1259946388"
     ]
    },
    {
@@ -1208,6 +1253,15 @@
     "kept": "wikidata: https://x.com/HayeLudovic",
     "others": [
      "wikidata: https://x.com/ludovichaye"
+    ]
+   },
+   {
+    "id": "20128B",
+    "nom": "Ludovic Haye",
+    "platform": "facebook",
+    "kept": "senat: https://www.facebook.com/LudovicHaye68",
+    "others": [
+     "senat: https://www.facebook.com/100064162956438"
     ]
    },
    {
