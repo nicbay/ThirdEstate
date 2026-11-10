@@ -8236,6 +8236,1437 @@
         ]
       },
       "postTime": "2026-11-08T11:40:54.495Z"
+    },
+    "bsky:at://did:plc:6iihpsin54462khal536kkjs/app.bsky.feed.post/3mzy5ypm6us2q": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:03.870Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Soutien à une mobilisation contre la crise du logement et pour les salaires, position sociale-démocrate ou de gauche écologique.",
+        "rationale_en": "Supports a mobilisation against the housing crisis and for wages, a social-democratic or left-ecological position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message militant sans attaque des élites ni opposition peuple contre élite.",
+        "rationale_en": "Activist message with no attack on elites or people-versus-elite framing."
+      },
+      "check": null,
+      "postTime": "2026-11-10T19:21:47.525Z"
+    },
+    "yt:Gj8Df1iM4Yg": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:03.870Z",
+      "storyItems": [
+        "e7e1e2621962",
+        "727187b137a3",
+        "1c36e4854631"
+      ],
+      "storyTitle": "Aux obsèques de Pengo Bossio Wangi, à Guyancourt : « Mon fils n’est pas une couleur de peau, mon fils est un être humain »",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Critique des médias dont CNews et de la responsabilité politique dans la lutte contre le racisme, positions de gauche.",
+        "rationale_en": "Criticises media including CNews and political responsibility for racism, left-leaning positions."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Présente les défenseurs de CNews comme hostiles et met en avant l'indignation face à la mort de Pengo Bossio Wangi.",
+        "rationale_en": "Presents CNews defenders as hostile and foregrounds indignation over the death of Pengo Bossio Wangi."
+      },
+      "check": null,
+      "postTime": "2026-11-10T19:12:24.000Z"
+    },
+    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3mzy55fkbrc2a": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:03.870Z",
+      "storyItems": [
+        "cbea0f30dddb"
+      ],
+      "storyTitle": "« Je ne disparaîtrai pas d’un coup » : Marine Tondelier indique qu’elle ne se désistera pas pour la présidentielle 2027",
+      "political": true,
+      "lean": {
+        "score": -0.4,
+        "rationale_fr": "Plaide pour une victoire de la gauche unie et contre une candidature autonome, position de gauche écologiste.",
+        "rationale_en": "Argues for a united left victory against an autonomous candidacy, a left-ecologist position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Argumentation politique interne sans rhétorique populiste marquée.",
+        "rationale_en": "Internal political argument without marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T19:06:31.010Z"
+    },
+    "yt:wE8CZI2ZQA8": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:03.870Z",
+      "storyItems": [
+        "7f66a8699824",
+        "4b3d58552dac",
+        "b30cffc24258",
+        "f3d80e492c30",
+        "8833b905f736",
+        "1bb47b5a4ac4"
+      ],
+      "storyTitle": "\"Il n'y a pas de discriminations en France\" pour Marine Le Pen",
+      "political": true,
+      "lean": {
+        "score": 0.2,
+        "rationale_fr": "Affirme l'existence de discriminations en France, en réponse à la position attribuée au RN, position centriste.",
+        "rationale_en": "States that discrimination exists in France, responding to the RN position; centrist stance."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Déclaration courte, sans opposition peuple contre élites ni appel émotionnel.",
+        "rationale_en": "Short statement with no people-versus-elite framing or emotional appeal."
+      },
+      "check": null,
+      "postTime": "2026-11-10T18:10:15.000Z"
+    },
+    "bsky:at://did:plc:yiitgmldz3gwyxmz3p5fqcwv/app.bsky.feed.post/3mzxzotpvds2w": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:03.870Z",
+      "storyItems": [
+        "9d2353f49c67",
+        "41ed48d6613a"
+      ],
+      "storyTitle": "Auto-déclaration des arrêts de travail : le gouvernement scandalisé par cette idée de Mélenchon à laquelle il était favorable il y a deux ans",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Défend les assurés contre l'idée d'« assistés » et critique le RN, positions de gauche sur la protection sociale.",
+        "rationale_en": "Defends insured workers against the 'assisted' framing and criticises the RN, left positions on social protection."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Critique politique directe sans rhétorique populiste développée.",
+        "rationale_en": "Direct political criticism without developed populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T18:04:41.331Z"
+    },
+    "yt:fZXNZKsc0n8": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:03.870Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Simple annonce d'un débat et de liens sociaux, sans position exprimée.",
+        "rationale_en": "Simple announcement of a debate and social links, with no position expressed."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Annonce sans contenu populiste.",
+        "rationale_en": "Announcement with no populist content."
+      },
+      "check": null,
+      "postTime": "2026-11-10T17:54:21.000Z"
+    },
+    "yt:LCMn3pcvSBA": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:03.870Z",
+      "storyItems": [
+        "c20d9cf90127",
+        "e4f5120f1d95",
+        "43e1c4906c03",
+        "d1e6cc1be4c2",
+        "96ee1be46543",
+        "c4a094dcdcaa"
+      ],
+      "storyTitle": "\"Il faut tout changer !\", scande Jean-Luc Mélenchon lors de son grand meeting du Bourget",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Défend la campagne de Mélenchon et son engagement contre l'extrême droite, positions de la gauche radicale.",
+        "rationale_en": "Defends Mélenchon's campaign and its opposition to the far right, radical-left positions."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "souverainete_populaire",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Met en avant la mobilisation populaire et une conviction présentée comme partagée par « beaucoup de gens », avec appel à l'émotion.",
+        "rationale_en": "Highlights popular mobilisation and a conviction presented as shared by 'many people', with emotional appeal."
+      },
+      "check": null,
+      "postTime": "2026-11-10T17:45:32.000Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3mzxyjm56q22x": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:03.870Z",
+      "storyItems": [
+        "19a28b495f8a",
+        "521897ce319c"
+      ],
+      "storyTitle": "« Il existe une omerta sur les crimes du communisme », dénonce Aurélien Lopez-Liguori, le maire RN d’Agde qui inaugure une stèle en hommage aux victimes",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Dénonce l'anticommunisme et les initiatives de la droite et de l'extrême droite sur la mémoire résistante, positions de gauche radicale.",
+        "rationale_en": "Denounces anticommunism and right and far-right initiatives on resistance memory; radical-left position."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Présente la droite et l'extrême droite comme engagées dans un effacement de l'histoire, sans nuance.",
+        "rationale_en": "Presents the right and far right as engaged in erasing history, without nuance."
+      },
+      "check": null,
+      "postTime": "2026-11-10T17:43:51.860Z"
+    },
+    "bsky:at://did:plc:jk3xvtjsvyzcpqamvsgriqt6/app.bsky.feed.post/3mzxxpyr2rs2p": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:10.043Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message d'agenda sans position politique.",
+        "rationale_en": "Agenda post with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T17:29:32.678Z"
+    },
+    "yt:KsbHzJxsvWc": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:10.043Z",
+      "storyItems": [
+        "0d8e974fe981"
+      ],
+      "storyTitle": "Pouvoir d'achat : face à la hausse du coût de la vie, les Français attendent des réponses du gouvernement",
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Baisse des cotisations salariales et réduction des dépenses de l'État : orientation libérale-conservatrice.",
+        "rationale_en": "Cutting employee contributions and state spending points to a liberal-conservative orientation."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Proposition économique chiffrée sans opposition au peuple contre des élites.",
+        "rationale_en": "Economic proposal without people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-10T17:08:37.000Z"
+    },
+    "bsky:at://did:plc:bnulcjvue27qpnwzup3y7hv3/app.bsky.feed.post/3mzxwae6nqk2g": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:10.043Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Défense des services publics et des missions locales face aux baisses de financement de l'État et de la Région.",
+        "rationale_en": "Defends public services and local youth missions against funding cuts."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Appel à mobilisation sans opposition populiste marquée.",
+        "rationale_en": "Call to mobilize without marked populist framing."
+      },
+      "check": null,
+      "postTime": "2026-11-10T17:02:54.050Z"
+    },
+    "bsky:at://did:plc:bnulcjvue27qpnwzup3y7hv3/app.bsky.feed.post/3mzxw6ykmvc2g": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:10.043Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Défense des services publics et des missions locales face aux baisses de financement de l'État et de la Région.",
+        "rationale_en": "Defends public services and local youth missions against funding cuts."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Appel à mobilisation sans opposition populiste marquée.",
+        "rationale_en": "Call to mobilize without marked populist framing."
+      },
+      "check": null,
+      "postTime": "2026-11-10T17:02:08.295Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3mzxw4bkz4v2v": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:10.043Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce de rendez-vous et de dédicace, sans contenu idéologique.",
+        "rationale_en": "Event announcement and book signing with no ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T17:00:37.088Z"
+    },
+    "yt:wkn0eGyxVAY": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:10.043Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Liste de liens de réseaux sociaux sans position politique.",
+        "rationale_en": "List of social media links with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T17:00:36.000Z"
+    },
+    "yt:NUG6xSZiVP8": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:10.043Z",
+      "storyItems": [
+        "f1d66a930157",
+        "3e31a53a7042"
+      ],
+      "storyTitle": "Ce que contient le projet de loi « résilience » sur la cybersécurité, examiné à l’Assemblée nationale",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Défense du chiffrement et opposition à la suppression d'un article ; position écologiste-gauche sur les libertés numériques.",
+        "rationale_en": "Defends encryption and opposes removing an article; left-leaning position on digital rights."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Critique argumentée du gouvernement sans rhétorique populiste.",
+        "rationale_en": "Argued criticism of the government without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T16:42:28.000Z"
+    },
+    "bsky:at://did:plc:7qlw6gig76xhkjjkxl35xpxe/app.bsky.feed.post/3mzxv3quwpc26": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:10.043Z",
+      "storyItems": [
+        "abec69375b3b",
+        "269a0c843ec0",
+        "9137227d86d0",
+        "5a8baa76a6f4",
+        "dea9044ef32d",
+        "21cd0d85e26c"
+      ],
+      "storyTitle": "Une pétition appelant à fermer CNews atteint un million de signatures sur le site de l'Assemblée nationale",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Soutien à la pétition demandant la fermeture de CNews, présentée comme lutte contre le racisme à la télévision.",
+        "rationale_en": "Supports the petition to close CNews, framed as fighting racism on television."
+      },
+      "populism": {
+        "score": 0.5,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Oppose « macronistes et RN » en bloc et invoque l'indignation plutôt que des arguments détaillés.",
+        "rationale_en": "Lumps macronists and RN together and relies on indignation rather than detailed arguments."
+      },
+      "check": {
+        "claim": "Plus d'un million de Français ont signé la pétition pour la fermeture de CNews.",
+        "why_fr": "Le chiffre concerne les signatures sur le site de l'Assemblée nationale ; la commission a rejeté le débat à une courte majorité, ce que le message présente comme un blocage total.",
+        "why_en": "The figure refers to signatures on the National Assembly site; the committee rejected a debate by a narrow majority, which the post presents as a total block.",
+        "sources": [
+          {
+            "title": "La pétition appelant à supprimer CNews de l'audiovisuel français classée par la commission de l'Assemblée nationale",
+            "url": "https://www.franceinfo.fr/politique/la-petition-appelant-a-supprimer-cnews-de-l-audiovisuel-francais-classee-par-la-commission-de-l-assemblee-nationale_8276303.html"
+          }
+        ]
+      },
+      "postTime": "2026-11-10T16:42:25.849Z"
+    },
+    "yt:bdY-e8fQ9C8": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:19.982Z",
+      "storyItems": [
+        "34ea58385c5a",
+        "13a0766b5ba4",
+        "a694b33b7c75",
+        "9a5d28b2d427",
+        "9ce5239f7f72",
+        "a19a189fd6ae"
+      ],
+      "storyTitle": "Le gouvernement annonce une hausse du smic de 1,6 % à partir du 1ᵉʳ décembre",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Demande un SMIC à 1 700 € nets, indexation des salaires sur l'inflation et conditionnalité des aides aux entreprises, positions de gauche social-démocrate à radicale.",
+        "rationale_en": "Calls for a 1,700 € net minimum wage, wage indexation on inflation and conditional business aid; left-leaning economic positions."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Ton indigné (« le gouvernement n'a rien compris », « le pays est en ébullition ») mais critique argumentée de politique publique.",
+        "rationale_en": "Indignant tone (\"government understood nothing\") but mostly argued criticism of a policy."
+      },
+      "check": {
+        "claim": "La France a connu la plus faible progression du salaire minimum de l'Union européenne en dix ans.",
+        "why_fr": "Affirmation comparative chiffrée sans source précise ; la période et les indicateurs retenus méritent d'être précisés avant d'être repris.",
+        "why_en": "Comparative figure given without a precise source; the period and indicators used should be specified before being repeated.",
+        "sources": [
+          {
+            "title": "Eurostat - salaires minimums",
+            "url": "https://ec.europa.eu/eurostat"
+          }
+        ]
+      },
+      "postTime": "2026-11-10T16:27:08.000Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3mzxtypeync2h": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:19.982Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de présentation d'une réunion ; évoque une bataille contre l'extrême droite et le macronisme sans contenu idéologique précis.",
+        "rationale_en": "Event announcement; mentions fighting the far right and Macronism without concrete ideological content."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste notable.",
+        "rationale_en": "No notable populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T16:22:49.873Z"
+    },
+    "bsky:at://did:plc:of5lwk3kijgutdoyls2wrhpz/app.bsky.feed.post/3mzxtpm3og222": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:19.982Z",
+      "storyItems": [
+        "abec69375b3b",
+        "269a0c843ec0",
+        "9137227d86d0",
+        "5a8baa76a6f4",
+        "dea9044ef32d",
+        "21cd0d85e26c"
+      ],
+      "storyTitle": "Une pétition appelant à fermer CNews atteint un million de signatures sur le site de l'Assemblée nationale",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Demande de fermeture de CNews ; position de gauche sur la régulation des médias, qualifiée de discours racistes.",
+        "rationale_en": "Calls for CNews to be shut down and describes its discourse as racist; left-leaning position on media regulation."
+      },
+      "populism": {
+        "score": 0.5,
+        "markers": [
+          "delegitimation",
+          "souverainete_populaire",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Présente la chaîne comme illégitime, invoque la volonté d'un million de signataires contre le débat parlementaire.",
+        "rationale_en": "Presents the channel as illegitimate and invokes the will of a million signatories against parliamentary handling."
+      },
+      "check": {
+        "claim": "Une pétition demandant la fermeture de CNews a recueilli un million de signatures.",
+        "why_fr": "Le décompte exact et sa validation sur le site de l'Assemblée méritent d'être vérifiés auprès de la source officielle.",
+        "why_en": "The exact signature count and its validation on the Assembly site should be checked against the official source.",
+        "sources": [
+          {
+            "title": "La pétition appelant à supprimer CNews classée en commission",
+            "url": "https://www.franceinfo.fr/politique/la-petition-appelant-a-supprimer-cnews-de-l-audiovisuel-francais-classee-par-la-commission-de-l-assemblee-nationale_8276303.html"
+          }
+        ]
+      },
+      "postTime": "2026-11-10T16:17:44.431Z"
+    },
+    "bsky:at://did:plc:ymrgrrgrkf6jk23dg6w4c36d/app.bsky.feed.post/3mzxtop6jwc2u": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:19.982Z",
+      "storyItems": [
+        "7cef629d9aee",
+        "19d00bcf1d22",
+        "668fdc02f08c"
+      ],
+      "storyTitle": "Grève du 10 novembre : étudiants, lycéens et enseignants à nouveau mobilisés pour « mettre le gouvernement sous pression »",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Soutien aux mobilisations étudiantes et lycéennes pour un avenir digne, position de gauche sociale.",
+        "rationale_en": "Supports student and high-school mobilisations for a 'dignified future'; left social position."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Appel à la mobilisation dans la rue avec un ton militant, sans rhétorique anti-élites marquée.",
+        "rationale_en": "Call to street mobilisation in a militant tone, without marked anti-elite rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T16:17:14.113Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3mzxtonkv2p2f": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:19.982Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.3,
+        "rationale_fr": "Met en avant le logement comme frein à la natalité ; lecture sociale sans référence à un dispositif précis.",
+        "rationale_en": "Presents housing as a barrier to births; social reading without reference to a specific measure."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Argument chiffré et factuel, sans opposition peuple contre élites.",
+        "rationale_en": "Argument framed with figures, no people-versus-elites framing."
+      },
+      "check": {
+        "claim": "Les jeunes ont perdu 25 m² de logement en 20 ans.",
+        "why_fr": "Statistique précise sans source citée ; la mesure (surface par personne, par ménage, tranche d'âge) mérite d'être précisée.",
+        "why_en": "Precise statistic without cited source; the measure (per person, per household, age group) should be specified.",
+        "sources": [
+          {
+            "title": "INSEE - logement",
+            "url": "https://www.insee.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-10T16:17:12.403Z"
+    },
+    "yt:4QNMtwY3LTU": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:19.982Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.3,
+        "rationale_fr": "Même argument que le message précédent : le logement comme frein à la natalité, lecture sociale.",
+        "rationale_en": "Same argument as the previous message: housing as a barrier to births, social reading."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Argument chiffré et factuel, sans rhétorique populiste marquée.",
+        "rationale_en": "Figures-based argument, no marked populist rhetoric."
+      },
+      "check": {
+        "claim": "Les jeunes ont perdu 25 m² de logement en 20 ans.",
+        "why_fr": "Statistique précise sans source citée ; la mesure (surface par personne, par ménage, tranche d'âge) mérite d'être précisée.",
+        "why_en": "Precise statistic without cited source; the measure should be specified.",
+        "sources": [
+          {
+            "title": "INSEE - logement",
+            "url": "https://www.insee.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-10T16:16:54.000Z"
+    },
+    "bsky:at://did:plc:d57dxlliqj3ctzpgmentyyn3/app.bsky.feed.post/3mzxt5mg74c24": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:19.982Z",
+      "storyItems": [
+        "2c9f473001b4"
+      ],
+      "storyTitle": "Pouvoir d'achat, smic... De nouveaux abandons de la politique de l'offre de Macron",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique de la politique de l'offre de Macron au profit de mesures sociales sur les bas revenus.",
+        "rationale_en": "Criticises Macron's supply-side policy in favour of social measures for low incomes."
+      },
+      "populism": {
+        "score": 0.5,
+        "markers": [
+          "anti_elites",
+          "appel_emotionnel",
+          "simplisme"
+        ],
+        "rationale_fr": "Formule choc (« Les français ont faim ») réduisant le débat à une opposition simple et émotionnelle.",
+        "rationale_en": "Shock formula (\"the French are hungry\") reduces the debate to a simple emotional opposition."
+      },
+      "check": null,
+      "postTime": "2026-11-10T16:07:40.788Z"
+    },
+    "bsky:at://did:plc:3jl4i7ervegs6md2tvxpgfvf/app.bsky.feed.post/3mzxst5wqek25": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:19.982Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Annonce une réunion pour le programme de Jean-Luc Mélenchon, de gauche radicale.",
+        "rationale_en": "Announces a meeting for Jean-Luc Mélenchon's programme, radical left."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [],
+        "rationale_fr": "Message d'annonce, rhétorique peu marquée.",
+        "rationale_en": "Announcement message with little marked rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T16:01:50.063Z"
+    },
+    "x:2120180599285485682": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:28.809Z",
+      "storyItems": [
+        "abec69375b3b",
+        "269a0c843ec0",
+        "9137227d86d0",
+        "5a8baa76a6f4",
+        "dea9044ef32d",
+        "21cd0d85e26c"
+      ],
+      "storyTitle": "Une pétition appelant à fermer CNews atteint un million de signatures sur le site de l'Assemblée nationale",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique de la majorité et de la droite qui ont refusé un débat sur le pluralisme des médias, position de gauche sur l'information.",
+        "rationale_en": "Criticizes the majority and right for blocking a debate on media pluralism, a left-leaning stance on information."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "peuple_vs_elites",
+          "delegitimation",
+          "souverainete_populaire"
+        ],
+        "rationale_fr": "Oppose « une pétition de plus d'un million de citoyens » aux députés qui l'écartent, et présente les adversaires comme alliés de l'extrême droite.",
+        "rationale_en": "Contrasts a million-signature petition with deputies who shelved it, framing opponents as allied with the far right."
+      },
+      "check": null,
+      "postTime": "2026-11-10T15:43:40.577Z"
+    },
+    "bsky:at://did:plc:of5lwk3kijgutdoyls2wrhpz/app.bsky.feed.post/3mzxrmzv7bc22": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:28.809Z",
+      "storyItems": [
+        "abec69375b3b",
+        "269a0c843ec0",
+        "9137227d86d0",
+        "5a8baa76a6f4",
+        "dea9044ef32d",
+        "21cd0d85e26c"
+      ],
+      "storyTitle": "Une pétition appelant à fermer CNews atteint un million de signatures sur le site de l'Assemblée nationale",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Soutien à un débat sur la suppression de CNews, position écologiste et de gauche sur le pluralisme.",
+        "rationale_en": "Supports debate on removing CNews, an ecologist, left-leaning position on media pluralism."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "souverainete_populaire",
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Invoque la volonté d'un million de citoyens face à la droite et l'extrême droite, avec une formule d'indignation (« Une honte ! »).",
+        "rationale_en": "Invokes the will of a million citizens against the right and far right, with an indignant framing (\"Une honte!\")."
+      },
+      "check": null,
+      "postTime": "2026-11-10T15:40:30.751Z"
+    },
+    "bsky:at://did:plc:hiebgjpdm7uhdm2zjafcg5on/app.bsky.feed.post/3mzxqplus6c2e": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:28.809Z",
+      "storyItems": [
+        "9134dd9ee739",
+        "0111d377c21b",
+        "2871e38fffe1",
+        "a3da09f0ca29",
+        "5464be227273",
+        "59ebcd6592d3"
+      ],
+      "storyTitle": "À Abu Dhabi, les États-Unis s’entendent avec la Russie pour discuter de la sécurité européenne",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Appel à un cessez-le-feu immédiat, retrait russe et négociations, position de gauche radicale sur la guerre.",
+        "rationale_en": "Calls for immediate ceasefire, Russian withdrawal and negotiations, a far-left position on the war."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Qualifie les adversaires d'« atlantistes pro-guerre », formule polémique sans argument développé.",
+        "rationale_en": "Labels opponents as \"pro-war atlanticists\", a polemical framing without developed argument."
+      },
+      "check": null,
+      "postTime": "2026-11-10T15:24:02.981Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3mzxpwcowns2h": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:28.809Z",
+      "storyItems": [
+        "4b9663ff740e"
+      ],
+      "storyTitle": "Un tee-shirt en solidarité avec la Palestine révèle les tensions autour d’un collège tarnais",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Fait divers signalant une réaction disciplinaire sans position idéologique explicite.",
+        "rationale_en": "Reports a school disciplinary reaction without explicit ideological position."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Présentation indignée d'un fait sans argumentation détaillée.",
+        "rationale_en": "Indignant presentation of an event without detailed argument."
+      },
+      "check": null,
+      "postTime": "2026-11-10T15:09:54.487Z"
+    },
+    "bsky:at://did:plc:bnulcjvue27qpnwzup3y7hv3/app.bsky.feed.post/3mzxpqlihzk2n": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:28.809Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Appel général à la mobilisation sans contenu idéologique précis.",
+        "rationale_en": "General call to mobilize with no specific ideological content."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message de mobilisation militante sans rhétorique populiste marquée.",
+        "rationale_en": "Militant mobilization message without marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T15:06:42.388Z"
+    },
+    "yt:N9vYExJONh8": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:28.809Z",
+      "storyItems": [
+        "c20d9cf90127",
+        "e4f5120f1d95",
+        "43e1c4906c03",
+        "d1e6cc1be4c2",
+        "96ee1be46543",
+        "c4a094dcdcaa"
+      ],
+      "storyTitle": "\"Il faut tout changer !\", scande Jean-Luc Mélenchon lors de son grand meeting du Bourget",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Soutien à la mobilisation sociale et au programme de Mélenchon, qui vise des mesures de gauche radicale.",
+        "rationale_en": "Supports social mobilization and Mélenchon's programme, which calls for far-left measures."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Met en avant le pouvoir d'achat et le succès du meeting sans argument chiffré détaillé.",
+        "rationale_en": "Highlights purchasing power and meeting turnout without detailed argument."
+      },
+      "check": {
+        "claim": "Grand meeting au Bourget ayant réuni plus de 20 000 personnes",
+        "why_fr": "Le chiffre semble provenir des organisateurs ; les estimations indépendantes peuvent différer.",
+        "why_en": "The figure appears to come from organizers; independent estimates may differ.",
+        "sources": [
+          {
+            "title": "LFI annonce la réimpression de 300 000 exemplaires",
+            "url": "https://www.leparisien.fr/elections/presidentielle/presidentielle-2027-lfi-annonce-la-reimpression-de-300-000-exemplaires-du-livre-programme-de-jean-luc-melenchon-10-11-2026-Q2S5JUJG6NHGPFJRP3WRUCHWQE.php"
+          }
+        ]
+      },
+      "postTime": "2026-11-10T15:01:43.000Z"
+    },
+    "yt:gZ2O69ZsrxM": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:28.809Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Compte rendu institutionnel d'une intervention sur la coopération contre les incendies, sans position politique tranchée.",
+        "rationale_en": "Institutional report on a wildfire cooperation intervention, without a clear political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T14:48:28.000Z"
+    },
+    "bsky:at://did:plc:dzhhf6dtekdyjpcvm5xr6jeb/app.bsky.feed.post/3mzxof52xzs2u": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:28.809Z",
+      "storyItems": [
+        "024362b5a253",
+        "7d15d2a78dce",
+        "16a60b02b696",
+        "3ece05b26a43",
+        "faf582845cbb"
+      ],
+      "storyTitle": "Blocages de lycées : \"Le premier des droits en France, c'est le droit à l'éducation. Vous ne pouvez pas priver votre camarade du droit à l'éducation\", réagit Édouard Geffray, ministre de l'Éducation nationale",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Soutien à l'intersyndicale de l'éducation, position de gauche sur les services publics et les mobilisations sociales.",
+        "rationale_en": "Supports education unions, a left-leaning position on public services and social mobilization."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Présence de soutien militant sans argument chiffré développé.",
+        "rationale_en": "Militant support presented without developed argument."
+      },
+      "check": {
+        "claim": "Près de 300 membres de l'Éducation nationale blessés lors du mouvement lycéen",
+        "why_fr": "Un autre article indique un bilan antérieur de plus de 200 blessés ; les chiffres évoluent et leur source doit être précisée.",
+        "why_en": "Another article gives an earlier toll of over 200 injured; figures are changing and their source should be specified.",
+        "sources": [
+          {
+            "title": "Près de 300 membres de l'Education nationale ont été blessés lors du mouvement lycéen",
+            "url": "https://www.franceinfo.fr/societe/education/blocage-des-lycees/pres-de-300-membres-de-l-education-nationale-ont-ete-blesses-lors-du-mouvement-lyceen-selon-le-gouvernement_8276330.html"
+          }
+        ]
+      },
+      "postTime": "2026-11-10T14:42:24.424Z"
+    },
+    "yt:9J-9qv3NPUw": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:36.330Z",
+      "storyItems": [
+        "e7e1e2621962",
+        "727187b137a3",
+        "1c36e4854631"
+      ],
+      "storyTitle": "Aux obsèques de Pengo Bossio Wangi, à Guyancourt : « Mon fils n’est pas une couleur de peau, mon fils est un être humain »",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique de CNews et des médias accusés de responsabilité dans le racisme ; position de gauche sur les médias et la lutte contre le racisme.",
+        "rationale_en": "Criticizes CNews and media for responsibility in racism; a left-leaning position on media and anti-racism."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Oppose les « macronistes » et « éditorialistes d'extrême droite » comme adversaires, avec un ton indigné.",
+        "rationale_en": "Frames macronists and far-right commentators as opponents, with an indignant tone."
+      },
+      "check": null,
+      "postTime": "2026-11-10T14:11:49.000Z"
+    },
+    "bsky:at://did:plc:fd2jc6zti4gpnk64f7rpftk7/app.bsky.feed.post/3mzxmltycv225": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:36.330Z",
+      "storyItems": [
+        "abec69375b3b",
+        "269a0c843ec0",
+        "9137227d86d0",
+        "5a8baa76a6f4",
+        "dea9044ef32d",
+        "21cd0d85e26c"
+      ],
+      "storyTitle": "Une pétition appelant à fermer CNews atteint un million de signatures sur le site de l'Assemblée nationale",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Défend la fermeture de CNews et critique la droite et le bloc central ; position de gauche sur les médias.",
+        "rationale_en": "Defends closing CNews and criticizes the right and centrist bloc; left-leaning position on media."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel",
+          "souverainete_populaire"
+        ],
+        "rationale_fr": "Oppose la volonté de la pétition (un million de signatures) aux choix de la majorité, qualifiés de « déni démocratique ».",
+        "rationale_en": "Sets the petition's million signatures against the majority's choices, called a democratic denial."
+      },
+      "check": null,
+      "postTime": "2026-11-10T14:10:22.299Z"
+    },
+    "bsky:at://did:plc:trj7jvmh2g7ekxbuqem6zgzq/app.bsky.feed.post/3mzxmcoxp4s2l": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:36.330Z",
+      "storyItems": [
+        "5fd1564a9105",
+        "a38a1d0ca3a0"
+      ],
+      "storyTitle": "Cybersécurité: les secteurs \"hautement critiques\" bientôt inscrits dans la loi",
+      "political": true,
+      "lean": {
+        "score": 0,
+        "rationale_fr": "Position technique sur la cybersécurité et la souveraineté numérique, sans marqueur idéologique clair.",
+        "rationale_en": "Technical position on cybersecurity and digital sovereignty, with no clear ideological marker."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Critique argumentée d'un projet de loi, sans rhétorique populiste.",
+        "rationale_en": "Reasoned criticism of a bill, without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T14:05:15.043Z"
+    },
+    "bsky:at://did:plc:k4zxrbhn35w47kyskzs3pse4/app.bsky.feed.post/3mzxm42gx422d": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:36.330Z",
+      "storyItems": [
+        "abec69375b3b",
+        "269a0c843ec0",
+        "9137227d86d0",
+        "5a8baa76a6f4",
+        "dea9044ef32d",
+        "21cd0d85e26c"
+      ],
+      "storyTitle": "Une pétition appelant à fermer CNews atteint un million de signatures sur le site de l'Assemblée nationale",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique de la droite et de la Macronie et défense de la fermeture de CNews ; position de gauche sur les médias.",
+        "rationale_en": "Criticizes the right and Macronie and defends closing CNews; left-leaning position on media."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel",
+          "anti_elites"
+        ],
+        "rationale_fr": "Présente la Macronie et la droite comme refusant « la colère citoyenne » et protégeant « la chaîne de Bolloré ».",
+        "rationale_en": "Presents Macronie and the right as refusing 'citizen anger' and protecting 'Bolloré's channel'."
+      },
+      "check": null,
+      "postTime": "2026-11-10T14:01:32.193Z"
+    },
+    "bsky:at://did:plc:7howemlmmr5kgkcif2zeob26/app.bsky.feed.post/3mzxlm4446s2o": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:36.330Z",
+      "storyItems": [
+        "693e276b9910",
+        "bb0f681bc3fd",
+        "c75c798432c4",
+        "85b6802b25e0",
+        "81c836f98d17",
+        "4dbafea05e73"
+      ],
+      "storyTitle": "La députée de La France insoumise Farida Amrani, \"légèrement blessée\" par un tir de mortier dans un salon de coiffure",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de soutien sans contenu idéologique sur le fond.",
+        "rationale_en": "Support message with no ideological content on substance."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Dénonce des « méthodes de violence et d'intimidation » en termes émotionnels, sans rhétorique populiste.",
+        "rationale_en": "Denounces 'violence and intimidation' in emotional terms, without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T13:52:37.071Z"
+    },
+    "yt:g8U-oO820L4": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:36.330Z",
+      "storyItems": [
+        "abec69375b3b",
+        "269a0c843ec0",
+        "9137227d86d0",
+        "5a8baa76a6f4",
+        "dea9044ef32d",
+        "21cd0d85e26c"
+      ],
+      "storyTitle": "Une pétition appelant à fermer CNews atteint un million de signatures sur le site de l'Assemblée nationale",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Défend un débat sur la fermeture de CNews et critique son impunité ; position de gauche sur les médias.",
+        "rationale_en": "Defends a debate on closing CNews and criticizes its impunity; left-leaning position on media."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Présente la chaîne comme jouissant d'une « impunité » et la commission comme refusant le débat, avec un ton militant.",
+        "rationale_en": "Portrays the channel as enjoying 'impunity' and the committee as refusing debate, in a militant tone."
+      },
+      "check": {
+        "claim": "CNews est condamnée en moyenne tous les deux mois par l'Arcom.",
+        "why_fr": "Affirmation chiffrée sur la fréquence des sanctions ; la période de comparaison et le décompte précis ne sont pas précisés dans le message.",
+        "why_en": "Numerical claim on sanction frequency; the comparison period and exact count are not specified in the message.",
+        "sources": []
+      },
+      "postTime": "2026-11-10T13:47:19.000Z"
+    },
+    "yt:ol6p3kflf_A": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:36.330Z",
+      "storyItems": [
+        "5fd1564a9105",
+        "a38a1d0ca3a0"
+      ],
+      "storyTitle": "Cybersécurité: les secteurs \"hautement critiques\" bientôt inscrits dans la loi",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Propose 5 milliards d'euros de mesures pour répondre aux revendications étudiantes et lycéennes, financées par une loi de fin de gestion ; orientation de gauche.",
+        "rationale_en": "Proposes 5 billion euros for student demands via an end-of-year finance bill; left-leaning orientation."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "anti_elites"
+        ],
+        "rationale_fr": "Critique le gouvernement qui impose des coupes, sans rhétorique populiste marquée.",
+        "rationale_en": "Criticizes the government for imposing cuts, without strong populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T13:42:17.000Z"
+    },
+    "bsky:at://did:plc:acgikw5qlvyil2hucces4she/app.bsky.feed.post/3mzxk5sgitk2h": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:36.330Z",
+      "storyItems": [
+        "693e276b9910",
+        "bb0f681bc3fd",
+        "c75c798432c4",
+        "85b6802b25e0",
+        "81c836f98d17",
+        "4dbafea05e73"
+      ],
+      "storyTitle": "La députée de La France insoumise Farida Amrani, \"légèrement blessée\" par un tir de mortier dans un salon de coiffure",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de soutien sans contenu idéologique sur le fond.",
+        "rationale_en": "Support message with no ideological content on substance."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Dénonce des « méthodes de violence et d'intimidation » en termes émotionnels, sans rhétorique populiste.",
+        "rationale_en": "Denounces 'violence and intimidation' in emotional terms, without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T13:26:43.421Z"
+    },
+    "bsky:at://did:plc:ymrgrrgrkf6jk23dg6w4c36d/app.bsky.feed.post/3mzxk3pmrmc2a": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:43.199Z",
+      "storyItems": [
+        "7cef629d9aee",
+        "19d00bcf1d22",
+        "668fdc02f08c"
+      ],
+      "storyTitle": "Grève du 10 novembre : étudiants, lycéens et enseignants à nouveau mobilisés pour « mettre le gouvernement sous pression »",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Soutien à la mobilisation lycéenne et étudiante pour leurs droits, position de gauche sur la contestation sociale.",
+        "rationale_en": "Supports students' mobilisation for their rights, a left-leaning position on social protest."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message bref sans attaque contre des élites ni rhétorique populiste.",
+        "rationale_en": "Brief message with no attack on elites and no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T13:25:33.372Z"
+    },
+    "yt:ycNAqTmUTUM": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:43.199Z",
+      "storyItems": [
+        "abec69375b3b",
+        "269a0c843ec0",
+        "9137227d86d0",
+        "5a8baa76a6f4",
+        "dea9044ef32d",
+        "21cd0d85e26c"
+      ],
+      "storyTitle": "Une pétition appelant à fermer CNews atteint un million de signatures sur le site de l'Assemblée nationale",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Soutien à une pétition pour supprimer CNews et critique de la droite et du RN, positions de gauche radicale sur les médias.",
+        "rationale_en": "Supports a petition to shut down CNews and criticises the right and RN, far-left positions on media."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Présente les adversaires comme illégitimes (« devrait avoir honte ») et mobilise l'indignation.",
+        "rationale_en": "Presents opponents as illegitimate (\"should be ashamed\") and mobilises indignation."
+      },
+      "check": null,
+      "postTime": "2026-11-10T13:15:19.000Z"
+    },
+    "bsky:at://did:plc:otrocyu2h7akfbiurwlqxxl6/app.bsky.feed.post/3mzxj3j4q7k2x": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:43.199Z",
+      "storyItems": [
+        "693e276b9910",
+        "bb0f681bc3fd",
+        "c75c798432c4",
+        "85b6802b25e0",
+        "81c836f98d17",
+        "4dbafea05e73"
+      ],
+      "storyTitle": "La députée de La France insoumise Farida Amrani, \"légèrement blessée\" par un tir de mortier dans un salon de coiffure",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Soutien à une députée LFI et dénonciation de méthodes de violence, sans proposition de politique détaillée.",
+        "rationale_en": "Solidarity with an LFI deputy and condemnation of violence, with no detailed policy proposal."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Appel à la solidarité et à l'indignation face aux violences subies par une élue.",
+        "rationale_en": "Calls for solidarity and indignation over violence against an elected official."
+      },
+      "check": null,
+      "postTime": "2026-11-10T13:07:32.814Z"
+    },
+    "yt:PbEdqG1dfoQ": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:43.199Z",
+      "storyItems": [
+        "f1d66a930157",
+        "3e31a53a7042"
+      ],
+      "storyTitle": "Ce que contient le projet de loi « résilience » sur la cybersécurité, examiné à l’Assemblée nationale",
+      "political": true,
+      "lean": {
+        "score": 0,
+        "rationale_fr": "Présente l'examen d'un projet de loi sur la résilience et la cybersécurité, sans clivage idéologique marqué.",
+        "rationale_en": "Presents debate on a resilience and cybersecurity bill, without marked ideological divide."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Discours technique et institutionnel, sans rhétorique populiste.",
+        "rationale_en": "Technical, institutional discourse with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T13:05:49.000Z"
+    },
+    "yt:N-QzNsFkbfk": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:43.199Z",
+      "storyItems": [
+        "9d2353f49c67",
+        "41ed48d6613a"
+      ],
+      "storyTitle": "Auto-déclaration des arrêts de travail : le gouvernement scandalisé par cette idée de Mélenchon à laquelle il était favorable il y a deux ans",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Proposition d'auto-déclaration des arrêts maladie de courte durée, orientation sociale et sécurité sociale de gauche.",
+        "rationale_en": "Proposes self-certification of short sick leave, a social-leaning left position on social security."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "simplisme"
+        ],
+        "rationale_fr": "Présente une mesure comme une solution simple à des problèmes de santé et d'accès aux soins.",
+        "rationale_en": "Presents a measure as a simple fix for healthcare access problems."
+      },
+      "check": null,
+      "postTime": "2026-11-10T13:05:35.000Z"
+    },
+    "yt:CXQbrvYN6oU": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:43.199Z",
+      "storyItems": [
+        "f1d66a930157",
+        "3e31a53a7042"
+      ],
+      "storyTitle": "Ce que contient le projet de loi « résilience » sur la cybersécurité, examiné à l’Assemblée nationale",
+      "political": true,
+      "lean": {
+        "score": 0,
+        "rationale_fr": "Critique le retard du gouvernement sur une directive européenne, sans position idéologique tranchée.",
+        "rationale_en": "Criticises government delay on an EU directive, without a clear ideological stance."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Critique argumentée d'un retard législatif, sans rhétorique populiste.",
+        "rationale_en": "Reasoned criticism of a legislative delay, without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T13:03:19.000Z"
+    },
+    "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3mzxiql342s2t": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:43.199Z",
+      "storyItems": [
+        "abec69375b3b",
+        "269a0c843ec0",
+        "9137227d86d0",
+        "5a8baa76a6f4",
+        "dea9044ef32d",
+        "21cd0d85e26c"
+      ],
+      "storyTitle": "Une pétition appelant à fermer CNews atteint un million de signatures sur le site de l'Assemblée nationale",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Oppose RN, droite et macronistes sur la question du racisme et soutient la pétition contre CNews.",
+        "rationale_en": "Opposes RN, right and Macronists on racism and supports the petition against CNews."
+      },
+      "populism": {
+        "score": 0.5,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel",
+          "anti_elites"
+        ],
+        "rationale_fr": "Présente les adversaires comme complices du racisme et oppose un « nous » moral à ceux qui défendent la chaîne.",
+        "rationale_en": "Portrays opponents as complicit in racism and sets a moral 'we' against those defending the channel."
+      },
+      "check": null,
+      "postTime": "2026-11-10T13:01:25.755Z"
+    },
+    "yt:li1UvOu1X8Q": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:43.199Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Débat sur les alternatives au néolibéralisme et remerciements, orientation anticapitaliste modérée.",
+        "rationale_en": "Debate on alternatives to neoliberalism, moderately anti-capitalist orientation."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "anti_elites"
+        ],
+        "rationale_fr": "Critique du néolibéralisme sans cibler nommément des élites, rhétorique modérée.",
+        "rationale_en": "Criticises neoliberalism without naming specific elites, moderate rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T10:45:03.000Z"
+    },
+    "yt:iabEVrkjiHw": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:47.367Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message annonçant une passage radio, sans position politique.",
+        "rationale_en": "Post announcing a radio appearance, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste présente.",
+        "rationale_en": "No populist rhetoric present."
+      },
+      "check": null,
+      "postTime": "2026-11-10T08:57:20.000Z"
+    },
+    "x:2119851455276286164": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:47.367Z",
+      "storyItems": [
+        "c20d9cf90127",
+        "e4f5120f1d95",
+        "43e1c4906c03",
+        "d1e6cc1be4c2",
+        "96ee1be46543",
+        "c4a094dcdcaa"
+      ],
+      "storyTitle": "\"Il faut tout changer !\", scande Jean-Luc Mélenchon lors de son grand meeting du Bourget",
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Critique de la position de Mélenchon sur l'Ukraine et soutien implicite à la position ukrainienne ; orientation peu marquée sur l'axe gauche-droite.",
+        "rationale_en": "Criticizes Mélenchon's Ukraine stance and implicitly backs Ukraine's position; left-right orientation is weakly marked."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Qualifie le discours adverse de « confusion » et de « blablacratie », sans attaque populiste structurée.",
+        "rationale_en": "Describes the opposing argument as 'confusion' and 'blablacratie', without structured populist framing."
+      },
+      "check": null,
+      "postTime": "2026-11-09T17:55:46.530Z"
+    },
+    "x:2119830766364532796": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:47.367Z",
+      "storyItems": [
+        "c20d9cf90127",
+        "e4f5120f1d95",
+        "43e1c4906c03",
+        "d1e6cc1be4c2",
+        "96ee1be46543",
+        "c4a094dcdcaa"
+      ],
+      "storyTitle": "\"Il faut tout changer !\", scande Jean-Luc Mélenchon lors de son grand meeting du Bourget",
+      "political": true,
+      "lean": {
+        "score": 0,
+        "rationale_fr": "Critique de la position de Mélenchon sur l'Ukraine en la comparant à celle de Trump ; enjeu de politique étrangère sans marqueur clair gauche-droite.",
+        "rationale_en": "Criticizes Mélenchon's Ukraine stance by comparing it to Trump's; foreign-policy issue without a clear left-right marker."
+      },
+      "populism": {
+        "score": 0.15,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Question rhétorique alarmiste sur l'« absorption » de l'Est de l'Ukraine, sans argument développé.",
+        "rationale_en": "Rhetorical alarmist question about the 'absorption' of eastern Ukraine, without developed argument."
+      },
+      "check": null,
+      "postTime": "2026-11-09T16:33:33.909Z"
+    },
+    "bsky:at://did:plc:k3duvs7l7xsp7varh7eoajnq/app.bsky.feed.post/3mzt3efeauc2p": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T21:00:47.367Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Remerciements et compte rendu d'un loto local, sans contenu idéologique.",
+        "rationale_en": "Thanks and report on a local lotto event, with no ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste présente.",
+        "rationale_en": "No populist rhetoric present."
+      },
+      "check": null,
+      "postTime": "2026-11-08T18:51:19.512Z"
     }
   },
   "failures": {
