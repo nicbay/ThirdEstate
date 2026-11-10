@@ -7592,6 +7592,27 @@
       },
       "check": null,
       "postTime": "2026-11-09T08:18:41.816Z"
+    },
+    "yt:7K-5tSDZimI": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-10T04:18:50.702Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de promotion d'une intervention médiatique et de liens vers des réseaux sociaux, sans contenu idéologique.",
+        "rationale_en": "Promotion of a media appearance and social links, with no ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste dans ce message de promotion.",
+        "rationale_en": "No populist rhetoric in this promotional message."
+      },
+      "check": null,
+      "postTime": "2026-11-09T12:40:22.000Z"
     }
   },
   "failures": {
