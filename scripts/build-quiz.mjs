@@ -116,6 +116,43 @@ const QUESTIONS = [
 
 const GROUPS = ["LFI-NFP", "GDR", "ECOS", "SOC", "LIOT", "DEM", "EPR", "HOR", "DR", "UDR", "RN"];
 
+/**
+ * Long version: two measures from each candidate's own 2027 programme (public/data/programmes/compare.json),
+ * asked as a proposal without saying whose it is. Chosen by hand from each candidate's logged measures so that
+ * every candidate has the same number, the wording is a concrete proposal (not a slogan or a budget total), and
+ * the set covers different subjects. The statement restates the measure in neutral terms; the quiz shows the
+ * candidate's own wording (`text` in compare.json) next to it once the results are out. The build fails if a
+ * measure no longer exists or has been dropped from the programme.
+ */
+const MEASURES = [
+  ["arthaud", "m08", "Faut-il exproprier sans indemnité les actionnaires des grandes entreprises, en commençant par l’industrie pétrolière et l’armement ?", "Should the shareholders of large companies be expropriated without compensation, starting with the oil and arms industries?"],
+  ["arthaud", "m09", "Faut-il régulariser tous les sans-papiers et garantir à chacun la liberté de circuler et de s’installer ?", "Should all undocumented migrants be regularised and everyone be free to move and settle?"],
+  ["melenchon", "L919a7c", "Faut-il rétablir la retraite à 60 ans à taux plein, après 40 années de cotisation ?", "Should retirement at 60 on a full pension, after 40 years of contributions, be restored?"],
+  ["melenchon", "L171b77", "Faut-il que la Sécurité sociale rembourse à 100 % les soins prescrits, en absorbant les complémentaires santé ?", "Should Social Security reimburse 100% of prescribed care, absorbing top-up health insurers?"],
+  ["roussel", "m06", "Faut-il passer à la semaine de 32 heures, sans baisse de salaire ?", "Should the working week go down to 32 hours, with no cut in pay?"],
+  ["roussel", "m18", "Faut-il nationaliser les grandes banques et compagnies d’assurance pour créer un pôle public financier ?", "Should the big banks and insurers be nationalised to form a public financial group?"],
+  ["tondelier", "m07", "Faut-il créer un revenu versé automatiquement à partir de 18 ans, garantissant à chacun au moins 918 € par mois ?", "Should an income be paid automatically from the age of 18, guaranteeing everyone at least €918 a month?"],
+  ["tondelier", "m11", "Faut-il que toute la nourriture servie dans les cantines publiques soit bio, locale et moins carnée ?", "Should all food served in public canteens be organic, local and less meat-based?"],
+  ["glucksmann", "m06", "Faut-il instaurer un service civique obligatoire de dix mois pour tous les jeunes ?", "Should a compulsory ten-month civic service be introduced for all young people?"],
+  ["glucksmann", "m10", "Faut-il saisir les 206 milliards d’euros d’avoirs publics russes gelés en Europe pour financer le soutien à l’Ukraine ?", "Should the €206bn of Russian state assets frozen in Europe be seized to fund support for Ukraine?"],
+  ["attal", "m01", "Faut-il supprimer l’âge légal de départ à la retraite et ne retenir que la durée de cotisation ?", "Should the legal retirement age be scrapped, keeping only the number of years of contributions?"],
+  ["attal", "m16", "Faut-il rétablir le redoublement, un certificat d’études en fin de CM2 et les groupes de niveau au collège ?", "Should repeating a year, a primary-school leaving certificate and ability groups in lower secondary school be brought back?"],
+  ["philippe", "m01", "Faut-il porter progressivement l’âge de départ à la retraite à 65 ans ?", "Should the retirement age be raised gradually to 65?"],
+  ["philippe", "m27", "Faut-il suspendre le regroupement familial pendant cinq ans ?", "Should family reunification be suspended for five years?"],
+  ["villepin", "m04", "Faut-il créer un impôt unique et fortement progressif sur le patrimoine des 1 % les plus riches, à partir de 2,2 millions d’euros ?", "Should there be a single, steeply progressive tax on the wealth of the richest 1%, starting at €2.2 million?"],
+  ["villepin", "m12", "Faut-il reprendre les autoroutes en gestion publique à la fin des concessions ?", "Should motorways return to public management when the concessions end?"],
+  ["lisnard", "m11", "Faut-il remplacer les départements et les régions par des provinces ?", "Should départements and regions be replaced by provinces?"],
+  ["lisnard", "m13", "Faut-il réserver le statut de fonctionnaire aux missions régaliennes et passer les autres agents publics sous contrat de droit privé ?", "Should civil-servant status be kept for core state functions only, with other public employees on private-law contracts?"],
+  ["retailleau", "r05", "Faut-il fusionner le RSA, la prime d’activité et l’ASS en un revenu réduit de 30 %, avec 15 heures d’activité obligatoires par semaine ?", "Should the RSA, the in-work bonus and the ASS be merged into one benefit cut by 30%, with 15 compulsory hours of activity a week?"],
+  ["retailleau", "r10", "Faut-il permettre au président, quand le Conseil constitutionnel censure une loi, de la soumettre au référendum ou au Congrès ?", "Should the president be able to put a law struck down by the Constitutional Council to a referendum or to Congress?"],
+  ["dupont-aignan", "d01", "Faut-il organiser un référendum sur l’appartenance de la France à l’Union européenne ?", "Should a referendum be held on France’s membership of the European Union?"],
+  ["dupont-aignan", "d16", "Faut-il supprimer la TVA sur 50 produits de première nécessité ?", "Should VAT be removed from 50 basic necessities?"],
+  ["le-pen", "m03", "Faut-il réserver les prestations familiales aux foyers dont au moins un parent est français ?", "Should family benefits be reserved for households where at least one parent is French?"],
+  ["le-pen", "m23", "Faut-il abroger la loi qui interdit la recherche d’hydrocarbures sur le sol français ?", "Should the law banning exploration for oil and gas on French soil be repealed?"],
+  ["zemmour", "z03", "Faut-il expulser tout étranger, même en situation régulière, après un an de chômage ?", "Should any foreigner, even one legally resident, be expelled after a year of unemployment?"],
+  ["zemmour", "z23", "Faut-il sortir la France de l’OTAN ?", "Should France leave NATO?"],
+];
+
 const deputes = await readJson(new URL("deputes.json", AN));
 const scrutins = await readJson(new URL("scrutins.json", AN));
 const byNum = new Map(scrutins.map((s) => [s[0], s]));
@@ -223,8 +260,80 @@ for (const g of [...GROUPS, "NI"]) {
   groups[g] = { libelle: ds[0].groupe?.libelle ?? "Non inscrits", couleur: ds[0].groupe?.couleur ?? "#8D949A", n: ds.length, line: line.join(""), cohesion, t: gRank[g] ?? "" };
 }
 
+// ---------- the 2027 candidates: who they are, and which group(s) stand for them on the votes ----------
+const CAND = new URL("../public/data/candidates/", import.meta.url);
+const candidates = [];
+for (const f of (await readdir(CAND)).filter((x) => x.endsWith(".json") && !["index.json", "pay-scales.json"].includes(x))) {
+  const c = await readJson(new URL(f, CAND));
+  if (!c.slug || !c.quiz?.groups?.length) continue;
+  for (const g of c.quiz.groups) if (!groups[g]) throw new Error(`${c.slug}: unknown group ${g}`);
+  candidates.push({ slug: c.slug, name: c.name, pollName: c.pollName ?? c.name, photo: c.photo?.src ?? null, party: { fr: c.party.fr, en: c.party.en }, groups: c.quiz.groups, note: c.quiz.note ?? null });
+}
+
+// ---------- own measures (long version) ----------
+const compare = await readJson(new URL("../public/data/programmes/compare.json", import.meta.url));
+const measures = MEASURES.map(([slug, id, fr, en]) => {
+  const m = compare.candidates.find((c) => c.slug === slug)?.measures.find((x) => x.id === id);
+  if (!m) throw new Error(`measure ${slug}/${id} not found in compare.json`);
+  if (m.status === "dropped") throw new Error(`measure ${slug}/${id} was dropped from the programme`);
+  if (!candidates.some((c) => c.slug === slug)) throw new Error(`measure ${slug}/${id}: no candidate file`);
+  return { slug, id, theme: m.theme, fr, en, text: m.text };
+});
+const perCand = new Map();
+for (const m of measures) perCand.set(m.slug, (perCand.get(m.slug) ?? 0) + 1);
+if (new Set(candidates.map((c) => perCand.get(c.slug) ?? 0)).size !== 1) throw new Error(`measures per candidate differ: ${JSON.stringify([...perCand])}`);
+
+// ---------- which votes to ask: the order that tells the candidates apart fastest ----------
+// A candidate's position on a vote is the mean of their groups' lines (P = 1, A = 0, C = −1). Greedy: at each
+// step take the vote that adds the most separation between pairs of candidates (each pair's distance counts up
+// to 3 votes' worth, so pairs already far apart stop attracting questions), minus a penalty when its subject
+// has already been asked. The short version is the first SHORT votes of that order, the long one the first LONG.
+const SHORT = 10, LONG = 14;
+const VAL = { P: 1, A: 0, C: -1, "-": null };
+const cv = candidates.map((c) => QUESTIONS.map((_, k) => {
+  const v = c.groups.map((g) => VAL[groups[g].line[k]]).filter((x) => x != null);
+  return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null;
+}));
+const order = [];
+const dist = candidates.map(() => candidates.map(() => 0));
+while (order.length < QUESTIONS.length) {
+  let best = -1, bestGain = -Infinity;
+  QUESTIONS.forEach((q, k) => {
+    if (order.includes(k)) return;
+    let gain = 0;
+    for (let i = 0; i < candidates.length; i++) for (let j = i + 1; j < candidates.length; j++) {
+      if (cv[i][k] == null || cv[j][k] == null) continue;
+      const d = Math.abs(cv[i][k] - cv[j][k]) / 2;
+      gain += Math.min(3, dist[i][j] + d) - Math.min(3, dist[i][j]);
+    }
+    gain -= 2.5 * order.filter((o) => QUESTIONS[o].theme === q.theme).length;
+    if (gain > bestGain) { bestGain = gain; best = k; }
+  });
+  order.push(best);
+  for (let i = 0; i < candidates.length; i++) for (let j = i + 1; j < candidates.length; j++) if (cv[i][best] != null && cv[j][best] != null) dist[i][j] += Math.abs(cv[i][best] - cv[j][best]) / 2;
+}
+// long version: measures in two rounds (each candidate once per round, in an order that alternates sides of the
+// hemicycle so neighbours on the list are not neighbours in politics), a vote after every two measures
+const stride = (n) => Array.from({ length: n }, (_, i) => (i * 5) % n); // 5 and 13 are coprime: visits everyone
+const bySlug = candidates.map((c) => measures.map((m, i) => ({ m, i })).filter((x) => x.m.slug === c.slug).map((x) => x.i));
+const mOrder = [0, 1].flatMap((round) => stride(candidates.length).map((ci) => bySlug[ci][round]).filter((x) => x != null));
+const longOrder = [];
+const lv = order.slice(0, LONG);
+for (let i = 0, v = 0, m = 0; v < lv.length || m < mOrder.length; i++) {
+  if (i % 3 === 0 && v < lv.length) longOrder.push(`v${lv[v++]}`);
+  else if (m < mOrder.length) longOrder.push(`m${mOrder[m++]}`);
+  else longOrder.push(`v${lv[v++]}`);
+}
+// a stamp of the question set: share links made for another set are not decoded as if they were for this one
+const rev = [...`${QUESTIONS.map((q) => q.id).join()}|${measures.map((m) => m.slug + m.id).join()}|${order.join()}`].reduce((h, ch) => (Math.imul(h, 31) + ch.charCodeAt(0)) >>> 0, 7).toString(36).slice(0, 4);
+
 const out = {
   generatedAt: new Date().toISOString(),
+  rev,
+  short: order.slice(0, SHORT).map((k) => `v${k}`),
+  long: longOrder,
+  candidates,
+  measures,
   legislature: 17,
   questions: QUESTIONS.map((q) => {
     const s = byNum.get(q.n);
@@ -235,4 +344,4 @@ const out = {
   mps,
 };
 await writeFile(new URL("quiz.json", AN), JSON.stringify(out));
-console.log(`✓ quiz: ${QUESTIONS.length} questions, ${mps.length} MPs, ${Object.keys(groups).length} groups`);
+console.log(`✓ quiz: ${QUESTIONS.length} votes (short: ${out.short.map((x) => QUESTIONS[x.slice(1)].id).join(", ")}), ${measures.length} measures, long ${longOrder.length} questions, ${candidates.length} candidates, ${mps.length} MPs, rev ${rev}`);

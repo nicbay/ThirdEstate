@@ -180,3 +180,18 @@ glyphs as well as colour.
   `aria-pressed`.
 - All motion is disabled under `prefers-reduced-motion: reduce`.
 - Charts and maps carry `role="img"` and labels; every map area has a tooltip and a title.
+
+## Pages rebuilt on the pixel theme
+
+Each keeps its styles in its own file under `src/styles/`, imported by its view.
+
+- **Shift map** (`shifts.css`): the map sits on a night stage; the timeline of election pairs is the control
+  (click, drag, arrow keys, play); arrows swing from one pair to the next; a card replaces the tooltip; the list
+  of biggest moves lights its arrow. The homepage card keeps the light version. Encoding rules above are unchanged.
+- **Simulator** (`simulator.css`): scenario cards computed from the polls, a first round → qualifiers → runoff
+  strip, undo/redo, transfers badged measured or assumed, pin and compare.
+- **Quiz** (`quiz.css`): a short version (10 Assembly votes chosen to separate the candidates) and a long one
+  (plus two measures per candidate, unnamed until the results); deal breakers and compatibles per candidate; the
+  reader's place on the left–right axis, overall and subject by subject. Proximity, never voting advice.
+- **Town photos** (`src/lib/pixelate.ts`): shown as pixel art first, resolving into the photograph on hover,
+  tap, focus or the button. People's portraits are never pixelated.
