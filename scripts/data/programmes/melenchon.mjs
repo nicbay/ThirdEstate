@@ -133,6 +133,50 @@ export default {
 
   // Section (or abridged sub-heading) titles that settle the theme on their own: [regex, theme].
   // Checked before keyword scoring, in order.
+  // An older, complete edition laid under the lineages (build-programme.mjs, attachBaseline): it adds each
+  // measure's 2020 wording where one matches, and changes no id, status or count. The 2022 booklet above is
+  // abridged, so a measure "absent in 2022" may simply have been left out of it: this edition settles that.
+  baseline: {
+    id: "f20",
+    year: 2020,
+    kind: "baseline-pdf",
+    label: { fr: "Édition 2020", en: "2020 edition" },
+    title: "L’Avenir en commun – version actualisée, avril 2020",
+    date: "2020-04",
+    text: "avenir-en-commun-2020.txt", // pdftotext -layout -enc UTF-8, one "=== page N ===" block per page
+    pagesTotal: 67,
+    bodyFrom: 5, bodyTo: 61, // pages 62+ explain how the programme was updated: not measures
+    chapters: {
+      1: ["Face à la crise démocratique, convoquer l’assemblée constituante de la 6e République", "institutions"],
+      2: ["Face au chômage et à l’urgence sociale, partager les richesses, mettre au pas la finance", "economie"],
+      3: ["Face à la crise climatique, la planification écologique", "ecologie"],
+      4: ["Face à la crise européenne, sortir des traités européens", "europe"],
+      5: ["Face à la guerre, instaurer l’indépendance de la France au service de la paix", "international"],
+      6: ["Face à la grande régression, choisir l’objectif du progrès humain", "social"],
+      7: ["Face au déclinisme, porter la France aux frontières de l’Humanité", "economie"],
+    },
+    // similarity needed to attach a 2020 measure to a lineage; pairs between border and accept are listed in
+    // .cache/programmes/review-melenchon-baseline.json and stay unlinked unless added to `link` below
+    accept: 0.56, border: 0.4,
+    // Hand review (2026-11-11) of the 105 pairs closest to the threshold: the 38 accepted with a score of 0.56–0.66
+    // (one rejected, below) and the 67 left out with 0.46–0.56 (the same commitment in 45 of them, linked here;
+    // the rest are a different measure, a reversed position or only a shared theme). Pairs under 0.46 were not read.
+    link: [ // [f20 id, lineage id]
+      ["f20-02a32e", "L43799a"], ["f20-fb61fa", "Ld40f15"], ["f20-a4c09a", "L5d42aa"], ["f20-e422ca", "La30f80"], ["f20-7f25a9", "L83f387"],
+      ["f20-6d136f", "L2a7860"], ["f20-80b1b9", "L9258f6"], ["f20-21ec4b", "La89ef7"], ["f20-dd7204", "L681dcb"], ["f20-fef269", "L458715"],
+      ["f20-94b215", "Lef65c0"], ["f20-0b7102", "L2b94c9"], ["f20-c6c078", "Le070e2"], ["f20-2c7216", "L5ee415"], ["f20-728727", "L879b8d"],
+      ["f20-ce42c1", "La7c1d0"], ["f20-8cb577", "Lf61392"], ["f20-2cb55d", "La514a7"], ["f20-eb97dd", "L61c35a"], ["f20-d18f61", "L93ac0b"],
+      ["f20-1331a8", "Le0315b"], ["f20-49f9f3", "L3848dd"], ["f20-3ac4a0", "Le4aa43"], ["f20-02b90a", "L80e85c"], ["f20-422da4", "L095a2c"],
+      ["f20-5ac708", "Lbb68b9"], ["f20-67d1d9", "Lfebe75"], ["f20-b36926", "L57d94c"], ["f20-a51d44", "L1032af"], ["f20-4841f8", "L6060af"],
+      ["f20-025a31", "La047ad"], ["f20-71f2db", "L81d78e"], ["f20-f5de6e", "L767df3"], ["f20-aa55a1", "L306886"], ["f20-c00cfa", "Ldf9ac8"],
+      ["f20-711011", "L448eb9"], ["f20-1966a6", "L0fd35e"], ["f20-ecbb73", "L544998"], ["f20-e76010", "L2409f1"], ["f20-79fab6", "Lf112a5"],
+      ["f20-226b8b", "Lc140d0"], // SMIC: 1 400 € net in 2020, 1 700 € in 2027
+      ["f20-fc293f", "L0920a1"], ["f20-e6620e", "L8270f5"], ["f20-38d5f8", "L80ae29"],
+    ],
+    unlink: [ // [f20 id, lineage id]
+      ["f20-2e3779", "L38aa3e"], // agrarian reform (land concentration) is not "500 000 farm jobs"
+    ],
+  },
   sectionThemes: [
     [/retraite/i, "travail"],
     [/logement|sans-abri|hébergement/i, "logement"],

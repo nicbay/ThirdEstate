@@ -1,0 +1,24 @@
+/* Programme page: the older baseline edition (2020) laid under the lineages (src/views/programme.ts). */
+.prog-vers.has-base { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem 1.1rem; }
+.prog-basever { border-left-color: var(--ink-3); }
+.prog-basever .prog-text { color: var(--ink-2); }
+.prog-chip.prog-base { background: var(--paper); border: 3px double var(--ink-3); color: var(--ink-2); padding: 0.08rem 0.4rem; }
+.prog-base-rows { display: grid; gap: 0.45rem; margin: 0.4rem 0 1rem; max-width: 52rem; }
+.prog-base-row { display: grid; grid-template-columns: minmax(0, 17rem) minmax(0, 1fr) 6.5rem 3rem; align-items: center; gap: 0.8rem; font-size: 0.9rem; }
+.prog-base-row b { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.prog-base-row > .muted { text-align: right; font: 500 0.74rem var(--mono); }
+.prog-base-bar { height: 12px; background: var(--wash); }
+.prog-base-bar i { display: block; height: 100%; background: var(--ink); transform-origin: left; animation: growX 0.8s var(--ease) both; }
+.prog-base-only { margin: 0.4rem 0 0.8rem; border-top: 2px solid var(--rule); padding-top: 0.6rem; }
+.prog-base-only summary { cursor: pointer; font-weight: 700; padding: 0.3rem 0; }
+.prog-base-only details { margin-left: 0.2rem; border-top: 1px solid var(--rule); }
+.prog-base-only details summary { font-weight: 600; font-size: 0.92rem; }
+.prog-base-only ul { margin: 0.2rem 0 0.8rem; padding-left: 1.1rem; display: grid; gap: 0.45rem; font-size: 0.9rem; line-height: 1.4; max-width: 90ch; }
+.prog-base-only .prog-loc { display: inline; }
+@media (max-width: 900px) { .prog-vers.has-base { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) {
+  .prog-vers.has-base { grid-template-columns: minmax(0, 1fr); }
+  .prog-base-row { grid-template-columns: minmax(0, 1fr) auto auto; gap: 0.2rem 0.8rem; }
+  .prog-base-row > span:first-child { grid-column: 1 / -1; }
+}
+@media (prefers-reduced-motion: reduce) { .prog-base-bar i { animation: none; } }
