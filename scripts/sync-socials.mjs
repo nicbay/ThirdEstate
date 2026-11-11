@@ -31,7 +31,7 @@ const CACHE = new URL("data/socials-cache.json", ROOT);
 const FETCH_CACHE = new URL(".cache/socials-fetch.json", ROOT);
 
 const args = new Set(process.argv.slice(2));
-const UA = "ThirdEstate-socials/1.0 (+https://github.com/nicbay/projectview)";
+const UA = "ThirdEstate-socials/1.0 (+https://github.com/nicbay/ThirdEstate)";
 const CACHE_DAYS = 7;
 const PLATFORMS = ["twitter", "instagram", "linkedin", "facebook", "bluesky", "tiktok", "youtube", "mastodon", "website"];
 const RANK = { override: 0, assemblee: 1, wikidata: 2, site: 3, group: 4, nosdeputes: 5, bluesky: 6, ai: 7 };

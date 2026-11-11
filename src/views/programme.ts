@@ -386,7 +386,7 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
         <p>${L(
           `Votes : seuls les scrutins dont l’objet est la mesure elle-même (ou son contraire direct) sont reliés ; les amendements, dont l’intitulé ne dit pas le contenu, ne le sont pas. Position du groupe : majorité des voix exprimées par ses ${esc(f.group === "LFI-NFP" ? "députés" : "membres")} actuels (open data de l’Assemblée). Ce relevé ne juge pas les mesures.`,
           `Votes: only votes whose object is the measure itself (or its direct opposite) are linked; amendments, whose titles do not state their content, are not. Group position: majority of the votes cast by its current members (Assembly open data). This record does not judge the measures.`)}</p>
-        <p class="source">${L("Analyse générée le", "Analysis generated on")} ${fmtDate(f.generatedAt)} · ${L("script", "script")} <a href="https://github.com/nicbay/projectview/blob/main/scripts/build-programme.mjs" target="_blank" rel="noopener">scripts/build-programme.mjs</a> · <a href="#/sources">${L("Toutes les sources", "All sources")}</a></p>
+        <p class="source">${L("Analyse générée le", "Analysis generated on")} ${fmtDate(f.generatedAt)} · ${L("script", "script")} <a href="https://github.com/nicbay/ThirdEstate/blob/main/scripts/build-programme.mjs" target="_blank" rel="noopener">scripts/build-programme.mjs</a> · <a href="#/sources">${L("Toutes les sources", "All sources")}</a></p>
       </article>
     </section>`;
 

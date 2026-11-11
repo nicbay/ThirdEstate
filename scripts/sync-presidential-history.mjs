@@ -27,7 +27,7 @@ import { unzipSync } from "fflate";
 
 const OUT = new URL("../public/data/history/presidential/", import.meta.url);
 const MEDIA = new URL("./data/presidential-history-media.json", import.meta.url);
-const UA = { "User-Agent": "ThirdEstate/0.1 (open-data French election site; github.com/nicbay/projectview)" };
+const UA = { "User-Agent": "ThirdEstate/0.1 (open-data French election site; github.com/nicbay/ThirdEstate)" };
 const CACHE = process.env.PV_CACHE ?? null;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 

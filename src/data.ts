@@ -239,7 +239,7 @@ export function repairDosMojibake(s: string) {
  * (each one is ~360 MB; see `ignoreCommand` in vercel.json). Everything else ships with the site.
  */
 const LIVE = /^\/data\/(markets\.json|polls\/|forecast\/|feed\/|news\/)/;
-const LIVE_BASE = "https://raw.githubusercontent.com/nicbay/projectview/main/public";
+const LIVE_BASE = "https://raw.githubusercontent.com/nicbay/ThirdEstate/main/public";
 export async function fetchJson<T>(url: string): Promise<T> {
   if (import.meta.env.PROD && LIVE.test(url)) {
     try {

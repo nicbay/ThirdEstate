@@ -114,7 +114,7 @@ the same 2021 vintage as the IRIS values. Commune income figures are those of th
 | Photos | Wikimedia Commons API (`generator=geosearch` + `imageinfo/extmetadata`) | per file (`licence`, `author`; mostly CC BY / CC BY-SA, some public domain) |
 | AI descriptions (optional) | Claude Haiku 5.5 via `scripts/lib/claude.mjs` | generated text, labelled |
 
-Requests use the User-Agent `ThirdEstate/0.1 (github.com/nicbay/projectview)`, one queue per host with ≥ 650 ms between
+Requests use the User-Agent `ThirdEstate/0.1 (github.com/nicbay/ThirdEstate)`, one queue per host with ≥ 650 ms between
 requests (≤ ~90/min; Wikimedia allows 200/min for an identified client), and wait for `Retry-After` on HTTP 429.
 The Wikimedia budget is shared with the other Third Estate jobs that run from the same machine, so in practice the
 throughput is lower (see "Cost and time").

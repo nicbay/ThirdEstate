@@ -27,7 +27,7 @@ const inseePage = (id) => `https://www.insee.fr/fr/statistiques/serie/${id}`;
 async function get(url, accept) {
   for (let attempt = 0; ; attempt++) {
     try {
-      const res = await fetch(url, { headers: { Accept: accept, "User-Agent": "third-estate (github.com/nicbay/projectview)" }, signal: AbortSignal.timeout(45000) });
+      const res = await fetch(url, { headers: { Accept: accept, "User-Agent": "third-estate (github.com/nicbay/ThirdEstate)" }, signal: AbortSignal.timeout(45000) });
       if (!res.ok) throw new Error(`${res.status} ${url}`);
       return await res.text();
     } catch (e) {
@@ -165,7 +165,7 @@ const IMF_GDD = "https://www.imf.org/external/datamapper/api/v1/GG_DEBT_GDP/DEU"
 async function getBuf(url) {
   for (let attempt = 0; ; attempt++) {
     try {
-      const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0 (third-estate; github.com/nicbay/projectview)" }, signal: AbortSignal.timeout(45000) });
+      const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0 (third-estate; github.com/nicbay/ThirdEstate)" }, signal: AbortSignal.timeout(45000) });
       if (!res.ok) throw new Error(`${res.status} ${url}`);
       return Buffer.from(await res.arrayBuffer());
     } catch (e) {
