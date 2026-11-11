@@ -17,6 +17,7 @@ import { bindSearch, searchBox } from "./explore";
 import { heroViz } from "./hero";
 import { mpChip, townBrief } from "./brief";
 import { mountDebtTeaser } from "./economy";
+import { mountDaily } from "./daily";
 import { mountProgrammesFeature, startTicker, tickerHtml, type TickerItem } from "./home-programmes";
 
 export async function renderHome(app: HTMLElement) {
@@ -88,6 +89,7 @@ export async function renderHome(app: HTMLElement) {
         <div class="px-edge" aria-hidden="true"></div>
       </section>
 
+      <div id="home-daily"></div>
       <div id="home-programmes" class="home-programmes"></div>
       <div id="mine"></div>
       <a class="quiz-teaser" href="#/quiz"><span class="quiz-teaser-k">${L("Quiz", "Quiz")}</span><strong>${L("Qui vous ressemble ?", "Who’s closest to you?")}</strong><span>${L("Répondez à de vrais votes de l’Assemblée : découvrez le député, le groupe et le candidat 2027 les plus proches de vous.", "Answer real Assembly votes: find the MP, group and 2027 candidate closest to you.")}</span></a>
@@ -153,6 +155,7 @@ export async function renderHome(app: HTMLElement) {
   });
   startTicker(app, ELECTION_DAY);
   app.querySelector("#hero-story")?.addEventListener("click", (e) => { e.preventDefault(); app.querySelector("#home-programmes")?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); });
+  void mountDaily(app.querySelector<HTMLElement>("#home-daily"), true);
   mountProgrammesFeature(app.querySelector<HTMLElement>("#home-programmes"));
 
   // ---------- trend chart ----------

@@ -19,31 +19,15 @@ import type { Market } from "../src/data";
 import { registerParties } from "../src/lib/candidates";
 import { forecast } from "../src/lib/forecast";
 import type { PollFile } from "../src/lib/polls";
+import { DAY, POLY_SLUG, iso, kalshiDaily, polymarketDaily, type Daily } from "./lib/market-history";
 
 const OUT = new URL("../public/data/forecast/history.json", import.meta.url);
-const KALSHI = "https://api.elections.kalshi.com/trade-api/v2";
-const KALSHI_SERIES = "KXFRENCHPRES";
-const POLY_SLUG = "next-french-presidential-election";
-const DAY = 86400000;
 
 interface Row { name: string; win: number; polls: number | null; markets: number | null }
 interface Day { date: string; live: boolean; sources: string[]; rows: Row[] }
 interface History { fetchedAt: string; days: Day[] }
 
-const iso = (t: number) => new Date(t).toISOString().slice(0, 10);
 const r1 = (x: number) => Math.round(x * 10) / 10;
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-/** GET JSON, pacing requests and backing off on 429 (Kalshi rate-limits shared CI addresses). */
-async function getJson<T = any>(url: string): Promise<T> {
-  for (let attempt = 0; ; attempt++) {
-    await sleep(attempt ? 2000 * 2 ** attempt : 250);
-    const res = await fetch(url, { headers: { Accept: "application/json", "User-Agent": "ThirdEstate/0.1 (forecast history)" }, signal: AbortSignal.timeout(20000) });
-    if (res.status === 429 && attempt < 5) continue;
-    if (!res.ok) throw new Error(`${res.status} ${url}`);
-    return res.json() as Promise<T>;
-  }
-}
-
 function entry(date: string, live: boolean, polls: PollFile, markets: Market[], asOf: string): Day {
   const fc = forecast(
     polls.firstRound.filter((p) => p.end <= asOf),
@@ -56,46 +40,6 @@ function entry(date: string, live: boolean, polls: PollFile, markets: Market[], 
     date, live, sources,
     rows: fc.rows.filter((r) => r.win >= 0.5).slice(0, 10).map((r) => ({ name: r.name, win: r1(r.win), polls: r.polls ? r1(r.polls.win) : null, markets: r.markets?.win != null ? r1(r.markets.win) : null })),
   };
-}
-
-// ---- market price history → one synthetic "winner" market per platform per day
-type Daily = Map<string, Map<string, number>>; // date → candidate → prob (%)
-
-async function kalshiDaily(from: number, to: number): Promise<Daily> {
-  const { markets } = await getJson<{ markets: any[] }>(`${KALSHI}/markets?series_ticker=${KALSHI_SERIES}&status=open&limit=200`);
-  const out: Daily = new Map();
-  for (const m of markets) {
-    const name = m.yes_sub_title || m.custom_strike?.Person;
-    if (!name) continue;
-    const { candlesticks } = await getJson<{ candlesticks: any[] }>(`${KALSHI}/series/${KALSHI_SERIES}/markets/${m.ticker}/candlesticks?start_ts=${Math.floor(from / 1000)}&end_ts=${Math.floor(to / 1000)}&period_interval=1440`);
-    let last: number | null = null;
-    for (const c of candlesticks ?? []) {
-      const close = Number(c.price?.close_dollars ?? c.price?.previous_dollars ?? NaN);
-      if (Number.isFinite(close) && close > 0) last = close;
-      if (last == null) continue;
-      const date = iso(c.end_period_ts * 1000 - 1);
-      if (!out.has(date)) out.set(date, new Map());
-      out.get(date)!.set(name, Math.round(last * 1000) / 10);
-    }
-  }
-  return out;
-}
-
-async function polymarketDaily(): Promise<Daily> {
-  const [event] = await getJson<any[]>(`https://gamma-api.polymarket.com/events?slug=${POLY_SLUG}`);
-  const out: Daily = new Map();
-  for (const m of event?.markets ?? []) {
-    const name = m.groupItemTitle;
-    const token = JSON.parse(m.clobTokenIds ?? "[]")[0];
-    if (!name || !token || /^(candidate|person|option) [a-z0-9]+$/i.test(name) || !(Number(m.volumeNum ?? 0) > 0)) continue;
-    const { history } = await getJson<{ history: { t: number; p: number }[] }>(`https://clob.polymarket.com/prices-history?market=${token}&interval=max&fidelity=1440`);
-    for (const h of history ?? []) {
-      const date = iso(h.t * 1000);
-      if (!out.has(date)) out.set(date, new Map());
-      out.get(date)!.set(name, Math.round(h.p * 1000) / 10);
-    }
-  }
-  return out;
 }
 
 const syntheticMarkets = (date: string, k: Daily | null, p: Daily | null, today: Market[]): Market[] => {

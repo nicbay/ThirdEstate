@@ -147,6 +147,7 @@ function sections(): Section[] {
       blurb: ["La présidentielle : qui est en tête, et pourquoi.", "The presidential race: who leads, and why."],
       children: [
         { href: "#/2027", match: /^#\/(2027|candidat)/, fr: "La course", en: "The race", desc: ["La prévision, les candidats, leurs fiches", "The forecast, the candidates, their files"] },
+        { href: "#/sondages#point", match: NEVER, fr: "Le point du jour", en: "Today’s brief", desc: ["Ce qui a bougé en 24 heures, et pourquoi peut-être", "What moved in 24 hours, and perhaps why"] },
         { href: "#/sondages", match: /^#\/sondages/, fr: "Sondages et marchés", en: "Polls and markets", desc: ["Chaque sondage, et ce que parient les marchés", "Every poll, and what the markets are betting"] },
         { href: "#/simulateur", match: /^#\/simulateur/, fr: "Simulateur", en: "Simulator", desc: ["Composez votre second tour", "Build your own runoff"] },
         { href: "#/fil", match: /^#\/fil/, fr: "Fil rouge, fil bleu", en: "Red feed, blue feed", desc: ["L’actualité vue de gauche et de droite", "The news as left and right see it"] },

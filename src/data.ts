@@ -238,7 +238,7 @@ export function repairDosMojibake(s: string) {
  * in production straight from the public GitHub repo, so those commits don't need a new Vercel deployment
  * (each one is ~360 MB; see `ignoreCommand` in vercel.json). Everything else ships with the site.
  */
-const LIVE = /^\/data\/(markets\.json|polls\/|forecast\/|feed\/|news\/)/;
+const LIVE = /^\/data\/(markets\.json|polls\/|forecast\/|feed\/|news\/|daily\/)/;
 const LIVE_BASE = "https://raw.githubusercontent.com/nicbay/ThirdEstate/main/public";
 export async function fetchJson<T>(url: string): Promise<T> {
   if (import.meta.env.PROD && LIVE.test(url)) {
