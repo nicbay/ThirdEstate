@@ -9667,6 +9667,86 @@
       },
       "check": null,
       "postTime": "2026-11-08T18:51:19.512Z"
+    },
+    "bsky:at://did:plc:d57dxlliqj3ctzpgmentyyn3/app.bsky.feed.post/3mzyiwrgkts2c": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-11T02:15:02.409Z",
+      "storyItems": [
+        "c20d9cf90127",
+        "e4f5120f1d95",
+        "43e1c4906c03",
+        "d1e6cc1be4c2",
+        "96ee1be46543",
+        "c4a094dcdcaa"
+      ],
+      "storyTitle": "\"Il faut tout changer !\", scande Jean-Luc Mélenchon lors de son grand meeting du Bourget",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Appel à diffuser et acheter le livre-programme « L'Avenir en commun » de Jean-Luc Mélenchon, programme de la gauche radicale.",
+        "rationale_en": "Calls to spread and buy the 'L'Avenir en commun' programme book by Jean-Luc Mélenchon, a radical-left platform."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Mobilisation militante sans attaque d'élites ni argument émotionnel marqué ; rhétorique peu populiste.",
+        "rationale_en": "Campaign mobilisation with no clear attack on elites or strong emotional appeal; little populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T22:37:33.486Z"
+    },
+    "bsky:at://did:plc:i27lvonqvridxzfgstsqw6p2/app.bsky.feed.post/3mzyi7msiis2c": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-11T02:15:02.409Z",
+      "storyItems": [
+        "abec69375b3b",
+        "269a0c843ec0",
+        "9137227d86d0",
+        "5a8baa76a6f4",
+        "dea9044ef32d",
+        "21cd0d85e26c"
+      ],
+      "storyTitle": "Une pétition appelant à fermer CNews atteint un million de signatures sur le site de l'Assemblée nationale",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Critique de la droite pour avoir « aidé l'extrême droite » et soutien à la fermeture de CNews, position de gauche sur le pluralisme médiatique.",
+        "rationale_en": "Criticises the right for having 'helped the far right' and backs closing CNews, a left-leaning position on media pluralism."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Présente les adversaires comme alliés de l'extrême droite et mobilise l'indignation (« Scandaleux ! ») plutôt que des arguments.",
+        "rationale_en": "Presents opponents as allies of the far right and relies on outrage ('Scandaleux!') rather than arguments."
+      },
+      "check": null,
+      "postTime": "2026-11-10T22:24:36.884Z"
+    },
+    "yt:OT6zdRh-Aq8": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-11T02:15:02.409Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Compte rendu d'une intervention en commission sur la coopération transfrontalière, sans position idéologique exprimée.",
+        "rationale_en": "Report of a committee speech on cross-border cooperation, with no ideological position expressed."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste : message descriptif et institutionnel.",
+        "rationale_en": "No populist rhetoric: a descriptive, institutional message."
+      },
+      "check": null,
+      "postTime": "2026-11-10T15:44:35.000Z"
     }
   },
   "failures": {
