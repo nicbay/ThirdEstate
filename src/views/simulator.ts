@@ -49,8 +49,6 @@ let authHooked = false;
 /** Saved scenarios ticked for comparison (ids; "now" = the scenario on screen). */
 const compare = new Set<string>(["now"]);
 let dockObserver: IntersectionObserver | null = null;
-/** Always in the default line-up when they are polled. */
-const LIKELY = ["David Lisnard"];
 const GREY = "#c4c7cc";
 const r1 = (x: number) => Math.round(x * 10) / 10;
 const clamp = (x: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, x));
@@ -196,18 +194,7 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
 
   // ---- probability model, from the polls only (unchanged): most-tested line-up + runoff polls or the transfer model
   const modelBase = () => {
-    const cands: Cand[] = lineup.rows.map((r) => ({ name: r.name, share: r1(r.share), bloc: meta(r.name).bloc }));
-    // Likely candidates the most-tested line-up leaves out (e.g. David Lisnard, second favourite on
-    // the betting markets): add them at their polling average, taking the points from their neighbours.
-    for (const name of LIKELY) {
-      if (cands.some((c) => c.name === name)) continue;
-      const share = r1(avgOf(name) ?? 0);
-      if (!share) continue;
-      const c = { name, share, bloc: meta(name).bloc };
-      cands.push(c);
-      rebalance(cands, c, share);
-    }
-    return cands;
+    return lineup.rows.map((r): Cand => ({ name: r.name, share: r1(r.share), bloc: meta(r.name).bloc }));
   };
   const baseline = modelBase();
   const baseShare = (n: string) => baseline.find((c) => c.name === n);
@@ -234,7 +221,6 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
   // ---- first-round presets, from the candidates pollsters test
   const pollAverage = (): Cand[] => {
     const names = lineup.rows.map((r) => r.name);
-    for (const n of LIKELY) if (!names.includes(n) && avgOf(n)) names.push(n);
     const cands = names.map((n) => ({ name: n, share: avgOf(n) ?? lineup.rows.find((r) => r.name === n)?.share ?? 0, bloc: meta(n).bloc }));
     normalise(cands);
     return cands;

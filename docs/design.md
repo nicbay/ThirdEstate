@@ -193,5 +193,4 @@ Each keeps its styles in its own file under `src/styles/`, imported by its view.
 - **Quiz** (`quiz.css`): a short version (10 Assembly votes chosen to separate the candidates) and a long one
   (plus two measures per candidate, unnamed until the results); deal breakers and compatibles per candidate; the
   reader's place on the left–right axis, overall and subject by subject. Proximity, never voting advice.
-- **Town photos** (`src/lib/pixelate.ts`): shown as pixel art first, resolving into the photograph on hover,
-  tap, focus or the button. People's portraits are never pixelated.
+- **Town photos** are the plain Wikimedia Commons photograph, credited under the picture. No pixel treatment.
