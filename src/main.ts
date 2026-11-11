@@ -22,11 +22,12 @@ import { esc } from "./util";
 import { renderEconomy } from "./views/economy";
 import { renderQuiz } from "./views/quiz";
 import { fetchJson, loadDeputes } from "./data";
-import { foxSvg } from "./lib/fox";
+import { foxCells, foxSvg } from "./lib/fox";
 import { pixelIcon, type PixelIcon } from "./lib/pixel-icons";
 import { initSearch, openSearch } from "./lib/search";
 import { foxBusy, initFox, initMotion, pageTransition } from "./lib/motion";
 import { renderCandidate } from "./views/candidate";
+import { pixelateAll } from "./lib/pixelate";
 
 const app = document.getElementById("app")!;
 const nav = document.getElementById("nav")!;
@@ -389,6 +390,7 @@ function reveal() {
 function enhance() {
   sectionHero();
   reveal();
+  pixelateAll(app);
   onScroll();
   app.querySelectorAll<HTMLTableElement>("table.table").forEach((t) => {
     if (t.parentElement?.classList.contains("table-scroll")) return;
@@ -448,6 +450,9 @@ new MutationObserver(() => {
   queueMicrotask(() => { queued = false; enhance(); });
 }).observe(app, { childList: true, subtree: true });
 
+/** While a page's data loads: the fox assembles pixel by pixel (diagonal sweep), over a row of marching blocks. */
+const loaderHtml = () => `<div class="pad px-loading" role="status"><svg class="fox" viewBox="0 0 16 16" width="96" height="96" shape-rendering="crispEdges" aria-hidden="true">${foxCells(false).map((c) => `<rect x="${c.x}" y="${c.y}" width="1" height="1" fill="${c.fill}" style="animation-delay:${(c.x + c.y) * 22}ms"/>`).join("")}</svg><p class="muted">${t().loading}</p><i aria-hidden="true"></i></div>`;
+
 let lastPath = "";
 async function route() {
   const { path, anchor } = split();
@@ -483,7 +488,7 @@ async function render(path: string, anchor: string | undefined) {
   for (const [re, fn] of routes) {
     const m = path.match(re);
     if (m) {
-      app.innerHTML = `<p class="muted pad px-loading">${t().loading}<i aria-hidden="true"></i></p>`;
+      app.innerHTML = loaderHtml();
       foxBusy(true);
       try {
         await fn(m);

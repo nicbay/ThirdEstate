@@ -236,8 +236,12 @@ html.is-scrolled .topbar { box-shadow: 0 2px 0 var(--night-rule), 0 10px 0 -4px 
 .cmdk-in { border-bottom-width: 4px; }
 #tooltip, .tooltip { box-shadow: 4px 4px 0 rgba(11, 13, 24, 0.3); }
 img[data-hide-broken], .mp-head img, .cand-card img, .pf-cand img, .word-mps img, .brief-mp img { clip-path: var(--px-clip); }
-.px-loading { display: flex; align-items: center; gap: 0.9rem; }
-.px-loading i { width: 40px; height: 8px; background: linear-gradient(90deg, var(--ink) 8px, transparent 8px) 0 0 / 16px 8px repeat-x; animation: px-load 0.6s steps(2) infinite; }
+.px-loading { display: grid; justify-items: center; gap: 0.9rem; padding-top: 4.5rem; padding-bottom: 4.5rem; }
+.px-loading p { margin: 0; font: 400 0.625rem var(--pixel); text-transform: uppercase; letter-spacing: 0.06em; }
+.px-loading .fox { width: 96px; height: 96px; }
+.px-loading .fox rect { animation: px-build 0.16s steps(2) backwards; }
+@keyframes px-build { from { opacity: 0; transform: translateY(-6px); } }
+.px-loading i { width: 64px; height: 8px; background: linear-gradient(90deg, var(--ink) 8px, transparent 8px) 0 0 / 16px 8px repeat-x; animation: px-load 0.6s steps(2) infinite; }
 @keyframes px-load { to { background-position: 16px 0; } }
 
 /* ---------- home ---------- */
@@ -397,7 +401,7 @@ footer .brand .fox { width: 64px; height: 64px; }
 .ph-key i { width: 12px; height: 12px; flex: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .rv-in, .ph-cands li, .ph-col, .ph-cbar, .ph-lstack, .nm-in, .menu-sheet[open], .to-top, .hero-x::after, .sec-hero::after, .px-loading i { animation: none !important; }
+  .rv-in, .ph-cands li, .ph-col, .ph-cbar, .ph-lstack, .nm-in, .menu-sheet[open], .to-top, .hero-x::after, .sec-hero::after, .px-loading i, .px-loading .fox rect { animation: none !important; }
   .hero-x h1 em::after, .sec-hero h1 .ln:last-child > span::after { animation: none; }
 }
 
@@ -434,3 +438,24 @@ footer .brand .fox { width: 64px; height: 64px; }
 .dy-compact .dy-table { min-width: 560px; margin-bottom: 0; }
 @media (max-width: 640px) { .dy-polls li { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .dy-live { animation: none; } }
+
+/* ---------- town photos as pixel art (src/lib/pixelate.ts): a canvas over the image, gone once resolved ---------- */
+.pxl { position: relative; overflow: hidden; }
+.pxl-cv { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; pointer-events: none; }
+.pxl.is-real .pxl-cv { opacity: 0; }
+.town-photo { aspect-ratio: 4 / 3; box-shadow: 8px 8px 0 #5b8dff; }
+.town-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.town-hero figure { padding: 0 8px 0 0; }
+.pxl-toggle { position: absolute; left: 8px; bottom: 8px; z-index: 1; padding: 0.4rem 0.55rem 0.35rem; border: 2px solid #fff; background: var(--night); color: #fff; font: 400 0.625rem var(--pixel); text-transform: uppercase; letter-spacing: 0.03em; cursor: pointer; }
+.pxl-toggle:hover { background: #fff; color: var(--night); }
+.tc-photo { display: block; }
+.tc-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* six sections need room: between the tab-bar breakpoint and a wide screen, the mark alone and compact tools */
+@media (min-width: 901px) and (max-width: 1140px) {
+  .topbar .brand b { display: none; }
+  .search-btn kbd, .search-btn .sb-label { display: none; }
+  .quiz-cta .q-long { display: none; }
+  .quiz-cta .q-short { display: inline; }
+  .lang .l-long { display: none; }
+  .lang .l-short { display: inline; }
+}
