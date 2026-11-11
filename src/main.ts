@@ -1,5 +1,6 @@
 import "./fonts.css";
 import "./style.css";
+import "./redesign.css";
 import { L, getLang, setLang, t } from "./i18n";
 import { renderHome } from "./views/home";
 import { renderPolls } from "./views/polls";
@@ -20,7 +21,7 @@ import { getHome, onHome } from "./lib/cloud";
 import { esc } from "./util";
 import { renderEconomy } from "./views/economy";
 import { renderQuiz } from "./views/quiz";
-import { loadDeputes } from "./data";
+import { fetchJson, loadDeputes } from "./data";
 import { foxSvg } from "./lib/fox";
 import { pixelIcon, type PixelIcon } from "./lib/pixel-icons";
 import { initSearch, openSearch } from "./lib/search";
@@ -76,6 +77,7 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/quiz(?:\/([\w-]+))?$/, (m) => renderQuiz(app, m[1])],
   // section names as paths, so a typed or shared section link lands somewhere
   [/^#\/(chez-vous|parlement|la-france|france|archives)$/, (m) => void (location.hash = { "chez-vous": homeHref(), parlement: "#/assemblee", "la-france": "#/chiffres", france: "#/chiffres", archives: "#/resultats" }[m[1]]!)],
+  [/^#\/programmes(?:\/theme\/([\w-]+))?$/, (m) => import("./views/programmes-hub").then((v) => v.renderProgrammesHub(app, m[1]))],
   [/^#\/programmes\/melenchon\/simulateur$/, () => import("./views/household").then((v) => v.renderHousehold(app))],
   [/^#\/programmes\/([\w-]+)$/, (m) => import("./views/programme").then((v) => v.renderProgramme(app, m[1]))],
 ];
@@ -102,14 +104,16 @@ async function findMyMp(code: string) {
   } catch { /* offline: try again next visit */ mpLookup = ""; }
 }
 
-// Information architecture: five sections, the site's promise "de votre mairie à l'Élysée".
+// Information architecture: six sections, the site's promise "de votre mairie à l'Élysée".
 // 1. Chez vous: the reader's town (remembered), their MP and senators, every town.
 // 2. Parlement: the MPs (577 seats), how they vote and what they say, the Senate.
 // 3. 2027: the race (forecast, polls and markets, simulator, the red/blue feed, the quiz).
-// 4. La France: the country in numbers and the left–right shift maps.
-// 5. Archives: results, every election since 1848.
-type Item = { href: string; match: RegExp; fr: string; en: string; note?: string };
-type Section = Item & { key: string; icon: PixelIcon; short: [string, string]; children: Item[] };
+// 4. Programmes: what every candidate proposes, compared theme by theme, costed and checked against the law.
+// 5. La France: the country in numbers and the left–right shift maps.
+// 6. Archives: results, every election since 1848.
+// Each page carries a one-line description: the masthead menus and the phone menu say what is behind every link.
+type Item = { href: string; match: RegExp; fr: string; en: string; note?: string; desc?: [string, string] };
+type Section = Item & { key: string; icon: PixelIcon; short: [string, string]; blurb: [string, string]; children: Item[] };
 const NEVER = /$^/;
 function sections(): Section[] {
   const home = getHome();
@@ -118,48 +122,64 @@ function sections(): Section[] {
   return [
     {
       key: "chez-vous", icon: "home", short: ["Chez vous", "Local"], href: mine, match: /^#\/(explorer|ville)/, fr: "Chez vous", en: "Where you live",
+      blurb: ["Votre commune, votre député, vos sénateurs.", "Your town, your MP, your senators."],
       children: [
         ...(home?.code ? [{ href: mine, match: new RegExp(`^#\\/ville\\/${home.code}$`), fr: "Ma commune", en: "My town", note: home.commune ?? home.code }] : []),
         ...(mp?.id ? [{ href: `#/depute/${mp.id}`, match: NEVER, fr: "Mon député", en: "My MP", note: mp.name }] : []),
         ...(home?.dep ? [{ href: `#/senat/${home.dep}`, match: NEVER, fr: "Mes sénateurs", en: "My senators", note: home.depName }] : []),
-        { href: "#/explorer", match: home?.code ? new RegExp(`^#\\/(explorer|ville\\/(?!${home.code}$))`) : /^#\/(explorer|ville)/, fr: "Toutes les communes", en: "Every town" },
+        { href: "#/explorer", match: home?.code ? new RegExp(`^#\\/(explorer|ville\\/(?!${home.code}$))`) : /^#\/(explorer|ville)/, fr: "Toutes les communes", en: "Every town", desc: ["Maire, conseil, écoles, sécurité, quartiers : 34 920 communes", "Mayor, council, schools, safety, neighbourhoods: 34,920 towns"] },
       ],
     },
     {
       key: "parlement", icon: "parliament", short: ["Parlement", "Parliament"], href: "#/assemblee", match: /^#\/(assemblee|elus|circo|depute|senat|senateur)/, fr: "Parlement", en: "Parliament",
+      blurb: ["577 députés, 348 sénateurs : chacun de leurs votes.", "577 MPs, 348 senators: every vote they cast."],
       children: [
-        { href: "#/assemblee", match: /^#\/(elus$|assemblee(\/\w{2,3})?$|circo\/)/, fr: "Les députés", en: "The MPs" },
-        { href: "#/assemblee/deputes", match: /^#\/(assemblee\/deputes|depute\/)/, fr: "Liste", en: "List" },
-        { href: "#/assemblee/loyaute", match: /^#\/assemblee\/loyaute/, fr: "Doigt sur la couture", en: "Toeing the line" },
-        { href: "#/assemblee/themes", match: /^#\/assemblee\/themes/, fr: "Ce qu’ils disent", en: "What they say" },
-        { href: "#/assemblee/composition", match: /^#\/assemblee\/composition/, fr: "Composition", en: "Who they are" },
-        { href: "#/senat", match: /^#\/(senat|senateur)/, fr: "Sénat", en: "Senate" },
+        { href: "#/assemblee", match: /^#\/(elus$|assemblee(\/\w{2,3})?$|circo\/)/, fr: "Les députés", en: "The MPs", desc: ["La carte des 577 circonscriptions", "The map of the 577 districts"] },
+        { href: "#/assemblee/deputes", match: /^#\/(assemblee\/deputes|depute\/)/, fr: "Liste", en: "List", desc: ["Chercher un député, par nom ou par groupe", "Find an MP by name or group"] },
+        { href: "#/assemblee/loyaute", match: /^#\/assemblee\/loyaute/, fr: "Doigt sur la couture", en: "Toeing the line", desc: ["Qui vote avec son groupe, qui s’en écarte", "Who votes with their group, who breaks ranks"] },
+        { href: "#/assemblee/themes", match: /^#\/assemblee\/themes/, fr: "Ce qu’ils disent", en: "What they say", desc: ["Les mots et les thèmes de l’hémicycle", "The words and themes of the chamber"] },
+        { href: "#/assemblee/composition", match: /^#\/assemblee\/composition/, fr: "Composition", en: "Who they are", desc: ["Âge, métier, parité : qui siège", "Age, occupation, gender: who sits"] },
+        { href: "#/senat", match: /^#\/(senat|senateur)/, fr: "Sénat", en: "Senate", desc: ["Les 348 sénateurs et leurs votes", "The 348 senators and their votes"] },
       ],
     },
     {
-      key: "2027", icon: "ballot", short: ["2027", "2027"], href: "#/2027", match: /^#\/(2027|sondages|simulateur|fil|quiz|candidat|programmes)/, fr: "2027", en: "2027",
+      key: "2027", icon: "ballot", short: ["2027", "2027"], href: "#/2027", match: /^#\/(2027|sondages|simulateur|fil|quiz|candidat)/, fr: "2027", en: "2027",
+      blurb: ["La présidentielle : qui est en tête, et pourquoi.", "The presidential race: who leads, and why."],
       children: [
-        { href: "#/2027", match: /^#\/2027/, fr: "La course", en: "The race" },
-        { href: "#/sondages", match: /^#\/sondages/, fr: "Sondages et marchés", en: "Polls and markets" },
-        { href: "#/simulateur", match: /^#\/simulateur/, fr: "Simulateur", en: "Simulator" },
-        { href: "#/fil", match: /^#\/fil/, fr: "Fil rouge, fil bleu", en: "Red feed, blue feed" },
-        { href: "#/quiz", match: /^#\/quiz/, fr: "Le quiz", en: "The quiz" },
+        { href: "#/2027", match: /^#\/(2027|candidat)/, fr: "La course", en: "The race", desc: ["La prévision, les candidats, leurs fiches", "The forecast, the candidates, their files"] },
+        { href: "#/sondages", match: /^#\/sondages/, fr: "Sondages et marchés", en: "Polls and markets", desc: ["Chaque sondage, et ce que parient les marchés", "Every poll, and what the markets are betting"] },
+        { href: "#/simulateur", match: /^#\/simulateur/, fr: "Simulateur", en: "Simulator", desc: ["Composez votre second tour", "Build your own runoff"] },
+        { href: "#/fil", match: /^#\/fil/, fr: "Fil rouge, fil bleu", en: "Red feed, blue feed", desc: ["L’actualité vue de gauche et de droite", "The news as left and right see it"] },
+        { href: "#/quiz", match: /^#\/quiz/, fr: "Le quiz", en: "The quiz", desc: ["Quel député, quel candidat vous ressemble ?", "Which MP and candidate are closest to you?"] },
+      ],
+    },
+    {
+      key: "programmes", icon: "doc", short: ["Programmes", "Programmes"], href: "#/programmes", match: /^#\/programmes/, fr: "Programmes", en: "Programmes",
+      blurb: ["Ce que propose chaque candidat, mesure par mesure.", "What each candidate proposes, measure by measure."],
+      children: [
+        { href: "#/programmes", match: /^#\/programmes(\/theme\/[\w-]+)?$/, fr: "Vue d’ensemble", en: "Overview", desc: ["Tous les candidats, de la gauche à la droite", "Every candidate, from left to right"] },
+        { href: "#/programmes#comparer", match: NEVER, fr: "Comparer par thème", en: "Compare by theme", desc: ["Sur le même sujet, qui propose quoi", "On the same subject, who proposes what"] },
+        { href: "#/programmes#couts", match: NEVER, fr: "Ce que ça coûte", en: "What it costs", desc: ["Le chiffre du parti, celui des instituts", "The party’s figure and the institutes’"] },
+        { href: "#/programmes#droit", match: NEVER, fr: "Droit et faisabilité", en: "Law and feasibility", desc: ["Constitution, droit européen, majorités", "Constitution, EU law, majorities"] },
+        { href: "#/programmes/melenchon/simulateur", match: /^#\/programmes\/[\w-]+\/simulateur/, fr: "Simulateur foyer", en: "Household simulator", desc: ["L’effet d’un programme sur votre budget", "A programme’s effect on your budget"] },
       ],
     },
     {
       key: "la-france", icon: "france", short: ["France", "France"], href: "#/chiffres", match: /^#\/(chiffres|resultats\/bascules)/, fr: "La France", en: "France",
+      blurb: ["Le pays en chiffres, et comment il bascule.", "The country in numbers, and how it shifts."],
       children: [
-        { href: "#/chiffres", match: /^#\/chiffres/, fr: "En chiffres", en: "In numbers" },
-        { href: "#/chiffres#depuis", match: NEVER, fr: "La dette en direct", en: "The debt, live" },
-        { href: "#/resultats/bascules", match: /^#\/resultats\/bascules/, fr: "Cartes des bascules", en: "Shift maps" },
+        { href: "#/chiffres", match: /^#\/chiffres/, fr: "En chiffres", en: "In numbers", desc: ["Emploi, prix, déficit, dette", "Jobs, prices, deficit, debt"] },
+        { href: "#/chiffres#depuis", match: NEVER, fr: "La dette en direct", en: "The debt, live", desc: ["Le compteur, président par président", "The counter, president by president"] },
+        { href: "#/resultats/bascules", match: /^#\/resultats\/bascules/, fr: "Cartes des bascules", en: "Shift maps", desc: ["Où la France a glissé à gauche, à droite", "Where France moved left, and right"] },
       ],
     },
     {
       key: "archives", icon: "archive", short: ["Archives", "Archives"], href: "#/resultats", match: /^#\/(resultats(?!\/bascules)|histoire|presidentielle)/, fr: "Archives", en: "Archives",
+      blurb: ["Chaque élection depuis 1848, archives à l’appui.", "Every election since 1848, with the footage."],
       children: [
-        { href: "#/resultats", match: /^#\/(resultats(\/presidentielles)?$|histoire)/, fr: "Toutes les élections depuis 1848", en: "Every election since 1848" },
-        { href: "#/resultats/presidentielle-2022", match: /^#\/resultats\/presidentielle-2022/, fr: "Présidentielle 2022", en: "2022 presidential" },
-        { href: "#/resultats/legislatives-2024", match: /^#\/resultats\/legislatives-2024/, fr: "Législatives 2024", en: "2024 legislative" },
+        { href: "#/resultats", match: /^#\/(resultats(\/presidentielles)?$|histoire)/, fr: "Toutes les élections depuis 1848", en: "Every election since 1848", desc: ["Résultats, cartes, annonces filmées", "Results, maps, filmed announcements"] },
+        { href: "#/resultats/presidentielle-2022", match: /^#\/resultats\/presidentielle-2022/, fr: "Présidentielle 2022", en: "2022 presidential", desc: ["Les sondages face au résultat", "The polls against the result"] },
+        { href: "#/resultats/legislatives-2024", match: /^#\/resultats\/legislatives-2024/, fr: "Législatives 2024", en: "2024 legislative", desc: ["Circonscription par circonscription", "District by district"] },
       ],
     },
   ];
@@ -177,12 +197,17 @@ function nextSteps(path: string) {
   const hist = { href: "#/resultats", fr: "Toutes les élections depuis 1848", en: "Every election since 1848" };
   const feed = { href: "#/fil", fr: "Ce que disent la gauche et la droite aujourd’hui", en: "What left and right are saying today" };
   const quiz = { href: "#/quiz", fr: "Le quiz : qui vous ressemble ?", en: "The quiz: who is most like you?" };
+  const progs = { href: "#/programmes", fr: "Comparer les programmes des candidats", en: "Compare the candidates’ programmes" };
+  const byTheme = { href: "#/programmes#comparer", fr: "Sur le même sujet, qui propose quoi", en: "On the same subject, who proposes what" };
   const france = { href: "#/chiffres", fr: "La France en chiffres", en: "France in numbers" };
   const shifts = { href: "#/resultats/bascules", fr: "Les cartes des bascules gauche-droite", en: "The left–right shift maps" };
   const pick = /^#\/(ville|explorer)/.test(path) ? [race, mps, quiz]
     : /^#\/(circo|depute|assemblee|elus|senat|senateur)/.test(path) ? [mine, /themes/.test(path) ? feed : words, race]
-    : /^#\/quiz/.test(path) ? [race, sim, mps]
-    : /^#\/(2027|sondages|simulateur)/.test(path) ? [mine, /simulateur/.test(path) ? polls : sim, quiz]
+    : /^#\/quiz/.test(path) ? [race, progs, mps]
+    : /^#\/programmes$/.test(path) ? [race, quiz, mps]
+    : /^#\/programmes\//.test(path) ? [byTheme, race, quiz]
+    : /^#\/candidat/.test(path) ? [progs, polls, quiz]
+    : /^#\/(2027|sondages|simulateur)/.test(path) ? [progs, /simulateur/.test(path) ? polls : sim, quiz]
     : /^#\/fil/.test(path) ? [race, mps, mine]
     : /^#\/resultats\/bascules/.test(path) ? [france, hist, mine]
     : /^#\/(resultats|histoire)/.test(path) ? [race, shifts, mine]
@@ -200,26 +225,66 @@ const split = () => {
 
 const isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
 const caret = `<svg viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><rect x="1" y="3" width="8" height="1"/><rect x="2" y="4" width="6" height="1"/><rect x="3" y="5" width="4" height="1"/><rect x="4" y="6" width="2" height="1"/></svg>`;
+// The Programmes menu also lists the candidates, by surname: loaded once, after first paint.
+let progNames: { slug: string; candidate: string }[] | null = null;
+let progAsked = false;
+function loadProgNames() {
+  if (progAsked) return;
+  progAsked = true;
+  const last = (n: string) => n.split(" ").slice(-1)[0];
+  fetchJson<{ programmes: { slug: string; candidate: string }[] }>("/data/programmes/index.json")
+    .then((d) => { progNames = d.programmes.map((p) => ({ slug: p.slug, candidate: p.candidate })).sort((a, b) => last(a.candidate).localeCompare(last(b.candidate), "fr")); renderChrome(split().path); })
+    .catch(() => { /* the menu simply has no candidate list */ });
+}
+const sheet = document.createElement("dialog");
+sheet.className = "menu-sheet";
+sheet.id = "menu-sheet";
+document.body.append(sheet);
+const closeSheet = () => { if (sheet.open) sheet.close(); };
+
 function renderChrome(path: string) {
   const SECTIONS = sections();
   const current = SECTIONS.find((s) => s.match.test(path));
   const home = getHome();
   if (home?.code && !myMp(home.code)) setTimeout(() => void findMyMp(home.code!), 1200);
+  if (!progAsked) setTimeout(loadProgNames, 600);
+  const candLinks = (cls: string) => (progNames?.length ? `<div class="${cls}"><p>${L("Programme par candidat", "Programme by candidate")}</p><div>${progNames.map((p) => `<a href="#/programmes/${esc(p.slug)}"${path === `#/programmes/${p.slug}` ? ` aria-current="page"` : ""}>${esc(p.candidate)}</a>`).join("")}</div></div>` : "");
+  const itemLink = (c: Item) => `<a href="${c.href}"${c.match.test(path) ? ` aria-current="page"` : ""}><span>${esc(L(c.fr, c.en))}</span>${c.note ? `<small class="nm-note">${esc(c.note)}</small>` : c.desc ? `<small>${esc(L(...c.desc))}</small>` : ""}</a>`;
 
-  // masthead: five sections, each a link plus a disclosure button for its menu
-  nav.innerHTML = `<ul class="nav-list">${SECTIONS.map((s) => `<li class="nav-item${s === current ? " active" : ""}">
+  // masthead: six sections, each a link plus a disclosure button for its menu (a panel: what the section is, then its pages)
+  nav.innerHTML = `<ul class="nav-list">${SECTIONS.map((s, n) => `<li class="nav-item${s === current ? " active" : ""}">
       <a class="nav-top" href="${s.href}"${s === current ? ` aria-current="true"` : ""}>${L(s.fr, s.en)}</a>
       <button type="button" class="nav-caret" aria-expanded="false" aria-controls="nm-${s.key}"><span class="sr-only">${L(`Menu ${s.fr}`, `${s.en} menu`)}</span>${caret}</button>
-      <div class="nav-menu" id="nm-${s.key}"><ul>${s.children.map((c) => `<li><a href="${c.href}"${c.match.test(path) ? ` aria-current="page"` : ""}><span>${esc(L(c.fr, c.en))}</span>${c.note ? `<small>${esc(c.note)}</small>` : ""}</a></li>`).join("")}</ul></div>
+      <div class="nav-menu${s.key === "programmes" && progNames?.length ? " is-wide" : ""}" id="nm-${s.key}"><div class="nm-in">
+        <div class="nm-lead">${pixelIcon(s.icon, 36)}<span class="nm-idx">0${n + 1}/0${SECTIONS.length}</span><b>${L(s.fr, s.en)}</b><p>${esc(L(...s.blurb))}</p></div>
+        <ul>${s.children.map((c) => `<li>${itemLink(c)}</li>`).join("")}</ul>
+        ${s.key === "programmes" ? candLinks("nm-extra") : ""}
+      </div></div>
     </li>`).join("")}</ul>`;
 
-  // phones: the same five as a bottom tab bar
-  tabbar.innerHTML = SECTIONS.map((s) => `<a href="${s.href}"${s === current ? ` aria-current="true" class="active"` : ""}>${pixelIcon(s.icon, 24)}<span>${L(...s.short)}</span></a>`).join("");
+  // phones and small tablets: four sections and a Menu button in a bottom tab bar; the menu sheet has everything
+  const TABS = ["chez-vous", "parlement", "2027", "programmes"];
+  const inTabs = current && TABS.includes(current.key);
+  tabbar.innerHTML = SECTIONS.filter((s) => TABS.includes(s.key)).map((s) => `<a href="${s.href}"${s === current ? ` aria-current="true" class="active"` : ""}>${pixelIcon(s.icon, 24)}<span>${L(...s.short)}</span></a>`).join("")
+    + `<button type="button" id="menu-btn" aria-haspopup="dialog" aria-controls="menu-sheet"${current && !inTabs ? ` class="active"` : ""}>${pixelIcon("menu", 24)}<span>Menu</span></button>`;
+  sheet.setAttribute("aria-label", L("Menu du site", "Site menu"));
+  sheet.innerHTML = `<div class="ms-box">
+    <header class="ms-head"><span class="ms-brand">${foxSvg(32, true)}<b>Third<span>Estate</span></b></span><button type="button" class="ms-close" data-ms="close" aria-label="${L("Fermer le menu", "Close the menu")}">${pixelIcon("close", 24)}</button></header>
+    <div class="ms-tools">
+      <button type="button" data-ms="search">${pixelIcon("search", 12)}<span>${L("Rechercher une commune, un élu, un mot", "Search a town, an official, a word")}</span></button>
+      <a class="ms-quiz" href="#/quiz">${L("Le quiz : qui vous ressemble ?", "The quiz: who’s like you?")}</a>
+    </div>
+    <nav class="ms-nav" aria-label="${L("Rubriques", "Sections")}">${SECTIONS.map((s, n) => `<details${s === current || (!current && n === 0) ? " open" : ""}>
+        <summary>${pixelIcon(s.icon, 24)}<span><b>${L(s.fr, s.en)}</b><small>${esc(L(...s.blurb))}</small></span>${caret}</summary>
+        <div class="ms-links">${s.children.map(itemLink).join("")}${s.key === "programmes" ? candLinks("ms-extra") : ""}</div>
+      </details>`).join("")}</nav>
+    <footer class="ms-foot"><a href="#/">${L("Accueil", "Home")}</a><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><button type="button" data-ms="lang">${getLang() === "fr" ? "English" : "Français"}</button></footer>
+  </div>`;
 
   const sub = document.getElementById("subnav")!;
   sub.hidden = !current;
   sub.setAttribute("aria-label", current ? L(`Rubrique ${current.fr}`, `${current.en} section`) : "");
-  sub.innerHTML = current ? `<div>${current.children.map((c) => `<a href="${c.href}"${c.match.test(path) ? ` class="active" aria-current="page"` : ""}>${esc(L(c.fr, c.en))}</a>`).join("")}</div>` : "";
+  sub.innerHTML = current ? `<div><span class="sub-k">${pixelIcon(current.icon, 12)}${L(current.fr, current.en)}</span>${current.children.map((c) => `<a href="${c.href}"${c.match.test(path) ? ` class="active" aria-current="page"` : ""}>${esc(L(c.fr, c.en))}</a>`).join("")}</div>` : "";
   // phones: the row scrolls sideways; bring the current page's link into view without moving the page
   const row = sub.firstElementChild as HTMLElement | null, on = sub.querySelector<HTMLElement>("a.active");
   if (row && on && row.scrollWidth > row.clientWidth) row.scrollLeft = Math.max(0, on.offsetLeft - (row.clientWidth - on.offsetWidth) / 2);
@@ -231,15 +296,52 @@ function renderChrome(path: string) {
   langBtn.innerHTML = `<span class="l-long">${t().langSwitch}</span><span class="l-short" aria-hidden="true">${getLang() === "fr" ? "EN" : "FR"}</span>`;
   langBtn.setAttribute("aria-label", getLang() === "fr" ? "Switch to English" : "Passer en français");
   skip.textContent = L("Aller au contenu", "Skip to content");
+  toTop.setAttribute("aria-label", L("Haut de page", "Back to top"));
 
-  footer.innerHTML = `<div class="foot">
-    <div class="foot-id">${document.querySelector(".topbar .brand")!.outerHTML}
+  footer.innerHTML = `<div class="foot-strip" aria-hidden="true"></div><div class="foot">
+    <div class="foot-id"><a class="brand" href="#/" aria-label="Third Estate">${foxSvg(64, true)}<b>Third<span>Estate</span></b></a>
       <p>${L("Données électorales françaises, de la commune à l’Élysée. Sources publiques, méthode ouverte, code libre.", "French election data, from your town hall to the Élysée. Public sources, open method, open code.")}</p>
       <p class="foot-quote">${L("« Qu’est-ce que le tiers état ? Tout. Qu’a-t-il été jusqu’à présent dans l’ordre politique ? Rien. Que demande-t-il ? À y devenir quelque chose. »", "“What is the Third Estate? Everything. What has it been until now in the political order? Nothing. What does it ask? To become something.”")} <span>Sieyès, 1789</span></p></div>
-    <nav class="foot-map" aria-label="${L("Plan du site", "Site map")}">${SECTIONS.map((s) => `<div><a class="foot-h" href="${s.href}">${L(s.fr, s.en)}</a>${s.children.map((c) => `<a href="${c.href}">${esc(L(c.fr, c.en))}</a>`).join("")}</div>`).join("")}
+    <nav class="foot-map" aria-label="${L("Plan du site", "Site map")}">${SECTIONS.map((s) => `<div><a class="foot-h" href="${s.href}">${pixelIcon(s.icon, 12)}${L(s.fr, s.en)}</a>${s.children.map((c) => `<a href="${c.href}">${esc(L(c.fr, c.en))}</a>`).join("")}</div>`).join("")}
       <div><span class="foot-h">${L("Le site", "About")}</span><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="https://github.com/nicbay/ThirdEstate" target="_blank" rel="noopener">GitHub</a></div></nav>
   </div>`;
 }
+
+// ---------- phone menu sheet: opened from the tab bar, closed by a link, the close button, Esc or the backdrop ----------
+tabbar.addEventListener("click", (e) => { if ((e.target as Element).closest("#menu-btn") && !sheet.open) sheet.showModal(); });
+sheet.addEventListener("click", (e) => {
+  const el = e.target as Element;
+  const act = el.closest<HTMLElement>("[data-ms]")?.dataset.ms;
+  if (el === sheet || act === "close" || el.closest("a")) return closeSheet();
+  if (act === "search") { closeSheet(); openSearch(document.getElementById("menu-btn")); }
+  if (act === "lang") { closeSheet(); langBtn.click(); }
+});
+window.addEventListener("hashchange", closeSheet);
+
+// ---------- scroll: a pixel progress bar under the masthead, a back-to-top button, the masthead's shadow ----------
+const progress = document.createElement("div");
+progress.className = "scroll-px";
+progress.setAttribute("aria-hidden", "true");
+progress.innerHTML = "<i></i>";
+document.querySelector(".topbar")!.append(progress);
+const toTop = document.createElement("button");
+toTop.type = "button";
+toTop.className = "to-top";
+toTop.innerHTML = pixelIcon("up", 24);
+toTop.hidden = true;
+document.body.append(toTop);
+toTop.addEventListener("click", () => { window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); app.focus({ preventScroll: true }); });
+let scrollQueued = false;
+function onScroll() {
+  scrollQueued = false;
+  const max = document.documentElement.scrollHeight - innerHeight;
+  const p = max > 40 ? Math.min(1, scrollY / max) : 0;
+  // 40 steps: the bar advances block by block, like the mark's pixels
+  (progress.firstElementChild as HTMLElement).style.width = `${(Math.round(p * 40) / 40) * 100}%`;
+  document.documentElement.classList.toggle("is-scrolled", scrollY > 8);
+  toTop.hidden = scrollY < innerHeight * 1.2;
+}
+window.addEventListener("scroll", () => { if (!scrollQueued) { scrollQueued = true; requestAnimationFrame(onScroll); } }, { passive: true });
 
 // ---------- masthead menus: hover on desktop, the caret button for keyboard and touch ----------
 const closeMenus = (except?: Element | null) =>
@@ -271,9 +373,22 @@ searchBtn.addEventListener("click", () => openSearch(searchBtn));
 skip.addEventListener("click", (e) => { e.preventDefault(); app.focus(); app.scrollIntoView(); });
 initSearch();
 
+// Sections below the fold rise in as they enter the screen. Nothing waits hidden: a section already on screen
+// (or one the observer never reports) simply stays as drawn; the class only starts a short entrance.
+const rise = "IntersectionObserver" in window ? new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("rv-in"); rise!.unobserve(e.target); } }), { rootMargin: "0px 0px -6% 0px" }) : null;
+function reveal() {
+  if (!rise || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  app.querySelectorAll<HTMLElement>(":scope > .page > .card, :scope > .page > article, :scope > .page > .next-steps, :scope > .page > .charter, :scope > .page > .quiz-teaser, .home-programmes > .pf").forEach((el) => {
+    if (el.dataset.rv) return;
+    el.dataset.rv = "1";
+    if (el.getBoundingClientRect().top > innerHeight * 0.92) rise.observe(el);
+  });
+}
 /** Presentation pass after each render: wide tables scroll inside their own box on small screens. */
 function enhance() {
   sectionHero();
+  reveal();
+  onScroll();
   app.querySelectorAll<HTMLTableElement>("table.table").forEach((t) => {
     if (t.parentElement?.classList.contains("table-scroll")) return;
     const box = document.createElement("div");
@@ -304,6 +419,7 @@ function sectionHero() {
   box.append(inner);
   band[0].before(box);
   inner.append(...band);
+  box.insertAdjacentHTML("beforeend", `<div class="px-edge" aria-hidden="true"></div>`);
   const h1 = inner.querySelector("h1");
   if (h1 && h1.children.length === 0 && h1.id !== "sim-h1") {
     const text = h1.textContent ?? "";
@@ -366,7 +482,7 @@ async function render(path: string, anchor: string | undefined) {
   for (const [re, fn] of routes) {
     const m = path.match(re);
     if (m) {
-      app.innerHTML = `<p class="muted pad">${t().loading}</p>`;
+      app.innerHTML = `<p class="muted pad px-loading">${t().loading}<i aria-hidden="true"></i></p>`;
       foxBusy(true);
       try {
         await fn(m);
