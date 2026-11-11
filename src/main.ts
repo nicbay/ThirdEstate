@@ -237,7 +237,7 @@ function renderChrome(path: string) {
       <p>${L("Données électorales françaises, de la commune à l’Élysée. Sources publiques, méthode ouverte, code libre.", "French election data, from your town hall to the Élysée. Public sources, open method, open code.")}</p>
       <p class="foot-quote">${L("« Qu’est-ce que le tiers état ? Tout. Qu’a-t-il été jusqu’à présent dans l’ordre politique ? Rien. Que demande-t-il ? À y devenir quelque chose. »", "“What is the Third Estate? Everything. What has it been until now in the political order? Nothing. What does it ask? To become something.”")} <span>Sieyès, 1789</span></p></div>
     <nav class="foot-map" aria-label="${L("Plan du site", "Site map")}">${SECTIONS.map((s) => `<div><a class="foot-h" href="${s.href}">${L(s.fr, s.en)}</a>${s.children.map((c) => `<a href="${c.href}">${esc(L(c.fr, c.en))}</a>`).join("")}</div>`).join("")}
-      <div><span class="foot-h">${L("Le site", "About")}</span><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="https://github.com/nicbay/projectview" target="_blank" rel="noopener">GitHub</a></div></nav>
+      <div><span class="foot-h">${L("Le site", "About")}</span><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="https://github.com/nicbay/ThirdEstate" target="_blank" rel="noopener">GitHub</a></div></nav>
   </div>`;
 }
 
@@ -341,6 +341,21 @@ async function route() {
   // the first page just appears (the fox is assembling); later ones cross over with the masthead held still
   return firstRender ? render(path, anchor) : pageTransition(() => render(path, anchor));
 }
+// A tab opened before a deploy still runs the old bundle, whose lazily loaded pages no longer exist on the
+// server (404). Reload once to pick up the new version; the sessionStorage stamp stops a reload loop if the
+// file is genuinely missing.
+const STALE_KEY = "te-stale-reload";
+function reloadForNewVersion(err: unknown) {
+  if (!/dynamically imported module|Importing a module script failed|error loading dynamically imported module/i.test(String((err as Error)?.message ?? err))) return false;
+  try {
+    const last = Number(sessionStorage.getItem(STALE_KEY) ?? 0);
+    if (Date.now() - last < 30_000) return false;
+    sessionStorage.setItem(STALE_KEY, String(Date.now()));
+  } catch { return false; }
+  location.reload();
+  return true;
+}
+window.addEventListener("vite:preloadError", (e) => { if (reloadForNewVersion((e as Event & { payload?: unknown }).payload)) e.preventDefault(); });
 let renderSeq = 0;
 async function render(path: string, anchor: string | undefined) {
   // A view transition runs its update on the next painted frame, so a quick second navigation (or a
@@ -362,6 +377,7 @@ async function render(path: string, anchor: string | undefined) {
         else window.scrollTo(0, 0);
       } catch (err) {
         console.error(err);
+        if (reloadForNewVersion(err)) return;
         app.innerHTML = `<p class="error pad">${t().error} — ${(err as Error).message}</p>`;
       } finally {
         foxBusy(false);

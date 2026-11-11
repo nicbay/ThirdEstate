@@ -18,7 +18,7 @@ export const PUBLIC_DIR = path("public/data/feed/");
 export const DEPUTES = path("public/data/an/deputes.json");
 export const SOCIALS = path("public/data/an/socials.json"); // produced by the mp-socials workstream (optional)
 
-export const UA = "Mozilla/5.0 (compatible; ThirdEstate/0.1; +https://github.com/nicbay/projectview)";
+export const UA = "Mozilla/5.0 (compatible; ThirdEstate/0.1; +https://github.com/nicbay/ThirdEstate)";
 export const HOUR = 3600e3;
 export const WINDOW_H = 72; // stories and reactions shown in latest.json
 export const KEEP_DAYS = 8; // how long raw news items / posts stay in the state files

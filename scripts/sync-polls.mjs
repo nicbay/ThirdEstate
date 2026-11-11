@@ -16,7 +16,7 @@ const PAGES = {
   2022: "Opinion_polling_for_the_2022_French_presidential_election",
   "legislatives-2024": "Opinion_polling_for_the_2024_French_legislative_election",
 };
-const UA = { "User-Agent": "ThirdEstate/0.1 (open-data French election site; github.com/nicbay/projectview)" };
+const UA = { "User-Agent": "ThirdEstate/0.1 (open-data French election site; github.com/nicbay/ThirdEstate)" };
 const OUT = new URL("../public/data/polls/", import.meta.url);
 
 const MONTHS = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, sept: 8, oct: 9, nov: 10, dec: 11 };
