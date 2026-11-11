@@ -9747,6 +9747,150 @@
       },
       "check": null,
       "postTime": "2026-11-10T15:44:35.000Z"
+    },
+    "bsky:at://did:plc:vjwqkzs27ge527nmwckanige/app.bsky.feed.post/3mzzmewqgis2q": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-11T09:51:10.926Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de commémoration et de remerciement aux écoliers, sans position politique.",
+        "rationale_en": "Commemorative and thank-you message to schoolchildren, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-11T09:11:49.779Z"
+    },
+    "yt:9pS5ETw7PpM": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-11T09:51:10.926Z",
+      "storyItems": [
+        "ab13503419a5",
+        "bcba7f397d6e",
+        "56f33deaa81f",
+        "ceb6272c15cd",
+        "aa3cd8675b46",
+        "370061d7ef31"
+      ],
+      "storyTitle": "Présidentielle 2027 : David Lisnard s’invite parmi les personnalités politiques les plus populaires, Marine Le Pen toujours première, selon un sondage",
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Plaide pour des courtes peines « certaines » et un « électrochoc » contre les petits délits, orientation sécuritaire de droite, et appelle à un accord Retailleau-Lisnard.",
+        "rationale_en": "Backs certain short sentences and an 'electroshock' for minor offences, a right-wing security stance, and calls for a Retailleau-Lisnard deal."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Vocabulaire un peu émotionnel (« électrochoc ») mais pas de rhétorique anti-élites ni de bloc populaire.",
+        "rationale_en": "Slightly emotive wording ('electroshock') but no anti-elite or popular-bloc rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-11T08:20:41.000Z"
+    },
+    "yt:_eDWjJ2CxqM": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-11T09:51:10.926Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Se félicite de moyens supplémentaires pour la police et les pompiers, et réclame de « redonner à l'État les moyens » contre les atteintes aux commerçants.",
+        "rationale_en": "Welcomes extra police and fire-service resources and calls to 'give the State the means' against attacks on shopkeepers."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Ton de victoire et appel à la sécurité, sans opposition peuple contre élites.",
+        "rationale_en": "Victory-style tone and security appeal, with no people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-11T08:13:15.000Z"
+    },
+    "yt:7HlQ81pqNCc": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-11T09:51:10.926Z",
+      "storyItems": [
+        "7cef629d9aee",
+        "19d00bcf1d22",
+        "668fdc02f08c"
+      ],
+      "storyTitle": "Grève du 10 novembre : étudiants, lycéens et enseignants à nouveau mobilisés pour « mettre le gouvernement sous pression »",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Soutient la mobilisation lycéenne et étudiante, dénonce une « répression systématique » et propose des crédits pour les étudiants et enseignants.",
+        "rationale_en": "Supports the student and teacher mobilisation, denounces 'systematic repression' and proposes funding for students and teachers."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [],
+        "rationale_fr": "Appel à « entendre la jeunesse » et accusation de répression, sans bloc populaire opposé aux élites.",
+        "rationale_en": "Calls to 'hear the youth' and accuses authorities of repression, without a popular bloc against elites."
+      },
+      "check": null,
+      "postTime": "2026-11-11T06:30:10.000Z"
+    },
+    "yt:GVzCCTCjVk8": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-11T09:51:10.926Z",
+      "storyItems": [
+        "ca88e07e8d11",
+        "5b1ca9fb558e",
+        "5538ef8160a0"
+      ],
+      "storyTitle": "« Vous faire taire » : des kebabs aux bistrots, l’extrême gauche annonce dix jours d’action contre CNews avec « Désarmer Bolloré »",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Critique de Vincent Bolloré et de l'influence des médias de son groupe, position associée à la gauche radicale.",
+        "rationale_en": "Criticises Vincent Bolloré and the influence of his media group, a position associated with the radical left."
+      },
+      "populism": {
+        "score": 0.5,
+        "markers": [
+          "anti_elites",
+          "complot"
+        ],
+        "rationale_fr": "Affirme sans source qu'un milliardaire peut acheter des parlementaires, suggérant une influence occulte.",
+        "rationale_en": "Asserts without sources that a billionaire can buy parliamentarians, implying hidden influence."
+      },
+      "check": null,
+      "postTime": "2026-11-11T02:05:28.000Z"
+    },
+    "bsky:at://did:plc:bnulcjvue27qpnwzup3y7hv3/app.bsky.feed.post/3mzvf24uhwk2d": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-11T09:51:10.926Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Dénonce des violences policières et saisit le procureur au titre de l'article 40, position de gauche sur le maintien de l'ordre.",
+        "rationale_en": "Denounces police violence and refers the matter to the prosecutor under article 40, a left-wing position on public order."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [],
+        "rationale_fr": "Formules indignées (« inacceptables ») sans opposition au peuple homogène ni complot.",
+        "rationale_en": "Indignant wording ('unacceptable') without homogeneous-people or conspiracy framing."
+      },
+      "check": null,
+      "postTime": "2026-11-09T16:49:51.958Z"
     }
   },
   "failures": {
