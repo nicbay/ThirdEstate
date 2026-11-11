@@ -7,6 +7,7 @@ import { WINDOW, average, duelAverages, pollValue, pollsterName, trend } from ".
 import { colon, dec, pair100, pct } from "../lib/format";
 import { esc, safeUrl } from "../util";
 import { shiftDays } from "./home";
+import { mountDaily } from "./daily";
 
 const ui = { range: 365, hidden: new Set<string>(), pollster: "" };
 
@@ -26,12 +27,15 @@ export async function renderPolls(app: HTMLElement) {
         <div><p class="eyebrow">${L("Présidentielle 2027", "2027 presidential election")}</p><h1>${current[0] ? (getLang() === "fr" ? `${esc(current[0].name)} à ${pct(current[0].avg)} en moyenne${current[1] ? `, ${esc(meta(current[1].name).surname)} à ${pct(current[1].avg)}` : ""}` : `${esc(current[0].name)} averages ${pct(current[0].avg)}${current[1] ? `, ${esc(meta(current[1].name).surname)} ${pct(current[1].avg)}` : ""}`) : L("Tous les sondages, et ce que parient les marchés", "Every poll, and what the betting markets say")}</h1>
           <p class="dek">${L("L’évolution des intentions de vote depuis 2025, chaque duel de second tour testé, la liste complète des sondages et les cotes de Kalshi et Polymarket.", "Voting intention since 2025, every runoff match-up tested, the full list of polls, and the odds on Kalshi and Polymarket.")}</p></div>
         <nav class="subnav">
+          <a href="#/sondages#point">${L("Le point du jour", "Today’s brief")}</a>
           <a href="#/sondages#evolution">${L("Évolution", "Trend")}</a>
           <a href="#/sondages#second-tour">${L("Second tour", "Runoff")}</a>
           <a href="#/sondages#liste">${L("Tous les sondages", "All polls")}</a>
           <a href="#/sondages#marches">${L("Marchés", "Markets")}</a>
         </nav>
       </div>
+
+      <div id="daily"></div>
 
       <article class="card" id="evolution">
         <header class="card-head"><h2>${L("Évolution des intentions de vote au 1er tour", "First-round voting intention over time")}</h2>
@@ -73,6 +77,8 @@ export async function renderPolls(app: HTMLElement) {
 
       <p class="source muted">${L("Sondages : Wikipédia (CC BY-SA), mis à jour le", "Polls: Wikipedia (CC BY-SA), updated")} ${fmtDate(polls.fetchedAt)} · <a href="${esc(safeUrl(polls.source))}" target="_blank" rel="noopener">${L("page source", "source page")}</a></p>
     </section>`;
+
+  void mountDaily(app.querySelector<HTMLElement>("#daily")).then(() => { if (/#point$/.test(location.hash)) document.getElementById("point")?.scrollIntoView(); });
 
   const drawChart = () => {
     const from = shiftDays(latest, -ui.range);

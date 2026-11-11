@@ -1,8 +1,9 @@
 // Front page. The hero and a live ticker, then the story of the moment (the 2027 programmes, with posts),
 // the polling trend and the shift arrows, each drawn in as it scrolls into view.
 import { geoConicConformal, geoPath } from "d3-geo";
-import { loadDepartements, loadDeputes, loadFeed, loadMarkets, loadPolls, loadShifts } from "../data";
-import { L, fmtDate, getLang } from "../i18n";
+import { fetchJson, loadDepartements, loadDeputes, loadFeed, loadMarkets, loadPolls, loadShifts } from "../data";
+import { pixelIcon } from "../lib/pixel-icons";
+import { L, fmtDate, fmtNum, getLang } from "../i18n";
 import { lineChart } from "../lib/chart";
 import { meta, registerParties, spectrumRank } from "../lib/candidates";
 import { cloudEnabled, getHome, onPresence } from "../lib/cloud";
@@ -16,10 +17,14 @@ import { bindSearch, searchBox } from "./explore";
 import { heroViz } from "./hero";
 import { mpChip, townBrief } from "./brief";
 import { mountDebtTeaser } from "./economy";
+import { mountDaily } from "./daily";
 import { mountProgrammesFeature, startTicker, tickerHtml, type TickerItem } from "./home-programmes";
 
 export async function renderHome(app: HTMLElement) {
-  const [polls, markets, geo, deputes, shifts] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null), loadDepartements(), loadDeputes(), loadShifts().catch(() => null)]);
+  const [polls, markets, geo, deputes, shifts, progs] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null), loadDepartements(), loadDeputes(), loadShifts().catch(() => null),
+    fetchJson<{ programmes: { total: number; inLatest?: number }[] }>("/data/programmes/index.json").catch(() => null)]);
+  const nProgs = progs?.programmes.length ?? 0;
+  const nMeasures = progs?.programmes.reduce((n, p) => n + (p.inLatest ?? p.total), 0) ?? 0;
   registerParties(polls.parties);
   const fr = getLang() === "fr";
   const latest = polls.firstRound[0]?.end ?? new Date().toISOString().slice(0, 10);
@@ -46,7 +51,7 @@ export async function renderHome(app: HTMLElement) {
 
   const ticker: TickerItem[] = [
     ...(leader ? [{ k: L("Sondages", "Polls"), html: esc(fr ? `${leader.name} en tête (${pct(leader.avg)})${second ? `, ${meta(second.name).surname} ${pct(second.avg)}` : ""}` : `${leader.name} leads (${pct(leader.avg)})${second ? `, ${meta(second.name).surname} ${pct(second.avg)}` : ""}`) }] : []),
-    { k: L("Programmes", "Programmes"), html: `<a href="#/programmes/melenchon">${L("Mélenchon : 5e version de L’Avenir en commun, passée au crible", "Mélenchon: 5th edition of L’Avenir en commun, examined")}</a>` },
+    { k: L("Programmes", "Programmes"), html: `<a href="#/programmes">${nProgs ? L(`${nProgs} programmes comparés, thème par thème`, `${nProgs} programmes compared, theme by theme`) : L("Les programmes comparés, thème par thème", "The programmes compared, theme by theme")}</a>` },
     ...(fav ? [{ k: L("Prévision", "Forecast"), html: esc(fr ? `${fav.name} : ${pct(fav.win, 0)} de chances` : `${fav.name}: ${pct(fav.win, 0)} chance`) }] : []),
     ...(feed?.stories ?? []).slice(0, 4).map((st) => ({ k: L("Actualité", "News"), html: `<a href="#/fil">${esc(st.items[0].title)}</a>` })),
     { k: L("Quiz", "Quiz"), html: `<a href="#/quiz">${L("Quel député vous ressemble ?", "Which MP is most like you?")}</a>` },
@@ -56,7 +61,7 @@ export async function renderHome(app: HTMLElement) {
       <section class="hero-x" aria-labelledby="hero-title">
         <div class="hero-x-in">
           <div class="hero-x-copy">
-            <p class="hero-kicker">${L("Présidentielle 2027 · Assemblée · Sénat · 34 920 communes", "2027 presidential · Assembly · Senate · 34,920 towns")} <span class="live-badge" id="live-badge" hidden><i></i><span id="live-count"></span></span></p>
+            <p class="hero-kicker">${L("Présidentielle 2027 · Programmes · Parlement · 34 920 communes", "2027 presidential · Programmes · Parliament · 34,920 towns")} <span class="live-badge" id="live-badge" hidden><i></i><span id="live-count"></span></span></p>
             <h1 id="hero-title"><span class="ln"><span>${L("La politique française,", "French politics,")}</span></span><span class="ln"><span><em>${L("en données.", "in data.")}</em></span></span></h1>
             <a class="hero-story" href="#home-programmes" id="hero-story"><i aria-hidden="true"></i><span>${L("Le dossier du moment", "The story right now")}</span>${L("Les programmes 2027 passés au crible : ce qui change, ce que ça coûte", "The 2027 programmes examined: what changes, what it costs")} →</a>
             <p class="hero-dek">${L("Qui va gagner en 2027. Comment votent vos députés et sénateurs. Ce qui se passe dans votre commune. Et toutes les élections depuis 1848, archives à l’appui.", "Who will win in 2027. How your MPs and senators vote. What is happening in your town. And every election since 1848, with the archive footage.")}</p>
@@ -73,15 +78,18 @@ export async function renderHome(app: HTMLElement) {
           </figure>
         </div>
         <nav class="hero-x-doors" aria-label="${L("Rubriques", "Sections")}">
-          <a href="${home?.code ? `#/ville/${home.code}` : "#/explorer"}"><span class="hx-k">${L("Chez vous", "Where you live")}</span><strong data-count="34920">${L("34 920", "34,920")}</strong><span>${home?.code ? esc(L(`communes, dont la vôtre, ${home.commune ?? home.code} : son maire, son député, ses sénateurs`, `towns, yours included, ${home.commune ?? home.code}: its mayor, MP and senators`)) : L("communes : maire, conseil, quartiers, écoles, sécurité, actualité", "towns: mayor, council, neighbourhoods, schools, safety, news")}</span></a>
-          <a href="#/assemblee"><span class="hx-k">${L("Parlement", "Parliament")}</span><strong data-count="${deputes.length || 577}">${deputes.length || 577}</strong><span>${L("députés et 348 sénateurs : chacun de leurs votes, et ce qu’ils disent en séance", "MPs and 348 senators: every vote they cast, and what they say in the chamber")}</span></a>
-          <a href="#/2027"><span class="hx-k">${L("Présidentielle 2027", "2027 presidential")}</span>${fav ? `<strong data-count="${Math.round(fav.win)}" data-suffix="${fr ? " %" : "%"}">${pct(fav.win, 0)}</strong><span>${fr ? `de chances pour ${esc(fav.name)} selon notre prévision (sondages et marchés)` : `chance for ${esc(fav.name)} in our forecast (polls and markets)`}</span>` : `<strong>2027</strong><span>${L("la course, les sondages et le simulateur", "the race, the polls and the simulator")}</span>`}</a>
-          <a href="#/chiffres"><span class="hx-k">${L("La France", "France")}</span><strong data-count="101">101</strong><span>${L("départements, et le pays en chiffres : dette en direct, emploi, prix, bascules gauche-droite", "departments, and the country in numbers: live debt, jobs, prices, left–right shifts")}</span></a>
-          <a href="#/resultats"><span class="hx-k">${L("Archives", "Archives")}</span><strong>1848</strong><span>${L("chaque présidentielle depuis, avec l’annonce en vidéo ou à la radio", "every presidential election since, with the announcement on film or radio")}</span></a>
+          <a href="${home?.code ? `#/ville/${home.code}` : "#/explorer"}"><span class="hx-k">${pixelIcon("home", 12)}${L("Chez vous", "Where you live")}</span><strong data-count="34920">${L("34 920", "34,920")}</strong><span>${home?.code ? esc(L(`communes, dont la vôtre, ${home.commune ?? home.code}`, `towns, yours included, ${home.commune ?? home.code}`)) : L("communes : maire, conseil, écoles, sécurité", "towns: mayor, council, schools, safety")}</span></a>
+          <a href="#/assemblee"><span class="hx-k">${pixelIcon("parliament", 12)}${L("Parlement", "Parliament")}</span><strong data-count="${deputes.length || 577}">${deputes.length || 577}</strong><span>${L("députés et 348 sénateurs : chacun de leurs votes", "MPs and 348 senators: every vote they cast")}</span></a>
+          <a href="#/2027"><span class="hx-k">${pixelIcon("ballot", 12)}${L("Présidentielle 2027", "2027 presidential")}</span>${fav ? `<strong data-count="${Math.round(fav.win)}" data-suffix="${fr ? " %" : "%"}">${pct(fav.win, 0)}</strong><span>${fr ? `de chances pour ${esc(fav.name)} selon notre prévision` : `chance for ${esc(fav.name)} in our forecast`}</span>` : `<strong>2027</strong><span>${L("la course, les sondages et le simulateur", "the race, the polls and the simulator")}</span>`}</a>
+          <a href="#/programmes" class="is-new"><span class="hx-k">${pixelIcon("doc", 12)}${L("Programmes", "Programmes")}<i class="px-tag">${L("Nouveau", "New")}</i></span><strong${nMeasures ? ` data-count="${nMeasures}"` : ""}>${nMeasures ? fmtNum(nMeasures) : "2027"}</strong><span>${L(`mesures de ${nProgs || "tous les"} candidats, comparées et chiffrées`, `measures from ${nProgs || "all the"} candidates, compared and costed`)}</span></a>
+          <a href="#/chiffres"><span class="hx-k">${pixelIcon("france", 12)}${L("La France", "France")}</span><strong data-count="101">101</strong><span>${L("départements : dette en direct, emploi, prix, bascules", "departments: live debt, jobs, prices, shifts")}</span></a>
+          <a href="#/resultats"><span class="hx-k">${pixelIcon("archive", 12)}${L("Archives", "Archives")}</span><strong>1848</strong><span>${L("chaque présidentielle depuis, avec l’annonce filmée", "every presidential election since, with the footage")}</span></a>
         </nav>
         ${tickerHtml(ticker)}
+        <div class="px-edge" aria-hidden="true"></div>
       </section>
 
+      <div id="home-daily"></div>
       <div id="home-programmes" class="home-programmes"></div>
       <div id="mine"></div>
       <a class="quiz-teaser" href="#/quiz"><span class="quiz-teaser-k">${L("Quiz", "Quiz")}</span><strong>${L("Qui vous ressemble ?", "Who’s closest to you?")}</strong><span>${L("Répondez à de vrais votes de l’Assemblée : découvrez le député, le groupe et le candidat 2027 les plus proches de vous.", "Answer real Assembly votes: find the MP, group and 2027 candidate closest to you.")}</span></a>
@@ -147,6 +155,7 @@ export async function renderHome(app: HTMLElement) {
   });
   startTicker(app, ELECTION_DAY);
   app.querySelector("#hero-story")?.addEventListener("click", (e) => { e.preventDefault(); app.querySelector("#home-programmes")?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); });
+  void mountDaily(app.querySelector<HTMLElement>("#home-daily"), true);
   mountProgrammesFeature(app.querySelector<HTMLElement>("#home-programmes"));
 
   // ---------- trend chart ----------

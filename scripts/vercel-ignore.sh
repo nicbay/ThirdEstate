@@ -15,6 +15,7 @@ if git diff --quiet "$prev" HEAD -- . \
   ':(exclude)public/data/forecast' \
   ':(exclude)public/data/feed' \
   ':(exclude)public/data/news' \
+  ':(exclude)public/data/daily' \
   ':(exclude)data/feed' \
   ':(exclude)data/usage' 2>/dev/null; then
   echo "Only live data changed since $prev: skipping the deployment (the site reads it from GitHub)."
