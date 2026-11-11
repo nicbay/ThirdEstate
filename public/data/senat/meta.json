@@ -1,5 +1,5 @@
 {
- "syncedAt": "2026-11-10T14:57:27.173Z",
+ "syncedAt": "2026-11-11T14:28:16.443Z",
  "firstSession": "2023-2024",
  "sources": {
   "api": "https://www.senat.fr/api-senat/senateurs.json",
@@ -32,13 +32,13 @@
    "max": 340
   },
   "session2026": {
-   "listed": 65,
-   "max": 65
+   "listed": 68,
+   "max": 68
   },
   "votes": {
-   "listed": 987,
-   "written": 987,
-   "fetchedThisRun": 36,
+   "listed": 990,
+   "written": 990,
+   "fetchedThisRun": 32,
    "failed": [],
    "noNominativeList": [
     "2023-100",
@@ -562,23 +562,6 @@
     "positions": "kept"
    },
    {
-    "id": "2023-98",
-    "published": {
-     "pour": 191,
-     "contre": 102,
-     "abstention": 49,
-     "nppv": 6
-    },
-    "nominative": {
-     "P": 341,
-     "C": 0,
-     "A": 0,
-     "N": 7
-    },
-    "gap": 301,
-    "positions": "dropped"
-   },
-   {
     "id": "2023-99",
     "published": {
      "pour": 341,
@@ -593,6 +576,23 @@
      "N": 7
     },
     "gap": 476,
+    "positions": "dropped"
+   },
+   {
+    "id": "2023-98",
+    "published": {
+     "pour": 191,
+     "contre": 102,
+     "abstention": 49,
+     "nppv": 6
+    },
+    "nominative": {
+     "P": 341,
+     "C": 0,
+     "A": 0,
+     "N": 7
+    },
+    "gap": 301,
     "positions": "dropped"
    },
    {
@@ -993,9 +993,9 @@
     "id": "19489J",
     "nom": "Éric Kerrouche",
     "platform": "facebook",
-    "kept": "senat: https://www.facebook.com/752244486",
+    "kept": "senat: https://www.facebook.com/eric.kerrouche",
     "others": [
-     "site: https://www.facebook.com/eric.kerrouche"
+     "senat: https://www.facebook.com/752244486"
     ]
    },
    {
