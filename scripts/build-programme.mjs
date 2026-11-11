@@ -4,7 +4,8 @@ import { existsSync, readFileSync } from "node:fs";
 //
 //   node scripts/build-programme.mjs [slug] [--fetch] [--force]
 //
-// slug     a config in scripts/data/programmes/<slug>.mjs (default: melenchon)
+// slug        a config in scripts/data/programmes/<slug>.mjs (default: melenchon)
+// --baseline  only (re)attach the older baseline edition (cfg.baseline) to the published file; see attachBaseline
 // --fetch  crawl the online version(s) into .cache/programmes/<dir>/ (3 s between requests;
 //          pages already cached are kept unless --force)
 //
@@ -337,6 +338,161 @@ async function parseSite(v) {
   return out;
 }
 
+const r3 = (x) => Math.round(x * 1000) / 1000;
+// ---------- baseline: an older, complete edition laid under the lineages (cfg.baseline) ----------
+// The lineages are built from the versions above and never change here: ids, statuses and counts stay
+// what they were. The baseline only adds, to each lineage it matches, its wording in that older edition
+// (field `f`), so the page can tell a measure that is new from one the abridged 2022 booklet left out.
+// It runs at the end of a full build, or alone on the published file:
+//   node scripts/build-programme.mjs [slug] --baseline
+// (the lineages are read back from public/data/programmes/<slug>.json; nothing else is recomputed).
+
+// Layout text (`pdftotext -layout`, "=== page N ===" markers): measures are "- " bullets, sub-measures "o "
+// bullets under them, continuation lines are indented deeper than their bullet; section titles are single
+// lines between blank lines; footnotes (numbered, at the foot of the page) and page numbers are dropped.
+function parseBaseline(v, txt) {
+  const out = [];
+  let chapter = 0, section = null, cur = null, parent = null, dashIndent = 10, lastFoot = 0;
+  const flush = () => { if (cur) { out.push(cur); cur = null; } };
+  for (const { n, lines } of pagesOf(txt)) {
+    if (n < v.bodyFrom || n > v.bodyTo) continue;
+    let foot = false;
+    for (let i = 0; i < lines.length; i++) {
+      const raw = lines[i].replace(/\t/g, " "), l = raw.trim();
+      if (!l || foot) continue;
+      const indent = raw.length - raw.trimStart().length;
+      if (/^\d{1,3}$/.test(l)) continue; // printed page number
+      const mc = l.match(/^Chapitre (\d+)\s*:\s*(.*)$/);
+      if (mc) {
+        flush(); chapter = Number(mc[1]); section = null; parent = null;
+        while (lines[i + 1]?.trim()) i++; // the title wraps; the config has it
+        continue;
+      }
+      if (!chapter) continue;
+      const mf = l.match(/^(\d{1,3}) \S/);
+      if (mf && indent <= dashIndent && Number(mf[1]) > lastFoot && Number(mf[1]) <= lastFoot + 8) { lastFoot = Number(mf[1]); foot = true; continue; }
+      if (/^- \S/.test(l) || /^-\S/.test(l) && indent >= 4) {
+        flush(); dashIndent = indent;
+        cur = parent = { text: l.replace(/^-\s*/, ""), chapter, section, page: n, indent, sub: false };
+        continue;
+      }
+      if (/^[o§] \S/.test(l) && parent) {
+        flush();
+        cur = { text: l.slice(2), chapter, section, page: n, indent, sub: true, parentText: parent.text };
+        parent.hasSub = true;
+        continue;
+      }
+      if (cur && indent > (cur.sub ? dashIndent : cur.indent)) { cur.text += " " + l; continue; }
+      flush();
+      // a section title: one line on its own, capitalised, not a sentence
+      const alone = !lines[i - 1]?.trim() && !lines[i + 1]?.trim();
+      if (alone && /^[\p{Lu}«]/u.test(l) && !/[.;,]$/.test(l) && l.length < 130) { section = l; parent = null; }
+    }
+  }
+  flush();
+  return out
+    // a bullet that only introduces its sub-bullets ("Faire France de tout bois :") is not a measure
+    .filter((m) => !(/:\s*$/.test(m.text) && (m.hasSub || m.text.length < 60)))
+    .map((m) => {
+      const [chTitle, chTheme] = v.chapters[m.chapter];
+      // footnote calls glued to the end of a word: "loi1", "assistance)3"
+      // …or to a year ("en 202026" is 2020 and call 26)
+      const text = clean(m.text.replace(/(?<=[\p{Ll}»)”"])\d{1,3}(?=$|[\s,;.:)])/gu, "").replace(/\b((?:19|20)\d\d)\d{1,3}(?=$|[\s,;.:)])/g, "$1"));
+      return { text, chapter: `${m.chapter}. ${chTitle}`, section: m.section ? clean(m.section) : null, page: m.page, chTheme, ...(m.sub ? { parentText: clean(m.parentText) } : {}) };
+    })
+    .filter((m) => m.text.length > 8);
+}
+
+async function attachBaseline(out) {
+  const v = cfg.baseline;
+  if (!v) return;
+  // a clean slate, so the step can be re-run on a file that already carries a baseline
+  delete out.baseline; delete out.sections[v.id];
+  for (const L of out.lineages) { delete L.f; delete L.fScore; delete L.fChange; }
+
+  const seen = new Set();
+  const F = parseBaseline(v, await readFile(new URL(v.text, CACHE), "utf8"))
+    .filter((m) => { const h = hash(m.text); if (seen.has(h)) return false; seen.add(h); return true; })
+    .map((m) => ({ ...m, id: `${v.id}-${hash(m.text)}`, theme: assignTheme(m.text + (m.parentText ? " " + m.parentText : ""), m.section, m.chTheme), figures: figures(m.text) }));
+
+  // same similarity as between versions (IDF-weighted Dice + containment), IDF over the lineages' wordings and the baseline
+  const tokSet = (t) => [...new Set(tokens(t))];
+  const B = out.lineages.map((L) => ({ L, ms: [L.a, L.e, L.w].filter(Boolean).map((m) => ({ text: m.t, tok: tokSet(m.t) })) }));
+  for (const m of F) m.tok = tokSet(m.text + (m.parentText && m.text.length < 60 ? " " + m.parentText : ""));
+  const docs = [...F, ...B.flatMap((b) => b.ms)];
+  const DF = new Map();
+  for (const d of docs) for (const t of d.tok) DF.set(t, (DF.get(t) ?? 0) + 1);
+  const idf = (t) => Math.log(1 + docs.length / (DF.get(t) ?? 1));
+  for (const d of docs) { d.tset = new Set(d.tok); d.w = d.tok.reduce((s, t) => s + idf(t), 0); }
+  const sim = (a, b) => {
+    if (norm(a.text) === norm(b.text)) return 1;
+    let inter = 0, n = 0;
+    for (const t of a.tok) if (b.tset.has(t)) { inter += idf(t); n++; }
+    if (n < 2 || !a.w || !b.w) return 0;
+    return 0.65 * ((2 * inter) / (a.w + b.w)) + 0.35 * (inter / Math.min(a.w, b.w));
+  };
+  const idx = new Map();
+  B.forEach((b, j) => { for (const t of new Set(b.ms.flatMap((m) => m.tok))) { if (!idx.has(t)) idx.set(t, []); idx.get(t).push(j); } });
+  const link = new Map((v.link ?? []).map(([f, l]) => [f, l])), unlink = new Set((v.unlink ?? []).map(([f, l]) => `${f}|${l}`));
+  const pairs = [];
+  F.forEach((a, i) => {
+    const cand = new Set();
+    for (const t of a.tok) for (const j of idx.get(t) ?? []) cand.add(j);
+    for (const j of cand) { const s = Math.max(...B[j].ms.map((m) => sim(a, m))); if (s >= v.border) pairs.push([s, i, j]); }
+    if (link.has(a.id)) { const j = B.findIndex((b) => b.L.id === link.get(a.id)); if (j >= 0) pairs.push([2, i, j]); else console.warn(`baseline link not applied: ${a.id}`); }
+  });
+  pairs.sort((p, q) => q[0] - p[0]);
+  const mA = new Map(), mB = new Set(), review = [];
+  for (const [s, i, j] of pairs) {
+    if (mA.has(i) || mB.has(j) || unlink.has(`${F[i].id}|${B[j].L.id}`)) continue;
+    if (s < v.accept) { review.push({ score: r3(s), f: F[i].id, lineage: B[j].L.id, fText: F[i].text, lText: B[j].ms.at(-1).text }); continue; }
+    mA.set(i, j); mB.add(j);
+    F[i].score = s === 2 ? null : r3(s);
+  }
+
+  const sections = [], sIdx = new Map();
+  const pack = (m) => {
+    const k = `${m.chapter}|${m.section ?? ""}`;
+    if (!sIdx.has(k)) { sIdx.set(k, sections.length); sections.push([null, m.chapter, m.section ?? null, null]); }
+    return { id: m.id, t: m.text, s: sIdx.get(k), p: m.page, ...(m.figures.length ? { f: [...new Set(m.figures)] } : {}) };
+  };
+  const figs = (list) => [...new Set(list ?? [])].filter((x) => !/^(19|20)\d\d$/.test(x)).sort(); // quantities, not years cited in passing
+  const already = { maintained: 0, modified: 0, new2025: 0, new2027: 0, dropped: 0 };
+  const only = [];
+  F.forEach((m, i) => {
+    const j = mA.get(i);
+    if (j === undefined) { only.push({ ...pack(m), theme: m.theme }); return; }
+    const L = B[j].L;
+    L.f = pack(m);
+    if (m.score != null) L.fScore = m.score;
+    already[L.status]++;
+    // a figure that differs between the baseline and the next complete wording (the 2022 booklet abridges: skipped when a fuller one exists)
+    const next = L.e ?? L.w ?? L.a, yr = L.e ? 2025 : L.w ? 2027 : 2022;
+    const fx = figs(m.figures), fy = figs(next.f);
+    if (fx.length && fy.length && JSON.stringify(fx) !== JSON.stringify(fy)) L.fChange = { from: v.year, to: yr, before: fx, after: fy };
+  });
+  const totals = Object.fromEntries(Object.keys(already).map((s) => [s, out.lineages.filter((L) => L.status === s).length]));
+  out.sections[v.id] = sections;
+  out.baseline = {
+    id: v.id, year: v.year, label: v.label, title: v.title, date: v.date, pages: v.pagesTotal, ...(v.url ? { url: v.url } : {}),
+    count: F.length, matched: mA.size, unmatched: only.length, accept: v.accept, doubtful: review.length,
+    already, totals, figureChanges: out.lineages.filter((L) => L.fChange).length, only,
+  };
+  review.sort((x, y) => y.score - x.score);
+  const sample = [...mA].map(([i, j]) => ({ score: F[i].score, f: F[i].id, lineage: B[j].L.id, status: B[j].L.status, fText: F[i].text, lText: B[j].ms.at(-1).text })).sort((x, y) => (x.score ?? 9) - (y.score ?? 9));
+  await writeFile(new URL(`review-${slug}-baseline.json`, CACHE), JSON.stringify({ borderline: review, weakestAccepted: sample.slice(0, 150) }, null, 1));
+  console.log(`${v.id}: ${F.length} measures; ${mA.size} matched to a lineage, ${only.length} without a later equivalent; ${review.length} doubtful pairs left unlinked`);
+  console.log(`already in ${v.year}:`, already, "of", totals);
+}
+
+if (args.includes("--baseline")) {
+  const file = new URL(`${slug}.json`, OUT);
+  const out = JSON.parse(await readFile(file, "utf8"));
+  await attachBaseline(out);
+  await writeFile(file, JSON.stringify(out));
+  process.exit(0);
+}
+
 // ---------- load + parse every version ----------
 if (FETCH) {
   for (const v of cfg.versions.filter((v) => v.kind === "site")) {
@@ -397,7 +553,6 @@ function sim(a, b) {
   if (n < 2 || !a.w || !b.w) return 0;
   return 0.65 * ((2 * inter) / (a.w + b.w)) + 0.35 * (inter / Math.min(a.w, b.w));
 }
-const r3 = (x) => Math.round(x * 1000) / 1000;
 // Within a version, a "mesure clé" box usually restates a bullet of the same section: merge near-duplicates
 // (similarity >= 0.75) into one measure that keeps the key flag and the longer wording.
 const MERGED = new Map(); // removed id -> kept id
@@ -623,6 +778,7 @@ const out = {
   themeWeights,
   lineages: outLineages,
 };
+await attachBaseline(out);
 await mkdir(OUT, { recursive: true });
 await writeFile(new URL(`${slug}.json`, OUT), JSON.stringify(out));
 review.sort((x, y) => y.score - x.score);

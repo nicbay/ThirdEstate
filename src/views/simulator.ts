@@ -19,6 +19,7 @@ import { defaultTransfer } from "../lib/forecast";
 import { SURVEY_SOURCE, TRANSFER_PRESETS, rnSide, transferFor, type Side, type Transfer, type TransferPreset } from "../lib/transfers";
 import { cloudEnabled, currentUser, deleteScenario, listScenarios, onAuth, saveScenario, sendLoginLink, signOut, type SavedScenario } from "../lib/cloud";
 import { esc, safeColor } from "../util";
+import "../styles/simulator.css";
 
 interface Cand { name: string; share: number; bloc: Bloc | null }
 interface Scenario {
@@ -34,9 +35,16 @@ interface Scenario {
   tp?: TransferPreset;
   /** first-round preset this field came from, until the first edit */
   p1?: string;
+  /** runoff turnout of the eliminated candidates' voters, in % of the transfer rule (50–110; absent = 100) */
+  mob?: number;
 }
 
 let state: Scenario | null = null;
+/** Undo / redo: scenarios as JSON, kept across re-renders of the page. */
+let undoStack: string[] = [], redoStack: string[] = [];
+/** A scenario pinned for side-by-side comparison (this visit only; saved scenarios live below). */
+let pinned: Scenario | null = null;
+let lastNudge = 0, lastNudgeKey = "";
 let authHooked = false;
 /** Saved scenarios ticked for comparison (ids; "now" = the scenario on screen). */
 const compare = new Set<string>(["now"]);
@@ -119,7 +127,8 @@ export function sanitizeScenario(raw: any): Scenario | null {
   // codes from the earlier simulator carry no "manual" flag: finalists other than the top two were picked by hand
   const top = [...cands].sort((a, b) => b.share - a.share).slice(0, 2).map((c) => c.name);
   const manual = typeof raw.manual === "boolean" ? raw.manual : !finalists.every((n: string) => top.includes(n));
-  return { cands, finalists: [finalists[0], finalists[1]], transfers, edited, manual, tp, p1: str(raw.p1) || undefined };
+  const mob = raw.mob == null ? 100 : Math.round(num(raw.mob, 50, 110));
+  return { cands, finalists: [finalists[0], finalists[1]], transfers, edited, manual, tp, p1: str(raw.p1) || undefined, ...(mob !== 100 ? { mob } : {}) };
 }
 const decode = (t: string): Scenario | null => {
   try {
@@ -140,7 +149,9 @@ function outcome(s: Scenario) {
     if (c.name === fa) { va += c.share; flows.push({ from: c, to: "a", v: c.share }); continue; }
     if (c.name === fb) { vb += c.share; flows.push({ from: c, to: "b", v: c.share }); continue; }
     const [ta, tb] = s.transfers[c.name] ?? [35, 35];
-    const a = (c.share * ta) / 100, b = (c.share * tb) / 100, x = Math.max(0, c.share - a - b);
+    // turnout of these voters in the runoff scales both transfers alike (never past 100 % of the electorate)
+    const k = Math.min((s.mob ?? 100) / 100, 100 / (ta + tb || 1));
+    const a = (c.share * ta * k) / 100, b = (c.share * tb * k) / 100, x = Math.max(0, c.share - a - b);
     va += a; vb += b; lost += x;
     flows.push({ from: c, to: "a", v: a }, { from: c, to: "x", v: x }, { from: c, to: "b", v: b });
   }
@@ -281,13 +292,22 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
   };
 
   // ---- state
-  const fresh = (): Scenario => {
-    const cands = pollAverage();
+  /** A whole scenario from a first-round field: top two qualify, transfers by the given rule. */
+  const make = (cands: Cand[], tp: TransferPreset = "2022", p1?: string, mob?: number): Scenario => {
     const top = [...cands].sort((a, b) => b.share - a.share);
-    const s: Scenario = { cands, finalists: [top[0].name, top[1].name], transfers: {}, edited: [], tp: "2022", p1: "avg" };
-    orderFinalists(s);
-    return s;
+    const sc: Scenario = { cands, finalists: [top[0].name, top[1].name], transfers: {}, edited: [], tp, p1, ...(mob && mob !== 100 ? { mob } : {}) };
+    orderFinalists(sc);
+    fillFor(sc);
+    return sc;
   };
+  const fresh = (): Scenario => make(pollAverage(), "2022", "avg");
+  /** Transfers of every eliminated candidate not set by hand, from the scenario's rule. */
+  function fillFor(sc: Scenario) {
+    const of = (n: string) => sc.cands.find((c) => c.name === n);
+    const [a, b] = sc.finalists.map((n) => side(of(n)));
+    for (const c of sc.cands) if (!sc.finalists.includes(c.name) && (!sc.edited.includes(c.name) || !sc.transfers[c.name])) sc.transfers[c.name] = transferFor(sc.tp ?? "2022", side(c), a, b).t;
+    for (const n of Object.keys(sc.transfers)) if (!of(n) || sc.finalists.includes(n)) delete sc.transfers[n];
+  }
   /** A = the further left, so the duel bar reads left → right like the first-round bar. Swaps transfers to match. */
   function orderFinalists(s: Scenario) {
     if (spectrumRank(s.finalists[0]) <= spectrumRank(s.finalists[1])) return;
@@ -305,13 +325,35 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
     const t = transferFor(s.tp ?? "2022", side(c), a, b);
     return { ...t, t: s.transfers[c.name] ?? t.t, edited: s.edited.includes(c.name) };
   };
-  const fillTransfers = () => {
-    for (const c of s.cands) if (!s.finalists.includes(c.name) && (!s.edited.includes(c.name) || !s.transfers[c.name])) {
-      const [a, b] = s.finalists.map((n) => side(cand(n)));
-      s.transfers[c.name] = transferFor(s.tp ?? "2022", side(c), a, b).t;
-    }
-    for (const n of Object.keys(s.transfers)) if (!cand(n) || s.finalists.includes(n)) delete s.transfers[n];
+  const fillTransfers = () => fillFor(s);
+
+  // ---- ready-made scenarios: a first-round field, a transfer rule, sometimes a turnout; each one explained in a line
+  const baseSc = fresh();
+  const hasRn = (sc: Scenario) => rnSide(side(sc.cands.find((c) => c.name === sc.finalists[0])), side(sc.cands.find((c) => c.name === sc.finalists[1]))) != null;
+  const WHY: Record<string, [string, string]> = {
+    avg: ["Chaque candidat à sa moyenne des sondages des 21 derniers jours.", "Every candidate at their 21-day polling average."],
+    left: ["La gauche hors extrême gauche derrière son mieux placé, qui additionne leurs voix : une hypothèse haute.", "The left (far left aside) behind its best-placed candidate, who adds up their votes: an upper bound."],
+    right: ["La droite derrière son mieux placé, qui additionne leurs voix : une hypothèse haute.", "The right behind its best-placed candidate, who adds up their votes: an upper bound."],
+    centre: ["Le centre derrière son mieux placé, qui additionne leurs voix : une hypothèse haute.", "The centre behind its best-placed candidate, who adds up their votes: an upper bound."],
   };
+  interface Ready { key: string; title: string; why: string; sc: Scenario }
+  const gallery: Ready[] = [
+    ...presets1.flatMap((p): Ready[] => {
+      const cands = p.build();
+      if (!cands) return [];
+      const w = swaps.find((x) => `swap:${x.inn}` === p.key);
+      const why = WHY[p.key] ? L(...WHY[p.key]) : w ? L(`${surname(w.inn)} à la place de ${surname(w.out)}, à sa moyenne dans les sondages qui l’ont testé.`, `${surname(w.inn)} in place of ${surname(w.out)}, at their average in the polls that tested them.`) : "";
+      return [{ key: p.key, title: fr ? p.fr : p.en, why, sc: make(cands, "2022", p.key) }];
+    }),
+    ...(hasRn(baseSc) ? [
+      { key: "front", title: L("Front républicain", "Republican front"), why: L("Les électeurs des éliminés se reportent massivement contre le finaliste de la droite nationale.", "Eliminated candidates’ voters swing heavily against the nationalist-right finalist."), sc: make(pollAverage(), "front", "avg") },
+      { key: "fissure", title: L("Front républicain fissuré", "Cracked republican front"), why: L("Les mêmes reports, mais plus faibles et plus partagés.", "The same transfers, but weaker and more evenly split."), sc: make(pollAverage(), "fissure", "avg") },
+    ] : []),
+    { key: "abst", title: L("Second tour boudé", "A shunned runoff"), why: L("Trois électeurs des éliminés sur dix qui se seraient reportés restent chez eux.", "Three in ten eliminated-candidate voters who would have transferred stay home."), sc: make(pollAverage(), "2022", "avg", 70) },
+  ];
+  /** What makes two scenarios "the same" for the gallery's pressed state. */
+  const sig = (sc: Scenario) => `${[...sc.cands].sort((a, b) => a.name.localeCompare(b.name)).map((c) => `${c.name}:${c.share}`).join(",")}|${sc.finalists.join("+")}|${sc.tp}|${sc.mob ?? 100}|${sc.edited.length}`;
+  const gallerySig = gallery.map((g) => sig(g.sc));
   const setFinalists = (a: string, b: string) => {
     if (pairKey(a, b) === pairKey(...s.finalists)) return false;
     s.finalists = [a, b];
@@ -337,12 +379,36 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
       <header class="page-head">
         <p class="eyebrow">${L("Présidentielle 2027, simulateur", "2027 presidential, simulator")}</p>
         <h1>${L("Présidentielle 2027, à vous de jouer", "The 2027 election, your call")}</h1>
-        <p class="dek">${L("Trois panneaux reliés : faites glisser les séparations du premier tour, répartissez les électeurs des éliminés, lisez le second tour. Tout se met à jour en direct.", "Three linked panels: drag the first-round dividers, split the eliminated candidates’ voters, read the runoff. Everything updates live.")}</p>
+        <p class="dek">${L("Et si la gauche s’unissait, si un candidat se retirait, si les reports de voix changeaient ? Partez d’un scénario tout prêt ou déplacez les chiffres : qui se qualifie et qui gagne se recalculent à chaque geste.", "What if the left united, a candidate withdrew, or vote transfers shifted? Start from a ready-made scenario or move the numbers: who qualifies and who wins are recomputed at every touch.")}</p>
       </header>
       <div class="sim-app" id="sim-app">
+        <section class="sim-ready" aria-labelledby="sim-t0">
+          <h2 class="sim-k" id="sim-t0">${L("Partir d’un scénario", "Start from a scenario")}</h2>
+          <div class="sim-gallery" id="sim-gallery" role="group" aria-labelledby="sim-t0">${gallery.map((g, i) => {
+            const o = outcome(g.sc);
+            return `<button type="button" class="sim-card" data-g="${i}" aria-pressed="false" style="--a:${color(g.sc.finalists[0])};--b:${color(g.sc.finalists[1])}">
+              <b>${esc(g.title)}</b><span class="sim-card-why">${esc(g.why)}</span>
+              <span class="sim-card-duel" aria-hidden="true"><i style="width:${o.pa}%"></i><i style="width:${100 - o.pa}%"></i></span>
+              <span class="sim-card-res"><span>${esc(surname(g.sc.finalists[0]))} – ${esc(surname(g.sc.finalists[1]))}</span><strong>${esc(surname(o.winner))} ${pct(Math.max(o.ra, o.rb))}</strong></span>
+            </button>`;
+          }).join("")}</div>
+        </section>
+        <section class="sim-story" id="sim-story" aria-label="${L("Le scénario en trois temps", "The scenario in three steps")}">
+          <ol class="sim-steps">
+            <li><span class="sim-k">1 · ${L("Premier tour", "First round")}</span><p id="st-1"></p></li>
+            <li><span class="sim-k">2 · ${L("Qualifiés", "Through")}</span><p id="st-2"></p></li>
+            <li class="is-res"><span class="sim-k">3 · ${L("Second tour", "Runoff")}</span><p id="st-3"></p></li>
+          </ol>
+          <div class="sim-tools" role="toolbar" aria-label="${L("Outils du scénario", "Scenario tools")}">
+            <button type="button" class="sim-tool" data-tool="undo" title="Ctrl+Z">${L("Annuler", "Undo")}</button>
+            <button type="button" class="sim-tool" data-tool="redo" title="Ctrl+Y">${L("Rétablir", "Redo")}</button>
+            <button type="button" class="sim-tool" data-tool="reset">${L("Sondages du jour", "Today’s polls")}</button>
+            <button type="button" class="sim-tool" data-tool="pin" aria-pressed="false">${L("Épingler pour comparer", "Pin to compare")}</button>
+            <button type="button" class="sim-tool ink" data-tool="share">${L("Copier le lien", "Copy link")}</button>
+          </div>
+        </section>
         <section class="sim-panel sim-p1" aria-labelledby="sim-t1">
           <header class="sim-ph"><span class="sim-no" aria-hidden="true">1</span><h2 id="sim-t1">${L("Premier tour", "First round")}</h2><span class="sim-total" id="p1-total"></span></header>
-          <div class="sim-presets" id="p1-presets" role="group" aria-label="${L("Scénarios de premier tour", "First-round scenarios")}"></div>
           <div class="sim-bar" id="p1-bar" data-drag="p1"></div>
           <div class="sim-axis" aria-hidden="true"><span>← ${L("Gauche", "Left")}</span><span>${L("Glissez les séparations · touchez un nom pour un chiffre précis", "Drag the dividers · tap a name for an exact figure")}</span><span>${L("Droite", "Right")} →</span></div>
           <ul class="sim-cands" id="p1-cands"></ul>
@@ -350,7 +416,13 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
         </section>
         <section class="sim-panel sim-p2" aria-labelledby="sim-t2">
           <header class="sim-ph"><span class="sim-no" aria-hidden="true">2</span><h2 id="sim-t2">${L("Reports de voix", "Vote transfers")}</h2></header>
+          <p class="sim-lede">${L("Où vont les électeurs des candidats éliminés ? Choisissez une règle, puis ajustez candidat par candidat : chaque ligne dit si le chiffre est mesuré, supposé, ou le vôtre.", "Where do the eliminated candidates’ voters go? Pick a rule, then adjust candidate by candidate: each row says whether the figure is measured, assumed, or yours.")}</p>
           <div class="sim-presets" id="p2-presets" role="group" aria-label="${L("Hypothèses de report", "Transfer assumptions")}"></div>
+          <div class="sim-mob">
+            <label for="p2-mob"><b>${L("Mobilisation des électeurs des éliminés", "Turnout of eliminated candidates’ voters")}</b><output id="p2-mob-v" for="p2-mob"></output></label>
+            <input type="range" id="p2-mob" min="50" max="110" step="5" />
+            <p class="sim-note">${L("À 100 %, les reports sont ceux de la règle choisie. À 70 %, trois électeurs sur dix qui se seraient reportés restent chez eux, quel que soit leur candidat.", "At 100%, transfers are those of the rule picked. At 70%, three in ten voters who would have transferred stay home, whoever their candidate was.")}</p>
+          </div>
           <p class="sim-legend" id="p2-legend"></p>
           <ol class="sim-trs" id="p2-rows"></ol>
           <figure class="sim-flowfig">
@@ -372,6 +444,8 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
             <div class="sim-kpi"><strong id="k-scn"></strong><span>${L("Probabilité de ce scénario selon les sondages", "Chance of this scenario, by the polls")}</span><span class="sim-ci" id="k-ci"></span></div>
           </div>
           <p class="sim-odds" id="r-odds"></p>
+          <div class="sim-read"><p class="sim-k">${L("Lecture", "Reading")}</p><p id="sim-read"></p></div>
+          <div class="sim-against" id="sim-vs"></div>
           <p class="sim-detail" id="r-detail"></p>
           <div class="sim-mk" id="p3-mk"></div>
           <p class="sim-note">${L(`Fourchette : votre score plus ou moins l’erreur typique d’un duel sondé avant le premier tour (σ = ${ROUND2_SD} points ; 80 % des cas). Probabilité du scénario : selon les sondages actuels, pas vos curseurs (20 000 simulations, chaque candidat pouvant s’écarter de sa moyenne d’environ ${String(ROUND1_SD).replace(".", ",")} points au 1er tour). Estimation indicative.`, `Range: your score plus or minus the typical miss of a runoff poll taken before the first round (σ = ${ROUND2_SD} points; 80% of cases). Scenario probability: from current polls, not your controls (20,000 simulations, each candidate able to miss their average by about ${ROUND1_SD} points in round 1). Indicative estimate.`)}</p>
@@ -388,7 +462,6 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
   const ordered = () => [...s.cands].sort(byRank);
   const renderP1 = () => {
     const o = ordered();
-    $("#p1-presets").innerHTML = presets1.map((p) => `<button type="button" class="sim-chipbtn" data-p1="${esc(p.key)}" aria-pressed="${s.p1 === p.key}">${esc(fr ? p.fr : p.en)}${p.hint ? ` <small>${esc(p.hint)}</small>` : ""}</button>`).join("");
     $("#p1-bar").innerHTML =
       o.map((c) => `<div class="sim-seg" data-seg="${esc(c.name)}" style="--c:${color(c.name)}"><b>${esc(surname(c.name))}</b><span></span></div>`).join("") +
       o.slice(0, -1).map((c, i) => `<span class="sim-hd" role="slider" tabindex="0" data-hk="p1:${i}" aria-label="${esc(L(`Séparation ${surname(c.name)} / ${surname(o[i + 1].name)}`, `Divider ${surname(c.name)} / ${surname(o[i + 1].name)}`))}" aria-valuemin="0"></span>`).join("");
@@ -397,9 +470,11 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
         const m = meta(c.name);
         return `<li class="sim-cand" data-c="${esc(c.name)}" style="--c:${color(c.name)}">
           <span class="sim-cand-n"><b>${esc(m.surname)}</b>${m.party ? ` <small>${esc(m.party)}</small>` : ""}<em class="sim-q">${L("qualifié", "through")}</em></span>
+          <span class="sim-stepper"><button type="button" class="sim-step" data-step="${esc(c.name)}" data-d="-0.5" aria-label="${esc(L(`${c.name} : un demi-point de moins`, `${c.name}: half a point less`))}">−</button>
           <label class="sim-cand-v"><span class="sim-sr">${esc(L(`Score de ${c.name} au premier tour, en %`, `${c.name}’s first-round share, %`))}</span><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" maxlength="5" data-share="${esc(c.name)}"/><i aria-hidden="true">%</i></label>
+          <button type="button" class="sim-step" data-step="${esc(c.name)}" data-d="0.5" aria-label="${esc(L(`${c.name} : un demi-point de plus`, `${c.name}: half a point more`))}">+</button></span>
           <span class="sim-delta" data-delta="${esc(c.name)}"></span>
-          <button type="button" class="sim-x" data-remove="${esc(c.name)}" aria-label="${esc(L(`Retirer ${c.name}`, `Remove ${c.name}`))}" ${s.cands.length <= 2 ? "disabled" : ""}>×</button>
+          <button type="button" class="sim-x" data-remove="${esc(c.name)}" title="${esc(L("Se retire : ses voix vont aux candidats les plus proches", "Withdraws: their votes go to the closest candidates"))}" aria-label="${esc(L(`${c.name} se retire`, `${c.name} withdraws`))}" ${s.cands.length <= 2 ? "disabled" : ""}>×</button>
         </li>`;
       })
       .join("");
@@ -411,7 +486,7 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
   // ---------- panel 2: structure ----------
   const eliminated = () => s.cands.filter((c) => !s.finalists.includes(c.name)).sort((a, b) => b.share - a.share);
   const srcLabel = (t: Transfer & { edited: boolean }) =>
-    t.edited ? L("modifié", "edited") : t.src === "survey" ? `Ipsos 2022 · ${t.who}` : t.src === "survey-partial" ? `Ipsos 2022 · ${t.who} ${L("(partiel)", "(partial)")}` : t.src === "prox" ? L("proximité", "proximity") : L("hypothèse", "assumption");
+    t.edited ? L("votre hypothèse", "your assumption") : t.src === "survey" ? `${L("mesuré", "measured")} · Ipsos 2022, ${t.who}` : t.src === "survey-partial" ? `${L("mesuré en partie", "partly measured")} · Ipsos 2022, ${t.who}` : t.src === "prox" ? L("hypothèse · proximité", "assumption · proximity") : L("hypothèse · chiffres ronds", "assumption · round numbers");
   const renderP2 = () => {
     const [fa, fb] = s.finalists;
     const rn = rnSide(side(cand(fa)), side(cand(fb)));
@@ -425,7 +500,7 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
       .map((c) => {
         const n = esc(c.name), sn = esc(surname(c.name));
         return `<li class="sim-tr" data-tr="${n}" style="--c:${color(c.name)}">
-          <div class="sim-tr-h"><b>${sn}</b><span class="sim-tr-share" data-trs="${n}"></span><span class="sim-src" data-src="${n}"></span>
+          <div class="sim-tr-h"><b>${sn}</b><span class="sim-tr-share" data-trs="${n}"></span><span class="sim-src" data-src="${n}"></span><button type="button" class="sim-undo1" data-unedit="${n}" hidden aria-label="${esc(L(`Revenir à la règle pour ${c.name}`, `Back to the rule for ${c.name}`))}">${L("revenir à la règle", "back to the rule")}</button>
             ${meta(c.name).bloc == null ? `<select class="sim-select sm" data-bloc="${n}" aria-label="${esc(L(`Famille politique de ${c.name}`, `${c.name}’s political family`))}"><option value="">${L("Famille ?", "Family?")}</option>${BLOCS.map((_, i) => `<option value="${i}" ${c.bloc === i ? "selected" : ""}>${blocName(i)}</option>`).join("")}</select>` : ""}</div>
           <div class="sim-split" data-drag="tr:${n}">
             <i class="a" style="background:${color(fa)}"><span></span></i><i class="x"><span></span></i><i class="b" style="background:${color(fb)}"><span></span></i>
@@ -529,7 +604,14 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
       const src = $(`[data-src="${n}"]`);
       src.textContent = srcLabel(info);
       src.dataset.k = info.edited ? "edited" : info.src;
+      const back = app.querySelector<HTMLElement>(`[data-unedit="${n}"]`);
+      if (back) back.hidden = !info.edited;
     }
+    const mobIn = $<HTMLInputElement>("#p2-mob");
+    const mob = s.mob ?? 100;
+    if (document.activeElement !== mobIn || Number(mobIn.value) !== mob) mobIn.value = String(mob);
+    $("#p2-mob-v").textContent = pct(mob, 0);
+    mobIn.setAttribute("aria-valuetext", L(`${mob} % des reports de la règle`, `${mob}% of the rule’s transfers`));
     app.querySelectorAll<HTMLButtonElement>("[data-tp]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.tp === s.tp && !s.edited.length)));
     app.querySelectorAll<HTMLButtonElement>("[data-p1]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.p1 === s.p1)));
     const out = outcome(s);
@@ -580,11 +662,61 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
         ? `${L("Entre ces deux-là, les marchés penchent pour", "Between these two, the markets lean to")} <b>${esc(surname(v[0] >= v[1] ? fa : fb))}</b> (${v[0] >= v[1] ? v[0] : v[1]}–${v[0] >= v[1] ? v[1] : v[0]})${L(" ; ", "; ")}${L("votre scénario", "your scenario")}${colon()}<b>${esc(surname(out.winner))}</b>.`
         : "";
     }
+    // ---- the story in three steps, the plain-language reading, the comparison
+    const rank = [...s.cands].sort((a, b) => b.share - a.share);
+    const shareOf = (n: string) => cand(n)?.share ?? 0;
+    $("#st-1").innerHTML = rank.slice(0, 4).map((c) => `<span class="${s.finalists.includes(c.name) ? "is-fin" : ""}" style="--c:${color(c.name)}">${esc(surname(c.name))} <b>${dec(c.share)}</b></span>`).join("");
+    $("#st-2").innerHTML = `<b>${esc(surname(fa))}</b> ${L("et", "and")} <b>${esc(surname(fb))}</b><small>${so ? `${L("ce duel a lieu dans", "this pairing happens in")} ${show(so.p1)} ${L("des simulations", "of simulations")}` : L("duel hors simulation", "pairing outside the simulation")}${s.manual ? ` · ${L("choisi à la main", "picked by hand")}` : ""}</small>`;
+    $("#st-3").innerHTML = `<b style="--c:${color(out.winner)}">${esc(surname(out.winner))} ${pct(wv)}</b><small>${L("gagne dans", "wins in")} ${show(pw)} ${L("des cas avec ces chiffres", "of cases on these numbers")}</small>`;
+    const third = rank.find((c) => !s.finalists.includes(c.name));
+    const cut = Math.min(shareOf(fa), shareOf(fb));
+    const duelPoll = duels.find((d) => pairKey(d.winner, d.loser) === pairKey(fa, fb));
+    const polled = duelPoll ? (100 * (duelPoll.winner === out.winner ? duelPoll.pw : duelPoll.pl)) / (duelPoll.pw + duelPoll.pl) : null;
+    const gap = polled == null ? 0 : r1(wv - polled);
+    $("#sim-read").textContent = [
+      L(`${fa} (${pct(shareOf(fa))}) et ${fb} (${pct(shareOf(fb))}) se qualifient`, `${fa} (${pct(shareOf(fa))}) and ${fb} (${pct(shareOf(fb))}) go through`)
+        + (s.manual ? L(" : un duel choisi à la main, pas forcément les deux premiers.", ": a pairing picked by hand, not necessarily the top two.") : third ? L(` ; ${third.name} reste à ${pts(r1(cut - third.share))} du second tour.`, `; ${third.name} falls ${pts(r1(cut - third.share))} short of the runoff.`) : "."),
+      L(`Les reports apportent ${pts(r1(out.va - shareOf(fa)))} à ${surname(fa)} et ${pts(r1(out.vb - shareOf(fb)))} à ${surname(fb)} ; ${pts(r1(out.lost))} ne vont à aucun des deux.`, `Transfers bring ${pts(r1(out.va - shareOf(fa)))} to ${surname(fa)} and ${pts(r1(out.vb - shareOf(fb)))} to ${surname(fb)}; ${pts(r1(out.lost))} go to neither.`),
+      L(`${out.winner} l’emporterait avec ${pct(wv)} des suffrages exprimés.`, `${out.winner} would win with ${pct(wv)} of valid votes.`),
+      wv < 52.5
+        ? L(`Avec l’erreur habituelle des sondages à ce stade, ${surname(out.winner)} ne gagne que dans ${show(pw)} des cas : trop serré pour trancher.`, `With the usual polling error at this stage, ${surname(out.winner)} wins in only ${show(pw)} of cases: too close to call.`)
+        : L(`Avec l’erreur habituelle des sondages à ce stade, ${surname(out.winner)} gagne dans ${show(pw)} des cas.`, `With the usual polling error at this stage, ${surname(out.winner)} wins in ${show(pw)} of cases.`),
+      polled == null ? L("Aucun sondage récent n’a testé ce duel : le résultat repose entièrement sur vos reports.", "No recent poll has tested this pairing: the result rests entirely on your transfers.")
+        : Math.abs(gap) < 0.5 ? L(`Les sondages de ce duel donnent ${pct(polled, 0)} à ${surname(out.winner)} : vos chiffres sont au même niveau.`, `Polls of this pairing give ${surname(out.winner)} ${pct(polled, 0)}: your numbers are level with them.`)
+        : L(`Les sondages de ce duel donnent ${pct(polled, 0)} à ${surname(out.winner)} : vos chiffres lui sont ${gap > 0 ? "plus" : "moins"} favorables de ${pts(Math.abs(gap))}.`, `Polls of this pairing give ${surname(out.winner)} ${pct(polled, 0)}: your numbers are ${pts(Math.abs(gap))} ${gap > 0 ? "kinder" : "harsher"} to them.`),
+    ].join(" ");
+    const col = (label: string, sc: Scenario, cls = "") => {
+      const o2 = outcome(sc), w2 = Math.max(o2.ra, o2.rb), so2 = scenarioOdds(sc);
+      return { label, cls, o: o2, w: w2, duel: `${surname(sc.finalists[0])} – ${surname(sc.finalists[1])}`, res: `${surname(o2.winner)} ${pct(w2)}`, win: show(normCdf((w2 - 50) / ROUND2_SD)), p1: so2 ? show(so2.p1) : "—" };
+    };
+    const cols = [col(L("Sondages du jour", "Today’s polls"), baseSc), ...(pinned ? [col(L("Épinglé", "Pinned"), pinned)] : []), col(L("Ce scénario", "This scenario"), s, "is-now")];
+    const base = cols[0];
+    const names = [...new Set([...reference.map((c) => c.name), ...s.cands.map((c) => c.name)])];
+    const moved = names.map((n) => ({ n, gone: !cand(n), d: r1(shareOf(n) - (reference.find((c) => c.name === n)?.share ?? 0)) })).filter((x) => x.gone || Math.abs(x.d) >= 0.5).sort((a, b) => Math.abs(b.d) - Math.abs(a.d)).slice(0, 6);
+    const rule = `${fr ? TP[s.tp ?? "2022"].fr : TP[s.tp ?? "2022"].en}${s.edited.length ? ` + ${s.edited.length} ${L(s.edited.length > 1 ? "reports modifiés" : "report modifié", s.edited.length > 1 ? "transfers edited" : "transfer edited")}` : ""}${(s.mob ?? 100) !== 100 ? ` · ${L("mobilisation", "turnout")} ${pct(s.mob!, 0)}` : ""}`;
+    $("#sim-vs").innerHTML = `<p class="sim-k">${L("Par rapport aux sondages du jour", "Against today’s polls")}</p>
+      <table class="sim-vs-t"><thead><tr><th></th>${cols.map((c) => `<th class="${c.cls}">${esc(c.label)}</th>`).join("")}</tr></thead><tbody>
+        <tr><th scope="row">${L("Duel", "Pairing")}</th>${cols.map((c) => `<td class="${c.cls}">${esc(c.duel)}</td>`).join("")}</tr>
+        <tr><th scope="row">${L("Second tour", "Runoff")}</th>${cols.map((c) => `<td class="${c.cls}"><b>${esc(c.res)}</b></td>`).join("")}</tr>
+        <tr><th scope="row">${L("Chance de victoire", "Chance of winning")}</th>${cols.map((c) => `<td class="${c.cls}">${c.win}</td>`).join("")}</tr>
+        <tr><th scope="row">${L("Chance que ce duel ait lieu", "Chance of this pairing")}</th>${cols.map((c) => `<td class="${c.cls}">${c.p1}</td>`).join("")}</tr>
+      </tbody></table>
+      <p class="sim-vs-line">${base.o.winner === out.winner && pairKey(...baseSc.finalists) === pairKey(fa, fb)
+        ? (Math.abs(r1(wv - base.w)) < 0.05 ? L("Même duel, même résultat que les sondages du jour.", "Same pairing, same result as today’s polls.") : `${esc(surname(out.winner))} <b>${signed(r1(wv - base.w))}</b> ${L("point au second tour par rapport aux sondages du jour.", "points in the runoff against today’s polls.")}`)
+        : base.o.winner === out.winner ? L(`Le duel change (${base.duel} dans les sondages du jour), le vainqueur reste ${surname(out.winner)}.`, `The pairing changes (${base.duel} in today’s polls); the winner is still ${surname(out.winner)}.`)
+        : L(`Le vainqueur change : ${surname(base.o.winner)} dans les sondages du jour, ${surname(out.winner)} ici.`, `The winner changes: ${surname(base.o.winner)} in today’s polls, ${surname(out.winner)} here.`)}</p>
+      <p class="sim-changes">${moved.map((x) => `<span style="--c:${color(x.n)}">${esc(surname(x.n))} ${x.gone ? L("se retire", "withdraws") : signed(x.d)}</span>`).join("") || `<span>${L("Premier tour : la moyenne des sondages", "First round: the polling average")}</span>`}<span class="is-rule">${esc(rule)}</span></p>`;
+    const curSig = sig(s);
+    app.querySelectorAll<HTMLButtonElement>("[data-g]").forEach((b, i) => b.setAttribute("aria-pressed", String(gallerySig[i] === curSig)));
+    const tool = (k: string) => app.querySelector<HTMLButtonElement>(`[data-tool="${k}"]`);
+    if (tool("undo")) { tool("undo")!.disabled = !undoStack.length; tool("redo")!.disabled = !redoStack.length; tool("pin")!.setAttribute("aria-pressed", String(!!pinned)); tool("pin")!.textContent = pinned ? L("Désépingler", "Unpin") : L("Épingler pour comparer", "Pin to compare"); }
+
     // live region (debounced, so a drag doesn't flood screen readers) and URL
     clearTimeout(liveTimer);
-    liveTimer = window.setTimeout(() => { $("#sim-live").textContent = `${L("Second tour", "Runoff")}${colon()}${surname(fa)} ${pct(out.ra)}, ${surname(fb)} ${pct(out.rb)}. ${L(`${out.winner} l’emporte.`, `${out.winner} wins.`)}`; }, 700);
+    liveTimer = window.setTimeout(() => { const live = app.querySelector("#sim-live"); if (!live) return; live.textContent = `${L("Second tour", "Runoff")}${colon()}${surname(fa)} ${pct(out.ra)}, ${surname(fb)} ${pct(out.rb)}. ${L(`${out.winner} l’emporte.`, `${out.winner} wins.`)}`; }, 700);
     clearTimeout(urlTimer);
     urlTimer = window.setTimeout(() => {
+      if (!app.querySelector("#p1-bar")) return; // left the page: do not rewrite another page's address
       if (!location.hash.startsWith("#/simulateur")) return;
       const h = `#/simulateur/${encode(s)}`;
       if (location.hash !== h) history.replaceState(history.state, "", h);
@@ -664,6 +796,45 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
     update();
   };
   const restructure = () => { fillTransfers(); renderP1(); renderP2(); renderP3(); update(); };
+  // undo / redo: a snapshot before every change (one per burst of arrow-key or slider nudges)
+  const checkpoint = () => {
+    const j = JSON.stringify(s);
+    if (undoStack[undoStack.length - 1] !== j) { undoStack.push(j); if (undoStack.length > 80) undoStack.shift(); }
+    redoStack = [];
+  };
+  const nudgeCheckpoint = (key: string) => { const t = Date.now(); if (key !== lastNudgeKey || t - lastNudge > 900) checkpoint(); lastNudge = t; lastNudgeKey = key; };
+  const load = (sc: Scenario) => {
+    for (const k of Object.keys(s)) delete (s as unknown as Record<string, unknown>)[k];
+    Object.assign(s, structuredClone(sc));
+    orderFinalists(s);
+    s.tp ??= "2022";
+    if (!s.finalists.every((n) => cand(n))) { s.manual = false; autoFinalists(); }
+    restructure();
+  };
+  const undo = () => {
+    const cur = JSON.stringify(s);
+    let prev = undoStack.pop();
+    if (prev === cur) prev = undoStack.pop();
+    if (!prev) return update();
+    redoStack.push(cur);
+    load(JSON.parse(prev) as Scenario);
+  };
+  const redo = () => {
+    const next = redoStack.pop();
+    if (!next) return;
+    undoStack.push(JSON.stringify(s));
+    load(JSON.parse(next) as Scenario);
+  };
+  const nudgeShare = (name: string, delta: number) => {
+    const c = cand(name);
+    if (!c) return;
+    const next = r1(clamp(c.share + delta, 0, 100));
+    const d = next - c.share;
+    c.share = next;
+    rebalance(s.cands, c, d);
+    fixDrift(s.cands, c);
+    afterShares();
+  };
   const moveDivider = (i: number, toPct: number) => {
     const o = ordered();
     const a = o[i], b = o[i + 1];
@@ -702,7 +873,7 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
     let chosen = group.length === 1 ? group[0] : -1;
     let moved = false;
     try { zone.setPointerCapture(e.pointerId); } catch { /* synthetic or already released pointer */ }
-    if (group.length) { e.preventDefault(); root.classList.add("is-dragging"); }
+    if (group.length) { e.preventDefault(); checkpoint(); root.classList.add("is-dragging"); }
     const move = (ev: PointerEvent) => {
       const x = at(ev.clientX);
       if (!moved && Math.abs(ev.clientX - e.clientX) < 3) return;
@@ -736,12 +907,19 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
 
   // keyboard on every handle: arrows ±0.5 pt (shift ±2) in round 1, ±1 (shift ±5) on transfers
   root.addEventListener("keydown", (e) => {
+    // Ctrl/⌘ Z undoes, Ctrl/⌘ Y or Shift Z redoes (outside text fields, which keep their own undo)
+    if ((e.ctrlKey || e.metaKey) && !e.altKey && /^[zy]$/i.test(e.key) && !(e.target as Element).closest("input[type=text], input[type=number], input[type=email]")) {
+      e.preventDefault();
+      if (e.key.toLowerCase() === "y" || e.shiftKey) redo(); else undo();
+      return;
+    }
     const h = (e.target as Element).closest<HTMLElement>("[data-hk]");
     if (!h) return;
     const dir = e.key === "ArrowRight" || e.key === "ArrowUp" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowDown" ? -1 : e.key === "PageUp" ? 2 : e.key === "PageDown" ? -2 : 0;
     const edge = e.key === "Home" ? -1 : e.key === "End" ? 1 : 0;
     if (!dir && !edge) return;
     e.preventDefault();
+    nudgeCheckpoint(h.dataset.hk!);
     const [kind, ...rest] = h.dataset.hk!.split(":");
     if (kind === "p1") {
       const i = Number(rest[0]);
@@ -762,6 +940,8 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
 
   root.addEventListener("change", (e) => {
     const el = e.target as HTMLInputElement | HTMLSelectElement;
+    if (el.id === "p2-mob") return; // handled live on "input"
+    if (el.dataset.share || el.dataset.tv || el.dataset.bloc || (el.id === "p1-add" && el.value) || el.id === "f-a" || el.id === "f-b") checkpoint();
     if (el.dataset.share) {
       const c = cand(el.dataset.share);
       const v = Number(el.value.replace(",", "."));
@@ -799,17 +979,31 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
   root.addEventListener("click", (e) => {
     const b = (e.target as Element).closest<HTMLButtonElement>("button");
     if (!b || b.disabled) return;
-    if (b.dataset.p1) {
-      const p = presets1.find((x) => x.key === b.dataset.p1);
-      const cands = p?.build();
-      if (!cands) return;
-      s.cands = cands;
-      s.p1 = p!.key;
-      s.manual = false;
-      s.edited = [];
-      autoFinalists();
-      restructure();
+    if (b.dataset.g) {
+      const g = gallery[Number(b.dataset.g)];
+      if (!g) return;
+      checkpoint();
+      load(g.sc);
+    } else if (b.dataset.step) {
+      nudgeCheckpoint(`step:${b.dataset.step}`);
+      nudgeShare(b.dataset.step, Number(b.dataset.d) * (e.shiftKey ? 4 : 1));
+    } else if (b.dataset.unedit) {
+      checkpoint();
+      s.edited = s.edited.filter((n) => n !== b.dataset.unedit);
+      fillTransfers();
+      update();
+    } else if (b.dataset.tool) {
+      const k = b.dataset.tool;
+      if (k === "undo") undo();
+      else if (k === "redo") redo();
+      else if (k === "reset") { checkpoint(); load(baseSc); }
+      else if (k === "pin") { pinned = pinned ? null : structuredClone(s); update(); }
+      else if (k === "share") {
+        const done = (t: string) => { const old = L("Copier le lien", "Copy link"); b.textContent = t; window.setTimeout(() => { if (b.isConnected) b.textContent = old; }, 1600); };
+        navigator.clipboard?.writeText(shareUrl(s)).then(() => done(L("Lien copié", "Link copied")), () => done(L("Copie impossible", "Could not copy"))) ?? done(L("Copie impossible", "Could not copy"));
+      }
     } else if (b.dataset.tp) {
+      checkpoint();
       s.tp = b.dataset.tp as TransferPreset;
       s.edited = [];
       s.transfers = {};
@@ -818,6 +1012,7 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
     } else if (b.dataset.remove) {
       const c = cand(b.dataset.remove);
       if (!c || s.cands.length <= 2) return;
+      checkpoint();
       rebalance(s.cands, c, -c.share);
       s.cands = s.cands.filter((x) => x !== c);
       fixDrift(s.cands);
@@ -828,13 +1023,23 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
       autoFinalists();
       restructure();
     } else if (b.id === "p1-reset") {
-      state = fresh();
-      renderSimulator(app);
+      checkpoint();
+      load(baseSc);
     } else if (b.id === "f-auto") {
+      checkpoint();
       s.manual = false;
       autoFinalists();
       renderP2(); renderP3(); update();
     }
+  });
+
+  root.addEventListener("input", (e) => {
+    const el = e.target as HTMLInputElement;
+    if (el.id !== "p2-mob") return;
+    nudgeCheckpoint("mob");
+    const v = Math.round(clamp(Number(el.value), 50, 110));
+    if (v === 100) delete s.mob; else s.mob = v;
+    update();
   });
 
   // phones and tablets: a slim result strip follows you while panel 3 is off screen
@@ -845,7 +1050,7 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
     dockObserver.observe($("#sim-p3"));
   }
   let lastW = 0;
-  const ro = new ResizeObserver(() => { const w = $("#p1-bar").clientWidth; if (w && w !== lastW) { lastW = w; update(); } });
+  const ro = new ResizeObserver(() => { const bar = app.querySelector("#p1-bar"); if (!bar) return ro.disconnect(); /* the reader left the page */ const w = bar.clientWidth; if (w && w !== lastW) { lastW = w; update(); } });
   ro.observe($("#p1-bar"));
 
   // ---------- my scenarios: save, compare 2–3, share ----------

@@ -3,6 +3,7 @@
 // added or dropped, and how the candidate's Assembly group voted on matching texts since 2024.
 // Data: public/data/programmes/<slug>.json, built by scripts/build-programme.mjs. Generic over slug.
 // Tone: descriptive only. Status chips use neutral ink/grey styles; colour is kept for vote positions.
+import "../styles/programme.css";
 import { fetchJson } from "../data";
 import { L, fmtDate, fmtNum, fmtPct } from "../i18n";
 import { esc, safeUrl } from "../util";
@@ -13,7 +14,16 @@ type VersionId = "a22" | "e25" | "w27" | string;
 type Status = "maintained" | "modified" | "new2025" | "new2027" | "dropped";
 interface Measure { id: string; t: string; s: number; p?: number; k?: 1; f?: string[] }
 interface Change { from: number; to: number; kinds: string[]; before: string[]; after: string[] }
-interface Lineage { id: string; theme: string; status: Status; droppedIn?: number; changed?: 1; key?: 1; a?: Measure; e?: Measure; w?: Measure; changes?: Change[] }
+interface Lineage { id: string; theme: string; status: Status; droppedIn?: number; changed?: 1; key?: 1; a?: Measure; e?: Measure; w?: Measure; changes?: Change[];
+  /** the same commitment in the older, complete baseline edition (2020), when one matches; never changes the status */
+  f?: Measure; fChange?: { from: number; to: number; before: string[]; after: string[] } }
+/** An older complete edition laid under the lineages (scripts/build-programme.mjs, attachBaseline). */
+interface Baseline {
+  id: string; year: number; label: { fr: string; en: string }; title: string; date: string; pages?: number; url?: string;
+  count: number; matched: number; unmatched: number; doubtful: number; figureChanges: number;
+  already: Record<Status, number>; totals: Record<Status, number>;
+  only: (Measure & { theme: string })[];
+}
 interface Version { id: VersionId; year: number; label: { fr: string; en: string }; title: string; date: string; kind: string; url?: string; count: number; key: number; financing?: { page: number; fr: string; en: string } }
 interface VoteItem { num: number; date: string; title: string; result: string; total: { P: number; C: number; A: number }; group: { P: number; C: number; A: number }; majority: "P" | "C" | "A" | null; expect: "P" | "C"; agrees: boolean | null }
 interface VoteLink { lineage: string; topic: { fr: string; en: string }; note: { fr: string; en: string } | null; scrutins: VoteItem[] }
@@ -32,6 +42,7 @@ interface ProgrammeFile {
   summary: { overall: Counts & { total: number; changed: number }; byTheme: Record<string, Counts> };
   highlights: { lineage: string; kind: string; fr: string; en: string }[];
   costing?: { rounds: CostRound[]; checked: string };
+  baseline?: Baseline;
   assessment?: AssessEntry[];
   votes: VoteLink[];
   themeWeights: { programme: Record<string, Record<string, number>>; speeches: Record<string, number> | null; chamber: Record<string, number> | null; speechesPeriod: { from: string; to: string } | null; speechesCount: number | null };
@@ -110,8 +121,8 @@ const branchHelp = (b: BranchId) => ({
 })[b];
 const BRANCH_STATUS: Record<BranchId, Status> = { kept: "maintained", changed: "modified", drop22: "dropped", add25: "new2025", drop25: "dropped", new27: "new2027" };
 
-interface State { q: string; theme: string; status: Status | ""; branch: BranchId | ""; key: boolean; votes: boolean; shown: number; focus: string | null; flowTheme: string; flowPick: BranchId }
-const state: State = { q: "", theme: "", status: "", branch: "", key: false, votes: false, shown: 30, focus: null, flowTheme: "", flowPick: "drop22" };
+interface State { q: string; theme: string; status: Status | ""; branch: BranchId | ""; key: boolean; votes: boolean; base: boolean; shown: number; focus: string | null; flowTheme: string; flowPick: BranchId }
+const state: State = { q: "", theme: "", status: "", branch: "", key: false, votes: false, base: false, shown: 30, focus: null, flowTheme: "", flowPick: "drop22" };
 const fold = (s: string) => s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
 
 // ---------- flow view (src/lib/programme-flow.ts): 2022 booklet, 2025 edition, 2027 site → branches → 2027 / dropped ----------
@@ -201,6 +212,7 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
   const byId = new Map(f.lineages.map((l) => [l.id, l]));
   const votesBy = new Map(f.votes.map((v) => [v.lineage, v]));
   const o = f.summary.overall;
+  const bl = f.baseline ?? null;
   const latest = (l: Lineage) => (l.w ?? l.e ?? l.a)!;
   const loc = (vid: string, m: Measure) => {
     const sec = f.sections[vid]?.[m.s];
@@ -268,11 +280,14 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
         <h1>${L(`${f.programme}, de 2022 à 2027 : ce qui reste, ce qui change`, `${f.programme} from 2022 to 2027: what stays, what changes`)}</h1>
         <p class="dek">${L(
           `${fmtNum(f.lineages.length)} engagements suivis à travers trois versions du programme : l’abrégé de 2022 (${va.count} mesures), l’édition complète de 2025 (${ve.count}) et le programme 2027 en ligne (${vw.count}). ${fmtNum(o.maintained + o.modified)} figuraient déjà dans l’abrégé de 2022, ${fmtNum(o.new2027)} n’apparaissent qu’en 2027, ${fmtNum(o.dropped)} ne figurent plus dans la version 2027.`,
-          `${fmtNum(f.lineages.length)} commitments tracked across three versions of the programme: the 2022 abridged booklet (${va.count} measures), the full 2025 edition (${ve.count}) and the online 2027 programme (${vw.count}). ${fmtNum(o.maintained + o.modified)} were already in the 2022 booklet, ${fmtNum(o.new2027)} appear only in 2027, ${fmtNum(o.dropped)} are no longer in the 2027 version.`)}</p>
+          `${fmtNum(f.lineages.length)} commitments tracked across three versions of the programme: the 2022 abridged booklet (${va.count} measures), the full 2025 edition (${ve.count}) and the online 2027 programme (${vw.count}). ${fmtNum(o.maintained + o.modified)} were already in the 2022 booklet, ${fmtNum(o.new2027)} appear only in 2027, ${fmtNum(o.dropped)} are no longer in the 2027 version.`)}${bl ? ` ${L(
+          `L’édition complète d’avril ${bl.year} (${fmtNum(bl.count)} mesures) sert de point de repère plus ancien : ${fmtNum(bl.matched)} engagements y figuraient déjà.`,
+          `The complete April ${bl.year} edition (${fmtNum(bl.count)} measures) serves as an older reference point: ${fmtNum(bl.matched)} commitments were already in it.`)}` : ""}</p>
         <nav class="prog-jump" aria-label="${L("Sur cette page", "On this page")}">
           <a href="#/programmes/${esc(f.slug)}#parcours">${L("Le parcours des mesures", "Where measures went")}</a>
           ${f.costing ? `<a href="#/programmes/${esc(f.slug)}#cout">${L("Le coût annoncé et estimé", "Claimed vs estimated cost")}</a>` : ""}
           ${f.assessment?.length ? `<a href="#/programmes/${esc(f.slug)}#evaluation">${L("Coût, faisabilité, droit", "Cost, feasibility, law")}</a>` : ""}
+          ${bl ? `<a href="#/programmes/${esc(f.slug)}#edition-${bl.year}">${L(`Déjà en ${bl.year} ?`, `Already in ${bl.year}?`)}</a>` : ""}
           <a href="#/programmes/${esc(f.slug)}#mesures">${L("Toutes les mesures", "Every measure")}</a>
           <a href="#/programmes/${esc(f.slug)}#assemblee">${L("Les votes à l’Assemblée", "Assembly votes")}</a>
         </nav>
@@ -307,7 +322,7 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
           ${themeRows.map((r) => `<button type="button" class="prog-row" data-theme="${esc(r.t.id)}" title="${L("Filtrer la liste sur ce thème", "Filter the list to this theme")}">
             <span class="prog-row-label">${esc(L(r.t.fr, r.t.en))} <b>${r.n}</b></span>${stack(r.c, r.n, maxN)}</button>`).join("")}
         </div>
-        <p class="muted small">${L(`Un engagement = une mesure suivie d’une version à l’autre (les mesures rapprochées par similarité de texte, puis relues). Thème : celui de la dernière version. « Apparue en 2025 » signifie absente de l’abrégé de 2022, qui ne reprend qu’une partie du programme complet de 2022.`, `One commitment = one measure followed from version to version (matched by text similarity, then reviewed). Theme: that of the latest version. ‘Added in 2025’ means absent from the 2022 booklet, which only covers part of the full 2022 programme.`)}</p>
+        <p class="muted small">${L(`Un engagement = une mesure suivie d’une version à l’autre (les mesures rapprochées par similarité de texte, puis relues). Thème : celui de la dernière version. « Apparue en 2025 » signifie absente de l’abrégé de 2022, qui ne reprend qu’une partie du programme complet de 2022${bl ? ` : ${fmtNum(bl.already.new2025)} de ces ${fmtNum(bl.totals.new2025)} mesures figuraient déjà dans l’édition complète de ${bl.year}` : ""}.`, `One commitment = one measure followed from version to version (matched by text similarity, then reviewed). Theme: that of the latest version. ‘Added in 2025’ means absent from the 2022 booklet, which only covers part of the full 2022 programme${bl ? `: ${fmtNum(bl.already.new2025)} of those ${fmtNum(bl.totals.new2025)} measures were already in the complete ${bl.year} edition` : ""}.`)}</p>
       </article>
 
       <article class="card">
@@ -315,6 +330,8 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
         <ol class="prog-highlights">${f.highlights.map((h) => `<li><span class="tag">${esc(({ figure: L("chiffre", "figure"), new: L("nouveau", "new"), dropped: L("retiré", "dropped"), wording: L("formulation", "wording") } as Record<string, string>)[h.kind] ?? h.kind)}</span> ${esc(L(h.fr, h.en))} <button type="button" class="linkish prog-goto" data-id="${esc(h.lineage)}">${L("voir les textes", "see the texts")}</button></li>`).join("")}</ol>
         ${va.financing && !f.costing ? `<p class="muted small">${L(`Chiffrage d’ensemble de 2022 (abrégé, p. ${va.financing.page}) : ${esc(va.financing.fr)}. Les éditions 2025 et 2027 étudiées ici ne donnent pas de chiffrage global équivalent.`, `Overall 2022 costing (booklet, p. ${va.financing.page}): ${esc(va.financing.en)}. The 2025 and 2027 editions studied here give no equivalent overall costing.`)}</p>` : ""}
       </article>
+
+      ${bl ? baselineCard(f, bl, themeName) : ""}
 
       ${costCard(f)}
 
@@ -331,6 +348,7 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
           <select id="pt" aria-label="${L("Thème", "Theme")}"><option value="">${L("Tous les thèmes", "All themes")}</option>${themeRows.map((r) => `<option value="${esc(r.t.id)}" ${state.theme === r.t.id ? "selected" : ""}>${esc(L(r.t.fr, r.t.en))} (${r.n})</option>`).join("")}</select>
           <label class="check"><input id="pk" type="checkbox" ${state.key ? "checked" : ""}/> ${L("Mesures clés", "Key measures")}</label>
           <label class="check"><input id="pv" type="checkbox" ${state.votes ? "checked" : ""}/> ${L("Avec un vote à l’Assemblée", "With an Assembly vote")}</label>
+          ${bl ? `<label class="check"><input id="pb" type="checkbox" ${state.base ? "checked" : ""}/> ${L(`Déjà dans l’édition ${bl.year}`, `Already in the ${bl.year} edition`)} <span class="muted">${fmtNum(bl.matched)}</span></label>` : ""}
         </div>
         <div class="prog-status" role="group" aria-label="${L("Statut", "Status")}">
           <button type="button" data-s="" aria-pressed="${state.status === ""}">${L("Tous", "All")} <span>${fmtNum(f.lineages.length)}</span></button>
@@ -375,6 +393,7 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
       <article class="card prose prog-method">
         <header class="card-head"><h2>${L("Sources et méthode", "Sources and method")}</h2></header>
         <ul>
+          ${bl ? `<li><b>${esc(L(bl.label.fr, bl.label.en))}</b> — ${esc(bl.title)} (${fmtNum(bl.count)} ${L("mesures", "measures")}${bl.pages ? `, ${bl.pages} pages` : ""}). ${L("PDF conservé par la rédaction ; sert de repère, n’entre pas dans le décompte des engagements.", "PDF kept on file; a reference point, not counted among the commitments.")}</li>` : ""}
           ${f.versions.map((v) => `<li><b>${esc(L(v.label.fr, v.label.en))}</b> — ${esc(v.title)} (${v.count} ${L("mesures", "measures")}, ${v.key} ${L("mesures clés", "key measures")}). ${v.url ? `<a href="${esc(safeUrl(v.url))}" target="_blank" rel="noopener">${v.kind === "site" ? L("Site", "Website") : L("Adresse d’origine du PDF", "Original PDF address")}</a>${v.kind !== "site" ? L(" (redirige désormais vers le site 2027 ; copie du PDF conservée par la rédaction)", " (now redirects to the 2027 site; a copy of the PDF is kept on file)") : ""}` : ""}</li>`).join("")}
         </ul>
         <p>${L(
@@ -383,6 +402,9 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
         <p>${L(
           "Rapprochement : chaque mesure de 2025 est associée à la mesure de 2027 la plus proche (recouvrement des mots, pondéré par leur rareté), puis chaque mesure de l’abrégé 2022 à la plus proche des deux. Les paires douteuses ont été relues une à une et confirmées ou rejetées à la main. « Modifiée » : un chiffre diffère, ou, entre 2025 et 2027, la formulation change d’au moins trois mots porteurs de sens. L’abrégé de 2022 résumant par nature, sa seule différence de formulation n’est pas comptée comme une modification.",
           "Matching: each 2025 measure is paired with the closest 2027 measure (word overlap weighted by rarity), then each 2022 booklet measure with the closest of the two. Doubtful pairs were read one by one and confirmed or rejected by hand. ‘Changed’: a figure differs or, between 2025 and 2027, the wording changes by at least three meaningful words. As the 2022 booklet summarises by design, a difference of wording alone from it does not count as a change.")}</p>
+        ${bl ? `<p>${L(
+          `Édition ${bl.year} : ses ${fmtNum(bl.count)} mesures (puces et sous-puces des sept chapitres, notes de bas de page retirées) sont rapprochées des engagements déjà établis, avec la même mesure de similarité et un seuil plus strict ; un engagement ne reçoit qu’une mesure de ${bl.year}. Les 105 paires les plus proches du seuil ont été relues une à une ; les autres rapprochements sont automatiques. ${fmtNum(bl.matched)} mesures sont rattachées à un engagement, ${fmtNum(bl.unmatched)} restent sans équivalent identifié (${fmtNum(bl.doubtful)} paires douteuses ont été laissées de côté) : une mesure reformulée en profondeur peut donc figurer dans cette liste alors qu’elle existe toujours. Cette édition n’a modifié ni le statut ni le nombre des engagements.`,
+          `${bl.year} edition: its ${fmtNum(bl.count)} measures (bullets and sub-bullets of the seven chapters, footnotes removed) are matched to the commitments already established, with the same similarity measure and a stricter threshold; a commitment takes one ${bl.year} measure at most. The 105 pairs closest to the threshold were read one by one; the other matches are automatic. ${fmtNum(bl.matched)} measures are attached to a commitment, ${fmtNum(bl.unmatched)} have no equivalent identified (${fmtNum(bl.doubtful)} doubtful pairs were left aside): a measure that was heavily reworded may therefore be in that list although it still exists. This edition changed neither the status nor the number of commitments.`)}</p>` : ""}
         <p>${L(
           `Votes : seuls les scrutins dont l’objet est la mesure elle-même (ou son contraire direct) sont reliés ; les amendements, dont l’intitulé ne dit pas le contenu, ne le sont pas. Position du groupe : majorité des voix exprimées par ses ${esc(f.group === "LFI-NFP" ? "députés" : "membres")} actuels (open data de l’Assemblée). Ce relevé ne juge pas les mesures.`,
           `Votes: only votes whose object is the measure itself (or its direct opposite) are linked; amendments, whose titles do not state their content, are not. Group position: majority of the votes cast by its current members (Assembly open data). This record does not judge the measures.`)}</p>
@@ -394,13 +416,20 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
   const list = app.querySelector<HTMLOListElement>("#plist")!;
   const more = app.querySelector<HTMLButtonElement>("#pmore")!;
   const countEl = app.querySelector<HTMLElement>("#pcount")!;
-  const hay = new Map(f.lineages.map((l) => [l.id, fold([l.a?.t, l.e?.t, l.w?.t].filter(Boolean).join(" "))]));
+  const hay = new Map(f.lineages.map((l) => [l.id, fold([l.f?.t, l.a?.t, l.e?.t, l.w?.t].filter(Boolean).join(" "))]));
   const order: Record<Status, number> = { modified: 0, new2027: 1, dropped: 2, new2025: 3, maintained: 4 };
 
   const col = (vid: string, year: number, m: Measure | undefined, html?: string) => `
     <div class="prog-ver${m ? "" : " prog-absent"}">
       <p class="prog-year">${year}${m?.k ? ` <span class="tag">${L("mesure clé", "key measure")}</span>` : ""}</p>
       ${m ? `<p class="prog-text" lang="fr">${html ?? esc(m.t)}</p>${loc(vid, m)}` : `<p class="prog-text muted">${L("Absente", "Absent")}</p>`}
+    </div>`;
+  // the older baseline edition: its wording when one matches; otherwise "no equivalent identified" (not "absent":
+  // the match is automatic and conservative, so a reworded measure may have been missed)
+  const baseCol = (l: Lineage) => `
+    <div class="prog-ver prog-basever${l.f ? "" : " prog-absent"}">
+      <p class="prog-year">${bl!.year}</p>
+      ${l.f ? `<p class="prog-text" lang="fr">${esc(l.f.t)}</p>${loc(bl!.id, l.f)}` : `<p class="prog-text muted">${L("Pas d’équivalent identifié", "No equivalent identified")}</p>`}
     </div>`;
   const changeNote = (l: Lineage) => (l.changes ?? []).map((c) => {
     const bits: string[] = [];
@@ -416,13 +445,14 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
     if (l.e && l.w && l.changed) [eh, wh] = diff(l.e.t, l.w.t);
     const v = votesBy.get(l.id);
     return `<li class="prog-item" id="m-${esc(l.id)}">
-      <div class="prog-item-head">${tag(l.status)}${l.status === "new2025" && l.changed ? `<span class="prog-chip prog-modified">${L("modifiée en 2027", "changed in 2027")}</span>` : ""}${l.status === "dropped" ? `<span class="muted small">${L(`absente depuis ${l.droppedIn}`, `absent since ${l.droppedIn}`)}</span>` : ""}<span class="prog-theme">${esc(themeName(l.theme))}</span></div>
-      <div class="prog-vers">
+      <div class="prog-item-head">${tag(l.status)}${l.status === "new2025" && l.changed ? `<span class="prog-chip prog-modified">${L("modifiée en 2027", "changed in 2027")}</span>` : ""}${l.status === "dropped" ? `<span class="muted small">${L(`absente depuis ${l.droppedIn}`, `absent since ${l.droppedIn}`)}</span>` : ""}${bl && l.f ? `<span class="prog-chip prog-base">${L(`Déjà en ${bl.year}`, `Already in ${bl.year}`)}</span>` : ""}<span class="prog-theme">${esc(themeName(l.theme))}</span></div>
+      <div class="prog-vers${bl ? " has-base" : ""}">
+        ${bl ? baseCol(l) : ""}
         ${col(va.id, va.year, l.a)}
         ${col(ve.id, ve.year, l.e, eh)}
         ${col(vw.id, vw.year, l.w, wh)}
       </div>
-      ${l.changes?.length ? `<p class="prog-change">${esc(changeNote(l))}</p>` : ""}
+      ${l.changes?.length || l.fChange ? `<p class="prog-change">${esc([l.fChange ? `${l.fChange.from} → ${l.fChange.to}${L(" : ", ": ")}${L("chiffres", "figures")} ${l.fChange.before.join(", ")} → ${l.fChange.after.join(", ")}` : "", changeNote(l)].filter(Boolean).join(" · "))}</p>` : ""}
       <p class="prog-an">${v
         ? `${L("Assemblée", "Assembly")} : ${v.scrutins.map((s) => `<a href="https://www.assemblee-nationale.fr/dyn/17/scrutins/${s.num}" target="_blank" rel="noopener">n° ${s.num}</a> (${esc(f.group)} ${s.majority ? POS[s.majority]().toLowerCase() : "—"})`).join(", ")} · <a href="#/programmes/${esc(f.slug)}#assemblee">${L("détail", "details")}</a>`
         : `${L("Assemblée : pas de vote correspondant", "Assembly: no matching vote")}`}</p>
@@ -432,7 +462,7 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
     if (state.focus) { const l = byId.get(state.focus); return l ? [l] : []; }
     const q = fold(state.q.trim());
     return f.lineages
-      .filter((l) => (!state.theme || l.theme === state.theme) && (!state.status || l.status === state.status) && (!state.branch || BRANCH[state.branch](l)) && (!state.key || l.key) && (!state.votes || votesBy.has(l.id)) && (!q || hay.get(l.id)!.includes(q)))
+      .filter((l) => (!state.theme || l.theme === state.theme) && (!state.status || l.status === state.status) && (!state.branch || BRANCH[state.branch](l)) && (!state.key || l.key) && (!state.votes || votesBy.has(l.id)) && (!state.base || l.f) && (!q || hay.get(l.id)!.includes(q)))
       .sort((a, b) => (b.key ?? 0) - (a.key ?? 0) || order[a.status] - order[b.status]);
   };
   const draw = () => {
@@ -451,10 +481,18 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
   themeSel.addEventListener("change", () => { state.theme = themeSel.value; reset(); });
   app.querySelector<HTMLInputElement>("#pk")!.addEventListener("change", (e) => { state.key = (e.target as HTMLInputElement).checked; reset(); });
   app.querySelector<HTMLInputElement>("#pv")!.addEventListener("change", (e) => { state.votes = (e.target as HTMLInputElement).checked; reset(); });
+  app.querySelector<HTMLInputElement>("#pb")?.addEventListener("change", (e) => { state.base = (e.target as HTMLInputElement).checked; reset(); });
   const statusBtns = [...app.querySelectorAll<HTMLButtonElement>(".prog-status button")];
   const setStatus = (s: Status | "") => { state.status = s; state.branch = ""; statusBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.s === s))); reset(); };
   statusBtns.forEach((b) => b.addEventListener("click", () => setStatus(b.dataset.s as Status | "")));
   more.addEventListener("click", () => { state.shown += 30; draw(); });
+  app.querySelector<HTMLButtonElement>("#bl-show")?.addEventListener("click", () => {
+    state.base = true; state.branch = ""; state.theme = ""; themeSel.value = "";
+    const pb = app.querySelector<HTMLInputElement>("#pb");
+    if (pb) pb.checked = true;
+    setStatus("");
+    app.querySelector("#mesures")?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  });
   const toList = () => app.querySelector("#mesures")?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   app.querySelectorAll<HTMLButtonElement>(".prog-row").forEach((b) => b.addEventListener("click", () => { state.theme = b.dataset.theme!; themeSel.value = state.theme; reset(); toList(); }));
   app.querySelectorAll<HTMLButtonElement>(".prog-goto").forEach((b) => b.addEventListener("click", () => { state.focus = b.dataset.id!; draw(); toList(); }));
@@ -611,4 +649,41 @@ function renderLite(app: HTMLElement, f: LiteFile) {
   }
   drawFlow();
   draw();
+}
+
+/** What the older complete edition shows: how many commitments of each status were already in it, and its measures with no later equivalent identified. */
+function baselineCard(f: ProgrammeFile, bl: Baseline, themeName: (id: string) => string) {
+  const rows: [Status, string][] = [
+    ["new2025", L("Apparues en 2025 (absentes de l’abrégé 2022)", "Added in 2025 (not in the 2022 booklet)")],
+    ["new2027", L("Nouvelles en 2027", "New in 2027")],
+    ["maintained", L("Maintenues depuis 2022", "Kept since 2022")],
+    ["modified", L("Modifiées depuis 2022", "Changed since 2022")],
+    ["dropped", L("Abandonnées", "Dropped")],
+  ];
+  const byTheme = new Map<string, Baseline["only"]>();
+  for (const m of bl.only) byTheme.set(m.theme, [...(byTheme.get(m.theme) ?? []), m]);
+  const sec = (m: Measure) => { const x = f.sections[bl.id]?.[m.s]; return [x?.[2], m.p ? `p. ${m.p}` : ""].filter(Boolean).map((v) => esc(v)).join(" · "); };
+  return `<article class="card" id="edition-${bl.year}">
+    <header class="card-head"><h2>${L(`Ce que montre l’édition complète de ${bl.year}`, `What the complete ${bl.year} edition shows`)}</h2></header>
+    <p class="prog-lede">${L(
+      `L’abrégé de 2022 ne reprend qu’une partie du programme : une mesure qui n’y figure pas n’est pas forcément nouvelle. L’édition complète d’avril ${bl.year} (${bl.pages ? `${bl.pages} pages, ` : ""}${fmtNum(bl.count)} mesures) permet de le vérifier. Pour chaque statut, la part des engagements dont une formulation existait déjà en ${bl.year}.`,
+      `The 2022 booklet only covers part of the programme: a measure missing from it is not necessarily new. The complete April ${bl.year} edition (${bl.pages ? `${bl.pages} pages, ` : ""}${fmtNum(bl.count)} measures) makes it possible to check. For each status, the share of commitments that already had a wording in ${bl.year}.`)}</p>
+    <div class="kpis kpis-4 prog-kpis">
+      <div><strong>${fmtNum(bl.matched)}</strong>${L(`mesures de ${bl.year} retrouvées ensuite`, `${bl.year} measures found later`)}</div>
+      <div><strong>${fmtNum(bl.already.new2025)}</strong>${L(`« apparues en 2025 » déjà là en ${bl.year}`, `‘added in 2025’ already there in ${bl.year}`)}</div>
+      <div><strong>${fmtNum(bl.already.new2027)}</strong>${L(`« nouvelles en 2027 » déjà là en ${bl.year}`, `‘new in 2027’ already there in ${bl.year}`)}</div>
+      <div><strong>${fmtNum(bl.unmatched)}</strong>${L(`mesures de ${bl.year} sans équivalent identifié`, `${bl.year} measures with no equivalent identified`)}</div>
+    </div>
+    <div class="prog-base-rows" role="img" aria-label="${L(`Part des engagements déjà présents en ${bl.year}, par statut`, `Share of commitments already present in ${bl.year}, by status`)}">
+      ${rows.map(([st, label]) => { const n = bl.already[st] ?? 0, t = bl.totals[st] ?? 0, p = t ? (100 * n) / t : 0; return `<div class="prog-base-row"><span>${esc(label)}</span><span class="prog-base-bar"><i style="width:${p.toFixed(1)}%"></i></span><b>${fmtNum(n)} <span class="muted">/ ${fmtNum(t)}</span></b><span class="muted">${fmtPct(p, 0)}</span></div>`; }).join("")}
+    </div>
+    <p><button type="button" class="button" id="bl-show">${L(`Voir les ${fmtNum(bl.matched)} engagements déjà présents en ${bl.year}`, `See the ${fmtNum(bl.matched)} commitments already there in ${bl.year}`)}</button></p>
+    <details class="prog-base-only">
+      <summary>${L(`Les ${fmtNum(bl.unmatched)} mesures de ${bl.year} sans équivalent identifié ensuite`, `The ${fmtNum(bl.unmatched)} measures of ${bl.year} with no later equivalent identified`)}</summary>
+      <p class="muted small">${L("« Sans équivalent identifié » ne veut pas dire abandonnée : le rapprochement est prudent, et une mesure reformulée en profondeur ou fondue dans une autre peut se trouver ici.", "‘No equivalent identified’ does not mean dropped: the matching is cautious, and a measure that was heavily reworded or merged into another may be listed here.")}</p>
+      ${f.themes.filter((t) => byTheme.has(t.id)).map((t) => `<details><summary>${esc(themeName(t.id))} <span class="muted">${byTheme.get(t.id)!.length}</span></summary>
+        <ul>${byTheme.get(t.id)!.map((m) => `<li><span lang="fr">${esc(m.t)}</span> <span class="prog-loc">${sec(m)}</span></li>`).join("")}</ul></details>`).join("")}
+    </details>
+    <p class="muted small">${L("Rapprochement automatique, relu à la main pour les cas limites ; détail dans « Sources et méthode ». Les statuts et les décomptes de cette page restent ceux établis à partir des versions 2022, 2025 et 2027.", "Automatic matching, read by hand for the borderline cases; details under ‘Sources and method’. The statuses and counts on this page remain those drawn from the 2022, 2025 and 2027 versions.")}</p>
+  </article>`;
 }
