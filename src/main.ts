@@ -27,7 +27,6 @@ import { pixelIcon, type PixelIcon } from "./lib/pixel-icons";
 import { initSearch, openSearch } from "./lib/search";
 import { foxBusy, initFox, initMotion, pageTransition } from "./lib/motion";
 import { renderCandidate } from "./views/candidate";
-import { pixelateAll } from "./lib/pixelate";
 
 const app = document.getElementById("app")!;
 const nav = document.getElementById("nav")!;
@@ -392,7 +391,6 @@ function reveal() {
 function enhance() {
   sectionHero();
   reveal();
-  pixelateAll(app);
   onScroll();
   app.querySelectorAll<HTMLTableElement>("table.table").forEach((t) => {
     if (t.parentElement?.classList.contains("table-scroll")) return;
