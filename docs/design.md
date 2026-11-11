@@ -17,13 +17,42 @@ everything else stays. The red-left/blue-right split bar (active tab, kickers) i
 part of the mark. Keep the grid exact;
 render it at multiples of 16px (24, 28, 32, 112) so pixels stay square. Wordmark: Archivo 850 condensed **THIRD** +
 300 **ESTATE**, uppercase. Favicon: the fox on a rounded ink tile (`public/favicon.svg`). Pixel type (Silkscreen) is
-allowed only for tiny accents, never for text people read; the site currently uses none. The 12×12 section icons of
+allowed only for tiny accents, never for text people read (see "Pixel theme"). The 12×12 section icons of
 the phone tab bar and the search glyph (`src/lib/pixel-icons.ts`) share the fox's pixel style, drawn in currentColor.
 Catchphrase: Article 15 of the 1789 Declaration, *« La société a le droit de demander compte à tout agent public de son administration »*, shortened on the homepage to « Demander compte à tout agent public ». Share image: `public/og.png` (1200×630, screenshot of `docs/brand/og-source.html`).
 
 A data desk, not a blog template. The page is a black-framed news product: one grotesk for
 everything people read, a monospace for everything that annotates, a 3px ink rule to open
 every section, and colour spent only on data. Tokens live at the top of `src/style.css`.
+
+## Pixel theme (beta, `src/redesign.css`)
+
+The frame takes its grammar from the fox. Loaded after `style.css`, the re-skin changes the chrome, not the data:
+
+- **No curves in the frame.** Every corner is square (`border-radius: 0` site-wide); charts and maps are SVG and keep
+  their own geometry. Panels (`.card`, doors, menus) and solid shapes (buttons, tags, photos) get **stepped corners**:
+  a 9-slice pixel border (`--px-soft`, `--px-ink`, `--px-dark`) or the `--px-clip` polygon. A clipped shape loses its
+  outline, so its focus ring is drawn inside (`.button:focus-visible`).
+- **Page and surfaces.** The page is warm paper `--bg #f2f0e9`; sections are white panels on it. Dark bands (masthead,
+  hero, footer) are `--night #0b0d18` with a faint grid of 2px squares, and dissolve into the page through two rows
+  of 4px squares (`.px-edge`, `.foot-strip`).
+- **Pixel type.** Silkscreen (self-hosted, OFL), for the smallest uppercase labels only: kickers, tags, the tab bar,
+  menu indexes, footer heads. Never for a sentence, never for a number people compare.
+- **Hard shadows, block motion.** Interactive panels lift up-left onto a hard offset shadow; presses and menu reveals
+  move in `steps()`. The scroll bar under the masthead advances in 40 blocks. Sections below the fold rise in once
+  as they enter the screen (`.rv-in`, added by `reveal()` in `src/main.ts`): nothing waits hidden, and all of it is
+  off under `prefers-reduced-motion`.
+- **The hero's 577 dots are pixels** (squares), on the map and in the hemicycle.
+
+Navigation: six sections (Chez vous, Parlement, 2027, **Programmes**, La France, Archives). On desktop each opens one
+panel as wide as the page column: what the section is, then its pages with a one-line description (the Programmes
+panel also lists every candidate). Below 900px: a bottom tab bar with four sections and **Menu**, which opens a
+full-screen sheet (search, quiz, every section and page, language). A pixel button returns to the top of long pages.
+
+Programmes hub (`#/programmes`, `src/views/programmes-hub.ts`): the candidates left to right, the same theme side by
+side, claimed against estimated cost, legal obstacles and feasibility. Its data is `public/data/programmes/compare.json`,
+written with the index by `scripts/build-programmes-index.mjs`. Same rule as the candidate pages: descriptive,
+same criteria for everyone.
 
 ## Principles
 
