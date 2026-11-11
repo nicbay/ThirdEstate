@@ -389,7 +389,7 @@ function results(stage: HTMLElement, d: QuizData) {
       ${byTheme.length > 1 ? `
       <h3>${L("Mais vous n’êtes pas à un seul endroit", "But you are not in one place")}</h3>
       <p class="qz-spec-sub">${spread > 0.3
-        ? L(`Sujet par sujet, vos réponses vont de « ${themeName(d, byTheme[0].t)} », où vous êtes le plus à gauche, à « ${themeName(d, byTheme[byTheme.length - 1].t)} », où vous êtes le plus à droite.`, `Subject by subject, your answers range from “${themeName(d, byTheme[0].t)}”, where you are furthest left, to “${themeName(d, byTheme[byTheme.length - 1].t)}”, where you are furthest right.`)
+        ? L(`Sujet par sujet, vos réponses vont de « ${esc(themeName(d, byTheme[0].t))} », où vous êtes le plus à gauche, à « ${esc(themeName(d, byTheme[byTheme.length - 1].t))} », où vous êtes le plus à droite.`, `Subject by subject, your answers range from “${esc(themeName(d, byTheme[0].t))}”, where you are furthest left, to “${esc(themeName(d, byTheme[byTheme.length - 1].t))}”, where you are furthest right.`)
         : L("Sujet par sujet, vos réponses restent proches de votre position d’ensemble.", "Subject by subject, your answers stay close to your overall position.")}</p>
       <ul class="qz-themes">${byTheme.map((t, i) => { const n = near(t.x); return `<li style="--i:${i}">
           <span class="qz-tl">${esc(themeName(d, t.t))}</span>

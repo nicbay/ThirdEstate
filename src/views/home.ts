@@ -4,7 +4,7 @@ import { geoConicConformal, geoPath } from "d3-geo";
 import { fetchJson, loadDepartements, loadDeputes, loadFeed, loadMarkets, loadPolls, loadShifts } from "../data";
 import { pixelIcon } from "../lib/pixel-icons";
 import { L, fmtDate, fmtNum, getLang } from "../i18n";
-import { lineChart } from "../lib/chart";
+import { lineChart, pollDots } from "../lib/chart";
 import { meta, registerParties, spectrumRank } from "../lib/candidates";
 import { cloudEnabled, getHome, onPresence } from "../lib/cloud";
 import { rewind } from "../lib/map";
@@ -79,7 +79,7 @@ export async function renderHome(app: HTMLElement) {
         </div>
         <nav class="hero-x-doors" aria-label="${L("Rubriques", "Sections")}">
           <a href="${home?.code ? `#/ville/${home.code}` : "#/explorer"}"><span class="hx-k">${pixelIcon("home", 12)}${L("Chez vous", "Where you live")}</span><strong data-count="34920">${L("34 920", "34,920")}</strong><span>${home?.code ? esc(L(`communes, dont la vôtre, ${home.commune ?? home.code}`, `towns, yours included, ${home.commune ?? home.code}`)) : L("communes : maire, conseil, écoles, sécurité", "towns: mayor, council, schools, safety")}</span></a>
-          <a href="#/assemblee"><span class="hx-k">${pixelIcon("parliament", 12)}${L("Parlement", "Parliament")}</span><strong data-count="${deputes.length || 577}">${deputes.length || 577}</strong><span>${L("députés et 348 sénateurs : chacun de leurs votes", "MPs and 348 senators: every vote they cast")}</span></a>
+          <a href="#/assemblee"><span class="hx-k">${pixelIcon("parliament", 12)}${L("Parlement", "Parliament")}</span><strong data-count="577">577</strong><span>${deputes.length && deputes.length < 577 ? L(`sièges de députés, dont ${577 - deputes.length} vacants, et 348 sénateurs : chacun de leurs votes`, `MPs’ seats, ${577 - deputes.length} of them vacant, and 348 senators: every vote they cast`) : L("députés et 348 sénateurs : chacun de leurs votes", "MPs and 348 senators: every vote they cast")}</span></a>
           <a href="#/2027"><span class="hx-k">${pixelIcon("ballot", 12)}${L("Présidentielle 2027", "2027 presidential")}</span>${fav ? `<strong data-count="${Math.round(fav.win)}" data-suffix="${fr ? " %" : "%"}">${pct(fav.win, 0)}</strong><span>${fr ? `de chances pour ${esc(fav.name)} selon notre prévision` : `chance for ${esc(fav.name)} in our forecast`}</span>` : `<strong>2027</strong><span>${L("la course, les sondages et le simulateur", "the race, the polls and the simulator")}</span>`}</a>
           <a href="#/programmes" class="is-new"><span class="hx-k">${pixelIcon("doc", 12)}${L("Programmes", "Programmes")}<i class="px-tag">${L("Nouveau", "New")}</i></span><strong${nMeasures ? ` data-count="${nMeasures}"` : ""}>${nMeasures ? fmtNum(nMeasures) : "2027"}</strong><span>${L(`mesures de ${nProgs || "tous les"} candidats, comparées et chiffrées`, `measures from ${nProgs || "all the"} candidates, compared and costed`)}</span></a>
           <a href="#/chiffres"><span class="hx-k">${pixelIcon("france", 12)}${L("La France", "France")}</span><strong data-count="101">101</strong><span>${L("départements : dette en direct, emploi, prix, bascules", "departments: live debt, jobs, prices, shifts")}</span></a>
@@ -163,7 +163,7 @@ export async function renderHome(app: HTMLElement) {
   const pts = trend(polls.firstRound, from);
   const shown = now.slice(0, 7).map((r) => r.name);
   app.querySelector("#trend")!.innerHTML = lineChart(
-    shown.map((n) => ({ name: n, label: meta(n).surname, color: meta(n).color, line: pts.filter((p) => p.values[n] != null).map((p) => ({ date: p.date, value: p.values[n] })) })).filter((s) => s.line.length),
+    shown.map((n) => ({ name: n, label: meta(n).surname, color: meta(n).color, line: pts.filter((p) => p.values[n] != null).map((p) => ({ date: p.date, value: p.values[n] })), dots: pollDots(polls.firstRound, n, from, polls.source) })).filter((s) => s.line.length),
     { height: 340 },
   );
 

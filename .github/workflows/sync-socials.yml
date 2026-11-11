@@ -36,10 +36,11 @@ jobs:
       - name: Social accounts
         run: node scripts/sync-socials.mjs
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
       - name: Commit if anything changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # only the push needs it
         run: |
           # socials-meta.json always changes (timestamp); only commit when accounts or the cache changed
           if git diff --quiet -- public/data/an/socials.json data/socials-cache.json data/usage 2>/dev/null && [ -z "$(git ls-files --others --exclude-standard data/usage)" ]; then

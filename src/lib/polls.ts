@@ -11,6 +11,8 @@ export interface Poll {
   start: string;
   end: string;
   sample: number | null;
+  /** the poll's own source (pollster or outlet page), when Wikipedia's table cites one */
+  url?: string;
   hyps: Record<string, number>[];
 }
 export interface Duel {

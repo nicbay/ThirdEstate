@@ -105,7 +105,8 @@ const num = (v: unknown, lo: number, hi: number) => {
   const n = Number(v);
   return Number.isFinite(n) ? Math.min(hi, Math.max(lo, n)) : lo;
 };
-const str = (v: unknown) => (typeof v === "string" ? v.slice(0, 80) : "");
+// names arrive from share links and saved scenarios: no markup characters, 60 characters at most
+const str = (v: unknown) => (typeof v === "string" ? v.replace(/[<>&"`]/g, "").trim().slice(0, 60) : "");
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export function sanitizeScenario(raw: any): Scenario | null {
   if (!raw || typeof raw !== "object" || !Array.isArray(raw.cands) || raw.cands.length > 30) return null;
@@ -703,8 +704,8 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
       </tbody></table>
       <p class="sim-vs-line">${base.o.winner === out.winner && pairKey(...baseSc.finalists) === pairKey(fa, fb)
         ? (Math.abs(r1(wv - base.w)) < 0.05 ? L("Même duel, même résultat que les sondages du jour.", "Same pairing, same result as today’s polls.") : `${esc(surname(out.winner))} <b>${signed(r1(wv - base.w))}</b> ${L("point au second tour par rapport aux sondages du jour.", "points in the runoff against today’s polls.")}`)
-        : base.o.winner === out.winner ? L(`Le duel change (${base.duel} dans les sondages du jour), le vainqueur reste ${surname(out.winner)}.`, `The pairing changes (${base.duel} in today’s polls); the winner is still ${surname(out.winner)}.`)
-        : L(`Le vainqueur change : ${surname(base.o.winner)} dans les sondages du jour, ${surname(out.winner)} ici.`, `The winner changes: ${surname(base.o.winner)} in today’s polls, ${surname(out.winner)} here.`)}</p>
+        : base.o.winner === out.winner ? esc(L(`Le duel change (${base.duel} dans les sondages du jour), le vainqueur reste ${surname(out.winner)}.`, `The pairing changes (${base.duel} in today’s polls); the winner is still ${surname(out.winner)}.`))
+        : esc(L(`Le vainqueur change : ${surname(base.o.winner)} dans les sondages du jour, ${surname(out.winner)} ici.`, `The winner changes: ${surname(base.o.winner)} in today’s polls, ${surname(out.winner)} here.`))}</p>
       <p class="sim-changes">${moved.map((x) => `<span style="--c:${color(x.n)}">${esc(surname(x.n))} ${x.gone ? L("se retire", "withdraws") : signed(x.d)}</span>`).join("") || `<span>${L("Premier tour : la moyenne des sondages", "First round: the polling average")}</span>`}<span class="is-rule">${esc(rule)}</span></p>`;
     const curSig = sig(s);
     app.querySelectorAll<HTMLButtonElement>("[data-g]").forEach((b, i) => b.setAttribute("aria-pressed", String(gallerySig[i] === curSig)));

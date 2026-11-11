@@ -39,6 +39,7 @@ const PAGES: { href: string; fr: string; en: string; k?: string }[] = [
   { href: "#/resultats", fr: "Toutes les élections depuis 1848", en: "Every election since 1848", k: "archives présidentielles histoire history" },
   { href: "#/resultats/presidentielle-2022", fr: "Présidentielle 2022 : sondages et résultat", en: "2022 presidential: polls vs result", k: "archives résultats results" },
   { href: "#/resultats/legislatives-2024", fr: "Législatives 2024", en: "2024 legislative election", k: "archives résultats results" },
+  { href: "#/mentions-legales", fr: "Mentions légales, données personnelles, cookies", en: "Legal notice, personal data, cookies", k: "rgpd gdpr privacy vie privée éditeur hébergeur contact" },
   { href: "#/sources", fr: "Sources et méthode", en: "Sources and method", k: "données data méthodologie" },
 ];
 
