@@ -65,6 +65,7 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/circo\/(\w{4,5})$/, (m) => renderCirco(app, m[1])],
   [/^#\/depute\/(PA\d+)$/, (m) => renderDepute(app, m[1])],
   [/^#\/sources$/, () => renderSources(app)],
+  [/^#\/mentions-legales$/, () => import("./views/legal").then((v) => v.renderLegal(app))],
   [/^#\/histoire\/([\w-]+)$/, (m) => renderElection(app, m[1])],
   [/^#\/fil$/, () => renderFeed(app)],
   [/^#\/2027$/, () => renderRace(app)],
@@ -88,7 +89,7 @@ const homeHref = () => { const h = getHome(); return h?.code ? `#/ville/${h.code
 const MY_MP = "te-my-mp";
 type MyMp = { code: string; id: string | null; name?: string };
 function myMp(code: string): MyMp | null {
-  try { const v = JSON.parse(localStorage.getItem(MY_MP) ?? "null") as MyMp | null; return v?.code === code ? v : null; } catch { return null; }
+  try { const v = JSON.parse(localStorage.getItem(MY_MP) ?? "null") as MyMp | null; return v?.code === code && (v.id === null || /^PA\d+$/.test(String(v.id))) ? v : null; } catch { return null; }
 }
 let mpLookup = "";
 /** The town's MP when one district covers (nearly) all of it; otherwise none ("Mon député" stays hidden). */
@@ -280,7 +281,7 @@ function renderChrome(path: string) {
         <summary>${pixelIcon(s.icon, 24)}<span><b>${L(s.fr, s.en)}</b><small>${esc(L(...s.blurb))}</small></span>${caret}</summary>
         <div class="ms-links">${s.children.map(itemLink).join("")}${s.key === "programmes" ? candLinks("ms-extra") : ""}</div>
       </details>`).join("")}</nav>
-    <footer class="ms-foot"><a href="#/">${L("Accueil", "Home")}</a><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><button type="button" data-ms="lang">${getLang() === "fr" ? "English" : "Français"}</button></footer>
+    <footer class="ms-foot"><a href="#/">${L("Accueil", "Home")}</a><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/mentions-legales">${L("Mentions légales", "Legal notice")}</a><button type="button" data-ms="lang">${getLang() === "fr" ? "English" : "Français"}</button></footer>
   </div>`;
 
   const sub = document.getElementById("subnav")!;
@@ -305,7 +306,8 @@ function renderChrome(path: string) {
       <p>${L("Données électorales françaises, de la commune à l’Élysée. Sources publiques, méthode ouverte, code libre.", "French election data, from your town hall to the Élysée. Public sources, open method, open code.")}</p>
       <p class="foot-quote">${L("« Qu’est-ce que le tiers état ? Tout. Qu’a-t-il été jusqu’à présent dans l’ordre politique ? Rien. Que demande-t-il ? À y devenir quelque chose. »", "“What is the Third Estate? Everything. What has it been until now in the political order? Nothing. What does it ask? To become something.”")} <span>Sieyès, 1789</span></p></div>
     <nav class="foot-map" aria-label="${L("Plan du site", "Site map")}">${SECTIONS.map((s) => `<div><a class="foot-h" href="${s.href}">${pixelIcon(s.icon, 12)}${L(s.fr, s.en)}</a>${s.children.map((c) => `<a href="${c.href}">${esc(L(c.fr, c.en))}</a>`).join("")}</div>`).join("")}
-      <div><span class="foot-h">${L("Le site", "About")}</span><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="https://github.com/nicbay/ThirdEstate" target="_blank" rel="noopener">GitHub</a></div></nav>
+      <div><span class="foot-h">${L("Le site", "About")}</span><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/mentions-legales">${L("Mentions légales, vos données", "Legal notice, your data")}</a><a href="https://github.com/nicbay/ThirdEstate" target="_blank" rel="noopener">GitHub</a></div></nav>
+    <p class="foot-legal">${L("Aucun cookie, aucune publicité, aucun suivi.", "No cookies, no ads, no tracking.")} <a href="#/mentions-legales#cookies">${L("Pourquoi il n’y a pas de bandeau", "Why there is no banner")}</a></p>
   </div>`;
 }
 
@@ -500,7 +502,7 @@ async function render(path: string, anchor: string | undefined) {
       } catch (err) {
         console.error(err);
         if (reloadForNewVersion(err)) return;
-        app.innerHTML = `<p class="error pad">${t().error} — ${(err as Error).message}</p>`;
+        app.innerHTML = `<p class="error pad">${t().error} — ${esc((err as Error).message)}</p>`;
       } finally {
         foxBusy(false);
       }

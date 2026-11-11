@@ -439,10 +439,11 @@ footer .brand .fox { width: 64px; height: 64px; }
 @media (max-width: 640px) { .dy-polls li { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .dy-live { animation: none; } }
 
-/* ---------- town photos as pixel art (src/lib/pixelate.ts): a canvas over the image, gone once resolved ---------- */
+/* ---------- town pictures (src/lib/pixelate.ts): a landmark in the mark's style, or a three-colour poster ---------- */
 .pxl { position: relative; overflow: hidden; }
 .pxl-cv { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; pointer-events: none; }
-.pxl.is-real .pxl-cv { opacity: 0; }
+.pxl-landmark { background: var(--night-2) var(--px-grid); }
+.pxl.is-real .pxl-cv { display: none; }
 .town-photo { aspect-ratio: 4 / 3; box-shadow: 8px 8px 0 #5b8dff; }
 .town-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .town-hero figure { padding: 0 8px 0 0; }
@@ -459,3 +460,28 @@ footer .brand .fox { width: 64px; height: 64px; }
   .lang .l-long { display: none; }
   .lang .l-short { display: inline; }
 }
+
+/* ---------- poll dots on the trend charts: one light blue for every poll, a link to its source ---------- */
+.chart .dot { fill: #8fb5f2; opacity: 0.75; stroke: transparent; stroke-width: 9px; paint-order: stroke; pointer-events: all; transition: opacity 0.12s, r 0.12s; }
+.chart .dot:hover, .chart .dot-link:focus-visible .dot { opacity: 1; fill: #2f6fe0; r: 5px; }
+.chart .dot-link { cursor: pointer; }
+.chart .dot-link:focus-visible { outline: none; }
+.reveal .chart .dot { opacity: 0; }
+.reveal.in .chart .dot { opacity: 0.75; }
+
+/* ---------- nothing flashes: the live markers, the hero's pixels and the headline cursor are still ---------- */
+.hero-x::after { display: none; }
+.live-badge i, .tk-live i, .hero-story i, .pf-pulse, .dy-live { animation: none !important; box-shadow: none; }
+.hero-x h1 em::after, .sec-hero h1 .ln:last-child > span::after { animation: none; }
+
+/* folded blocks (long lists that open on demand) */
+.fold > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.9rem; padding: 0.7rem 0.9rem; border: 2px solid var(--ink); background: var(--paper); cursor: pointer; font-weight: 800; list-style: none; transition: transform 0.1s steps(2), box-shadow 0.1s steps(2); }
+.fold > summary::-webkit-details-marker { display: none; }
+.fold > summary::before { content: "+"; font: 700 1rem var(--mono); width: 1ch; }
+.fold[open] > summary::before { content: "−"; }
+.fold > summary:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--ink); }
+.fold[open] > summary { margin-bottom: 1rem; }
+
+.foot-legal { max-width: var(--col); margin: 0 auto; padding: 0.9rem var(--gutter) 1.4rem; border-top: 2px solid var(--night-rule); font: 500 0.74rem var(--mono); color: #a7abc0; }
+.foot-legal a { color: #fff; text-decoration: underline; }
+.legal .prose ul { display: grid; gap: 0.5rem; }

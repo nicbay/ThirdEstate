@@ -54,7 +54,7 @@ export async function mountDaily(box: HTMLElement | null, compact = false) {
   const latest = [...(polls?.firstRound ?? [])].sort((x, y) => y.end.localeCompare(x.end)).slice(0, 6);
   const pollLine = (p: (typeof latest)[number]) => {
     const top = [...new Set(p.hyps.flatMap((h) => Object.keys(h)))].map((n) => ({ n, v: pollValue(p, n)! })).sort((x, y) => y.v - x.v).slice(0, 5);
-    return `<li><span class="dy-pwho"><b>${esc(pollsterName(p.pollster))}</b>${fresh.has(`${pollsterName(p.pollster)}|${p.end}`) ? ` <span class="px-tag">${L("Nouveau", "New")}</span>` : ""}<span class="muted small">${fmtDate(p.start)} – ${fmtDate(p.end)}${p.sample ? ` · ${p.sample.toLocaleString(getLang() === "fr" ? "fr-FR" : "en-GB")} ${L("pers.", "people")}` : ""}</span></span>
+    return `<li><span class="dy-pwho">${p.url ? `<a href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener"><b>${esc(pollsterName(p.pollster))}</b></a>` : `<b>${esc(pollsterName(p.pollster))}</b>`}${fresh.has(`${pollsterName(p.pollster)}|${p.end}`) ? ` <span class="px-tag">${L("Nouveau", "New")}</span>` : ""}<span class="muted small">${fmtDate(p.start)} – ${fmtDate(p.end)}${p.sample ? ` · ${p.sample.toLocaleString(getLang() === "fr" ? "fr-FR" : "en-GB")} ${L("pers.", "people")}` : ""}</span></span>
       <span class="dy-ptop">${top.map((t) => `<span style="--c:${safeColor(meta(t.n).color)}"><i></i>${esc(meta(t.n).surname)} <b>${dec(t.v, t.v % 1 ? 1 : 0)}</b></span>`).join("")}</span></li>`;
   };
 

@@ -1,7 +1,7 @@
 // Polls & markets: trend, runoff match-ups, every poll, prediction markets.
 import { loadMarkets, loadPolls } from "../data";
 import { L, fmtDate, fmtNum, getLang } from "../i18n";
-import { lineChart } from "../lib/chart";
+import { lineChart, pollDots } from "../lib/chart";
 import { meta, registerParties } from "../lib/candidates";
 import { WINDOW, average, duelAverages, pollValue, pollsterName, trend } from "../lib/polls";
 import { colon, dec, pair100, pct } from "../lib/format";
@@ -93,10 +93,7 @@ export async function renderPolls(app: HTMLElement) {
           label: m.surname,
           color: m.color,
           line: pts.filter((p) => p.values[n] != null).map((p) => ({ date: p.date, value: p.values[n] })),
-          dots: polls.firstRound.filter((p) => p.end >= from).flatMap((p) => {
-            const v = pollValue(p, n);
-            return v == null ? [] : [{ date: p.end, value: v, title: `${p.pollster} · ${fmtDate(p.end)} · ${n} ${pct(v)}` }];
-          }),
+          dots: pollDots(polls.firstRound, n, from, polls.source),
         };
       })
       .filter((s) => s.line.length);

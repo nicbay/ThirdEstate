@@ -1,6 +1,7 @@
 // Minimal SVG line chart: polling-average lines with individual poll dots.
-import { esc } from "../util";
-import { fmtDate } from "../i18n";
+import { esc, safeUrl } from "../util";
+import { L, fmtDate } from "../i18n";
+import { pollValue, pollsterName, type Poll } from "./polls";
 import { dec, pct } from "./format";
 
 export interface Series {
@@ -8,7 +9,7 @@ export interface Series {
   label: string;
   color: string;
   line: { date: string; value: number }[];
-  dots?: { date: string; value: number; title: string }[];
+  dots?: { date: string; value: number; title: string; href?: string }[];
   /** Final value shown as a diamond (e.g. actual election result). */
   final?: { date: string; value: number; title: string };
 }
@@ -56,7 +57,7 @@ export function lineChart(series: Series[], opts: { height?: number; yMax?: numb
     ${series
       .map(
         (s) => `<g class="series" data-name="${esc(s.name)}">
-          ${(s.dots ?? []).map((p) => `<circle cx="${x(p.date)}" cy="${y(p.value)}" r="${compact ? 3.4 : 2.6}" fill="${s.color}" class="dot"><title>${esc(p.title)}</title></circle>`).join("")}
+          ${(s.dots ?? []).map((p) => { const c = `<circle cx="${x(p.date)}" cy="${y(p.value)}" r="${compact ? 3.6 : 3}" class="dot"><title>${esc(p.title)}</title></circle>`; return p.href ? `<a href="${esc(safeUrl(p.href))}" target="_blank" rel="noopener" class="dot-link">${c}</a>` : c; }).join("")}
           <polyline class="halo" points="${s.line.map((p) => `${x(p.date)},${y(p.value)}`).join(" ")}"/>
           <polyline class="line" pathLength="1" fill="none" stroke="${s.color}" stroke-width="${compact ? 3.4 : 2.6}" stroke-linejoin="round" stroke-linecap="round" points="${s.line.map((p) => `${x(p.date)},${y(p.value)}`).join(" ")}"/>
           ${s.final ? `<path d="M${x(s.final.date)},${y(s.final.value) - 6}l6,6l-6,6l-6,-6z" fill="${s.color}" stroke="var(--card)"><title>${esc(s.final.title)}</title></path>` : ""}
@@ -65,4 +66,17 @@ export function lineChart(series: Series[], opts: { height?: number; yMax?: numb
       .join("")}
     ${ends.map(({ s, y: yy }) => `<text x="${W - R + 8}" y="${yy + 4}" class="end-label" fill="${s.color}"><title>${esc(s.label)}</title>${esc(compact && s.label.length > 14 ? `${s.label.slice(0, 13).trim()}…` : s.label)} <tspan class="v">${dec(s.line.at(-1)!.value)}</tspan></text>`).join("")}
   </svg>`;
+}
+
+/** Every poll that tested `name` since `from`, as chart dots: hover for the figure, click for the poll's source
+ *  (the pollster's or outlet's page when the record cites one, else the page the record comes from). */
+export function pollDots(polls: Poll[], name: string, from: string, fallback?: string) {
+  return polls.filter((p) => p.end >= from).flatMap((p) => {
+    const v = pollValue(p, name);
+    if (v == null) return [];
+    const href = p.url ?? fallback;
+    return [{ date: p.end, value: v, href, title: `${pollsterName(p.pollster)} · ${fmtDate(p.end)}
+${name} ${dec(v)} %${href ? `
+${L("Cliquer pour ouvrir la source", "Click to open the source")}` : ""}` }];
+  });
 }

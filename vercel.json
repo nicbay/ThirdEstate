@@ -6,7 +6,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://i.ytimg.com https://www2.assemblee-nationale.fr https://www.assemblee-nationale.fr https://upload.wikimedia.org https://thumb.wikimedia.org https://commons.wikimedia.org https://www.senat.fr; connect-src 'self' https://bxjparhlylqrbipnnyuu.supabase.co wss://bxjparhlylqrbipnnyuu.supabase.co https://data.geopf.fr https://geo.api.gouv.fr https://tabular-api.data.gouv.fr https://raw.githubusercontent.com; frame-src https://www.youtube-nocookie.com https://player.ina.fr https://www.ina.fr https://archive.org https://commons.wikimedia.org; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+          "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://i.ytimg.com https://www2.assemblee-nationale.fr https://www.assemblee-nationale.fr https://upload.wikimedia.org https://thumb.wikimedia.org https://commons.wikimedia.org https://www.senat.fr; connect-src 'self' https://bxjparhlylqrbipnnyuu.supabase.co wss://bxjparhlylqrbipnnyuu.supabase.co https://data.geopf.fr https://geo.api.gouv.fr https://tabular-api.data.gouv.fr https://raw.githubusercontent.com/nicbay/ThirdEstate/; frame-src https://www.youtube-nocookie.com https://player.ina.fr https://www.ina.fr https://archive.org https://commons.wikimedia.org; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
         },
         {
           "key": "X-Frame-Options",

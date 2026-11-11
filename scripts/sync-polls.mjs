@@ -58,7 +58,10 @@ function grid(table) {
       while (out[r][c]) c++;
       const rs = Number(cell.getAttribute("rowspan") ?? 1);
       const cs = Number(cell.getAttribute("colspan") ?? 1);
-      const v = { el: cell, th: cell.tagName === "TH", text: clean(cell), origin: `${t}:${r}:${c}` };
+      // the poll's own source: a direct external link in the cell, or its footnote (read before clean() drops the footnote marks)
+      const ext = cell.querySelector("a.external")?.getAttribute("href") ?? null;
+      const note = cell.querySelector("sup.reference a")?.getAttribute("href") ?? null;
+      const v = { el: cell, th: cell.tagName === "TH", text: clean(cell), origin: `${t}:${r}:${c}`, ext, note };
       for (let i = 0; i < rs; i++) for (let j = 0; j < cs; j++) ((out[r + i] ??= [])[c + j] = v);
       c += cs;
     }
@@ -66,7 +69,7 @@ function grid(table) {
   return out;
 }
 
-function parseTable(table, { blocs = false } = {}) {
+function parseTable(table, { blocs = false, resolve = () => null } = {}) {
   const g = grid(table);
   const firstData = g.findIndex((row) => row.some((c) => c && !c.th));
   if (firstData < 0) return null;
@@ -107,7 +110,8 @@ function parseTable(table, { blocs = false } = {}) {
       if (spanned.length && v != null) values[spanned.join(" + ")] = v;
     }
     if (Object.keys(values).length < 2) continue;
-    rows.push({ key: `${row[iFirm].origin}|${row[iDate].origin}`, pollster: firm.replace(/\[.*?\]/g, "").replace(/\s*Archived .*$/i, "").trim(), start: dates[0], end: dates[1], sample: num((row[iSample]?.text ?? "").replace(/,/g, "")) ?? null, values });
+    const url = row[iFirm].ext ?? resolve(row[iFirm].note) ?? resolve(row[iDate]?.note) ?? null;
+    rows.push({ key: `${row[iFirm].origin}|${row[iDate].origin}`, url, pollster: firm.replace(/\[.*?\]/g, "").replace(/\s*Archived .*$/i, "").trim(), start: dates[0], end: dates[1], sample: num((row[iSample]?.text ?? "").replace(/,/g, "")) ?? null, values });
   }
   return rows;
 }
@@ -120,6 +124,12 @@ async function syncYear(year) {
   if (!res.ok) throw new Error(`${res.status} ${url}`);
   const root = parse((await res.json()).parse.text);
 
+  // footnote → the first external link of the reference it points to (the pollster's or the outlet's page), https only
+  const resolve = (href) => {
+    if (!href?.startsWith("#")) return null;
+    const u = root.getElementById(decodeURIComponent(href.slice(1)))?.querySelector("a.external")?.getAttribute("href");
+    return u && /^https:///.test(u) ? u : null;
+  };
   const firstRound = new Map();
   const secondRound = [];
   let h2 = "";
@@ -133,12 +143,12 @@ async function syncYear(year) {
       continue;
     }
     if (h2 !== "first round" && h2 !== "second round") continue;
-    const rows = parseTable(el, { blocs: String(year).startsWith("legislatives") });
+    const rows = parseTable(el, { blocs: String(year).startsWith("legislatives"), resolve });
     if (!rows) continue;
     for (const r of rows) {
       if (h2 === "first round") {
         // rows sharing the same (rowspan-merged) firm + date cells are line-ups of one poll
-        const p = firstRound.get(r.key) ?? { pollster: r.pollster, start: r.start, end: r.end, sample: r.sample, hyps: [] };
+        const p = firstRound.get(r.key) ?? { pollster: r.pollster, start: r.start, end: r.end, sample: r.sample, ...(r.url ? { url: r.url } : {}), hyps: [] };
         p.hyps.push(r.values);
         firstRound.set(r.key, p);
       } else {

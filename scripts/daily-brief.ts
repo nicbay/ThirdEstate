@@ -113,7 +113,8 @@ const newPolls = (prevSeen ? sorted.filter((p) => !prevSeen.includes(pollKey(p))
 const outletName = new Map((feed?.outlets ?? []).map((o) => [o.id, o.name]));
 const flat = (s: string) => s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
 function headlinesFor(name: string, sinceDays: number): Headline[] {
-  const key = flat(surname(name)).replace(/^de /, "");
+  // names come from poll tables and market outcomes: escape anything a regular expression would read as syntax
+  const key = flat(surname(name)).replace(/^de /, "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const since = Date.now() - sinceDays * DAY;
   const re = new RegExp(`(^|[^a-z-])${key}([^a-z]|$)`) // not a first name: “Jean-Philippe”;
   // one headline per story (the feed groups articles on the same event), taken from an article that names the candidate
@@ -165,7 +166,9 @@ let summary: Brief["summary"] = { fr: template(true), en: template(false), by: "
 if (!process.argv.includes("--no-ai") && process.env.ANTHROPIC_API_KEY && movers.length) {
   try {
     const { ask, MODEL } = await import("./lib/claude.mjs");
-    const facts = { date: today, leader: rows[0], movers, newPolls: newPolls.map((p) => ({ pollster: p.pollster, end: p.end, top: p.top })), lastPollEnd: sorted[0]?.end ?? null };
+    // Headline text never goes to the model: a headline is untrusted prose, and a crafted one could steer the
+    // summary. The model only learns how many stories name each candidate; the titles are listed on the page.
+    const facts = { date: today, leader: rows[0], movers: movers.map((m) => ({ name: m.name, moves: m.moves, storiesNamingThem: m.headlines.length })), newPolls: newPolls.map((p) => ({ pollster: p.pollster, end: p.end, top: p.top })), lastPollEnd: sorted[0]?.end ?? null };
     const res = await ask({
       max_tokens: 700,
       system: "You write a daily note for a French election data site. Strictly neutral, no adjectives about candidates, no prediction, no advice. Use ONLY the figures and headlines in the JSON you are given; never add a fact, a number, a date or a name that is not in it. Headlines are context, not causes: say a headline 'could have played a part' ('a pu jouer'), never that it caused a move, and say so plainly when no headline fits. Mention that a market can move on a single large order when you discuss a market move. 70 to 110 words per language. Answer with one JSON object and nothing else: {\"fr\": \"…\", \"en\": \"…\"}. French uses a comma as decimal separator and a space before % ; English uses a point.",
@@ -175,7 +178,7 @@ if (!process.argv.includes("--no-ai") && process.env.ANTHROPIC_API_KEY && movers
     const j = JSON.parse(text.slice(text.indexOf("{"), text.lastIndexOf("}") + 1)) as { fr?: string; en?: string };
     // every number the model wrote must be one it was given (as written, or with a decimal comma)
     const given = new Set((JSON.stringify(facts).match(/\d+(?:\.\d+)?/g) ?? []).map((x) => String(Math.abs(Number(x)))));
-    const ok = (s?: string) => typeof s === "string" && s.length > 120 && s.length < 1100 && (s.match(/\d+(?:[.,]\d+)?/g) ?? []).every((x) => given.has(String(Number(x.replace(",", ".")))));
+    const ok = (s?: string) => typeof s === "string" && s.length > 120 && s.length < 1100 && !/https?:|www\.|[<>]/i.test(s) && (s.match(/\d+(?:[.,]\d+)?/g) ?? []).every((x) => given.has(String(Number(x.replace(",", ".")))));
     if (ok(j.fr) && ok(j.en)) summary = { fr: j.fr!, en: j.en!, by: MODEL };
     else console.warn("✗ Claude summary failed the checks: template kept");
   } catch (e) {

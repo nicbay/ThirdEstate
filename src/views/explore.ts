@@ -296,7 +296,7 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
         const mp = byDistrict.get(t.districts[0]?.code);
         const ex = townExtra(bundle[t.code]);
         return `<li><a href="#/ville/${t.code}" class="town-card${ex?.photo ? " has-photo" : ""}" data-code="${t.code}">
-          ${ex?.photo ? `<span class="tc-photo"><img data-px="card" src="${esc(safeUrl(ex.photo.url))}" alt="" loading="lazy"/></span>` : ""}
+          ${ex?.photo ? `<span class="tc-photo"><img data-px="card" crossorigin="anonymous" data-hide-broken src="${esc(safeUrl(ex.photo.url))}" alt="" loading="lazy"/></span>` : ""}
           <span class="tc-head"><b>${esc(t.name)}</b><span class="muted small">${fmtNum(t.pop)} ${L("hab.", "people")}</span></span>
           <span class="tc-stats small">${t.income ? `<span><i>${L("Niveau de vie", "Living standard")}</i>${fmtNum(t.income)} €</span>` : ""}${t.unemployment != null ? `<span><i>${L("Chômage", "Unemployment")}</i>${fmt(t.unemployment)} %</span>` : ""}${t.schools.length ? `<span><i>${L("Écoles", "Schools")}</i>${t.schools.length}</span>` : ""}${t.events.length ? `<span><i>${L("Événements", "Events")}</i>${t.events.length}</span>` : ""}</span>
           ${mp ? `<span class="small muted">${L("Député·e", "MP")}${colon()}${esc(mp.prenom)} ${esc(mp.nom)} <span class="chip" style="--c:${safeColor(mp.groupe?.couleur) ?? "#999"}">${esc(mp.groupe?.abrev ?? "")}</span></span>` : ""}
@@ -474,7 +474,7 @@ export async function renderTown(app: HTMLElement, code: string) {
     <section class="page town">
       <p class="crumbs"><a href="#/explorer/${dep}">${esc(info?.departement?.nom ?? dep)}</a></p>
       <header class="town-hero ${photo ? "has-photo" : ""}">
-        ${photo ? `<figure><div class="town-photo"><img data-px="hero" src="${esc(safeUrl(photo.url))}" alt="${esc(name)}" loading="eager"/></div><figcaption class="tiny">${esc(photo.author ?? "")} ${photo.licence ? `(${esc(photo.licence)})` : ""}, Wikimedia Commons</figcaption></figure>` : ""}
+        ${photo ? `<figure><div class="town-photo" data-code="${esc(code)}"><img data-px="hero" crossorigin="anonymous" src="${esc(safeUrl(photo.url))}" alt="${esc(name)}" loading="eager"/></div><figcaption class="tiny">${esc(photo.author ?? "")} ${photo.licence ? `(${esc(photo.licence)})` : ""}, Wikimedia Commons</figcaption></figure>` : ""}
         <div>
           <p class="eyebrow">${esc(info?.departement?.nom ?? "")}${info?.region?.nom ? `, ${esc(info.region.nom)}` : ""}</p>
           <h1>${esc(name)}</h1>
