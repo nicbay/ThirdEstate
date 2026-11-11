@@ -1,0 +1,64 @@
+# "Le point du jour": once a day, how the 2027 race moved in the polls, on Kalshi and on Polymarket since
+# yesterday and over a week, with the headlines that could have played a part (scripts/daily-brief.ts).
+# Polls and markets are refreshed first so the brief starts from the latest figures (the hourly sync-live job
+# keeps them fresh the rest of the day). The summary may be reworded by Claude Haiku within the shared budget,
+# hence the `claude-budget` concurrency group; without the key or the budget the template summary is used.
+# See docs/data-daily.md.
+name: Daily brief
+
+on:
+  schedule:
+    - cron: "5 6 * * *" # 07:05 or 08:05 in Paris
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: claude-budget
+  cancel-in-progress: false
+
+jobs:
+  brief:
+    permissions:
+      contents: write # push the refreshed data
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false # the token is given only to the push step
+
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci --ignore-scripts
+
+      - name: Polls
+        run: npm run sync:polls
+        continue-on-error: true # the brief can run on the last hourly file
+
+      - name: Markets
+        run: npm run sync:markets
+        continue-on-error: true
+
+      - name: Daily brief
+        run: npm run sync:daily
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      # Only the brief's own files: polls and markets are committed by the hourly job (no two jobs push the same file).
+      - name: Commit
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add public/data/daily
+          [ -d data/usage ] && git add data/usage
+          git diff --cached --quiet && { echo "No change."; exit 0; }
+          git commit -m "data: daily brief ($(date -u +'%F'))"
+          git pull --rebase --autostash
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:${GITHUB_REF_NAME}"

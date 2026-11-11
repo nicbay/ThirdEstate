@@ -81,6 +81,7 @@ export async function mountProgrammesFeature(box: HTMLElement | null) {
         <p class="pf-kicker"><i class="pf-pulse" aria-hidden="true"></i>${L("Le dossier du moment", "The story right now")}</p>
         <h2 id="pf-title">${L("Les programmes 2027, passés au crible", "The 2027 programmes, under the microscope")}</h2>
         <p class="pf-dek">${L("Ce que chaque candidat promet, ce qui a changé depuis 2022, ce que ça coûte selon eux et selon les économistes indépendants.", "What each candidate promises, what changed since 2022, and what it costs according to them and to independent economists.")}</p>
+        <a class="pf-all" href="#/programmes">${L("Comparer tous les programmes", "Compare every programme")} <i aria-hidden="true">→</i></a>
       </header>
       <div class="pf-grid">
         <a class="pf-lead" href="#/programmes/${esc(lead.slug)}">

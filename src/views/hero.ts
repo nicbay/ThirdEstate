@@ -8,7 +8,7 @@ import { AN_SEATS, seatRank, seatSummary } from "../lib/hemicycle";
 import { rewind } from "../lib/map";
 import { esc, safeColor } from "../util";
 
-const W = 640, H = 560, R = 4;
+const W = 640, H = 560, R = 3.5; // half the side of a dot: the dots are pixels (squares), like the mark
 /** Group colours are chosen for white paper; lift the darkest ones (RN navy, GDR maroon) so they read on black. */
 function onDark(hex: string) {
   const m = /^#?([0-9a-f]{6})$/i.exec(hex);
@@ -72,7 +72,7 @@ export function heroViz(geo: GeoJSON.FeatureCollection, deputes: Depute[], pair:
     if (!p) far.push(d);
     return d;
   });
-  relax(dots.filter((d) => !far.includes(d)), 2 * R + 0.5);
+  relax(dots.filter((d) => !far.includes(d)), 2 * R + 1.5);
   // overseas and abroad: a small grid in the Atlantic, labelled
   far.sort((a, b) => a.code.localeCompare(b.code)).forEach((d, i) => { d.mx = 14 + (i % 6) * 11; d.my = 400 + Math.floor(i / 6) * 11; });
   // seats: groups left → right, and within a group west → east so the flight reads as a sweep
@@ -90,7 +90,7 @@ export function heroViz(geo: GeoJSON.FeatureCollection, deputes: Depute[], pair:
     ${dots
       .map((d) => {
         const tip = d.mp ? `${d.mp.prenom} ${d.mp.nom}\n${d.mp.groupe?.libelle ?? ""}\n${L("Circonscription", "District")} ${Number(d.code.slice(-2))}, ${d.code.startsWith("99") ? L("Français de l’étranger", "French abroad") : d.code.slice(0, d.code.length - 2)}` : `${L("Siège vacant", "Vacant seat")}\n${L("Circonscription", "District")} ${d.code}`;
-        return `<circle class="hd" r="${R}" fill="${d.color}" data-code="${d.code}" data-tip="${esc(tip)}" style="--mx:${d.mx.toFixed(1)}px;--my:${d.my.toFixed(1)}px;--hx:${d.hx.toFixed(1)}px;--hy:${d.hy.toFixed(1)}px;--dm:${Math.round((d.mx / maxX) * 900)}ms;--dh:${Math.round((seatIndex.get(d)! / order.length) * 900)}ms"/>`;
+        return `<rect class="hd" x="${-R}" y="${-R}" width="${2 * R}" height="${2 * R}" fill="${d.color}" data-code="${d.code}" data-tip="${esc(tip)}" style="--mx:${d.mx.toFixed(1)}px;--my:${d.my.toFixed(1)}px;--hx:${d.hx.toFixed(1)}px;--hy:${d.hy.toFixed(1)}px;--dm:${Math.round((d.mx / maxX) * 900)}ms;--dh:${Math.round((seatIndex.get(d)! / order.length) * 900)}ms"/>`;
       })
       .join("")}
   </svg>`;
@@ -130,7 +130,7 @@ export function heroViz(geo: GeoJSON.FeatureCollection, deputes: Depute[], pair:
     el.addEventListener("mouseenter", () => (paused = true));
     el.addEventListener("mouseleave", () => (paused = false));
     buttons.forEach((b) => b.addEventListener("click", () => { auto = false; clearTimeout(timer); set(b.dataset.hd as "map" | "hemi"); }));
-    el.addEventListener("click", (e) => { const c = (e.target as Element).closest<SVGCircleElement>("circle.hd"); if (c) location.hash = `#/circo/${c.dataset.code}`; });
+    el.addEventListener("click", (e) => { const c = (e.target as Element).closest<SVGRectElement>("rect.hd"); if (c) location.hash = `#/circo/${c.dataset.code}`; });
   };
   return { svg, legend, start };
 }
