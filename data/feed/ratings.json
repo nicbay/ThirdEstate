@@ -11941,6 +11941,148 @@
       },
       "check": null,
       "postTime": "2026-11-11T19:39:31.500Z"
+    },
+    "bsky:at://did:plc:fakceyj3l3pen4wtnjhgudd3/app.bsky.feed.post/3n25nof72um2m": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T23:52:45.945Z",
+      "storyItems": [
+        "0a97a996808a"
+      ],
+      "storyTitle": "11 novembre : derrière la cérémonie commémorative imposée par le ministre de l’Éducation, une tentative d’embrigadement de la jeunesse",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Appel à agir pour la paix et critique implicite de la guerre ; position pacifiste proche de la gauche écologiste/sociale-démocrate.",
+        "rationale_en": "Calls for acting for peace and implicitly criticizes war; pacifist stance close to left-wing social-democratic positions."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste : pas d'opposition peuple/élites ni d'attaque d'adversaires.",
+        "rationale_en": "No populist rhetoric: no people-versus-elites framing or attack on opponents."
+      },
+      "check": null,
+      "postTime": "2026-11-12T23:45:39.400Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3n25ddjh4w32r": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T23:52:45.945Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message promotionnel sur la sortie d'un livre et une tournée, sans contenu idéologique.",
+        "rationale_en": "Promotional message about a book release and tour, with no ideological content."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Slogan « remettre le pays debout » sans rhétorique populiste marquée.",
+        "rationale_en": "Slogan 'get the country back on its feet' without marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-12T20:40:37.563Z"
+    },
+    "yt:dABlrQ1VWN4": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T23:52:45.945Z",
+      "storyItems": [
+        "96a6f7b0a6d8"
+      ],
+      "storyTitle": "Projet de loi de finances de fin de gestion: c'est quoi, ce texte examiné à l'Assemblée cette semaine?",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique des coupes budgétaires et de la finance, demande de débat parlementaire sur les recettes ; position de gauche.",
+        "rationale_en": "Criticizes budget cuts and finance, calls for parliamentary debate on revenues; left-wing position."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Présente le gouvernement comme utilisant un mécanisme « généreux pour la finance », avec une tonalité d'indignation.",
+        "rationale_en": "Presents the government as using a mechanism 'generous to finance', with an indignant tone."
+      },
+      "check": null,
+      "postTime": "2026-11-12T19:36:06.000Z"
+    },
+    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3n257kqonxk2d": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T23:52:45.945Z",
+      "storyItems": [
+        "60a1af00133b",
+        "184005ffc3db"
+      ],
+      "storyTitle": "Budget 2027 : après un passage chaotique à l’Assemblée, les sénateurs prennent le relais",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique des coupes budgétaires sans débat sur les recettes ; position de gauche sur les finances publiques.",
+        "rationale_en": "Criticizes budget cuts without debate on revenues; left-wing position on public finances."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Reproche au gouvernement de passer outre le débat parlementaire, sans attaque personnelle marquée.",
+        "rationale_en": "Accuses the government of bypassing parliamentary debate, without strong personal attacks."
+      },
+      "check": null,
+      "postTime": "2026-11-12T19:33:05.070Z"
+    },
+    "bsky:at://did:plc:awp4pev7xbtmhlwvq6qfirpz/app.bsky.feed.post/3n2557hl6a22r": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T23:52:45.945Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Mise en avant du programme présidentiel de La France insoumise ; positions de gauche radicale sur les services publics non explicites ici.",
+        "rationale_en": "Promotes La France insoumise's presidential campaign; the message itself has little explicit left-wing content."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Mise en avant d'un chiffre de soutiens avec ton enthousiaste, sans rhétorique anti-élites.",
+        "rationale_en": "Highlights a support count with an enthusiastic tone, without anti-elite rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-12T18:50:58.913Z"
+    },
+    "x:2120564903559741457": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T23:52:45.945Z",
+      "storyItems": [
+        "15170037c4dc"
+      ],
+      "storyTitle": "Drapeau français et voile islamique : une vidéo de Tibo InShape enflamme la toile",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Critique morale d'une vidéo d'influenceur, sans position de politique publique.",
+        "rationale_en": "Moral criticism of an influencer's video, with no public policy position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Reproche moral sans opposition peuple/élites ni appel émotionnel marqué.",
+        "rationale_en": "Moral reproach without people-versus-elites framing or strong emotional appeal."
+      },
+      "check": null,
+      "postTime": "2026-11-11T17:10:45.856Z"
     }
   },
   "failures": {
