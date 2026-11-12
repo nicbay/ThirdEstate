@@ -10526,6 +10526,158 @@
       },
       "check": null,
       "postTime": "2026-11-10T11:55:03.604Z"
+    },
+    "bsky:at://did:plc:d57dxlliqj3ctzpgmentyyn3/app.bsky.feed.post/3n22mkgxajk2n": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T00:59:44.118Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Pacifisme affirmé, hommage à Jaurès, Rosa Luxemburg et aux réfractaires, références typiques de la gauche pacifiste.",
+        "rationale_en": "Openly pacifist message honouring Jaurès, Rosa Luxemburg and refusers, typical of left-wing pacifist references."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste : hommage mémoriel sans opposition au peuple ni aux élites.",
+        "rationale_en": "No populist rhetoric: a memorial tribute without opposing the people to elites."
+      },
+      "check": null,
+      "postTime": "2026-11-11T18:47:34.288Z"
+    },
+    "bsky:at://did:plc:i27lvonqvridxzfgstsqw6p2/app.bsky.feed.post/3n22m5jdxa22e": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T00:59:44.118Z",
+      "storyItems": [
+        "3bd4c09b5015"
+      ],
+      "storyTitle": "L’hommage indistinct du 11-Novembre occulte le sens réel des guerres",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Rappel historique des pertes de la Grande Guerre, sans contenu idéologique identifiable.",
+        "rationale_en": "Historical reminder of Great War losses, with no identifiable ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Ton mémoriel et historique, sans opposition peuple contre élites.",
+        "rationale_en": "Commemorative and historical tone, without people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-11T18:40:20.595Z"
+    },
+    "bsky:at://did:plc:qbkihi5tj3ng2no6ycodztnp/app.bsky.feed.post/3n22kyuuj5s2z": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T00:59:44.118Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message d'agenda et de commémoration générale, sans position politique.",
+        "rationale_en": "Agenda and general commemoration message, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucun marqueur populiste dans ce message de présence à une cérémonie.",
+        "rationale_en": "No populist markers in this message about attending a ceremony."
+      },
+      "check": null,
+      "postTime": "2026-11-11T18:19:51.158Z"
+    },
+    "yt:_TWHgeW8iWM": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T00:59:44.119Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Hommage commémoratif sans prise de position politique explicite.",
+        "rationale_en": "Commemorative tribute without an explicit political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Discours mémoriel sans rhétorique populiste identifiable.",
+        "rationale_en": "Memorial speech with no identifiable populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-11T18:05:21.000Z"
+    },
+    "x:2120210082680234203": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T00:59:44.119Z",
+      "storyItems": [
+        "930580da837d",
+        "825831ecffb0",
+        "04bb9c08a048",
+        "abec69375b3b",
+        "269a0c843ec0",
+        "9137227d86d0"
+      ],
+      "storyTitle": "Pétition contre CNews : quelles suites possibles à l’Assemblée nationale ?",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Demande la fermeture de CNews et critique la décision de commission ; position de gauche sur la régulation des médias.",
+        "rationale_en": "Calls for CNews to be closed and criticises the committee decision; a left-leaning position on media regulation."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "souverainete_populaire"
+        ],
+        "rationale_fr": "Met en avant la volonté d'un million de signataires face à la décision de la commission.",
+        "rationale_en": "Invokes the will of over a million signatories against the committee's decision."
+      },
+      "check": null,
+      "postTime": "2026-11-10T17:40:49.966Z"
+    },
+    "x:2120175043111993680": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T00:59:44.119Z",
+      "storyItems": [
+        "cc9c34413246",
+        "6415d1d10690"
+      ],
+      "storyTitle": "Prix Goncourt : Jaenada se prend pour Maigret",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Communication promotionnelle sur les ventes d'un livre, sans position politique.",
+        "rationale_en": "Promotional communication about book sales, with no political position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Enthousiasme appuyé (« du jamais vu », « nous écrivons l'histoire ») sans argument détaillé.",
+        "rationale_en": "Strong enthusiasm (\"unprecedented\", \"we are writing history\") without detailed argument."
+      },
+      "check": {
+        "claim": "Le programme « L'Avenir en commun » a été dévalisé dès sa sortie, premier tirage de 80 000 exemplaires, numéro 1 dans tous les points de vente.",
+        "why_fr": "Le chiffre et le classement « dans TOUS les points de vente » viennent de l'auteure et ne sont pas détaillés ; l'article fourni décrit un classement hebdomadaire, dont la méthode mérite d'être précisée.",
+        "why_en": "The figures and the claim of ranking first in all outlets come from the author and are not detailed; the article provided describes a weekly ranking whose method would need clarifying.",
+        "sources": [
+          {
+            "title": "Le livre-programme de Jean-Luc Mélenchon attire plus de lecteurs que le lauréat du Goncourt",
+            "url": "https://www.franceinfo.fr/culture/livres/le-livre-programme-de-jean-luc-melenchon-attire-plus-de-lecteurs-que-le-laureat-du-goncourt_8278001.html"
+          }
+        ]
+      },
+      "postTime": "2026-11-10T15:21:35.882Z"
     }
   },
   "failures": {
