@@ -10678,6 +10678,406 @@
         ]
       },
       "postTime": "2026-11-10T15:21:35.882Z"
+    },
+    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3n2472z7frk2r": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T10:17:17.546Z",
+      "storyItems": [
+        "28b62127c232",
+        "b0662d21617a",
+        "5d068a03ccbe"
+      ],
+      "storyTitle": "Le suspect de l'attentat raciste de Trappes et La Verrière avait dressé une liste de personnalités de gauche et d'extrême gauche",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Communiqué LFI réclamant une action du ministre contre les menaces de l'extrême droite, sur fond de sécurité et d'antiracisme.",
+        "rationale_en": "LFI statement demanding action from the minister against far-right threats, framed around security and anti-racism."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Présente le ministre comme inactif face aux menaces, sans attaque directe d'adversaires illégitimes.",
+        "rationale_en": "Presents the minister as inactive against threats, without directly attacking opponents as illegitimate."
+      },
+      "check": null,
+      "postTime": "2026-11-12T09:51:37.396Z"
+    },
+    "yt:vP0_JNqNauw": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T10:17:17.546Z",
+      "storyItems": [
+        "e0e42ac889b2"
+      ],
+      "storyTitle": "11-Novembre : la France se transmet",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de commémoration et de remerciements, sans position politique explicite.",
+        "rationale_en": "Commemoration and thanks message with no explicit political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-12T09:21:12.000Z"
+    },
+    "yt:SSbhLmpuXmI": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T10:17:17.546Z",
+      "storyItems": [
+        "6a2c0da34c81",
+        "7f06cf03285e",
+        "2e2352bc03fe",
+        "b39d4bdd480b"
+      ],
+      "storyTitle": "\"On ne rentrera jamais dans une salle avec l'extrême droite\" : la première réunion du comité de réforme Parcoursup tourne court",
+      "political": true,
+      "lean": {
+        "score": -0.3,
+        "rationale_fr": "Salue des mesures, mais demande plus de moyens pour l'éducation et la santé mentale, position proche de la social-démocratie.",
+        "rationale_en": "Welcomes measures but calls for more education and mental health resources, close to social democracy."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Argumentation sur les moyens et la mise en œuvre, sans rhétorique populiste.",
+        "rationale_en": "Argues about resources and implementation, without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-12T08:59:30.000Z"
+    },
+    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3n23zybtdbs2l": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T10:17:17.546Z",
+      "storyItems": [
+        "96a6f7b0a6d8"
+      ],
+      "storyTitle": "Projet de loi de finances de fin de gestion: c'est quoi, ce texte examiné à l'Assemblée cette semaine?",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Défend des hausses de moyens pour soignants et étudiants et critique le rejet budgétaire, orientation de gauche radicale.",
+        "rationale_en": "Defends more funding for health workers and students and criticizes the budget, a far-left orientation."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Ton militant mais argumentation budgétaire concrète.",
+        "rationale_en": "Militant tone but concrete budget argument."
+      },
+      "check": null,
+      "postTime": "2026-11-12T08:20:37.066Z"
+    },
+    "bsky:at://did:plc:fakceyj3l3pen4wtnjhgudd3/app.bsky.feed.post/3n23z6letus25": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T10:17:17.546Z",
+      "storyItems": [
+        "cfc7e2da1a1c",
+        "adc6a831dcff",
+        "4929f2eb9e64"
+      ],
+      "storyTitle": "Présidentielle 2027 : franceinfo organise un grand oral des candidats sur les services publics",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Défend le renforcement des services publics comme bien commun, orientation de gauche.",
+        "rationale_en": "Defends strengthening public services as a common good, a left-wing orientation."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Formule générale sur les services publics, sans opposition peuple contre élites.",
+        "rationale_en": "General statement on public services, without people versus elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-12T08:06:14.660Z"
+    },
+    "bsky:at://did:plc:otrocyu2h7akfbiurwlqxxl6/app.bsky.feed.post/3n23ynniibk2y": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T10:17:17.546Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.4,
+        "rationale_fr": "Plaide pour la réhabilitation des fusillés et pour la paix, position pacifiste de gauche.",
+        "rationale_en": "Calls for rehabilitating executed soldiers and for peace, a left-leaning pacifist position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Message commémoratif sans rhétorique populiste.",
+        "rationale_en": "Commemorative message without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-12T07:56:46.414Z"
+    },
+    "bsky:at://did:plc:yiitgmldz3gwyxmz3p5fqcwv/app.bsky.feed.post/3n23xhaz5f22c": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T10:17:17.546Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Soutien à une candidature sans contenu idéologique précisé.",
+        "rationale_en": "Support for a candidacy without specified ideological content."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Slogan court sans rhétorique populiste marquée.",
+        "rationale_en": "Short slogan without marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-12T07:35:18.297Z"
+    },
+    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3n23vwzmdy22a": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T10:17:17.546Z",
+      "storyItems": [
+        "2ee8e7241188"
+      ],
+      "storyTitle": "Stéphane Audoin-Rouzeau : « Comme en 1914, le déclenchement d’une guerre paraît irrationnel, mais il ne faut pas le croire impossible »",
+      "political": true,
+      "lean": {
+        "score": -0.9,
+        "rationale_fr": "Associe le capitalisme à la guerre et annonce la fin de la mondialisation capitaliste, orientation anticapitaliste.",
+        "rationale_en": "Links capitalism to war and predicts the end of capitalist globalization, an anticapitalist orientation."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Ton apocalyptique mobilisant la peur de la guerre plutôt que des arguments détaillés.",
+        "rationale_en": "Apocalyptic tone invoking fear of war rather than detailed arguments."
+      },
+      "check": null,
+      "postTime": "2026-11-12T07:08:19.925Z"
+    },
+    "yt:Ix3-b3Hrwi8": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T10:17:23.593Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Appel au droit des peuples à disposer d'eux-mêmes sur l'Ukraine, position proche de la gauche antiimpérialiste.",
+        "rationale_en": "Calls for peoples' self-determination regarding Ukraine, a position typical of the anti-imperialist left."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message très court sans attaque d'élites ni appel émotionnel marqué.",
+        "rationale_en": "Very short message with no clear anti-elite attack or strong emotional appeal."
+      },
+      "check": null,
+      "postTime": "2026-11-12T07:00:12.000Z"
+    },
+    "bsky:at://did:plc:trj7jvmh2g7ekxbuqem6zgzq/app.bsky.feed.post/3n23uv2kpe22i": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T10:17:23.593Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique du gel de budgets publics et de la suppression de postes dans la recherche, position de gauche sur les services publics.",
+        "rationale_en": "Criticizes budget freezes and job cuts in research, a left-leaning stance on public services."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Indignation mise en avant (« INADMISSIBLE ») sans argumentation chiffrée.",
+        "rationale_en": "Emphasizes indignation (\"INADMISSIBLE\") rather than detailed argument."
+      },
+      "check": null,
+      "postTime": "2026-11-12T06:49:20.068Z"
+    },
+    "bsky:at://did:plc:ln2ibflz7bn3uttly7yepk4f/app.bsky.feed.post/3n22omlf24c2p": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T10:17:23.593Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de commémoration et d'agenda sans position politique explicite.",
+        "rationale_en": "Commemoration and agenda message without explicit political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-11T19:24:33.525Z"
+    },
+    "x:2120566637858558307": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T10:17:23.593Z",
+      "storyItems": [
+        "f6f18f8a945a"
+      ],
+      "storyTitle": "Le président de SOS Racisme Dominique Sopo rejette «le concept de racisme anti-Blancs»",
+      "political": true,
+      "lean": {
+        "score": 0.2,
+        "rationale_fr": "Critique de SOS Racisme et défense de la notion de racisme anti-blanc, position proche de la droite conservatrice.",
+        "rationale_en": "Criticizes SOS Racisme and defends the notion of anti-white racism, a center-right to conservative position."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Présente SOS Racisme comme disqualifié, sans argument développé.",
+        "rationale_en": "Presents SOS Racisme as disqualified without developed argument."
+      },
+      "check": null,
+      "postTime": "2026-11-11T17:17:39.345Z"
+    },
+    "x:2120500950464954614": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T10:17:23.593Z",
+      "storyItems": [
+        "7c81f9805086",
+        "eab61eb0feb0",
+        "583b6470db95",
+        "4fd87f5d7291",
+        "486ae218b4b3",
+        "4133e4c85e97"
+      ],
+      "storyTitle": "Présidentielle 2027 : Retailleau soumet à Philippe, Attal et Lisnard des dates pour une primaire",
+      "political": true,
+      "lean": {
+        "score": 0.2,
+        "rationale_fr": "Opposition à une primaire de la droite et du centre, positionnement interne à la droite libérale.",
+        "rationale_en": "Opposes a center-right primary, an internal position within liberal-conservative politics."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Argumentation politique ordinaire sans rhétorique populiste notable.",
+        "rationale_en": "Ordinary political argument without notable populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-11T12:56:38.250Z"
+    },
+    "bsky:at://did:plc:7qlw6gig76xhkjjkxl35xpxe/app.bsky.feed.post/3mzy6vc36vc2l": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T10:17:23.593Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Hommage et remerciements sans contenu idéologique.",
+        "rationale_en": "Tribute and thanks without ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T19:37:46.416Z"
+    },
+    "yt:1yCmatnSZSA": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T10:17:23.593Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce de réunion publique, purement pratique.",
+        "rationale_en": "Announcement of a public meeting, purely practical."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T18:17:39.000Z"
+    },
+    "bsky:at://did:plc:skhpi6tvodwwkygydxmka5tm/app.bsky.feed.post/3mzxms4rdnj2p": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T10:17:23.593Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.3,
+        "rationale_fr": "Dénonce la représentation de citoyens par des députés de droite, position de gauche sur la représentation.",
+        "rationale_en": "Denounces representation of citizens by right-wing deputies, a left-leaning position on representation."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "appel_emotionnel",
+          "peuple_vs_elites"
+        ],
+        "rationale_fr": "Oppose « 1 million de citoyen·nes » à « 3 députés de droite » et qualifie la situation de scandale.",
+        "rationale_en": "Contrasts \"1 million citizens\" with \"3 right-wing deputies\" and calls it a scandal."
+      },
+      "check": null,
+      "postTime": "2026-11-10T14:13:52.829Z"
+    },
+    "yt:V0FjQTy2X4s": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-12T10:17:25.762Z",
+      "storyItems": [
+        "c2696766abc1"
+      ],
+      "storyTitle": "A Chartres, Edouard Philippe persiste après sa sortie sur la «surreprésentation» de jeunes «issus de l’immigration» dans les pillages du 17 octobre",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique de propos d'Édouard Philippe sur l'origine supposée des pillages, défendue au nom de la lutte contre la stigmatisation ; positionnement de gauche sur l'identité et les divisions.",
+        "rationale_en": "Criticizes Édouard Philippe's remarks on the supposed origin of the looting, framed around opposing stigmatization; a left-leaning position on identity and division."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Accuse l'adversaire d'alimenter l'amalgame et d'agir à des fins électoralistes, sans rhétorique du peuple contre les élites.",
+        "rationale_en": "Accuses the opponent of stoking prejudice and acting for electoral gain, without a people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-10T09:53:43.000Z"
     }
   },
   "failures": {
