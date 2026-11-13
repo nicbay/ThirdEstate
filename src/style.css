@@ -117,7 +117,7 @@ main:focus { outline: none; }
 .brand b span { font-weight: 300; color: #d8d9de; margin-left: 0.22em; }
 .brand:hover { text-decoration: none; }
 
-/* five sections, each a link and a caret that opens its menu (hover on desktop, click or keyboard everywhere) */
+/* four sections, each a link and a caret that opens its menu (hover on desktop, click or keyboard everywhere) */
 #nav { flex: 1; min-width: 0; height: 100%; font-size: 0.9rem; }
 .nav-list { display: flex; height: 100%; margin: 0; padding: 0; list-style: none; }
 .nav-item { position: relative; display: flex; align-items: stretch; }
@@ -168,7 +168,7 @@ main:focus { outline: none; }
 .subnav-bar a.active { color: var(--ink); border-color: var(--ink); }
 .subnav-bar a:hover { color: var(--ink); }
 
-/* phones: one row up top (mark, search, quiz, language), the five sections in a bottom tab bar */
+/* phones: one row up top (mark, search, quiz, language), the four sections and a Menu button in a bottom tab bar */
 .tabbar { display: none; }
 @media (max-width: 760px) {
   :root { --bar-h: 52px; }
@@ -233,7 +233,7 @@ main:focus { outline: none; }
   .cmdk-t i { display: none; }
 }
 
-/* footer: the mark, the promise, and a map of the five sections */
+/* footer: the mark, the promise, and a map of the four sections */
 footer { background: var(--ink); color: #b9bbc2; margin-top: 3rem; }
 footer .foot { max-width: var(--col); margin: 0 auto; padding: 2.2rem var(--gutter) 2.6rem; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 2rem 3rem; font-size: 0.86rem; }
 footer .brand { font-size: 1.15rem; }
@@ -296,6 +296,10 @@ footer a:hover { text-decoration: underline; }
 }
 .tabs button:hover, .tabs a[role="tab"]:hover { border-color: var(--ink); }
 .tabs [aria-selected="true"], .tabs a[role="tab"][aria-selected="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+/* a page's views as links (the Assembly): same pills, the current one marked with aria-current */
+.page-tabs a { font: 600 0.84rem var(--text); color: var(--ink); background: var(--paper); text-decoration: none; border: 1px solid var(--rule-2); border-radius: 999px; padding: 0.38rem 0.85rem; line-height: 1.2; white-space: nowrap; transition: background 0.15s, border-color 0.15s, color 0.15s; }
+.page-tabs a:hover { border-color: var(--ink); text-decoration: none; }
+.page-tabs a[aria-current="page"] { background: var(--ink); border-color: var(--ink); color: #fff; }
 @media (max-width: 640px) {
   .page-head .tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); padding: 0 var(--gutter) 2px; }
   .page-head .tabs::-webkit-scrollbar { display: none; }
@@ -912,6 +916,8 @@ body { overflow-x: clip; }
 .sec-hero a { color: #fff; }
 .sec-hero .tabs [aria-selected="true"], .sec-hero .tabs a[role="tab"][aria-selected="true"] { background: #fff; border-color: #fff; color: #111216; }
 .sec-hero .tabs button, .sec-hero .tabs a[role="tab"] { color: #c9cad0; background: transparent; }
+.sec-hero .page-tabs a { color: #c9cad0; background: transparent; }
+.sec-hero .page-tabs a[aria-current="page"] { background: #fff; border-color: #fff; color: #111216; }
 .sec-hero .subnav a { color: #fff; }
 .sec-hero .town-search input { background: #fff; color: #111216; border-color: #fff; box-shadow: 5px 5px 0 #5b8dff; }
 .sec-hero .town-search input:focus { box-shadow: 5px 5px 0 #ff5a6a; }
