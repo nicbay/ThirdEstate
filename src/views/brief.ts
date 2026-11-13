@@ -40,7 +40,10 @@ export async function townBrief(code: string, name: string): Promise<Brief> {
       : `Your MP is <a href="#/depute/${mp.id}">${esc(mp.prenom)} ${esc(mp.nom)}</a> (${esc(mp.groupe?.abrev ?? "")}), who took part in ${pct(100 * mp.stats.participation)} of the Assembly’s recorded votes.`);
   } else if (mps.length > 1) {
     const names = mps.slice(0, 4).map(({ mp }) => `<a href="#/depute/${mp.id}">${esc(mp.prenom)} ${esc(mp.nom)}</a> (${esc(mp.groupe?.abrev ?? "")})`);
-    s.push(fr ? `La commune est partagée entre ${mps.length} circonscriptions\u00a0: ${list(names)}${mps.length > 4 ? "…" : ""}.` : `The town is split between ${mps.length} districts: ${list(names)}${mps.length > 4 ? "…" : ""}.`);
+    // past four names, say how many more instead of a trailing "…" (it ran into the full stop: "(EPR)….")
+    const more = mps.length - names.length;
+    const named = more > 0 ? `${names.join(", ")} ${fr ? `et ${more} autre${more > 1 ? "s" : ""}` : `and ${more} more`}` : list(names);
+    s.push(fr ? `La commune est partagée entre ${mps.length} circonscriptions\u00a0: ${named}.` : `The town is split between ${mps.length} districts: ${named}.`);
   }
 
   // 2. how its (main) district voted at the last legislative election, and the swing since the one before

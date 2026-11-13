@@ -54,6 +54,8 @@ interface Opts {
   hidden?: () => Set<string>;
   height?: number;
   onChange?: (fc: Forecast) => void;
+  /** where the one-line key and the folded method go (default: under the chart); the homepage puts them after its number */
+  after?: HTMLElement;
 }
 
 /** Renders scenario buttons + chart + note into `box`; returns a redraw function (for range or legend changes). */
@@ -63,10 +65,14 @@ export function mountForecastChart(box: HTMLElement, o: Opts) {
       <p class="scn-k">${L("Et si… ?", "What if…?")} <span>${L("(plusieurs choix possibles)", "(pick several)")}</span></p>
       <div class="scn-list">${SCENARIOS.map((s) => `<button type="button" class="scn-btn scn-${s.kind}" data-k="${s.key}">${esc(L(s.fr, s.en))}</button>`).join("")}</div>
     </div>
-    <div class="fc-chart"></div>
-    <p class="muted small scn-note"></p>`;
+    <div class="fc-chart"></div>`;
+  // under the chart (or wherever the caller wants it): one line that says how to read it, the method folded away
   const chartBox = box.querySelector<HTMLElement>(".fc-chart")!;
-  const note = box.querySelector<HTMLElement>(".scn-note")!;
+  const foot = o.after ?? box.appendChild(document.createElement("div"));
+  foot.innerHTML = `<p class="scn-key"></p>
+    <details class="scn-more"><summary>${L("Méthode", "Method")}</summary><p class="scn-note"></p></details>`;
+  const key = foot.querySelector<HTMLElement>(".scn-key")!;
+  const note = foot.querySelector<HTMLElement>(".scn-note")!;
   const buttons = [...box.querySelectorAll<HTMLButtonElement>(".scn-btn")];
 
   /** pressed / greyed-out state of every button */
@@ -118,7 +124,8 @@ export function mountForecastChart(box: HTMLElement, o: Opts) {
       .filter((s) => s.line.length);
     const markers = [{ date: ELECTION_DAY, label: L("1er tour", "1st round"), title: L(`Premier tour, ${fmtDate(ELECTION_DAY)}`, `First round, ${fmtDate(ELECTION_DAY)}`) }];
     if (fc.primary) markers.push({ date: fc.primary.day, label: L("Primaire", "Primary"), title: L(`Primaire du centre (scénario), ${fmtDate(fc.primary.day)}`, `Centre primary (scenario), ${fmtDate(fc.primary.day)}`) });
-    chartBox.innerHTML = lineChart(series, { height: o.height, markers });
+    // the figures at the line ends are the projection on election day, not today's average: the chart says so
+    chartBox.innerHTML = lineChart(series, { height: o.height, markers, endHead: L("1er tour, projeté", "1st round, projected") });
 
     const pr = fc.primary;
     const sn = (names: string[], fr: boolean) => { const xs = names.map((n) => esc(meta(n).surname)); return xs.length > 1 ? `${xs.slice(0, -1).join(", ")} ${fr ? "et" : "and"} ${xs.at(-1)}` : xs.join(""); };
@@ -128,6 +135,10 @@ export function mountForecastChart(box: HTMLElement, o: Opts) {
           ` Primary: whoever is best placed in the end-of-December polls wins, ${win} on the current trend. ${sn(pr.losers, false)} withdraw (✕) and ${Math.round(100 * RALLY_SHARE)}% of their voters join him; ${sn(PRIMARY.rallyFrom, false)} stays out: only ${Math.round(100 * PRIMARY.rallyFromShare)}% of his voters join him.`)
       : "";
     const base = sel.length === 0;
+    key.innerHTML = L(
+      `Ligne pleine : moyenne des sondages jusqu’au ${fmtDate(lastDate)}. Pointillés et chiffres en bout de ligne : la projection au premier tour (${fmtDate(ELECTION_DAY)}) ; zone : 8 chances sur 10.`,
+      `Solid line: polling average up to ${fmtDate(lastDate)}. Dotted line and the figures at the line ends: the projection to the first round (${fmtDate(ELECTION_DAY)}); shaded: an 8-in-10 range.`,
+    );
     note.innerHTML = `${base ? "" : `<b>${esc(scenarioLabel(sel))}.</b> `}${L(
       `Pointillés : les sondages tels quels, prolongés d’une tendance lente (un cinquième de celle des quatre derniers mois, ${TREND_CAP} points au plus)${base ? "" : ", plus ce que change le scénario"} ; les scores de tous les candidats (y compris ceux non affichés) font 100 %. Zone colorée : 8 chances sur 10 que le score tombe dedans, selon notre modèle (erreurs de sondage, ralliements tardifs et cygnes noirs tirés au hasard). Personne ne dépasse un plafond tiré du rejet : on ne gagne au plus que la moitié du chemin vers l’électorat qui n’exclut pas de voter pour vous (Mélenchon : ${dec(ceilingOf(fc, "Jean-Luc Mélenchon"))} %).`,
       `Dotted line: the polls as they are, carried forward with a slow trend (a fifth of the last four months’ trend, ${TREND_CAP} points at most)${base ? "" : ", plus what the scenarios change"}; all candidates’ scores (including those not shown) add up to 100%. Shaded area: an 8-in-10 chance the score lands inside it, in our model (polling error, random late rallies and black swans). Nobody goes above a ceiling drawn from rejection: at most half the way to the electorate that doesn’t rule out voting for them (Mélenchon: ${dec(ceilingOf(fc, "Jean-Luc Mélenchon"))}%).`,

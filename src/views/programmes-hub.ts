@@ -69,20 +69,22 @@ export async function renderProgrammesHub(app: HTMLElement, wanted?: string) {
     const c = p.counts ?? (p.flow ? { maintained: p.flow.kept, modified: p.flow.changed, new: p.flow.add25 + p.flow.new27, dropped: p.flow.drop22 + p.flow.drop25 } : null);
     if (!c) return "";
     const tot = c.maintained + c.modified + c.new + c.dropped || 1;
-    const seg = (k: Status, cls: string) => (c[k] ? `<span class="prog-${cls}" style="flex:${c[k]}" data-tip="${esc(`${statusLabel(k)}\n${fmtNum(c[k])} (${Math.round((100 * c[k]) / tot)} %)`)}"></span>` : "");
-    return `<span class="ph-stack prog-stack">${seg("maintained", "maintained")}${seg("modified", "modified")}${seg("new", "new2027")}${seg("dropped", "dropped")}</span>
-      <span class="ph-stack-k">${fmtNum(c.maintained)} ${L("gardées", "kept")} · ${fmtNum(c.modified)} ${L("modifiées", "changed")} · ${fmtNum(c.new)} ${L("nouvelles", "new")} · ${fmtNum(c.dropped)} ${L("abandonnées", "dropped")}</span>`;
+    const seg = (k: Status, cls: string) => (c[k] ? `<span class="prog-${cls}" style="flex:${c[k]}" data-tip="${esc(`${statusLabel(k)}
+${fmtNum(c[k])} (${Math.round((100 * c[k]) / tot)} %)`)}"></span>` : "");
+    return `<span class="ph-flow"><span class="ph-stack prog-stack">${seg("maintained", "maintained")}${seg("modified", "modified")}${seg("new", "new2027")}${seg("dropped", "dropped")}</span>
+      <span class="ph-stack-k">${fmtNum(c.maintained)} ${L("gardées", "kept")} · ${fmtNum(c.modified)} ${L("modifiées", "changed")} · ${fmtNum(c.new)} ${L("nouvelles", "new")} · ${fmtNum(c.dropped)} ${L("abandonnées", "dropped")}</span></span>`;
   };
-  const candCard = (r: (typeof rows)[number], i: number) => {
+  // one row per candidate, left to right; the whole row is the link
+  const candRow = (r: (typeof rows)[number]) => {
     const { p, c } = r, e = p.lastEstimate;
-    return `<li style="--c:${r.color};--i:${i}"><a class="ph-cand" href="#/programmes/${esc(p.slug)}">
-      <span class="ph-cand-top">${c?.photo ? `<img src="${esc(safeUrl(c.photo))}" alt="" loading="lazy" width="56" height="56" data-hide-broken>` : `<span class="ph-noimg"></span>`}
-        <span class="ph-cand-id"><b>${esc(p.candidate)}</b><span>${esc(c ? L(c.party.fr, c.party.en) : p.party)}</span></span></span>
-      <span class="ph-status is-${p.status}">${p.lite ? esc(STATUS_TXT[p.status]()) : L("Analysé en entier", "Analysed in full")}</span>
-      <span class="ph-n"><strong data-count="${p.inLatest ?? p.total}">${fmtNum(p.inLatest ?? p.total)}</strong> ${p.lite ? L("mesures étudiées", "measures reviewed") : L("mesures en 2027", "measures in 2027")}</span>
+    return `<li style="--c:${r.color}"><a class="ph-row" href="#/programmes/${esc(p.slug)}">
+      <i class="ph-mark" aria-hidden="true"></i>
+      <span class="ph-who">${c?.photo ? `<img src="${esc(safeUrl(c.photo))}" alt="" loading="lazy" width="40" height="40" data-hide-broken>` : `<span class="ph-noimg"></span>`}
+        <b>${esc(p.candidate)}</b><span>${esc(c ? L(c.party.fr, c.party.en) : p.party)}</span>
+        <span class="ph-status${p.status === "published" ? " is-out" : ""}">${p.lite ? esc(STATUS_TXT[p.status]()) : L("Analysé en entier", "Analysed in full")}</span></span>
+      <span class="ph-n"><strong>${fmtNum(p.inLatest ?? p.total)}</strong>${p.lite ? L("mesures étudiées", "measures reviewed") : L("mesures en 2027", "measures in 2027")}</span>
       ${stack(p)}
-      <span class="ph-cost">${e ? `${e.year}${L(" : ", ": ")}${e.announced != null ? `${L("annoncé", "claimed")} <b>${md(e.announced)}</b>, ` : ""}${L("estimé", "estimated")} <b class="${e.net < 0 ? "is-neg" : "is-pos"}">${md(e.net)}</b>` : L("Pas d’estimation indépendante du coût", "No independent cost estimate")}</span>
-      <span class="ph-go">${L("Ouvrir le programme", "Open the programme")} <i aria-hidden="true">→</i></span>
+      <span class="ph-cost">${e ? `${e.year}${L(" : ", ": ")}${e.announced != null ? `${L("annoncé", "claimed")} <b>${md(e.announced)}</b>, ` : ""}${L("estimé", "estimated")} <b class="${e.net < 0 ? "is-neg" : "is-pos"}">${md(e.net)}</b>` : L("Pas d’estimation indépendante", "No independent estimate")}</span>
     </a></li>`;
   };
 
@@ -125,12 +127,9 @@ export async function renderProgrammesHub(app: HTMLElement, wanted?: string) {
         <p class="dek">${L(
           `Ce que proposent les ${rows.length} candidats testés dans les sondages, sur les mêmes sujets et avec la même grille : ce qui a changé depuis leur dernière campagne, ce que ça coûte selon eux et selon les instituts indépendants, ce que la Constitution et le droit européen permettent.`,
           `What the ${rows.length} candidates tested in the polls propose, on the same subjects and by the same yardstick: what changed since their last campaign, what it costs according to them and to independent institutes, and what the Constitution and EU law allow.`)}</p>
-        <div class="ph-kpis">
-          <div><strong data-count="${rows.length}">${rows.length}</strong><span>${L("candidats", "candidates")}</span></div>
-          <div><strong data-count="${all.length}">${fmtNum(all.length)}</strong><span>${L("mesures passées en revue", "measures reviewed")}</span></div>
-          <div><strong data-count="${nCosted}">${fmtNum(nCosted)}</strong><span>${L("mesures chiffrées", "measures costed")}</span></div>
-          <div><strong data-count="${nObstacle}">${fmtNum(nObstacle)}</strong><span>${L("obstacles juridiques sérieux", "serious legal obstacles")}</span></div>
-        </div>
+        <p class="dek ph-tally">${L(
+          `En tout, <b>${rows.length}</b> candidats et <b>${fmtNum(all.length)}</b> mesures mises côte à côte, dont <b>${fmtNum(nCosted)}</b> chiffrées et <b>${fmtNum(nObstacle)}</b> qui se heurtent à un obstacle juridique sérieux.`,
+          `In all, <b>${rows.length}</b> candidates and <b>${fmtNum(all.length)}</b> measures side by side, <b>${fmtNum(nCosted)}</b> of them costed and <b>${fmtNum(nObstacle)}</b> facing a serious legal obstacle.`)}</p>
         <nav class="prog-jump" aria-label="${L("Sur cette page", "On this page")}">
           <a href="#/programmes#candidats">${L("Les candidats", "The candidates")}</a>
           <a href="#/programmes#comparer">${L("Comparer par thème", "Compare by theme")}</a>
@@ -144,7 +143,9 @@ export async function renderProgrammesHub(app: HTMLElement, wanted?: string) {
         <header class="card-head"><h2>${L(`${rows.length} programmes, de la gauche à la droite`, `${rows.length} programmes, from left to right`)}</h2></header>
         <p class="prog-lede">${L(`${nPub} sur ${rows.length} ont publié un programme complet ; les autres avancent par annonces, que nous relevons au fil de la campagne. La barre montre ce que chaque programme a gardé, modifié, ajouté ou abandonné depuis la campagne précédente.`, `${nPub} of ${rows.length} have published a full programme; the others are moving by announcements, which we log as the campaign goes on. The bar shows what each programme kept, changed, added or dropped since the previous campaign.`)}</p>
         <div class="ph-axis" aria-hidden="true"><span>${L("Gauche", "Left")}</span><i></i><span>${L("Droite", "Right")}</span></div>
-        <ul class="ph-cands">${rows.map(candCard).join("")}</ul>
+        <ol class="ph-rows">
+          <li class="ph-rows-head" aria-hidden="true"><span>${L("Candidat", "Candidate")}</span><span>${L("Mesures", "Measures")}</span><span>${L("Depuis la campagne précédente", "Since the previous campaign")}</span><span>${L("Coût, dernière estimation", "Cost, latest estimate")}</span></li>
+          ${rows.map(candRow).join("")}</ol>
         <ul class="prog-legend ph-legend">
           <li><i class="prog-sw prog-maintained"></i><b>${L("Gardées", "Kept")}</b></li><li><i class="prog-sw prog-modified"></i><b>${L("Modifiées", "Changed")}</b></li>
           <li><i class="prog-sw prog-new2027"></i><b>${L("Nouvelles", "New")}</b></li><li><i class="prog-sw prog-dropped"></i><b>${L("Abandonnées", "Dropped")}</b></li>

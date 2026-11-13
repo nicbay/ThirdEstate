@@ -179,7 +179,7 @@ function sections(): Section[] {
         { group: PROG, href: "#/programmes#droit", match: NEVER, minor: true, fr: "Droit et faisabilité", en: "Law and feasibility", desc: ["Constitution, droit européen, majorités", "Constitution, EU law, majorities"] },
         { group: VOTE, href: "#/2027/voter", match: /^#\/2027\/voter/, fr: "Comment voter", en: "How to vote", desc: ["S’inscrire, voter par procuration, trouver son bureau", "Registering, proxy votes, your polling station"] },
         { group: VOTE, href: "#/2027/comment-ca-marche", match: /^#\/2027\/comment-ca-marche/, minor: true, fr: "Comment ça marche", en: "How it works", desc: ["L’élection présidentielle expliquée, étape par étape", "The presidential election explained, step by step"] },
-        { group: VOTE, href: "#/quiz", match: /^#\/quiz/, fr: "Le quiz", en: "The quiz", desc: ["Quel député, quel candidat vous ressemble ?", "Which MP and candidate are closest to you?"] },
+        { group: VOTE, href: "#/quiz", match: /^#\/quiz/, fr: "Le quiz : qui vous ressemble ?", en: "The quiz: who is closest to you?", sub: ["Le quiz", "The quiz"], desc: ["Le député et le candidat les plus proches de vos réponses", "The MP and candidate closest to your answers"] },
         { group: SIM, href: "#/simulateur", match: /^#\/simulateur/, fr: "Simulateur de second tour", en: "Second-round simulator", sub: ["Simulateur de second tour", "Runoff simulator"], desc: ["Composez votre second tour, report de voix par report", "Build your own runoff, vote transfer by transfer"] },
         { group: SIM, href: "#/programmes/melenchon/simulateur", match: /^#\/programmes\/[\w-]+\/simulateur/, fr: "Votre budget selon un programme", en: "Your budget under a programme", sub: ["Votre budget", "Your budget"], desc: ["L’effet d’un programme sur le budget de votre foyer", "A programme’s effect on your household budget"] },
       ],
@@ -233,7 +233,7 @@ function nextSteps(path: string) {
   const words = { href: "#/assemblee/themes", fr: "Ce que disent les députés en séance", en: "What MPs say in the chamber" };
   const hist = { href: "#/resultats", fr: "Toutes les élections depuis 1848", en: "Every election since 1848" };
   const feed = { href: "#/fil", fr: "Ce que disent la gauche et la droite aujourd’hui", en: "What left and right are saying today" };
-  const quiz = { href: "#/quiz", fr: "Le quiz : qui vous ressemble ?", en: "The quiz: who is most like you?" };
+  const quiz = { href: "#/quiz", fr: "Le quiz : qui vous ressemble ?", en: "The quiz: who is closest to you?" };
   const progs = { href: "#/programmes", fr: "Comparer les programmes des candidats", en: "Compare the candidates’ programmes" };
   const byTheme = { href: "#/programmes#comparer", fr: "Sur le même sujet, qui propose quoi", en: "On the same subject, who proposes what" };
   const france = { href: "#/chiffres", fr: "La France en chiffres", en: "France in numbers" };
@@ -256,7 +256,8 @@ function nextSteps(path: string) {
     : /^#\/chiffres/.test(path) ? [race, shifts, mine]
     : null;
   if (!pick) return "";
-  return `<nav class="next-steps" aria-label="${L("Et ensuite", "What next")}"><p>${L("Et ensuite", "What next")}</p>${pick.map((x) => `<a href="${x.href}">${esc(L(x.fr, x.en))}<span aria-hidden="true">→</span></a>`).join("")}</nav>`;
+  const label = L("Ailleurs sur Third Estate", "Elsewhere on Third Estate");
+  return `<nav class="next-steps" aria-label="${label}"><p>${label}</p><ul>${pick.map((x) => `<li><a href="${x.href}">${esc(L(x.fr, x.en))}<span aria-hidden="true">→</span></a></li>`).join("")}</ul></nav>`;
 }
 
 const split = () => {
@@ -327,7 +328,7 @@ function renderChrome(path: string) {
     <header class="ms-head"><span class="ms-brand" aria-label="Third Estate">${foxSvg(32, true)}${wordmarkSvg(3)}</span><button type="button" class="ms-close" data-ms="close" aria-label="${L("Fermer le menu", "Close the menu")}">${pixelIcon("close", 24)}</button></header>
     <div class="ms-tools">
       <button type="button" data-ms="search">${pixelIcon("search", 12)}<span>${L("Rechercher une commune, un élu, un mot", "Search a town, an official, a word")}</span></button>
-      <a class="ms-quiz" href="#/quiz">${L("Le quiz : qui vous ressemble ?", "The quiz: who’s like you?")}</a>
+      <a class="ms-quiz" href="#/quiz">${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</a>
     </div>
     <nav class="ms-nav" aria-label="${L("Rubriques", "Sections")}">${SECTIONS.map((s, n) => `<details${s === current || (!current && n === 0) ? " open" : ""}>
         <summary>${pixelIcon(s.icon, 24)}<span><b>${L(s.fr, s.en)}</b><small>${esc(L(...s.blurb))}</small></span>${caret}</summary>
@@ -346,7 +347,7 @@ function renderChrome(path: string) {
 
   searchBtn.innerHTML = `${pixelIcon("search", 12)}<span class="sb-label">${L("Rechercher", "Search")}</span><kbd>${isMac ? "⌘" : "Ctrl"} K</kbd>`;
   searchBtn.setAttribute("aria-label", L(`Rechercher (${isMac ? "Cmd" : "Ctrl"}+K)`, `Search (${isMac ? "Cmd" : "Ctrl"}+K)`));
-  quizBtn.innerHTML = `<span class="q-long">${L("Qui vous ressemble ?", "Who’s like you?")}</span><span class="q-short">${L("Le quiz", "Quiz")}</span>`;
+  quizBtn.innerHTML = `<span class="q-long">${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</span><span class="q-short">Quiz</span>`;
   quizBtn.toggleAttribute("aria-current", /^#\/quiz/.test(path));
   paintThemeBtn();
   langBtn.innerHTML = `<span class="l-long">${t().langSwitch}</span><span class="l-short" aria-hidden="true">${getLang() === "fr" ? "EN" : "FR"}</span>`;
@@ -432,22 +433,11 @@ searchBtn.addEventListener("click", () => openSearch(searchBtn));
 skip.addEventListener("click", (e) => { e.preventDefault(); app.focus(); app.scrollIntoView(); });
 initSearch();
 
-// Sections below the fold rise in as they enter the screen. Nothing waits hidden: a section already on screen
-// (or one the observer never reports) simply stays as drawn; the class only starts a short entrance.
-const rise = "IntersectionObserver" in window ? new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("rv-in"); rise!.unobserve(e.target); } }), { rootMargin: "0px 0px -6% 0px" }) : null;
-function reveal() {
-  if (!rise || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  app.querySelectorAll<HTMLElement>(":scope > .page > .card, :scope > .page > article, :scope > .page > .next-steps").forEach((el) => {
-    if (el.dataset.rv) return;
-    el.dataset.rv = "1";
-    if (el.getBoundingClientRect().top > innerHeight * 0.92) rise.observe(el);
-  });
-}
+// Sections start visible: no entrance per section. What moves is the data (src/lib/motion.ts).
 /** Presentation pass after each render: wide tables scroll inside their own box on small screens. */
 function enhance() {
+  mergeLocalTabs(); // first, so the kicker check sees the current view in the section bar
   sectionHero();
-  mergeLocalTabs();
-  reveal();
   onScroll();
   app.querySelectorAll<HTMLTableElement>("table.table").forEach((t) => {
     if (t.parentElement?.classList.contains("table-scroll")) return;
@@ -464,9 +454,9 @@ function enhance() {
   document.documentElement.style.setProperty("--sub-h", `${sub && !sub.hidden ? sub.offsetHeight : 0}px`);
 }
 /**
- * Every page opens like the homepage: its crumbs and header are lifted into one dark, full-width band,
- * the headline rises in line by line and the clause after the first comma takes the red→blue gradient.
- * That is the page's one entrance; what moves below it (figures, seats, lines) is in src/lib/motion.ts.
+ * Inner pages open with a paper headline strip (the dark band is the homepage's alone): crumbs, a short kicker,
+ * the headline in ink as written, the dek, then the content. The strip is a plain wrapper (`.sec-hero`, kept as
+ * the hook for the contents rail and the identity strip); nothing in it animates.
  */
 function sectionHero() {
   const page = app.querySelector<HTMLElement>(":scope > .page");
@@ -485,26 +475,33 @@ function sectionHero() {
   box.append(inner);
   band[0].before(box);
   inner.append(...band);
-  box.insertAdjacentHTML("beforeend", `<div class="px-edge" aria-hidden="true"></div>`);
-  const h1 = inner.querySelector("h1");
-  if (h1 && h1.children.length === 0 && h1.id !== "sim-h1") {
-    const text = h1.textContent ?? "";
-    // two lines after the first comma or colon; the colon (and the no-break space French puts before it) stays on line one
-    const m = /(,|\s?:)\s/.exec(text);
-    const cut = m ? m.index + m[1].length : -1;
-    const lines = cut > 0 && cut < text.length - 4 ? [text.slice(0, cut), text.slice(cut).trim()] : [text];
-    h1.textContent = "";
-    lines.forEach((t, n) => {
-      const ln = document.createElement("span");
-      ln.className = "ln";
-      const sp = document.createElement("span");
-      if (n === 1) { const em = document.createElement("em"); em.textContent = t; sp.append(em); } else sp.textContent = t;
-      sp.style.animationDelay = `${n * 0.1}s`;
-      ln.append(sp);
-      h1.append(ln);
-    });
-  }
+  trimKicker(inner);
 }
+
+/**
+ * A kicker only says what nothing else on screen says. Parts of it that repeat the crumbs, the section bar
+ * (the section's name, blurb and pages) or the headline are dropped; an empty kicker goes.
+ * Only plain-text kickers are trimmed piece by piece; one holding markup (a party chip) goes only if it all repeats.
+ */
+function trimKicker(strip: HTMLElement) {
+  const k = strip.querySelector<HTMLElement>(".eyebrow");
+  if (!k) return;
+  const words = (s: string) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").split(/[^a-z0-9]+/).filter((w) => w.length >= 3 && !STOP.has(w));
+  const cur = sections().find((s) => s.match.test(split().path));
+  const sub = document.getElementById("subnav");
+  const ctx = words([
+    strip.querySelector(".crumbs")?.textContent, strip.querySelector("h1")?.textContent,
+    cur ? `${cur.fr} ${cur.en} ${L(...cur.blurb)}` : "",
+    sub && !sub.hidden ? sub.textContent : "",
+  ].join(" "));
+  const said = (part: string) => words(part).every((w) => ctx.some((c) => c.startsWith(w.slice(0, 6))));
+  if (k.children.length) { if (said(k.textContent ?? "")) k.remove(); return; }
+  const parts = (k.textContent ?? "").split(/\s+·\s+|,\s+/).map((p) => p.trim()).filter(Boolean);
+  const keep = parts.filter((p) => !said(p));
+  if (!keep.length) k.remove();
+  else if (keep.length < parts.length) k.textContent = keep.join(" · ");
+}
+const STOP = new Set(["les", "des", "une", "aux", "par", "pour", "sur", "dans", "the", "and", "for", "with"]);
 
 /**
  * One local bar, not two rows: a page's own view links (`.page-tabs`, e.g. the Assemblée's map / who they are /

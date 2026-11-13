@@ -242,7 +242,7 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
     <section class="page explorer">
       <header class="page-head">
         <p class="eyebrow">${L("Ma commune", "My town")}</p>
-        <h1>${L("Ce qui se passe près de chez vous", "What’s happening where you live")}</h1>
+        <h1>${L("Votre commune, de la mairie à l’Assemblée", "Your town, from the town hall to the Assembly")}</h1>
         <p class="dek">${L("Vos élus et leurs votes, la vie locale, l’emploi, les écoles, la sécurité, et ce qui fait le charme du coin. Cherchez une adresse ou parcourez un département.", "Your elected officials and how they vote, local life, jobs, schools, safety, and what makes the place good. Search an address or browse a department.")}</p>
         ${searchBox()}
       </header>
@@ -482,8 +482,9 @@ export async function renderTown(app: HTMLElement, code: string) {
         <div>
           <p class="eyebrow">${esc(info?.departement?.nom ?? "")}${info?.region?.nom ? `, ${esc(info.region.nom)}` : ""}</p>
           <h1>${esc(name)}</h1>
-          <p class="dek">${[info?.population ? `${fmtNum(info.population)} ${L("habitants", "inhabitants")}` : "", postcodes(info?.codesPostaux ?? [])].filter(Boolean).join(", ")}.${extra?.description?.text ? ` <span lang="fr">${esc(extra.description.text)}</span>` : ""}</p>
-          ${extra?.description?.url ? `<p class="tiny muted">${L("Extrait de", "From")} <a href="${esc(safeUrl(extra.description.url))}" target="_blank" rel="noopener">${L("Wikipédia", "French Wikipedia")}</a> (CC BY-SA)${fr ? "" : ", text in French"}</p>` : ""}
+          <p class="dek">${[info?.population ? `${fmtNum(info.population)} ${L("habitants", "inhabitants")}` : "", postcodes(info?.codesPostaux ?? [])].filter(Boolean).join(", ")}.</p>
+          ${extra?.description?.text ? `<figure class="town-wiki"><blockquote lang="fr"${extra.description.url ? ` cite="${esc(safeUrl(extra.description.url))}"` : ""}><p>${esc(extra.description.text)}</p></blockquote>
+            <figcaption class="tiny muted">${L("Extrait de", "Quoted from")} ${extra.description.url ? `<a href="${esc(safeUrl(extra.description.url))}" target="_blank" rel="noopener">${L("Wikipédia", "French Wikipedia")}</a>` : L("Wikipédia", "French Wikipedia")} (CC BY-SA)${fr ? "" : ", in French"}</figcaption></figure>` : ""}
           <div class="home-set" id="home-set"></div>
           ${searchBox(L("Chercher une autre adresse", "Search another address"))}
         </div>

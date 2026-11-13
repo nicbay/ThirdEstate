@@ -59,7 +59,8 @@ function relax(ds: Dot[], min: number) {
   }
 }
 
-export function heroViz(geo: GeoJSON.FeatureCollection, deputes: Depute[], pair: ShiftPair | undefined) {
+export function heroViz(geo: GeoJSON.FeatureCollection, deputes: Depute[], pair: ShiftPair | undefined, dark = true) {
+  const lift = (hex: string) => (dark ? onDark(hex) : hex);
   if (!pair) return { svg: "", legend: "", start: () => {} };
   const mainland = geo.features.map(rewind).filter((f) => f.properties!.code.length === 2);
   const proj = geoConicConformal().parallels([44, 49]).rotate([-3, 0]).fitExtent([[110, 8], [W - 8, H - 8]], { type: "FeatureCollection", features: mainland } as GeoJSON.FeatureCollection);
@@ -68,7 +69,7 @@ export function heroViz(geo: GeoJSON.FeatureCollection, deputes: Depute[], pair:
   const dots: Dot[] = Object.entries(pair.units).map(([code, u]) => {
     const mp = byCirco.get(code);
     const p = /^(97|98|99)/.test(code) ? null : proj([u.lon, u.lat]);
-    const d: Dot = { code, mp, mx: p?.[0] ?? 0, my: p?.[1] ?? 0, hx: 0, hy: 0, color: onDark(safeColor(mp?.groupe?.couleur) ?? "#5a5d66") };
+    const d: Dot = { code, mp, mx: p?.[0] ?? 0, my: p?.[1] ?? 0, hx: 0, hy: 0, color: lift(safeColor(mp?.groupe?.couleur) ?? "#5a5d66") };
     if (!p) far.push(d);
     return d;
   });
@@ -96,7 +97,7 @@ export function heroViz(geo: GeoJSON.FeatureCollection, deputes: Depute[], pair:
   </svg>`;
 
   const groups = new Map<string, { abrev: string; label: string; color: string; n: number }>();
-  for (const d of order) if (d.mp?.groupe) { const g = d.mp.groupe; const x = groups.get(g.abrev) ?? { abrev: g.abrev, label: g.libelle, color: onDark(safeColor(g.couleur) ?? "#999"), n: 0 }; x.n++; groups.set(g.abrev, x); }
+  for (const d of order) if (d.mp?.groupe) { const g = d.mp.groupe; const x = groups.get(g.abrev) ?? { abrev: g.abrev, label: g.libelle, color: lift(safeColor(g.couleur) ?? "#999"), n: 0 }; x.n++; groups.set(g.abrev, x); }
   const vacantTip = L(
     `${sum.vacant > 1 ? "Sièges vacants" : "Siège vacant"}, en attente d’une élection partielle. Majorité absolue des ${sum.sitting} membres en exercice : ${sum.majority} (${sum.fullMajority} quand les ${sum.statutory} sièges sont pourvus).`,
     `${sum.vacant > 1 ? "Vacant seats" : "Vacant seat"}, pending a by-election. Absolute majority of the ${sum.sitting} sitting members: ${sum.majority} (${sum.fullMajority} when all ${sum.statutory} seats are filled).`,

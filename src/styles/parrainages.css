@@ -27,8 +27,8 @@
 .pg-val { text-align: right; font-variant-numeric: tabular-nums lining-nums; }
 .pg-val b { font-weight: 750; }
 .pg-meta { display: flex; flex-wrap: wrap; gap: 0.15rem 0.9rem; color: var(--ink-2); margin-top: 0.15rem; }
-.pg-check.ok { color: var(--up); }
-.pg-check.ko { color: var(--down); }
+.pg-check.ok { color: var(--up-text); }
+.pg-check.ko { color: var(--down-text); }
 .pg-check .muted { color: var(--ink-3); }
 .pg-axis { font: 500 0.68rem var(--mono); color: var(--ink-3); }
 .pg-axis-t { position: relative; height: 1.1em; }

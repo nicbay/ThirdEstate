@@ -11,3 +11,11 @@
   .cand-votes > li { grid-template-columns: minmax(0, 1fr); gap: 0.25rem; }
   .cand-vote { justify-self: start; }
 }
+/* "In the race": one big number (the polling average), the rest folded into a sentence */
+.cand-race { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.8rem; margin: 0 0 0.4rem; }
+.cand-race strong { font: 850 clamp(2.4rem, 1.6rem + 2.4vw, 3.4rem)/1 var(--display); font-stretch: 76%; color: var(--ink); font-variant-numeric: tabular-nums lining-nums; }
+.cand-race span { font-size: 0.95rem; color: var(--ink-2); }
+.cand-race-s { max-width: var(--measure); margin: 0 0 0.6rem; line-height: 1.5; }
+.cand-race-s b { font-family: var(--mono); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cand-race-s .cand-up { color: var(--up-text); }
+.cand-race-s .cand-down { color: var(--down-text); }

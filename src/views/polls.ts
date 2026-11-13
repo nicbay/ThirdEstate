@@ -12,6 +12,16 @@ import { mountForecastChart } from "./forecast-chart";
 
 const ui = { range: 180, hidden: new Set<string>(), pollster: "" };
 
+/** Ink or white, whichever reads at 4.5:1 or better on a party colour (light ones like the centre's yellow need ink). */
+const textOn = (hex: string) => {
+  const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
+  if (!m) return "#fff";
+  const lin = (i: number) => { const c = parseInt(m[1].slice(i, i + 2), 16) / 255; return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; };
+  const y = 0.2126 * lin(0) + 0.7152 * lin(2) + 0.0722 * lin(4);
+  return 1.05 / (y + 0.05) >= 4.5 ? "#fff" : "#0d0f1a";
+};
+const duelCell = (w: number, color: string) => { const t = textOn(color); return `<span style="width:${w}%;background:${color};color:${t}${t === "#fff" ? "" : ";text-shadow:none"}">${w}</span>`; };
+
 export async function renderPolls(app: HTMLElement) {
   const [polls, markets] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null)]);
   registerParties(polls.parties);
@@ -57,7 +67,7 @@ export async function renderPolls(app: HTMLElement) {
               const w = meta(d.winner), l = meta(d.loser);
               const [rw, rl] = pair100(d.pw, d.pl);
               return `<tr><td><b>${esc(d.winner)}</b> ${L("contre", "vs")} ${esc(d.loser)}</td>
-                <td class="num"><div class="duel"><span style="width:${rw}%;background:${w.color}">${rw}</span><span style="width:${rl}%;background:${l.color}">${rl}</span></div></td>
+                <td class="num"><div class="duel">${duelCell(rw, w.color)}${duelCell(rl, l.color)}</div></td>
                 <td class="num muted">${d.total}</td><td class="muted">${fmtDate(d.last)}</td></tr>`;
             })
             .join("")}</tbody>

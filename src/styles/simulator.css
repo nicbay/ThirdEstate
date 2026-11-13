@@ -99,7 +99,7 @@ h2.sim-k { font-stretch: 100%; }
 
 /* the runoff: reading and comparison */
 .sim-kpi { border-top-width: 4px; }
-.sim-read { display: grid; gap: 0.3rem; padding: 0.7rem 0.8rem 0.8rem; background: var(--panel); box-shadow: inset 4px 0 0 var(--ink); }
+.sim-read { display: grid; gap: 0.3rem; padding: 0.7rem 0.8rem 0.8rem; background: var(--panel); }
 .sim-read p:last-child { margin: 0; font-size: 0.9rem; line-height: 1.5; }
 .sim-against { display: grid; gap: 0.45rem; }
 .sim-vs-t { width: 100%; border-collapse: collapse; font-size: 0.8rem; font-variant-numeric: tabular-nums lining-nums; }

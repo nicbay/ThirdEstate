@@ -15,6 +15,6 @@
 .pg-detail td { background: var(--paper); padding: 0.6rem 0.8rem 1rem; }
 .pg-detail-in p { margin: 0.2rem 0 0.6rem; max-width: 75ch; }
 .pg-hist { margin-top: 0.4rem; }
-.pg-hist .better { color: #1e8a4c; font-weight: 700; }
-.pg-hist .worse { color: #b3261e; font-weight: 700; }
+.pg-hist .better { color: var(--up-text); font-weight: 700; }
+.pg-hist .worse { color: var(--down-text); font-weight: 700; }
 .pg-grades { max-width: 520px; }

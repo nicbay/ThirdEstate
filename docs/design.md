@@ -37,12 +37,14 @@ The frame takes its grammar from the fox. Loaded after `style.css`, the re-skin 
 - **Page and surfaces.** The page is warm paper `--bg #f2f0e9`; sections are white panels on it. Dark bands (masthead,
   hero, footer) are `--night #0b0d18` with a faint grid of 2px squares, and dissolve into the page through two rows
   of 4px squares (`.px-edge`, `.foot-strip`).
-- **Pixel type.** Silkscreen (self-hosted, OFL), for the smallest uppercase labels only: kickers, tags, the tab bar,
-  menu indexes, footer heads. Never for a sentence, never for a number people compare.
+- **Pixel type.** Silkscreen (self-hosted, OFL), for decorative uppercase labels only (card-head links, menu
+  indexes). Never for a sentence, never for a number people compare, never for a control or a status people must
+  read: kickers, crumbs, tags, status chips, the tab bar, footer links and sub-bar labels are IBM Plex Mono uppercase.
+  Nothing people read or click is under 11px; body and source lines are 12px or more.
 - **Hard shadows, block motion.** Interactive panels lift up-left onto a hard offset shadow; presses and menu reveals
-  move in `steps()`. The scroll bar under the masthead advances in 40 blocks. Sections below the fold rise in once
-  as they enter the screen (`.rv-in`, added by `reveal()` in `src/main.ts`): nothing waits hidden, and all of it is
-  off under `prefers-reduced-motion`.
+  move in `steps()`. The scroll bar under the masthead advances in 40 blocks. Content starts visible: no headline
+  rise, no per-section entrance, no blinking caret. Motion is kept where it explains data (chart draw-ins, the 577
+  dots flying into the seats, the fox assembling), and all of it is off under `prefers-reduced-motion`.
 - **The hero's 577 dots are pixels** (squares), on the map and in the hemicycle.
 
 ## Pixel Desk v2 (beta, `src/styles/overhaul.css`)
@@ -51,8 +53,21 @@ The overhaul keeps the pixel grammar and calms the frame. Loaded last, written a
 Component behaviour follows the Astryx design system's specs (read through its MCP); Astryx itself is not installed
 (React + StyleX, ~49 KB gzip for the touch helpers alone), so components are small vanilla TS/CSS.
 
-- **Answer first.** Inner pages open with a headline strip, not a hero: kicker, headline (≤ 2.9rem), dek, then the
-  main chart inside the first screen. The tall dark hero is the homepage's alone.
+- **Answer first.** Inner pages open with a paper headline strip, not a hero: crumbs, an optional short kicker
+  (≤ 4 words, dropped by `trimKicker()` when the crumbs, h1 or section bar already say it), an ink headline
+  (≤ 2.9rem) written as a sentence of its own shape (no comma-split, no gradient text), a dek (≤ ~68 characters a
+  line), then the main chart inside the first screen. `sectionHero()` in `src/main.ts` builds it. The tall dark
+  hero is the homepage's alone; below it the homepage returns to paper and white panels.
+- **Numbers in sentences, not tiles.** A page has at most one big number. Supporting figures go in a typeset line
+  with mono numbers ("13 candidats et 439 mesures…, dont 182 chiffrées"), never a row of 4 KPI tiles. Movers are
+  a line with ▲/▼ in the data colour, not tinted tiles.
+- **No side stripes on callouts.** A note, verdict or caveat is a `--panel` block with a 3px ink top rule. A
+  coloured left rule is allowed only when it encodes a party, bloc or candidate colour.
+- **Same figure, same number.** When two modules show the race, label what each is ("1er tour, projeté" on the
+  forecast chart, "Moyenne des sondages au <date>" on the poll widget); a forecast chart ends on today's live figure.
+- **Specific labels.** No "Key takeaways", "Top stories", "All →", "Start →", "Open the programme →". Say what is
+  there: "Ce qu'il faut retenir du 13 novembre", "Fil rouge, fil bleu", "Les 23 mesures de Lisnard, une par une".
+  Page footers close with "Ailleurs sur Third Estate", a short typeset list of links.
 - **One local bar.** Under the masthead, the section's pages; a page's own views (`.page-tabs`, e.g. the Assemblée's
   map / who they are / toeing the line / what they say) are moved into that bar by `mergeLocalTabs()` in `src/main.ts`,
   nested after their page. No second row of tabs.
@@ -168,7 +183,9 @@ glyphs as well as colour.
 - **Masthead**: black bar, the fox and the condensed wordmark, five sections (Chez vous, Parlement, 2027, La France,
   Archives), each a link plus a caret button that opens its menu (white panel, 3px ink rule; hover on desktop, click or
   keyboard everywhere, Esc closes). Active section underlined with the red/blue split bar. Right side: search button
-  (Ctrl/⌘ K), the white "Qui vous ressemble ?" call to action (red/blue offset shadow) to `#/quiz`, FR/EN. The current
+  (Ctrl/⌘ K), the white quiz call to action (one 3px blue offset shadow; "Quiz" on phones) to `#/quiz`. The quiz has one
+  name everywhere: « Le quiz : qui vous ressemble ? » / "The quiz: who is closest to you?"; its entry is one
+  primary button with the real count and length, and a text link to the long version, FR/EN. The current
   section's pages repeat in a row under the bar. Below 760px: one top row (mark, search, quiz, language), the section
   pages as a sideways-scrolling row, and a fixed bottom tab bar with the five sections (pixel icon + short label,
   safe-area padding).
@@ -177,7 +194,10 @@ glyphs as well as colour.
 - **Section (`.card`)**: 3px ink rule, condensed `h2`, mono "→" link at the right.
 - **Tabs**: pill row (`.tabs`), segmented control for in-module switches (`.small-tabs`).
 - **Bars**: 10px on a `--wash` track, bold value right-aligned, grow-in animation.
-- **KPIs / `.lk` / hero stats**: 2px ink rule on top, big condensed number, mono label.
+- **KPIs / `.lk` / hero stats**: 2px ink rule on top, big condensed number, mono label. One per page at most (see
+  "Numbers in sentences, not tiles").
+- **Programme list** (`#/programmes`): one row per candidate in seating order, left to right, party colour as a thin
+  mark, the kept/changed/new bar inline; the whole row is the link.
 - **Spectrum strip**: 58px (40px on phones), parties in seating order, axis labelled ← LEFT / RIGHT →
   in the left/right colours.
 - **Tables**: mono uppercase headers over a 2px ink rule, tabular right-aligned numbers, hover rows,

@@ -143,7 +143,7 @@ export async function renderRace(app: HTMLElement) {
       </nav>
       <p class="source">${L("Sondages compilés par Wikipédia (CC BY-SA)", "Polls compiled by Wikipedia (CC BY-SA)")}, <a href="${esc(safeUrl(polls.source))}" target="_blank" rel="noopener">${L("page source", "source page")}</a>, ${L("mis à jour le", "updated")} ${fmtDate(polls.fetchedAt)}.</p>
     </section>`;
-  drawForecastTrend(app);
+  drawForecastTrend(app, fc);
   // the "Method" link (and #/2027#methode links) open the method box
   const md = app.querySelector<HTMLDetailsElement>("#methode");
   app.querySelectorAll('a[href="#/2027#methode"]').forEach((x) => x.addEventListener("click", () => md && (md.open = true)));
@@ -237,10 +237,16 @@ function forecastCard(fc: Forecast) {
 
 interface FcDay { date: string; live: boolean; sources: string[]; rows: { name: string; win: number; polls: number | null; markets: number | null }[] }
 /** The forecast over time (public/data/forecast/history.json, written daily by scripts/forecast-history.ts). */
-async function drawForecastTrend(app: HTMLElement) {
+async function drawForecastTrend(app: HTMLElement, fc: Forecast) {
   const h = await fetchJson<{ days: FcDay[] }>("/data/forecast/history.json").catch(() => null);
   const box = app.querySelector<HTMLElement>("#fc-trend");
   if (!h || !box || h.days.length < 2) return;
+  // the chart ends on today's forecast, the very figures in the headline and the card above: the history file is
+  // written once a day, with that day's market prices, so its last point can lag the live page by a few points
+  const today = new Date().toISOString().slice(0, 10);
+  const live: FcDay = { date: today, live: true, sources: [], rows: fc.rows.map((r) => ({ name: r.name, win: r.win, polls: r.polls?.win ?? null, markets: r.markets?.win ?? null })) };
+  const recorded = h.days.at(-1)!;
+  h.days = [...h.days.filter((d) => d.date < today), live];
   box.hidden = false;
   const last = h.days.at(-1)!;
   const names = last.rows.slice(0, 6).map((r) => r.name);
@@ -261,7 +267,8 @@ async function drawForecastTrend(app: HTMLElement) {
   const back = h.days.filter((d) => !d.live);
   const kalshiOnly = back.filter((d) => !d.sources.includes("Polymarket")).length;
   app.querySelector("#fc-trend-note")!.textContent = [
-    L(`Chance de victoire, en %, chaque jour depuis le ${fmtDate(h.days[0].date)}.`, `Chance of winning, %, every day since ${fmtDate(h.days[0].date)}.`),
+    L(`Chance de victoire, en %, chaque jour depuis le ${fmtDate(h.days[0].date)} ; le dernier point est la prévision d’aujourd’hui (${fmtDate(today)}), celle affichée plus haut.`, `Chance of winning, %, every day since ${fmtDate(h.days[0].date)}; the last point is today’s forecast (${fmtDate(today)}), the one shown above.`),
+    recorded.date < today ? L(`Dernier relevé enregistré : ${fmtDate(recorded.date)}.`, `Last recorded day: ${fmtDate(recorded.date)}.`) : "",
     back.length && firstLive ? L(`Avant le ${fmtDate(firstLive)}, la prévision est reconstituée : le même modèle rejoué jour par jour avec les sondages connus ce jour-là et le cours de clôture des marchés${kalshiOnly ? ` (Kalshi seul ${kalshiOnly > 1 ? `${kalshiOnly} jours` : "un jour"}, faute de cours Polymarket)` : ""}.`, `Before ${fmtDate(firstLive)} the forecast is reconstructed: the same model replayed day by day with the polls known that day and each market's closing price${kalshiOnly ? ` (Kalshi only on ${kalshiOnly > 1 ? `${kalshiOnly} days` : "one day"} with no Polymarket price)` : ""}.`) : "",
     L("Ensuite, enregistrée chaque jour.", "From then on, recorded daily."),
   ].filter(Boolean).join(" ");
