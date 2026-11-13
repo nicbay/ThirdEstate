@@ -5,6 +5,8 @@ import { L } from "../i18n";
 import { hemicycle } from "../lib/hemicycle";
 import { pixelIcon, type PixelIcon } from "../lib/pixel-icons";
 import { detailSheet } from "../lib/sheet";
+import { infoTip } from "../lib/infotip";
+import { toast } from "../lib/toast";
 
 export const kitAllowed = () => /^(localhost|127\.0\.0\.1|\[::1\]|beta\.thirdestate\.fr)$/.test(location.hostname) || location.hostname.endsWith(".vercel.app");
 
@@ -18,7 +20,7 @@ export function renderKit(app: HTMLElement) {
     <div class="page-head">
       <p class="eyebrow">${L("Bêta · système de design", "Beta · design system")}</p>
       <h1>${L("Le kit Pixel Desk, chaque pièce sur une page", "The Pixel Desk kit, every piece on one page")}</h1>
-      <p class="dek">${L("Jetons, composants et règles de la refonte. Le bouton soleil/lune du bandeau bascule le thème ; sur téléphone, le dernier panneau devient une feuille.", "Tokens, components and rules of the overhaul. The sun/moon button in the masthead flips the theme; on a phone, the last panel becomes a sheet.")}</p>
+      <p class="dek">${L("Jetons, composants et règles de la refonte. Le bouton soleil/lune du bandeau bascule le thème ; sur téléphone, le dernier panneau devient une feuille. Ailleurs sur le site : le bandeau d’identité des fiches d’élus et de candidats, et le sommaire « Sur cette page » des pages longues.", "Tokens, components and rules of the overhaul. The sun/moon button in the masthead flips the theme; on a phone, the last panel becomes a sheet. Elsewhere on the site: the identity strip on MP and candidate pages, and the “On this page” rail on long reads.")}</p>
     </div>
 
     <article class="card">
@@ -61,6 +63,16 @@ export function renderKit(app: HTMLElement) {
       <div class="kit-row"><a class="button" href="#/kit">${L("Bouton", "Button")}</a><button type="button" class="linkish">${L("Lien-bouton", "Link button")}</button><span class="px-tag">${L("Nouveau", "New")}</span><span class="tag">${L("étiquette", "tag")}</span></div>
       <div class="kit-row"><div class="tabs small-tabs" role="group" aria-label="${L("Exemple de bascule", "Example switch")}"><button type="button" aria-selected="true">${L("Député actuel", "Current MP")}</button><button type="button" aria-selected="false">${L("Tour 2024", "2024 round")}</button></div></div>
       <div class="kit-row kit-icons">${icons.map((i) => `<span title="${i}">${pixelIcon(i, 24)}</span>`).join("")}</div>
+      <div class="kit-row"><span class="small">${L("Moyenne des sondages", "Poll average")}${infoTip(L("Chaque sondage compte selon la note de son institut.", "Each poll counts by its institute’s grade."), L("À propos de la moyenne", "About the average"))}</span><button type="button" class="button" id="kit-toast">${L("Afficher un toast", "Show a toast")}</button></div>
+    </article>
+
+    <article class="card">
+      <header class="card-head"><h2>${L("Tableau triable", "Sortable table")}</h2></header>
+      <p class="muted small">${L("Tout tableau de 6 lignes ou plus se trie par colonne ; l’en-tête reste visible en défilant sur grand écran.", "Any table of 6 rows or more sorts by column; on wide screens the header row stays in view while scrolling.")}</p>
+      <table class="table"><thead><tr><th>${L("Groupe", "Group")}</th><th class="num">${L("Sièges", "Seats")}</th><th class="num">${L("Loyauté", "Loyalty")}</th></tr></thead><tbody>
+        ${[["RN", 121, "99,1"], ["EPR", 91, "97,4"], ["LFI-NFP", 71, "99,6"], ["SOC", 66, "96,8"], ["DR", 49, "95,2"], ["ECOS", 38, "98,3"], ["Dem", 36, "94,9"], ["HOR", 34, "93,7"]].map(([g, n, l]) => `<tr><td>${g}</td><td class="num">${n}</td><td class="num">${L(`${l} %`, `${String(l).replace(",", ".")}%`)}</td></tr>`).join("")}
+        <tr><td>Total</td><td class="num">506</td><td class="num">–</td></tr>
+      </tbody></table>
     </article>
 
     <article class="card">
@@ -76,4 +88,5 @@ export function renderKit(app: HTMLElement) {
     </aside>
   </section>`;
   detailSheet(app.querySelector<HTMLElement>("#kit-sheet")!, L("Panneau de détail", "Detail panel"), { start: 0 });
+  app.querySelector("#kit-toast")!.addEventListener("click", () => toast(L("Montpellier est maintenant votre commune", "Montpellier is now your town"), { uniqueID: "kit", action: { label: L("Annuler", "Undo") } }));
 }
