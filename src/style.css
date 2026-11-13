@@ -4,61 +4,6 @@
    colour is reserved for data, and political colour follows the French convention:
    left red/pink, greens green, centre yellow-orange, right blue, far right navy. */
 
-:root {
-  /* neutrals */
-  --paper: #ffffff;
-  --panel: #f5f4f0;   /* data modules, hover rows */
-  --wash: #e8e6df;    /* empty map areas, bar tracks */
-  --ink: #111216;
-  --ink-2: #474c56;   /* secondary text, 8.6:1 on paper */
-  --ink-3: #686d77;   /* tertiary text, 5.1:1 on paper */
-  --rule: #e1e0da;
-  --rule-2: #c8c7c0;
-  --rule-strong: #111216;
-
-  /* brand + interaction (violet: belongs to no French party) */
-  --accent: #4b2fd0;
-  --link: #3d23b8;
-  --focus: #4b2fd0;
-
-  /* political colour tokens */
-  --far-left: #9c1022;
-  --left: #d4253a;      /* left bloc, "moved left" arrows */
-  --left-soft: #f6c7cd;
-  --soc: #e8559a;       /* socialists / misc. left */
-  --eco: #1e9e57;
-  --centre: #f2a400;
-  --right: #1f5fcf;     /* right bloc, "moved right" arrows */
-  --right-soft: #c4d5f5;
-  --far-right: #1c2c6c;
-  --other: #9aa0aa;
-
-  /* vote positions (for / against / abstain / non-voting) */
-  --P: #1d8a4b;
-  --C: #c42637;
-  --A: #c99a2e;
-  --N: #8b9099;
-  --absent: #d7d8dc;
-  --up: #1d8a4b;
-  --down: #c42637;
-
-  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --text: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  /* legacy aliases used by inline SVG */
-  --serif: var(--display);
-  --sans: var(--text);
-
-  --measure: 66ch;
-  --col: 1160px;
-  /* viewport width without the classic scrollbar (set from JS in main.ts; 100vw includes it, so full-bleed bands overflowed) */
-  --vw: 100vw;
-  --gutter: 16px;
-  --bar-h: 56px;
-  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
-  color-scheme: light;
-}
-
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-padding-top: 110px; }
 body {
@@ -171,7 +116,6 @@ main:focus { outline: none; }
 /* phones: one row up top (mark, search, quiz, language), the four sections and a Menu button in a bottom tab bar */
 .tabbar { display: none; }
 @media (max-width: 760px) {
-  :root { --bar-h: 52px; }
   .topbar { gap: 0.5rem; }
   .topbar .brand b { display: inline; font-size: 1.08rem; }
   .brand { gap: 0.45rem; }
@@ -819,11 +763,11 @@ body { overflow-x: clip; }
 .hero-x h1 .ln { display: block; overflow: hidden; padding-bottom: 0.06em; }
 .hero-x h1 .ln > span { display: inline-block; animation: lineUp 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
 .hero-x h1 .ln:nth-child(2) > span { animation-delay: 0.12s; }
-.hero-x h1 em { font-style: normal; background: linear-gradient(90deg, #ff5a6a, #b58cff 50%, #5b8dff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-x h1 em { font-style: normal; background: linear-gradient(90deg, var(--split-red), var(--split-violet) 50%, var(--split-blue)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 @keyframes lineUp { from { transform: translateY(105%); } to { transform: none; } }
 .hero-x .town-search { margin-top: 0.5rem; animation: fadeUp 0.8s 0.55s both; }
-.hero-x .town-search input { font-size: 1.12rem; padding: 1rem 1.1rem 1rem 2.9rem; border-color: #fff; box-shadow: 5px 5px 0 #5b8dff; }
-.hero-x .town-search input:focus { box-shadow: 5px 5px 0 #ff5a6a; border-color: #fff; }
+.hero-x .town-search input { font-size: 1.12rem; padding: 1rem 1.1rem 1rem 2.9rem; border-color: #fff; box-shadow: 5px 5px 0 var(--split-blue); }
+.hero-x .town-search input:focus { box-shadow: 5px 5px 0 var(--split-red); border-color: #fff; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 .hx-k { font: 600 0.7rem var(--mono); text-transform: uppercase; letter-spacing: 0.09em; color: #a9abb3; }
 
@@ -849,7 +793,7 @@ body { overflow-x: clip; }
 .sec-hero h1 { color: #fff; font-size: clamp(2.2rem, 1.2rem + 3.6vw, 4.1rem); font-weight: 850; font-stretch: 72%; line-height: 0.96; letter-spacing: -0.028em; max-width: 22ch; }
 .sec-hero h1 .ln { display: block; overflow: hidden; padding-bottom: 0.07em; }
 .sec-hero h1 .ln > span { display: inline-block; animation: lineUp 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-.sec-hero h1 em { font-style: normal; background: linear-gradient(90deg, #ff5a6a, #b58cff 50%, #5b8dff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.sec-hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--split-red), var(--split-violet) 50%, var(--split-blue)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .sec-hero .eyebrow { color: #a9abb3; }
 .sec-hero .dek { color: #d3d4da; animation: fadeUp 0.7s 0.25s both; }
 .sec-hero .page-head > :not(h1):not(.eyebrow):not(.dek), .sec-hero .page-head > div > :not(h1):not(.eyebrow):not(.dek) { animation: fadeUp 0.7s 0.35s both; }
@@ -860,8 +804,8 @@ body { overflow-x: clip; }
 .sec-hero .page-tabs a { color: #c9cad0; background: transparent; }
 .sec-hero .page-tabs a[aria-current="page"] { background: #fff; border-color: #fff; color: #111216; }
 .sec-hero .subnav a { color: #fff; }
-.sec-hero .town-search input { background: #fff; color: #111216; border-color: #fff; box-shadow: 5px 5px 0 #5b8dff; }
-.sec-hero .town-search input:focus { box-shadow: 5px 5px 0 #ff5a6a; }
+.sec-hero .town-search input { background: #fff; color: #111216; border-color: #fff; box-shadow: 5px 5px 0 var(--split-blue); }
+.sec-hero .town-search input:focus { box-shadow: 5px 5px 0 var(--split-red); }
 .sec-hero .town-search::before { border-color: #111216; }
 .sec-hero .town-search::after { background: #111216; }
 .sec-hero .suggest { --paper: #fff; --ink: #111216; --ink-2: #54565e; --rule: #e1e0da; color: #111216; }
@@ -961,7 +905,7 @@ body { overflow-x: clip; }
 .home-btn { font: 700 0.86rem var(--text); color: var(--ink); background: var(--paper); border: 2px solid var(--ink); border-radius: 999px; padding: 0.35rem 0.9rem; cursor: pointer; }
 .home-btn:hover { background: var(--ink); color: var(--paper); }
 .home-is { display: inline-flex; align-items: center; gap: 0.35rem; font: 700 0.86rem var(--text); }
-.home-is svg { width: 15px; height: 15px; color: #ff5a6a; }
+.home-is svg { width: 15px; height: 15px; color: var(--split-red); }
 .brief .brief-text p { font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem); line-height: 1.55; max-width: 62ch; margin: 0; }
 .brief .brief-text a { color: inherit; font-weight: 700; text-decoration-color: var(--accent); text-underline-offset: 3px; }
 .jump { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }

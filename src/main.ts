@@ -1,4 +1,5 @@
 import "./fonts.css";
+import "./styles/tokens.css";
 import "./style.css";
 import "./redesign.css";
 import { L, getLang, setLang, t } from "./i18n";

@@ -23,7 +23,9 @@ Catchphrase: Article 15 of the 1789 Declaration, *« La société a le droit de 
 
 A data desk, not a blog template. The page is a black-framed news product: one grotesk for
 everything people read, a monospace for everything that annotates, a 3px ink rule to open
-every section, and colour spent only on data. Tokens live at the top of `src/style.css`.
+every section, and colour spent only on data. Every token (palette, night-band text, the red/blue split, pixel shapes, and semantic aliases named after the
+Astryx design system: `--color-background-*`, `--color-text-*`, `--spacing-1…6`) lives in `src/styles/tokens.css`,
+loaded before `style.css` and `redesign.css`; write new CSS against tokens, not hex values.
 
 ## Pixel theme (beta, `src/redesign.css`)
 
