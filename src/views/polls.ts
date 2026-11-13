@@ -33,6 +33,7 @@ export async function renderPolls(app: HTMLElement) {
           <a href="#/sondages#second-tour">${L("Second tour", "Runoff")}</a>
           <a href="#/sondages#liste">${L("Tous les sondages", "All polls")}</a>
           <a href="#/sondages#marches">${L("Marchés", "Markets")}</a>
+          <a href="#/sondages/instituts">${L("Les instituts notés", "Pollsters graded")}</a>
         </nav>
       </div>
 
@@ -44,7 +45,7 @@ export async function renderPolls(app: HTMLElement) {
         </header>
         <div id="chart"></div>
         <div class="legend" id="legend"></div>
-        <p class="muted small">${L(`Lignes pleines : moyenne des sondages sur ${WINDOW} jours glissants, la même que partout sur le site. Points : sondages individuels (moyenne des hypothèses testées).`, `Solid lines: ${WINDOW}-day rolling polling average, the same one used across the site. Dots: individual polls (mean across tested line-ups).`)} <a href="#/sources">${L("Méthode", "Method")}</a></p>
+        <p class="muted small">${L(`Lignes pleines : moyenne des sondages sur ${WINDOW} jours glissants, pondérée par la note de chaque institut (un sondage mal noté la fait moins bouger), la même que partout sur le site. Points : sondages individuels (moyenne des hypothèses testées).`, `Solid lines: ${WINDOW}-day rolling polling average, weighted by each institute’s grade (a poorly graded poll moves it less), the same one used across the site. Dots: individual polls (mean across tested line-ups).`)} <a href="#/sondages/instituts">${L("Les instituts notés", "Pollsters graded")}</a> · <a href="#/sources">${L("Méthode", "Method")}</a></p>
       </article>
 
       <article class="card" id="second-tour">

@@ -1,7 +1,7 @@
 // Minimal SVG line chart: polling-average lines with individual poll dots.
 import { esc, safeUrl } from "../util";
 import { L, fmtDate } from "../i18n";
-import { pollValue, pollsterName, type Poll } from "./polls";
+import { pollValue, pollWeight, pollsterName, pollsterRating, type Poll } from "./polls";
 import { dec, pct } from "./format";
 
 export interface Series {
@@ -104,15 +104,21 @@ export function lineChart(series: Series[], opts: { height?: number; yMax?: numb
   </svg>`;
 }
 
-/** Every poll that tested `name` since `from`, as chart dots: hover for the figure, click for the poll's source
- *  (the pollster's or outlet's page when the record cites one, else the page the record comes from). */
-export function pollDots(polls: Poll[], name: string, from: string, fallback?: string) {
+/** Every poll that tested `name` since `from`, as chart dots: hover for the figure, the institute's grade and the
+ *  poll's weight in the average; click for the poll's own publication (the pollster's release, else its official
+ *  notice at the Commission des sondages; a press article only when neither was found). Never Wikipedia. */
+export function pollDots(polls: Poll[], name: string, from: string, _fallback?: string) {
   return polls.filter((p) => p.end >= from).flatMap((p) => {
     const v = pollValue(p, name);
     if (v == null) return [];
-    const href = p.url ?? fallback;
-    return [{ date: p.end, value: v, href, title: `${pollsterName(p.pollster)} · ${fmtDate(p.end)}
-${name} ${dec(v)} %${href ? `
-${L("Cliquer pour ouvrir la source", "Click to open the source")}` : ""}` }];
+    const href = p.url;
+    const r = pollsterRating(p.pollster);
+    const grade = r?.grade ? L(`note ${r.grade}`, `grade ${r.grade}`) : L("pas encore noté", "not yet graded");
+    const open = !href ? "" : p.urlKind === "pollster" ? L("Cliquer : la publication de l’institut", "Click: the pollster’s publication")
+      : p.urlKind === "commission" ? L("Cliquer : la notice officielle (Commission des sondages)", "Click: the official notice (Commission des sondages)")
+      : L("Cliquer : l’article de presse (publication de l’institut introuvable)", "Click: the press article (the pollster’s own release wasn’t found)");
+    return [{ date: p.end, value: v, href, title: `${pollsterName(p.pollster)} (${grade}, ${L("poids", "weight")} ${dec(pollWeight(p), 2)}) · ${fmtDate(p.end)}
+${name} ${dec(v)} %${open ? `
+${open}` : ""}` }];
   });
 }
