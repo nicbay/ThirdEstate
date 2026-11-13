@@ -529,8 +529,11 @@ footer .brand .fox { width: 64px; height: 64px; }
 .scn-btn.scn-setback::before { content: "⚡"; margin-right: 0.3em; }
 .chart .proj .band { opacity: 0.13; stroke: none; }
 .chart .proj .proj-line { stroke-width: 2; stroke-dasharray: 2 5; stroke-linecap: round; opacity: 0.9; }
-.chart .marker { stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 3 4; }
-.chart .marker-label { fill: var(--ink-3); font: 600 11px var(--mono); }
+.chart .marker line { stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 3 4; }
+.chart .marker rect { fill: var(--paper); stroke: var(--ink-3); stroke-width: 1; }
+.chart .marker text { fill: var(--ink-2, var(--ink)); font: 700 10.5px var(--mono); text-transform: uppercase; letter-spacing: 0.04em; }
+.chart.compact .marker text { font-size: 13px; }
+.chart .proj-out { stroke-width: 2.6; stroke-linecap: round; fill: none; }
 .scn-note b { color: var(--ink); }
 .hq-num.is-scenario strong { color: #ffd166; }
 .hq-scn { margin: 0.4rem 0 0; max-width: 62ch; font-size: 0.9rem; line-height: 1.45; color: #d3d4da; }

@@ -10,7 +10,7 @@ import { shiftDays } from "./home";
 import { liveForecast, mountDaily } from "./daily";
 import { mountForecastChart } from "./forecast-chart";
 
-const ui = { range: 365, hidden: new Set<string>(), pollster: "" };
+const ui = { range: 180, hidden: new Set<string>(), pollster: "" };
 
 export async function renderPolls(app: HTMLElement) {
   const [polls, markets] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null)]);
