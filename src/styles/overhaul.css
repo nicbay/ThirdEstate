@@ -107,3 +107,17 @@
   /* a sheet nested in another card (presidential results) keeps its surface and frame */
   .card .px-sheet.card, .card .px-sheet { background: var(--paper); background-clip: padding-box; border: 6px solid transparent; border-bottom: 0; border-image: var(--px-ink) 6 / 6px / 0 stretch; padding: 0; }
 }
+
+/* ---------- toasts (src/lib/toast.ts) ---------- */
+.px-toasts { position: fixed; z-index: 60; left: 50%; bottom: var(--spacing-5); transform: translateX(-50%); display: grid; gap: var(--spacing-2); width: min(440px, calc(100vw - 2 * var(--gutter))); pointer-events: none; }
+@media (max-width: 900px) { .px-toasts { bottom: calc(72px + env(safe-area-inset-bottom)); } }
+.px-toast { pointer-events: auto; display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: var(--spacing-3); padding: var(--spacing-3) var(--spacing-3) var(--spacing-3) var(--spacing-4); background: var(--night); color: #fff; border: 6px solid transparent; border-image: var(--px-dark-hi) 6 / 6px / 0 stretch; background-clip: padding-box; filter: drop-shadow(5px 5px 0 var(--split-blue)); animation: px-toast-in 0.2s steps(4, end); }
+.px-toast.is-error { filter: drop-shadow(5px 5px 0 var(--split-red)); }
+.px-toast.is-out { animation: px-toast-out 0.18s steps(3, end) forwards; }
+.px-toast p { margin: 0; font-size: 0.92rem; line-height: 1.35; }
+.px-toast-act { font: 400 0.625rem var(--pixel); text-transform: uppercase; letter-spacing: 0.04em; color: var(--night); background: #fff; border: 0; padding: 0.5rem 0.6rem; cursor: pointer; text-decoration: none; clip-path: var(--px-clip); }
+.px-toast-x { display: grid; place-items: center; width: 28px; height: 28px; padding: 0; color: var(--night-text-2); background: none; border: 0; cursor: pointer; }
+.px-toast-x:hover { color: #fff; }
+@keyframes px-toast-in { from { transform: translateY(12px); } } /* slide only: a toast must be readable even if animations are paused */
+@keyframes px-toast-out { to { transform: translateY(8px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .px-toast, .px-toast.is-out { animation: none; } }

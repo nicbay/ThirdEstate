@@ -9,6 +9,7 @@
 // Answers never leave the browser: everything is computed here, and the share link carries them in the URL hash
 // (#/quiz/<code>), which browsers do not send to any server.
 import "../styles/quiz.css";
+import { toast } from "../lib/toast";
 import { fetchJson, loadPolls } from "../data";
 import { L, colon, fmtDate, fmtNum, fmtPct } from "../i18n";
 import { meta, registerParties, spectrumRank } from "../lib/candidates";
@@ -490,7 +491,8 @@ function results(stage: HTMLElement, d: QuizData) {
     const out = stage.querySelector<HTMLElement>(".qz-copied")!;
     try {
       await navigator.clipboard.writeText(url);
-      out.textContent = L("Lien copié. Il contient vos réponses ; rien n’est envoyé ailleurs.", "Link copied. It holds your answers; nothing is sent anywhere.");
+      out.textContent = "";
+      toast(L("Lien copié. Il contient vos réponses ; rien n’est envoyé ailleurs.", "Link copied. It holds your answers; nothing is sent anywhere."), { uniqueID: "quiz-link" });
     } catch {
       out.innerHTML = `<input class="quiz-url" readonly value="${esc(url)}" aria-label="${L("Lien de vos résultats", "Link to your results")}" />`;
       out.querySelector<HTMLInputElement>("input")!.select();
