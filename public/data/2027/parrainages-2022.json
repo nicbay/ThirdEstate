@@ -1,0 +1,4668 @@
+{
+ "year": 2022,
+ "status": "final",
+ "fetchedAt": "2026-11-13T11:04:10.816Z",
+ "source": {
+  "name": "Conseil constitutionnel",
+  "url": "https://presidentielle2022.conseil-constitutionnel.fr/telechargement/parrainagestotal.csv",
+  "dataset": "https://www.data.gouv.fr/datasets/parrainages-des-candidats-a-lelection-presidentielle-francaise-de-2022",
+  "licence": "Other (Public Domain), as listed on data.gouv.fr"
+ },
+ "window": {
+  "opened": "2022-01-27",
+  "deadline": "2022-03-04T18:00:00+01:00",
+  "list": "2022-03-07",
+  "firstRound": "2022-04-10"
+ },
+ "updatedAt": "2022-03-07",
+ "rules": {
+  "threshold": 500,
+  "minDepartments": 30,
+  "maxShare": 0.1
+ },
+ "totals": {
+  "sponsorships": 13427,
+  "candidates": 64,
+  "reached500": 12,
+  "qualifiedOnPublishedData": 12
+ },
+ "publications": [
+  "2022-02-01",
+  "2022-02-03",
+  "2022-02-08",
+  "2022-02-10",
+  "2022-02-15",
+  "2022-02-17",
+  "2022-02-22",
+  "2022-02-24",
+  "2022-03-01",
+  "2022-03-03",
+  "2022-03-07"
+ ],
+ "candidates": [
+  {
+   "name": "PÉCRESSE Valérie",
+   "displayName": "Valérie Pécresse",
+   "total": 2636,
+   "departments": 107,
+   "topDepartment": {
+    "name": "Seine-et-Marne",
+    "count": 105,
+    "share": 0.0398
+   },
+   "rule": {
+    "reached500": true,
+    "departments30": true,
+    "share10": true
+   },
+   "qualifiedOnPublishedData": true,
+   "reached500On": "2022-02-08",
+   "byDate": [
+    [
+     "2022-02-01",
+     34
+    ],
+    [
+     "2022-02-03",
+     324
+    ],
+    [
+     "2022-02-08",
+     939
+    ],
+    [
+     "2022-02-10",
+     1249
+    ],
+    [
+     "2022-02-15",
+     1824
+    ],
+    [
+     "2022-02-17",
+     1945
+    ],
+    [
+     "2022-02-22",
+     2143
+    ],
+    [
+     "2022-02-24",
+     2271
+    ],
+    [
+     "2022-03-01",
+     2457
+    ],
+    [
+     "2022-03-03",
+     2556
+    ],
+    [
+     "2022-03-07",
+     2636
+    ]
+   ],
+   "byMandate": {
+    "maire": 1322,
+    "conseiller-departemental": 591,
+    "conseiller-regional": 288,
+    "senateur": 147,
+    "depute": 105,
+    "maire-delegue": 43,
+    "conseiller-paris": 41,
+    "president-epci": 24,
+    "conseil-consulaire": 18,
+    "conseiller-metropole-lyon": 14,
+    "outre-mer": 14,
+    "afe": 12,
+    "maire-arrondissement": 8,
+    "depute-europeen": 6,
+    "assemblee-corse": 3
+   },
+   "byDepartment": {
+    "Seine-et-Marne": 105,
+    "Yvelines": 103,
+    "Alpes-Maritimes": 89,
+    "Val-d'Oise": 64,
+    "Paris": 63,
+    "Nord": 59,
+    "Doubs": 56,
+    "Essonne": 53,
+    "Hauts-de-Seine": 53,
+    "Meurthe-et-Moselle": 50,
+    "Rhône": 50,
+    "Val-de-Marne": 50,
+    "Ain": 46,
+    "Bouches-du-Rhône": 43,
+    "Bas-Rhin": 41,
+    "Corrèze": 41,
+    "Calvados": 40,
+    "Haute-Marne": 40,
+    "Isère": 39,
+    "Jura": 39,
+    "Pas-de-Calais": 39,
+    "Var": 39,
+    "Marne": 38,
+    "Aube": 37,
+    "Orne": 37,
+    "Français de l'étranger": 35,
+    "Seine-Maritime": 33,
+    "Côte-d'Or": 32,
+    "Gard": 32,
+    "Moselle": 32,
+    "Sarthe": 32,
+    "Yonne": 32,
+    "Seine-Saint-Denis": 31,
+    "Vosges": 31,
+    "Eure-et-Loir": 30,
+    "Haut-Rhin": 30,
+    "Savoie": 30,
+    "Loire": 29,
+    "Oise": 29,
+    "Territoire de Belfort": 29,
+    "Aisne": 28,
+    "Ardennes": 28,
+    "Charente-Maritime": 28,
+    "Eure": 28,
+    "Loire-Atlantique": 27,
+    "Drôme": 26,
+    "Manche": 26,
+    "Somme": 26,
+    "Haute-Saône": 25,
+    "Loiret": 24,
+    "Meuse": 23,
+    "Puy-de-Dôme": 23,
+    "Maine-et-Loire": 22,
+    "Saône-et-Loire": 22,
+    "Gironde": 21,
+    "Haute-Savoie": 21,
+    "Vaucluse": 21,
+    "Allier": 19,
+    "Cantal": 19,
+    "Ardèche": 18,
+    "Cher": 17,
+    "Finistère": 17,
+    "Vendée": 17,
+    "Hautes-Alpes": 16,
+    "Aveyron": 15,
+    "Haute-Loire": 15,
+    "Indre": 14,
+    "Loir-et-Cher": 14,
+    "Nouvelle-Calédonie": 14,
+    "Pyrénées-Atlantiques": 13,
+    "Gers": 12,
+    "Indre-et-Loire": 12,
+    "Mayotte": 12,
+    "Dordogne": 11,
+    "Côtes-d'Armor": 10,
+    "Morbihan": 10,
+    "Charente": 9,
+    "Haute-Garonne": 9,
+    "Ille-et-Vilaine": 9,
+    "La Réunion": 9,
+    "Deux-Sèvres": 8,
+    "Pyrénées-Orientales": 8,
+    "Haute-Corse": 7,
+    "Hérault": 7,
+    "Lot": 7,
+    "Lot-et-Garonne": 7,
+    "Mayenne": 7,
+    "Polynésie française": 7,
+    "Creuse": 6,
+    "Parlement européen": 6,
+    "Tarn": 6,
+    "Tarn-et-Garonne": 6,
+    "Alpes-de-Haute-Provence": 5,
+    "Corse-du-Sud": 5,
+    "Haute-Vienne": 5,
+    "Vienne": 5,
+    "Hautes-Pyrénées": 4,
+    "Nièvre": 4,
+    "Aude": 3,
+    "Lozère": 3,
+    "Saint-Martin": 3,
+    "Ariège": 1,
+    "Landes": 1,
+    "Martinique": 1,
+    "Saint-Barthélemy": 1,
+    "Saint-Martin / Saint-Barthélémy": 1,
+    "Wallis et Futuna": 1
+   }
+  },
+  {
+   "name": "MACRON Emmanuel",
+   "displayName": "Emmanuel Macron",
+   "total": 2098,
+   "departments": 107,
+   "topDepartment": {
+    "name": "Polynésie française",
+    "count": 110,
+    "share": 0.0524
+   },
+   "rule": {
+    "reached500": true,
+    "departments30": true,
+    "share10": true
+   },
+   "qualifiedOnPublishedData": true,
+   "reached500On": "2022-02-03",
+   "byDate": [
+    [
+     "2022-02-01",
+     105
+    ],
+    [
+     "2022-02-03",
+     529
+    ],
+    [
+     "2022-02-08",
+     926
+    ],
+    [
+     "2022-02-10",
+     1050
+    ],
+    [
+     "2022-02-15",
+     1260
+    ],
+    [
+     "2022-02-17",
+     1345
+    ],
+    [
+     "2022-02-22",
+     1463
+    ],
+    [
+     "2022-02-24",
+     1544
+    ],
+    [
+     "2022-03-01",
+     1785
+    ],
+    [
+     "2022-03-03",
+     1974
+    ],
+    [
+     "2022-03-07",
+     2098
+    ]
+   ],
+   "byMandate": {
+    "maire": 1215,
+    "depute": 335,
+    "conseiller-departemental": 176,
+    "conseiller-regional": 93,
+    "maire-delegue": 79,
+    "outre-mer": 58,
+    "senateur": 45,
+    "afe": 22,
+    "conseil-consulaire": 20,
+    "depute-europeen": 19,
+    "conseiller-metropole-lyon": 15,
+    "president-epci": 15,
+    "conseiller-paris": 4,
+    "maire-arrondissement": 2
+   },
+   "byDepartment": {
+    "Polynésie française": 110,
+    "Eure": 70,
+    "Côte-d'Or": 55,
+    "Français de l'étranger": 52,
+    "Nord": 52,
+    "Haut-Rhin": 48,
+    "Pas-de-Calais": 38,
+    "Rhône": 36,
+    "Guadeloupe": 35,
+    "Isère": 35,
+    "Marne": 35,
+    "Bouches-du-Rhône": 34,
+    "Seine-et-Marne": 34,
+    "Aisne": 32,
+    "Lot": 31,
+    "Yvelines": 31,
+    "Bas-Rhin": 30,
+    "Calvados": 30,
+    "Gironde": 30,
+    "Charente": 28,
+    "Moselle": 27,
+    "Seine-Maritime": 27,
+    "Yonne": 27,
+    "Haute-Garonne": 26,
+    "Somme": 26,
+    "Tarn": 26,
+    "Manche": 25,
+    "Var": 25,
+    "Mayotte": 24,
+    "Morbihan": 24,
+    "Doubs": 23,
+    "Nouvelle-Calédonie": 23,
+    "Dordogne": 22,
+    "Drôme": 22,
+    "Alpes-de-Haute-Provence": 21,
+    "Alpes-Maritimes": 21,
+    "Haute-Saône": 21,
+    "Loire-Atlantique": 21,
+    "Paris": 21,
+    "Finistère": 20,
+    "Hautes-Pyrénées": 20,
+    "La Réunion": 20,
+    "Oise": 20,
+    "Pyrénées-Atlantiques": 20,
+    "Vosges": 20,
+    "Essonne": 19,
+    "Haute-Savoie": 19,
+    "Maine-et-Loire": 19,
+    "Mayenne": 19,
+    "Parlement européen": 19,
+    "Saône-et-Loire": 19,
+    "Vienne": 19,
+    "Indre-et-Loire": 18,
+    "Sarthe": 18,
+    "Cantal": 17,
+    "Ille-et-Vilaine": 17,
+    "Hauts-de-Seine": 16,
+    "Loire": 16,
+    "Val-d'Oise": 16,
+    "Ain": 15,
+    "Loir-et-Cher": 15,
+    "Loiret": 15,
+    "Gard": 14,
+    "Meurthe-et-Moselle": 14,
+    "Côtes-d'Armor": 13,
+    "Gers": 13,
+    "Hérault": 13,
+    "Lot-et-Garonne": 13,
+    "Vendée": 13,
+    "Ardennes": 12,
+    "Aveyron": 12,
+    "Charente-Maritime": 12,
+    "Guyane": 12,
+    "Nièvre": 12,
+    "Pyrénées-Orientales": 12,
+    "Vaucluse": 12,
+    "Deux-Sèvres": 11,
+    "Puy-de-Dôme": 11,
+    "Aude": 10,
+    "Eure-et-Loir": 10,
+    "Haute-Marne": 10,
+    "Landes": 10,
+    "Orne": 10,
+    "Aube": 9,
+    "Haute-Corse": 9,
+    "Hautes-Alpes": 9,
+    "Allier": 8,
+    "Corse-du-Sud": 8,
+    "Jura": 8,
+    "Martinique": 8,
+    "Val-de-Marne": 8,
+    "Cher": 7,
+    "Meuse": 7,
+    "Creuse": 6,
+    "Haute-Vienne": 6,
+    "Savoie": 6,
+    "Seine-Saint-Denis": 6,
+    "Ardèche": 5,
+    "Ariège": 5,
+    "Corrèze": 4,
+    "Indre": 4,
+    "Saint-Martin": 4,
+    "Haute-Loire": 2,
+    "Lozère": 2,
+    "Saint-Pierre-et-Miquelon": 2,
+    "Tarn-et-Garonne": 1,
+    "Wallis et Futuna": 1
+   }
+  },
+  {
+   "name": "HIDALGO Anne",
+   "displayName": "Anne Hidalgo",
+   "total": 1440,
+   "departments": 96,
+   "topDepartment": {
+    "name": "Haute-Garonne",
+    "count": 96,
+    "share": 0.0667
+   },
+   "rule": {
+    "reached500": true,
+    "departments30": true,
+    "share10": true
+   },
+   "qualifiedOnPublishedData": true,
+   "reached500On": "2022-02-08",
+   "byDate": [
+    [
+     "2022-02-01",
+     48
+    ],
+    [
+     "2022-02-03",
+     266
+    ],
+    [
+     "2022-02-08",
+     652
+    ],
+    [
+     "2022-02-10",
+     790
+    ],
+    [
+     "2022-02-15",
+     1007
+    ],
+    [
+     "2022-02-17",
+     1074
+    ],
+    [
+     "2022-02-22",
+     1177
+    ],
+    [
+     "2022-02-24",
+     1226
+    ],
+    [
+     "2022-03-01",
+     1318
+    ],
+    [
+     "2022-03-03",
+     1387
+    ],
+    [
+     "2022-03-07",
+     1440
+    ]
+   ],
+   "byMandate": {
+    "maire": 688,
+    "conseiller-departemental": 388,
+    "conseiller-regional": 169,
+    "senateur": 60,
+    "conseiller-paris": 45,
+    "depute": 25,
+    "maire-delegue": 19,
+    "president-epci": 17,
+    "conseiller-metropole-lyon": 8,
+    "afe": 6,
+    "maire-arrondissement": 5,
+    "conseil-consulaire": 4,
+    "depute-europeen": 3,
+    "outre-mer": 3
+   },
+   "byDepartment": {
+    "Haute-Garonne": 96,
+    "Gironde": 66,
+    "Landes": 61,
+    "Aude": 58,
+    "Paris": 58,
+    "Ariège": 57,
+    "Hérault": 55,
+    "Haute-Vienne": 44,
+    "Seine-Maritime": 34,
+    "Dordogne": 33,
+    "Nord": 32,
+    "Pas-de-Calais": 32,
+    "Gers": 31,
+    "Ille-et-Vilaine": 31,
+    "Côtes-d'Armor": 30,
+    "Meurthe-et-Moselle": 30,
+    "Finistère": 27,
+    "Loire-Atlantique": 24,
+    "Gard": 22,
+    "Puy-de-Dôme": 21,
+    "Ardèche": 19,
+    "Pyrénées-Orientales": 18,
+    "Tarn": 18,
+    "Pyrénées-Atlantiques": 16,
+    "Charente-Maritime": 15,
+    "Côte-d'Or": 15,
+    "Manche": 15,
+    "Rhône": 15,
+    "Saône-et-Loire": 15,
+    "Val-d'Oise": 15,
+    "Français de l'étranger": 13,
+    "Hautes-Pyrénées": 13,
+    "Seine-et-Marne": 13,
+    "Seine-Saint-Denis": 13,
+    "Val-de-Marne": 13,
+    "Charente": 12,
+    "Creuse": 12,
+    "Loiret": 12,
+    "Drôme": 11,
+    "Guadeloupe": 11,
+    "Lot": 11,
+    "Sarthe": 11,
+    "Ain": 10,
+    "Cher": 10,
+    "Indre": 10,
+    "Loire": 10,
+    "Moselle": 10,
+    "Somme": 10,
+    "Calvados": 9,
+    "Corrèze": 9,
+    "Deux-Sèvres": 9,
+    "Doubs": 9,
+    "Haute-Saône": 9,
+    "Indre-et-Loire": 9,
+    "Lot-et-Garonne": 9,
+    "Tarn-et-Garonne": 9,
+    "Eure": 8,
+    "Isère": 8,
+    "Nièvre": 8,
+    "Bouches-du-Rhône": 7,
+    "Jura": 7,
+    "Martinique": 6,
+    "Oise": 6,
+    "Orne": 6,
+    "Aveyron": 5,
+    "Essonne": 5,
+    "Lozère": 5,
+    "Mayenne": 5,
+    "Vaucluse": 5,
+    "Vienne": 5,
+    "Aisne": 4,
+    "Ardennes": 4,
+    "Haute-Marne": 4,
+    "Hauts-de-Seine": 4,
+    "Loir-et-Cher": 4,
+    "Maine-et-Loire": 4,
+    "Vendée": 4,
+    "Allier": 3,
+    "Bas-Rhin": 3,
+    "Cantal": 3,
+    "Haut-Rhin": 3,
+    "Marne": 3,
+    "Meuse": 3,
+    "Morbihan": 3,
+    "Parlement européen": 3,
+    "Savoie": 3,
+    "Yvelines": 3,
+    "Alpes-de-Haute-Provence": 2,
+    "Aube": 2,
+    "Eure-et-Loir": 2,
+    "Haute-Loire": 2,
+    "Haute-Savoie": 2,
+    "Vosges": 2,
+    "Yonne": 2,
+    "Alpes-Maritimes": 1,
+    "La Réunion": 1
+   }
+  },
+  {
+   "name": "MÉLENCHON Jean-Luc",
+   "displayName": "Jean-Luc Mélenchon",
+   "total": 906,
+   "departments": 104,
+   "topDepartment": {
+    "name": "La Réunion",
+    "count": 29,
+    "share": 0.032
+   },
+   "rule": {
+    "reached500": true,
+    "departments30": true,
+    "share10": true
+   },
+   "qualifiedOnPublishedData": true,
+   "reached500On": "2022-02-24",
+   "byDate": [
+    [
+     "2022-02-01",
+     14
+    ],
+    [
+     "2022-02-03",
+     100
+    ],
+    [
+     "2022-02-08",
+     224
+    ],
+    [
+     "2022-02-10",
+     258
+    ],
+    [
+     "2022-02-15",
+     332
+    ],
+    [
+     "2022-02-17",
+     370
+    ],
+    [
+     "2022-02-22",
+     442
+    ],
+    [
+     "2022-02-24",
+     540
+    ],
+    [
+     "2022-03-01",
+     808
+    ],
+    [
+     "2022-03-03",
+     873
+    ],
+    [
+     "2022-03-07",
+     906
+    ]
+   ],
+   "byMandate": {
+    "maire": 667,
+    "conseiller-departemental": 62,
+    "conseiller-regional": 45,
+    "outre-mer": 32,
+    "maire-delegue": 31,
+    "depute": 22,
+    "conseil-consulaire": 12,
+    "assemblee-corse": 9,
+    "conseiller-metropole-lyon": 7,
+    "afe": 6,
+    "depute-europeen": 6,
+    "president-epci": 4,
+    "senateur": 2,
+    "conseiller-paris": 1
+   },
+   "byDepartment": {
+    "La Réunion": 29,
+    "Drôme": 24,
+    "Ariège": 22,
+    "Meurthe-et-Moselle": 22,
+    "Puy-de-Dôme": 20,
+    "Isère": 19,
+    "Français de l'étranger": 18,
+    "Gard": 18,
+    "Aude": 17,
+    "Haute-Garonne": 17,
+    "Moselle": 17,
+    "Seine-Maritime": 17,
+    "Côte-d'Or": 16,
+    "Guyane": 16,
+    "Jura": 16,
+    "Dordogne": 15,
+    "Pas-de-Calais": 15,
+    "Seine-Saint-Denis": 15,
+    "Calvados": 14,
+    "Nord": 14,
+    "Saône-et-Loire": 14,
+    "Ardèche": 13,
+    "Gironde": 13,
+    "Seine-et-Marne": 13,
+    "Somme": 13,
+    "Vosges": 13,
+    "Alpes-de-Haute-Provence": 12,
+    "Charente": 12,
+    "Hautes-Alpes": 12,
+    "Hautes-Pyrénées": 12,
+    "Lot": 12,
+    "Lot-et-Garonne": 12,
+    "Aisne": 11,
+    "Charente-Maritime": 11,
+    "Nouvelle-Calédonie": 11,
+    "Rhône": 11,
+    "Haute-Corse": 10,
+    "Haute-Saône": 10,
+    "Manche": 10,
+    "Pyrénées-Atlantiques": 10,
+    "Ain": 9,
+    "Loire": 9,
+    "Martinique": 9,
+    "Corrèze": 8,
+    "Creuse": 8,
+    "Haute-Vienne": 8,
+    "Vienne": 8,
+    "Yonne": 8,
+    "Côtes-d'Armor": 7,
+    "Haute-Savoie": 7,
+    "Hérault": 7,
+    "Maine-et-Loire": 7,
+    "Meuse": 7,
+    "Pyrénées-Orientales": 7,
+    "Savoie": 7,
+    "Tarn": 7,
+    "Corse-du-Sud": 6,
+    "Doubs": 6,
+    "Eure": 6,
+    "Guadeloupe": 6,
+    "Loire-Atlantique": 6,
+    "Mayenne": 6,
+    "Oise": 6,
+    "Parlement européen": 6,
+    "Sarthe": 6,
+    "Yvelines": 6,
+    "Ardennes": 5,
+    "Aveyron": 5,
+    "Gers": 5,
+    "Loiret": 5,
+    "Paris": 5,
+    "Val-d'Oise": 5,
+    "Allier": 4,
+    "Aube": 4,
+    "Cantal": 4,
+    "Essonne": 4,
+    "Eure-et-Loir": 4,
+    "Finistère": 4,
+    "Ille-et-Vilaine": 4,
+    "Indre": 4,
+    "Indre-et-Loire": 4,
+    "Loir-et-Cher": 4,
+    "Lozère": 4,
+    "Marne": 4,
+    "Saint-Pierre-et-Miquelon": 4,
+    "Vaucluse": 4,
+    "Bouches-du-Rhône": 3,
+    "Cher": 3,
+    "Haute-Loire": 3,
+    "Morbihan": 3,
+    "Orne": 3,
+    "Territoire de Belfort": 3,
+    "Val-de-Marne": 3,
+    "Var": 3,
+    "Alpes-Maritimes": 2,
+    "Bas-Rhin": 2,
+    "Deux-Sèvres": 2,
+    "Haut-Rhin": 2,
+    "Hauts-de-Seine": 2,
+    "Landes": 2,
+    "Nièvre": 2,
+    "Haute-Marne": 1,
+    "Mayotte": 1,
+    "Polynésie française": 1
+   }
+  },
+  {
+   "name": "ZEMMOUR Éric",
+   "displayName": "Éric Zemmour",
+   "total": 741,
+   "departments": 95,
+   "topDepartment": {
+    "name": "Côte-d'Or",
+    "count": 32,
+    "share": 0.0432
+   },
+   "rule": {
+    "reached500": true,
+    "departments30": true,
+    "share10": true
+   },
+   "qualifiedOnPublishedData": true,
+   "reached500On": "2022-03-01",
+   "byDate": [
+    [
+     "2022-02-01",
+     14
+    ],
+    [
+     "2022-02-03",
+     58
+    ],
+    [
+     "2022-02-08",
+     149
+    ],
+    [
+     "2022-02-10",
+     181
+    ],
+    [
+     "2022-02-15",
+     250
+    ],
+    [
+     "2022-02-17",
+     291
+    ],
+    [
+     "2022-02-22",
+     350
+    ],
+    [
+     "2022-02-24",
+     415
+    ],
+    [
+     "2022-03-01",
+     620
+    ],
+    [
+     "2022-03-03",
+     721
+    ],
+    [
+     "2022-03-07",
+     741
+    ]
+   ],
+   "byMandate": {
+    "maire": 632,
+    "maire-delegue": 39,
+    "conseiller-departemental": 23,
+    "conseiller-regional": 17,
+    "conseil-consulaire": 8,
+    "senateur": 6,
+    "outre-mer": 4,
+    "conseiller-metropole-lyon": 3,
+    "depute": 3,
+    "depute-europeen": 3,
+    "president-epci": 2,
+    "afe": 1
+   },
+   "byDepartment": {
+    "Côte-d'Or": 32,
+    "Aisne": 22,
+    "Aube": 19,
+    "Rhône": 19,
+    "Ardennes": 18,
+    "Oise": 18,
+    "Moselle": 17,
+    "Gers": 16,
+    "Eure": 15,
+    "Isère": 15,
+    "Marne": 15,
+    "Meurthe-et-Moselle": 15,
+    "Haute-Marne": 14,
+    "Meuse": 14,
+    "Seine-Maritime": 14,
+    "Somme": 14,
+    "Bas-Rhin": 13,
+    "Charente-Maritime": 13,
+    "Polynésie française": 13,
+    "Ain": 12,
+    "Haute-Saône": 12,
+    "Bouches-du-Rhône": 11,
+    "Eure-et-Loir": 11,
+    "Haute-Corse": 11,
+    "Nord": 11,
+    "Saône-et-Loire": 11,
+    "Vaucluse": 11,
+    "Vosges": 11,
+    "Calvados": 10,
+    "Français de l'étranger": 10,
+    "Haut-Rhin": 10,
+    "Loiret": 10,
+    "Drôme": 9,
+    "Manche": 9,
+    "Pas-de-Calais": 9,
+    "Yonne": 9,
+    "Doubs": 8,
+    "Gironde": 8,
+    "Indre": 8,
+    "Loir-et-Cher": 8,
+    "Loire": 8,
+    "Seine-et-Marne": 8,
+    "Alpes-de-Haute-Provence": 7,
+    "Corse-du-Sud": 7,
+    "Haute-Garonne": 7,
+    "Haute-Savoie": 7,
+    "Lot-et-Garonne": 7,
+    "Orne": 7,
+    "Puy-de-Dôme": 7,
+    "Var": 7,
+    "Aveyron": 6,
+    "Hérault": 6,
+    "Jura": 6,
+    "Sarthe": 6,
+    "Savoie": 6,
+    "Yvelines": 6,
+    "Ardèche": 5,
+    "Dordogne": 5,
+    "Haute-Vienne": 5,
+    "Maine-et-Loire": 5,
+    "Tarn-et-Garonne": 5,
+    "Val-d'Oise": 5,
+    "Charente": 4,
+    "Cher": 4,
+    "Creuse": 4,
+    "Indre-et-Loire": 4,
+    "Pyrénées-Atlantiques": 4,
+    "Pyrénées-Orientales": 4,
+    "Vendée": 4,
+    "Vienne": 4,
+    "Allier": 3,
+    "Alpes-Maritimes": 3,
+    "Haute-Loire": 3,
+    "Lot": 3,
+    "Mayenne": 3,
+    "Parlement européen": 3,
+    "Gard": 2,
+    "Hautes-Pyrénées": 2,
+    "Hauts-de-Seine": 2,
+    "Ille-et-Vilaine": 2,
+    "Morbihan": 2,
+    "Nièvre": 2,
+    "Saint-Barthélemy": 2,
+    "Seine-Saint-Denis": 2,
+    "Tarn": 2,
+    "Aude": 1,
+    "Cantal": 1,
+    "Corrèze": 1,
+    "Finistère": 1,
+    "Hautes-Alpes": 1,
+    "Landes": 1,
+    "Loire-Atlantique": 1,
+    "Lozère": 1,
+    "Nouvelle-Calédonie": 1,
+    "Val-de-Marne": 1
+   }
+  },
+  {
+   "name": "JADOT Yannick",
+   "displayName": "Yannick Jadot",
+   "total": 712,
+   "departments": 98,
+   "topDepartment": {
+    "name": "Rhône",
+    "count": 70,
+    "share": 0.0983
+   },
+   "rule": {
+    "reached500": true,
+    "departments30": true,
+    "share10": true
+   },
+   "qualifiedOnPublishedData": true,
+   "reached500On": "2022-02-22",
+   "byDate": [
+    [
+     "2022-02-01",
+     11
+    ],
+    [
+     "2022-02-03",
+     80
+    ],
+    [
+     "2022-02-08",
+     268
+    ],
+    [
+     "2022-02-10",
+     325
+    ],
+    [
+     "2022-02-15",
+     450
+    ],
+    [
+     "2022-02-17",
+     490
+    ],
+    [
+     "2022-02-22",
+     565
+    ],
+    [
+     "2022-02-24",
+     615
+    ],
+    [
+     "2022-03-01",
+     669
+    ],
+    [
+     "2022-03-03",
+     689
+    ],
+    [
+     "2022-03-07",
+     712
+    ]
+   ],
+   "byMandate": {
+    "maire": 292,
+    "conseiller-regional": 137,
+    "conseiller-departemental": 120,
+    "conseiller-metropole-lyon": 51,
+    "conseiller-paris": 26,
+    "afe": 16,
+    "depute": 11,
+    "depute-europeen": 10,
+    "maire-arrondissement": 10,
+    "maire-delegue": 10,
+    "senateur": 10,
+    "conseil-consulaire": 9,
+    "assemblee-corse": 4,
+    "outre-mer": 4,
+    "president-epci": 2
+   },
+   "byDepartment": {
+    "Rhône": 70,
+    "Paris": 33,
+    "Français de l'étranger": 27,
+    "Gironde": 21,
+    "Ille-et-Vilaine": 19,
+    "Isère": 18,
+    "Loire-Atlantique": 16,
+    "Jura": 15,
+    "Essonne": 14,
+    "Bas-Rhin": 13,
+    "Calvados": 13,
+    "Côte-d'Or": 12,
+    "Haute-Garonne": 12,
+    "Côtes-d'Armor": 11,
+    "Deux-Sèvres": 11,
+    "Meurthe-et-Moselle": 11,
+    "Moselle": 11,
+    "Doubs": 10,
+    "Lot-et-Garonne": 10,
+    "Maine-et-Loire": 10,
+    "Nord": 10,
+    "Parlement européen": 10,
+    "Seine-Maritime": 10,
+    "Aude": 9,
+    "Haute-Savoie": 9,
+    "Manche": 9,
+    "Puy-de-Dôme": 9,
+    "Aisne": 8,
+    "Finistère": 8,
+    "Hauts-de-Seine": 8,
+    "Hérault": 8,
+    "Pas-de-Calais": 8,
+    "Val-d'Oise": 8,
+    "Val-de-Marne": 8,
+    "Corse-du-Sud": 7,
+    "Haute-Corse": 7,
+    "Seine-Saint-Denis": 7,
+    "Charente-Maritime": 6,
+    "Gard": 6,
+    "Haut-Rhin": 6,
+    "Indre-et-Loire": 6,
+    "Loire": 6,
+    "Marne": 6,
+    "Pyrénées-Orientales": 6,
+    "Somme": 6,
+    "Ain": 5,
+    "Drôme": 5,
+    "Haute-Saône": 5,
+    "Loir-et-Cher": 5,
+    "Loiret": 5,
+    "Mayenne": 5,
+    "Meuse": 5,
+    "Morbihan": 5,
+    "Pyrénées-Atlantiques": 5,
+    "Vienne": 5,
+    "Charente": 4,
+    "Dordogne": 4,
+    "Eure": 4,
+    "Gers": 4,
+    "Hautes-Pyrénées": 4,
+    "Oise": 4,
+    "Saône-et-Loire": 4,
+    "Savoie": 4,
+    "Yvelines": 4,
+    "Allier": 3,
+    "Alpes-de-Haute-Provence": 3,
+    "Alpes-Maritimes": 3,
+    "Ardèche": 3,
+    "Ardennes": 3,
+    "Bouches-du-Rhône": 3,
+    "Cantal": 3,
+    "Cher": 3,
+    "Eure-et-Loir": 3,
+    "Indre": 3,
+    "Nièvre": 3,
+    "Sarthe": 3,
+    "Territoire de Belfort": 3,
+    "Vaucluse": 3,
+    "Vosges": 3,
+    "Yonne": 3,
+    "Aube": 2,
+    "Aveyron": 2,
+    "Corrèze": 2,
+    "Creuse": 2,
+    "Haute-Loire": 2,
+    "Haute-Marne": 2,
+    "Haute-Vienne": 2,
+    "Hautes-Alpes": 2,
+    "Landes": 2,
+    "Lot": 2,
+    "Martinique": 2,
+    "Tarn": 2,
+    "Ariège": 1,
+    "Lozère": 1,
+    "Nouvelle-Calédonie": 1,
+    "Polynésie française": 1,
+    "Var": 1,
+    "Vendée": 1
+   }
+  },
+  {
+   "name": "LASSALLE Jean",
+   "displayName": "Jean Lassalle",
+   "total": 642,
+   "departments": 86,
+   "topDepartment": {
+    "name": "Pyrénées-Atlantiques",
+    "count": 50,
+    "share": 0.0779
+   },
+   "rule": {
+    "reached500": true,
+    "departments30": true,
+    "share10": true
+   },
+   "qualifiedOnPublishedData": true,
+   "reached500On": "2022-02-17",
+   "byDate": [
+    [
+     "2022-02-01",
+     15
+    ],
+    [
+     "2022-02-03",
+     124
+    ],
+    [
+     "2022-02-08",
+     316
+    ],
+    [
+     "2022-02-10",
+     382
+    ],
+    [
+     "2022-02-15",
+     471
+    ],
+    [
+     "2022-02-17",
+     503
+    ],
+    [
+     "2022-02-22",
+     561
+    ],
+    [
+     "2022-02-24",
+     579
+    ],
+    [
+     "2022-03-01",
+     602
+    ],
+    [
+     "2022-03-03",
+     620
+    ],
+    [
+     "2022-03-07",
+     642
+    ]
+   ],
+   "byMandate": {
+    "maire": 606,
+    "maire-delegue": 17,
+    "conseiller-departemental": 9,
+    "assemblee-corse": 3,
+    "afe": 2,
+    "depute": 2,
+    "conseiller-regional": 1,
+    "president-epci": 1,
+    "senateur": 1
+   },
+   "byDepartment": {
+    "Pyrénées-Atlantiques": 50,
+    "Hautes-Pyrénées": 28,
+    "Haute-Garonne": 26,
+    "Gers": 24,
+    "Haute-Corse": 24,
+    "Gironde": 20,
+    "Dordogne": 18,
+    "Lot-et-Garonne": 18,
+    "Aveyron": 16,
+    "Moselle": 15,
+    "Corse-du-Sud": 14,
+    "Doubs": 13,
+    "Haute-Saône": 12,
+    "Tarn": 12,
+    "Aude": 11,
+    "Charente": 11,
+    "Eure-et-Loir": 11,
+    "Jura": 11,
+    "Ardennes": 10,
+    "Ariège": 10,
+    "Hautes-Alpes": 10,
+    "Landes": 10,
+    "Puy-de-Dôme": 10,
+    "Ain": 9,
+    "Charente-Maritime": 9,
+    "Meuse": 9,
+    "Vosges": 9,
+    "Corrèze": 8,
+    "Drôme": 8,
+    "Loire": 8,
+    "Bas-Rhin": 7,
+    "Côte-d'Or": 7,
+    "Côtes-d'Armor": 7,
+    "Indre": 7,
+    "Nièvre": 7,
+    "Aube": 6,
+    "Gard": 6,
+    "Haut-Rhin": 6,
+    "Hérault": 6,
+    "Lot": 6,
+    "Orne": 6,
+    "Saône-et-Loire": 6,
+    "Yonne": 6,
+    "Allier": 5,
+    "Lozère": 5,
+    "Meurthe-et-Moselle": 5,
+    "Ardèche": 4,
+    "Cantal": 4,
+    "Eure": 4,
+    "Haute-Vienne": 4,
+    "Loir-et-Cher": 4,
+    "Pas-de-Calais": 4,
+    "Pyrénées-Orientales": 4,
+    "Savoie": 4,
+    "Aisne": 3,
+    "Alpes-de-Haute-Provence": 3,
+    "Calvados": 3,
+    "Creuse": 3,
+    "Haute-Marne": 3,
+    "Haute-Savoie": 3,
+    "Indre-et-Loire": 3,
+    "Maine-et-Loire": 3,
+    "Marne": 3,
+    "Nord": 3,
+    "Oise": 3,
+    "Seine-Maritime": 3,
+    "Vaucluse": 3,
+    "Vendée": 3,
+    "Deux-Sèvres": 2,
+    "Finistère": 2,
+    "Français de l'étranger": 2,
+    "Isère": 2,
+    "Manche": 2,
+    "Morbihan": 2,
+    "Rhône": 2,
+    "Sarthe": 2,
+    "Alpes-Maritimes": 1,
+    "Cher": 1,
+    "Haute-Loire": 1,
+    "Loire-Atlantique": 1,
+    "Mayenne": 1,
+    "Seine-et-Marne": 1,
+    "Tarn-et-Garonne": 1,
+    "Territoire de Belfort": 1,
+    "Val-de-Marne": 1,
+    "Yvelines": 1
+   }
+  },
+  {
+   "name": "ROUSSEL Fabien",
+   "displayName": "Fabien Roussel",
+   "total": 626,
+   "departments": 95,
+   "topDepartment": {
+    "name": "Nord",
+    "count": 40,
+    "share": 0.0639
+   },
+   "rule": {
+    "reached500": true,
+    "departments30": true,
+    "share10": true
+   },
+   "qualifiedOnPublishedData": true,
+   "reached500On": "2022-02-17",
+   "byDate": [
+    [
+     "2022-02-01",
+     30
+    ],
+    [
+     "2022-02-03",
+     159
+    ],
+    [
+     "2022-02-08",
+     326
+    ],
+    [
+     "2022-02-10",
+     381
+    ],
+    [
+     "2022-02-15",
+     492
+    ],
+    [
+     "2022-02-17",
+     529
+    ],
+    [
+     "2022-02-22",
+     582
+    ],
+    [
+     "2022-02-24",
+     593
+    ],
+    [
+     "2022-03-01",
+     613
+    ],
+    [
+     "2022-03-03",
+     619
+    ],
+    [
+     "2022-03-07",
+     626
+    ]
+   ],
+   "byMandate": {
+    "maire": 394,
+    "conseiller-departemental": 113,
+    "conseiller-regional": 62,
+    "senateur": 14,
+    "maire-delegue": 13,
+    "conseiller-paris": 12,
+    "depute": 8,
+    "conseiller-metropole-lyon": 5,
+    "president-epci": 3,
+    "conseil-consulaire": 1,
+    "maire-arrondissement": 1
+   },
+   "byDepartment": {
+    "Nord": 40,
+    "Dordogne": 25,
+    "Pas-de-Calais": 23,
+    "Gard": 20,
+    "Puy-de-Dôme": 19,
+    "Allier": 17,
+    "Val-de-Marne": 17,
+    "Paris": 16,
+    "Hautes-Pyrénées": 15,
+    "Bouches-du-Rhône": 14,
+    "Oise": 14,
+    "Gironde": 13,
+    "Haute-Garonne": 13,
+    "Meurthe-et-Moselle": 13,
+    "Cher": 12,
+    "Somme": 12,
+    "Aisne": 11,
+    "Haute-Vienne": 11,
+    "Isère": 11,
+    "Landes": 11,
+    "Seine-Saint-Denis": 11,
+    "Corrèze": 10,
+    "Côtes-d'Armor": 10,
+    "Aude": 9,
+    "Rhône": 9,
+    "Seine-Maritime": 9,
+    "Loiret": 8,
+    "Pyrénées-Orientales": 8,
+    "Finistère": 7,
+    "Jura": 7,
+    "Nièvre": 7,
+    "Alpes-de-Haute-Provence": 6,
+    "Ariège": 6,
+    "Doubs": 6,
+    "Essonne": 6,
+    "Gers": 6,
+    "Hauts-de-Seine": 6,
+    "Hérault": 6,
+    "La Réunion": 6,
+    "Lot": 6,
+    "Pyrénées-Atlantiques": 6,
+    "Seine-et-Marne": 6,
+    "Ardèche": 5,
+    "Calvados": 5,
+    "Loire": 5,
+    "Moselle": 5,
+    "Tarn": 5,
+    "Aveyron": 4,
+    "Cantal": 4,
+    "Haute-Corse": 4,
+    "Lot-et-Garonne": 4,
+    "Lozère": 4,
+    "Maine-et-Loire": 4,
+    "Meuse": 4,
+    "Morbihan": 4,
+    "Yonne": 4,
+    "Alpes-Maritimes": 3,
+    "Bas-Rhin": 3,
+    "Côte-d'Or": 3,
+    "Eure": 3,
+    "Haute-Savoie": 3,
+    "Ille-et-Vilaine": 3,
+    "Indre": 3,
+    "Indre-et-Loire": 3,
+    "Saône-et-Loire": 3,
+    "Sarthe": 3,
+    "Savoie": 3,
+    "Charente": 2,
+    "Charente-Maritime": 2,
+    "Corse-du-Sud": 2,
+    "Creuse": 2,
+    "Deux-Sèvres": 2,
+    "Haute-Loire": 2,
+    "Haute-Marne": 2,
+    "Haute-Saône": 2,
+    "Loire-Atlantique": 2,
+    "Marne": 2,
+    "Tarn-et-Garonne": 2,
+    "Val-d'Oise": 2,
+    "Vaucluse": 2,
+    "Vendée": 2,
+    "Vienne": 2,
+    "Yvelines": 2,
+    "Ain": 1,
+    "Aube": 1,
+    "Drôme": 1,
+    "Eure-et-Loir": 1,
+    "Français de l'étranger": 1,
+    "Hautes-Alpes": 1,
+    "Loir-et-Cher": 1,
+    "Manche": 1,
+    "Mayenne": 1,
+    "Orne": 1,
+    "Territoire de Belfort": 1,
+    "Vosges": 1
+   }
+  },
+  {
+   "name": "LE PEN Marine",
+   "displayName": "Marine Le Pen",
+   "total": 622,
+   "departments": 101,
+   "topDepartment": {
+    "name": "Pas-de-Calais",
+    "count": 28,
+    "share": 0.045
+   },
+   "rule": {
+    "reached500": true,
+    "departments30": true,
+    "share10": true
+   },
+   "qualifiedOnPublishedData": true,
+   "reached500On": "2022-03-01",
+   "byDate": [
+    [
+     "2022-02-01",
+     2
+    ],
+    [
+     "2022-02-03",
+     35
+    ],
+    [
+     "2022-02-08",
+     139
+    ],
+    [
+     "2022-02-10",
+     274
+    ],
+    [
+     "2022-02-15",
+     331
+    ],
+    [
+     "2022-02-17",
+     366
+    ],
+    [
+     "2022-02-22",
+     393
+    ],
+    [
+     "2022-02-24",
+     414
+    ],
+    [
+     "2022-03-01",
+     503
+    ],
+    [
+     "2022-03-03",
+     603
+    ],
+    [
+     "2022-03-07",
+     622
+    ]
+   ],
+   "byMandate": {
+    "maire": 292,
+    "conseiller-regional": 241,
+    "conseiller-departemental": 29,
+    "maire-delegue": 21,
+    "depute-europeen": 19,
+    "depute": 12,
+    "outre-mer": 5,
+    "senateur": 2,
+    "conseil-consulaire": 1
+   },
+   "byDepartment": {
+    "Pas-de-Calais": 28,
+    "Aisne": 20,
+    "Haute-Marne": 20,
+    "Parlement européen": 19,
+    "Bouches-du-Rhône": 17,
+    "Marne": 17,
+    "Doubs": 16,
+    "Moselle": 16,
+    "Gironde": 15,
+    "Var": 15,
+    "Vaucluse": 15,
+    "Aube": 14,
+    "Haute-Saône": 14,
+    "Hérault": 14,
+    "Nord": 14,
+    "Meuse": 13,
+    "Bas-Rhin": 11,
+    "Meurthe-et-Moselle": 11,
+    "Seine-Maritime": 11,
+    "Alpes-Maritimes": 10,
+    "Charente-Maritime": 10,
+    "Manche": 10,
+    "Oise": 10,
+    "Vosges": 10,
+    "Côte-d'Or": 9,
+    "Polynésie française": 9,
+    "Yonne": 9,
+    "Gard": 8,
+    "Haut-Rhin": 8,
+    "Seine-et-Marne": 8,
+    "Yvelines": 8,
+    "Haute-Garonne": 7,
+    "Loiret": 7,
+    "Pyrénées-Orientales": 7,
+    "Savoie": 7,
+    "Ain": 6,
+    "Calvados": 6,
+    "Eure-et-Loir": 6,
+    "Jura": 6,
+    "Orne": 6,
+    "Saône-et-Loire": 6,
+    "Somme": 6,
+    "Ardennes": 5,
+    "Eure": 5,
+    "La Réunion": 5,
+    "Sarthe": 5,
+    "Alpes-de-Haute-Provence": 4,
+    "Charente": 4,
+    "Essonne": 4,
+    "Gers": 4,
+    "Mayenne": 4,
+    "Pyrénées-Atlantiques": 4,
+    "Vendée": 4,
+    "Ardèche": 3,
+    "Aude": 3,
+    "Cher": 3,
+    "Corrèze": 3,
+    "Dordogne": 3,
+    "Finistère": 3,
+    "Hautes-Alpes": 3,
+    "Ille-et-Vilaine": 3,
+    "Isère": 3,
+    "Loir-et-Cher": 3,
+    "Loire": 3,
+    "Rhône": 3,
+    "Tarn": 3,
+    "Val-d'Oise": 3,
+    "Ariège": 2,
+    "Aveyron": 2,
+    "Côtes-d'Armor": 2,
+    "Drôme": 2,
+    "Haute-Savoie": 2,
+    "Hauts-de-Seine": 2,
+    "Indre": 2,
+    "Indre-et-Loire": 2,
+    "Landes": 2,
+    "Loire-Atlantique": 2,
+    "Lot": 2,
+    "Lot-et-Garonne": 2,
+    "Lozère": 2,
+    "Mayotte": 2,
+    "Morbihan": 2,
+    "Paris": 2,
+    "Puy-de-Dôme": 2,
+    "Tarn-et-Garonne": 2,
+    "Vienne": 2,
+    "Allier": 1,
+    "Cantal": 1,
+    "Corse-du-Sud": 1,
+    "Creuse": 1,
+    "Deux-Sèvres": 1,
+    "Français de l'étranger": 1,
+    "Haute-Corse": 1,
+    "Haute-Vienne": 1,
+    "Hautes-Pyrénées": 1,
+    "Maine-et-Loire": 1,
+    "Nièvre": 1,
+    "Nouvelle-Calédonie": 1,
+    "Saint-Pierre-et-Miquelon": 1,
+    "Territoire de Belfort": 1,
+    "Val-de-Marne": 1
+   }
+  },
+  {
+   "name": "DUPONT-AIGNAN Nicolas",
+   "displayName": "Nicolas Dupont-Aignan",
+   "total": 600,
+   "departments": 84,
+   "topDepartment": {
+    "name": "Haute-Marne",
+    "count": 36,
+    "share": 0.06
+   },
+   "rule": {
+    "reached500": true,
+    "departments30": true,
+    "share10": true
+   },
+   "qualifiedOnPublishedData": true,
+   "reached500On": "2022-03-01",
+   "byDate": [
+    [
+     "2022-02-01",
+     10
+    ],
+    [
+     "2022-02-03",
+     77
+    ],
+    [
+     "2022-02-08",
+     232
+    ],
+    [
+     "2022-02-10",
+     280
+    ],
+    [
+     "2022-02-15",
+     360
+    ],
+    [
+     "2022-02-17",
+     379
+    ],
+    [
+     "2022-02-22",
+     422
+    ],
+    [
+     "2022-02-24",
+     457
+    ],
+    [
+     "2022-03-01",
+     532
+    ],
+    [
+     "2022-03-03",
+     582
+    ],
+    [
+     "2022-03-07",
+     600
+    ]
+   ],
+   "byMandate": {
+    "maire": 569,
+    "maire-delegue": 22,
+    "conseiller-departemental": 5,
+    "conseiller-regional": 3,
+    "depute": 1
+   },
+   "byDepartment": {
+    "Haute-Marne": 36,
+    "Vosges": 29,
+    "Moselle": 28,
+    "Somme": 22,
+    "Ardennes": 21,
+    "Marne": 20,
+    "Côte-d'Or": 19,
+    "Aisne": 17,
+    "Manche": 17,
+    "Meuse": 17,
+    "Calvados": 15,
+    "Jura": 15,
+    "Saône-et-Loire": 15,
+    "Dordogne": 13,
+    "Doubs": 12,
+    "Eure-et-Loir": 12,
+    "Aube": 11,
+    "Bas-Rhin": 11,
+    "Haute-Saône": 11,
+    "Meurthe-et-Moselle": 11,
+    "Orne": 11,
+    "Pas-de-Calais": 11,
+    "Oise": 10,
+    "Drôme": 9,
+    "Yonne": 9,
+    "Eure": 8,
+    "Haut-Rhin": 8,
+    "Seine-Maritime": 8,
+    "Haute-Savoie": 7,
+    "Loiret": 7,
+    "Aude": 6,
+    "Hautes-Alpes": 6,
+    "Indre": 6,
+    "Loir-et-Cher": 6,
+    "Sarthe": 6,
+    "Charente-Maritime": 5,
+    "Essonne": 5,
+    "Loire": 5,
+    "Nièvre": 5,
+    "Nord": 5,
+    "Seine-et-Marne": 5,
+    "Val-d'Oise": 5,
+    "Ain": 4,
+    "Gers": 4,
+    "Hautes-Pyrénées": 4,
+    "Hérault": 4,
+    "Lot-et-Garonne": 4,
+    "Rhône": 4,
+    "Alpes-de-Haute-Provence": 3,
+    "Creuse": 3,
+    "Gard": 3,
+    "Haute-Garonne": 3,
+    "Haute-Loire": 3,
+    "Isère": 3,
+    "Lot": 3,
+    "Maine-et-Loire": 3,
+    "Pyrénées-Atlantiques": 3,
+    "Vaucluse": 3,
+    "Vendée": 3,
+    "Ariège": 2,
+    "Bouches-du-Rhône": 2,
+    "Cantal": 2,
+    "Charente": 2,
+    "Côtes-d'Armor": 2,
+    "Gironde": 2,
+    "Indre-et-Loire": 2,
+    "Landes": 2,
+    "Lozère": 2,
+    "Puy-de-Dôme": 2,
+    "Territoire de Belfort": 2,
+    "Var": 2,
+    "Vienne": 2,
+    "Allier": 1,
+    "Alpes-Maritimes": 1,
+    "Cher": 1,
+    "Corrèze": 1,
+    "Corse-du-Sud": 1,
+    "Deux-Sèvres": 1,
+    "Ille-et-Vilaine": 1,
+    "La Réunion": 1,
+    "Loire-Atlantique": 1,
+    "Mayenne": 1,
+    "Tarn": 1,
+    "Yvelines": 1
+   }
+  },
+  {
+   "name": "POUTOU Philippe",
+   "displayName": "Philippe Poutou",
+   "total": 596,
+   "departments": 91,
+   "topDepartment": {
+    "name": "Aisne",
+    "count": 27,
+    "share": 0.0453
+   },
+   "rule": {
+    "reached500": true,
+    "departments30": true,
+    "share10": true
+   },
+   "qualifiedOnPublishedData": true,
+   "reached500On": "2022-03-07",
+   "byDate": [
+    [
+     "2022-02-01",
+     4
+    ],
+    [
+     "2022-02-03",
+     54
+    ],
+    [
+     "2022-02-08",
+     127
+    ],
+    [
+     "2022-02-10",
+     146
+    ],
+    [
+     "2022-02-15",
+     188
+    ],
+    [
+     "2022-02-17",
+     199
+    ],
+    [
+     "2022-02-22",
+     224
+    ],
+    [
+     "2022-02-24",
+     243
+    ],
+    [
+     "2022-03-01",
+     342
+    ],
+    [
+     "2022-03-03",
+     439
+    ],
+    [
+     "2022-03-07",
+     596
+    ]
+   ],
+   "byMandate": {
+    "maire": 506,
+    "maire-delegue": 39,
+    "conseiller-departemental": 25,
+    "outre-mer": 9,
+    "conseiller-regional": 5,
+    "senateur": 5,
+    "assemblee-corse": 3,
+    "depute": 3,
+    "conseiller-metropole-lyon": 1
+   },
+   "byDepartment": {
+    "Aisne": 27,
+    "Doubs": 26,
+    "Pyrénées-Atlantiques": 23,
+    "Haute-Saône": 22,
+    "Aveyron": 19,
+    "Dordogne": 15,
+    "Calvados": 14,
+    "Haute-Savoie": 14,
+    "Isère": 14,
+    "Meuse": 13,
+    "Lozère": 12,
+    "Aube": 11,
+    "Deux-Sèvres": 11,
+    "Haute-Garonne": 11,
+    "Haute-Marne": 11,
+    "Jura": 11,
+    "Loire": 11,
+    "Somme": 10,
+    "Tarn": 10,
+    "Ariège": 9,
+    "Aude": 9,
+    "Charente": 9,
+    "Côtes-d'Armor": 9,
+    "Eure": 9,
+    "Finistère": 9,
+    "Haute-Corse": 9,
+    "Seine-et-Marne": 9,
+    "Ardèche": 8,
+    "Eure-et-Loir": 8,
+    "Nièvre": 8,
+    "Drôme": 7,
+    "Gers": 7,
+    "Martinique": 7,
+    "Vosges": 7,
+    "Creuse": 6,
+    "Loir-et-Cher": 6,
+    "Lot-et-Garonne": 6,
+    "Orne": 6,
+    "Rhône": 6,
+    "Yonne": 6,
+    "Ain": 5,
+    "Bas-Rhin": 5,
+    "Essonne": 5,
+    "Gard": 5,
+    "Gironde": 5,
+    "Hautes-Pyrénées": 5,
+    "Oise": 5,
+    "Pas-de-Calais": 5,
+    "Saône-et-Loire": 5,
+    "Vienne": 5,
+    "Alpes-de-Haute-Provence": 4,
+    "Ardennes": 4,
+    "Cher": 4,
+    "Corrèze": 4,
+    "Haute-Vienne": 4,
+    "Hautes-Alpes": 4,
+    "Ille-et-Vilaine": 4,
+    "Indre-et-Loire": 4,
+    "Pyrénées-Orientales": 4,
+    "Seine-Maritime": 4,
+    "Vaucluse": 4,
+    "Côte-d'Or": 3,
+    "Hérault": 3,
+    "Indre": 3,
+    "Landes": 3,
+    "Manche": 3,
+    "Marne": 3,
+    "Meurthe-et-Moselle": 3,
+    "Nouvelle-Calédonie": 3,
+    "Savoie": 3,
+    "Charente-Maritime": 2,
+    "Guyane": 2,
+    "La Réunion": 2,
+    "Loiret": 2,
+    "Lot": 2,
+    "Morbihan": 2,
+    "Sarthe": 2,
+    "Tarn-et-Garonne": 2,
+    "Territoire de Belfort": 2,
+    "Bouches-du-Rhône": 1,
+    "Cantal": 1,
+    "Corse-du-Sud": 1,
+    "Haut-Rhin": 1,
+    "Loire-Atlantique": 1,
+    "Moselle": 1,
+    "Nord": 1,
+    "Puy-de-Dôme": 1,
+    "Seine-Saint-Denis": 1,
+    "Var": 1,
+    "Vendée": 1,
+    "Yvelines": 1
+   }
+  },
+  {
+   "name": "ARTHAUD Nathalie",
+   "displayName": "Nathalie Arthaud",
+   "total": 576,
+   "departments": 75,
+   "topDepartment": {
+    "name": "Meuse",
+    "count": 44,
+    "share": 0.0764
+   },
+   "rule": {
+    "reached500": true,
+    "departments30": true,
+    "share10": true
+   },
+   "qualifiedOnPublishedData": true,
+   "reached500On": "2022-02-15",
+   "byDate": [
+    [
+     "2022-02-01",
+     12
+    ],
+    [
+     "2022-02-03",
+     138
+    ],
+    [
+     "2022-02-08",
+     368
+    ],
+    [
+     "2022-02-10",
+     419
+    ],
+    [
+     "2022-02-15",
+     509
+    ],
+    [
+     "2022-02-17",
+     529
+    ],
+    [
+     "2022-02-22",
+     559
+    ],
+    [
+     "2022-02-24",
+     562
+    ],
+    [
+     "2022-03-01",
+     568
+    ],
+    [
+     "2022-03-03",
+     570
+    ],
+    [
+     "2022-03-07",
+     576
+    ]
+   ],
+   "byMandate": {
+    "maire": 525,
+    "maire-delegue": 50,
+    "conseiller-departemental": 1
+   },
+   "byDepartment": {
+    "Meuse": 44,
+    "Haute-Marne": 29,
+    "Calvados": 28,
+    "Meurthe-et-Moselle": 27,
+    "Eure": 25,
+    "Seine-Maritime": 24,
+    "Aisne": 22,
+    "Doubs": 19,
+    "Vosges": 18,
+    "Ardennes": 17,
+    "Pas-de-Calais": 17,
+    "Côtes-d'Armor": 14,
+    "Moselle": 14,
+    "Oise": 13,
+    "Somme": 13,
+    "Drôme": 12,
+    "Hautes-Pyrénées": 12,
+    "Côte-d'Or": 11,
+    "Marne": 11,
+    "Manche": 10,
+    "Charente": 9,
+    "Dordogne": 9,
+    "Haute-Saône": 9,
+    "Isère": 9,
+    "Jura": 9,
+    "Lot": 8,
+    "Lot-et-Garonne": 8,
+    "Orne": 7,
+    "Ain": 6,
+    "Corrèze": 6,
+    "Gironde": 6,
+    "Nord": 6,
+    "Ardèche": 5,
+    "Gard": 5,
+    "Haute-Corse": 5,
+    "Haute-Garonne": 5,
+    "Hautes-Alpes": 5,
+    "Aube": 4,
+    "Cher": 4,
+    "Gers": 4,
+    "Haute-Savoie": 4,
+    "Indre": 4,
+    "Saône-et-Loire": 4,
+    "Bas-Rhin": 3,
+    "Charente-Maritime": 3,
+    "Creuse": 3,
+    "Ille-et-Vilaine": 3,
+    "Indre-et-Loire": 3,
+    "Lozère": 3,
+    "Puy-de-Dôme": 3,
+    "Alpes-de-Haute-Provence": 2,
+    "Aude": 2,
+    "Haut-Rhin": 2,
+    "Loir-et-Cher": 2,
+    "Loire-Atlantique": 2,
+    "Martinique": 2,
+    "Nièvre": 2,
+    "Pyrénées-Atlantiques": 2,
+    "Rhône": 2,
+    "Allier": 1,
+    "Aveyron": 1,
+    "Corse-du-Sud": 1,
+    "Guadeloupe": 1,
+    "Haute-Vienne": 1,
+    "Landes": 1,
+    "Loire": 1,
+    "Loiret": 1,
+    "Pyrénées-Orientales": 1,
+    "Sarthe": 1,
+    "Savoie": 1,
+    "Seine-et-Marne": 1,
+    "Territoire de Belfort": 1,
+    "Val-d'Oise": 1,
+    "Vaucluse": 1,
+    "Vienne": 1
+   }
+  },
+  {
+   "name": "ASSELINEAU François",
+   "displayName": "François Asselineau",
+   "total": 293,
+   "departments": 59,
+   "topDepartment": {
+    "name": "Haute-Marne",
+    "count": 33,
+    "share": 0.1126
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": true,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-01",
+     10
+    ],
+    [
+     "2022-02-03",
+     56
+    ],
+    [
+     "2022-02-08",
+     171
+    ],
+    [
+     "2022-02-10",
+     193
+    ],
+    [
+     "2022-02-15",
+     210
+    ],
+    [
+     "2022-02-17",
+     217
+    ],
+    [
+     "2022-02-22",
+     241
+    ],
+    [
+     "2022-02-24",
+     247
+    ],
+    [
+     "2022-03-01",
+     263
+    ],
+    [
+     "2022-03-03",
+     279
+    ],
+    [
+     "2022-03-07",
+     293
+    ]
+   ],
+   "byMandate": {
+    "maire": 233,
+    "maire-delegue": 58,
+    "conseil-consulaire": 1,
+    "conseiller-departemental": 1
+   },
+   "byDepartment": {
+    "Haute-Marne": 33,
+    "Côte-d'Or": 24,
+    "Meuse": 23,
+    "Aisne": 22,
+    "Marne": 17,
+    "Aube": 15,
+    "Ardennes": 12,
+    "Yonne": 12,
+    "Moselle": 10,
+    "Orne": 9,
+    "Hérault": 7,
+    "Aude": 6,
+    "Aveyron": 6,
+    "Dordogne": 6,
+    "Manche": 6,
+    "Somme": 6,
+    "Gard": 5,
+    "Calvados": 4,
+    "Eure": 4,
+    "Drôme": 3,
+    "Gers": 3,
+    "Lot-et-Garonne": 3,
+    "Meurthe-et-Moselle": 3,
+    "Seine-et-Marne": 3,
+    "Ardèche": 2,
+    "Charente": 2,
+    "Charente-Maritime": 2,
+    "Cher": 2,
+    "Essonne": 2,
+    "Haut-Rhin": 2,
+    "Haute-Saône": 2,
+    "Hautes-Pyrénées": 2,
+    "Indre": 2,
+    "Jura": 2,
+    "Mayenne": 2,
+    "Nord": 2,
+    "Oise": 2,
+    "Pas-de-Calais": 2,
+    "Seine-Maritime": 2,
+    "Vosges": 2,
+    "Ain": 1,
+    "Alpes-de-Haute-Provence": 1,
+    "Ariège": 1,
+    "Eure-et-Loir": 1,
+    "Français de l'étranger": 1,
+    "Haute-Garonne": 1,
+    "Haute-Savoie": 1,
+    "Indre-et-Loire": 1,
+    "Landes": 1,
+    "Loire": 1,
+    "Loiret": 1,
+    "Morbihan": 1,
+    "Puy-de-Dôme": 1,
+    "Rhône": 1,
+    "Sarthe": 1,
+    "Val-d'Oise": 1,
+    "Vaucluse": 1,
+    "Vendée": 1,
+    "Yvelines": 1
+   }
+  },
+  {
+   "name": "TAUBIRA Christiane",
+   "displayName": "Christiane Taubira",
+   "total": 274,
+   "departments": 80,
+   "topDepartment": {
+    "name": "Guyane",
+    "count": 19,
+    "share": 0.0693
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": true,
+    "share10": true
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-03",
+     8
+    ],
+    [
+     "2022-02-08",
+     36
+    ],
+    [
+     "2022-02-10",
+     47
+    ],
+    [
+     "2022-02-15",
+     73
+    ],
+    [
+     "2022-02-17",
+     86
+    ],
+    [
+     "2022-02-22",
+     104
+    ],
+    [
+     "2022-02-24",
+     128
+    ],
+    [
+     "2022-03-01",
+     181
+    ],
+    [
+     "2022-03-03",
+     241
+    ],
+    [
+     "2022-03-07",
+     274
+    ]
+   ],
+   "byMandate": {
+    "maire": 170,
+    "conseiller-departemental": 34,
+    "conseiller-regional": 25,
+    "outre-mer": 24,
+    "maire-delegue": 9,
+    "conseil-consulaire": 5,
+    "afe": 2,
+    "president-epci": 2,
+    "conseiller-metropole-lyon": 1,
+    "depute": 1,
+    "maire-arrondissement": 1
+   },
+   "byDepartment": {
+    "Guyane": 19,
+    "Côte-d'Or": 13,
+    "Saône-et-Loire": 13,
+    "Martinique": 10,
+    "Nièvre": 8,
+    "Calvados": 7,
+    "Français de l'étranger": 7,
+    "Ille-et-Vilaine": 7,
+    "Isère": 7,
+    "Loire-Atlantique": 7,
+    "Puy-de-Dôme": 6,
+    "Rhône": 6,
+    "Ain": 5,
+    "Drôme": 5,
+    "Finistère": 5,
+    "Lot": 5,
+    "Seine-Saint-Denis": 5,
+    "Bouches-du-Rhône": 4,
+    "Côtes-d'Armor": 4,
+    "Gers": 4,
+    "Jura": 4,
+    "Loire": 4,
+    "Loiret": 4,
+    "Meuse": 4,
+    "Savoie": 4,
+    "Allier": 3,
+    "Alpes-de-Haute-Provence": 3,
+    "Ardèche": 3,
+    "Ariège": 3,
+    "Aude": 3,
+    "Charente-Maritime": 3,
+    "Dordogne": 3,
+    "Doubs": 3,
+    "Gard": 3,
+    "Haute-Garonne": 3,
+    "Haute-Savoie": 3,
+    "Hautes-Pyrénées": 3,
+    "Maine-et-Loire": 3,
+    "Manche": 3,
+    "Meurthe-et-Moselle": 3,
+    "Orne": 3,
+    "Vendée": 3,
+    "Vosges": 3,
+    "Ardennes": 2,
+    "Corrèze": 2,
+    "Creuse": 2,
+    "Gironde": 2,
+    "Haute-Marne": 2,
+    "Haute-Saône": 2,
+    "Hérault": 2,
+    "Loir-et-Cher": 2,
+    "Lot-et-Garonne": 2,
+    "Morbihan": 2,
+    "Moselle": 2,
+    "Pas-de-Calais": 2,
+    "Pyrénées-Atlantiques": 2,
+    "Tarn-et-Garonne": 2,
+    "Vienne": 2,
+    "Yonne": 2,
+    "Aube": 1,
+    "Cantal": 1,
+    "Charente": 1,
+    "Deux-Sèvres": 1,
+    "Eure-et-Loir": 1,
+    "Guadeloupe": 1,
+    "Haute-Loire": 1,
+    "Hauts-de-Seine": 1,
+    "Indre-et-Loire": 1,
+    "La Réunion": 1,
+    "Landes": 1,
+    "Marne": 1,
+    "Mayenne": 1,
+    "Nord": 1,
+    "Oise": 1,
+    "Saint-Pierre-et-Miquelon": 1,
+    "Sarthe": 1,
+    "Seine-Maritime": 1,
+    "Somme": 1,
+    "Vaucluse": 1,
+    "Yvelines": 1
+   }
+  },
+  {
+   "name": "KAZIB Anasse",
+   "displayName": "Anasse Kazib",
+   "total": 160,
+   "departments": 46,
+   "topDepartment": {
+    "name": "Aisne",
+    "count": 12,
+    "share": 0.075
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": true,
+    "share10": true
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-01",
+     1
+    ],
+    [
+     "2022-02-03",
+     21
+    ],
+    [
+     "2022-02-08",
+     84
+    ],
+    [
+     "2022-02-10",
+     99
+    ],
+    [
+     "2022-02-15",
+     116
+    ],
+    [
+     "2022-02-17",
+     122
+    ],
+    [
+     "2022-02-22",
+     128
+    ],
+    [
+     "2022-02-24",
+     130
+    ],
+    [
+     "2022-03-01",
+     144
+    ],
+    [
+     "2022-03-03",
+     149
+    ],
+    [
+     "2022-03-07",
+     160
+    ]
+   ],
+   "byMandate": {
+    "maire": 155,
+    "maire-delegue": 5
+   },
+   "byDepartment": {
+    "Aisne": 12,
+    "Gers": 11,
+    "Moselle": 11,
+    "Ariège": 9,
+    "Dordogne": 9,
+    "Hautes-Pyrénées": 9,
+    "Pyrénées-Atlantiques": 9,
+    "Haute-Garonne": 8,
+    "Ardennes": 6,
+    "Aude": 6,
+    "Seine-Maritime": 6,
+    "Somme": 5,
+    "Yonne": 5,
+    "Eure": 4,
+    "Meurthe-et-Moselle": 4,
+    "Aube": 3,
+    "Calvados": 3,
+    "Gard": 3,
+    "Meuse": 3,
+    "Corrèze": 2,
+    "Côte-d'Or": 2,
+    "Côtes-d'Armor": 2,
+    "Doubs": 2,
+    "Jura": 2,
+    "Lot-et-Garonne": 2,
+    "Tarn-et-Garonne": 2,
+    "Alpes-de-Haute-Provence": 1,
+    "Bas-Rhin": 1,
+    "Charente": 1,
+    "Creuse": 1,
+    "Deux-Sèvres": 1,
+    "Drôme": 1,
+    "Eure-et-Loir": 1,
+    "Gironde": 1,
+    "Hérault": 1,
+    "Landes": 1,
+    "Lot": 1,
+    "Lozère": 1,
+    "Marne": 1,
+    "Oise": 1,
+    "Pas-de-Calais": 1,
+    "Savoie": 1,
+    "Tarn": 1,
+    "Var": 1,
+    "Vaucluse": 1,
+    "Yvelines": 1
+   }
+  },
+  {
+   "name": "THOUY Hélène",
+   "displayName": "Hélène Thouy",
+   "total": 139,
+   "departments": 68,
+   "topDepartment": {
+    "name": "Seine-et-Marne",
+    "count": 7,
+    "share": 0.0504
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": true,
+    "share10": true
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-01",
+     2
+    ],
+    [
+     "2022-02-03",
+     22
+    ],
+    [
+     "2022-02-08",
+     48
+    ],
+    [
+     "2022-02-10",
+     56
+    ],
+    [
+     "2022-02-15",
+     70
+    ],
+    [
+     "2022-02-17",
+     74
+    ],
+    [
+     "2022-02-22",
+     89
+    ],
+    [
+     "2022-02-24",
+     97
+    ],
+    [
+     "2022-03-01",
+     114
+    ],
+    [
+     "2022-03-03",
+     124
+    ],
+    [
+     "2022-03-07",
+     139
+    ]
+   ],
+   "byMandate": {
+    "maire": 120,
+    "conseiller-departemental": 9,
+    "conseiller-regional": 3,
+    "maire-delegue": 2,
+    "president-epci": 2,
+    "conseil-consulaire": 1,
+    "conseiller-paris": 1,
+    "senateur": 1
+   },
+   "byDepartment": {
+    "Seine-et-Marne": 7,
+    "Oise": 6,
+    "Doubs": 5,
+    "Eure": 5,
+    "Moselle": 5,
+    "Haut-Rhin": 4,
+    "Meuse": 4,
+    "Seine-Maritime": 4,
+    "Aube": 3,
+    "Côte-d'Or": 3,
+    "Eure-et-Loir": 3,
+    "Haute-Marne": 3,
+    "Loiret": 3,
+    "Marne": 3,
+    "Meurthe-et-Moselle": 3,
+    "Orne": 3,
+    "Paris": 3,
+    "Puy-de-Dôme": 3,
+    "Vienne": 3,
+    "Yonne": 3,
+    "Ain": 2,
+    "Aisne": 2,
+    "Ardennes": 2,
+    "Charente-Maritime": 2,
+    "Drôme": 2,
+    "Gironde": 2,
+    "Haute-Corse": 2,
+    "Haute-Saône": 2,
+    "Indre-et-Loire": 2,
+    "Lot-et-Garonne": 2,
+    "Somme": 2,
+    "Var": 2,
+    "Vaucluse": 2,
+    "Vosges": 2,
+    "Yvelines": 2,
+    "Allier": 1,
+    "Alpes-de-Haute-Provence": 1,
+    "Ardèche": 1,
+    "Aude": 1,
+    "Bas-Rhin": 1,
+    "Bouches-du-Rhône": 1,
+    "Calvados": 1,
+    "Corrèze": 1,
+    "Côtes-d'Armor": 1,
+    "Creuse": 1,
+    "Dordogne": 1,
+    "Essonne": 1,
+    "Finistère": 1,
+    "Français de l'étranger": 1,
+    "Gard": 1,
+    "Haute-Garonne": 1,
+    "Haute-Vienne": 1,
+    "Hautes-Pyrénées": 1,
+    "Hauts-de-Seine": 1,
+    "Hérault": 1,
+    "Ille-et-Vilaine": 1,
+    "Indre": 1,
+    "Loir-et-Cher": 1,
+    "Lot": 1,
+    "Manche": 1,
+    "Mayenne": 1,
+    "Pas-de-Calais": 1,
+    "Pyrénées-Atlantiques": 1,
+    "Pyrénées-Orientales": 1,
+    "Rhône": 1,
+    "Saône-et-Loire": 1,
+    "Savoie": 1,
+    "Vendée": 1
+   }
+  },
+  {
+   "name": "KOENIG Gaspard",
+   "displayName": "Gaspard Koenig",
+   "total": 107,
+   "departments": 53,
+   "topDepartment": {
+    "name": "Orne",
+    "count": 7,
+    "share": 0.0654
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": true,
+    "share10": true
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-03",
+     2
+    ],
+    [
+     "2022-02-08",
+     23
+    ],
+    [
+     "2022-02-10",
+     27
+    ],
+    [
+     "2022-02-15",
+     28
+    ],
+    [
+     "2022-02-17",
+     31
+    ],
+    [
+     "2022-02-22",
+     38
+    ],
+    [
+     "2022-02-24",
+     49
+    ],
+    [
+     "2022-03-01",
+     72
+    ],
+    [
+     "2022-03-03",
+     91
+    ],
+    [
+     "2022-03-07",
+     107
+    ]
+   ],
+   "byMandate": {
+    "maire": 86,
+    "assemblee-corse": 6,
+    "conseiller-departemental": 4,
+    "senateur": 3,
+    "maire-delegue": 2,
+    "afe": 1,
+    "conseiller-metropole-lyon": 1,
+    "conseiller-paris": 1,
+    "conseiller-regional": 1,
+    "depute": 1,
+    "president-epci": 1
+   },
+   "byDepartment": {
+    "Orne": 7,
+    "Oise": 6,
+    "Haute-Corse": 5,
+    "Aisne": 4,
+    "Cher": 4,
+    "Eure-et-Loir": 4,
+    "Haute-Savoie": 4,
+    "Savoie": 4,
+    "Seine-Maritime": 4,
+    "Yonne": 4,
+    "Corse-du-Sud": 3,
+    "Morbihan": 3,
+    "Pyrénées-Atlantiques": 3,
+    "Somme": 3,
+    "Ardennes": 2,
+    "Haute-Saône": 2,
+    "Hautes-Pyrénées": 2,
+    "Indre-et-Loire": 2,
+    "Loir-et-Cher": 2,
+    "Loire-Atlantique": 2,
+    "Paris": 2,
+    "Saône-et-Loire": 2,
+    "Val-d'Oise": 2,
+    "Vosges": 2,
+    "Allier": 1,
+    "Ardèche": 1,
+    "Aude": 1,
+    "Charente": 1,
+    "Charente-Maritime": 1,
+    "Dordogne": 1,
+    "Drôme": 1,
+    "Essonne": 1,
+    "Français de l'étranger": 1,
+    "Gard": 1,
+    "Gers": 1,
+    "Haute-Loire": 1,
+    "Hautes-Alpes": 1,
+    "Indre": 1,
+    "Isère": 1,
+    "Jura": 1,
+    "Loire": 1,
+    "Lot": 1,
+    "Marne": 1,
+    "Meuse": 1,
+    "Moselle": 1,
+    "Nord": 1,
+    "Pas-de-Calais": 1,
+    "Puy-de-Dôme": 1,
+    "Rhône": 1,
+    "Seine-et-Marne": 1,
+    "Tarn-et-Garonne": 1,
+    "Vaucluse": 1,
+    "Yvelines": 1
+   }
+  },
+  {
+   "name": "KUZMANOVIC Georges",
+   "displayName": "Georges Kuzmanovic",
+   "total": 49,
+   "departments": 26,
+   "topDepartment": {
+    "name": "Moselle",
+    "count": 6,
+    "share": 0.1224
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-01",
+     1
+    ],
+    [
+     "2022-02-03",
+     9
+    ],
+    [
+     "2022-02-08",
+     25
+    ],
+    [
+     "2022-02-10",
+     27
+    ],
+    [
+     "2022-02-15",
+     35
+    ],
+    [
+     "2022-02-17",
+     38
+    ],
+    [
+     "2022-02-22",
+     40
+    ],
+    [
+     "2022-02-24",
+     42
+    ],
+    [
+     "2022-03-01",
+     45
+    ],
+    [
+     "2022-03-03",
+     46
+    ],
+    [
+     "2022-03-07",
+     49
+    ]
+   ],
+   "byMandate": {
+    "maire": 46,
+    "maire-delegue": 2,
+    "conseiller-regional": 1
+   },
+   "byDepartment": {
+    "Moselle": 6,
+    "Ardennes": 3,
+    "Dordogne": 3,
+    "Pas-de-Calais": 3,
+    "Yonne": 3,
+    "Aisne": 2,
+    "Bas-Rhin": 2,
+    "Calvados": 2,
+    "Doubs": 2,
+    "Haute-Marne": 2,
+    "Marne": 2,
+    "Puy-de-Dôme": 2,
+    "Saône-et-Loire": 2,
+    "Somme": 2,
+    "Vosges": 2,
+    "Ain": 1,
+    "Ardèche": 1,
+    "Cher": 1,
+    "Côte-d'Or": 1,
+    "Gard": 1,
+    "Haute-Saône": 1,
+    "Indre": 1,
+    "Jura": 1,
+    "La Réunion": 1,
+    "Meuse": 1,
+    "Pyrénées-Atlantiques": 1
+   }
+  },
+  {
+   "name": "MIGUET Nicolas",
+   "displayName": "Nicolas Miguet",
+   "total": 40,
+   "departments": 29,
+   "topDepartment": {
+    "name": "Ardennes",
+    "count": 4,
+    "share": 0.1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": true
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-03",
+     2
+    ],
+    [
+     "2022-02-08",
+     9
+    ],
+    [
+     "2022-02-15",
+     12
+    ],
+    [
+     "2022-02-24",
+     18
+    ],
+    [
+     "2022-03-01",
+     27
+    ],
+    [
+     "2022-03-03",
+     35
+    ],
+    [
+     "2022-03-07",
+     40
+    ]
+   ],
+   "byMandate": {
+    "maire": 38,
+    "conseiller-departemental": 1,
+    "maire-delegue": 1
+   },
+   "byDepartment": {
+    "Ardennes": 4,
+    "Orne": 3,
+    "Ain": 2,
+    "Aisne": 2,
+    "Eure": 2,
+    "Haute-Saône": 2,
+    "Oise": 2,
+    "Savoie": 2,
+    "Aveyron": 1,
+    "Bas-Rhin": 1,
+    "Calvados": 1,
+    "Côte-d'Or": 1,
+    "Doubs": 1,
+    "Gironde": 1,
+    "Haute-Garonne": 1,
+    "Haute-Marne": 1,
+    "Indre-et-Loire": 1,
+    "Landes": 1,
+    "Lozère": 1,
+    "Manche": 1,
+    "Marne": 1,
+    "Meurthe-et-Moselle": 1,
+    "Meuse": 1,
+    "Puy-de-Dôme": 1,
+    "Pyrénées-Orientales": 1,
+    "Sarthe": 1,
+    "Seine-et-Marne": 1,
+    "Val-d'Oise": 1,
+    "Vosges": 1
+   }
+  },
+  {
+   "name": "EGGER Clara",
+   "displayName": "Clara Egger",
+   "total": 36,
+   "departments": 26,
+   "topDepartment": {
+    "name": "Creuse",
+    "count": 3,
+    "share": 0.0833
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": true
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-03",
+     3
+    ],
+    [
+     "2022-02-08",
+     6
+    ],
+    [
+     "2022-02-10",
+     7
+    ],
+    [
+     "2022-02-15",
+     13
+    ],
+    [
+     "2022-02-17",
+     16
+    ],
+    [
+     "2022-02-22",
+     22
+    ],
+    [
+     "2022-02-24",
+     24
+    ],
+    [
+     "2022-03-01",
+     28
+    ],
+    [
+     "2022-03-03",
+     34
+    ],
+    [
+     "2022-03-07",
+     36
+    ]
+   ],
+   "byMandate": {
+    "maire": 34,
+    "conseil-consulaire": 1,
+    "maire-delegue": 1
+   },
+   "byDepartment": {
+    "Creuse": 3,
+    "Indre-et-Loire": 3,
+    "Aisne": 2,
+    "Ardennes": 2,
+    "Dordogne": 2,
+    "Drôme": 2,
+    "Haute-Savoie": 2,
+    "Nord": 2,
+    "Alpes-Maritimes": 1,
+    "Ardèche": 1,
+    "Ariège": 1,
+    "Aude": 1,
+    "Doubs": 1,
+    "Français de l'étranger": 1,
+    "Haute-Garonne": 1,
+    "Haute-Saône": 1,
+    "Haute-Vienne": 1,
+    "Lot": 1,
+    "Manche": 1,
+    "Meurthe-et-Moselle": 1,
+    "Moselle": 1,
+    "Nièvre": 1,
+    "Oise": 1,
+    "Pyrénées-Orientales": 1,
+    "Rhône": 1,
+    "Vaucluse": 1
+   }
+  },
+  {
+   "name": "CHICHE Arnaud",
+   "displayName": "Arnaud Chiche",
+   "total": 21,
+   "departments": 16,
+   "topDepartment": {
+    "name": "Dordogne",
+    "count": 3,
+    "share": 0.1429
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-03",
+     1
+    ],
+    [
+     "2022-02-08",
+     4
+    ],
+    [
+     "2022-02-10",
+     5
+    ],
+    [
+     "2022-02-15",
+     8
+    ],
+    [
+     "2022-02-22",
+     9
+    ],
+    [
+     "2022-03-01",
+     12
+    ],
+    [
+     "2022-03-03",
+     16
+    ],
+    [
+     "2022-03-07",
+     21
+    ]
+   ],
+   "byMandate": {
+    "maire": 19,
+    "maire-delegue": 1,
+    "president-epci": 1
+   },
+   "byDepartment": {
+    "Dordogne": 3,
+    "Somme": 3,
+    "Calvados": 2,
+    "Finistère": 1,
+    "Hautes-Alpes": 1,
+    "Isère": 1,
+    "Loire": 1,
+    "Loiret": 1,
+    "Marne": 1,
+    "Moselle": 1,
+    "Nord": 1,
+    "Oise": 1,
+    "Saône-et-Loire": 1,
+    "Sarthe": 1,
+    "Seine-Maritime": 1,
+    "Var": 1
+   }
+  },
+  {
+   "name": "MARTINEZ Antoine",
+   "displayName": "Antoine Martinez",
+   "total": 13,
+   "departments": 9,
+   "topDepartment": {
+    "name": "Aube",
+    "count": 3,
+    "share": 0.2308
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-08",
+     5
+    ],
+    [
+     "2022-02-15",
+     7
+    ],
+    [
+     "2022-02-17",
+     9
+    ],
+    [
+     "2022-02-22",
+     10
+    ],
+    [
+     "2022-02-24",
+     11
+    ],
+    [
+     "2022-03-01",
+     12
+    ],
+    [
+     "2022-03-03",
+     13
+    ]
+   ],
+   "byMandate": {
+    "maire": 13
+   },
+   "byDepartment": {
+    "Aube": 3,
+    "Doubs": 2,
+    "Haute-Saône": 2,
+    "Cantal": 1,
+    "Charente-Maritime": 1,
+    "Drôme": 1,
+    "Gironde": 1,
+    "Haute-Savoie": 1,
+    "Pas-de-Calais": 1
+   }
+  },
+  {
+   "name": "FORTANÉ Jean-Marc",
+   "displayName": "Jean-Marc Fortané",
+   "total": 12,
+   "departments": 11,
+   "topDepartment": {
+    "name": "Haute-Loire",
+    "count": 2,
+    "share": 0.1667
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-10",
+     1
+    ],
+    [
+     "2022-02-22",
+     3
+    ],
+    [
+     "2022-03-01",
+     7
+    ],
+    [
+     "2022-03-03",
+     9
+    ],
+    [
+     "2022-03-07",
+     12
+    ]
+   ],
+   "byMandate": {
+    "maire": 12
+   },
+   "byDepartment": {
+    "Haute-Loire": 2,
+    "Ain": 1,
+    "Alpes-de-Haute-Provence": 1,
+    "Ardennes": 1,
+    "Dordogne": 1,
+    "Ille-et-Vilaine": 1,
+    "Indre-et-Loire": 1,
+    "Lot": 1,
+    "Moselle": 1,
+    "Pas-de-Calais": 1,
+    "Tarn-et-Garonne": 1
+   }
+  },
+  {
+   "name": "SMATI Rafik",
+   "displayName": "Rafik Smati",
+   "total": 10,
+   "departments": 7,
+   "topDepartment": {
+    "name": "Haut-Rhin",
+    "count": 2,
+    "share": 0.2
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-08",
+     2
+    ],
+    [
+     "2022-02-15",
+     5
+    ],
+    [
+     "2022-02-17",
+     7
+    ],
+    [
+     "2022-02-22",
+     8
+    ],
+    [
+     "2022-03-01",
+     9
+    ],
+    [
+     "2022-03-07",
+     10
+    ]
+   ],
+   "byMandate": {
+    "maire": 8,
+    "conseiller-departemental": 2
+   },
+   "byDepartment": {
+    "Haut-Rhin": 2,
+    "Haute-Savoie": 2,
+    "Meuse": 2,
+    "Ain": 1,
+    "Allier": 1,
+    "Moselle": 1,
+    "Pyrénées-Atlantiques": 1
+   }
+  },
+  {
+   "name": "ROCCA Martin",
+   "displayName": "Martin Rocca",
+   "total": 9,
+   "departments": 9,
+   "topDepartment": {
+    "name": "Ain",
+    "count": 1,
+    "share": 0.1111
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-08",
+     1
+    ],
+    [
+     "2022-02-10",
+     2
+    ],
+    [
+     "2022-02-15",
+     3
+    ],
+    [
+     "2022-03-01",
+     8
+    ],
+    [
+     "2022-03-03",
+     9
+    ]
+   ],
+   "byMandate": {
+    "maire": 9
+   },
+   "byDepartment": {
+    "Ain": 1,
+    "Allier": 1,
+    "Deux-Sèvres": 1,
+    "Landes": 1,
+    "Lot-et-Garonne": 1,
+    "Nièvre": 1,
+    "Rhône": 1,
+    "Saône-et-Loire": 1,
+    "Savoie": 1
+   }
+  },
+  {
+   "name": "CAU Marie",
+   "displayName": "Marie Cau",
+   "total": 8,
+   "departments": 5,
+   "topDepartment": {
+    "name": "Nord",
+    "count": 4,
+    "share": 0.5
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-08",
+     1
+    ],
+    [
+     "2022-02-15",
+     2
+    ],
+    [
+     "2022-02-17",
+     3
+    ],
+    [
+     "2022-02-24",
+     4
+    ],
+    [
+     "2022-03-01",
+     5
+    ],
+    [
+     "2022-03-03",
+     7
+    ],
+    [
+     "2022-03-07",
+     8
+    ]
+   ],
+   "byMandate": {
+    "maire": 8
+   },
+   "byDepartment": {
+    "Nord": 4,
+    "Haut-Rhin": 1,
+    "Isère": 1,
+    "Lot": 1,
+    "Orne": 1
+   }
+  },
+  {
+   "name": "WAECHTER Antoine",
+   "displayName": "Antoine Waechter",
+   "total": 7,
+   "departments": 7,
+   "topDepartment": {
+    "name": "Calvados",
+    "count": 1,
+    "share": 0.1429
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-15",
+     1
+    ],
+    [
+     "2022-02-17",
+     2
+    ],
+    [
+     "2022-02-22",
+     3
+    ],
+    [
+     "2022-02-24",
+     4
+    ],
+    [
+     "2022-03-03",
+     7
+    ]
+   ],
+   "byMandate": {
+    "maire": 6,
+    "conseiller-regional": 1
+   },
+   "byDepartment": {
+    "Calvados": 1,
+    "Indre-et-Loire": 1,
+    "Jura": 1,
+    "Loire-Atlantique": 1,
+    "Saône-et-Loire": 1,
+    "Vaucluse": 1,
+    "Yonne": 1
+   }
+  },
+  {
+   "name": "BÉKAERT Corinne",
+   "displayName": "Corinne Békaert",
+   "total": 6,
+   "departments": 6,
+   "topDepartment": {
+    "name": "Bas-Rhin",
+    "count": 1,
+    "share": 0.1667
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-08",
+     1
+    ],
+    [
+     "2022-02-15",
+     3
+    ],
+    [
+     "2022-02-24",
+     4
+    ],
+    [
+     "2022-03-01",
+     5
+    ],
+    [
+     "2022-03-07",
+     6
+    ]
+   ],
+   "byMandate": {
+    "maire": 6
+   },
+   "byDepartment": {
+    "Bas-Rhin": 1,
+    "Haute-Savoie": 1,
+    "Hautes-Alpes": 1,
+    "Manche": 1,
+    "Nord": 1,
+    "Oise": 1
+   }
+  },
+  {
+   "name": "MEURICE Guillaume",
+   "displayName": "Guillaume Meurice",
+   "total": 6,
+   "departments": 6,
+   "topDepartment": {
+    "name": "Bas-Rhin",
+    "count": 1,
+    "share": 0.1667
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-15",
+     1
+    ],
+    [
+     "2022-02-24",
+     2
+    ],
+    [
+     "2022-03-01",
+     3
+    ],
+    [
+     "2022-03-03",
+     6
+    ]
+   ],
+   "byMandate": {
+    "maire": 3,
+    "maire-delegue": 2,
+    "conseiller-departemental": 1
+   },
+   "byDepartment": {
+    "Bas-Rhin": 1,
+    "Isère": 1,
+    "Jura": 1,
+    "Loire-Atlantique": 1,
+    "Manche": 1,
+    "Somme": 1
+   }
+  },
+  {
+   "name": "BARNIER Michel",
+   "displayName": "Michel Barnier",
+   "total": 2,
+   "departments": 2,
+   "topDepartment": {
+    "name": "Ardèche",
+    "count": 1,
+    "share": 0.5
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-03",
+     1
+    ],
+    [
+     "2022-03-01",
+     2
+    ]
+   ],
+   "byMandate": {
+    "maire": 2
+   },
+   "byDepartment": {
+    "Ardèche": 1,
+    "Ardennes": 1
+   }
+  },
+  {
+   "name": "FIORILE Eric Régis",
+   "displayName": "Eric Régis Fiorile",
+   "total": 2,
+   "departments": 2,
+   "topDepartment": {
+    "name": "Haute-Garonne",
+    "count": 1,
+    "share": 0.5
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-17",
+     1
+    ],
+    [
+     "2022-03-03",
+     2
+    ]
+   ],
+   "byMandate": {
+    "maire": 1,
+    "maire-delegue": 1
+   },
+   "byDepartment": {
+    "Haute-Garonne": 1,
+    "Orne": 1
+   }
+  },
+  {
+   "name": "JUVING-BRUNET Alexandre",
+   "displayName": "Alexandre Juving-Brunet",
+   "total": 2,
+   "departments": 2,
+   "topDepartment": {
+    "name": "Meurthe-et-Moselle",
+    "count": 1,
+    "share": 0.5
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-03-01",
+     2
+    ]
+   ],
+   "byMandate": {
+    "maire": 2
+   },
+   "byDepartment": {
+    "Meurthe-et-Moselle": 1,
+    "Nièvre": 1
+   }
+  },
+  {
+   "name": "LACROIX Nicolas",
+   "displayName": "Nicolas Lacroix",
+   "total": 2,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Haute-Marne",
+    "count": 2,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-03-01",
+     2
+    ]
+   ],
+   "byMandate": {
+    "maire": 2
+   },
+   "byDepartment": {
+    "Haute-Marne": 2
+   }
+  },
+  {
+   "name": "LAURUT Christian",
+   "displayName": "Christian Laurut",
+   "total": 2,
+   "departments": 2,
+   "topDepartment": {
+    "name": "Aube",
+    "count": 1,
+    "share": 0.5
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-24",
+     1
+    ],
+    [
+     "2022-03-01",
+     2
+    ]
+   ],
+   "byMandate": {
+    "maire": 2
+   },
+   "byDepartment": {
+    "Aube": 1,
+    "Meuse": 1
+   }
+  },
+  {
+   "name": "RIVOAL Stéphanie",
+   "displayName": "Stéphanie Rivoal",
+   "total": 2,
+   "departments": 2,
+   "topDepartment": {
+    "name": "Ain",
+    "count": 1,
+    "share": 0.5
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-10",
+     1
+    ],
+    [
+     "2022-02-15",
+     2
+    ]
+   ],
+   "byMandate": {
+    "maire": 2
+   },
+   "byDepartment": {
+    "Ain": 1,
+    "Meurthe-et-Moselle": 1
+   }
+  },
+  {
+   "name": "VIEIRA Gildas",
+   "displayName": "Gildas Vieira",
+   "total": 2,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Loir-et-Cher",
+    "count": 2,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-10",
+     1
+    ],
+    [
+     "2022-02-24",
+     2
+    ]
+   ],
+   "byMandate": {
+    "maire": 2
+   },
+   "byDepartment": {
+    "Loir-et-Cher": 2
+   }
+  },
+  {
+   "name": "ARNAL Christian-Jacques",
+   "displayName": "Christian-Jacques Arnal",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Saône-et-Loire",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-03-03",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Saône-et-Loire": 1
+   }
+  },
+  {
+   "name": "BLANCHET Christophe",
+   "displayName": "Christophe Blanchet",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Eure-et-Loir",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-03-01",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Eure-et-Loir": 1
+   }
+  },
+  {
+   "name": "BORLOO Jean-Louis",
+   "displayName": "Jean-Louis Borloo",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Français de l'étranger",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-24",
+     1
+    ]
+   ],
+   "byMandate": {
+    "afe": 1
+   },
+   "byDepartment": {
+    "Français de l'étranger": 1
+   }
+  },
+  {
+   "name": "CAHEZ Thierry",
+   "displayName": "Thierry Cahez",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Bas-Rhin",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-22",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Bas-Rhin": 1
+   }
+  },
+  {
+   "name": "CAZENEUVE Bernard",
+   "displayName": "Bernard Cazeneuve",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Manche",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-03-07",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Manche": 1
+   }
+  },
+  {
+   "name": "CHAUDOT Michel",
+   "displayName": "Michel Chaudot",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Haute-Saône",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-03-07",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Haute-Saône": 1
+   }
+  },
+  {
+   "name": "COJAN Patrick",
+   "displayName": "Patrick Cojan",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Corrèze",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-15",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Corrèze": 1
+   }
+  },
+  {
+   "name": "DELABY Vincent",
+   "displayName": "Vincent Delaby",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Doubs",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-03-07",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Doubs": 1
+   }
+  },
+  {
+   "name": "DELGA Carole",
+   "displayName": "Carole Delga",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Haute-Garonne",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-17",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Haute-Garonne": 1
+   }
+  },
+  {
+   "name": "FESSARD DE FOUCAULT Bertrand",
+   "displayName": "Bertrand Fessard de Foucault",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Dordogne",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-10",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Dordogne": 1
+   }
+  },
+  {
+   "name": "GIFFON Jean Baptiste",
+   "displayName": "Jean Baptiste Giffon",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Haute-Savoie",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-03-03",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Haute-Savoie": 1
+   }
+  },
+  {
+   "name": "GLUCKSMANN Raphaël",
+   "displayName": "Raphaël Glucksmann",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Haute-Marne",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-03-03",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Haute-Marne": 1
+   }
+  },
+  {
+   "name": "HERROU Cédric",
+   "displayName": "Cédric Herrou",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Haute-Garonne",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-03-07",
+     1
+    ]
+   ],
+   "byMandate": {
+    "depute": 1
+   },
+   "byDepartment": {
+    "Haute-Garonne": 1
+   }
+  },
+  {
+   "name": "HOLLANDE François",
+   "displayName": "François Hollande",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Vosges",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-15",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Vosges": 1
+   }
+  },
+  {
+   "name": "LAM Yaya",
+   "displayName": "Yaya Lam",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Vienne",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-15",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Vienne": 1
+   }
+  },
+  {
+   "name": "MARECHAL Philippe Célestin",
+   "displayName": "Philippe Célestin Marechal",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Oise",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-08",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Oise": 1
+   }
+  },
+  {
+   "name": "MAZUEL Philippe",
+   "displayName": "Philippe Mazuel",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Rhône",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-08",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Rhône": 1
+   }
+  },
+  {
+   "name": "MÉNARD Emmanuelle",
+   "displayName": "Emmanuelle Ménard",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Marne",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-15",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Marne": 1
+   }
+  },
+  {
+   "name": "MONTEBOURG Arnaud",
+   "displayName": "Arnaud Montebourg",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Meuse",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-24",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Meuse": 1
+   }
+  },
+  {
+   "name": "MONTSERRAT Paul",
+   "displayName": "Paul Montserrat",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Charente-Maritime",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-03-01",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Charente-Maritime": 1
+   }
+  },
+  {
+   "name": "PESQUET Thomas",
+   "displayName": "Thomas Pesquet",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Haute-Savoie",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-03-01",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Haute-Savoie": 1
+   }
+  },
+  {
+   "name": "PHILIPPE Edouard",
+   "displayName": "Edouard Philippe",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Gironde",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-03-03",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Gironde": 1
+   }
+  },
+  {
+   "name": "PHILIPPOT Florian",
+   "displayName": "Florian Philippot",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Seine-Maritime",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-10",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Seine-Maritime": 1
+   }
+  },
+  {
+   "name": "ROCQUEMONT Antoine",
+   "displayName": "Antoine Rocquemont",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Aube",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-22",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Aube": 1
+   }
+  },
+  {
+   "name": "RUFFIN François",
+   "displayName": "François Ruffin",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Meuse",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-03-03",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Meuse": 1
+   }
+  },
+  {
+   "name": "SAINT-PAUL Laetitia",
+   "displayName": "Laetitia Saint-Paul",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Maine-et-Loire",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-22",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire-delegue": 1
+   },
+   "byDepartment": {
+    "Maine-et-Loire": 1
+   }
+  },
+  {
+   "name": "SCHOVANEC Josef",
+   "displayName": "Josef Schovanec",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Eure",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-08",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Eure": 1
+   }
+  },
+  {
+   "name": "WENDLINGER Stéphane",
+   "displayName": "Stéphane Wendlinger",
+   "total": 1,
+   "departments": 1,
+   "topDepartment": {
+    "name": "Ardèche",
+    "count": 1,
+    "share": 1
+   },
+   "rule": {
+    "reached500": false,
+    "departments30": false,
+    "share10": false
+   },
+   "qualifiedOnPublishedData": false,
+   "reached500On": null,
+   "byDate": [
+    [
+     "2022-02-15",
+     1
+    ]
+   ],
+   "byMandate": {
+    "maire": 1
+   },
+   "byDepartment": {
+    "Ardèche": 1
+   }
+  }
+ ]
+}
