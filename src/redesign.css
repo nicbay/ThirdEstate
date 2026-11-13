@@ -489,9 +489,8 @@ footer .brand .fox { width: 64px; height: 64px; }
 @media (max-width: 640px) { .dy-polls li { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .dy-live { animation: none; } }
 
-/* four sections fit beside the full tools on most screens; on narrower desktops the mark alone and compact tools */
+/* four sections fit beside the full name and tools on most screens; on narrower desktops the tools go compact */
 @media (min-width: 901px) and (max-width: 1080px) {
-  .topbar .brand b { display: none; }
   .search-btn kbd, .search-btn .sb-label { display: none; }
   .quiz-cta .q-long { display: none; }
   .quiz-cta .q-short { display: inline; }
