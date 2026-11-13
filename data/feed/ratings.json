@@ -12888,6 +12888,278 @@
       },
       "check": null,
       "postTime": "2026-11-11T13:13:24.383Z"
+    },
+    "bsky:at://did:plc:vjwqkzs27ge527nmwckanige/app.bsky.feed.post/3n2a3h7kdks2h": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-13T23:52:17.383Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de commémoration sans position politique explicite.",
+        "rationale_en": "Commemorative message with no explicit political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-13T22:57:30.683Z"
+    },
+    "masto:https://piaille.fr/users/cyrielle_chatelain/statuses/117611007211227439": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-13T23:52:17.383Z",
+      "storyItems": [
+        "1401964038df",
+        "0aa5c4855bde",
+        "d78b1be9a105",
+        "75ed16d16afa",
+        "f9e158443e11",
+        "318bf6e7725f"
+      ],
+      "storyTitle": "Ce que l’on sait de la panne d’Outlook et de Microsoft 365",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Demande de contrôle de la dépendance aux services américains et de souveraineté numérique, portée par une commission d'enquête.",
+        "rationale_en": "Calls for reducing dependence on US digital services and for digital sovereignty, via a parliamentary inquiry."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Argumentation institutionnelle, sans opposition peuple contre élites.",
+        "rationale_en": "Institutional argument, no people-versus-elite framing."
+      },
+      "check": null,
+      "postTime": "2026-11-13T20:25:50.465Z"
+    },
+    "bsky:at://did:plc:skhpi6tvodwwkygydxmka5tm/app.bsky.feed.post/3n27mk2ukm624": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-13T23:52:17.383Z",
+      "storyItems": [
+        "a59670f2c62f"
+      ],
+      "storyTitle": "Arrêts maladie pour raisons de santé mentale : la délicate prise en charge des troubles liés au travail",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Demande de reconnaissance des risques psychosociaux comme maladies professionnelles, mesure de protection des salariés.",
+        "rationale_en": "Calls for recognizing psychosocial risks as occupational diseases, a worker-protection measure."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Ton indigné (« une honte ! ») mis en avant, sans rhétorique anti-élites.",
+        "rationale_en": "Outraged tone (\"une honte!\") stressed, without anti-elite rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-13T18:30:40.297Z"
+    },
+    "bsky:at://did:plc:bnulcjvue27qpnwzup3y7hv3/app.bsky.feed.post/3n27m6byfu22i": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-13T23:52:17.383Z",
+      "storyItems": [
+        "46ef29471f27"
+      ],
+      "storyTitle": "Suppression des jours de carence et auto-déclaration pour les arrêts maladie de courte durée : LFI dit s’inspirer du droit local d’Alsace-Moselle",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Proposition de maintien de salaire dès le 1er jour et d'auto-déclaration, mesures de protection sociale de gauche radicale.",
+        "rationale_en": "Proposes full pay from day one and self-declaration for short sick leave, far-left social protection measures."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Proposition programmatique argumentée, sans rhétorique populiste marquée.",
+        "rationale_en": "Programmatic proposal with reasoning, no marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-13T18:24:05.128Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3n27lxp5mfc2l": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-13T23:52:17.383Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Mention d'une mobilisation lycéenne sans position idéologique claire.",
+        "rationale_en": "Mentions student mobilization without a clear ideological position."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "peuple_vs_elites"
+        ],
+        "rationale_fr": "Oppose lycéens non entendus au gouvernement, de façon légère.",
+        "rationale_en": "Lightly contrasts students not heard with the government."
+      },
+      "check": null,
+      "postTime": "2026-11-13T18:20:24.048Z"
+    },
+    "bsky:at://did:plc:of5lwk3kijgutdoyls2wrhpz/app.bsky.feed.post/3n27ky76s3s2q": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-13T23:52:17.383Z",
+      "storyItems": [
+        "8d401d40dfcd",
+        "683e58cff7c3",
+        "991f8e0b62ad",
+        "7623759791a2",
+        "930580da837d",
+        "825831ecffb0"
+      ],
+      "storyTitle": "Pétition « Supprimer CNews » : les députés ferment la porte à un débat à l'Assemblée",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Opposition à l'examen d'une pétition visant CNews, position de défense du pluralisme médiatique et de gauche.",
+        "rationale_en": "Opposes parliamentary debate on a petition to remove CNews, a stance aligned with left-leaning media pluralism concerns."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Présente implicitement les groupes ayant bloqué la pétition comme responsables d'un déni démocratique.",
+        "rationale_en": "Implicitly frames groups that blocked the petition as responsible for a democratic denial."
+      },
+      "check": null,
+      "postTime": "2026-11-13T18:02:47.121Z"
+    },
+    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3n27ks7w5qk2h": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-13T23:52:17.383Z",
+      "storyItems": [
+        "ec076b4cbc91",
+        "e3a90596a939",
+        "160d44397bd8",
+        "dd698854f47b",
+        "3ea6c80916e3",
+        "113f37438391"
+      ],
+      "storyTitle": "Présidentielle 2027 : Teddy Riner effectuera son premier déplacement au salon du Made in France ce samedi",
+      "political": true,
+      "lean": {
+        "score": -0.3,
+        "rationale_fr": "Plaidoyer pour la réindustrialisation et l'encouragement à la production française, financé par une mesure fiscale non précisée.",
+        "rationale_en": "Advocates reindustrialization and French production, financed by an unspecified measure."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message programmatique, sans opposition peuple contre élites.",
+        "rationale_en": "Programmatic message, no people-versus-elite framing."
+      },
+      "check": null,
+      "postTime": "2026-11-13T17:59:26.557Z"
+    },
+    "x:2121265497933291669": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-13T23:52:17.383Z",
+      "storyItems": [
+        "f3e04e2bf3d2"
+      ],
+      "storyTitle": "13-Novembre : Antoine Léaument rattrapé par son tweet polémique publié le soir des attentats",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Moquerie sur un tweet passé, sans contenu idéologique explicite.",
+        "rationale_en": "Mocks an old tweet, without explicit ideological content."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Qualifie le propos visé de « délirant » sans argument développé.",
+        "rationale_en": "Labels the targeted remark \"délirant\" without developed argument."
+      },
+      "check": null,
+      "postTime": "2026-11-13T15:34:40.571Z"
+    },
+    "bsky:at://did:plc:ln2ibflz7bn3uttly7yepk4f/app.bsky.feed.post/3n277z75ips2t": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-13T23:52:24.486Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de commémoration sans position ou proposition politique explicite.",
+        "rationale_en": "Commemorative message with no explicit political position or proposal."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste : hommage aux victimes et appel à l'État de droit.",
+        "rationale_en": "No populist rhetoric: tribute to victims and appeal to the rule of law."
+      },
+      "check": null,
+      "postTime": "2026-11-13T14:46:29.473Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3n275ezolds2r": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-13T23:52:24.486Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Critique de l'extradition vers la Hongrie et défense de militants antifascistes, positionnement de gauche.",
+        "rationale_en": "Criticizes extradition to Hungary and defends antifascist activists, a left-leaning position."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel",
+          "delegitimation"
+        ],
+        "rationale_fr": "Formules comme « chasse aux militants » et « traités comme des terroristes » mobilisent l'indignation plus que l'argumentation.",
+        "rationale_en": "Phrases like 'manhunt' and 'treated as terrorists' rely on indignation more than argument."
+      },
+      "check": null,
+      "postTime": "2026-11-13T13:59:25.169Z"
+    },
+    "bsky:at://did:plc:7qlw6gig76xhkjjkxl35xpxe/app.bsky.feed.post/3n26x3d4mnc2y": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-13T23:52:24.486Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Plaide pour une priorité écologique et sociale des fonds publics pour la pêche, contre les armateurs industriels.",
+        "rationale_en": "Calls for ecological and social priority in public fishing funds, against industrial fleet owners."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "peuple_vs_elites",
+          "simplisme"
+        ],
+        "rationale_fr": "Oppose une « poignée d'armateurs » aux petits pêcheurs artisans, présentés comme un bloc vertueux.",
+        "rationale_en": "Opposes a 'handful of shipowners' to small artisanal fishers presented as a virtuous group."
+      },
+      "check": null,
+      "postTime": "2026-11-13T12:06:37.074Z"
     }
   },
   "failures": {
