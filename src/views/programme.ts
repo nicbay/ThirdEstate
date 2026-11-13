@@ -125,6 +125,11 @@ interface State { q: string; theme: string; status: Status | ""; branch: BranchI
 const state: State = { q: "", theme: "", status: "", branch: "", key: false, votes: false, base: false, shown: 30, focus: null, flowTheme: "", flowPick: "drop22" };
 const fold = (s: string) => s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
 
+/** A version's source document for the flow boxes: the manifesto PDF when there is one, else the website. A version
+ *  that is only announcements (press articles) links to the candidate's official site when the file records one. */
+const docOf = (v: { url?: string; kind?: string } | undefined, site?: string) =>
+  v?.kind === "announcements" && site ? { url: site, kind: "site" } : v?.url ? { url: v.url, kind: v.kind } : undefined;
+
 // ---------- flow view (src/lib/programme-flow.ts): 2022 booklet, 2025 edition, 2027 site → branches → 2027 / dropped ----------
 export function melenchonFlowSpec(f: ProgrammeFile, ls: Lineage[]): FlowSpec {
   const n = Object.fromEntries((Object.keys(BRANCH) as BranchId[]).map((b) => [b, ls.filter(BRANCH[b]).length])) as Record<BranchId, number>;
@@ -135,12 +140,12 @@ export function melenchonFlowSpec(f: ProgrammeFile, ls: Lineage[]): FlowSpec {
   const order: BranchId[] = ["kept", "changed", "drop22", "add25", "drop25", "new27"];
   return {
     sources: [
-      { id: "s22", icon: "22", title: L("Abrégé 2022", "2022 booklet"), sub: items(inA), out: ["kept", "changed", "drop22"] },
-      { id: "s25", icon: "25", title: L("Édition 2025", "2025 edition"), sub: items(inE), out: ["add25", "drop25"] },
-      { id: "s27", icon: "27", title: L("Site 2027", "2027 website"), sub: L("textes nouveaux", "new texts"), out: ["new27"] },
+      { id: "s22", icon: "22", title: L("Abrégé 2022", "2022 booklet"), sub: items(inA), out: ["kept", "changed", "drop22"], doc: docOf(f.versions[0]) },
+      { id: "s25", icon: "25", title: L("Édition 2025", "2025 edition"), sub: items(inE), out: ["add25", "drop25"], doc: docOf(ve) },
+      { id: "s27", icon: "27", title: L("Site 2027", "2027 website"), sub: L("textes nouveaux", "new texts"), out: ["new27"], doc: docOf(vw) },
     ],
     branches: order.map((b) => ({ id: b, icon: icon[b], title: branchLabel(b), n: n[b], drop: b === "drop22" || b === "drop25" })),
-    keepTitle: L(`Programme ${vw.year}`, `${vw.year} programme`), keepN: inW, goneN: n.drop22 + n.drop25,
+    keepTitle: L(`Programme ${vw.year}`, `${vw.year} programme`), keepN: inW, goneN: n.drop22 + n.drop25, keepDoc: docOf(vw),
     label: L(`Flux des engagements : ${inA} dans l’abrégé 2022, ${inE} dans l’édition ${ve.year}, ${inW} dans le programme ${vw.year}.`, `Flow of commitments: ${inA} in the 2022 booklet, ${inE} in the ${ve.year} edition, ${inW} in the ${vw.year} programme.`),
   };
 }
@@ -547,7 +552,7 @@ interface LiteMeasure {
   short?: { fr: string; en: string };
 }
 interface LiteFile {
-  slug: string; candidate: string; party: string; lite: true; status: "published" | "partial" | "none";
+  slug: string; candidate: string; party: string; site?: string; lite: true; status: "published" | "partial" | "none";
   statusNote: { fr: string; en: string }; summary: { fr: string; en: string };
   versions: { id: string; year: number; label: { fr: string; en: string }; title: string; date: string; url?: string; kind: string }[];
   measures: LiteMeasure[]; costing: { rounds: CostRound[]; checked: string } | null;
@@ -570,11 +575,11 @@ function renderLite(app: HTMLElement, f: LiteFile) {
   const items = (k: number) => `${fmtNum(k)} ${k > 1 ? L("mesures", "measures") : L("mesure", "measure")}`;
   const spec: FlowSpec | null = vs.length > 1 && f.measures.length ? {
     sources: [
-      { id: "old", icon: String(first.year).slice(2), title: L(`Socle ${first.year}`, `${first.year} baseline`), sub: items(c.maintained + c.modified + c.dropped), out: ["maintained", "modified", "dropped"] },
-      { id: "nw", icon: String(last.year).slice(2), title: L(`Propositions ${last.year}`, `${last.year} proposals`), sub: L("propositions nouvelles", "new proposals"), out: ["new"] },
+      { id: "old", icon: String(first.year).slice(2), title: L(`Socle ${first.year}`, `${first.year} baseline`), sub: items(c.maintained + c.modified + c.dropped), out: ["maintained", "modified", "dropped"], doc: docOf(first, f.site) },
+      { id: "nw", icon: String(last.year).slice(2), title: L(`Propositions ${last.year}`, `${last.year} proposals`), sub: L("propositions nouvelles", "new proposals"), out: ["new"], doc: docOf(last, f.site) },
     ],
     branches: (["maintained", "modified", "dropped", "new"] as LiteStatus[]).map((s) => ({ id: s, icon: { maintained: "=", modified: "≠", dropped: "−", new: "★" }[s], title: liteLabel(s), n: c[s], drop: s === "dropped" })),
-    keepTitle: L(`Programme ${last.year}`, `${last.year} programme`), keepN: c.maintained + c.modified + c.new, goneN: c.dropped,
+    keepTitle: L(`Programme ${last.year}`, `${last.year} programme`), keepN: c.maintained + c.modified + c.new, goneN: c.dropped, keepDoc: docOf(last, f.site),
     label: L(`${f.measures.length} mesures suivies de ${first.year} à ${last.year}`, `${f.measures.length} measures followed from ${first.year} to ${last.year}`),
   } : null;
   const rows: Assessed[] = f.measures.map((m) => ({
