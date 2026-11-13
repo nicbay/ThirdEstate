@@ -68,11 +68,10 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/histoire\/([\w-]+)$/, (m) => renderElection(app, m[1])],
   [/^#\/fil$/, () => renderFeed(app)],
   [/^#\/2027$/, () => renderRace(app)],
-  // PLACEHOLDER ROUTES (integrator: replace each pendingPage call with the real view's import)
-  [/^#\/2027\/voter$/, () => pendingPage(app, L("Voter en 2027 : s’inscrire, la procuration, le bureau de vote", "Voting in 2027: registration, proxy votes, your polling station"))],
-  [/^#\/2027\/comment-ca-marche$/, () => pendingPage(app, L("Comment ça marche : la présidentielle expliquée", "How it works: the presidential election explained"))],
-  [/^#\/2027\/calendrier$/, () => pendingPage(app, L("Le calendrier de la campagne, jusqu’au second tour", "The campaign calendar, up to the runoff"))],
-  [/^#\/2027\/parrainages$/, () => pendingPage(app, L("Les parrainages : les 500 signatures pour être candidat", "Sponsorships: the 500 signatures needed to run"))],
+  [/^#\/2027\/voter$/, () => import("./views/vote").then((v) => v.renderVote(app))],
+  [/^#\/2027\/comment-ca-marche$/, () => import("./views/explainers").then((v) => v.renderExplainers(app))],
+  [/^#\/2027\/calendrier$/, () => import("./views/calendar").then((v) => v.renderCalendar(app))],
+  [/^#\/2027\/parrainages$/, () => import("./views/parrainages").then((v) => v.renderParrainages(app))],
   [/^#\/senat(?:\/(\w{2,3}))?$/, (m) => renderSenat(app, m[1])],
   [/^#\/candidat\/([\w-]+)$/, (m) => renderCandidate(app, m[1])],
   [/^#\/senateur\/([\w-]+)$/, (m) => renderSenateur(app, m[1])],
@@ -90,22 +89,6 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/programmes\/melenchon\/simulateur$/, () => import("./views/household").then((v) => v.renderHousehold(app))],
   [/^#\/programmes\/([\w-]+)$/, (m) => import("./views/programme").then((v) => v.renderProgramme(app, m[1]))],
 ];
-
-/**
- * PLACEHOLDER: a "coming soon" page for the 2027 pages being built elsewhere (voter, comment-ca-marche,
- * calendrier, parrainages). The integrator replaces each route above with the real view and can then delete this.
- */
-function pendingPage(el: HTMLElement, title: string) {
-  el.innerHTML = `<section class="page pending-page" data-pending="true">
-    <div class="page-head">
-      <p class="eyebrow">2027</p>
-      <h1>${esc(title)}</h1>
-      <p class="dek">${L("Bientôt : cette page est en préparation.", "Coming soon: this page is being prepared.")}</p>
-    </div>
-    <article class="card"><p>${L("En attendant, suivez la course et comparez les programmes.", "Meanwhile, follow the race and compare the programmes.")}</p>
-      <p><a href="#/2027">${L("La course", "The race")} →</a> · <a href="#/programmes">${L("Les programmes", "Programmes")} →</a></p></article>
-  </section>`;
-}
 
 // ---------- the reader's own officials (remembered town → its MP, its department → its senators) ----------
 const homeHref = () => { const h = getHome(); return h?.code ? `#/ville/${h.code}` : "#/explorer"; };
