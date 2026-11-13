@@ -12,16 +12,17 @@ export interface Series {
   dots?: { date: string; value: number; title: string; href?: string }[];
   /** Final value shown as a diamond (e.g. actual election result). */
   final?: { date: string; value: number; title: string };
-  /** Projection to a future date: a dotted line from (d0, v0) to (d1, mid) inside a band that widens to [lo, hi]. */
-  proj?: { d0: string; v0: number; d1: string; mid: number; lo: number; hi: number; label?: string; title?: string };
+  /** Projection: a dotted line through the knots' `mid` inside a band through their [lo, hi]; the first knot is
+   *  today (lo = mid = hi), and the band opens like a funnel from there. */
+  proj?: { knots: { date: string; mid: number; lo: number; hi: number }[]; label?: string; title?: string };
 }
 
-export function lineChart(series: Series[], opts: { height?: number; yMax?: number; marker?: { date: string; label: string } } = {}) {
+export function lineChart(series: Series[], opts: { height?: number; yMax?: number; markers?: { date: string; label: string }[] } = {}) {
   // Phones get a narrower canvas so 11px labels stay ~11px instead of shrinking to 4px.
   const compact = typeof window !== "undefined" && window.innerWidth < 640;
   const W = compact ? 520 : 900, H = Math.round((opts.height ?? 380) * (compact ? 1.05 : 1)), L = compact ? 40 : 44, R = compact ? 172 : 150, T = 12, B = compact ? 34 : 28;
   const gap = compact ? 19 : 13;
-  const all = series.flatMap((s) => [...s.line, ...(s.dots ?? []), ...(s.final ? [s.final] : []), ...(s.proj ? [{ date: s.proj.d1, value: s.proj.hi }] : [])]);
+  const all = series.flatMap((s) => [...s.line, ...(s.dots ?? []), ...(s.final ? [s.final] : []), ...(s.proj ? s.proj.knots.map((k) => ({ date: k.date, value: k.hi })) : [])]);
   if (!all.length) return "";
   const t = (d: string) => Date.parse(d);
   const x0 = Math.min(...all.map((p) => t(p.date))), x1 = Math.max(...all.map((p) => t(p.date)));
@@ -43,7 +44,7 @@ export function lineChart(series: Series[], opts: { height?: number; yMax?: numb
   const ticks = months.filter((_, i) => i % step === 0).map((m) => `<text x="${x(m)}" y="${H - 8}" text-anchor="middle" class="axis">${fmtDate(m).replace(/^\d+\s/, "")}</text>`);
 
   // end labels, nudged apart so they don't overlap
-  const endValue = (s: Series) => (s.proj ? s.proj.mid : s.line.at(-1)!.value);
+  const endValue = (s: Series) => (s.proj ? s.proj.knots.at(-1)!.mid : s.line.at(-1)!.value);
   const ends = series
     .filter((s) => s.line.length)
     .map((s) => ({ s, y: y(endValue(s)) }))
@@ -57,27 +58,30 @@ export function lineChart(series: Series[], opts: { height?: number; yMax?: numb
 
   // projection: a band that opens like a funnel (width grows with the square root of time) and a dotted centre line
   const proj = (s: Series) => {
-    const p = s.proj;
-    if (!p) return "";
-    const N = 16, xs: number[] = [], up: string[] = [], dn: string[] = [], mid: string[] = [];
-    for (let i = 0; i <= N; i++) {
-      const f = i / N, g = Math.sqrt(f);
-      const dd = new Date(t(p.d0) + f * (t(p.d1) - t(p.d0))).toISOString();
-      const xx = x(dd), m = p.v0 + (p.mid - p.v0) * f;
-      xs.push(xx);
-      up.push(`${xx},${y(m + (p.hi - p.mid) * g)}`);
-      dn.push(`${xx},${y(m - (p.mid - p.lo) * g)}`);
-      mid.push(`${xx},${y(m)}`);
+    const ks = s.proj?.knots;
+    if (!ks || ks.length < 2) return "";
+    const up: string[] = [], dn: string[] = [], mid: string[] = [];
+    for (let k = 0; k + 1 < ks.length; k++) {
+      const A = ks[k], B = ks[k + 1];
+      const N = k === 0 ? 14 : 4;
+      for (let i = k === 0 ? 0 : 1; i <= N; i++) {
+        const f = i / N, g = k === 0 ? Math.sqrt(f) : f; // the first stretch opens like a funnel
+        const xx = x(new Date(t(A.date) + f * (t(B.date) - t(A.date))).toISOString());
+        const m = A.mid + (B.mid - A.mid) * f;
+        const lo = A.lo + (B.lo - A.lo) * g, hi = A.hi + (B.hi - A.hi) * g;
+        up.push(`${xx},${y(Math.max(m, hi))}`);
+        dn.push(`${xx},${y(Math.max(0, Math.min(m, lo)))}`);
+        mid.push(`${xx},${y(m)}`);
+      }
     }
-    return `<g class="proj"><polygon class="band" points="${[...up, ...dn.reverse()].join(" ")}" fill="${s.color}"><title>${esc(p.title ?? "")}</title></polygon>
+    return `<g class="proj"><polygon class="band" points="${[...up, ...dn.reverse()].join(" ")}" fill="${s.color}"><title>${esc(s.proj?.title ?? "")}</title></polygon>
       <polyline class="proj-line" fill="none" stroke="${s.color}" points="${mid.join(" ")}"/></g>`;
   };
-  const marker = opts.marker && t(opts.marker.date) >= x0 && t(opts.marker.date) <= x1
-    ? `<line class="marker" x1="${x(opts.marker.date)}" x2="${x(opts.marker.date)}" y1="${T}" y2="${H - B}"/><text class="marker-label" x="${x(opts.marker.date) - 4}" y="${T + 10}" text-anchor="end">${esc(opts.marker.label)}</text>`
-    : "";
+  const markers = (opts.markers ?? []).filter((m) => t(m.date) >= x0 && t(m.date) <= x1).map((m, i) =>
+    `<line class="marker" x1="${x(m.date)}" x2="${x(m.date)}" y1="${T}" y2="${H - B}"/><text class="marker-label" x="${x(m.date) - 4}" y="${T + 10 + i * 13}" text-anchor="end">${esc(m.label)}</text>`).join("");
 
   return `<svg viewBox="0 0 ${W} ${H}" class="chart${compact ? " compact" : ""}" role="img" aria-label="${esc(series.map((s) => `${s.label} ${dec(s.line.at(-1)?.value)}`).join(", "))}">
-    ${grid.join("")}${ticks.join("")}${marker}
+    ${grid.join("")}${ticks.join("")}${markers}
     ${series
       .map(
         (s) => `<g class="series" data-name="${esc(s.name)}" style="--c:${s.color}">

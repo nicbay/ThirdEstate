@@ -63,6 +63,7 @@
 .cv-tag { font: 600 0.66rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; padding: 0.1rem 0.4rem; border: 1px solid currentColor; border-radius: 2px; }
 .cv-tag.expected { color: var(--A); }
 .cv-tag.confirmed { color: var(--P); }
+.cv-tag.proposed { color: var(--ink-3); border-style: dashed; }
 .cv-tag.next { color: var(--paper); background: var(--accent); border-color: var(--accent); }
 .cv-basis { font-size: 0.86rem; color: var(--ink-2); }
 

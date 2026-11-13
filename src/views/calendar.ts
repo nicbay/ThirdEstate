@@ -1,6 +1,7 @@
 // Campaign calendar (#/2027/calendrier): a timeline of public/data/2027/calendar.json, with a countdown to
 // the first round, the next item highlighted and past items muted. "expected" = announced by the government
 // or derived from the law, pending the decree calling voters; "confirmed" = happened or legally fixed.
+// "proposed" = floated by a candidate or party, not agreed (e.g. the centre and right primary).
 import "../styles/civic.css";
 import { fetchJson } from "../data";
 import { L, colon, fmtNum, plural } from "../i18n";
@@ -11,7 +12,7 @@ interface Item {
   date: string;
   end?: string;
   kind: Kind;
-  status: "confirmed" | "expected";
+  status: "confirmed" | "expected" | "proposed";
   round?: number;
   fr: string;
   en: string;
@@ -73,7 +74,7 @@ export async function renderCalendar(app: HTMLElement) {
     const tag = isNext
       ? `<span class="cv-tag next">${ongoing ? L("En cours", "Now") : L("Prochaine étape", "Next")}</span>`
       : "";
-    const status = `<span class="cv-tag ${it.status}">${it.status === "confirmed" ? L("Confirmé", "Confirmed") : L("Prévu", "Expected")}</span>`;
+    const status = `<span class="cv-tag ${it.status}">${it.status === "confirmed" ? L("Confirmé", "Confirmed") : it.status === "proposed" ? L("Proposé", "Proposed") : L("Prévu", "Expected")}</span>`;
     const left = !past && !ongoing ? daysBetween(today, it.date) : null;
     const inDays = left !== null && left > 0 ? `<span>${L("dans", "in")} ${fmtNum(left)} ${plural(left, ["jour", "jours"], ["day", "days"])}</span>` : "";
     const basis = it.basis ? `<p class="cv-basis">${esc(L(it.basis.fr, it.basis.en))}</p>` : "";
