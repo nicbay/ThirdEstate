@@ -486,12 +486,12 @@ export async function renderEconomy(app: HTMLElement) {
         <div class="debt-live" aria-live="off">
           <p class="debt-k">${L("Dette publique estimée", "Estimated public debt")}</p>
           <p class="debt-n" id="debt-n">${eur(Math.round(debtAt(e, Date.now())))}</p>
-          <dl class="debt-per">
-            <div><dt>${L("Par habitant", "Per resident")}</dt><dd id="debt-pop">–</dd></div>
-            <div><dt>${L("Par personne en emploi", "Per person in work")}</dt><dd id="debt-emp">–</dd></div>
-            <div><dt>${L("En plus chaque jour", "Added each day")}</dt><dd>${big(perDay, 0)}</dd></div>
-            ${e.debt.pct != null ? `<div><dt>${L(`Rapportée au PIB, ${period(e.debt.period)}`, `As a share of GDP, ${period(e.debt.period)}`)}</dt><dd>${pct(e.debt.pct)}</dd></div>` : ""}
-          </dl>
+          <p class="debt-per">
+            <span><b id="debt-pop">–</b> ${L("par habitant", "per resident")}</span><span class="debt-sep" aria-hidden="true"> · </span>
+            <span><b id="debt-emp">–</b> ${L("par personne en emploi", "per person in work")}</span><span class="debt-sep" aria-hidden="true"> · </span>
+            <span><b>${big(perDay, 0)}</b> ${L("de plus chaque jour", "added each day")}</span>${e.debt.pct != null ? `<span class="debt-sep" aria-hidden="true"> · </span>
+            <span><b>${pct(e.debt.pct)}</b> ${L(`du PIB (${period(e.debt.period)})`, `of GDP (${period(e.debt.period)})`)}</span>` : ""}
+          </p>
         </div>
       </header>
 

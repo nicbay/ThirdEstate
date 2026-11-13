@@ -17,10 +17,11 @@ export interface Series {
   proj?: { knots: { date: string; mid: number; lo: number; hi: number }[]; label?: string; title?: string; /** the candidate withdraws at the last knot: the line stops there with a cross */ out?: boolean };
 }
 
-export function lineChart(series: Series[], opts: { height?: number; yMax?: number; markers?: { date: string; label: string; title?: string }[] } = {}) {
-  // Phones get a narrower canvas so 11px labels stay ~11px instead of shrinking to 4px.
+export function lineChart(series: Series[], opts: { height?: number; yMax?: number; markers?: { date: string; label: string; title?: string }[]; /** a short head over the end labels, saying what the figures there are */ endHead?: string } = {}) {
+  // Phones get a narrower canvas so labels stay at 11px or more on a 343px-wide chart (16px units × 343/460).
   const compact = typeof window !== "undefined" && window.innerWidth < 640;
-  const W = compact ? 520 : 900, H = Math.round((opts.height ?? 380) * (compact ? 1.05 : 1)), L = compact ? 40 : 44, R = compact ? 136 : 150, T = opts.markers?.length ? (compact ? 34 : 28) : 12, B = compact ? 34 : 28;
+  const head = opts.endHead ? (compact ? 24 : 18) : 0;
+  const W = compact ? 460 : 900, H = Math.round((opts.height ?? 380) * (compact ? 1.05 : 1)) + head, L = compact ? 40 : 44, R = compact ? 136 : 150, T = (opts.markers?.length ? (compact ? 34 : 28) : 12) + head, B = compact ? 34 : 28;
   const gap = compact ? 19 : 13;
   const all = series.flatMap((s) => [...s.line, ...(s.dots ?? []), ...(s.final ? [s.final] : []), ...(s.proj ? s.proj.knots.map((k) => ({ date: k.date, value: k.hi })) : [])]);
   if (!all.length) return "";
@@ -82,13 +83,13 @@ export function lineChart(series: Series[], opts: { height?: number; yMax?: numb
       <polyline class="proj-line" fill="none" stroke="${s.color}" points="${mid.join(" ")}"/>${cross}</g>`;
   };
   const markers = (opts.markers ?? []).filter((m) => t(m.date) >= x0 && t(m.date) <= x1).map((m) => {
-    const mx = x(m.date), w = m.label.length * (compact ? 8.4 : 7) + 14, h = compact ? 22 : 18;
+    const mx = x(m.date), w = m.label.length * (compact ? 9.4 : 7) + 14, h = compact ? 24 : 18;
     return `<g class="marker"><title>${esc(m.title ?? m.label)}</title><line x1="${mx}" x2="${mx}" y1="${T - 4}" y2="${H - B}"/>
-      <rect x="${mx - w / 2}" y="${T - 6 - h}" width="${w}" height="${h}" rx="${h / 2}"/><text x="${mx}" y="${T - 6 - h / 2}" text-anchor="middle" dominant-baseline="central">${esc(m.label)}</text></g>`;
+      <rect x="${mx - w / 2}" y="${T - 6 - h}" width="${w}" height="${h}"/><text x="${mx}" y="${T - 6 - h / 2}" text-anchor="middle" dominant-baseline="central">${esc(m.label)}</text></g>`;
   }).join("")
 
   return `<svg viewBox="0 0 ${W} ${H}" class="chart${compact ? " compact" : ""}" role="img" aria-label="${esc(series.map((s) => `${s.label} ${dec(s.line.at(-1)?.value)}`).join(", "))}">
-    ${grid.join("")}${ticks.join("")}${markers}
+    ${opts.endHead ? `<text x="${W - 2}" y="${compact ? 17 : 13}" text-anchor="end" class="axis end-head">${esc(opts.endHead)}</text>` : ""}${grid.join("")}${ticks.join("")}${markers}
     ${series
       .map(
         (s) => `<g class="series" data-name="${esc(s.name)}" style="--c:${s.color}">

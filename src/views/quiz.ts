@@ -1,4 +1,4 @@
-// "Qui vous ressemble ?" (#/quiz): two versions of the same quiz.
+// "Le quiz : qui vous ressemble ?" (#/quiz): two versions of the same quiz.
 //   Short: the ten Assembly votes that tell the 2027 candidates apart fastest (about two minutes).
 //   Long:  fourteen votes and two measures from each candidate's own programme, asked without saying whose
 //          they are (about eight minutes). Its results add, candidate by candidate, the deal breakers (what you
@@ -159,8 +159,8 @@ export async function renderQuiz(app: HTMLElement, code?: string) {
   app.innerHTML = `
     <section class="page quiz-page qz-page">
       <header class="page-head">
-        <p class="eyebrow">${L("Quiz · présidentielle 2027", "Quiz · 2027 presidential")}</p>
-        <h1>${L("Qui vous ressemble, parmi les candidats de 2027 ?", "Who is closest to you, among the 2027 candidates?")}</h1>
+        <p class="eyebrow">${L("Présidentielle 2027", "2027 presidential")}</p>
+        <h1>${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</h1>
         <p class="dek">${L("Des votes réels de l’Assemblée et des mesures tirées des programmes : répondez, marquez ce qui compte vraiment pour vous, et voyez de quel candidat vos réponses vous rapprochent, sur quoi vous divergez, et où vous vous situez de la gauche à la droite.", "Real Assembly votes and measures taken from the programmes: answer, mark what really matters to you, and see which candidate your answers bring you closest to, where you differ, and where you stand from left to right.")}</p>
       </header>
       ${stale ? `<p class="qz-stale">${L("Ce lien de résultats correspond à une ancienne série de questions : il ne peut plus être relu. Vous pouvez refaire le quiz.", "This results link was made for an earlier set of questions and can no longer be read. You can take the quiz again.")}</p>` : ""}
@@ -200,7 +200,7 @@ function draw(stage: HTMLElement, d: QuizData, dir: 1 | -1) {
       <span class="qz-count">${s.step + 1}<span>/${total}</span></span>
     </div>
     <div class="qz-card ${dir > 0 ? "qz-in-fwd" : "qz-in-back"}">
-      <p class="qz-kicker"><i style="background:${THEME_COLOR[q.theme] ?? "#9a9ea6"}"></i>${esc(themeName(d, q.theme))} · ${isVote ? `${L("Vote à l’Assemblée,", "Assembly vote,")} ${fmtDate(q.vote!.d)}` : L("Proposition d’un candidat", "A candidate’s proposal")}</p>
+      <p class="qz-kicker"><i style="background:${THEME_COLOR[q.theme] ?? "var(--other)"}"></i>${esc(themeName(d, q.theme))} · ${isVote ? `${L("Vote à l’Assemblée,", "Assembly vote,")} ${fmtDate(q.vote!.d)}` : L("Proposition d’un candidat", "A candidate’s proposal")}</p>
       <h2 class="qz-q">${esc(q.q)}</h2>
       <p class="qz-ctx">${isVote
         ? `${esc(q.ctx)} <a href="https://www.assemblee-nationale.fr/dyn/17/scrutins/${q.vote!.n}" target="_blank" rel="noopener">${L(`Scrutin n° ${q.vote!.n}`, `Vote no. ${q.vote!.n}`)} ↗</a>`
@@ -262,32 +262,18 @@ function keepInView(stage: HTMLElement) {
 }
 
 function intro(stage: HTMLElement, d: QuizData) {
-  const nV = d.long.filter((t) => t[0] === "v").length, nM = d.long.length - nV;
-  const per = nM / d.candidates.length;
   const themes = [...new Set(d.long.map((t) => question(d, t).theme))];
-  const card = (m: Mode, title: string, time: string, n: number, lines: string[], tag: string) => `
-    <button type="button" class="qz-pick is-${m}" data-mode="${m}">
-      <span class="px-tag">${tag}</span>
-      <strong>${title}</strong>
-      <span class="qz-pick-n"><b>${n}</b> ${L("questions", "questions")} · ${time}</span>
-      <span class="qz-pick-lines">${lines.map((x) => `<span>${x}</span>`).join("")}</span>
-      <span class="qz-pick-go">${L("Commencer", "Start")} <i aria-hidden="true">→</i></span>
-    </button>`;
+  const nS = d.short.length, nL = d.long.length;
   stage.innerHTML = `<div class="qz-intro qz-in-fwd">
-      <div class="qz-picks">
-        ${card("s", L("Version courte", "Short version"), L("2 minutes", "2 minutes"), d.short.length, [
-          L(`Les ${d.short.length} votes de l’Assemblée qui départagent le mieux les candidats`, `The ${d.short.length} Assembly votes that best tell the candidates apart`),
-          L("Votre classement des candidats et votre place sur l’axe gauche-droite", "Your ranking of the candidates and your place on the left–right axis"),
-        ], L("Rapide", "Quick"))}
-        ${card("l", L("Version longue", "Long version"), L("8 minutes", "8 minutes"), d.long.length, [
-          L(`${nV} votes et ${nM} mesures tirées des programmes : ${per} par candidat, sans dire de qui`, `${nV} votes and ${nM} measures from the programmes: ${per} per candidate, without saying whose`),
-          L("En plus : vos points de rupture avec chaque candidat, ce qui pourrait vous rapprocher, votre position sujet par sujet", "Also: your deal breakers with each candidate, what could bring you closer, your position subject by subject"),
-        ], L("La plus précise", "Most precise"))}
+      <p class="qz-lede">${L(`La version courte pose les ${nS} votes de l’Assemblée qui départagent le mieux les candidats, puis vous classe parmi eux et vous situe de la gauche à la droite.`, `The short version asks the ${nS} Assembly votes that best tell the candidates apart, then ranks them against your answers and places you from left to right.`)}</p>
+      <div class="qz-go">
+        <button type="button" class="qz-cta qz-start" data-mode="s">${L(`Commencer : ${nS} questions, 2 minutes`, `Start: ${nS} questions, 2 minutes`)} <i aria-hidden="true">→</i></button>
+        <button type="button" class="qz-long" data-mode="l">${L(`ou la version longue : ${nL} questions, sujet par sujet, avec vos lignes rouges`, `or the long version: ${nL} questions, subject by subject, with your deal breakers`)}</button>
       </div>
-      <p class="qz-topics">${themes.map((t) => `<span><i style="background:${THEME_COLOR[t] ?? "#9a9ea6"}"></i>${esc(themeName(d, t))}</span>`).join("")}</p>
+      <ul class="qz-topics" aria-label="${L("Sujets abordés", "Subjects covered")}">${themes.map((t) => `<li><i style="background:${THEME_COLOR[t] ?? "var(--other)"}"></i>${esc(themeName(d, t))}</li>`).join("")}</ul>
       <p class="muted small">${L("Vous pouvez passer une question, revenir en arrière, et marquer celles qui comptent vraiment pour vous : elles pèsent double. Vos réponses restent dans votre navigateur. Ce quiz mesure une proximité avec des votes et des mesures ; il ne dit pas pour qui voter.", "You can skip a question, go back, and mark the ones that really matter to you: they count double. Your answers stay in your browser. This quiz measures how close you are to votes and measures; it does not say who to vote for.")}</p>
     </div>`;
-  stage.querySelectorAll<HTMLButtonElement>(".qz-pick").forEach((b) => b.addEventListener("click", () => {
+  stage.querySelectorAll<HTMLButtonElement>("[data-mode]").forEach((b) => b.addEventListener("click", () => {
     st = { mode: b.dataset.mode as Mode, step: 0, a: new Map(), started: true };
     draw(stage, d, 1);
     keepInView(stage);

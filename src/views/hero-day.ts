@@ -130,26 +130,29 @@ export async function heroDay() {
   if (events[0]) takeaways.push(`${L("Dans la campagne", "On the trail")}${colon()}${events[0].html.replace(/\.\s*$/, "")}.`);
 
   // ---- the note of the day: takeaways, then the polls, what changed, the stories and the posts
+  // a dated desk brief: a few run-in lines under an ink rule, no boxes, no counters
+  const dayLabel = new Date(today()).toLocaleDateString(fr ? "fr-FR" : "en-GB", { day: "numeric", month: "long" });
+  const dayLabelFr = dayLabel.replace(/^1 /, "1er ");
   const noteHtml = `<section class="hday-panel" aria-labelledby="hday-note-title">
-    <header class="hday-panel-head"><p class="hero-kicker">${L("Le point du jour", "The note of the day")} · ${fmtDate(today())}</p><h2 id="hday-note-title">${L("Ce qu’il faut retenir", "Key takeaways")}</h2></header>
+    <header class="hday-panel-head"><h2 id="hday-note-title">${L(`Ce qu’il faut retenir du ${dayLabelFr}`, `What to know on ${dayLabel}`)}</h2></header>
     <ul class="hday-take">${takeaways.map((t) => `<li>${t}</li>`).join("")}</ul>
     <div class="hday-note">
       <section class="hday-block">
-        <header><h2>${L("Sondages", "Polls")}</h2><a href="#/sondages">${L("Tous", "All")} →</a></header>
+        <header><h2>${L(`Moyenne des sondages au ${fmtDate(latest)}`, `Poll average, ${fmtDate(latest)}`)}</h2><a href="#/sondages">${L("Chaque sondage", "Every poll")} →</a></header>
         <ol class="hdp">${pollRows}</ol>
-        <p class="hday-small">${L("Moyenne pondérée par la note des instituts · variation sur 7 jours", "Average weighted by institute grade · change over 7 days")}${infoTip(L("Chaque sondage compte selon la note de son institut (de A+ à F), gagnée par l’écart entre ses derniers sondages et les résultats depuis 2002. La flèche donne la variation sur les 7 derniers jours.", "Each poll counts by its institute’s grade (A+ to F), earned from how far its final polls landed from the results since 2002. The arrow is the change over the last 7 days."), L("À propos de la moyenne", "About the average"))}${lastLine ? ` · ${lastLine}` : ""}</p>
+        <p class="hday-small">${L("Intentions de vote aujourd’hui, pondérées par la note des instituts · variation sur 7 jours. Le graphique au-dessus prolonge ces moyennes jusqu’au premier tour.", "Voting intention today, weighted by institute grade · change over 7 days. The chart above carries these averages forward to the first round.")}${infoTip(L("Chaque sondage compte selon la note de son institut (de A+ à F), gagnée par l’écart entre ses derniers sondages et les résultats depuis 2002. La flèche donne la variation sur les 7 derniers jours.", "Each poll counts by its institute’s grade (A+ to F), earned from how far its final polls landed from the results since 2002. The arrow is the change over the last 7 days."), L("À propos de la moyenne", "About the average"))}${lastLine ? ` · ${lastLine}` : ""}</p>
       </section>
       ${eventsHtml ? `<section class="hday-block"><header><h2>${L("Ce qui a bougé", "What changed")}</h2><a href="#/2027">${L("Les candidats", "Candidates")} →</a></header><ul class="hde">${eventsHtml}</ul></section>` : ""}
-      ${storiesHtml ? `<section class="hday-block"><header><h2>${L("À la une", "Top stories")}</h2><a href="#/fil">${L("Fil rouge, fil bleu", "Red feed, blue feed")} →</a></header><ul class="hdn">${storiesHtml}</ul></section>` : ""}
-      ${postsHtml ? `<section class="hday-block"><header><h2>${L("Sur les réseaux", "On social media")}</h2><a href="#/fil">${L("Tout", "All")} →</a></header><ul class="hds">${postsHtml}</ul></section>` : ""}
+      ${storiesHtml ? `<section class="hday-block"><header><h2>${L("Fil rouge, fil bleu", "Red feed, blue feed")}</h2><a href="#/fil">${L("Tout le fil", "The whole feed")} →</a></header><ul class="hdn">${storiesHtml}</ul></section>` : ""}
+      ${postsHtml ? `<section class="hday-block"><header><h2>${L("Ce que publient les députés", "What MPs are posting")}</h2><a href="#/fil">${L("Tout le fil", "The whole feed")} →</a></header><ul class="hds">${postsHtml}</ul></section>` : ""}
     </div>
   </section>`;
 
   // ---- widget 1: the Assembly, 577 dots that fly from the map into the seats
   const pair = shifts?.pairs.filter((p) => p.level === "district").at(-1);
-  const viz = heroViz(geo, deputes, pair);
+  const viz = heroViz(geo, deputes, pair, isDarkTheme());
   const parliamentHtml = `<section class="hw hw-parl" aria-labelledby="hw-parl">
-    <a class="hw-head" href="#/assemblee"><span class="hero-kicker">${L("Parlement", "Parliament")}</span><b id="hw-parl">${L("Savoir ce que vote votre député", "Know how your MP votes")}</b><span>${L("577 députés et 348 sénateurs : chacun de leurs votes, leur loyauté envers le groupe, ce qu’ils disent en séance.", "577 MPs and 348 senators: every vote they cast, their loyalty to their group, what they say in the chamber.")}</span></a>
+    <a class="hw-head" href="#/assemblee"><span class="hero-kicker">${L("Parlement", "Parliament")}</span><b id="hw-parl">${L("577 sièges, et comment vote le vôtre", "577 seats, and how yours votes")}</b><span>${L("577 députés et 348 sénateurs : chacun de leurs votes, leur loyauté envers le groupe, ce qu’ils disent en séance.", "577 MPs and 348 senators: every vote they cast, their loyalty to their group, what they say in the chamber.")}</span></a>
     <figure class="hw-fig">${viz.svg}<figcaption><div class="hd-toggle" role="group" aria-label="${L("Vue", "View")}"><button type="button" data-hd="map">${L("Circonscriptions", "Districts")}</button><button type="button" data-hd="hemi">${L("Sièges", "Seats")}</button></div><p id="hd-caption"></p>${viz.legend}</figcaption></figure>
   </section>`;
 
@@ -171,7 +174,7 @@ export async function heroDay() {
     </figure>
   </section>` : "";
 
-  const headHtml = `<p class="hero-kicker">${L("Présidentielle 2027", "2027 presidential election")} · ${fmtDate(today())} · ${L(`premier tour dans ${daysToGo} jours`, `first round in ${daysToGo} days`)}</p>
+  const headHtml = `<p class="hday-kicker">${L("Présidentielle 2027", "2027 presidential election")} · ${fmtDate(today())} · ${L(`premier tour dans ${daysToGo} jours`, `first round in ${daysToGo} days`)}</p>
     <h1 id="hday-title">${esc(head)}</h1>`;
 
   const start = (root: HTMLElement) => {
@@ -185,8 +188,8 @@ export async function heroDay() {
       const proj = geoConicConformal().parallels([44, 49]).rotate([-3, 0]).fitExtent([[10, 10], [790, 770]], fcGeo);
       const k = unitsPerPx(svg, 800);
       svg.style.setProperty("--sw", `${(1.7 * k).toFixed(2)}px`);
-      svg.innerHTML = features.map((f) => `<path d="${geoPath(proj)(f)}" class="shift-base"/>`).join("") + arrowPaths(pair, "lr", (p) => proj(p) as [number, number] | null, { k, dark: true });
-      root.querySelector("#hday-legend")!.innerHTML = legend("lr", 2.2 / k, true, true);
+      svg.innerHTML = features.map((f) => `<path d="${geoPath(proj)(f)}" class="shift-base"/>`).join("") + arrowPaths(pair, "lr", (p) => proj(p) as [number, number] | null, { k, dark: isDarkTheme() });
+      root.querySelector("#hday-legend")!.innerHTML = legend("lr", 2.2 / k, true, isDarkTheme());
     };
     // drawn once it comes near the screen (it sits at the foot of the page)
     const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { io.disconnect(); draw(); } }, { rootMargin: "300px" });
@@ -196,4 +199,6 @@ export async function heroDay() {
   return { headHtml, noteHtml, parliamentHtml, shiftsHtml, start };
 }
 
+/** The widgets sit on paper: party colours as they are, lifted only when the reader's paper is dark. */
+const isDarkTheme = () => (document.documentElement.dataset.theme ? document.documentElement.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches);
 const fmt1 = (v: number) => (getLang() === "fr" ? v.toFixed(1).replace(".", ",") : v.toFixed(1)).replace("-", "−");

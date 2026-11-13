@@ -2,18 +2,17 @@
    Same pixel grammar, a calmer frame: the answer comes first, one local bar, and the pixel panel
    means "you can click this". Written against src/styles/tokens.css. */
 
-/* ---------- answer-first page header: the dark band shrinks to a headline strip ---------- */
-.sec-hero-in { padding: var(--spacing-5) var(--gutter) 1.6rem; gap: var(--spacing-3); }
+/* ---------- answer-first page header: a paper headline strip (style.css), the content right under it ---------- */
+.sec-hero-in { gap: var(--spacing-3); }
 .sec-hero h1 { font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.9rem); line-height: 0.98; max-width: 40ch; }
 .page-tabs[hidden], .page-head nav.tabs[hidden] { display: none; }
-.sec-hero .dek { font-size: clamp(0.98rem, 0.94rem + 0.2vw, 1.08rem); max-width: 72ch; line-height: 1.45; }
+.sec-hero .dek { font-size: clamp(0.98rem, 0.94rem + 0.2vw, 1.08rem); line-height: 1.45; }
 .sec-hero .page-head, .sec-hero .page-head > div { gap: var(--spacing-2); }
-.sec-hero::after { width: min(34vw, 420px); }
 .sec-hero .mp-head { gap: var(--spacing-5); }
 .sec-hero .mp-head img { width: 104px; height: 104px; }
 .sec-hero .crumbs { margin: 0; font-size: 0.78rem; }
 @media (max-width: 760px) {
-  .sec-hero-in { padding: var(--spacing-4) var(--gutter) 1.3rem; }
+  .sec-hero-in { gap: var(--spacing-2); }
   .sec-hero h1 { font-size: clamp(1.6rem, 1.2rem + 2.6vw, 2.1rem); }
   .sec-hero .mp-head { grid-template-columns: auto minmax(0, 1fr); gap: var(--spacing-4); }
   .sec-hero .mp-head img { width: 72px; height: 72px; }
@@ -130,7 +129,6 @@
 .px-info-pop { position: absolute; z-index: 40; left: -8px; top: calc(100% + 8px); width: max-content; max-width: min(18rem, 80vw); padding: 0.55rem 0.7rem; font: 400 0.82rem/1.4 var(--text); color: #fff; background: var(--night); text-align: left; white-space: normal; filter: drop-shadow(4px 4px 0 var(--split-blue)); }
 .px-info-pop.is-left { left: auto; right: -8px; }
 .px-info-pop.is-up { top: auto; bottom: calc(100% + 8px); }
-.sec-hero .px-info-btn { background: var(--night-rule-2); color: #fff; }
 
 /* ---------- sortable tables with sticky header rows (src/lib/sortable.ts) ---------- */
 .table th[aria-sort] { padding: 0; }

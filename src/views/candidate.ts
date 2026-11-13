@@ -155,15 +155,17 @@ export async function renderCandidate(app: HTMLElement, slug: string) {
              <p class="muted small">${polled
                ? L("Aucun des sondages de premier tour des trois dernières semaines ne le teste : pas de moyenne, pas de prévision, et aucun marché prédictif ne le cote.", "None of the first-round polls of the last three weeks tests this candidate: no average, no forecast, and no prediction market lists them.")
                : L("Aucun sondage publié ne le teste encore, et aucun marché prédictif ne le cote. Sa moyenne et sa prévision apparaîtront ici dès qu’il sera testé.", "No published poll tests this candidate yet and no prediction market lists them. The average and forecast will appear here once they are polled.")}</p>`
-          : `<div class="kpis kpis-4 cand-kpis">
-          <div><strong>${row ? pct(row.avg) : "–"}</strong>${L("Moyenne des sondages", "Polling average")}${rank ? ` · ${rank}${L(rank === 1 ? "er" : "e", rank === 1 ? "st" : rank === 2 ? "nd" : rank === 3 ? "rd" : "th")}` : ""}</div>
-          <div><strong class="${delta == null || Math.abs(delta) < 0.05 ? "" : delta > 0 ? "cand-up" : "cand-down"}">${delta == null ? "–" : signed(delta)}</strong>${L("Sur 30 jours (points)", "Over 30 days (pts)")}</div>
-          <div><strong>${fmtChance(fr?.win)}</strong>${L("Chances de victoire (prévision)", "Chance of winning (forecast)")}${infoTip(L("Tirée de la prévision du site : les sondages passés dans 20 000 élections simulées, mêlés aux marchés prédictifs.", "From the site’s forecast: polls run through 20,000 simulated elections, blended with prediction markets."), L("À propos de cette chance", "About this chance"))}</div>
-          <div><strong>${fmtChance(mk)}</strong>${L("Marchés prédictifs", "Prediction markets")}</div>
-        </div>
+          : `${row ? `<p class="cand-race"><strong data-count>${pct(row.avg)}</strong><span>${L("moyenne des sondages de premier tour", "first-round polling average")}${rank ? `, ${rank}${L(rank === 1 ? "er" : "e", rank === 1 ? "st" : rank === 2 ? "nd" : rank === 3 ? "rd" : "th")}` : ""}</span></p>` : ""}
+        <p class="cand-race-s">${[
+          delta == null ? "" : Math.abs(delta) < 0.05
+            ? L("Stable sur 30 jours.", "Flat over 30 days.")
+            : `<b class="${delta > 0 ? "cand-up" : "cand-down"}">${signed(delta)}</b> ${L(`point${Math.abs(delta) >= 2 ? "s" : ""} sur 30 jours.`, `point${Math.abs(delta) === 1 ? "" : "s"} over 30 days.`)}`,
+          fr?.win != null ? `${L("Chances de victoire selon notre prévision", "Chance of winning in our forecast")}${L(" : ", ": ")}<b>${fmtChance(fr.win)}</b>${infoTip(L("Tirée de la prévision du site : les sondages passés dans 20 000 élections simulées, mêlés aux marchés prédictifs.", "From the site’s forecast: polls run through 20,000 simulated elections, blended with prediction markets."), L("À propos de cette chance", "About this chance"))}${mk != null ? L(`, <b>${fmtChance(mk)}</b> selon les marchés prédictifs.`, `; <b>${fmtChance(mk)}</b> on prediction markets.`) : "."}` : mk != null ? `${L("Chances de victoire selon les marchés prédictifs", "Chance of winning on prediction markets")}${L(" : ", ": ")}<b>${fmtChance(mk)}</b>.` : "",
+          fr?.qualify != null ? L(`Au second tour dans ${fmtChance(fr.qualify)} des cas.`, `Reaches the runoff in ${fmtChance(fr.qualify)} of cases.`) : "",
+        ].filter(Boolean).join(" ")}</p>
         <p class="muted small">${L(
-          `Moyenne des ${nPolls} sondages de premier tour des trois dernières semaines qui le testent ; prévision : notre modèle (sondages et marchés) ; marchés : Kalshi et Polymarket ramenés à 100 %.${fr?.qualify != null ? ` Au second tour dans ${fmtChance(fr.qualify)} des cas selon la prévision.` : ""}`,
-          `Average of the ${nPolls} first-round polls of the last three weeks that test this candidate; forecast: our model (polls and markets); markets: Kalshi and Polymarket rescaled to 100%.${fr?.qualify != null ? ` Reaches the runoff in ${fmtChance(fr.qualify)} of cases in the forecast.` : ""}`,
+          `Moyenne des ${nPolls} sondages de premier tour des trois dernières semaines qui le testent ; prévision : notre modèle (sondages et marchés) ; marchés : Kalshi et Polymarket ramenés à 100 %.`,
+          `Average of the ${nPolls} first-round polls of the last three weeks that test this candidate; forecast: our model (polls and markets); markets: Kalshi and Polymarket rescaled to 100%.`,
         )}${row ? "" : ` ${L("Pas testé dans les sondages des trois dernières semaines.", "Not tested in the polls of the last three weeks.")}`}</p>`}
         <div id="cand-trend"></div>
         <p class="small"><a href="#/sondages">${L("Tous les sondages et les marchés", "Every poll and market")}</a> · <a href="#/simulateur">${L("Simuler le second tour", "Simulate the runoff")}</a></p>
@@ -312,7 +314,7 @@ function programmeCard(d: CandidateFile, p: ProgEntry | null) {
     </div>
     ${e ? `<p class="muted small">${e.label ? `${esc(tr(e.label))}. ` : ""}${e.announced != null ? `${L("Chiffrage annoncé", "Claimed cost")}${L(" : ", ": ")}${md(e.announced)} ; ` : `${L("Pas de chiffrage du parti", "No party costing")} ; `}${L("estimation", "estimate")} ${esc(e.by)}${L(" : ", ": ")}${md(e.net)}${e.horizon ? ` ${esc(tr(e.horizon))}` : ""}. ${L("Solde pour les finances publiques : négatif = coût net.", "Net effect on public finances: negative = net cost.")}</p>` : ""}
     ${p.status === "partial" && p.statusNote ? `<p class="muted small">${esc(tr(p.statusNote))}</p>` : ""}
-    <a class="door cand-door" href="#/programmes/${esc(p.slug)}"><b>${L("Lire l’analyse complète", "Read the full analysis")}</b><span class="muted small">${L("Mesures, coût, droit et sources, point par point.", "Measures, cost, law and sources, point by point.")}</span></a>
+    <a class="door cand-door" href="#/programmes/${esc(p.slug)}"><b>${n ? L(`Les ${fmtNum(n)} mesures de ${esc(surname(d.name))}, une par une`, `${esc(surname(d.name))}’s ${fmtNum(n)} measures, one by one`) : L(`Le programme de ${esc(surname(d.name))}, mesure par mesure`, `${esc(surname(d.name))}’s manifesto, measure by measure`)}</b><span class="muted small">${L("Mesures, coût, droit et sources, point par point.", "Measures, cost, law and sources, point by point.")}</span></a>
   </section>`;
 }
 
@@ -358,7 +360,7 @@ function newsCard(d: CandidateFile, items: Headline[], hours: number) {
 function quizCard(d: CandidateFile) {
   const g = d.quiz.groups;
   return `<section class="card" id="c-quiz">
-    <header class="card-head"><h2>${L("Le quiz : qui vous ressemble ?", "The quiz: who’s closest to you?")}</h2></header>
+    <header class="card-head"><h2>${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</h2></header>
     ${g.length
       ? `<p class="small">${L(`Répondez aux votes de l’Assemblée et aux mesures des programmes : ${esc(d.name)} y est représenté par ${g.length > 1 ? "les groupes" : "le groupe"} ${g.map(esc).join(" et ")}.`, `Answer the Assembly’s votes and the manifesto measures: ${esc(d.name)} is represented by the ${g.map(esc).join(" and ")} group${g.length > 1 ? "s" : ""}.`)}${d.quiz.note ? ` ${esc(tr(d.quiz.note))}` : ""}</p>`
       : `<p class="cand-none">${L("Pas encore dans le quiz", "Not in the quiz yet")}</p><p class="muted small">${d.quiz.note ? esc(tr(d.quiz.note)) : L("Aucun groupe parlementaire ne le représente encore dans le quiz.", "No parliamentary group stands for this candidate in the quiz yet.")}</p>`}

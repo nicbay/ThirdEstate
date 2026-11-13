@@ -1,10 +1,10 @@
 // Front page, top to bottom: the polls and on to the first round (on the dark hero, under the day's headline);
-// the quiz, the page's loudest call to action; the reader's own town (when known); the note of the day (key
+// one quiet line for the quiz; the reader's own town (when known); the note of the day (key
 // takeaways, polls, what changed, stories, posts); two widgets, the Assembly's 577 seats and the shift map.
 // The parts are built in views/hero-day.ts.
 import { loadMarkets, loadPolls } from "../data";
 import { L, fmtDate } from "../i18n";
-import { meta, registerParties } from "../lib/candidates";
+import { registerParties } from "../lib/candidates";
 import { getHome } from "../lib/cloud";
 import { average, latestPollDate, pollsInWindow, WINDOW } from "../lib/polls";
 import { colon } from "../lib/format";
@@ -21,8 +21,6 @@ export async function renderHome(app: HTMLElement) {
   const now = average(polls.firstRound, latest);
   const nPolls = pollsInWindow(polls.firstRound, latest).length;
   const home = getHome();
-  const cols = now.slice(0, 6).map((r) => meta(r.name).color);
-  const quizPixels = Array.from({ length: 24 }, (_, i) => `<i style="background:${cols[(i * 5 + Math.floor(i / 6)) % cols.length] ?? "#fff"}"></i>`).join("");
 
   app.innerHTML = `
     <section class="page home">
@@ -31,20 +29,12 @@ export async function renderHome(app: HTMLElement) {
         <div class="hday-chart">
           <div id="trend" class="reveal"></div>
           <div id="hq-num">${forecastLine(scenarioForecast(polls, markets, scenarioFromUrl()))}</div>
-          <p class="hday-small">${L(`Ligne pleine : moyenne des sondages du premier tour sur ${WINDOW} jours, pondérée par la note des instituts (<a href="#/sondages/instituts">le classement</a>), jusqu’au dernier sondage (${fmtDate(latest)}, ${nPolls} sondages dans la fenêtre). Points : sondages individuels. Au-delà : la projection jusqu’au premier tour.`, `Solid line: first-round polling average over ${WINDOW} days, weighted by each institute’s grade (<a href="#/sondages/instituts">the ranking</a>), up to the latest poll (${fmtDate(latest)}, ${nPolls} polls in the window). Dots: individual polls. Beyond: the projection to the first round.`)}</p>
+          <div id="hq-foot" class="hday-small"></div>
         </div>
         <div class="px-edge" aria-hidden="true"></div>
       </section>
 
-      <a class="quiz-band" href="#/quiz">
-        <span class="qb-px" aria-hidden="true">${quizPixels}</span>
-        <span class="qb-text">
-          <span class="qb-k">${L("Le quiz", "The quiz")}</span>
-          <b>${L("Qui vous ressemble ?", "Who is most like you?")}</b>
-          <span>${L("Répondez à 10 votes de l’Assemblée et découvrez de quel député et de quel candidat vous êtes le plus proche, sujet par sujet.", "Answer 10 Assembly votes and find out which MP and which candidate you are closest to, subject by subject.")}</span>
-        </span>
-        <span class="qb-go">${L("Faire le quiz", "Take the quiz")} <span aria-hidden="true">→</span></span>
-      </a>
+      <p class="quiz-line"><b>${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</b> <span>${L("Dix votes de l’Assemblée, et le député et le candidat les plus proches de vous.", "Ten Assembly votes, and the MP and the candidate closest to you.")}</span> <a class="button" href="#/quiz">${L("Faire le quiz", "Take the quiz")}</a></p>
 
       <div id="mine"></div>
 
@@ -64,10 +54,18 @@ export async function renderHome(app: HTMLElement) {
   const from = shiftDays(latest, window.innerWidth < 640 ? -100 : -150);
   const shown = now.slice(0, 7).map((r) => r.name);
   const num = app.querySelector<HTMLElement>("#hq-num");
-  mountForecastChart(app.querySelector<HTMLElement>("#trend")!, {
-    polls, markets, from: () => from, shown: () => shown, height: 340,
+  const foot = app.querySelector<HTMLElement>("#hq-foot")!;
+  const trendBox = app.querySelector<HTMLElement>("#trend")!;
+  const redraw = mountForecastChart(trendBox, {
+    polls, markets, from: () => from, shown: () => shown, height: 340, after: foot,
     onChange: (fc) => { if (num) num.innerHTML = forecastLine(fc, fc.scenarios.length ? scenarioForecast(polls, markets, []) : undefined); },
   });
+  // the method behind the average, folded with the rest of the method
+  foot.querySelector(".scn-more")?.insertAdjacentHTML("beforeend", `<p>${L(`Moyenne des sondages du premier tour sur ${WINDOW} jours, pondérée par la note des instituts (<a href="#/sondages/instituts">le classement</a>), jusqu’au dernier sondage (${fmtDate(latest)}, ${nPolls} sondages dans la fenêtre). Points : sondages individuels.`, `First-round polling average over ${WINDOW} days, weighted by each institute’s grade (<a href="#/sondages/instituts">the ranking</a>), up to the latest poll (${fmtDate(latest)}, ${nPolls} polls in the window). Dots: individual polls.`)}</p>`);
+  // phones get a narrower canvas: redraw when the window crosses the 640px line
+  const narrow = matchMedia("(max-width: 639px)");
+  const onNarrow = () => { if (!document.body.contains(trendBox)) return narrow.removeEventListener("change", onNarrow); redraw(); };
+  narrow.addEventListener("change", onNarrow);
 
   // draw-in when scrolled into view
   const io = new IntersectionObserver((entries) => entries.forEach((e) => e.isIntersecting && (e.target.classList.add("in"), io.unobserve(e.target))), { threshold: 0.25 });

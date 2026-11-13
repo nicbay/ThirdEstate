@@ -39,7 +39,7 @@ export function renderKit(app: HTMLElement) {
     <article class="card">
       <header class="card-head"><h2>${L("Typographie", "Type")}</h2></header>
       <div class="kit-type">
-        <p class="eyebrow">${L("Surtitre en pixels (Silkscreen), jamais pour une phrase", "Pixel kicker (Silkscreen), never for a sentence")}</p>
+        <p class="eyebrow">${L("Surtitre court", "Short kicker")}</p>
         <p class="kit-h1">${L("Titre de page, Archivo 850 étroit", "Page headline, Archivo 850 condensed")}</p>
         <h2>${L("Titre de section", "Section head")}</h2>
         <h3>${L("Sous-titre", "Sub-head")}</h3>
@@ -77,8 +77,8 @@ export function renderKit(app: HTMLElement) {
 
     <article class="card">
       <header class="card-head"><h2>${L("Panneaux : calmes ou cliquables", "Panels: calm or clickable")}</h2></header>
-      <p class="muted small">${L("Une section est une feuille blanche ouverte par un filet d’encre. Le cadre pixel et l’ombre dure veulent dire : ça se clique.", "A section is a white sheet opened by an ink rule. The pixel frame and the hard shadow mean: you can click this.")}</p>
-      <nav class="next-steps" aria-label="${L("Exemple", "Example")}"><p>${L("Et ensuite", "What next")}</p><a href="#/2027">${L("Où en est la présidentielle", "Where the race stands")}<span aria-hidden="true">→</span></a><a href="#/assemblee">${L("Les députés et leurs votes", "The MPs and their votes")}<span aria-hidden="true">→</span></a></nav>
+      <p class="muted small">${L("Une section est une feuille blanche ouverte par un filet d’encre. Le cadre pixel et l’ombre dure veulent dire : ça se clique. Les liens de fin de page sont une simple liste.", "A section is a white sheet opened by an ink rule. The pixel frame and the hard shadow mean: you can click this. End-of-page links are a plain list.")}</p>
+      <nav class="next-steps" aria-label="${L("Exemple", "Example")}"><p>${L("Ailleurs sur Third Estate", "Elsewhere on Third Estate")}</p><ul><li><a href="#/2027">${L("Où en est la présidentielle", "Where the race stands")}<span aria-hidden="true">→</span></a></li><li><a href="#/assemblee">${L("Les députés et leurs votes", "The MPs and their votes")}<span aria-hidden="true">→</span></a></li></ul></nav>
     </article>
 
     <aside class="card panel" id="kit-sheet">

@@ -161,10 +161,8 @@ export async function mountDaily(box: HTMLElement | null) {
     ...[...moves].flatMap(([n, m]) => { const x = pollsMove(m); return x ? [{ ...x, name: n }] : []; }),
     ...movers.flatMap((m) => m.moves.filter((x) => x.src !== "polls").map((x) => ({ ...x, name: m.name }))),
   ].sort((x, y) => Math.abs(y.d) - Math.abs(x.d)).slice(0, 4);
-  const tiles = big.length ? `<ul class="dy-tiles">${big.map((x) => `<li class="dy-tile ${x.d > 0 ? "is-up" : "is-down"}">
-      <span class="dy-tile-d"><i aria-hidden="true">${x.d > 0 ? "▲" : "▼"}</i>${x.d > 0 ? "+" : "−"}${dec(Math.abs(x.d))}<small>${Math.abs(x.d) >= 2 ? "pts" : "pt"}</small></span>
-      <span class="dy-tile-n">${esc(meta(x.name).surname)}</span>
-      <span class="dy-tile-s">${SRC[x.src]()} · ${x.days === 1 ? "24 h" : week}${x.src === "polls" ? ` · ${L("à", "now")} ${pct(x.now)}` : ""}</span></li>`).join("")}</ul>` : "";
+  // the biggest moves as one typeset line, not tiles: "Ce qui a bougé : X ▲ +1,2 pt (sondages, 24 h) · Y ▼ −0,8 pt …"
+  const tiles = big.length ? `<p class="dy-moved"><span class="dy-moved-k">${L("Ce qui a bougé :", "What moved:")}</span> ${big.map((x) => `<span class="dy-mv"><b>${esc(meta(x.name).surname)}</b> <span class="dy-mv-d ${x.d > 0 ? "is-up" : "is-down"}"><i aria-hidden="true">${x.d > 0 ? "▲" : "▼"}</i>${x.d > 0 ? "+" : "−"}${dec(Math.abs(x.d))} ${Math.abs(x.d) >= 2 ? "pts" : "pt"}</span> <span class="dy-mv-s">(${x.src === "polls" ? L("sondages", "polls") : SRC[x.src]()}, ${x.days === 1 ? "24 h" : week}${x.src === "polls" ? `, ${L("à", "now")} ${pct(x.now)}` : ""})</span></span>`).join(`<span class="dy-mv-sep" aria-hidden="true"> · </span>`)}</p>` : "";
 
   // the latest polls, straight from the hourly file; "new" = published since the last brief
   const fresh = new Set((b?.newPolls ?? []).map((p) => `${p.pollster}|${p.end}`));
