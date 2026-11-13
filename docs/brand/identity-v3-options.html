@@ -1,0 +1,116 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Identity options</title>
+<!-- Served by the Vite dev server: http://localhost:<port>/docs/brand/identity-v3-options.html (fonts come from /public/fonts) -->
+<style>
+@font-face{font-family:Geist;src:url(/fonts/geist-variable.woff2) format("woff2");font-weight:100 900}
+@font-face{font-family:"Geist Mono";src:url(/fonts/geist-mono-variable.woff2) format("woff2");font-weight:100 900}
+@font-face{font-family:Archivo;src:url(/fonts/archivo-100-900-latin.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%}
+@font-face{font-family:Silkscreen;src:url(/fonts/silkscreen-400-latin.woff2) format("woff2");font-weight:400}
+@font-face{font-family:Silkscreen;src:url(/fonts/silkscreen-700-latin.woff2) format("woff2");font-weight:700}
+:root{--night:#131209;--ink:#0d0f1a;--ink2:#474c56;--ink3:#686d77;--rule:#e2dfd4}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--ink);font:400 16px/24px Geist,system-ui,sans-serif}
+main{max-width:1200px;margin:0 auto;padding:48px 16px 96px}
+h1{font:600 36px/40px Geist;letter-spacing:-.02em;margin:0 0 12px}
+.dek{margin:0 0 48px;max-width:680px;color:var(--ink2);font-size:18px;line-height:28px}
+h2{font:600 24px/32px Geist;letter-spacing:-.01em;margin:64px 0 16px;padding-top:24px;border-top:2px solid var(--ink);position:relative}
+h2::before{content:"";position:absolute;top:-5px;left:0;width:8px;height:8px;background:var(--ink)}
+.k{font:400 12px/16px Silkscreen;text-transform:uppercase;letter-spacing:.04em;color:var(--ink3);margin:0}
+/* parts */
+.parts{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.part{display:grid;gap:8px}
+.part .sw{display:flex;align-items:center;justify-content:center;gap:24px;height:128px;background:var(--night);color:#fff}
+.part .sw.l{background:#f4f3ee;color:var(--ink)}
+.part b{font:600 16px/24px Geist}
+.part>span{font:400 14px/20px Geist;color:var(--ink2)}
+/* lockups */
+.lock{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--rule);margin-bottom:24px}
+.lock header{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;padding:16px 24px;border-bottom:2px solid var(--rule)}
+.lock header b{font:600 20px/28px Geist}
+.lock header .tag{font:600 12px/16px "Geist Mono";background:var(--ink);color:#fff;padding:2px 8px}
+.lock header p{flex-basis:100%;margin:0;color:var(--ink2);font-size:14px;line-height:20px;max-width:880px}
+.stage{display:flex;align-items:center;justify-content:center;min-height:160px;padding:32px 24px}
+.stage.d{background:var(--night);color:#fff}
+.stage.w{background:#fff;color:var(--ink)}
+.row{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:24px;padding:16px 24px;border-top:2px solid var(--rule);font:500 12px/16px "Geist Mono";color:var(--ink3)}
+.row .bar{display:flex;align-items:center;gap:12px;height:56px;padding:0 16px;background:var(--night);color:#fff;clip-path:polygon(0 4px,2px 4px,2px 2px,4px 2px,4px 0,calc(100% - 4px) 0,calc(100% - 4px) 2px,calc(100% - 2px) 2px,calc(100% - 2px) 4px,100% 4px,100% calc(100% - 4px),calc(100% - 2px) calc(100% - 4px),calc(100% - 2px) calc(100% - 2px),calc(100% - 4px) calc(100% - 2px),calc(100% - 4px) 100%,4px 100%,4px calc(100% - 2px),2px calc(100% - 2px),2px calc(100% - 4px),0 calc(100% - 4px))}
+.row .bar i{font:500 14px Geist;font-style:normal;color:#cfcfcf}
+.fav{display:inline-flex;align-items:center;gap:8px}
+.lk{display:inline-flex;align-items:center}
+.lk.stack{flex-direction:column;gap:12px}
+svg{display:block}
+/* wordmarks */
+.w-archivo{font-family:Archivo;font-weight:850;font-stretch:75%;text-transform:uppercase;letter-spacing:.01em;line-height:1;white-space:nowrap}
+.w-archivo span{font-weight:300;margin-left:.22em}
+.w-geist{font-family:Geist;font-weight:600;letter-spacing:-.035em;line-height:1;white-space:nowrap}
+.w-geist span{font-weight:400;opacity:.62}
+.w-silk{font-family:Silkscreen;font-weight:700;text-transform:uppercase;line-height:1;letter-spacing:.02em;white-space:nowrap}
+.w-silk span{font-weight:400;opacity:.7;margin-left:.3em}
+.w-mono{font-family:"Geist Mono";font-weight:500;letter-spacing:-.02em;line-height:1;white-space:nowrap;text-transform:lowercase}
+.w-mono span{opacity:.55}
+.pick{margin-top:64px;padding:24px;background:#f4f3ee}
+.pick ol{margin:8px 0 0;padding-left:20px}
+</style></head><body><main>
+<p class="k">Third Estate · identity v3 · options</p>
+<h1>Logo and wordmark options</h1>
+<p class="dek">Four marks and five wordmarks, then six ways to combine them. Each lockup is shown on night, on white, in the masthead pill at its real size, and as a favicon at 32 and 16 pixels. All marks stay on a pixel grid.</p>
+
+<h2>The marks</h2>
+<div class="parts" id="marks"></div>
+
+<h2>The wordmarks</h2>
+<div class="parts" id="words"></div>
+
+<h2>Lockups</h2>
+<div id="locks"></div>
+
+<div class="pick"><p class="k">How to answer</p><ol><li>Pick a lockup (1 to 6), or a mark letter and a wordmark number (for example M2 + W3).</li><li>Say anything to change: colours, weight, casing, stacked or inline.</li></ol></div>
+</main>
+<script>
+const BLEU="#000091", BLEU_D="#5470ff", ROUGE="#e1000f", WHITE="#ffffff", EYE="#111216";
+// ---------- grids ----------
+const FOX=["..K..........K..",".KLK........KRK.",".KLLK......KRRK.",".KLILK....KRIRK.","KLLILLKKKKRRIRRK","KLLLLLLMMRRRRRRK","KLLLLLLMMRRRRRRK","KLLEELLMMRREERRK","KLLLLLLMMRRRRRRK",".KMMLLLMMRRRMMK.","..KMMMLMMRMMMK..","...KMMMMMMMMK...","....KMMMMMMK....",".....KMNNMK.....","......KNNK......",".......KK......."];
+// flat tricolour fox, 12×12, no outline: red fur, white muzzle and ears, blue eyes and nose
+const FLAT=["RR........RR","RWR......RWR","RWWRRRRRRWWR","RRRRRRRRRRRR","RRBRRRRRRBRR","RRRRRWWRRRRR","WWRRWWWWRRWW",".WWWWWWWWWW.","..WWWWWWWW..","...WWBBWW...","....WBBW....",".....WW....."];
+// the numeral III, serifs top and bottom, the third stem split red | blue
+const III=["................","................",".IIIIIIIIIIIIII.",".IIIIIIIIIIIIII.","...II..II..RB...","...II..II..RB...","...II..II..RB...","...II..II..RB...","...II..II..RB...","...II..II..RB...","...II..II..RB...","...II..II..RB...",".IIIIIIIIIIIIII.",".IIIIIIIIIIIIII.","................","................"];
+function rects(grid,pal,ox=0,oy=0){let s="";grid.forEach((row,y)=>{for(let x=0;x<row.length;){const c=row[x];let e=x+1;while(e<row.length&&pal[row[e]]===pal[c])e++;if(pal[c])s+=`<rect x="${ox+x}" y="${oy+y}" width="${e-x}" height="1" fill="${pal[c]}"/>`;x=e}});return s}
+const svg=(w,h,inner,px)=>`<svg viewBox="0 0 ${w} ${h}" width="${w*px}" height="${h*px}" shape-rendering="crispEdges" aria-hidden="true">${inner}</svg>`;
+// marks: (dark, size in css px) -> svg
+const MARKS={
+  M1:{name:"M1 · The fox, as today",note:"16×16, bleu France outline, red fur, white muzzle. Detailed; the outline thins out at 16px.",draw:(d,s)=>svg(16,16,rects(FOX,{K:d?BLEU_D:BLEU,L:ROUGE,R:ROUGE,I:WHITE,M:WHITE,E:EYE,N:EYE}),s/16)},
+  M2:{name:"M2 · Flat tricolour fox",note:"12×12, no outline, bigger pixels. Red fur, white muzzle, blue eyes and nose: the flag in three flat fields. Sharpest as a favicon.",draw:(d,s)=>svg(12,12,rects(FLAT,{R:ROUGE,W:WHITE,B:d?BLEU_D:BLEU}),s/12)},
+  M3:{name:"M3 · Fox line, one colour",note:"The same head, outline, eyes and nose only, in the text colour. Works on any surface, in print, in a stamp.",draw:(d,s)=>svg(16,16,rects(FOX,{K:"currentColor",E:"currentColor",N:"currentColor"}),s/16)},
+  M4:{name:"M4 · III, the third",note:"Drops the animal: the Roman numeral for the third estate, its last stem split red | blue (left and right). Pure type, no mascot.",draw:(d,s)=>svg(16,16,rects(III,{I:"currentColor",R:d?"#ff5a6a":ROUGE,B:d?BLEU_D:BLEU}),s/16)},
+};
+// ---------- custom bitmap wordmark (5×7 caps, THIRD bold, ESTATE regular) ----------
+const G={T:["#####","..#..","..#..","..#..","..#..","..#..","..#.."],H:["#...#","#...#","#...#","#####","#...#","#...#","#...#"],I:["###",".#.",".#.",".#.",".#.",".#.","###"],R:["####.","#...#","#...#","####.","#.#..","#..#.","#...#"],D:["####.","#...#","#...#","#...#","#...#","#...#","####."],E:["#####","#....","#....","####.","#....","#....","#####"],S:[".####","#....","#....",".###.","....#","....#","####."],A:[".###.","#...#","#...#","#####","#...#","#...#","#...#"]};
+function bitmap(word,bold,x0,fill){let s="",x=x0;for(const ch of word){const g=G[ch];const w=g[0].length+(bold?1:0);g.forEach((row,y)=>{[...row].forEach((c,i)=>{if(c==="#")s+=`<rect x="${x+i}" y="${y}" width="${bold?2:1}" height="1" fill="${fill}"/>`})});x+=w+1}return{s,x}}
+function pixelWord(px,dark,stack=false){const a=bitmap("THIRD",true,0,"currentColor");if(stack){const b=bitmap("ESTATE",false,0,dark?"#9b9b9b":"#686d77");const w=Math.max(a.x,b.x);return svg(w,16,a.s+b.s.replace(/y="(\d)"/g,(m,y)=>`y="${+y+9}"`),px)}const b=bitmap("ESTATE",false,a.x+3,dark?"#9b9b9b":"#686d77");return svg(b.x,7,a.s+b.s,px)}
+const WORDS={
+  W1:{name:"W1 · Archivo condensed, as today",note:"Heavy condensed THIRD, light ESTATE. Newsy; the last trace of Archivo on the site.",html:(z)=>`<span class="w-archivo" style="font-size:${z}px">Third<span>Estate</span></span>`},
+  W2:{name:"W2 · Geist, sentence case",note:"The site's own typeface, tight tracking, Estate a step lighter. Calm, current, one typeface everywhere.",html:(z)=>`<span class="w-geist" style="font-size:${z}px">Third <span>Estate</span></span>`},
+  W3:{name:"W3 · Drawn pixel letters",note:"Bespoke 5×7 bitmap caps drawn on the fox's grid: THIRD in a doubled stroke, ESTATE single. Ownable, crisp at any multiple.",html:(z,d,stack)=>pixelWord(Math.max(2,Math.round(z/7)),d,stack)},
+  W4:{name:"W4 · Silkscreen",note:"The pixel face already used for micro labels. Fully pixel at once, but a stock font anyone can use.",html:(z)=>`<span class="w-silk" style="font-size:${Math.round(z*.8)}px">Third<span>Estate</span></span>`},
+  W5:{name:"W5 · Geist Mono, lowercase",note:"third estate in the data face: reads like a terminal or a desk feed. Quiet, technical.",html:(z)=>`<span class="w-mono" style="font-size:${Math.round(z*.9)}px">third<span>.estate</span></span>`},
+};
+// ---------- render parts ----------
+document.getElementById("marks").innerHTML=Object.values(MARKS).map(m=>`<div class="part"><div class="sw">${m.draw(true,96)}${m.draw(true,32)}${m.draw(true,16)}</div><div class="sw l">${m.draw(false,96)}${m.draw(false,32)}${m.draw(false,16)}</div><b>${m.name}</b><span>${m.note}</span></div>`).join("");
+document.getElementById("words").innerHTML=Object.values(WORDS).map(w=>`<div class="part"><div class="sw">${w.html(28,true)}</div><div class="sw l">${w.html(28,false)}</div><b>${w.name}</b><span>${w.note}</span></div>`).join("");
+// ---------- lockups ----------
+const LOCKS=[
+  {n:1,m:"M1",w:"W1",t:"Today",p:"For reference: the current fox and the Archivo wordmark."},
+  {n:2,m:"M1",w:"W2",t:"Smallest change",p:"Keep the fox exactly, move the wordmark onto Geist so the whole site speaks one typeface. Lowest risk, nothing to relearn."},
+  {n:3,m:"M2",w:"W3",t:"All pixel (recommended)",p:"Flat tricolour fox and drawn pixel letters on the same grid: one system from favicon to share card, owned outright, no stock font in the logo. The fox gets simpler so it survives 16px."},
+  {n:4,m:"M2",w:"W2",t:"Pixel mark, clean type",p:"The flat fox for character, Geist for legibility. A good split if drawn letters feel too retro next to the data."},
+  {n:5,m:"M3",w:"W5",t:"Desk feed",p:"One-colour fox line and the mono wordmark: monochrome, editorial, prints anywhere. Least colourful, most serious."},
+  {n:6,m:"M4",w:"W3",t:"No fox",p:"The numeral III and pixel letters, stacked. Says 'third estate' without a mascot. Included for contrast; it drops the fox you asked to keep earlier.",stack:true},
+];
+const lock=(L,d,z)=>{const m=MARKS[L.m],w=WORDS[L.w];const ms=Math.round(z*(L.stack?1.6:1.15));return `<span class="lk${L.stack?" stack":""}" style="gap:${Math.round(z*.42)}px">${m.draw(d,ms)}${w.html(z,d,L.stack)}</span>`};
+document.getElementById("locks").innerHTML=LOCKS.map(L=>`<section class="lock"><header><span class="tag">${L.n}</span><b>${L.t}</b><span class="k">${L.m} + ${L.w}</span><p>${L.p}</p></header>
+<div class="stage d">${lock(L,true,40)}</div><div class="stage w">${lock(L,false,40)}</div>
+<div class="row"><span class="bar">${lock({...L,stack:false},true,20)}<i>2027 · Your town · Parliament</i></span>
+<span class="fav">${MARKS[L.m].draw(true,32)} 32px</span><span class="fav">${MARKS[L.m].draw(true,16)} 16px</span>
+<span class="fav" style="color:var(--ink)">${MARKS[L.m].draw(false,32)} on white</span></div></section>`).join("");
+</script>
+</body></html>

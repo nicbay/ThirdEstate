@@ -29,6 +29,7 @@ import { renderEconomy } from "./views/economy";
 import { renderQuiz } from "./views/quiz";
 import { fetchJson, loadDeputes } from "./data";
 import { foxCells, foxSvg } from "./lib/fox";
+import { wordmarkSvg } from "./lib/wordmark";
 import { pixelIcon, type PixelIcon } from "./lib/pixel-icons";
 import { initSearch, openSearch } from "./lib/search";
 import { foxBusy, initFox, initMotion, pageTransition } from "./lib/motion";
@@ -61,7 +62,7 @@ const searchBtn = document.getElementById("search-btn") as HTMLButtonElement;
 const quizBtn = document.getElementById("quiz-cta") as HTMLAnchorElement;
 const tabbar = document.getElementById("tabbar")!;
 const skip = document.getElementById("skip") as HTMLAnchorElement;
-document.querySelector(".topbar .brand")!.insertAdjacentHTML("afterbegin", foxSvg(28, true));
+document.querySelector(".topbar .brand")!.insertAdjacentHTML("afterbegin", foxSvg(28, true) + wordmarkSvg(2));
 initFox(document.querySelector<SVGSVGElement>(".topbar .brand .fox"));
 initMotion(app);
 // A portrait that fails to load disappears (instead of a broken-image icon). One capturing listener replaces
@@ -323,7 +324,7 @@ function renderChrome(path: string) {
     + `<button type="button" id="menu-btn" aria-haspopup="dialog" aria-controls="menu-sheet">${pixelIcon("menu", 24)}<span>Menu</span></button>`;
   sheet.setAttribute("aria-label", L("Menu du site", "Site menu"));
   sheet.innerHTML = `<div class="ms-box">
-    <header class="ms-head"><span class="ms-brand">${foxSvg(32, true)}<b>Third<span>Estate</span></b></span><button type="button" class="ms-close" data-ms="close" aria-label="${L("Fermer le menu", "Close the menu")}">${pixelIcon("close", 24)}</button></header>
+    <header class="ms-head"><span class="ms-brand" aria-label="Third Estate">${foxSvg(32, true)}${wordmarkSvg(3)}</span><button type="button" class="ms-close" data-ms="close" aria-label="${L("Fermer le menu", "Close the menu")}">${pixelIcon("close", 24)}</button></header>
     <div class="ms-tools">
       <button type="button" data-ms="search">${pixelIcon("search", 12)}<span>${L("Rechercher une commune, un élu, un mot", "Search a town, an official, a word")}</span></button>
       <a class="ms-quiz" href="#/quiz">${L("Le quiz : qui vous ressemble ?", "The quiz: who’s like you?")}</a>
@@ -354,7 +355,7 @@ function renderChrome(path: string) {
   toTop.setAttribute("aria-label", L("Haut de page", "Back to top"));
 
   footer.innerHTML = `<div class="foot-strip" aria-hidden="true"></div><div class="foot">
-    <div class="foot-id"><a class="brand" href="#/" aria-label="Third Estate">${foxSvg(64, true)}<b>Third<span>Estate</span></b></a>
+    <div class="foot-id"><a class="brand" href="#/" aria-label="Third Estate">${foxSvg(64, true)}${wordmarkSvg(3)}</a>
       <p>${L("Données électorales françaises, de la commune à l’Élysée. Sources publiques, méthode ouverte, code libre.", "French election data, from your town hall to the Élysée. Public sources, open method, open code.")}</p>
       <p class="foot-quote">${L("« Qu’est-ce que le tiers état ? Tout. Qu’a-t-il été jusqu’à présent dans l’ordre politique ? Rien. Que demande-t-il ? À y devenir quelque chose. »", "“What is the Third Estate? Everything. What has it been until now in the political order? Nothing. What does it ask? To become something.”")} <span>Sieyès, 1789</span></p></div>
     <nav class="foot-map" aria-label="${L("Plan du site", "Site map")}">${SECTIONS.map((s) => `<div${isGrouped(s) ? ` class="foot-wide"` : ""}><a class="foot-h" href="${s.href}">${pixelIcon(s.icon, 12)}${L(s.fr, s.en)}</a>${isGrouped(s)

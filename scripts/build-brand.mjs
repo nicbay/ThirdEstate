@@ -4,6 +4,7 @@
 // Usage: node scripts/build-brand.mjs
 import { writeFile } from "node:fs/promises";
 import { FOX_GRID, foxFavicon, foxSvg } from "../src/lib/fox.ts";
+import { wordmarkSvg } from "../src/lib/wordmark.ts";
 
 if (FOX_GRID.length !== 16 || FOX_GRID.some((r) => r.length !== 16)) throw new Error("fox grid must be 16×16");
 
@@ -16,14 +17,14 @@ const og = `<!doctype html><html><head><meta charset="utf-8">
 html,body{margin:0;width:1200px;height:630px;background:#111216;color:#fff;font-family:Archivo,sans-serif;overflow:hidden}
 .wrap{position:absolute;inset:0;padding:72px 84px;display:flex;flex-direction:column;justify-content:space-between}
 .top{display:flex;align-items:center;gap:30px}
-.top svg{width:112px;height:112px;display:block}
+.top svg{display:block}.top svg.fox{width:112px;height:112px}
 .word{font-size:96px;font-weight:850;font-stretch:75%;text-transform:uppercase;letter-spacing:.01em;line-height:1}
 .word span{font-weight:300;color:#d8d9de;margin-left:.22em}
 h1{font-size:58px;font-weight:800;font-stretch:78%;line-height:1.02;letter-spacing:-.02em;margin:0;max-width:24ch}
 .foot{font:500 22px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:#8e919b;display:flex;justify-content:space-between}
 .bar{position:absolute;left:0;right:0;bottom:0;height:12px;background:linear-gradient(90deg,#d4253a 0 50%,#1f5fcf 50% 100%)}
 </style></head><body><div class="wrap">
-<div class="top">${foxSvg(112, true)}<div class="word">Third<span>Estate</span></div></div>
+<div class="top">${foxSvg(112, true)}${wordmarkSvg(8)}</div>
 <h1>« La société a le droit de demander compte à tout agent public de son administration. »</h1>
 <div class="foot"><span>Déclaration des droits de l’homme, art. 15, 1789</span><span>FR · EN</span></div>
 </div><div class="bar"></div></body></html>
