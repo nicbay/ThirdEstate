@@ -214,8 +214,8 @@ function forecastCard(fc: Forecast) {
           "<b>Markets.</b> Kalshi and Polymarket “winner” prices, rescaled to 100% to remove the platforms’ margin, then averaged weighted by traded volume.",
         )}</li>
         <li>${fr
-          ? `<b>Mélange.</b> ${Math.round(100 * (1 - MARKET_WEIGHT))} % sondages, ${Math.round(100 * MARKET_WEIGHT)} % marchés. Un nom que seuls les marchés couvrent (non testé par les instituts) ne garde que la moitié « marchés ». Premier tour supposé le ${fmtDate(ELECTION_DAY)} (date à fixer par décret, entre mi et fin avril).`
-          : `<b>Blend.</b> ${Math.round(100 * (1 - MARKET_WEIGHT))}% polls, ${Math.round(100 * MARKET_WEIGHT)}% markets. A name only the markets cover (not tested by pollsters) keeps only the markets half. First round assumed on ${fmtDate(ELECTION_DAY)} (the date is set by decree, mid to late April).`}</li>
+          ? `<b>Mélange.</b> ${Math.round(100 * (1 - MARKET_WEIGHT))} % sondages, ${Math.round(100 * MARKET_WEIGHT)} % marchés. Un nom que seuls les marchés couvrent (non testé par les instituts) ne garde que la moitié « marchés ». Premier tour le ${fmtDate(ELECTION_DAY)} (date retenue en Conseil des ministres le 1er juillet 2026, officialisée par le décret de convocation).`
+          : `<b>Blend.</b> ${Math.round(100 * (1 - MARKET_WEIGHT))}% polls, ${Math.round(100 * MARKET_WEIGHT)}% markets. A name only the markets cover (not tested by pollsters) keeps only the markets half. First round on ${fmtDate(ELECTION_DAY)} (chosen at the Council of Ministers on 1 July 2026, made official by the convening decree).`}</li>
       </ol>
       <p class="small muted">${L("Les tailles d’erreur sont un jugement, pas une estimation tirée des présidentielles passées (trop peu nombreuses pour être ajustées). Ce n’est pas une prédiction certaine : un candidat à 70 % perd trois fois sur dix. Information, pas incitation à parier.", "Error sizes are a judgement, not estimated from past presidential elections (too few to fit). This isn’t a certainty: a candidate at 70% loses three times in ten. Information, not an invitation to bet.")}</p>
     </details>
