@@ -1,0 +1,35 @@
+/* Third Estate — Pixel Desk v2 (beta). Loaded last; see todo/ui-overhaul.md and docs/design.md.
+   Same pixel grammar, a calmer frame: the answer comes first, one local bar, and the pixel panel
+   means "you can click this". Written against src/styles/tokens.css. */
+
+/* ---------- answer-first page header: the dark band shrinks to a headline strip ---------- */
+.sec-hero-in { padding: var(--spacing-5) var(--gutter) 1.6rem; gap: var(--spacing-3); }
+.sec-hero h1 { font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.9rem); line-height: 0.98; max-width: 40ch; }
+.page-tabs[hidden] { display: none; }
+.sec-hero .dek { font-size: clamp(0.98rem, 0.94rem + 0.2vw, 1.08rem); max-width: 72ch; line-height: 1.45; }
+.sec-hero .page-head, .sec-hero .page-head > div { gap: var(--spacing-2); }
+.sec-hero::after { width: min(34vw, 420px); }
+.sec-hero .mp-head { gap: var(--spacing-5); }
+.sec-hero .mp-head img { width: 104px; height: 104px; }
+.sec-hero .crumbs { margin: 0; font-size: 0.78rem; }
+@media (max-width: 760px) {
+  .sec-hero-in { padding: var(--spacing-4) var(--gutter) 1.3rem; }
+  .sec-hero h1 { font-size: clamp(1.6rem, 1.2rem + 2.6vw, 2.1rem); }
+  .sec-hero .mp-head { grid-template-columns: auto minmax(0, 1fr); gap: var(--spacing-4); }
+  .sec-hero .mp-head img { width: 72px; height: 72px; }
+}
+
+/* ---------- one local bar: section pages, and the current page's views nested after it ---------- */
+.subnav-bar .sub-tabs { display: flex; align-items: center; gap: 0.1rem; padding: 0 0.5rem 0 0.2rem; margin-right: 0.4rem; border-right: 2px solid var(--night-rule); }
+.subnav-bar .sub-tabs::before { content: ""; flex: none; width: 6px; height: 6px; margin: 0 0.35rem 0 0; background: var(--night-rule-2); box-shadow: 4px 0 0 var(--night-rule-2); }
+.subnav-bar.has-tabs a.active { border-image: none; border-bottom-color: transparent; color: #fff; }
+.subnav-bar .sub-tabs a { font-weight: 550; font-size: 0.84rem; color: var(--night-label); padding-left: 0.55rem; padding-right: 0.55rem; }
+.subnav-bar .sub-tabs a[aria-current] { color: #fff; border-image: linear-gradient(90deg, var(--split-red) 0 50%, var(--split-blue) 50% 100%) 1; }
+.subnav-bar .sub-tabs a:hover { color: #fff; background: rgba(255, 255, 255, 0.05); }
+
+/* ---------- calm panels: a section is a white sheet opened by an ink rule; the stepped pixel frame and the
+   hard shadow are kept for what you can click (candidate cards, next steps, quiz picks, simulator cards) ---------- */
+.card { border: 0; border-top: 3px solid var(--ink); border-image: none; background: var(--paper); padding: var(--spacing-4) 1.35rem 1.4rem; }
+.card .card, .sec-hero .card { border-top: 0; background: none; padding: 0; }
+.page { row-gap: var(--spacing-5); }
+@media (max-width: 760px) { .card { padding: var(--spacing-3) var(--spacing-3) var(--spacing-4); } }

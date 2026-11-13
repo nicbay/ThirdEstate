@@ -2,6 +2,7 @@ import "./fonts.css";
 import "./styles/tokens.css";
 import "./style.css";
 import "./redesign.css";
+import "./styles/overhaul.css";
 import { L, getLang, setLang, t } from "./i18n";
 import { renderHome } from "./views/home";
 import { renderPolls } from "./views/polls";
@@ -419,6 +420,7 @@ function reveal() {
 /** Presentation pass after each render: wide tables scroll inside their own box on small screens. */
 function enhance() {
   sectionHero();
+  mergeLocalTabs();
   reveal();
   onScroll();
   app.querySelectorAll<HTMLTableElement>("table.table").forEach((t) => {
@@ -470,6 +472,42 @@ function sectionHero() {
       h1.append(ln);
     });
   }
+}
+
+/**
+ * One local bar, not two rows: a page's own view links (`.page-tabs`, e.g. the Assemblée's map / who they are /
+ * toeing the line…) move into the sticky section bar, nested right after the section page they belong to.
+ * A view that is already a page of the section (Find an MP) stays where the section bar has it.
+ */
+let mergedTabs: Element | null = null;
+function mergeLocalTabs() {
+  const sub = document.getElementById("subnav");
+  const row = sub?.firstElementChild as HTMLElement | null;
+  const tabs = app.querySelector<HTMLElement>(":scope > .page .page-tabs");
+  if (tabs && tabs === mergedTabs && sub?.querySelector(".sub-tabs")) return; // already merged for this render
+  mergedTabs = tabs;
+  sub?.querySelector(".sub-tabs")?.remove();
+  sub?.classList.remove("has-tabs");
+  if (!sub || !row || !tabs) return;
+  const owner = row.querySelector<HTMLAnchorElement>("a.active");
+  if (!owner) return;
+  const known = new Set([...row.querySelectorAll<HTMLAnchorElement>("a")].map((a) => a.getAttribute("href")));
+  const views = [...tabs.querySelectorAll<HTMLAnchorElement>("a")].filter((a) => !known.has(a.getAttribute("href")) || a.getAttribute("href") === owner.getAttribute("href"));
+  if (views.length < 2) return;
+  const group = document.createElement("span");
+  group.className = "sub-tabs";
+  group.setAttribute("role", "list");
+  for (const a of views) {
+    const c = a.cloneNode(true) as HTMLAnchorElement;
+    c.setAttribute("role", "listitem");
+    if (a.getAttribute("href") === owner.getAttribute("href") && !a.hasAttribute("aria-current")) c.removeAttribute("aria-current");
+    group.append(c);
+  }
+  owner.after(group);
+  sub.classList.add("has-tabs");
+  tabs.hidden = true;
+  const on = group.querySelector<HTMLElement>("[aria-current]");
+  if (on && row.scrollWidth > row.clientWidth) row.scrollLeft = Math.max(0, on.offsetLeft - (row.clientWidth - on.offsetWidth) / 2);
 }
 
 let queued = false;
