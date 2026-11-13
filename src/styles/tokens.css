@@ -120,3 +120,56 @@
 
 /* phones and small tablets: the masthead is shorter */
 @media (max-width: 900px) { :root { --bar-h: 54px; } }
+
+/* ---- dark theme: follows the system unless the reader picked one (html[data-theme], set by public/theme-boot.js
+   and the masthead toggle). Only the paper side flips: the night bands stay night, party colours stay data. ---- */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f1220;
+  --paper: #171b2d;
+  --panel: #1d2236;
+  --wash: #272c44;
+  --ink: #e9ebf3;
+  --ink-2: #b6bacb;
+  --ink-3: #8d92a9;
+  --rule: #2a2f47;
+  --rule-2: #3a3f5c;
+  --rule-strong: #e9ebf3;
+  --accent: #a594ff;
+  --link: #b8abff;
+  --focus: #a594ff;
+  --left-soft: #4a1f2a;
+  --right-soft: #1f2f55;
+  --absent: #3a3f52;
+  --N: #6f7489;
+  --shadow-hard: 6px 6px 0 rgba(0, 0, 0, 0.45);
+  --px-soft: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' shape-rendering='crispEdges'%3E%3Cpath fill='%23171b2d' d='M4 2h10v2h2v10h-2v2H4v-2H2V4h2z'/%3E%3Cpath fill='%233a3f5c' d='M4 0h10v2H4zM2 2h2v2H2zM14 2h2v2h-2zM0 4h2v10H0zM16 4h2v10h-2zM2 14h2v2H2zM14 14h2v2h-2zM4 16h10v2H4z'/%3E%3C/svg%3E");
+  --px-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' shape-rendering='crispEdges'%3E%3Cpath fill='%23171b2d' d='M4 2h10v2h2v10h-2v2H4v-2H2V4h2z'/%3E%3Cpath fill='%23e9ebf3' d='M4 0h10v2H4zM2 2h2v2H2zM14 2h2v2h-2zM0 4h2v10H0zM16 4h2v10h-2zM2 14h2v2H2zM14 14h2v2h-2zM4 16h10v2H4z'/%3E%3C/svg%3E");
+  --px-dither: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' shape-rendering='crispEdges'%3E%3Cpath fill='%230f1220' d='M0 0h4v4H0zM4 4h4v4H4zM12 4h4v4h-4z'/%3E%3C/svg%3E");
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0f1220;
+    --paper: #171b2d;
+    --panel: #1d2236;
+    --wash: #272c44;
+    --ink: #e9ebf3;
+    --ink-2: #b6bacb;
+    --ink-3: #8d92a9;
+    --rule: #2a2f47;
+    --rule-2: #3a3f5c;
+    --rule-strong: #e9ebf3;
+    --accent: #a594ff;
+    --link: #b8abff;
+    --focus: #a594ff;
+    --left-soft: #4a1f2a;
+    --right-soft: #1f2f55;
+    --absent: #3a3f52;
+    --N: #6f7489;
+    --shadow-hard: 6px 6px 0 rgba(0, 0, 0, 0.45);
+    --px-soft: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' shape-rendering='crispEdges'%3E%3Cpath fill='%23171b2d' d='M4 2h10v2h2v10h-2v2H4v-2H2V4h2z'/%3E%3Cpath fill='%233a3f5c' d='M4 0h10v2H4zM2 2h2v2H2zM14 2h2v2h-2zM0 4h2v10H0zM16 4h2v10h-2zM2 14h2v2H2zM14 14h2v2h-2zM4 16h10v2H4z'/%3E%3C/svg%3E");
+    --px-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' shape-rendering='crispEdges'%3E%3Cpath fill='%23171b2d' d='M4 2h10v2h2v10h-2v2H4v-2H2V4h2z'/%3E%3Cpath fill='%23e9ebf3' d='M4 0h10v2H4zM2 2h2v2H2zM14 2h2v2h-2zM0 4h2v10H0zM16 4h2v10h-2zM2 14h2v2H2zM14 14h2v2h-2zM4 16h10v2H4z'/%3E%3C/svg%3E");
+    --px-dither: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' shape-rendering='crispEdges'%3E%3Cpath fill='%230f1220' d='M0 0h4v4H0zM4 4h4v4H4zM12 4h4v4h-4z'/%3E%3C/svg%3E");
+  }
+}
