@@ -64,7 +64,7 @@
 .sx #shift-svg .circo-link:hover .shift-circo { fill: rgba(255, 255, 255, 0.06); stroke: #fff; }
 .sx #shift-svg .circo-num { fill: #8f94ad; }
 .sx .arrow { transition: opacity 0.12s; }
-.sx svg.has-hot .arrow { opacity: 0.2; }
+/* hovering an arrow highlights it without greying out the others */
 .sx svg.has-hot .arrow.is-hot, .sx .arrow:hover { opacity: 1; }
 .sx .arrow.is-hot .shaft, .sx .arrow[data-href]:hover .shaft { stroke-width: calc(var(--sw, 1.9px) * 2.4); }
 .sx .arrow.is-hot .head { stroke: inherit; stroke-width: var(--sw, 1.9px); }

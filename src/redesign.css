@@ -232,30 +232,7 @@ img[data-hide-broken], .mp-head img, .cand-card img, .word-mps img, .brief-mp im
 .px-loading i { width: 64px; height: 8px; background: linear-gradient(90deg, var(--ink) 8px, transparent 8px) 0 0 / 16px 8px repeat-x; animation: px-load 0.6s steps(2) infinite; }
 @keyframes px-load { to { background-position: 16px 0; } }
 
-/* ---------- home (src/views/home.ts): one question, one number, three doors, then a few calm blocks ---------- */
-.home-q { padding-top: 2.4rem; }
-.home-q h1 { font-size: clamp(2.5rem, 1.2rem + 4.6vw, 4.8rem); }
-.hq-answer { display: grid; gap: 0.9rem; margin: 1.4rem 0 0; max-width: 46rem; animation: fadeUp 0.8s 0.3s both; }
-.hq-num { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.9rem; margin: 0; }
-.hq-num strong { font: 850 clamp(3rem, 2rem + 4vw, 4.6rem)/0.9 var(--display); font-stretch: 72%; letter-spacing: -0.02em; font-variant-numeric: tabular-nums lining-nums; color: #fff; }
-.hq-num span { font-size: clamp(1.02rem, 0.95rem + 0.3vw, 1.2rem); line-height: 1.4; color: #d3d4da; }
-.hq-num b { color: #fff; }
-.hq-num a, .hq-brief a, .hq-door p a { color: #fff; text-decoration-color: #ff5a6a; text-underline-offset: 3px; }
-.hq-brief { margin: 0; padding-left: 0.9rem; border-left: 6px solid #5b8dff; line-height: 1.5; color: #d3d4da; max-width: 62ch; }
-.hq-k { display: block; margin-bottom: 0.2rem; font: 400 0.625rem var(--pixel); letter-spacing: 0.03em; text-transform: uppercase; color: #a7abc0; }
-.hq-doors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 2rem 0 1.6rem; }
-.hq-door { display: grid; align-content: start; gap: 0.5rem; padding: 0.9rem 1rem 1.1rem; color: #fff; text-decoration: none; border: 6px solid transparent; border-image: var(--px-dark) 6 / 6px / 0 stretch; background: var(--night-2) padding-box; position: relative; min-width: 0; }
-.hq-door h2 { margin: 0; font-size: 0.75rem; color: #fff; }
-.hq-door p { margin: 0; font-size: 0.92rem; line-height: 1.45; color: #c9cad0; }
-.hq-door .town-search { margin-top: 0.2rem; animation: none; }
-.hq-door .town-search input { font-size: 1rem; padding: 0.8rem 0.9rem 0.8rem 2.6rem; }
-a.hq-door { transition: transform 0.12s steps(2), background 0.12s; }
-a.hq-door::after { content: "→"; position: absolute; right: 0.8rem; top: 0.75rem; color: #5b6080; transition: transform 0.15s steps(2), color 0.15s; }
-a.hq-door:hover { border-image-source: var(--px-dark-hi); background-color: #1b1f36; transform: translate(-2px, -2px); filter: drop-shadow(4px 4px 0 #5b8dff); text-decoration: none; }
-a.hq-door:hover::after { transform: translateX(3px); color: #fff; }
-@media (max-width: 900px) { .hq-doors { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .hq-town { grid-column: 1 / -1; } }
-@media (max-width: 560px) { .hq-doors { grid-template-columns: minmax(0, 1fr); gap: 10px; } .home-q { padding-top: 1.8rem; } }
-@media (prefers-reduced-motion: reduce) { .hq-answer { animation: none; } a.hq-door:hover { transform: none; } }
+/* ---------- home (src/views/home.ts): the hero is in styles/hero-day.css; below it a few calm blocks ---------- */
 .home-more { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 10px; }
 .home-more a { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.1rem 0.6rem; align-items: center; padding: 0.75rem 0.9rem; color: var(--ink); text-decoration: none; border: 2px solid var(--rule-2); background: var(--paper); }
 .home-more a:hover { border-color: var(--ink); box-shadow: 3px 3px 0 var(--ink); text-decoration: none; }
@@ -538,6 +515,4 @@ footer .brand .fox { width: 64px; height: 64px; }
 .chart.compact .marker text { font-size: 13px; }
 .chart .proj-out { stroke-width: 2.6; stroke-linecap: round; fill: none; }
 .scn-note b { color: var(--ink); }
-.hq-num.is-scenario strong { color: #ffd166; }
-.hq-scn { margin: 0.4rem 0 0; max-width: 62ch; font-size: 0.9rem; line-height: 1.45; color: #d3d4da; }
 @media (max-width: 640px) { .scn-btn { font-size: 0.78rem; padding: 0.28rem 0.6rem; } }
