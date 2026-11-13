@@ -12083,6 +12083,27 @@
       },
       "check": null,
       "postTime": "2026-11-11T17:10:45.856Z"
+    },
+    "yt:kJgErSuJ-WA": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-13T07:14:55.569Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Défend la décarbonation de l'acier européen et la souveraineté industrielle, tout en demandant des conditions compétitives pour les industriels ; positionnement social-démocrate/centriste.",
+        "rationale_en": "Backs decarbonising European steel and industrial sovereignty while asking for competitive conditions for manufacturers; centrist-social-democratic positioning."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Description institutionnelle d'une intervention parlementaire, sans rhétorique populiste.",
+        "rationale_en": "Institutional description of a parliamentary speech, with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-10T14:35:23.000Z"
     }
   },
   "failures": {
