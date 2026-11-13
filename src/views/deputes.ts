@@ -10,7 +10,7 @@ export async function renderDeputes(app: HTMLElement) {
   const s = t();
   const groupes = [...new Map(deputes.filter((d) => d.groupe).map((d) => [d.groupe!.id, d.groupe!])).values()].sort((a, b) => a.libelle.localeCompare(b.libelle, "fr"));
 
-  // Embedded in the Assemblée section (tab "Députés").
+  // Embedded in the Assembly page (tab "Trouver un député" / "Find an MP", #/assemblee/deputes).
   app.innerHTML = `
     <div class="card">
       <div class="filters">
