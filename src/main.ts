@@ -1,5 +1,6 @@
 import { initInfoTips } from "./lib/infotip";
 import { sortableTables } from "./lib/sortable";
+import { longRead } from "./lib/toc";
 import "./fonts.css";
 import "./styles/tokens.css";
 import "./style.css";
@@ -454,6 +455,8 @@ function enhance() {
     box.append(t);
   });
   sortableTables(app);
+  const pg = app.querySelector<HTMLElement>(":scope > .page");
+  if (pg) longRead(pg, split().path); // rebuilt only if more headings arrive
   // the sticky header rows sit under the masthead and the section bar
   const sub = document.getElementById("subnav");
   document.documentElement.style.setProperty("--sub-h", `${sub && !sub.hidden ? sub.offsetHeight : 0}px`);
