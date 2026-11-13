@@ -2,6 +2,7 @@
 import { loadAnMeta, loadCircoGeo, loadDepartements, loadDeputes, loadLeg24, type Depute } from "../data";
 import { L, fmtDate, fmtNum, fmtPct } from "../i18n";
 import { NUANCE_LABEL, nuanceColor } from "../lib/candidates";
+import { detailSheet } from "../lib/sheet";
 import { OVERSEAS_DEPS, abroadInset, insetFigure, mapPaths, rewind } from "../lib/map";
 import { esc, groupBy, safeColor } from "../util";
 import { AN_SEATS, assemblyMajorityNote, hemicycle, seatRank, seatSummary } from "../lib/hemicycle";
@@ -126,7 +127,8 @@ async function mapView(pane: HTMLElement, dep?: string) {
   };
 
   const drawDep = async () => {
-    const box = pane.querySelector<HTMLElement>("#dep")!;
+    // once the panel is a phone sheet (below), redraws go into its body so the grab bar stays
+    const box = pane.querySelector<HTMLElement>("#dep .px-sheet-body") ?? pane.querySelector<HTMLElement>("#dep")!;
     if (!dep) {
       const groups = [...groupBy(deputes.filter((d) => d.groupe), (d) => d.groupe!.id).values()].sort((a, b) => seatRank(a[0].groupe!.abrev) - seatRank(b[0].groupe!.abrev));
       box.innerHTML = `<h2>${L("Les groupes, de gauche à droite", "The groups, left to right")}</h2>
@@ -160,6 +162,8 @@ async function mapView(pane: HTMLElement, dep?: string) {
   };
   drawFrance();
   await drawDep();
+  // phones: a picked department's districts rise in a sheet over the map instead of waiting below it
+  if (dep) detailSheet(pane.querySelector<HTMLElement>("#dep")!, depName(dep));
 }
 
 async function composition(pane: HTMLElement) {
