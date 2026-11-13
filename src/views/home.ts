@@ -14,14 +14,13 @@ import { colon, pct } from "../lib/format";
 import { esc } from "../util";
 import { bindSearch, searchBox } from "./explore";
 import { mpChip, townBrief } from "./brief";
-import { liveForecast, loadBrief, pollMoves, todaySentence } from "./daily";
+import { liveForecast, todaySentence } from "./daily";
 
 export async function renderHome(app: HTMLElement) {
-  const [polls, markets, cands, brief] = await Promise.all([
+  const [polls, markets, cands] = await Promise.all([
     loadPolls("2027"),
     loadMarkets().catch(() => null),
     fetchJson<{ candidates: unknown[] }>("/data/candidates/index.json").catch(() => null),
-    loadBrief(),
   ]);
   registerParties(polls.parties);
   const fr = getLang() === "fr";
@@ -31,7 +30,7 @@ export async function renderHome(app: HTMLElement) {
   const today = new Date().toISOString().slice(0, 10);
   const daysToGo = Math.max(0, Math.round((Date.parse(ELECTION_DAY) - Date.parse(today)) / 86400000));
   const fav = liveForecast(polls, markets).rows[0];
-  const sentence = todaySentence(pollMoves(polls.firstRound), brief);
+  const sentence = todaySentence(polls.firstRound);
   const nCands = cands?.candidates.length ?? 0;
   const home = getHome();
 

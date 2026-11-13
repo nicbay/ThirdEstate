@@ -55,8 +55,8 @@ export function liveForecast(polls: PollFile, markets: { fetchedAt: string; mark
 
 export const loadBrief = () => fetchJson<Brief>("/data/daily/latest.json").catch(() => null);
 
-/** The day in one sentence, from the live average: the leader, the biggest weekly mover, the new polls. */
-export function todaySentence(moves: Map<string, Move>, brief: Brief | null): string {
+/** The day in one sentence, from the live average: the leader, the biggest weekly mover, the latest poll. */
+export function todaySentence(firstRound: Poll[], moves = pollMoves(firstRound)): string {
   const fr = getLang() === "fr";
   const rows = [...moves].map(([name, m]) => ({ name, ...m })).sort((a, b) => b.now - a.now);
   const lead = rows[0];
@@ -68,11 +68,8 @@ export function todaySentence(moves: Map<string, Move>, brief: Brief | null): st
     : `${meta(lead.name).surname} leads the polling average at ${pct(lead.now)} (${leadMove})`;
   const mover = rows.slice(1, 8).filter((r) => r.d7 != null && Math.abs(r.d7) >= NOTABLE_POLLS.d7).sort((a, b) => Math.abs(b.d7!) - Math.abs(a.d7!))[0];
   if (mover) s += fr ? ` ; ${meta(mover.name).surname} ${ptsTxt(mover.d7!)}, à ${pct(mover.now)}` : `; ${meta(mover.name).surname} ${ptsTxt(mover.d7!)} to ${pct(mover.now)}`;
-  const recent = brief && Date.parse(today()) - Date.parse(brief.date) <= DAY ? brief.newPolls : [];
-  if (recent.length) {
-    const who = [...new Set(recent.map((p) => pollsterName(p.pollster)))].join(", ");
-    s += fr ? ` ; ${recent.length} ${recent.length > 1 ? "nouveaux sondages" : "nouveau sondage"} depuis hier (${who})` : `; ${recent.length} new poll${recent.length > 1 ? "s" : ""} since yesterday (${who})`;
-  }
+  const last = [...firstRound].sort((a, b) => b.end.localeCompare(a.end))[0];
+  if (last) s += fr ? ` ; dernier sondage : ${pollsterName(last.pollster)}, terrain achevé le ${fmtDate(last.end)}` : `; latest poll: ${pollsterName(last.pollster)}, fieldwork ended ${fmtDate(last.end)}`;
   return `${s}.`;
 }
 
@@ -85,10 +82,12 @@ export function whyDiffer(fc: Forecast): string {
   let gap = "";
   if (top && pw != null && mw != null && Math.abs(pw - mw) >= 15) {
     const n = esc(meta(top.name).surname);
+    const pq = top.polls!.qualify, wr = pq ? (100 * pw) / pq : 0; // how often the polls model has them win the runoffs they reach
+    const wins = wr >= 90 ? L("le gagne presque toujours", "nearly always wins it") : L(`le gagne dans ${pct(wr, 0)} des cas`, `wins it ${pct(wr, 0)} of the time`);
     gap = pw > mw
       ? fr
-        ? `<p>Aujourd’hui, l’écart est grand pour ${n} : notre modèle de sondages lui donne ${pct(pw, 0)}, les marchés ${pct(mw, 0)}, d’où ${pct(top.win, 0)} dans notre prévision. ${n} est en tête de tous les sondages du premier tour et de tous les duels de second tour testés, donc le modèle ne simule presque jamais de défaite. Mais il prend les candidats testés par les instituts comme acquis : il ne sait pas dire si un candidat sera bien sur le bulletin, ni si ses adversaires se rangeront derrière l’un d’eux. Les marchés, eux, le prennent en compte, et c’est la principale raison de l’écart. À ${months} mois du vote, les sondages se sont souvent trompés de plus que ça${fc.nLineupPolls < 4 ? `, et la configuration de référence ne repose que sur ${fc.nLineupPolls} sondage${fc.nLineupPolls > 1 ? "s" : ""}` : ""} : lisez ce chiffre comme « en tête », pas comme « élection jouée ».</p>`
-        : `<p>Today the gap is wide for ${n}: our polls model gives ${pct(pw, 0)}, the markets ${pct(mw, 0)}, hence ${pct(top.win, 0)} in our forecast. ${n} leads every first-round poll and every runoff match-up tested, so the model rarely sees ${n} lose. But it takes the candidates pollsters test as given: it can’t tell whether a candidate will actually be on the ballot, or whether rivals will rally behind one of them. The markets do price that, and it is the main reason for the gap. ${months} months out, polls have often missed by more than this${fc.nLineupPolls < 4 ? `, and the reference line-up rests on just ${fc.nLineupPolls} poll${fc.nLineupPolls > 1 ? "s" : ""}` : ""}: read the number as “ahead”, not “done deal”.</p>`
+        ? `<p>Aujourd’hui, l’écart est grand pour ${n} : notre modèle de sondages lui donne ${pct(pw, 0)}, les marchés ${pct(mw, 0)}, d’où ${pct(top.win, 0)} dans notre prévision. Dans le modèle, ${n} se qualifie pour le second tour dans ${pct(pq, 0)} des simulations et ${wins}. Mais il prend les candidats testés par les instituts comme acquis : il ne sait pas dire si un candidat sera bien sur le bulletin, ni si ses adversaires se rangeront derrière l’un d’eux. Les marchés, eux, le prennent en compte, et c’est la principale raison de l’écart. À ${months} mois du vote, les sondages se sont souvent trompés de plus que ça${fc.nLineupPolls < 4 ? `, et la configuration de référence ne repose que sur ${fc.nLineupPolls} sondage${fc.nLineupPolls > 1 ? "s" : ""}` : ""} : lisez ce chiffre comme « en tête », pas comme « élection jouée ».</p>`
+        : `<p>Today the gap is wide for ${n}: our polls model gives ${pct(pw, 0)}, the markets ${pct(mw, 0)}, hence ${pct(top.win, 0)} in our forecast. In the model, ${n} reaches the runoff in ${pct(pq, 0)} of simulations and ${wins}. But it takes the candidates pollsters test as given: it can’t tell whether a candidate will actually be on the ballot, or whether rivals will rally behind one of them. The markets do price that, and it is the main reason for the gap. ${months} months out, polls have often missed by more than this${fc.nLineupPolls < 4 ? `, and the reference line-up rests on just ${fc.nLineupPolls} poll${fc.nLineupPolls > 1 ? "s" : ""}` : ""}: read the number as “ahead”, not “done deal”.</p>`
       : fr
         ? `<p>Aujourd’hui, les marchés donnent à ${n} plus que les sondages (${pct(mw, 0)} contre ${pct(pw, 0)}) : les parieurs anticipent peut-être une remontée ou un retrait d’un rival, ce que le modèle de sondages, qui ne voit que les chiffres du jour, ne fait pas.</p>`
         : `<p>Today the markets rate ${n} above the polls (${pct(mw, 0)} against ${pct(pw, 0)}): traders may expect a rise or a rival dropping out, which the polls model, seeing only today’s numbers, does not.</p>`;
@@ -179,7 +178,7 @@ export async function mountDaily(box: HTMLElement | null) {
   box.innerHTML = `<article class="card dy" id="point">
       <header class="card-head"><h2>${L("Le point du jour", "Today’s brief")}</h2></header>
       <p class="dy-when">${esc(longDate(today()))} · ${L("sondages relevés à", "polls checked at")} ${clock(polls.fetchedAt)}${markets ? ` · ${L("marchés à", "markets at")} ${clock(markets.fetchedAt)}` : ""}</p>
-      <p class="dy-sum">${esc(todaySentence(moves, b))}</p>
+      <p class="dy-sum">${esc(todaySentence(polls.firstRound, moves))}</p>
       ${tiles}
       ${table}
       <p class="muted small">${L("Sondages : moyenne des intentions de vote au premier tour (en %), la même que partout sur le site, et sa variation en points sur 24 heures et sur sept jours. Notre prévision : chances de gagner l’élection. Marchés : la même probabilité d’après les cours de Kalshi et Polymarket, moyennés selon les volumes échangés ; donnés pour comparaison, ce ne sont pas des sondages.", "Polls: average first-round voting intention (%), the same one used across the site, and its change in points over 24 hours and seven days. Our forecast: chance of winning the election. Markets: the same probability from Kalshi and Polymarket prices, averaged by traded volume; shown for comparison, they aren’t polls.")}</p>
