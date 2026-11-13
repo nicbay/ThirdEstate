@@ -1,4 +1,5 @@
 import { geoConicConformal, geoMercator, geoPath, type GeoProjection } from "d3-geo";
+import { detailSheet, panelBody } from "../lib/sheet";
 import { ELECTIONS, loadDepartements, presidentialResults, type AreaResult, type Election, type RoundResult } from "../data";
 import { L, fmtNum, fmtPct, t } from "../i18n";
 import { esc } from "../util";
@@ -51,7 +52,11 @@ export async function renderPresidential(app: HTMLElement, year?: number) {
       return insetFigure(`<svg viewBox="0 0 100 100" class="inset">${paths(fc.features, geoMercator().fitExtent([[6, 6], [94, 94]], fc), round, election, 100)}</svg>`, f.properties!.nom as string);
     }).join("") + abroadTile(round, election);
 
-    renderPanel(app.querySelector("#panel")!, round, election);
+    const panel = app.querySelector<HTMLElement>("#panel")!;
+    renderPanel(panelBody(panel), round, election);
+    // phones: a picked department rises in a sheet over the map; unpicking folds it back to its peek
+    if (state.selected) detailSheet(panel, L("Résultats du département", "Department results"))?.settle(1);
+    else if (panel.classList.contains("px-sheet")) detailSheet(panel, "")?.settle(0);
 
     app.querySelectorAll<SVGElement | HTMLElement>("[data-code]").forEach((el) =>
       el.addEventListener("click", () => {

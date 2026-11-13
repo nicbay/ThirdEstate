@@ -504,7 +504,8 @@ let mergedTabs: Element | null = null;
 function mergeLocalTabs() {
   const sub = document.getElementById("subnav");
   const row = sub?.firstElementChild as HTMLElement | null;
-  const tabs = app.querySelector<HTMLElement>(":scope > .page .page-tabs");
+  // a page's own link row: the Assemblée's views (.page-tabs), or a tab row of links in the page head (Résultats)
+  const tabs = app.querySelector<HTMLElement>(":scope > .page .page-tabs, :scope > .page .page-head nav.tabs:has(a[href^='#/'])");
   if (tabs && tabs === mergedTabs && sub?.querySelector(".sub-tabs")) return; // already merged for this render
   mergedTabs = tabs;
   sub?.querySelector(".sub-tabs")?.remove();
@@ -513,6 +514,8 @@ function mergeLocalTabs() {
   const owner = row.querySelector<HTMLAnchorElement>("a.active");
   if (!owner) return;
   const known = new Set([...row.querySelectorAll<HTMLAnchorElement>("a")].map((a) => a.getAttribute("href")));
+  // a row that only repeats the section bar's links is dropped, not merged
+  if ([...tabs.querySelectorAll<HTMLAnchorElement>("a")].every((a) => known.has(a.getAttribute("href")))) { tabs.hidden = true; return; }
   const views = [...tabs.querySelectorAll<HTMLAnchorElement>("a")].filter((a) => !known.has(a.getAttribute("href")) || a.getAttribute("href") === owner.getAttribute("href"));
   if (views.length < 2) return;
   const group = document.createElement("span");

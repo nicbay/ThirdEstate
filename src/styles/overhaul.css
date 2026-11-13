@@ -5,7 +5,7 @@
 /* ---------- answer-first page header: the dark band shrinks to a headline strip ---------- */
 .sec-hero-in { padding: var(--spacing-5) var(--gutter) 1.6rem; gap: var(--spacing-3); }
 .sec-hero h1 { font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.9rem); line-height: 0.98; max-width: 40ch; }
-.page-tabs[hidden] { display: none; }
+.page-tabs[hidden], .page-head nav.tabs[hidden] { display: none; }
 .sec-hero .dek { font-size: clamp(0.98rem, 0.94rem + 0.2vw, 1.08rem); max-width: 72ch; line-height: 1.45; }
 .sec-hero .page-head, .sec-hero .page-head > div { gap: var(--spacing-2); }
 .sec-hero::after { width: min(34vw, 420px); }
@@ -36,7 +36,7 @@
 
 /* ---------- detail sheet (src/lib/sheet.ts): phones only, the side panel rises from the bottom ---------- */
 @media (max-width: 860px) {
-  .card.px-sheet { position: fixed; left: 0; right: 0; z-index: 24; display: grid; grid-template-rows: auto minmax(0, 1fr); margin: 0; padding: 0; background: var(--paper); border: 6px solid transparent; border-bottom: 0; border-image: var(--px-ink) 6 / 6px / 0 stretch; background-clip: padding-box; filter: drop-shadow(0 -4px 0 rgba(11, 13, 24, 0.18)); transition: transform 0.24s steps(6, end); will-change: transform; }
+  .px-sheet { position: fixed; left: 0; right: 0; z-index: 24; display: grid; grid-template-rows: auto minmax(0, 1fr); margin: 0; padding: 0; background: var(--paper); border: 6px solid transparent; border-bottom: 0; border-image: var(--px-ink) 6 / 6px / 0 stretch; background-clip: padding-box; filter: drop-shadow(0 -4px 0 rgba(11, 13, 24, 0.18)); transition: transform 0.24s steps(6, end); will-change: transform; }
   .px-sheet-grab { display: grid; place-items: center; height: 30px; padding: 0; border: 0; background: none; cursor: grab; touch-action: none; }
   .px-sheet-grab::before { content: ""; width: 40px; height: 6px; background: var(--rule-2); box-shadow: 0 0 0 0 var(--ink); clip-path: var(--px-clip); }
   .px-sheet-grab:active { cursor: grabbing; }
@@ -94,3 +94,16 @@
 .kit-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-3); margin: 0 0 var(--spacing-4); }
 .kit-icons span { display: grid; place-items: center; width: 40px; height: 40px; color: var(--ink); background: var(--panel); }
 .kit-hemi { max-width: 420px; margin-top: var(--spacing-4); }
+.town-pane { min-width: 0; }
+.town-pane-k { display: none; margin: 0 0 var(--spacing-2); font: 400 0.625rem var(--pixel); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-3); }
+@media (max-width: 860px) {
+  .px-sheet .town-pane-k { display: block; }
+  .px-sheet .town-list { border-top: 0; }
+}
+
+/* the page's entrance must not leave a transform behind: a transformed .page would trap the fixed detail sheet */
+.page { animation-fill-mode: backwards; }
+@media (max-width: 860px) {
+  /* a sheet nested in another card (presidential results) keeps its surface and frame */
+  .card .px-sheet.card, .card .px-sheet { background: var(--paper); background-clip: padding-box; border: 6px solid transparent; border-bottom: 0; border-image: var(--px-ink) 6 / 6px / 0 stretch; padding: 0; }
+}

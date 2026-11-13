@@ -9,9 +9,15 @@ import { L } from "../i18n";
 const NARROW = "(max-width: 860px)";
 const FLICK = 0.45; // px/ms: faster than this, the release moves on to the next snap point
 
-export function detailSheet(el: HTMLElement, label: string, opts: { snaps?: number[]; start?: number } = {}) {
-  if (!matchMedia(NARROW).matches || el.dataset.sheet) return;
-  el.dataset.sheet = "1";
+export type Sheet = { body: HTMLElement; settle: (i: number) => void; at: () => number };
+const sheets = new WeakMap<HTMLElement, Sheet>();
+/** Where to write a panel's content: its sheet body once it is a sheet, the panel itself otherwise. */
+export const panelBody = (el: HTMLElement) => sheets.get(el)?.body ?? el;
+
+export function detailSheet(el: HTMLElement, label: string, opts: { snaps?: number[]; start?: number } = {}): Sheet | null {
+  if (!matchMedia(NARROW).matches) return null;
+  const had = sheets.get(el);
+  if (had) return had;
   const snaps = (opts.snaps ?? [0.16, 0.52, 0.86]).slice().sort((a, b) => a - b);
   let at = Math.min(opts.start ?? 1, snaps.length - 1);
   const tabbar = () => (document.querySelector<HTMLElement>(".tabbar")?.offsetHeight ?? 0);
@@ -95,4 +101,7 @@ export function detailSheet(el: HTMLElement, label: string, opts: { snaps?: numb
   }
   addEventListener("resize", () => { if (el.isConnected) settle(at, false); });
   settle(at, false);
+  const api: Sheet = { body, settle: (i) => settle(i), at: () => at };
+  sheets.set(el, api);
+  return api;
 }

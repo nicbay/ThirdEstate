@@ -5,6 +5,7 @@
 // district profiles (crime, income, jobs, schools, spending, events) and, when built,
 // per-town files from scripts/sync-communes.mjs (councillors, monuments, prices, photos).
 import { geoMercator, geoPath } from "d3-geo";
+import { detailSheet } from "../lib/sheet";
 import { fetchJson, loadDeputes, type Depute } from "../data";
 import { getHome, setHome } from "../lib/cloud";
 import { L, colon, fmtDate, fmtNum, getLang, plural } from "../i18n";
@@ -251,7 +252,7 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
         <span id="count" class="muted small"></span>
       </div>
       <div class="split">
-        <ol class="town-list" id="towns"><li class="muted">${L("Chargement de", "Loading")} ${esc(depName)}…</li></ol>
+        <div class="town-pane" id="town-pane"><p class="town-pane-k">${L("Les communes de", "Towns in")} ${esc(depName)}</p><ol class="town-list" id="towns"><li class="muted">${L("Chargement de", "Loading")} ${esc(depName)}…</li></ol></div>
         <div class="split-map"><svg id="dep-map" viewBox="0 0 600 600" role="img" aria-label="${esc(depName)}"></svg><div class="legend-scale" id="legend"></div></div>
       </div>
       <p class="source">${L("Contours : geo.api.gouv.fr. Recherche : Base adresse nationale (Géoplateforme). Chiffres : INSEE, SSMSI, Éducation nationale, OFGL.", "Outlines: geo.api.gouv.fr. Search: National address base (Géoplateforme). Figures: INSEE, SSMSI, Ministry of Education, OFGL.")}</p>
@@ -307,6 +308,8 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
     const hl = (code: string, on: boolean) => app.querySelector(`#dep-map [data-code="${code}"]`)?.classList.toggle("hl", on);
     app.querySelectorAll<HTMLElement>(".town-card").forEach((a) => { a.addEventListener("mouseenter", () => hl(a.dataset.code!, true)); a.addEventListener("mouseleave", () => hl(a.dataset.code!, false)); });
     app.querySelectorAll<SVGPathElement>("#dep-map .town").forEach((p) => p.addEventListener("click", () => (location.hash = `#/ville/${p.dataset.code}`)));
+    // phones: the town list rests as a sheet over the map (peek: its title), pulled up to browse
+    detailSheet(app.querySelector<HTMLElement>("#town-pane")!, L("Les communes", "The towns"), { start: 0 });
   };
   app.querySelector<HTMLSelectElement>("#metric")!.addEventListener("change", (e) => { ui.metric = (e.target as HTMLSelectElement).value as Metric; draw(); });
   app.querySelector<HTMLSelectElement>("#sort")!.addEventListener("change", (e) => { ui.sort = (e.target as HTMLSelectElement).value as Metric; draw(); });
