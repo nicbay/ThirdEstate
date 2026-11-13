@@ -16,13 +16,13 @@ h2.sim-k { font-stretch: 100%; }
 /* ---- ready-made scenarios: one card each, with the runoff it leads to ---- */
 .sim-gallery { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(214px, 1fr); gap: 10px; overflow-x: auto; padding: 2px 6px 10px 2px; scroll-snap-type: x proximity; scrollbar-width: thin; }
 .sim-card { scroll-snap-align: start; display: grid; grid-template-rows: auto 1fr auto auto; gap: 0.35rem; text-align: left; padding: 0.55rem 0.6rem 0.6rem; min-height: 44px; cursor: pointer; color: var(--ink); font: inherit; border: 6px solid transparent; border-image: var(--px-soft) 6 / 6px / 0 stretch; background: var(--paper) padding-box; transition: transform 0.12s steps(2); }
-.sim-card > b { font: 700 1rem/1.15 var(--display); font-stretch: 84%; }
+.sim-card > b { font: 800 1rem/1.15 var(--display); font-stretch: 84%; }
 .sim-card-why { font-size: 0.78rem; line-height: 1.35; color: var(--ink-2); }
 .sim-card-duel { display: flex; height: 8px; margin-top: 0.2rem; background: var(--wash); position: relative; }
 .sim-card-duel i:first-child { background: var(--a); } .sim-card-duel i:last-child { background: var(--b); }
 .sim-card-duel::after { content: ""; position: absolute; left: 50%; top: -3px; bottom: -3px; width: 2px; margin-left: -1px; background: var(--ink); }
 .sim-card-res { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.1rem 0.6rem; font: 500 0.68rem var(--mono); color: var(--ink-3); }
-.sim-card-res strong { font: 700 0.92rem var(--display); font-stretch: 84%; color: var(--ink); font-variant-numeric: tabular-nums lining-nums; }
+.sim-card-res strong { font: 800 0.92rem var(--display); font-stretch: 84%; color: var(--ink); font-variant-numeric: tabular-nums lining-nums; }
 .sim-card:hover { transform: translate(-2px, -2px); border-image-source: var(--px-ink); filter: drop-shadow(4px 4px 0 var(--ink)); }
 .sim-card[aria-pressed="true"] { border-image-source: var(--px-ink); filter: drop-shadow(4px 4px 0 var(--accent)); }
 .sim-card[aria-pressed="true"] > b::after { content: " ✓"; color: var(--accent); }
@@ -36,7 +36,7 @@ h2.sim-k { font-stretch: 100%; }
 .sim-steps li:not(:last-child)::after { content: ""; position: absolute; right: -9px; top: 50%; width: 16px; height: 16px; margin-top: -8px; z-index: 1; background: var(--night); border: 2px solid var(--night-rule); border-width: 2px 2px 0 0; transform: rotate(45deg); }
 .sim-steps .sim-k { color: var(--night-text-3); }
 .sim-steps p { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.7rem; font-size: 0.95rem; line-height: 1.3; }
-.sim-steps p b { font: 700 1.12rem/1.1 var(--display); font-stretch: 82%; font-variant-numeric: tabular-nums lining-nums; }
+.sim-steps p b { font: 800 1.12rem/1.1 var(--display); font-stretch: 82%; font-variant-numeric: tabular-nums lining-nums; }
 .sim-steps p small { flex-basis: 100%; font-size: 0.76rem; color: var(--night-label); }
 #st-1 span { display: inline-flex; align-items: baseline; gap: 0.3rem; color: var(--night-label); white-space: nowrap; }
 #st-1 span::before { content: ""; width: 8px; height: 8px; background: var(--c); align-self: center; }
@@ -65,7 +65,7 @@ h2.sim-k { font-stretch: 100%; }
 .sim-select, .sim-input { border-width: 2px; }
 .sim-bar { height: 92px; box-shadow: 0 0 0 2px var(--ink); margin-top: 0.5rem; }
 .sim-seg.is-fin::after { height: 8px; opacity: 1; }
-.sim-hd::after { box-shadow: 2px 2px 0 rgba(19, 18, 9, 0.35); }
+.sim-hd::after { box-shadow: 2px 2px 0 rgba(11, 13, 24, 0.35); }
 .sim-bar:hover .sim-hd::after, .sim-split:hover .sim-hd::after { opacity: 0.8; }
 .sim-split { box-shadow: 0 0 0 2px var(--rule-2); }
 .sim-duel { box-shadow: 0 0 0 2px var(--ink); }
@@ -93,7 +93,7 @@ h2.sim-k { font-stretch: 100%; }
 .sim-undo1[hidden] { display: none; }
 .sim-mob { display: grid; gap: 0.3rem; padding: 0.6rem 0.7rem 0.7rem; background: var(--panel); }
 .sim-mob label { display: flex; justify-content: space-between; align-items: baseline; gap: 0.8rem; font-size: 0.88rem; }
-.sim-mob output { font: 700 1.15rem var(--display); font-stretch: 82%; font-variant-numeric: tabular-nums lining-nums; }
+.sim-mob output { font: 800 1.15rem var(--display); font-stretch: 82%; font-variant-numeric: tabular-nums lining-nums; }
 .sim-mob input[type="range"] { width: 100%; min-height: 32px; accent-color: var(--ink); }
 @media (pointer: coarse) { .sim-mob input[type="range"] { min-height: 44px; } }
 
