@@ -12,14 +12,16 @@ export interface Series {
   dots?: { date: string; value: number; title: string; href?: string }[];
   /** Final value shown as a diamond (e.g. actual election result). */
   final?: { date: string; value: number; title: string };
+  /** Projection to a future date: a dotted line from (d0, v0) to (d1, mid) inside a band that widens to [lo, hi]. */
+  proj?: { d0: string; v0: number; d1: string; mid: number; lo: number; hi: number; label?: string; title?: string };
 }
 
-export function lineChart(series: Series[], opts: { height?: number; yMax?: number } = {}) {
+export function lineChart(series: Series[], opts: { height?: number; yMax?: number; marker?: { date: string; label: string } } = {}) {
   // Phones get a narrower canvas so 11px labels stay ~11px instead of shrinking to 4px.
   const compact = typeof window !== "undefined" && window.innerWidth < 640;
   const W = compact ? 520 : 900, H = Math.round((opts.height ?? 380) * (compact ? 1.05 : 1)), L = compact ? 40 : 44, R = compact ? 172 : 150, T = 12, B = compact ? 34 : 28;
   const gap = compact ? 19 : 13;
-  const all = series.flatMap((s) => [...s.line, ...(s.dots ?? []), ...(s.final ? [s.final] : [])]);
+  const all = series.flatMap((s) => [...s.line, ...(s.dots ?? []), ...(s.final ? [s.final] : []), ...(s.proj ? [{ date: s.proj.d1, value: s.proj.hi }] : [])]);
   if (!all.length) return "";
   const t = (d: string) => Date.parse(d);
   const x0 = Math.min(...all.map((p) => t(p.date))), x1 = Math.max(...all.map((p) => t(p.date)));
@@ -41,9 +43,10 @@ export function lineChart(series: Series[], opts: { height?: number; yMax?: numb
   const ticks = months.filter((_, i) => i % step === 0).map((m) => `<text x="${x(m)}" y="${H - 8}" text-anchor="middle" class="axis">${fmtDate(m).replace(/^\d+\s/, "")}</text>`);
 
   // end labels, nudged apart so they don't overlap
+  const endValue = (s: Series) => (s.proj ? s.proj.mid : s.line.at(-1)!.value);
   const ends = series
     .filter((s) => s.line.length)
-    .map((s) => ({ s, y: y(s.line.at(-1)!.value) }))
+    .map((s) => ({ s, y: y(endValue(s)) }))
     .sort((a, b) => a.y - b.y);
   for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < gap) ends[i].y = ends[i - 1].y + gap;
   // if the stack ran past the bottom, push it back up from the last label
@@ -52,19 +55,41 @@ export function lineChart(series: Series[], opts: { height?: number; yMax?: numb
     for (let i = ends.length - 2; i >= 0; i--) if (ends[i + 1].y - ends[i].y < gap) ends[i].y = ends[i + 1].y - gap;
   }
 
+  // projection: a band that opens like a funnel (width grows with the square root of time) and a dotted centre line
+  const proj = (s: Series) => {
+    const p = s.proj;
+    if (!p) return "";
+    const N = 16, xs: number[] = [], up: string[] = [], dn: string[] = [], mid: string[] = [];
+    for (let i = 0; i <= N; i++) {
+      const f = i / N, g = Math.sqrt(f);
+      const dd = new Date(t(p.d0) + f * (t(p.d1) - t(p.d0))).toISOString();
+      const xx = x(dd), m = p.v0 + (p.mid - p.v0) * f;
+      xs.push(xx);
+      up.push(`${xx},${y(m + (p.hi - p.mid) * g)}`);
+      dn.push(`${xx},${y(m - (p.mid - p.lo) * g)}`);
+      mid.push(`${xx},${y(m)}`);
+    }
+    return `<g class="proj"><polygon class="band" points="${[...up, ...dn.reverse()].join(" ")}" fill="${s.color}"><title>${esc(p.title ?? "")}</title></polygon>
+      <polyline class="proj-line" fill="none" stroke="${s.color}" points="${mid.join(" ")}"/></g>`;
+  };
+  const marker = opts.marker && t(opts.marker.date) >= x0 && t(opts.marker.date) <= x1
+    ? `<line class="marker" x1="${x(opts.marker.date)}" x2="${x(opts.marker.date)}" y1="${T}" y2="${H - B}"/><text class="marker-label" x="${x(opts.marker.date) - 4}" y="${T + 10}" text-anchor="end">${esc(opts.marker.label)}</text>`
+    : "";
+
   return `<svg viewBox="0 0 ${W} ${H}" class="chart${compact ? " compact" : ""}" role="img" aria-label="${esc(series.map((s) => `${s.label} ${dec(s.line.at(-1)?.value)}`).join(", "))}">
-    ${grid.join("")}${ticks.join("")}
+    ${grid.join("")}${ticks.join("")}${marker}
     ${series
       .map(
         (s) => `<g class="series" data-name="${esc(s.name)}" style="--c:${s.color}">
           ${(s.dots ?? []).map((p) => { const c = `<circle cx="${x(p.date)}" cy="${y(p.value)}" r="${compact ? 3.6 : 3}" class="dot" fill="${s.color}"><title>${esc(p.title)}</title></circle>`; return p.href ? `<a href="${esc(safeUrl(p.href))}" target="_blank" rel="noopener" class="dot-link">${c}</a>` : c; }).join("")}
+          ${proj(s)}
           <polyline class="halo" points="${s.line.map((p) => `${x(p.date)},${y(p.value)}`).join(" ")}"/>
           <polyline class="line" pathLength="1" fill="none" stroke="${s.color}" stroke-width="${compact ? 3.4 : 2.6}" stroke-linejoin="round" stroke-linecap="round" points="${s.line.map((p) => `${x(p.date)},${y(p.value)}`).join(" ")}"/>
           ${s.final ? `<path d="M${x(s.final.date)},${y(s.final.value) - 6}l6,6l-6,6l-6,-6z" fill="${s.color}" stroke="var(--card)"><title>${esc(s.final.title)}</title></path>` : ""}
         </g>`,
       )
       .join("")}
-    ${ends.map(({ s, y: yy }) => `<text x="${W - R + 8}" y="${yy + 4}" class="end-label" fill="${s.color}"><title>${esc(s.label)}</title>${esc(compact && s.label.length > 14 ? `${s.label.slice(0, 13).trim()}…` : s.label)} <tspan class="v">${dec(s.line.at(-1)!.value)}</tspan></text>`).join("")}
+    ${ends.map(({ s, y: yy }) => `<text x="${W - R + 8}" y="${yy + 4}" class="end-label" fill="${s.color}"><title>${esc(s.label)}</title>${esc(compact && (s.proj?.label ?? s.label).length > 14 ? `${(s.proj?.label ?? s.label).slice(0, 13).trim()}…` : s.proj?.label ?? s.label)} <tspan class="v">${s.proj ? "≈" : ""}${dec(endValue(s))}</tspan></text>`).join("")}
   </svg>`;
 }
 

@@ -1,14 +1,14 @@
 // Polls & markets: trend, runoff match-ups, every poll, prediction markets.
 import { loadMarkets, loadPolls } from "../data";
 import { L, fmtDate, fmtNum, getLang } from "../i18n";
-import { lineChart, pollDots } from "../lib/chart";
 import { meta, registerParties } from "../lib/candidates";
-import { WINDOW, average, duelAverages, latestPollDate, pollsterName, trend } from "../lib/polls";
+import { WINDOW, average, duelAverages, latestPollDate, pollsterName } from "../lib/polls";
 import { colon, dec, pair100, pct } from "../lib/format";
 import { combineOdds, oddsFor, winShare } from "../lib/markets";
 import { esc, safeUrl } from "../util";
 import { shiftDays } from "./home";
 import { liveForecast, mountDaily } from "./daily";
+import { mountForecastChart } from "./forecast-chart";
 
 const ui = { range: 365, hidden: new Set<string>(), pollster: "" };
 
@@ -44,7 +44,7 @@ export async function renderPolls(app: HTMLElement) {
         </header>
         <div id="chart"></div>
         <div class="legend" id="legend"></div>
-        <p class="muted small">${L(`Lignes : moyenne des sondages sur ${WINDOW} jours glissants, la même que partout sur le site. Points : sondages individuels (moyenne des hypothèses testées).`, `Lines: ${WINDOW}-day rolling polling average, the same one used across the site. Dots: individual polls (mean across tested line-ups).`)} <a href="#/sources">${L("Méthode", "Method")}</a></p>
+        <p class="muted small">${L(`Lignes pleines : moyenne des sondages sur ${WINDOW} jours glissants, la même que partout sur le site. Points : sondages individuels (moyenne des hypothèses testées).`, `Solid lines: ${WINDOW}-day rolling polling average, the same one used across the site. Dots: individual polls (mean across tested line-ups).`)} <a href="#/sources">${L("Méthode", "Method")}</a></p>
       </article>
 
       <article class="card" id="second-tour">
@@ -81,24 +81,12 @@ export async function renderPolls(app: HTMLElement) {
 
   void mountDaily(app.querySelector<HTMLElement>("#daily")).then(() => { if (/#point$/.test(location.hash)) document.getElementById("point")?.scrollIntoView(); });
 
+  const shown = current.slice(0, 12).map((r) => r.name);
+  const redraw = mountForecastChart(app.querySelector<HTMLElement>("#chart")!, {
+    polls, markets, from: () => shiftDays(latest, -ui.range), shown: () => shown, hidden: () => ui.hidden,
+  });
   const drawChart = () => {
-    const from = shiftDays(latest, -ui.range);
-    const pts = trend(polls.firstRound, from);
-    const shown = current.slice(0, 12).map((r) => r.name);
-    const series = shown
-      .filter((n) => !ui.hidden.has(n))
-      .map((n) => {
-        const m = meta(n);
-        return {
-          name: n,
-          label: m.surname,
-          color: m.color,
-          line: pts.filter((p) => p.values[n] != null).map((p) => ({ date: p.date, value: p.values[n] })),
-          dots: pollDots(polls.firstRound, n, from, polls.source),
-        };
-      })
-      .filter((s) => s.line.length);
-    app.querySelector("#chart")!.innerHTML = lineChart(series);
+    redraw();
     app.querySelector("#legend")!.innerHTML = shown
       .map((n) => `<button type="button" class="chip-toggle" data-name="${esc(n)}" aria-pressed="${!ui.hidden.has(n)}" style="--c:${meta(n).color}">${esc(meta(n).surname)}</button>`)
       .join("");

@@ -5,16 +5,16 @@
 import { fetchJson, loadMarkets, loadPolls } from "../data";
 import { pixelIcon } from "../lib/pixel-icons";
 import { L, fmtDate, getLang } from "../i18n";
-import { lineChart, pollDots } from "../lib/chart";
 import { meta, registerParties } from "../lib/candidates";
 import { getHome } from "../lib/cloud";
-import { average, latestPollDate, pollsInWindow, trend, WINDOW } from "../lib/polls";
-import { ELECTION_DAY } from "../lib/forecast";
+import { average, latestPollDate, pollsInWindow, WINDOW } from "../lib/polls";
+import { ELECTION_DAY, type Forecast } from "../lib/forecast";
 import { colon, pct } from "../lib/format";
 import { esc } from "../util";
 import { bindSearch, searchBox } from "./explore";
 import { mpChip, townBrief } from "./brief";
-import { liveForecast, todaySentence } from "./daily";
+import { todaySentence } from "./daily";
+import { mountForecastChart, scenarioForecast, scenarioFromUrl, scenarioHeadline } from "./forecast-chart";
 
 export async function renderHome(app: HTMLElement) {
   const [polls, markets, cands] = await Promise.all([
@@ -29,7 +29,8 @@ export async function renderHome(app: HTMLElement) {
   const nPolls = pollsInWindow(polls.firstRound, latest).length;
   const today = new Date().toISOString().slice(0, 10);
   const daysToGo = Math.max(0, Math.round((Date.parse(ELECTION_DAY) - Date.parse(today)) / 86400000));
-  const fav = liveForecast(polls, markets).rows[0];
+  const fc0 = scenarioForecast(polls, markets, scenarioFromUrl());
+  const fcBase = () => scenarioForecast(polls, markets, "base");
   const sentence = todaySentence(polls.firstRound);
   const nCands = cands?.candidates.length ?? 0;
   const home = getHome();
@@ -40,9 +41,7 @@ export async function renderHome(app: HTMLElement) {
         <p class="hero-kicker">${L(`Présidentielle 2027 · premier tour dans ${daysToGo} jours`, `2027 presidential election · first round in ${daysToGo} days`)}</p>
         <h1 id="hero-title"><span class="ln"><span>${L("Qui va gagner", "Who will win")}</span></span><span class="ln"><span><em>${L("en 2027 ?", "in 2027?")}</em></span></span></h1>
         <div class="hq-answer">
-          ${fav
-            ? `<p class="hq-num"><strong>${pct(fav.win, 0)}</strong><span>${fr ? `de chances pour <b>${esc(fav.name)}</b>, selon notre prévision` : `chance for <b>${esc(fav.name)}</b>, in our forecast`} · <a href="#/2027">${L("Comment on calcule", "How it’s worked out")}</a></span></p>`
-            : `<p class="hq-num"><span><a href="#/2027">${L("La course, les sondages et le simulateur", "The race, the polls and the simulator")}</a></span></p>`}
+          <div id="hq-num">${headline(fc0, fr, fcBase())}</div>
           ${sentence ? `<p class="hq-brief"><span class="hq-k">${L("Le point du jour", "Today’s brief")}</span> ${esc(sentence)} <a href="#/sondages#point">${L("Le point complet", "The full brief")} →</a></p>` : ""}
         </div>
         <div class="hero-x-doors hq-doors">
@@ -66,9 +65,9 @@ export async function renderHome(app: HTMLElement) {
       <div id="mine"></div>
 
       <section class="card">
-        <header class="card-head"><h2>${L("La moyenne des sondages, sur un an", "The polling average, over a year")}</h2><a href="#/sondages">${L("Tous les sondages", "Every poll")}</a></header>
+        <header class="card-head"><h2>${L("Les sondages, et jusqu’au premier tour", "The polls, and on to the first round")}</h2><a href="#/sondages">${L("Tous les sondages", "Every poll")}</a></header>
         <div id="trend" class="reveal"></div>
-        <p class="muted small">${L(`Moyenne des sondages du premier tour sur ${WINDOW} jours, jusqu’au dernier sondage (${fmtDate(latest)}, ${nPolls} sondages dans la fenêtre) ; la même moyenne partout sur le site. Points : sondages individuels.`, `First-round polling average over ${WINDOW} days, up to the latest poll (${fmtDate(latest)}, ${nPolls} polls in the window); the same average everywhere on the site. Dots: individual polls.`)}</p>
+        <p class="muted small">${L(`Ligne pleine : moyenne des sondages du premier tour sur ${WINDOW} jours, jusqu’au dernier sondage (${fmtDate(latest)}, ${nPolls} sondages dans la fenêtre) ; la même moyenne partout sur le site. Points : sondages individuels.`, `Solid line: first-round polling average over ${WINDOW} days, up to the latest poll (${fmtDate(latest)}, ${nPolls} polls in the window); the same average everywhere on the site. Dots: individual polls.`)}</p>
       </section>
 
       <ul class="home-more" aria-label="${L("Aussi sur Third Estate", "Also on Third Estate")}">
@@ -79,14 +78,14 @@ export async function renderHome(app: HTMLElement) {
   bindSearch(app);
   if (home?.code) drawMine(app.querySelector<HTMLElement>("#mine")!, home.code, home.commune ?? home.code);
 
-  // ---------- trend chart ----------
+  // ---------- polls chart with the projection to election day and the scenarios ----------
   const from = shiftDays(latest, -365);
-  const pts = trend(polls.firstRound, from);
   const shown = now.slice(0, 7).map((r) => r.name);
-  app.querySelector("#trend")!.innerHTML = lineChart(
-    shown.map((n) => ({ name: n, label: meta(n).surname, color: meta(n).color, line: pts.filter((p) => p.values[n] != null).map((p) => ({ date: p.date, value: p.values[n] })), dots: pollDots(polls.firstRound, n, from, polls.source) })).filter((s) => s.line.length),
-    { height: 320 },
-  );
+  const num = app.querySelector<HTMLElement>("#hq-num")!;
+  mountForecastChart(app.querySelector<HTMLElement>("#trend")!, {
+    polls, markets, from: () => from, shown: () => shown, height: 340,
+    onChange: (fc) => { num.innerHTML = headline(fc, fr, fcBase()); },
+  });
 
   // draw-in when scrolled into view
   const io = new IntersectionObserver((entries) => entries.forEach((e) => e.isIntersecting && (e.target.classList.add("in"), io.unobserve(e.target))), { threshold: 0.25 });
@@ -111,6 +110,16 @@ async function drawMine(box: HTMLElement, code: string, name: string) {
   } catch {
     box.innerHTML = "";
   }
+}
+
+/** The one number: the favourite's chance, today or under the chosen scenario. */
+function headline(fc: Forecast, fr: boolean, ref?: Forecast) {
+  const fav = fc.rows[0];
+  if (!fav) return `<p class="hq-num"><span><a href="#/2027">${L("La course, les sondages et le simulateur", "The race, the polls and the simulator")}</a></span></p>`;
+  const base = fc.scenario === "base";
+  return `<p class="hq-num${base ? "" : " is-scenario"}"><strong>${pct(fav.win, 0)}</strong><span>${fr
+    ? `de chances pour <b>${esc(fav.name)}</b>, ${base ? "selon notre prévision" : "dans ce scénario"}`
+    : `chance for <b>${esc(fav.name)}</b>, ${base ? "in our forecast" : "in this scenario"}`} · <a href="${base ? "#/2027" : "#/"}"${base ? "" : ' data-scn-reset="1"'}>${base ? L("Comment on calcule", "How it’s worked out") : L("Revenir aux sondages du jour", "Back to today’s polls")}</a></span></p>${base ? "" : `<p class="hq-scn">${scenarioHeadline(fc, ref)}</p>`}`;
 }
 
 export const shiftDays = (iso: string, d: number) => new Date(Date.parse(iso) + d * 86400000).toISOString().slice(0, 10);
