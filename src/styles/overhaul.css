@@ -165,3 +165,14 @@
   .page.has-toc > .px-toc { grid-column: 2; grid-row: 2 / span var(--toc-rows, 1); align-self: start; position: sticky; top: calc(var(--bar-h) + var(--sub-h, 0px) + 16px); max-height: calc(100vh - var(--bar-h) - var(--sub-h, 0px) - 32px); overflow-y: auto; }
   .px-toc summary { pointer-events: none; }
 }
+
+/* ---------- profile identity strip (src/lib/id-strip.ts) ---------- */
+.id-strip { position: fixed; left: 0; right: 0; top: calc(var(--bar-h) + var(--sub-h, 0px)); z-index: 14; background: var(--paper); border-bottom: 3px solid var(--c, var(--ink)); box-shadow: 0 4px 0 rgba(11, 13, 24, 0.08); transform: translateY(-110%); visibility: hidden; transition: transform 0.18s steps(4, end), visibility 0s 0.18s; pointer-events: none; }
+.id-strip.is-on { transform: none; visibility: visible; transition: transform 0.18s steps(4, end); }
+.id-in { max-width: var(--col); margin: 0 auto; padding: 0.4rem var(--gutter); display: flex; align-items: center; gap: var(--spacing-3); }
+.id-in img { width: 32px; height: 32px; object-fit: cover; clip-path: var(--px-clip); background: var(--wash); }
+.id-in b { font: 800 1.02rem/1.1 var(--display); font-stretch: 80%; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 760px) { .id-strip { top: var(--bar-h); } }
+@media (prefers-reduced-motion: reduce) { .id-strip, .id-strip.is-on { transition: none; } }
+.id-in b { flex: 0 0 auto; max-width: 62%; }
+.id-in .chip { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
