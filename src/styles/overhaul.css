@@ -121,3 +121,13 @@
 @keyframes px-toast-in { from { transform: translateY(12px); } } /* slide only: a toast must be readable even if animations are paused */
 @keyframes px-toast-out { to { transform: translateY(8px); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .px-toast, .px-toast.is-out { animation: none; } }
+
+/* ---------- InfoTip (src/lib/infotip.ts): a pixel "i" that explains a label or a figure ---------- */
+.px-info { position: relative; display: inline-flex; vertical-align: 0.1em; margin-left: 0.3em; text-transform: none; letter-spacing: 0; }
+.px-info-btn { display: grid; place-items: center; width: 16px; height: 16px; padding: 0; font: 700 10px/1 var(--mono); color: var(--paper); background: var(--ink-3); border: 0; cursor: help; clip-path: var(--px-clip); }
+.px-info-btn:hover, .px-info-btn[aria-expanded="true"] { background: var(--accent); color: #fff; }
+.px-info-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; clip-path: none; }
+.px-info-pop { position: absolute; z-index: 40; left: -8px; top: calc(100% + 8px); width: max-content; max-width: min(18rem, 80vw); padding: 0.55rem 0.7rem; font: 400 0.82rem/1.4 var(--text); color: #fff; background: var(--night); text-align: left; white-space: normal; filter: drop-shadow(4px 4px 0 var(--split-blue)); }
+.px-info-pop.is-left { left: auto; right: -8px; }
+.px-info-pop.is-up { top: auto; bottom: calc(100% + 8px); }
+.sec-hero .px-info-btn { background: var(--night-rule-2); color: #fff; }

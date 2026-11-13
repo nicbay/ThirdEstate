@@ -3,6 +3,7 @@
 // fly into the Assembly's seats, or the arrows of how each district shifted between the last two legislative
 // elections. Preview at #/apercu until it replaces the current hero.
 import "../styles/hero-day.css";
+import { infoTip } from "../lib/infotip";
 import { geoConicConformal, geoPath } from "d3-geo";
 import { fetchJson, loadDepartements, loadDeputes, loadFeed, loadMarkets, loadPolls, loadShifts, type FeedReaction } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
@@ -120,7 +121,7 @@ export async function heroDay() {
         <section class="hday-block">
           <header><h2>${L("Sondages", "Polls")}</h2><a href="#/sondages">${L("Tous", "All")} →</a></header>
           <ol class="hdp">${pollRows}</ol>
-          <p class="hday-small">${L("Moyenne pondérée par la note des instituts · variation sur 7 jours", "Average weighted by institute grade · change over 7 days")}${lastLine ? ` · ${lastLine}` : ""}</p>
+          <p class="hday-small">${L("Moyenne pondérée par la note des instituts · variation sur 7 jours", "Average weighted by institute grade · change over 7 days")}${infoTip(L("Chaque sondage compte selon la note de son institut (de A+ à F), gagnée par l’écart entre ses derniers sondages et les résultats depuis 2002. La flèche donne la variation sur les 7 derniers jours.", "Each poll counts by its institute’s grade (A+ to F), earned from how far its final polls landed from the results since 2002. The arrow is the change over the last 7 days."), L("À propos de la moyenne", "About the average"))}${lastLine ? ` · ${lastLine}` : ""}</p>
           <div id="hq-num">${forecastLine(fc, fc.scenarios.length ? scenarioForecast(polls, markets, []) : undefined)}</div>
         </section>
         ${eventsHtml ? `<section class="hday-block"><header><h2>${L("Ce qui a bougé", "What changed")}</h2><a href="#/2027">${L("Les candidats", "Candidates")} →</a></header><ul class="hde">${eventsHtml}</ul></section>` : ""}

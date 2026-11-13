@@ -1,5 +1,6 @@
 // 2027 front page: the state of the race in one headline and one strip, then the detail.
 import { loadMarkets, loadPolls } from "../data";
+import { infoTip } from "../lib/infotip";
 import { L, fmtDate, getLang } from "../i18n";
 import { candidateSlug, meta, registerParties, spectrumRank } from "../lib/candidates";
 import { average, duelAverages, pollValue, pollsInWindow } from "../lib/polls";
@@ -174,7 +175,7 @@ function forecastCard(fc: Forecast) {
   const CEIL_FR = ceil ? ` Plafonds : un candidat ne peut gagner au plus que la moitié du chemin entre son score actuel et l’électorat qui n’exclut pas de voter pour lui (${REJECTION.poll.pollster} pour ${REJECTION.poll.sponsor}, ${fmtDate(REJECTION.poll.fieldwork[1])}) : ${ceil}. Les scores de tous les candidats font toujours 100 %.` : "";
   const CEIL_EN = ceil ? ` Ceilings: a candidate can gain at most half the way from today’s score to the electorate that doesn’t rule out voting for them (${REJECTION.poll.pollster} for ${REJECTION.poll.sponsor}, ${fmtDate(REJECTION.poll.fieldwork[1])}): ${ceil}. All candidates’ scores always add up to 100%.` : "";
   return `<section class="card forecast" id="prevision">
-    <header class="card-head"><h2>${L("Qui sera élu en 2027 ?", "Who will win in 2027?")}</h2><a href="#/2027#methode">${L("Méthode", "Method")}</a></header>
+    <header class="card-head"><h2>${L("Qui sera élu en 2027 ?", "Who will win in 2027?")}${infoTip(L("La chance de chaque candidat d’être élu : les sondages récents passés dans 20 000 élections simulées, mêlés aux prix des marchés prédictifs (Kalshi, Polymarket). « Sondages » et « Marchés » montrent chaque source seule ; « au second tour », la chance de s’y qualifier.", "Each candidate’s chance of being elected: recent polls run through 20,000 simulated elections, blended with prediction-market prices (Kalshi, Polymarket). “Polls” and “Markets” show each source alone; “reaches runoff” is the chance of making the second round."), L("Comment lire ces chances", "How to read these chances"))}</h2><a href="#/2027#methode">${L("Méthode", "Method")}</a></header>
     <div class="fc-grid">
       <ol class="fc-rows">${shown
         .map((r) => {
