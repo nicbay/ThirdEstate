@@ -23,7 +23,7 @@ export async function renderResults(app: HTMLElement, tab = "presidentielles") {
       <div class="page-head">
         <div><p class="eyebrow">${L("Résultats passés", "Past results")}</p><h1>${L("Ce que les électeurs ont voté, et à quel point les sondages s’étaient trompés", "How France voted, and how far off the polls were")}</h1>
           <p class="dek">${L("Résultats officiels du ministère de l’Intérieur, comparés au dernier sondage de chaque institut avant le vote.", "Official Ministry of the Interior results, compared with each pollster’s last poll before the vote.")}</p></div>
-        <nav class="tabs">${TABS.map((t) => `<a role="tab" href="#/resultats/${t.key}" aria-selected="${t.key === tab}">${L(t.fr, t.en)}</a>`).join("")}</nav>
+        <nav class="tabs">${TABS.map((t) => `<a role="tab" href="#/resultats${t.key === "presidentielles" ? "" : `/${t.key}`}" aria-selected="${t.key === tab}">${L(t.fr, t.en)}</a>`).join("")}</nav>
       </div>
       <div id="pane"></div>
     </section>`;
