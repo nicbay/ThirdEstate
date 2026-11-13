@@ -67,7 +67,7 @@ export async function renderHome(app: HTMLElement) {
       <section class="card">
         <header class="card-head"><h2>${L("Les sondages, et jusqu’au premier tour", "The polls, and on to the first round")}</h2><a href="#/sondages">${L("Tous les sondages", "Every poll")}</a></header>
         <div id="trend" class="reveal"></div>
-        <p class="muted small">${L(`Ligne pleine : moyenne des sondages du premier tour sur ${WINDOW} jours, jusqu’au dernier sondage (${fmtDate(latest)}, ${nPolls} sondages dans la fenêtre) ; la même moyenne partout sur le site. Points : sondages individuels.`, `Solid line: first-round polling average over ${WINDOW} days, up to the latest poll (${fmtDate(latest)}, ${nPolls} polls in the window); the same average everywhere on the site. Dots: individual polls.`)}</p>
+        <p class="muted small">${L(`Ligne pleine : moyenne des sondages du premier tour sur ${WINDOW} jours, pondérée par la note des instituts (<a href="#/sondages/instituts">le classement</a>), jusqu’au dernier sondage (${fmtDate(latest)}, ${nPolls} sondages dans la fenêtre) ; la même moyenne partout sur le site. Points : sondages individuels.`, `Solid line: first-round polling average over ${WINDOW} days, weighted by each institute’s grade (<a href="#/sondages/instituts">the ranking</a>), up to the latest poll (${fmtDate(latest)}, ${nPolls} polls in the window); the same average everywhere on the site. Dots: individual polls.`)}</p>
       </section>
 
       <ul class="home-more" aria-label="${L("Aussi sur Third Estate", "Also on Third Estate")}">

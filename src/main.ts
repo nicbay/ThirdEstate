@@ -55,6 +55,7 @@ new ResizeObserver(setVw).observe(document.documentElement);
 const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/$/, () => renderHome(app)],
   [/^#\/sondages$/, () => renderPolls(app)],
+  [/^#\/sondages\/instituts$/, () => import("./views/pollsters").then((v) => v.renderPollsters(app))],
   [/^#\/simulateur(?:\/([\w-]+))?$/, (m) => renderSimulator(app, m[1])],
   [/^#\/resultats(?:\/([\w-]+))?$/, (m) => renderResults(app, m[1])],
   [/^#\/presidentielle(?:\/\d{4})?$/, () => void (location.hash = "#/resultats/presidentielle-2022")], // old links
@@ -138,7 +139,8 @@ function sections(): Section[] {
       blurb: ["La présidentielle : qui est en tête, ce qu’ils proposent, comment voter.", "The presidential race: who leads, what they propose, how to vote."],
       children: [
         { group: RACE, href: "#/2027", match: /^#\/(2027$|candidat)/, fr: "La course", en: "The race", desc: ["La prévision, les candidats, leurs fiches", "The forecast, the candidates, their files"] },
-        { group: RACE, href: "#/sondages", match: /^#\/sondages/, fr: "Sondages et marchés", en: "Polls and markets", desc: ["Chaque sondage, et ce que parient les marchés", "Every poll, and what the markets are betting"] },
+        { group: RACE, href: "#/sondages", match: /^#\/sondages$/, fr: "Sondages et marchés", en: "Polls and markets", desc: ["Chaque sondage, et ce que parient les marchés", "Every poll, and what the markets are betting"] },
+        { group: RACE, href: "#/sondages/instituts", match: /^#\/sondages\/instituts/, fr: "Les instituts notés", en: "Pollsters graded", sub: ["Instituts", "Pollsters"], desc: ["De A+ à F, sur leurs sondages passés face aux résultats", "A+ to F, on their past polls against the results"] },
         { group: RACE, href: "#/sondages#point", match: NEVER, minor: true, fr: "Le point du jour", en: "Today’s brief", desc: ["Ce qui a bougé en 24 heures, et pourquoi peut-être", "What moved in 24 hours, and perhaps why"] },
         { group: RACE, href: "#/fil", match: /^#\/fil/, fr: "Fil rouge, fil bleu", en: "Red feed, blue feed", desc: ["L’actualité vue de gauche et de droite", "The news as left and right see it"] },
         { group: RACE, href: "#/2027/calendrier", match: /^#\/2027\/calendrier/, fr: "Calendrier de la campagne", en: "Campaign calendar", sub: ["Calendrier", "Calendar"], desc: ["Les dates clés jusqu’au second tour", "Key dates up to the runoff"] },

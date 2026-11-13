@@ -21,7 +21,7 @@
 import type { Market } from "../data";
 import { meta, type Bloc } from "./candidates";
 import { combineOdds, winShare } from "./markets";
-import { average, duelAverages, pollsInWindow, referenceLineup, trend, type Duel, type Poll } from "./polls";
+import { average, duelAverages, pollWeight, pollsInWindow, referenceLineup, trend, type Duel, type Poll } from "./polls";
 import primaryData from "../../public/data/2027/primary.json";
 import rejectionData from "../../public/data/2027/rejection.json";
 import candidateIndex from "../../public/data/candidates/index.json";
@@ -326,18 +326,19 @@ export function fieldLineup(polls: Poll[], asOf: string): { n: number; rows: { n
   const ps = pollsInWindow(polls, asOf);
   const FIELD = fieldNames(polls, asOf);
   const score = (h: Record<string, number>) => Object.keys(h).reduce((s, k) => s + (FIELD.has(norm(k)) ? 1 : -1), 0);
-  const acc = new Map<string, number[]>();
+  const acc = new Map<string, [number, number][]>(); // [value, the poll's grade weight]
   for (const p of ps) {
+    const w = pollWeight(p);
     if (!p.hyps.length) continue;
     const best = Math.max(...p.hyps.map(score));
     const hs = p.hyps.filter((h) => score(h) === best);
     for (const n of new Set(hs.flatMap((h) => Object.keys(h)))) {
       if (!FIELD.has(norm(n))) continue; // tested too rarely so far: left out, the others scaled up to 100
       const v = hs.map((h) => h[n]).filter((x): x is number => x != null);
-      if (v.length) acc.set(n, [...(acc.get(n) ?? []), v.reduce((a, b) => a + b, 0) / v.length]);
+      if (v.length) acc.set(n, [...(acc.get(n) ?? []), [v.reduce((a, b) => a + b, 0) / v.length, w]]);
     }
   }
-  const rows = [...acc].map(([name, v]) => ({ name, share: v.reduce((a, b) => a + b, 0) / v.length }));
+  const rows = [...acc].map(([name, v]) => ({ name, share: v.reduce((a, [x, w]) => a + x * w, 0) / v.reduce((a, [, w]) => a + w, 0) }));
   const sum = rows.reduce((s, r) => s + r.share, 0);
   if (ps.length < 3 || rows.length < 4 || sum <= 0) return referenceLineup(polls, asOf);
   return { n: ps.length, rows: rows.map((r) => ({ name: r.name, share: (100 * r.share) / sum })) };

@@ -8,15 +8,22 @@
 //    number, whichever date a page passes (some passed today, others the latest poll's date, and the
 //    two disagreed whenever an old poll had slid out of a calendar window but not out of the other).
 // 3. Candidates tested in fewer than 40% of those polls are left out of the average.
+// 4. Polls are weighted by their institute's grade (public/data/polls/pollsters.json, from how close each
+//    firm's final polls came to the results of past elections): an A+ poll counts 1, an F poll 0.2, a firm
+//    with no track record 0.6. A poorly graded poll moves the average less.
 // The same `average` feeds every number and chart line on the site (trend() is it, sampled weekly).
+
+import ratingsData from "../../public/data/polls/pollsters.json";
 
 export interface Poll {
   pollster: string;
   start: string;
   end: string;
   sample: number | null;
-  /** the poll's own source (pollster or outlet page), when Wikipedia's table cites one */
+  /** the poll's own publication when found (the pollster's release, else the Commission des sondages notice) */
   url?: string;
+  /** what `url` points to */
+  urlKind?: "pollster" | "commission" | "press";
   hyps: Record<string, number>[];
 }
 export interface Duel {
@@ -53,6 +60,40 @@ export function pollsterName(raw: string) {
   return FIRMS.find((n) => f === flat(n) || f.startsWith(`${flat(n)} `)) ?? raw.trim();
 }
 
+// ---------- institute grades ----------
+export type Grade = "A+" | "A" | "A-" | "B+" | "B" | "B-" | "C+" | "C" | "C-" | "D" | "F";
+export interface PollsterRating {
+  name: string;
+  aliases?: string[];
+  grade: Grade | null;
+  weight: number | null;
+  score: number | null;
+  mae: number | null;
+  elections: number;
+  polls: number;
+  biasFarRight: number | null;
+  history: { election: string; mae: number; rel: number; end: string; url: string | null }[];
+  methodology: { mode: { fr: string; en: string }; sample: string | null; notes: { fr: string; en: string } | null; url: string | null } | null;
+}
+export interface Ratings {
+  updated: string;
+  method: { fr: string; en: string };
+  grades: { grade: Grade; min: number | null; max: number | null; weight: number }[];
+  elections: { id: string; type: string; round: number; date: string; label: { fr: string; en: string }; source: string; resultSource: string; pollsters: number; avgError: number }[];
+  pollsters: PollsterRating[];
+}
+export const RATINGS = ratingsData as unknown as Ratings;
+/** Weight of a poll whose institute has no track record yet. */
+export const UNRATED_WEIGHT = 0.6;
+const byName = new Map<string, PollsterRating>();
+for (const r of RATINGS.pollsters ?? []) for (const n of [r.name, ...(r.aliases ?? [])]) byName.set(flat(n), r);
+/** The institute's rating, by any of its names. */
+export function pollsterRating(raw: string): PollsterRating | null {
+  return byName.get(flat(raw)) ?? byName.get(flat(pollsterName(raw))) ?? null;
+}
+/** How much a poll counts in the average (its institute's grade weight). */
+export const pollWeight = (p: Pick<Poll, "pollster">) => pollsterRating(p.pollster)?.weight ?? UNRATED_WEIGHT;
+
 export function pollValue(p: Poll, cand: string): number | null {
   const v = p.hyps.map((h) => h[cand]).filter((x): x is number => x != null);
   return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null;
@@ -88,8 +129,14 @@ export function average(polls: Poll[], asOf: string, days = WINDOW, minShare = M
   const names = new Set(win.flatMap((p) => p.hyps.flatMap((h) => Object.keys(h))));
   const rows: AvgRow[] = [];
   for (const name of names) {
-    const vals = win.map((p) => pollValue(p, name)).filter((x): x is number => x != null);
-    if (vals.length && vals.length >= minShare * win.length) rows.push({ name, avg: vals.reduce((a, b) => a + b, 0) / vals.length, n: vals.length });
+    let sw = 0, sv = 0, n = 0;
+    for (const p of win) {
+      const v = pollValue(p, name);
+      if (v == null) continue;
+      const w = pollWeight(p);
+      sw += w; sv += w * v; n++;
+    }
+    if (n && n >= minShare * win.length && sw > 0) rows.push({ name, avg: sv / sw, n });
   }
   return rows.sort((a, b) => b.avg - a.avg);
 }

@@ -1,0 +1,20 @@
+/* Polling institutes, graded (views/pollsters.ts) */
+.pg .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.pg-table { min-width: 640px; }
+.pg-table th[scope="row"] { font-weight: 600; text-align: left; }
+.pg-open { all: unset; cursor: pointer; font: inherit; font-weight: 700; color: var(--ink); border-bottom: 1px dashed var(--rule-2); }
+.pg-open:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.pg-open[aria-expanded="true"] { border-bottom-style: solid; }
+.pg-badge { display: inline-block; min-width: 2.2em; text-align: center; font: 800 0.82rem var(--mono); padding: 0.15rem 0.4rem; border-radius: 3px; color: #fff; }
+.pg-badge.g-a { background: #1e8a4c; }
+.pg-badge.g-b { background: #5f9c2f; }
+.pg-badge.g-c { background: #c98a12; }
+.pg-badge.g-d { background: #d0612a; }
+.pg-badge.g-f { background: #b3261e; }
+.pg-badge.g-none { background: var(--rule-2); color: var(--ink); }
+.pg-detail td { background: var(--paper); padding: 0.6rem 0.8rem 1rem; }
+.pg-detail-in p { margin: 0.2rem 0 0.6rem; max-width: 75ch; }
+.pg-hist { margin-top: 0.4rem; }
+.pg-hist .better { color: #1e8a4c; font-weight: 700; }
+.pg-hist .worse { color: #b3261e; font-weight: 700; }
+.pg-grades { max-width: 520px; }
