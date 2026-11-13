@@ -526,6 +526,9 @@ footer .brand .fox { width: 64px; height: 64px; }
 .scn-btn:hover { border-color: var(--ink); }
 .scn-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .scn-btn[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.scn-btn:disabled { opacity: 0.38; cursor: not-allowed; text-decoration: line-through; text-decoration-thickness: 1px; }
+.scn-btn:disabled:hover { border-color: var(--rule-2); }
+.scn-k span { text-transform: none; letter-spacing: 0; font-weight: 500; }
 .scn-btn.scn-setback::before { content: "⚡"; margin-right: 0.3em; }
 .chart .proj .band { opacity: 0.13; stroke: none; }
 .chart .proj .proj-line { stroke-width: 2; stroke-dasharray: 2 5; stroke-linecap: round; opacity: 0.9; }
