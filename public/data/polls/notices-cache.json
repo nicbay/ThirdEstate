@@ -1,0 +1,3743 @@
+{
+ "about": "Commission des sondages notices read by scripts/sync-polls.mjs (poll → notice lookups); safe to delete",
+ "notices": {
+  "1034": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/avril/9113-p-ifop-jddpdf.pdf",
+   "fieldwork": [
+    "2021-04-02",
+    "2021-04-08"
+   ],
+   "samples": [
+    1730,
+    2003,
+    2000,
+    2554,
+    2861,
+    100
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1036": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/avril/9118-paca-ifop-la-tribune.pdf",
+   "fieldwork": [
+    "2021-04-06",
+    "2021-04-09"
+   ],
+   "samples": [
+    914,
+    1010,
+    400,
+    600,
+    900,
+    618,
+    356,
+    615,
+    351,
+    578,
+    340
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1042": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/avril/9116-paca-ifop-ps.pdf",
+   "fieldwork": [
+    "2021-03-15",
+    "2021-03-22"
+   ],
+   "samples": [
+    901,
+    1000,
+    400,
+    600,
+    900,
+    624,
+    368,
+    626,
+    369,
+    617,
+    365,
+    623,
+    371,
+    604,
+    348
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1046": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/avril/9124-p-ifop-jdd.pdf",
+   "fieldwork": [
+    "2021-04-22",
+    "2021-04-23"
+   ],
+   "samples": [
+    1515,
+    1000,
+    981,
+    1015,
+    1005,
+    1004,
+    1001
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": false
+  },
+  "1057": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/mai/9134-paca-ifop-le-figarp.pdf",
+   "fieldwork": [
+    "2021-05-06",
+    "2021-05-10"
+   ],
+   "samples": [
+    954,
+    1059,
+    400,
+    700,
+    1000,
+    674,
+    428,
+    678,
+    433,
+    677,
+    425
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1062": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/mai/9139-p-ifop-le-figaro.pdf",
+   "fieldwork": [
+    "2021-05-18",
+    "2021-05-20"
+   ],
+   "samples": [
+    1363,
+    1529,
+    600,
+    700,
+    800,
+    900,
+    1000,
+    972,
+    717,
+    992,
+    951,
+    703,
+    943,
+    702,
+    966,
+    711,
+    656,
+    809,
+    585,
+    941,
+    670
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1063": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/mai/9140-hdf-ifop-le-figaro.pdf",
+   "fieldwork": [
+    "2021-05-17",
+    "2021-05-20"
+   ],
+   "samples": [
+    933,
+    1018,
+    400,
+    600,
+    900,
+    615,
+    353,
+    614,
+    357
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1064": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/mai/9141-idf-ifop-le-figaro.pdf",
+   "fieldwork": [
+    "2021-05-11",
+    "2021-05-18"
+   ],
+   "samples": [
+    1707,
+    1907,
+    700,
+    1200,
+    1500,
+    1284,
+    739
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1068": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/mai/9145-aura-ifop-lyon-capitale.pdf",
+   "fieldwork": [
+    "2021-05-17",
+    "2021-05-21"
+   ],
+   "samples": [
+    993,
+    1101,
+    400,
+    700,
+    1000,
+    689,
+    390,
+    697,
+    388,
+    581,
+    325
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1080": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9158-paca-ifop-le-figaro.pdf",
+   "fieldwork": [
+    "2021-05-26",
+    "2021-05-31"
+   ],
+   "samples": [
+    1006,
+    1109,
+    400,
+    700,
+    1000,
+    695,
+    434,
+    694,
+    432,
+    623,
+    390
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1083": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9156-occ-ifop-la-tribune.pdf",
+   "fieldwork": [
+    "2021-05-21",
+    "2021-05-27"
+   ],
+   "samples": [
+    1003,
+    1102,
+    400,
+    700,
+    1000,
+    680,
+    402,
+    663,
+    396,
+    664,
+    397,
+    640,
+    382
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1084": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9161-nouvele-aquitaine-ifop-la-tribune.pdf",
+   "fieldwork": [
+    "2021-05-26",
+    "2021-05-31"
+   ],
+   "samples": [
+    1000,
+    1103,
+    600,
+    400,
+    632,
+    372,
+    608,
+    364,
+    597,
+    351
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1087": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9164-paca-ipsos-france-tv.pdf",
+   "fieldwork": [
+    "2021-06-03",
+    "2021-06-07"
+   ],
+   "samples": [
+    1000,
+    500,
+    12005
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1088": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9165-aura-ipsos-france-tv.pdf",
+   "fieldwork": [
+    "2021-06-03",
+    "2021-06-07"
+   ],
+   "samples": [
+    1001,
+    1000,
+    453,
+    12005
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1089": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9166-centre-vdl-ipsos-france-tv.pdf",
+   "fieldwork": [
+    "2021-06-03",
+    "2021-06-07"
+   ],
+   "samples": [
+    1000,
+    409,
+    12005
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1090": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9167-bfc-ipsos-france-tv.pdf",
+   "fieldwork": [
+    "2021-06-03",
+    "2021-06-07"
+   ],
+   "samples": [
+    1000,
+    389,
+    1001,
+    12005
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1091": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9168-nouvelle-a-ipsos-france-tv.pdf",
+   "fieldwork": [
+    "2021-06-03",
+    "2021-06-07"
+   ],
+   "samples": [
+    1000,
+    393,
+    12005
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1092": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9169-normandie-ipsos-france-tv.pdf",
+   "fieldwork": [
+    "2021-06-03",
+    "2021-06-07"
+   ],
+   "samples": [
+    1000,
+    450
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1093": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9170-grand-est-ipsos-france-tv.pdf",
+   "fieldwork": [
+    "2021-06-03",
+    "2021-06-07"
+   ],
+   "samples": [
+    1001,
+    408,
+    12005
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1094": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9171-pdll-ipsos-france-tv.pdf",
+   "fieldwork": [
+    "2021-06-03",
+    "2021-06-07"
+   ],
+   "samples": [
+    1001,
+    394,
+    12005
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1095": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9172-bretagne-ipsos-france-tv.pdf",
+   "fieldwork": [
+    "2021-06-03",
+    "2021-06-07"
+   ],
+   "samples": [
+    1000,
+    400,
+    12005
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1096": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9173-occ-ipsos-france-tv.pdf",
+   "fieldwork": [
+    "2021-06-03",
+    "2021-06-07"
+   ],
+   "samples": [
+    1000,
+    500,
+    12005
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1099": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9176-hdf-ifop-la-tribune.pdf",
+   "fieldwork": [
+    "2021-06-02",
+    "2021-06-07"
+   ],
+   "samples": [
+    967,
+    1070,
+    400,
+    600,
+    900,
+    653,
+    420,
+    651,
+    647,
+    418
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1101": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9178-occ-ifop-la-depeche.pdf",
+   "fieldwork": [
+    "2021-06-07",
+    "2021-06-11"
+   ],
+   "samples": [
+    998,
+    1100,
+    400,
+    700,
+    1000,
+    703,
+    417,
+    685,
+    678,
+    410
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1103": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9180-paca-ifop-le-figaro.pdf",
+   "fieldwork": [
+    "2021-06-10",
+    "2021-06-14"
+   ],
+   "samples": [
+    960,
+    1048,
+    400,
+    700,
+    1000,
+    690,
+    442,
+    445,
+    637
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1105": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9182-idf-ifop-le-figaro.pdf",
+   "fieldwork": [
+    "2021-06-07",
+    "2021-06-11"
+   ],
+   "samples": [
+    982,
+    1101,
+    400,
+    700,
+    1100,
+    696,
+    413,
+    677,
+    398,
+    678,
+    399,
+    680,
+    402
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1113": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9189-normandie-ifop-boulanger.pdf",
+   "fieldwork": [
+    "2021-06-11",
+    "2021-06-16"
+   ],
+   "samples": [
+    903,
+    1001,
+    400,
+    600,
+    1000,
+    606,
+    353,
+    596,
+    354
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1114": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9190-presidentielles-ifop-le-point.pdf",
+   "fieldwork": [
+    "2021-06-08",
+    "2021-06-09"
+   ],
+   "samples": [
+    901,
+    1003,
+    500,
+    600,
+    900,
+    626,
+    473
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1119": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9194-paca-ifop-le-figaro.pdf",
+   "fieldwork": [
+    "2021-06-21",
+    "2021-06-23"
+   ],
+   "samples": [
+    919,
+    1012,
+    400,
+    700,
+    1000,
+    619,
+    436
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1120": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9195-idf-ifop-le-figaro.pdf",
+   "fieldwork": [
+    "2021-06-22",
+    "2021-06-24"
+   ],
+   "samples": [
+    939,
+    1001,
+    400,
+    700,
+    1000,
+    698,
+    313
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1124": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juillet/9199-pres-ipsos-france-tv.pdf",
+   "fieldwork": [
+    "2021-06-25",
+    "2021-06-26"
+   ],
+   "samples": [
+    1499,
+    802,
+    600
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1126": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juillet/9198-pres-ifop-le-figaro.pdf",
+   "fieldwork": [
+    "2021-06-29",
+    "2021-07-02"
+   ],
+   "samples": [
+    1337,
+    1500,
+    600,
+    700,
+    800,
+    900,
+    1300,
+    291,
+    949,
+    929,
+    691,
+    935,
+    932,
+    683,
+    686,
+    892,
+    649,
+    748,
+    556,
+    672
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1128": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/aout/9201-p-ipsos-libres-le-point.pdf",
+   "fieldwork": [
+    "2021-08-27",
+    "2021-08-27"
+   ],
+   "samples": [
+    2000,
+    1000,
+    2021
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1130": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/septembre/9203-p-ifop-v3-le-figaro.pdf",
+   "fieldwork": null,
+   "samples": [
+    1334,
+    1505,
+    600,
+    700,
+    800,
+    900,
+    956,
+    739,
+    931,
+    727,
+    920,
+    714,
+    915,
+    715,
+    694,
+    955,
+    746,
+    943,
+    732,
+    960,
+    751,
+    868,
+    650,
+    510,
+    767,
+    211,
+    891,
+    661,
+    212,
+    718,
+    556,
+    213,
+    851,
+    639
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1131": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/septembre/9204-p-ipsos-le-parisien.pdf",
+   "fieldwork": [
+    "2021-09-03",
+    "2021-09-03"
+   ],
+   "samples": [
+    925,
+    1000,
+    435
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1138": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/septembre/9210-p-ifop-courrier-cauchois.pdf",
+   "fieldwork": [
+    "2021-09-14",
+    "2021-09-15"
+   ],
+   "samples": [
+    893,
+    1014,
+    500,
+    600,
+    900,
+    642,
+    506
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1144": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/octobre/9215-p-ipsos-le-parisien.pdf",
+   "fieldwork": [
+    "2021-10-01",
+    "2021-10-01"
+   ],
+   "samples": [
+    1500,
+    700,
+    684,
+    151515
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1145": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/octobre/9216-p-ifop-le-figaro-v4.pdf",
+   "fieldwork": [
+    "2021-09-29",
+    "2021-10-01"
+   ],
+   "samples": [
+    1351,
+    1510,
+    600,
+    700,
+    800,
+    900,
+    1300,
+    959,
+    709,
+    939,
+    934,
+    704,
+    990,
+    733,
+    976,
+    731,
+    967,
+    722,
+    947,
+    705,
+    920,
+    669,
+    768,
+    566,
+    310,
+    901,
+    659,
+    411,
+    545,
+    912,
+    852,
+    626
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1149": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/octobre/9220-p-ifop-sud-radio.pdf",
+   "fieldwork": [
+    "2021-10-05",
+    "2021-10-06"
+   ],
+   "samples": [
+    921,
+    1010,
+    500,
+    700,
+    900,
+    1000,
+    701,
+    549,
+    685,
+    540
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1153": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/octobre/9224-p-ifop-le-figaro.pdf",
+   "fieldwork": [
+    "2021-10-09",
+    "2021-10-13"
+   ],
+   "samples": [
+    4503,
+    5025,
+    2000,
+    3000,
+    4000,
+    3432,
+    2310,
+    3430,
+    2307,
+    3429,
+    2295
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1155": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/octobre/9226-p-ipsos-cevipof-lm-v2.pdf",
+   "fieldwork": [
+    "2021-10-22",
+    "2021-10-22"
+   ],
+   "samples": [
+    16228,
+    8500,
+    8888,
+    2021,
+    10000,
+    18659
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1159": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/octobre/9229-p-hidalgo-ipsos-le-parisien.pdf",
+   "fieldwork": [
+    "2021-10-22",
+    "2021-10-22"
+   ],
+   "samples": [
+    993,
+    1000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": false
+  },
+  "1206": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/janvier/9275-p-cluster-17-4-janv.pdf",
+   "fieldwork": [
+    "2021-12-27",
+    "2021-12-31"
+   ],
+   "samples": [
+    2252,
+    2402,
+    2500
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1208": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/janvier/9277-rpw-opinion-way-kea-les-echos-5-janvier.pdf",
+   "fieldwork": [
+    "2021-01-02",
+    "2021-01-05"
+   ],
+   "samples": [
+    1501,
+    1596,
+    1500,
+    11100,
+    1091
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1217": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/janvier/9287-rpw-opinionway-les-echos.pdf",
+   "fieldwork": [
+    "2022-01-08",
+    "2022-01-11"
+   ],
+   "samples": [
+    1613,
+    1756,
+    1500,
+    11100,
+    1159
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1219": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/janvier/9285-p-cluster-17-marianne.pdf",
+   "fieldwork": [
+    "2022-01-04",
+    "2022-01-08"
+   ],
+   "samples": [
+    2291,
+    2406,
+    2192,
+    1799,
+    92192,
+    91799
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1220": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/janvier/9288-harris-interactive-challenges-v28.pdf",
+   "fieldwork": [
+    "2022-01-07",
+    "2022-01-10"
+   ],
+   "samples": [
+    2600,
+    2124,
+    2000,
+    6010
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1225": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/janvier/9293-opinionway-kea-les-echos.pdf",
+   "fieldwork": [
+    "2022-01-10",
+    "2022-01-13"
+   ],
+   "samples": [
+    1575,
+    1708,
+    1500,
+    11100,
+    1120
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1229": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/janvier/9297-rpw-opinionway-kea-les-echos-radio-classique-17-janvier.pdf",
+   "fieldwork": [
+    "2022-01-15",
+    "2022-01-17"
+   ],
+   "samples": [
+    1093,
+    1202,
+    780,
+    1000,
+    4780,
+    786
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1237": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/janvier/9305-rpw-opinionway-kea-partners-radio-classique-20-janvier.pdf",
+   "fieldwork": [
+    "2022-01-17",
+    "2022-01-20"
+   ],
+   "samples": [
+    1603,
+    1748,
+    1100,
+    1500,
+    11100,
+    1120,
+    1073
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1242": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/janvier/9311-rpw-opinionway-kea-les-echos-24janv.pdf",
+   "fieldwork": [
+    "2022-01-21",
+    "2022-01-24"
+   ],
+   "samples": [
+    1650,
+    1798,
+    1200,
+    1600,
+    11200,
+    1197
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1248": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/janvier/9317-rpw-opinionway-kea-les-echos-26-janv.pdf",
+   "fieldwork": [
+    "2022-01-23",
+    "2022-01-26"
+   ],
+   "samples": [
+    1629,
+    1765,
+    1200,
+    1600,
+    11200,
+    1177
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1249": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/janvier/9318-p-cluster-17-marianne.pdf",
+   "fieldwork": [
+    "2022-01-18",
+    "2022-01-22"
+   ],
+   "samples": [
+    2634,
+    2779,
+    2548,
+    2093,
+    82634,
+    82093
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1255": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/janvier/9324-p-opinionway-cnews-vague-2.pdf",
+   "fieldwork": [
+    "2022-01-26",
+    "2022-01-27"
+   ],
+   "samples": [
+    988,
+    1028,
+    700,
+    1000,
+    4700,
+    675
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1261": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/fevrier/9330-p-cluster-17-marianne.pdf",
+   "fieldwork": [
+    "2022-01-25",
+    "2022-01-29"
+   ],
+   "samples": [
+    2055,
+    2163,
+    1997,
+    1737,
+    92055,
+    91737
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1286": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/fevrier/9354-cluster17-marianne.pdf",
+   "fieldwork": [
+    "2022-02-01",
+    "2022-02-05"
+   ],
+   "samples": [
+    2367,
+    2510,
+    2204,
+    2047,
+    92367,
+    92047
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1298": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/fevrier/9365-rpw-opinionway-kea-partners-les-echos-radio-classique-15-fev.pdf",
+   "fieldwork": null,
+   "samples": [
+    1634,
+    1746,
+    1100,
+    1600,
+    11100,
+    1165
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1299": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/fevrier/9365-rpw-opinionway-kea-partners-les-echos-radio-classique-15-fev.pdf",
+   "fieldwork": null,
+   "samples": [
+    1634,
+    1746,
+    1100,
+    1600,
+    11100,
+    1165
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1303": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/fevrier/9369-opinionway-les-echos-radio-classique-16-fev.pdf",
+   "fieldwork": null,
+   "samples": [
+    1604,
+    1724,
+    1100,
+    1600,
+    11100,
+    1153
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1305": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/fevrier/9371-opinionway-kea-partners-les-echos-17-fev.pdf",
+   "fieldwork": null,
+   "samples": [
+    1578,
+    1703,
+    1100,
+    1600,
+    11100,
+    1131
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1308": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/fevrier/9374-p-cluster-17-marainne-13-02.pdf",
+   "fieldwork": [
+    "2022-02-08",
+    "2022-02-11"
+   ],
+   "samples": [
+    2175,
+    2301,
+    2085,
+    1832,
+    92175,
+    91832
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1310": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/fevrier/9375-opinionway-kea-partners-les-echos-radio-classique-18-fev.pdf",
+   "fieldwork": null,
+   "samples": [
+    1597,
+    1723,
+    1100,
+    1600,
+    11100,
+    1154
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1323": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/fevrier/9389-harris-interactive-challenges-v34-le-23-fevrier.pdf",
+   "fieldwork": [
+    "2022-02-18",
+    "2022-02-21"
+   ],
+   "samples": [
+    2457,
+    2018,
+    2000,
+    5910,
+    2022
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1327": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/fevrier/9391-rpw-opinionway-kea-partners-les-echos-radio-classique-23-fev.pdf",
+   "fieldwork": null,
+   "samples": [
+    1639,
+    1751,
+    1100,
+    1600,
+    11100,
+    1146
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1329": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/fevrier/9395-rpw-opinionway-kea-partners-les-echos-radio-classique-24-fev.pdf",
+   "fieldwork": null,
+   "samples": [
+    1603,
+    1726,
+    1100,
+    1600,
+    11100,
+    1098
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1331": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/fevrier/9397-rpw-opinionway-kea-partners-les-echos-radio-classique-2-5-fev.pdf",
+   "fieldwork": null,
+   "samples": [
+    1598,
+    1727,
+    1100,
+    1600,
+    11100,
+    1117
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1332": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/fevrier/9398-harris-interactive-le-regard-des-francais-sur-la-guerre-entre-la-russie-et-l-uk-m6-rtl.pdf",
+   "fieldwork": [
+    "2022-02-27",
+    "2022-02-27"
+   ],
+   "samples": [
+    1161,
+    1000,
+    10117
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": false
+  },
+  "1333": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/fevrier/9399-rpw-opinionway-kea-partners-les-echos-radio-classique-28-fev.pdf",
+   "fieldwork": null,
+   "samples": [
+    1656,
+    1770,
+    1200,
+    1600,
+    11200,
+    1203
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1334": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/fevrier/9400-harris-interactive-challenges-v35.pdf",
+   "fieldwork": [
+    "2022-02-25",
+    "2022-02-28"
+   ],
+   "samples": [
+    2311,
+    2008,
+    2000,
+    5810,
+    2022
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1341": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9410-rdp-ifop-rolling-2-03.pdf",
+   "fieldwork": [
+    "2022-02-26",
+    "2022-03-02"
+   ],
+   "samples": [
+    1383,
+    1505,
+    600,
+    700,
+    800,
+    900,
+    1000,
+    1300,
+    1124,
+    852,
+    826,
+    621,
+    747,
+    922,
+    690
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1350": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9414-cluster17-ukraine.pdf",
+   "fieldwork": [
+    "2022-02-27",
+    "2022-02-27"
+   ],
+   "samples": [
+    1121,
+    1154,
+    31121
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": false
+  },
+  "1352": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9415-cluster17-le-3-mars.pdf",
+   "fieldwork": [
+    "2022-02-27",
+    "2022-03-01"
+   ],
+   "samples": [
+    2195,
+    2274,
+    2095,
+    1872,
+    92195,
+    91872
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1359": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/fevrier/9401-cluster-17-jeudi.pdf",
+   "fieldwork": [
+    "2022-02-20",
+    "2022-02-23"
+   ],
+   "samples": [
+    2615,
+    2722,
+    2521,
+    2230,
+    82615,
+    82230
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1371": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9432-harris-interractive-challenges.pdf",
+   "fieldwork": [
+    "2022-03-04",
+    "2022-03-07"
+   ],
+   "samples": [
+    2394,
+    2088,
+    2000,
+    5710,
+    2022
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1375": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9428-cluster-17-le-8-mars.pdf",
+   "fieldwork": [
+    "2022-03-03",
+    "2022-03-06"
+   ],
+   "samples": [
+    2056,
+    2156,
+    1978,
+    1763,
+    92056,
+    91763
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1395": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9453-opinionway-cnews-vague-18-le-15-mars.pdf",
+   "fieldwork": [
+    "2022-03-13",
+    "2022-03-14"
+   ],
+   "samples": [
+    1072,
+    1122,
+    800,
+    1000,
+    4800,
+    780
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1399": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9457-opinionway-kea-partners-les-echos-radio-classique-15-mars.pdf",
+   "fieldwork": [
+    "2022-03-12",
+    "2022-03-15"
+   ],
+   "samples": [
+    1644,
+    1749,
+    1200,
+    1600,
+    11200,
+    1195
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1400": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9458-harris-interactive-baro-challenges-v37-le-16-mars.pdf",
+   "fieldwork": [
+    "2022-03-11",
+    "2022-03-14"
+   ],
+   "samples": [
+    2390,
+    2089,
+    3438,
+    2935,
+    7830,
+    7191,
+    2000,
+    5710,
+    2022
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1401": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9459-opinionway-cnews-vague-19-le-16-mars.pdf",
+   "fieldwork": [
+    "2022-03-14",
+    "2022-03-15"
+   ],
+   "samples": [
+    1048,
+    1082,
+    800,
+    1000,
+    4800,
+    784
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1403": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9461-opinionway-kea-partners-les-echos-radio-classique-16-mars.pdf",
+   "fieldwork": [
+    "2022-03-13",
+    "2022-03-16"
+   ],
+   "samples": [
+    1597,
+    1704,
+    1200,
+    1600,
+    11200,
+    1182
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1409": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9467-opinionway-cnews-vague-20-le-17-mars.pdf",
+   "fieldwork": [
+    "2022-03-15",
+    "2022-03-16"
+   ],
+   "samples": [
+    1032,
+    1089,
+    800,
+    1000,
+    4800,
+    781
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1411": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9469-rpw-opinionway-kea-partners-les-echos-radio-classique-17-mars.pdf",
+   "fieldwork": [
+    "2022-03-14",
+    "2022-03-17"
+   ],
+   "samples": [
+    1550,
+    1643,
+    1100,
+    1500,
+    11100,
+    1147
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1417": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9475-opinionway-kea-partners-les-echos-radio-classique-18-mars.pdf",
+   "fieldwork": [
+    "2022-03-15",
+    "2022-03-18"
+   ],
+   "samples": [
+    1542,
+    1623,
+    1100,
+    1500,
+    11100,
+    1129
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1419": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9477-opinionway-pour-cnews-vague-21-le-18-mars.pdf",
+   "fieldwork": [
+    "2022-03-16",
+    "2022-03-17"
+   ],
+   "samples": [
+    1006,
+    1042,
+    700,
+    1000,
+    4700,
+    732
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1421": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9479-opinionway-kea-partners-les-echos-radio-classique-21-mars.pdf",
+   "fieldwork": [
+    "2022-03-18",
+    "2022-03-21"
+   ],
+   "samples": [
+    1636,
+    1735,
+    1200,
+    1600,
+    11200,
+    1220
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1423": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9481-opinionway-cnews-vague-22-le-21-mars.pdf",
+   "fieldwork": [
+    "2022-03-19",
+    "2022-03-20"
+   ],
+   "samples": [
+    1092,
+    1162,
+    800,
+    1000,
+    4800,
+    817
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1427": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9485-opinionway-cnews-vague-23-le-22-mars.pdf",
+   "fieldwork": [
+    "2022-03-20",
+    "2022-03-21"
+   ],
+   "samples": [
+    1092,
+    1136,
+    800,
+    1000,
+    4800,
+    794
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1429": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9487-opinionway-kea-partners-les-echos-radio-classique-22-mars.pdf",
+   "fieldwork": [
+    "2022-03-19",
+    "2022-03-22"
+   ],
+   "samples": [
+    1626,
+    1718,
+    1100,
+    1600,
+    11100,
+    1178
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1431": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9489-cluster17-21-mars.pdf",
+   "fieldwork": [
+    "2022-03-18",
+    "2022-03-20"
+   ],
+   "samples": [
+    2527,
+    2601,
+    2382,
+    2081,
+    82527,
+    82081
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1433": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9491-opinionway-kea-partners-les-echos-radio-classique-23-mars.pdf",
+   "fieldwork": [
+    "2022-03-20",
+    "2022-03-23"
+   ],
+   "samples": [
+    1614,
+    1708,
+    1200,
+    1600,
+    11200,
+    1150
+   ],
+   "iv": true,
+   "presidential": false,
+   "legislative": false
+  },
+  "1439": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9497-opinionway-pour-cnews-vague-25-le-24-mars.pdf",
+   "fieldwork": [
+    "2022-03-22",
+    "2022-03-23"
+   ],
+   "samples": [
+    1105,
+    1153,
+    800,
+    1100,
+    3800,
+    790
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1441": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9499-opinionway-kea-partners-les-echos-radio-classique-24-mars.pdf",
+   "fieldwork": [
+    "2022-03-21",
+    "2022-03-24"
+   ],
+   "samples": [
+    1619,
+    1710,
+    1200,
+    1600,
+    11200,
+    1164
+   ],
+   "iv": true,
+   "presidential": false,
+   "legislative": false
+  },
+  "1443": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9501-opinionway-pour-cnews-vague-26-le-25-mars.pdf",
+   "fieldwork": [
+    "2022-03-23",
+    "2022-03-24"
+   ],
+   "samples": [
+    1001,
+    1058,
+    700,
+    1000,
+    4700,
+    733
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1445": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9503-opinionway-kea-partners-les-echos-radio-classique-25-mars.pdf",
+   "fieldwork": [
+    "2022-03-22",
+    "2022-03-25"
+   ],
+   "samples": [
+    1636,
+    1719,
+    1200,
+    1600,
+    11200,
+    1201
+   ],
+   "iv": true,
+   "presidential": false,
+   "legislative": false
+  },
+  "1449": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9505-opinionway-kea-partners-les-echos-radio-classique-28-mars.pdf",
+   "fieldwork": [
+    "2022-03-25",
+    "2022-03-28"
+   ],
+   "samples": [
+    1627,
+    1726,
+    1200,
+    1600,
+    11200,
+    1178
+   ],
+   "iv": true,
+   "presidential": false,
+   "legislative": false
+  },
+  "1451": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9507-opinionway-cnews-vague-27-le-28-mars.pdf",
+   "fieldwork": [
+    "2022-03-26",
+    "2022-03-27"
+   ],
+   "samples": [
+    1072,
+    1134,
+    700,
+    1000,
+    4700,
+    771
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1456": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9511-opinionway-kea-partners-les-echos-radio-classique-29-mars.pdf",
+   "fieldwork": [
+    "2022-03-26",
+    "2022-03-29"
+   ],
+   "samples": [
+    1617,
+    1715,
+    1200,
+    1600,
+    11200,
+    1197
+   ],
+   "iv": true,
+   "presidential": false,
+   "legislative": false
+  },
+  "1460": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9515-opinionway-pour-cnews-vague-29-le-30-mars.pdf",
+   "fieldwork": [
+    "2022-03-28",
+    "2022-03-29"
+   ],
+   "samples": [
+    1035,
+    1091,
+    800,
+    1000,
+    4800,
+    774
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1464": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9521-opinionway-kea-partners-les-echos-radio-classique-30-mars.pdf",
+   "fieldwork": [
+    "2022-03-27",
+    "2022-03-30"
+   ],
+   "samples": [
+    1633,
+    1739,
+    1200,
+    1600,
+    11200,
+    1181
+   ],
+   "iv": true,
+   "presidential": false,
+   "legislative": false
+  },
+  "1466": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9523-opinionway-pour-cnews-vague-30-le-31-mars.pdf",
+   "fieldwork": [
+    "2022-03-29",
+    "2022-03-30"
+   ],
+   "samples": [
+    1077,
+    1138,
+    800,
+    1000,
+    4800,
+    777
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1467": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9524-rdp-ifop-pm-31-mars.pdf",
+   "fieldwork": [
+    "2022-03-28",
+    "2022-03-31"
+   ],
+   "samples": [
+    2775,
+    2995,
+    600,
+    700,
+    800,
+    900,
+    1000,
+    1300,
+    2256,
+    1746,
+    1617,
+    1239,
+    2040,
+    1575,
+    1852,
+    1427,
+    1825,
+    1384
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1468": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9525-opinionway-kea-partners-les-echos-radio-classique-31-mars.pdf",
+   "fieldwork": [
+    "2022-03-28",
+    "2022-03-31"
+   ],
+   "samples": [
+    1562,
+    1641,
+    1200,
+    1600,
+    11200,
+    1177
+   ],
+   "iv": true,
+   "presidential": false,
+   "legislative": false
+  },
+  "1485": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9541-opinionway-pour-cnews-vague-33-le-4-avril.pdf",
+   "fieldwork": [
+    "2022-04-03",
+    "2022-04-04"
+   ],
+   "samples": [
+    1083,
+    1133,
+    900,
+    1000,
+    4900,
+    861
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1487": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9543-opinionway-kea-partners-les-echos-radio-classique-5-avril.pdf",
+   "fieldwork": [
+    "2022-04-02",
+    "2022-04-05"
+   ],
+   "samples": [
+    1777,
+    1887,
+    1400,
+    1800,
+    961400,
+    1376
+   ],
+   "iv": true,
+   "presidential": false,
+   "legislative": false
+  },
+  "1488": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9544-rdp-ifop-pm-lci-sud-radio-5-avril.pdf",
+   "fieldwork": [
+    "2022-04-01",
+    "2022-04-05"
+   ],
+   "samples": [
+    2780,
+    3007,
+    1300,
+    1400,
+    1500,
+    2000,
+    2293,
+    1804,
+    1674,
+    1289,
+    2073,
+    1593,
+    1871,
+    1220,
+    1892,
+    1438
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1491": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9547-opinionway-pour-cnews-vague-34-le-6-avril.pdf",
+   "fieldwork": [
+    "2022-04-04",
+    "2022-04-05"
+   ],
+   "samples": [
+    1212,
+    1282,
+    900,
+    1000,
+    4900,
+    1133,
+    1083,
+    955
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1493": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9549-opinionway-kea-partners-les-echos-radio-classique-6-avril.pdf",
+   "fieldwork": [
+    "2022-04-03",
+    "2022-04-06"
+   ],
+   "samples": [
+    1902,
+    2018,
+    1400,
+    1900,
+    961400,
+    1454
+   ],
+   "iv": true,
+   "presidential": false,
+   "legislative": false
+  },
+  "1497": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9555-opinionway-kea-partners-les-echos-radio-classique-notice-a-la-commission-7-avril.pdf",
+   "fieldwork": [
+    "2022-04-04",
+    "2022-04-07"
+   ],
+   "samples": [
+    2043,
+    2154,
+    1500,
+    2000,
+    961500,
+    1556
+   ],
+   "iv": true,
+   "presidential": false,
+   "legislative": false
+  },
+  "1498": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9556-rdp-ifop-pm-lci-sud-radio-7-avril.pdf",
+   "fieldwork": [
+    "2022-04-04",
+    "2022-04-07"
+   ],
+   "samples": [
+    2802,
+    3011,
+    1300,
+    1400,
+    1500,
+    2000,
+    2292,
+    1868,
+    1630,
+    1305,
+    2082,
+    1673,
+    1852,
+    1490,
+    1911,
+    1521
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1502": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9527-opinionway-pour-cnews-vague-31-le-1er-avril.pdf",
+   "fieldwork": [
+    "2022-03-30",
+    "2022-03-31"
+   ],
+   "samples": [
+    1044,
+    1089,
+    800,
+    1000,
+    4800,
+    799
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1507": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9531-cluster17-le-1er-avril.pdf",
+   "fieldwork": [
+    "2022-03-29",
+    "2022-03-31"
+   ],
+   "samples": [
+    2688,
+    2767,
+    2515,
+    2141,
+    82688,
+    82141
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1509": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9533-opinionway-kea-partners-les-echos-radio-classique-1er-avril.pdf",
+   "fieldwork": [
+    "2022-03-29",
+    "2022-04-01"
+   ],
+   "samples": [
+    1576,
+    1641,
+    1200,
+    1600,
+    11200,
+    1180
+   ],
+   "iv": true,
+   "presidential": false,
+   "legislative": false
+  },
+  "1513": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9537-ifop-jdd-le-4-avril.pdf",
+   "fieldwork": [
+    "2022-03-31",
+    "2022-04-01"
+   ],
+   "samples": [
+    1405,
+    1540,
+    900,
+    1000,
+    1300,
+    1052,
+    933,
+    943,
+    869
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1515": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9539-opinionway-kea-partners-les-echos-radio-classique-notice-a-la-commission-4-avril.pdf",
+   "fieldwork": [
+    "2022-04-01",
+    "2022-04-04"
+   ],
+   "samples": [
+    1666,
+    1748,
+    1200,
+    1600,
+    11200,
+    1291
+   ],
+   "iv": true,
+   "presidential": false,
+   "legislative": false
+  },
+  "1522": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9551-cluster17-le-5-04.pdf",
+   "fieldwork": [
+    "2022-04-02",
+    "2022-04-04"
+   ],
+   "samples": [
+    2961,
+    3061,
+    2793,
+    2276,
+    82961,
+    82276
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1523": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9563-opinionway-pour-cnews-vague-36-le-8-avril.pdf",
+   "fieldwork": [
+    "2022-04-06",
+    "2022-04-07"
+   ],
+   "samples": [
+    1009,
+    1048,
+    800,
+    1000,
+    4800,
+    774
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1530": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9573-opinionway-kea-partners-les-echos-radio-classique-11-avril.pdf",
+   "fieldwork": [
+    "2022-04-10",
+    "2022-04-11"
+   ],
+   "samples": [
+    2174,
+    2233,
+    1800,
+    2200,
+    91800,
+    1762
+   ],
+   "iv": true,
+   "presidential": false,
+   "legislative": false
+  },
+  "1532": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9575-rpw-opinionway-kea-partners-les-echos-radio-classique-12-avril.pdf",
+   "fieldwork": [
+    "2022-04-10",
+    "2022-04-12"
+   ],
+   "samples": [
+    1600,
+    1645,
+    1200,
+    11200,
+    1232
+   ],
+   "iv": true,
+   "presidential": false,
+   "legislative": false
+  },
+  "1533": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9576-rdp-ifop-pm-12-avril.pdf",
+   "fieldwork": [
+    "2022-04-10",
+    "2022-04-12"
+   ],
+   "samples": [
+    1877,
+    2004,
+    1200,
+    1500,
+    2000,
+    1454,
+    1230
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1542": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9585-opinionway-kea-partners-les-echos-radio-classique-13-avril.pdf",
+   "fieldwork": [
+    "2022-04-11",
+    "2022-04-13"
+   ],
+   "samples": [
+    1623,
+    1688,
+    1200,
+    1600,
+    11200,
+    1210
+   ],
+   "iv": true,
+   "presidential": false,
+   "legislative": false
+  },
+  "1544": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9587-opinionway-pour-cnews-vague-39-le-14-avril.pdf",
+   "fieldwork": [
+    "2022-04-12",
+    "2022-04-13"
+   ],
+   "samples": [
+    1082,
+    1123,
+    800,
+    1000,
+    4800,
+    805
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1551": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9594-rdp-ifop-pm-le-15-avril.pdf",
+   "fieldwork": [
+    "2022-04-12",
+    "2022-04-15"
+   ],
+   "samples": [
+    2817,
+    3007,
+    1300,
+    1400,
+    1500,
+    2000,
+    2068,
+    1176
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1554": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9597-opinionway-kea-partners-les-echos-radio-classique-14-avril.pdf",
+   "fieldwork": [
+    "2022-04-11",
+    "2022-04-14"
+   ],
+   "samples": [
+    1611,
+    1689,
+    1200,
+    1600,
+    11200,
+    1184
+   ],
+   "iv": true,
+   "presidential": false,
+   "legislative": false
+  },
+  "1556": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9598-cluster17-rolling-hebdomadaire-sic-le-14-avril.pdf",
+   "fieldwork": [
+    "2022-04-13",
+    "2022-04-14"
+   ],
+   "samples": [
+    3329,
+    3383,
+    2622,
+    2275,
+    73329,
+    72275
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1557": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9599-cluster-17-18-04.pdf",
+   "fieldwork": [
+    "2022-04-17",
+    "2022-04-18"
+   ],
+   "samples": [
+    2793,
+    2843,
+    2205,
+    1904,
+    82793,
+    81904
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1567": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9602-rdp-ifop-paris-match-lci-sud-radio.pdf",
+   "fieldwork": [
+    "2022-04-14",
+    "2022-04-18"
+   ],
+   "samples": [
+    2799,
+    3015,
+    1300,
+    1400,
+    1500,
+    2000,
+    2105,
+    1818
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1572": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9614-rdp-ifop-pm-20-04.pdf",
+   "fieldwork": [
+    "2022-04-16",
+    "2022-04-20"
+   ],
+   "samples": [
+    3008,
+    2818,
+    1300,
+    1400,
+    1500,
+    2000,
+    2128,
+    1811
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1578": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9618-ifop-pm-le-21-avril.pdf",
+   "fieldwork": [
+    "2022-04-18",
+    "2022-04-21"
+   ],
+   "samples": [
+    2839,
+    3006,
+    1300,
+    1400,
+    1500,
+    2000,
+    2105,
+    1785
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1585": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9628-rdp-ifop-pm-le-22-avril.pdf",
+   "fieldwork": [
+    "2022-04-19",
+    "2022-04-22"
+   ],
+   "samples": [
+    2834,
+    3010,
+    1300,
+    1400,
+    1500,
+    2000,
+    2129,
+    1830
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1610": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mai/9655-4eme-du-var-ifop-jdd.pdf",
+   "fieldwork": [
+    "2022-05-13",
+    "2022-05-18"
+   ],
+   "samples": [
+    600,
+    732,
+    300,
+    400,
+    438,
+    323,
+    404,
+    295,
+    419
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "1642": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2023/avril/9686-pres-ifop-7-04-fig-mag-sud-radio.pdf",
+   "fieldwork": [
+    "2023-03-30",
+    "2023-03-31"
+   ],
+   "samples": [
+    1105,
+    1200,
+    500,
+    600,
+    700,
+    800,
+    1100,
+    783,
+    766,
+    586,
+    735,
+    563,
+    717,
+    558,
+    681,
+    520,
+    688,
+    524
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "1817": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2024/juin/9847-leg-harris-interactive-challenges-m6-rtl.pdf",
+   "fieldwork": [
+    "2024-06-09",
+    "2024-06-10"
+   ],
+   "samples": [
+    2022,
+    2744,
+    2340,
+    2000,
+    2024
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "1830": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2024/juin/9859-leg-opinionway-pollitics-juin-2024.pdf",
+   "fieldwork": [
+    "2024-06-17",
+    "2024-06-18"
+   ],
+   "samples": [
+    1044,
+    1112,
+    1000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": false
+  },
+  "1831": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2024/juin/9860-leg-lci-ifop-le-figaro-sud-radio.pdf",
+   "fieldwork": [
+    "2024-06-18",
+    "2024-06-21"
+   ],
+   "samples": [
+    2317,
+    2500,
+    1200,
+    1500,
+    2000,
+    1810,
+    1464
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "1839": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2024/juin/9867-leg-ifop-lci-le-figaro-sud-radio.pdf",
+   "fieldwork": [
+    "2024-06-20",
+    "2024-06-24"
+   ],
+   "samples": [
+    1843,
+    2000,
+    1200,
+    1500,
+    1450,
+    1162
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "1841": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2024/juin/9869-leg-10eme-nord-ifop-paris-match.pdf",
+   "fieldwork": [
+    "2024-06-18",
+    "2024-06-20"
+   ],
+   "samples": [
+    602,
+    733,
+    1200,
+    1500,
+    2000,
+    572,
+    438
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "1846": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2024/juin/9874-leg-opinionway-cnews-europe1-je-jdd-28-juin-2024.pdf",
+   "fieldwork": [
+    "2024-06-25",
+    "2024-06-26"
+   ],
+   "samples": [
+    1035,
+    1115,
+    700,
+    1000,
+    4700,
+    668
+   ],
+   "iv": true,
+   "presidential": false,
+   "legislative": false
+  },
+  "1847": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2024/juin/9875-opinionway-les-echos-vague-3-28-juin.pdf",
+   "fieldwork": [
+    "2024-06-26",
+    "2024-06-27"
+   ],
+   "samples": [
+    1058,
+    1141,
+    700,
+    1000,
+    4700,
+    668
+   ],
+   "iv": true,
+   "presidential": false,
+   "legislative": false
+  },
+  "1852": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2024/juin/9880-leg-ifop-47003-paris-match.pdf",
+   "fieldwork": [
+    "2024-06-24",
+    "2024-06-26"
+   ],
+   "samples": [
+    561,
+    650,
+    300,
+    400,
+    600,
+    700,
+    496,
+    435,
+    466,
+    406,
+    454,
+    398
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "1853": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2024/juin/9881-lef-ifop-0601-paris-match.pdf",
+   "fieldwork": [
+    "2024-06-25",
+    "2024-06-27"
+   ],
+   "samples": [
+    543,
+    702,
+    500,
+    600,
+    700,
+    513,
+    403,
+    505,
+    393,
+    446,
+    342
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "1854": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2024/juin/9882-leg-ifop-9307-pm.pdf",
+   "fieldwork": [
+    "2024-06-25",
+    "2024-06-26"
+   ],
+   "samples": [
+    550,
+    700,
+    300,
+    400,
+    600,
+    464,
+    385,
+    332
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "1855": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2024/juillet/9883-leg-harris-interactive-challenges-03-juillet.pdf",
+   "fieldwork": [
+    "2024-07-02",
+    "2024-07-03"
+   ],
+   "samples": [
+    3383,
+    3008,
+    3000
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "1858": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2024/juillet/9886-leg-harris-interactive-challenges-vague-7-05-juillet.pdf",
+   "fieldwork": [
+    "2024-07-04",
+    "2024-07-05"
+   ],
+   "samples": [
+    3335,
+    2951,
+    3000,
+    1010
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "1902": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2025/avril/9926-pres-hanouna-ifop-valeurs-actuelles-29-avril.pdf",
+   "fieldwork": [
+    "2025-04-22",
+    "2025-04-23"
+   ],
+   "samples": [
+    1004,
+    1200,
+    1500,
+    2000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": true
+  },
+  "1906": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2025/mai/9930-pres-ifop-hexagone-5-mai.pdf",
+   "fieldwork": [
+    "2025-04-11",
+    "2025-04-18"
+   ],
+   "samples": [
+    9128,
+    10000,
+    1838,
+    2000,
+    1300,
+    1400,
+    1500,
+    7049,
+    5454,
+    7176,
+    5537,
+    7161,
+    5525,
+    7065,
+    5459,
+    7104,
+    5492,
+    6988,
+    5415,
+    6537,
+    5059,
+    5671,
+    4420,
+    6376,
+    4952,
+    5409,
+    4090,
+    1402,
+    1078,
+    1390,
+    1069,
+    1329,
+    1001
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "1931": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2024/juin/9982-1-leg-opinionway-pour-la-fondapol-juin-2024.pdf",
+   "fieldwork": [
+    "2024-06-21",
+    "2024-06-24"
+   ],
+   "samples": [
+    3040,
+    3326,
+    3000,
+    72100,
+    2136
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "2110": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/mars/10118-pres-ifop-le-figaro-4-mars.pdf",
+   "fieldwork": [
+    "2026-02-26",
+    "2026-02-27"
+   ],
+   "samples": [
+    1393,
+    1500,
+    700,
+    800,
+    1000,
+    1009,
+    784,
+    1013,
+    793,
+    1025,
+    795,
+    1005,
+    780,
+    770,
+    1002,
+    771,
+    1029,
+    797,
+    978,
+    758,
+    1045,
+    806,
+    1021
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "2143": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/mars/10141-pres-vote-lgbt-ifop-tetu-9-mars.pdf",
+   "fieldwork": [
+    "2026-02-01",
+    "2026-02-06"
+   ],
+   "samples": [
+    1137,
+    303,
+    1000
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "2194": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/mai/10193-pres-ifop-le-figaro-29-mai.pdf",
+   "fieldwork": [
+    "2026-05-26",
+    "2026-05-28"
+   ],
+   "samples": [
+    1368,
+    1501,
+    800,
+    1000,
+    1100,
+    1500,
+    1014,
+    825,
+    1034,
+    840,
+    824,
+    1019,
+    1015,
+    827,
+    1022,
+    997,
+    809,
+    1054,
+    844,
+    1010,
+    817,
+    410,
+    1007,
+    808,
+    11,
+    1026,
+    822
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "2212": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/juin/10207-pres-tableau-de-bord-ifop-18-juin.pdf",
+   "fieldwork": [
+    "2026-06-10",
+    "2026-06-12"
+   ],
+   "samples": [
+    1001,
+    900,
+    1000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": false
+  },
+  "2228": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10223-pres-iv-toluna-harris-interactive-rtl-8-juillet.pdf",
+   "fieldwork": [
+    "2026-07-01",
+    "2026-07-08"
+   ],
+   "samples": [
+    1592,
+    1837,
+    2000,
+    6262,
+    1086
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "2229": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10224-pres-presitrack-opinionway-les-echos-9-juillet.pdf",
+   "fieldwork": [
+    "2026-07-08",
+    "2026-07-09"
+   ],
+   "samples": [
+    963,
+    1042,
+    960,
+    4700,
+    700,
+    696
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "2230": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10225-pres-iv-1er-tour-verian-lhemicycle-10-juillet.pdf",
+   "fieldwork": [
+    "2026-07-08",
+    "2026-07-10"
+   ],
+   "samples": [
+    987,
+    1047,
+    938
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "2231": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10226-pres-elabe-11-juillet.pdf",
+   "fieldwork": [
+    "2026-07-09",
+    "2026-07-10"
+   ],
+   "samples": [
+    1503,
+    1390,
+    1000
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "2245": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10235-pres-observatoire-politique-elabe-30-juillet.pdf",
+   "fieldwork": [
+    "2026-07-28",
+    "2026-07-29"
+   ],
+   "samples": [
+    1004,
+    1000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": true
+  },
+  "2246": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10237-pres-barometre-cluster17-le-point-aout.pdf",
+   "fieldwork": [
+    "2026-07-27",
+    "2026-07-28"
+   ],
+   "samples": [
+    1601,
+    200000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": false
+  },
+  "2248": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10239-pres-toluna-harris-interactive-rtl-24-aout.pdf",
+   "fieldwork": [
+    "2026-08-18",
+    "2026-08-19"
+   ],
+   "samples": [
+    1764,
+    2114,
+    2000,
+    6161
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "2249": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10240-pres-suivi-potentiel-electoral-v8-toluna-harris-interactive-26-aout.pdf",
+   "fieldwork": [
+    "2026-07-29",
+    "2026-07-30"
+   ],
+   "samples": [
+    1111,
+    941,
+    1000,
+    1211
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "2250": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10242-pres-barometre-election-pres-iv-v5-ifop-26-aout.pdf",
+   "fieldwork": [
+    "2026-08-24",
+    "2026-08-25"
+   ],
+   "samples": [
+    1598,
+    1800,
+    1500,
+    1188,
+    930,
+    1158,
+    920,
+    1141,
+    909,
+    1176,
+    925,
+    1144,
+    898,
+    1122,
+    889,
+    1100,
+    872,
+    1150,
+    883,
+    1105,
+    850,
+    949,
+    731,
+    1107,
+    860,
+    1117,
+    870,
+    940,
+    720
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "2256": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10246-pres-cluster17-le-grand-continent-31-aout.pdf",
+   "fieldwork": [
+    "2026-07-22",
+    "2026-07-24"
+   ],
+   "samples": [
+    1506,
+    1404,
+    1207,
+    1209,
+    1041,
+    1048,
+    1014,
+    983,
+    806,
+    1032,
+    1052,
+    997,
+    1001,
+    968,
+    939,
+    771,
+    11404,
+    11209,
+    21207,
+    21052,
+    41048,
+    41041,
+    41032,
+    41014,
+    41001,
+    4997,
+    4983,
+    4968,
+    4939,
+    4806,
+    5771,
+    200000
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "2258": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2024/septembre/9889a-pres-iv-opinionway-challenges-18-septembre.pdf",
+   "fieldwork": [
+    "2024-09-11",
+    "2024-09-12"
+   ],
+   "samples": [
+    20272,
+    945,
+    1009,
+    4620,
+    620,
+    621
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "2263": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10251-pres-iv-cluster-17-le-point-5-septembre.pdf",
+   "fieldwork": [
+    "2026-08-31",
+    "2026-09-01"
+   ],
+   "samples": [
+    1628,
+    1711,
+    1459,
+    1451,
+    1491,
+    1150,
+    1131,
+    1211,
+    11628,
+    11491,
+    11459,
+    11451,
+    11211,
+    21150,
+    21131,
+    200000
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "2264": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10252-pres-iv-opinionway-jdd-7-septembre.pdf",
+   "fieldwork": [
+    "2026-09-02",
+    "2026-09-03"
+   ],
+   "samples": [
+    929,
+    1003,
+    930,
+    4680,
+    680
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "2276": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10263-pres-iv-toluna-harris-interactive-rtl-14-septembre.pdf",
+   "fieldwork": [
+    "2026-09-08",
+    "2026-09-10"
+   ],
+   "samples": [
+    2052,
+    2358,
+    2000,
+    6060,
+    1339,
+    1317,
+    1304,
+    1309,
+    1312,
+    1116,
+    1178,
+    1174
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "2283": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10246a-pres-indices-de-popularite-ifop-lopinion-31-septembre.pdf",
+   "fieldwork": [
+    "2026-08-26",
+    "2026-08-27"
+   ],
+   "samples": [
+    1000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": true
+  },
+  "2288": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10275-pres-barometre-confiance-politique-toluna-harris-interactive-25-septembre.pdf",
+   "fieldwork": [
+    "2026-09-22",
+    "2026-09-24"
+   ],
+   "samples": [
+    1017,
+    1000
+   ],
+   "iv": false,
+   "presidential": false,
+   "legislative": false
+  },
+  "2290": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10277-pres-toluna-harris-interactive-rtl-28-septembre.pdf",
+   "fieldwork": [
+    "2026-09-22",
+    "2026-09-24"
+   ],
+   "samples": [
+    1974,
+    2334,
+    2000,
+    5960,
+    1242,
+    1227,
+    1216,
+    1219,
+    1223,
+    1055,
+    1125
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  },
+  "2326": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10309-pres-ifop-14-octobre.pdf",
+   "fieldwork": [
+    "2026-10-02",
+    "2026-10-05"
+   ],
+   "samples": [
+    3092,
+    3000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": true
+  },
+  "2327": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10314-pres-climat-politique-post-primaire-ps-pp-ifop-lci-14-octobre.pdf",
+   "fieldwork": [
+    "2026-10-12",
+    "2026-10-14"
+   ],
+   "samples": [
+    1390,
+    1525,
+    800,
+    900,
+    1000,
+    1100,
+    1050,
+    832,
+    1047,
+    834,
+    1024,
+    815,
+    1081,
+    858
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "2328": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10311-pres-laicite-et-fait-religieux-ifop-14-octobre.pdf",
+   "fieldwork": [
+    "2026-09-25",
+    "2026-09-30"
+   ],
+   "samples": [
+    9689,
+    14244,
+    10000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": true
+  },
+  "2329": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10312-pres-peuple-de-droite-ifop-valeurs-actuelles-14-octobre.pdf",
+   "fieldwork": [
+    "2026-10-02",
+    "2026-10-05"
+   ],
+   "samples": [
+    3000,
+    1764
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": true
+  },
+  "2331": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10315-pres-la-fete-de-l-entreprise-ifop-15-octobre.pdf",
+   "fieldwork": [
+    "2026-09-23",
+    "2026-09-29"
+   ],
+   "samples": [
+    2525,
+    900
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": false
+  },
+  "2336": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10321-pres-rapport-a-la-republique-v2-ifop-15-octobre.pdf",
+   "fieldwork": [
+    "2026-09-15",
+    "2026-09-21"
+   ],
+   "samples": [
+    2000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": true
+  },
+  "2339": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10324-pres-iv-elabe-17-octobre.pdf",
+   "fieldwork": [
+    "2026-10-14",
+    "2026-10-16"
+   ],
+   "samples": [
+    1701,
+    1553,
+    1200
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "2342": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10326-pres-tableau-de-bord-des-personnalites-ifop-20-octobre.pdf",
+   "fieldwork": [
+    "2026-10-14",
+    "2026-10-16"
+   ],
+   "samples": [
+    1007,
+    900,
+    1000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": false
+  },
+  "2343": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10327-pres-barometre-election-v7-ifop-20-octobre.pdf",
+   "fieldwork": [
+    "2026-10-17",
+    "2026-10-19"
+   ],
+   "samples": [
+    1928,
+    2081,
+    1100,
+    1400,
+    2000,
+    1431,
+    1159,
+    1421,
+    1145,
+    1402,
+    1129,
+    1408,
+    1138,
+    1360,
+    1101,
+    1463,
+    1179,
+    1439,
+    1158,
+    1451,
+    1164,
+    1240,
+    981,
+    1383,
+    1095,
+    1346,
+    1063,
+    1314,
+    1044,
+    1345,
+    1061
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "2345": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10328-pres-attentes-reformes-ifop-21-octobre.pdf",
+   "fieldwork": [
+    "2026-10-12",
+    "2026-10-13"
+   ],
+   "samples": [
+    1062,
+    1000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": false
+  },
+  "2350": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10330-pres-droit-animal-ifop-22-octobre.pdf",
+   "fieldwork": [
+    "2026-09-30",
+    "2026-10-02"
+   ],
+   "samples": [
+    1000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": false
+  },
+  "2360": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10306-pres-evolutions-carrieres-ifop-13-octobre.pdf",
+   "fieldwork": null,
+   "samples": [
+    1000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": false
+  },
+  "2368": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10347-pres-accompagnement-fin-de-vie-ifop-2-novembre.pdf",
+   "fieldwork": [
+    "2026-10-12",
+    "2026-10-19"
+   ],
+   "samples": [
+    1004,
+    1000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": false
+  },
+  "2370": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10348-pres-doublage-et-ia-ifop-novembre.pdf",
+   "fieldwork": [
+    "2026-10-22",
+    "2026-10-23"
+   ],
+   "samples": [
+    1010,
+    1000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": true
+  },
+  "2372": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10350-pres-dette-publique-ifop-le-figaro-3-novembre.pdf",
+   "fieldwork": [
+    "2026-10-27",
+    "2026-10-28"
+   ],
+   "samples": [
+    1500
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": true
+  },
+  "2376": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10351-pres-iv-ifop-lci-3-novembre.pdf",
+   "fieldwork": [
+    "2026-10-27",
+    "2026-10-29"
+   ],
+   "samples": [
+    1501,
+    1650,
+    900,
+    1100,
+    1200,
+    1300,
+    1500,
+    1160,
+    956,
+    1138,
+    943,
+    1134,
+    944,
+    1154,
+    955
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "2378": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10318-pres-presitrack-v3-opinionway-15-octobre.pdf",
+   "fieldwork": [
+    "2026-10-13",
+    "2026-10-14"
+   ],
+   "samples": [
+    978,
+    1001,
+    4731,
+    731,
+    1043
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "2382": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10361-pres-le-regard-des-francais-sur-l-avenir-ifop-6-novembre.pdf",
+   "fieldwork": [
+    "2026-10-22",
+    "2026-10-23"
+   ],
+   "samples": [
+    1010,
+    1000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": true
+  },
+  "2387": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10368-pres-iv-cluster17-politico-11-novembre.pdf",
+   "fieldwork": [
+    "2026-11-09",
+    "2026-11-10"
+   ],
+   "samples": [
+    1164,
+    1242,
+    1081,
+    1142,
+    899,
+    888,
+    883,
+    21164,
+    21142,
+    21081,
+    31078,
+    3899,
+    4888,
+    4883,
+    200000
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": false
+  }
+ },
+ "lookups": {
+  "legislative|harris|2024-06-30|2024-06-30": {
+   "url": null,
+   "checked": "2026-11-13"
+  },
+  "legislative|ifop|2024-06-30|2024-06-30": {
+   "url": null,
+   "checked": "2026-11-13"
+  },
+  "legislative|opinionway|2024-06-21|2024-06-24": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2024/juin/9982-1-leg-opinionway-pour-la-fondapol-juin-2024.pdf"
+  },
+  "legislative|opinionway|2024-06-30|2024-06-30": {
+   "url": null,
+   "checked": "2026-11-13"
+  },
+  "presidential|cluster17|2022-01-25|2022-01-29": {
+   "url": null,
+   "checked": "2026-11-13"
+  },
+  "presidential|cluster17|2022-03-14|2022-03-16": {
+   "url": null,
+   "checked": "2026-11-13"
+  },
+  "presidential|cluster17|2026-07-22|2026-07-24": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10246-pres-cluster17-le-grand-continent-31-aout.pdf"
+  },
+  "presidential|cluster17|2026-08-31|2026-09-01": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10251-pres-iv-cluster-17-le-point-5-septembre.pdf"
+  },
+  "presidential|cluster17|2026-11-09|2026-11-10": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10368-pres-iv-cluster17-politico-11-novembre.pdf"
+  },
+  "presidential|elabe|2026-07-09|2026-07-10": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10226-pres-elabe-11-juillet.pdf"
+  },
+  "presidential|elabe|2026-10-14|2026-10-16": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10324-pres-iv-elabe-17-octobre.pdf"
+  },
+  "presidential|harris|2021-03-03|2021-03-04": {
+   "url": null,
+   "checked": "2026-11-13"
+  },
+  "presidential|harris|2022-01-28|2022-01-31": {
+   "url": null,
+   "checked": "2026-11-13"
+  },
+  "presidential|harris|2026-07-07|2026-07-08": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10223-pres-iv-toluna-harris-interactive-rtl-8-juillet.pdf"
+  },
+  "presidential|harris|2026-08-18|2026-08-19": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10239-pres-toluna-harris-interactive-rtl-24-aout.pdf"
+  },
+  "presidential|harris|2026-09-08|2026-09-10": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10263-pres-iv-toluna-harris-interactive-rtl-14-septembre.pdf"
+  },
+  "presidential|ifop|2021-04-02|2021-04-08": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/avril/9113-p-ifop-jddpdf.pdf"
+  },
+  "presidential|ifop|2021-05-18|2021-05-20": {
+   "url": null,
+   "checked": "2026-11-13"
+  },
+  "presidential|ifop|2021-06-08|2021-06-09": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juin/9190-presidentielles-ifop-le-point.pdf"
+  },
+  "presidential|ifop|2021-08-31|2021-09-02": {
+   "url": null,
+   "checked": "2026-11-13"
+  },
+  "presidential|ifop|2022-03-31|2022-04-01": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9537-ifop-jdd-le-4-avril.pdf"
+  },
+  "presidential|ifop|2023-03-30|2023-03-31": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2023/avril/9686-pres-ifop-7-04-fig-mag-sud-radio.pdf"
+  },
+  "presidential|ifop|2025-04-11|2025-04-18": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2025/mai/9930-pres-ifop-hexagone-5-mai.pdf"
+  },
+  "presidential|ifop|2026-02-26|2026-02-27": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/mars/10118-pres-ifop-le-figaro-4-mars.pdf"
+  },
+  "presidential|ifop|2026-05-26|2026-05-28": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/mai/10193-pres-ifop-le-figaro-29-mai.pdf"
+  },
+  "presidential|ifop|2026-08-24|2026-08-25": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10242-pres-barometre-election-pres-iv-v5-ifop-26-aout.pdf"
+  },
+  "presidential|ifop|2026-10-12|2026-10-14": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10314-pres-climat-politique-post-primaire-ps-pp-ifop-lci-14-octobre.pdf"
+  },
+  "presidential|ifop|2026-10-17|2026-10-19": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10327-pres-barometre-election-v7-ifop-20-octobre.pdf"
+  },
+  "presidential|ifop|2026-10-27|2026-10-29": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10351-pres-iv-ifop-lci-3-novembre.pdf"
+  },
+  "presidential|ipsos|2021-06-25|2021-06-26": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/juillet/9199-pres-ipsos-france-tv.pdf"
+  },
+  "presidential|ipsos|2021-09-02|2021-09-03": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2021/septembre/9204-p-ipsos-le-parisien.pdf"
+  },
+  "presidential|opinionway|2021-11-15|2021-11-17": {
+   "url": null,
+   "checked": "2026-11-13"
+  },
+  "presidential|opinionway|2021-12-13|2021-12-15": {
+   "url": null,
+   "checked": "2026-11-13"
+  },
+  "presidential|opinionway|2022-03-15|2022-03-16": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9467-opinionway-cnews-vague-20-le-17-mars.pdf"
+  },
+  "presidential|opinionway|2022-03-19|2022-03-20": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9481-opinionway-cnews-vague-22-le-21-mars.pdf"
+  },
+  "presidential|opinionway|2022-03-26|2022-03-27": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/mars/9507-opinionway-cnews-vague-27-le-28-mars.pdf"
+  },
+  "presidential|opinionway|2022-03-30|2022-03-31": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9527-opinionway-pour-cnews-vague-31-le-1er-avril.pdf"
+  },
+  "presidential|opinionway|2022-04-02|2022-04-03": {
+   "url": null,
+   "checked": "2026-11-13"
+  },
+  "presidential|opinionway|2024-09-11|2024-09-12": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2024/septembre/9889a-pres-iv-opinionway-challenges-18-septembre.pdf"
+  },
+  "presidential|opinionway|2026-07-08|2026-07-09": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10224-pres-presitrack-opinionway-les-echos-9-juillet.pdf"
+  },
+  "presidential|opinionway|2026-09-02|2026-09-03": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10252-pres-iv-opinionway-jdd-7-septembre.pdf"
+  },
+  "presidential|opinionway|2026-10-13|2026-10-14": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10318-pres-presitrack-v3-opinionway-15-octobre.pdf"
+  },
+  "presidential|opinionway|2026-11-09|2026-11-10": {
+   "url": null,
+   "checked": "2026-11-13"
+  },
+  "presidential|opinionway|2026-11-10|2026-11-12": {
+   "url": null,
+   "checked": "2026-11-13"
+  },
+  "presidential|verian|2026-07-09|2026-07-10": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10225-pres-iv-1er-tour-verian-lhemicycle-10-juillet.pdf"
+  }
+ }
+}
