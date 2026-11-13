@@ -231,14 +231,14 @@ export async function renderMpSpeech(el: HTMLElement, d: Depute) {
   try {
     [s, m, deputes] = await Promise.all([loadSummary(), loadMp(d.id), loadDeputes()]);
   } catch {
-    el.innerHTML = `<article class="card mp-speech"><header class="card-head"><h2>${title}</h2><a href="#/assemblee/themes">${L("Thèmes de l’Assemblée", "Assembly themes")}</a></header><p class="muted">${L("Aucune intervention en séance publique relevée pour l’instant.", "No speech in public sitting recorded yet.")}</p></article>`;
+    el.innerHTML = `<article class="card mp-speech"><header class="card-head"><h2>${title}</h2><a href="#/assemblee/themes">${L("Ce que disent les députés", "What MPs say")}</a></header><p class="muted">${L("Aucune intervention en séance publique relevée pour l’instant.", "No speech in public sitting recorded yet.")}</p></article>`;
     return;
   }
   await fontsReady();
   const top = Object.entries(m.themes).sort((a, b) => b[1] - a[1])[0];
   el.innerHTML = `
     <article class="card mp-speech">
-      <header class="card-head"><h2>${title}</h2><a href="#/assemblee/themes">${L("Thèmes de l’Assemblée", "Assembly themes")}</a></header>
+      <header class="card-head"><h2>${title}</h2><a href="#/assemblee/themes">${L("Ce que disent les députés", "What MPs say")}</a></header>
       <div class="kpis kpis-4">
         <div><span class="muted">${L("Interventions", "Speeches")}</span><strong>${fmtNum(m.speeches)}</strong></div>
         <div><span class="muted">${L("Interpellations", "Interjections")}</span><strong>${fmtNum(m.interjections)}</strong></div>

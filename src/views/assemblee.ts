@@ -1,4 +1,4 @@
-// National Assembly: map (France → department → district), MP list, composition analysis.
+// National Assembly: one page, one tab bar (map, who they are, toeing the line, what they say, find an MP).
 import { loadAnMeta, loadCircoGeo, loadDepartements, loadDeputes, loadLeg24, type Depute } from "../data";
 import { L, fmtDate, fmtNum, fmtPct } from "../i18n";
 import { NUANCE_LABEL, nuanceColor } from "../lib/candidates";
@@ -27,25 +27,38 @@ export async function renderAssemblee(app: HTMLElement, tab = "carte", dep?: str
   for (const d of all) if (d.groupe?.abrev) byGroup.set(d.groupe.abrev, (byGroup.get(d.groupe.abrev) ?? 0) + 1);
   const [bigG, bigN] = [...byGroup.entries()].sort((a, b) => b[1] - a[1])[0] ?? ["", 0];
   const seats = seatSummary(AN_SEATS, all.length);
-  const h1 = tab === "loyaute"
-    ? L("Du doigt sur la couture à la fronde, qui vote toujours comme son groupe", "From toeing the line to open rebellion, who always votes with their group")
-    : bigN && bigN < seats.majority
-    ? L(`Aucune majorité : le premier groupe, ${bigG}, n’a que ${bigN} sièges sur ${seats.statutory}`, `No majority: the largest group, ${bigG}, has only ${bigN} of ${seats.statutory} seats`)
-    : L("Qui siège à l’Assemblée, et pour qui ont voté leurs circonscriptions", "Who sits in the Assembly, and how their districts voted");
+  // One Assembly page: five views behind one tab bar. Each view keeps its own URL (#/assemblee/<tab>), so old links still land.
+  const TABS: { key: string; href: string; fr: string; en: string }[] = [
+    { key: "carte", href: "#/assemblee", fr: "La carte", en: "The map" },
+    { key: "composition", href: "#/assemblee/composition", fr: "Qui ils sont", en: "Who they are" },
+    { key: "loyaute", href: "#/assemblee/loyaute", fr: "Doigt sur la couture", en: "Toeing the line" },
+    { key: "themes", href: "#/assemblee/themes", fr: "Ce qu’ils disent", en: "What they say" },
+    { key: "deputes", href: "#/assemblee/deputes", fr: "Trouver un député", en: "Find an MP" },
+  ];
+  const head: Record<string, [string, string]> = {
+    loyaute: [L("Du doigt sur la couture à la fronde, qui vote toujours comme son groupe", "From toeing the line to open rebellion, who always votes with their group"),
+      L("Sur chaque scrutin public, chaque député comparé à la ligne de son groupe : du vote aveugle à la fronde.", "On every public vote, each MP compared with their group’s line: from blind obedience to open rebellion.")],
+    composition: [L("Qui siège à l’Assemblée, par âge, métier et parité", "Who sits in the Assembly, by age, occupation and gender"),
+      L("La sociologie des députés, groupe par groupe, comparée à celle des Français qui travaillent.", "The MPs’ backgrounds, group by group, compared with France’s workforce.")],
+    themes: [L("Ce qu’ils disent, les mots et les thèmes de l’hémicycle", "What they say, the words and themes of the chamber"),
+      L("Chaque intervention en séance publique, ramenée à ses mots les plus caractéristiques.", "Every speech in public sitting, boiled down to its most distinctive words.")],
+    deputes: [L("Trouver un député, par nom, département ou groupe", "Find an MP, by name, department or group"),
+      L("Les députés en exercice : ouvrez une fiche pour ses votes, ses interventions et sa circonscription.", "The sitting MPs: open a profile for their votes, speeches and district.")],
+  };
+  const [h1, dek] = head[tab] ?? [
+    bigN && bigN < seats.majority
+      ? L(`Aucune majorité : le premier groupe, ${bigG}, n’a que ${bigN} sièges sur ${seats.statutory}`, `No majority: the largest group, ${bigG}, has only ${bigN} of ${seats.statutory} seats`)
+      : L("Qui siège à l’Assemblée, et pour qui ont voté leurs circonscriptions", "Who sits in the Assembly, and how their districts voted"),
+    L("Choisissez un département sur la carte pour voir ses circonscriptions, leur député et leur vote de 2024.", "Pick a department on the map to see its districts, their MP and how they voted in 2024."),
+  ];
   app.innerHTML = `
     <section class="page">
       <div class="page-head">
         <p class="eyebrow">${L("Assemblée nationale, 17e législature", "National Assembly, 17th legislature")}</p>
         <h1>${esc(h1)}</h1>
-        <p class="dek">${tab === "loyaute"
-          ? L("Sur chaque scrutin public, chaque député comparé à la ligne de son groupe : du vote aveugle à la fronde.", "On every public vote, each MP compared with their group’s line: from blind obedience to open rebellion.")
-          : L("Choisissez un département sur la carte pour voir ses circonscriptions, leur député et leur vote de 2024.", "Pick a department on the map to see its districts, their MP and how they voted in 2024.")}</p>
-        <nav class="tabs">
-          <a role="tab" href="#/assemblee" aria-selected="${tab === "carte"}">${L("Carte", "Map")}</a>
-          <a role="tab" href="#/assemblee/deputes" aria-selected="${tab === "deputes"}">${L("Députés", "MPs")}</a>
-          <a role="tab" href="#/assemblee/composition" aria-selected="${tab === "composition"}">${L("Qui sont les députés ?", "Who are the MPs?")}</a>
-          <a role="tab" href="#/assemblee/loyaute" aria-selected="${tab === "loyaute"}">${L("Doigt sur la couture", "Toeing the line")}</a>
-          <a role="tab" href="#/assemblee/themes" aria-selected="${tab === "themes"}">${L("De quoi parlent-ils ?", "What do they talk about?")}</a>
+        <p class="dek">${dek}</p>
+        <nav class="tabs page-tabs" aria-label="${esc(L("Les vues de l’Assemblée", "Assembly views"))}">
+          ${TABS.map((x) => `<a href="${x.href}"${x.key === tab ? ` aria-current="page"` : ""}>${L(x.fr, x.en)}</a>`).join("")}
         </nav>
       </div>
       <div id="pane"></div>
