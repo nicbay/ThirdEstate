@@ -1,0 +1,13 @@
+/* Candidate hub (#/candidat/<slug>): blocks added on top of the shared .cand-* styles in style.css. */
+.cand-news, .cand-votes { list-style: none; margin: 0 0 0.8rem; padding: 0; display: grid; }
+.cand-news > li, .cand-votes > li { border-top: 1px solid var(--rule); padding: 0.6rem 0; display: grid; gap: 0.2rem; min-width: 0; }
+.cand-news a { font-weight: 600; line-height: 1.35; overflow-wrap: anywhere; }
+.cand-votes > li { grid-template-columns: 6.5rem minmax(0, 1fr); gap: 0.8rem; align-items: baseline; line-height: 1.4; }
+.cand-vote { font: 600 0.66rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; text-align: center; padding: 0.15rem 0.3rem; border: 1px solid var(--rule); color: var(--ink-2); }
+.cand-vote.v-P { color: var(--paper); background: var(--up, #1e9e57); border-color: transparent; }
+.cand-vote.v-C { color: var(--paper); background: var(--down, #c41f33); border-color: transparent; }
+#c-quiz .button, #c-programme .cand-door { margin-top: 0.4rem; }
+@media (max-width: 560px) {
+  .cand-votes > li { grid-template-columns: minmax(0, 1fr); gap: 0.25rem; }
+  .cand-vote { justify-self: start; }
+}

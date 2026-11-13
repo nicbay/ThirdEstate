@@ -1,9 +1,12 @@
-// One 2027 candidate: polls, forecast and markets, then the same factual blocks for everyone
-// (patrimoine, convictions, candidacies, public pay, career, links, programme), every item sourced.
-// Data: public/data/candidates/<slug>.json, hand-curated and checked at build time (scripts/check-candidates.mjs).
-import { fetchJson, loadMarkets, loadPolls } from "../data";
+// One 2027 candidate, the hub for everything the site knows about them: polls, forecast and markets; campaign;
+// programme summary; votes in Parliament; recent headlines; the quiz; then the same factual blocks for everyone
+// (patrimoine, convictions, candidacies, public pay, career, links), every item sourced. Each block says so
+// plainly when there is nothing to show (not polled, no programme yet, not in Parliament, no headline).
+// Data: public/data/candidates/<slug>.json, hand-curated and checked at build time (scripts/check-candidates.mjs);
+// the rest is looked up by slug or name, so a new candidate file is enough (docs/data-candidates.md).
+import { fetchJson, loadFeed, loadMarkets, loadPolls, loadScrutins, loadVotes, type Depute, type FeedStory } from "../data";
 import { L, fmtNum, getLang } from "../i18n";
-import { meta, registerParties } from "../lib/candidates";
+import { meta, registerParties, surname } from "../lib/candidates";
 import { average, pollsInWindow, trend } from "../lib/polls";
 import { forecast } from "../lib/forecast";
 import { combineOdds, oddsFor, winShare } from "../lib/markets";
@@ -12,6 +15,7 @@ import { pct, signed } from "../lib/format";
 import { estimatePay, UNPRICED, type Mandate, type PayScales } from "../lib/public-pay";
 import { esc, safeUrl } from "../util";
 import { shiftDays } from "./home";
+import "../styles/candidate.css";
 
 type Bi = { fr: string; en: string };
 interface Source { title: string; publisher: string; url: string; date: string }
@@ -23,6 +27,13 @@ export interface CandidateFile {
   party: Bi & Sourced; role: Bi & Sourced;
   links: (Bi & { url: string; kind: string })[];
   an: string | null;
+  /** senator id (#/senateur/<id>); when absent the page looks the name up in the Senate list */
+  senat?: string | null;
+  background?: (Bi & Sourced) | null;
+  supporters?: { name: string; role: Bi; sources: Source[] }[];
+  campaign?: (Bi & { date: string; sources: Source[] })[];
+  /** words that identify the candidate in headlines (default: full name and surname) */
+  newsMatch?: string[] | null;
   wealth: { status: "published" | "none"; declarations: { date: string; context: Bi; net: number | null; gross?: number | null; note: Bi | null; sources: Source[] }[]; explanation: Bi; sources: Source[] };
   convictions: {
     definitive: { date: string; court: Bi; offence: Bi; sentence: Bi; kind: "penal" | "press" | "civil"; final: Bi; sources: Source[] }[];
@@ -78,11 +89,13 @@ const OFFICE_GROUP: Record<string, Bi> = {
 const groupOf = (o: string) => (/ministre|secretaire-etat/.test(o) ? "gov" : /depute|senateur|mep/.test(o) ? "parl" : /fonctionnaire|other/.test(o) ? "other" : "local");
 
 export async function renderCandidate(app: HTMLElement, slug: string) {
-  const [d, scales, polls, markets] = await Promise.all([
+  const [d, scales, polls, markets, progs, feed] = await Promise.all([
     fetchJson<CandidateFile>(`/data/candidates/${encodeURIComponent(slug)}.json`),
     fetchJson<PayScales>("/data/candidates/pay-scales.json"),
     loadPolls("2027"),
     loadMarkets().catch(() => null),
+    fetchJson<{ programmes: ProgEntry[] }>("/data/programmes/index.json").catch(() => null),
+    loadFeed().catch(() => null),
   ]);
   registerParties(polls.parties);
   const m = meta(d.pollName);
@@ -103,6 +116,16 @@ export async function renderCandidate(app: HTMLElement, slug: string) {
   const ph = d.photo;
   const cands = [...d.candidacies].sort((a, b) => b.date.localeCompare(a.date));
   const elected = cands.filter((c) => c.elected).length;
+  const polled = polls.firstRound.some((p) => p.hyps.some((h) => d.pollName in h));
+  const prog = findProgramme(d, progs?.programmes ?? []);
+  const news = headlines(d, feed?.stories ?? [], feed?.outlets ?? []);
+  const hasCampaign = !!(d.background || d.supporters?.length || d.campaign?.length);
+  const toc: [string, string][] = [
+    ["c-course", L("Course", "Race")],
+    ...(hasCampaign ? [["c-campagne", L("Campagne", "Campaign")] as [string, string]] : []),
+    ["c-programme", L("Programme", "Manifesto")], ["c-parlement", L("Parlement", "Parliament")], ["c-actu", L("Actualité", "News")], ["c-quiz", L("Quiz", "Quiz")],
+    ["c-patrimoine", L("Patrimoine", "Assets")], ["c-justice", L("Justice", "Courts")], ["c-candidatures", L("Candidatures", "Elections")], ["c-argent", L("Argent public", "Public pay")], ["c-parcours", L("Parcours", "Career")], ["c-liens", L("Liens", "Links")],
+  ];
 
   app.innerHTML = `
     <section class="page cand" style="--c:${m.color}">
@@ -113,7 +136,7 @@ export async function renderCandidate(app: HTMLElement, slug: string) {
           <figcaption><a href="${esc(safeUrl(ph.page))}" target="_blank" rel="noopener">${L("Photo", "Photo")}</a> ${esc(ph.author)}${ph.year ? `, ${ph.year}` : ""} · ${ph.licenceUrl ? `<a href="${esc(safeUrl(ph.licenceUrl))}" target="_blank" rel="noopener">${esc(ph.licence)}</a>` : esc(ph.licence)} · Wikimedia Commons</figcaption>
         </figure>
         <div>
-          <p class="eyebrow">${L("Testé dans les sondages 2027", "Polled for 2027")} · <span class="chip" style="--c:${m.color}">${esc(tr(d.party))}</span></p>
+          <p class="eyebrow">${polled ? L("Testé dans les sondages 2027", "Polled for 2027") : L("Présidentielle 2027", "2027 presidential election")} · <span class="chip" style="--c:${m.color}">${esc(tr(d.party))}</span></p>
           <h1>${esc(d.name)}</h1>
           <p class="dek">${esc(tr(d.role))}</p>
           <p class="cand-meta">${d.born ? `${L("Naissance", "Born")}${L(" : ", ": ")}${esc(when(d.born.date))}${d.born.place ? `, ${esc(d.born.place)}` : ""} · ` : ""}${L("Dernière vérification", "Last checked")}${L(" : ", ": ")}${esc(when(d.verified))}</p>
@@ -121,23 +144,42 @@ export async function renderCandidate(app: HTMLElement, slug: string) {
       </header>
 
       <nav class="cand-toc" aria-label="${L("Sur cette page", "On this page")}">
-        <a href="#/candidat/${esc(d.slug)}#c-course">${L("Course", "Race")}</a><a href="#/candidat/${esc(d.slug)}#c-patrimoine">${L("Patrimoine", "Assets")}</a><a href="#/candidat/${esc(d.slug)}#c-justice">${L("Justice", "Courts")}</a><a href="#/candidat/${esc(d.slug)}#c-candidatures">${L("Candidatures", "Elections")}</a><a href="#/candidat/${esc(d.slug)}#c-argent">${L("Argent public", "Public pay")}</a><a href="#/candidat/${esc(d.slug)}#c-parcours">${L("Parcours", "Career")}</a><a href="#/candidat/${esc(d.slug)}#c-liens">${L("Liens", "Links")}</a>
+        ${toc.map(([id, t]) => `<a href="#/candidat/${esc(d.slug)}#${id}">${esc(t)}</a>`).join("")}
       </nav>
 
       <section class="card" id="c-course">
         <header class="card-head"><h2>${L("Dans la course", "In the race")}</h2><a href="#/2027#prevision">${L("Prévision", "Forecast")}</a></header>
-        <div class="kpis kpis-4 cand-kpis">
+        ${!row && !fr && mk == null
+          ? `<p class="cand-none">${polled ? L("Pas dans la moyenne récente", "Not in the recent average") : L("Pas encore testé", "Not polled yet")}</p>
+             <p class="muted small">${polled
+               ? L("Aucun des sondages de premier tour des trois dernières semaines ne le teste : pas de moyenne, pas de prévision, et aucun marché prédictif ne le cote.", "None of the first-round polls of the last three weeks tests this candidate: no average, no forecast, and no prediction market lists them.")
+               : L("Aucun sondage publié ne le teste encore, et aucun marché prédictif ne le cote. Sa moyenne et sa prévision apparaîtront ici dès qu’il sera testé.", "No published poll tests this candidate yet and no prediction market lists them. The average and forecast will appear here once they are polled.")}</p>`
+          : `<div class="kpis kpis-4 cand-kpis">
           <div><strong>${row ? pct(row.avg) : "–"}</strong>${L("Moyenne des sondages", "Polling average")}${rank ? ` · ${rank}${L(rank === 1 ? "er" : "e", rank === 1 ? "st" : rank === 2 ? "nd" : rank === 3 ? "rd" : "th")}` : ""}</div>
           <div><strong class="${delta == null || Math.abs(delta) < 0.05 ? "" : delta > 0 ? "cand-up" : "cand-down"}">${delta == null ? "–" : signed(delta)}</strong>${L("Sur 30 jours (points)", "Over 30 days (pts)")}</div>
           <div><strong>${fmtChance(fr?.win)}</strong>${L("Chances de victoire (prévision)", "Chance of winning (forecast)")}</div>
           <div><strong>${fmtChance(mk)}</strong>${L("Marchés prédictifs", "Prediction markets")}</div>
         </div>
         <p class="muted small">${L(
-          `Moyenne des ${nPolls} sondages de premier tour des trois dernières semaines qui le testent ; prévision : notre modèle (sondages et marchés) ; marchés : Kalshi et Polymarket ramenés à 100 %. Au second tour dans ${fmtChance(fr?.qualify)} des cas selon la prévision.`,
-          `Average of the ${nPolls} first-round polls of the last three weeks that test this candidate; forecast: our model (polls and markets); markets: Kalshi and Polymarket rescaled to 100%. Reaches the runoff in ${fmtChance(fr?.qualify)} of cases in the forecast.`,
-        )}</p>
+          `Moyenne des ${nPolls} sondages de premier tour des trois dernières semaines qui le testent ; prévision : notre modèle (sondages et marchés) ; marchés : Kalshi et Polymarket ramenés à 100 %.${fr?.qualify != null ? ` Au second tour dans ${fmtChance(fr.qualify)} des cas selon la prévision.` : ""}`,
+          `Average of the ${nPolls} first-round polls of the last three weeks that test this candidate; forecast: our model (polls and markets); markets: Kalshi and Polymarket rescaled to 100%.${fr?.qualify != null ? ` Reaches the runoff in ${fmtChance(fr.qualify)} of cases in the forecast.` : ""}`,
+        )}${row ? "" : ` ${L("Pas testé dans les sondages des trois dernières semaines.", "Not tested in the polls of the last three weeks.")}`}</p>`}
         <div id="cand-trend"></div>
+        <p class="small"><a href="#/sondages">${L("Tous les sondages et les marchés", "Every poll and market")}</a> · <a href="#/simulateur">${L("Simuler le second tour", "Simulate the runoff")}</a></p>
       </section>
+
+      ${hasCampaign ? campaignCard(d) : ""}
+
+      ${programmeCard(d, prog)}
+
+      <section class="card" id="c-parlement">
+        <header class="card-head"><h2>${L("Au Parlement", "In Parliament")}</h2></header>
+        <div id="cand-parl"><p class="muted small">${L("Chargement des votes…", "Loading votes…")}</p></div>
+      </section>
+
+      ${newsCard(d, news, feed?.windowHours ?? 72)}
+
+      ${quizCard(d)}
 
       <section class="card" id="c-patrimoine">
         <header class="card-head"><h2>${L("Patrimoine déclaré", "Declared assets")}</h2></header>
@@ -220,15 +262,9 @@ export async function renderCandidate(app: HTMLElement, slug: string) {
         <ul class="cand-links">
           ${d.an ? `<li><a href="#/depute/${esc(d.an)}">${L("Sa page à l’Assemblée sur Third Estate", "Their Assembly page on Third Estate")}</a><span class="muted small">${L("votes, interventions, présence", "votes, speeches, attendance")}</span></li>` : ""}
           ${d.links.map((l) => `<li><a href="${esc(safeUrl(l.url))}" target="_blank" rel="noopener">${esc(tr(l))}</a><span class="muted small">${esc(new URL(safeUrl(l.url), location.href).hostname.replace(/^www\./, ""))}</span></li>`).join("")}
-          <li><a href="#/quiz">${L("Quiz « Qui vous ressemble ? »", "Quiz “Who’s closest to you?”")}</a><span class="muted small">${L(`Ce candidat y est représenté par ${d.quiz.groups.length > 1 ? "les groupes" : "le groupe"} ${d.quiz.groups.map(esc).join(" et ")} à l’Assemblée.`, `This candidate is represented there by the ${d.quiz.groups.map(esc).join(" and ")} group${d.quiz.groups.length > 1 ? "s" : ""} in the Assembly.`)}${d.quiz.note ? ` ${esc(tr(d.quiz.note))}` : ""}</span></li>
+          ${prog ? `<li><a href="#/programmes/${esc(prog.slug)}">${L("Son programme, mesure par mesure", "The manifesto, measure by measure")}</a><span class="muted small">Third Estate</span></li>` : ""}
+          <li><a href="#/fil">${L("Fil rouge, fil bleu", "Red feed, blue feed")}</a><span class="muted small">${L("l’actualité vue de gauche et de droite", "the news as left and right see it")}</span></li>
         </ul>
-      </section>
-
-      <section class="card" id="c-programme">
-        <header class="card-head"><h2>${L("Programme", "Manifesto")}</h2></header>
-        ${d.programme
-          ? `<a class="door cand-door" href="#/programmes/${esc(d.programme)}"><b>${L("Analyse du programme", "Manifesto analysis")}</b><span class="muted small">${L("Mesures, coût et sources, point par point.", "Measures, cost and sources, point by point.")}</span></a>`
-          : `<p class="cand-none">${L("À venir", "Coming soon")}</p><p class="muted small">${L("L’analyse de son programme sera publiée ici.", "An analysis of the manifesto will be published here.")}</p>`}
       </section>
 
       <p class="source">${L("Fiche établie à la main à partir de sources publiques citées ligne par ligne ; vérifiée le", "Hand-built from the public sources cited line by line; checked")} ${esc(when(d.verified))}. ${L("Une erreur ? Les sources de chaque ligne permettent de la vérifier.", "Spotted an error? Each line’s sources let you check it.")}</p>
@@ -237,6 +273,161 @@ export async function renderCandidate(app: HTMLElement, slug: string) {
   drawTrend(app, polls.firstRound, d.pollName, m.color, latest);
   drawPay(app, pay.years);
   drawGantt(app, d.mandates, d.verified);
+  void fillParliament(app, d);
+}
+
+// ---------- hub blocks: everything below is looked up by slug or name, and says so when there is nothing ----------
+
+/** Folds accents and case so "Mélenchon" matches "MELENCHON" and "melenchon". */
+const fold = (s: string) => s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().replace(/[’']/g, " ").replace(/\s+/g, " ").trim();
+const sameName = (a: string, b: string) => fold(a).replace(/-/g, " ") === fold(b).replace(/-/g, " ");
+
+interface ProgEntry {
+  slug: string; candidate: string; party: string; programme: string | null; lite: boolean; status: "published" | "partial" | "none";
+  statusNote?: Bi; summary?: Bi; total: number; inLatest?: number;
+  lastEstimate: { year: number; label?: Bi; horizon?: Bi; announced: number | null; by: string; net: number } | null;
+}
+/** The programme analysis for this candidate: the file's `programme` slug, else the same slug, else the same name. */
+function findProgramme(d: CandidateFile, list: ProgEntry[]) {
+  return list.find((p) => p.slug === d.programme) ?? list.find((p) => p.slug === d.slug) ?? list.find((p) => sameName(p.candidate, d.name)) ?? null;
+}
+const md = (v: number) => { const sg = v > 0 ? "+" : v < 0 ? "−" : ""; const a = Math.abs(v); const n = fmtNum(a >= 10 ? Math.round(a) : Math.round(a * 10) / 10); return L(`${sg}${n} Md€`, `${sg}€${n}bn`); };
+
+function programmeCard(d: CandidateFile, p: ProgEntry | null) {
+  if (!p) return `<section class="card" id="c-programme">
+      <header class="card-head"><h2>${L("Programme", "Manifesto")}</h2><a href="#/programmes">${L("Tous les programmes", "Every manifesto")}</a></header>
+      <p class="cand-none">${L("Pas encore analysé", "Not analysed yet")}</p>
+      <p class="muted small">${L(`Aucune analyse du programme de ${esc(d.name)} n’est encore publiée sur Third Estate. Elle apparaîtra ici, avec le nombre de mesures et leur coût.`, `No analysis of ${esc(d.name)}’s manifesto is published on Third Estate yet. It will appear here, with the number of measures and their cost.`)}</p>
+    </section>`;
+  const n = p.inLatest ?? p.total;
+  const e = p.lastEstimate;
+  return `<section class="card" id="c-programme">
+    <header class="card-head"><h2>${L("Programme", "Manifesto")}</h2><a href="#/programmes/${esc(p.slug)}">${L("Le programme complet", "Full manifesto")}</a></header>
+    ${p.programme ? `<p class="eyebrow">${esc(p.programme)}</p>` : ""}
+    ${p.summary ? `<p>${esc(tr(p.summary))}</p>` : ""}
+    <div class="kpis cand-kpis">
+      <div><strong>${n ? fmtNum(n) : "–"}</strong>${p.lite ? L("Mesures étudiées", "Measures reviewed") : L("Mesures en 2027", "Measures in 2027")}</div>
+      <div><strong>${e ? md(e.net) : "–"}</strong>${e ? `${L("Effet estimé sur le solde public", "Estimated effect on the public balance")} (${esc(e.by)}, ${e.year})` : L("Pas d’estimation indépendante du coût", "No independent cost estimate")}</div>
+    </div>
+    ${e ? `<p class="muted small">${e.label ? `${esc(tr(e.label))}. ` : ""}${e.announced != null ? `${L("Chiffrage annoncé", "Claimed cost")}${L(" : ", ": ")}${md(e.announced)} ; ` : `${L("Pas de chiffrage du parti", "No party costing")} ; `}${L("estimation", "estimate")} ${esc(e.by)}${L(" : ", ": ")}${md(e.net)}${e.horizon ? ` ${esc(tr(e.horizon))}` : ""}. ${L("Solde pour les finances publiques : négatif = coût net.", "Net effect on public finances: negative = net cost.")}</p>` : ""}
+    ${p.status === "partial" && p.statusNote ? `<p class="muted small">${esc(tr(p.statusNote))}</p>` : ""}
+    <a class="door cand-door" href="#/programmes/${esc(p.slug)}"><b>${L("Lire l’analyse complète", "Read the full analysis")}</b><span class="muted small">${L("Mesures, coût, droit et sources, point par point.", "Measures, cost, law and sources, point by point.")}</span></a>
+  </section>`;
+}
+
+function campaignCard(d: CandidateFile) {
+  const events = [...(d.campaign ?? [])].sort((a, b) => b.date.localeCompare(a.date));
+  return `<section class="card" id="c-campagne">
+    <header class="card-head"><h2>${L("Campagne 2027", "2027 campaign")}</h2></header>
+    ${d.background ? `<p>${esc(tr(d.background))}</p>${src(d.background.sources)}` : ""}
+    ${d.supporters?.length ? `<h3 class="cand-h3">${L("Soutiens et équipe cités par la presse", "Backers and team named in the press")} <span class="muted">${d.supporters.length}</span></h3>
+      <ol class="cand-list">${d.supporters.map((s) => `<li><div class="cand-li-head"><b>${esc(s.name)}</b></div><p class="small">${esc(tr(s.role))}</p>${src(s.sources)}</li>`).join("")}</ol>` : ""}
+    ${events.length ? `<h3 class="cand-h3">${L("Étapes", "Milestones")}</h3>
+      <ol class="cand-list">${events.map((x) => `<li><div class="cand-li-head"><b>${esc(tr(x))}</b><span class="cand-when">${esc(when(x.date))}</span></div>${src(x.sources)}</li>`).join("")}</ol>` : ""}
+  </section>`;
+}
+
+interface Headline { title: string; link: string; time: string; outlet: string }
+/** Headlines from the red/blue feed (last 72 hours) whose title or summary names the candidate. */
+function headlines(d: CandidateFile, stories: FeedStory[], outlets: { id: string; name: string }[]): Headline[] {
+  const terms = (d.newsMatch?.length ? d.newsMatch : [d.name, surname(d.name)]).map(fold).filter((t) => t.length >= 3);
+  const res = terms.map((t) => new RegExp(`(^|[^a-z0-9])${t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^a-z0-9]|$)`));
+  const outletName = new Map(outlets.map((o) => [o.id, o.name]));
+  const seen = new Set<string>();
+  return stories
+    .flatMap((s) => s.items)
+    .filter((i) => { const t = fold(`${i.title} ${i.summary ?? ""}`); return res.some((r) => r.test(t)); })
+    .sort((a, b) => b.time.localeCompare(a.time))
+    .filter((i) => { const k = fold(i.title); if (seen.has(k) || seen.has(i.link)) return false; seen.add(k); seen.add(i.link); return true; })
+    .map((i) => ({ title: i.title, link: i.link, time: i.time, outlet: outletName.get(i.outlet) ?? i.outlet }));
+}
+
+function newsCard(d: CandidateFile, items: Headline[], hours: number) {
+  const shown = items.slice(0, 8);
+  const t = (iso: string) => new Date(iso).toLocaleString(loc(), { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+  return `<section class="card" id="c-actu">
+    <header class="card-head"><h2>${L("Dans l’actualité", "In the news")}</h2><a href="#/fil">${L("Le fil", "The feed")}</a></header>
+    ${shown.length
+      ? `<p class="muted small">${L(`${items.length} titre${items.length > 1 ? "s" : ""} le cit${items.length > 1 ? "ent" : "e"} dans le fil des ${hours} dernières heures (quinze médias, de gauche à droite)${items.length > shown.length ? ` ; les ${shown.length} plus récents` : ""}.`, `${items.length} headline${items.length > 1 ? "s" : ""} in the last ${hours} hours of our feed (fifteen outlets, left to right) name${items.length > 1 ? "" : "s"} this candidate${items.length > shown.length ? `; the ${shown.length} most recent` : ""}.`)}</p>
+         <ol class="cand-news">${shown.map((h) => `<li><a href="${esc(safeUrl(h.link))}" target="_blank" rel="noopener">${esc(h.title)}</a><span class="muted small">${esc(h.outlet)} · ${esc(t(h.time))}</span></li>`).join("")}</ol>`
+      : `<p class="cand-none">${L("Aucun titre récent", "No recent headline")}</p><p class="muted small">${L(`Aucun des titres du fil des ${hours} dernières heures ne le cite.`, `None of the headlines in the last ${hours} hours of our feed names this candidate.`)}</p>`}
+  </section>`;
+}
+
+function quizCard(d: CandidateFile) {
+  const g = d.quiz.groups;
+  return `<section class="card" id="c-quiz">
+    <header class="card-head"><h2>${L("Le quiz : qui vous ressemble ?", "The quiz: who’s closest to you?")}</h2></header>
+    ${g.length
+      ? `<p class="small">${L(`Répondez aux votes de l’Assemblée et aux mesures des programmes : ${esc(d.name)} y est représenté par ${g.length > 1 ? "les groupes" : "le groupe"} ${g.map(esc).join(" et ")}.`, `Answer the Assembly’s votes and the manifesto measures: ${esc(d.name)} is represented by the ${g.map(esc).join(" and ")} group${g.length > 1 ? "s" : ""}.`)}${d.quiz.note ? ` ${esc(tr(d.quiz.note))}` : ""}</p>`
+      : `<p class="cand-none">${L("Pas encore dans le quiz", "Not in the quiz yet")}</p><p class="muted small">${d.quiz.note ? esc(tr(d.quiz.note)) : L("Aucun groupe parlementaire ne le représente encore dans le quiz.", "No parliamentary group stands for this candidate in the quiz yet.")}</p>`}
+    <a class="button" href="#/quiz">${L("Faire le quiz", "Take the quiz")}</a>
+  </section>`;
+}
+
+type Vote = "P" | "C" | "A" | "N" | "-";
+const VOTE: Record<string, Bi> = { P: { fr: "Pour", en: "For" }, C: { fr: "Contre", en: "Against" }, A: { fr: "Abstention", en: "Abstain" }, N: { fr: "Non-votant", en: "Non-voting" } };
+interface Senator { id: string; prenom: string; nom: string; circonscription: string; groupe?: { abrev?: string; libelle?: string } | null; stats?: { pour: number; contre: number; abstention: number; scrutins: number; participation: number } }
+
+/** Votes in Parliament: the MP (file `an`, else same name among sitting MPs) or the senator (file `senat`, else same name). */
+async function fillParliament(app: HTMLElement, d: CandidateFile) {
+  const box = () => app.querySelector<HTMLElement>("#cand-parl");
+  try {
+    const [deps, sens] = await Promise.all([
+      fetchJson<Depute[]>("/data/an/deputes.json").catch(() => [] as Depute[]),
+      fetchJson<Senator[]>("/data/senat/senateurs.json").catch(() => [] as Senator[]),
+    ]);
+    const mp = (d.an ? deps.find((x) => x.id === d.an) : null) ?? deps.find((x) => sameName(`${x.prenom} ${x.nom}`, d.name)) ?? null;
+    const sen = mp ? null : (d.senat ? sens.find((x) => x.id === d.senat) : null) ?? sens.find((x) => sameName(`${x.prenom} ${x.nom}`, d.name)) ?? null;
+    if (!box()) return;
+    if (mp) {
+      const [votes, scrutins] = await Promise.all([loadVotes(mp.id).catch(() => ({}) as Record<string, Vote>), loadScrutins().catch(() => [])]);
+      const recent = scrutins.filter((s) => votes[String(s[0])]).sort((a, b) => b[1].localeCompare(a[1]) || b[0] - a[0]).slice(0, 6)
+        .map((s) => ({ date: s[1], title: s[2], result: s[3], v: votes[String(s[0])] }));
+      return void (box()!.innerHTML = parlBlock({
+        who: L(`Député${mp.civ === "Mme" ? "e" : ""} ${mp.departement ? `(${mp.departement}, ${mp.numCirco}${mp.numCirco === 1 ? L("re", "st") : L("e", "th")} circ.)` : ""}`, `MP ${mp.departement ? `(${mp.departement}, constituency ${mp.numCirco})` : ""}`),
+        group: mp.groupe?.libelle ?? "", href: `#/depute/${mp.id}`, label: L("Sa page de député : tous ses votes, interventions, présence", "Their MP page: every vote, speech, attendance"),
+        stats: mp.stats, recent,
+      }));
+    }
+    if (sen) {
+      const [votes, scrutins] = await Promise.all([
+        fetchJson<Record<string, Vote>>(`/data/senat/votes/${encodeURIComponent(sen.id)}.json`).catch(() => ({}) as Record<string, Vote>),
+        fetchJson<[string, string, string, string, ...unknown[]][]>("/data/senat/scrutins.json").catch(() => []),
+      ]);
+      const recent = scrutins.filter((s) => votes[s[0]] && votes[s[0]] !== "-").sort((a, b) => b[1].localeCompare(a[1]) || b[0].localeCompare(a[0], undefined, { numeric: true })).slice(0, 6)
+        .map((s) => ({ date: s[1], title: s[2], result: s[3], v: votes[s[0]] }));
+      return void (box()!.innerHTML = parlBlock({
+        who: L(`Sénateur·rice (${sen.circonscription})`, `Senator (${sen.circonscription})`), group: sen.groupe?.libelle ?? "", href: `#/senateur/${sen.id}`,
+        label: L("Sa page de sénateur : tous ses votes", "Their senator page: every vote"), stats: sen.stats ?? null, recent,
+      }));
+    }
+    const mep = d.mandates.find((m) => m.office === "mep" && !m.to);
+    const ep = d.links.find((l) => l.kind === "ep");
+    box()!.innerHTML = `<p class="cand-none">${L("Ne siège pas au Parlement français", "Does not sit in the French Parliament")}</p>
+      <p class="muted small">${mep
+        ? `${L("Député européen : ses votes au Parlement européen ne sont pas suivis sur Third Estate.", "Member of the European Parliament: votes there are not tracked on Third Estate.")}${ep ? ` <a href="${esc(safeUrl(ep.url))}" target="_blank" rel="noopener">${esc(tr(ep))}</a>` : ""}`
+        : L("Ni député ni sénateur aujourd’hui : pas de votes à afficher.", "Neither an MP nor a senator today: no votes to show.")}
+      <a href="#/assemblee">${L("Les députés et leurs votes", "The MPs and their votes")}</a></p>`;
+  } catch {
+    const b = box();
+    if (b) b.innerHTML = `<p class="muted small">${L("Votes indisponibles pour le moment.", "Votes unavailable right now.")}</p>`;
+  }
+}
+
+function parlBlock(o: { who: string; group: string; href: string; label: string; stats: { pour: number; contre: number; abstention: number; scrutins: number; participation: number } | null; recent: { date: string; title: string; result: string; v: string }[] }) {
+  const s = o.stats;
+  return `<p class="small"><b>${esc(o.who)}</b>${o.group ? ` · ${esc(o.group)}` : ""}</p>
+    ${s ? `<div class="kpis kpis-4 cand-kpis">
+      <div><strong>${fmtNum(s.pour + s.contre + s.abstention)}</strong>${L("Votes exprimés", "Votes cast")}</div>
+      <div><strong>${Math.round(100 * s.participation)}${L(" %", "%")}</strong>${L("Participation aux scrutins", "Turnout in divisions")}</div>
+      <div><strong>${fmtNum(s.pour)}</strong>${L("Pour", "For")}</div>
+      <div><strong>${fmtNum(s.contre)}</strong>${L("Contre", "Against")}</div>
+    </div>` : ""}
+    ${o.recent.length
+      ? `<h3 class="cand-h3">${L("Ses derniers votes", "Latest votes")}</h3><ol class="cand-votes">${o.recent.map((r) => `<li><span class="cand-vote v-${esc(r.v)}">${esc(tr(VOTE[r.v] ?? { fr: r.v, en: r.v }))}</span><span>${esc(r.title.replace(/^./, (c) => c.toUpperCase()))}<span class="muted small"> · ${esc(when(r.date))} · ${esc(r.result)}</span></span></li>`).join("")}</ol>`
+      : `<p class="muted small">${L("Aucun vote enregistré pour l’instant.", "No recorded vote yet.")}</p>`}
+    <p class="small"><a href="${esc(o.href)}">${esc(o.label)}</a></p>`;
 }
 
 function payNotes(d: CandidateFile, gaps: Set<string>) {

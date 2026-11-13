@@ -2,12 +2,50 @@
 
 One hand-curated file per candidate in `public/data/candidates/<slug>.json`, plus
 `public/data/candidates/pay-scales.json` (official gross pay scales used by the public-pay estimate).
-They feed the candidate page `#/candidat/<slug>` (`src/views/candidate.ts`) and the "Les candidats"
-section of `#/2027`.
+They feed the candidate page `#/candidat/<slug>` (`src/views/candidate.ts`), which is the hub for
+everything the site knows about a candidate, and the "Les candidats" section of `#/2027`.
 
-The candidate set is not fixed here: the 2027 page shows a card for every name in the polling
-average (`average()` in `src/lib/polls.ts`). A name with no file gets a card without a link.
-`index.json` maps poll names to slugs.
+The candidate set is not fixed in code: the 2027 page shows a card for every name in the polling
+average (`average()` in `src/lib/polls.ts`), plus every candidate file missing from that average. A
+name with no file gets a card without a link. `index.json`, written by `scripts/check-candidates.mjs`,
+maps poll names to slugs and carries the `display` overrides, and `src/lib/candidates.ts` imports it,
+so the colour, party code and page link of a candidate follow the file everywhere on the site (2027
+page, polls, simulator, forecast).
+
+## What the candidate page shows, and where it comes from
+
+Every block says so in one line when there is nothing to show; none of them needs code per candidate.
+
+| Block | Source | When absent |
+|---|---|---|
+| Polls, trend, forecast, markets | `public/data/polls/2027.json` by `pollName`; `src/lib/forecast.ts`; `markets.json` | "Not polled yet" / "Not in the recent average" |
+| Campaign 2027 | `background`, `supporters`, `campaign` in the file | block hidden |
+| Programme | `public/data/programmes/index.json`: `programme` slug, else same slug, else same candidate name | "Not analysed yet" |
+| Parliament | MP: `an`, else same name in `public/data/an/deputes.json`; senator: `senat`, else same name in `public/data/senat/senateurs.json` | "Does not sit in the French Parliament" (MEPs: link to the EP page from `links` with `kind: "ep"`) |
+| News | `public/data/feed/latest.json` (72 h): titles and summaries matching `newsMatch` (default: full name and surname) | "No recent headline" |
+| Quiz | `quiz.groups` (`public/data/an/quiz.json`, built by `scripts/build-quiz.mjs`) | "Not in the quiz yet" + `quiz.note` |
+| Assets, courts, elections, public pay, career, links | the file | "None found" / "Not published" / … |
+
+## Adding a candidate
+
+1. Create `public/data/candidates/<slug>.json` (lower-case, hyphens; the slug is the URL `#/candidat/<slug>`)
+   following the schema below. Set `pollName` to the name exactly as in `public/data/polls/2027.json`
+   (the check warns if it is not there yet; the page still works, with "Not polled yet").
+2. Photo: a Wikimedia Commons file, with `file`, `src` (`Special:FilePath/…?width=480`), `page`,
+   `author`, `licence`, `licenceUrl`, `year` copied from the file page.
+3. Colour: nothing to do if the polls give the candidate a known party code (`parties` in
+   `public/data/polls/2027.json`, colours in `PARTY` in `src/lib/candidates.ts`). Otherwise add
+   `"display": { "party": "XYZ" }` (an existing code), or `"display": { "color": "#rrggbb", "bloc": 0–4 | null }`.
+   Without either, the candidate shows in neutral grey with no political family.
+4. If the surname alone is ambiguous in headlines (a common first name, a family name shared with
+   another politician), set `newsMatch`, e.g. `["Édouard Philippe"]`.
+5. Quiz: leave `"groups": []` (with a `note`) until a parliamentary group represents the candidate.
+   Giving groups means `scripts/build-quiz.mjs` also needs the same number of programme measures
+   for them as for everyone else (its `MEASURES` list), then `npm run build:quiz`.
+6. Programme (optional): `public/data/programmes/<slug>.json` (see `scripts/build-programme.mjs`), then
+   `node scripts/build-programmes-index.mjs`. The candidate page finds it by slug or name.
+7. Run `npm run check:candidates`: it validates every source and rewrites `index.json`. Fix errors,
+   read the warnings. `npm run build` runs it too.
 
 ## Rules (legal care: accuracy over completeness)
 
@@ -42,6 +80,9 @@ average (`average()` in `src/lib/polls.ts`). A name with no file gets a card wit
   "slug": "melenchon",
   "name": "Jean-Luc Mélenchon",
   "pollName": "Jean-Luc Mélenchon",         // exactly as in public/data/polls/2027.json
+  "display": { "party": "NE", "color": "#3f72c4", "bloc": 3 },  // optional, each key optional: party code,
+                                             // colour and political family (0 radical left … 4 nationalist right,
+                                             // null = none) when the polls don't give them or give a wrong one
   "verified": "2026-11-08",                  // date of last verification ("dernière vérification")
   "wikidata": "Q...",
   "born": { "date": "1951-08-19", "place": "Tanger (Maroc)", "sources": [] },
@@ -57,6 +98,11 @@ average (`average()` in `src/lib/polls.ts`). A name with no file gets a card wit
   "links": [ { "fr": "Fiche HATVP", "en": "HATVP page", "url": "https://www.hatvp.fr/…", "kind": "hatvp" } ],
                                               // kind: an | senat | ep | hatvp | gouv | wikidata | other
   "an": "PA2150" ,                            // current MP id on our site (#/depute/PA…), else null
+  "senat": "04033B" | null,                   // optional: senator id (#/senateur/…); both are also found by name
+  "background": { "fr": "…", "en": "…", "sources": [] } | null,   // optional short sourced background
+  "supporters": [ { "name": "…", "role": { "fr": "…", "en": "…" }, "sources": [] } ],  // optional, named in the press
+  "campaign": [ { "date": "2026-11-09", "fr": "…", "en": "…", "sources": [] } ],       // optional dated campaign steps
+  "newsMatch": ["Édouard Philippe"] | null,   // optional: headline terms (default: full name and surname)
   "wealth": {
     "status": "published" | "none",
     "declarations": [{
@@ -119,11 +165,21 @@ average (`average()` in `src/lib/polls.ts`). A name with no file gets a card wit
     "amount": 6000000,
     "sources": []
   }],
-  "programme": "melenchon" | null,             // #/programmes/<slug> when an analysis exists
+  "programme": "melenchon" | null,             // #/programmes/<slug>; null = look it up by slug, then by name
   "quiz": { "groups": ["LFI-NFP"], "note": { "fr": "…", "en": "…" } | null },
   "omitted": [ { "what": "…", "why": "…" } ]  // facts considered and left out (not displayed)
 }
 ```
+
+## Still hard-coded elsewhere (outside the candidate files)
+
+- `src/views/simulator.ts`: the Le Pen → Bardella swap scenario names both people.
+- `scripts/build-quiz.mjs`: `MEASURES`, the programme questions per candidate slug (every candidate in
+  the quiz must have the same number).
+- The household budget simulator exists for Mélenchon only (`src/views/household.ts`, its route in
+  `src/main.ts`, links in `src/views/programme.ts`, `programmes-hub.ts`, `home-programmes.ts`).
+- `PARTY` in `src/lib/candidates.ts` maps party codes (not candidates) to colours and blocs; a new party
+  either gets a line there or its candidates set `display.color` / `display.bloc`.
 
 ## Public-pay estimate
 
