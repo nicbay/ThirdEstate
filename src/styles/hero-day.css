@@ -84,3 +84,84 @@
 .hday-actions > a { font: 700 0.92rem var(--text); color: #fff; text-decoration: none; }
 .hday-actions > a:hover { text-decoration: underline; }
 @media (prefers-reduced-motion: reduce) { .hero-dots .hd { transition: none; } }
+
+/* ===================== homepage order: polls hero → quiz → note of the day → widgets ===================== */
+/* the polls chart sits on the night band: the chart reads its colours from these variables */
+.hday-chart { --ink: #ffffff; --ink-2: #c9cad0; --ink-3: #9a9eb5; --paper: var(--night); --panel: var(--night-2); --wash: #20243a; --rule: var(--night-rule); --rule-2: var(--night-rule-2); --link: #c4b5ff; --accent: #8f7bff; --far-right: #6a78e0; color: #fff; display: grid; gap: 0.6rem; margin-top: 0.4rem; }
+.hday-chart [stroke="#1c2c6c"] { stroke: #6a78e0; }
+.hday-chart [fill="#1c2c6c"] { fill: #6a78e0; }
+.hday-chart [style*="#1c2c6c"] { --c: #6a78e0 !important; }
+.hday-chart .hday-small { margin: 0; max-width: 90ch; }
+.hday-chart .hday-fc { font-size: 0.95rem; }
+.hday > h1 { max-width: 30ch; }
+
+/* the quiz: the page's loudest call to action, a white pixel panel with the red/blue offset shadow */
+.quiz-band { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 1.2rem 1.8rem; padding: 1.5rem 1.8rem; color: var(--ink); text-decoration: none; background: var(--paper) padding-box; border: 6px solid transparent; border-image: var(--px-ink) 6 / 6px / 0 stretch; filter: drop-shadow(4px 4px 0 var(--split-red)) drop-shadow(4px 4px 0 var(--split-blue)); transition: transform 0.15s steps(3, end), filter 0.15s steps(3, end); }
+.quiz-band:hover { text-decoration: none; transform: translate(-3px, -3px); filter: drop-shadow(5px 5px 0 var(--split-red)) drop-shadow(5px 5px 0 var(--split-blue)); }
+.quiz-band:active { transform: translate(3px, 3px); filter: drop-shadow(1px 1px 0 var(--split-red)) drop-shadow(1px 1px 0 var(--split-blue)); }
+.quiz-band:focus-visible { outline: 3px solid var(--focus); outline-offset: 8px; }
+.qb-px { display: grid; grid-template-columns: repeat(6, 12px); gap: 3px; }
+.qb-px i { width: 12px; height: 12px; animation: qb-blink 3.2s steps(1) infinite; }
+.qb-px i:nth-child(5n) { animation-delay: 0.8s; }
+.qb-px i:nth-child(7n) { animation-delay: 1.9s; }
+@keyframes qb-blink { 0%, 88% { opacity: 1; } 92% { opacity: 0.25; } }
+.qb-text { display: grid; gap: 0.25rem; min-width: 0; }
+.qb-k { font: 400 0.66rem var(--pixel); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-3); }
+.qb-text b { font: 700 clamp(1.7rem, 1.2rem + 1.8vw, 2.5rem)/1 var(--display); font-stretch: 78%; letter-spacing: -0.02em; }
+.qb-text > span:last-child { color: var(--ink-2); font-size: 1rem; line-height: 1.45; max-width: 60ch; }
+.qb-go { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 1.3rem; background: var(--ink); color: var(--paper); font: 700 1.05rem var(--display); white-space: nowrap; clip-path: var(--px-clip); }
+.qb-go span { display: inline-block; transition: transform 0.15s steps(3, end); }
+.quiz-band:hover .qb-go span { transform: translateX(3px); }
+@media (max-width: 760px) {
+  .quiz-band { grid-template-columns: minmax(0, 1fr); padding: 1.2rem; gap: 0.9rem; }
+  .qb-px { grid-template-columns: repeat(12, 10px); }
+  .qb-px i { width: 10px; height: 10px; }
+  .qb-go { justify-self: start; }
+}
+
+/* the note of the day: a night panel, key takeaways first, then the blocks in two columns */
+.hday-panel { background: var(--night) var(--px-grid); background-size: 16px 16px; color: #fff; padding: 1.6rem 1.8rem 1.8rem; display: grid; gap: 1.2rem; }
+.hday-panel-head { display: grid; gap: 0.3rem; }
+.hday-panel-head .hero-kicker { margin: 0; }
+.hday-panel-head h2 { color: #fff; font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); }
+.hday-take { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr)); gap: 0.8rem; counter-reset: tk; }
+.hday-take li { counter-increment: tk; display: block; padding: 0.9rem 1rem; background: var(--night-2) padding-box; border: 6px solid transparent; border-image: var(--px-dark) 6 / 6px / 0 stretch; color: #d3d4da; font-size: 0.95rem; line-height: 1.45; }
+.hday-take li::before { content: "0" counter(tk); display: block; margin-bottom: 0.4rem; font: 400 0.75rem var(--pixel); color: var(--split-blue); }
+.hday-take b, .hday-take a { color: #fff; }
+.hday-panel .hday-note { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 2.2rem; }
+@media (max-width: 900px) {
+  .hday-panel .hday-note { grid-template-columns: 1fr; }
+  .hday-panel { padding: 1.2rem 1rem 1.4rem; }
+}
+
+/* the two widgets: night tiles side by side */
+.hw-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; align-items: stretch; }
+@media (max-width: 900px) { .hw-row { grid-template-columns: 1fr; } }
+.hw { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 1rem; padding: 1.3rem 1.4rem 1.4rem; background: var(--night) padding-box; color: #fff; border: 6px solid transparent; border-image: var(--px-dark) 6 / 6px / 0 stretch; min-width: 0; }
+.hw-head { display: grid; gap: 0.35rem; color: #fff; text-decoration: none; }
+.hw-head .hero-kicker { margin: 0; }
+.hw-head b { font: 700 clamp(1.35rem, 1.1rem + 0.8vw, 1.7rem)/1.1 var(--display); font-stretch: 80%; letter-spacing: -0.012em; }
+.hw-head:hover b { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+.hw-head > span:last-child { color: #c3c6d4; font-size: 0.92rem; line-height: 1.45; }
+.hw-big { display: inline-block; margin-left: 0.25rem; font-variant-numeric: tabular-nums; }
+.hw-big.is-pos { color: var(--split-blue); }
+.hw-big.is-neg { color: var(--split-red); }
+.hw-fig { margin: 0; display: grid; gap: 0.6rem; align-content: end; min-width: 0; }
+.hw-fig figcaption { display: grid; gap: 0.55rem; color: #a9abb3; font-size: 0.8rem; }
+.hw-fig figcaption p { margin: 0; }
+.hw .home-arrows { width: 100%; height: auto; max-height: 420px; display: block; }
+.hw .home-arrows .shift-base { fill: rgba(255, 255, 255, 0.035); stroke: rgba(255, 255, 255, 0.16); stroke-width: 0.8; }
+.hw .home-arrows .arrow { cursor: pointer; }
+.hw-parl .hero-dots { max-height: 420px; }
+.hw-strip { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 2px; height: 44px; position: relative; }
+.hw-strip::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--night-rule-2); }
+.hw-strip i { position: relative; display: block; }
+.hw-strip i::before { content: ""; position: absolute; left: 0; right: 0; height: var(--h); }
+.hw-strip i.is-pos::before { bottom: 50%; background: var(--split-blue); opacity: 0.55; }
+.hw-strip i.is-neg::before { top: 50%; background: var(--split-red); opacity: 0.55; }
+.hw-strip i.is-on::before { opacity: 1; }
+.hw-years { display: flex; justify-content: space-between; gap: 0.6rem; font: 400 0.6rem var(--pixel); text-transform: uppercase; letter-spacing: 0.03em; color: var(--night-text-3); }
+.hw-years span:nth-child(2) { text-align: center; }
+.hw-more { justify-self: start; font: 700 0.92rem var(--display); color: #fff; text-decoration: none; }
+.hw-more:hover { text-decoration: underline; }
+@media (prefers-reduced-motion: reduce) { .qb-px i { animation: none; } }
