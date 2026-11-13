@@ -6,7 +6,7 @@ import type { Market } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
 import { lineChart, pollDots, type Series } from "../lib/chart";
 import { meta } from "../lib/candidates";
-import { ELECTION_DAY, PRIMARY, SCENARIOS, forecast, isScenario, type Forecast, type ScenarioKey } from "../lib/forecast";
+import { ELECTION_DAY, PRIMARY, RALLY_SHARE, SCENARIOS, forecast, isScenario, type Forecast, type ScenarioKey } from "../lib/forecast";
 import { trend, type PollFile } from "../lib/polls";
 import { dec, pct } from "../lib/format";
 import { esc } from "../util";
@@ -98,7 +98,10 @@ export function mountForecastChart(box: HTMLElement, o: Opts) {
           const knots = pr.knots.map((k, i) => (i === 0 ? { date: last.date, mid: last.value, lo: last.value, hi: last.value } : k));
           const end = knots.at(-1)!;
           const who = replaced ? "Bardella" : m.surname;
-          s.proj = {
+          s.proj = pr.outAt ? {
+            knots, out: true,
+            title: L(`${who} se retire à la primaire du ${fmtDate(pr.outAt)}`, `${who} withdraws at the ${fmtDate(pr.outAt)} primary`),
+          } : {
             knots,
             label: replaced ? "Bardella" : undefined,
             title: L(`${who} le ${fmtDate(ELECTION_DAY)} : ${dec(end.lo)} à ${dec(end.hi)} % (8 chances sur 10), ${dec(end.mid)} % en moyenne`, `${who} on ${fmtDate(ELECTION_DAY)}: ${dec(end.lo)} to ${dec(end.hi)}% (8 in 10 chance), ${dec(end.mid)}% on average`),
@@ -107,17 +110,17 @@ export function mountForecastChart(box: HTMLElement, o: Opts) {
         return s;
       })
       .filter((s) => s.line.length);
-    const markers = [{ date: ELECTION_DAY, label: L(`1er tour, ${fmtDate(ELECTION_DAY)}`, `1st round, ${fmtDate(ELECTION_DAY)}`) }];
+    const markers = [{ date: ELECTION_DAY, label: L("1er tour", "1st round"), title: L(`Premier tour, ${fmtDate(ELECTION_DAY)}`, `First round, ${fmtDate(ELECTION_DAY)}`) }];
     if (fc.primary && key !== "no-primary") {
-      markers.push({ date: fc.primary.day, label: PRIMARY.status === "confirmed" ? L("Primaire du centre", "Centre primary") : L("Primaire du centre (anticipée)", "Centre primary (anticipated)") });
+      markers.push({ date: fc.primary.day, label: L("Primaire", "Primary"), title: L(`Primaire du centre ${PRIMARY.status === "confirmed" ? "" : "(anticipée) "}— ${fmtDate(fc.primary.day)}`, `Centre primary ${PRIMARY.status === "confirmed" ? "" : "(anticipated) "}— ${fmtDate(fc.primary.day)}`) });
     }
     chartBox.innerHTML = lineChart(series, { height: o.height, markers });
     const pr = fc.primary;
-    const win = pr?.winners[0];
-    const sn = (names: string[], fr: boolean) => names.map((n) => esc(meta(n).surname)).join(fr ? ", " : ", ");
-    const primLine = pr && key !== "no-primary"
-      ? L(` Primaire du centre anticipée fin janvier : ${sn(PRIMARY.participants, true)} se rangent derrière le mieux placé dans les sondages de fin décembre${win ? ` (${esc(meta(win.name).surname)} ${Math.round(win.p)} fois sur 100)` : ""} ; ${sn(PRIMARY.rallyFrom, true)} n’y participe pas mais ${Math.round(100 * PRIMARY.rallyFromShare)} % de ses électeurs rejoignent le candidat désigné. Pour chaque participant, la ligne est la moyenne entre gagner (et rassembler) et se retirer.`,
-          ` Centre primary anticipated at the end of January: ${sn(PRIMARY.participants, false)} line up behind whoever is best placed in the end-of-December polls${win ? ` (${esc(meta(win.name).surname)} ${Math.round(win.p)} times in 100)` : ""}; ${sn(PRIMARY.rallyFrom, false)} doesn’t take part, but ${Math.round(100 * PRIMARY.rallyFromShare)}% of his voters join the chosen candidate. For each participant the line averages winning (and rallying the rest) and withdrawing.`)
+    const sn = (names: string[], fr: boolean) => { const xs = names.map((n) => esc(meta(n).surname)); return xs.length > 1 ? `${xs.slice(0, -1).join(", ")} ${fr ? "et" : "and"} ${xs.at(-1)}` : xs.join(""); };
+    const win = pr?.winner ? esc(meta(pr.winner).surname) : null;
+    const primLine = pr && key !== "no-primary" && win
+      ? L(` Primaire du centre anticipée fin janvier : le mieux placé dans les sondages de fin décembre l’emporte, ${win} selon la tendance actuelle. ${sn(pr.losers, true)} se retirent (✕) et ${Math.round(100 * RALLY_SHARE)} % de leurs électeurs le rejoignent ; ${sn(PRIMARY.rallyFrom, true)} n’y participe pas mais ${Math.round(100 * PRIMARY.rallyFromShare)} % de ses électeurs le rejoignent aussi.`,
+          ` Centre primary anticipated at the end of January: whoever is best placed in the end-of-December polls wins, ${win} on the current trend. ${sn(pr.losers, false)} withdraw (✕) and ${Math.round(100 * RALLY_SHARE)}% of their voters join him; ${sn(PRIMARY.rallyFrom, false)} doesn’t take part, but ${Math.round(100 * PRIMARY.rallyFromShare)}% of his voters join him too.`)
       : "";
     note.innerHTML = `${key === "base" ? "" : `<b>${esc(label(key))}.</b> ${esc(desc(key))} `}${L(
       `Pointillés : le score attendu au premier tour, avec la moitié de la tendance des quatre derniers mois${key === "base" ? "" : ", dans ce scénario"} ; les scores de tous les candidats (y compris ceux non affichés) font 100 %. Zone colorée : 8 chances sur 10 que le score tombe dedans, selon notre modèle (erreurs de sondage, ralliements tardifs, cygnes noirs). Personne ne dépasse un plafond tiré du rejet : on ne gagne au plus que la moitié du chemin vers l’électorat qui n’exclut pas de voter pour vous (Mélenchon : ${dec(ceilingOf(fc, "Jean-Luc Mélenchon"))} %).`,

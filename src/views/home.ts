@@ -79,7 +79,8 @@ export async function renderHome(app: HTMLElement) {
   if (home?.code) drawMine(app.querySelector<HTMLElement>("#mine")!, home.code, home.commune ?? home.code);
 
   // ---------- polls chart with the projection to election day and the scenarios ----------
-  const from = shiftDays(latest, -365);
+  // five months back on a wide screen, about three on a phone: the projection to the first round gets as much room
+  const from = shiftDays(latest, window.innerWidth < 640 ? -100 : -150);
   const shown = now.slice(0, 7).map((r) => r.name);
   const num = app.querySelector<HTMLElement>("#hq-num")!;
   mountForecastChart(app.querySelector<HTMLElement>("#trend")!, {

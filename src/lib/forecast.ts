@@ -83,7 +83,7 @@ export interface ForecastRow {
 }
 /** A candidate's first-round score along the way, in the polls model: at each knot (today, the primary, election
  *  day) the average and the 80 % range, in % of votes cast; at every knot the field adds up to 100. */
-export interface Projection { name: string; knots: { date: string; mid: number; lo: number; hi: number }[] }
+export interface Projection { name: string; knots: { date: string; mid: number; lo: number; hi: number }[]; /** withdraws on this date */ outAt?: string }
 export interface Forecast {
   rows: ForecastRow[];
   /** most likely runoff pairings in the polls model */
@@ -103,7 +103,7 @@ export interface Forecast {
   /** transfer rates by political distance, fitted to the runoff polls */
   affinity: number[];
   /** the centre and right primary, when it falls before the vote: how often it's held, who wins it */
-  primary: { day: string; pHeld: number; held: number; winners: { name: string; p: number }[] } | null;
+  primary: { day: string; pHeld: number; held: number; winner: string | null; losers: string[] } | null;
   /** first-round ceilings from rejection polls, by candidate (only those the poll covers) */
   ceilings: Record<string, number>;
 }
@@ -224,8 +224,6 @@ export const P_RALLY = 0.25;
 /** Long-term trend carried forward: the last 120 days' slope of the polling average, at this fraction, capped. */
 export const TREND_DAYS = 120, TREND_DAMP = 0.5, TREND_CAP = 4;
 // Errors have fat tails (one draw in ten is about twice as wide), so big misses aren't vanishingly rare.
-/** The primary picks whoever is best placed in the polls at the end of December, give or take this many points. */
-const PRIMARY_SD = 2;
 /** Ceiling: a candidate can climb at most this fraction of the way from today's share to their maximum
  *  electorate (everyone who doesn't completely rule out voting for them, Cluster17 for Politico). */
 export const CEILING_FRACTION = 0.5;
@@ -310,6 +308,10 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
     return ex == null ? Infinity : before[i] + CEILING_FRACTION * Math.max(0, 100 - ex - before[i]);
   });
   const f1 = primaryOn ? tPrim / Math.max(1, daysToGo) : 1;
+  // who the primary picks: the participant best placed in the polls at the end of December, as projected today
+  // (today's share plus the trend carried to that date); once December's polls are in, that is simply who leads
+  const fDec = Math.max(0, Math.min(1, (Date.parse(PRIMARY.decidedBy || PRIMARY_DAY) - Date.parse(asOf)) / 86400000 / Math.max(1, daysToGo)));
+  const primWinner = primIdx.length ? primIdx.reduce((a, b) => (base[b].share + drift[b] * fDec > base[a].share + drift[a] * fDec ? b : a)) : -1;
 
   const polledShare = (a: string, b: string) => {
     const d = duels.find((x) => [x.winner, x.loser].sort().join() === [a, b].sort().join());
@@ -356,7 +358,6 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
   const runoffCache = new Map<string, number>();
   const atPrimary = base.map(() => new Float32Array(RUNS)), afterPrimary = base.map(() => new Float32Array(RUNS)), final = base.map(() => new Float32Array(RUNS));
   let nHeld = 0;
-  const primWins = new Map<string, number>();
   const x = new Float64Array(n);
   /** shares add up to 100 among those still running; nobody goes above their ceiling (the excess goes to the others) */
   const settle = (out: Set<number>) => {
@@ -382,9 +383,7 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
     // voters follow; part of the centre outside the primary (Philippe's voters) rallies too
     if (primaryOn && rand() < pHeld) {
       nHeld++;
-      let w = primIdx[0], wv = -Infinity;
-      for (const i of primIdx) { const v = x[i] + PRIMARY_SD * gauss(rand); if (v > wv) { wv = v; w = i; } }
-      primWins.set(base[w].name, (primWins.get(base[w].name) ?? 0) + 1);
+      const w = primWinner;
       for (const i of primIdx) if (i !== w) { const g = Math.max(0, x[i]); x[w] += g * RALLY_SHARE; x[i] -= g * RALLY_SHARE; spread(x, i, Math.max(0, x[i]), out); x[i] = 0; out.add(i); }
       for (const j of rallyIdx) if (!out.has(j) && x[j] > 0) { const g = x[j] * PRIMARY.rallyFromShare; x[j] -= g; x[w] += g; }
       settle(out);
@@ -440,15 +439,26 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
     const at = (f: number) => sorted[Math.min(sorted.length - 1, Math.floor(f * sorted.length))];
     return { date, mid: sum / arr.length, lo: at(0.1), hi: at(0.9) };
   };
-  const projection: Projection[] = n >= 2 ? base.map((c, i) => ({
-    name: c.name,
-    knots: [
-      { date: asOf, mid: c.share, lo: c.share, hi: c.share },
-      ...(primaryOn ? [knot(PRIMARY_DAY, atPrimary[i], i), knot(new Date(Date.parse(PRIMARY_DAY) + 86400000).toISOString().slice(0, 10), afterPrimary[i], i)] : []),
-      knot(ELECTION_DAY, final[i], i),
-    ],
-  })) : [];
-  const primary = primaryOn ? { day: PRIMARY_DAY, pHeld, held: (100 * nHeld) / RUNS, winners: [...primWins.entries()].map(([name, k]) => ({ name, p: (100 * k) / Math.max(1, nHeld) })).sort((a, b) => b.p - a.p) } : null;
+  // when the primary surely happens, its losers' lines stop there (they withdraw); otherwise they average both paths
+  const sure = primaryOn && pHeld >= 1;
+  const projection: Projection[] = n >= 2 ? base.map((c, i) => {
+    const out = sure && primIdx.includes(i) && i !== primWinner;
+    return {
+      name: c.name,
+      ...(out ? { outAt: PRIMARY_DAY } : {}),
+      knots: [
+        { date: asOf, mid: c.share, lo: c.share, hi: c.share },
+        ...(primaryOn ? [knot(PRIMARY_DAY, atPrimary[i], i)] : []),
+        ...(primaryOn && !out ? [knot(new Date(Date.parse(PRIMARY_DAY) + 86400000).toISOString().slice(0, 10), afterPrimary[i], i)] : []),
+        ...(out ? [] : [knot(ELECTION_DAY, final[i], i)]),
+      ],
+    };
+  }) : [];
+  const primary = primaryOn ? {
+    day: PRIMARY_DAY, pHeld, held: (100 * nHeld) / RUNS,
+    winner: primWinner >= 0 ? base[primWinner].name : null,
+    losers: primIdx.filter((i) => i !== primWinner).map((i) => base[i].name),
+  } : null;
 
   // ---- markets (not under a scenario: they can't be re-priced for an imagined world)
   const hasMarkets = scenario === "base" && odds.some((o) => o.win);
