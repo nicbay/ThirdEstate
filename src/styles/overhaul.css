@@ -36,7 +36,7 @@
 
 /* ---------- detail sheet (src/lib/sheet.ts): phones only, the side panel rises from the bottom ---------- */
 @media (max-width: 860px) {
-  .px-sheet { position: fixed; left: 0; right: 0; z-index: 24; display: grid; grid-template-rows: auto minmax(0, 1fr); margin: 0; padding: 0; background: var(--paper); border: 6px solid transparent; border-bottom: 0; border-image: var(--px-ink) 6 / 6px / 0 stretch; background-clip: padding-box; filter: drop-shadow(0 -4px 0 rgba(11, 13, 24, 0.18)); transition: transform 0.24s steps(6, end); will-change: transform; }
+  .px-sheet { position: fixed; left: 0; right: 0; z-index: 24; display: grid; grid-template-rows: auto minmax(0, 1fr); margin: 0; padding: 0; background: var(--paper); border: 6px solid transparent; border-bottom: 0; border-image: var(--px-ink) 6 / 6px / 0 stretch; background-clip: padding-box; filter: drop-shadow(0 -4px 0 rgba(19, 18, 9, 0.18)); transition: transform 0.24s steps(6, end); will-change: transform; }
   .px-sheet-grab { display: grid; place-items: center; height: 30px; padding: 0; border: 0; background: none; cursor: grab; touch-action: none; }
   .px-sheet-grab::before { content: ""; width: 40px; height: 6px; background: var(--rule-2); box-shadow: 0 0 0 0 var(--ink); clip-path: var(--px-clip); }
   .px-sheet-grab:active { cursor: grabbing; }
@@ -90,7 +90,7 @@
 .kit-sw small { color: var(--ink-3); font: 500 0.68rem var(--mono); }
 .kit-type { display: grid; gap: var(--spacing-2); }
 .kit-type > * { margin: 0; }
-.kit-h1 { font: 850 clamp(1.8rem, 1.1rem + 2.2vw, 2.9rem)/0.98 var(--display); font-stretch: 72%; letter-spacing: -0.028em; }
+.kit-h1 { font: 700 clamp(1.8rem, 1.1rem + 2.2vw, 2.9rem)/0.98 var(--display); font-stretch: 72%; letter-spacing: -0.028em; }
 .kit-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-3); margin: 0 0 var(--spacing-4); }
 .kit-icons span { display: grid; place-items: center; width: 40px; height: 40px; color: var(--ink); background: var(--panel); }
 .kit-hemi { max-width: 420px; margin-top: var(--spacing-4); }
@@ -167,11 +167,11 @@
 }
 
 /* ---------- profile identity strip (src/lib/id-strip.ts) ---------- */
-.id-strip { position: fixed; left: 0; right: 0; top: calc(var(--bar-h) + var(--sub-h, 0px)); z-index: 14; background: var(--paper); border-bottom: 3px solid var(--c, var(--ink)); box-shadow: 0 4px 0 rgba(11, 13, 24, 0.08); transform: translateY(-110%); visibility: hidden; transition: transform 0.18s steps(4, end), visibility 0s 0.18s; pointer-events: none; }
+.id-strip { position: fixed; left: 0; right: 0; top: calc(var(--bar-h) + var(--sub-h, 0px)); z-index: 14; background: var(--paper); border-bottom: 3px solid var(--c, var(--ink)); box-shadow: 0 4px 0 rgba(19, 18, 9, 0.08); transform: translateY(-110%); visibility: hidden; transition: transform 0.18s steps(4, end), visibility 0s 0.18s; pointer-events: none; }
 .id-strip.is-on { transform: none; visibility: visible; transition: transform 0.18s steps(4, end); }
 .id-in { max-width: var(--col); margin: 0 auto; padding: 0.4rem var(--gutter); display: flex; align-items: center; gap: var(--spacing-3); }
 .id-in img { width: 32px; height: 32px; object-fit: cover; clip-path: var(--px-clip); background: var(--wash); }
-.id-in b { font: 800 1.02rem/1.1 var(--display); font-stretch: 80%; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.id-in b { font: 700 1.02rem/1.1 var(--display); font-stretch: 80%; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 @media (max-width: 760px) { .id-strip { top: var(--bar-h); } }
 @media (prefers-reduced-motion: reduce) { .id-strip, .id-strip.is-on { transition: none; } }
 .id-in b { flex: 0 0 auto; max-width: 62%; }

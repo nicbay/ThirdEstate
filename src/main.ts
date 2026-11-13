@@ -7,6 +7,7 @@ import "./styles/tokens.css";
 import "./style.css";
 import "./redesign.css";
 import "./styles/overhaul.css";
+import "./styles/desk-v3.css";
 import { L, getLang, setLang, t } from "./i18n";
 import { renderHome } from "./views/home";
 import { renderPolls } from "./views/polls";
@@ -58,7 +59,6 @@ themeBtn.addEventListener("click", () => {
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", paintThemeBtn);
 const footer = document.getElementById("footer")!;
 const searchBtn = document.getElementById("search-btn") as HTMLButtonElement;
-const quizBtn = document.getElementById("quiz-cta") as HTMLAnchorElement;
 const tabbar = document.getElementById("tabbar")!;
 const skip = document.getElementById("skip") as HTMLAnchorElement;
 document.querySelector(".topbar .brand")!.insertAdjacentHTML("afterbegin", foxSvg(28, true));
@@ -75,6 +75,17 @@ document.addEventListener("error", (e) => {
 const setVw = () => document.documentElement.style.setProperty("--vw", `${document.documentElement.clientWidth}px`);
 setVw();
 new ResizeObserver(setVw).observe(document.documentElement);
+// The masthead floats (fixed): the nav pill and the section's pill under it. --head-h is the room it takes at the top
+// of every page (night bands slide under it); --bar-h is where sticky things stop, 0 while it is tucked away on phones.
+const masthead = document.getElementById("masthead")!;
+const root = document.documentElement;
+function setHeadVars() {
+  const h = Math.ceil(masthead.getBoundingClientRect().height);
+  root.style.setProperty("--head-h", `${h}px`);
+  root.style.setProperty("--bar-h", root.classList.contains("head-away") ? "0px" : `${h}px`);
+  root.style.setProperty("--sub-h", "0px");
+}
+new ResizeObserver(setHeadVars).observe(masthead);
 
 // URL shape: #/<section>[/<param>][#<anchor>]
 const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
@@ -324,11 +335,11 @@ function renderChrome(path: string) {
   sheet.setAttribute("aria-label", L("Menu du site", "Site menu"));
   sheet.innerHTML = `<div class="ms-box">
     <header class="ms-head"><span class="ms-brand">${foxSvg(32, true)}<b>Third<span>Estate</span></b></span><button type="button" class="ms-close" data-ms="close" aria-label="${L("Fermer le menu", "Close the menu")}">${pixelIcon("close", 24)}</button></header>
-    <div class="ms-tools">
+    <div class="ms-tools" style="--i:1">
       <button type="button" data-ms="search">${pixelIcon("search", 12)}<span>${L("Rechercher une commune, un élu, un mot", "Search a town, an official, a word")}</span></button>
       <a class="ms-quiz" href="#/quiz">${L("Le quiz : qui vous ressemble ?", "The quiz: who’s like you?")}</a>
     </div>
-    <nav class="ms-nav" aria-label="${L("Rubriques", "Sections")}">${SECTIONS.map((s, n) => `<details${s === current || (!current && n === 0) ? " open" : ""}>
+    <nav class="ms-nav" aria-label="${L("Rubriques", "Sections")}">${SECTIONS.map((s, n) => `<details style="--i:${n + 2}"${s === current || (!current && n === 0) ? " open" : ""}>
         <summary>${pixelIcon(s.icon, 24)}<span><b>${L(s.fr, s.en)}</b><small>${esc(L(...s.blurb))}</small></span>${caret}</summary>
         <div class="ms-links">${groupsOf(s).map((g) => `${g.head ? `<p class="ms-group">${esc(L(...g.head))}</p>` : ""}${g.items.map(itemLink).join("")}`).join("")}${withCands(s) ? candLinks("ms-extra") : ""}</div>
       </details>`).join("")}</nav>
@@ -345,8 +356,6 @@ function renderChrome(path: string) {
 
   searchBtn.innerHTML = `${pixelIcon("search", 12)}<span class="sb-label">${L("Rechercher", "Search")}</span><kbd>${isMac ? "⌘" : "Ctrl"} K</kbd>`;
   searchBtn.setAttribute("aria-label", L(`Rechercher (${isMac ? "Cmd" : "Ctrl"}+K)`, `Search (${isMac ? "Cmd" : "Ctrl"}+K)`));
-  quizBtn.innerHTML = `<span class="q-long">${L("Qui vous ressemble ?", "Who’s like you?")}</span><span class="q-short">${L("Le quiz", "Quiz")}</span>`;
-  quizBtn.toggleAttribute("aria-current", /^#\/quiz/.test(path));
   paintThemeBtn();
   langBtn.innerHTML = `<span class="l-long">${t().langSwitch}</span><span class="l-short" aria-hidden="true">${getLang() === "fr" ? "EN" : "FR"}</span>`;
   langBtn.setAttribute("aria-label", getLang() === "fr" ? "Switch to English" : "Passer en français");
@@ -390,8 +399,16 @@ toTop.hidden = true;
 document.body.append(toTop);
 toTop.addEventListener("click", () => { window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); app.focus({ preventScroll: true }); });
 let scrollQueued = false;
+let lastY = 0;
+const phone = matchMedia("(max-width: 760px)");
 function onScroll() {
   scrollQueued = false;
+  // phones: the masthead steps away while reading down and comes back on the first move up
+  const away = phone.matches && scrollY > 160 && scrollY > lastY && !sheet.open;
+  if (Math.abs(scrollY - lastY) > 6 || scrollY < 160) {
+    if (root.classList.contains("head-away") !== away) { root.classList.toggle("head-away", away); setHeadVars(); }
+    lastY = scrollY;
+  }
   const max = document.documentElement.scrollHeight - innerHeight;
   const p = max > 40 ? Math.min(1, scrollY / max) : 0;
   // 40 steps: the bar advances block by block, like the mark's pixels
@@ -581,11 +598,13 @@ function reloadForNewVersion(err: unknown) {
 }
 window.addEventListener("vite:preloadError", (e) => { if (reloadForNewVersion((e as Event & { payload?: unknown }).payload)) e.preventDefault(); });
 let renderSeq = 0;
+const SITE_TITLE = document.title;
 async function render(path: string, anchor: string | undefined) {
   // A view transition runs its update on the next painted frame, so a quick second navigation (or a
   // background tab) can leave an older render queued: drop it if the address has moved on since.
   if (split().path !== path) return;
   const seq = ++renderSeq;
+  document.title = SITE_TITLE; // views that name themselves (home, 404) set their own after this
   renderChrome(path);
   for (const [re, fn] of routes) {
     const m = path.match(re);
@@ -609,7 +628,10 @@ async function render(path: string, anchor: string | undefined) {
       return;
     }
   }
-  location.hash = "#/";
+  const { renderNotFound } = await import("./views/notfound");
+  if (seq !== renderSeq) return;
+  renderNotFound(app, path);
+  window.scrollTo(0, 0);
 }
 
 langBtn.addEventListener("click", () => {

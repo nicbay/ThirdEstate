@@ -5,7 +5,7 @@
 .pg-open { all: unset; cursor: pointer; font: inherit; font-weight: 700; color: var(--ink); border-bottom: 1px dashed var(--rule-2); }
 .pg-open:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .pg-open[aria-expanded="true"] { border-bottom-style: solid; }
-.pg-badge { display: inline-block; min-width: 2.2em; text-align: center; font: 800 0.82rem var(--mono); padding: 0.15rem 0.4rem; border-radius: 3px; color: #fff; }
+.pg-badge { display: inline-block; min-width: 2.2em; text-align: center; font: 700 0.82rem var(--mono); padding: 0.15rem 0.4rem; border-radius: 3px; color: #fff; }
 .pg-badge.g-a { background: #1e8a4c; }
 .pg-badge.g-b { background: #5f9c2f; }
 .pg-badge.g-c { background: #c98a12; }
