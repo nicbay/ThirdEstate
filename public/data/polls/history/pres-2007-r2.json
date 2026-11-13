@@ -1,0 +1,2145 @@
+{
+ "id": "pres-2007-r2",
+ "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2007_French_presidential_election",
+ "resultSource": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2007 (via public/data/history/presidential/2007.json)",
+ "result": {
+  "Nicolas Sarkozy": 53.06,
+  "Ségolène Royal": 46.94
+ },
+ "polls": [
+  {
+   "pollster": "BVA",
+   "start": "2007-05-04",
+   "end": "2007-05-04",
+   "sample": 807,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_bvaorange_4mai__5e28d.pdf",
+   "values": {
+    "Ségolène Royal": 45,
+    "Nicolas Sarkozy": 55
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-05-04",
+   "end": "2007-05-04",
+   "sample": 992,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-64",
+   "values": {
+    "Ségolène Royal": 45,
+    "Nicolas Sarkozy": 55
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-05-03",
+   "end": "2007-05-03",
+   "sample": 1005,
+   "url": "https://web.archive.org/web/20071017141953/http://www.csa-fr.com/dataset/data2007/opi20070503-les-reactions-au-debat-televise-royal-sarkozy-et-les-intentions-de-vote-presidentielles-pour-le-second-tour.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-05-03",
+   "end": "2007-05-03",
+   "sample": 961,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/intentiondevote0405.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2007-05-03",
+   "end": "2007-05-03",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-barometre-presidentiel-vague-24",
+   "values": {
+    "Ségolène Royal": 45.5,
+    "Nicolas Sarkozy": 54.5
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-05-02",
+   "end": "2007-05-03",
+   "sample": 1414,
+   "url": "https://web.archive.org/web/20070605011047/http://www.ipsos.fr/presidentielle-2007/pdf/040507.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2007-05-02",
+   "end": "2007-05-03",
+   "sample": 1415,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/jdd-online-intention-de-vote-second-tour/viewdocument.html",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-05-01",
+   "end": "2007-05-02",
+   "sample": 1011,
+   "url": "https://web.archive.org/web/20070605010955/http://www.ipsos.fr/presidentielle-2007/pdf/030507.pdf",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-30",
+   "end": "2007-05-01",
+   "sample": 808,
+   "url": "https://web.archive.org/web/20070605011032/http://www.ipsos.fr/presidentielle-2007/pdf/020507.pdf",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2007-04-30",
+   "end": "2007-04-30",
+   "sample": 805,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_26observatoirebvaorange-presseragionale_3bb0a.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-27",
+   "end": "2007-04-30",
+   "sample": 1362,
+   "url": "https://web.archive.org/web/20070605011120/http://www.ipsos.fr/presidentielle-2007/pdf/010507.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-04-27",
+   "end": "2007-04-28",
+   "sample": 956,
+   "url": "https://web.archive.org/web/20070605010945/http://www.ifop2007.fr/photo/File/IntentionDeVote/PM-PRESI21-30042007-16265.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2007-04-27",
+   "end": "2007-04-28",
+   "sample": 1002,
+   "url": "https://web.archive.org/web/20070913134701/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/intentions_de_vote_second_tour_1_._vague_2._30_avril_2007.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-26",
+   "end": "2007-04-28",
+   "sample": 1367,
+   "url": "https://web.archive.org/web/20070605011105/http://www.ipsos.fr/presidentielle-2007/pdf/290407.pdf",
+   "values": {
+    "Ségolène Royal": 47.5,
+    "Nicolas Sarkozy": 52.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-04-26",
+   "end": "2007-04-27",
+   "sample": 886,
+   "url": "https://web.archive.org/web/20070503175643/http://www.ifop2007.fr/photo/File/IntentionDeVote/JDD-PRESI20-28-04-2007-16263A.pdf",
+   "values": {
+    "Ségolène Royal": 47.5,
+    "Nicolas Sarkozy": 52.5
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2007-04-26",
+   "end": "2007-04-27",
+   "sample": 2000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-barometre-presidentiel-vague-23",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-25",
+   "end": "2007-04-27",
+   "sample": 1255,
+   "url": "https://web.archive.org/web/20070605011035/http://www.ipsos.fr/presidentielle-2007/pdf/280407.pdf",
+   "values": {
+    "Ségolène Royal": 47.5,
+    "Nicolas Sarkozy": 52.5
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-24",
+   "end": "2007-04-26",
+   "sample": 1219,
+   "url": "https://web.archive.org/web/20070605011054/http://www.ipsos.fr/presidentielle-2007/pdf/270407.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-04-25",
+   "end": "2007-04-25",
+   "sample": 1005,
+   "url": "https://web.archive.org/web/20070605010952/http://www.csa-fr.com/dataset/data2007/opi20070425-les-intentions-de-vote-pour-le-second-tour-de-l-election-presidentielle.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-04-24",
+   "end": "2007-04-25",
+   "sample": 956,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/intentions2504.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-23",
+   "end": "2007-04-25",
+   "sample": 1613,
+   "url": "https://web.archive.org/web/20070605011100/http://www.ipsos.fr/presidentielle-2007/pdf/260407.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2007-04-24",
+   "end": "2007-04-24",
+   "sample": 893,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_25observatoirebvaorange-presseragionale_35826.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-23",
+   "end": "2007-04-24",
+   "sample": 1208,
+   "url": "https://web.archive.org/web/20070605011109/http://www.ipsos.fr/presidentielle-2007/pdf/250407.pdf",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2007-04-23",
+   "end": "2007-04-24",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-barometre-presidentiel-vague-22",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-23",
+   "end": "2007-04-23",
+   "sample": 803,
+   "url": "https://web.archive.org/web/20070605011043/http://www.ipsos.fr/presidentielle-2007/pdf/240407.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2007-04-22",
+   "end": "2007-04-22",
+   "sample": 825,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_ssvobservatoirebvaorange-presseragionale_b308d.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-04-22",
+   "end": "2007-04-22",
+   "sample": 1005,
+   "url": "https://web.archive.org/web/20070605010959/http://www.csa-fr.com/dataset/data2007/opi20070422-les-intentions-de-vote-pour-le-second-tour-de-l-election-presidentielle.pdf",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-04-22",
+   "end": "2007-04-22",
+   "sample": 1010,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/intentions2204.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-22",
+   "end": "2007-04-22",
+   "sample": 1089,
+   "url": "https://web.archive.org/web/20070605011112/http://www.ipsos.fr/presidentielle-2007/pdf/2dTour.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2007-04-22",
+   "end": "2007-04-22",
+   "sample": 1537,
+   "url": "https://web.archive.org/web/20070605010942/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2rmcbfmtv20mn23avril07.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2007-04-20",
+   "end": "2007-04-20",
+   "sample": 810,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_bvaorange_20avril_synthase_38759.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-04-20",
+   "end": "2007-04-20",
+   "sample": 1002,
+   "url": "https://web.archive.org/web/20070605010942/http://www.csa-fr.com/dataset/data2007/opi20070420-intentions-de-vote-a-l-election-presidentielle-de-2007-vague-27.pdf",
+   "values": {
+    "Ségolène Royal": 50,
+    "Nicolas Sarkozy": 50
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-19",
+   "end": "2007-04-20",
+   "sample": 1598,
+   "url": "https://web.archive.org/web/20070605010944/http://www.ipsos.fr/presidentielle-2007/pdf/200407-2.pdf",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-04-18",
+   "end": "2007-04-19",
+   "sample": 1002,
+   "url": "https://web.archive.org/web/20071017141550/http://www.csa-fr.com/dataset/data2007/opi20070419-intentions-de-vote-a-l-election-presidentielle-de-2007-vague-26.pdf",
+   "values": {
+    "Ségolène Royal": 50,
+    "Nicolas Sarkozy": 50
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-18",
+   "end": "2007-04-19",
+   "sample": 1209,
+   "url": "https://web.archive.org/web/20070605011051/http://www.ipsos.fr/presidentielle-2007/pdf/200407.pdf",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2007-04-18",
+   "end": "2007-04-19",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-barometre-presidentiel-vague-21",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-04-17",
+   "end": "2007-04-19",
+   "sample": 952,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/flash_presi.pdf",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-17",
+   "end": "2007-04-18",
+   "sample": 1212,
+   "url": "https://web.archive.org/web/20070605010952/http://www.ipsos.fr/presidentielle-2007/pdf/190407.pdf",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2007-04-16",
+   "end": "2007-04-17",
+   "sample": 887,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_23observatoirebvaorange-presseragionale_56efa.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-16",
+   "end": "2007-04-17",
+   "sample": 1009,
+   "url": "https://web.archive.org/web/20070605011116/http://www.ipsos.fr/presidentielle-2007/pdf/180407.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2007-04-16",
+   "end": "2007-04-17",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-barometre-presidentiel-vague-20",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-04-16",
+   "end": "2007-04-16",
+   "sample": 1006,
+   "url": "https://web.archive.org/web/20070605010955/http://www.csa-fr.com/dataset/data2007/opi20070416-intentions-de-vote-a-l-election-presidentielle-de-2007-vague-25.pdf",
+   "values": {
+    "Ségolène Royal": 50,
+    "Nicolas Sarkozy": 50
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-04-14",
+   "end": "2007-04-16",
+   "sample": 954,
+   "url": "https://web.archive.org/web/20070605010950/http://www.ifop2007.fr/photo/File/IntentionDeVote/PM-PRESI17-0407-16235.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-14",
+   "end": "2007-04-16",
+   "sample": 1357,
+   "url": "https://web.archive.org/web/20070605010941/http://www.ipsos.fr/presidentielle-2007/pdf/170407.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2007-04-13",
+   "end": "2007-04-15",
+   "sample": 1004,
+   "url": "https://web.archive.org/web/20070605010946/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2rmcbfmtv20mn16_17avril07.pdf",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-12",
+   "end": "2007-04-14",
+   "sample": 1355,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-50",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-04-12",
+   "end": "2007-04-13",
+   "sample": 928,
+   "url": "https://web.archive.org/web/20070913213410/http://www.ifop2007.fr/photo/File/IntentionDeVote/JDD-PRESI16-042007-16237.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-11",
+   "end": "2007-04-13",
+   "sample": 1279,
+   "url": "https://web.archive.org/web/20070605011015/http://www.ipsos.fr/presidentielle-2007/pdf/140407.pdf",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-04-11",
+   "end": "2007-04-12",
+   "sample": 918,
+   "url": "https://web.archive.org/web/20070928000426/http://www.csa-fr.com/dataset/data2007/opi20070412-intentions-de-vote-a-l-election-presidentielle-de-2007-vague-24.pdf",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2007-04-11",
+   "end": "2007-04-12",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-barometre-presidentiel-vague-19",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-10",
+   "end": "2007-04-12",
+   "sample": 1207,
+   "url": "https://web.archive.org/web/20070605011021/http://www.ipsos.fr/presidentielle-2007/pdf/130407.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-04-10",
+   "end": "2007-04-11",
+   "sample": 876,
+   "url": "https://web.archive.org/web/20071017141115/http://www.csa-fr.com/dataset/data2007/opi20070411-intentions-de-vote-a-l-election-presidentielle-de-2007-vague-23.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-09",
+   "end": "2007-04-11",
+   "sample": 1209,
+   "url": "https://web.archive.org/web/20070605011102/http://www.ipsos.fr/presidentielle-2007/pdf/120407.pdf",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2007-04-10",
+   "end": "2007-04-10",
+   "sample": 867,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_22observatoirebvaorange-presseragionale_74e3b.pdf",
+   "values": {
+    "Ségolène Royal": 45,
+    "Nicolas Sarkozy": 55
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-07",
+   "end": "2007-04-10",
+   "sample": 1300,
+   "url": "https://web.archive.org/web/20070605010947/http://www.ipsos.fr/presidentielle-2007/pdf/110407.pdf",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-06",
+   "end": "2007-04-09",
+   "sample": 1355,
+   "url": "https://web.archive.org/web/20070605011029/http://www.ipsos.fr/presidentielle-2007/pdf/100407.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2007-04-06",
+   "end": "2007-04-07",
+   "sample": 1009,
+   "url": "https://web.archive.org/web/20070422035214/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2rmcbfmtv20mn9_10avril07.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-05",
+   "end": "2007-04-07",
+   "sample": 1355,
+   "url": "https://web.archive.org/web/20070605011025/http://www.ipsos.fr/presidentielle-2007/pdf/080407.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-04-05",
+   "end": "2007-04-06",
+   "sample": 953,
+   "url": "https://web.archive.org/web/20070913213231/http://www.ifop2007.fr/photo/File/IntentionDeVote/JDD-PRESI15-0407-16227.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-04",
+   "end": "2007-04-06",
+   "sample": 1263,
+   "url": "https://web.archive.org/web/20070605011012/http://www.ipsos.fr/presidentielle-2007/pdf/070407.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-04-04",
+   "end": "2007-04-05",
+   "sample": 881,
+   "url": "https://web.archive.org/web/20070605010947/http://www.csa-fr.com/dataset/data2007/opi20070405-intentions-de-vote-a-l-election-presidentielle-de-2007-vague-22.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2007-04-04",
+   "end": "2007-04-05",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-barometre-presidentiel-vague-18",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-03",
+   "end": "2007-04-05",
+   "sample": 1208,
+   "url": "https://web.archive.org/web/20070605011007/http://www.ipsos.fr/presidentielle-2007/pdf/060407.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-04-02",
+   "end": "2007-04-04",
+   "sample": 1209,
+   "url": "https://web.archive.org/web/20070605011049/http://www.ipsos.fr/presidentielle-2007/pdf/050407.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2007-04-02",
+   "end": "2007-04-03",
+   "sample": 860,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_21observatoirebvaorange-presseragionale_b7187.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-31",
+   "end": "2007-04-03",
+   "sample": 1272,
+   "url": "https://web.archive.org/web/20070605011018/http://www.ipsos.fr/presidentielle-2007/pdf/040407.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-03-31",
+   "end": "2007-04-02",
+   "sample": 846,
+   "url": "https://web.archive.org/web/20070913213231/http://www.ifop2007.fr/photo/File/IntentionDeVote/JDD-PRESI15-0407-16227.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-30",
+   "end": "2007-04-02",
+   "sample": 1344,
+   "url": "https://web.archive.org/web/20070605011058/http://www.ipsos.fr/presidentielle-2007/pdf/030407.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2007-03-30",
+   "end": "2007-03-31",
+   "sample": 1003,
+   "url": "https://web.archive.org/web/20070913134747/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2rmcbfmtv20mn2_3avril07.pdf",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-29",
+   "end": "2007-03-31",
+   "sample": 1341,
+   "url": "https://web.archive.org/web/20070605011009/http://www.ipsos.fr/presidentielle-2007/pdf/010407.pdf",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-28",
+   "end": "2007-03-30",
+   "sample": 1277,
+   "url": "https://web.archive.org/web/20070605010958/http://www.ipsos.fr/presidentielle-2007/pdf/310307.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-03-28",
+   "end": "2007-03-29",
+   "sample": 922,
+   "url": "https://web.archive.org/web/20070420171638/http://www.csa-fr.com/dataset/data2007/opi20070329-intentions-de-vote-a-l-election-presidentielle-de-2007-vague-21.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2007-03-28",
+   "end": "2007-03-29",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-barometre-presidentiel-vague-17",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-27",
+   "end": "2007-03-29",
+   "sample": 1104,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-36",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-03-26",
+   "end": "2007-03-28",
+   "sample": 954,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/fiduciallci_0304.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-26",
+   "end": "2007-03-28",
+   "sample": 1006,
+   "url": "https://web.archive.org/web/20070605011038/http://www.ipsos.fr/presidentielle-2007/pdf/290307.pdf",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2007-03-26",
+   "end": "2007-03-27",
+   "sample": 873,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_20observatoirebvaorange-presseragionale_1fa82.pdf",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-24",
+   "end": "2007-03-27",
+   "sample": 1110,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-34",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-23",
+   "end": "2007-03-26",
+   "sample": 1247,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-33",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2007-03-23",
+   "end": "2007-03-24",
+   "sample": 1004,
+   "url": "https://web.archive.org/web/20070913134736/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2rmcbfmtv20mn26_27mars07.pdf",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-22",
+   "end": "2007-03-24",
+   "sample": 1245,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-32",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-03-22",
+   "end": "2007-03-23",
+   "sample": 872,
+   "url": "https://web.archive.org/web/20070913213658/http://www.ifop2007.fr/photo/File/IntentionDeVote/JDD-PRESI13-0307.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-21",
+   "end": "2007-03-23",
+   "sample": 1143,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-31",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-03-21",
+   "end": "2007-03-22",
+   "sample": 894,
+   "url": "https://web.archive.org/web/20071017140449/http://www.csa-fr.com/dataset/data2007/opi20070322-intentions-de-vote-a-l-election-presidentielle-de-2007-vague-20.pdf",
+   "values": {
+    "Ségolène Royal": 50,
+    "Nicolas Sarkozy": 50
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2007-03-21",
+   "end": "2007-03-22",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-barometre-presidentiel-vague-16",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-20",
+   "end": "2007-03-22",
+   "sample": 1006,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-30",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-19",
+   "end": "2007-03-21",
+   "sample": 1009,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-29",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2007-03-19",
+   "end": "2007-03-20",
+   "sample": 854,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_19observatoirebvaorange-presseragionale_e9f3d.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-17",
+   "end": "2007-03-20",
+   "sample": 1069,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-28",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-03-19",
+   "end": "2007-03-19",
+   "sample": 872,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/intentions2203.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-16",
+   "end": "2007-03-19",
+   "sample": 1253,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-27",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-03-16",
+   "end": "2007-03-17",
+   "sample": 911,
+   "url": "https://web.archive.org/web/20070913213601/http://www.ifop2007.fr/photo/File/IntentionDeVote/JDD-PRESI11-0307.pdf",
+   "values": {
+    "Ségolène Royal": 48.5,
+    "Nicolas Sarkozy": 51.5
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2007-03-16",
+   "end": "2007-03-17",
+   "sample": 1003,
+   "url": "https://web.archive.org/web/20070913134742/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2rmcbfmtv20mn19_20mars07.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-15",
+   "end": "2007-03-17",
+   "sample": 1252,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-26",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-14",
+   "end": "2007-03-16",
+   "sample": 1193,
+   "url": "https://web.archive.org/web/20070320064540/http://www.ipsos.fr/presidentielle-2007/pdf/170307.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2007-03-14",
+   "end": "2007-03-15",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-barometre-presidentiel-vague-15",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-13",
+   "end": "2007-03-15",
+   "sample": 1008,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-24",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-03-14",
+   "end": "2007-03-14",
+   "sample": 905,
+   "url": "https://web.archive.org/web/20070330011304/http://www.csa-fr.com/dataset/data2007/opi20070314-intentions-de-vote-a-l-election-presidentielle-de-2007-vague-19.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-12",
+   "end": "2007-03-14",
+   "sample": 1005,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-23",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2007-03-12",
+   "end": "2007-03-13",
+   "sample": 861,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_18observatoirebvaorange-presseragionale_363f1.pdf",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-10",
+   "end": "2007-03-13",
+   "sample": 1104,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-22",
+   "values": {
+    "Ségolène Royal": 47.5,
+    "Nicolas Sarkozy": 52.5
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-09",
+   "end": "2007-03-12",
+   "sample": 1250,
+   "url": "https://web.archive.org/web/20070315205629/http://www.ipsos.fr/presidentielle-2007/pdf/130307.pdf",
+   "values": {
+    "Ségolène Royal": 47.5,
+    "Nicolas Sarkozy": 52.5
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2007-03-09",
+   "end": "2007-03-10",
+   "sample": 1000,
+   "url": "https://web.archive.org/web/20070913134759/http://www.lh2.fr/_upload/ressources/sondages/lh2rmcbfmtv20mn12_13mars07.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-08",
+   "end": "2007-03-10",
+   "sample": 1254,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-20",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-07",
+   "end": "2007-03-09",
+   "sample": 1155,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-19",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2007-03-07",
+   "end": "2007-03-08",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-barometre-presidentiel-vague-14",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2007-03-07",
+   "end": "2007-03-08",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-objectif-2007-vague-8",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-06",
+   "end": "2007-03-08",
+   "sample": 1012,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-18",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-03-07",
+   "end": "2007-03-07",
+   "sample": 917,
+   "url": "https://web.archive.org/web/20070310174019/http://www.csa-fr.com/dataset/data2007/opi20070307-intentions-de-vote-a-l-election-presidentielle-de-2007-vague-18.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-05",
+   "end": "2007-03-07",
+   "sample": 1012,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-17",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2007-03-05",
+   "end": "2007-03-06",
+   "sample": 853,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_17observatoirebvaorange-presseragionale_7d124.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-03",
+   "end": "2007-03-06",
+   "sample": 1135,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-16",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-02",
+   "end": "2007-03-05",
+   "sample": 1255,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-15",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2007-03-02",
+   "end": "2007-03-03",
+   "sample": 1004,
+   "url": "https://web.archive.org/web/20070307094913/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2rmcbfmtv20mn5_6_mars07.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-03-01",
+   "end": "2007-03-03",
+   "sample": 1254,
+   "url": "https://web.archive.org/web/20070307083108/http://www.ipsos.fr/presidentielle-2007/pdf/040307.pdf",
+   "values": {
+    "Ségolène Royal": 45.5,
+    "Nicolas Sarkozy": 54.5
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-02-28",
+   "end": "2007-03-02",
+   "sample": 1128,
+   "url": "http://www.lemonde.fr/societe/article/2007/03/03/la-troisieme-place-de-bayrou-confortee-par-un-nouveau-barometre-quotidien_878502_3224.html",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2007-02-28",
+   "end": "2007-03-01",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-barometre-presidentiel-vague-13",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-02-27",
+   "end": "2007-03-01",
+   "sample": 1008,
+   "url": "http://www.lemonde.fr/societe/article/2007/03/03/la-troisieme-place-de-bayrou-confortee-par-un-nouveau-barometre-quotidien_878502_3224.html",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-02-28",
+   "end": "2007-02-28",
+   "sample": 871,
+   "url": "https://web.archive.org/web/20070327090013/http://www.csa-fr.com/dataset/data2007/opi20070228a-intentions-de-vote-a-l-election-presidentielle-de-2007-vague-17.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-02-26",
+   "end": "2007-02-28",
+   "sample": 1009,
+   "url": "https://web.archive.org/web/20070303115538/http://www.ipsos.fr/presidentielle-2007/pdf/Ipsos_Dell_SFR_Le_Point_01_mars_Vague_1.pdf",
+   "values": {
+    "Ségolène Royal": 46.5,
+    "Nicolas Sarkozy": 53.5
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2007-02-26",
+   "end": "2007-02-27",
+   "sample": 869,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_16observatoirebvaorange_3d91f.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-02-26",
+   "end": "2007-02-26",
+   "sample": 952,
+   "url": "https://www.lemonde.fr/societe/article/2007/02/27/francois-bayrou-est-credite-de-19-des-voix-au-premier-tour-dans-un-sondage-ifop_876971_3224.html",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-02-23",
+   "end": "2007-02-26",
+   "sample": 1842,
+   "url": "https://web.archive.org/web/20070913213210/http://www.ifop2007.fr/photo/File/IntentionDeVote/LACROIX-CATHOLIQUES-0307.pdf",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-02-23",
+   "end": "2007-02-24",
+   "sample": 957,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-0",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2007-02-23",
+   "end": "2007-02-24",
+   "sample": 1005,
+   "url": "https://web.archive.org/web/20070913134820/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2rmcbfmtv20mn26_27fev07.pdf",
+   "values": {
+    "Ségolène Royal": 50,
+    "Nicolas Sarkozy": 50
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-02-22",
+   "end": "2007-02-23",
+   "sample": 889,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/intentions2502.pdf",
+   "values": {
+    "Ségolène Royal": 49.5,
+    "Nicolas Sarkozy": 50.5
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-02-20",
+   "end": "2007-02-20",
+   "sample": 884,
+   "url": "https://web.archive.org/web/20070307193539/http://www.csa-fr.com/dataset/data2007/opi20070220a-intentions-de-vote-a-l-election-presidentielle-de-2007-vague-16.pdf",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2007-02-19",
+   "end": "2007-02-20",
+   "sample": 845,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_14observatoirebvaorange_197cd.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-02-16",
+   "end": "2007-02-17",
+   "sample": 952,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2007-02-16",
+   "end": "2007-02-17",
+   "sample": 1007,
+   "url": "https://web.archive.org/web/20070913134834/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2rmcbfmtv20mn19_20fev07.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-02-14",
+   "end": "2007-02-15",
+   "sample": 909,
+   "url": "https://web.archive.org/web/20070326140144/http://www.csa-fr.com/dataset/data2007/opi20070215b-intentions-de-vote-a-l-election-presidentielle-de-2007-vague-15.pdf",
+   "values": {
+    "Ségolène Royal": 45,
+    "Nicolas Sarkozy": 55
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2007-02-14",
+   "end": "2007-02-15",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-barometre-presidentiel-vague-12",
+   "values": {
+    "Ségolène Royal": 45,
+    "Nicolas Sarkozy": 55
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-02-13",
+   "end": "2007-02-15",
+   "sample": 952,
+   "url": "https://web.archive.org/web/20070913213639/http://www.ifop2007.fr/photo/File/IntentionDeVote/FID-FL7GP-0207.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2007-02-12",
+   "end": "2007-02-12",
+   "sample": 873,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_13observatoirebvaorange_59db3.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-02-12",
+   "end": "2007-02-12",
+   "sample": 919,
+   "url": "https://web.archive.org/web/20071017141519/http://www.csa-fr.com/dataset/data2007/opi20070212b-intentions-de-vote-a-l-election-presidentielle-de-2007-vague-14.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-02-12",
+   "end": "2007-02-12",
+   "sample": 879,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/intentions1302.pdf",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-02-12",
+   "end": "2007-02-12",
+   "sample": 807,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-02-09",
+   "end": "2007-02-10",
+   "sample": 944,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-12",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2007-02-09",
+   "end": "2007-02-10",
+   "sample": 1007,
+   "url": "https://web.archive.org/web/20070913134829/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2rmcbfmtv20mn12_13fev07.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2007-02-07",
+   "end": "2007-02-08",
+   "sample": 843,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_12observatoirebvaorange_e6d7f.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2007-02-07",
+   "end": "2007-02-08",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-objectif-2007-vague-7",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-02-02",
+   "end": "2007-02-03",
+   "sample": 934,
+   "url": "https://www.ipsos.com/fr-fr/les-intentions-de-vote-pour-lelection-presidentielle-1",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2007-02-02",
+   "end": "2007-02-03",
+   "sample": 1004,
+   "url": "https://web.archive.org/web/20070723143746/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2rmcbfmtv20mn5_6fev07.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2007-01-31",
+   "end": "2007-02-01",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-barometre-presidentiel-vague-11",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-01-31",
+   "end": "2007-01-31",
+   "sample": 902,
+   "url": "https://web.archive.org/web/20071017141937/http://www.csa-fr.com/dataset/data2007/opi20070131a-intentions-de-vote-a-l-election-presidentielle-de-2007-vague-13.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-01-26",
+   "end": "2007-01-27",
+   "sample": 959,
+   "url": "https://www.ipsos.com/fr-fr/les-intentions-de-vote-pour-lelection-presidentielle-0",
+   "values": {
+    "Ségolène Royal": 46,
+    "Nicolas Sarkozy": 54
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-01-25",
+   "end": "2007-01-26",
+   "sample": 865,
+   "url": "https://web.archive.org/web/20070210205728/http://www.ifop2007.fr/photo/File/IntentionDeVote/PM-PRESI6-0107.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2007-01-22",
+   "end": "2007-01-23",
+   "sample": 849,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_08observatoirebvaorange_10fc7.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-01-19",
+   "end": "2007-01-20",
+   "sample": 963,
+   "url": "https://www.ipsos.com/fr-fr/les-intentions-de-vote-pour-lelection-presidentielle",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-01-18",
+   "end": "2007-01-20",
+   "sample": 956,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/LCIFIDUCIAL2401.pdf",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2007-01-17",
+   "end": "2007-01-18",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-barometre-presidentiel-vague-10",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-01-17",
+   "end": "2007-01-17",
+   "sample": 845,
+   "url": "https://web.archive.org/web/20071017140720/http://www.csa-fr.com/dataset/data2007/opi20070117a-intentions-de-vote-a-l-election-presidentielle-de-2007-vague-12.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-01-15",
+   "end": "2007-01-15",
+   "sample": 868,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/PM-PRESI5-0107.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2007-01-10",
+   "end": "2007-01-12",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-objectif-2007-vague-6",
+   "values": {
+    "Ségolène Royal": 52,
+    "Nicolas Sarkozy": 48
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2007-01-05",
+   "end": "2007-01-06",
+   "sample": 952,
+   "url": "https://www.ipsos.com/fr-fr/barometre-de-laction-politique-janvier-2007-intention-de-vote-presidentielle",
+   "values": {
+    "Ségolène Royal": 50,
+    "Nicolas Sarkozy": 50
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2007-01-04",
+   "end": "2007-01-05",
+   "sample": 939,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/iv-jdd-0107.pdf",
+   "values": {
+    "Ségolène Royal": 50.5,
+    "Nicolas Sarkozy": 49.5
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-01-03",
+   "end": "2007-01-03",
+   "sample": 891,
+   "url": "https://web.archive.org/web/20071017141903/http://www.csa-fr.com/dataset/data2007/opi20070103a-intentions-de-vote-a-l-election-presidentielle-de-2007-vague-11.pdf",
+   "values": {
+    "Ségolène Royal": 52,
+    "Nicolas Sarkozy": 48
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2006-12-14",
+   "end": "2006-12-15",
+   "sample": 951,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/tpeelectionsflash.pdf",
+   "values": {
+    "Ségolène Royal": 50,
+    "Nicolas Sarkozy": 50
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2006-12-11",
+   "end": "2006-12-12",
+   "sample": 797,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_04observatoirebvaorange_7754b.pdf",
+   "values": {
+    "Ségolène Royal": 51,
+    "Nicolas Sarkozy": 49
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2006-12-08",
+   "end": "2006-12-09",
+   "sample": 952,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-11",
+   "values": {
+    "Ségolène Royal": 50,
+    "Nicolas Sarkozy": 50
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2006-12-01",
+   "end": "2006-12-02",
+   "sample": 950,
+   "url": "https://www.ipsos.com/fr-fr/presidentielle-2007-investitures-et-candidatures-nont-pas-change-le-rapport-de-force",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2006-11-30",
+   "end": "2006-12-01",
+   "sample": 901,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/intentionsdevotev4.pdf",
+   "values": {
+    "Ségolène Royal": 50,
+    "Nicolas Sarkozy": 50
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2006-11-21",
+   "end": "2006-11-22",
+   "sample": 1002,
+   "url": "https://web.archive.org/web/20071017141843/http://www.csa-fr.com/dataset/data2006/opi20061122a.pdf",
+   "values": {
+    "Ségolène Royal": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2006-11-17",
+   "end": "2006-11-18",
+   "sample": 817,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/intentionsdevote2.pdf",
+   "values": {
+    "Ségolène Royal": 51,
+    "Nicolas Sarkozy": 49
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2006-11-09",
+   "end": "2006-11-11",
+   "sample": 948,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-10",
+   "values": {
+    "Ségolène Royal": 50,
+    "Nicolas Sarkozy": 50
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2006-11-08",
+   "end": "2006-11-08",
+   "sample": 1007,
+   "url": "https://web.archive.org/web/20070510132013/http://www.csa-fr.com/dataset/data2006/opi20061108b.pdf",
+   "values": {
+    "Ségolène Royal": 51,
+    "Nicolas Sarkozy": 49
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2006-10-17",
+   "end": "2006-10-18",
+   "sample": 838,
+   "url": "https://web.archive.org/web/20070307193415/http://www.csa-fr.com/dataset/data2006/opi20061018b.pdf",
+   "values": {
+    "Ségolène Royal": 52,
+    "Nicolas Sarkozy": 48
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2006-10-12",
+   "end": "2006-10-13",
+   "sample": 892,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/intentionsdevote.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2006-10-12",
+   "end": "2006-10-13",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-barometre-presidentiel-vague-7",
+   "values": {
+    "Ségolène Royal": 51,
+    "Nicolas Sarkozy": 49
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2006-10-06",
+   "end": "2006-10-07",
+   "sample": 944,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-9",
+   "values": {
+    "Ségolène Royal": 50,
+    "Nicolas Sarkozy": 50
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2006-09-13",
+   "end": "2006-09-14",
+   "sample": 907,
+   "url": "https://web.archive.org/web/20070510131904/http://www.csa-fr.com/dataset/data2006/opi20060914d.pdf",
+   "values": {
+    "Ségolène Royal": 52,
+    "Nicolas Sarkozy": 48
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2006-09-08",
+   "end": "2006-09-09",
+   "sample": 954,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-8",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2006-08-18",
+   "end": "2006-08-19",
+   "sample": 963,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-7",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2006-07-07",
+   "end": "2006-07-08",
+   "sample": 944,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-6",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2006-06-29",
+   "end": "2006-06-30",
+   "sample": 800,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/Microsoft%20Word%20-%20Rapport%2015698.pdf",
+   "values": {
+    "Ségolène Royal": 51,
+    "Nicolas Sarkozy": 49
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2006-06-09",
+   "end": "2006-06-10",
+   "sample": 959,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-5",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2006-06-07",
+   "end": "2006-06-07",
+   "sample": 844,
+   "url": "https://web.archive.org/web/20071017141138/http://www.csa-fr.com/dataset/data2006/opi20060607a.pdf",
+   "values": {
+    "Ségolène Royal": 51,
+    "Nicolas Sarkozy": 49
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2006-05-16",
+   "end": "2006-05-17",
+   "sample": 777,
+   "url": "https://web.archive.org/web/20060713202850/http://www.csa-fr.com/dataset/data2006/opi20060517a.pdf",
+   "values": {
+    "Ségolène Royal": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2006-05-12",
+   "end": "2006-05-13",
+   "sample": 939,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-4",
+   "values": {
+    "Ségolène Royal": 51,
+    "Nicolas Sarkozy": 49
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2006-04-20",
+   "end": "2006-04-21",
+   "sample": 883,
+   "url": "https://web.archive.org/web/20070913213421/http://www.ifop2007.fr/photo/File/IntentionDeVote/PM-PRESI-0406.pdf",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2006-04-18",
+   "end": "2006-04-19",
+   "sample": 878,
+   "url": "https://web.archive.org/web/20071017141003/http://www.csa-fr.com/dataset/data2006/opi20060419a.pdf",
+   "values": {
+    "Ségolène Royal": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2006-04-18",
+   "end": "2006-04-18",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/presidentielle-2007-barometre-presidentiel-vague-1",
+   "values": {
+    "Ségolène Royal": 51,
+    "Nicolas Sarkozy": 49
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2006-04-07",
+   "end": "2006-04-08",
+   "sample": 947,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-3",
+   "values": {
+    "Ségolène Royal": 51,
+    "Nicolas Sarkozy": 49
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2006-03-29",
+   "end": "2006-03-29",
+   "sample": 839,
+   "url": "https://web.archive.org/web/20060504024706/http://www.csa-fr.com/dataset/data2006/opi20060329b.pdf",
+   "values": {
+    "Ségolène Royal": 52,
+    "Nicolas Sarkozy": 48
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2006-03-10",
+   "end": "2006-03-11",
+   "sample": 945,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-2",
+   "values": {
+    "Ségolène Royal": 50,
+    "Nicolas Sarkozy": 50
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2006-02-10",
+   "end": "2006-02-11",
+   "sample": 930,
+   "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-1",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2006-01-27",
+   "end": "2006-01-28",
+   "sample": 951,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_observatoirelci-lefigarovague10_daad3.pdf",
+   "values": {
+    "Ségolène Royal": 49,
+    "Nicolas Sarkozy": 51
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2006-01-25",
+   "end": "2006-01-26",
+   "sample": 865,
+   "url": "https://web.archive.org/web/20071017193105/http://www.csa-fr.com/dataset/data2006/opi20060126f.pdf",
+   "values": {
+    "Ségolène Royal": 51,
+    "Nicolas Sarkozy": 49
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2005-09-30",
+   "end": "2005-10-01",
+   "sample": 811,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_observatoirelci-lefigarov7_1125d.pdf",
+   "values": {
+    "Ségolène Royal": 47,
+    "Nicolas Sarkozy": 53
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-01-02",
+   "end": "2007-01-07",
+   "sample": 513,
+   "url": "https://web.archive.org/web/20071017140911/http://www.csa-fr.com/dataset/data2007/opi20070107a-intentions-de-vote-a-l-election-presidentielle-de-2007-en-region-paca.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-01-02",
+   "end": "2007-01-07",
+   "sample": 501,
+   "url": "https://web.archive.org/web/20071017140911/http://www.csa-fr.com/dataset/data2007/opi20070107a-intentions-de-vote-a-l-election-presidentielle-de-2007-en-region-paca.pdf",
+   "values": {
+    "Ségolène Royal": 51,
+    "Nicolas Sarkozy": 49
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-01-02",
+   "end": "2007-01-07",
+   "sample": 503,
+   "url": "https://web.archive.org/web/20071017140911/http://www.csa-fr.com/dataset/data2007/opi20070107a-intentions-de-vote-a-l-election-presidentielle-de-2007-en-region-paca.pdf",
+   "values": {
+    "Ségolène Royal": 48,
+    "Nicolas Sarkozy": 52
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-01-02",
+   "end": "2007-01-07",
+   "sample": 501,
+   "url": "https://web.archive.org/web/20071017140911/http://www.csa-fr.com/dataset/data2007/opi20070107a-intentions-de-vote-a-l-election-presidentielle-de-2007-en-region-paca.pdf",
+   "values": {
+    "Ségolène Royal": 40,
+    "Nicolas Sarkozy": 60
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2007-01-02",
+   "end": "2007-01-07",
+   "sample": 502,
+   "url": "https://web.archive.org/web/20071017140911/http://www.csa-fr.com/dataset/data2007/opi20070107a-intentions-de-vote-a-l-election-presidentielle-de-2007-en-region-paca.pdf",
+   "values": {
+    "Ségolène Royal": 41,
+    "Nicolas Sarkozy": 59
+   }
+  }
+ ]
+}

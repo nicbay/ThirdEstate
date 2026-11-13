@@ -1,0 +1,541 @@
+{
+ "id": "leg-2017-r1",
+ "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2017_French_legislative_election",
+ "resultSource": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2017_French_legislative_election (official-result row \"2017 election\" of the poll table)",
+ "result": {
+  "EXG": 0.77,
+  "PCF": 2.72,
+  "FI": 11.03,
+  "ECO + EELV": 4.3,
+  "PS + PRG + DVG": 9.51,
+  "LREM + MoDem": 32.33,
+  "UDI + LR + DVD": 21.56,
+  "DLF": 1.17,
+  "FN": 13.2,
+  "EXD": 0.3,
+  "REG + DIV": 3.11
+ },
+ "polls": [
+  {
+   "pollster": "Ipsos",
+   "start": "2017-06-07",
+   "end": "2017-06-08",
+   "sample": 1112,
+   "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/svv1er_tour_9juin.pdf",
+   "values": {
+    "EXG": 1,
+    "PCF": 2,
+    "FI": 11.5,
+    "EELV": 3,
+    "PS + PRG + DVG": 8,
+    "LREM + MoDem": 31.5,
+    "UDI + LR + DVD": 22,
+    "DLF": 1.5,
+    "FN": 17,
+    "DIV": 2.5
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-06-06",
+   "end": "2017-06-08",
+   "sample": 931,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/06/Rapport-Harris-Indeed-Intentions-de-vote-aux-elections-legislatives-LCP1.pdf",
+   "values": {
+    "EXG": 1,
+    "PCF": 3,
+    "FI": 12,
+    "ECO + EELV": 3,
+    "PS + PRG": 7,
+    "DVG": 1,
+    "LREM + MoDem": 30,
+    "UDI + LR": 19,
+    "DVD": 2,
+    "DLF": 1,
+    "FN": 17,
+    "EXD": 1,
+    "REG + DIV": 3
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-06-06",
+   "end": "2017-06-08",
+   "sample": 3080,
+   "url": "https://web.archive.org/web/20170814175019/http://opinionlab.opinion-way.com/dokumenty/LegiTrack-OpinionWayOrpi-Quatrieme-vague.pdf",
+   "values": {
+    "EXG": 1,
+    "PCF": 3,
+    "FI": 12,
+    "ECO + EELV": 3,
+    "PS + PRG": 7,
+    "DVG": 1,
+    "LREM + MoDem": 30,
+    "UDI + LR": 21,
+    "DVD": 2,
+    "FN": 18,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-06-06",
+   "end": "2017-06-08",
+   "sample": 1003,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/3789-1-study_file.pdf",
+   "values": {
+    "EXG": 0.5,
+    "PCF": 3,
+    "FI": 11,
+    "EELV": 3.5,
+    "PS + PRG": 8,
+    "DVG": 1,
+    "LREM + MoDem": 30,
+    "UDI + LR": 20,
+    "DVD": 2,
+    "DLF": 1.5,
+    "FN": 18,
+    "DIV": 1.5
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-06-05",
+   "end": "2017-06-08",
+   "sample": 1918,
+   "url": "https://elabe.fr/wp-content/uploads/2017/06/08062017_bfmtv_les-francais-et-les-elections-legislatives-v2.pdf",
+   "values": {
+    "EXG": 0.5,
+    "PCF": 2,
+    "FI": 11,
+    "EELV": 3,
+    "PS + PRG + DVG": 9,
+    "LREM + MoDem": 29,
+    "UDI + LR + DVD": 23,
+    "DLF": 2,
+    "FN": 17,
+    "DIV": 3.5
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2017-06-02",
+   "end": "2017-06-05",
+   "sample": 4772,
+   "url": "http://www.bva.fr/data/sondage/sondage_fiche/1993/fichier_intentions_de_vote_-_elections_legislatives_-_pop2017_-_07_juin_20174bfd2.pdf",
+   "values": {
+    "EXG": 1,
+    "PCF": 2,
+    "FI": 12.5,
+    "EELV": 3,
+    "PS + PRG": 8,
+    "DVG": 1,
+    "LREM + MoDem": 30,
+    "UDI + LR": 20,
+    "DVD": 1.5,
+    "DLF": 2,
+    "FN": 18,
+    "DIV": 1
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2017-06-02",
+   "end": "2017-06-04",
+   "sample": 1126,
+   "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/enquetelegislatives2.pdf",
+   "values": {
+    "EXG": 1,
+    "PCF": 2,
+    "FI": 12.5,
+    "EELV": 2.5,
+    "PS + PRG + DVG": 8.5,
+    "LREM + MoDem": 29.5,
+    "UDI + LR + DVD": 23,
+    "DLF": 1.5,
+    "FN": 17,
+    "DIV": 2.5
+   }
+  },
+  {
+   "pollster": "Odoxa",
+   "start": "2017-05-31",
+   "end": "2017-06-01",
+   "sample": 697,
+   "url": "http://www.odoxa.fr/wp-content/uploads/2017/06/Intention-de-vote-legislatives-Odoxa-Dentsu-Consulting-juin-2017.pdf",
+   "values": {
+    "EXG": 1,
+    "PCF": 3,
+    "FI": 11,
+    "EELV": 3,
+    "PS + PRG": 8,
+    "LREM + MoDem": 33,
+    "UDI + LR": 19,
+    "DLF": 2.5,
+    "FN": 18,
+    "DIV": 1.5
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-05-30",
+   "end": "2017-06-01",
+   "sample": 885,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/06/Rapport-Harris-Indeed-Intentions-de-vote-aux-elections-legislatives-LCP.pdf",
+   "values": {
+    "EXG": 2,
+    "PCF": 2,
+    "FI": 11,
+    "ECO + EELV": 3,
+    "PS + PRG": 8,
+    "DVG": 1,
+    "LREM + MoDem": 31,
+    "UDI + LR": 18,
+    "DVD": 2,
+    "DLF": 2,
+    "FN": 18,
+    "EXD": 0.5,
+    "REG + DIV": 2
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-05-30",
+   "end": "2017-06-01",
+   "sample": 1940,
+   "url": "https://web.archive.org/web/20170814214805/http://opinionlab.opinion-way.com/dokumenty/LegiTrack-OpinionWay-Orpi-Troisieme-vague-1erjuin2017.pdf",
+   "values": {
+    "EXG": 1,
+    "PCF": 3,
+    "FI": 13,
+    "ECO + EELV": 2,
+    "PS + PRG": 9,
+    "DVG": 1,
+    "LREM + MoDem": 29,
+    "UDI + LR": 20,
+    "DVD": 2,
+    "FN": 18,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-05-29",
+   "end": "2017-05-31",
+   "sample": 2802,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/3783-1-study_file.pdf",
+   "values": {
+    "EXG": 0.5,
+    "PCF": 2.5,
+    "FI": 12,
+    "EELV": 3,
+    "PS + PRG": 7.5,
+    "DVG": 1,
+    "LREM + MoDem": 31,
+    "UDI + LR": 19,
+    "DVD": 1.5,
+    "DLF": 2,
+    "FN": 18,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2017-05-27",
+   "end": "2017-05-30",
+   "sample": 8778,
+   "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/publication_rapport_eef2017_-vague_15_cevipof_ipsos_le_monde.pdf",
+   "values": {
+    "EXG": 0.5,
+    "PCF": 2,
+    "FI": 11.5,
+    "EELV": 3,
+    "PS + PRG + DVG": 8.5,
+    "LREM + MoDem": 31,
+    "UDI + LR + DVD": 22,
+    "DLF": 2,
+    "FN": 18,
+    "DIV": 1.5
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2017-05-26",
+   "end": "2017-05-28",
+   "sample": 1127,
+   "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/enquetelegislatives1.pdf",
+   "values": {
+    "EXG": 0.5,
+    "PCF": 2,
+    "FI": 11.5,
+    "EELV": 3,
+    "PS + PRG + DVG": 9,
+    "LREM + MoDem": 29.5,
+    "UDI + LR + DVD": 22,
+    "DLF": 2.5,
+    "FN": 18,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2017-05-24",
+   "end": "2017-05-28",
+   "sample": 2022,
+   "url": "https://fr.kantar.com/elections/legislatives/2017/legislatives-2017-intentions-de-vote-30-mai-2017/",
+   "values": {
+    "EXG": 1,
+    "PCF": 2,
+    "FI": 12,
+    "EELV": 3.5,
+    "PS + PRG": 8,
+    "DVG": 1,
+    "LREM + MoDem": 31,
+    "UDI + LR": 18,
+    "DVD": 1.5,
+    "UPR": 0.5,
+    "DLF": 2.5,
+    "FN": 17,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-05-23",
+   "end": "2017-05-26",
+   "sample": 905,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/05/Rapport-Harris-Indeed-Intentions-de-vote-aux-%C3%A9lections-legislatives-LCP.pdf",
+   "values": {
+    "EXG": 2,
+    "PCF": 2,
+    "FI": 14,
+    "EELV": 3,
+    "PS + PRG": 7,
+    "LREM + MoDem": 31,
+    "UDI + LR": 18,
+    "DLF": 3,
+    "FN": 19,
+    "DIV": 1
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-05-23",
+   "end": "2017-05-24",
+   "sample": 2103,
+   "url": "https://web.archive.org/web/20170814215140/http://opinionlab.opinion-way.com/dokumenty/LegiTrack-OpinionWayOrpi-Deuxieme-vague25mai2017.pdf",
+   "values": {
+    "EXG": 1,
+    "PCF": 2,
+    "FI": 15,
+    "EELV + PS + PRG": 10,
+    "LREM + MoDem": 28,
+    "UDI + LR": 20,
+    "DVD": 2,
+    "FN": 19,
+    "DIV": 3
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-05-23",
+   "end": "2017-05-24",
+   "sample": 1011,
+   "url": "https://elabe.fr/wp-content/uploads/2017/05/24052017_bfmtv_les-francais-et-les-elections-legislatives.pdf",
+   "values": {
+    "EXG": 0.5,
+    "PCF": 2,
+    "FI": 12,
+    "EELV": 2.5,
+    "PS + PRG": 6.5,
+    "LREM + MoDem": 33,
+    "UDI + LR": 20,
+    "DLF": 1.5,
+    "FN": 19,
+    "DIV": 3
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-05-18",
+   "end": "2017-05-19",
+   "sample": 950,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/3768-1-study_file.pdf",
+   "values": {
+    "EXG": 0.5,
+    "PCF": 1.5,
+    "FI": 15,
+    "EELV": 2.5,
+    "PS + PRG": 7,
+    "LREM + MoDem": 31,
+    "UDI + LR": 19,
+    "DLF": 2.5,
+    "FN": 18,
+    "DIV": 3
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-05-16",
+   "end": "2017-05-18",
+   "sample": 940,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/05/Rapport-Harris-Indeed-Intentions-vote-elections-legislatives-LCP.pdf",
+   "values": {
+    "EXG": 1,
+    "PCF": 2,
+    "FI": 16,
+    "EELV": 3,
+    "PS + PRG": 6,
+    "LREM + MoDem": 32,
+    "UDI + LR": 18,
+    "DLF": 3,
+    "FN": 19
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-05-16",
+   "end": "2017-05-18",
+   "sample": 1997,
+   "url": "https://web.archive.org/web/20170814215825/http://opinionlab.opinion-way.com/dokumenty/LegiTrack-OpinionWay-Orpi-Premierevague-18mai2017.pdf",
+   "values": {
+    "EXG": 1,
+    "PCF": 2,
+    "FI": 14,
+    "EELV + PS + PRG": 11,
+    "LREM + MoDem": 27,
+    "UDI + LR": 20,
+    "DVD": 2,
+    "FN": 20,
+    "DIV": 3
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-05-15",
+   "end": "2017-05-17",
+   "sample": 4598,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/05/Rapport-Harris-Intentions-de-vote-elections-legislatives-France-TV.pdf",
+   "values": {
+    "EXG": 1,
+    "PCF": 2,
+    "FI": 15,
+    "EELV": 3,
+    "PS + PRG": 6,
+    "LREM + MoDem": 32,
+    "UDI + LR": 19,
+    "DLF": 3,
+    "FN": 19
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-05-09",
+   "end": "2017-05-11",
+   "sample": 941,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/05/rapport-harris-interactive-indeed-intentions-vote-legislatives-LCP.pdf",
+   "values": {
+    "EXG": 2,
+    "PCF": 2,
+    "FI": 14,
+    "EELV": 3,
+    "PS + PRG": 7,
+    "LREM + MoDem": 29,
+    "UDI + LR": 20,
+    "DLF": 3,
+    "FN": 20
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-05-07",
+   "end": "2017-05-07",
+   "sample": 2376,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/05/Rapport-Harris-Sondage-Soir-du-Vote-2nd-tour-de-lelection-presidentielle-M6.pdf",
+   "values": {
+    "EXG": 1,
+    "PCF": 2,
+    "FI": 13,
+    "EELV": 3,
+    "PS + PRG": 8,
+    "LREM + MoDem": 26,
+    "UDI + LR": 22,
+    "DLF": 3,
+    "FN": 22
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2017-05-04",
+   "end": "2017-05-05",
+   "sample": 1507,
+   "url": "https://fr.kantar.com/elections/legislatives/2017/les-francais-et-les-elections-legislatives-2017/",
+   "values": {
+    "EXG": 2,
+    "PCF": 1,
+    "FI": 15,
+    "EELV": 3.5,
+    "PS + PRG": 9,
+    "LREM + MoDem": 24,
+    "UDI + LR": 22,
+    "DLF": 2.5,
+    "FN": 21
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-05-04",
+   "end": "2017-05-05",
+   "sample": 1405,
+   "url": "http://www.parismatch.com/Actu/Politique/Sondage-legislatives-En-Marche-en-tete-avec-une-courte-avance-sur-les-Republicains-et-le-Front-national-1250711",
+   "values": {
+    "EXG": 1,
+    "PCF": 2,
+    "FI": 16,
+    "EELV": 3,
+    "PS + PRG": 9,
+    "LREM + MoDem": 22,
+    "UDI": 2.5,
+    "LR": 20,
+    "DLF": 1.5,
+    "FN": 20,
+    "DIV": 3
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-24",
+   "end": "2017-05-01",
+   "sample": 5032,
+   "url": "http://www.commission-des-sondages.fr/notices/files/notices/2017/mai/8600-legs-ow-les-echos.pdf",
+   "values": {
+    "EXG": 1,
+    "PCF + FI": 10,
+    "EELV + PS + PRG": 13,
+    "LREM + MoDem": 26,
+    "UDI + LR": 24,
+    "DVD": 3,
+    "FN": 19,
+    "DIV": 4
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2014-11-18",
+   "end": "2014-11-20",
+   "sample": 955,
+   "url": "http://www.lefigaro.fr/politique/2014/12/02/01002-20141202ARTFIG00399-sondage-la-gauche-serait-laminee-aux-legislatives.php",
+   "values": {
+    "EXG": 1,
+    "FG": 8,
+    "MRC + PS + PRG + DVG": 18,
+    "EELV": 7,
+    "MoDem + UDI": 12,
+    "UMP + DVD": 24,
+    "DLF": 1,
+    "FN": 23,
+    "DIV": 6
+   }
+  }
+ ]
+}

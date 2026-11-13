@@ -1,0 +1,813 @@
+{
+ "id": "leg-2022-r1",
+ "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2022_French_legislative_election",
+ "resultSource": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2022_French_legislative_election (official-result row \"Ministry of the Interior (Le Monde)\" of the poll table)",
+ "result": {
+  "LO NPA EXG": 1.17,
+  "NUPES": 25.66,
+  "DVG PRG FGR": 3.7,
+  "ECO + PA": 2.67,
+  "ENS + DVC": 27,
+  "UDC + DVD": 13.62,
+  "DLF LP": 1.13,
+  "RN": 18.68,
+  "REC EXD": 4.24,
+  "REG + DIV": 2.13
+ },
+ "polls": [
+  {
+   "pollster": "Ipsos",
+   "start": "2022-06-12",
+   "end": "2022-06-12",
+   "sample": null,
+   "url": "https://mobile.twitter.com/EuropeElects/status/1536084549955989505",
+   "values": {
+    "LO NPA EXG": 1.3,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 25.6,
+    "DVG PRG FGR": 3.7,
+    "ECO + PA": 2.7,
+    "ENS": 25.2,
+    "DVC": 1.3,
+    "UDC + DVD": 13.6,
+    "DLF LP": 1.1,
+    "RN": 19.1,
+    "REC EXD": 4.1,
+    "REG + DIV": 2.3
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2022-06-12",
+   "end": "2022-06-12",
+   "sample": null,
+   "url": "https://twitter.com/EuropeElects/status/1536048404354277378",
+   "values": {
+    "LO NPA EXG": 1.2,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 26.2,
+    "DVG PRG FGR": 3.3,
+    "ENS": 25.8,
+    "UDC": 11.1,
+    "DVD": 1.9,
+    "DLF LP": 1.2,
+    "RN": 19.1,
+    "REC EXD": 4.3,
+    "REG + DIV": 5.9
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2022-06-12",
+   "end": "2022-06-12",
+   "sample": null,
+   "url": "https://twitter.com/EuropeElects/status/1536047558686031872",
+   "values": {
+    "LO NPA EXG": 1.4,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 26.1,
+    "DVG PRG FGR": 3,
+    "ENS": 25.6,
+    "UDC": 11.3,
+    "DVD": 3.2,
+    "DLF LP": 1.1,
+    "RN": 19.2,
+    "REC EXD": 4.1,
+    "REG + DIV": 5
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2022-06-12",
+   "end": "2022-06-12",
+   "sample": null,
+   "url": "https://twitter.com/EuropeElects/status/1536046959630462976",
+   "values": {
+    "LO NPA EXG": 1.5,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 25,
+    "DVG PRG FGR + ECO": 5.5,
+    "ENS": 25,
+    "DVC": 1,
+    "UDC": 11.5,
+    "DVD": 2.5,
+    "DLF LP": 1.2,
+    "RN": 19,
+    "REC EXD": 4.5,
+    "REG + DIV": 3.3
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2022-06-10",
+   "end": "2022-06-10",
+   "sample": 8159,
+   "url": "https://www.ipsos.com/fr-fr/legislatives-2022/legislatives-ensemble-et-nupes-au-coude-coude-faible-participation-attendue",
+   "values": {
+    "LO NPA EXG": 1,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 27,
+    "DVG PRG FGR": 3,
+    "ECO": 2.5,
+    "ENS": 28,
+    "DVC": 0.5,
+    "UDC + DVD": 11,
+    "DLF LP": 1,
+    "RN": 19,
+    "REC EXD": 5.5,
+    "REG + DIV": 1.5
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2022-06-08",
+   "end": "2022-06-10",
+   "sample": 2078,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2022/06/ZheShiWAVE52.pdf",
+   "values": {
+    "LO NPA EXG": 1,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 26,
+    "DVG PRG FGR": 4,
+    "PA": 2,
+    "ENS": 26,
+    "DVC": 1,
+    "UDC": 10,
+    "DVD": 1,
+    "DLF LP": 2,
+    "RN": 20,
+    "REC EXD": 6,
+    "REG + DIV": 1
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2022-06-08",
+   "end": "2022-06-09",
+   "sample": 1831,
+   "url": "https://www.ifop.com/wp-content/uploads/2022/06/119254-Rapport.pdf",
+   "values": {
+    "LO NPA EXG": 1,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 26.5,
+    "DVG PRG FGR": 3.5,
+    "ENS + DVC": 26,
+    "UDC": 10,
+    "DVD": 2,
+    "DLF LP": 1.5,
+    "RN": 19,
+    "REC EXD": 5.5,
+    "DIV": 5
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2022-06-08",
+   "end": "2022-06-09",
+   "sample": 2000,
+   "url": "https://elabe.fr/wp-content/uploads/2022/06/20220610_elabe_bfmtv_lexpress_sfr_les-francais-et-les-elections-legislatives-2022.pdf",
+   "values": {
+    "LO NPA EXG": 1.5,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 26.5,
+    "DVG PRG FGR": 3,
+    "ENS + DVC": 27,
+    "UDC": 11,
+    "DVD": 1,
+    "DLF LP": 1.5,
+    "RN": 19.5,
+    "REC EXD": 4.5,
+    "REG + DIV": 4.5
+   }
+  },
+  {
+   "pollster": "Cluster17",
+   "start": "2022-06-07",
+   "end": "2022-06-09",
+   "sample": 2608,
+   "url": "https://pbs.twimg.com/media/FU10nt_WYCMT_w2?format=jpg&name=large",
+   "values": {
+    "LO NPA EXG": 0.5,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 29.5,
+    "DVG PRG FGR": 2.5,
+    "PA": 1.5,
+    "ENS": 26,
+    "DVC": 1,
+    "UDC": 10.5,
+    "DVD": 1,
+    "DLF LP": 1.5,
+    "RN": 17.5,
+    "REC EXD": 5.5,
+    "REG": 1,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2022-06-05",
+   "end": "2022-06-08",
+   "sample": 3001,
+   "url": "https://f.dviz.factoviz.com/UserFiles/3/f/f/Barom%C3%A8tre%20OpinionWay%20-%20Kea%20Partners%20pour%20Les%20Echos%20et%20Radio%20Classique%20-%209%20juin%20-%20vague%205.pdf",
+   "values": {
+    "LO NPA EXG": 1,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 25,
+    "DVG PRG FGR": 3,
+    "ECO": 1,
+    "PA": 2,
+    "ENS + DVC": 28,
+    "UDC": 11,
+    "DVD": 1,
+    "DLF LP": 1,
+    "RN": 18,
+    "REC EXD": 6,
+    "DIV": 3
+   }
+  },
+  {
+   "pollster": "YouGov",
+   "start": "2022-06-01",
+   "end": "2022-06-08",
+   "sample": 3306,
+   "url": "https://docs.cdn.yougov.com/gzp6ruw96d/VI_Tables_10-Jun-2022-Publish.pdf",
+   "values": {
+    "LO NPA EXG": 2,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 25,
+    "PA": 1,
+    "ENS": 26,
+    "UDC": 9,
+    "DLF LP": 1,
+    "RN": 21,
+    "REC EXD": 8,
+    "REG + DIV": 7
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2022-06-06",
+   "end": "2022-06-07",
+   "sample": 2000,
+   "url": "https://www.ipsos.com/sites/default/files/ct/news/documents/2022-06/Ipsos%20pour%20Radio%20France%20et%20France%20Te%CC%81levisions%20_%20Etude%20sur%20les%20e%CC%81lections%20le%CC%81gislatives%20_%202022.pdf",
+   "values": {
+    "LO NPA EXG": 1.5,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 28,
+    "DVG PRG FGR": 2.5,
+    "ECO": 2.5,
+    "ENS": 27,
+    "DVC": 0.5,
+    "UDC + DVD": 11,
+    "DLF LP": 1,
+    "RN": 19.5,
+    "REC EXD": 6,
+    "REG + DIV": 1
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2022-06-03",
+   "end": "2022-06-06",
+   "sample": 10826,
+   "url": "https://www.ipsos.com/sites/default/files/ct/news/documents/2022-06/Rapport%20Ipsos_CEVIPOF%20LEMONDE%20FJJ%20_Enque%CC%82te%20e%CC%81lectorale%202022%20vague%203-6%20juin%202022.pdf",
+   "values": {
+    "LO NPA EXG": 1,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 27.5,
+    "DVG PRG FGR": 2,
+    "ECO": 2.5,
+    "ENS": 28,
+    "DVC": 0.5,
+    "UDC + DVD": 11,
+    "DLF LP": 1,
+    "RN": 20,
+    "REC EXD": 5.5,
+    "REG + DIV": 1
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2022-06-03",
+   "end": "2022-06-06",
+   "sample": 1840,
+   "url": "https://www.tf1info.fr/politique/sondage-exclusif-lci-tf1-elections-legislatives-2022-l-union-de-gauche-nupes-de-melenchon-repasse-devant-ensemble-parti-larem-de-la-majorite-de-macron-2222326.html?Echobox=1654614113#xtor=CS5-113",
+   "values": {
+    "LO NPA EXG": 1,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 26,
+    "DVG PRG FGR": 3.5,
+    "ENS + DVC": 25,
+    "UDC": 11,
+    "DVD": 2,
+    "DLF LP": 2,
+    "RN": 21,
+    "REC EXD": 5,
+    "DIV": 4.5
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2022-06-03",
+   "end": "2022-06-06",
+   "sample": 2355,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2022/06/Rapport-Harris-Interactive-Toluna-V51-Intentions-de-vote-Legislatives-2022-Challenges.pdf",
+   "values": {
+    "LO NPA EXG": 2,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 24,
+    "DVG PRG FGR": 5,
+    "PA": 2,
+    "ENS": 26,
+    "DVC": 1,
+    "UDC": 10,
+    "DVD": 1,
+    "DLF LP": 2,
+    "RN": 20,
+    "REC EXD": 6,
+    "REG + DIV": 1
+   }
+  },
+  {
+   "pollster": "Cluster17",
+   "start": "2022-05-30",
+   "end": "2022-06-01",
+   "sample": 2459,
+   "url": "https://cluster17.com/wp-content/uploads/2022/06/notice-technique-2.pdf",
+   "values": {
+    "LO NPA EXG": 1,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 31,
+    "PA": 1.5,
+    "ENS + DVC": 27,
+    "UDC + DVD": 10,
+    "DLF LP": 2,
+    "RN": 19,
+    "REC EXD": 5,
+    "REG": 1.5,
+    "DIV": 3
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2022-05-30",
+   "end": "2022-06-01",
+   "sample": 2000,
+   "url": "https://elabe.fr/wp-content/uploads/2022/06/20220601_elabe_bfmtv_lexpress_sfr_les-francais-et-les-elections-legislatives-2022.pdf",
+   "values": {
+    "LO NPA EXG": 1.5,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 25,
+    "DVG PRG FGR": 2.5,
+    "ENS + DVC": 24.5,
+    "UDC": 12.5,
+    "DVD": 1.5,
+    "DLF LP": 1.5,
+    "RN": 22,
+    "REC EXD": 4.5,
+    "REG + DIV": 4.5
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2022-05-28",
+   "end": "2022-05-31",
+   "sample": 3008,
+   "url": "https://f.dviz.factoviz.com/UserFiles/3/f/f/Baromètre%20OpinionWay%20-%20Kea%20Partners%20pour%20Les%20Echos%20et%20Radio%20Classique%20-%202%20juin%20-%20vague%204.pdf",
+   "values": {
+    "LO NPA EXG": 1,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 26,
+    "DVG PRG FGR": 2,
+    "ECO": 2,
+    "PA": 1,
+    "ENS + DVC": 27,
+    "UDC": 11,
+    "DVD": 1,
+    "DLF LP": 1,
+    "RN": 20,
+    "REC EXD": 6,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2022-05-27",
+   "end": "2022-05-30",
+   "sample": 2371,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2022/06/LICUABI-645.pdf",
+   "values": {
+    "LO NPA EXG": 2,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 24,
+    "DVG PRG FGR": 4,
+    "PA": 2,
+    "ENS": 27,
+    "DVC": 1,
+    "UDC": 9,
+    "DVD": 1,
+    "DLF LP": 1,
+    "RN": 21,
+    "REC EXD": 7,
+    "REG + DIV": 1
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2022-05-25",
+   "end": "2022-05-28",
+   "sample": 1796,
+   "url": "https://www.tf1info.fr/politique/sondage-exclusif-legislatives-2022-la-majorite-presidentielle-passe-en-tete-des-intentions-de-vote-2221563.html",
+   "values": {
+    "LO NPA EXG": 1,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 25,
+    "DVG PRG FGR": 4,
+    "ENS + DVC": 27,
+    "UDC": 10,
+    "DVD": 1,
+    "DLF LP": 2,
+    "RN": 21,
+    "REC EXD": 6,
+    "REG + DIV": 3
+   }
+  },
+  {
+   "pollster": "Cluster17",
+   "start": "2022-05-24",
+   "end": "2022-05-26",
+   "sample": 2373,
+   "url": "https://cluster17.com/wp-content/uploads/2022/05/notice-technique-s21.pdf",
+   "values": {
+    "LO NPA EXG": 0.5,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS + DVG PRG FGR": 30,
+    "PA": 2,
+    "ENS + DVC": 26,
+    "UDC + DVD": 10.5,
+    "DLF LP": 1.5,
+    "RN": 19,
+    "REC EXD": 6,
+    "REG": 0.5,
+    "DIV": 4
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2022-05-19",
+   "end": "2022-05-24",
+   "sample": 2845,
+   "url": "https://www.opinion-way.com/fr/component/edocman/barometre-opinionway-kea-partners-pour-les-echos-et-radio-classique-25-mai-vague-3/viewdocument/2877.html?Itemid=0",
+   "values": {
+    "LO NPA EXG": 2,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 25,
+    "DVG PRG FGR": 3,
+    "ECO": 2,
+    "PA": 2,
+    "ENS + DVC": 26,
+    "UDC + DVD": 11,
+    "DLF LP": 3,
+    "RN": 21,
+    "REC EXD": 5
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2022-05-20",
+   "end": "2022-05-23",
+   "sample": 2331,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2022/05/MYLBZHFT-126.pdf",
+   "values": {
+    "LO NPA EXG": 3,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 28,
+    "ENS + DVC": 26,
+    "UDC + DVD": 9,
+    "DLF LP": 2,
+    "RN": 21,
+    "REC EXD": 7,
+    "REG + DIV": 4
+   }
+  },
+  {
+   "pollster": "Cluster17",
+   "start": "2022-05-17",
+   "end": "2022-05-19",
+   "sample": 2950,
+   "url": "https://cluster17.com/wp-content/uploads/2022/05/notice.pdf",
+   "values": {
+    "LO NPA EXG": 0.5,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS + DVG PRG FGR": 31,
+    "PA": 1,
+    "ENS + DVC": 26,
+    "UDC + DVD": 9,
+    "DLF LP": 2,
+    "RN": 20,
+    "REC EXD": 5.5,
+    "REG": 1.5,
+    "DIV": 3.5
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2022-05-16",
+   "end": "2022-05-19",
+   "sample": 11247,
+   "url": "https://www.ipsos.com/sites/default/files/ct/news/documents/2022-05/NOTICE%20TECHNIQUE%20Ipsos%20Le%20Monde%20FJJ%20Cevipof%20-%20Panel%20e%CC%81lectoral%20Vague%2011.pdf",
+   "values": {
+    "LO NPA EXG": 1,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 27,
+    "DVG PRG FGR": 3,
+    "ENS + DVC": 28,
+    "UDC": 9,
+    "DVD": 1,
+    "DLF LP": 1,
+    "RN": 21,
+    "REC EXD": 6,
+    "REG + DIV": 3
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2022-05-16",
+   "end": "2022-05-18",
+   "sample": 1793,
+   "url": "https://elabe.fr/wp-content/uploads/2022/05/20220518_elabe_bfmtv_lexpress_sfr_les-francais-les-elections-legislatives-2022-et-la-nouvelle-premiere-ministre.pdf",
+   "values": {
+    "LO NPA EXG": 2,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 27.5,
+    "ENS + DVC": 27,
+    "UDC + DVD": 10,
+    "DLF LP": 1,
+    "RN": 21.5,
+    "REC EXD": 5,
+    "REG + DIV": 6
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2022-05-14",
+   "end": "2022-05-18",
+   "sample": 3022,
+   "url": "https://f.dviz.factoviz.com/UserFiles/3/f/f/Barom%C3%A8tre%20OpinionWay%20-%20Kea%20Partners%20pour%20Les%20Echos%20et%20Radio%20Classique%20-%2018%20mai%20%20-%20vague%202.pdf",
+   "values": {
+    "LO NPA EXG": 2,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 24,
+    "DVG PRG FGR": 3,
+    "ECO": 2,
+    "PA": 2,
+    "ENS + DVC": 27,
+    "UDC + DVD": 11,
+    "DLF LP": 2,
+    "RN": 22,
+    "REC EXD": 5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2022-05-13",
+   "end": "2022-05-16",
+   "sample": 1884,
+   "url": "https://www.tf1info.fr/politique/exclusif-sondage-legislatives-la-gauche-nupes-maintient-sa-legere-avance-sur-la-majorite-presidentielle-au-1er-tour-2220191.html",
+   "values": {
+    "LO NPA EXG": 1.5,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 27,
+    "ENS + DVC": 26,
+    "UDC + DVD": 11,
+    "DLF LP": 2.5,
+    "RN": 23,
+    "REC EXD": 6,
+    "DIV": 3
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2022-05-13",
+   "end": "2022-05-16",
+   "sample": 2393,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2022/05/VJOECOEZ-HC44.pdf",
+   "values": {
+    "LO NPA EXG": 3,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 29,
+    "ENS + DVC": 26,
+    "UDC + DVD": 10,
+    "DLF LP": 1,
+    "RN": 23,
+    "REC EXD": 5,
+    "REG + DIV": 3
+   }
+  },
+  {
+   "pollster": "Cluster17",
+   "start": "2022-05-10",
+   "end": "2022-05-12",
+   "sample": 2967,
+   "url": "https://cluster17.com/wp-content/uploads/2022/05/notice-politique.pdf",
+   "values": {
+    "LO NPA EXG": 1,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS + DVG PRG FGR": 31,
+    "ENS + DVC": 27,
+    "UDC + DVD": 9.5,
+    "DLF LP": 2,
+    "RN": 19,
+    "REC EXD": 5.5,
+    "REG": 1,
+    "DIV": 4
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2022-05-06",
+   "end": "2022-05-09",
+   "sample": 1691,
+   "url": "https://www.ifop.com/wp-content/uploads/2022/05/119165-Rapport.pdf",
+   "values": {
+    "LO NPA EXG": 1.5,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 28,
+    "ENS + DVC": 27,
+    "UDC + DVD": 11,
+    "DLF LP": 2,
+    "RN": 22,
+    "REC EXD": 6.5,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2022-05-06",
+   "end": "2022-05-09",
+   "sample": 1691,
+   "url": "https://www.ifop.com/wp-content/uploads/2022/05/119165-Rapport.pdf",
+   "values": {
+    "LO NPA EXG": 1,
+    "NUPES / PCF": 2,
+    "NUPES / LFI": 18,
+    "NUPES / PÉ": 6.5,
+    "NUPES / PS": 5.5,
+    "ENS + DVC": 26,
+    "UDC + DVD": 11,
+    "DLF LP": 2,
+    "RN": 21,
+    "REC EXD": 6,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2022-05-06",
+   "end": "2022-05-09",
+   "sample": 2406,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2022/05/HESCREHJ-25.pdf",
+   "values": {
+    "LO NPA EXG": 3,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 28,
+    "ENS + DVC": 26,
+    "UDC + DVD": 9,
+    "DLF LP": 1,
+    "RN": 24,
+    "REC EXD": 6,
+    "REG + DIV": 3
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2022-05-05",
+   "end": "2022-05-09",
+   "sample": 3077,
+   "url": "https://www.lesechos.fr/elections/sondages/sondage-exclusif-legislatives-emmanuel-macron-conserverait-une-large-majorite-a-lassemblee-1406064#",
+   "values": {
+    "LO NPA EXG": 2,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 23,
+    "DVG PRG FGR": 3,
+    "ECO": 2,
+    "PA": 2,
+    "ENS + DVC": 26,
+    "UDC + DVD": 12,
+    "DLF LP": 2,
+    "RN": 23,
+    "REC EXD": 5
+   }
+  },
+  {
+   "pollster": "Cluster17",
+   "start": "2022-05-03",
+   "end": "2022-05-05",
+   "sample": 3498,
+   "url": "https://cluster17.com/wp-content/uploads/2022/05/enquete-intentions-de-vote-election-legislatives-2022.pdf",
+   "values": {
+    "LO NPA EXG": 1,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS + DVG PRG FGR": 34,
+    "ENS + DVC": 24.5,
+    "UDC + DVD": 8.5,
+    "DLF LP": 1.5,
+    "RN": 19.5,
+    "REC EXD": 5,
+    "REG": 2,
+    "DIV": 4
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2022-04-29",
+   "end": "2022-05-02",
+   "sample": 2366,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2022/05/NTRDVTE-L34.pdf",
+   "values": {
+    "LO NPA EXG": 2,
+    "NUPES / PCF": 2,
+    "NUPES / LFI": 19,
+    "NUPES / PÉ": 7,
+    "NUPES / PS + DVG PRG FGR": 7,
+    "ENS + DVC": 24,
+    "UDC + DVD": 8,
+    "DLF LP": 1,
+    "RN": 23,
+    "REC EXD": 6,
+    "REG + DIV": 1
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2022-04-29",
+   "end": "2022-05-02",
+   "sample": 2366,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2022/05/NTRDVTE-L34.pdf",
+   "values": {
+    "LO NPA EXG": 2,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 33,
+    "ENS + DVC + UDC + DVD": 33,
+    "DLF LP + RN + REC EXD": 30,
+    "REG + DIV": 2
+   }
+  },
+  {
+   "pollster": "Cluster17",
+   "start": "2022-04-27",
+   "end": "2022-04-28",
+   "sample": 2659,
+   "url": "https://cluster17.com/wp-content/uploads/2022/05/20220428_Cluster17_Notice-Technique_Publique.pdf",
+   "values": {
+    "LO NPA EXG": 1,
+    "NUPES / PCF": 2,
+    "NUPES / LFI": 20,
+    "NUPES / PÉ": 7.5,
+    "NUPES / PS + DVG PRG FGR": 5.5,
+    "ENS + DVC": 24,
+    "UDC + DVD": 7.5,
+    "DLF LP": 2,
+    "RN": 21,
+    "REC EXD": 6,
+    "REG": 1,
+    "DIV": 2.5
+   }
+  },
+  {
+   "pollster": "Cluster17",
+   "start": "2022-04-27",
+   "end": "2022-04-28",
+   "sample": 2659,
+   "url": "https://cluster17.com/wp-content/uploads/2022/05/20220428_Cluster17_Notice-Technique_Publique.pdf",
+   "values": {
+    "LO NPA EXG": 1.5,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ": 27,
+    "NUPES / PS + DVG PRG FGR": 7,
+    "ENS + DVC": 23,
+    "UDC + DVD": 9,
+    "DLF LP": 2,
+    "RN": 21,
+    "REC EXD": 6.5,
+    "REG": 1,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "Cluster17",
+   "start": "2022-04-27",
+   "end": "2022-04-28",
+   "sample": 2659,
+   "url": "https://cluster17.com/wp-content/uploads/2022/05/20220428_Cluster17_Notice-Technique_Publique.pdf",
+   "values": {
+    "LO NPA EXG": 1,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS + DVG PRG FGR": 34,
+    "ENS + DVC": 24,
+    "UDC + DVD": 9.5,
+    "DLF LP": 3,
+    "RN + REC EXD": 24,
+    "REG": 1.5,
+    "DIV": 3
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2022-04-24",
+   "end": "2022-04-25",
+   "sample": 2343,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2022/04/Rapport-Harris-Interactive-Toluna-V45-Intentions-de-vote-Le%CC%81gislatives-2022-Challenges.pdf",
+   "values": {
+    "LO NPA EXG": 1,
+    "NUPES / PCF": 3,
+    "NUPES / LFI": 19,
+    "NUPES / PÉ": 8,
+    "NUPES / PS + DVG PRG FGR": 5,
+    "ENS + DVC": 24,
+    "UDC + DVD": 8,
+    "DLF LP": 1,
+    "RN": 23,
+    "REC EXD": 7,
+    "REG + DIV": 1
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2022-04-24",
+   "end": "2022-04-25",
+   "sample": 2343,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2022/04/Rapport-Harris-Interactive-Toluna-V45-Intentions-de-vote-Le%CC%81gislatives-2022-Challenges.pdf",
+   "values": {
+    "LO NPA EXG": 2,
+    "NUPES / PCF + NUPES / LFI + NUPES / PÉ + NUPES / PS": 33,
+    "ENS + DVC + UDC + DVD": 33,
+    "DLF LP + RN + REC EXD": 31,
+    "REG + DIV": 1
+   }
+  }
+ ]
+}
