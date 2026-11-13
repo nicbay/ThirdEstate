@@ -23,7 +23,7 @@ const PAGES: { href: string; fr: string; en: string; k?: string }[] = [
   { href: "#/assemblee/deputes", fr: "Liste des députés", en: "List of MPs", k: "parlement deputes mps" },
   { href: "#/assemblee/loyaute", fr: "Doigt sur la couture : la discipline de vote", en: "Toeing the line: party discipline", k: "loyauté loyalty rebelles frondeurs" },
   { href: "#/assemblee/themes", fr: "Ce qu’ils disent : les mots de l’hémicycle", en: "What they say: words in the chamber", k: "thèmes themes nuage cloud discours speeches" },
-  { href: "#/assemblee/composition", fr: "Composition de l’Assemblée", en: "Who sits in the Assembly", k: "professions métiers sociologie" },
+  { href: "#/assemblee/composition", fr: "Qui ils sont : la composition de l’Assemblée", en: "Who they are: who sits in the Assembly", k: "professions métiers sociologie" },
   { href: "#/senat", fr: "Sénat : les 348 sénateurs", en: "Senate: the 348 senators", k: "parlement senateurs senators" },
   { href: "#/2027", fr: "Présidentielle 2027 : la course", en: "2027 presidential: the race", k: "prévision forecast élection" },
   { href: "#/sondages", fr: "Sondages et marchés prédictifs", en: "Polls and prediction markets", k: "polls polymarket intentions de vote" },

@@ -23,9 +23,9 @@ import { meta, type Bloc } from "./candidates";
 import { combineOdds, winShare } from "./markets";
 import { average, duelAverages, referenceLineup, type Duel, type Poll } from "./polls";
 
-/** First round of the 2027 presidential election. The decree isn't out yet: the Constitution puts it
- *  20–35 days before the end of the current term (13 May 2027), so mid-April; we use 11 April. */
-export const ELECTION_DAY = "2027-04-11";
+/** First round of the 2027 presidential election: Sunday 18 April 2027 (run-off 2 May), as chosen at the Council
+ *  of Ministers of 1 July 2026. The convening decree, due at least 10 weeks before, makes it official. */
+export const ELECTION_DAY = "2027-04-18";
 export const MARKET_WEIGHT = 0.5;
 const RUNS = 20000;
 
