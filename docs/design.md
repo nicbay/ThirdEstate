@@ -66,6 +66,26 @@ Component behaviour follows the Astryx design system's specs (read through its M
 - **Dark theme.** Follows the system; the masthead sun/moon button overrides it (`localStorage` `te-theme`, applied
   before paint by `public/theme-boot.js`). Only the paper side flips; night bands stay night. Party colours stay data,
   with one exception: RN's navy `#1c2c6c` lifts to `#6a78e0` so it stays legible on dark paper.
+- The sheet also carries the picked department on the **presidential results map** (`presidential.ts`, unpicking folds
+  it) and the **Explorer town list** (resting at its peek over the department map). A view writes into a sheet with
+  `panelBody(el)` and raises or folds it with the controller `detailSheet()` returns. A tab row in a page head that
+  only repeats the section bar is hidden (Résultats).
+- **Toasts** (`src/lib/toast.ts`, Astryx Toast spec): polite live region, never takes focus, 5 s auto-hide paused on
+  hover/focus, `uniqueID` replaces, optional action, close button. Used for "I live here" (with Undo) and copied
+  quiz links. Slide-only entrance, so a toast is readable even when animations are paused.
+- **InfoTips** (`src/lib/infotip.ts`, Astryx InfoTip / toggletip spec): a pixel "i" beside a figure; hover and focus
+  preview, click/tap/Enter pins (`aria-expanded`, announced once), Escape / outside press / focus leaving closes.
+  Views call `infoTip(text, label)`; one delegated handler. On the 2027 forecast, the homepage poll average and a
+  candidate's chance of winning.
+- **Sortable tables** (`src/lib/sortable.ts`): any `table.table` with a head and 6+ rows, no spans; numeric columns
+  high-to-low first (French or English numbers), text A-Z; Total/France rows stay last; `data-nosort` opts out.
+  Above 760px a table that fits its column gets a sticky header row under the bars (`--sub-h`).
+- **Long reads** (`src/lib/toc.ts`): How to vote, Sources, Legal notice get "On this page": a sticky rail with the
+  current section marked from 1100px, a folded list below. Pages with their own jump links are left alone.
+- **Identity strip** (`src/lib/id-strip.ts`): on MP, senator and candidate pages, once the header scrolls away, a slim
+  strip with photo, name and party chip in the party colour. `aria-hidden`, no controls.
+- `.page` keeps no transform after its entrance (`animation-fill-mode: backwards`): a transformed ancestor would trap
+  the fixed sheets and strip.
 - **The kit** (`#/kit`, beta and local hosts only, `src/views/kit.ts`): every token and component on one page.
 
 Navigation: six sections (Chez vous, Parlement, 2027, **Programmes**, La France, Archives). On desktop each opens one
