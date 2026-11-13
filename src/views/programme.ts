@@ -387,7 +387,7 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
             <span class="prog-wbars"><span class="prog-wbar prog-wp" style="width:${((100 * r.p) / wMax).toFixed(1)}%"></span><b>${fmtPct(100 * r.p, 0)}</b>
             <span class="prog-wbar prog-ws" style="width:${((100 * r.s) / wMax).toFixed(1)}%"></span><b>${fmtPct(100 * r.s, 0)}</b></span></div>`).join("")}
         </div>
-        <p class="muted small">${L("Thèmes : le même lexique de mots-clés que la page « De quoi parlent-ils ? » (17 thèmes). Une mesure reçoit le thème de sa section, sauf si son texte relève clairement d’un autre.", "Themes: the same keyword lexicon as the ‘What do they talk about?’ page (17 themes). A measure takes its section’s theme unless its text clearly belongs to another.")} <a href="#/assemblee/themes">${L("Voir les thèmes à l’Assemblée", "See themes in the Assembly")}</a></p>
+        <p class="muted small">${L("Thèmes : le même lexique de mots-clés que la page « Ce qu’ils disent » (17 thèmes). Une mesure reçoit le thème de sa section, sauf si son texte relève clairement d’un autre.", "Themes: the same keyword lexicon as the ‘What they say’ page (17 themes). A measure takes its section’s theme unless its text clearly belongs to another.")} <a href="#/assemblee/themes">${L("Voir les thèmes à l’Assemblée", "See themes in the Assembly")}</a></p>
       </article>
 
       <article class="card prose prog-method">

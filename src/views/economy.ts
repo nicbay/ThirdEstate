@@ -584,18 +584,3 @@ export async function renderEconomy(app: HTMLElement) {
   app.querySelectorAll('a[href="#/chiffres#methode"]').forEach((x) => x.addEventListener("click", () => md && (md.open = true)));
   if (md && location.hash.endsWith("#methode")) md.open = true;
 }
-
-/** One-line live debt figure for the homepage, linking to the page. */
-export async function mountDebtTeaser(el: HTMLElement | null) {
-  if (!el) return;
-  const e = await loadEconomy().catch(() => null);
-  if (!e || !el.isConnected) return;
-  const perSec = e.debt.ratePerYear / (YEAR_MS / 1000);
-  el.innerHTML = `<a class="debt-teaser" href="#/chiffres">
-    <span class="hx-k">${L("Dette publique, estimée à cet instant", "Public debt, estimated as of now")}</span>
-    <strong id="teaser-n">${eur(Math.round(debtAt(e, Date.now())))}</strong>
-    <span>${L(`environ ${eur(Math.round(perSec))} de plus par seconde. La France en chiffres`, `about ${eur(Math.round(perSec))} more every second. France in numbers`)}</span>
-  </a>`;
-  const n = el.querySelector<HTMLElement>("#teaser-n")!;
-  tick(n, (now) => { n.textContent = eur(Math.round(debtAt(e, now))); });
-}

@@ -406,7 +406,7 @@ initSearch();
 const rise = "IntersectionObserver" in window ? new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("rv-in"); rise!.unobserve(e.target); } }), { rootMargin: "0px 0px -6% 0px" }) : null;
 function reveal() {
   if (!rise || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  app.querySelectorAll<HTMLElement>(":scope > .page > .card, :scope > .page > article, :scope > .page > .next-steps, :scope > .page > .charter, :scope > .page > .quiz-teaser, .home-programmes > .pf").forEach((el) => {
+  app.querySelectorAll<HTMLElement>(":scope > .page > .card, :scope > .page > article, :scope > .page > .next-steps").forEach((el) => {
     if (el.dataset.rv) return;
     el.dataset.rv = "1";
     if (el.getBoundingClientRect().top > innerHeight * 0.92) rise.observe(el);
