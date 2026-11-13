@@ -1,7 +1,7 @@
-// Homepage hero, "the note of the day": on the left what moved (polls, new and departing candidates, the day's
-// stories, what MPs are posting); on the right one France: its 577 districts coloured by the sitting MP, which
-// fly into the Assembly's seats, or the arrows of how each district shifted between the last two legislative
-// elections. Preview at #/apercu until it replaces the current hero.
+// Homepage parts, built from the day's numbers: the headline; "the note of the day" (key takeaways, then the polls,
+// new and departing candidates, the day's stories, what MPs are posting); and two widgets for the foot of the page,
+// the Assembly (577 districts coloured by the sitting MP, which fly into the seats) and a small shift map (how each
+// district moved between the last two legislative elections, with the national change at every election since 1848).
 import "../styles/hero-day.css";
 import { infoTip } from "../lib/infotip";
 import { geoConicConformal, geoPath } from "d3-geo";
@@ -10,14 +10,12 @@ import { L, fmtDate, getLang } from "../i18n";
 import { meta, registerParties } from "../lib/candidates";
 import { ELECTION_DAY } from "../lib/forecast";
 import { average, latestPollDate, pollsterName, pollsterRating, trend } from "../lib/polls";
-import { colon, dec, pct } from "../lib/format";
+import { colon, dec, pct, signed } from "../lib/format";
 import { rewind } from "../lib/map";
-import { getHome } from "../lib/cloud";
 import { esc, safeUrl } from "../util";
 import { heroViz } from "./hero";
 import { arrowPaths, legend, unitsPerPx } from "./shifts";
 import { pollMoves } from "./daily";
-import { bindSearch, searchBox } from "./explore";
 import { scenarioForecast, scenarioFromUrl, scenarioLabel } from "./forecast-chart";
 import type { Forecast } from "../lib/forecast";
 
@@ -108,73 +106,94 @@ export async function heroDay() {
     .slice(0, 2);
   const postsHtml = posts.map((r) => `<li><a href="${esc(safeUrl(r.url))}" target="_blank" rel="noopener"><span class="hds-who"><i style="background:${esc(r.mp.group?.couleur ?? "#888")}"></i>${esc(r.mp.name)}${r.mp.group ? ` <span>${esc(r.mp.group.abrev)}</span>` : ""}</span><span class="hds-text">${esc(r.text.length > 150 ? `${r.text.slice(0, 147).trim()}…` : r.text)}</span></a></li>`).join("");
 
-  // ---- the visual: seats or shifts
-  const pair = shifts?.pairs.filter((p) => p.level === "district").at(-1);
-  const viz = heroViz(geo, deputes, pair);
-  const home = getHome();
+  // ---- key takeaways: three or four sentences written from the numbers
+  const fav = fc.rows[0];
+  const pair0 = fc.pairs[0];
+  const movers = top
+    .map((r) => ({ r, d: moves.get(r.name)?.d7 ?? null }))
+    .filter((x): x is { r: (typeof top)[number]; d: number } => x.d != null && Math.abs(x.d) >= 0.5)
+    .sort((x, y) => Math.abs(y.d) - Math.abs(x.d));
+  const pts = (v: number) => `${dec(Math.abs(v))} point${Math.abs(v) >= 2 ? "s" : ""}`;
+  const takeaways: string[] = [];
+  if (a && b) takeaways.push(fr
+    ? `<b>${esc(meta(a.name).surname)}</b> est en tête avec ${pct(a.avg)}, ${pts(gap)} devant ${esc(meta(b.name).surname)} (${pct(b.avg)}).`
+    : `<b>${esc(meta(a.name).surname)}</b> leads on ${pct(a.avg)}, ${pts(gap)} ahead of ${esc(meta(b.name).surname)} (${pct(b.avg)}).`);
+  if (movers[0]) {
+    const { r, d } = movers[0];
+    takeaways.push(fr
+      ? `Le plus fort mouvement de la semaine : <b>${esc(meta(r.name).surname)}</b>, ${d > 0 ? "+" : "−"}${pts(d)} en 7 jours.`
+      : `Biggest move of the week: <b>${esc(meta(r.name).surname)}</b>, ${d > 0 ? "+" : "−"}${pts(d)} in 7 days.`);
+  } else takeaways.push(L("Aucun candidat n’a bougé d’un demi-point ou plus en 7 jours.", "No candidate moved half a point or more in 7 days."));
+  if (fav) takeaways.push(fr
+    ? `Notre prévision donne à <b>${esc(meta(fav.name).surname)}</b> ${pct(fav.win, 0)} de chances d’être élu${pair0 ? ` ; second tour le plus probable : ${esc(meta(pair0.a).surname)} – ${esc(meta(pair0.b).surname)} (${Math.round(pair0.p)} % des simulations)` : ""}.`
+    : `Our forecast gives <b>${esc(meta(fav.name).surname)}</b> a ${pct(fav.win, 0)} chance of being elected${pair0 ? `; most likely runoff: ${esc(meta(pair0.a).surname)} – ${esc(meta(pair0.b).surname)} (${Math.round(pair0.p)}% of simulations)` : ""}.`);
+  if (events[0]) takeaways.push(`${L("Dans la campagne", "On the trail")}${colon()}${events[0].html.replace(/\.\s*$/, "")}.`);
 
-  const html = `<section class="hero-x hday" aria-labelledby="hday-title">
-    <p class="hero-kicker">${L("Le point du jour", "The note of the day")} · ${fmtDate(today())} · ${L(`premier tour dans ${daysToGo} jours`, `first round in ${daysToGo} days`)}</p>
-    <h1 id="hday-title">${esc(head)}</h1>
-    <div class="hday-grid">
-      <div class="hday-note">
-        <section class="hday-block">
-          <header><h2>${L("Sondages", "Polls")}</h2><a href="#/sondages">${L("Tous", "All")} →</a></header>
-          <ol class="hdp">${pollRows}</ol>
-          <p class="hday-small">${L("Moyenne pondérée par la note des instituts · variation sur 7 jours", "Average weighted by institute grade · change over 7 days")}${infoTip(L("Chaque sondage compte selon la note de son institut (de A+ à F), gagnée par l’écart entre ses derniers sondages et les résultats depuis 2002. La flèche donne la variation sur les 7 derniers jours.", "Each poll counts by its institute’s grade (A+ to F), earned from how far its final polls landed from the results since 2002. The arrow is the change over the last 7 days."), L("À propos de la moyenne", "About the average"))}${lastLine ? ` · ${lastLine}` : ""}</p>
-          <div id="hq-num">${forecastLine(fc, fc.scenarios.length ? scenarioForecast(polls, markets, []) : undefined)}</div>
-        </section>
-        ${eventsHtml ? `<section class="hday-block"><header><h2>${L("Ce qui a bougé", "What changed")}</h2><a href="#/2027">${L("Les candidats", "Candidates")} →</a></header><ul class="hde">${eventsHtml}</ul></section>` : ""}
-        ${storiesHtml ? `<section class="hday-block"><header><h2>${L("À la une", "Top stories")}</h2><a href="#/fil">${L("Fil rouge, fil bleu", "Red feed, blue feed")} →</a></header><ul class="hdn">${storiesHtml}</ul></section>` : ""}
-        ${postsHtml ? `<section class="hday-block"><header><h2>${L("Sur les réseaux", "On social media")}</h2><a href="#/fil">${L("Tout", "All")} →</a></header><ul class="hds">${postsHtml}</ul></section>` : ""}
-      </div>
-      <figure class="hday-viz">
-        <div class="hday-tabs" role="tablist" aria-label="${L("Carte", "Map")}">
-          <button type="button" role="tab" data-v="seats" aria-selected="true">${L("L’Assemblée · 577 sièges", "The Assembly · 577 seats")}</button>
-          ${pair ? `<button type="button" role="tab" data-v="shifts" aria-selected="false">${L(`Les bascules ${pair.from}→${pair.to}`, `Shifts ${pair.from}→${pair.to}`)}</button>` : ""}
-        </div>
-        <div class="hday-pane" data-p="seats">
-          ${viz.svg}
-          <figcaption><div class="hd-toggle" role="group" aria-label="${L("Vue", "View")}"><button type="button" data-hd="map">${L("Circonscriptions", "Districts")}</button><button type="button" data-hd="hemi">${L("Sièges", "Seats")}</button></div><p id="hd-caption"></p>${viz.legend}</figcaption>
-        </div>
-        ${pair ? `<div class="hday-pane" data-p="shifts" hidden>
-          <svg id="hday-arrows" viewBox="0 0 800 780" class="home-arrows" role="img" aria-label="${L(`Bascules ${pair.from}–${pair.to}`, `Shifts ${pair.from}–${pair.to}`)}"></svg>
-          <figcaption><p>${L(`Une flèche par circonscription : écart droite–gauche au premier tour des législatives, de ${pair.from} à ${pair.to}. Survolez, cliquez.`, `One arrow per district: right–left margin in the legislative first round, ${pair.from} to ${pair.to}. Hover, click.`)}</p><div class="shift-legend" id="hday-legend"></div></figcaption>
-        </div>` : ""}
-      </figure>
+  // ---- the note of the day: takeaways, then the polls, what changed, the stories and the posts
+  const noteHtml = `<section class="hday-panel" aria-labelledby="hday-note-title">
+    <header class="hday-panel-head"><p class="hero-kicker">${L("Le point du jour", "The note of the day")} · ${fmtDate(today())}</p><h2 id="hday-note-title">${L("Ce qu’il faut retenir", "Key takeaways")}</h2></header>
+    <ul class="hday-take">${takeaways.map((t) => `<li>${t}</li>`).join("")}</ul>
+    <div class="hday-note">
+      <section class="hday-block">
+        <header><h2>${L("Sondages", "Polls")}</h2><a href="#/sondages">${L("Tous", "All")} →</a></header>
+        <ol class="hdp">${pollRows}</ol>
+        <p class="hday-small">${L("Moyenne pondérée par la note des instituts · variation sur 7 jours", "Average weighted by institute grade · change over 7 days")}${infoTip(L("Chaque sondage compte selon la note de son institut (de A+ à F), gagnée par l’écart entre ses derniers sondages et les résultats depuis 2002. La flèche donne la variation sur les 7 derniers jours.", "Each poll counts by its institute’s grade (A+ to F), earned from how far its final polls landed from the results since 2002. The arrow is the change over the last 7 days."), L("À propos de la moyenne", "About the average"))}${lastLine ? ` · ${lastLine}` : ""}</p>
+      </section>
+      ${eventsHtml ? `<section class="hday-block"><header><h2>${L("Ce qui a bougé", "What changed")}</h2><a href="#/2027">${L("Les candidats", "Candidates")} →</a></header><ul class="hde">${eventsHtml}</ul></section>` : ""}
+      ${storiesHtml ? `<section class="hday-block"><header><h2>${L("À la une", "Top stories")}</h2><a href="#/fil">${L("Fil rouge, fil bleu", "Red feed, blue feed")} →</a></header><ul class="hdn">${storiesHtml}</ul></section>` : ""}
+      ${postsHtml ? `<section class="hday-block"><header><h2>${L("Sur les réseaux", "On social media")}</h2><a href="#/fil">${L("Tout", "All")} →</a></header><ul class="hds">${postsHtml}</ul></section>` : ""}
     </div>
-    <div class="hday-actions">
-      <div class="hday-town">${searchBox(home?.code ? L(`Votre commune : ${home.commune ?? ""} — ou une autre`, `Your town: ${home.commune ?? ""} — or another`) : L("Votre ville ou votre code postal", "Your town or postcode"))}</div>
-      <a href="#/programmes">${L("Comparer les programmes", "Compare the programmes")} →</a>
-      <a href="#/quiz">${L("Faire le quiz", "Take the quiz")} →</a>
-    </div>
-    <div class="px-edge" aria-hidden="true"></div>
   </section>`;
 
+  // ---- widget 1: the Assembly, 577 dots that fly from the map into the seats
+  const pair = shifts?.pairs.filter((p) => p.level === "district").at(-1);
+  const viz = heroViz(geo, deputes, pair);
+  const parliamentHtml = `<section class="hw hw-parl" aria-labelledby="hw-parl">
+    <a class="hw-head" href="#/assemblee"><span class="hero-kicker">${L("Parlement", "Parliament")}</span><b id="hw-parl">${L("Savoir ce que vote votre député", "Know how your MP votes")}</b><span>${L("577 députés et 348 sénateurs : chacun de leurs votes, leur loyauté envers le groupe, ce qu’ils disent en séance.", "577 MPs and 348 senators: every vote they cast, their loyalty to their group, what they say in the chamber.")}</span></a>
+    <figure class="hw-fig">${viz.svg}<figcaption><div class="hd-toggle" role="group" aria-label="${L("Vue", "View")}"><button type="button" data-hd="map">${L("Circonscriptions", "Districts")}</button><button type="button" data-hd="hemi">${L("Sièges", "Seats")}</button></div><p id="hd-caption"></p>${viz.legend}</figcaption></figure>
+  </section>`;
+
+  // ---- widget 2: the shift map, small: the latest district arrows and the national change since 1848
+  const series = (shifts?.pairs ?? []).filter((p) => p.level === "department" && p.national.lr).sort((x, y) => x.from - y.from);
+  const nat = pair?.national.lr;
+  const maxV = Math.max(1, ...series.map((p) => Math.abs(p.national.lr![2])));
+  const strip = series.map((p, n) => {
+    const v = p.national.lr![2];
+    return `<i class="${v > 0 ? "is-pos" : "is-neg"}${n === series.length - 1 ? " is-on" : ""}" style="--h:${((48 * Math.abs(v)) / maxV).toFixed(1)}%" title="${p.from} → ${p.to} : ${signed(v)}"></i>`;
+  }).join("");
+  const shiftsHtml = pair && nat ? `<section class="hw hw-shift" aria-labelledby="hw-shift">
+    <a class="hw-head" href="#/resultats/bascules"><span class="hero-kicker">${L("Cartes des bascules", "Shift maps")} · ${pair.from} → ${pair.to}</span><b id="hw-shift">${nat[2] > 0 ? L("La France a glissé à droite", "France moved right") : L("La France a glissé à gauche", "France moved left")} <span class="hw-big ${nat[2] > 0 ? "is-pos" : "is-neg"}">${signed(nat[2])} ${L("pts", "pts")}</span></b><span>${L(`Une flèche par circonscription : écart droite − gauche au premier tour des législatives, de ${fmt1(nat[0])} à ${fmt1(nat[1])} points au niveau national.`, `One arrow per district: right − left margin in the legislative first round, ${fmt1(nat[0])} to ${fmt1(nat[1])} points nationally.`)}</span></a>
+    <figure class="hw-fig">
+      <svg id="hday-arrows" viewBox="0 0 800 780" class="home-arrows" role="img" aria-label="${L(`Bascules ${pair.from}–${pair.to}`, `Shifts ${pair.from}–${pair.to}`)}"></svg>
+      <figcaption><div class="shift-legend" id="hday-legend"></div>
+        ${series.length > 3 ? `<div class="hw-strip" aria-hidden="true">${strip}</div><p class="hw-years"><span>${series[0].from}</span><span>${L("variation nationale à chaque élection", "national change at each election")}</span><span>${series.at(-1)!.to}</span></p>` : ""}
+        <a class="hw-more" href="#/resultats/bascules">${L("Remonter jusqu’à 1848", "Go back to 1848")} →</a></figcaption>
+    </figure>
+  </section>` : "";
+
+  const headHtml = `<p class="hero-kicker">${L("Présidentielle 2027", "2027 presidential election")} · ${fmtDate(today())} · ${L(`premier tour dans ${daysToGo} jours`, `first round in ${daysToGo} days`)}</p>
+    <h1 id="hday-title">${esc(head)}</h1>`;
+
   const start = (root: HTMLElement) => {
-    bindSearch(root);
-    viz.start(root);
-    let drawn = false;
-    const drawArrows = () => {
-      if (drawn || !pair) return;
-      drawn = true;
+    const parl = root.querySelector<HTMLElement>(".hw-parl");
+    if (parl) viz.start(parl);
+    const svg = root.querySelector<SVGSVGElement>("#hday-arrows");
+    if (!svg || !pair) return;
+    const draw = () => {
       const features = geo.features.map(rewind).filter((f) => f.properties!.code.length === 2);
       const fcGeo = { type: "FeatureCollection", features } as GeoJSON.FeatureCollection;
       const proj = geoConicConformal().parallels([44, 49]).rotate([-3, 0]).fitExtent([[10, 10], [790, 770]], fcGeo);
-      const svg = root.querySelector<SVGSVGElement>("#hday-arrows")!;
       const k = unitsPerPx(svg, 800);
       svg.style.setProperty("--sw", `${(1.7 * k).toFixed(2)}px`);
       svg.innerHTML = features.map((f) => `<path d="${geoPath(proj)(f)}" class="shift-base"/>`).join("") + arrowPaths(pair, "lr", (p) => proj(p) as [number, number] | null, { k, dark: true });
       root.querySelector("#hday-legend")!.innerHTML = legend("lr", 2.2 / k, true, true);
-      svg.addEventListener("click", (e) => { const href = (e.target as Element).closest<SVGGElement>(".arrow")?.dataset.href; if (href) location.hash = href; });
     };
-    root.querySelectorAll<HTMLButtonElement>(".hday-tabs [data-v]").forEach((t) =>
-      t.addEventListener("click", () => {
-        root.querySelectorAll<HTMLButtonElement>(".hday-tabs [data-v]").forEach((x) => x.setAttribute("aria-selected", String(x === t)));
-        root.querySelectorAll<HTMLElement>(".hday-pane").forEach((p) => (p.hidden = p.dataset.p !== t.dataset.v));
-        if (t.dataset.v === "shifts") drawArrows();
-      }),
-    );
+    // drawn once it comes near the screen (it sits at the foot of the page)
+    const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { io.disconnect(); draw(); } }, { rootMargin: "300px" });
+    io.observe(svg);
+    svg.addEventListener("click", (e) => { const href = (e.target as Element).closest<SVGGElement>(".arrow")?.dataset.href; if (href) location.hash = href; });
   };
-  return { html, start };
+  return { headHtml, noteHtml, parliamentHtml, shiftsHtml, start };
 }
+
+const fmt1 = (v: number) => (getLang() === "fr" ? v.toFixed(1).replace(".", ",") : v.toFixed(1)).replace("-", "−");

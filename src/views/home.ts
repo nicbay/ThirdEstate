@@ -1,17 +1,16 @@
-// Front page. The hero is "the note of the day" (views/hero-day.ts): what moved in the polls, who entered or
-// left the race, the day's stories and posts, beside one map of France (the 577 seats, or how each district
-// shifted). Below: the reader's own town (when known), the polls chart with its projection and scenarios, and
-// one line each on Parliament and the archives.
+// Front page, top to bottom: the polls and on to the first round (on the dark hero, under the day's headline);
+// the quiz, the page's loudest call to action; the reader's own town (when known); the note of the day (key
+// takeaways, polls, what changed, stories, posts); two widgets, the Assembly's 577 seats and the shift map.
+// The parts are built in views/hero-day.ts.
 import { loadMarkets, loadPolls } from "../data";
-import { pixelIcon } from "../lib/pixel-icons";
 import { L, fmtDate } from "../i18n";
-import { registerParties } from "../lib/candidates";
+import { meta, registerParties } from "../lib/candidates";
 import { getHome } from "../lib/cloud";
 import { average, latestPollDate, pollsInWindow, WINDOW } from "../lib/polls";
 import { colon } from "../lib/format";
 import { esc } from "../util";
 import { mpChip, townBrief } from "./brief";
-import { mountForecastChart, scenarioForecast } from "./forecast-chart";
+import { mountForecastChart, scenarioForecast, scenarioFromUrl } from "./forecast-chart";
 import { forecastLine, heroDay } from "./hero-day";
 
 export async function renderHome(app: HTMLElement) {
@@ -21,25 +20,41 @@ export async function renderHome(app: HTMLElement) {
   const now = average(polls.firstRound, latest);
   const nPolls = pollsInWindow(polls.firstRound, latest).length;
   const home = getHome();
+  const cols = now.slice(0, 6).map((r) => meta(r.name).color);
+  const quizPixels = Array.from({ length: 24 }, (_, i) => `<i style="background:${cols[(i * 5 + Math.floor(i / 6)) % cols.length] ?? "#fff"}"></i>`).join("");
 
   app.innerHTML = `
     <section class="page home">
-      ${hero.html}
+      <section class="hero-x hday" aria-labelledby="hday-title">
+        ${hero.headHtml}
+        <div class="hday-chart">
+          <div id="trend" class="reveal"></div>
+          <div id="hq-num">${forecastLine(scenarioForecast(polls, markets, scenarioFromUrl()))}</div>
+          <p class="hday-small">${L(`Ligne pleine : moyenne des sondages du premier tour sur ${WINDOW} jours, pondérée par la note des instituts (<a href="#/sondages/instituts">le classement</a>), jusqu’au dernier sondage (${fmtDate(latest)}, ${nPolls} sondages dans la fenêtre). Points : sondages individuels. Au-delà : la projection jusqu’au premier tour.`, `Solid line: first-round polling average over ${WINDOW} days, weighted by each institute’s grade (<a href="#/sondages/instituts">the ranking</a>), up to the latest poll (${fmtDate(latest)}, ${nPolls} polls in the window). Dots: individual polls. Beyond: the projection to the first round.`)}</p>
+        </div>
+        <div class="px-edge" aria-hidden="true"></div>
+      </section>
+
+      <a class="quiz-band" href="#/quiz">
+        <span class="qb-px" aria-hidden="true">${quizPixels}</span>
+        <span class="qb-text">
+          <span class="qb-k">${L("Le quiz", "The quiz")}</span>
+          <b>${L("Qui vous ressemble ?", "Who is most like you?")}</b>
+          <span>${L("Répondez à 10 votes de l’Assemblée et découvrez de quel député et de quel candidat vous êtes le plus proche, sujet par sujet.", "Answer 10 Assembly votes and find out which MP and which candidate you are closest to, subject by subject.")}</span>
+        </span>
+        <span class="qb-go">${L("Faire le quiz", "Take the quiz")} <span aria-hidden="true">→</span></span>
+      </a>
 
       <div id="mine"></div>
 
-      <section class="card">
-        <header class="card-head"><h2>${L("Les sondages, et jusqu’au premier tour", "The polls, and on to the first round")}</h2><a href="#/sondages">${L("Tous les sondages", "Every poll")}</a></header>
-        <div id="trend" class="reveal"></div>
-        <p class="muted small">${L(`Ligne pleine : moyenne des sondages du premier tour sur ${WINDOW} jours, pondérée par la note des instituts (<a href="#/sondages/instituts">le classement</a>), jusqu’au dernier sondage (${fmtDate(latest)}, ${nPolls} sondages dans la fenêtre) ; la même moyenne partout sur le site. Points : sondages individuels.`, `Solid line: first-round polling average over ${WINDOW} days, weighted by each institute’s grade (<a href="#/sondages/instituts">the ranking</a>), up to the latest poll (${fmtDate(latest)}, ${nPolls} polls in the window); the same average everywhere on the site. Dots: individual polls.`)}</p>
-      </section>
+      ${hero.noteHtml}
 
-      <ul class="home-more" aria-label="${L("Aussi sur Third Estate", "Also on Third Estate")}">
-        <li><a href="#/assemblee">${pixelIcon("parliament", 12)}<b>${L("Parlement", "Parliament")}</b><span>${L("577 députés et 348 sénateurs : chacun de leurs votes.", "577 MPs and 348 senators: every vote they cast.")}</span></a></li>
-        <li><a href="#/resultats">${pixelIcon("archive", 12)}<b>${L("Archives", "Archives")}</b><span>${L("Chaque présidentielle depuis 1848, avec l’annonce filmée.", "Every presidential election since 1848, with the footage of the result.")}</span></a></li>
-      </ul>
+      <div class="hw-row">
+        ${hero.parliamentHtml}
+        ${hero.shiftsHtml}
+      </div>
     </section>`;
-  hero.start(app.querySelector<HTMLElement>(".hday")!);
+  hero.start(app);
   if (home?.code) drawMine(app.querySelector<HTMLElement>("#mine")!, home.code, home.commune ?? home.code);
 
   // ---------- polls chart with the projection to election day and the scenarios ----------
