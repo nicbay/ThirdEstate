@@ -190,3 +190,11 @@
 .hday .hd-toggle button[aria-pressed="true"], .hd-toggle.hd-toggle button[aria-pressed="true"] { color: var(--night); }
 /* the count in a selected programme-theme button follows the button's inverted text */
 .ph-themes button[aria-selected="true"] b { color: inherit; opacity: 0.75; }
+
+/* ---------- programme flow: version boxes link to their source document (PDF, else the site) ---------- */
+.flow-link { cursor: pointer; text-decoration: none; }
+.flow-node.is-link .flow-doc { font: 600 10px var(--mono); letter-spacing: 0.04em; fill: var(--link); }
+.flow-link:hover .flow-box, .flow-link:focus-visible .flow-box { stroke: var(--accent); stroke-width: 2.5; }
+.flow-link:hover .flow-doc, .flow-link:focus-visible .flow-doc { text-decoration: underline; }
+.flow-link:focus-visible { outline: none; }
+.flow-link:focus-visible .flow-box { stroke: var(--focus); stroke-width: 3; }
