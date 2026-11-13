@@ -5,6 +5,7 @@
 // Data: public/data/candidates/<slug>.json, hand-curated and checked at build time (scripts/check-candidates.mjs);
 // the rest is looked up by slug or name, so a new candidate file is enough (docs/data-candidates.md).
 import { fetchJson, loadFeed, loadMarkets, loadPolls, loadScrutins, loadVotes, type Depute, type FeedStory } from "../data";
+import { infoTip } from "../lib/infotip";
 import { L, fmtNum, getLang } from "../i18n";
 import { meta, registerParties, surname } from "../lib/candidates";
 import { average, pollsInWindow, trend } from "../lib/polls";
@@ -157,7 +158,7 @@ export async function renderCandidate(app: HTMLElement, slug: string) {
           : `<div class="kpis kpis-4 cand-kpis">
           <div><strong>${row ? pct(row.avg) : "–"}</strong>${L("Moyenne des sondages", "Polling average")}${rank ? ` · ${rank}${L(rank === 1 ? "er" : "e", rank === 1 ? "st" : rank === 2 ? "nd" : rank === 3 ? "rd" : "th")}` : ""}</div>
           <div><strong class="${delta == null || Math.abs(delta) < 0.05 ? "" : delta > 0 ? "cand-up" : "cand-down"}">${delta == null ? "–" : signed(delta)}</strong>${L("Sur 30 jours (points)", "Over 30 days (pts)")}</div>
-          <div><strong>${fmtChance(fr?.win)}</strong>${L("Chances de victoire (prévision)", "Chance of winning (forecast)")}</div>
+          <div><strong>${fmtChance(fr?.win)}</strong>${L("Chances de victoire (prévision)", "Chance of winning (forecast)")}${infoTip(L("Tirée de la prévision du site : les sondages passés dans 20 000 élections simulées, mêlés aux marchés prédictifs.", "From the site’s forecast: polls run through 20,000 simulated elections, blended with prediction markets."), L("À propos de cette chance", "About this chance"))}</div>
           <div><strong>${fmtChance(mk)}</strong>${L("Marchés prédictifs", "Prediction markets")}</div>
         </div>
         <p class="muted small">${L(

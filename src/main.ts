@@ -1,3 +1,4 @@
+import { initInfoTips } from "./lib/infotip";
 import "./fonts.css";
 import "./styles/tokens.css";
 import "./style.css";
@@ -611,5 +612,6 @@ window.addEventListener("hashchange", route);
 onHome(() => renderChrome(split().path));
 setLang(getLang());
 initTooltip();
+initInfoTips();
 joinPresence();
 route();
