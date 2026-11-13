@@ -33,6 +33,25 @@ import { renderCandidate } from "./views/candidate";
 const app = document.getElementById("app")!;
 const nav = document.getElementById("nav")!;
 const langBtn = document.getElementById("lang") as HTMLButtonElement;
+const themeBtn = document.getElementById("theme") as HTMLButtonElement;
+// light / dark: follows the system until the reader picks one (kept in localStorage, applied before paint by public/theme-boot.js)
+const isDark = () => document.documentElement.dataset.theme ? document.documentElement.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+function paintThemeBtn() {
+  const dark = isDark();
+  themeBtn.innerHTML = pixelIcon(dark ? "sun" : "moon", 12);
+  themeBtn.setAttribute("aria-label", dark ? L("Passer en thème clair", "Switch to light theme") : L("Passer en thème sombre", "Switch to dark theme"));
+  themeBtn.setAttribute("aria-pressed", String(dark));
+}
+themeBtn.addEventListener("click", () => {
+  const next = isDark() ? "light" : "dark";
+  document.documentElement.dataset.theme = next;
+  // back to "follow the system" when the pick matches it, so a later system change is followed again
+  const sys = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  try { if (next === sys) localStorage.removeItem("te-theme"); else localStorage.setItem("te-theme", next); } catch { /* private mode */ }
+  if (next === sys) delete document.documentElement.dataset.theme;
+  paintThemeBtn();
+});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", paintThemeBtn);
 const footer = document.getElementById("footer")!;
 const searchBtn = document.getElementById("search-btn") as HTMLButtonElement;
 const quizBtn = document.getElementById("quiz-cta") as HTMLAnchorElement;
@@ -323,6 +342,7 @@ function renderChrome(path: string) {
   searchBtn.setAttribute("aria-label", L(`Rechercher (${isMac ? "Cmd" : "Ctrl"}+K)`, `Search (${isMac ? "Cmd" : "Ctrl"}+K)`));
   quizBtn.innerHTML = `<span class="q-long">${L("Qui vous ressemble ?", "Who’s like you?")}</span><span class="q-short">${L("Le quiz", "Quiz")}</span>`;
   quizBtn.toggleAttribute("aria-current", /^#\/quiz/.test(path));
+  paintThemeBtn();
   langBtn.innerHTML = `<span class="l-long">${t().langSwitch}</span><span class="l-short" aria-hidden="true">${getLang() === "fr" ? "EN" : "FR"}</span>`;
   langBtn.setAttribute("aria-label", getLang() === "fr" ? "Switch to English" : "Passer en français");
   skip.textContent = L("Aller au contenu", "Skip to content");

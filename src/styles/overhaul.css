@@ -46,3 +46,38 @@
   .px-sheet-space { display: block; }
 }
 .px-sheet-space { display: none; }
+
+/* ---------- theme toggle (masthead) ---------- */
+.theme-btn { display: grid; place-items: center; width: 36px; height: 36px; padding: 0; color: #fff; background: none; border: 2px solid var(--night-rule-2); cursor: pointer; }
+.theme-btn:hover { border-color: #fff; }
+.theme-btn .px-icon { width: 12px; height: 12px; }
+@media (max-width: 760px) { .theme-btn { width: 32px; height: 32px; } }
+
+/* ---------- dark theme: the few light-only tints (warnings, flags) get dark tints with light text ---------- */
+:root[data-theme="dark"] .verify { background: #2b2614; }
+:root[data-theme="dark"] .mp-entry-tag, :root[data-theme="dark"] .ph-flag.is-risk { background: #2b2614; border-color: #4d4220; color: #f0cf7a; }
+:root[data-theme="dark"] .ph-flag.is-serious { background: #33161c; border-color: #5c2530; color: #ff9aa6; }
+:root[data-theme="dark"] .ph-lstack .l-ok, :root[data-theme="dark"] .ph-key .l-ok { background: #4a4f66; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .verify { background: #2b2614; }
+  :root:not([data-theme="light"]) .mp-entry-tag, :root:not([data-theme="light"]) .ph-flag.is-risk { background: #2b2614; border-color: #4d4220; color: #f0cf7a; }
+  :root:not([data-theme="light"]) .ph-flag.is-serious { background: #33161c; border-color: #5c2530; color: #ff9aa6; }
+  :root:not([data-theme="light"]) .ph-lstack .l-ok, :root:not([data-theme="light"]) .ph-key .l-ok { background: #4a4f66; }
+}
+
+/* ---------- dark theme: the far-right navy (#1c2c6c) vanishes on dark paper, so it lifts to a lighter
+   violet-navy, still apart from the right's blue. The only party colour the theme touches. ---------- */
+:root[data-theme="dark"] { --far-right: #6a78e0; }
+:root[data-theme="dark"] [fill="#1c2c6c"] { fill: #6a78e0; }
+:root[data-theme="dark"] [stroke="#1c2c6c"] { stroke: #6a78e0; }
+:root[data-theme="dark"] [style*="#1c2c6c"] { --c: #6a78e0 !important; --col: #6a78e0 !important; }
+:root[data-theme="dark"] [style*="background:#1c2c6c"], :root[data-theme="dark"] [style*="background: #1c2c6c"] { background: #6a78e0 !important; }
+:root[data-theme="dark"] [style*="color:#1c2c6c"]:not([style*="background"]), :root[data-theme="dark"] [style*="color: #1c2c6c"]:not([style*="background"]) { color: #6a78e0 !important; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --far-right: #6a78e0; }
+  :root:not([data-theme="light"]) [fill="#1c2c6c"] { fill: #6a78e0; }
+  :root:not([data-theme="light"]) [stroke="#1c2c6c"] { stroke: #6a78e0; }
+  :root:not([data-theme="light"]) [style*="#1c2c6c"] { --c: #6a78e0 !important; --col: #6a78e0 !important; }
+  :root:not([data-theme="light"]) [style*="background:#1c2c6c"], :root:not([data-theme="light"]) [style*="background: #1c2c6c"] { background: #6a78e0 !important; }
+  :root:not([data-theme="light"]) [style*="color:#1c2c6c"]:not([style*="background"]), :root:not([data-theme="light"]) [style*="color: #1c2c6c"]:not([style*="background"]) { color: #6a78e0 !important; }
+}
