@@ -5,6 +5,7 @@
 // district profiles (crime, income, jobs, schools, spending, events) and, when built,
 // per-town files from scripts/sync-communes.mjs (councillors, monuments, prices, photos).
 import { geoMercator, geoPath } from "d3-geo";
+import { toast } from "../lib/toast";
 import { detailSheet } from "../lib/sheet";
 import { fetchJson, loadDeputes, type Depute } from "../data";
 import { getHome, setHome } from "../lib/cloud";
@@ -570,8 +571,13 @@ export async function renderTown(app: HTMLElement, code: string) {
       : `<button type="button" class="home-btn" data-home="on">${L("C’est chez moi", "I live here")}</button> <span class="muted small">${h?.code ? L(`à la place de ${esc(h.commune ?? h.code)}`, `instead of ${esc(h.commune ?? h.code)}`) : L("pour retrouver votre commune, vos élus et votre circonscription partout sur le site", "to keep your town, officials and district one click away across the site")}</span>`;
     homeBox.querySelector<HTMLButtonElement>("[data-home]")?.addEventListener("click", (e) => {
       const on = (e.currentTarget as HTMLElement).dataset.home === "on";
+      const before = getHome();
       setHome(on ? asHome() : null);
       drawHomeSet(false);
+      toast(on ? L(`${name} est maintenant votre commune`, `${name} is now your town`) : L("Commune oubliée sur cet appareil", "Town forgotten on this device"), {
+        uniqueID: "home",
+        action: { label: L("Annuler", "Undo"), onClick: () => { setHome(before?.code ? before : null); drawHomeSet(false); } },
+      });
     });
   };
   let picked: string | null = null;
