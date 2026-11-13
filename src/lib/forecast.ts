@@ -21,9 +21,11 @@
 import type { Market } from "../data";
 import { meta, type Bloc } from "./candidates";
 import { combineOdds, winShare } from "./markets";
-import { average, duelAverages, referenceLineup, trend, type Duel, type Poll } from "./polls";
+import { average, duelAverages, pollsInWindow, referenceLineup, trend, type Duel, type Poll } from "./polls";
 import primaryData from "../../public/data/2027/primary.json";
 import rejectionData from "../../public/data/2027/rejection.json";
+import candidateIndex from "../../public/data/candidates/index.json";
+
 
 /** First round of the 2027 presidential election: Sunday 18 April 2027 (run-off 2 May), as chosen at the Council
  *  of Ministers of 1 July 2026. The convening decree, due at least 10 weeks before, makes it official. */
@@ -55,14 +57,14 @@ export const SETBACK_RUNOFF = 5;
 /** Share of their vote the smaller candidates of a camp hand to its leader when the camp rallies. */
 export const RALLY_SHARE = 0.7;
 
-export type ScenarioKey = "base" | "no-primary" | "right-rallies" | "left-unites" | "le-pen-out" | "setback-le-pen" | "setback-melenchon" | "setback-centre";
+export type ScenarioKey = "base" | "centre-primary" | "right-rallies" | "left-unites" | "le-pen-out" | "setback-le-pen" | "setback-melenchon" | "setback-centre";
 export interface ScenarioDef { key: ScenarioKey; fr: string; en: string; descFr: string; descEn: string; kind: "base" | "primary" | "rally" | "ballot" | "setback" }
 const pc = (x: number) => Math.round(x * 100);
 const BS_FR = "Impact calqué sur les cygnes noirs de la vie politique française (Balladur 1995, Fillon 2017, Pécresse 2022 : entre un quart et deux tiers de leurs voix perdues)";
 const BS_EN = "Impact based on past black swans in French political life (Balladur 1995, Fillon 2017, Pécresse 2022: between a quarter and two thirds of their vote lost)";
 export const SCENARIOS: ScenarioDef[] = [
   { key: "base", kind: "base", fr: "Les sondages du jour", en: "Today’s polls", descFr: "Notre prévision telle quelle : le modèle des sondages et les marchés, à parts égales.", descEn: "Our forecast as it stands: the polls model and the markets, half and half." },
-  { key: "no-primary", kind: "primary", fr: "Pas de primaire", en: "No primary", descFr: "Pas de primaire au centre et à droite : Attal, Retailleau et Lisnard restent tous candidats, Philippe garde ses électeurs.", descEn: "No centre and right primary: Attal, Retailleau and Lisnard all stay in, and Philippe keeps his voters." },
+  { key: "centre-primary", kind: "primary", fr: "Primaire du centre", en: "Centre primary", descFr: "Fin janvier, Attal, Retailleau et Lisnard se rangent derrière le mieux placé dans les sondages de fin décembre ; les deux autres se retirent et la plupart de leurs électeurs le suivent. Philippe n’y participe pas mais la moitié de ses électeurs rejoignent le candidat désigné.", descEn: "At the end of January Attal, Retailleau and Lisnard line up behind whoever is best placed in the end-of-December polls; the other two withdraw and most of their voters follow. Philippe stays out, but half his voters join the chosen candidate." },
   { key: "right-rallies", kind: "rally", fr: "Le centre et la droite se rassemblent", en: "Centre and right rally", descFr: `Les autres candidats du centre et de la droite cèdent ${pc(RALLY_SHARE)} % de leurs voix au mieux placé d’entre eux.`, descEn: `The other centre and right candidates hand ${pc(RALLY_SHARE)}% of their vote to the best placed among them.` },
   { key: "left-unites", kind: "rally", fr: "La gauche s’unit", en: "The left unites", descFr: `Les autres candidats de gauche cèdent ${pc(RALLY_SHARE)} % de leurs voix au mieux placé d’entre eux.`, descEn: `The other left-wing candidates hand ${pc(RALLY_SHARE)}% of their vote to the best placed among them.` },
   { key: "le-pen-out", kind: "ballot", fr: "Le Pen n’est pas candidate", en: "Le Pen doesn’t run", descFr: "Jordan Bardella la remplace, au niveau que lui donnent les sondages qui le testent.", descEn: "Jordan Bardella replaces her, at the level the polls that test him give him." },
@@ -221,8 +223,9 @@ function applyScenario(key: ScenarioKey, base: Cand[], firstRound: Poll[], aff: 
 export const P_SHOCK = 0.5;
 /** Chance, per camp (left; centre and right), that its voters rally late behind its best-placed candidate. */
 export const P_RALLY = 0.25;
-/** Long-term trend carried forward: the last 120 days' slope of the polling average, at this fraction, capped. */
-export const TREND_DAYS = 120, TREND_DAMP = 0.5, TREND_CAP = 4;
+/** A slow trend carried forward: a fifth of the last 120 days' slope of the polling average, capped at 1.5 points
+ *  by election day. Polls don't move in straight lines: most of a recent slide or climb doesn't carry on. */
+export const TREND_DAYS = 120, TREND_DAMP = 0.2, TREND_CAP = 1.5;
 // Errors have fat tails (one draw in ten is about twice as wide), so big misses aren't vanishingly rare.
 /** Ceiling: a candidate can climb at most this fraction of the way from today's share to their maximum
  *  electorate (everyone who doesn't completely rule out voting for them, Cluster17 for Politico). */
@@ -267,17 +270,44 @@ export function trendSlopes(firstRound: Poll[], asOf: string): Map<string, numbe
   return out;
 }
 
+/** Declared candidates (one file each in public/data/candidates), by poll name. */
+const DECLARED = new Set(((candidateIndex as { candidates?: { pollName: string }[] }).candidates ?? []).map((c) => c.pollName.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().trim()));
+
+/** The starting point: from every poll of the last three weeks, the line-up closest to the declared field (most
+ *  declared candidates, fewest hypothetical ones), each candidate averaged over the polls that test them, then
+ *  scaled to 100. Close to the polling average on the chart, but one coherent field. Falls back to the most-tested
+ *  line-up when too few polls match (old dates). */
+export function fieldLineup(polls: Poll[], asOf: string): { n: number; rows: { name: string; share: number }[] } {
+  const ps = pollsInWindow(polls, asOf);
+  const score = (h: Record<string, number>) => Object.keys(h).reduce((s, k) => s + (DECLARED.has(norm(k)) ? 1 : -1), 0);
+  const acc = new Map<string, number[]>();
+  for (const p of ps) {
+    if (!p.hyps.length) continue;
+    const best = Math.max(...p.hyps.map(score));
+    const hs = p.hyps.filter((h) => score(h) === best);
+    for (const n of new Set(hs.flatMap((h) => Object.keys(h)))) {
+      const v = hs.map((h) => h[n]).filter((x): x is number => x != null);
+      if (v.length) acc.set(n, [...(acc.get(n) ?? []), v.reduce((a, b) => a + b, 0) / v.length]);
+    }
+  }
+  const rows = [...acc].map(([name, v]) => ({ name, share: v.reduce((a, b) => a + b, 0) / v.length }));
+  const sum = rows.reduce((s, r) => s + r.share, 0);
+  if (ps.length < 3 || rows.length < 4 || sum <= 0) return referenceLineup(polls, asOf);
+  return { n: ps.length, rows: rows.map((r) => ({ name: r.name, share: (100 * r.share) / sum })) };
+}
+
 export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Market[], asOf: string, scenario: ScenarioKey = "base"): Forecast {
   const daysToGo = Math.max(0, Math.round((Date.parse(ELECTION_DAY) - Date.parse(asOf)) / 86400000));
   const { sd1, sd2, bloc: sdBloc } = errors(daysToGo);
-  const lineup = referenceLineup(firstRound, asOf);
+  const lineup = fieldLineup(firstRound, asOf);
   const base: Cand[] = lineup.rows.map((r) => ({ name: r.name, share: r.share, bloc: meta(r.name).bloc }));
   const duels = duelAverages(secondRound, undefined, asOf).filter((d) => !d.stale);
   const odds = combineOdds(markets);
   const added: string[] = [];
   const polled = average(firstRound, asOf, undefined, 0);
   for (const o of odds) {
-    if ((winShare(odds, o) ?? 0) < 3 || base.some((c) => norm(c.name) === norm(o.name))) continue;
+    // only declared candidates: a name the markets like but who isn't running stays in the markets half
+    if ((winShare(odds, o) ?? 0) < 3 || !DECLARED.has(norm(o.name)) || base.some((c) => norm(c.name) === norm(o.name))) continue;
     const pv = polled.find((r) => norm(r.name) === norm(o.name));
     if (!pv || pv.avg < 1) continue;
     const nb = meta(pv.name).bloc;
@@ -299,8 +329,9 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
   // the primary: when it would be decided, and who takes part (only those in the field)
   const tPrim = Math.round((Date.parse(PRIMARY_DAY) - Date.parse(asOf)) / 86400000);
   const primIdx = base.map((c, i) => (PRIMARY.participants.some((p) => norm(p) === norm(c.name)) ? i : -1)).filter((i) => i >= 0);
-  const primaryOn = PRIMARY.status !== "cancelled" && tPrim > 0 && tPrim < daysToGo && primIdx.length >= 2;
-  const pHeld = scenario === "no-primary" ? 0 : PRIMARY.status === "confirmed" ? 1 : PRIMARY.pHeld;
+  const pHeldRaw = scenario === "centre-primary" || PRIMARY.status === "confirmed" ? 1 : PRIMARY.status === "cancelled" ? 0 : PRIMARY.pHeld;
+  const primaryOn = pHeldRaw > 0 && tPrim > 0 && tPrim < daysToGo && primIdx.length >= 2;
+  const pHeld = pHeldRaw;
   const rallyIdx = base.map((c, i) => (PRIMARY.rallyFrom.some((p) => norm(p) === norm(c.name)) ? i : -1)).filter((i) => i >= 0);
   // ceilings from rejection (today's share, before any scenario, plus half the room to the maximum electorate)
   const ceiling = base.map((c, i) => {
@@ -432,15 +463,31 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
     p.n++; if (aWins) p.aWins++;
     pairs.set(key, p);
   }
-  const knot = (date: string, arr: Float32Array, i: number) => {
-    let sum = 0;
-    for (const v of arr) sum += v;
+  // when the primary surely happens, its losers' lines stop there (they withdraw)
+  const sure = primaryOn && pHeld >= 1;
+  // The dotted line: the polls as they are, plus the slow trend and whatever the scenario itself changes, with
+  // none of the random black swans and late rallies (those only widen the band). Adds up to 100 at every step.
+  const path = (() => {
+    const out = new Set<number>();
+    for (let i = 0; i < n; i++) x[i] = base[i].share + drift[i] * f1;
+    settle(out);
+    const p1 = Array.from(x);
+    if (sure && primWinner >= 0) {
+      const w = primWinner;
+      for (const i of primIdx) if (i !== w) { const g = Math.max(0, x[i]); x[w] += g * RALLY_SHARE; x[i] -= g * RALLY_SHARE; spread(x, i, Math.max(0, x[i]), out); x[i] = 0; out.add(i); }
+      for (const j of rallyIdx) if (!out.has(j) && x[j] > 0) { const g = x[j] * PRIMARY.rallyFromShare; x[j] -= g; x[w] += g; }
+      settle(out);
+    }
+    const p2 = Array.from(x);
+    for (let i = 0; i < n; i++) if (!out.has(i)) x[i] += drift[i] * (1 - f1);
+    settle(out);
+    return { p1, p2, p3: Array.from(x) };
+  })();
+  const knot = (date: string, arr: Float32Array, mid: number) => {
     const sorted = arr.sort(); // in place: the arrays aren't used again
     const at = (f: number) => sorted[Math.min(sorted.length - 1, Math.floor(f * sorted.length))];
-    return { date, mid: sum / arr.length, lo: at(0.1), hi: at(0.9) };
+    return { date, mid, lo: Math.min(mid, at(0.1)), hi: Math.max(mid, at(0.9)) };
   };
-  // when the primary surely happens, its losers' lines stop there (they withdraw); otherwise they average both paths
-  const sure = primaryOn && pHeld >= 1;
   const projection: Projection[] = n >= 2 ? base.map((c, i) => {
     const out = sure && primIdx.includes(i) && i !== primWinner;
     return {
@@ -448,9 +495,9 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
       ...(out ? { outAt: PRIMARY_DAY } : {}),
       knots: [
         { date: asOf, mid: c.share, lo: c.share, hi: c.share },
-        ...(primaryOn ? [knot(PRIMARY_DAY, atPrimary[i], i)] : []),
-        ...(primaryOn && !out ? [knot(new Date(Date.parse(PRIMARY_DAY) + 86400000).toISOString().slice(0, 10), afterPrimary[i], i)] : []),
-        ...(out ? [] : [knot(ELECTION_DAY, final[i], i)]),
+        ...(primaryOn ? [knot(PRIMARY_DAY, atPrimary[i], path.p1[i])] : []),
+        ...(primaryOn && !out ? [knot(new Date(Date.parse(PRIMARY_DAY) + 86400000).toISOString().slice(0, 10), afterPrimary[i], path.p2[i])] : []),
+        ...(out ? [] : [knot(ELECTION_DAY, final[i], path.p3[i])]),
       ],
     };
   }) : [];
