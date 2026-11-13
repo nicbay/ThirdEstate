@@ -81,3 +81,16 @@
   :root:not([data-theme="light"]) [style*="background:#1c2c6c"], :root:not([data-theme="light"]) [style*="background: #1c2c6c"] { background: #6a78e0 !important; }
   :root:not([data-theme="light"]) [style*="color:#1c2c6c"]:not([style*="background"]), :root:not([data-theme="light"]) [style*="color: #1c2c6c"]:not([style*="background"]) { color: #6a78e0 !important; }
 }
+
+/* ---------- the kit page (#/kit) ---------- */
+.kit-sws { list-style: none; margin: 0.6rem 0 1rem; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: var(--spacing-3); }
+.kit-sw { display: grid; grid-template-columns: 36px minmax(0, 1fr); column-gap: var(--spacing-2); align-items: center; font-size: 0.78rem; }
+.kit-sw i { grid-row: span 2; width: 36px; height: 36px; border: 2px solid var(--rule-2); clip-path: var(--px-clip); }
+.kit-sw code { font: 500 0.72rem var(--mono); overflow-wrap: anywhere; }
+.kit-sw small { color: var(--ink-3); font: 500 0.68rem var(--mono); }
+.kit-type { display: grid; gap: var(--spacing-2); }
+.kit-type > * { margin: 0; }
+.kit-h1 { font: 850 clamp(1.8rem, 1.1rem + 2.2vw, 2.9rem)/0.98 var(--display); font-stretch: 72%; letter-spacing: -0.028em; }
+.kit-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-3); margin: 0 0 var(--spacing-4); }
+.kit-icons span { display: grid; place-items: center; width: 40px; height: 40px; color: var(--ink); background: var(--panel); }
+.kit-hemi { max-width: 420px; margin-top: var(--spacing-4); }

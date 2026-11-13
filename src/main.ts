@@ -88,6 +88,7 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/depute\/(PA\d+)$/, (m) => renderDepute(app, m[1])],
   [/^#\/sources$/, () => renderSources(app)],
   [/^#\/mentions-legales$/, () => import("./views/legal").then((v) => v.renderLegal(app))],
+  [/^#\/kit$/, () => import("./views/kit").then((v) => v.renderKit(app))], // design kit: beta and local only (the view checks the host)
   [/^#\/histoire\/([\w-]+)$/, (m) => renderElection(app, m[1])],
   [/^#\/fil$/, () => renderFeed(app)],
   [/^#\/2027$/, () => renderRace(app)],
