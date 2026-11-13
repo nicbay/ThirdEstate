@@ -36,6 +36,11 @@ const norm = (s) => s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toUpperCas
 const legCache = {};
 const leg = (y) => (legCache[y] ??= fs.existsSync(`public/data/history/legislative/${y}.json`) ? JSON.parse(fs.readFileSync(`public/data/history/legislative/${y}.json`, "utf8")) : null);
 
+const readIf = (p) => (fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, "utf8")) : null);
+const deputes = readIf("public/data/an/deputes.json");
+const senateurs = readIf("public/data/senat/senateurs.json");
+const quizGroups = (() => { const q = readIf("public/data/an/quiz.json"); return q?.groups ? new Set(Array.isArray(q.groups) ? q.groups.map((g) => g.id ?? g) : Object.keys(q.groups)) : null; })();
+
 const index = [];
 const files = fs.readdirSync(DIR).filter((f) => f.endsWith(".json") && f !== "pay-scales.json" && f !== "index.json").sort();
 for (const f of files) {
@@ -51,6 +56,26 @@ for (const f of files) {
   if (d.born) checkSources(f, "born", d.born.sources);
   (d.links ?? []).forEach((l, i) => { bi(f, `links[${i}]`, l); if (!/^https:\/\//.test(l.url ?? "")) err(f, `links[${i}]`, "https url required"); });
   if (d.an != null && !/^PA\d+$/.test(d.an)) err(f, "an", "must be PA… or null");
+  else if (d.an && deputes && !deputes.some((x) => x.id === d.an)) warnings.push(`${f}: an "${d.an}" is not a sitting MP in public/data/an/deputes.json`);
+  if (d.senat != null && (typeof d.senat !== "string" || !/^\w+$/.test(d.senat))) err(f, "senat", "senator id (e.g. 04033B) or null");
+  else if (d.senat && senateurs && !senateurs.some((x) => x.id === d.senat)) warnings.push(`${f}: senat "${d.senat}" not found in public/data/senat/senateurs.json`);
+  if (d.programme != null && !fs.existsSync(`public/data/programmes/${d.programme}.json`)) err(f, "programme", `no public/data/programmes/${d.programme}.json`);
+  if (d.newsMatch != null && (!Array.isArray(d.newsMatch) || !d.newsMatch.every((s) => typeof s === "string" && s.trim().length >= 3))) err(f, "newsMatch", "array of strings (3+ characters)");
+  if (d.background != null) { bi(f, "background", d.background); checkSources(f, "background", d.background.sources); }
+  (d.supporters ?? []).forEach((x, i) => { if (!x.name) err(f, `supporters[${i}]`, "name required"); bi(f, `supporters[${i}].role`, x.role); checkSources(f, `supporters[${i}]`, x.sources); });
+  (d.campaign ?? []).forEach((x, i) => { if (!DATE.test(x.date ?? "")) err(f, `campaign[${i}]`, "date"); bi(f, `campaign[${i}]`, x); checkSources(f, `campaign[${i}]`, x.sources); });
+  const disp = d.display;
+  if (disp != null) {
+    if (typeof disp !== "object") err(f, "display", "object or null");
+    else {
+      if (disp.party != null && (typeof disp.party !== "string" || !disp.party)) err(f, "display.party", "party code string");
+      if (disp.color != null && !/^#[0-9a-f]{6}$/i.test(disp.color)) err(f, "display.color", "#rrggbb");
+      if ("bloc" in disp && disp.bloc !== null && ![0, 1, 2, 3, 4].includes(disp.bloc)) err(f, "display.bloc", "0–4 or null");
+    }
+  }
+  const pollParty = disp?.party ?? polls.parties?.[d.pollName] ?? null;
+  if (!pollParty && !disp?.color) warnings.push(`${f}: no party code in the polls and no display.party / display.color: shown in neutral grey`);
+  if (d.quiz?.groups?.length && quizGroups && d.quiz.groups.some((g) => !quizGroups.has(g))) warnings.push(`${f}: quiz group(s) ${d.quiz.groups.filter((g) => !quizGroups.has(g)).join(", ")} not in public/data/an/quiz.json (rebuild the quiz)`);
 
   const w = d.wealth;
   if (!w || !["published", "none"].includes(w.status)) err(f, "wealth.status", "published | none");
@@ -122,8 +147,16 @@ for (const f of files) {
   if (!d.quiz || !Array.isArray(d.quiz.groups)) err(f, "quiz", "groups required");
   bi(f, "quiz.note", d.quiz?.note, true);
 
-  index.push({ slug: d.slug, name: d.name, pollName: d.pollName, photo: ph?.src, party: { fr: d.party?.fr, en: d.party?.en }, role: { fr: d.role?.fr, en: d.role?.en }, verified: d.verified });
+  // `display` is read by src/lib/candidates.ts (bundled), so poll colours and blocs follow the files
+  const display = disp ? Object.fromEntries(Object.entries({ party: disp.party, color: disp.color, bloc: disp.bloc }).filter(([k]) => k in disp)) : undefined;
+  index.push({ slug: d.slug, name: d.name, pollName: d.pollName, photo: ph?.src, party: { fr: d.party?.fr, en: d.party?.en }, role: { fr: d.role?.fr, en: d.role?.en }, verified: d.verified, ...(display ? { display } : {}) });
 }
+// names in the last 30 days of polls with no file: they render with a card but no page (not an error)
+const newest = polls.firstRound.map((p) => p.end).filter(Boolean).sort().at(-1) ?? "";
+const since = newest ? new Date(Date.parse(newest) - 30 * 864e5).toISOString().slice(0, 10) : "";
+const recentNames = new Set(polls.firstRound.filter((p) => (p.end ?? "") >= since).flatMap((p) => p.hyps.flatMap((h) => Object.keys(h))));
+const pollsWithoutFile = [...recentNames].filter((n) => !index.some((c) => c.pollName === n));
+if (pollsWithoutFile.length) console.log(`info  polled in the last 30 days without a candidate file (card, no page): ${pollsWithoutFile.join(", ")}`);
 
 // pay scales: every section sourced
 const pay = JSON.parse(fs.readFileSync(path.join(DIR, "pay-scales.json"), "utf8"));

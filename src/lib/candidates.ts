@@ -1,5 +1,8 @@
-// Party colours and political families. Party codes come from Wikipedia's poll tables
-// (see scripts/sync-polls.mjs); candidates without one are "unknown" until the user sets it.
+// Party colours and political families. Party codes come from Wikipedia's poll tables (scripts/sync-polls.mjs).
+// Per-candidate overrides (party code, colour, bloc) live in the candidate's own file
+// (public/data/candidates/<slug>.json, `display`), copied by scripts/check-candidates.mjs into index.json,
+// imported here: adding a candidate never means editing this file. Unknown names get a neutral grey.
+import candidateIndex from "../../public/data/candidates/index.json";
 
 export type Bloc = 0 | 1 | 2 | 3 | 4; // radical left → far right
 export const BLOCS: { fr: string; en: string; color: string }[] = [
@@ -34,7 +37,7 @@ const PARTY: Record<string, { color: string; bloc: Bloc | null }> = {
   RN: { color: "#1c2c6c", bloc: 4 },
   "R!": { color: "#4a2c1d", bloc: 4 },
   REC: { color: "#4a2c1d", bloc: 4 },
-  NE: { color: "#3f72c4", bloc: 3 }, // Nouvelle Énergie (David Lisnard)
+  NE: { color: "#3f72c4", bloc: 3 }, // Nouvelle Énergie
   DIV: { color: "#9aa3b2", bloc: null },
 };
 
@@ -54,21 +57,35 @@ export function surname(full: string) {
 }
 
 let extraParties: Record<string, string> = {};
-// Candidates the poll tables list without a party label.
-const KNOWN_PARTIES: Record<string, string> = { "David Lisnard": "NE" };
 export const registerParties = (p: Record<string, string>) => (extraParties = { ...extraParties, ...p });
 
+/** What the candidate files say about display, keyed by poll name (see `display` in docs/data-candidates.md). */
+interface FileMeta { slug: string; party: string | null; color: string | null; bloc: Bloc | null | undefined }
+type IndexRow = { slug: string; pollName: string; display?: { party?: string | null; color?: string | null; bloc?: number | null } };
+const FILES = new Map<string, FileMeta>(
+  ((candidateIndex as { candidates?: IndexRow[] }).candidates ?? []).map((c) => [
+    c.pollName,
+    { slug: c.slug, party: c.display?.party ?? null, color: c.display?.color ?? null, bloc: c.display && "bloc" in c.display ? ((c.display.bloc ?? null) as Bloc | null) : undefined },
+  ]),
+);
+/** Slug of the candidate page (#/candidat/<slug>) for a poll name, or null when there is no file yet. */
+export const candidateSlug = (name: string) => FILES.get(name)?.slug ?? null;
+
+/** Party code, colour and bloc for a poll name. The candidate file wins over the poll table's party code;
+ *  a name known nowhere gets a neutral grey and no bloc. */
 export function meta(name: string): CandidateMeta {
-  const party = extraParties[name] ?? KNOWN_PARTIES[name] ?? null;
+  const f = FILES.get(name);
+  const party = f?.party ?? extraParties[name] ?? null;
   const p = party ? PARTY[party] : undefined;
-  return { name, surname: surname(name), party, color: p?.color ?? hashColor(name), bloc: p?.bloc ?? null };
+  const bloc = f?.bloc !== undefined ? f.bloc : (p?.bloc ?? null);
+  return { name, surname: surname(name), party, color: f?.color ?? p?.color ?? neutralColor(name), bloc };
 }
 
-// Stable fallback colour for candidates with no known party.
-function hashColor(s: string) {
+/** Neutral fallback colour: a grey, nudged slightly per name so several unknown lines stay apart in a chart. */
+export function neutralColor(s: string) {
   let h = 0;
   for (const c of s) h = (h * 31 + c.charCodeAt(0)) % 360;
-  return `hsl(${h} 35% 55%)`;
+  return `hsl(${h} 8% ${52 + (h % 4) * 5}%)`;
 }
 
 // ---------- 2024 legislative nuances (Ministry of the Interior codes) → poll blocs ----------

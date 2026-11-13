@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-08",
+ "generatedAt": "2026-11-13",
  "candidates": [
   {
    "slug": "arthaud",
@@ -89,7 +89,10 @@
     "fr": "Maire de Cannes (depuis 2014, réélu le 15 mars 2026) ; président de la communauté d'agglomération Cannes Pays de Lérins ; 3e vice-président du conseil départemental des Alpes-Maritimes ; président de l'Association des maires de France ; président de Nouvelle Énergie ; candidat déclaré à l'élection présidentielle de 2027 (annonce du 31 mars 2026, jour de son départ des Républicains)",
     "en": "Mayor of Cannes (since 2014, re-elected on 15 March 2026); president of the Cannes Pays de Lérins urban community; 3rd vice-president of the Alpes-Maritimes departmental council; president of the Association des maires de France; president of Nouvelle Énergie; declared candidate for the 2027 presidential election (announced on 31 March 2026, the day he left Les Républicains)"
    },
-   "verified": "2026-11-08"
+   "verified": "2026-11-08",
+   "display": {
+    "party": "NE"
+   }
   },
   {
    "slug": "melenchon",
@@ -135,6 +138,25 @@
     "en": "Senator for Vendée (again since 13 November 2025, re-elected on 27 September 2026); president of Les Républicains since 18 May 2025; regional councillor of Pays de la Loire; designated as Les Républicains' 2027 presidential candidate by a members' vote (result announced on 19 April 2026)"
    },
    "verified": "2026-11-08"
+  },
+  {
+   "slug": "riner",
+   "name": "Teddy Riner",
+   "pollName": "Teddy Riner",
+   "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Teddy_Riner_Cannes_2016.jpg?width=480",
+   "party": {
+    "fr": "Sans étiquette",
+    "en": "No party (independent)"
+   },
+   "role": {
+    "fr": "Judoka en activité (Paris Saint-Germain Judo, réengagé jusqu'en 2028) ; candidat déclaré à l'élection présidentielle de 2027 (annonce du 9 novembre 2026), sans parti, se disant « ni de droite, ni de gauche »",
+    "en": "Active judoka (Paris Saint-Germain Judo, re-signed until 2028); declared candidate for the 2027 presidential election (announced on 9 November 2026), with no party, describing himself as \"neither right nor left\""
+   },
+   "verified": "2026-11-13",
+   "display": {
+    "party": "DIV",
+    "color": "#5f7d8c"
+   }
   },
   {
    "slug": "roussel",
