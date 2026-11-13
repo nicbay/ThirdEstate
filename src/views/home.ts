@@ -12,6 +12,7 @@ import { esc } from "../util";
 import { mpChip, townBrief } from "./brief";
 import { mountForecastChart, scenarioForecast, scenarioFromUrl } from "./forecast-chart";
 import { forecastLine, heroDay } from "./hero-day";
+import { mountOcean } from "../lib/ocean";
 
 export async function renderHome(app: HTMLElement) {
   const [polls, markets, hero] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null), heroDay()]);
@@ -55,6 +56,7 @@ export async function renderHome(app: HTMLElement) {
       </div>
     </section>`;
   hero.start(app);
+  mountOcean(app.querySelector<HTMLElement>(".hday")!);
   if (home?.code) drawMine(app.querySelector<HTMLElement>("#mine")!, home.code, home.commune ?? home.code);
 
   // ---------- polls chart with the projection to election day and the scenarios ----------
