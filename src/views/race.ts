@@ -1,7 +1,7 @@
 // 2027 front page: the state of the race in one headline and one strip, then the detail.
 import { loadMarkets, loadPolls } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
-import { meta, registerParties, spectrumRank } from "../lib/candidates";
+import { candidateSlug, meta, registerParties, spectrumRank } from "../lib/candidates";
 import { average, duelAverages, pollValue, pollsInWindow } from "../lib/polls";
 import { combineOdds, platformShare, winShare } from "../lib/markets";
 import { dec, pair100, pct, signed } from "../lib/format";
@@ -76,7 +76,7 @@ export async function renderRace(app: HTMLElement) {
                 // the change is always shown when there is a figure 30 days back (a stable average reads "0,0")
                 const delta = prev != null ? Math.round(10 * r.avg) / 10 - Math.round(10 * prev) / 10 : null;
                 return `<li>
-                  <div class="bar-label"><span>${esc(r.name)} <span class="muted">${esc(m.party ?? "")}</span></span>
+                  <div class="bar-label"><span>${who(r.name, cindex)} <span class="muted">${esc(m.party ?? "")}</span></span>
                   <span>${delta != null ? `<span class="${Math.abs(delta) < 0.05 ? "muted" : delta > 0 ? "up" : "down"}" title="${L("sur 30 jours", "over 30 days")}">${signed(delta)}</span> ` : `<span class="muted small">${L("nouveau", "new")}</span> `}<b>${pct(r.avg)}</b></span></div>
                   <div class="bar"><div style="width:${(100 * r.avg) / max}%;background:${m.color}"></div></div>
                 </li>`;
@@ -97,7 +97,7 @@ export async function renderRace(app: HTMLElement) {
                    .map((o) => {
                      const v = winShare(odds, o) ?? 0;
                      const detail = (["kalshi", "polymarket"] as const).map((pl) => { const x = platformShare(odds, o, pl); return x == null ? "" : `${pl === "kalshi" ? "Kalshi" : "Polymarket"} ${pct(x, 0)}`; }).filter(Boolean).join(" · ");
-                     return `<li><div class="bar-label"><span>${esc(o.name)}${detail ? ` <span class="muted small">${detail}</span>` : ""}</span><b>${pct(v, 0)}</b></div><div class="bar"><div style="width:${v}%;background:${meta(o.name).color}"></div></div></li>`;
+                     return `<li><div class="bar-label"><span>${who(o.name, cindex)}${detail ? ` <span class="muted small">${detail}</span>` : ""}</span><b>${pct(v, 0)}</b></div><div class="bar"><div style="width:${v}%;background:${meta(o.name).color}"></div></div></li>`;
                    })
                    .join("")}</ol>`
               : `<p class="muted">${L("Données de marché indisponibles.", "Market data unavailable.")}</p>`
@@ -175,7 +175,7 @@ function forecastCard(fc: Forecast) {
           const c = meta(r.name).color;
           const party = meta(r.name).party;
           return `<li>
-            <div class="fc-name"><i class="dot" style="background:${c}"></i><b>${esc(r.name)}</b>${party ? ` <span class="muted small">${esc(party)}</span>` : ""}</div>
+            <div class="fc-name"><i class="dot" style="background:${c}"></i><b>${who(r.name, null)}</b>${party ? ` <span class="muted small">${esc(party)}</span>` : ""}</div>
             <div class="fc-pct"><strong>${fmt(r.win)}</strong><span>%</span></div>
             <div class="fc-bar"><div style="width:${(100 * r.win) / max}%;background:${c}"></div></div>
             <div class="fc-src small muted">${L("Sondages", "Polls")} <b>${r.polls ? `${fmtP(r.polls.win)}` : L("non testé", "not polled")}</b> · ${L("Marchés", "Markets")} <b>${r.markets?.win != null ? `${fmtP(r.markets.win)}` : "–"}</b>${r.qualify != null ? ` · ${L("au second tour", "reaches runoff")} <b>${fmtP(r.qualify)}</b>` : ""}</div>
@@ -254,21 +254,31 @@ async function drawForecastTrend(app: HTMLElement) {
   ].filter(Boolean).join(" ");
 }
 
-/** "Les candidats": one card per name in the polling average (the same set as every number above), linking to its page. */
+/** A name, linked to the candidate's page (#/candidat/<slug>) when there is a candidate file for it. */
+function who(name: string, idx: CandidateIndex | null) {
+  const slug = idx?.candidates.find((c) => c.pollName === name)?.slug ?? candidateSlug(name);
+  return slug ? `<a href="#/candidat/${esc(slug)}">${esc(name)}</a>` : esc(name);
+}
+
+/** "Les candidats": one card per name in the polling average (the same set as every number above), linking to its
+ *  page; then anyone with a candidate file who is missing from the average (not polled lately), so every file is reachable. */
 function candidatesSection(rows: { name: string; avg: number }[], idx: CandidateIndex | null) {
   const by = new Map((idx?.candidates ?? []).map((c) => [c.pollName, c]));
+  const inAvg = new Set(rows.map((r) => r.name));
+  const extra = (idx?.candidates ?? []).filter((c) => !inAvg.has(c.pollName)).sort((a, b) => spectrumRank(a.pollName) - spectrumRank(b.pollName));
+  const card = (name: string, v: string, note = "") => {
+    const m = meta(name);
+    const c = by.get(name);
+    const inner = `${c?.photo ? `<img src="${esc(safeUrl(c.photo))}" alt="" width="64" height="64" loading="lazy" referrerpolicy="no-referrer">` : `<span class="cand-noimg" aria-hidden="true"></span>`}
+      <span class="cand-card-t"><b>${esc(c?.name ?? name)}</b><span class="muted small">${esc(c ? L(c.party.fr, c.party.en) : m.party ?? "")}</span></span>
+      <span class="cand-card-v">${v}</span>${note}`;
+    return `<li style="--c:${safeColor(m.color)}">${c ? `<a class="cand-card" href="#/candidat/${esc(c.slug)}">${inner}</a>` : `<div class="cand-card">${inner}<span class="muted tiny">${L("Fiche à venir", "Page coming")}</span></div>`}</li>`;
+  };
   return `<section class="card" id="candidats">
     <header class="card-head"><h2>${L("Les candidats", "The candidates")}</h2><a href="#/sondages">${L("Sondages", "Polls")}</a></header>
-    <p class="muted small">${L("Chaque personne testée dans les sondages récents (celles qui comptent dans la moyenne). Leur fiche réunit patrimoine déclaré, condamnations, candidatures, argent public perçu et parcours, chaque ligne sourcée.", "Everyone tested in recent polls (those in the average). Each page gathers declared assets, convictions, elections contested, public money received and career, every line sourced.")}</p>
-    <ul class="cand-cards">${rows
-      .map((r) => {
-        const m = meta(r.name);
-        const c = by.get(r.name);
-        const inner = `${c?.photo ? `<img src="${esc(safeUrl(c.photo))}" alt="" width="64" height="64" loading="lazy" referrerpolicy="no-referrer">` : `<span class="cand-noimg" aria-hidden="true"></span>`}
-          <span class="cand-card-t"><b>${esc(r.name)}</b><span class="muted small">${esc(c ? L(c.party.fr, c.party.en) : m.party ?? "")}</span></span>
-          <span class="cand-card-v">${pct(r.avg)}</span>`;
-        return `<li style="--c:${safeColor(m.color)}">${c ? `<a class="cand-card" href="#/candidat/${esc(c.slug)}">${inner}</a>` : `<div class="cand-card">${inner}<span class="muted tiny">${L("Fiche à venir", "Page coming")}</span></div>`}</li>`;
-      })
-      .join("")}</ul>
+    <p class="muted small">${L("Chaque personne testée dans les sondages récents (celles qui comptent dans la moyenne). Sa page réunit sondages et prévision, programme, votes au Parlement, actualité, patrimoine déclaré, condamnations, candidatures, argent public perçu et parcours, chaque ligne sourcée.", "Everyone tested in recent polls (those in the average). Each page gathers polls and forecast, manifesto, votes in Parliament, news, declared assets, convictions, elections contested, public money received and career, every line sourced.")}</p>
+    <ul class="cand-cards">${rows.map((r) => card(r.name, pct(r.avg))).join("")}</ul>
+    ${extra.length ? `<h3 class="cand-h3">${L("Pas dans la moyenne récente", "Not in the recent average")}</h3>
+    <ul class="cand-cards">${extra.map((c) => card(c.pollName, "–", `<span class="muted tiny">${L("pas testé ces trois dernières semaines", "not polled in the last three weeks")}</span>`)).join("")}</ul>` : ""}
   </section>`;
 }
