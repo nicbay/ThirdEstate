@@ -1,8 +1,12 @@
 // Polling average. Method (also shown on the Sources page):
 // 1. A poll often tests several line-ups; a candidate's figure for that poll is the mean
 //    across the line-ups that include them.
-// 2. The average on a date is the mean of each poll's figure over the previous WINDOW days
-//    (each poll counts once; if fewer than 3 polls fall in the window, the last 3 polls are used).
+// 2. The average on a date is the mean of each poll's figure over the WINDOW days that end with the
+//    most recent poll published by then (each poll counts once; if fewer than 3 polls fall in the
+//    window, the last 3 polls are used). The window is anchored on the latest poll, not on the calendar
+//    date asked for: so the average "today" and the average "as of the latest poll" are the same
+//    number, whichever date a page passes (some passed today, others the latest poll's date, and the
+//    two disagreed whenever an old poll had slid out of a calendar window but not out of the other).
 // 3. Candidates tested in fewer than 40% of those polls are left out of the average.
 // The same `average` feeds every number and chart line on the site (trend() is it, sampled weekly).
 
@@ -54,12 +58,18 @@ export function pollValue(p: Poll, cand: string): number | null {
   return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null;
 }
 
-/** Polls ending in the `days` days up to `asOf` (each poll once; at least the last 3 polls).
- *  With `onePerPollster`, only each firm's latest poll in the window counts. */
+/** The end date of the most recent poll (or today when there are none): the date pages quote the average "as of". */
+export function latestPollDate(polls: Poll[]) {
+  return polls.reduce<string | null>((m, p) => (m == null || p.end > m ? p.end : m), null) ?? new Date().toISOString().slice(0, 10);
+}
+
+/** Polls ending in the `days` days up to the latest poll at or before `asOf` (each poll once; at least
+ *  the last 3 polls). With `onePerPollster`, only each firm's latest poll in the window counts. */
 export function pollsInWindow(polls: Poll[], asOf: string, days = WINDOW, onePerPollster = false) {
   const t = Date.parse(asOf);
   const before = polls.filter((p) => Date.parse(p.end) <= t).sort((a, b) => b.end.localeCompare(a.end));
-  let inWin = before.filter((p) => Date.parse(p.end) > t - days * DAY);
+  const anchor = before.length ? Date.parse(before[0].end) : t;
+  let inWin = before.filter((p) => Date.parse(p.end) > anchor - days * DAY);
   if (inWin.length < 3) inWin = before.slice(0, 3);
   if (!onePerPollster) return inWin;
   const seen = new Set<string>();

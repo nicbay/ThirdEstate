@@ -3,18 +3,19 @@ import { loadMarkets, loadPolls } from "../data";
 import { L, fmtDate, fmtNum, getLang } from "../i18n";
 import { lineChart, pollDots } from "../lib/chart";
 import { meta, registerParties } from "../lib/candidates";
-import { WINDOW, average, duelAverages, pollValue, pollsterName, trend } from "../lib/polls";
+import { WINDOW, average, duelAverages, latestPollDate, pollsterName, trend } from "../lib/polls";
 import { colon, dec, pair100, pct } from "../lib/format";
+import { combineOdds, oddsFor, winShare } from "../lib/markets";
 import { esc, safeUrl } from "../util";
 import { shiftDays } from "./home";
-import { mountDaily } from "./daily";
+import { liveForecast, mountDaily } from "./daily";
 
 const ui = { range: 365, hidden: new Set<string>(), pollster: "" };
 
 export async function renderPolls(app: HTMLElement) {
   const [polls, markets] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null)]);
   registerParties(polls.parties);
-  const latest = polls.firstRound[0]?.end ?? new Date().toISOString().slice(0, 10);
+  const latest = latestPollDate(polls.firstRound);
   const current = average(polls.firstRound, latest);
   const pollsters = [...new Set(polls.firstRound.map((p) => pollsterName(p.pollster)))].sort();
   const allDuels = duelAverages(polls.secondRound);
@@ -71,8 +72,8 @@ export async function renderPolls(app: HTMLElement) {
       </article>
 
       <article class="card" id="marches">
-        <header class="card-head"><h2>${L("Marchés prédictifs", "Prediction markets")}</h2></header>
-        ${markets ? marketsHtml(markets) : `<p class="muted">${L("Données indisponibles.", "Data unavailable.")}</p>`}
+        <header class="card-head"><h2>${L("Marchés prédictifs, pour comparaison", "Prediction markets, for comparison")}</h2></header>
+        ${markets ? marketsHtml(markets, polls) : `<p class="muted">${L("Données indisponibles.", "Data unavailable.")}</p>`}
       </article>
 
       <p class="source muted">${L("Sondages : Wikipédia (CC BY-SA), mis à jour le", "Polls: Wikipedia (CC BY-SA), updated")} ${fmtDate(polls.fetchedAt)} · <a href="${esc(safeUrl(polls.source))}" target="_blank" rel="noopener">${L("page source", "source page")}</a></p>
@@ -144,8 +145,15 @@ export async function renderPolls(app: HTMLElement) {
   drawList();
 }
 
-function marketsHtml(data: NonNullable<Awaited<ReturnType<typeof loadMarkets>>>) {
+function marketsHtml(data: NonNullable<Awaited<ReturnType<typeof loadMarkets>>>, polls: Awaited<ReturnType<typeof loadPolls>>) {
+  const top = liveForecast(polls, data).rows[0];
+  const odds = combineOdds(data.markets);
+  const mk = top ? winShare(odds, oddsFor(odds, top.name)) : null;
+  const fr = getLang() === "fr";
   return `
+    ${top ? `<p class="mk-vs">${fr
+      ? `Notre prévision donne ${pct(top.win, 0)} de chances à ${esc(top.name)}${mk != null ? ` ; les marchés réunis, ${pct(mk, 0)}` : ""}. Le chiffre de référence du site est la prévision ; les marchés sont un second avis, qui intègre aussi la question de savoir qui sera candidat.`
+      : `Our forecast gives ${esc(top.name)} a ${pct(top.win, 0)} chance${mk != null ? `; the markets combined, ${pct(mk, 0)}` : ""}. The site’s reference figure is the forecast; the markets are a second opinion, one that also prices who will actually stand.`} <a href="#/sondages#point">${L("Pourquoi les deux diffèrent", "Why the two differ")}</a></p>` : ""}
     <p class="muted small">${L(
       "Prix des contrats « oui », lus comme une probabilité implicite. Ce ne sont pas des sondages : ils reflètent les paris d’une poignée de parieurs, souvent hors de France. Polymarket est bloqué en France ; il est interrogé depuis un serveur hors de France.",
       "Price of “yes” contracts, read as an implied probability. These aren’t polls: they reflect bets by a small number of traders, mostly outside France. Polymarket is blocked in France and is queried from a server outside the country.",
