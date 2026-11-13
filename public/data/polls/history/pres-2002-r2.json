@@ -1,0 +1,88 @@
+{
+ "id": "pres-2002-r2",
+ "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2002_French_presidential_election",
+ "resultSource": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2002 (via public/data/history/presidential/2002.json)",
+ "result": {
+  "Jacques Chirac": 82.21,
+  "Jean-Marie Le Pen": 17.79
+ },
+ "polls": [
+  {
+   "pollster": "CSA",
+   "start": "2002-05-03",
+   "end": "2002-05-03",
+   "sample": 1000,
+   "url": "https://web.archive.org/web/20020611183151/http://www.csa-tmo.fr/fra/dataset/data2002/opi20020503a.htm",
+   "values": {
+    "Jacques Chirac": 80,
+    "Jean-Marie Le Pen": 20
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2002-04-30",
+   "end": "2002-05-02",
+   "sample": 1012,
+   "url": "https://www.ipsos.com/fr-fr/le-barometre-presidentielle-legislatives-2002-vague-9",
+   "values": {
+    "Jacques Chirac": 79,
+    "Jean-Marie Le Pen": 21
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2002-04-26",
+   "end": "2002-04-27",
+   "sample": 922,
+   "url": "https://www.ipsos.com/fr-fr/le-barometre-presidentielle-legislatives-2002-vague-8",
+   "values": {
+    "Jacques Chirac": 78,
+    "Jean-Marie Le Pen": 22
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2002-04-23",
+   "end": "2002-04-24",
+   "sample": 1000,
+   "url": "https://web.archive.org/web/20020602065426/http://www.csa-tmo.fr/fra/dataset/data2002/opi20020424b.htm",
+   "values": {
+    "Jacques Chirac": 81,
+    "Jean-Marie Le Pen": 19
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2002-04-21",
+   "end": "2002-04-21",
+   "sample": 1000,
+   "url": "https://web.archive.org/web/20020427122528/http://www.csa-tmo.fr/fra/dataset/data2002/opi20020421c.htm",
+   "values": {
+    "Jacques Chirac": 77,
+    "Jean-Marie Le Pen": 23
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2002-04-21",
+   "end": "2002-04-21",
+   "sample": 1043,
+   "url": "https://www.ipsos.com/fr-fr/le-niveau-dindecision",
+   "values": {
+    "Jacques Chirac": 80,
+    "Jean-Marie Le Pen": 20
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2002-04-21",
+   "end": "2002-04-21",
+   "sample": 1000,
+   "url": "https://web.archive.org/web/20030730202051/http://www.tns-sofres.com/etudes/pol/210402_intentions_t2.htm",
+   "values": {
+    "Jacques Chirac": 78,
+    "Jean-Marie Le Pen": 22
+   }
+  }
+ ]
+}

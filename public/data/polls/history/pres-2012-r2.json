@@ -1,0 +1,2475 @@
+{
+ "id": "pres-2012-r2",
+ "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2012_French_presidential_election",
+ "resultSource": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2012 (via public/data/history/presidential/2012.json)",
+ "result": {
+  "François Hollande": 51.64,
+  "Nicolas Sarkozy": 48.36
+ },
+ "polls": [
+  {
+   "pollster": "Ifop",
+   "start": "2012-05-02",
+   "end": "2012-05-04",
+   "sample": 1766,
+   "url": "http://www.ifopelections.fr/resources/Downloads/310/Documents.pdf",
+   "values": {
+    "François Hollande": 52,
+    "Nicolas Sarkozy": 48
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-05-01",
+   "end": "2012-05-04",
+   "sample": 1225,
+   "url": "https://web.archive.org/web/20120515133901/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-04-05-2012.pdf",
+   "values": {
+    "François Hollande": 52,
+    "Nicolas Sarkozy": 48
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2012-05-03",
+   "end": "2012-05-03",
+   "sample": 2161,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_-_le_parisien7d161.pdf",
+   "values": {
+    "François Hollande": 52.5,
+    "Nicolas Sarkozy": 47.5
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2012-05-03",
+   "end": "2012-05-03",
+   "sample": 1002,
+   "url": "https://web.archive.org/web/20120523003731/http://www.csa.eu/multimedia/data/sondages/data2012/opi20120503-la-course-2012-vague-26-mai-2012.pdf",
+   "values": {
+    "François Hollande": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2012-05-03",
+   "end": "2012-05-03",
+   "sample": 1018,
+   "url": "https://web.archive.org/web/20120602010845/http://www.ipsos.fr/sites/default/files/attachments/rapport_barometre_iv_vague_20.pdf",
+   "values": {
+    "François Hollande": 52.5,
+    "Nicolas Sarkozy": 47.5
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2012-05-03",
+   "end": "2012-05-03",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/sites/default/files/2012.05.04-iv13.pdf",
+   "values": {
+    "François Hollande": 53.5,
+    "Nicolas Sarkozy": 46.5
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2012-05-02",
+   "end": "2012-05-03",
+   "sample": 1072,
+   "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2015/09/Results_HIFR_VSD_04052012.pdf",
+   "values": {
+    "François Hollande": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2012-05-02",
+   "end": "2012-05-03",
+   "sample": 2009,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/le-barometre-de-la-presidentielle-2012-vague-9-fiducial-pour-le-figaro-et-lci/viewdocument.html",
+   "values": {
+    "François Hollande": 52.5,
+    "Nicolas Sarkozy": 47.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-30",
+   "end": "2012-05-03",
+   "sample": 968,
+   "url": "https://web.archive.org/web/20120514082238/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-03-05-2012.pdf",
+   "values": {
+    "François Hollande": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-28",
+   "end": "2012-05-02",
+   "sample": 1229,
+   "url": "https://web.archive.org/web/20120514080518/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-02-05-2012.pdf",
+   "values": {
+    "François Hollande": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2012-04-27",
+   "end": "2012-05-02",
+   "sample": 1077,
+   "url": "https://web.archive.org/web/20120504001235/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2yahooimpactdebatteleviseentrdeuxtours3mai2012.pdf",
+   "values": {
+    "François Hollande": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2012-04-30",
+   "end": "2012-05-01",
+   "sample": 1387,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_bva-orange-spqr-rtld3c0c.pdf",
+   "values": {
+    "François Hollande": 53.5,
+    "Nicolas Sarkozy": 46.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-28",
+   "end": "2012-05-01",
+   "sample": 904,
+   "url": "https://web.archive.org/web/20120514082352/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-01-05-2012.pdf",
+   "values": {
+    "François Hollande": 53.5,
+    "Nicolas Sarkozy": 46.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-26",
+   "end": "2012-04-30",
+   "sample": 898,
+   "url": "https://web.archive.org/web/20120514082152/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-30-04-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-26",
+   "end": "2012-04-29",
+   "sample": 1876,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1854-1-study_file.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2012-04-27",
+   "end": "2012-04-28",
+   "sample": 988,
+   "url": "https://web.archive.org/web/20120512095510/http://www.ipsos.fr/sites/default/files/attachments/rapport_barometre_iv_vague_19_0.pdf",
+   "values": {
+    "François Hollande": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2012-04-27",
+   "end": "2012-04-28",
+   "sample": 958,
+   "url": "https://web.archive.org/web/20120503220010/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2yahoointentionsvotepresidentielle201229avril2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-24",
+   "end": "2012-04-27",
+   "sample": 963,
+   "url": "https://web.archive.org/web/20120514081837/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-27-04-2012.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2012-04-25",
+   "end": "2012-04-26",
+   "sample": 1032,
+   "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2015/09/Results_HIFR_VSD_27042012.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-23",
+   "end": "2012-04-26",
+   "sample": 966,
+   "url": "https://web.archive.org/web/20120522150913/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-26-04-2012.pdf",
+   "values": {
+    "François Hollande": 54.5,
+    "Nicolas Sarkozy": 45.5
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2012-04-24",
+   "end": "2012-04-25",
+   "sample": 2285,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_bva-orange-spqr-rtla82d5.pdf",
+   "values": {
+    "François Hollande": 54.5,
+    "Nicolas Sarkozy": 45.5
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2012-04-24",
+   "end": "2012-04-25",
+   "sample": 1009,
+   "url": "https://web.archive.org/web/20120526170752/http://www.csa.eu/multimedia/data/sondages/data2012/opi20120425-la-course-2012-vague-25-avril-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2012-04-24",
+   "end": "2012-04-25",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/sites/default/files/2012.04.26-iv12.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-22",
+   "end": "2012-04-25",
+   "sample": 1507,
+   "url": "https://web.archive.org/web/20120514081956/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-25-04-2012.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2012-04-23",
+   "end": "2012-04-24",
+   "sample": 1145,
+   "url": "http://opinionlab.opinion-way.com/dokumenty/OpinionWay_Fiducial_pour_Radio_Classique_Les_Echos_Vague_6_24_avril2012_3.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-22",
+   "end": "2012-04-24",
+   "sample": 1185,
+   "url": "https://web.archive.org/web/20120514080226/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-24-04-2012.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-22",
+   "end": "2012-04-23",
+   "sample": 865,
+   "url": "https://web.archive.org/web/20120514081520/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-23-04-2012.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2012-04-22",
+   "end": "2012-04-22",
+   "sample": 678,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_22042012_-_le_parisienf40b6.pdf",
+   "values": {
+    "François Hollande": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2012-04-22",
+   "end": "2012-04-22",
+   "sample": 1009,
+   "url": "https://web.archive.org/web/20120526170734/http://www.csa.eu/multimedia/data/sondages/data2012/opi20120422-sondage-soir-du-vote-intentions-de-vote-au-second-tour-election-presidentielle-2012.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2012-04-22",
+   "end": "2012-04-22",
+   "sample": 1088,
+   "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2015/09/Results_HIFR_Soirduvote_22042012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-22",
+   "end": "2012-04-22",
+   "sample": 1004,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1847-1-study_file.pdf",
+   "values": {
+    "François Hollande": 54.5,
+    "Nicolas Sarkozy": 45.5
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2012-04-22",
+   "end": "2012-04-22",
+   "sample": 1090,
+   "url": "https://web.archive.org/web/20120512062804/http://www.ipsos.fr/sites/default/files/attachments/rapport_jour_de_vote-22-avril-2012-21h30.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2012-04-22",
+   "end": "2012-04-22",
+   "sample": 7900,
+   "url": "https://www.nouvelobs.com/election-presidentielle-2012/sondage-presidentielle-2012/20120422.OBS6836/et-deja-un-sondage-de-second-tour-hollande-sarkozy.html",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-18",
+   "end": "2012-04-20",
+   "sample": 1723,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1849-1-study_file.pdf",
+   "values": {
+    "François Hollande": 54.5,
+    "Nicolas Sarkozy": 45.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-17",
+   "end": "2012-04-20",
+   "sample": 2592,
+   "url": "https://web.archive.org/web/20120514081754/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-20-04-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2012-04-18",
+   "end": "2012-04-19",
+   "sample": 2161,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_-_le_parisien21a91.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2012-04-18",
+   "end": "2012-04-19",
+   "sample": 1005,
+   "url": "https://web.archive.org/web/20120617031959/http://www.csa.eu/multimedia/data/sondages/data2012/opi20120419-la-course-2012-vague-24-avril-2012.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2012-04-18",
+   "end": "2012-04-19",
+   "sample": 1068,
+   "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2015/09/Results_HIFR_VSD_20042012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2012-04-18",
+   "end": "2012-04-19",
+   "sample": 1021,
+   "url": "https://web.archive.org/web/20120601194938/http://www.ipsos.fr/sites/default/files/attachments/rapport_barometre_iv_vague_18.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2012-04-18",
+   "end": "2012-04-19",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/sites/default/files/2012.04.20-intentionsvote.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-16",
+   "end": "2012-04-19",
+   "sample": 2588,
+   "url": "https://web.archive.org/web/20120516193906/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-19-04-2012.pdf",
+   "values": {
+    "François Hollande": 53.5,
+    "Nicolas Sarkozy": 46.5
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2012-04-17",
+   "end": "2012-04-18",
+   "sample": 956,
+   "url": "https://web.archive.org/web/20120503225731/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2yahoointentionsvotepresidentielle201219avril2012.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-14",
+   "end": "2012-04-18",
+   "sample": 2552,
+   "url": "https://web.archive.org/web/20120516194150/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-18-04-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2012-04-16",
+   "end": "2012-04-17",
+   "sample": 1161,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_bva-orange-spqr-rtl4060b.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2012-04-16",
+   "end": "2012-04-17",
+   "sample": 886,
+   "url": "https://web.archive.org/web/20120418195754/http://www.csa.eu/multimedia/data/sondages/data2012/opi20120417-la-course-2012-vague-23-avril-2012.pdf",
+   "values": {
+    "François Hollande": 58,
+    "Nicolas Sarkozy": 42
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2012-04-16",
+   "end": "2012-04-17",
+   "sample": 1002,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/le-barometre-de-la-presidentielle-2012-vague-8-fiducial-pour-le-figaro-et-lci/viewdocument.html",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-14",
+   "end": "2012-04-17",
+   "sample": 1709,
+   "url": "https://web.archive.org/web/20120516192524/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-17-04-2012.pdf",
+   "values": {
+    "François Hollande": 54.5,
+    "Nicolas Sarkozy": 45.5
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2012-04-12",
+   "end": "2012-04-16",
+   "sample": 991,
+   "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2015/09/Results_HIFR_VSD_17042012.pdf",
+   "values": {
+    "François Hollande": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-12",
+   "end": "2012-04-15",
+   "sample": 1808,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1841-1-study_file.pdf",
+   "values": {
+    "François Hollande": 55.5,
+    "Nicolas Sarkozy": 44.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-12",
+   "end": "2012-04-15",
+   "sample": 1711,
+   "url": "https://web.archive.org/web/20120516183404/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-16-04-2012.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2012-04-13",
+   "end": "2012-04-14",
+   "sample": 894,
+   "url": "https://web.archive.org/web/20120601194920/http://www.ipsos.fr/sites/default/files/attachments/rapport_barometre_iv_vague_17.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-10",
+   "end": "2012-04-13",
+   "sample": 2562,
+   "url": "https://web.archive.org/web/20120416224534/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-13-04-2012.pdf",
+   "values": {
+    "François Hollande": 54.5,
+    "Nicolas Sarkozy": 45.5
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2012-04-11",
+   "end": "2012-04-12",
+   "sample": 885,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_bva-orange-spqr-rtl61753.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2012-04-11",
+   "end": "2012-04-12",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/sites/default/files/2012.04.13-iv.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-09",
+   "end": "2012-04-12",
+   "sample": 2562,
+   "url": "https://web.archive.org/web/20120416224526/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-12-04-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2012-04-10",
+   "end": "2012-04-11",
+   "sample": 1013,
+   "url": "https://web.archive.org/web/20120417070525/http://www.csa.eu/multimedia/data/sondages/data2012/opi20120411-la-course-2012-vague-22-avril-2012.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2012-04-10",
+   "end": "2012-04-11",
+   "sample": 977,
+   "url": "https://web.archive.org/web/20120419134434/http://oise.pcf.fr/sites/default/files/20120412-lh2-yahoo.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2012-04-10",
+   "end": "2012-04-11",
+   "sample": 1007,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/l-indicateur-2012-l-observatoire-de-la-presidentielle-vague-5-fiducial-pour-radio-classique-et-les-echos/viewdocument.html",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-06",
+   "end": "2012-04-11",
+   "sample": 2285,
+   "url": "https://web.archive.org/web/20120416224504/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-11-04-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-06",
+   "end": "2012-04-10",
+   "sample": 1425,
+   "url": "https://web.archive.org/web/20120416224521/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-10-04-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2012-04-06",
+   "end": "2012-04-07",
+   "sample": 955,
+   "url": "https://web.archive.org/web/20120417000036/http://www.ipsos.fr/sites/default/files/attachments/rapport_barometre_iv_vague_16.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-05",
+   "end": "2012-04-07",
+   "sample": 1869,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1842-1-study_file.pdf",
+   "values": {
+    "François Hollande": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-05",
+   "end": "2012-04-07",
+   "sample": 1002,
+   "url": "https://web.archive.org/web/20120416224456/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-09-04-2012.pdf",
+   "values": {
+    "François Hollande": 53.5,
+    "Nicolas Sarkozy": 46.5
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2012-04-03",
+   "end": "2012-04-06",
+   "sample": 1033,
+   "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2015/09/Results_HIFR_VSD_10042012.pdf",
+   "values": {
+    "François Hollande": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-03",
+   "end": "2012-04-06",
+   "sample": 1284,
+   "url": "https://web.archive.org/web/20120416224452/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-06-04-2012.pdf",
+   "values": {
+    "François Hollande": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-04-02",
+   "end": "2012-04-05",
+   "sample": 1060,
+   "url": "https://web.archive.org/web/20120416225800/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-05-04-2012.pdf",
+   "values": {
+    "François Hollande": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2012-04-03",
+   "end": "2012-04-04",
+   "sample": 969,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/le-barometre-de-la-presidentielle-2012-vague-7-fiducial-pour-le-figaro-et-lci/viewdocument.html",
+   "values": {
+    "François Hollande": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-31",
+   "end": "2012-04-04",
+   "sample": 1432,
+   "url": "https://web.archive.org/web/20120416225742/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-04-04-2012.pdf",
+   "values": {
+    "François Hollande": 53.5,
+    "Nicolas Sarkozy": 46.5
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2012-04-02",
+   "end": "2012-04-03",
+   "sample": 884,
+   "url": "https://web.archive.org/web/20120416221759/http://www.csa.eu/multimedia/data/sondages/data2012/opi20120403-la-course-2012-vague-21-avril-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-31",
+   "end": "2012-04-03",
+   "sample": 999,
+   "url": "https://web.archive.org/web/20120417092420/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-03-04-2012.pdf",
+   "values": {
+    "François Hollande": 53.5,
+    "Nicolas Sarkozy": 46.5
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2012-03-29",
+   "end": "2012-04-02",
+   "sample": 1059,
+   "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2015/09/Results_HIFR_VSD_03042012.pdf",
+   "values": {
+    "François Hollande": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-29",
+   "end": "2012-04-02",
+   "sample": 893,
+   "url": "https://web.archive.org/web/20120416225737/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-02-04-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2012-03-30",
+   "end": "2012-03-31",
+   "sample": 881,
+   "url": "https://web.archive.org/web/20120417112540/http://www.ipsos.fr/sites/default/files/attachments/rapport__barometre_intention_de_vote_vague15.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2012-03-30",
+   "end": "2012-03-31",
+   "sample": 973,
+   "url": "https://web.archive.org/web/20120417022216/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2yahoointentionsvotepresidentielle20121avril_2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2012-03-29",
+   "end": "2012-03-31",
+   "sample": 2555,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_bva-le_parisien_-_avril_2012dd0f0.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-27",
+   "end": "2012-03-30",
+   "sample": 957,
+   "url": "https://web.archive.org/web/20120417021928/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-30-03-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-26",
+   "end": "2012-03-29",
+   "sample": 950,
+   "url": "https://web.archive.org/web/20120417071952/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-29-03-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-24",
+   "end": "2012-03-28",
+   "sample": 1211,
+   "url": "https://web.archive.org/web/20120416232958/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-28-03-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2012-03-26",
+   "end": "2012-03-27",
+   "sample": 876,
+   "url": "https://web.archive.org/web/20120416221734/http://www.csa.eu/multimedia/data/sondages/data2012/opi20120327-la-course-2012-vague-20-mars-2012.pdf",
+   "values": {
+    "François Hollande": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2012-03-26",
+   "end": "2012-03-27",
+   "sample": 1148,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/le-barometre-de-la-presidentielle-2012-vague-6-fiducial-pour-le-figaro-et-lci/viewdocument.html",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2012-03-26",
+   "end": "2012-03-27",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/sites/default/files/2012.03.28-intentionsvote9.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-24",
+   "end": "2012-03-27",
+   "sample": 902,
+   "url": "https://web.archive.org/web/20120516192726/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-27-03-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2012-03-22",
+   "end": "2012-03-26",
+   "sample": 1231,
+   "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2015/09/Results_HIFR_VSD_27032012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-22",
+   "end": "2012-03-25",
+   "sample": 1769,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1817-1-study_file.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-22",
+   "end": "2012-03-25",
+   "sample": 887,
+   "url": "https://web.archive.org/web/20120416232951/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-26-03-2012.pdf",
+   "values": {
+    "François Hollande": 53.5,
+    "Nicolas Sarkozy": 46.5
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2012-03-23",
+   "end": "2012-03-24",
+   "sample": 978,
+   "url": "https://web.archive.org/web/20120417113059/http://www.ipsos.fr/sites/default/files/attachments/rapport_barometre_intention_de_vote_vague14.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-20",
+   "end": "2012-03-23",
+   "sample": 942,
+   "url": "https://web.archive.org/web/20120417021923/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-23-03-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2012-03-21",
+   "end": "2012-03-22",
+   "sample": 926,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_bva-orange-spqr-rtl84932.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-19",
+   "end": "2012-03-22",
+   "sample": 945,
+   "url": "https://web.archive.org/web/20120416232946/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-22-03-2012.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-17",
+   "end": "2012-03-21",
+   "sample": 1195,
+   "url": "https://web.archive.org/web/20120323222328/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-21-03-2012.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2012-03-19",
+   "end": "2012-03-20",
+   "sample": 888,
+   "url": "https://web.archive.org/web/20120324102825/http://www.csa.eu/multimedia/data/sondages/data2012/opi20120320-la-course-2012-vague-19-mars-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-17",
+   "end": "2012-03-20",
+   "sample": 876,
+   "url": "https://web.archive.org/web/20120323200557/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-20-03-2012.pdf",
+   "values": {
+    "François Hollande": 54.5,
+    "Nicolas Sarkozy": 45.5
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2012-03-15",
+   "end": "2012-03-19",
+   "sample": 1097,
+   "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2015/09/Results_HIFR_VSD_20032012.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-15",
+   "end": "2012-03-19",
+   "sample": 881,
+   "url": "https://web.archive.org/web/20120323222317/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-19-03-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-16",
+   "end": "2012-03-17",
+   "sample": 961,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1806-1-study_file.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2012-03-16",
+   "end": "2012-03-17",
+   "sample": 950,
+   "url": "https://web.archive.org/web/20120328195034/http://www.ipsos.fr/sites/default/files/attachments/rapport_barometre_intention_de_vote_vague13.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2012-03-16",
+   "end": "2012-03-17",
+   "sample": 962,
+   "url": "https://web.archive.org/web/20120323224238/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2yahoointentionsvotepresidensielle201218mars2012.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-13",
+   "end": "2012-03-16",
+   "sample": 928,
+   "url": "https://web.archive.org/web/20120323204137/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-16-03-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2012-03-14",
+   "end": "2012-03-15",
+   "sample": 1183,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/le-barometre-de-la-presidentielle-2012-vague-5-fiducial-pour-le-figaro-et-lci/viewdocument.html",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-12",
+   "end": "2012-03-15",
+   "sample": 928,
+   "url": "https://web.archive.org/web/20120323191954/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-15-03-2012.pdf",
+   "values": {
+    "François Hollande": 53.5,
+    "Nicolas Sarkozy": 46.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-11",
+   "end": "2012-03-14",
+   "sample": 1187,
+   "url": "https://web.archive.org/web/20120316113904/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-14-03-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2012-03-12",
+   "end": "2012-03-13",
+   "sample": 861,
+   "url": "https://web.archive.org/web/20120316093944/http://www.csa.eu/multimedia/data/sondages/data2012/opi20120313-la-course-2012-vague-18-mars-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-11",
+   "end": "2012-03-13",
+   "sample": 875,
+   "url": "https://web.archive.org/web/20120323222305/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-13-03-2012.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2012-03-12",
+   "end": "2012-03-12",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/sites/default/files/2012.03.13-iv8.pdf",
+   "values": {
+    "François Hollande": 58,
+    "Nicolas Sarkozy": 42
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-11",
+   "end": "2012-03-12",
+   "sample": 1638,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1793-1-study_file.pdf",
+   "values": {
+    "François Hollande": 54.5,
+    "Nicolas Sarkozy": 45.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-08",
+   "end": "2012-03-12",
+   "sample": 874,
+   "url": "https://web.archive.org/web/20120323191948/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-12-03-2012.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-06",
+   "end": "2012-03-09",
+   "sample": 922,
+   "url": "https://web.archive.org/web/20120323200549/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-09-03-2012.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-05",
+   "end": "2012-03-08",
+   "sample": 924,
+   "url": "https://web.archive.org/web/20120323194243/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-08-03-2012.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2012-03-05",
+   "end": "2012-03-07",
+   "sample": 1098,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/l-indicateur-2012-l-observatoire-de-la-presidentielle-vague-4-fiducial-pour-radio-classique-et-les-echos/viewdocument.html",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-03",
+   "end": "2012-03-07",
+   "sample": 1182,
+   "url": "https://web.archive.org/web/20120323222252/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-07-03-2012.pdf",
+   "values": {
+    "François Hollande": 55.5,
+    "Nicolas Sarkozy": 44.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-03",
+   "end": "2012-03-06",
+   "sample": 877,
+   "url": "https://web.archive.org/web/20120323204132/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-06-03-2012.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2012-03-05",
+   "end": "2012-03-05",
+   "sample": 888,
+   "url": "https://web.archive.org/web/20120416232058/http://www.csa.eu/multimedia/data/sondages/data2012/opi20120305-la-course-2012-vague-17-mars-2012.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2012-03-01",
+   "end": "2012-03-05",
+   "sample": 975,
+   "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2015/09/Results_HIFR_VSD_06032012.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-03-01",
+   "end": "2012-03-05",
+   "sample": 867,
+   "url": "https://web.archive.org/web/20120323200540/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-05-03-2012.pdf",
+   "values": {
+    "François Hollande": 56.5,
+    "Nicolas Sarkozy": 43.5
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2012-03-02",
+   "end": "2012-03-03",
+   "sample": 761,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_bva-le_parisien_-_mars_2012a3c86.pdf",
+   "values": {
+    "François Hollande": 59,
+    "Nicolas Sarkozy": 41
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2012-03-02",
+   "end": "2012-03-03",
+   "sample": 966,
+   "url": "https://web.archive.org/web/20120324033905/http://www.ipsos.fr/sites/default/files/attachments/rapport_barometre_intention_de_vote_vague12.pdf",
+   "values": {
+    "François Hollande": 58,
+    "Nicolas Sarkozy": 42
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2012-03-02",
+   "end": "2012-03-03",
+   "sample": 971,
+   "url": "https://web.archive.org/web/20120311205614/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2yahoointentionsvotepresidentielle20124mars2012.pdf",
+   "values": {
+    "François Hollande": 58,
+    "Nicolas Sarkozy": 42
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-28",
+   "end": "2012-03-02",
+   "sample": 912,
+   "url": "https://web.archive.org/web/20120323193650/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-02-03-2012.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-27",
+   "end": "2012-03-01",
+   "sample": 929,
+   "url": "https://web.archive.org/web/20120321085337/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-01-03-2012.pdf",
+   "values": {
+    "François Hollande": 56.5,
+    "Nicolas Sarkozy": 43.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-24",
+   "end": "2012-02-29",
+   "sample": 1187,
+   "url": "https://web.archive.org/web/20120323222337/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-29-02-2012.pdf",
+   "values": {
+    "François Hollande": 55.5,
+    "Nicolas Sarkozy": 44.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-24",
+   "end": "2012-02-28",
+   "sample": 888,
+   "url": "https://web.archive.org/web/20120323204143/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-28-02-2012.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2012-02-27",
+   "end": "2012-02-27",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/sites/default/files/2012.02.28-iv7.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-23",
+   "end": "2012-02-26",
+   "sample": 1723,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1843-1-study_file.pdf",
+   "values": {
+    "François Hollande": 56.5,
+    "Nicolas Sarkozy": 43.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-23",
+   "end": "2012-02-26",
+   "sample": 882,
+   "url": "https://web.archive.org/web/20120323222330/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-27-02-2012.pdf",
+   "values": {
+    "François Hollande": 55.5,
+    "Nicolas Sarkozy": 44.5
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2012-02-24",
+   "end": "2012-02-25",
+   "sample": 959,
+   "url": "https://web.archive.org/web/20120601222427/http://www.ipsos.fr/sites/default/files/attachments/rapport_barometre_intention_de_vote_vague11.pdf",
+   "values": {
+    "François Hollande": 58,
+    "Nicolas Sarkozy": 42
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-21",
+   "end": "2012-02-24",
+   "sample": 931,
+   "url": "https://web.archive.org/web/20120227042050/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-24-02-2012.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-20",
+   "end": "2012-02-23",
+   "sample": 931,
+   "url": "https://web.archive.org/web/20120227125320/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-23-02-2012.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-18",
+   "end": "2012-02-22",
+   "sample": 1180,
+   "url": "https://web.archive.org/web/20120227040844/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-22-02-2012.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-18",
+   "end": "2012-02-21",
+   "sample": 874,
+   "url": "https://web.archive.org/web/20120227040557/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-21-02-2012.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2012-02-20",
+   "end": "2012-02-20",
+   "sample": 891,
+   "url": "https://web.archive.org/web/20120417080130/http://www.csa.eu/multimedia/data/sondages/data2012/opi20120220-l-entree-en-campagne-de-nicolas-sarkozy-et-l-election-presidentielle.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-16",
+   "end": "2012-02-20",
+   "sample": 872,
+   "url": "https://web.archive.org/web/20120323222320/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-20-02-2012.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2012-02-17",
+   "end": "2012-02-18",
+   "sample": 969,
+   "url": "https://web.archive.org/web/20120227040316/http://www.ipsos.fr/sites/default/files/attachments/rapport_barometre_intention_de_vote_vague10.pdf",
+   "values": {
+    "François Hollande": 59,
+    "Nicolas Sarkozy": 41
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2012-02-17",
+   "end": "2012-02-18",
+   "sample": 967,
+   "url": "https://web.archive.org/web/20120226224729/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2yahoointentionsvotepresidentielle201218fev2012.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2012-02-17",
+   "end": "2012-02-18",
+   "sample": 975,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/le-barometre-de-la-presidentielle-2012-vague-4-fiducial-pour-le-figaro-et-lci/viewdocument.html",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-14",
+   "end": "2012-02-17",
+   "sample": 938,
+   "url": "https://web.archive.org/web/20120227040825/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-17-02-2012.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2012-02-15",
+   "end": "2012-02-16",
+   "sample": 930,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_bva-orange-spqr-rtl872a6.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-13",
+   "end": "2012-02-16",
+   "sample": 939,
+   "url": "https://web.archive.org/web/20120323222309/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-16-02-2012.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-11",
+   "end": "2012-02-15",
+   "sample": 1174,
+   "url": "https://web.archive.org/web/20120227055435/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-15-02-2012.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-11",
+   "end": "2012-02-14",
+   "sample": 867,
+   "url": "https://web.archive.org/web/20120324013515/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-14-02-2012.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2012-02-09",
+   "end": "2012-02-13",
+   "sample": 954,
+   "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2015/09/Results_HIFR_VSD_14022012.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-09",
+   "end": "2012-02-13",
+   "sample": 870,
+   "url": "https://web.archive.org/web/20120227040820/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-13-02-2012.pdf",
+   "values": {
+    "François Hollande": 57.5,
+    "Nicolas Sarkozy": 42.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-09",
+   "end": "2012-02-12",
+   "sample": 1723,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1844-1-study_file.pdf",
+   "values": {
+    "François Hollande": 57.5,
+    "Nicolas Sarkozy": 42.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-07",
+   "end": "2012-02-10",
+   "sample": 923,
+   "url": "https://web.archive.org/web/20120323222258/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-10-02-2012.pdf",
+   "values": {
+    "François Hollande": 57.5,
+    "Nicolas Sarkozy": 42.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-06",
+   "end": "2012-02-09",
+   "sample": 913,
+   "url": "https://web.archive.org/web/20120227055430/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-09-02-2012.pdf",
+   "values": {
+    "François Hollande": 57.5,
+    "Nicolas Sarkozy": 42.5
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2012-02-06",
+   "end": "2012-02-08",
+   "sample": 1215,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/l-indicateur-2012-l-observatoire-de-la-presidentielle-vague-3-fiducial-pour-radio-classique-et-les-echos/viewdocument.html",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-04",
+   "end": "2012-02-08",
+   "sample": 1179,
+   "url": "https://web.archive.org/web/20120227082603/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-08-02-2012.pdf",
+   "values": {
+    "François Hollande": 57.5,
+    "Nicolas Sarkozy": 42.5
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2012-02-06",
+   "end": "2012-02-07",
+   "sample": 869,
+   "url": "https://web.archive.org/web/20120324032258/http://www.csa.eu/multimedia/data/sondages/data2012/opi20120207-la-credibilite-des-principaux-candidats-et-l-election-presidentielle.pdf",
+   "values": {
+    "François Hollande": 60,
+    "Nicolas Sarkozy": 40
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-04",
+   "end": "2012-02-07",
+   "sample": 871,
+   "url": "https://web.archive.org/web/20120227055424/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-07-02-2012.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-02-02",
+   "end": "2012-02-06",
+   "sample": 876,
+   "url": "https://web.archive.org/web/20120227130520/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-06-02-2012.pdf",
+   "values": {
+    "François Hollande": 58,
+    "Nicolas Sarkozy": 42
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2012-02-03",
+   "end": "2012-02-04",
+   "sample": 779,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_bva-le_parisien_-_fevrier_20127b9f9.pdf",
+   "values": {
+    "François Hollande": 58,
+    "Nicolas Sarkozy": 42
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2012-02-03",
+   "end": "2012-02-04",
+   "sample": 953,
+   "url": "https://web.archive.org/web/20120227092754/http://www.ipsos.fr/sites/default/files/attachments/rapport_barometre_intention_de_vote_vague9.pdf",
+   "values": {
+    "François Hollande": 59,
+    "Nicolas Sarkozy": 41
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2012-02-03",
+   "end": "2012-02-04",
+   "sample": 955,
+   "url": "https://web.archive.org/web/20120226224626/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2yahoointentionsvotepresidentielle2012fevrier2012.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-31",
+   "end": "2012-02-03",
+   "sample": 922,
+   "url": "https://web.archive.org/web/20120227055418/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-03-02-2012.pdf",
+   "values": {
+    "François Hollande": 57.5,
+    "Nicolas Sarkozy": 42.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-30",
+   "end": "2012-02-02",
+   "sample": 917,
+   "url": "https://web.archive.org/web/20120227082508/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-02-02-2012.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-29",
+   "end": "2012-02-01",
+   "sample": 1166,
+   "url": "https://web.archive.org/web/20120516193820/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-01-02-2012.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2012-01-30",
+   "end": "2012-01-31",
+   "sample": 1407,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_bva-orange-spqr-rtl_-_avec_synthese964f4.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-29",
+   "end": "2012-01-31",
+   "sample": 866,
+   "url": "https://web.archive.org/web/20120516192629/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-31-01-2012.pdf",
+   "values": {
+    "François Hollande": 58,
+    "Nicolas Sarkozy": 42
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2012-01-30",
+   "end": "2012-01-30",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/sites/default/files/2012.02.01-iv6.pdf",
+   "values": {
+    "François Hollande": 58,
+    "Nicolas Sarkozy": 42
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-29",
+   "end": "2012-01-30",
+   "sample": 1387,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1845-1-study_file.pdf",
+   "values": {
+    "François Hollande": 58,
+    "Nicolas Sarkozy": 42
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-27",
+   "end": "2012-01-30",
+   "sample": 871,
+   "url": "https://web.archive.org/web/20120516192422/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-30-01-2012.pdf",
+   "values": {
+    "François Hollande": 57.5,
+    "Nicolas Sarkozy": 42.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-24",
+   "end": "2012-01-27",
+   "sample": 935,
+   "url": "https://web.archive.org/web/20120131143555/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-27-01-2012.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-23",
+   "end": "2012-01-26",
+   "sample": 926,
+   "url": "https://web.archive.org/web/20120216082431/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-26-01-2012.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2012-01-23",
+   "end": "2012-01-25",
+   "sample": 1087,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/le-barometre-de-la-presidentielle-2012-vague-3-fiducial-pour-le-figaro-et-lci/viewdocument.html",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-21",
+   "end": "2012-01-25",
+   "sample": 1178,
+   "url": "https://web.archive.org/web/20120131075412/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-25-01-2012.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2012-01-23",
+   "end": "2012-01-24",
+   "sample": 898,
+   "url": "https://web.archive.org/web/20120130232757/http://www.csa.eu/multimedia/data/sondages/data2012/opi20120124-la-campagne-de-francois-hollande-et-l-election-presidentielle.pdf",
+   "values": {
+    "François Hollande": 60,
+    "Nicolas Sarkozy": 40
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-21",
+   "end": "2012-01-24",
+   "sample": 864,
+   "url": "https://web.archive.org/web/20120131144810/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-24-01-2012.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-20",
+   "end": "2012-01-23",
+   "sample": 877,
+   "url": "https://web.archive.org/web/20120516193717/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-23-01-2012.pdf",
+   "values": {
+    "François Hollande": 56.5,
+    "Nicolas Sarkozy": 43.5
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2012-01-19",
+   "end": "2012-01-22",
+   "sample": 1029,
+   "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2015/09/Results_HIFR_VSD_25012012.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-17",
+   "end": "2012-01-20",
+   "sample": 937,
+   "url": "https://web.archive.org/web/20120131144604/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-20-01-2012.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2012-01-18",
+   "end": "2012-01-19",
+   "sample": 959,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_bva-orange-spqr-rtl2a9fb.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-16",
+   "end": "2012-01-19",
+   "sample": 923,
+   "url": "https://web.archive.org/web/20120516192943/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-19-01-2012.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-14",
+   "end": "2012-01-18",
+   "sample": 1168,
+   "url": "https://web.archive.org/web/20120131075408/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-18-01-2012.pdf",
+   "values": {
+    "François Hollande": 56.5,
+    "Nicolas Sarkozy": 43.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-14",
+   "end": "2012-01-17",
+   "sample": 864,
+   "url": "https://web.archive.org/web/20120516193604/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-17-01-2012.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-13",
+   "end": "2012-01-16",
+   "sample": 872,
+   "url": "https://web.archive.org/web/20120216082427/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-16-01-2012.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2012-01-13",
+   "end": "2012-01-14",
+   "sample": 948,
+   "url": "https://web.archive.org/web/20120127100305/http://www.ipsos.fr/sites/default/files/attachments/rapport_barometre_intention_de_vote_vague8_0.pdf",
+   "values": {
+    "François Hollande": 59,
+    "Nicolas Sarkozy": 41
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2012-01-13",
+   "end": "2012-01-14",
+   "sample": 966,
+   "url": "https://web.archive.org/web/20120123201308/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2yahoointentionsvotepresidentiellejanv2012.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-11",
+   "end": "2012-01-13",
+   "sample": 1550,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1846-1-study_file.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-10",
+   "end": "2012-01-13",
+   "sample": 942,
+   "url": "https://web.archive.org/web/20120216082421/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-13-01-2012.pdf",
+   "values": {
+    "François Hollande": 56.5,
+    "Nicolas Sarkozy": 43.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-09",
+   "end": "2012-01-12",
+   "sample": 943,
+   "url": "https://web.archive.org/web/20120131075403/http://www.parismatch.com/Actu-Match/Presidentielle-2012/import/pdf/rapport-12-01-2012.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2012-01-10",
+   "end": "2012-01-11",
+   "sample": 967,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/l-indicateur-2012-l-observatoire-de-la-presidentielle-janvier-2012-vague-2-fiducial-pour-radio-classique-et-les-echos/viewdocument.html",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2012-01-09",
+   "end": "2012-01-10",
+   "sample": 875,
+   "url": "https://web.archive.org/web/20120216084034/http://www.csa.eu/multimedia/data/sondages/data2012/opi20120110-la-lutte-contre-le-chomage-et-l-election-presidentielle.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2012-01-06",
+   "end": "2012-01-09",
+   "sample": 2007,
+   "url": "https://www.tns-sofres.com/sites/default/files/2012.01.18-catholiques.pdf",
+   "values": {
+    "François Hollande": 59,
+    "Nicolas Sarkozy": 41
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2012-01-06",
+   "end": "2012-01-07",
+   "sample": 815,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_bva-le_parisien_-_9_janvier_2012d007c.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2012-01-04",
+   "end": "2012-01-06",
+   "sample": 1163,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1723-1-study_file.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2011-12-16",
+   "end": "2011-12-19",
+   "sample": 913,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/l-indicateur-2012-l-observatoire-de-la-presidentielle-decembre-2011-fiducial-pour-radio-classique-et-les-echos/viewdocument.html",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2011-12-13",
+   "end": "2011-12-15",
+   "sample": 1031,
+   "url": "https://web.archive.org/web/20120717175424/http://www.harrisinteractive.fr/news/2011/results_HIFR_elecpres2012_16122011.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2011-12-13",
+   "end": "2011-12-15",
+   "sample": 937,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1711-1-study_file.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2011-12-13",
+   "end": "2011-12-15",
+   "sample": 912,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/le-barometre-de-la-presidentielle-2012-vague-2-fiducial-pour-le-figaro-et-lci/viewdocument.html",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2011-12-12",
+   "end": "2011-12-13",
+   "sample": 859,
+   "url": "https://web.archive.org/web/20120131123207/http://www.csa.eu/multimedia/data/sondages/data2011/opi20111213-la-crise-de-la-dette-et-l-election-presidentielle-de-2012.pdf",
+   "values": {
+    "François Hollande": 58,
+    "Nicolas Sarkozy": 42
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2011-12-09",
+   "end": "2011-12-10",
+   "sample": 953,
+   "url": "https://web.archive.org/web/20120114042059/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2yahoointentionvotepresidentielle2012_11dec2011.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2011-12-02",
+   "end": "2011-12-03",
+   "sample": 798,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_bva-le_parisien_-_dec_2011c97f0.pdf",
+   "values": {
+    "François Hollande": 59,
+    "Nicolas Sarkozy": 41
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2011-12-02",
+   "end": "2011-12-03",
+   "sample": 955,
+   "url": "https://web.archive.org/web/20120131091757/http://www.ipsos.fr/sites/default/files/attachments/2011-12-06-barometre-intentions-de-vote-vague-7.pdf",
+   "values": {
+    "François Hollande": 60,
+    "Nicolas Sarkozy": 40
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2011-11-29",
+   "end": "2011-11-30",
+   "sample": 934,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1694-1-study_file.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2011-11-25",
+   "end": "2011-11-26",
+   "sample": 1003,
+   "url": "https://www.tns-sofres.com/sites/default/files/2011.11.30-ivp.pdf",
+   "values": {
+    "François Hollande": 60,
+    "Nicolas Sarkozy": 40
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2011-11-23",
+   "end": "2011-11-24",
+   "sample": 952,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/le-barometre-de-la-presidentielle-2012-vague-1-fiducial-pour-le-figaro-et-lci/viewdocument.html",
+   "values": {
+    "François Hollande": 58,
+    "Nicolas Sarkozy": 42
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2011-11-18",
+   "end": "2011-11-19",
+   "sample": 784,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_bva-orange-spqr-rtl1cd1c.pdf",
+   "values": {
+    "François Hollande": 58,
+    "Nicolas Sarkozy": 42
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2011-11-18",
+   "end": "2011-11-19",
+   "sample": 830,
+   "url": "https://web.archive.org/web/20111125053926/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2yahoointentionsvotepresidentielle201220nov_2011.pdf",
+   "values": {
+    "François Hollande": 58,
+    "Nicolas Sarkozy": 42
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2011-11-14",
+   "end": "2011-11-15",
+   "sample": 822,
+   "url": "https://web.archive.org/web/20111125130841/http://www.csa.eu/multimedia/data/sondages/data2011/opi20111115-les-preoccupations-des-francais-le-contexte-economique-et-financier-et-les-intentions-de-vote-pour-2012.pdf",
+   "values": {
+    "François Hollande": 59,
+    "Nicolas Sarkozy": 41
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2011-11-04",
+   "end": "2011-11-05",
+   "sample": 796,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_bva-le_parisien317d4.pdf",
+   "values": {
+    "François Hollande": 61,
+    "Nicolas Sarkozy": 39
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2011-11-02",
+   "end": "2011-11-04",
+   "sample": 1843,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1663-1-study_file.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2011-10-28",
+   "end": "2011-10-29",
+   "sample": 970,
+   "url": "https://web.archive.org/web/20111125012136/http://www.ipsos.fr/sites/default/files/attachments/barometre_intentions_de_vote_ipsos_vague6_1.pdf",
+   "values": {
+    "François Hollande": 62,
+    "Nicolas Sarkozy": 38
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2011-10-21",
+   "end": "2011-10-22",
+   "sample": 813,
+   "url": "https://web.archive.org/web/20111226093215/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2yahoointentionsvotepresidentielle2012vague_5octobre2011.pdf",
+   "values": {
+    "François Hollande": 60,
+    "Nicolas Sarkozy": 40
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2011-10-18",
+   "end": "2011-10-20",
+   "sample": 941,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1652-1-study_file.pdf",
+   "values": {
+    "François Hollande": 60,
+    "Nicolas Sarkozy": 40
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2011-10-17",
+   "end": "2011-10-18",
+   "sample": 753,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_bva-orange-presse_regionale-rtlc80f6.pdf",
+   "values": {
+    "François Hollande": 64,
+    "Nicolas Sarkozy": 36
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2011-10-17",
+   "end": "2011-10-17",
+   "sample": 859,
+   "url": "https://web.archive.org/web/20111027015728/http://www.csa.eu/multimedia/data/sondages/data2011/opi20111017-le-bilan-des-primaires-socialistes-et-les-intentions-de-vote-pour-l-election-presidentielle-de-2012.pdf",
+   "values": {
+    "François Hollande": 62,
+    "Nicolas Sarkozy": 38
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2011-09-30",
+   "end": "2011-10-01",
+   "sample": 843,
+   "url": "https://web.archive.org/web/20111005043244/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2yahoointentionsvotepre_sidentielle2012octobre2011.pdf",
+   "values": {
+    "François Hollande": 60,
+    "Nicolas Sarkozy": 40
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2011-09-02",
+   "end": "2011-09-03",
+   "sample": 818,
+   "url": "https://web.archive.org/web/20111005043336/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2yahoointentionsvotepresidentielle2012septembre2011.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2011-08-30",
+   "end": "2011-09-02",
+   "sample": 1918,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1608-1-study_file.pdf",
+   "values": {
+    "François Hollande": 59,
+    "Nicolas Sarkozy": 41
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2011-07-19",
+   "end": "2011-07-21",
+   "sample": 948,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1577-1-study_file.pdf",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2011-07-08",
+   "end": "2011-07-09",
+   "sample": 782,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_bva-orange-presse_regionale-rtl4be06.pdf",
+   "values": {
+    "François Hollande": 58,
+    "Nicolas Sarkozy": 42
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2011-07-08",
+   "end": "2011-07-09",
+   "sample": 827,
+   "url": "https://web.archive.org/web/20110812154306/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2yahoointentionsvotepresidentielle10juillet2011.pdf",
+   "values": {
+    "François Hollande": 60,
+    "Nicolas Sarkozy": 40
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2011-06-03",
+   "end": "2011-06-05",
+   "sample": 1449,
+   "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2015/09/results_HIFR_marianne_10062011.pdf",
+   "values": {
+    "François Hollande": 60,
+    "Nicolas Sarkozy": 40
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2011-05-20",
+   "end": "2011-05-21",
+   "sample": 960,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_bva-orange-presse_regionale-rtlbc4c9.pdf",
+   "values": {
+    "François Hollande": 62,
+    "Nicolas Sarkozy": 38
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2011-05-20",
+   "end": "2011-05-21",
+   "sample": 960,
+   "url": "https://www.tns-sofres.com/sites/default/files/2011.05.25-intentions-vote-2012.pdf",
+   "values": {
+    "François Hollande": 58,
+    "Nicolas Sarkozy": 42
+   }
+  },
+  {
+   "pollster": "LH2",
+   "start": "2011-05-06",
+   "end": "2011-05-07",
+   "sample": 576,
+   "url": "https://web.archive.org/web/20110516022607/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2yahoointentionsvotepresidentielle2012_07mai11.pdf",
+   "values": {
+    "François Hollande": 60,
+    "Nicolas Sarkozy": 40
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2011-04-20",
+   "end": "2011-04-21",
+   "sample": 917,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1480-1-study_file.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2011-02-18",
+   "end": "2011-02-19",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/sites/default/files/2011.02.23-intentions-vote-2012.pdf",
+   "values": {
+    "François Hollande": 56,
+    "Nicolas Sarkozy": 44
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2011-02-14",
+   "end": "2011-02-15",
+   "sample": 1005,
+   "url": "https://web.archive.org/web/20110301190150/http://www.csa-fr.com/dataset/data2011/opi20110215-les-francais-et-la-question-de-la-candidature-de-dominique-strauss-kahn-a-l-election-presidentielle.pdf",
+   "values": {
+    "François Hollande": 54,
+    "Nicolas Sarkozy": 46
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2011-01-17",
+   "end": "2011-01-18",
+   "sample": 847,
+   "url": "https://web.archive.org/web/20110124180226/http://www.csa-fr.com/dataset/data2011/opi20110118-la-designation-du-candidat-ps-et-les-intentions-de-vote-de-premier-tour-et-de-second-tour-dans-la-perspective-de-l-election-presidentielle-de-2012.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2010-11-19",
+   "end": "2010-11-20",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/sites/default/files/2010.11.23-intentions-vote-2012.pdf",
+   "values": {
+    "François Hollande": 55,
+    "Nicolas Sarkozy": 45
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2010-11-18",
+   "end": "2010-11-19",
+   "sample": 811,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/1330-1-study_file.pdf",
+   "values": {
+    "François Hollande": 53,
+    "Nicolas Sarkozy": 47
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2010-08-20",
+   "end": "2010-08-21",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/sites/default/files/2010.08.26-intentions-vote-2012.pdf",
+   "values": {
+    "François Hollande": 50,
+    "Nicolas Sarkozy": 50
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2009-11-04",
+   "end": "2009-11-05",
+   "sample": 910,
+   "url": "http://archive.wikiwix.com/cache/20110809162345/http://www.csa-fr.com/dataset/data2009/opi20091105-rapports-de-force-au-second-tour-de-l-election-presidentielle.pdf",
+   "values": {
+    "François Hollande": 43,
+    "Nicolas Sarkozy": 57
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2012-03-29",
+   "end": "2012-03-30",
+   "sample": 801,
+   "url": "https://web.archive.org/web/20120427021108/http://13.pcf.fr/22366",
+   "values": {
+    "François Hollande": 57,
+    "Nicolas Sarkozy": 43
+   }
+  }
+ ]
+}
