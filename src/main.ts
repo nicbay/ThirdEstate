@@ -482,7 +482,8 @@ let lastPath = "";
 async function route() {
   const { path, anchor } = split();
   // in-page anchor on the same page: just scroll
-  if (path === lastPath && anchor) return document.getElementById(anchor)?.scrollIntoView({ behavior: "smooth" });
+  // (a scenario anchor, #scenario-<key>, is page state, not a place: it re-renders)
+  if (path === lastPath && anchor && !anchor.startsWith("scenario-")) return document.getElementById(anchor)?.scrollIntoView({ behavior: "smooth" });
   const firstRender = !lastPath;
   lastPath = path;
   // the first page just appears (the fox is assembling); later ones cross over with the masthead held still

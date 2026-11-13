@@ -517,3 +517,21 @@ footer .brand .fox { width: 64px; height: 64px; }
 .foot-legal { max-width: var(--col); margin: 0 auto; padding: 0.9rem var(--gutter) 1.4rem; border-top: 2px solid var(--night-rule); font: 500 0.74rem var(--mono); color: #a7abc0; }
 .foot-legal a { color: #fff; text-decoration: underline; }
 .legal .prose ul { display: grid; gap: 0.5rem; }
+
+/* ---------- scenarios and the projection to election day (views/forecast-chart.ts) ---------- */
+.scn { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; margin: 0 0 0.75rem; }
+.scn-k { margin: 0; font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); }
+.scn-list { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.scn-btn { font: 600 0.8rem var(--text); cursor: pointer; background: var(--paper); color: var(--ink); border: 1px solid var(--rule-2); border-radius: 999px; padding: 0.3rem 0.7rem; }
+.scn-btn:hover { border-color: var(--ink); }
+.scn-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.scn-btn[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.scn-btn.scn-setback::before { content: "⚡"; margin-right: 0.3em; }
+.chart .proj .band { opacity: 0.13; stroke: none; }
+.chart .proj .proj-line { stroke-width: 2; stroke-dasharray: 2 5; stroke-linecap: round; opacity: 0.9; }
+.chart .marker { stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 3 4; }
+.chart .marker-label { fill: var(--ink-3); font: 600 11px var(--mono); }
+.scn-note b { color: var(--ink); }
+.hq-num.is-scenario strong { color: #ffd166; }
+.hq-scn { margin: 0.4rem 0 0; max-width: 62ch; font-size: 0.9rem; line-height: 1.45; color: #d3d4da; }
+@media (max-width: 640px) { .scn-btn { font-size: 0.78rem; padding: 0.28rem 0.6rem; } }
