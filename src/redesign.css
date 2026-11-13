@@ -17,6 +17,10 @@ body *, body *::before, body *::after { border-radius: 0 !important; }
 .topbar { background: var(--night); gap: 1rem; box-shadow: 0 2px 0 var(--night-rule); transition: box-shadow 0.2s; }
 html.is-scrolled .topbar { box-shadow: 0 2px 0 var(--night-rule), 0 10px 0 -4px rgba(11, 13, 24, 0.18); }
 .brand .fox { width: 32px; height: 32px; }
+/* the wordmark: pixel capitals drawn on the fox's grid (src/lib/wordmark.ts), at whole multiples so pixels stay square */
+.wordmark { display: block; flex: none; color: #fff; }
+@media (min-width: 761px) and (max-width: 900px) { .topbar .brand .wordmark { display: none; } }
+@media (max-width: 359px) { .topbar .brand .wordmark { display: none; } }
 .brand:hover .fox { animation: fox-hop 0.4s steps(4); }
 @keyframes fox-hop { 50% { transform: translateY(-3px); } }
 .scroll-px { position: absolute; left: 0; right: 0; bottom: -2px; height: 4px; pointer-events: none; }

@@ -15,8 +15,7 @@ a white blaze, snout and inner ears (`#ffffff`), ink eyes `#111216` and an ink n
 face. On the black masthead and footer the outline takes a lighter blue `#5470ff` (bleu France would vanish on ink);
 everything else stays. The red-left/blue-right split bar (active tab, kickers) is the political convention and is not
 part of the mark. Keep the grid exact;
-render it at multiples of 16px (24, 28, 32, 112) so pixels stay square. Wordmark: Archivo 850 condensed **THIRD** +
-300 **ESTATE**, uppercase. Favicon: the fox on a rounded ink tile (`public/favicon.svg`). Pixel type (Silkscreen) is
+render it at multiples of 16px (24, 28, 32, 112) so pixels stay square. Wordmark: **THIRD ESTATE** drawn in pixel capitals on the same grid (`wordmarkSvg(px)` in `src/lib/wordmark.ts`, 5×7 glyphs): THIRD in a doubled stroke, ESTATE single-stroke in a quieter grey; rendered at whole multiples (2px masthead, 3px menu and footer, 8px share card). Options explored: `docs/brand/identity-v3-options.html` (chosen: M1 + W3). Favicon: the fox on a rounded ink tile (`public/favicon.svg`). Pixel type (Silkscreen) is
 allowed only for tiny accents, never for text people read (see "Pixel theme"). The 12×12 section icons of
 the phone tab bar and the search glyph (`src/lib/pixel-icons.ts`) share the fox's pixel style, drawn in currentColor.
 Catchphrase: Article 15 of the 1789 Declaration, *« La société a le droit de demander compte à tout agent public de son administration »*, shortened on the homepage to « Demander compte à tout agent public ». Share image: `public/og.png` (1200×630, screenshot of `docs/brand/og-source.html`).
