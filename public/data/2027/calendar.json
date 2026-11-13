@@ -12,8 +12,15 @@
       "status": "confirmed",
       "fr": "Début du financement de campagne : les mandataires des candidats peuvent recueillir des fonds et régler des dépenses",
       "en": "Campaign finance period opens: candidates’ financial agents may raise funds and pay expenses",
-      "basis": { "fr": "Un an avant le premier jour du mois de l’élection (loi du 6 novembre 1962, art. 3, II)", "en": "One year before the first day of the election month (law of 6 November 1962, art. 3, II)" },
-      "source": { "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000684037", "title": "Loi n° 62-1292 du 6 novembre 1962, art. 3", "publisher": "Légifrance" }
+      "basis": {
+        "fr": "Un an avant le premier jour du mois de l’élection (loi du 6 novembre 1962, art. 3, II)",
+        "en": "One year before the first day of the election month (law of 6 November 1962, art. 3, II)"
+      },
+      "source": {
+        "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000684037",
+        "title": "Loi n° 62-1292 du 6 novembre 1962, art. 3",
+        "publisher": "Légifrance"
+      }
     },
     {
       "date": "2026-07-01",
@@ -21,7 +28,11 @@
       "status": "confirmed",
       "fr": "Le Conseil des ministres retient les dates : 18 avril et 2 mai 2027",
       "en": "The Council of Ministers picks the dates: 18 April and 2 May 2027",
-      "source": { "url": "https://www.elysee.fr/emmanuel-macron/2026/07/01/compte-rendu-du-conseil-des-ministres-du-mercredi-1er-juillet-2026", "title": "Compte rendu du Conseil des ministres du 1er juillet 2026", "publisher": "Élysée" }
+      "source": {
+        "url": "https://www.elysee.fr/emmanuel-macron/2026/07/01/compte-rendu-du-conseil-des-ministres-du-mercredi-1er-juillet-2026",
+        "title": "Compte rendu du Conseil des ministres du 1er juillet 2026",
+        "publisher": "Élysée"
+      }
     },
     {
       "date": "2026-08-27",
@@ -29,7 +40,11 @@
       "status": "confirmed",
       "fr": "Premier débat entre candidats déclarés, à la rencontre du Medef (Roland-Garros, diffusé sur LCI)",
       "en": "First debate between declared candidates, at the Medef business conference (Roland-Garros, broadcast on LCI)",
-      "source": { "url": "https://www.publicsenat.fr/actualites/politique/dette-retraites-fiscalite-que-retenir-du-premier-debat-des-candidats-a-lelection-presidentielle", "title": "Dette, retraites, fiscalité : que retenir du premier débat des candidats", "publisher": "Public Sénat" }
+      "source": {
+        "url": "https://www.publicsenat.fr/actualites/politique/dette-retraites-fiscalite-que-retenir-du-premier-debat-des-candidats-a-lelection-presidentielle",
+        "title": "Dette, retraites, fiscalité : que retenir du premier débat des candidats",
+        "publisher": "Public Sénat"
+      }
     },
     {
       "date": "2026-10-01",
@@ -37,8 +52,32 @@
       "status": "confirmed",
       "fr": "Six mois avant le mois du scrutin : la publicité commerciale à des fins de propagande électorale est interdite",
       "en": "Six months before the election month: paid commercial advertising for electoral propaganda is banned",
-      "basis": { "fr": "Code électoral, art. L. 52-1", "en": "Electoral code, art. L. 52-1" },
-      "source": { "url": "https://www.touteleurope.eu/vie-politique-des-etats-membres/presidentielle-2027-calendrier-dates-inscription-candidats-vote/", "title": "Présidentielle 2027 : le calendrier complet", "publisher": "Toute l’Europe" }
+      "basis": {
+        "fr": "Code électoral, art. L. 52-1",
+        "en": "Electoral code, art. L. 52-1"
+      },
+      "source": {
+        "url": "https://www.touteleurope.eu/vie-politique-des-etats-membres/presidentielle-2027-calendrier-dates-inscription-candidats-vote/",
+        "title": "Présidentielle 2027 : le calendrier complet",
+        "publisher": "Toute l’Europe"
+      }
+    },
+    {
+      "date": "2027-01-31",
+      "end": "2027-02-07",
+      "kind": "vote",
+      "status": "proposed",
+      "fr": "Primaire de la droite et du centre, proposée par Bruno Retailleau (deux tours). Gabriel Attal y est favorable ; Édouard Philippe et Dominique de Villepin refusent d’y participer",
+      "en": "Centre and right primary, proposed by Bruno Retailleau (two rounds). Gabriel Attal is in favour; Édouard Philippe and Dominique de Villepin refuse to take part",
+      "basis": {
+        "fr": "Proposition, pas encore acceptée par tous les candidats concernés : notre prévision la fait se tenir une fois sur deux",
+        "en": "A proposal, not yet agreed by every candidate concerned: our forecast holds it one time in two"
+      },
+      "source": {
+        "url": "https://lcp.fr/actualites/presidentielle-bruno-retailleau-propose-une-primaire-les-31-janvier-et-7-fevrier-445008",
+        "title": "Présidentielle : Bruno Retailleau propose une primaire les 31 janvier et 7 février",
+        "publisher": "LCP"
+      }
     },
     {
       "date": "2027-02-07",
@@ -46,8 +85,15 @@
       "status": "expected",
       "fr": "Au plus tard : publication du décret de convocation des électeurs. La collecte des parrainages s’ouvre avec lui",
       "en": "Latest date for the decree calling voters to the polls. Sponsorship collection opens with it",
-      "basis": { "fr": "Au moins dix semaines avant le premier tour (loi du 6 novembre 1962, art. 1 bis)", "en": "At least ten weeks before the first round (law of 6 November 1962, art. 1 bis)" },
-      "source": { "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000684037", "title": "Loi n° 62-1292 du 6 novembre 1962, art. 1 bis", "publisher": "Légifrance" }
+      "basis": {
+        "fr": "Au moins dix semaines avant le premier tour (loi du 6 novembre 1962, art. 1 bis)",
+        "en": "At least ten weeks before the first round (law of 6 November 1962, art. 1 bis)"
+      },
+      "source": {
+        "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000684037",
+        "title": "Loi n° 62-1292 du 6 novembre 1962, art. 1 bis",
+        "publisher": "Légifrance"
+      }
     },
     {
       "date": "2027-03-12",
@@ -55,8 +101,15 @@
       "status": "expected",
       "fr": "Dernier jour pour s’inscrire sur les listes électorales (en ligne, en mairie ou par courrier)",
       "en": "Last day to register to vote (online, at the town hall or by post)",
-      "basis": { "fr": "Sixième vendredi avant le premier tour ; quelques cas (18 ans, déménagement professionnel, naturalisation…) jusqu’au 10e jour avant", "en": "Sixth Friday before the first round; a few cases (turning 18, moving for work, naturalisation…) until the 10th day before" },
-      "source": { "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34240", "title": "Peut-on s’inscrire sur la liste électorale et voter la même année ?", "publisher": "Service-Public.gouv.fr" }
+      "basis": {
+        "fr": "Sixième vendredi avant le premier tour ; quelques cas (18 ans, déménagement professionnel, naturalisation…) jusqu’au 10e jour avant",
+        "en": "Sixth Friday before the first round; a few cases (turning 18, moving for work, naturalisation…) until the 10th day before"
+      },
+      "source": {
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34240",
+        "title": "Peut-on s’inscrire sur la liste électorale et voter la même année ?",
+        "publisher": "Service-Public.gouv.fr"
+      }
     },
     {
       "date": "2027-03-12",
@@ -64,8 +117,15 @@
       "status": "expected",
       "fr": "18 h : fin de la collecte des 500 parrainages, qui doivent être arrivés au Conseil constitutionnel",
       "en": "6 pm: sponsorship collection closes; the 500 signatures must have reached the Constitutional Council",
-      "basis": { "fr": "Sixième vendredi avant le premier tour, à 18 heures (loi du 6 novembre 1962, art. 3, I)", "en": "Sixth Friday before the first round, 6 pm (law of 6 November 1962, art. 3, I)" },
-      "source": { "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000684037", "title": "Loi n° 62-1292 du 6 novembre 1962, art. 3", "publisher": "Légifrance" }
+      "basis": {
+        "fr": "Sixième vendredi avant le premier tour, à 18 heures (loi du 6 novembre 1962, art. 3, I)",
+        "en": "Sixth Friday before the first round, 6 pm (law of 6 November 1962, art. 3, I)"
+      },
+      "source": {
+        "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000684037",
+        "title": "Loi n° 62-1292 du 6 novembre 1962, art. 3",
+        "publisher": "Légifrance"
+      }
     },
     {
       "date": "2027-03-26",
@@ -73,8 +133,15 @@
       "status": "expected",
       "fr": "Au plus tard : publication de la liste officielle des candidats, établie par le Conseil constitutionnel",
       "en": "Latest date for the official list of candidates, drawn up by the Constitutional Council",
-      "basis": { "fr": "Quatrième vendredi avant le premier tour (loi du 6 novembre 1962, art. 3, I) ; elle peut paraître plus tôt", "en": "Fourth Friday before the first round (law of 6 November 1962, art. 3, I); it can come out earlier" },
-      "source": { "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000684037", "title": "Loi n° 62-1292 du 6 novembre 1962, art. 3", "publisher": "Légifrance" }
+      "basis": {
+        "fr": "Quatrième vendredi avant le premier tour (loi du 6 novembre 1962, art. 3, I) ; elle peut paraître plus tôt",
+        "en": "Fourth Friday before the first round (law of 6 November 1962, art. 3, I); it can come out earlier"
+      },
+      "source": {
+        "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000684037",
+        "title": "Loi n° 62-1292 du 6 novembre 1962, art. 3",
+        "publisher": "Légifrance"
+      }
     },
     {
       "date": "2027-03-26",
@@ -83,8 +150,15 @@
       "status": "expected",
       "fr": "Temps de parole : équité entre candidats à la radio et à la télévision, de la publication de la liste à la veille de la campagne",
       "en": "Airtime: fairness between candidates on radio and TV, from the publication of the list to the eve of the campaign",
-      "basis": { "fr": "Loi du 6 novembre 1962, art. 3, I bis ; l’Arcom doit préciser les règles de 2027 dans une recommandation, pas encore publiée. La période commence dès la publication de la liste, au plus tard le 26 mars", "en": "Law of 6 November 1962, art. 3, I bis; Arcom must set the 2027 details in a recommendation, not yet published. The period starts as soon as the list is out, 26 March at the latest" },
-      "source": { "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000684037", "title": "Loi n° 62-1292 du 6 novembre 1962, art. 3, I bis", "publisher": "Légifrance" }
+      "basis": {
+        "fr": "Loi du 6 novembre 1962, art. 3, I bis ; l’Arcom doit préciser les règles de 2027 dans une recommandation, pas encore publiée. La période commence dès la publication de la liste, au plus tard le 26 mars",
+        "en": "Law of 6 November 1962, art. 3, I bis; Arcom must set the 2027 details in a recommendation, not yet published. The period starts as soon as the list is out, 26 March at the latest"
+      },
+      "source": {
+        "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000684037",
+        "title": "Loi n° 62-1292 du 6 novembre 1962, art. 3, I bis",
+        "publisher": "Légifrance"
+      }
     },
     {
       "date": "2027-04-05",
@@ -93,8 +167,15 @@
       "status": "expected",
       "fr": "Campagne officielle du premier tour : affiches, clips officiels, et égalité stricte du temps de parole",
       "en": "Official first-round campaign: official posters and broadcasts, and strict equality of airtime",
-      "basis": { "fr": "Ouverte le deuxième lundi avant le scrutin, close le vendredi précédant le vote à minuit", "en": "Opens on the second Monday before the vote, closes at midnight on the Friday before" },
-      "source": { "url": "https://www.touteleurope.eu/vie-politique-des-etats-membres/presidentielle-2027-calendrier-dates-inscription-candidats-vote/", "title": "Présidentielle 2027 : le calendrier complet", "publisher": "Toute l’Europe" }
+      "basis": {
+        "fr": "Ouverte le deuxième lundi avant le scrutin, close le vendredi précédant le vote à minuit",
+        "en": "Opens on the second Monday before the vote, closes at midnight on the Friday before"
+      },
+      "source": {
+        "url": "https://www.touteleurope.eu/vie-politique-des-etats-membres/presidentielle-2027-calendrier-dates-inscription-candidats-vote/",
+        "title": "Présidentielle 2027 : le calendrier complet",
+        "publisher": "Toute l’Europe"
+      }
     },
     {
       "date": "2027-04-18",
@@ -103,8 +184,15 @@
       "round": 1,
       "fr": "Premier tour (samedi 17 avril aux Antilles, en Guyane, à Saint-Pierre-et-Miquelon, Saint-Barthélemy, Saint-Martin, en Polynésie et dans les consulats du continent américain)",
       "en": "First round (Saturday 17 April in the French Caribbean, French Guiana, Saint-Pierre-et-Miquelon, Saint-Barthélemy, Saint-Martin, French Polynesia and consulates in the Americas)",
-      "basis": { "fr": "Date retenue en Conseil des ministres le 1er juillet 2026, en attente du décret", "en": "Date chosen by the Council of Ministers on 1 July 2026, awaiting the decree" },
-      "source": { "url": "https://www.service-public.gouv.fr/particuliers/actualites/A15053", "title": "Les dates de l’élection présidentielle de 2027 sont annoncées", "publisher": "Service-Public.gouv.fr" }
+      "basis": {
+        "fr": "Date retenue en Conseil des ministres le 1er juillet 2026, en attente du décret",
+        "en": "Date chosen by the Council of Ministers on 1 July 2026, awaiting the decree"
+      },
+      "source": {
+        "url": "https://www.service-public.gouv.fr/particuliers/actualites/A15053",
+        "title": "Les dates de l’élection présidentielle de 2027 sont annoncées",
+        "publisher": "Service-Public.gouv.fr"
+      }
     },
     {
       "date": "2027-05-02",
@@ -113,8 +201,15 @@
       "round": 2,
       "fr": "Second tour entre les deux candidats arrivés en tête, sauf majorité absolue au premier tour (samedi 1er mai dans les mêmes territoires)",
       "en": "Run-off between the top two candidates, unless someone wins an outright majority in the first round (Saturday 1 May in the same territories)",
-      "basis": { "fr": "Date retenue en Conseil des ministres le 1er juillet 2026, en attente du décret", "en": "Date chosen by the Council of Ministers on 1 July 2026, awaiting the decree" },
-      "source": { "url": "https://www.service-public.gouv.fr/particuliers/actualites/A15053", "title": "Les dates de l’élection présidentielle de 2027 sont annoncées", "publisher": "Service-Public.gouv.fr" }
+      "basis": {
+        "fr": "Date retenue en Conseil des ministres le 1er juillet 2026, en attente du décret",
+        "en": "Date chosen by the Council of Ministers on 1 July 2026, awaiting the decree"
+      },
+      "source": {
+        "url": "https://www.service-public.gouv.fr/particuliers/actualites/A15053",
+        "title": "Les dates de l’élection présidentielle de 2027 sont annoncées",
+        "publisher": "Service-Public.gouv.fr"
+      }
     },
     {
       "date": "2027-05-13",
@@ -122,8 +217,15 @@
       "status": "confirmed",
       "fr": "Fin du mandat d’Emmanuel Macron ; le nouveau président prend ses fonctions au plus tard ce jour",
       "en": "Emmanuel Macron’s term ends; the new president takes office by this day at the latest",
-      "basis": { "fr": "Cinq ans après la prise de fonctions du 14 mai 2022 (Constitution, art. 6 et 7)", "en": "Five years after he took office on 14 May 2022 (Constitution, arts. 6 and 7)" },
-      "source": { "url": "https://www.touteleurope.eu/vie-politique-des-etats-membres/presidentielle-2027-calendrier-dates-inscription-candidats-vote/", "title": "Présidentielle 2027 : le calendrier complet", "publisher": "Toute l’Europe" }
+      "basis": {
+        "fr": "Cinq ans après la prise de fonctions du 14 mai 2022 (Constitution, art. 6 et 7)",
+        "en": "Five years after he took office on 14 May 2022 (Constitution, arts. 6 and 7)"
+      },
+      "source": {
+        "url": "https://www.touteleurope.eu/vie-politique-des-etats-membres/presidentielle-2027-calendrier-dates-inscription-candidats-vote/",
+        "title": "Présidentielle 2027 : le calendrier complet",
+        "publisher": "Toute l’Europe"
+      }
     },
     {
       "date": "2027-07-02",
@@ -131,8 +233,15 @@
       "status": "expected",
       "fr": "18 h : les candidats déposent leur compte de campagne à la CNCCFP",
       "en": "6 pm: candidates file their campaign accounts with the CNCCFP",
-      "basis": { "fr": "Onzième vendredi après le premier tour (loi du 6 novembre 1962, art. 3, V)", "en": "Eleventh Friday after the first round (law of 6 November 1962, art. 3, V)" },
-      "source": { "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000684037", "title": "Loi n° 62-1292 du 6 novembre 1962, art. 3, V", "publisher": "Légifrance" }
+      "basis": {
+        "fr": "Onzième vendredi après le premier tour (loi du 6 novembre 1962, art. 3, V)",
+        "en": "Eleventh Friday after the first round (law of 6 November 1962, art. 3, V)"
+      },
+      "source": {
+        "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000684037",
+        "title": "Loi n° 62-1292 du 6 novembre 1962, art. 3, V",
+        "publisher": "Légifrance"
+      }
     }
   ]
 }

@@ -6,7 +6,7 @@ import type { Market } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
 import { lineChart, pollDots, type Series } from "../lib/chart";
 import { meta } from "../lib/candidates";
-import { ELECTION_DAY, SCENARIOS, forecast, isScenario, type Forecast, type ScenarioKey } from "../lib/forecast";
+import { ELECTION_DAY, PRIMARY, SCENARIOS, forecast, isScenario, type Forecast, type ScenarioKey } from "../lib/forecast";
 import { trend, type PollFile } from "../lib/polls";
 import { dec, pct } from "../lib/format";
 import { esc } from "../util";
@@ -92,22 +92,34 @@ export function mountForecastChart(box: HTMLElement, o: Opts) {
         const pr = fc.projection.find((p) => p.name === (replaced ? "Jordan Bardella" : n));
         const last = line.at(-1);
         if (pr && last && last.date === lastDate) {
-          const mid = Math.max(0, last.value + pr.shift);
-          const lo = Math.max(0, mid - (pr.mid - pr.lo)), hi = mid + (pr.hi - pr.mid);
+          // the model's knots are offsets from today's level: hang them on the chart's own last average
+          const knots = pr.knots.map((k, i) => ({ date: i === 0 ? last.date : k.date, mid: Math.max(0, last.value + k.mid), lo: Math.max(0, last.value + k.lo), hi: Math.max(0, last.value + k.hi) }));
+          const end = knots.at(-1)!;
+          const who = replaced ? "Bardella" : m.surname;
           s.proj = {
-            d0: last.date, v0: last.value, d1: ELECTION_DAY, mid, lo, hi,
+            knots,
             label: replaced ? "Bardella" : undefined,
-            title: L(`${replaced ? "Bardella" : m.surname} le ${fmtDate(ELECTION_DAY)} : ${dec(lo)} à ${dec(hi)} % (8 chances sur 10)`, `${replaced ? "Bardella" : m.surname} on ${fmtDate(ELECTION_DAY)}: ${dec(lo)} to ${dec(hi)}% (8 in 10 chance)`),
+            title: L(`${who} le ${fmtDate(ELECTION_DAY)} : ${dec(end.lo)} à ${dec(end.hi)} % (8 chances sur 10), ${dec(end.mid)} % en moyenne`, `${who} on ${fmtDate(ELECTION_DAY)}: ${dec(end.lo)} to ${dec(end.hi)}% (8 in 10 chance), ${dec(end.mid)}% on average`),
           };
         }
         return s;
       })
       .filter((s) => s.line.length);
-    chartBox.innerHTML = lineChart(series, { height: o.height, marker: { date: ELECTION_DAY, label: L(`1er tour, ${fmtDate(ELECTION_DAY)}`, `1st round, ${fmtDate(ELECTION_DAY)}`) } });
+    const markers = [{ date: ELECTION_DAY, label: L(`1er tour, ${fmtDate(ELECTION_DAY)}`, `1st round, ${fmtDate(ELECTION_DAY)}`) }];
+    if (fc.primary && key !== "no-primary") {
+      const sure = key === "primary-held" || PRIMARY.status === "confirmed";
+      markers.push({ date: fc.primary.day, label: sure ? L("Primaire", "Primary") : L("Primaire ? (proposée)", "Primary? (proposed)") });
+    }
+    chartBox.innerHTML = lineChart(series, { height: o.height, markers });
+    const pr = fc.primary;
+    const primLine = pr && key !== "no-primary"
+      ? L(` ${esc(PRIMARY.name.fr)} (${PRIMARY.participants.map((n) => esc(meta(n).surname)).join(", ")} ; sans ${PRIMARY.declined.map((n) => esc(meta(n).surname)).join(" ni ")}) : ${key === "primary-held" ? "elle a lieu dans ce scénario" : `proposée pour le ${fmtDate(pr.day)}, elle se tient dans ${Math.round(pr.held)} % des simulations`}${pr.winners[0] ? ` ; ${esc(meta(pr.winners[0].name).surname)} la remporte ${Math.round(pr.winners[0].p)} fois sur 100` : ""}. Après la primaire, la zone de chaque participant s’ouvre vers le bas : le gagnant récupère l’essentiel des voix des autres, les perdants se retirent (la ligne en pointillés est la moyenne des deux).`,
+          ` ${esc(PRIMARY.name.en)} (${PRIMARY.participants.map((n) => esc(meta(n).surname)).join(", ")}; without ${PRIMARY.declined.map((n) => esc(meta(n).surname)).join(" or ")}): ${key === "primary-held" ? "held in this scenario" : `proposed for ${fmtDate(pr.day)}, held in ${Math.round(pr.held)}% of simulations`}${pr.winners[0] ? `; ${esc(meta(pr.winners[0].name).surname)} wins it ${Math.round(pr.winners[0].p)} times in 100` : ""}. After the primary each participant’s band opens downwards: the winner takes most of the others’ votes, the losers withdraw (the dotted line averages the two).`)
+      : "";
     note.innerHTML = `${key === "base" ? "" : `<b>${esc(label(key))}.</b> ${esc(desc(key))} `}${L(
-      `Pointillés : le score du premier tour si la campagne ne bouge pas${key === "base" ? "" : " (dans ce scénario)"} ; zone colorée : 8 chances sur 10 que le score tombe dedans, selon notre modèle. Elle s’élargit avec le temps restant. <a href="#/2027">La méthode</a>.`,
-      `Dotted line: the first-round score if the campaign doesn’t move${key === "base" ? "" : " (in this scenario)"}; shaded area: an 8-in-10 chance the score lands inside it, in our model. It widens with the time left. <a href="#/2027">The method</a>.`,
-    )}`;
+      `Pointillés : la moyenne des sondages prolongée jusqu’au premier tour, avec la moitié de sa tendance des quatre derniers mois${key === "base" ? "" : ", dans ce scénario"} ; zone colorée : 8 chances sur 10 que le score tombe dedans, selon notre modèle (erreurs de sondage, ralliements tardifs, coups durs).`,
+      `Dotted line: the polling average carried on to the first round, with half its trend of the last four months${key === "base" ? "" : ", in this scenario"}; shaded area: an 8-in-10 chance the score lands inside it, in our model (polling error, late rallies, setbacks).`,
+    )}${primLine} <a href="#/2027">${L("La méthode", "The method")}</a>.`;
     o.onChange?.(fc);
   };
 

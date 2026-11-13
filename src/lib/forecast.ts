@@ -21,7 +21,8 @@
 import type { Market } from "../data";
 import { meta, type Bloc } from "./candidates";
 import { combineOdds, winShare } from "./markets";
-import { average, duelAverages, referenceLineup, type Duel, type Poll } from "./polls";
+import { average, duelAverages, referenceLineup, trend, type Duel, type Poll } from "./polls";
+import primaryData from "../../public/data/2027/primary.json";
 
 /** First round of the 2027 presidential election: Sunday 18 April 2027 (run-off 2 May), as chosen at the Council
  *  of Ministers of 1 July 2026. The convening decree, due at least 10 weeks before, makes it official. */
@@ -53,11 +54,13 @@ export const SETBACK_RUNOFF = 5;
 /** Share of their vote the smaller candidates of a camp hand to its leader when the camp rallies. */
 export const RALLY_SHARE = 0.7;
 
-export type ScenarioKey = "base" | "right-rallies" | "left-unites" | "le-pen-out" | "setback-le-pen" | "setback-melenchon" | "setback-centre";
-export interface ScenarioDef { key: ScenarioKey; fr: string; en: string; descFr: string; descEn: string; kind: "base" | "rally" | "ballot" | "setback" }
+export type ScenarioKey = "base" | "primary-held" | "no-primary" | "right-rallies" | "left-unites" | "le-pen-out" | "setback-le-pen" | "setback-melenchon" | "setback-centre";
+export interface ScenarioDef { key: ScenarioKey; fr: string; en: string; descFr: string; descEn: string; kind: "base" | "primary" | "rally" | "ballot" | "setback" }
 const pc = (x: number) => Math.round(x * 100);
 export const SCENARIOS: ScenarioDef[] = [
   { key: "base", kind: "base", fr: "Les sondages du jour", en: "Today’s polls", descFr: "Notre prévision telle quelle : le modèle des sondages et les marchés, à parts égales.", descEn: "Our forecast as it stands: the polls model and the markets, half and half." },
+  { key: "primary-held", kind: "primary", fr: "La primaire a lieu", en: "The primary happens", descFr: "La primaire de la droite et du centre se tient le 7 février (Attal, Retailleau, Lisnard ; sans Philippe) : le gagnant reste, les autres se retirent et la plupart de leurs électeurs le suivent.", descEn: "The centre and right primary is held on 7 February (Attal, Retailleau, Lisnard; without Philippe): the winner stays, the others withdraw and most of their voters follow the winner." },
+  { key: "no-primary", kind: "primary", fr: "Pas de primaire", en: "No primary", descFr: "La primaire de la droite et du centre n’a pas lieu : Attal, Retailleau et Lisnard restent tous candidats.", descEn: "The centre and right primary doesn’t happen: Attal, Retailleau and Lisnard all stay in." },
   { key: "right-rallies", kind: "rally", fr: "Le centre et la droite se rassemblent", en: "Centre and right rally", descFr: `Les autres candidats du centre et de la droite cèdent ${pc(RALLY_SHARE)} % de leurs voix au mieux placé d’entre eux.`, descEn: `The other centre and right candidates hand ${pc(RALLY_SHARE)}% of their vote to the best placed among them.` },
   { key: "left-unites", kind: "rally", fr: "La gauche s’unit", en: "The left unites", descFr: `Les autres candidats de gauche cèdent ${pc(RALLY_SHARE)} % de leurs voix au mieux placé d’entre eux.`, descEn: `The other left-wing candidates hand ${pc(RALLY_SHARE)}% of their vote to the best placed among them.` },
   { key: "le-pen-out", kind: "ballot", fr: "Le Pen n’est pas candidate", en: "Le Pen doesn’t run", descFr: "Jordan Bardella la remplace, au niveau que lui donnent les sondages qui le testent.", descEn: "Jordan Bardella replaces her, at the level the polls that test him give him." },
@@ -76,9 +79,9 @@ export interface ForecastRow {
   polls: { win: number; qualify: number; share: number } | null;
   markets: { win: number | null; qualify: number | null } | null;
 }
-/** Where a candidate's first-round score lands on election day in the polls model: the starting share (after the
- *  scenario), its 80 % range, and how far the scenario moved the starting share. */
-export interface Projection { name: string; mid: number; lo: number; hi: number; shift: number }
+/** A candidate's first-round score along the way, in the polls model: at each knot (today, the primary, election
+ *  day) the average and the 80 % range, as offsets from today's polling level before any scenario. */
+export interface Projection { name: string; knots: { date: string; mid: number; lo: number; hi: number }[] }
 export interface Forecast {
   rows: ForecastRow[];
   /** most likely runoff pairings in the polls model */
@@ -97,6 +100,8 @@ export interface Forecast {
   projection: Projection[];
   /** transfer rates by political distance, fitted to the runoff polls */
   affinity: number[];
+  /** the centre and right primary, when it falls before the vote: how often it's held, who wins it */
+  primary: { day: string; pHeld: number; held: number; winners: { name: string; p: number }[] } | null;
 }
 
 const norm = (s: string) => s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().trim();
@@ -118,10 +123,12 @@ function mulberry32(seed: number) {
   };
 }
 
-/** Uncertainty shrinks as the vote nears: linear in days to go, between eve-of-vote and six-months values. */
+/** Uncertainty shrinks as the vote nears: linear in days to go, between eve-of-vote and six-months values.
+ *  Six months out: 4.5 pts per candidate in the first round, 7.5 pts in the runoff (runoff polls taken in
+ *  November 2011 missed Hollande–Sarkozy by about 8 points). */
 export function errors(daysToGo: number) {
   const k = Math.max(0, Math.min(1, daysToGo / 180));
-  return { sd1: 2 + 1.5 * k, sd2: 3.5 + 2.5 * k, bloc: 1.5 };
+  return { sd1: 2 + 2.5 * k, sd2: 3.5 + 4 * k, bloc: 1.5 };
 }
 
 type Cand = { name: string; share: number; bloc: Bloc | null };
@@ -202,6 +209,52 @@ function applyScenario(key: ScenarioKey, base: Cand[], firstRound: Poll[], aff: 
   return { target: null, handicap };
 }
 
+// ---------- built-in uncertainty (applies to every view, scenarios included) ----------
+// Polls five months out miss more, and more unevenly, than a bell curve allows: in 1995, 2017 and 2022 a leading
+// candidate collapsed (Balladur, Fillon, Pécresse: three of the last five elections), in 2017 and 2022 a camp rallied late behind one name
+// (Macron, Mélenchon). Each simulated campaign can therefore include, at random:
+/** Chance that one major candidate (picked at random, every camp alike) suffers a setback of the size above. */
+export const P_SHOCK = 0.5;
+/** Chance, per camp (left; centre and right), that its voters rally late behind its best-placed candidate. */
+export const P_RALLY = 0.25;
+/** Long-term trend carried forward: the last 120 days' slope of the polling average, at this fraction, capped. */
+export const TREND_DAYS = 120, TREND_DAMP = 0.5, TREND_CAP = 4;
+// Errors have fat tails (one draw in ten is about twice as wide), so big misses aren't vanishingly rare.
+/** How much a primary's result can differ from the participants' general-election polling (points). */
+const PRIMARY_SD = 6;
+
+export interface Primary {
+  name: { fr: string; en: string };
+  status: "proposed" | "confirmed" | "cancelled";
+  rounds: string[];
+  participants: string[];
+  declined: string[];
+  pHeld: number;
+  note: { fr: string; en: string };
+  sources: { url: string; title: string; publisher: string; date: string }[];
+}
+export const PRIMARY = primaryData as Primary;
+/** The primary's deciding day (its last round). */
+export const PRIMARY_DAY = PRIMARY.rounds.at(-1)!;
+
+/** Linear slope of each candidate's polling average over the last TREND_DAYS, in points per day. */
+export function trendSlopes(firstRound: Poll[], asOf: string): Map<string, number> {
+  const from = new Date(Date.parse(asOf) - TREND_DAYS * 86400000).toISOString().slice(0, 10);
+  const pts = trend(firstRound, from, { to: asOf });
+  const out = new Map<string, number>();
+  const names = new Set(pts.flatMap((p) => Object.keys(p.values)));
+  for (const n of names) {
+    const xs: number[] = [], ys: number[] = [];
+    for (const p of pts) if (p.values[n] != null) { xs.push(Date.parse(p.date) / 86400000); ys.push(p.values[n]); }
+    if (xs.length < 6 || xs.at(-1)! - xs[0] < TREND_DAYS / 2) continue;
+    const mx = xs.reduce((a, b) => a + b, 0) / xs.length, my = ys.reduce((a, b) => a + b, 0) / ys.length;
+    let sxy = 0, sxx = 0;
+    for (let i = 0; i < xs.length; i++) { sxy += (xs[i] - mx) * (ys[i] - my); sxx += (xs[i] - mx) ** 2; }
+    if (sxx > 0) out.set(n, sxy / sxx);
+  }
+  return out;
+}
+
 export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Market[], asOf: string, scenario: ScenarioKey = "base"): Forecast {
   const daysToGo = Math.max(0, Math.round((Date.parse(ELECTION_DAY) - Date.parse(asOf)) / 86400000));
   const { sd1, sd2, bloc: sdBloc } = errors(daysToGo);
@@ -223,40 +276,119 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
     added.push(pv.name);
   }
   const aff = fitAffinity(base, duels);
-  const before = new Map(base.map((c) => [c, c.share]));
+  const before = base.map((c) => c.share);
   const { target, handicap } = applyScenario(scenario, base, firstRound, aff);
+  const n = base.length;
 
-  const runoffShare = (a: string, b: string) => {
+  // long-term trend carried forward (points by election day)
+  const slopes = trendSlopes(firstRound, asOf);
+  const drift = base.map((c) => { const s = slopes.get(c.name); return s == null ? 0 : Math.max(-TREND_CAP, Math.min(TREND_CAP, s * daysToGo * TREND_DAMP)); });
+
+  // the primary: when it would be decided, and who takes part (only those in the field)
+  const tPrim = Math.round((Date.parse(PRIMARY_DAY) - Date.parse(asOf)) / 86400000);
+  const primIdx = base.map((c, i) => (PRIMARY.participants.some((p) => norm(p) === norm(c.name)) ? i : -1)).filter((i) => i >= 0);
+  const primaryOn = PRIMARY.status !== "cancelled" && tPrim > 0 && tPrim < daysToGo && primIdx.length >= 2;
+  const pHeld = scenario === "primary-held" ? 1 : scenario === "no-primary" ? 0 : PRIMARY.status === "confirmed" ? 1 : PRIMARY.pHeld;
+  const f1 = primaryOn ? tPrim / Math.max(1, daysToGo) : 1;
+
+  const polledShare = (a: string, b: string) => {
     const d = duels.find((x) => [x.winner, x.loser].sort().join() === [a, b].sort().join());
-    let v: number;
-    if (d) v = d.winner === a ? (100 * d.pw) / (d.pw + d.pl) : (100 * d.pl) / (d.pw + d.pl);
-    else {
-      const A = base.find((c) => c.name === a), B = base.find((c) => c.name === b);
-      v = A && B ? transferShare(base, A, B, aff) : 50;
+    return d ? (d.winner === a ? (100 * d.pw) / (d.pw + d.pl) : (100 * d.pl) / (d.pw + d.pl)) : null;
+  };
+  // A match-up nobody polls borrows from the closest one that is polled: same opponent, someone of the same
+  // political family, shifted by the difference the transfer model sees between the two.
+  const runoffBase = (a: string, b: string) => {
+    const direct = polledShare(a, b);
+    if (direct != null) return direct;
+    const A = base.find((c) => c.name === a), B = base.find((c) => c.name === b);
+    if (!A || !B) return 50;
+    const model = transferShare(base, A, B, aff);
+    const proxies: number[] = [];
+    for (const [keep, swap, flip] of [[A, B, false], [B, A, true]] as const) {
+      for (const Y of base) {
+        if (Y === swap || Y === keep || Y.bloc == null || Y.bloc !== swap.bloc) continue;
+        const v = polledShare(keep.name, Y.name);
+        if (v == null) continue;
+        const shift = transferShare(base, keep, swap, aff) - transferShare(base, keep, Y, aff);
+        const forKeep = v + shift;
+        proxies.push(flip ? 100 - forKeep : forKeep);
+      }
     }
-    return v - (handicap.get(a) ?? 0) + (handicap.get(b) ?? 0);
+    return proxies.length ? proxies.reduce((s, v) => s + v, 0) / proxies.length : model;
   };
 
   // ---- polls model
   const rand = mulberry32(2027);
+  // fat tails as a scale mixture: one draw in ten is about twice as wide (unit variance overall, like a Student t)
+  const tdist = () => gauss(rand) * (rand() < 0.1 ? 1.9 : 0.85);
+  const affW = (from: Bloc | null, to: Bloc | null) => (from == null || to == null ? 0.3 : aff[Math.abs(from - to)]);
+  /** hand `pts` of candidate i's vote to the others, by political closeness × size */
+  const spread = (x: Float64Array, i: number, pts: number, out: Set<number>) => {
+    let tot = 0;
+    for (let j = 0; j < n; j++) if (j !== i && !out.has(j)) tot += affW(base[i].bloc, base[j].bloc) * x[j];
+    if (tot <= 0) return;
+    for (let j = 0; j < n; j++) if (j !== i && !out.has(j)) x[j] += (pts * affW(base[i].bloc, base[j].bloc) * x[j]) / tot;
+    x[i] -= pts;
+  };
+  const majors = base.map((c, i) => (c.share >= 8 ? i : -1)).filter((i) => i >= 0);
   const wins = new Map<string, number>(), quals = new Map<string, number>();
   const pairs = new Map<string, { n: number; aWins: number }>();
   const runoffCache = new Map<string, number>();
-  const sims = base.map(() => new Float32Array(RUNS));
-  for (let r = 0; r < RUNS && base.length >= 2; r++) {
-    const blocShift = [0, 1, 2, 3, 4].map(() => sdBloc * gauss(rand));
+  const atPrimary = base.map(() => new Float32Array(RUNS)), afterPrimary = base.map(() => new Float32Array(RUNS)), final = base.map(() => new Float32Array(RUNS));
+  let nHeld = 0;
+  const primWins = new Map<string, number>();
+  const x = new Float64Array(n);
+  for (let r = 0; r < RUNS && n >= 2; r++) {
+    const out = new Set<number>();
+    const hcap = new Map(handicap);
+    // stage 1: today → primary
+    const b1 = [0, 1, 2, 3, 4].map(() => sdBloc * Math.sqrt(f1) * gauss(rand));
+    for (let i = 0; i < n; i++) x[i] = base[i].share + drift[i] * f1 + (base[i].bloc != null ? b1[base[i].bloc!] : 0) + sd1 * Math.sqrt(f1) * tdist();
+    for (let i = 0; i < n; i++) atPrimary[i][r] = Math.max(0, x[i]);
+    // the primary, if it happens: the winner stays, the others withdraw and most of their voters follow the winner
+    if (primaryOn && rand() < pHeld) {
+      nHeld++;
+      let w = primIdx[0], wv = -Infinity;
+      for (const i of primIdx) { const v = x[i] + PRIMARY_SD * gauss(rand); if (v > wv) { wv = v; w = i; } }
+      primWins.set(base[w].name, (primWins.get(base[w].name) ?? 0) + 1);
+      for (const i of primIdx) if (i !== w) { const g = Math.max(0, x[i]); x[w] += g * RALLY_SHARE; x[i] -= g * RALLY_SHARE; spread(x, i, Math.max(0, x[i]), out); x[i] = 0; out.add(i); }
+    }
+    for (let i = 0; i < n; i++) afterPrimary[i][r] = Math.max(0, x[i]);
+    // stage 2: primary → election day
+    if (f1 < 1) {
+      const b2 = [0, 1, 2, 3, 4].map(() => sdBloc * Math.sqrt(1 - f1) * gauss(rand));
+      for (let i = 0; i < n; i++) if (!out.has(i)) x[i] += drift[i] * (1 - f1) + (base[i].bloc != null ? b2[base[i].bloc!] : 0) + sd1 * Math.sqrt(1 - f1) * tdist();
+    }
+    // a late rally in a camp
+    for (const camp of [[0, 1], [2, 3]]) {
+      if (rand() >= P_RALLY) continue;
+      const idx = base.map((c, i) => (c.bloc != null && camp.includes(c.bloc) && !out.has(i) ? i : -1)).filter((i) => i >= 0);
+      if (idx.length < 2) continue;
+      const lead = idx.reduce((a, b) => (x[b] > x[a] ? b : a));
+      const k = RALLY_SHARE * (0.4 + 0.6 * rand());
+      for (const i of idx) if (i !== lead && x[i] > 0) { const g = x[i] * k; x[i] -= g; x[lead] += g; }
+    }
+    // a black swan: one major candidate, any camp, loses a third of their vote and ground in every runoff
+    if (rand() < P_SHOCK) {
+      const live = majors.filter((i) => !out.has(i));
+      if (live.length) {
+        const h = live[Math.floor(rand() * live.length)];
+        if (x[h] > 0) spread(x, h, x[h] * SETBACK_SHARE, out);
+        hcap.set(base[h].name, (hcap.get(base[h].name) ?? 0) + SETBACK_RUNOFF);
+      }
+    }
     let i1 = -1, i2 = -1, v1 = -Infinity, v2 = -Infinity;
-    for (let i = 0; i < base.length; i++) {
-      const c = base[i];
-      const v = c.share + (c.bloc != null ? blocShift[c.bloc] : 0) + sd1 * gauss(rand);
-      sims[i][r] = v;
-      if (v > v1) { i2 = i1; v2 = v1; i1 = i; v1 = v; } else if (v > v2) { i2 = i; v2 = v; }
+    for (let i = 0; i < n; i++) {
+      if (x[i] < 0) x[i] = 0;
+      final[i][r] = x[i];
+      if (out.has(i)) continue;
+      if (x[i] > v1) { i2 = i1; v2 = v1; i1 = i; v1 = x[i]; } else if (x[i] > v2) { i2 = i; v2 = x[i]; }
     }
     const [a, b] = [base[i1].name, base[i2].name].sort();
     const key = `${a}|${b}`;
     let ra = runoffCache.get(key);
-    if (ra == null) { ra = runoffShare(a, b); runoffCache.set(key, ra); }
-    const aWins = ra + sd2 * gauss(rand) > 50;
+    if (ra == null) { ra = runoffBase(a, b); runoffCache.set(key, ra); }
+    const aWins = ra - (hcap.get(a) ?? 0) + (hcap.get(b) ?? 0) + sd2 * tdist() > 50;
     const w = aWins ? a : b;
     wins.set(w, (wins.get(w) ?? 0) + 1);
     quals.set(a, (quals.get(a) ?? 0) + 1);
@@ -265,8 +397,22 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
     p.n++; if (aWins) p.aWins++;
     pairs.set(key, p);
   }
-  const quant = (arr: Float32Array, f: number) => { const s = Float32Array.from(arr).sort(); return s[Math.min(s.length - 1, Math.floor(f * s.length))]; };
-  const projection: Projection[] = base.length >= 2 ? base.map((c, i) => ({ name: c.name, mid: c.share, lo: Math.max(0, quant(sims[i], 0.1)), hi: quant(sims[i], 0.9), shift: c.share - (before.get(c) ?? c.share) })) : [];
+  const knot = (date: string, arr: Float32Array, i: number) => {
+    let sum = 0;
+    for (const v of arr) sum += v;
+    const sorted = arr.sort(); // in place: the arrays aren't used again
+    const at = (f: number) => sorted[Math.min(sorted.length - 1, Math.floor(f * sorted.length))];
+    return { date, mid: sum / arr.length - before[i], lo: at(0.1) - before[i], hi: at(0.9) - before[i] };
+  };
+  const projection: Projection[] = n >= 2 ? base.map((c, i) => ({
+    name: c.name,
+    knots: [
+      { date: asOf, mid: c.share - before[i], lo: c.share - before[i], hi: c.share - before[i] },
+      ...(primaryOn ? [knot(PRIMARY_DAY, atPrimary[i], i), knot(new Date(Date.parse(PRIMARY_DAY) + 86400000).toISOString().slice(0, 10), afterPrimary[i], i)] : []),
+      knot(ELECTION_DAY, final[i], i),
+    ],
+  })) : [];
+  const primary = primaryOn ? { day: PRIMARY_DAY, pHeld, held: (100 * nHeld) / RUNS, winners: [...primWins.entries()].map(([name, k]) => ({ name, p: (100 * k) / Math.max(1, nHeld) })).sort((a, b) => b.p - a.p) } : null;
 
   // ---- markets (not under a scenario: they can't be re-priced for an imagined world)
   const hasMarkets = scenario === "base" && odds.some((o) => o.win);
@@ -306,5 +452,6 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
     marketWeight: wm,
     projection,
     affinity: aff,
+    primary,
   };
 }
