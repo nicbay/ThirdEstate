@@ -46,6 +46,28 @@ The frame takes its grammar from the fox. Loaded after `style.css`, the re-skin 
   off under `prefers-reduced-motion`.
 - **The hero's 577 dots are pixels** (squares), on the map and in the hemicycle.
 
+## Pixel Desk v2 (beta, `src/styles/overhaul.css`)
+
+The overhaul keeps the pixel grammar and calms the frame. Loaded last, written against `src/styles/tokens.css`.
+Component behaviour follows the Astryx design system's specs (read through its MCP); Astryx itself is not installed
+(React + StyleX, ~49 KB gzip for the touch helpers alone), so components are small vanilla TS/CSS.
+
+- **Answer first.** Inner pages open with a headline strip, not a hero: kicker, headline (≤ 2.9rem), dek, then the
+  main chart inside the first screen. The tall dark hero is the homepage's alone.
+- **One local bar.** Under the masthead, the section's pages; a page's own views (`.page-tabs`, e.g. the Assemblée's
+  map / who they are / toeing the line / what they say) are moved into that bar by `mergeLocalTabs()` in `src/main.ts`,
+  nested after their page. No second row of tabs.
+- **Calm panels.** A static section (`.card`) is a white sheet opened by a 3px ink rule. The stepped pixel frame and
+  the hard shadow mean *clickable*: next steps, candidate cards, quiz picks, simulator cards.
+- **Detail sheet** (`src/lib/sheet.ts`, Astryx BottomSheet spec, no scrim). Up to 860px a page's side panel
+  (Assemblée: the picked department) rises from the bottom over the map: peek / half / near-full snap points, slow
+  drags settle on the nearest, flicks go to the next, Escape folds to the peek, the grab bar is a button. Steps, not
+  springs; none under reduced motion. Desktop keeps the docked panel.
+- **Dark theme.** Follows the system; the masthead sun/moon button overrides it (`localStorage` `te-theme`, applied
+  before paint by `public/theme-boot.js`). Only the paper side flips; night bands stay night. Party colours stay data,
+  with one exception: RN's navy `#1c2c6c` lifts to `#6a78e0` so it stays legible on dark paper.
+- **The kit** (`#/kit`, beta and local hosts only, `src/views/kit.ts`): every token and component on one page.
+
 Navigation: six sections (Chez vous, Parlement, 2027, **Programmes**, La France, Archives). On desktop each opens one
 panel as wide as the page column: what the section is, then its pages with a one-line description (the Programmes
 panel also lists every candidate). Below 900px: a bottom tab bar with four sections and **Menu**, which opens a

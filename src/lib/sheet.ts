@@ -62,7 +62,7 @@ export function detailSheet(el: HTMLElement, label: string, opts: { snaps?: numb
     start = { y: e.clientY, visible: px(at) };
     trail = [{ y: e.clientY, t: e.timeStamp }];
     dragged = false;
-    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    try { (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId); } catch { /* pointer already gone: the drag still tracks over the bar */ }
   };
   const onMove = (e: PointerEvent) => {
     if (!start) return;
