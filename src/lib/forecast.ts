@@ -64,7 +64,7 @@ const BS_FR = "Impact calqué sur les cygnes noirs de la vie politique français
 const BS_EN = "Impact based on past black swans in French political life (Balladur 1995, Fillon 2017, Pécresse 2022: between a quarter and two thirds of their vote lost)";
 export const SCENARIOS: ScenarioDef[] = [
   { key: "base", kind: "base", fr: "Les sondages du jour", en: "Today’s polls", descFr: "Notre prévision telle quelle : le modèle des sondages et les marchés, à parts égales.", descEn: "Our forecast as it stands: the polls model and the markets, half and half." },
-  { key: "centre-primary", kind: "primary", fr: "Primaire du centre", en: "Centre primary", descFr: "Fin janvier, Attal, Retailleau et Lisnard se rangent derrière le mieux placé dans les sondages de fin décembre ; les deux autres se retirent et la plupart de leurs électeurs le suivent. Philippe n’y participe pas mais la moitié de ses électeurs rejoignent le candidat désigné.", descEn: "At the end of January Attal, Retailleau and Lisnard line up behind whoever is best placed in the end-of-December polls; the other two withdraw and most of their voters follow. Philippe stays out, but half his voters join the chosen candidate." },
+  { key: "centre-primary", kind: "primary", fr: "Primaire du centre", en: "Centre primary", descFr: "Fin janvier, Attal, Retailleau et Lisnard se rangent derrière le mieux placé dans les sondages de fin décembre ; les deux autres se retirent et la plupart de leurs électeurs le suivent. Philippe n’y participe pas : seul un quart de ses électeurs rejoignent le candidat désigné.", descEn: "At the end of January Attal, Retailleau and Lisnard line up behind whoever is best placed in the end-of-December polls; the other two withdraw and most of their voters follow. Philippe stays out: only a quarter of his voters join the chosen candidate." }, // keep in step with rallyFromShare in primary.json
   { key: "right-rallies", kind: "rally", fr: "Le centre et la droite se rassemblent", en: "Centre and right rally", descFr: `Les autres candidats du centre et de la droite cèdent ${pc(RALLY_SHARE)} % de leurs voix au mieux placé d’entre eux.`, descEn: `The other centre and right candidates hand ${pc(RALLY_SHARE)}% of their vote to the best placed among them.` },
   { key: "left-unites", kind: "rally", fr: "La gauche s’unit", en: "The left unites", descFr: `Les autres candidats de gauche cèdent ${pc(RALLY_SHARE)} % de leurs voix au mieux placé d’entre eux.`, descEn: `The other left-wing candidates hand ${pc(RALLY_SHARE)}% of their vote to the best placed among them.` },
   { key: "le-pen-out", kind: "ballot", fr: "Le Pen n’est pas candidate", en: "Le Pen doesn’t run", descFr: "Jordan Bardella la remplace, au niveau que lui donnent les sondages qui le testent.", descEn: "Jordan Bardella replaces her, at the level the polls that test him give him." },
@@ -73,6 +73,20 @@ export const SCENARIOS: ScenarioDef[] = [
   { key: "setback-centre", kind: "setback", fr: "Cygne noir : le centre", en: "Centre black swan", descFr: `${BS_FR} : le candidat du centre le mieux placé perd ${pc(SETBACK_SHARE)} % de ses voix au premier tour et ${SETBACK_RUNOFF} points dans chaque duel.`, descEn: `${BS_EN}: the best-placed centrist loses ${pc(SETBACK_SHARE)}% of their first-round vote and ${SETBACK_RUNOFF} points in every runoff.` },
 ];
 export const isScenario = (k: string | null | undefined): k is ScenarioKey => SCENARIOS.some((s) => s.key === k);
+/** Scenarios that can't be combined: both rally the same camp, or one removes the candidate the other hits. */
+export const INCOMPATIBLE: [ScenarioKey, ScenarioKey][] = [
+  ["centre-primary", "right-rallies"],
+  ["le-pen-out", "setback-le-pen"],
+];
+/** Can `k` be added to the selection `sel`? */
+export const compatible = (sel: readonly ScenarioKey[], k: ScenarioKey) => !INCOMPATIBLE.some(([a, b]) => (a === k && sel.includes(b)) || (b === k && sel.includes(a)));
+/** A selection in the canonical order (the order of SCENARIOS), without "base", duplicates or clashes. */
+export function canonical(sel: ScenarioKey | readonly ScenarioKey[] | undefined): ScenarioKey[] {
+  const raw = (Array.isArray(sel) ? sel : sel ? [sel] : []) as ScenarioKey[];
+  const out: ScenarioKey[] = [];
+  for (const s of SCENARIOS) if (s.key !== "base" && raw.includes(s.key) && compatible(out, s.key)) out.push(s.key);
+  return out;
+}
 
 export interface ForecastRow {
   name: string;
@@ -96,9 +110,10 @@ export interface Forecast {
   nLineupPolls: number;
   /** candidates added to the poll line-up because the markets rate them */
   added: string[];
-  scenario: ScenarioKey;
-  /** who the scenario acted on (the rallying leader, the candidate hit, the replacement) */
-  scenarioTarget: string | null;
+  /** the scenarios applied, in canonical order (empty = today's polls) */
+  scenarios: ScenarioKey[];
+  /** who the scenarios acted on (the rallying leader, the candidate hit, the replacement) */
+  scenarioTargets: string[];
   /** markets weight actually used (0 under a scenario) */
   marketWeight: number;
   projection: Projection[];
@@ -270,6 +285,10 @@ export function trendSlopes(firstRound: Poll[], asOf: string): Map<string, numbe
   return out;
 }
 
+/** A name joins the model once pollsters have tested it this often in the last FIELD_DAYS, candidate file or not
+ *  (Riner, Lagarde: not yet), unless it's tested instead of a declared candidate rather than alongside them
+ *  (Hollande is tested in place of Glucksmann, Bardella in place of Le Pen). */
+export const FIELD_MIN_POLLS = 5, FIELD_DAYS = 60;
 /** Declared candidates (one file each in public/data/candidates), by poll name. */
 const DECLARED = new Set(((candidateIndex as { candidates?: { pollName: string }[] }).candidates ?? []).map((c) => c.pollName.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().trim()));
 
@@ -277,15 +296,43 @@ const DECLARED = new Set(((candidateIndex as { candidates?: { pollName: string }
  *  declared candidates, fewest hypothetical ones), each candidate averaged over the polls that test them, then
  *  scaled to 100. Close to the polling average on the chart, but one coherent field. Falls back to the most-tested
  *  line-up when too few polls match (old dates). */
+/** The field: anyone tested in at least FIELD_MIN_POLLS polls of the last FIELD_DAYS days, mostly alongside the
+ *  declared candidates who poll 8 % or more (not in place of one of them). Declared or not. */
+export function fieldNames(polls: Poll[], asOf: string): Set<string> {
+  const from = new Date(Date.parse(asOf) - FIELD_DAYS * 86400000).toISOString().slice(0, 10);
+  const recent = polls.filter((p) => p.end >= from && p.end <= asOf);
+  const majors = average(polls, asOf).filter((r) => r.avg >= 8 && DECLARED.has(norm(r.name))).map((r) => r.name);
+  // everyone, declared or not, needs FIELD_MIN_POLLS polls: a new candidate (Riner) joins once tested enough
+  const field = new Set<string>();
+  const counts = new Map<string, number>();
+  for (const p of recent) for (const n of new Set(p.hyps.flatMap((h) => Object.keys(h)))) counts.set(n, (counts.get(n) ?? 0) + 1);
+  for (const [n, c] of counts) {
+    if (c < FIELD_MIN_POLLS) continue;
+    // an alternative to a major candidate is almost never tested together with them (Hollande and Glucksmann
+    // share 1 line-up in 10): at most a fifth of the smaller of the two's line-ups
+    const hyps = recent.flatMap((p) => p.hyps);
+    const hs = hyps.filter((h) => n in h);
+    const alternative = majors.some((m) => {
+      if (m === n) return false;
+      const hm = hyps.filter((h) => m in h).length;
+      return hs.filter((h) => m in h).length <= 0.2 * Math.min(hs.length, hm);
+    });
+    if (!alternative) field.add(norm(n));
+  }
+  return field;
+}
+
 export function fieldLineup(polls: Poll[], asOf: string): { n: number; rows: { name: string; share: number }[] } {
   const ps = pollsInWindow(polls, asOf);
-  const score = (h: Record<string, number>) => Object.keys(h).reduce((s, k) => s + (DECLARED.has(norm(k)) ? 1 : -1), 0);
+  const FIELD = fieldNames(polls, asOf);
+  const score = (h: Record<string, number>) => Object.keys(h).reduce((s, k) => s + (FIELD.has(norm(k)) ? 1 : -1), 0);
   const acc = new Map<string, number[]>();
   for (const p of ps) {
     if (!p.hyps.length) continue;
     const best = Math.max(...p.hyps.map(score));
     const hs = p.hyps.filter((h) => score(h) === best);
     for (const n of new Set(hs.flatMap((h) => Object.keys(h)))) {
+      if (!FIELD.has(norm(n))) continue; // tested too rarely so far: left out, the others scaled up to 100
       const v = hs.map((h) => h[n]).filter((x): x is number => x != null);
       if (v.length) acc.set(n, [...(acc.get(n) ?? []), v.reduce((a, b) => a + b, 0) / v.length]);
     }
@@ -296,18 +343,21 @@ export function fieldLineup(polls: Poll[], asOf: string): { n: number; rows: { n
   return { n: ps.length, rows: rows.map((r) => ({ name: r.name, share: (100 * r.share) / sum })) };
 }
 
-export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Market[], asOf: string, scenario: ScenarioKey = "base"): Forecast {
+export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Market[], asOf: string, scenario: ScenarioKey | readonly ScenarioKey[] = []): Forecast {
+  const keys = canonical(scenario);
   const daysToGo = Math.max(0, Math.round((Date.parse(ELECTION_DAY) - Date.parse(asOf)) / 86400000));
   const { sd1, sd2, bloc: sdBloc } = errors(daysToGo);
   const lineup = fieldLineup(firstRound, asOf);
+  const field = fieldNames(firstRound, asOf);
   const base: Cand[] = lineup.rows.map((r) => ({ name: r.name, share: r.share, bloc: meta(r.name).bloc }));
   const duels = duelAverages(secondRound, undefined, asOf).filter((d) => !d.stale);
   const odds = combineOdds(markets);
   const added: string[] = [];
   const polled = average(firstRound, asOf, undefined, 0);
   for (const o of odds) {
-    // only declared candidates: a name the markets like but who isn't running stays in the markets half
-    if ((winShare(odds, o) ?? 0) < 3 || !DECLARED.has(norm(o.name)) || base.some((c) => norm(c.name) === norm(o.name))) continue;
+    // only the field (declared, or polled often enough): a name the markets like but pollsters barely test stays in
+    // the markets half
+    if ((winShare(odds, o) ?? 0) < 3 || !field.has(norm(o.name)) || base.some((c) => norm(c.name) === norm(o.name))) continue;
     const pv = polled.find((r) => norm(r.name) === norm(o.name));
     if (!pv || pv.avg < 1) continue;
     const nb = meta(pv.name).bloc;
@@ -319,7 +369,14 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
   }
   const aff = fitAffinity(base, duels);
   const before = base.map((c) => c.share);
-  const { target, handicap } = applyScenario(scenario, base, firstRound, aff);
+  const handicap = new Map<string, number>();
+  const targets: string[] = [];
+  for (const k of keys) {
+    if (k === "centre-primary") continue; // played inside the simulation, at its date
+    const r = applyScenario(k, base, firstRound, aff);
+    if (r.target) targets.push(r.target);
+    for (const [nm, v] of r.handicap) handicap.set(nm, (handicap.get(nm) ?? 0) + v);
+  }
   const n = base.length;
 
   // long-term trend carried forward (points by election day)
@@ -329,7 +386,7 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
   // the primary: when it would be decided, and who takes part (only those in the field)
   const tPrim = Math.round((Date.parse(PRIMARY_DAY) - Date.parse(asOf)) / 86400000);
   const primIdx = base.map((c, i) => (PRIMARY.participants.some((p) => norm(p) === norm(c.name)) ? i : -1)).filter((i) => i >= 0);
-  const pHeldRaw = scenario === "centre-primary" || PRIMARY.status === "confirmed" ? 1 : PRIMARY.status === "cancelled" ? 0 : PRIMARY.pHeld;
+  const pHeldRaw = keys.includes("centre-primary") || PRIMARY.status === "confirmed" ? 1 : PRIMARY.status === "cancelled" ? 0 : PRIMARY.pHeld;
   const primaryOn = pHeldRaw > 0 && tPrim > 0 && tPrim < daysToGo && primIdx.length >= 2;
   const pHeld = pHeldRaw;
   const rallyIdx = base.map((c, i) => (PRIMARY.rallyFrom.some((p) => norm(p) === norm(c.name)) ? i : -1)).filter((i) => i >= 0);
@@ -508,7 +565,7 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
   } : null;
 
   // ---- markets (not under a scenario: they can't be re-priced for an imagined world)
-  const hasMarkets = scenario === "base" && odds.some((o) => o.win);
+  const hasMarkets = keys.length === 0 && odds.some((o) => o.win);
 
   // ---- blend
   const names = new Map<string, string>(); // norm → display name
@@ -540,8 +597,8 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
     daysToGo, sd1, sd2,
     nLineupPolls: lineup.n,
     added,
-    scenario,
-    scenarioTarget: target,
+    scenarios: keys,
+    scenarioTargets: targets,
     marketWeight: wm,
     projection,
     affinity: aff,

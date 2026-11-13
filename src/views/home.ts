@@ -30,7 +30,7 @@ export async function renderHome(app: HTMLElement) {
   const today = new Date().toISOString().slice(0, 10);
   const daysToGo = Math.max(0, Math.round((Date.parse(ELECTION_DAY) - Date.parse(today)) / 86400000));
   const fc0 = scenarioForecast(polls, markets, scenarioFromUrl());
-  const fcBase = () => scenarioForecast(polls, markets, "base");
+  const fcBase = () => scenarioForecast(polls, markets, []);
   const sentence = todaySentence(polls.firstRound);
   const nCands = cands?.candidates.length ?? 0;
   const home = getHome();
@@ -117,7 +117,7 @@ async function drawMine(box: HTMLElement, code: string, name: string) {
 function headline(fc: Forecast, fr: boolean, ref?: Forecast) {
   const fav = fc.rows[0];
   if (!fav) return `<p class="hq-num"><span><a href="#/2027">${L("La course, les sondages et le simulateur", "The race, the polls and the simulator")}</a></span></p>`;
-  const base = fc.scenario === "base";
+  const base = fc.scenarios.length === 0;
   return `<p class="hq-num${base ? "" : " is-scenario"}"><strong>${pct(fav.win, 0)}</strong><span>${fr
     ? `de chances pour <b>${esc(fav.name)}</b>, ${base ? "selon notre prévision" : "dans ce scénario"}`
     : `chance for <b>${esc(fav.name)}</b>, ${base ? "in our forecast" : "in this scenario"}`} · <a href="${base ? "#/2027" : "#/"}"${base ? "" : ' data-scn-reset="1"'}>${base ? L("Comment on calcule", "How it’s worked out") : L("Revenir aux sondages du jour", "Back to today’s polls")}</a></span></p>${base ? "" : `<p class="hq-scn">${scenarioHeadline(fc, ref)}</p>`}`;
