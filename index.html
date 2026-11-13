@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#131209" />
+    <meta name="theme-color" content="#111216" />
     <title>Third Estate — Élections et vie publique en France</title>
     <meta name="description" content="Sondages, prévisions, marchés prédictifs, résultats depuis 1848, vos élus et leurs votes, la vie de votre commune. French elections and civic data, in French and English." />
     <meta property="og:site_name" content="Third Estate" />
@@ -18,24 +18,23 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script src="/theme-boot.js"></script>
-    <link rel="preload" href="/fonts/geist-variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/archivo-100-900-latin.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <a class="skip-link" href="#app" id="skip">Aller au contenu</a>
-    <header class="masthead" id="masthead">
-      <div class="topbar">
-        <a class="brand" href="#/" aria-label="Third Estate">
-          <b>Third<span>Estate</span></b>
-        </a>
-        <nav id="nav" aria-label="Navigation"></nav>
-        <div class="top-tools">
-          <button id="search-btn" class="search-btn" type="button" aria-haspopup="dialog"></button>
-          <button id="theme" class="theme-btn" type="button"></button>
-          <button id="lang" class="lang" type="button"></button>
-        </div>
+    <header class="topbar">
+      <a class="brand" href="#/" aria-label="Third Estate">
+        <b>Third<span>Estate</span></b>
+      </a>
+      <nav id="nav" aria-label="Navigation"></nav>
+      <div class="top-tools">
+        <button id="search-btn" class="search-btn" type="button" aria-haspopup="dialog"></button>
+        <a id="quiz-cta" class="quiz-cta" href="#/quiz"></a>
+        <button id="theme" class="theme-btn" type="button"></button>
+        <button id="lang" class="lang" type="button"></button>
       </div>
-      <nav id="subnav" class="subnav-bar" hidden></nav>
     </header>
+    <nav id="subnav" class="subnav-bar" hidden></nav>
     <main id="app" tabindex="-1"></main>
     <footer id="footer"></footer>
     <nav id="tabbar" class="tabbar" aria-label="Sections"></nav>

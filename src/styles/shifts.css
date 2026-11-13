@@ -2,7 +2,7 @@
    read as light on night. Tokens come from src/redesign.css. Every rule is scoped to .sx, which leaves the
    homepage's light arrows card (same arrows, same legend) as it is. */
 .sx {
-  --paper: var(--night); --panel: var(--night-2); --wash: #272727; --ink: #fff; --ink-2: var(--night-text-2); --ink-3: var(--night-text-3); --rule: var(--night-rule); --rule-2: var(--night-rule-2); --link: #c4b5ff;
+  --paper: var(--night); --panel: var(--night-2); --wash: #20243a; --ink: #fff; --ink-2: var(--night-text-2); --ink-3: var(--night-text-3); --rule: var(--night-rule); --rule-2: var(--night-rule-2); --link: #c4b5ff;
   position: relative; display: grid; gap: 1.1rem; min-width: 0; color: #fff;
   border: 6px solid transparent; border-image: var(--px-dark) 6 / 6px / 0 stretch;
   background: var(--px-grid), var(--night-2); background-clip: padding-box;
@@ -14,7 +14,7 @@
 /* headline: the finding, in numbers */
 .sx-top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 0.9rem 1.6rem; }
 .sx-head { display: grid; gap: 0.45rem; min-width: 0; flex: 1 1 26rem; }
-.sx-head h2 { color: #fff; font-size: clamp(1.8rem, 1.1rem + 2.6vw, 3.2rem); font-weight: 700; font-stretch: 74%; line-height: 0.98; letter-spacing: -0.025em; }
+.sx-head h2 { color: #fff; font-size: clamp(1.8rem, 1.1rem + 2.6vw, 3.2rem); font-weight: 850; font-stretch: 74%; line-height: 0.98; letter-spacing: -0.025em; }
 .sx-head h2 span { white-space: nowrap; font-variant-numeric: tabular-nums lining-nums; }
 .sx-dek { margin: 0; max-width: 68ch; color: var(--night-text-2); font-size: 0.98rem; line-height: 1.45; }
 .sx-tools { display: flex; flex-wrap: wrap; gap: 0.5rem; }
@@ -32,7 +32,7 @@
 .sx-play button { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; min-width: 44px; height: 44px; padding: 0 0.6rem; border: 2px solid var(--night-rule-2); background: var(--night); color: #fff; font: 600 0.8rem var(--text); cursor: pointer; transition: transform 0.1s steps(2), box-shadow 0.1s steps(2), border-color 0.1s; }
 .sx-play button:hover { border-color: #fff; transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--split-blue); }
 .sx-play button:active { transform: translate(1px, 1px); box-shadow: none; }
-.sx-play #sx-play { background: #fff; color: var(--night); border-color: #fff; font-weight: 700; padding: 0 0.9rem; }
+.sx-play #sx-play { background: #fff; color: var(--night); border-color: #fff; font-weight: 800; padding: 0 0.9rem; }
 .sx-play-i { width: 0; height: 0; border-left: 10px solid currentColor; border-top: 6px solid transparent; border-bottom: 6px solid transparent; }
 #sx-play[aria-pressed="true"] .sx-play-i { width: 10px; height: 12px; border: 0; background: linear-gradient(90deg, currentColor 0 4px, transparent 4px 6px, currentColor 6px 10px); }
 .sx-strip-box { min-width: 0; }
@@ -77,9 +77,9 @@
 @media (pointer: coarse) { .sx .map-ctrl button { min-width: 44px; height: 44px; } }
 
 /* the card: one unit's figures */
-.sx-card { position: absolute; left: 0.6rem; bottom: 0.6rem; width: min(17.5rem, 58%); display: grid; gap: 0.3rem; padding: 0.55rem 0.7rem 0.65rem; border: 6px solid transparent; border-image: var(--px-dark-hi) 6 / 6px / 0 stretch; background: #272727 padding-box; }
-.sx-card h3 { margin: 0; font: 700 1.02rem/1.15 var(--display); font-stretch: 84%; color: #fff; }
-.sx-big { margin: 0; font: 700 2rem/1 var(--display); font-stretch: 74%; letter-spacing: -0.02em; font-variant-numeric: tabular-nums lining-nums; }
+.sx-card { position: absolute; left: 0.6rem; bottom: 0.6rem; width: min(17.5rem, 58%); display: grid; gap: 0.3rem; padding: 0.55rem 0.7rem 0.65rem; border: 6px solid transparent; border-image: var(--px-dark-hi) 6 / 6px / 0 stretch; background: #1b1f36 padding-box; }
+.sx-card h3 { margin: 0; font: 800 1.02rem/1.15 var(--display); font-stretch: 84%; color: #fff; }
+.sx-big { margin: 0; font: 850 2rem/1 var(--display); font-stretch: 74%; letter-spacing: -0.02em; font-variant-numeric: tabular-nums lining-nums; }
 .sx-big span { font: 500 0.78rem var(--text); letter-spacing: 0; color: var(--night-text-2); }
 .sx-row { display: flex; justify-content: space-between; gap: 0.8rem; margin: 0; padding-top: 0.25rem; border-top: 1px solid var(--night-edge); font-size: 0.78rem; color: var(--night-text-2); }
 .sx-row b { color: #fff; font-family: var(--mono); font-weight: 600; white-space: nowrap; }

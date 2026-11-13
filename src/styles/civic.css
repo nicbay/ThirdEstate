@@ -17,7 +17,7 @@
 /* key-date banner */
 .cv-key { display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem; padding: 0.9rem 1rem; background: var(--panel); border-left: 4px solid var(--accent); }
 .cv-key > div { display: grid; gap: 0.1rem; min-width: 0; }
-.cv-key b { font: 700 1.3rem/1.15 var(--display); font-stretch: 85%; }
+.cv-key b { font: 800 1.3rem/1.15 var(--display); font-stretch: 85%; }
 .cv-key span { font: 500 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-2); }
 .cv-note { padding: 0.7rem 0.9rem; border: 1px solid var(--rule-2); background: var(--paper); font-size: 0.92rem; max-width: var(--measure); }
 
@@ -36,7 +36,7 @@
 /* calendar */
 .cv-count { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 1rem; }
 .cv-count-box { padding: 1rem; background: var(--ink); color: var(--paper); display: grid; gap: 0.25rem; }
-.cv-count-box b { font: 700 clamp(2.4rem, 1.8rem + 2.4vw, 3.6rem)/1 var(--display); font-stretch: 76%; letter-spacing: -0.02em; }
+.cv-count-box b { font: 850 clamp(2.4rem, 1.8rem + 2.4vw, 3.6rem)/1 var(--display); font-stretch: 76%; letter-spacing: -0.02em; }
 .cv-count-box span { font: 500 0.74rem var(--mono); text-transform: uppercase; letter-spacing: 0.07em; opacity: 0.85; }
 .cv-count-box.next { background: var(--panel); color: var(--ink); border-left: 4px solid var(--accent); }
 .cv-count-box.next b { font-size: clamp(1.3rem, 1.1rem + 0.8vw, 1.7rem); line-height: 1.15; }

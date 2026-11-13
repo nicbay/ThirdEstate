@@ -98,47 +98,6 @@ side, claimed against estimated cost, legal obstacles and feasibility. Its data 
 written with the index by `scripts/build-programmes-index.mjs`. Same rule as the candidate pages: descriptive,
 same criteria for everyone.
 
-## Pixel Desk v3 (beta, `src/styles/desk-v3.css`, `src/styles/landing.css`)
-
-The landing-page design system (the `landing-page-design` skill) applied to the pixel grammar. Loaded last. Where
-the two disagree, **the pixel art wins**: the fox, square and stepped corners, `steps()` for presses and menus, pixel
-icons, Silkscreen for micro-labels.
-
-- **One typeface.** Geist for everything people read, Geist Mono for figures, tables and annotation (both self-hosted,
-  OFL, `public/fonts/geist*.woff2`). Archivo stays only in the THIRD ESTATE wordmark (logo). IBM Plex Mono is gone from
-  the site (the files stay for `scripts/build-stories.mjs` and the brand pages). No italics, no weight above 700
-  (the wordmark keeps its 850).
-- **Type scale and named styles.** Sizes are Tailwind steps only (12, 14, 16, 18, 20, 24, 30, 36, 48, 60), each with its
-  line height (`--t-xs` … `--t-6xl`). Named styles: Heading 1 to 6 (600), Title 1 to 4 (500), Body 1 to 7 (Body 7 =
-  18/28 for deks), Button-md/sm (600), Caption 1/3/5, as classes `.heading-1`, `.body-4`… Body text is 16/24. Inner
-  page `h1` is Heading 2 (48), Heading 4 (30) on phones; section `h2` is Heading 5 (24); the home hero is Heading 1.
-- **Spacing scale.** `--space-0` … `--space-900` = 0, 2, 4, 8, 12, 16, 24, 32, 40, 48, 64, 80, 96. Nothing else in new CSS.
-  Main buttons: 8px by 12px.
-- **Colour.** Night is `#131209` (bands, footer, menus), raised night `#1f1f1f`, rules `#313131`. Dark theme paper is
-  `#181818` / `#1f1f1f` / `#272727`: only the dark backgrounds the system allows. Light page is plain white. Night bands
-  are flat with the 2px pixel grid: the red/blue glow gradients are gone. The one gradient left is on headline text in
-  night bands, `#FFFFFF` → `#9B9B9B` left to right.
-- **Masthead.** A compact bar floating 12px off the top, centred and sized to its content, translucent night over a
-  16px blur, stepped corners; the section's pages sit in a second, lighter pill under it (`#masthead` holds both).
-  Night bands slide up under them (`--head-h`, measured in `src/main.ts`). Section menus hang from the bar at page-column
-  width. No quiz button in the masthead: one primary action per screen. Phones: the bar spans the screen and the
-  masthead steps away while reading down, back on the first move up (`html.head-away`); the menu is a full-height
-  translucent panel whose parts rise 24px in reading order, 60ms apart, 400ms at most.
-- **Sections are not panels.** A static section opens on a 2px ink divider with an 8px pixel block at its start, then
-  its heading; no one-sided card border. Clickable things keep the stepped frame and the hard shadow.
-- **Motion.** One curve, `--ease: cubic-bezier(0.22, 1, 0.36, 1)`: 500ms for layout, 300ms for colour; sections rise
-  32px over 700ms, once. Pixel moments (presses, menus, the fox) keep `steps()`. All off under reduced motion.
-- **Homepage = landing page for the forecast** (`src/views/home.ts`). One offer, one action, "See the 2027 forecast",
-  in the hero and again at the bottom. Hero: headline (no period, broken where the thought breaks, ≤ 680px), sub,
-  call to action, a proof line from live data (polls in the window, 20,000 simulations, latest poll date) and the
-  odds drawn as pixel blocks (25 a row, one block = 4%). Then: the reader's town when known; problem → solution beside
-  the polls chart; a bento of what else the site answers (Parliament with the 577 dots, polls, programmes, towns,
-  archives); the Article 15 tagline, whose words light up one at a time as they cross a line 40% up the screen
-  (`src/lib/tagline.ts`); how the forecast works in three steps; public sources and three promises; an FAQ; the same
-  call to action on a night band. Every claim on it is one the site already makes elsewhere; no invented figures.
-- **404** (`src/views/notfound.ts`): an unknown address gets the fox, what happened and a way back, instead of a
-  silent redirect home.
-
 ## Principles
 
 1. **Colour is data.** Chrome is black, white and warm grey. Red, pink, green, yellow, blue and navy
