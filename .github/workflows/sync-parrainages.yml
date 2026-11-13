@@ -1,0 +1,52 @@
+# Presidential sponsorships (parrainages): the sponsorships validated by the Conseil constitutionnel, per candidate,
+# with the 500-signature and 30-department checks (scripts/sync-parrainages.mjs, see docs/data-parrainages.md).
+# Daily. Until the collection window opens (late January or early February 2027, after the decree convening the
+# voters) nothing is published, the script writes status "not-open" and only its fetchedAt changes: a no-op, no commit.
+# While the window is open the Conseil publishes twice a week or more, usually in the evening: hence 21:30 UTC.
+name: Sync parrainages
+
+on:
+  schedule:
+    - cron: "30 21 * * *" # 22:30 Paris in winter, after the Conseil's evening publications
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-parrainages
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    permissions:
+      contents: write # push the refreshed data
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false # the token is given only to the push step
+
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci --ignore-scripts
+
+      - run: npm run sync:parrainages
+
+      - name: Commit
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # fetchedAt changes on every run: commit only when real data changed (scripts/data-changed.mjs ignores it)
+          node scripts/data-changed.mjs public/data/2027/parrainages.json public/data/2027/parrainages-2022.json || { echo "No new data."; exit 0; }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add public/data/2027/parrainages.json public/data/2027/parrainages-2022.json
+          git diff --cached --quiet && { echo "No change."; exit 0; }
+          git commit -m "data: sync parrainages ($(date -u +'%F'))"
+          git pull --rebase --autostash
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:${GITHUB_REF_NAME}"
