@@ -176,3 +176,17 @@
 @media (prefers-reduced-motion: reduce) { .id-strip, .id-strip.is-on { transition: none; } }
 .id-in b { flex: 0 0 auto; max-width: 62%; }
 .id-in .chip { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ---------- dark theme: things painted var(--ink) with hard white text ---------- */
+/* the chart tooltip and the simulator dock are night surfaces in every theme */
+.tip, .sim-dock { background: var(--night); color: #fff; }
+.tip { box-shadow: 4px 4px 0 var(--split-blue); }
+/* selected tabs and solid buttons invert: --ink turns light in dark mode, so their text takes the paper colour */
+:root[data-theme="dark"] :is(.tabs [aria-selected="true"], .tabs a[role="tab"][aria-selected="true"], .page-tabs a[aria-current="page"], .button, .quiz-next, .quiz-start, .quiz-share, .debtp-mode button[aria-pressed="true"], .sim-no, .sim-chipbtn[aria-pressed="true"], .sim-q, .sim-btn:hover, .sim-btn.ink, .mt-filters button[aria-pressed="true"], .p-yes, .hh-cut, .ph-status.is-published, .ph-themes button[aria-selected="true"], .qz-pick-go, .qz-weight[aria-pressed="true"], .sim-src[data-k="survey"], .sim-src[data-k="survey-partial"]) { color: var(--paper); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) :is(.tabs [aria-selected="true"], .tabs a[role="tab"][aria-selected="true"], .page-tabs a[aria-current="page"], .button, .quiz-next, .quiz-start, .quiz-share, .debtp-mode button[aria-pressed="true"], .sim-no, .sim-chipbtn[aria-pressed="true"], .sim-q, .sim-btn:hover, .sim-btn.ink, .mt-filters button[aria-pressed="true"], .p-yes, .hh-cut, .ph-status.is-published, .ph-themes button[aria-selected="true"], .qz-pick-go, .qz-weight[aria-pressed="true"], .sim-src[data-k="survey"], .sim-src[data-k="survey-partial"]) { color: var(--paper); }
+}
+/* the homepage map toggle sits on the night band: its pressed state is white with night text in every theme */
+.hday .hd-toggle button[aria-pressed="true"], .hd-toggle.hd-toggle button[aria-pressed="true"] { color: var(--night); }
+/* the count in a selected programme-theme button follows the button's inverted text */
+.ph-themes button[aria-selected="true"] b { color: inherit; opacity: 0.75; }
