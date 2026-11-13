@@ -54,6 +54,7 @@ new ResizeObserver(setVw).observe(document.documentElement);
 // URL shape: #/<section>[/<param>][#<anchor>]
 const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/$/, () => renderHome(app)],
+  [/^#\/apercu$/, () => void (location.hash = "#/")], // the hero preview became the homepage
   [/^#\/sondages$/, () => renderPolls(app)],
   [/^#\/sondages\/instituts$/, () => import("./views/pollsters").then((v) => v.renderPollsters(app))],
   [/^#\/simulateur(?:\/([\w-]+))?$/, (m) => renderSimulator(app, m[1])],

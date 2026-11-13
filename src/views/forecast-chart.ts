@@ -4,12 +4,12 @@
 // Scenarios combine (a primary plus a black swan, say); a button that clashes with the selection is greyed out.
 // The selection is kept in the URL anchor (#/#scenario-<key>+<key>) so a "what if" view can be shared.
 import type { Market } from "../data";
-import { L, fmtDate, getLang } from "../i18n";
+import { L, fmtDate } from "../i18n";
 import { lineChart, pollDots, type Series } from "../lib/chart";
 import { meta } from "../lib/candidates";
 import { ELECTION_DAY, INCOMPATIBLE, PRIMARY, RALLY_SHARE, SCENARIOS, TREND_CAP, canonical, compatible, forecast, isScenario, type Forecast, type ScenarioKey } from "../lib/forecast";
 import { trend, type PollFile } from "../lib/polls";
-import { dec, pct } from "../lib/format";
+import { dec } from "../lib/format";
 import { esc } from "../util";
 
 const today = () => new Date().toISOString().slice(0, 10);
@@ -42,23 +42,6 @@ export const scenarioLabel = (sel: readonly ScenarioKey[]) => sel.map(label).joi
 
 /** A candidate's ceiling in the model, or NaN. */
 const ceilingOf = (fc: Forecast, name: string) => fc.ceilings[name] ?? NaN;
-
-/** What the headline number means under the current scenarios. */
-export function scenarioHeadline(fc: Forecast, base?: Forecast): string {
-  const fav = fc.rows[0];
-  if (!fav || !fc.scenarios.length) return "";
-  const fr = getLang() === "fr";
-  const many = fc.scenarios.length > 1;
-  // like for like: the same polls model, today, for the same candidate
-  const ref = base?.rows.find((r) => r.name === fav.name)?.polls?.win;
-  const cmp = ref == null ? "" : fr
-    ? ` Sans ${many ? "ces scénarios" : "ce scénario"}, le même modèle lui donne ${pct(ref, 0)}.`
-    : ` Without ${many ? "these scenarios" : "this scenario"}, the same model gives ${esc(fav.name)} ${pct(ref, 0)}.`;
-  const what = fc.scenarios.map((k) => `<b>${esc(label(k))}</b> : ${esc(desc(k))}`.replace(" : ", fr ? " : " : ": ")).join(" ");
-  return fr
-    ? `${many ? "Scénarios combinés" : "Scénario"}. ${what} Chiffre du seul modèle des sondages : les marchés ne peuvent pas être recalculés pour un monde imaginé.${cmp}`
-    : `${many ? "Combined scenarios" : "Scenario"}. ${what} Figure from the polls model alone: markets can’t be re-priced for an imagined world.${cmp}`;
-}
 
 interface Opts {
   polls: PollFile;
