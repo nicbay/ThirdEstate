@@ -1,0 +1,33 @@
+{
+ "year": 2027,
+ "status": "not-open",
+ "fetchedAt": "2026-11-13T11:04:11.062Z",
+ "updatedAt": null,
+ "source": {
+  "name": "Conseil constitutionnel",
+  "url": null,
+  "checked": [
+   "https://www.data.gouv.fr/api/1/datasets/?organization=540f9a01a3a72928898af4a3",
+   "https://presidentielle2027.conseil-constitutionnel.fr/telechargement/parrainagestotal.csv"
+  ]
+ },
+ "window": {
+  "firstRound": "2027-04-18",
+  "secondRound": "2027-05-02",
+  "roundsDecided": "2026-07-01",
+  "opens": null,
+  "opensExpected": {
+   "fr": "fin janvier ou début février 2027, le lendemain de la publication du décret de convocation des électeurs",
+   "en": "late January or early February 2027, the day after the decree convening the voters is published"
+  },
+  "deadline": "2027-03-12T18:00:00+01:00",
+  "listBy": "2027-03-26"
+ },
+ "rules": {
+  "threshold": 500,
+  "minDepartments": 30,
+  "maxShare": 0.1
+ },
+ "reference": "/data/2027/parrainages-2022.json",
+ "candidates": []
+}
