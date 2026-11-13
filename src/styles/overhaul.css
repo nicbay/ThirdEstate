@@ -33,3 +33,16 @@
 .card .card, .sec-hero .card { border-top: 0; background: none; padding: 0; }
 .page { row-gap: var(--spacing-5); }
 @media (max-width: 760px) { .card { padding: var(--spacing-3) var(--spacing-3) var(--spacing-4); } }
+
+/* ---------- detail sheet (src/lib/sheet.ts): phones only, the side panel rises from the bottom ---------- */
+@media (max-width: 860px) {
+  .card.px-sheet { position: fixed; left: 0; right: 0; z-index: 24; display: grid; grid-template-rows: auto minmax(0, 1fr); margin: 0; padding: 0; background: var(--paper); border: 6px solid transparent; border-bottom: 0; border-image: var(--px-ink) 6 / 6px / 0 stretch; background-clip: padding-box; filter: drop-shadow(0 -4px 0 rgba(11, 13, 24, 0.18)); transition: transform 0.24s steps(6, end); will-change: transform; }
+  .px-sheet-grab { display: grid; place-items: center; height: 30px; padding: 0; border: 0; background: none; cursor: grab; touch-action: none; }
+  .px-sheet-grab::before { content: ""; width: 40px; height: 6px; background: var(--rule-2); box-shadow: 0 0 0 0 var(--ink); clip-path: var(--px-clip); }
+  .px-sheet-grab:active { cursor: grabbing; }
+  .px-sheet-grab:focus-visible { outline-offset: -4px; }
+  .px-sheet-body { overflow-y: auto; overscroll-behavior: contain; max-height: calc(var(--sheet-visible, 50vh) - 36px); padding: 0 var(--spacing-4) var(--spacing-4); }
+  .px-sheet.is-peek .px-sheet-body { overflow: hidden; }
+  .px-sheet-space { display: block; }
+}
+.px-sheet-space { display: none; }
