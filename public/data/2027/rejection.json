@@ -1,0 +1,21 @@
+{
+  "updated": "2026-11-13",
+  "measure": {
+    "fr": "Part des Français qui excluent totalement de voter pour cette personnalité à une élection présidentielle",
+    "en": "Share of French voters who completely rule out voting for this person in a presidential election"
+  },
+  "poll": { "pollster": "Cluster17", "sponsor": "Politico", "fieldwork": ["2026-10-19", "2026-10-22"], "sample": 3000, "wave": 2 },
+  "source": { "url": "https://cluster17.com/barometre-presidentiel-doctobre-pour-politico-vague-2-marine-le-pen-jugee-favorite-lopposition-a-larrivee-de-lfi-au-pouvoir-domine/", "title": "Baromètre présidentiel d’octobre pour Politico (vague 2)", "publisher": "Cluster17", "date": "2026-10-27" },
+  "excluded": {
+    "Marine Tondelier": 71,
+    "Éric Zemmour": 71,
+    "Jean-Luc Mélenchon": 69,
+    "Bruno Retailleau": 54,
+    "Marine Le Pen": 52,
+    "Raphaël Glucksmann": 52
+  },
+  "missing": {
+    "fr": "Le baromètre teste douze personnalités ; l’article de Cluster17 ne donne le chiffre que de ces six (les autres sont entre 52 % et 71 %). Les autres candidats n’ont pas de plafond dans le modèle.",
+    "en": "The barometer tests twelve people; Cluster17’s article gives the figure for these six only (the others are between 52% and 71%). Other candidates have no ceiling in the model."
+  }
+}
