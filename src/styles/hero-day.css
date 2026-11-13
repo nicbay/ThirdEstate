@@ -165,3 +165,14 @@
 .hw-more { justify-self: start; font: 700 0.92rem var(--display); color: #fff; text-decoration: none; }
 .hw-more:hover { text-decoration: underline; }
 @media (prefers-reduced-motion: reduce) { .qb-px i { animation: none; } }
+
+/* the pixel ocean behind the hero (src/lib/ocean.ts): one pixel per inhabitant, the reader's one glowing */
+.ocean { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; display: block; pointer-events: none; image-rendering: pixelated; }
+.hero-x.has-ocean::before { background: none; }
+.ocean-me { position: absolute; z-index: 3; width: 32px; height: 32px; margin: -16px 0 0 -16px; padding: 0; border: 0; background: none; cursor: pointer; }
+.ocean-me:focus-visible { outline: 2px solid #ffd452; outline-offset: 2px; }
+.ocean-say { position: absolute; z-index: 3; margin: 0; width: max-content; max-width: min(260px, 70vw); transform: translate(16px, -50%); display: grid; gap: 0.25rem; padding: 0.7rem 0.85rem; background: var(--night-2) padding-box; border: 6px solid transparent; border-image: var(--px-dark-hi) 6 / 6px / 0 stretch; color: #d3d4da; font-size: 0.82rem; line-height: 1.4; pointer-events: none; opacity: 0; visibility: hidden; transition: opacity 0.2s steps(3, end), visibility 0s 0.2s; }
+.ocean-say.is-left { transform: translate(calc(-100% - 16px), -50%); }
+.ocean-say.is-on { opacity: 1; visibility: visible; transition: opacity 0.2s steps(3, end); }
+.ocean-say b { font: 700 1.15rem/1.1 var(--display); font-stretch: 80%; color: #ffd452; }
+.hday > :not(.ocean):not(.ocean-me):not(.ocean-say) { position: relative; }
