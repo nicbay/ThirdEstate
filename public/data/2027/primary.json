@@ -1,20 +1,62 @@
 {
   "updated": "2026-11-13",
-  "name": { "fr": "Primaire de la droite et du centre", "en": "Centre and right primary" },
-  "status": "proposed",
-  "rounds": ["2027-01-31", "2027-02-07"],
-  "participants": ["Gabriel Attal", "Bruno Retailleau", "David Lisnard"],
-  "declined": ["Édouard Philippe", "Dominique de Villepin"],
-  "pHeld": 0.5,
+  "name": {
+    "fr": "Primaire de la droite et du centre",
+    "en": "Centre and right primary"
+  },
+  "status": "expected",
+  "rounds": [
+    "2027-01-31"
+  ],
+  "participants": [
+    "Gabriel Attal",
+    "Bruno Retailleau",
+    "David Lisnard"
+  ],
+  "declined": [
+    "Édouard Philippe",
+    "Dominique de Villepin"
+  ],
+  "pHeld": 1,
   "note": {
-    "fr": "Proposée par Bruno Retailleau le 12 novembre 2026 ; Gabriel Attal y est favorable, les équipes d’Attal, Retailleau et Lisnard se sont réunies. Édouard Philippe refuse d’y participer, Dominique de Villepin aussi. Rien n’est encore décidé : le modèle la fait se tenir une fois sur deux.",
-    "en": "Proposed by Bruno Retailleau on 12 November 2026; Gabriel Attal is in favour, and the Attal, Retailleau and Lisnard teams have met. Édouard Philippe refuses to take part, as does Dominique de Villepin. Nothing is decided yet: the model holds it one time in two."
+    "fr": "Proposée par Bruno Retailleau le 12 novembre 2026 (31 janvier et 7 février). Notre prévision l’anticipe : Attal, Retailleau et Lisnard se rangent derrière le mieux placé dans les sondages de fin décembre, désigné fin janvier. Édouard Philippe n’y participe pas mais en pâtit : la moitié de ses électeurs rejoignent le candidat désigné. Le bouton « Pas de primaire » montre l’autre chemin.",
+    "en": "Proposed by Bruno Retailleau on 12 November 2026 (31 January and 7 February). Our forecast anticipates it: Attal, Retailleau and Lisnard line up behind whoever is best placed in the end-of-December polls, named at the end of January. Édouard Philippe doesn’t take part but loses out: half his voters join the chosen candidate. The “No primary” button shows the other path."
   },
   "sources": [
-    { "url": "https://lcp.fr/actualites/presidentielle-bruno-retailleau-propose-une-primaire-les-31-janvier-et-7-fevrier-445008", "title": "Présidentielle : Bruno Retailleau propose une primaire les 31 janvier et 7 février", "publisher": "LCP", "date": "2026-11-12" },
-    { "url": "https://www.franceinfo.fr/elections/presidentielle-2027-je-ne-me-soumettrai-pas-a-une-primaire-repete-edouard-philippe-candidat-horizons_8279726.html", "title": "Présidentielle 2027 : « Je ne me soumettrai pas à une primaire », répète Édouard Philippe", "publisher": "franceinfo", "date": "2026-11-12" },
-    { "url": "https://www.20minutes.fr/politique/4262516-20261112-presidentielle-2027-retailleau-insiste-primaire-philippe-redit-non", "title": "Présidentielle 2027 : Retailleau insiste sur la primaire, même sans Philippe (qui redit non)", "publisher": "20 Minutes", "date": "2026-11-12" },
-    { "url": "https://www.franceinfo.fr/elections/presidentielle/primaire-de-la-droite-et-du-centre-il-y-aura-un-siege-pour-edouard-philippe-dans-toutes-les-reunions-assure-gabriel-attal_8279009.html", "title": "Primaire de la droite et du centre : « Il y aura un siège » pour Édouard Philippe « dans toutes les réunions », assure Gabriel Attal", "publisher": "franceinfo", "date": "2026-11-12" },
-    { "url": "https://www.leparisien.fr/elections/presidentielle/presidentielle-2027-je-nai-rien-a-voir-avec-les-macronistes-dominique-de-villepin-refuse-de-participer-a-une-primaire-de-la-droite-et-du-centre-12-11-2026-KSREQYMWDVAOBLVEVMWXNNTPTI.php", "title": "« Je n’ai rien à voir avec les macronistes », Dominique de Villepin refuse de participer à une primaire de la droite et du centre", "publisher": "Le Parisien", "date": "2026-11-12" }
-  ]
+    {
+      "url": "https://lcp.fr/actualites/presidentielle-bruno-retailleau-propose-une-primaire-les-31-janvier-et-7-fevrier-445008",
+      "title": "Présidentielle : Bruno Retailleau propose une primaire les 31 janvier et 7 février",
+      "publisher": "LCP",
+      "date": "2026-11-12"
+    },
+    {
+      "url": "https://www.franceinfo.fr/elections/presidentielle-2027-je-ne-me-soumettrai-pas-a-une-primaire-repete-edouard-philippe-candidat-horizons_8279726.html",
+      "title": "Présidentielle 2027 : « Je ne me soumettrai pas à une primaire », répète Édouard Philippe",
+      "publisher": "franceinfo",
+      "date": "2026-11-12"
+    },
+    {
+      "url": "https://www.20minutes.fr/politique/4262516-20261112-presidentielle-2027-retailleau-insiste-primaire-philippe-redit-non",
+      "title": "Présidentielle 2027 : Retailleau insiste sur la primaire, même sans Philippe (qui redit non)",
+      "publisher": "20 Minutes",
+      "date": "2026-11-12"
+    },
+    {
+      "url": "https://www.franceinfo.fr/elections/presidentielle/primaire-de-la-droite-et-du-centre-il-y-aura-un-siege-pour-edouard-philippe-dans-toutes-les-reunions-assure-gabriel-attal_8279009.html",
+      "title": "Primaire de la droite et du centre : « Il y aura un siège » pour Édouard Philippe « dans toutes les réunions », assure Gabriel Attal",
+      "publisher": "franceinfo",
+      "date": "2026-11-12"
+    },
+    {
+      "url": "https://www.leparisien.fr/elections/presidentielle/presidentielle-2027-je-nai-rien-a-voir-avec-les-macronistes-dominique-de-villepin-refuse-de-participer-a-une-primaire-de-la-droite-et-du-centre-12-11-2026-KSREQYMWDVAOBLVEVMWXNNTPTI.php",
+      "title": "« Je n’ai rien à voir avec les macronistes », Dominique de Villepin refuse de participer à une primaire de la droite et du centre",
+      "publisher": "Le Parisien",
+      "date": "2026-11-12"
+    }
+  ],
+  "decidedBy": "2026-12-31",
+  "rallyFrom": [
+    "Édouard Philippe"
+  ],
+  "rallyFromShare": 0.5
 }

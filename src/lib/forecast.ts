@@ -23,6 +23,7 @@ import { meta, type Bloc } from "./candidates";
 import { combineOdds, winShare } from "./markets";
 import { average, duelAverages, referenceLineup, trend, type Duel, type Poll } from "./polls";
 import primaryData from "../../public/data/2027/primary.json";
+import rejectionData from "../../public/data/2027/rejection.json";
 
 /** First round of the 2027 presidential election: Sunday 18 April 2027 (run-off 2 May), as chosen at the Council
  *  of Ministers of 1 July 2026. The convening decree, due at least 10 weeks before, makes it official. */
@@ -54,19 +55,20 @@ export const SETBACK_RUNOFF = 5;
 /** Share of their vote the smaller candidates of a camp hand to its leader when the camp rallies. */
 export const RALLY_SHARE = 0.7;
 
-export type ScenarioKey = "base" | "primary-held" | "no-primary" | "right-rallies" | "left-unites" | "le-pen-out" | "setback-le-pen" | "setback-melenchon" | "setback-centre";
+export type ScenarioKey = "base" | "no-primary" | "right-rallies" | "left-unites" | "le-pen-out" | "setback-le-pen" | "setback-melenchon" | "setback-centre";
 export interface ScenarioDef { key: ScenarioKey; fr: string; en: string; descFr: string; descEn: string; kind: "base" | "primary" | "rally" | "ballot" | "setback" }
 const pc = (x: number) => Math.round(x * 100);
+const BS_FR = "Impact calqué sur les cygnes noirs de la vie politique française (Balladur 1995, Fillon 2017, Pécresse 2022 : entre un quart et deux tiers de leurs voix perdues)";
+const BS_EN = "Impact based on past black swans in French political life (Balladur 1995, Fillon 2017, Pécresse 2022: between a quarter and two thirds of their vote lost)";
 export const SCENARIOS: ScenarioDef[] = [
   { key: "base", kind: "base", fr: "Les sondages du jour", en: "Today’s polls", descFr: "Notre prévision telle quelle : le modèle des sondages et les marchés, à parts égales.", descEn: "Our forecast as it stands: the polls model and the markets, half and half." },
-  { key: "primary-held", kind: "primary", fr: "La primaire a lieu", en: "The primary happens", descFr: "La primaire de la droite et du centre se tient le 7 février (Attal, Retailleau, Lisnard ; sans Philippe) : le gagnant reste, les autres se retirent et la plupart de leurs électeurs le suivent.", descEn: "The centre and right primary is held on 7 February (Attal, Retailleau, Lisnard; without Philippe): the winner stays, the others withdraw and most of their voters follow the winner." },
-  { key: "no-primary", kind: "primary", fr: "Pas de primaire", en: "No primary", descFr: "La primaire de la droite et du centre n’a pas lieu : Attal, Retailleau et Lisnard restent tous candidats.", descEn: "The centre and right primary doesn’t happen: Attal, Retailleau and Lisnard all stay in." },
+  { key: "no-primary", kind: "primary", fr: "Pas de primaire", en: "No primary", descFr: "Pas de primaire au centre et à droite : Attal, Retailleau et Lisnard restent tous candidats, Philippe garde ses électeurs.", descEn: "No centre and right primary: Attal, Retailleau and Lisnard all stay in, and Philippe keeps his voters." },
   { key: "right-rallies", kind: "rally", fr: "Le centre et la droite se rassemblent", en: "Centre and right rally", descFr: `Les autres candidats du centre et de la droite cèdent ${pc(RALLY_SHARE)} % de leurs voix au mieux placé d’entre eux.`, descEn: `The other centre and right candidates hand ${pc(RALLY_SHARE)}% of their vote to the best placed among them.` },
   { key: "left-unites", kind: "rally", fr: "La gauche s’unit", en: "The left unites", descFr: `Les autres candidats de gauche cèdent ${pc(RALLY_SHARE)} % de leurs voix au mieux placé d’entre eux.`, descEn: `The other left-wing candidates hand ${pc(RALLY_SHARE)}% of their vote to the best placed among them.` },
   { key: "le-pen-out", kind: "ballot", fr: "Le Pen n’est pas candidate", en: "Le Pen doesn’t run", descFr: "Jordan Bardella la remplace, au niveau que lui donnent les sondages qui le testent.", descEn: "Jordan Bardella replaces her, at the level the polls that test him give him." },
-  { key: "setback-le-pen", kind: "setback", fr: "Coup dur pour Le Pen", en: "Major setback: Le Pen", descFr: `Elle perd ${pc(SETBACK_SHARE)} % de ses voix au premier tour et ${SETBACK_RUNOFF} points dans chaque duel.`, descEn: `She loses ${pc(SETBACK_SHARE)}% of her first-round vote and ${SETBACK_RUNOFF} points in every runoff.` },
-  { key: "setback-melenchon", kind: "setback", fr: "Coup dur pour Mélenchon", en: "Major setback: Mélenchon", descFr: `Il perd ${pc(SETBACK_SHARE)} % de ses voix au premier tour et ${SETBACK_RUNOFF} points dans chaque duel.`, descEn: `He loses ${pc(SETBACK_SHARE)}% of his first-round vote and ${SETBACK_RUNOFF} points in every runoff.` },
-  { key: "setback-centre", kind: "setback", fr: "Coup dur pour le centre", en: "Major setback: the centre", descFr: `Le candidat du centre le mieux placé perd ${pc(SETBACK_SHARE)} % de ses voix au premier tour et ${SETBACK_RUNOFF} points dans chaque duel.`, descEn: `The best-placed centrist loses ${pc(SETBACK_SHARE)}% of their first-round vote and ${SETBACK_RUNOFF} points in every runoff.` },
+  { key: "setback-le-pen", kind: "setback", fr: "Cygne noir : Le Pen", en: "Le Pen black swan", descFr: `${BS_FR} : elle perd ${pc(SETBACK_SHARE)} % de ses voix au premier tour et ${SETBACK_RUNOFF} points dans chaque duel.`, descEn: `${BS_EN}: she loses ${pc(SETBACK_SHARE)}% of her first-round vote and ${SETBACK_RUNOFF} points in every runoff.` },
+  { key: "setback-melenchon", kind: "setback", fr: "Cygne noir : Mélenchon", en: "Mélenchon black swan", descFr: `${BS_FR} : il perd ${pc(SETBACK_SHARE)} % de ses voix au premier tour et ${SETBACK_RUNOFF} points dans chaque duel.`, descEn: `${BS_EN}: he loses ${pc(SETBACK_SHARE)}% of his first-round vote and ${SETBACK_RUNOFF} points in every runoff.` },
+  { key: "setback-centre", kind: "setback", fr: "Cygne noir : le centre", en: "Centre black swan", descFr: `${BS_FR} : le candidat du centre le mieux placé perd ${pc(SETBACK_SHARE)} % de ses voix au premier tour et ${SETBACK_RUNOFF} points dans chaque duel.`, descEn: `${BS_EN}: the best-placed centrist loses ${pc(SETBACK_SHARE)}% of their first-round vote and ${SETBACK_RUNOFF} points in every runoff.` },
 ];
 export const isScenario = (k: string | null | undefined): k is ScenarioKey => SCENARIOS.some((s) => s.key === k);
 
@@ -80,7 +82,7 @@ export interface ForecastRow {
   markets: { win: number | null; qualify: number | null } | null;
 }
 /** A candidate's first-round score along the way, in the polls model: at each knot (today, the primary, election
- *  day) the average and the 80 % range, as offsets from today's polling level before any scenario. */
+ *  day) the average and the 80 % range, in % of votes cast; at every knot the field adds up to 100. */
 export interface Projection { name: string; knots: { date: string; mid: number; lo: number; hi: number }[] }
 export interface Forecast {
   rows: ForecastRow[];
@@ -102,6 +104,8 @@ export interface Forecast {
   affinity: number[];
   /** the centre and right primary, when it falls before the vote: how often it's held, who wins it */
   primary: { day: string; pHeld: number; held: number; winners: { name: string; p: number }[] } | null;
+  /** first-round ceilings from rejection polls, by candidate (only those the poll covers) */
+  ceilings: Record<string, number>;
 }
 
 const norm = (s: string) => s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().trim();
@@ -213,27 +217,37 @@ function applyScenario(key: ScenarioKey, base: Cand[], firstRound: Poll[], aff: 
 // Polls five months out miss more, and more unevenly, than a bell curve allows: in 1995, 2017 and 2022 a leading
 // candidate collapsed (Balladur, Fillon, Pécresse: three of the last five elections), in 2017 and 2022 a camp rallied late behind one name
 // (Macron, Mélenchon). Each simulated campaign can therefore include, at random:
-/** Chance that one major candidate (picked at random, every camp alike) suffers a setback of the size above. */
+/** Chance that one major candidate (picked at random, every camp alike) suffers a black swan of the size above. */
 export const P_SHOCK = 0.5;
 /** Chance, per camp (left; centre and right), that its voters rally late behind its best-placed candidate. */
 export const P_RALLY = 0.25;
 /** Long-term trend carried forward: the last 120 days' slope of the polling average, at this fraction, capped. */
 export const TREND_DAYS = 120, TREND_DAMP = 0.5, TREND_CAP = 4;
 // Errors have fat tails (one draw in ten is about twice as wide), so big misses aren't vanishingly rare.
-/** How much a primary's result can differ from the participants' general-election polling (points). */
-const PRIMARY_SD = 6;
+/** The primary picks whoever is best placed in the polls at the end of December, give or take this many points. */
+const PRIMARY_SD = 2;
+/** Ceiling: a candidate can climb at most this fraction of the way from today's share to their maximum
+ *  electorate (everyone who doesn't completely rule out voting for them, Cluster17 for Politico). */
+export const CEILING_FRACTION = 0.5;
+export const REJECTION = rejectionData as { excluded: Record<string, number>; source: { url: string; title: string; publisher: string; date: string }; poll: { pollster: string; sponsor: string; fieldwork: string[]; sample: number } };
 
 export interface Primary {
   name: { fr: string; en: string };
-  status: "proposed" | "confirmed" | "cancelled";
+  /** "expected" = our assumption that it happens (still only proposed by the candidates) */
+  status: "proposed" | "expected" | "confirmed" | "cancelled";
   rounds: string[];
+  /** the polls that decide who is best placed */
+  decidedBy: string;
   participants: string[];
   declined: string[];
   pHeld: number;
+  /** candidates outside the primary whose voters partly rally to its winner, and how much */
+  rallyFrom: string[];
+  rallyFromShare: number;
   note: { fr: string; en: string };
   sources: { url: string; title: string; publisher: string; date: string }[];
 }
-export const PRIMARY = primaryData as Primary;
+export const PRIMARY: Primary = { rallyFrom: [], rallyFromShare: 0, declined: [], decidedBy: "", ...(primaryData as Partial<Primary>) } as Primary;
 /** The primary's deciding day (its last round). */
 export const PRIMARY_DAY = PRIMARY.rounds.at(-1)!;
 
@@ -288,7 +302,13 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
   const tPrim = Math.round((Date.parse(PRIMARY_DAY) - Date.parse(asOf)) / 86400000);
   const primIdx = base.map((c, i) => (PRIMARY.participants.some((p) => norm(p) === norm(c.name)) ? i : -1)).filter((i) => i >= 0);
   const primaryOn = PRIMARY.status !== "cancelled" && tPrim > 0 && tPrim < daysToGo && primIdx.length >= 2;
-  const pHeld = scenario === "primary-held" ? 1 : scenario === "no-primary" ? 0 : PRIMARY.status === "confirmed" ? 1 : PRIMARY.pHeld;
+  const pHeld = scenario === "no-primary" ? 0 : PRIMARY.status === "confirmed" ? 1 : PRIMARY.pHeld;
+  const rallyIdx = base.map((c, i) => (PRIMARY.rallyFrom.some((p) => norm(p) === norm(c.name)) ? i : -1)).filter((i) => i >= 0);
+  // ceilings from rejection (today's share, before any scenario, plus half the room to the maximum electorate)
+  const ceiling = base.map((c, i) => {
+    const ex = Object.entries(REJECTION.excluded).find(([k]) => norm(k) === norm(c.name))?.[1];
+    return ex == null ? Infinity : before[i] + CEILING_FRACTION * Math.max(0, 100 - ex - before[i]);
+  });
   const f1 = primaryOn ? tPrim / Math.max(1, daysToGo) : 1;
 
   const polledShare = (a: string, b: string) => {
@@ -338,22 +358,38 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
   let nHeld = 0;
   const primWins = new Map<string, number>();
   const x = new Float64Array(n);
+  /** shares add up to 100 among those still running; nobody goes above their ceiling (the excess goes to the others) */
+  const settle = (out: Set<number>) => {
+    for (let pass = 0; pass < 2; pass++) {
+      let sum = 0;
+      for (let i = 0; i < n; i++) { if (out.has(i) || x[i] < 0) x[i] = out.has(i) ? 0 : Math.max(0, x[i]); sum += x[i]; }
+      if (sum > 0) for (let i = 0; i < n; i++) x[i] = (100 * x[i]) / sum;
+      let excess = 0, free = 0;
+      for (let i = 0; i < n; i++) { if (x[i] > ceiling[i]) { excess += x[i] - ceiling[i]; x[i] = ceiling[i]; } else if (!out.has(i)) free += x[i]; }
+      if (excess <= 0 || free <= 0) return;
+      for (let i = 0; i < n; i++) if (!out.has(i) && x[i] < ceiling[i]) x[i] += (excess * x[i]) / free;
+    }
+  };
   for (let r = 0; r < RUNS && n >= 2; r++) {
     const out = new Set<number>();
     const hcap = new Map(handicap);
     // stage 1: today → primary
     const b1 = [0, 1, 2, 3, 4].map(() => sdBloc * Math.sqrt(f1) * gauss(rand));
     for (let i = 0; i < n; i++) x[i] = base[i].share + drift[i] * f1 + (base[i].bloc != null ? b1[base[i].bloc!] : 0) + sd1 * Math.sqrt(f1) * tdist();
-    for (let i = 0; i < n; i++) atPrimary[i][r] = Math.max(0, x[i]);
-    // the primary, if it happens: the winner stays, the others withdraw and most of their voters follow the winner
+    settle(out);
+    for (let i = 0; i < n; i++) atPrimary[i][r] = x[i];
+    // the primary: whoever is best placed at the end of December wins it; the others withdraw and most of their
+    // voters follow; part of the centre outside the primary (Philippe's voters) rallies too
     if (primaryOn && rand() < pHeld) {
       nHeld++;
       let w = primIdx[0], wv = -Infinity;
       for (const i of primIdx) { const v = x[i] + PRIMARY_SD * gauss(rand); if (v > wv) { wv = v; w = i; } }
       primWins.set(base[w].name, (primWins.get(base[w].name) ?? 0) + 1);
       for (const i of primIdx) if (i !== w) { const g = Math.max(0, x[i]); x[w] += g * RALLY_SHARE; x[i] -= g * RALLY_SHARE; spread(x, i, Math.max(0, x[i]), out); x[i] = 0; out.add(i); }
+      for (const j of rallyIdx) if (!out.has(j) && x[j] > 0) { const g = x[j] * PRIMARY.rallyFromShare; x[j] -= g; x[w] += g; }
+      settle(out);
     }
-    for (let i = 0; i < n; i++) afterPrimary[i][r] = Math.max(0, x[i]);
+    for (let i = 0; i < n; i++) afterPrimary[i][r] = x[i];
     // stage 2: primary → election day
     if (f1 < 1) {
       const b2 = [0, 1, 2, 3, 4].map(() => sdBloc * Math.sqrt(1 - f1) * gauss(rand));
@@ -377,9 +413,9 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
         hcap.set(base[h].name, (hcap.get(base[h].name) ?? 0) + SETBACK_RUNOFF);
       }
     }
+    settle(out);
     let i1 = -1, i2 = -1, v1 = -Infinity, v2 = -Infinity;
     for (let i = 0; i < n; i++) {
-      if (x[i] < 0) x[i] = 0;
       final[i][r] = x[i];
       if (out.has(i)) continue;
       if (x[i] > v1) { i2 = i1; v2 = v1; i1 = i; v1 = x[i]; } else if (x[i] > v2) { i2 = i; v2 = x[i]; }
@@ -402,12 +438,12 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
     for (const v of arr) sum += v;
     const sorted = arr.sort(); // in place: the arrays aren't used again
     const at = (f: number) => sorted[Math.min(sorted.length - 1, Math.floor(f * sorted.length))];
-    return { date, mid: sum / arr.length - before[i], lo: at(0.1) - before[i], hi: at(0.9) - before[i] };
+    return { date, mid: sum / arr.length, lo: at(0.1), hi: at(0.9) };
   };
   const projection: Projection[] = n >= 2 ? base.map((c, i) => ({
     name: c.name,
     knots: [
-      { date: asOf, mid: c.share - before[i], lo: c.share - before[i], hi: c.share - before[i] },
+      { date: asOf, mid: c.share, lo: c.share, hi: c.share },
       ...(primaryOn ? [knot(PRIMARY_DAY, atPrimary[i], i), knot(new Date(Date.parse(PRIMARY_DAY) + 86400000).toISOString().slice(0, 10), afterPrimary[i], i)] : []),
       knot(ELECTION_DAY, final[i], i),
     ],
@@ -453,5 +489,6 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
     projection,
     affinity: aff,
     primary,
+    ceilings: Object.fromEntries(base.map((c, i) => [c.name, ceiling[i]]).filter(([, v]) => Number.isFinite(v as number))),
   };
 }

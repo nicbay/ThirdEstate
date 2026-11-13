@@ -35,6 +35,9 @@ function setUrl(key: ScenarioKey) {
 const label = (key: ScenarioKey) => { const s = SCENARIOS.find((x) => x.key === key)!; return L(s.fr, s.en); };
 const desc = (key: ScenarioKey) => { const s = SCENARIOS.find((x) => x.key === key)!; return L(s.descFr, s.descEn); };
 
+/** A candidate's ceiling in the model, or NaN. */
+const ceilingOf = (fc: Forecast, name: string) => fc.ceilings[name] ?? NaN;
+
 /** One sentence saying what the headline number means under the current scenario. */
 export function scenarioHeadline(fc: Forecast, base?: Forecast): string {
   const fav = fc.rows[0];
@@ -87,13 +90,12 @@ export function mountForecastChart(box: HTMLElement, o: Opts) {
         const m = meta(n);
         const line = pts.filter((p) => p.values[n] != null).map((p) => ({ date: p.date, value: p.values[n] }));
         const s: Series = { name: n, label: m.surname, color: m.color, line, dots: pollDots(o.polls.firstRound, n, from, o.polls.source) };
-        // the projection starts from the chart's own last average and moves by what the scenario changed
+        // the projection leaves from the chart's own last average and heads for the model's levels, which add up to 100
         const replaced = key === "le-pen-out" && n === "Marine Le Pen";
         const pr = fc.projection.find((p) => p.name === (replaced ? "Jordan Bardella" : n));
         const last = line.at(-1);
         if (pr && last && last.date === lastDate) {
-          // the model's knots are offsets from today's level: hang them on the chart's own last average
-          const knots = pr.knots.map((k, i) => ({ date: i === 0 ? last.date : k.date, mid: Math.max(0, last.value + k.mid), lo: Math.max(0, last.value + k.lo), hi: Math.max(0, last.value + k.hi) }));
+          const knots = pr.knots.map((k, i) => (i === 0 ? { date: last.date, mid: last.value, lo: last.value, hi: last.value } : k));
           const end = knots.at(-1)!;
           const who = replaced ? "Bardella" : m.surname;
           s.proj = {
@@ -107,18 +109,19 @@ export function mountForecastChart(box: HTMLElement, o: Opts) {
       .filter((s) => s.line.length);
     const markers = [{ date: ELECTION_DAY, label: L(`1er tour, ${fmtDate(ELECTION_DAY)}`, `1st round, ${fmtDate(ELECTION_DAY)}`) }];
     if (fc.primary && key !== "no-primary") {
-      const sure = key === "primary-held" || PRIMARY.status === "confirmed";
-      markers.push({ date: fc.primary.day, label: sure ? L("Primaire", "Primary") : L("Primaire ? (proposée)", "Primary? (proposed)") });
+      markers.push({ date: fc.primary.day, label: PRIMARY.status === "confirmed" ? L("Primaire du centre", "Centre primary") : L("Primaire du centre (anticipée)", "Centre primary (anticipated)") });
     }
     chartBox.innerHTML = lineChart(series, { height: o.height, markers });
     const pr = fc.primary;
+    const win = pr?.winners[0];
+    const sn = (names: string[], fr: boolean) => names.map((n) => esc(meta(n).surname)).join(fr ? ", " : ", ");
     const primLine = pr && key !== "no-primary"
-      ? L(` ${esc(PRIMARY.name.fr)} (${PRIMARY.participants.map((n) => esc(meta(n).surname)).join(", ")} ; sans ${PRIMARY.declined.map((n) => esc(meta(n).surname)).join(" ni ")}) : ${key === "primary-held" ? "elle a lieu dans ce scénario" : `proposée pour le ${fmtDate(pr.day)}, elle se tient dans ${Math.round(pr.held)} % des simulations`}${pr.winners[0] ? ` ; ${esc(meta(pr.winners[0].name).surname)} la remporte ${Math.round(pr.winners[0].p)} fois sur 100` : ""}. Après la primaire, la zone de chaque participant s’ouvre vers le bas : le gagnant récupère l’essentiel des voix des autres, les perdants se retirent (la ligne en pointillés est la moyenne des deux).`,
-          ` ${esc(PRIMARY.name.en)} (${PRIMARY.participants.map((n) => esc(meta(n).surname)).join(", ")}; without ${PRIMARY.declined.map((n) => esc(meta(n).surname)).join(" or ")}): ${key === "primary-held" ? "held in this scenario" : `proposed for ${fmtDate(pr.day)}, held in ${Math.round(pr.held)}% of simulations`}${pr.winners[0] ? `; ${esc(meta(pr.winners[0].name).surname)} wins it ${Math.round(pr.winners[0].p)} times in 100` : ""}. After the primary each participant’s band opens downwards: the winner takes most of the others’ votes, the losers withdraw (the dotted line averages the two).`)
+      ? L(` Primaire du centre anticipée fin janvier : ${sn(PRIMARY.participants, true)} se rangent derrière le mieux placé dans les sondages de fin décembre${win ? ` (${esc(meta(win.name).surname)} ${Math.round(win.p)} fois sur 100)` : ""} ; ${sn(PRIMARY.rallyFrom, true)} n’y participe pas mais ${Math.round(100 * PRIMARY.rallyFromShare)} % de ses électeurs rejoignent le candidat désigné. Pour chaque participant, la ligne est la moyenne entre gagner (et rassembler) et se retirer.`,
+          ` Centre primary anticipated at the end of January: ${sn(PRIMARY.participants, false)} line up behind whoever is best placed in the end-of-December polls${win ? ` (${esc(meta(win.name).surname)} ${Math.round(win.p)} times in 100)` : ""}; ${sn(PRIMARY.rallyFrom, false)} doesn’t take part, but ${Math.round(100 * PRIMARY.rallyFromShare)}% of his voters join the chosen candidate. For each participant the line averages winning (and rallying the rest) and withdrawing.`)
       : "";
     note.innerHTML = `${key === "base" ? "" : `<b>${esc(label(key))}.</b> ${esc(desc(key))} `}${L(
-      `Pointillés : la moyenne des sondages prolongée jusqu’au premier tour, avec la moitié de sa tendance des quatre derniers mois${key === "base" ? "" : ", dans ce scénario"} ; zone colorée : 8 chances sur 10 que le score tombe dedans, selon notre modèle (erreurs de sondage, ralliements tardifs, coups durs).`,
-      `Dotted line: the polling average carried on to the first round, with half its trend of the last four months${key === "base" ? "" : ", in this scenario"}; shaded area: an 8-in-10 chance the score lands inside it, in our model (polling error, late rallies, setbacks).`,
+      `Pointillés : le score attendu au premier tour, avec la moitié de la tendance des quatre derniers mois${key === "base" ? "" : ", dans ce scénario"} ; les scores de tous les candidats (y compris ceux non affichés) font 100 %. Zone colorée : 8 chances sur 10 que le score tombe dedans, selon notre modèle (erreurs de sondage, ralliements tardifs, cygnes noirs). Personne ne dépasse un plafond tiré du rejet : on ne gagne au plus que la moitié du chemin vers l’électorat qui n’exclut pas de voter pour vous (Mélenchon : ${dec(ceilingOf(fc, "Jean-Luc Mélenchon"))} %).`,
+      `Dotted line: the expected first-round score, with half the trend of the last four months${key === "base" ? "" : ", in this scenario"}; all candidates’ scores (including those not shown) add up to 100%. Shaded area: an 8-in-10 chance the score lands inside it, in our model (polling error, late rallies, black swans). Nobody goes above a ceiling drawn from rejection: at most half the way to the electorate that doesn’t rule out voting for them (Mélenchon: ${dec(ceilingOf(fc, "Jean-Luc Mélenchon"))}%).`,
     )}${primLine} <a href="#/2027">${L("La méthode", "The method")}</a>.`;
     o.onChange?.(fc);
   };
