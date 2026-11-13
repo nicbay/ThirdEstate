@@ -1,4 +1,5 @@
 import { initInfoTips } from "./lib/infotip";
+import { sortableTables } from "./lib/sortable";
 import "./fonts.css";
 import "./styles/tokens.css";
 import "./style.css";
@@ -452,6 +453,10 @@ function enhance() {
     t.replaceWith(box);
     box.append(t);
   });
+  sortableTables(app);
+  // the sticky header rows sit under the masthead and the section bar
+  const sub = document.getElementById("subnav");
+  document.documentElement.style.setProperty("--sub-h", `${sub && !sub.hidden ? sub.offsetHeight : 0}px`);
 }
 /**
  * Every page opens like the homepage: its crumbs and header are lifted into one dark, full-width band,
