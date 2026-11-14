@@ -1,0 +1,10 @@
+/* Town page: "what the town receives and pays in" (src/views/town-state.ts) */
+.sb-verdict { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.8rem; margin: 0.4rem 0 1rem; border-top: 2px solid var(--ink); padding-top: 0.5rem; }
+.sb-verdict > span:first-child { font-weight: 700; font-size: 1.05rem; }
+.sb-verdict strong { font: 800 2.2rem/1.05 var(--display); font-stretch: 78%; font-variant-numeric: lining-nums tabular-nums; letter-spacing: -0.015em; }
+.sb-bars { display: grid; gap: 0.5rem; margin-bottom: 1rem; max-width: 34rem; }
+.sb-bars > div { display: grid; gap: 0.2rem; }
+.sb-bar { display: block; height: 0.6rem; min-width: 2px; border-radius: 1px; }
+.sb-bar.in { background: var(--ink-2); }
+.sb-bar.out { background: repeating-linear-gradient(135deg, var(--ink-2) 0 3px, transparent 3px 6px); border: 1px solid var(--ink-2); }
+.sb-table { max-width: 34rem; }
