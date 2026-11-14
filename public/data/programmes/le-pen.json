@@ -1001,5 +1001,326 @@
   "summary": {
     "fr": "Le projet du RN repose sur la priorité nationale (prestations, logement social, emploi), la baisse de la TVA sur l'énergie et un retour partiel sur la réforme des retraites. L'âge de départ proposé est passé de 60 ans (2022) à 62 ans avec 60 ans pour les carrières longues (2026), et le RN met désormais en avant un contre-budget de 140 Md€ d'économies d'ici 2032 avec une règle d'or. L'Institut Montaigne estimait le coût net à 101,8 Md€/an en 2022 et 71 Md€/an pour le programme législatif de 2024 ; plusieurs mesures sur les étrangers se heurtent à des décisions du Conseil constitutionnel (n° 89-269 DC, n° 2024-6 RIP).",
     "en": "The RN's project centres on national priority (benefits, social housing, jobs), lower VAT on energy and a partial rollback of the pension reform. The proposed retirement age has moved from 60 (2022) to 62, with 60 for long careers (2026), and the RN now leads with a counter-budget of €140bn in savings by 2032 and a golden rule. Institut Montaigne put the net cost at €101.8bn a year in 2022 and €71bn a year for the 2024 legislative programme; several measures on foreigners conflict with Conseil constitutionnel rulings (no. 89-269 DC, no. 2024-6 RIP)."
-  }
+  },
+  "group": "RN",
+  "votes": [
+    {
+      "lineage": "m06",
+      "topic": {
+        "fr": "Retraites : revenir sur le recul de l'âge légal",
+        "en": "Pensions: undo the higher legal retirement age"
+      },
+      "note": {
+        "fr": "468 : amendement de suppression de l'article premier de la proposition de loi d'abrogation de la retraite à 64 ans ; voter contre suit la promesse. 3684 : article suspendant la réforme de 2023 dans le budget de la Sécurité sociale pour 2026.",
+        "en": "468: amendment deleting article 1 of the bill repealing retirement at 64; voting against follows the promise. 3684: article suspending the 2023 reform in the 2026 social security budget."
+      },
+      "scrutins": [
+        {
+          "num": 217,
+          "date": "2024-10-31",
+          "title": "l'ensemble de la proposition de loi visant à restaurer un système de retraite plus juste en annulant les dernières réformes portant sur l’âge de départ et le nombre d’annuités (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        },
+        {
+          "num": 468,
+          "date": "2024-11-28",
+          "title": "l'amendement de suppression n° 4 de M. Sitzenstuhl et les amendements identiques suivants à l'article premier de la proposition de loi d'abrogation de la retraite à 64 ans (première lecture).",
+          "result": "rejeté",
+          "expect": "C"
+        },
+        {
+          "num": 2257,
+          "date": "2025-06-05",
+          "title": "la proposition de résolution visant à abroger la loi n° 2023-270 du 14 avril 2023 de financement rectificative de la sécurité sociale pour 2023 dite réforme des retraites.",
+          "result": "adopté",
+          "expect": "P"
+        },
+        {
+          "num": 3684,
+          "date": "2025-11-12",
+          "title": "l'article 45 bis (examen prioritaire) du projet de loi de financement de la sécurité sociale pour 2026 (première lecture).",
+          "result": "adopté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m17",
+      "topic": {
+        "fr": "Droit du sol : le restreindre (Mayotte)",
+        "en": "Birthright citizenship: restrict it (Mayotte)"
+      },
+      "note": {
+        "fr": "Proposition de loi durcissant l'accès à la nationalité par le droit du sol à Mayotte, première étape de la suppression promise ; 1307 : motion de rejet, voter contre suit la promesse.",
+        "en": "Bill tightening birthright access to citizenship in Mayotte, a first step towards the promised abolition; 1307: motion to reject, voting against follows the promise."
+      },
+      "scrutins": [
+        {
+          "num": 738,
+          "date": "2025-02-06",
+          "title": "l'ensemble de la proposition de loi visant à renforcer les conditions d'accès à la nationalité française à Mayotte (première lecture).",
+          "result": "adopté",
+          "expect": "P"
+        },
+        {
+          "num": 1307,
+          "date": "2025-04-08",
+          "title": "la motion de rejet préalable, déposée par Mme Mathilde Panot, de la proposition de loi visant à renforcer les conditions d'accès à la nationalité française à Mayotte (texte de la commission mixte paritaire).",
+          "result": "rejeté",
+          "expect": "C"
+        },
+        {
+          "num": 1308,
+          "date": "2025-04-08",
+          "title": "l'ensemble de la proposition de loi visant à renforcer les conditions d'accès à la nationalité française à Mayotte (texte de la commission mixte paritaire).",
+          "result": "adopté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m07",
+      "topic": {
+        "fr": "TVA à 5,5 % sur les carburants et l'énergie",
+        "en": "5.5% VAT on fuel and energy"
+      },
+      "note": {
+        "fr": "Amendements du RN aux budgets 2026 et 2027 classant carburants, fioul, gaz et électricité au taux réduit de 5,5 %.",
+        "en": "RN amendments to the 2026 and 2027 budgets moving fuel, heating oil, gas and electricity to the reduced 5.5% rate."
+      },
+      "scrutins": [
+        {
+          "num": 4038,
+          "date": "2025-11-20",
+          "title": "l'amendement n° 792 de Mme Le Pen après l'article 25 du projet de loi de finances pour 2026 (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        },
+        {
+          "num": 4044,
+          "date": "2025-11-20",
+          "title": "l'amendement n° 795 de M. Jean-Philippe Tanguy après l'article 25 du projet de loi de finances pour 2026 (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        },
+        {
+          "num": 9488,
+          "date": "2026-11-02",
+          "title": "l'amendement n° 635 de Mme Le Pen après l'article 16 du projet de loi de finances pour 2027 (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        },
+        {
+          "num": 9490,
+          "date": "2026-11-02",
+          "title": "l'amendement n° 748 de M. Jean-Philippe Tanguy après l'article 16 du projet de loi de finances pour 2027 (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m09",
+      "topic": {
+        "fr": "Exonérer d'impôt sur le revenu les moins de 30 ans",
+        "en": "Income-tax exemption for under-30s"
+      },
+      "note": {
+        "fr": "Amendement au budget 2027 exonérant d'impôt sur le revenu les revenus du travail jusqu'à 30 ans.",
+        "en": "Amendment to the 2027 budget exempting earned income up to age 30 from income tax."
+      },
+      "scrutins": [
+        {
+          "num": 8747,
+          "date": "2026-10-15",
+          "title": "l'amendement n° 640 de M. Jean-Philippe Tanguy après l'article 3 du projet de loi de finances pour 2027 (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m10",
+      "topic": {
+        "fr": "Part fiscale pleine dès le deuxième enfant",
+        "en": "Full tax share from the second child"
+      },
+      "note": {
+        "fr": "Amendements aux budgets 2025, 2026 et 2027 donnant une part entière de quotient familial dès le deuxième enfant.",
+        "en": "Amendments to the 2025, 2026 and 2027 budgets granting a full family-quotient share from the second child."
+      },
+      "scrutins": [
+        {
+          "num": 51,
+          "date": "2024-10-23",
+          "title": "l'amendement n° 845 de M. Sabatou après l'article 3 du projet de loi de finances pour 2025 (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        },
+        {
+          "num": 3092,
+          "date": "2025-10-25",
+          "title": "l'amendement n° 774 de M. Jean-Philippe Tanguy et l'amendement identique suivant après l'article 2 du projet de loi de finances pour 2026 (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        },
+        {
+          "num": 8759,
+          "date": "2026-10-15",
+          "title": "l'amendement n° 639 de M. Jean-Philippe Tanguy après l'article 3 du projet de loi de finances pour 2027 (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m11",
+      "topic": {
+        "fr": "Remplacer l'IFI par un impôt sur la fortune financière",
+        "en": "Replace the property wealth tax with a financial wealth tax"
+      },
+      "note": {
+        "fr": "Amendements aux budgets 2025 et 2026 transformant l'IFI en impôt sur la fortune financière.",
+        "en": "Amendments to the 2025 and 2026 budgets turning the IFI into a financial wealth tax."
+      },
+      "scrutins": [
+        {
+          "num": 91,
+          "date": "2024-10-25",
+          "title": "l'amendement n° 835 de M. Jean-Philippe Tanguy après l'article 3 du projet de loi de finances pour 2025 (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        },
+        {
+          "num": 3292,
+          "date": "2025-10-31",
+          "title": "l'amendement n° 3796 de M. Jean-Philippe Tanguy et l'amendement identique suivant à l'article 3 du projet de loi de finances pour 2026 (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        },
+        {
+          "num": 5023,
+          "date": "2026-01-15",
+          "title": "l'amendement n° 160 de M. Jean-Philippe Tanguy à l'article 3 bis du projet de loi de finances pour 2026 (nouvelle lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m12",
+      "topic": {
+        "fr": "Prêt à taux zéro transformé en subvention au troisième enfant",
+        "en": "Zero-rate loan turned into a grant at the third child"
+      },
+      "note": {
+        "fr": "Amendement au budget 2027 créant un prêt à taux zéro « jeunes ménages » dont le capital restant dû devient une subvention à la naissance du troisième enfant.",
+        "en": "Amendment to the 2027 budget creating a 'young households' zero-rate loan whose outstanding balance becomes a grant when the third child is born."
+      },
+      "scrutins": [
+        {
+          "num": 9362,
+          "date": "2026-10-30",
+          "title": "l'amendement n° 667 (rect.) de M. Jean-Philippe Tanguy après l'article 7 du projet de loi de finances pour 2027 (première lecture).",
+          "result": "adopté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m13",
+      "topic": {
+        "fr": "Audiovisuel public : réduire son périmètre",
+        "en": "Public broadcasting: shrink it"
+      },
+      "note": {
+        "fr": "Amendement au budget 2027 réduisant les crédits de l'audiovisuel public, présenté comme un premier pas vers le recentrage voulu par le RN (la privatisation elle-même n'a pas été votée).",
+        "en": "Amendment to the 2027 budget cutting public broadcasting funds, presented as a first step towards the RN's downsizing (privatisation itself has not been put to a vote)."
+      },
+      "scrutins": [
+        {
+          "num": 9693,
+          "date": "2026-11-04",
+          "title": "l'amendement n° 736 de M. Ballard à l'article 42 du projet de loi de finances pour 2027 (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m21",
+      "topic": {
+        "fr": "Réduire la contribution française au budget de l'UE",
+        "en": "Cut France's contribution to the EU budget"
+      },
+      "note": {
+        "fr": "Amendements aux lois spéciales de 2024 et 2025 et au budget 2027 abaissant le prélèvement sur recettes au profit de l'Union européenne.",
+        "en": "Amendments to the 2024 and 2025 special laws and to the 2027 budget lowering the levy paid to the EU budget."
+      },
+      "scrutins": [
+        {
+          "num": 520,
+          "date": "2024-12-16",
+          "title": "l'amendement n° 6 de M. Jean-Philippe Tanguy après l'article premier du projet de loi spéciale prévue par l'article 45 de la loi organique du 1er août 2001 relative aux lois de finances (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        },
+        {
+          "num": 4943,
+          "date": "2025-12-23",
+          "title": "l'amendement n° 5 de M. Jean-Philippe Tanguy après l'article premier du projet de loi spéciale prévue par l'article 45 de la loi organique du 1er août 2001 relative aux lois de finances (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        },
+        {
+          "num": 8715,
+          "date": "2026-10-14",
+          "title": "l'amendement n° 3694 de M. Jean-Philippe Tanguy à l'article 55 (examen prioritaire) du projet de loi de finances pour 2027 (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m22",
+      "topic": {
+        "fr": "Taxe de 1 000 € par salarié extra-européen",
+        "en": "€1,000 levy per non-EU employee"
+      },
+      "note": {
+        "fr": "Amendement de Jean-Philippe Tanguy au budget 2027 instituant cette contribution annuelle de l'employeur.",
+        "en": "Jean-Philippe Tanguy's amendment to the 2027 budget creating this annual employer levy."
+      },
+      "scrutins": [
+        {
+          "num": 9520,
+          "date": "2026-11-02",
+          "title": "l'amendement n° 680 de M. Jean-Philippe Tanguy après l'article 23 du projet de loi de finances pour 2027 (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m23",
+      "topic": {
+        "fr": "Lever l'interdiction de rechercher des hydrocarbures",
+        "en": "Lift the ban on hydrocarbon exploration"
+      },
+      "note": {
+        "fr": "Article premier d'une proposition de loi levant l'interdiction issue de la loi Hulot dans les outre-mer.",
+        "en": "Article 1 of a bill lifting the Hulot-law ban in the overseas territories."
+      },
+      "scrutins": [
+        {
+          "num": 7386,
+          "date": "2026-06-11",
+          "title": "l'article premier de la proposition de loi visant à lever dans les territoires d'outre-mer l'interdiction de recherche, d'exploration et d'exploitation des hydrocarbures (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        }
+      ]
+    }
+  ]
 }

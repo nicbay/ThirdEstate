@@ -1,0 +1,42 @@
+{
+ "generated": "2026-11-14T12:17:09.123Z",
+ "coverage": [
+  {
+   "person": "Sarah Knafo",
+   "chamber": "PE",
+   "legislature": "10",
+   "from": "2024-07-17",
+   "to": "2026-11-12",
+   "votes": 4760
+  }
+ ],
+ "notCovered": [
+  {
+   "person": "Éric Zemmour",
+   "chamber": null,
+   "from": null,
+   "to": null,
+   "why": {
+    "fr": "N'a jamais siégé au Parlement : aucun vote enregistré.",
+    "en": "Has never sat in Parliament: no recorded votes."
+   }
+  }
+ ],
+ "people": [
+  {
+   "name": "Éric Zemmour",
+   "role": {
+    "fr": "Candidat, président de Reconquête",
+    "en": "Candidate, president of Reconquête"
+   }
+  },
+  {
+   "name": "Sarah Knafo",
+   "role": {
+    "fr": "Députée européenne Reconquête depuis 2024",
+    "en": "Reconquête MEP since 2024"
+   }
+  }
+ ],
+ "contradictions": []
+}
