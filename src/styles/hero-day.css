@@ -54,14 +54,15 @@
 .hero-dots .hd { cursor: pointer; transform: translate(var(--mx), var(--my)) scale(0); transition: transform 1.5s cubic-bezier(0.7, 0, 0.25, 1) var(--dm), opacity 0.3s; }
 .hero-dots.ready .hd { transform: translate(var(--mx), var(--my)) scale(1); }
 .hero-dots.ready.is-hemi .hd { transform: translate(var(--hx), var(--hy)) scale(1.18); transition-delay: var(--dh); }
-.hero-dots .hd:hover { stroke: var(--ink); stroke-width: 2; }
-.hero-dots .hd-map path { fill: var(--panel); stroke: var(--rule-2); stroke-width: 0.6; }
+.hero-dots .hd:hover { stroke: var(--night-text); stroke-width: 2; }
+.hero-dots .hd-map path { fill: var(--night-panel); stroke: var(--night-rule-2); stroke-width: 0.6; }
 .hero-dots .hd-map, .hero-dots .hd-hemi { transition: opacity 0.9s 0.4s; }
 .hero-dots.is-hemi .hd-map { opacity: 0; transition-delay: 0s; }
 .hero-dots:not(.is-hemi) .hd-hemi { opacity: 0; transition-delay: 0s; }
-.hero-dots .hd-hemi line { stroke: var(--ink-3); stroke-dasharray: 3 4; }
-.hd-total { font: 850 64px var(--display); font-stretch: 72%; fill: var(--ink); letter-spacing: -0.02em; font-variant-numeric: tabular-nums lining-nums; }
-.hd-note { font: 500 13px var(--mono); fill: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+.hero-dots .hd-hemi line { stroke: var(--night-label); stroke-dasharray: 3 4; }
+.hd-total { font: 850 64px var(--display); font-stretch: 72%; fill: var(--night-text); letter-spacing: -0.02em; font-variant-numeric: tabular-nums lining-nums; }
+/* the dots sit on the night band in both themes: night colours, not the page's ink */
+.hd-note { font: 500 13px var(--mono); fill: var(--night-label); text-transform: uppercase; letter-spacing: 0.08em; }
 .hd-toggle { display: inline-flex; justify-self: start; border: 2px solid var(--rule-2); padding: 2px; }
 .hd-toggle button { font: 600 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-2); background: none; border: 0; padding: 0.45rem 0.7rem; cursor: pointer; }
 .hw .hd-toggle.hd-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
@@ -159,9 +160,10 @@
 /* the circle the pixels leave around the reader's: the band's own colour, the message inside, the pixel kept */
 .ocean-say { position: absolute; z-index: 3; width: calc(2 * var(--r, 118px)); height: calc(2 * var(--r, 118px)); margin: calc(-1 * var(--r, 118px)) 0 0 calc(-1 * var(--r, 118px)); border-radius: 50%; background: radial-gradient(closest-side, var(--night) 76%, transparent 84%); opacity: 0; display: grid; align-content: center; justify-items: center; gap: 0.3rem; padding: 2.4rem 1.1rem 0; box-sizing: border-box; text-align: center; color: var(--night-text-2); pointer-events: none; }
 .ocean-say i { position: absolute; left: 50%; top: 50%; width: 3px; height: 3px; margin: -1.5px 0 0 -1.5px; background: #fff; box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.5); }
-.ocean-say p { margin: 0; opacity: 0; transition: opacity 0.15s; }
+/* one small pixel-type line under the reader's pixel, clear of the arrow cursor that sits on it */
+.ocean-say p { position: absolute; left: 0; right: 0; top: calc(50% + 26px); margin: 0; opacity: 0; transition: opacity 0.15s; }
 .ocean-say.is-on p { opacity: 1; transition: opacity 0.3s 0.22s; }
-.ocean-say b { display: block; max-width: 11.5em; font: 700 1.15rem/1.2 var(--display); font-stretch: 85%; color: var(--night-text); text-wrap: balance; }
+.ocean-say b { display: block; font: 400 0.6875rem/1 var(--pixel); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; color: var(--night-text); }
 @media (prefers-reduced-motion: reduce) { .ocean-say p, .ocean-say.is-on p { transition: none; } }
 .hday > :not(.ocean):not(.ocean-me):not(.ocean-say) { position: relative; }
 

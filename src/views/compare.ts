@@ -57,7 +57,7 @@ const PLM_NAME: Record<string, string> = { "75056": "Paris", "69123": "Lyon", "1
 
 async function loadSide(code: string): Promise<Side | null> {
   const dep = depOf(code);
-  const [{ towns }, bundle, info, muni, quartiers, quality, police, state] = await Promise.all([
+  const [{ towns }, bundle, info, muni, quartiers, quality, police, state, arrs] = await Promise.all([
     loadDepartmentTowns(dep).catch(() => ({ towns: new Map<string, TownData>() })),
     loadTownBundle(dep),
     get(`https://geo.api.gouv.fr/communes/${code}?fields=nom,code,population,departement,surface`),
@@ -66,6 +66,8 @@ async function loadSide(code: string): Promise<Side | null> {
     get(`/data/quality/${dep}.json`),
     loadMunicipalPolice(plmCity(code)).catch(() => null),
     loadStateBalance(code).catch(() => null),
+    // Paris, Lyon, Marseille arrondissements: their own council and mayor (scripts/sync-municipal-plm.mjs)
+    plmCity(code) !== code ? get("/data/municipal/arrondissements.json") : null,
   ]);
   const ranks = await townRanks(code).catch(() => ({}));
   const own = towns.get(code);
@@ -85,8 +87,8 @@ async function loadSide(code: string): Promise<Side | null> {
     t.years ??= arrs.find((a) => a.years)?.years;
   }
   if (plmCity(code) !== code && t?.crime) cityWide.add("crime");
-  const m = muni?.communes?.[code] ?? muni?.communes?.[plmCity(code)];
-  if (m && !muni?.communes?.[code]) cityWide.add("vote");
+  const m = arrs?.arrondissements?.[code] ?? muni?.communes?.[code] ?? muni?.communes?.[plmCity(code)];
+  if (m && !muni?.communes?.[code] && !arrs?.arrondissements?.[code]) cityWide.add("vote");
   return {
     code,
     dep,

@@ -74,6 +74,18 @@ ${fmtNum(c[k])} (${Math.round((100 * c[k]) / tot)} %)`)}"></span>` : "");
     return `<span class="ph-flow"><span class="ph-stack prog-stack">${seg("maintained", "maintained")}${seg("modified", "modified")}${seg("new", "new2027")}${seg("dropped", "dropped")}</span>
       <span class="ph-stack-k">${fmtNum(c.maintained)} ${L("gardées", "kept")} · ${fmtNum(c.modified)} ${L("modifiées", "changed")} · ${fmtNum(c.new)} ${L("nouvelles", "new")} · ${fmtNum(c.dropped)} ${L("abandonnées", "dropped")}</span></span>`;
   };
+  // cost: two short boxed lines (what the party says, what an independent institute estimates) and a link to the
+  // detail; the row itself is a link, so the detail link is a span that navigates on click
+  const costCell = (p: IndexEntry) => {
+    const e = p.lastEstimate;
+    if (!e) return `<span class="ph-cost"><span class="ph-cbox is-none"><span class="ph-ck">${L("Estimation", "Estimate")}</span><span>${L("aucune pour l’instant", "none yet")}</span></span></span>`;
+    const line = (k: string, v: string, title = "") => `<span class="ph-cbox"${title ? ` title="${esc(title)}"` : ""}><span class="ph-ck">${k}</span>${v}</span>`;
+    return `<span class="ph-cost">
+        ${line(L("Parti", "Party"), e.announced != null ? `<b>${md(e.announced)}</b>` : `<span class="ph-cnone">${L("non chiffré", "not costed")}</span>`)}
+        ${line(L("Estimation", "Estimate"), `<b class="${e.net < 0 ? "is-neg" : "is-pos"}">${md(e.net)}</b>`, e.by)}
+        <span class="ph-ccta" role="link" tabindex="-1" data-href="#/programmes/${esc(p.slug)}#cout">${esc(e.by)}, ${e.year} →</span>
+      </span>`;
+  };
   // one row per candidate, left to right; the whole row is the link
   const candRow = (r: (typeof rows)[number]) => {
     const { p, c } = r, e = p.lastEstimate;
@@ -84,7 +96,7 @@ ${fmtNum(c[k])} (${Math.round((100 * c[k]) / tot)} %)`)}"></span>` : "");
         <span class="ph-status${p.status === "published" ? " is-out" : ""}">${p.lite ? esc(STATUS_TXT[p.status]()) : L("Analysé en entier", "Analysed in full")}</span></span>
       <span class="ph-n"><strong>${fmtNum(p.inLatest ?? p.total)}</strong>${p.lite ? L("mesures étudiées", "measures reviewed") : L("mesures en 2027", "measures in 2027")}</span>
       ${stack(p)}
-      <span class="ph-cost">${e ? `${e.year}${L(" : ", ": ")}${e.announced != null ? `${L("annoncé", "claimed")} <b>${md(e.announced)}</b>, ` : ""}${L("estimé", "estimated")} <b class="${e.net < 0 ? "is-neg" : "is-pos"}">${md(e.net)}</b>` : L("Pas d’estimation indépendante", "No independent estimate")}</span>
+      ${costCell(p)}
     </a></li>`;
   };
 
@@ -214,5 +226,7 @@ ${fmtNum(c[k])} (${Math.round((100 * c[k]) / tot)} %)`)}"></span>` : "");
     tabs.forEach((b) => b.setAttribute("aria-selected", String(b.dataset.theme === theme)));
   };
   tabs.forEach((b) => b.addEventListener("click", () => { theme = b.dataset.theme!; drawTheme(); }));
+  // the cost cell's link inside the row's link: straight to the costing section
+  app.querySelectorAll<HTMLElement>(".ph-ccta").forEach((x) => x.addEventListener("click", (ev) => { ev.preventDefault(); ev.stopPropagation(); location.hash = x.dataset.href!; }));
   drawTheme();
 }

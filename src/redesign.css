@@ -266,8 +266,14 @@ footer .brand .fox { width: 64px; height: 64px; }
 .ph-flow { display: grid; gap: 0.3rem; min-width: 0; }
 .ph-stack { height: 12px; width: 100%; }
 .ph-stack-k { font: 500 0.6875rem/1.4 var(--mono); color: var(--ink-2); font-variant-numeric: tabular-nums; }
-.ph-cost { font-size: 0.8rem; line-height: 1.35; color: var(--ink-2); }
-.ph-cost b { font-family: var(--mono); font-weight: 700; color: var(--ink); white-space: nowrap; }
+/* cost: two boxed lines, party then independent estimate, and a link to the detail */
+.ph-cost { display: grid; gap: 4px; font-size: 0.78rem; line-height: 1.3; color: var(--ink-2); }
+.ph-cbox { display: flex; justify-content: space-between; align-items: baseline; gap: 0.6rem; padding: 0.3rem 0.5rem; border: 1px solid var(--rule); background: var(--paper); }
+.ph-ck { font: 400 0.6rem var(--pixel); text-transform: uppercase; letter-spacing: 0.03em; color: var(--ink-3); }
+.ph-cost b { font: 700 0.85rem var(--mono); color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ph-cnone, .ph-cbox.is-none > span:last-child { color: var(--ink-3); font-size: 0.74rem; }
+.ph-ccta { justify-self: start; font: 600 0.68rem var(--mono); color: var(--link); cursor: pointer; }
+.ph-ccta:hover { text-decoration: underline; }
 .ph .is-neg { color: var(--down-text); } .ph .is-pos { color: var(--up-text); }
 @media (max-width: 760px) {
   .ph-rows-head { display: none; }
@@ -472,7 +478,16 @@ footer .brand .fox { width: 64px; height: 64px; }
 .scn-btn:disabled:hover { border-color: var(--rule-2); }
 .scn-k span { text-transform: none; letter-spacing: 0; font-weight: 500; }
 .scn-btn.scn-setback::before { content: "⚡"; margin-right: 0.3em; }
-.chart .proj .band { opacity: 0.13; stroke: none; }
+/* projection bands: a dozen overlapping cones read as mud, so each one shows only for the candidate pointed at
+   (hover, or tap: .on), and the other series step back */
+.chart .proj .band { opacity: 0; stroke: none; pointer-events: none; transition: opacity 0.15s; }
+.chart .proj .proj-hit { stroke: transparent; stroke-width: 12; pointer-events: stroke; }
+.chart .axis-break { stroke: var(--ink-3); stroke-width: 1.5; fill: none; opacity: 0.8; }
+.chart .end-lead { stroke-width: 1; opacity: 0.6; fill: none; }
+.chart.has-proj .series { transition: opacity 0.15s; }
+.chart.has-proj .series .end-label { cursor: pointer; }
+.chart.has-proj .series:hover .band, .chart.has-proj .series.on .band { opacity: 0.22; }
+.chart.has-proj:has(.series:hover, .series.on) .series:not(:hover):not(.on) { opacity: 0.22; }
 .chart .proj .proj-line { stroke-width: 2; stroke-dasharray: 2 5; stroke-linecap: round; opacity: 0.9; }
 .chart .marker line { stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 3 4; }
 .chart .marker rect { fill: var(--paper); stroke: var(--ink-3); stroke-width: 1; }

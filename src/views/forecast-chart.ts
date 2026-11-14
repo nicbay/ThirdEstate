@@ -7,7 +7,7 @@ import { fetchJson, type Market } from "../data";
 import { L, fmtDate } from "../i18n";
 import { lineChart, pollDots, type Series } from "../lib/chart";
 import { meta } from "../lib/candidates";
-import { ELECTION_DAY, INCOMPATIBLE, PRIMARY, RALLY_SHARE, SCENARIOS, TREND_CAP, canonical, compatible, forecast, isScenario, type Forecast, type ScenarioKey } from "../lib/forecast";
+import { ELECTION_DAY, INCOMPATIBLE, PRIMARY, MOMENTUM_CAP, MOMENTUM_DAYS, MOMENTUM_TAU, RALLY_SHARE, SCENARIOS, canonical, compatible, forecast, isScenario, type Forecast, type ScenarioKey } from "../lib/forecast";
 import { gradeColor, pollValue, pollsterName, pollsterRating, trend, type PollFile } from "../lib/polls";
 import { dec } from "../lib/format";
 import { esc } from "../util";
@@ -196,7 +196,14 @@ export function mountForecastChart(box: HTMLElement, o: Opts) {
         const pr = fc.projection.find((p) => p.name === (replaced ? "Jordan Bardella" : n));
         const last = line.at(-1);
         if (pr && last && last.date === lastDate) {
-          const knots = pr.knots.map((k, i) => (i === 0 ? { date: last.date, mid: last.value, lo: last.value, hi: last.value } : k));
+          // the chart's average and the model's starting line-up differ a little (house effects, the field scaled to
+          // 100): that gap fades out evenly to the last knot rather than showing as a jump in the first days
+          const gap = last.value - pr.knots[0].mid, tEnd = Date.parse(pr.knots.at(-1)!.date) - Date.parse(last.date);
+          const knots = pr.knots.map((k, i) => {
+            if (i === 0) return { date: last.date, mid: last.value, lo: last.value, hi: last.value };
+            const off = gap * Math.max(0, 1 - (Date.parse(k.date) - Date.parse(last.date)) / Math.max(1, tEnd));
+            return { date: k.date, mid: k.mid + off, lo: Math.max(0, k.lo + off), hi: k.hi + off };
+          });
           const end = knots.at(-1)!;
           const who = replaced ? "Bardella" : m.surname;
           s.proj = pr.outAt ? {
@@ -227,12 +234,12 @@ export function mountForecastChart(box: HTMLElement, o: Opts) {
     // every candidate of the model is on the chart: say the figures add up
     const all = fc.projection.every((p) => series.some((x) => x.name === p.name || (p.name === "Jordan Bardella" && x.name === "Marine Le Pen" && sel.includes("le-pen-out"))));
     key.innerHTML = L(
-      `Ligne pleine : moyenne des sondages jusqu’au ${fmtDate(lastDate)}. Pointillés et chiffres en bout de ligne : la projection au premier tour (${fmtDate(ELECTION_DAY)})${all ? ", 100 % à eux tous" : ""} ; zone : 8 chances sur 10.`,
-      `Solid line: polling average up to ${fmtDate(lastDate)}. Dotted line and the figures at the line ends: the projection to the first round (${fmtDate(ELECTION_DAY)})${all ? ", 100% between them" : ""}; shaded: an 8-in-10 range.`,
+      `Ligne pleine : moyenne des sondages jusqu’au ${fmtDate(lastDate)}. Pointillés et chiffres en bout de ligne : la projection au premier tour (${fmtDate(ELECTION_DAY)})${all ? ", 100 % à eux tous" : ""} ; survolez ou touchez un nom pour sa zone à 8 chances sur 10.`,
+      `Solid line: polling average up to ${fmtDate(lastDate)}. Dotted line and the figures at the line ends: the projection to the first round (${fmtDate(ELECTION_DAY)})${all ? ", 100% between them" : ""}; hover or tap a name for its 8-in-10 range.`,
     ) + (min && !all ? ` ${below}` : "");
     note.innerHTML = `${base ? "" : `<b>${esc(scenarioLabel(sel))}.</b> `}${L(
-      `Pointillés : les sondages tels quels, prolongés d’une tendance lente (un cinquième de celle des quatre derniers mois, ${TREND_CAP} points au plus)${base ? "" : ", plus ce que change le scénario"} ; les scores de tous les candidats (y compris ceux non affichés) font 100 %. Zone colorée : 8 chances sur 10 que le score tombe dedans, selon notre modèle (erreurs de sondage, ralliements tardifs et cygnes noirs tirés au hasard). Personne ne dépasse un plafond tiré du rejet : on ne gagne au plus que la moitié du chemin vers l’électorat qui n’exclut pas de voter pour vous (Mélenchon : ${dec(ceilingOf(fc, "Jean-Luc Mélenchon"))} %).`,
-      `Dotted line: the polls as they are, carried forward with a slow trend (a fifth of the last four months’ trend, ${TREND_CAP} points at most)${base ? "" : ", plus what the scenarios change"}; all candidates’ scores (including those not shown) add up to 100%. Shaded area: an 8-in-10 chance the score lands inside it, in our model (polling error, random late rallies and black swans). Nobody goes above a ceiling drawn from rejection: at most half the way to the electorate that doesn’t rule out voting for them (Mélenchon: ${dec(ceilingOf(fc, "Jean-Luc Mélenchon"))}%).`,
+      `Pointillés : les sondages tels quels, prolongés d’un élan qui s’essouffle (la pente des ${MOMENTUM_DAYS} derniers jours continue puis s’amortit : environ ${MOMENTUM_TAU} jours de cette pente d’ici le vote, ${MOMENTUM_CAP} points au plus)${base ? "" : ", plus ce que change le scénario"} ; les scores de tous les candidats (y compris ceux non affichés) font 100 %. Zone colorée (au survol d’un candidat) : 8 chances sur 10 que le score tombe dedans, selon notre modèle (erreurs de sondage, ralliements tardifs et cygnes noirs tirés au hasard). Personne ne dépasse un plafond tiré du rejet : on ne gagne au plus que la moitié du chemin vers l’électorat qui n’exclut pas de voter pour vous (Mélenchon : ${dec(ceilingOf(fc, "Jean-Luc Mélenchon"))} %).`,
+      `Dotted line: the polls as they are, carried forward with fading momentum (the last ${MOMENTUM_DAYS} days’ slope carries on, then dies away: about ${MOMENTUM_TAU} days’ worth of it by the vote, ${MOMENTUM_CAP} points at most)${base ? "" : ", plus what the scenarios change"}; all candidates’ scores (including those not shown) add up to 100%. Shaded area (when you point at a candidate): an 8-in-10 chance the score lands inside it, in our model (polling error, random late rallies and black swans). Nobody goes above a ceiling drawn from rejection: at most half the way to the electorate that doesn’t rule out voting for them (Mélenchon: ${dec(ceilingOf(fc, "Jean-Luc Mélenchon"))}%).`,
     )}${primLine} <a href="#/2027">${L("La méthode", "The method")}</a>.`;
     o.onChange?.(fc);
   };
@@ -260,6 +267,14 @@ export function mountForecastChart(box: HTMLElement, o: Opts) {
       setUrl(sel);
       draw();
     });
+  // tap (or click) a candidate's line or name: their 8-in-10 band shows and the others step back; tap again to clear
+  chartBox.addEventListener("click", (e) => {
+    const g = (e.target as Element).closest?.(".chart.has-proj .series");
+    if (!g || (e.target as Element).closest("a")) return;
+    const on = g.classList.contains("on");
+    for (const x of chartBox.querySelectorAll(".series.on")) x.classList.remove("on");
+    if (!on) g.classList.add("on");
+  });
   syncButtons();
   draw();
   return draw;
