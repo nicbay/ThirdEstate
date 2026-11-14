@@ -17,16 +17,18 @@ const GROUP_SIDE = {
 };
 
 // Presidential candidates (public/data/candidates/*) don't list their X accounts, so the main ones are here.
+// Checked 14 Nov 2026 against press embeds and campaign material; Villepin left out until his handle is confirmed
+// (his tweets then show under their own @handle, unplaced).
 // Keep in sync with candidates/index.json. Bardella is not a candidate but leads the RN and is quoted daily.
 const CANDIDATE_X = {
   JLMelenchon: ["melenchon", "Jean-Luc Mélenchon", "La France insoumise", "left"],
   n_arthaud: ["arthaud", "Nathalie Arthaud", "Lutte ouvrière", "left"],
+  nathaliearthaud: ["arthaud", "Nathalie Arthaud", "Lutte ouvrière", "left"], // both listed on her 2022 campaign leaflet
   Fabien_Roussel: ["roussel", "Fabien Roussel", "Parti communiste français", "left"],
   marinetondelier: ["tondelier", "Marine Tondelier", "Les Écologistes", "left"],
   rglucks1: ["glucksmann", "Raphaël Glucksmann", "Place publique", "left"],
   GabrielAttal: ["attal", "Gabriel Attal", "Renaissance", "centre"],
   EPhilippe_LH: ["philippe", "Édouard Philippe", "Horizons", "centre"],
-  DeVillepin: ["villepin", "Dominique de Villepin", "La France humaniste", "centre"],
   BrunoRetailleau: ["retailleau", "Bruno Retailleau", "Les Républicains", "right"],
   davidlisnard: ["lisnard", "David Lisnard", "Nouvelle Énergie", "right"],
   dupontaignan: ["dupont-aignan", "Nicolas Dupont-Aignan", "Debout la France", "right"],
