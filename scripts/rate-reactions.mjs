@@ -32,13 +32,13 @@ const SOURCE_DOMAINS = [
 const MARKERS = ["anti_elites", "peuple_vs_elites", "peuple_homogene", "souverainete_populaire", "delegitimation", "complot", "simplisme", "nativisme", "appel_emotionnel"];
 const BANNED = /\b(faux|fausse|fausses|mensong\w*|ment|mentent|menteu\w*|erron\w*|inexact\w*|false|untrue|lie|lies|lying|incorrect|wrong|fake|désinformation|disinformation|misinformation)\b/i;
 
-export const SYSTEM = `Tu analyses des messages publiés sur les réseaux sociaux par des député·es français·es, en réaction à l'actualité. Pour chaque message, tu rends une notation JSON. Juge chaque message séparément : ne le compare pas aux autres messages de la liste. Sois sobre, factuel et équilibré : tes sorties sont publiées sur un site d'information non partisan.
+export const SYSTEM = `Tu analyses des messages publiés sur les réseaux sociaux par des députés français, en réaction à l'actualité. Pour chaque message, tu rends une notation JSON. Juge chaque message séparément : ne le compare pas aux autres messages de la liste. Sois sobre, factuel et équilibré : tes sorties sont publiées sur un site d'information non partisan. Écris en français standard, sans écriture inclusive (pas de point médian).
 
 1. story — Parmi les sujets d'actualité candidats (A, B, C…) fournis avec le message, lequel le message commente-t-il directement ? Réponds par la lettre, ou "none" si aucun ne correspond vraiment (simple ressemblance de mots, sujet différent, message sans rapport).
 
 2. political — true si le message exprime une position, une critique ou une proposition politique ; false pour un message purement pratique (agenda, « je serai sur RTL », remerciements sans contenu).
 
-3. lean — Orientation gauche/droite du CONTENU du message, sur l'axe politique français, de -1 (gauche radicale) à +1 (droite radicale), 0 = centre ou neutre. Juge les idées exprimées (économie, redistribution, immigration, sécurité, écologie, Europe, institutions), pas l'étiquette supposée de l'auteur·e. Repères : -1 rupture anticapitaliste ; -0.5 social-démocratie / écologie de gauche ; 0 centre, consensus, neutre ; +0.5 droite libérale-conservatrice ; +1 droite nationaliste / identitaire. score = null si political = false ou si le message n'a aucun contenu idéologique. rationale_fr / rationale_en : une phrase courte (≤ 25 mots) qui cite ce qui, dans le message, justifie la note.
+3. lean — Orientation gauche/droite du CONTENU du message, sur l'axe politique français, de -1 (gauche radicale) à +1 (droite radicale), 0 = centre ou neutre. Juge les idées exprimées (économie, redistribution, immigration, sécurité, écologie, Europe, institutions), pas l'étiquette supposée de l'auteur. Repères : -1 rupture anticapitaliste ; -0.5 social-démocratie / écologie de gauche ; 0 centre, consensus, neutre ; +0.5 droite libérale-conservatrice ; +1 droite nationaliste / identitaire. score = null si political = false ou si le message n'a aucun contenu idéologique. rationale_fr / rationale_en : une phrase courte (≤ 25 mots) qui cite ce qui, dans le message, justifie la note.
 
 4. populism — 0 (aucune rhétorique populiste) à 1 (très forte), quel que soit le bord. markers : uniquement ceux réellement présents parmi
    anti_elites (attaque « les élites », « la caste », « l'oligarchie »), peuple_vs_elites (peuple pur contre élite corrompue), peuple_homogene (« le peuple veut… » comme bloc unique), souverainete_populaire (la volonté du peuple contre les institutions / contre-pouvoirs), delegitimation (adversaires présentés comme illégitimes, ennemis, traîtres), complot (intentions cachées, manipulation organisée), simplisme (solution simple à un problème complexe), nativisme (« nous » contre les étrangers), appel_emotionnel (indignation ou peur mise en avant à la place d'arguments).
@@ -122,7 +122,7 @@ function buildPrompt(batch, ctx) {
       })
       .join("\n");
     return `### Message i=${i}
-Auteur·e : ${mp ? `${mp.prenom} ${mp.nom}` : post.mpId}, député·e — ${post.platform}, ${post.time.slice(0, 16).replace("T", " ")} UTC
+Auteur : ${mp ? `${mp.prenom} ${mp.nom}` : post.mpId}, député — ${post.platform}, ${post.time.slice(0, 16).replace("T", " ")} UTC
 Texte :
 """
 ${snippet(postText(post), 1200)}

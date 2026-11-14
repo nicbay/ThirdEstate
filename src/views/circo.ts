@@ -28,7 +28,7 @@ export async function renderCirco(app: HTMLElement, code: string) {
               ? `<article class="card mp-head" style="--c:${safeColor(d.groupe?.couleur) ?? "#999"}">
               <img src="${photoUrl(d.id)}" alt="" data-hide-broken />
               <div class="mp-id">
-                <p class="eyebrow">${L("Député·e", "MP")}</p>
+                <p class="eyebrow">${L(d.civ === "Mme" ? "Députée" : "Député", "MP")}</p>
                 <h2><a href="#/depute/${d.id}">${esc(d.prenom)} ${esc(d.nom)}</a></h2>
                 <p><span class="chip">${esc(d.groupe?.abrev ?? "—")}</span> ${esc(d.groupe?.libelle ?? "")}</p>
                 <p class="muted small">${age(d) ?? "?"} ${L("ans", "years old")} · ${esc(d.profession ?? L("profession non déclarée", "no occupation stated"))}</p>
@@ -72,7 +72,7 @@ export async function renderCirco(app: HTMLElement, code: string) {
     app.querySelector("#res")!.innerHTML = rows.length
       ? `<p class="muted small">${L("Participation", "Turnout")} ${fmtPct((100 * r0.Votants) / r0.Inscrits)} · ${fmtNum(r0.Exprimes)} ${L("suffrages exprimés", "valid votes")}</p>
         <ol class="bars">${rows
-          .map((r) => `<li><div class="bar-label"><span><i class="dot" style="background:${nuanceColor(r.CodNuaCand)}"></i>${esc(r.PrenomPsn)} <b>${esc(r.NomPsn)}</b> <span class="muted">${esc(NUANCE_LABEL[r.CodNuaCand] ?? r.CodNuaCand)}</span>${/oui/i.test(r.Elu) ? ` <span class="tag">${L("élu·e au 1er tour", "won outright")}</span>` : /qualif/i.test(r.Elu) ? ` <span class="tag">${L("qualifié·e", "qualified")}</span>` : ""}</span><b>${fmtPct(r.RapportExprimes)}</b></div><div class="bar"><div style="width:${r.RapportExprimes}%;background:${nuanceColor(r.CodNuaCand)}"></div></div></li>`)
+          .map((r) => `<li><div class="bar-label"><span><i class="dot" style="background:${nuanceColor(r.CodNuaCand)}"></i>${esc(r.PrenomPsn)} <b>${esc(r.NomPsn)}</b> <span class="muted">${esc(NUANCE_LABEL[r.CodNuaCand] ?? r.CodNuaCand)}</span>${/oui/i.test(r.Elu) ? ` <span class="tag">${L("victoire au 1er tour", "won outright")}</span>` : /qualif/i.test(r.Elu) ? ` <span class="tag">${L("au second tour", "qualified")}</span>` : ""}</span><b>${fmtPct(r.RapportExprimes)}</b></div><div class="bar"><div style="width:${r.RapportExprimes}%;background:${nuanceColor(r.CodNuaCand)}"></div></div></li>`)
           .join("")}</ol>
         <p class="source muted">${L("Requête en direct : ministère de l’Intérieur via l’API data.gouv.fr", "Live query: Ministry of the Interior via the data.gouv.fr API")} · <a href="${esc(url)}" target="_blank" rel="noopener">API</a></p>`
       : `<p class="muted">${L("Aucun résultat trouvé pour cette circonscription.", "No result found for this district.")}</p>`;

@@ -34,7 +34,7 @@ export function setHome(h: Home | null) {
   } catch {
     /* private mode */
   }
-  presence?.track({ dep: h?.dep ?? null });
+  presence?.track(presencePayload());
   for (const fn of homeListeners) fn(h);
 }
 const homeListeners = new Set<(h: Home | null) => void>();
@@ -47,10 +47,15 @@ export async function lookupPostcode(cp: string) {
   return (await r.json()) as { nom: string; code: string; codeDepartement: string; departement?: { nom: string } }[];
 }
 
-// ---------- live visitors (Realtime Presence: only a department code is shared) ----------
+// ---------- live visitors (Realtime Presence: anonymous; a department, and the town only if the reader set it) ----------
 type Counts = Map<string, number>;
+/** towns readers marked as theirs, among those online now: code → { name, n } */
+export type TownCounts = Map<string, { name: string; dep: string; n: number }>;
 let presence: ReturnType<SupabaseClient["channel"]> | null = null;
-const presenceListeners = new Set<(c: Counts, total: number) => void>();
+const presenceListeners = new Set<(c: Counts, total: number, towns: TownCounts) => void>();
+let lastTowns: TownCounts = new Map();
+/** What a visitor shares while online: their department and, if they chose it, their town (code and name). */
+const presencePayload = () => { const h = getHome(); return { dep: h?.dep ?? null, code: h?.code ?? null, town: h?.code ? h.commune ?? null : null }; };
 
 export function joinPresence() {
   if (!cloud || presence) return;
@@ -58,27 +63,36 @@ export function joinPresence() {
   presence = cloud.channel("visitors", { config: { presence: { key: id } } });
   presence
     .on("presence", { event: "sync" }, () => {
-      const state = presence!.presenceState<{ dep: string | null }>();
+      const state = presence!.presenceState<{ dep: string | null; code?: string | null; town?: string | null }>();
       const counts: Counts = new Map();
+      const towns: TownCounts = new Map();
       let total = 0;
       for (const metas of Object.values(state)) {
         total++;
-        const dep = metas[0]?.dep;
-        if (dep) counts.set(dep, (counts.get(dep) ?? 0) + 1);
+        const m = metas[0];
+        if (m?.dep && /^(\d{2,3}|2[AB])$/.test(m.dep)) counts.set(m.dep, (counts.get(m.dep) ?? 0) + 1);
+        // other visitors' payloads are untrusted: a town is kept only with a valid code and a short name
+        if (m?.code && /^(\d{5}|2[AB]\d{3})$/.test(m.code) && typeof m.town === "string") {
+          const t = towns.get(m.code) ?? { name: m.town.slice(0, 60), dep: m.dep ?? "", n: 0 };
+          t.n++;
+          towns.set(m.code, t);
+        }
       }
-      for (const fn of presenceListeners) fn(counts, total);
+      lastTowns = towns;
+      for (const fn of presenceListeners) fn(counts, total, towns);
     })
     .subscribe((status) => {
-      if (status === "SUBSCRIBED") presence!.track({ dep: getHome()?.dep ?? null });
+      if (status === "SUBSCRIBED") presence!.track(presencePayload());
     });
 }
-export function onPresence(fn: (c: Counts, total: number) => void) {
+export function onPresence(fn: (c: Counts, total: number, towns: TownCounts) => void) {
   presenceListeners.add(fn);
   if (!cloud) {
     // offline: only this visit
     const h = getHome();
-    fn(new Map(h ? [[h.dep, 1]] : []), 1);
+    fn(new Map(h ? [[h.dep, 1]] : []), 1, h?.code ? new Map([[h.code, { name: h.commune ?? h.code, dep: h.dep, n: 1 }]]) : new Map());
   }
+  void lastTowns;
   return () => presenceListeners.delete(fn);
 }
 

@@ -32,7 +32,7 @@ export async function renderFeed(app: HTMLElement) {
       </header>
       <div id="stories"></div>
       <p class="source">${L(
-        `Mis à jour le ${fmtDate(feed.generatedAt)}. Presse : flux RSS publics ; les messages X sont ceux intégrés ou liés dans les articles (X n’est pas lu directement, son accès est payant). Quelques réactions de député·es sur Bluesky, YouTube ou Mastodon s’y ajoutent quand elles renvoient à l’article ou correspondent nettement au sujet, jamais plus nombreuses que les messages cités par la presse. Analyse du contenu par Claude Haiku 5.5 : une IA peut se tromper, chaque note est expliquée.`,
+        `Mis à jour le ${fmtDate(feed.generatedAt)}. Presse : flux RSS publics ; les messages X sont ceux intégrés ou liés dans les articles (X n’est pas lu directement, son accès est payant). Quelques réactions de députés sur Bluesky, YouTube ou Mastodon s’y ajoutent quand elles renvoient à l’article ou correspondent nettement au sujet, jamais plus nombreuses que les messages cités par la presse. Analyse du contenu par Claude Haiku 5.5 : une IA peut se tromper, chaque note est expliquée.`,
         `Updated ${fmtDate(feed.generatedAt)}. Press: public RSS feeds; the X posts are those embedded in or linked from the articles (X itself isn’t read because access is paid). A few MPs’ posts on Bluesky, YouTube or Mastodon are added when they link to the article or clearly match the story, never outnumbering the posts the press quoted. Content rated by Claude Haiku 5.5: an AI can be wrong, and every rating is explained.`,
       )} <a href="#/sources">${L("Méthode", "Method")}</a></p>
     </section>`;
@@ -84,7 +84,7 @@ function storyBlock(s: FeedStory, ps: FeedPress[], rs: FeedReaction[], outletNam
       }
       ${
         rs.length
-          ? `<div class="feed-others"><p class="feed-col-head">${L("Aussi sur les réseaux (député·es)", "Also on social media (MPs)")}</p>${rs.map((r) => reaction(r, fr)).join("")}</div>`
+          ? `<div class="feed-others"><p class="feed-col-head">${L("Aussi sur les réseaux (députés)", "Also on social media (MPs)")}</p>${rs.map((r) => reaction(r, fr)).join("")}</div>`
           : ""
       }
     </article>`;
@@ -120,9 +120,9 @@ function pressPost(p: FeedPress, outletName: Map<string, string>, fr: boolean) {
     p.sideFrom === "content"
       ? L("placé d’après le contenu du message", "placed from the post’s content")
       : p.sideFrom === "group"
-        ? L(`placé d’après le groupe de l’auteur·e (${a.group?.abrev ?? ""})`, `placed from the author’s group (${a.group?.abrev ?? ""})`)
+        ? L(`placé d’après le groupe de l’auteur (${a.group?.abrev ?? ""})`, `placed from the author’s group (${a.group?.abrev ?? ""})`)
         : p.sideFrom === "party"
-          ? L(`placé d’après le parti de l’auteur·e (${a.party ?? ""})`, `placed from the author’s party (${a.party ?? ""})`)
+          ? L(`placé d’après le parti de l’auteur (${a.party ?? ""})`, `placed from the author’s party (${a.party ?? ""})`)
           : "";
   const quoted = p.quotedBy
     .map((q) => `<a href="${esc(safeUrl(q.link))}" target="_blank" rel="noopener" title="${esc(q.title)}">${esc(outletName.get(q.outlet) ?? q.outlet)}</a>`)

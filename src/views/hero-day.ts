@@ -5,6 +5,7 @@
 import "../styles/hero-day.css";
 import { infoTip } from "../lib/infotip";
 import { geoConicConformal, geoPath } from "d3-geo";
+import { getHome, onPresence } from "../lib/cloud";
 import { fetchJson, loadDepartements, loadDeputes, loadFeed, loadMarkets, loadPolls, loadShifts, type FeedReaction } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
 import { meta, registerParties } from "../lib/candidates";
@@ -151,8 +152,14 @@ export async function heroDay() {
   // ---- widget 1: the Assembly, 577 dots that fly from the map into the seats
   const pair = shifts?.pairs.filter((p) => p.level === "district").at(-1);
   const viz = heroViz(geo, deputes, pair, true); // drawn on the night band, whatever the theme
-  const parliamentHtml = `<section class="hw hw-parl" aria-labelledby="hw-parl">
-    <a class="hw-head" href="#/assemblee"><span class="hero-kicker">${L("Parlement", "Parliament")}</span><b id="hw-parl">${L("577 sièges, et comment vote le vôtre", "577 seats, and how yours votes")}</b><span>${L("577 députés et 348 sénateurs : chacun de leurs votes, leur loyauté envers le groupe, ce qu’ils disent en séance.", "577 MPs and 348 senators: every vote they cast, their loyalty to their group, what they say in the chamber.")}</span></a>
+  // widget 1: who is reading right now, department by department, and the towns readers marked as theirs
+  const parliamentHtml = `<section class="hw hw-live" aria-labelledby="hw-live">
+    <div class="hw-head"><span class="hero-kicker"><i class="live-dot" aria-hidden="true"></i>${L("En direct", "Live")}</span><b id="hw-live">${L("Qui lit Third Estate en ce moment", "Who's reading Third Estate right now")}</b><span id="live-sum">${L("Connexion…", "Connecting…")}</span></div>
+    <figure class="hw-fig"><svg id="live-map" viewBox="0 0 600 580" role="img" aria-label="${L("Lecteurs en ligne par département", "Readers online by department")}"></svg>
+      <figcaption><p class="live-k">${L("Communes revendiquées par les lecteurs en ligne", "Towns claimed by readers online")}</p><ul class="live-towns" id="live-towns"></ul>
+      <p class="small">${getHome()?.code ? L(`Vous : <a href="#/ville/${getHome()!.code}">${esc(getHome()!.commune ?? "")}</a>`, `You: <a href="#/ville/${getHome()!.code}">${esc(getHome()!.commune ?? "")}</a>`) : `<a href="#/explorer">${L("Revendiquez votre commune", "Claim your town")} →</a>`}</p>
+      <p class="tiny muted">${L("Anonyme : seuls le département et, si vous l’avez choisie, la commune sont partagés, le temps de la visite.", "Anonymous: only the department and, if you chose it, the town are shared, for the length of the visit.")}</p></figcaption>
+    </figure>
   </section>`;
   // the hero's art: the 577 districts on the map of France, flying into the 577 seats of the Assembly and back
   const artHtml = `<figure class="hday-art hw-fig">${viz.svg}<figcaption><div class="hd-toggle" role="group" aria-label="${L("Vue", "View")}"><button type="button" data-hd="map">${L("Circonscriptions", "Districts")}</button><button type="button" data-hd="hemi">${L("Sièges", "Seats")}</button></div><p id="hd-caption"></p>${viz.legend}</figcaption></figure>`;
@@ -188,6 +195,33 @@ export async function heroDay() {
   const start = (root: HTMLElement) => {
     const art = root.querySelector<HTMLElement>(".hday-art");
     if (art) viz.start(art);
+    // the live map: departments shaded by readers online, refreshed on every presence change
+    const liveSvg = root.querySelector<SVGSVGElement>("#live-map");
+    if (liveSvg) {
+      const deps = geo.features.map(rewind).filter((f) => f.properties!.code.length === 2);
+      const lproj = geoConicConformal().parallels([44, 49]).rotate([-3, 0]).fitExtent([[8, 8], [592, 572]], { type: "FeatureCollection", features: deps } as GeoJSON.FeatureCollection);
+      const lpath = geoPath(lproj);
+      const centre = new Map(deps.map((f) => [f.properties!.code as string, lpath.centroid(f)]));
+      liveSvg.innerHTML = deps.map((f) => `<path d="${lpath(f)}" data-dep="${f.properties!.code}" class="live-dep"/>`).join("") + `<g id="live-pings"></g>`;
+      const off = onPresence((counts, total, towns) => {
+        if (!document.body.contains(liveSvg)) return off();
+        const max = Math.max(1, ...counts.values());
+        liveSvg.querySelectorAll<SVGPathElement>(".live-dep").forEach((p) => {
+          const n = counts.get(p.dataset.dep!) ?? 0;
+          p.style.setProperty("--k", n ? (0.25 + 0.75 * (n / max)).toFixed(2) : "0");
+          p.classList.toggle("is-on", n > 0);
+          p.dataset.tip = `${geo.features.find((f) => f.properties!.code === p.dataset.dep)?.properties?.nom ?? p.dataset.dep}\n${n} ${L(n > 1 ? "lecteurs en ligne" : "lecteur en ligne", n > 1 ? "readers online" : "reader online")}`;
+        });
+        // a soft ping on every department with readers
+        root.querySelector("#live-pings")!.innerHTML = [...counts].map(([d]) => { const c = centre.get(d); return c ? `<circle cx="${c[0].toFixed(1)}" cy="${c[1].toFixed(1)}" r="5" class="live-ping"/>` : ""; }).join("");
+        const located = [...counts.values()].reduce((a, b) => a + b, 0);
+        root.querySelector("#live-sum")!.textContent = L(`${total} ${total > 1 ? "lecteurs" : "lecteur"} en ce moment, dont ${located} ${located > 1 ? "situés" : "situé"} sur la carte.`, `${total} ${total > 1 ? "readers" : "reader"} right now, ${located} of them on the map.`);
+        const list = [...towns].sort((a, b) => b[1].n - a[1].n).slice(0, 8);
+        root.querySelector("#live-towns")!.innerHTML = list.length
+          ? list.map(([code, t]) => `<li><a href="#/ville/${code}">${esc(t.name)}</a>${t.n > 1 ? ` <b>${t.n}</b>` : ""}</li>`).join("")
+          : `<li class="muted">${L("Aucune pour l’instant.", "None yet.")}</li>`;
+      });
+    }
     const svg = root.querySelector<SVGSVGElement>("#hday-arrows");
     if (!svg || !pair) return;
     const draw = () => {

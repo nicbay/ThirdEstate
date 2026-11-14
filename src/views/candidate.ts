@@ -401,7 +401,7 @@ async function fillParliament(app: HTMLElement, d: CandidateFile) {
       const recent = scrutins.filter((s) => votes[s[0]] && votes[s[0]] !== "-").sort((a, b) => b[1].localeCompare(a[1]) || b[0].localeCompare(a[0], undefined, { numeric: true })).slice(0, 6)
         .map((s) => ({ date: s[1], title: s[2], result: s[3], v: votes[s[0]] }));
       return void (box()!.innerHTML = parlBlock({
-        who: L(`Sénateur·rice (${sen.circonscription})`, `Senator (${sen.circonscription})`), group: sen.groupe?.libelle ?? "", href: `#/senateur/${sen.id}`,
+        who: L(`Au Sénat (${sen.circonscription})`, `Senator (${sen.circonscription})`), group: sen.groupe?.libelle ?? "", href: `#/senateur/${sen.id}`,
         label: L("Sa page de sénateur : tous ses votes", "Their senator page: every vote"), stats: sen.stats ?? null, recent,
       }));
     }
