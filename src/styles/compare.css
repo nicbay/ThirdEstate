@@ -64,8 +64,8 @@
 .cmp-bars i.a { justify-self: end; background: var(--cmp-a); }
 .cmp-bars i.b { justify-self: start; background: var(--cmp-b); }
 .cmp-row-text .cmp-row-vals { grid-template-columns: 1fr 0.2fr 1fr; align-items: start; }
-.cmp-winner { display: grid; gap: 0.1rem; font: 400 0.95rem var(--text); white-space: normal; border-left: 4px solid var(--c); padding-left: 0.5rem; }
-.cmp-v.b .cmp-winner { border-left: 0; border-right: 4px solid var(--c); padding: 0 0.5rem 0 0; }
+.cmp-winner { display: grid; gap: 0.1rem; font: 400 0.95rem var(--text); white-space: normal; }
+.cmp-winner b::before { content: ""; display: inline-block; width: 0.6rem; height: 0.6rem; margin-right: 0.35rem; background: var(--c); vertical-align: 0.05em; }
 
 @media (max-width: 640px) {
   .cmp-heads { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 0.6rem; }
