@@ -19,6 +19,10 @@ import { renderTownPolice } from "./town-police";
 import { renderTownState } from "./town-state";
 import { renderQuartiers } from "./quartiers";
 import { mpChip, townBrief } from "./brief";
+import { loadRankMeta, rankHref, rankIn, rankText, townRankings, townRanks } from "../lib/rankings";
+import { residentBalance } from "../lib/redistribution";
+import { loadStateBalance } from "./town-state";
+import "../styles/rankings.css";
 import { armsSlot, loadCommuneArms, loadDepartmentArms, paintArms } from "../lib/arms";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -618,6 +622,8 @@ export async function renderTown(app: HTMLElement, code: string) {
           : ""
       }
 
+      <div id="town-ranks"></div>
+
       <div class="grid-2">
         <section class="card">
           <header class="card-head"><h2>${L("Ce qui fait vivre la commune", "What makes the town tick")}</h2></header>
@@ -647,6 +653,7 @@ export async function renderTown(app: HTMLElement, code: string) {
       <nav class="doors">${mps.map(({ d }) => `<a class="door" href="#/circo/${d.code}"><b>${L("Toute la circonscription", "The whole district")} ${d.code.slice(-2)}</b><span class="muted small">${L("Résultats électoraux, député, chiffres détaillés", "Election results, MP, detailed figures")}</span></a>`).join("")}<a class="door" href="#/explorer/${dep}"><b>${L("Les autres communes du département", "Other towns in the department")}</b><span class="muted small">${L("Liste et carte", "List and map")}</span></a></nav>
     </section>`;
   bindSearch(app);
+  void drawTownRanks(app.querySelector<HTMLElement>("#town-ranks"), code, name, t?.income);
   // the town's coat of arms, and the department's beside it (a link to the department, its towns and MPs)
   void Promise.all([loadCommuneArms(dep), loadDepartmentArms()]).then(([ca, da]) => {
     const box = app.querySelector<HTMLElement>("#town-arms");
@@ -727,4 +734,18 @@ export async function renderTown(app: HTMLElement, code: string) {
     }
     show(rows[0].dataset.crime!);
   });
+}
+
+/** Where the town stands in France on every ranked figure, each a link to the ranking with the town highlighted.
+ *  A balance is ranked on the side the town is on (contributor or beneficiary). */
+async function drawTownRanks(box: HTMLElement | null, code: string, name: string, income?: number) {
+  if (!box) return;
+  const [ranks, meta, state] = await Promise.all([townRanks(code).catch(() => ({})), loadRankMeta().catch(() => null), loadStateBalance(code).catch(() => null)]);
+  const list = townRankings({ townhall: state?.balance, resident: income ? residentBalance(income).net : null })
+    .map((rk) => ({ rk, r: rankIn(rk, ranks, meta) }))
+    .filter((x): x is { rk: typeof x.rk; r: [number, number] } => !!x.r);
+  if (!list.length || !box.isConnected) return;
+  box.innerHTML = `<section class="card"><header class="card-head" id="classements"><h2>${L(`Où se classe ${esc(name)}`, `Where ${esc(name)} ranks`)}</h2><a href="#/classements">${L("Tous les classements", "All rankings")} →</a></header>
+    <ul class="town-ranks">${list.map(({ rk, r }) => `<li><a href="${rankHref(rk, code)}"><span>${esc(L(...rk.label))}</span></a><b>${rankText(r)}</b></li>`).join("")}</ul>
+    <p class="muted tiny">${L("Rang en France parmi les communes qui ont ce chiffre (1 : la première dans l’ordre du classement). Cliquez pour voir le classement, filtrer par département ou par taille.", "Rank in France among the towns that have the figure (1: first in the ranking’s order). Click to see the ranking, filter by department or size.")}</p></section>`;
 }

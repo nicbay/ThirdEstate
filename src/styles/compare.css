@@ -113,3 +113,18 @@
   .cmp-mid-label { grid-area: m; border: 0; }
   .cmp-v.a { grid-area: va; } .cmp-v.b { grid-area: vb; } .cmp-bar.a { grid-area: ba; } .cmp-bar.b { grid-area: bb; }
 }
+/* the gap's town name stays inside the middle column: shortened in the markup, clipped here if still too long */
+.cmp-mid-label { min-width: 0; }
+.cmp-mid-label .cmp-gap { display: block; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+.cmp-score span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+/* the two balances: their labels open the worked calculation, which spans the whole row */
+.cmp-calc-btn { all: unset; cursor: pointer; font-size: 0.84rem; color: var(--ink-2); line-height: 1.2; text-decoration: underline dotted; text-underline-offset: 3px; }
+.cmp-calc-btn:hover { color: var(--ink); }
+.cmp-calc-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.cmp-rows > .cmp-calc { display: block; grid-column: 1 / -1; padding: 0.5rem 0; }
+.cmp-calc summary { cursor: pointer; font: 600 0.78rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; }
+.cmp-calc-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem 2rem; margin-top: 0.7rem; }
+.cmp-calc h4 { margin: 0.6rem 0 0.3rem; font-size: 0.95rem; }
+.cmp-calc-t td { padding: 0.3rem 0.4rem 0.3rem 0; font-size: 0.85rem; }
+.cmp-calc-sum td { border-top: 2px solid var(--ink); border-bottom: 0; }
+.cmp-v .rank-of { margin-top: 0.1rem; }
