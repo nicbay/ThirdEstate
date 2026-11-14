@@ -18,6 +18,7 @@
     "sync:markets": "node scripts/sync-markets.mjs",
     "sync:results": "node scripts/sync-results.mjs",
     "sync:economy": "node scripts/sync-economy.mjs",
+    "sync:arms": "node scripts/sync-arms.mjs",
     "sync:forecast": "esbuild scripts/forecast-history.ts --bundle --platform=node --format=esm --outfile=.cache/forecast-history.mjs --log-level=warning && node .cache/forecast-history.mjs",
     "sync:parrainages": "node scripts/sync-parrainages.mjs",
     "sync:daily": "esbuild scripts/daily-brief.ts --bundle --platform=node --format=esm --packages=external --outfile=.cache/daily-brief.mjs --log-level=warning && node .cache/daily-brief.mjs"
