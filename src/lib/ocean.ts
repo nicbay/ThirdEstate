@@ -24,7 +24,7 @@ precision highp float;
 precision mediump float;
 #endif
 uniform vec2 uRes; uniform float uT; uniform float uCell; uniform vec2 uOff; uniform float uShare; uniform float uSide;
-uniform vec2 uMe; uniform float uOpen; uniform float uR; uniform float uDpr; uniform vec4 uMask;
+uniform vec2 uMe; uniform float uOpen; uniform float uR; uniform float uDpr; uniform vec4 uMask; uniform vec4 uMask2;
 // a cell's identity, hashed in two small parts so precision never smears neighbours together
 float h1(vec2 p){ p = fract(p * vec2(0.1031, 0.1030)); p += dot(p, p.yx + 33.33); return fract((p.x + p.y) * p.x); }
 float hash(vec2 c){ vec2 lo = mod(c, 64.0), hi = floor(c / 64.0); return fract(h1(lo + 0.5) + h1(hi * 1.37 + 7.0) * 1.618); }
@@ -77,9 +77,10 @@ void main(){
   }
   vec2 uv = frag / uRes;
   float dMe = r / uDpr;                             // CSS px from the reader's pixel
-  // no pixels behind the chart: they fade out over a soft edge around its box (CSS px)
+  // no pixels behind the chart or the seats animation: they fade out over a soft edge around each box (CSS px)
   vec2 q = max(uMask.xy - frag, frag - uMask.zw) / uDpr;
-  float outside = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0);
+  vec2 q2 = max(uMask2.xy - frag, frag - uMask2.zw) / uDpr;
+  float outside = min(length(max(q, 0.0)) + min(max(q.x, q.y), 0.0), length(max(q2, 0.0)) + min(max(q2.x, q2.y), 0.0));
   float clear = smoothstep(0.0, 56.0, outside);
   // and they thin out toward the bottom of the band instead of stopping at its edge
   float bottom = 1.0 - smoothstep(0.55, 0.97, uv.y);
@@ -125,7 +126,7 @@ export function mountOcean(host: HTMLElement) {
   gl.enableVertexAttribArray(loc);
   gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
   const u = (n: string) => gl.getUniformLocation(prog, n);
-  const U = { res: u("uRes"), t: u("uT"), cell: u("uCell"), off: u("uOff"), share: u("uShare"), side: u("uSide"), me: u("uMe"), open: u("uOpen"), r: u("uR"), dpr: u("uDpr"), mask: u("uMask") };
+  const U = { res: u("uRes"), t: u("uT"), cell: u("uCell"), off: u("uOff"), share: u("uShare"), side: u("uSide"), me: u("uMe"), open: u("uOpen"), r: u("uR"), dpr: u("uDpr"), mask: u("uMask"), mask2: u("uMask2") };
   gl.uniform1f(U.share, REGISTERED / POPULATION);
   gl.uniform1f(U.side, SIDE);
   // which window onto the 69 million this visit shows
@@ -148,11 +149,12 @@ export function mountOcean(host: HTMLElement) {
   const canHover = matchMedia("(hover: hover) and (pointer: fine)").matches;
   if (canHover) host.append(me, say);
   const chart = host.querySelector<HTMLElement>(".hday-chart");
+  const art = host.querySelector<HTMLElement>(".hday-art"), intro = host.querySelector<HTMLElement>(".hday-intro");
 
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let dpr = 1, meX = 0, meY = 0, R = 120, raf = 0, visible = true, pinned = false, hover = false;
   let open = 0, openTarget = 0;
-  let mask = [0, 0, 0, 0];
+  let mask = [0, 0, 0, 0], mask2 = [-9, -9, -9, -9];
   const t0 = performance.now();
 
   let last = performance.now();
@@ -170,6 +172,7 @@ export function mountOcean(host: HTMLElement) {
     gl.uniform1f(U.open, e);
     gl.uniform1f(U.r, R * dpr);
     gl.uniform4f(U.mask, mask[0] * dpr, mask[1] * dpr, mask[2] * dpr, mask[3] * dpr);
+    gl.uniform4f(U.mask2, mask2[0] * dpr, mask2[1] * dpr, mask2[2] * dpr, mask2[3] * dpr);
     say.style.opacity = e.toFixed(3);
     gl.clearColor(0, 0, 0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT);
@@ -198,11 +201,22 @@ export function mountOcean(host: HTMLElement) {
     R = Math.max(90, Math.min(wide ? 120 : 104, (room - 6) / 1.6));
     meX = Math.floor(Math.min(r.width * (wide ? 0.8 : 0.84), r.width - R * 0.8 - 6) / CELL) * CELL;
     meY = Math.floor((R * 0.8 + 3) / CELL) * CELL;
+    // with the seats animation on the right, the reader's pixel sits in the open space above the intro text
+    if (intro && art && wide) {
+      const ib = intro.getBoundingClientRect();
+      R = 84;
+      meX = Math.floor((ib.right - r.left - R * 0.9) / CELL) * CELL;
+      meY = Math.floor(Math.max(R * 0.55, ib.top - r.top - 46) / CELL) * CELL;
+    }
     for (const el of [me, say]) { el.style.left = `${meX + CELL / 2}px`; el.style.top = `${meY + CELL / 2}px`; }
     say.style.setProperty("--r", `${R}px`);
     if (chart) {
       const c = chart.getBoundingClientRect();
       mask = [c.left - r.left, c.top - r.top, c.right - r.left, c.bottom - r.top];
+    }
+    if (art) {
+      const a = art.getBoundingClientRect();
+      mask2 = [a.left - r.left, a.top - r.top, a.right - r.left, a.bottom - r.top];
     }
     frame(performance.now());
     kick();
@@ -226,6 +240,7 @@ export function mountOcean(host: HTMLElement) {
   const ro = new ResizeObserver(place);
   ro.observe(host);
   if (chart) ro.observe(chart);
+  if (art) ro.observe(art);
   const io = new IntersectionObserver((es) => { visible = es.some((e) => e.isIntersecting); if (visible) kick(); });
   io.observe(host);
   const onVis = () => { if (!document.hidden) kick(); };
