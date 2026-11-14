@@ -1,0 +1,121 @@
+{
+  "generated": "2026-11-14T12:12:39.990Z",
+  "coverage": [
+    {
+      "person": "Nicolas Dupont-Aignan",
+      "chamber": "AN",
+      "from": "2012-06-20",
+      "to": "2016-11-24",
+      "votes": 130
+    },
+    {
+      "person": "Nicolas Dupont-Aignan",
+      "chamber": "AN",
+      "from": "2017-06-21",
+      "to": "2022-06-21",
+      "votes": 328
+    },
+    {
+      "person": "Nicolas Dupont-Aignan",
+      "chamber": "AN",
+      "from": "2022-06-22",
+      "to": "2024-06-09",
+      "votes": 185
+    }
+  ],
+  "notCovered": [
+    {
+      "person": "Nicolas Dupont-Aignan",
+      "chamber": "AN",
+      "from": "1997-06-12",
+      "to": "2012-06-19",
+      "why": {
+        "fr": "Votes antérieurs à 2012 (11e à 13e législatures) : pas de données de vote nominatif ouvertes au même format.",
+        "en": "Votes before 2012 (11th–13th legislatures): no open roll-call data in the same format."
+      }
+    },
+    {
+      "person": "Nicolas Dupont-Aignan",
+      "chamber": "AN",
+      "from": "2016-11-24",
+      "to": "2017-06-20",
+      "why": {
+        "fr": "Le fichier ouvert des scrutins de la 14e législature s'arrête le 2016-11-24 : les votes suivants ne sont pas couverts.",
+        "en": "The open roll-call file for the 14th legislature stops on 2016-11-24: later votes are not covered."
+      }
+    },
+    {
+      "person": "Nicolas Dupont-Aignan",
+      "chamber": "AN",
+      "from": "2024-07-18",
+      "to": null,
+      "why": {
+        "fr": "Battu aux élections législatives de 2024 : il ne siège plus à l'Assemblée.",
+        "en": "Lost his seat at the 2024 general election: no longer in the Assembly."
+      }
+    },
+    {
+      "person": "Debout la France",
+      "chamber": "AN",
+      "from": "2024-07-18",
+      "to": null,
+      "why": {
+        "fr": "Aucun député de Debout la France dans l'Assemblée élue en 2024.",
+        "en": "Debout la France has no MP in the Assembly elected in 2024."
+      }
+    },
+    {
+      "person": "Nicolas Dupont-Aignan",
+      "chamber": "Sénat",
+      "from": null,
+      "to": null,
+      "why": {
+        "fr": "Jamais sénateur.",
+        "en": "Never a senator."
+      }
+    },
+    {
+      "person": "Nicolas Dupont-Aignan",
+      "chamber": "PE",
+      "from": null,
+      "to": null,
+      "why": {
+        "fr": "Jamais député européen (sa liste n'a pas eu d'élu en 2019 ni en 2024).",
+        "en": "Never an MEP (his list won no seat in 2019 or 2024)."
+      }
+    }
+  ],
+  "people": [
+    {
+      "name": "Nicolas Dupont-Aignan",
+      "role": {
+        "fr": "Député de l'Essonne (1997-2024), président de Debout la France",
+        "en": "MP for Essonne (1997–2024), leader of Debout la France"
+      }
+    }
+  ],
+  "contradictions": [
+    {
+      "person": "Nicolas Dupont-Aignan",
+      "chamber": "AN",
+      "legislature": 15,
+      "date": "2020-06-15",
+      "num": 2756,
+      "title": "l'ensemble du projet de loi relatif à la dette sociale et à l'autonomie (première lecture).",
+      "url": "https://www.assemblee-nationale.fr/dyn/15/scrutins/2756",
+      "position": "C",
+      "measure": {
+        "lineage": "d22",
+        "label": {
+          "fr": "Faire de la dépendance une cinquième branche de la Sécurité sociale",
+          "en": "Make long-term care a fifth branch of social security"
+        }
+      },
+      "explanation": {
+        "fr": "Il a voté contre la loi de 2020 qui a créé la cinquième branche « autonomie » qu'il propose en 2022 ; ce texte organisait surtout le transfert de 136 Md€ de dette sociale à la CADES, ce qui peut expliquer son vote.",
+        "en": "He voted against the 2020 law that created the 'autonomy' fifth branch he proposed in 2022; the bill mainly moved €136bn of social debt to CADES, which may explain his vote."
+      },
+      "strength": "partial"
+    }
+  ]
+}
