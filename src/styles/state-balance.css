@@ -14,7 +14,7 @@
 .sb-two .sb-verdict { margin-bottom: 0.5rem; }
 .sb-why { margin: 0 0 1rem; padding-left: 1.1rem; display: grid; gap: 0.2rem; font-size: 0.88rem; color: var(--ink-2); }
 .sb-why b { color: var(--ink); font-variant-numeric: tabular-nums; }
-.sb-explain { border-left: 3px solid var(--rule-2); padding-left: 0.9rem; margin: 0.2rem 0 1rem; max-width: 70ch; display: grid; gap: 0.5rem; }
+.sb-explain { background: var(--panel); border-top: 3px solid var(--ink); padding: 0.7rem 0.9rem; margin: 0.2rem 0 1rem; max-width: 70ch; display: grid; gap: 0.5rem; }
 .sb-explain h3 { margin: 0; font-size: 0.95rem; }
 .sb-explain p { margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--ink-2); }
 
