@@ -91,6 +91,10 @@ for (const r of RATINGS.pollsters ?? []) for (const n of [r.name, ...(r.aliases 
 export function pollsterRating(raw: string): PollsterRating | null {
   return byName.get(flat(raw)) ?? byName.get(flat(pollsterName(raw))) ?? null;
 }
+/** The id of an institute's row on the ranking page, for links (#/sondages/instituts#pg-…). */
+export const pollsterAnchor = (name: string) => `pg-${(pollsterRating(name)?.name ?? pollsterName(name)).normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
+/** Grade colours, as on the ranking page's badges (A green to F red; ungraded grey). */
+export const gradeColor = (g: Grade | null | undefined) => (!g ? "#8a8d99" : ({ A: "#2fae66", B: "#7cb342", C: "#d69a1c", D: "#e0703a", F: "#e04a3f" } as Record<string, string>)[g[0]] ?? "#8a8d99");
 /** How much a poll counts in the average (its institute's grade weight). */
 export const pollWeight = (p: Pick<Poll, "pollster">) => pollsterRating(p.pollster)?.weight ?? UNRATED_WEIGHT;
 

@@ -14,21 +14,39 @@ export interface Series {
   final?: { date: string; value: number; title: string };
   /** Projection: a dotted line through the knots' `mid` inside a band through their [lo, hi]; the first knot is
    *  today (lo = mid = hi), and the band opens like a funnel from there. */
+  /** a ring around one point (the latest poll), in a given colour */
+  ring?: { date: string; value: number; color: string; title: string };
   proj?: { knots: { date: string; mid: number; lo: number; hi: number }[]; label?: string; title?: string; /** the candidate withdraws at the last knot: the line stops there with a cross */ out?: boolean };
 }
 
-export function lineChart(series: Series[], opts: { height?: number; yMax?: number; markers?: { date: string; label: string; title?: string }[]; /** a short head over the end labels, saying what the figures there are */ endHead?: string } = {}) {
+/** One mark per poll under the plot: a short text (the institute's grade) in a colour, linked. */
+export interface RugMark { date: string; text: string; color: string; href: string; title: string }
+
+export function lineChart(series: Series[], opts: { height?: number; yMax?: number; markers?: { date: string; label: string; title?: string }[]; /** a short head over the end labels, saying what the figures there are */ endHead?: string; /** marks along the bottom, one per poll, with a label at the left */ rug?: { marks: RugMark[]; label: string } } = {}) {
   // Phones get a narrower canvas so labels stay at 11px or more on a 343px-wide chart (16px units × 343/460).
   const compact = typeof window !== "undefined" && window.innerWidth < 640;
   const head = opts.endHead ? (compact ? 24 : 18) : 0;
-  const W = compact ? 460 : 900, H = Math.round((opts.height ?? 380) * (compact ? 1.05 : 1)) + head, L = compact ? 40 : 44, R = compact ? 136 : 150, T = (opts.markers?.length ? (compact ? 34 : 28) : 12) + head, B = compact ? 34 : 28;
+  const W = compact ? 460 : 900, H = Math.round((opts.height ?? 380) * (compact ? 1.05 : 1)) + head, L = compact ? 40 : 44, R = compact ? 136 : 150, T = (opts.markers?.length ? (compact ? 34 : 28) : 12) + head, B0 = compact ? 34 : 28;
   const gap = compact ? 19 : 13;
+  const rugMarks = opts.rug?.marks ?? [];
   const all = series.flatMap((s) => [...s.line, ...(s.dots ?? []), ...(s.final ? [s.final] : []), ...(s.proj ? s.proj.knots.map((k) => ({ date: k.date, value: k.hi })) : [])]);
   if (!all.length) return "";
   const t = (d: string) => Date.parse(d);
   const x0 = Math.min(...all.map((p) => t(p.date))), x1 = Math.max(...all.map((p) => t(p.date)));
   const yMax = opts.yMax ?? Math.ceil(Math.max(...all.map((p) => p.value)) / 5) * 5 + 5;
   const x = (d: string) => L + ((t(d) - x0) / Math.max(1, x1 - x0)) * (W - L - R);
+  // the rug: marks laid left to right in up to four rows, a new row when one would touch the previous
+  const rugFs = compact ? 14 : 10, rugRow = rugFs + 2, rugMin = rugFs * 1.05;
+  const rows: number[] = [];
+  const placed = rugMarks.filter((m) => t(m.date) >= x0 && t(m.date) <= x1).sort((a, b) => t(a.date) - t(b.date)).map((m) => {
+    const mx = x(m.date);
+    let r = rows.findIndex((end) => mx - end >= rugMin);
+    if (r < 0) r = rows.length < 4 ? rows.length : rows.indexOf(Math.min(...rows));
+    rows[r] = mx;
+    return { m, mx, r };
+  });
+  const rugH = placed.length ? rows.length * rugRow + 8 : 0;
+  const B = B0 + rugH;
   const y = (v: number) => T + (1 - v / yMax) * (H - T - B);
 
   const grid = [];
@@ -97,10 +115,12 @@ export function lineChart(series: Series[], opts: { height?: number; yMax?: numb
           ${proj(s)}
           <polyline class="halo" points="${s.line.map((p) => `${x(p.date)},${y(p.value)}`).join(" ")}"/>
           <polyline class="line" pathLength="1" fill="none" stroke="${s.color}" stroke-width="${compact ? 3.4 : 2.6}" stroke-linejoin="round" stroke-linecap="round" points="${s.line.map((p) => `${x(p.date)},${y(p.value)}`).join(" ")}"/>
+          ${s.ring ? `<circle cx="${x(s.ring.date)}" cy="${y(s.ring.value)}" r="${compact ? 8 : 6.5}" class="ring" fill="none" stroke="${s.ring.color}" stroke-width="${compact ? 2.6 : 2}"><title>${esc(s.ring.title)}</title></circle>` : ""}
           ${s.final ? `<path d="M${x(s.final.date)},${y(s.final.value) - 6}l6,6l-6,6l-6,-6z" fill="${s.color}" stroke="var(--card)"><title>${esc(s.final.title)}</title></path>` : ""}
         </g>`,
       )
       .join("")}
+    ${placed.length ? `<g class="rug"><text x="${L - 6}" y="${H - B + 6 + rugRow * 0.8}" text-anchor="end" class="axis">${esc(opts.rug!.label)}</text>${placed.map(({ m, mx, r }) => `<a href="${esc(m.href)}"><text x="${mx}" y="${H - B + 6 + rugRow * (r + 0.8)}" text-anchor="middle" fill="${m.color}" font-size="${rugFs}"><title>${esc(m.title)}</title>${esc(m.text)}</text></a>`).join("")}</g>` : ""}
     ${ends.map(({ s, y: yy }) => `<text x="${W - R + 8}" y="${yy + 4}" class="end-label" fill="${s.color}"><title>${esc(s.label)}</title>${esc(compact && (s.proj?.label ?? s.label).length > 11 ? `${(s.proj?.label ?? s.label).slice(0, 10).trim()}…` : s.proj?.label ?? s.label)} <tspan class="v">${s.proj?.out ? "✕" : `${s.proj ? "≈" : ""}${dec(endValue(s))}`}</tspan></text>`).join("")}
   </svg>`;
 }

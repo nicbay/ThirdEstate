@@ -142,14 +142,58 @@
 .ocean { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; display: block; pointer-events: none; image-rendering: pixelated; }
 .hero-x.has-ocean::before { background: none; }
 .ocean-me { position: absolute; z-index: 3; width: 32px; height: 32px; margin: -16px 0 0 -16px; padding: 0; border: 0; background: none; cursor: pointer; }
-.ocean-me:focus-visible { outline: 2px solid #ffd452; outline-offset: 2px; }
+.ocean-me:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 /* the circle the pixels leave around the reader's: the band's own colour, the message inside, the pixel kept */
-.ocean-say { position: absolute; z-index: 3; width: calc(2 * var(--r, 118px)); height: calc(2 * var(--r, 118px)); margin: calc(-1 * var(--r, 118px)) 0 0 calc(-1 * var(--r, 118px)); border-radius: 50%; background: radial-gradient(closest-side, var(--night) 76%, transparent 84%); opacity: 0; display: grid; align-content: center; justify-items: center; gap: 0.3rem; padding: 1.4rem 1.1rem 0; box-sizing: border-box; text-align: center; color: var(--night-text-2); pointer-events: none; }
-.ocean-say i { position: absolute; left: 50%; top: 50%; width: 3px; height: 3px; margin: -1.5px 0 0 -1.5px; background: #ffd65c; box-shadow: 0 0 6px 2px rgba(255, 214, 92, 0.45); transition: top 0.2s; }
-.ocean-say.is-on i { top: calc(50% - 2.4rem); transition: top 0.35s 0.12s ease-out; }
+.ocean-say { position: absolute; z-index: 3; width: calc(2 * var(--r, 118px)); height: calc(2 * var(--r, 118px)); margin: calc(-1 * var(--r, 118px)) 0 0 calc(-1 * var(--r, 118px)); border-radius: 50%; background: radial-gradient(closest-side, var(--night) 76%, transparent 84%); opacity: 0; display: grid; align-content: center; justify-items: center; gap: 0.3rem; padding: 2.4rem 1.1rem 0; box-sizing: border-box; text-align: center; color: var(--night-text-2); pointer-events: none; }
+.ocean-say i { position: absolute; left: 50%; top: 50%; width: 3px; height: 3px; margin: -1.5px 0 0 -1.5px; background: #fff; box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.5); }
 .ocean-say p { margin: 0; opacity: 0; transition: opacity 0.15s; }
 .ocean-say.is-on p { opacity: 1; transition: opacity 0.3s 0.22s; }
-.ocean-say b { display: block; max-width: 11.5em; font: 700 0.95rem/1.22 var(--display); font-stretch: 85%; color: var(--night-text); text-wrap: balance; }
-.ocean-say .by { font: 500 0.75rem var(--mono); letter-spacing: 0.04em; color: #ffd65c; }
-@media (prefers-reduced-motion: reduce) { .ocean-say p, .ocean-say.is-on p, .ocean-say i, .ocean-say.is-on i { transition: none; } }
+.ocean-say b { display: block; max-width: 11.5em; font: 700 1.15rem/1.2 var(--display); font-stretch: 85%; color: var(--night-text); text-wrap: balance; }
+@media (prefers-reduced-motion: reduce) { .ocean-say p, .ocean-say.is-on p { transition: none; } }
 .hday > :not(.ocean):not(.ocean-me):not(.ocean-say) { position: relative; }
+
+/* the forecast chart's views (src/views/forecast-chart.ts): polls, prediction markets, odds of winning, scenarios */
+.fc-views { display: flex; flex-wrap: wrap; gap: 0 1.2rem; border-bottom: 1px solid var(--rule-2); margin-bottom: 0.7rem; }
+.fc-views button { font: 600 0.8rem var(--mono); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-3); background: none; border: 0; border-bottom: 3px solid transparent; margin-bottom: -1px; padding: 0.55rem 0; cursor: pointer; }
+.fc-views button:hover { color: var(--ink); }
+.fc-views button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+.fc-views button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.fc-views + .scn[hidden] { display: none; }
+@media (max-width: 640px) { .fc-views { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; } .fc-views button { flex: none; } }
+.chart .rug text { font-family: var(--mono); font-weight: 700; cursor: pointer; }
+.chart .rug a:hover text, .chart .rug a:focus text { text-decoration: underline; }
+.chart .ring { pointer-events: auto; }
+
+/* the update of the day (src/views/day-update.ts): a dated head, then one card per candidate, scannable */
+.dup { padding: 1.6rem 0 1.4rem; border-bottom: 1px solid var(--rule-2); display: grid; gap: 1rem; }
+.dup-head { display: grid; gap: 0.35rem; max-width: 72ch; }
+.dup-k { margin: 0; font: 600 0.75rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); }
+.dup-head h2 { margin: 0; font: 800 clamp(1.3rem, 1.05rem + 0.9vw, 1.75rem)/1.12 var(--display); font-stretch: 82%; color: var(--ink); text-wrap: balance; }
+.dup-src { margin: 0; font-size: 0.8rem; color: var(--ink-3); }
+.dup-src a { color: var(--link); white-space: nowrap; }
+.dup-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 0.75rem; }
+.dup-card { position: relative; display: grid; align-content: start; gap: 0.3rem; padding: 0.85rem 0.9rem 0.9rem; background: var(--panel); border-top: 4px solid var(--c); min-width: 0; }
+.dup-card.is-big { box-shadow: inset 0 0 0 2px var(--c); }
+.dup-card p { margin: 0; }
+.dup-name { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; font: 700 1rem var(--display); color: var(--ink); }
+.dup-name i { width: 8px; height: 8px; background: var(--c); flex: none; }
+.dup-tag { font: 600 0.66rem var(--mono); text-transform: uppercase; letter-spacing: 0.04em; color: var(--paper); background: var(--ink); padding: 0.12rem 0.3rem; }
+.dup-big { font: 800 2.1rem/1 var(--display); font-variant-numeric: tabular-nums; color: var(--ink); }
+.dup-big small { font-size: 0.95rem; font-weight: 700; color: var(--ink-2); }
+.dup-lab { font-size: 0.72rem; color: var(--ink-3); }
+.dup-chips { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.15rem !important; }
+.dup-chip { display: inline-flex; align-items: baseline; gap: 0.3rem; font: 700 0.78rem var(--mono); font-variant-numeric: tabular-nums; padding: 0.15rem 0.4rem; background: var(--wash, rgba(127, 127, 127, 0.12)); color: var(--ink-2); }
+.dup-chip small { font-weight: 500; font-size: 0.68rem; color: var(--ink-3); }
+.dup-chip.is-up { color: var(--up-text); }
+.dup-chip.is-down { color: var(--down-text); }
+.dup-polls { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; font-size: 0.82rem; color: var(--ink-2); padding-top: 0.35rem; border-top: 1px solid var(--rule); margin-top: 0.25rem !important; }
+.dup-polls b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.dup-news { list-style: none; margin: 0.2rem 0 0; padding: 0; display: grid; gap: 0.45rem; }
+.dup-news li { display: grid; gap: 0.1rem; }
+.dup-news a { font-size: 0.84rem; line-height: 1.3; color: var(--ink); text-decoration: none; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.dup-news a:hover { text-decoration: underline; }
+.dup-news span { font-size: 0.7rem; color: var(--ink-3); }
+@media (max-width: 640px) {
+  .dup-cards { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 78%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 calc(-1 * var(--gutter, 16px)); padding: 0 var(--gutter, 16px); }
+  .dup-card { scroll-snap-align: start; }
+}

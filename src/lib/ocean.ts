@@ -4,8 +4,9 @@
 // Registered voters take the flag's three colours; everyone else (minors, foreign residents, adults not on the rolls)
 // is grey. Nothing moves across the screen: each pixel flickers softly on its own rhythm, and now and then fades to
 // blue and back. The ocean fades out toward the bottom of the band and around the chart (no pixels behind it).
-// One pixel glows gold: the reader. Over it (pointer, focus or tap) the pixels around it are pushed aside to make room,
-// crowd an uneven edge and keep pressing back, and a short message appears in the space. Still frame under reduced motion (the circle opens without the slide), paused off
+// One pixel glows bright white: the reader. Over it (pointer, focus or tap) the pixels around it are pushed aside to make room,
+// crowd an uneven edge and keep pressing back, and "your vote matters" appears in the space. Touch screens
+// only get the glow. Still frame under reduced motion (the circle opens without the slide), paused off
 // screen; no WebGL → the plain grid.
 import { L } from "../i18n";
 
@@ -28,7 +29,7 @@ uniform vec2 uMe; uniform float uOpen; uniform float uR; uniform float uDpr; uni
 float h1(vec2 p){ p = fract(p * vec2(0.1031, 0.1030)); p += dot(p, p.yx + 33.33); return fract((p.x + p.y) * p.x); }
 float hash(vec2 c){ vec2 lo = mod(c, 64.0), hi = floor(c / 64.0); return fract(h1(lo + 0.5) + h1(hi * 1.37 + 7.0) * 1.618); }
 const vec3 BLUE = vec3(0.36, 0.5, 1.0);
-const vec3 GOLD = vec3(1.0, 0.84, 0.36);
+const vec3 GOLD = vec3(1.0, 1.0, 1.0); // the reader's pixel: plain bright white
 vec2 meC; float L;
 // the room the pixels leave around the reader's: an uneven edge that slowly breathes, never a perfect circle
 float holeAt(float th){ return uR * uOpen * (1.0 + 0.07 * sin(3.0 * th + uT * 0.45) + 0.045 * sin(5.0 * th - uT * 0.7 + 1.3) + 0.03 * sin(8.0 * th + uT * 1.1)); }
@@ -104,8 +105,6 @@ void main(){
   gl_FragColor = vec4(outc, outa);
 }`;
 
-const fmtM = (n: number) => (n / 1e6).toLocaleString(L("fr-FR", "en-GB"), { maximumFractionDigits: 1 });
-
 /** Paints the ocean behind `host` (a positioned, overflow-hidden band). Returns a cleanup function. */
 export function mountOcean(host: HTMLElement) {
   const canvas = document.createElement("canvas");
@@ -142,13 +141,12 @@ export function mountOcean(host: HTMLElement) {
   const say = document.createElement("div");
   say.className = "ocean-say";
   say.id = "ocean-say";
-  say.innerHTML = `<i aria-hidden="true"></i>${L(
-    `<p><b>Votre voix compte</b></p><p class="by">Un pixel parmi ${fmtM(POPULATION)} millions</p>`,
-    `<p><b>“Someone struggled for your right to vote. Use it.”</b></p><p class="by">Susan B. Anthony</p>`,
-  )}`;
+  say.innerHTML = `<i aria-hidden="true"></i><p><b>${L("Votre voix compte", "Your vote matters")}</b></p>`;
   host.classList.add("has-ocean");
   host.prepend(canvas);
-  host.append(me, say);
+  // the room and the message are for a mouse (and the keyboard); on touch screens the pixel only glows
+  const canHover = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (canHover) host.append(me, say);
   const chart = host.querySelector<HTMLElement>(".hday-chart");
 
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -173,7 +171,6 @@ export function mountOcean(host: HTMLElement) {
     gl.uniform1f(U.r, R * dpr);
     gl.uniform4f(U.mask, mask[0] * dpr, mask[1] * dpr, mask[2] * dpr, mask[3] * dpr);
     say.style.opacity = e.toFixed(3);
-    say.style.transform = `scale(${(0.6 + 0.4 * e).toFixed(3)})`;
     gl.clearColor(0, 0, 0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
@@ -214,7 +211,7 @@ export function mountOcean(host: HTMLElement) {
   // over the pixel the ocean parts; it closes again once the pointer leaves the circle
   const show = (on: boolean) => { openTarget = on ? 1 : 0; say.classList.toggle("is-on", on); kick(); };
   host.addEventListener("pointermove", (e) => {
-    if (e.pointerType === "touch" || pinned) return;
+    if (!canHover || e.pointerType === "touch" || pinned) return;
     const r = host.getBoundingClientRect();
     const d = Math.hypot(e.clientX - r.left - meX, e.clientY - r.top - meY);
     const on = hover ? d < R + 8 : d < 14;
