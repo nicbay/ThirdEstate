@@ -161,7 +161,7 @@ for (const day of days) {
 
   const edition = { date: D, provisional: !!day.provisional, note, insight, prev: y1?.date ?? null, head: insight.head ?? head, rows: rows.slice(0, 8), polls: fresh, headlines: headlines.slice(0, 5), analysis, week };
   await writeFile(new URL(`daily/editions/${D}.json`, ROOT), JSON.stringify(edition));
-  index.push({ date: D, head });
+  index.push({ date: D, head: edition.head });
 }
 await writeFile(new URL("daily/editions/index.json", ROOT), JSON.stringify(index));
 console.log(`editions: ${index.length} (${index[0]?.date} → ${index.at(-1)?.date})`);
