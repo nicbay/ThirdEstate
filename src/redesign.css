@@ -504,3 +504,47 @@ footer .brand .fox { width: 64px; height: 64px; }
 .cmp-band:focus-visible { outline: 3px solid var(--link); outline-offset: 2px; }
 .cmp-cta { display: inline-block; margin: 0.2rem 0 0.9rem; }
 @media (max-width: 640px) { .cmp-band { grid-template-columns: 1fr auto; grid-template-areas: "k go" "t go" "d go"; } .cmp-band-k { justify-self: start; } }
+
+/* MP page: the one-by-one vote list folds away at the bottom */
+.mp-votes > summary { cursor: pointer; list-style: none; }
+.mp-votes > summary::-webkit-details-marker { display: none; }
+.mp-votes > summary h2 { display: inline; font-size: 1.05rem; }
+.mp-votes > summary::before { content: "▸ "; font-family: var(--mono); }
+.mp-votes[open] > summary::before { content: "▾ "; }
+.mp-votes[open] > summary { margin-bottom: 0.8rem; }
+
+/* law and feasibility in the site's colours (grey, violet, red, blue), not traffic lights */
+.ph-lstack a { min-width: 3px; display: block; }
+.ph-lstack a:hover, .ph-lstack a:focus-visible { filter: brightness(1.15); outline: 2px solid var(--ink); outline-offset: 1px; }
+.ph-lstack .l-risk, .ph-key .l-risk, .ph-lstack .f-medium, .ph-key .f-medium { background: var(--split-violet); }
+.ph-lstack .l-serious, .ph-key .l-serious, .ph-lstack .f-low, .ph-key .f-low { background: var(--split-red); }
+.ph-lstack .f-high, .ph-key .f-high { background: var(--split-blue); }
+.f-high { background: color-mix(in srgb, var(--split-blue) 18%, transparent); color: var(--ink); }
+.f-medium, .l-risk, .l-constitutional-revision-needed { background: color-mix(in srgb, var(--split-violet) 22%, transparent); color: var(--ink); }
+.f-low, .l-unconstitutional-precedent, .l-eu-law { background: color-mix(in srgb, var(--split-red) 20%, transparent); color: var(--ink); }
+.mt-linked { margin: 0 0 0.6rem; padding: 0.5rem 0.7rem; border: 2px solid var(--ink); font-size: 0.9rem; scroll-margin-top: 5rem; }
+
+/* programme page: the party's MPs who voted against the programme (src/views/programme-dissent.ts) */
+.dis-wrap { overflow-x: auto; }
+.dis-map { width: 100%; min-width: 620px; height: auto; display: block; }
+.dis-line { stroke: var(--rule-2); stroke-width: 1.2; }
+.dis-prog rect { fill: var(--ink); }
+.dis-prog text { fill: var(--paper); font: 700 15px var(--display); }
+.dis-mp { cursor: pointer; outline: none; }
+.dis-ring { fill: var(--panel); stroke: var(--split-violet); stroke-width: 3; }
+.dis-ring.has-against { stroke: var(--split-red); }
+.dis-mp:hover .dis-ring, .dis-mp:focus-visible .dis-ring, .dis-mp.is-on .dis-ring { stroke: var(--ink); stroke-width: 4; }
+.dis-n { font: 600 11px var(--mono); fill: var(--ink-2); }
+.dis-panel:empty { display: none; }
+.dis-panel { border-top: 2px solid var(--ink); margin-top: 0.8rem; padding-top: 0.7rem; }
+.dis-panel h3 { margin: 0 0 0.5rem; font-size: 1.05rem; }
+.dis-votes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; }
+.dis-votes li { border-left: 3px solid var(--rule-2); padding-left: 0.7rem; }
+.dis-votes p { margin: 0.1rem 0; }
+.dis-topic { font-weight: 700; }
+.dis-pos { font: 700 0.75rem var(--mono); text-transform: uppercase; padding: 0.1rem 0.4rem; }
+.dis-C { background: color-mix(in srgb, var(--split-red) 25%, transparent); }
+.dis-A { background: color-mix(in srgb, var(--split-violet) 25%, transparent); }
+.dis-P { background: color-mix(in srgb, var(--split-blue) 25%, transparent); }
+.dis-n-c { fill: var(--ink); font-weight: 700; }
+.dis-rest summary { cursor: pointer; color: var(--ink-2); }

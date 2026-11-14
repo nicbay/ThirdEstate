@@ -110,7 +110,8 @@ ${fmtNum(c[k])} (${Math.round((100 * c[k]) / tot)} %)`)}"></span>` : "");
     const ms = live(r.ms), n = ms.length || 1;
     const lg = { ok: ms.filter((m) => m.legal === "ok").length, risk: ms.filter((m) => m.legal === "risk").length, serious: ms.filter((m) => SERIOUS.includes(m.legal)).length, unknown: ms.filter((m) => m.legal === "unknown").length };
     const fs = { high: ms.filter((m) => m.feasibility === "high").length, medium: ms.filter((m) => m.feasibility === "medium").length, low: ms.filter((m) => m.feasibility === "low").length, na: ms.filter((m) => !m.feasibility).length };
-    const seg = (cls: string, k: number, label: string) => (k ? `<span class="${cls}" style="flex:${k}" data-tip="${esc(`${label}\n${k} ${L("mesures", "measures")} (${Math.round(share(k, n))} %)`)}"></span>` : "");
+    // each segment opens the candidate's measures of that kind, with the reason and its sources
+    const seg = (cls: string, k: number, label: string) => (k ? `<a class="${cls}" style="flex:${k}" href="#/programmes/${esc(r.p.slug)}#eval-${cls}" aria-label="${esc(`${label} : ${k}`)}" data-tip="${esc(`${label}\n${k} ${L("mesures", "measures")} (${Math.round(share(k, n))} %)\n${L("Cliquer : lesquelles et pourquoi", "Click: which ones and why")}`)}"></a>` : "");
     return `<tr style="--i:${i}">
       <th scope="row"><a href="#/programmes/${esc(r.p.slug)}#evaluation"><i class="dot" style="background:${r.color}"></i>${esc(r.p.candidate)}</a></th>
       <td class="num">${ms.length}</td>

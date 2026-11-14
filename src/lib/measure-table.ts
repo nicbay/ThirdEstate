@@ -44,6 +44,17 @@ const popLabel = (p: Pop) => ({ yes: L("Oui", "Yes"), partly: L("En partie", "Pa
 const md = (v: number) => { const sg = v > 0 ? "+" : v < 0 ? "−" : ""; const a = Math.abs(v); const n = fmtNum(a >= 10 ? Math.round(a) : Math.round(a * 10) / 10); return L(`${sg}${n} Md€`, `${sg}€${n}bn`); };
 
 type Filter = "" | "cost" | "legal" | "low" | "pop";
+const SERIOUS_LEGAL = ["unconstitutional-precedent", "eu-law", "constitutional-revision-needed"];
+/** Filters a link can open (#eval-<key>, from the programmes page's law and feasibility bars), with their label. */
+const LINKED: Record<string, [() => string, (m: Assessed) => boolean]> = {
+  "l-ok": [() => L("Pas d’obstacle identifié", "No obstacle found"), (m) => m.legal === "ok"],
+  "l-risk": [() => L("Risque juridique", "Legal risk"), (m) => m.legal === "risk"],
+  "l-serious": [() => L("Obstacle juridique sérieux", "Serious legal obstacle"), (m) => SERIOUS_LEGAL.includes(m.legal)],
+  "l-na": [() => L("Non évalué", "Not assessed"), (m) => m.legal === "unknown" || !m.feasibility],
+  "f-high": [() => L("Réalisable", "Feasible"), (m) => m.feasibility === "high"],
+  "f-medium": [() => L("Difficile", "Difficult"), (m) => m.feasibility === "medium"],
+  "f-low": [() => L("Peu réalisable", "Hard to deliver"), (m) => m.feasibility === "low"],
+};
 const FILTERS: [Filter, () => string, (m: Assessed) => boolean][] = [
   ["", () => L("Toutes", "All"), () => true],
   ["cost", () => L("Plus de 5 Md€", "Over €5bn"), (m) => m.cost != null && Math.abs(m.cost) >= 5],
@@ -122,6 +133,27 @@ export function mountMeasureTable(root: HTMLElement, id: string, rows: Assessed[
       else det.hidden = tr.getAttribute("aria-expanded") !== "true";
     });
   }));
+  // arriving from a bar on the programmes page: only those measures, each opened on its reason and sources
+  const linked = /#eval-([\w-]+)$/.exec(location.hash)?.[1];
+  const lf = linked ? LINKED[linked] : undefined;
+  if (lf) {
+    const [label, fn] = lf;
+    let n = 0;
+    table.querySelectorAll<HTMLTableRowElement>(".mt-row").forEach((tr) => {
+      const show = fn(byId.get(tr.dataset.id!)!);
+      tr.hidden = !show;
+      tr.setAttribute("aria-expanded", String(show));
+      (tr.nextElementSibling as HTMLElement).hidden = !show;
+      if (show) n++;
+    });
+    wrap.querySelectorAll(".mt-filters button").forEach((x) => x.setAttribute("aria-pressed", "false"));
+    const note = document.createElement("p");
+    note.className = "mt-linked";
+    note.innerHTML = `${esc(label())}${L(" : ", ": ")}<b>${n}</b> ${L("mesures, avec la raison et les sources", "measures, with the reason and the sources")} · <button type="button" class="linkish">${L("tout afficher", "show all")}</button>`;
+    note.querySelector("button")!.addEventListener("click", () => { note.remove(); (wrap.querySelector<HTMLButtonElement>('.mt-filters button[data-f=""]'))?.click(); });
+    table.closest(".mt-wrap")!.before(note);
+    requestAnimationFrame(() => note.scrollIntoView({ block: "start" }));
+  }
   table.querySelectorAll<HTMLTableRowElement>(".mt-row").forEach((tr) => {
     const toggle = () => { const open = tr.getAttribute("aria-expanded") !== "true"; tr.setAttribute("aria-expanded", String(open)); (tr.nextElementSibling as HTMLElement).hidden = !open; };
     tr.addEventListener("click", (e) => { if (!(e.target as Element).closest("a")) toggle(); });
