@@ -144,12 +144,12 @@
 .ocean-me { position: absolute; z-index: 3; width: 32px; height: 32px; margin: -16px 0 0 -16px; padding: 0; border: 0; background: none; cursor: pointer; }
 .ocean-me:focus-visible { outline: 2px solid #ffd452; outline-offset: 2px; }
 /* the circle the pixels leave around the reader's: the band's own colour, the message inside, the pixel kept */
-.ocean-say { position: absolute; z-index: 3; width: calc(2 * var(--r, 118px)); height: calc(2 * var(--r, 118px)); margin: calc(-1 * var(--r, 118px)) 0 0 calc(-1 * var(--r, 118px)); border-radius: 50%; background: var(--night); clip-path: circle(0px); display: grid; align-content: center; justify-items: center; gap: 0.3rem; padding: 1.4rem 1.1rem 0; box-sizing: border-box; text-align: center; color: var(--night-text-2); pointer-events: none; }
+.ocean-say { position: absolute; z-index: 3; width: calc(2 * var(--r, 118px)); height: calc(2 * var(--r, 118px)); margin: calc(-1 * var(--r, 118px)) 0 0 calc(-1 * var(--r, 118px)); border-radius: 50%; background: radial-gradient(closest-side, var(--night) 76%, transparent 84%); opacity: 0; display: grid; align-content: center; justify-items: center; gap: 0.3rem; padding: 1.4rem 1.1rem 0; box-sizing: border-box; text-align: center; color: var(--night-text-2); pointer-events: none; }
 .ocean-say i { position: absolute; left: 50%; top: 50%; width: 3px; height: 3px; margin: -1.5px 0 0 -1.5px; background: #ffd65c; box-shadow: 0 0 6px 2px rgba(255, 214, 92, 0.45); transition: top 0.2s; }
 .ocean-say.is-on i { top: calc(50% - 2.4rem); transition: top 0.35s 0.12s ease-out; }
 .ocean-say p { margin: 0; opacity: 0; transition: opacity 0.15s; }
 .ocean-say.is-on p { opacity: 1; transition: opacity 0.3s 0.22s; }
-.ocean-say b { display: block; max-width: 13em; font: 700 0.95rem/1.22 var(--display); font-stretch: 85%; color: var(--night-text); text-wrap: balance; }
+.ocean-say b { display: block; max-width: 11.5em; font: 700 0.95rem/1.22 var(--display); font-stretch: 85%; color: var(--night-text); text-wrap: balance; }
 .ocean-say .by { font: 500 0.75rem var(--mono); letter-spacing: 0.04em; color: #ffd65c; }
 @media (prefers-reduced-motion: reduce) { .ocean-say p, .ocean-say.is-on p, .ocean-say i, .ocean-say.is-on i { transition: none; } }
 .hday > :not(.ocean):not(.ocean-me):not(.ocean-say) { position: relative; }
