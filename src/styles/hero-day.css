@@ -1,5 +1,5 @@
 /* Homepage hero, "the note of the day" (views/hero-day.ts) */
-.hday { padding-bottom: 2.2rem; }
+.hday { padding-bottom: 0; } /* the pixel fade closes the band, flush with the page */
 .hday h1 { font: 850 clamp(1.9rem, 1.2rem + 2.6vw, 3.1rem)/1.02 var(--display); font-stretch: 78%; letter-spacing: -0.015em; color: var(--night-text); margin: 0.35rem 0 1.1rem; max-width: 26ch; text-wrap: balance; }
 .hday-note { display: grid; gap: 1.05rem; min-width: 0; }
 /* the kicker over the headline: a sentence, so mono, not the pixel face */
@@ -90,9 +90,10 @@
 .hday > h1 { max-width: 30ch; }
 
 /* the quiz: one quiet line under the hero, one plain button */
-.quiz-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.6rem; margin: 0; padding: 0.9rem 0; border-bottom: 1px solid var(--rule-2); color: var(--ink-2); font-size: 0.95rem; line-height: 1.45; }
+.quiz-line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; margin: 1.5rem 0; padding: 1rem 1.2rem calc(1rem + var(--box-bar-h)); color: var(--ink-2); font-size: 0.95rem; line-height: 1.45; } /* the box: overhaul.css */
+.quiz-line > span { flex: 1 1 22rem; min-width: 0; }
 .quiz-line b { color: var(--ink); font: 700 1.05rem var(--display); }
-.quiz-line .button { margin-left: auto; align-self: center; }
+.quiz-line .button { margin: 0 0 0 auto; flex: none; }
 @media (max-width: 640px) { .quiz-line .button { margin-left: 0; } }
 
 /* the note of the day: a white sheet on the paper; a dated brief under an ink rule, then the blocks in two columns */

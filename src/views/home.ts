@@ -41,7 +41,7 @@ export async function renderHome(app: HTMLElement) {
         <div class="px-edge" aria-hidden="true"></div>
       </section>
 
-      <p class="quiz-line"><b>${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</b> <span>${L("Dix votes de l’Assemblée, et le député et le candidat les plus proches de vous.", "Ten Assembly votes, and the MP and the candidate closest to you.")}</span> <a class="button" href="#/quiz">${L("Faire le quiz", "Take the quiz")}</a></p>
+      <p class="box quiz-line"><b>${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</b> <span>${L("Dix votes de l’Assemblée, et le député et le candidat les plus proches de vous.", "Ten Assembly votes, and the MP and the candidate closest to you.")}</span> <a class="button" href="#/quiz">${L("Faire le quiz", "Take the quiz")}</a></p>
 
       <div id="mine"></div>
 

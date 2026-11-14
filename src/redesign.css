@@ -149,8 +149,8 @@ html.is-scrolled .topbar { box-shadow: 0 2px 0 var(--night-rule), 0 10px 0 -4px 
 /* a handful of pixels that blink, far apart: the band is alive, not busy */
 .hero-x::after { content: ""; position: absolute; z-index: -1; left: 0; top: 0; width: 4px; height: 4px; color: transparent; box-shadow: 12vw 70px 0 var(--split-red), 38vw 26px 0 var(--split-blue), 55vw 300px 0 #fff, 71vw 44px 0 var(--split-violet), 90vw 210px 0 var(--split-red), 26vw 420px 0 var(--split-blue), 83vw 470px 0 #fff; animation: px-twinkle 2.4s steps(2, jump-none) infinite; }
 @keyframes px-twinkle { 50% { opacity: 0.25; } }
-.px-edge { height: 8px; background: var(--px-dither) repeat-x left bottom / 16px 8px; position: relative; z-index: 1; }
-.hero-x .px-edge { margin: 0 calc(-1 * max(var(--gutter), calc((var(--vw) - var(--col)) / 2))); }
+.px-edge { height: 24px; background: var(--px-fade) repeat-x left bottom / 32px 24px; position: relative; z-index: 1; }
+.hero-x .px-edge { margin: 1.5rem calc(-1 * max(var(--gutter), calc((var(--vw) - var(--col)) / 2))) 0; } /* the band's last line stays clear of the fade */
 @keyframes px-caret { 50% { opacity: 0; } }
 /* a short rise, kept for lists that build item by item (programme columns, quiz rows); sections no longer rise in */
 @keyframes rv-rise { from { opacity: 0; transform: translateY(18px); } }
