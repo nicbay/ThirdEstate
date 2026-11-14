@@ -128,8 +128,38 @@ for (const day of days) {
     if (headlines[0]) lines.push(fr ? `L’info la plus reprise : « ${short(headlines[0].title)} » (${headlines[0].n} médias).` : `Most-covered story: "${short(headlines[0].title)}" (${headlines[0].n} outlets).`);
     return lines.slice(0, 3).join(" ");
   };
-  const note = ai ? { fr: ai.fr, en: ai.en, by: ai.by } : { fr: plain(true), en: plain(false), by: "template" };
-  const edition = { date: D, provisional: !!day.provisional, note, prev: y1?.date ?? null, head, rows: rows.slice(0, 8), polls: fresh, headlines: headlines.slice(0, 5), analysis, week };
+  const note = ai?.fr ? { fr: ai.fr, en: ai.en, by: ai.by } : { fr: plain(true), en: plain(false), by: "template" };
+
+  // the day's verdict: whose day it was, and the surprise. Claude's when the daily brief wrote one (checked there),
+  // else a plain one from the figures: a candidate's market move over the week plus their poll move, the largest
+  // rises and falls, each with a headline naming them when there is one.
+  const num = (v, fr) => (fr ? String(Math.abs(v)).replace(".", ",") : String(Math.abs(v)));
+  // a headline naming the candidate, each headline used once (the first candidate it names keeps it)
+  const usedStories = new Set();
+  const storyFor = (name) => { const key = surnameKey(name); const h = key && headlines.find((x) => !usedStories.has(x.title) && norm(x.title).includes(key)); if (!h) return null; usedStories.add(h.title); return { title: h.title, link: h.link, outlet: h.outlet, n: h.n }; };
+  const why = (r, fr) => [
+    r.d7 != null && Math.abs(r.d7) >= 1 ? (fr ? `${r.d7 > 0 ? "+" : "−"}${num(r.d7, true)} pt${Math.abs(r.d7) >= 2 ? "s" : ""} sur les marchés en 7 jours` : `${r.d7 > 0 ? "+" : "−"}${num(r.d7)} pt${Math.abs(r.d7) === 1 ? "" : "s"} on the markets in 7 days`) : null,
+    r.polls7 != null && Math.abs(r.polls7) >= 0.5 ? (fr ? `${r.polls7 > 0 ? "+" : "−"}${num(r.polls7, true)} pt${Math.abs(r.polls7) >= 2 ? "s" : ""} dans les sondages${r.d7 != null && Math.abs(r.d7) >= 1 ? "" : " en 7 jours"}` : `${r.polls7 > 0 ? "+" : "−"}${num(r.polls7)} pt${Math.abs(r.polls7) === 1 ? "" : "s"} in the polls${r.d7 != null && Math.abs(r.d7) >= 1 ? "" : " in 7 days"}`) : null,
+  ].filter(Boolean).join(fr ? ", " : ", ");
+  const score = (r) => (r.d7 ?? 0) + 1.5 * (r.polls7 ?? 0);
+  const ranked = rows.filter((r) => why(r, false)).sort((a, b) => score(b) - score(a));
+  const line = (r, fr) => { const w = why(r, fr); return `${w.charAt(0).toUpperCase()}${w.slice(1)}.`; };
+  // the surprise: a newcomer's first poll, else polls and markets pulling apart, else a move on one market only
+  const firstPoll = polls.filter((p) => p.end > iso(Date.parse(D) - 7 * DAY) && p.end <= D).flatMap((p) => [...new Set(p.hyps.flatMap((h) => Object.keys(h)))]
+    .filter((n) => !polls.some((q) => q.end <= iso(Date.parse(D) - 7 * DAY) && q.hyps.some((h) => n in h))).map((n) => ({ n, p, v: r1(pollMean(p, n)) })))[0];
+  const apart = rows.find((r) => r.d7 != null && r.polls7 != null && Math.abs(r.d7) >= 1.5 && Math.abs(r.polls7) >= 1 && Math.sign(r.d7) !== Math.sign(r.polls7));
+  const alone = analysis.find((a) => a.factors.some((f) => f.kind === "split"));
+  const surprise = firstPoll
+    ? { name: firstPoll.n, fr: `${surname(firstPoll.n)} testé pour la première fois : ${num(firstPoll.v, true)} % (${firstPoll.p.pollster}).`, en: `${surname(firstPoll.n)} polled for the first time: ${num(firstPoll.v)}% (${firstPoll.p.pollster}).`, story: storyFor(firstPoll.n) }
+    : apart ? { name: apart.name, fr: `${surname(apart.name)} : les marchés et les sondages divergent (${apart.d7 > 0 ? "+" : "−"}${num(apart.d7, true)} contre ${apart.polls7 > 0 ? "+" : "−"}${num(apart.polls7, true)} en 7 jours).`, en: `${surname(apart.name)}: markets and polls pull apart (${apart.d7 > 0 ? "+" : "−"}${num(apart.d7)} against ${apart.polls7 > 0 ? "+" : "−"}${num(apart.polls7)} over 7 days).`, story: null }
+    : alone ? (() => { const f = alone.factors.find((x) => x.kind === "split"); return { name: alone.name, fr: `${surname(alone.name)} : un seul marché a bougé (Kalshi ${f.kalshi > 0 ? "+" : "−"}${num(f.kalshi, true)}, Polymarket ${f.poly > 0 ? "+" : "−"}${num(f.poly, true)}), peut-être un seul gros pari.`, en: `${surname(alone.name)}: only one market moved (Kalshi ${f.kalshi > 0 ? "+" : "−"}${num(f.kalshi)}, Polymarket ${f.poly > 0 ? "+" : "−"}${num(f.poly)}), possibly a single large bet.`, story: null }; })()
+    : null;
+  // after the surprise, so it keeps first claim on a headline naming its candidate
+  const good = ranked.filter((r) => score(r) >= 1).slice(0, 3).map((r) => ({ name: r.name, fr: line(r, true), en: line(r, false), story: storyFor(r.name) }));
+  const bad = ranked.filter((r) => score(r) <= -1).reverse().slice(0, 3).map((r) => ({ name: r.name, fr: line(r, true), en: line(r, false), story: storyFor(r.name) }));
+  const insight = ai?.insight ?? { head, surprise, good, bad, by: "template" };
+
+  const edition = { date: D, provisional: !!day.provisional, note, insight, prev: y1?.date ?? null, head: insight.head ?? head, rows: rows.slice(0, 8), polls: fresh, headlines: headlines.slice(0, 5), analysis, week };
   await writeFile(new URL(`daily/editions/${D}.json`, ROOT), JSON.stringify(edition));
   index.push({ date: D, head });
 }
