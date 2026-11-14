@@ -52,7 +52,11 @@ export async function renderHome(app: HTMLElement) {
   // ---------- polls chart with the projection to election day and the scenarios ----------
   // five months back on a wide screen, about three on a phone: the projection to the first round gets as much room
   const from = shiftDays(latest, window.innerWidth < 640 ? -100 : -150);
-  const shown = now.slice(0, 7).map((r) => r.name);
+  // every candidate in the model (polled at least FIELD_MIN_POLLS times lately), largest first: the figures at the
+  // line ends then add up to 100, whatever the scenarios
+  const field = scenarioForecast(polls, markets, []).projection.map((p) => p.name);
+  const rank = (n: string) => now.find((r) => r.name === n)?.avg ?? 0;
+  const shown = [...field].sort((a, b) => rank(b) - rank(a));
   const num = app.querySelector<HTMLElement>("#hq-num");
   const foot = app.querySelector<HTMLElement>("#hq-foot")!;
   const trendBox = app.querySelector<HTMLElement>("#trend")!;

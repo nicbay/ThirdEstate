@@ -135,9 +135,11 @@ export function mountForecastChart(box: HTMLElement, o: Opts) {
           ` Primary: whoever is best placed in the end-of-December polls wins, ${win} on the current trend. ${sn(pr.losers, false)} withdraw (✕) and ${Math.round(100 * RALLY_SHARE)}% of their voters join him; ${sn(PRIMARY.rallyFrom, false)} stays out: only ${Math.round(100 * PRIMARY.rallyFromShare)}% of his voters join him.`)
       : "";
     const base = sel.length === 0;
+    // every candidate of the model is on the chart: say the figures add up
+    const all = fc.projection.every((p) => series.some((x) => x.name === p.name || (p.name === "Jordan Bardella" && x.name === "Marine Le Pen" && sel.includes("le-pen-out"))));
     key.innerHTML = L(
-      `Ligne pleine : moyenne des sondages jusqu’au ${fmtDate(lastDate)}. Pointillés et chiffres en bout de ligne : la projection au premier tour (${fmtDate(ELECTION_DAY)}) ; zone : 8 chances sur 10.`,
-      `Solid line: polling average up to ${fmtDate(lastDate)}. Dotted line and the figures at the line ends: the projection to the first round (${fmtDate(ELECTION_DAY)}); shaded: an 8-in-10 range.`,
+      `Ligne pleine : moyenne des sondages jusqu’au ${fmtDate(lastDate)}. Pointillés et chiffres en bout de ligne : la projection au premier tour (${fmtDate(ELECTION_DAY)})${all ? ", 100 % à eux tous" : ""} ; zone : 8 chances sur 10.`,
+      `Solid line: polling average up to ${fmtDate(lastDate)}. Dotted line and the figures at the line ends: the projection to the first round (${fmtDate(ELECTION_DAY)})${all ? ", 100% between them" : ""}; shaded: an 8-in-10 range.`,
     );
     note.innerHTML = `${base ? "" : `<b>${esc(scenarioLabel(sel))}.</b> `}${L(
       `Pointillés : les sondages tels quels, prolongés d’une tendance lente (un cinquième de celle des quatre derniers mois, ${TREND_CAP} points au plus)${base ? "" : ", plus ce que change le scénario"} ; les scores de tous les candidats (y compris ceux non affichés) font 100 %. Zone colorée : 8 chances sur 10 que le score tombe dedans, selon notre modèle (erreurs de sondage, ralliements tardifs et cygnes noirs tirés au hasard). Personne ne dépasse un plafond tiré du rejet : on ne gagne au plus que la moitié du chemin vers l’électorat qui n’exclut pas de voter pour vous (Mélenchon : ${dec(ceilingOf(fc, "Jean-Luc Mélenchon"))} %).`,
