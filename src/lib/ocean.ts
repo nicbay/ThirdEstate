@@ -4,8 +4,8 @@
 // Registered voters take the flag's three colours; everyone else (minors, foreign residents, adults not on the rolls)
 // is grey. Nothing moves across the screen: each pixel flickers softly on its own rhythm, and now and then fades to
 // blue and back. The ocean fades out toward the bottom of the band and around the chart (no pixels behind it).
-// One pixel glows gold: the reader. Over it (pointer, focus or tap) the pixels around it part and leave an empty
-// circle with a short message. Still frame under reduced motion (the circle opens without the slide), paused off
+// One pixel glows gold: the reader. Over it (pointer, focus or tap) the pixels around it are pushed aside to make room,
+// crowd an uneven edge and keep pressing back, and a short message appears in the space. Still frame under reduced motion (the circle opens without the slide), paused off
 // screen; no WebGL → the plain grid.
 import { L } from "../i18n";
 
@@ -29,27 +29,53 @@ float h1(vec2 p){ p = fract(p * vec2(0.1031, 0.1030)); p += dot(p, p.yx + 33.33)
 float hash(vec2 c){ vec2 lo = mod(c, 64.0), hi = floor(c / 64.0); return fract(h1(lo + 0.5) + h1(hi * 1.37 + 7.0) * 1.618); }
 const vec3 BLUE = vec3(0.36, 0.5, 1.0);
 const vec3 GOLD = vec3(1.0, 0.84, 0.36);
+vec2 meC; float L;
+// the room the pixels leave around the reader's: an uneven edge that slowly breathes, never a perfect circle
+float holeAt(float th){ return uR * uOpen * (1.0 + 0.07 * sin(3.0 * th + uT * 0.45) + 0.045 * sin(5.0 * th - uT * 0.7 + 1.3) + 0.03 * sin(8.0 * th + uT * 1.1)); }
+// where a pixel sits once pushed: each one moves whole (no stretching); the nearest ones go furthest and crowd the
+// edge, where they keep pressing back toward the reader, get pushed out again, and slide slowly along it
+vec2 pushed(vec2 c, float h){
+  vec2 d = c - meC; float s = length(d);
+  if (uOpen < 0.001 || s >= L) return c;
+  float th = atan(d.y, d.x);
+  float u = 1.0 - s / L, edge = u * u;
+  float r = s + holeAt(th) * edge;
+  float press = pow(max(0.0, sin(uT * (0.55 + h * 0.6) + h * 6.2832)), 4.0);
+  r -= edge * edge * uOpen * uCell * 1.4 * press;
+  th += uOpen * edge * 0.06 * sin(uT * 0.22 + h * 1.7);
+  return meC + r * vec2(cos(th), sin(th));
+}
 void main(){
   vec2 frag = vec2(gl_FragCoord.x, uRes.y - gl_FragCoord.y);
   vec2 meCell = floor(uMe / uCell);
-  vec2 meC = (meCell + 0.5) * uCell;
-  // the parting: the pixels within reach slide outward, packed into a ring, and leave an empty circle of radius
-  // uR * uOpen; each fragment looks up where its pixel came from
-  vec2 d = frag - meC;
-  float r = length(d);
-  float hole = uR * uOpen;
-  float reach = uR * 2.2;
+  meC = (meCell + 0.5) * uCell;
+  L = uR * 2.8;
   // the reader's own pixel never moves
   vec2 fc = floor(frag / uCell); vec2 fin = frag - fc * uCell;
   if (fc == meCell && fin.x < uCell - uDpr && fin.y < uCell - uDpr) { gl_FragColor = vec4(GOLD, 1.0); return; }
-  if (uOpen > 0.001 && r < hole) { gl_FragColor = vec4(0.0); return; }
-  vec2 src = frag;
-  if (uOpen > 0.001 && r < reach) src = meC + d / max(r, 0.001) * (reach * (r - hole) / (reach - hole));
-  vec2 cell = floor(src / uCell);
-  vec2 inCell = src - cell * uCell;
-  bool gap = inCell.x >= uCell - uDpr || inCell.y >= uCell - uDpr;
+  vec2 d = frag - meC;
+  float r = length(d);
+  vec2 cell = fc; bool hit = fin.x < uCell - uDpr && fin.y < uCell - uDpr;
+  if (uOpen > 0.001 && r < L + 3.0 * uCell) {
+    // which pixel landed here: start from a guess (the push undone along this direction), then look around it
+    float H = holeAt(atan(d.y, d.x));
+    float s = r;
+    if (H > 0.0 && r < L) { float u = (L - sqrt(max(0.0, L * L - 4.0 * H * (L - r)))) / (2.0 * H); s = max(0.0, L * (1.0 - u)); }
+    vec2 g = floor((meC + d / max(r, 0.001) * s) / uCell);
+    hit = false; float best = 1e9;
+    for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) {
+      vec2 cc = g + vec2(float(i), float(j));
+      if (cc == meCell) continue;
+      vec2 p = pushed((cc + 0.5) * uCell, hash(mod(cc + uOff, uSide) + 5.0));
+      vec2 lp = frag - (p - 0.5 * uCell);
+      if (lp.x >= 0.0 && lp.y >= 0.0 && lp.x < uCell - uDpr && lp.y < uCell - uDpr) {
+        float dd = dot(frag - p, frag - p);
+        if (dd < best) { best = dd; cell = cc; hit = true; }
+      }
+    }
+  }
   vec2 uv = frag / uRes;
-  float dMe = length(frag - meC) / uDpr;           // CSS px from the reader's pixel
+  float dMe = r / uDpr;                             // CSS px from the reader's pixel
   // no pixels behind the chart: they fade out over a soft edge around its box (CSS px)
   vec2 q = max(uMask.xy - frag, frag - uMask.zw) / uDpr;
   float outside = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0);
@@ -58,24 +84,20 @@ void main(){
   float bottom = 1.0 - smoothstep(0.55, 0.97, uv.y);
 
   vec3 col = vec3(0.0); float a = 0.0;
-  if (!gap) {
-    if (cell == meCell) {
-      a = 0.0; // pushed out of its place by the parting: the real one is drawn above
-    } else {
-      vec2 c = mod(cell + uOff, uSide);
-      float r1 = hash(c), r2 = hash(c + 17.0), r3 = hash(c + 41.0), r4 = hash(c + 83.0);
-      vec3 base = vec3(0.37, 0.38, 0.44); float k = 0.55;
-      if (r1 < uShare) { base = r2 < 0.34 ? BLUE : (r2 < 0.67 ? vec3(0.93, 0.93, 0.97) : vec3(1.0, 0.37, 0.44)); k = 1.0; }
-      // a soft flicker, each pixel on its own rhythm
-      float f = 0.5 + 0.5 * sin(uT * (0.35 + r3 * 0.9) + r4 * 6.2832);
-      // now and then a pixel drifts to blue and back
-      float toBlue = smoothstep(0.82, 1.0, sin(uT * (0.08 + r4 * 0.12) + r3 * 6.2832));
-      col = mix(base, BLUE, toBlue * 0.85);
-      float vis = (0.3 + 0.7 * smoothstep(0.1, 0.75, uv.x)) * clear * bottom;
-      a = (0.05 + 0.24 * (0.35 + 0.65 * f) * (0.6 + 0.4 * r2)) * k * vis;
-    }
+  if (hit && cell != meCell) {
+    vec2 c = mod(cell + uOff, uSide);
+    float r1 = hash(c), r2 = hash(c + 17.0), r3 = hash(c + 41.0), r4 = hash(c + 83.0);
+    vec3 base = vec3(0.37, 0.38, 0.44); float k = 0.55;
+    if (r1 < uShare) { base = r2 < 0.34 ? BLUE : (r2 < 0.67 ? vec3(0.93, 0.93, 0.97) : vec3(1.0, 0.37, 0.44)); k = 1.0; }
+    // a soft flicker, each pixel on its own rhythm
+    float f = 0.5 + 0.5 * sin(uT * (0.35 + r3 * 0.9) + r4 * 6.2832);
+    // now and then a pixel drifts to blue and back
+    float toBlue = smoothstep(0.82, 1.0, sin(uT * (0.08 + r4 * 0.12) + r3 * 6.2832));
+    col = mix(base, BLUE, toBlue * 0.85);
+    float vis = (0.3 + 0.7 * smoothstep(0.1, 0.75, uv.x)) * clear * bottom;
+    a = (0.05 + 0.24 * (0.35 + 0.65 * f) * (0.6 + 0.4 * r2)) * k * vis;
   }
-  // the reader's pixel glows a little, between the pixels too (only while the circle is closed)
+  // the reader's pixel glows a little, between the pixels too (only while the room is closed)
   float glow = exp(-(dMe * dMe) / (2.0 * 7.0 * 7.0)) * (0.32 + 0.08 * sin(uT * 2.2)) * (1.0 - uOpen);
   vec3 outc = col * min(a, 1.0) + GOLD * glow;
   float outa = min(1.0, min(a, 1.0) + glow);
@@ -150,7 +172,8 @@ export function mountOcean(host: HTMLElement) {
     gl.uniform1f(U.open, e);
     gl.uniform1f(U.r, R * dpr);
     gl.uniform4f(U.mask, mask[0] * dpr, mask[1] * dpr, mask[2] * dpr, mask[3] * dpr);
-    say.style.clipPath = `circle(${(R * e).toFixed(1)}px)`;
+    say.style.opacity = e.toFixed(3);
+    say.style.transform = `scale(${(0.6 + 0.4 * e).toFixed(3)})`;
     gl.clearColor(0, 0, 0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
@@ -173,9 +196,11 @@ export function mountOcean(host: HTMLElement) {
     const wide = r.width > 760;
     // the circle fits the open space above the chart, at the right of the headline; snapped to the grid
     const room = chart ? chart.getBoundingClientRect().top - r.top : 200;
-    R = Math.max(84, Math.min(wide ? 112 : 96, (room - 6) / 2));
-    meX = Math.floor(Math.min(r.width * (wide ? 0.8 : 0.84), r.width - R - 6) / CELL) * CELL;
-    meY = Math.floor((R + 3) / CELL) * CELL;
+    // pixels pushed past the top of the band or behind the chart simply aren't drawn, so the room can be wider than
+    // the space; the message's own solid centre (four fifths of it) stays above the chart and below the masthead
+    R = Math.max(90, Math.min(wide ? 120 : 104, (room - 6) / 1.6));
+    meX = Math.floor(Math.min(r.width * (wide ? 0.8 : 0.84), r.width - R * 0.8 - 6) / CELL) * CELL;
+    meY = Math.floor((R * 0.8 + 3) / CELL) * CELL;
     for (const el of [me, say]) { el.style.left = `${meX + CELL / 2}px`; el.style.top = `${meY + CELL / 2}px`; }
     say.style.setProperty("--r", `${R}px`);
     if (chart) {
