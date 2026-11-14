@@ -107,6 +107,7 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/elus$/, () => renderAssemblee(app, "carte")],
   [/^#\/explorer(?:\/(\w{2,3}))?$/, (m) => renderExplorer(app, m[1])],
   [/^#\/ville\/(\w{5})$/, (m) => renderTown(app, m[1])],
+  [/^#\/comparer(?:\/(\w{5}))?(?:\/(\w{5}))?$/, (m) => import("./views/compare").then((v) => v.renderCompare(app, m[1], m[2]))],
   [/^#\/chiffres$/, () => renderEconomy(app)],
   [/^#\/quiz(?:\/([\w-]+))?$/, (m) => renderQuiz(app, m[1])],
   // section names as paths, so a typed or shared section link lands somewhere
@@ -185,7 +186,7 @@ function sections(): Section[] {
       ],
     },
     {
-      key: "chez-vous", icon: "home", short: ["Chez vous", "Your town"], href: mine, match: /^#\/(explorer|ville)/, fr: "Chez vous", en: "Your town",
+      key: "chez-vous", icon: "home", short: ["Chez vous", "Your town"], href: mine, match: /^#\/(explorer|ville|comparer)/, fr: "Chez vous", en: "Your town",
       blurb: ["Votre commune, votre député, vos sénateurs.", "Your town, your MP, your senators."],
       children: [
         ...(home?.code ? [{ href: mine, match: new RegExp(`^#\\/ville\\/${home.code}$`), fr: "Ma commune", en: "My town", note: home.commune ?? home.code }] : []),
@@ -238,7 +239,7 @@ function nextSteps(path: string) {
   const byTheme = { href: "#/programmes#comparer", fr: "Sur le même sujet, qui propose quoi", en: "On the same subject, who proposes what" };
   const france = { href: "#/chiffres", fr: "La France en chiffres", en: "France in numbers" };
   const shifts = { href: "#/resultats/bascules", fr: "Les cartes des bascules gauche-droite", en: "The left–right shift maps" };
-  const pick = /^#\/(ville|explorer)/.test(path) ? [race, mps, quiz]
+  const pick = /^#\/(ville|explorer|comparer)/.test(path) ? [race, mps, quiz]
     : /^#\/(circo|depute|assemblee|elus|senat|senateur)/.test(path) ? [mine, /themes/.test(path) ? feed : words, race]
     : /^#\/quiz/.test(path) ? [race, progs, mps]
     : /^#\/programmes$/.test(path) ? [race, quiz, mps]
