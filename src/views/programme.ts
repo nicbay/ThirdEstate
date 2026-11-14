@@ -9,6 +9,8 @@ import { fetchJson } from "../data";
 import { L, fmtDate, fmtNum, fmtPct } from "../i18n";
 import { esc, safeUrl } from "../util";
 import { flowSvg, type FlowSpec } from "../lib/programme-flow";
+import { scorecardHtml, mountScorecard, type ScItem, type ScStatus } from "../lib/programme-scorecard";
+import { mountVotesCard } from "./programme-votes";
 import { measureTable, mountMeasureTable, type Assessed, type Feas, type Legal } from "../lib/measure-table";
 
 type VersionId = "a22" | "e25" | "w27" | string;
@@ -25,12 +27,19 @@ interface Baseline {
   already: Record<Status, number>; totals: Record<Status, number>;
   only: (Measure & { theme: string })[];
 }
-interface Version { id: VersionId; year: number; label: { fr: string; en: string }; title: string; date: string; kind: string; url?: string; count: number; key: number; financing?: { page: number; fr: string; en: string } }
+interface Version { id: VersionId; year: number; label: { fr: string; en: string }; title: string; date: string; kind: string; url?: string; archive?: string; count: number; key: number; financing?: { page: number; fr: string; en: string } }
 interface VoteItem { num: number; date: string; title: string; result: string; total: { P: number; C: number; A: number }; group: { P: number; C: number; A: number }; majority: "P" | "C" | "A" | null; expect: "P" | "C"; agrees: boolean | null }
 interface VoteLink { lineage: string; topic: { fr: string; en: string }; note: { fr: string; en: string } | null; scrutins: VoteItem[] }
 type Counts = Record<Status, number>;
 interface CostLine { by: string; spending: number; revenue: number; net: number; date: string; note: { fr: string; en: string }; url: string }
 interface CostRound { id: string; year: number; label: { fr: string; en: string }; horizon: { fr: string; en: string }; announced: CostLine; estimates: CostLine[] }
+type TT = { fr: string; en: string };
+type Src = { title: string; url: string };
+/** The growth a programme's figures assume, how plausible that is, and comparable policies abroad. */
+interface Growth {
+  assumed: TT; rate: number | null; verdict: "realistic" | "optimistic" | "improbable" | "unstated"; reason: TT; sources: Src[]; checked: string;
+  examples: { country: TT; year: string; policy: TT; outcome: TT; result: "worked" | "failed" | "mixed"; sources: Src[] }[];
+}
 interface AssessEntry {
   id: string; short: { fr: string; en: string } | null; cost: number | null; low: number | null; high: number | null; party: number | null; by: string | null;
   basis: string | null; sources: { title: string; url: string }[]; legal: Legal; legalNote: string | null; feasibility: Feas; feasibilityNote: string | null; broadBenefit: boolean; key: boolean;
@@ -43,6 +52,7 @@ interface ProgrammeFile {
   summary: { overall: Counts & { total: number; changed: number }; byTheme: Record<string, Counts> };
   highlights: { lineage: string; kind: string; fr: string; en: string }[];
   costing?: { rounds: CostRound[]; checked: string };
+  growth?: Growth;
   baseline?: Baseline;
   assessment?: AssessEntry[];
   votes: VoteLink[];
@@ -70,8 +80,8 @@ const statusHelp = (s: Status): string =>
     maintained: L("présente en 2022 et en 2027, même engagement et mêmes chiffres", "in 2022 and 2027, same commitment and figures"),
     modified: L("présente en 2022 et en 2027, chiffre ou formulation modifiés", "in 2022 and 2027, figure or wording changed"),
     new2025: L("absente de l’abrégé 2022, présente dans l’édition 2025 et en 2027", "not in the 2022 booklet, in the 2025 edition and in 2027"),
-    new2027: L("présente seulement dans le programme 2027", "only in the 2027 programme"),
-    dropped: L("absente du programme 2027", "not in the 2027 programme"),
+    new2027: L("présente seulement dans le programme 2027", "only in the 2027 program"),
+    dropped: L("absente du programme 2027", "not in the 2027 program"),
   })[s];
 const POS = { P: () => L("Pour", "For"), C: () => L("Contre", "Against"), A: () => L("Abstention", "Abstain") };
 
@@ -115,9 +125,9 @@ const branchLabel = (b: BranchId) => ({
 const branchHelp = (b: BranchId) => ({
   kept: L("Dans l’abrégé 2022 et en 2027, même engagement, mêmes chiffres.", "In the 2022 booklet and in 2027, same commitment, same figures."),
   changed: L("Dans l’abrégé 2022 et en 2027, mais un chiffre ou la formulation a changé.", "In the 2022 booklet and in 2027, but a figure or the wording changed."),
-  drop22: L("Dans l’abrégé 2022, plus dans le programme 2027 (retirées dès 2025 ou en 2027).", "In the 2022 booklet, no longer in the 2027 programme (dropped in 2025 or in 2027)."),
+  drop22: L("Dans l’abrégé 2022, plus dans le programme 2027 (retirées dès 2025 ou en 2027).", "In the 2022 booklet, no longer in the 2027 program (dropped in 2025 or in 2027)."),
   add25: L("Absentes de l’abrégé 2022, ajoutées dans l’édition 2025, toujours là en 2027.", "Not in the 2022 booklet, added in the 2025 edition, still there in 2027."),
-  drop25: L("Ajoutées dans l’édition 2025, plus dans le programme 2027.", "Added in the 2025 edition, no longer in the 2027 programme."),
+  drop25: L("Ajoutées dans l’édition 2025, plus dans le programme 2027.", "Added in the 2025 edition, no longer in the 2027 program."),
   new27: L("Sans équivalent dans les versions précédentes : n’apparaissent qu’en 2027.", "No match in earlier versions: only in 2027."),
 })[b];
 const BRANCH_STATUS: Record<BranchId, Status> = { kept: "maintained", changed: "modified", drop22: "dropped", add25: "new2025", drop25: "dropped", new27: "new2027" };
@@ -146,14 +156,36 @@ export function melenchonFlowSpec(f: ProgrammeFile, ls: Lineage[]): FlowSpec {
       { id: "s27", icon: "27", title: L("Site 2027", "2027 website"), sub: L("textes nouveaux", "new texts"), out: ["new27"], doc: docOf(vw) },
     ],
     branches: order.map((b) => ({ id: b, icon: icon[b], title: branchLabel(b), n: n[b], drop: b === "drop22" || b === "drop25" })),
-    keepTitle: L(`Programme ${vw.year}`, `${vw.year} programme`), keepN: inW, goneN: n.drop22 + n.drop25, keepDoc: docOf(vw),
-    label: L(`Flux des engagements : ${inA} dans l’abrégé 2022, ${inE} dans l’édition ${ve.year}, ${inW} dans le programme ${vw.year}.`, `Flow of commitments: ${inA} in the 2022 booklet, ${inE} in the ${ve.year} edition, ${inW} in the ${vw.year} programme.`),
+    keepTitle: L(`Programme ${vw.year}`, `${vw.year} program`), keepN: inW, goneN: n.drop22 + n.drop25, keepDoc: docOf(vw),
+    label: L(`Flux des engagements : ${inA} dans l’abrégé 2022, ${inE} dans l’édition ${ve.year}, ${inW} dans le programme ${vw.year}.`, `Flow of commitments: ${inA} in the 2022 booklet, ${inE} in the ${ve.year} edition, ${inW} in the ${vw.year} program.`),
   };
 }
 
-function costCard(f: { slug: string; costing?: { rounds: CostRound[]; checked: string } | null }) {
-  const c = f.costing;
-  if (!c?.rounds.length) return "";
+/** Up top of the cost card: the growth the programme's figures rest on, whether that holds, and precedents abroad. */
+function growthBlock(g: Growth) {
+  const verdict = { realistic: L("Réaliste", "Realistic"), optimistic: L("Optimiste", "Optimistic"), improbable: L("Improbable", "Improbable"), unstated: L("Non précisée", "Not stated") }[g.verdict];
+  const res = { worked: L("A marché", "Worked"), failed: L("A échoué", "Failed"), mixed: L("Mitigé", "Mixed") };
+  const links = (xs: Src[]) => xs.map((x) => `<a href="${esc(safeUrl(x.url))}" target="_blank" rel="noopener">${esc(x.title)}</a>`).join(" · ");
+  return `<div class="growth is-${cls(g.verdict)}">
+    <div class="growth-head">
+      <span class="growth-rate">${g.rate != null ? `${fmtNum(g.rate)} %` : "?"}</span>
+      <span class="growth-what"><span class="eyebrow">${L("Croissance supposée par le programme", "Growth the program assumes")}</span><b>${esc(L(g.assumed.fr, g.assumed.en))}</b></span>
+      <span class="growth-verdict">${esc(verdict)}</span>
+    </div>
+    <p class="growth-why">${esc(L(g.reason.fr, g.reason.en))}</p>
+    ${g.examples.length ? `<p class="eyebrow growth-k">${L("Des politiques comparables à l’étranger", "Comparable policies abroad")}</p>
+    <ul class="growth-ex">${g.examples.map((x) => `<li class="is-${cls(x.result)}">
+      <span class="growth-where">${esc(L(x.country.fr, x.country.en))} · ${esc(x.year)}</span>
+      <span class="growth-res">${esc(res[x.result])}</span>
+      <p><b>${esc(L(x.policy.fr, x.policy.en))}</b> ${esc(L(x.outcome.fr, x.outcome.en))}</p>
+      <p class="small">${links(x.sources)}</p></li>`).join("")}</ul>` : ""}
+    ${g.sources.length ? `<p class="small muted">${L("Sources", "Sources")}${L(" : ", ": ")}${links(g.sources)} · ${L("vérifiées le", "checked on")} ${fmtDate(g.checked)}</p>` : ""}
+  </div>`;
+}
+
+function costCard(f: { slug: string; costing?: { rounds: CostRound[]; checked: string } | null; growth?: Growth | null }) {
+  const c = f.costing ?? { rounds: [], checked: "" };
+  if (!c.rounds.length && !f.growth) return "";
   // a round given as a multi-year total (e.g. "cumulé jusqu’en 2032") can’t sit on the per-year axis
   const annual = (r: CostRound) => !/cumul|quinquennat|d’ici|jusqu|atteint|en 20\d\d par rapport/i.test(r.horizon.fr);
   const nets = c.rounds.filter((r) => annual(r)).flatMap((r) => [r.announced?.net, ...r.estimates.map((e) => e.net)]).filter((v): v is number => typeof v === "number");
@@ -190,18 +222,23 @@ function costCard(f: { slug: string; costing?: { rounds: CostRound[]; checked: s
         `The gap is mostly about revenue. In 2022 Institut Montaigne counted €${fmtNum(m22.revenue)}bn of revenue out of the €${fmtNum(r22.announced.revenue)}bn announced: it counts neither the anti-fraud receipts nor the extra growth LFI expects. It also prices spending higher (€${fmtNum(m22.spending)}bn against ${fmtNum(r22.announced.spending)}). Montaigne notes the stimulus effect could cut the deficit increase by 30 to 50%: even then, €110–150bn a year would remain unfunded.`)}</p>
       <p>${L(
         `Le premier budget annoncé pour 2027 (${fmtNum(r27.announced.spending)} Md€ de dépenses nouvelles, ${fmtNum(r27.announced.revenue)} Md€ de recettes) est trois fois plus petit que le chiffrage de 2022, mais il ne couvre que la première année et une partie des mesures : le retour à 62 ans y coûte 9 Md€, alors que le programme 2027 vise toujours la retraite à 60 ans, que l’iFRAP chiffrait à 50 Md€ par an en 2024. Le chiffrage complet est annoncé pour début 2027 ; aucune évaluation indépendante n’existe encore. Rien ne permet donc de dire, à ce stade, que l’écart des deux campagnes précédentes s’est refermé.`,
-        `The first budget announced for 2027 (€${fmtNum(r27.announced.spending)}bn of new spending, €${fmtNum(r27.announced.revenue)}bn of revenue) is a third the size of the 2022 costing, but covers only the first year and part of the measures: going back to 62 costs €9bn in it, while the 2027 programme still aims for retirement at 60, which iFRAP put at €50bn a year in 2024. The full costing is due in early 2027; no independent assessment exists yet. Nothing so far shows that the gap of the last two campaigns has closed.`)}</p>
+        `The first budget announced for 2027 (€${fmtNum(r27.announced.spending)}bn of new spending, €${fmtNum(r27.announced.revenue)}bn of revenue) is a third the size of the 2022 costing, but covers only the first year and part of the measures: going back to 62 costs €9bn in it, while the 2027 program still aims for retirement at 60, which iFRAP put at €50bn a year in 2024. The full costing is due in early 2027; no independent assessment exists yet. Nothing so far shows that the gap of the last two campaigns has closed.`)}</p>
     </div>` : "";
+  const nEst = c.rounds.reduce((a, r) => a + r.estimates.length + (r.announced ? 1 : 0), 0);
   return `<article class="card" id="cout">
-    <header class="card-head"><h2>${L("Ce que coûte le programme : l’annonce et les estimations", "What the programme costs: the claim and the estimates")}</h2></header>
-    <p class="prog-lede">${L("Solde des mesures pour les finances publiques, en milliards d’euros par an : à droite du zéro, les recettes nouvelles dépassent les dépenses nouvelles ; à gauche, le programme creuse le déficit.", "Balance of the measures for public finances, in billions of euros a year: right of zero, new revenue exceeds new spending; left of zero, the programme widens the deficit.")}</p>
+    <header class="card-head"><h2>${L("Ce que coûte le programme, et la croissance qu’il suppose", "What the program costs, and the growth it assumes")}</h2></header>
+    ${f.growth ? growthBlock(f.growth) : ""}
+    ${c.rounds.length ? `<details class="cost-fold"${f.growth ? "" : " open"}>
+    <summary><span>${L("Le chiffrage ligne à ligne", "The costing, line by line")}</span> <span class="muted small">${L(`${fmtNum(c.rounds.length)} campagnes, ${fmtNum(nEst)} chiffres : annonces du parti et estimations indépendantes`, `${fmtNum(c.rounds.length)} campaigns, ${fmtNum(nEst)} figures: party claims and independent estimates`)}</span></summary>
+    <p class="prog-lede">${L("Solde des mesures pour les finances publiques, en milliards d’euros par an : à droite du zéro, les recettes nouvelles dépassent les dépenses nouvelles ; à gauche, le programme creuse le déficit.", "Balance of the measures for public finances, in billions of euros a year: right of zero, new revenue exceeds new spending; left of zero, the program widens the deficit.")}</p>
     ${c.rounds.map((r) => `<section class="cost-round">
       <h3>${esc(L(r.label.fr, r.label.en))} <span class="muted small">· ${esc(L(r.horizon.fr, r.horizon.en))}</span></h3>
       ${bar(r.announced, "ann", annual(r))}
       ${r.estimates.map((e) => bar(e, "est", annual(r))).join("") || `<p class="cost-none muted small">${f.slug === "melenchon" ? L("Pas encore d’estimation indépendante : le chiffrage complet est annoncé pour début 2027.", "No independent estimate yet: the full costing is due in early 2027.") : L("Pas encore d’estimation indépendante.", "No independent estimate yet.")}</p>`}
     </section>`).join("")}
     ${verdict}
-    <p class="muted small">${L(`Estimations « statiques » : effets directs des mesures, sans effet sur la croissance. Les auteurs n’utilisent pas la même trajectoire de référence, d’où des écarts entre eux.${f.slug === "melenchon" ? " Le NFP de 2024 était une coalition ; son programme n’est pas celui de LFI seule." : ""} Sources vérifiées le ${fmtDate(c.checked)}.`, `‘Static’ estimates: direct effects of the measures, no growth feedback. The authors use different baselines, hence differences between them.${f.slug === "melenchon" ? " The 2024 NFP was a coalition; its programme is not LFI’s alone." : ""} Sources checked on ${fmtDate(c.checked)}.`)}</p>
+    <p class="muted small">${L(`Estimations « statiques » : effets directs des mesures, sans effet sur la croissance. Les auteurs n’utilisent pas la même trajectoire de référence, d’où des écarts entre eux.${f.slug === "melenchon" ? " Le NFP de 2024 était une coalition ; son programme n’est pas celui de LFI seule." : ""} Sources vérifiées le ${fmtDate(c.checked)}.`, `‘Static’ estimates: direct effects of the measures, no growth feedback. The authors use different baselines, hence differences between them.${f.slug === "melenchon" ? " The 2024 NFP was a coalition; its program is not LFI’s alone." : ""} Sources checked on ${fmtDate(c.checked)}.`)}</p>
+    </details>` : ""}
   </article>`;
 }
 
@@ -209,7 +246,7 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
   const f = await load(slug).catch(() => null);
   if (f && (f as unknown as LiteFile).lite) return renderLite(app, f as unknown as LiteFile);
   if (!f) {
-    app.innerHTML = `<section class="page"><div class="page-head"><h1>${L("Programme introuvable", "Programme not found")}</h1><p class="dek">${L("Aucune analyse de programme n’est disponible pour ce candidat pour l’instant.", "No programme analysis is available for this candidate yet.")}</p></div></section>`;
+    app.innerHTML = `<section class="page"><div class="page-head"><h1>${L("Programme introuvable", "Program not found")}</h1><p class="dek">${L("Aucune analyse de programme n’est disponible pour ce candidat pour l’instant.", "No program analysis is available for this candidate yet.")}</p></div></section>`;
     return;
   }
   const V = Object.fromEntries(f.versions.map((v) => [v.id, v])) as Record<string, Version>;
@@ -279,19 +316,42 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
   const nDisagree = f.votes.reduce((s, v) => s + v.scrutins.filter((x) => x.agrees === false).length, 0);
   const nInW = f.lineages.filter((l) => l.w).length;
 
+  // ---------- scorecard: the 2022 booklet against the 2027 programme, key measures first ----------
+  const SC_OF: Record<Status, ScStatus> = { maintained: "kept", modified: "changed", dropped: "dropped", new2025: "new", new2027: "new" };
+  const side = (v: Version, m: Measure | undefined) => {
+    if (!m) return undefined;
+    const sec = f.sections[v.id]?.[m.s];
+    const pdf = v.archive ?? v.url;
+    const href = sec?.[3] ?? (pdf ? `${pdf}${m.p && /pdf/i.test(v.kind) ? `#page=${m.p}` : ""}` : undefined);
+    const where = [sec?.[0], sec?.[1], sec?.[2]].filter(Boolean).join(" › ") + (m.p ? ` · p. ${m.p}` : "");
+    return { year: v.year, text: m.t, href, where, tag: v.kind === "site" ? L(`site ${v.year}`, `${v.year} website`) : undefined };
+  };
+  const scItems: ScItem[] = (["changed", "kept", "dropped", "new"] as ScStatus[]).flatMap((st) => f.lineages
+    .filter((l) => SC_OF[l.status] === st)
+    .sort((x, y) => (y.key ?? 0) - (x.key ?? 0) || (votesBy.has(y.id) ? 1 : 0) - (votesBy.has(x.id) ? 1 : 0))
+    .slice(0, 30)
+    .map((l) => ({
+      id: l.id, status: st, key: !!l.key, theme: l.theme,
+      before: st === "new" ? undefined : l.a ? side(va, l.a) : side(ve, l.e),
+      after: st === "dropped" ? undefined : side(vw, l.w),
+    })));
+  const scTotals: Record<ScStatus, number> = { changed: o.modified, kept: o.maintained, dropped: o.dropped, new: o.new2025 + o.new2027 };
+
   app.innerHTML = `
     <section class="page prog">
       <div class="page-head">
-        <p class="eyebrow">${L("Programmes 2027", "2027 programmes")} · ${esc(f.candidate)} · ${esc(f.party)}</p>
+        <p class="eyebrow">${L("Programmes 2027", "2027 programs")} · ${esc(f.candidate)} · ${esc(f.party)}</p>
         <h1>${L(`${f.programme}, de 2022 à 2027 : ce qui reste, ce qui change`, `${f.programme} from 2022 to 2027: what stays, what changes`)}</h1>
         <p class="dek">${L(
           `${fmtNum(f.lineages.length)} engagements suivis à travers trois versions du programme : l’abrégé de 2022 (${va.count} mesures), l’édition complète de 2025 (${ve.count}) et le programme 2027 en ligne (${vw.count}). ${fmtNum(o.maintained + o.modified)} figuraient déjà dans l’abrégé de 2022, ${fmtNum(o.new2027)} n’apparaissent qu’en 2027, ${fmtNum(o.dropped)} ne figurent plus dans la version 2027.`,
-          `${fmtNum(f.lineages.length)} commitments tracked across three versions of the programme: the 2022 abridged booklet (${va.count} measures), the full 2025 edition (${ve.count}) and the online 2027 programme (${vw.count}). ${fmtNum(o.maintained + o.modified)} were already in the 2022 booklet, ${fmtNum(o.new2027)} appear only in 2027, ${fmtNum(o.dropped)} are no longer in the 2027 version.`)}${bl ? ` ${L(
+          `${fmtNum(f.lineages.length)} commitments tracked across three versions of the program: the 2022 abridged booklet (${va.count} measures), the full 2025 edition (${ve.count}) and the online 2027 program (${vw.count}). ${fmtNum(o.maintained + o.modified)} were already in the 2022 booklet, ${fmtNum(o.new2027)} appear only in 2027, ${fmtNum(o.dropped)} are no longer in the 2027 version.`)}${bl ? ` ${L(
           `L’édition complète d’avril ${bl.year} (${fmtNum(bl.count)} mesures) sert de point de repère plus ancien : ${fmtNum(bl.matched)} engagements y figuraient déjà.`,
           `The complete April ${bl.year} edition (${fmtNum(bl.count)} measures) serves as an older reference point: ${fmtNum(bl.matched)} commitments were already in it.`)}` : ""}</p>
         <nav class="prog-jump" aria-label="${L("Sur cette page", "On this page")}">
+          <a href="#/programmes/${esc(f.slug)}#bilan">${L("Le bilan 2022 → 2027", "2022 → 2027 at a glance")}</a>
           <a href="#/programmes/${esc(f.slug)}#parcours">${L("Le parcours des mesures", "Where measures went")}</a>
-          ${f.costing ? `<a href="#/programmes/${esc(f.slug)}#cout">${L("Le coût annoncé et estimé", "Claimed vs estimated cost")}</a>` : ""}
+          ${f.costing ? `<a href="#/programmes/${esc(f.slug)}#cout">${L("Le coût et la croissance", "Cost and growth")}</a>` : ""}
+          ${f.votes.length ? `<a href="#/programmes/${esc(f.slug)}#votes">${L("Qui a voté contre", "Who voted against")}</a>` : ""}
           ${f.assessment?.length ? `<a href="#/programmes/${esc(f.slug)}#evaluation">${L("Coût, faisabilité, droit", "Cost, feasibility, law")}</a>` : ""}
           ${bl ? `<a href="#/programmes/${esc(f.slug)}#edition-${bl.year}">${L(`Déjà en ${bl.year} ?`, `Already in ${bl.year}?`)}</a>` : ""}
           <a href="#/programmes/${esc(f.slug)}#mesures">${L("Toutes les mesures", "Every measure")}</a>
@@ -304,9 +364,15 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
         </a>` : ""}
       </div>
 
+      <article class="card sc-card" id="bilan">
+        <header class="card-head"><h2>${L("Le bilan : ce qui a changé, tenu ou disparu depuis 2022", "At a glance: what changed, held or went since 2022")}</h2></header>
+        <p class="prog-lede">${L(`À gauche, la mesure dans l’abrégé de 2022 ; à droite, dans le programme 2027 ; au milieu, ce qu’elle est devenue. Mesures clés d’abord. Chaque boîte ouvre sa source : le PDF à la bonne page, ou la section du site 2027.`, `Left, the measure in the 2022 booklet; right, in the 2027 program; in between, what became of it. Key measures first. Each box opens its source: the PDF at the right page, or the section of the 2027 website.`)}</p>
+        ${scorecardHtml(scItems, { id: "sc-mel", yearA: va.year, yearB: vw.year, totals: scTotals, droppedNote: (it) => { const l = byId.get(it.id); return l?.droppedIn ? L(`Retirée en ${l.droppedIn}`, `Dropped in ${l.droppedIn}`) : L("Retirée", "Dropped"); }, listHref: () => `#/programmes/${f.slug}#mesures` })}
+      </article>
+
       <article class="card flow-card" id="parcours">
         <header class="card-head"><h2>${L("Le parcours des mesures, de 2022 à 2027", "Where the measures went, 2022 to 2027")}</h2></header>
-        <p class="prog-lede">${L("Chaque version du programme entre à gauche ; chaque mesure suit une branche : gardée, modifiée, ajoutée ou abandonnée. L’épaisseur d’un lien est proportionnelle au nombre de mesures. Cliquez une branche pour voir ses mesures.", "Each version of the programme enters on the left; each measure follows a branch: kept, changed, added or dropped. A link’s thickness is proportional to the number of measures. Click a branch to see its measures.")}</p>
+        <p class="prog-lede">${L("Chaque version du programme entre à gauche ; chaque mesure suit une branche : gardée, modifiée, ajoutée ou abandonnée. L’épaisseur d’un lien est proportionnelle au nombre de mesures. Cliquez une branche pour voir ses mesures.", "Each version of the program enters on the left; each measure follows a branch: kept, changed, added or dropped. A link’s thickness is proportional to the number of measures. Click a branch to see its measures.")}</p>
         <div class="flow-tools">
           <label>${L("Thème", "Theme")} <select id="ft"><option value="">${L("Tous les thèmes", "All themes")}</option>${themeRows.map((r) => `<option value="${esc(r.t.id)}" ${state.flowTheme === r.t.id ? "selected" : ""}>${esc(L(r.t.fr, r.t.en))}</option>`).join("")}</select></label>
           <span class="muted small flow-hint">${L("Faites glisser pour voir tout le schéma", "Swipe to see the whole diagram")}</span>
@@ -316,7 +382,7 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
       </article>
 
       <article class="card">
-        <header class="card-head"><h2>${L("Le programme, thème par thème", "The programme, theme by theme")}</h2></header>
+        <header class="card-head"><h2>${L("Le programme, thème par thème", "The program, theme by theme")}</h2></header>
         <div class="kpis kpis-4 prog-kpis">
           <div><strong>${fmtNum(o.maintained)}</strong>${esc(statusLabel("maintained"))}</div>
           <div><strong>${fmtNum(o.modified)}</strong>${esc(statusLabel("modified"))}</div>
@@ -328,7 +394,7 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
           ${themeRows.map((r) => `<button type="button" class="prog-row" data-theme="${esc(r.t.id)}" title="${L("Filtrer la liste sur ce thème", "Filter the list to this theme")}">
             <span class="prog-row-label">${esc(L(r.t.fr, r.t.en))} <b>${r.n}</b></span>${stack(r.c, r.n, maxN)}</button>`).join("")}
         </div>
-        <p class="muted small">${L(`Un engagement = une mesure suivie d’une version à l’autre (les mesures rapprochées par similarité de texte, puis relues). Thème : celui de la dernière version. « Apparue en 2025 » signifie absente de l’abrégé de 2022, qui ne reprend qu’une partie du programme complet de 2022${bl ? ` : ${fmtNum(bl.already.new2025)} de ces ${fmtNum(bl.totals.new2025)} mesures figuraient déjà dans l’édition complète de ${bl.year}` : ""}.`, `One commitment = one measure followed from version to version (matched by text similarity, then reviewed). Theme: that of the latest version. ‘Added in 2025’ means absent from the 2022 booklet, which only covers part of the full 2022 programme${bl ? `: ${fmtNum(bl.already.new2025)} of those ${fmtNum(bl.totals.new2025)} measures were already in the complete ${bl.year} edition` : ""}.`)}</p>
+        <p class="muted small">${L(`Un engagement = une mesure suivie d’une version à l’autre (les mesures rapprochées par similarité de texte, puis relues). Thème : celui de la dernière version. « Apparue en 2025 » signifie absente de l’abrégé de 2022, qui ne reprend qu’une partie du programme complet de 2022${bl ? ` : ${fmtNum(bl.already.new2025)} de ces ${fmtNum(bl.totals.new2025)} mesures figuraient déjà dans l’édition complète de ${bl.year}` : ""}.`, `One commitment = one measure followed from version to version (matched by text similarity, then reviewed). Theme: that of the latest version. ‘Added in 2025’ means absent from the 2022 booklet, which only covers part of the full 2022 program${bl ? `: ${fmtNum(bl.already.new2025)} of those ${fmtNum(bl.totals.new2025)} measures were already in the complete ${bl.year} edition` : ""}.`)}</p>
       </article>
 
       <article class="card">
@@ -343,7 +409,7 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
 
       ${assessRows.length ? `<article class="card" id="evaluation">
         <header class="card-head"><h2>${L("Mesure par mesure : coût, faisabilité, Constitution", "Measure by measure: cost, feasibility, constitution")}</h2></header>
-        <p class="prog-lede">${L(`Les ${fmtNum(assessRows.length)} mesures du programme 2027 qui sont soit des « mesures clés », soit chiffrées par l’Institut Montaigne en 2022. Le chiffre de Montaigne est conservé quand la mesure n’a pas changé de montant ; sinon, et pour les mesures nouvelles, l’estimation est la nôtre, calcul et sources à l’appui. Cliquez une ligne pour le détail.`, `The ${fmtNum(assessRows.length)} measures of the 2027 programme that are either ‘key measures’ or were costed by Institut Montaigne in 2022. Montaigne’s figure is kept where the measure’s amount hasn’t changed; otherwise, and for new measures, the estimate is ours, with its calculation and sources. Click a row for details.`)}</p>
+        <p class="prog-lede">${L(`Les ${fmtNum(assessRows.length)} mesures du programme 2027 qui sont soit des « mesures clés », soit chiffrées par l’Institut Montaigne en 2022. Le chiffre de Montaigne est conservé quand la mesure n’a pas changé de montant ; sinon, et pour les mesures nouvelles, l’estimation est la nôtre, calcul et sources à l’appui. Cliquez une ligne pour le détail.`, `The ${fmtNum(assessRows.length)} measures of the 2027 program that are either ‘key measures’ or were costed by Institut Montaigne in 2022. Montaigne’s figure is kept where the measure’s amount hasn’t changed; otherwise, and for new measures, the estimate is ours, with its calculation and sources. Click a row for details.`)}</p>
         ${measureTable(assessRows, { id: "mt-mel", partyName: f.candidate })}
       </article>` : ""}
 
@@ -369,7 +435,7 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
         <header class="card-head"><h2>${L(`À l’Assemblée depuis 2024 : comment a voté le groupe ${esc(f.group)}`, `In the Assembly since 2024: how the ${esc(f.group)} group voted`)}</h2></header>
         <p class="prog-lede">${L(
           `${f.votes.length} engagements du programme correspondent clairement à un texte voté depuis juillet 2024 (${nVoteScrutins} scrutins publics). La position du groupe est celle de la majorité de ses députés actuels ayant voté. Elle va dans le sens de la promesse dans ${nAgree} scrutins, pas dans ${nDisagree}. Pour les ${fmtNum(nInW - f.votes.length)} autres engagements de 2027 : pas de vote correspondant identifié.`,
-          `${f.votes.length} programme commitments clearly match a text voted on since July 2024 (${nVoteScrutins} public votes). The group position is that of the majority of its current MPs who voted. It is in line with the promise in ${nAgree} votes, not in ${nDisagree}. For the other ${fmtNum(nInW - f.votes.length)} 2027 commitments: no matching vote identified.`)}</p>
+          `${f.votes.length} program commitments clearly match a text voted on since July 2024 (${nVoteScrutins} public votes). The group position is that of the majority of its current MPs who voted. It is in line with the promise in ${nAgree} votes, not in ${nDisagree}. For the other ${fmtNum(nInW - f.votes.length)} 2027 commitments: no matching vote identified.`)}</p>
         <div class="prog-votes">${f.votes.map((v) => {
           const l = byId.get(v.lineage);
           const m = l ? latest(l) : null;
@@ -383,12 +449,12 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
       </article>
 
       <article class="card">
-        <header class="card-head"><h2>${L("Poids dans le programme et temps de parole", "Weight in the programme vs speaking time")}</h2></header>
+        <header class="card-head"><h2>${L("Poids dans le programme et temps de parole", "Weight in the program vs speaking time")}</h2></header>
         <p class="prog-lede">${L(
           `Part de chaque thème parmi les ${vw.count} mesures du programme 2027, et part du même thème dans les interventions en séance des députés ${esc(f.group)}${tw.speechesPeriod ? ` (${fmtDate(tw.speechesPeriod.from)} – ${fmtDate(tw.speechesPeriod.to)}${tw.speechesCount ? `, ${fmtNum(tw.speechesCount)} interventions` : ""})` : ""}. Les deux mesures ne se comparent qu’en ordre de grandeur : une mesure n’est pas une minute de débat, et l’ordre du jour de l’Assemblée est largement fixé par le gouvernement.`,
-          `Share of each theme among the ${vw.count} measures of the 2027 programme, and share of the same theme in ${esc(f.group)} MPs’ speeches in the chamber${tw.speechesPeriod ? ` (${fmtDate(tw.speechesPeriod.from)} – ${fmtDate(tw.speechesPeriod.to)}${tw.speechesCount ? `, ${fmtNum(tw.speechesCount)} speeches` : ""})` : ""}. Only orders of magnitude compare: a measure is not a minute of debate, and the Assembly’s agenda is largely set by the government.`)}</p>
+          `Share of each theme among the ${vw.count} measures of the 2027 program, and share of the same theme in ${esc(f.group)} MPs’ speeches in the chamber${tw.speechesPeriod ? ` (${fmtDate(tw.speechesPeriod.from)} – ${fmtDate(tw.speechesPeriod.to)}${tw.speechesCount ? `, ${fmtNum(tw.speechesCount)} speeches` : ""})` : ""}. Only orders of magnitude compare: a measure is not a minute of debate, and the Assembly’s agenda is largely set by the government.`)}</p>
         <div class="prog-weights">
-          <div class="prog-wkey"><span><i class="prog-sw prog-wp"></i>${L("Programme 2027", "2027 programme")}</span><span><i class="prog-sw prog-ws"></i>${L(`Interventions ${f.group}`, `${f.group} speeches`)}</span></div>
+          <div class="prog-wkey"><span><i class="prog-sw prog-wp"></i>${L("Programme 2027", "2027 program")}</span><span><i class="prog-sw prog-ws"></i>${L(`Interventions ${f.group}`, `${f.group} speeches`)}</span></div>
           ${weightRows.map((r) => `<div class="prog-wrow"><span class="prog-wlabel">${esc(L(r.t.fr, r.t.en))}</span>
             <span class="prog-wbars"><span class="prog-wbar prog-wp" style="width:${((100 * r.p) / wMax).toFixed(1)}%"></span><b>${fmtPct(100 * r.p, 0)}</b>
             <span class="prog-wbar prog-ws" style="width:${((100 * r.s) / wMax).toFixed(1)}%"></span><b>${fmtPct(100 * r.s, 0)}</b></span></div>`).join("")}
@@ -400,7 +466,7 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
         <header class="card-head"><h2>${L("Sources et méthode", "Sources and method")}</h2></header>
         <ul>
           ${bl ? `<li><b>${esc(L(bl.label.fr, bl.label.en))}</b> — ${esc(bl.title)} (${fmtNum(bl.count)} ${L("mesures", "measures")}${bl.pages ? `, ${bl.pages} pages` : ""}). ${L("PDF conservé par la rédaction ; sert de repère, n’entre pas dans le décompte des engagements.", "PDF kept on file; a reference point, not counted among the commitments.")}</li>` : ""}
-          ${f.versions.map((v) => `<li><b>${esc(L(v.label.fr, v.label.en))}</b> — ${esc(v.title)} (${v.count} ${L("mesures", "measures")}, ${v.key} ${L("mesures clés", "key measures")}). ${v.url ? `<a href="${esc(safeUrl(v.url))}" target="_blank" rel="noopener">${v.kind === "site" ? L("Site", "Website") : L("Adresse d’origine du PDF", "Original PDF address")}</a>${v.kind !== "site" ? L(" (redirige désormais vers le site 2027 ; copie du PDF conservée par la rédaction)", " (now redirects to the 2027 site; a copy of the PDF is kept on file)") : ""}` : ""}</li>`).join("")}
+          ${f.versions.map((v) => `<li><b>${esc(L(v.label.fr, v.label.en))}</b> — ${esc(v.title)} (${v.count} ${L("mesures", "measures")}, ${v.key} ${L("mesures clés", "key measures")}). ${v.url ? `<a href="${esc(safeUrl(v.url))}" target="_blank" rel="noopener">${v.kind === "site" ? L("Site", "Website") : L("Adresse d’origine du PDF", "Original PDF address")}</a>${v.kind !== "site" ? L(" (redirige désormais vers le site 2027 ; copie du PDF conservée par la rédaction)", " (now redirects to the 2027 site; a copy of the PDF is kept on file)") : ""}` : ""}${v.archive ? ` · <a href="${esc(safeUrl(v.archive))}" target="_blank" rel="noopener">${L("copie en ligne du même PDF", "online copy of the same PDF")}</a>` : ""}</li>`).join("")}
         </ul>
         <p>${L(
           "Extraction : le texte des deux PDF est découpé en puces (« • ») sous leurs chapitres et sections ; les encadrés « mesure clé » sont repérés et fusionnés avec la puce qu’ils reprennent ; les encadrés de sondages (« À savoir ») sont écartés. Le site 2027 est lu page par page (chaque chapitre de chaque partie) ; chaque mesure garde le lien de sa section. Les textes sont cités tels quels, en français.",
@@ -508,6 +574,14 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
   draw();
   mountMeasureTable(app, "mt-mel", assessRows);
   void mountDissent(app, f.slug, f.candidate);
+  mountScorecard(app, "sc-mel");
+  app.querySelectorAll<HTMLAnchorElement>("#sc-mel .sc-all").forEach((a) => a.addEventListener("click", (e) => {
+    e.preventDefault();
+    const st = a.closest<HTMLElement>(".sc-group")!.dataset.status as ScStatus;
+    setStatus(({ changed: "modified", kept: "maintained", dropped: "dropped", new: "new2027" } as Record<ScStatus, Status>)[st]);
+    toList();
+  }));
+  void mountVotesCard(app, { slug: f.slug, group: f.group, votes: f.votes, before: app.querySelector("#evaluation") ?? app.querySelector("#mesures"), measureHref: (id) => `#/programmes/${f.slug}#m-${id}` });
 
   // ---------- flow view ----------
   const canvas = app.querySelector<HTMLElement>("#fcanvas")!;
@@ -552,15 +626,18 @@ interface LiteMeasure {
   cost: { value: number; low?: number | null; high?: number | null; by: string; url?: string; note?: { fr: string; en: string } } | null;
   legal: Legal; legalNote: { fr: string; en: string } | null; feasibility: Feas; feasibilityNote: { fr: string; en: string } | null; broadBenefit: boolean;
   short?: { fr: string; en: string };
+  /** page of the measure in each version's PDF (version id → page) */
+  pages?: Record<string, number>;
 }
 interface LiteFile {
   slug: string; candidate: string; party: string; site?: string; lite: true; status: "published" | "partial" | "none";
   statusNote: { fr: string; en: string }; summary: { fr: string; en: string };
-  versions: { id: string; year: number; label: { fr: string; en: string }; title: string; date: string; url?: string; kind: string }[];
+  versions: { id: string; year: number; label: { fr: string; en: string }; title: string; date: string; url?: string; kind: string; press?: string }[];
   measures: LiteMeasure[]; costing: { rounds: CostRound[]; checked: string } | null;
+  growth?: Growth; group?: string; votes?: VoteLink[];
 }
 /** Values from data files used as CSS class suffixes: letters, digits and dashes only. */
-const cls = (v: unknown) => String(v ?? "").replace(/[^w-]/g, "");
+const cls = (v: unknown) => String(v ?? "").replace(/[^\w-]/g, "");
 const LITE_STATUS: LiteStatus[] = ["maintained", "modified", "new", "dropped"];
 const liteLabel = (s: LiteStatus) => ({ maintained: L("Gardées", "Kept"), modified: L("Modifiées", "Changed"), new: L("Nouvelles", "New"), dropped: L("Abandonnées", "Dropped") })[s];
 const THEME_NAMES: Record<string, [string, string]> = {
@@ -581,7 +658,7 @@ function renderLite(app: HTMLElement, f: LiteFile) {
       { id: "nw", icon: String(last.year).slice(2), title: L(`Propositions ${last.year}`, `${last.year} proposals`), sub: L("propositions nouvelles", "new proposals"), out: ["new"], doc: docOf(last, f.site) },
     ],
     branches: (["maintained", "modified", "dropped", "new"] as LiteStatus[]).map((s) => ({ id: s, icon: { maintained: "=", modified: "≠", dropped: "−", new: "★" }[s], title: liteLabel(s), n: c[s], drop: s === "dropped" })),
-    keepTitle: L(`Programme ${last.year}`, `${last.year} programme`), keepN: c.maintained + c.modified + c.new, goneN: c.dropped, keepDoc: docOf(last, f.site),
+    keepTitle: L(`Programme ${last.year}`, `${last.year} program`), keepN: c.maintained + c.modified + c.new, goneN: c.dropped, keepDoc: docOf(last, f.site),
     label: L(`${f.measures.length} mesures suivies de ${first.year} à ${last.year}`, `${f.measures.length} measures followed from ${first.year} to ${last.year}`),
   } : null;
   const rows: Assessed[] = f.measures.map((m) => ({
@@ -592,33 +669,54 @@ function renderLite(app: HTMLElement, f: LiteFile) {
     feasibility: m.feasibility ?? null, feasibilityNote: m.feasibilityNote ? L(m.feasibilityNote.fr, m.feasibilityNote.en) : null,
     broadBenefit: !!m.broadBenefit, sources: m.sources, status: m.status, statusLabel: liteLabel(m.status),
   }));
+  // scorecard: oldest wording on the left, newest on the right, each opening its own source
+  const SC_LITE: Record<LiteStatus, ScStatus> = { maintained: "kept", modified: "changed", dropped: "dropped", new: "new" };
+  const versionUrls = new Set(vs.map((v) => v.url).filter(Boolean));
+  const hrefOf = (v: LiteFile["versions"][number], m: LiteMeasure, newest: boolean) => {
+    if (v.url && (v.kind === "pdf" || /\.pdf(\?|#|$)/i.test(v.url))) return `${v.url}${m.pages?.[v.id] ? `#page=${m.pages[v.id]}` : ""}`;
+    if (v.kind === "site" && v.url) return v.url;
+    // announcements: the measure's own press source for that version (not an earlier document, not a costing institute)
+    const own = m.sources.filter((x) => !versionUrls.has(x.url) && !/institutmontaigne|ifrap/i.test(x.url));
+    return (newest ? own[own.length - 1] : own[0])?.url ?? v.url;
+  };
+  const sideOf = (m: LiteMeasure, newest: boolean) => {
+    const ordered = newest ? [...vs].reverse() : vs;
+    const v = ordered.find((x) => m.texts[x.id]);
+    return v ? { year: v.year, text: m.texts[v.id], href: hrefOf(v, m, newest), where: L(v.label.fr, v.label.en) + (m.pages?.[v.id] ? ` · p. ${m.pages[v.id]}` : "") } : undefined;
+  };
+  const scItems: ScItem[] = f.measures.map((m) => ({
+    id: m.id, status: SC_LITE[m.status], theme: m.theme,
+    before: m.status === "new" ? undefined : sideOf(m, false),
+    after: m.status === "dropped" ? undefined : sideOf(m, true),
+  }));
   let pick: LiteStatus | "" = "";
-  const statusTxt = { published: L("Programme publié", "Programme published"), partial: L("Annonces partielles", "Partial announcements"), none: L("Pas encore de programme", "No programme yet") }[f.status];
+  const statusTxt = { published: L("Programme publié", "Program published"), partial: L("Annonces partielles", "Partial announcements"), none: L("Pas encore de programme", "No program yet") }[f.status];
   app.innerHTML = `
     <section class="page prog">
       <div class="page-head">
-        <p class="eyebrow">${L("Programmes 2027", "2027 programmes")} · ${esc(f.candidate)} · ${esc(f.party)}</p>
-        <h1>${L(`Le programme de ${f.candidate}, de ${first.year} à ${last.year}`, `${f.candidate}’s programme, ${first.year} to ${last.year}`)}</h1>
+        <p class="eyebrow">${L("Programmes 2027", "2027 programs")} · ${esc(f.candidate)} · ${esc(f.party)}</p>
+        <h1>${L(`Le programme de ${f.candidate}, de ${first.year} à ${last.year}`, `${f.candidate}’s program, ${first.year} to ${last.year}`)}</h1>
         <p class="dek">${esc(L(f.summary.fr, f.summary.en))}</p>
         <p class="prog-status-note"><span class="prog-chip">${esc(statusTxt)}</span> ${esc(L(f.statusNote.fr, f.statusNote.en))}</p>
         <nav class="prog-jump" aria-label="${L("Sur cette page", "On this page")}">
-          ${spec ? `<a href="#/programmes/${esc(f.slug)}#parcours">${L("Le parcours des mesures", "Where measures went")}</a>` : ""}
+          ${spec ? `<a href="#/programmes/${esc(f.slug)}#parcours">${L(`Le bilan ${first.year} → ${last.year}`, `${first.year} → ${last.year} at a glance`)}</a>` : ""}
+          ${f.costing?.rounds.length || f.growth ? `<a href="#/programmes/${esc(f.slug)}#cout">${L("Le coût et la croissance", "Cost and growth")}</a>` : ""}
+          ${f.votes?.length ? `<a href="#/programmes/${esc(f.slug)}#votes">${L("Qui a voté contre", "Who voted against")}</a>` : ""}
           <a href="#/programmes/${esc(f.slug)}#evaluation">${L("Coût, faisabilité, droit", "Cost, feasibility, law")}</a>
-          ${f.costing?.rounds.length ? `<a href="#/programmes/${esc(f.slug)}#cout">${L("Le coût annoncé et estimé", "Claimed vs estimated cost")}</a>` : ""}
           <a href="#/programmes/${esc(f.slug)}#mesures">${L("Toutes les mesures", "Every measure")}</a>
           <a href="#/candidat/${esc(f.slug)}">${L("La fiche du candidat", "Candidate profile")}</a>
         </nav>
       </div>
-      ${spec ? `<article class="card flow-card" id="parcours">
-        <header class="card-head"><h2>${L(`Le parcours des mesures, de ${first.year} à ${last.year}`, `Where the measures went, ${first.year} to ${last.year}`)}</h2></header>
-        <p class="prog-lede">${L("Une sélection des mesures principales, suivies d’une version à l’autre. Cliquez une branche pour filtrer la liste.", "A selection of the main measures, followed from one version to the next. Click a branch to filter the list.")}</p>
-        <div class="flow-canvas" id="fcanvas"></div>
+      ${spec ? `<article class="card sc-card" id="parcours">
+        <header class="card-head"><h2>${L(`Le bilan : ce qui a changé, tenu ou disparu depuis ${first.year}`, `At a glance: what changed, held or went since ${first.year}`)}</h2></header>
+        <p class="prog-lede">${L(`Les ${fmtNum(f.measures.length)} mesures principales. À gauche, la plus ancienne version de chaque mesure ; à droite, la plus récente ; au milieu, ce qu’elle est devenue. Chaque boîte ouvre sa source : le PDF à la bonne page quand il existe, sinon le site ou l’article.`, `The ${fmtNum(f.measures.length)} main measures. Left, the oldest version of each; right, the newest; in between, what became of it. Each box opens its source: the PDF at the right page where there is one, else the website or the article.`)}</p>
+        ${scorecardHtml(scItems, { id: "sc-lite", yearA: first.year, yearB: last.year, droppedNote: () => L(`Absente en ${last.year}`, `Not in ${last.year}`) })}
       </article>` : ""}
+      ${costCard({ slug: f.slug, costing: f.costing, growth: f.growth })}
       <article class="card" id="evaluation">
         <header class="card-head"><h2>${L("Mesure par mesure : coût, faisabilité, Constitution", "Measure by measure: cost, feasibility, constitution")}</h2></header>
         ${measureTable(rows, { id: "mt-lite", partyName: f.candidate })}
       </article>
-      ${f.costing?.rounds.length ? costCard({ slug: f.slug, costing: f.costing }) : ""}
       <article class="card" id="mesures">
         <header class="card-head"><h2>${L("Les mesures, version par version", "The measures, version by version")}</h2></header>
         <p id="lcount" class="muted small"></p>
@@ -626,36 +724,26 @@ function renderLite(app: HTMLElement, f: LiteFile) {
       </article>
       <article class="card prose prog-method">
         <header class="card-head"><h2>${L("Sources", "Sources")}</h2></header>
-        <ul>${vs.map((v) => `<li><b>${esc(L(v.label.fr, v.label.en))}</b> — ${esc(v.title)} (${esc(v.date)})${v.url ? ` · <a href="${esc(safeUrl(v.url))}" target="_blank" rel="noopener">${L("source", "source")}</a>` : ""}</li>`).join("")}</ul>
+        <ul>${vs.map((v) => `<li><b>${esc(L(v.label.fr, v.label.en))}</b> — ${esc(v.title)} (${esc(v.date)})${v.url ? ` · <a href="${esc(safeUrl(v.url))}" target="_blank" rel="noopener">${v.url.startsWith("/docs/") ? L("PDF conservé sur ce site", "PDF kept on this site") : L("source", "source")}</a>` : ""}${v.press ? ` · <a href="${esc(safeUrl(v.press))}" target="_blank" rel="noopener">${L("compte rendu de presse", "press report")}</a>` : ""}</li>`).join("")}</ul>
         <p>${L("Sélection des mesures principales de chaque version, citées depuis les documents du candidat ou les comptes rendus de presse indiqués. Le statut compare la plus ancienne et la plus récente version. Chaque mesure a ses sources.", "A selection of each version’s main measures, quoted from the candidate’s documents or the press reports listed. The status compares the oldest and newest versions. Every measure lists its sources.")}</p>
       </article>
     </section>`;
   mountMeasureTable(app, "mt-lite", rows);
   void mountDissent(app, f.slug, f.candidate);
+  mountScorecard(app, "sc-lite");
+  void mountVotesCard(app, { slug: f.slug, group: f.group, votes: f.votes, before: app.querySelector("#evaluation"), measureHref: (id) => `#/programmes/${f.slug}#m-${id}` });
   const list = app.querySelector<HTMLOListElement>("#llist")!;
-  const canvas = app.querySelector<HTMLElement>("#fcanvas");
   const draw = () => {
     const ms = f.measures.filter((m) => !pick || m.status === pick);
     app.querySelector("#lcount")!.innerHTML = `${fmtNum(ms.length)} ${L("mesures", "measures")}${pick ? ` · ${esc(liteLabel(pick))} <button type="button" class="linkish" id="lclr">${L("tout afficher", "show all")}</button>` : ""}`;
-    app.querySelector("#lclr")?.addEventListener("click", () => { pick = ""; draw(); drawFlow(); });
+    app.querySelector("#lclr")?.addEventListener("click", () => { pick = ""; draw(); });
     list.innerHTML = ms.map((m) => `<li class="prog-item" id="m-${esc(m.id)}">
       <div class="prog-item-head"><span class="prog-chip prog-${m.status === "new" ? "new2027" : cls(m.status)}">${esc(liteLabel(m.status))}</span><span class="prog-theme">${esc(themeLabel(m.theme))}</span></div>
-      <div class="prog-vers">${vs.map((v) => `<div class="prog-ver${m.texts[v.id] ? "" : " prog-absent"}"><p class="prog-year">${v.year}</p><p class="prog-text${m.texts[v.id] ? "" : " muted"}" lang="fr">${m.texts[v.id] ? esc(m.texts[v.id]) : L("Absente", "Absent")}</p></div>`).join("")}</div>
+      <div class="prog-vers">${vs.map((v) => `<div class="prog-ver${m.texts[v.id] ? "" : " prog-absent"}"><p class="prog-year">${v.year}</p><p class="prog-text${m.texts[v.id] ? "" : " muted"}" lang="fr">${m.texts[v.id] ? esc(m.texts[v.id]) : L("Absente", "Absent")}</p>${m.texts[v.id] && m.pages?.[v.id] && v.url ? `<span class="prog-loc"><a href="${esc(safeUrl(`${v.url}#page=${m.pages[v.id]}`))}" target="_blank" rel="noopener">PDF p. ${m.pages[v.id]} ↗</a></span>` : ""}</div>`).join("")}</div>
       ${m.change ? `<p class="prog-change">${esc(L(m.change.fr, m.change.en))}</p>` : ""}
       <p class="prog-an small">${m.sources.map((s) => `<a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join(" · ")}</p>
     </li>`).join("");
   };
-  function drawFlow() {
-    if (!canvas || !spec) return;
-    if (canvas.firstChild) canvas.classList.add("flow-static");
-    canvas.innerHTML = flowSvg(spec, pick);
-    canvas.querySelectorAll<SVGGElement>("[data-branch]").forEach((g) => {
-      const go = () => { pick = pick === g.dataset.branch ? "" : (g.dataset.branch as LiteStatus); drawFlow(); draw(); };
-      g.addEventListener("click", go);
-      g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
-    });
-  }
-  drawFlow();
   draw();
 }
 
@@ -675,7 +763,7 @@ function baselineCard(f: ProgrammeFile, bl: Baseline, themeName: (id: string) =>
     <header class="card-head"><h2>${L(`Ce que montre l’édition complète de ${bl.year}`, `What the complete ${bl.year} edition shows`)}</h2></header>
     <p class="prog-lede">${L(
       `L’abrégé de 2022 ne reprend qu’une partie du programme : une mesure qui n’y figure pas n’est pas forcément nouvelle. L’édition complète d’avril ${bl.year} (${bl.pages ? `${bl.pages} pages, ` : ""}${fmtNum(bl.count)} mesures) permet de le vérifier. Pour chaque statut, la part des engagements dont une formulation existait déjà en ${bl.year}.`,
-      `The 2022 booklet only covers part of the programme: a measure missing from it is not necessarily new. The complete April ${bl.year} edition (${bl.pages ? `${bl.pages} pages, ` : ""}${fmtNum(bl.count)} measures) makes it possible to check. For each status, the share of commitments that already had a wording in ${bl.year}.`)}</p>
+      `The 2022 booklet only covers part of the program: a measure missing from it is not necessarily new. The complete April ${bl.year} edition (${bl.pages ? `${bl.pages} pages, ` : ""}${fmtNum(bl.count)} measures) makes it possible to check. For each status, the share of commitments that already had a wording in ${bl.year}.`)}</p>
     <div class="kpis kpis-4 prog-kpis">
       <div><strong>${fmtNum(bl.matched)}</strong>${L(`mesures de ${bl.year} retrouvées ensuite`, `${bl.year} measures found later`)}</div>
       <div><strong>${fmtNum(bl.already.new2025)}</strong>${L(`« apparues en 2025 » déjà là en ${bl.year}`, `‘added in 2025’ already there in ${bl.year}`)}</div>

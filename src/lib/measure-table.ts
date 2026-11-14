@@ -97,7 +97,7 @@ export function measureTable(rows: Assessed[], opts: { id: string; partyName: st
           ${m.legalNote ? `<p><b>${L("Droit", "Law")}${L(" : ", ": ")}</b>${esc(m.legalNote)}</p>` : ""}
           <p class="muted small">${L("Populisme économique", "Economic populism")}${L(" : ", ": ")}${esc(popWhy(m, p))}</p>
           ${m.sources?.length ? `<p class="small">${L("Sources", "Sources")}${L(" : ", ": ")}${m.sources.map((s) => `<a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join(" · ")}</p>` : ""}
-          ${m.href ? `<p class="small"><a href="${esc(m.href)}">${L("Voir la mesure dans le programme", "See the measure in the programme")}</a></p>` : ""}
+          ${m.href ? `<p class="small"><a href="${esc(m.href)}">${L("Voir la mesure dans le programme", "See the measure in the program")}</a></p>` : ""}
         </td></tr>`;
       }).join("")}</tbody></table></div>
     <p class="muted small">${L(

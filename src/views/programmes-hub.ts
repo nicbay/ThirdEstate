@@ -36,7 +36,7 @@ const legalShort = (l: Legal) => ({
   "eu-law": L("Contraire au droit de l’UE", "Conflicts with EU law"), "constitutional-revision-needed": L("Révision de la Constitution", "Needs constitutional change"),
 })[l];
 const statusLabel = (s: Status) => ({ maintained: L("Gardée", "Kept"), modified: L("Modifiée", "Changed"), new: L("Nouvelle", "New"), dropped: L("Abandonnée", "Dropped") })[s];
-const STATUS_TXT = { published: () => L("Programme publié", "Programme published"), partial: () => L("Annonces partielles", "Partial announcements"), none: () => L("Pas encore publié", "Not yet published") };
+const STATUS_TXT = { published: () => L("Programme publié", "Program published"), partial: () => L("Annonces partielles", "Partial announcements"), none: () => L("Pas encore publié", "Not yet published") };
 
 let theme = "";
 
@@ -123,8 +123,8 @@ ${fmtNum(c[k])} (${Math.round((100 * c[k]) / tot)} %)`)}"></span>` : "");
   app.innerHTML = `
     <section class="page prog ph">
       <div class="page-head">
-        <p class="eyebrow">${L("Présidentielle 2027 · Programmes", "2027 presidential · Programmes")}</p>
-        <h1>${L("Les programmes 2027, mesure par mesure", "The 2027 programmes, measure by measure")}</h1>
+        <p class="eyebrow">${L("Présidentielle 2027 · Programmes", "2027 presidential · Programs")}</p>
+        <h1>${L("Les programmes 2027, mesure par mesure", "The 2027 programs, measure by measure")}</h1>
         <p class="dek">${L(
           `Ce que proposent les ${rows.length} candidats testés dans les sondages, sur les mêmes sujets et avec la même grille : ce qui a changé depuis leur dernière campagne, ce que ça coûte selon eux et selon les instituts indépendants, ce que la Constitution et le droit européen permettent.`,
           `What the ${rows.length} candidates tested in the polls propose, on the same subjects and by the same yardstick: what changed since their last campaign, what it costs according to them and to independent institutes, and what the Constitution and EU law allow.`)}</p>
@@ -141,8 +141,8 @@ ${fmtNum(c[k])} (${Math.round((100 * c[k]) / tot)} %)`)}"></span>` : "");
       </div>
 
       <article class="card" id="candidats">
-        <header class="card-head"><h2>${L(`${rows.length} programmes, de la gauche à la droite`, `${rows.length} programmes, from left to right`)}</h2></header>
-        <p class="prog-lede">${L(`${nPub} sur ${rows.length} ont publié un programme complet ; les autres avancent par annonces, que nous relevons au fil de la campagne. La barre montre ce que chaque programme a gardé, modifié, ajouté ou abandonné depuis la campagne précédente.`, `${nPub} of ${rows.length} have published a full programme; the others are moving by announcements, which we log as the campaign goes on. The bar shows what each programme kept, changed, added or dropped since the previous campaign.`)}</p>
+        <header class="card-head"><h2>${L(`${rows.length} programmes, de la gauche à la droite`, `${rows.length} programs, from left to right`)}</h2></header>
+        <p class="prog-lede">${L(`${nPub} sur ${rows.length} ont publié un programme complet ; les autres avancent par annonces, que nous relevons au fil de la campagne. La barre montre ce que chaque programme a gardé, modifié, ajouté ou abandonné depuis la campagne précédente.`, `${nPub} of ${rows.length} have published a full program; the others are moving by announcements, which we log as the campaign goes on. The bar shows what each program kept, changed, added or dropped since the previous campaign.`)}</p>
         <div class="ph-axis" aria-hidden="true"><span>${L("Gauche", "Left")}</span><i></i><span>${L("Droite", "Right")}</span></div>
         <ol class="ph-rows">
           <li class="ph-rows-head" aria-hidden="true"><span>${L("Candidat", "Candidate")}</span><span>${L("Mesures", "Measures")}</span><span>${L("Depuis la campagne précédente", "Since the previous campaign")}</span><span>${L("Coût, dernière estimation", "Cost, latest estimate")}</span></li>
@@ -151,7 +151,7 @@ ${fmtNum(c[k])} (${Math.round((100 * c[k]) / tot)} %)`)}"></span>` : "");
           <li><i class="prog-sw prog-maintained"></i><b>${L("Gardées", "Kept")}</b></li><li><i class="prog-sw prog-modified"></i><b>${L("Modifiées", "Changed")}</b></li>
           <li><i class="prog-sw prog-new2027"></i><b>${L("Nouvelles", "New")}</b></li><li><i class="prog-sw prog-dropped"></i><b>${L("Abandonnées", "Dropped")}</b></li>
         </ul>
-        <a class="ph-sim" href="#/programmes/melenchon/simulateur"><span class="px-tag">${L("Simulateur", "Simulator")}</span><strong>${L("Le programme de Mélenchon vous coûterait-il ou vous rapporterait-il ?", "Would Mélenchon’s programme cost you or pay you?")}</strong><span>${L("Revenus, enfants, logement, patrimoine : l’effet estimé sur votre foyer, mesure par mesure.", "Income, children, housing, wealth: the estimated effect on your household, measure by measure.")} <i aria-hidden="true">→</i></span></a>
+        <a class="ph-sim" href="#/programmes/melenchon/simulateur"><span class="px-tag">${L("Simulateur", "Simulator")}</span><strong>${L("Le programme de Mélenchon vous coûterait-il ou vous rapporterait-il ?", "Would Mélenchon’s program cost you or pay you?")}</strong><span>${L("Revenus, enfants, logement, patrimoine : l’effet estimé sur votre foyer, mesure par mesure.", "Income, children, housing, wealth: the estimated effect on your household, measure by measure.")} <i aria-hidden="true">→</i></span></a>
       </article>
 
       <article class="card" id="comparer">
@@ -163,11 +163,11 @@ ${fmtNum(c[k])} (${Math.round((100 * c[k]) / tot)} %)`)}"></span>` : "");
 
       <article class="card" id="couts">
         <header class="card-head"><h2>${L("Ce que ça coûte : l’annonce et l’estimation", "What it costs: the claim and the estimate")}</h2></header>
-        <p class="prog-lede">${L("Solde pour les finances publiques, en milliards d’euros par an, du dernier programme que quelqu’un d’indépendant a chiffré. À gauche du zéro, le programme creuse le déficit ; à droite, il le réduit. Le trait fin est le chiffre du parti, la barre pleine celui de l’institut.", "Balance for public finances, in € billions a year, of the latest programme someone independent has costed. Left of zero the programme widens the deficit; right of zero it narrows it. The thin line is the party’s figure, the solid bar the institute’s.")}</p>
+        <p class="prog-lede">${L("Solde pour les finances publiques, en milliards d’euros par an, du dernier programme que quelqu’un d’indépendant a chiffré. À gauche du zéro, le programme creuse le déficit ; à droite, il le réduit. Le trait fin est le chiffre du parti, la barre pleine celui de l’institut.", "Balance for public finances, in € billions a year, of the latest program someone independent has costed. Left of zero the program widens the deficit; right of zero it narrows it. The thin line is the party’s figure, the solid bar the institute’s.")}</p>
         <div class="ph-costs reveal-on">${costRows}</div>
         <p class="muted small">${L(
           `Ces chiffrages ne portent pas tous sur la même élection : la ligne sous chaque nom dit laquelle. Les programmes de 2024 étaient ceux de coalitions (Nouveau Front populaire, Ensemble), d’où des chiffres identiques pour leurs membres. Aucun programme 2027 n’a encore été chiffré par un institut indépendant.${uncosted.length ? ` Pas d’estimation indépendante disponible pour ${uncosted.map((r) => r.p.candidate).join(", ")}.` : ""}`,
-          `These costings are not all for the same election: the line under each name says which. The 2024 programmes were coalition platforms (New Popular Front, Ensemble), hence identical figures for their members. No 2027 programme has been costed by an independent institute yet.${uncosted.length ? ` No independent estimate available for ${uncosted.map((r) => r.p.candidate).join(", ")}.` : ""}`)}</p>
+          `These costings are not all for the same election: the line under each name says which. The 2024 programs were coalition platforms (New Popular Front, Ensemble), hence identical figures for their members. No 2027 program has been costed by an independent institute yet.${uncosted.length ? ` No independent estimate available for ${uncosted.map((r) => r.p.candidate).join(", ")}.` : ""}`)}</p>
       </article>
 
       <article class="card" id="droit">
@@ -178,12 +178,12 @@ ${fmtNum(c[k])} (${Math.round((100 * c[k]) / tot)} %)`)}"></span>` : "");
           <li><i class="l-ok"></i>${L("Pas d’obstacle", "No obstacle")}</li><li><i class="l-risk"></i>${L("Risque", "Risk")}</li><li><i class="l-serious"></i>${L("Obstacle sérieux", "Serious obstacle")}</li>
           <li><i class="f-high"></i>${L("Réalisable", "Feasible")}</li><li><i class="f-medium"></i>${L("Difficile", "Difficult")}</li><li><i class="f-low"></i>${L("Peu réalisable", "Hard to deliver")}</li><li><i class="l-na"></i>${L("Non évalué", "Not assessed")}</li>
         </ul>
-        <p class="muted small">${L(`Les programmes ne sont pas relevés avec la même profondeur (de ${minN} à ${maxN} mesures selon ce que le candidat a publié) : comparez les proportions, pas les totaux. Un obstacle juridique n’est pas un jugement sur la mesure ; il dit quelle procédure elle suppose.`, `The programmes are not logged to the same depth (from ${minN} to ${maxN} measures depending on what the candidate has published): compare proportions, not totals. A legal obstacle is not a verdict on the measure; it says what procedure it would take.`)}</p>
+        <p class="muted small">${L(`Les programmes ne sont pas relevés avec la même profondeur (de ${minN} à ${maxN} mesures selon ce que le candidat a publié) : comparez les proportions, pas les totaux. Un obstacle juridique n’est pas un jugement sur la mesure ; il dit quelle procédure elle suppose.`, `The programs are not logged to the same depth (from ${minN} to ${maxN} measures depending on what the candidate has published): compare proportions, not totals. A legal obstacle is not a verdict on the measure; it says what procedure it would take.`)}</p>
       </article>
 
       <article class="card prose prog-method" id="methode">
         <header class="card-head"><h2>${L("Méthode", "Method")}</h2></header>
-        <p>${L("Chaque mesure est citée depuis le document du candidat ou, à défaut, depuis un compte rendu de presse daté ; chacune a ses sources sur la page du candidat. Le statut compare la version la plus ancienne et la plus récente du programme. Les coûts repris sont ceux de l’Institut Montaigne et de la Fondation iFRAP quand ils existent ; sinon l’estimation de la rédaction est donnée avec son calcul.", "Every measure is quoted from the candidate’s document or, failing that, from a dated press report; each has its sources on the candidate’s page. The status compares the oldest and newest versions of the programme. Costs are Institut Montaigne’s and Fondation iFRAP’s where they exist; otherwise our own estimate is given with its calculation.")}</p>
+        <p>${L("Chaque mesure est citée depuis le document du candidat ou, à défaut, depuis un compte rendu de presse daté ; chacune a ses sources sur la page du candidat. Le statut compare la version la plus ancienne et la plus récente du programme. Les coûts repris sont ceux de l’Institut Montaigne et de la Fondation iFRAP quand ils existent ; sinon l’estimation de la rédaction est donnée avec son calcul.", "Every measure is quoted from the candidate’s document or, failing that, from a dated press report; each has its sources on the candidate’s page. The status compares the oldest and newest versions of the program. Costs are Institut Montaigne’s and Fondation iFRAP’s where they exist; otherwise our own estimate is given with its calculation.")}</p>
         <p>${L("La lecture juridique s’appuie sur les décisions du Conseil constitutionnel et les textes européens cités mesure par mesure. La faisabilité tient compte de la majorité nécessaire, du calendrier et du financement. Ce relevé décrit ; il ne note pas les candidats et ne dit pas pour qui voter.", "The legal reading rests on Conseil constitutionnel decisions and the EU texts cited measure by measure. Feasibility weighs the majority needed, the calendar and the funding. This record describes; it does not grade the candidates or say who to vote for.")}</p>
         <p class="source">${L("Relevé mis à jour le", "Record updated on")} ${fmtDate(cmp.generatedAt)} · <a href="#/sources">${L("Toutes les sources", "All sources")}</a></p>
       </article>

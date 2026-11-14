@@ -17,7 +17,7 @@ interface Box { id: string; x: number; y: number; w: number; h: number; kind: "s
 const docLabel = (d: FlowDoc) => (/pdf/i.test(d.kind ?? "") || /\.pdf(\?|#|$)/i.test(d.url) ? "PDF" : d.kind === "site" ? L("site", "site") : L("source", "source"));
 
 /** Node titles must fit their box: cut at a word boundary and add an ellipsis (full text in the tooltip). */
-const clip = (t: string, n: number) => (t.length <= n ? t : `${t.slice(0, n).replace(/[s,:;(–-]+S*$/, "")}…`);
+const clip = (t: string, n: number) => (t.length <= n ? t : `${t.slice(0, n).replace(/[\s,:;(–-]+\S*$/, "")}…`);
 const items = (k: number) => `${fmtNum(k)} ${k > 1 ? L("mesures", "measures") : L("mesure", "measure")}`;
 
 /** `pick`: the highlighted branch id. `compact`: no edge labels, no ports (homepage teaser). */

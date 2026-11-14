@@ -1,0 +1,147 @@
+// The 2022 → 2027 scorecard of a programme: one node per commitment on each side (the oldest version on the
+// left, the newest on the right), wired through four status hubs (changed, kept, dropped, new), in the spirit
+// of a workflow editor but drawn in the site's pixel style: square ports, orthogonal 2px wires, stepped panels.
+// Every node opens its own source: the version's PDF at the right page, the website section, or the article.
+// Shared by the full (Mélenchon) and the curated ("lite") programme pages (src/views/programme.ts).
+import { L, fmtNum } from "../i18n";
+import { esc, safeUrl } from "../util";
+
+export type ScStatus = "changed" | "kept" | "dropped" | "new";
+/** One side of a commitment: its wording in a version, and where to read it. */
+export interface ScSide { year: number; text: string; href?: string; where?: string; /** link label when not a PDF (e.g. "site 2027") */ tag?: string }
+export interface ScItem { id: string; status: ScStatus; key?: boolean; theme?: string; before?: ScSide; after?: ScSide; note?: string }
+export interface ScOptions {
+  id: string; yearA: number; yearB: number;
+  /** shown under the "dropped" ghost node (e.g. "retirée en 2025") */
+  droppedNote?: (it: ScItem) => string;
+  /** link to the full list of a status, under the graph */
+  listHref?: (s: ScStatus) => string;
+  /** commitments per hub before "show the others" (default 3) */
+  fold?: number;
+  /** true counts when `items` is only a selection (e.g. the key measures of a 1,200-commitment programme) */
+  totals?: Record<ScStatus, number>;
+}
+
+export const SC_ORDER: ScStatus[] = ["changed", "kept", "dropped", "new"];
+const icon: Record<ScStatus, string> = { changed: "≠", kept: "=", dropped: "−", new: "+" };
+export const scLabel = (s: ScStatus) => ({ changed: L("Modifiées", "Changed"), kept: L("Gardées", "Kept"), dropped: L("Abandonnées", "Dropped"), new: L("Nouvelles", "New") })[s];
+const scHelp = (s: ScStatus, a: number, b: number) => ({
+  changed: L(`en ${a} et en ${b}, chiffre ou contenu modifié`, `in ${a} and ${b}, figure or content changed`),
+  kept: L(`en ${a} et en ${b}, même engagement`, `in ${a} and ${b}, same commitment`),
+  dropped: L(`en ${a}, plus en ${b}`, `in ${a}, gone by ${b}`),
+  new: L(`absentes en ${a}, présentes en ${b}`, `not in ${a}, in ${b}`),
+})[s];
+
+/** "PDF p. 16", "site", "article": what a node's link opens. */
+function docTag(href: string) {
+  const pdf = /\.pdf(\?|#|$)/i.test(href);
+  const page = /#page=(\d+)/.exec(href)?.[1];
+  return pdf ? (page ? L(`PDF p. ${page}`, `PDF p. ${page}`) : "PDF") : /^\/|thirdestate/.test(href) ? L("document", "document") : L("source", "source");
+}
+
+function node(side: ScSide | undefined, s: ScStatus, it: ScItem, end: "a" | "b", o: ScOptions) {
+  if (!side) {
+    const txt = end === "a" ? L(`Absente en ${o.yearA}`, `Not in ${o.yearA}`) : o.droppedNote?.(it) ?? L(`Absente en ${o.yearB}`, `Not in ${o.yearB}`);
+    return `<span class="sc-node is-ghost is-${end}" data-end="${end}"><span class="sc-y">${end === "a" ? o.yearA : o.yearB}</span><span class="sc-t">${esc(txt)}</span></span>`;
+  }
+  const href = side.href ? safeUrl(side.href) : "";
+  const inner = `<span class="sc-y">${side.year}${it.key && end === "b" ? ` <i class="sc-key">${L("clé", "key")}</i>` : ""}</span><span class="sc-t" lang="fr">${esc(side.text)}</span>${href ? `<span class="sc-doc">${esc(/\.pdf/i.test(href) || !side.tag ? docTag(href) : side.tag)} ↗</span>` : ""}`;
+  const title = `${side.year}${side.where ? ` · ${side.where}` : ""} — ${side.text}`;
+  return href
+    ? `<a class="sc-node is-${end}" data-end="${end}" href="${esc(href)}" target="_blank" rel="noopener" title="${esc(title)}">${inner}</a>`
+    : `<span class="sc-node is-${end}" data-end="${end}" title="${esc(title)}">${inner}</span>`;
+}
+
+/** Scorecard markup: the four counts, then the node graph. Call mountScorecard after it is in the DOM. */
+export function scorecardHtml(items: ScItem[], o: ScOptions) {
+  const fold = o.fold ?? 3;
+  const by = Object.fromEntries(SC_ORDER.map((s) => [s, items.filter((x) => x.status === s)])) as Record<ScStatus, ScItem[]>;
+  const n = (s: ScStatus) => o.totals?.[s] ?? by[s].length;
+  const total = SC_ORDER.reduce((a, s) => a + n(s), 0) || 1;
+  const counts = `<div class="sc-counts" role="list">${SC_ORDER.map((s) => `<a role="listitem" class="sc-count is-${s}" href="#${o.id}-${s}" data-sc-jump="${s}">
+      <span class="sc-tile">${icon[s]}</span><b>${fmtNum(n(s))}</b><span>${esc(scLabel(s))}</span>
+      <span class="sc-bar"><i style="width:${((100 * n(s)) / total).toFixed(1)}%"></i></span></a>`).join("")}</div>`;
+  const groups = SC_ORDER.filter((s) => by[s].length).map((s) => {
+    const rows = by[s];
+    return `<section class="sc-group is-${s}" id="${o.id}-${s}" data-status="${s}" style="--rows:${rows.length}">
+      <div class="sc-hub" style="grid-row: 1 / span ${Math.min(rows.length, fold) + (rows.length > fold ? 1 : 0)}">
+        <span class="sc-tile">${icon[s]}</span><span class="sc-hub-t"><b>${esc(scLabel(s))}</b><span>${fmtNum(n(s))} · ${esc(scHelp(s, o.yearA, o.yearB))}</span></span>
+      </div>
+      ${rows.map((it, i) => `<div class="sc-row${i >= fold ? " is-folded" : ""}" data-id="${esc(it.id)}"${i >= fold ? " hidden" : ""}>${node(it.before, s, it, "a", o)}${node(it.after, s, it, "b", o)}</div>`).join("")}
+      ${rows.length > fold ? `<button type="button" class="sc-more" aria-expanded="false" data-n="${rows.length - fold}">${L(`+ ${rows.length - fold} autres`, `+ ${rows.length - fold} more`)}</button>` : ""}
+      ${n(s) > rows.length && o.listHref ? `<a class="sc-all" href="${esc(o.listHref(s))}">${L(`Les ${fmtNum(n(s))} dans la liste complète`, `All ${fmtNum(n(s))} in the full list`)} →</a>` : ""}
+    </section>`;
+  }).join("");
+  return `<div class="sc" id="${o.id}">
+    ${counts}
+    <div class="sc-cols" aria-hidden="true"><span>${o.yearA}</span><span></span><span>${o.yearB}</span></div>
+    <div class="sc-graph">${groups}<svg class="sc-wires" aria-hidden="true"></svg></div>
+  </div>`;
+}
+
+/** Draws the wires (and redraws them on resize or when a hub unfolds). */
+export function mountScorecard(root: HTMLElement, id: string) {
+  const sc = root.querySelector<HTMLElement>(`#${id}`);
+  if (!sc) return;
+  const graph = sc.querySelector<HTMLElement>(".sc-graph")!;
+  const svg = sc.querySelector<SVGSVGElement>(".sc-wires")!;
+  const draw = () => {
+    const g = graph.getBoundingClientRect();
+    svg.setAttribute("viewBox", `0 0 ${g.width.toFixed(0)} ${g.height.toFixed(0)}`);
+    svg.setAttribute("width", g.width.toFixed(0));
+    svg.setAttribute("height", g.height.toFixed(0));
+    // stacked layout (phones): the hub sits above its rows and CSS draws the links
+    if (getComputedStyle(graph).getPropertyValue("--sc-stacked").trim() === "1") { svg.innerHTML = ""; return; }
+    const r = (el: Element) => { const b = el.getBoundingClientRect(); return { x1: b.left - g.left, x2: b.right - g.left, y: Math.round(b.top - g.top + b.height / 2) }; };
+    let out = "";
+    sc.querySelectorAll<HTMLElement>(".sc-group").forEach((grp) => {
+      const s = grp.dataset.status!;
+      const hub = r(grp.querySelector(".sc-hub")!);
+      const rows = [...grp.querySelectorAll<HTMLElement>(".sc-row:not([hidden])")];
+      const more = grp.querySelector<HTMLElement>(".sc-more");
+      // fan-in rails: 2px orthogonal wires, x-step in the gap's middle (pixel elbows, no curves)
+      for (const row of rows) {
+        const a = r(row.querySelector('[data-end="a"]')!), b = r(row.querySelector('[data-end="b"]')!);
+        const ghostA = row.querySelector('[data-end="a"]')!.classList.contains("is-ghost");
+        const ghostB = row.querySelector('[data-end="b"]')!.classList.contains("is-ghost");
+        const mx1 = Math.round((a.x2 + hub.x1) / 2), mx2 = Math.round((hub.x2 + b.x1) / 2);
+        out += `<path class="sc-w is-${s}${ghostA ? " is-ghost" : ""}" data-id="${esc(row.dataset.id)}" d="M${Math.round(a.x2)},${a.y}H${mx1}V${hub.y}H${Math.round(hub.x1)}"/>`;
+        out += `<path class="sc-w is-${s}${ghostB ? " is-ghost" : ""}" data-id="${esc(row.dataset.id)}" d="M${Math.round(hub.x2)},${hub.y}H${mx2}V${b.y}H${Math.round(b.x1)}"/>`;
+        out += `<rect class="sc-port is-${s}" x="${Math.round(a.x2) - 3}" y="${a.y - 3}" width="6" height="6"/><rect class="sc-port is-${s}" x="${Math.round(b.x1) - 3}" y="${b.y - 3}" width="6" height="6"/>`;
+      }
+      if (more && !more.hidden) {
+        const m = r(more);
+        out += `<path class="sc-w is-${s} is-ghost" d="M${Math.round(hub.x1)},${hub.y}H${Math.round((m.x1 + hub.x1) / 2)}V${m.y}"/>`;
+      }
+      out += `<rect class="sc-port is-${s}" x="${Math.round(hub.x1) - 3}" y="${hub.y - 3}" width="6" height="6"/><rect class="sc-port is-${s}" x="${Math.round(hub.x2) - 3}" y="${hub.y - 3}" width="6" height="6"/>`;
+    });
+    svg.innerHTML = out;
+  };
+  // hover a node: light up its two wires and its partner
+  graph.addEventListener("pointerover", (e) => {
+    const row = (e.target as Element).closest<HTMLElement>(".sc-row");
+    sc.querySelectorAll(".is-hot").forEach((x) => x.classList.remove("is-hot"));
+    if (!row) return;
+    row.classList.add("is-hot");
+    svg.querySelectorAll(`[data-id="${CSS.escape(row.dataset.id!)}"]`).forEach((p) => p.classList.add("is-hot"));
+  });
+  graph.addEventListener("pointerleave", () => sc.querySelectorAll(".is-hot").forEach((x) => x.classList.remove("is-hot")));
+  sc.querySelectorAll<HTMLButtonElement>(".sc-more").forEach((b) => b.addEventListener("click", () => {
+    const grp = b.closest<HTMLElement>(".sc-group")!;
+    const open = b.getAttribute("aria-expanded") !== "true";
+    grp.querySelectorAll<HTMLElement>(".sc-row.is-folded").forEach((x) => (x.hidden = !open));
+    const hub = grp.querySelector<HTMLElement>(".sc-hub")!;
+    const n = grp.querySelectorAll(".sc-row:not([hidden])").length;
+    hub.style.gridRow = `1 / span ${n + 1}`;
+    b.setAttribute("aria-expanded", String(open));
+    b.textContent = open ? L("Replier", "Show fewer") : L(`+ ${b.dataset.n} autres`, `+ ${b.dataset.n} more`);
+    draw();
+  }));
+  sc.querySelectorAll<HTMLAnchorElement>("[data-sc-jump]").forEach((a) => a.addEventListener("click", (e) => {
+    e.preventDefault();
+    sc.querySelector(`#${id}-${a.dataset.scJump}`)?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  }));
+  const ro = new ResizeObserver(() => requestAnimationFrame(draw));
+  ro.observe(graph);
+  draw();
+}

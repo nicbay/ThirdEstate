@@ -163,7 +163,7 @@ function sections(): Section[] {
   const mine = homeHref();
   const mp = home?.code ? myMp(home.code) : null;
   const RACE: [string, string] = ["Suivre la course", "Follow the race"];
-  const PROG: [string, string] = ["Les programmes", "The programmes"];
+  const PROG: [string, string] = ["Les programmes", "The programs"];
   const VOTE: [string, string] = ["Voter en 2027", "Voting in 2027"];
   const SIM: [string, string] = ["Simuler", "Try it yourself"];
   return [
@@ -178,7 +178,7 @@ function sections(): Section[] {
         { group: RACE, href: "#/fil", match: /^#\/fil/, fr: "Fil rouge, fil bleu", en: "Red feed, blue feed", desc: ["L’actualité vue de gauche et de droite", "The news as left and right see it"] },
         { group: RACE, href: "#/2027/calendrier", match: /^#\/2027\/calendrier/, fr: "Calendrier de la campagne", en: "Campaign calendar", sub: ["Calendrier", "Calendar"], desc: ["Les dates clés jusqu’au second tour", "Key dates up to the runoff"] },
         { group: RACE, href: "#/2027/parrainages", match: /^#\/2027\/parrainages/, minor: true, fr: "Les parrainages", en: "Sponsorships", desc: ["Les 500 signatures d’élus pour être candidat", "The 500 officials’ signatures needed to run"] },
-        { group: PROG, href: "#/programmes", match: /^#\/programmes(\/theme\/[\w-]+)?$/, fr: "Les programmes", en: "Programmes", desc: ["Tous les candidats, de la gauche à la droite", "Every candidate, from left to right"] },
+        { group: PROG, href: "#/programmes", match: /^#\/programmes(\/theme\/[\w-]+)?$/, fr: "Les programmes", en: "Programs", desc: ["Tous les candidats, de la gauche à la droite", "Every candidate, from left to right"] },
         { group: PROG, href: "#/programmes#comparer", match: NEVER, minor: true, fr: "Comparer par thème", en: "Compare by theme", desc: ["Sur le même sujet, qui propose quoi", "On the same subject, who proposes what"] },
         { group: PROG, href: "#/programmes#couts", match: NEVER, minor: true, fr: "Ce que ça coûte", en: "What it costs", desc: ["Le chiffre du parti, celui des instituts", "The party’s figure and the institutes’"] },
         { group: PROG, href: "#/programmes#droit", match: NEVER, minor: true, fr: "Droit et faisabilité", en: "Law and feasibility", desc: ["Constitution, droit européen, majorités", "Constitution, EU law, majorities"] },
@@ -186,7 +186,7 @@ function sections(): Section[] {
         { group: VOTE, href: "#/2027/comment-ca-marche", match: /^#\/2027\/comment-ca-marche/, minor: true, fr: "Comment ça marche", en: "How it works", desc: ["L’élection présidentielle expliquée, étape par étape", "The presidential election explained, step by step"] },
         { group: VOTE, href: "#/quiz", match: /^#\/quiz/, fr: "Le quiz : qui vous ressemble ?", en: "The quiz: who is closest to you?", sub: ["Le quiz", "The quiz"], desc: ["Le député et le candidat les plus proches de vos réponses", "The MP and candidate closest to your answers"] },
         { group: SIM, href: "#/simulateur", match: /^#\/simulateur/, fr: "Simulateur de second tour", en: "Second-round simulator", sub: ["Simulateur de second tour", "Runoff simulator"], desc: ["Composez votre second tour, report de voix par report", "Build your own runoff, vote transfer by transfer"] },
-        { group: SIM, href: "#/programmes/melenchon/simulateur", match: /^#\/programmes\/[\w-]+\/simulateur/, fr: "Votre budget selon un programme", en: "Your budget under a programme", sub: ["Votre budget", "Your budget"], desc: ["L’effet d’un programme sur le budget de votre foyer", "A programme’s effect on your household budget"] },
+        { group: SIM, href: "#/programmes/melenchon/simulateur", match: /^#\/programmes\/[\w-]+\/simulateur/, fr: "Votre budget selon un programme", en: "Your budget under a program", sub: ["Votre budget", "Your budget"], desc: ["L’effet d’un programme sur le budget de votre foyer", "A program’s effect on your household budget"] },
       ],
     },
     {
@@ -231,7 +231,7 @@ function nextSteps(path: string) {
   const mine = home?.code ? { href: `#/ville/${home.code}`, fr: `Votre commune, ${home.commune ?? ""}`, en: `Your town, ${home.commune ?? ""}` } : { href: "#/explorer", fr: "Trouver votre commune", en: "Find your town" };
   const race = { href: "#/2027", fr: "Où en est la présidentielle 2027", en: "Where the 2027 race stands" };
   const sim = { href: "#/simulateur", fr: "Le simulateur de second tour", en: "The second-round simulator" };
-  const budget = { href: "#/programmes/melenchon/simulateur", fr: "Votre budget selon un programme", en: "Your budget under a programme" };
+  const budget = { href: "#/programmes/melenchon/simulateur", fr: "Votre budget selon un programme", en: "Your budget under a program" };
   const vote = { href: "#/2027/voter", fr: "Comment voter en 2027", en: "How to vote in 2027" };
   const how = { href: "#/2027/comment-ca-marche", fr: "Comment marche la présidentielle", en: "How the presidential election works" };
   const cal = { href: "#/2027/calendrier", fr: "Le calendrier de la campagne", en: "The campaign calendar" };
@@ -241,7 +241,7 @@ function nextSteps(path: string) {
   const hist = { href: "#/resultats", fr: "Toutes les élections depuis 1848", en: "Every election since 1848" };
   const feed = { href: "#/fil", fr: "Ce que disent la gauche et la droite aujourd’hui", en: "What left and right are saying today" };
   const quiz = { href: "#/quiz", fr: "Le quiz : qui vous ressemble ?", en: "The quiz: who is closest to you?" };
-  const progs = { href: "#/programmes", fr: "Comparer les programmes des candidats", en: "Compare the candidates’ programmes" };
+  const progs = { href: "#/programmes", fr: "Comparer les programmes des candidats", en: "Compare the candidates’ programs" };
   const byTheme = { href: "#/programmes#comparer", fr: "Sur le même sujet, qui propose quoi", en: "On the same subject, who proposes what" };
   const france = { href: "#/chiffres", fr: "La France en chiffres", en: "France in numbers" };
   const shifts = { href: "#/resultats/bascules", fr: "Les cartes des bascules gauche-droite", en: "The left–right shift maps" };

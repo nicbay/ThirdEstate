@@ -7,7 +7,7 @@
   "status": "partial",
   "statusNote": {
     "fr": "Candidat investi par 72 % des adhérents du PCF le 6 septembre 2026 ; pas de programme 2027 complet publié à ce jour, seulement des annonces (industrie, électricité, salaires, fraude fiscale) ; aucune date de publication annoncée.",
-    "en": "Nominated by 72% of PCF members on 6 September 2026; no full 2027 programme published yet, only announcements (industry, electricity, wages, tax fraud); no publication date announced."
+    "en": "Nominated by 72% of PCF members on 6 September 2026; no full 2027 program published yet, only announcements (industry, electricity, wages, tax fraud); no publication date announced."
   },
   "versions": [
     {
@@ -15,7 +15,7 @@
       "year": 2022,
       "label": {
         "fr": "Programme 2022",
-        "en": "2022 programme"
+        "en": "2022 program"
       },
       "title": "La France des jours heureux",
       "date": "2022-01",
@@ -879,7 +879,7 @@
       },
       "change": {
         "fr": "Absent du programme 2022, présent dans le contrat NFP 2024.",
-        "en": "Not in the 2022 programme, present in the 2024 NFP contract."
+        "en": "Not in the 2022 program, present in the 2024 NFP contract."
       },
       "sources": [
         {
@@ -1080,7 +1080,7 @@
           "date": "2024-06",
           "note": {
             "fr": "Chiffrage présenté le 21 juin 2024 : environ 150 Md€ de dépenses supplémentaires d'ici 2027, compensées par autant de recettes (25 Md€ de mesures d'urgence, environ 100 Md€ dès 2025). Programme commun de la coalition, pas un programme propre au candidat.",
-            "en": "Costing presented on 21 June 2024: about €150bn of extra spending by 2027, matched by as much revenue (€25bn of emergency measures, about €100bn in 2025). Joint coalition programme, not the candidate's own."
+            "en": "Costing presented on 21 June 2024: about €150bn of extra spending by 2027, matched by as much revenue (€25bn of emergency measures, about €100bn in 2025). Joint coalition program, not the candidate's own."
           },
           "url": "https://www.publicsenat.fr/actualites/economie/150-milliards-de-depenses-supplementaires-dici-fin-2027-le-nouveau-front-populaire-detaille-le-cout-de-son-programme"
         },
@@ -1104,7 +1104,7 @@
   },
   "summary": {
     "fr": "Le programme 2022 « La France des jours heureux » reposait sur la hausse des salaires (Smic à 1 500 € net, +30 % dans la fonction publique), la retraite à 60 ans, la semaine de 32 heures, 500 000 embauches publiques, le nucléaire et la nationalisation de grandes banques. En 2024, le PCF a signé le contrat du Nouveau Front populaire, aux objectifs voisins mais formulés autrement (Smic à 1 600 € net, retraite à 60 ans comme objectif, pôle public bancaire sans nationalisation) ; pour 2027, seules des annonces existent (Smic à 2 200 € brut, doublement de l'industrie et de la production d'électricité, sanctions pénales contre la fraude). L'iFRAP chiffrait le programme 2022 à 287 Md€ de dépenses pour 131,4 Md€ de recettes, et l'Institut Montaigne le contrat NFP à un déficit supplémentaire de 179 Md€ par an.",
-    "en": "The 2022 programme \"La France des jours heureux\" centred on higher wages (€1,500 net minimum wage, +30% for civil servants), retirement at 60, a 32-hour week, 500,000 public hires, nuclear power and nationalising large banks. In 2024 the PCF signed the New Popular Front contract, with similar aims worded differently (€1,600 net minimum wage, retirement at 60 as an objective, a public banking pole without nationalisation); for 2027 there are only announcements (€2,200 gross minimum wage, doubling industry and electricity output, criminal penalties for tax fraud). iFRAP costed the 2022 programme at €287bn of spending against €131.4bn of revenue, and Institut Montaigne put the NFP contract at €179bn a year of extra deficit."
+    "en": "The 2022 program \"La France des jours heureux\" centred on higher wages (€1,500 net minimum wage, +30% for civil servants), retirement at 60, a 32-hour week, 500,000 public hires, nuclear power and nationalising large banks. In 2024 the PCF signed the New Popular Front contract, with similar aims worded differently (€1,600 net minimum wage, retirement at 60 as an objective, a public banking pole without nationalisation); for 2027 there are only announcements (€2,200 gross minimum wage, doubling industry and electricity output, criminal penalties for tax fraud). iFRAP costed the 2022 program at €287bn of spending against €131.4bn of revenue, and Institut Montaigne put the NFP contract at €179bn a year of extra deficit."
   },
   "group": "GDR",
   "votes": [
@@ -1218,7 +1218,7 @@
       },
       "note": {
         "fr": "Textes ciblés (retraites agricoles, retraités pauvres) ; le programme vise le minimum contributif au niveau du Smic.",
-        "en": "Targeted bills (farm pensions, poor retirees); the programme aims to lift the contributory minimum to the minimum wage."
+        "en": "Targeted bills (farm pensions, poor retirees); the program aims to lift the contributory minimum to the minimum wage."
       },
       "scrutins": [
         {
@@ -1384,7 +1384,7 @@
       },
       "note": {
         "fr": "Le programme vise à doubler la part de l'industrie ; la nationalisation de l'acier en est une application.",
-        "en": "The programme aims to double industry's share of GDP; nationalising steel is one application."
+        "en": "The program aims to double industry's share of GDP; nationalising steel is one application."
       },
       "scrutins": [
         {
@@ -1427,5 +1427,90 @@
         }
       ]
     }
-  ]
+  ],
+  "growth": {
+    "assumed": {
+      "fr": "Aucune hypothèse de croissance publiée, ni en 2022 ni pour 2027",
+      "en": "No growth assumption published, either in 2022 or for 2027"
+    },
+    "rate": null,
+    "verdict": "unstated",
+    "reason": {
+      "fr": "Faute de chiffrage du parti, seul l'iFRAP a évalué la version 2022 : 287 Md€ de dépenses en plus pour 131,4 Md€ de recettes, soit un trou de 155,6 Md€. Le combler par la croissance exigerait des taux bien supérieurs aux 0,9 % (2027) et 1,2 % (2028) prévus par la Banque de France.",
+      "en": "With no costing from the party, only iFRAP assessed the 2022 version: €287bn of extra spending against €131.4bn of revenue, a €155.6bn gap. Closing it through growth would take rates far above the 0.9% (2027) and 1.2% (2028) the Banque de France forecasts."
+    },
+    "sources": [
+      {
+        "title": "Fondation iFRAP — Chiffrage des programmes des candidats à la présidentielle 2022",
+        "url": "https://www.ifrap.org/la-revue/chiffrage-des-programmes-des-candidats-la-presidentielle-2022"
+      },
+      {
+        "title": "Banque de France — Projections macroéconomiques intermédiaires, septembre 2026",
+        "url": "https://www.banque-france.fr/fr/publications-et-statistiques/publications/projections-macroeconomiques-intermediaires-septembre-2026"
+      },
+      {
+        "title": "Public Sénat — Budget 2027 : le HCFP pointe des prévisions « optimistes »",
+        "url": "https://www.publicsenat.fr/actualites/economie/budget-2027-le-haut-conseil-des-finances-publiques-pointe-des-previsions-optimistes-du-gouvernement"
+      }
+    ],
+    "examples": [
+      {
+        "country": {
+          "fr": "Espagne",
+          "en": "Spain"
+        },
+        "year": "2019",
+        "policy": {
+          "fr": "Hausse de 22 % du salaire minimum en une fois, de 736 à 900 € par mois (ordre de grandeur proche d'un Smic à 2 200 € brut)",
+          "en": "One-off 22% minimum-wage rise, from €736 to €900 a month (close in size to a €2,200 gross French minimum wage)"
+        },
+        "outcome": {
+          "fr": "Les bas salaires ont nettement progressé, mais la Banque d'Espagne estime une perte d'emploi de 6 à 11 points chez les salariés directement concernés, soit 0,6 à 1,1 % de l'emploi salarié.",
+          "en": "Low wages rose sharply, but the Bank of Spain estimates a job loss of 6 to 11 points among directly affected workers, or 0.6 to 1.1% of wage employment."
+        },
+        "result": "mixed",
+        "sources": [
+          {
+            "title": "Al Jazeera — Spain announces huge minimum wage rise",
+            "url": "https://www.aljazeera.com/economy/2018/12/13/spain-announces-huge-minimum-wage-rise-amid-catalonia-tensions"
+          },
+          {
+            "title": "Banco de España — Los efectos del salario mínimo interprofesional en el empleo (DO 2113)",
+            "url": "https://www.bde.es/wbe/en/publicaciones/analisis-economico-investigacion/documentos-ocasionales/efectos-salario-minimo-interprofesional-empleo-nueva-evidencia-para-espana.html"
+          },
+          {
+            "title": "El Independiente — La subida del SMI aumenta la posibilidad de perder un empleo",
+            "url": "https://www.elindependiente.com/economia/2021/06/08/la-subida-del-smi-aumenta-la-posibilidad-de-perder-un-empleo-entre-un-2-y-un-3/amp/"
+          }
+        ]
+      },
+      {
+        "country": {
+          "fr": "Allemagne",
+          "en": "Germany"
+        },
+        "year": "2014",
+        "policy": {
+          "fr": "« Rente mit 63 » : retraite à taux plein dès 63 ans après 45 ans de cotisation",
+          "en": "\"Rente mit 63\": full pension from age 63 after 45 contribution years"
+        },
+        "outcome": {
+          "fr": "Les bénéficiaires sont partis 5,4 mois plus tôt en moyenne, pour un coût de 6,5 Md€ dès 2016 ; en 2022, 1,99 million de personnes en profitaient, 400 000 de plus que prévu.",
+          "en": "Eligible workers retired 5.4 months earlier on average, at a cost of €6.5bn by 2016; by 2022, 1.99 million people drew it, 400,000 more than expected."
+        },
+        "result": "mixed",
+        "sources": [
+          {
+            "title": "Dolls & Krolage — Early retirement at 63 (ifo Working Paper 291)",
+            "url": "https://econpapers.repec.org/RePEc:ces:ifowps:_291"
+          },
+          {
+            "title": "IamExpat — Early retirement increasingly popular in Germany (Deutsche Rentenversicherung data)",
+            "url": "https://www.iamexpat.de/expat-info/german-expat-news/early-retirement-increasingly-popular-germany"
+          }
+        ]
+      }
+    ],
+    "checked": "2026-11-14"
+  }
 }

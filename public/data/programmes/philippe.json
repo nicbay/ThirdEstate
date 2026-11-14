@@ -7,13 +7,16 @@
   "status": "partial",
   "statusNote": {
     "fr": "Au 8 novembre 2026, le site de campagne présente quatre « priorités » détaillées, complétées par des annonces (retraites le 29 septembre, travail et famille le 8 octobre 2026) ; aucun document programme complet ni chiffrage global n'est publié, et l'Institut Montaigne annonce ses chiffrages des candidats pour le premier trimestre 2027.",
-    "en": "As of 8 November 2026, the campaign site sets out four detailed \"priorities\", supplemented by announcements (pensions on 29 September, work and family on 8 October 2026); no full programme document or overall costing has been published, and Institut Montaigne plans its costings of candidates for Q1 2027."
+    "en": "As of 8 November 2026, the campaign site sets out four detailed \"priorities\", supplemented by announcements (pensions on 29 September, work and family on 8 October 2026); no full program document or overall costing has been published, and Institut Montaigne plans its costings of candidates for Q1 2027."
   },
   "versions": [
     {
       "id": "e24",
       "year": 2024,
-      "label": { "fr": "Législatives 2024 : programme commun Ensemble pour la République (coalition dont Horizons)", "en": "2024 legislative: joint Ensemble pour la République programme (coalition including Horizons)" },
+      "label": {
+        "fr": "Législatives 2024 : programme commun Ensemble pour la République (coalition dont Horizons)",
+        "en": "2024 legislative: joint Ensemble pour la République program (coalition including Horizons)"
+      },
       "title": "Ensemble pour la République — programme des législatives 2024 (synthèse Institut Montaigne)",
       "date": "2024-06",
       "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese",
@@ -22,7 +25,10 @@
     {
       "id": "p27",
       "year": 2027,
-      "label": { "fr": "Propositions 2027 (site de campagne et annonces)", "en": "2027 proposals (campaign site and announcements)" },
+      "label": {
+        "fr": "Propositions 2027 (site de campagne et annonces)",
+        "en": "2027 proposals (campaign site and announcements)"
+      },
       "title": "Priorités — edouardphilippe.fr",
       "date": "2026-10",
       "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere",
@@ -38,46 +44,92 @@
         "e24": "Repousser l'âge de départ à la retraite à 64 ans (maintien de la réforme de 2023)",
         "p27": "Porter progressivement l'âge de départ à 65 ans et la durée de cotisation à 45 ans en moins de dix ans ; permettre à un Français sur trois de partir avant 65 ans"
       },
-      "change": { "fr": "Âge légal : 64 ans (réforme de 2023, conservée en 2024) → 65 ans et 45 annuités en moins de dix ans, avec départs anticipés pour un tiers des assurés.", "en": "Legal age: 64 (2023 reform, kept in 2024) → 65 and 45 contribution years within ten years, with early exits for one in three." },
+      "change": {
+        "fr": "Âge légal : 64 ans (réforme de 2023, conservée en 2024) → 65 ans et 45 annuités en moins de dix ans, avec départs anticipés pour un tiers des assurés.",
+        "en": "Legal age: 64 (2023 reform, kept in 2024) → 65 and 45 contribution years within ten years, with early exits for one in three."
+      },
       "sources": [
-        { "title": "Une France plus prospère — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere" },
-        { "title": "LCP, 29 septembre 2026 : Philippe veut porter l'âge de départ à 65 ans et la durée de cotisation à 45 ans", "url": "https://lcp.fr/actualites/retraites-edouard-philippe-veut-porter-l-age-de-depart-a-65-ans-et-la-duree-de" },
-        { "title": "Institut Montaigne, législatives 2024 : chiffrages retraites et fiscalité (3 juillet 2024)", "url": "https://institutmontaigne.org/communiques-de-presse/legislatives-2024-chiffrages-retraites-et-fiscalite" }
+        {
+          "title": "Une France plus prospère — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere"
+        },
+        {
+          "title": "LCP, 29 septembre 2026 : Philippe veut porter l'âge de départ à 65 ans et la durée de cotisation à 45 ans",
+          "url": "https://lcp.fr/actualites/retraites-edouard-philippe-veut-porter-l-age-de-depart-a-65-ans-et-la-duree-de"
+        },
+        {
+          "title": "Institut Montaigne, législatives 2024 : chiffrages retraites et fiscalité (3 juillet 2024)",
+          "url": "https://institutmontaigne.org/communiques-de-presse/legislatives-2024-chiffrages-retraites-et-fiscalite"
+        }
       ],
-      "cost": { "value": 30, "low": null, "high": null, "by": "Candidate", "url": "https://www.publicsenat.fr/actualites/politique/reculer-ou-avancer-lage-legal-avec-ou-sans-capitalisation-ce-que-proposent-les-principaux-candidats-a-lelection-presidentielle-sur-les-retraites", "note": { "fr": "Gain revendiqué par le candidat pour la réforme paramétrique, « en année pleine » (Public Sénat, 30 septembre 2026). Pas d'estimation indépendante publiée.", "en": "Saving claimed by the candidate for the parametric reform, \"in a full year\" (Public Sénat, 30 September 2026). No independent estimate published." } },
+      "cost": {
+        "value": 30,
+        "low": null,
+        "high": null,
+        "by": "Candidate",
+        "url": "https://www.publicsenat.fr/actualites/politique/reculer-ou-avancer-lage-legal-avec-ou-sans-capitalisation-ce-que-proposent-les-principaux-candidats-a-lelection-presidentielle-sur-les-retraites",
+        "note": {
+          "fr": "Gain revendiqué par le candidat pour la réforme paramétrique, « en année pleine » (Public Sénat, 30 septembre 2026). Pas d'estimation indépendante publiée.",
+          "en": "Saving claimed by the candidate for the parametric reform, \"in a full year\" (Public Sénat, 30 September 2026). No independent estimate published."
+        }
+      },
       "legal": "ok",
       "legalNote": null,
       "feasibility": "medium",
-      "feasibilityNote": { "fr": "Montée en charge sur moins de dix ans ; voie (loi, référendum ou ordonnance) non précisée.", "en": "Phased in over under ten years; route (law, referendum or ordinance) not specified." },
+      "feasibilityNote": {
+        "fr": "Montée en charge sur moins de dix ans ; voie (loi, référendum ou ordonnance) non précisée.",
+        "en": "Phased in over under ten years; route (law, referendum or ordinance) not specified."
+      },
       "broadBenefit": false
     },
     {
       "id": "m02",
       "theme": "social",
       "status": "new",
-      "texts": { "p27": "Construire un système mixte associant répartition et capitalisation, avec un premier versement de l'État de 500 € dès le premier emploi" },
+      "texts": {
+        "p27": "Construire un système mixte associant répartition et capitalisation, avec un premier versement de l'État de 500 € dès le premier emploi"
+      },
       "change": null,
       "sources": [
-        { "title": "Une France plus prospère — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere" },
-        { "title": "Public Sénat, 30 septembre 2026 : ce que proposent les candidats sur les retraites", "url": "https://www.publicsenat.fr/actualites/politique/reculer-ou-avancer-lage-legal-avec-ou-sans-capitalisation-ce-que-proposent-les-principaux-candidats-a-lelection-presidentielle-sur-les-retraites" }
+        {
+          "title": "Une France plus prospère — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere"
+        },
+        {
+          "title": "Public Sénat, 30 septembre 2026 : ce que proposent les candidats sur les retraites",
+          "url": "https://www.publicsenat.fr/actualites/politique/reculer-ou-avancer-lage-legal-avec-ou-sans-capitalisation-ce-que-proposent-les-principaux-candidats-a-lelection-presidentielle-sur-les-retraites"
+        }
       ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
       "feasibility": "medium",
-      "feasibilityNote": { "fr": "Le site évoque un pilier par capitalisation de 10 à 15 % des pensions ; le coût du versement initial n'est pas chiffré.", "en": "The site mentions a funded pillar worth 10-15% of pensions; the cost of the initial payment is not given." },
+      "feasibilityNote": {
+        "fr": "Le site évoque un pilier par capitalisation de 10 à 15 % des pensions ; le coût du versement initial n'est pas chiffré.",
+        "en": "The site mentions a funded pillar worth 10-15% of pensions; the cost of the initial payment is not given."
+      },
       "broadBenefit": true
     },
     {
       "id": "m03",
       "theme": "budget",
       "status": "new",
-      "texts": { "p27": "Inscrire dans la Constitution une règle d'or de maîtrise des déficits via un référendum ; ramener le déficit de plus de 5 % à 2 % du PIB à la fin du quinquennat" },
+      "texts": {
+        "p27": "Inscrire dans la Constitution une règle d'or de maîtrise des déficits via un référendum ; ramener le déficit de plus de 5 % à 2 % du PIB à la fin du quinquennat"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus prospère — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere" } ],
+      "sources": [
+        {
+          "title": "Une France plus prospère — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere"
+        }
+      ],
       "cost": null,
       "legal": "constitutional-revision-needed",
-      "legalNote": { "fr": "Révision constitutionnelle ; la révision par référendum direct (article 11) plutôt que par l'article 89 est juridiquement contestée.", "en": "Constitutional amendment; amending by direct referendum (Article 11) rather than Article 89 is legally contested." },
+      "legalNote": {
+        "fr": "Révision constitutionnelle ; la révision par référendum direct (article 11) plutôt que par l'article 89 est juridiquement contestée.",
+        "en": "Constitutional amendment; amending by direct referendum (Article 11) rather than Article 89 is legally contested."
+      },
       "feasibility": "medium",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -86,28 +138,47 @@
       "id": "m04",
       "theme": "budget",
       "status": "new",
-      "texts": { "p27": "50 % de l'effort sur les dépenses sociales et un quart sur l'État et les collectivités" },
+      "texts": {
+        "p27": "50 % de l'effort sur les dépenses sociales et un quart sur l'État et les collectivités"
+      },
       "change": null,
       "sources": [
-        { "title": "Une France plus prospère — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere" },
-        { "title": "Euronews, 9 octobre 2026", "url": "https://fr.euronews.com/2026/10/09/presidentielle-2027-edouard-philippe-mise-sur-le-travail-et-la-reduction-des-depenses-publ" }
+        {
+          "title": "Une France plus prospère — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere"
+        },
+        {
+          "title": "Euronews, 9 octobre 2026",
+          "url": "https://fr.euronews.com/2026/10/09/presidentielle-2027-edouard-philippe-mise-sur-le-travail-et-la-reduction-des-depenses-publ"
+        }
       ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
       "feasibility": null,
-      "feasibilityNote": { "fr": "Montant total de l'effort non publié.", "en": "Total size of the effort not published." },
+      "feasibilityNote": {
+        "fr": "Montant total de l'effort non publié.",
+        "en": "Total size of the effort not published."
+      },
       "broadBenefit": false
     },
     {
       "id": "m05",
       "theme": "budget",
       "status": "new",
-      "texts": { "p27": "Supprimer un tiers des fonctionnaires partant à la retraite, soit plus de 250 000 postes sur le quinquennat" },
+      "texts": {
+        "p27": "Supprimer un tiers des fonctionnaires partant à la retraite, soit plus de 250 000 postes sur le quinquennat"
+      },
       "change": null,
       "sources": [
-        { "title": "Une France plus prospère — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere" },
-        { "title": "Echos Plus, 9 octobre 2026", "url": "https://echosplus.com/2026/10/09/edouard-philippe-ce-que-ses-propositions-changeraient-pour-les-salaries-et-les-familles/" }
+        {
+          "title": "Une France plus prospère — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere"
+        },
+        {
+          "title": "Echos Plus, 9 octobre 2026",
+          "url": "https://echosplus.com/2026/10/09/edouard-philippe-ce-que-ses-propositions-changeraient-pour-les-salaries-et-les-familles/"
+        }
       ],
       "cost": null,
       "legal": "ok",
@@ -120,9 +191,16 @@
       "id": "m06",
       "theme": "budget",
       "status": "new",
-      "texts": { "p27": "Fusionner et supprimer des dizaines d'opérateurs, d'agences et de comités publics" },
+      "texts": {
+        "p27": "Fusionner et supprimer des dizaines d'opérateurs, d'agences et de comités publics"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus prospère — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere" } ],
+      "sources": [
+        {
+          "title": "Une France plus prospère — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -134,10 +212,27 @@
       "id": "m07",
       "theme": "economie",
       "status": "new",
-      "texts": { "p27": "50 Md€ de baisses d'impôts de production contre 50 Md€ d'aides publiques improductives en moins" },
+      "texts": {
+        "p27": "50 Md€ de baisses d'impôts de production contre 50 Md€ d'aides publiques improductives en moins"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus prospère — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere" } ],
-      "cost": { "value": 0, "low": null, "high": null, "by": "Candidate", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere", "note": { "fr": "Présenté comme neutre : 50 Md€ de baisse d'impôts compensés par 50 Md€ d'aides supprimées (horizon non précisé). Aides concernées non listées.", "en": "Presented as neutral: €50bn of tax cuts offset by €50bn of subsidies removed (timeframe not stated). Subsidies concerned not listed." } },
+      "sources": [
+        {
+          "title": "Une France plus prospère — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere"
+        }
+      ],
+      "cost": {
+        "value": 0,
+        "low": null,
+        "high": null,
+        "by": "Candidate",
+        "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere",
+        "note": {
+          "fr": "Présenté comme neutre : 50 Md€ de baisse d'impôts compensés par 50 Md€ d'aides supprimées (horizon non précisé). Aides concernées non listées.",
+          "en": "Presented as neutral: €50bn of tax cuts offset by €50bn of subsidies removed (timeframe not stated). Subsidies concerned not listed."
+        }
+      },
       "legal": "ok",
       "legalNote": null,
       "feasibility": "medium",
@@ -148,26 +243,46 @@
       "id": "m08",
       "theme": "economie",
       "status": "new",
-      "texts": { "p27": "Sceller un moratoire normatif et fiscal : pas de nouvelle norme et de nouvel impôt sur le quinquennat" },
+      "texts": {
+        "p27": "Sceller un moratoire normatif et fiscal : pas de nouvelle norme et de nouvel impôt sur le quinquennat"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus prospère — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere" } ],
+      "sources": [
+        {
+          "title": "Une France plus prospère — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
       "feasibility": "low",
-      "feasibilityNote": { "fr": "Un moratoire ne lie pas juridiquement le législateur ni les obligations de transposition européennes.", "en": "A moratorium does not legally bind Parliament or EU transposition duties." },
+      "feasibilityNote": {
+        "fr": "Un moratoire ne lie pas juridiquement le législateur ni les obligations de transposition européennes.",
+        "en": "A moratorium does not legally bind Parliament or EU transposition duties."
+      },
       "broadBenefit": false
     },
     {
       "id": "m09",
       "theme": "travail",
       "status": "new",
-      "texts": { "p27": "Permettre aux entreprises de fixer librement le temps de travail pour sortir des 35h" },
+      "texts": {
+        "p27": "Permettre aux entreprises de fixer librement le temps de travail pour sortir des 35h"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus prospère — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere" } ],
+      "sources": [
+        {
+          "title": "Une France plus prospère — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere"
+        }
+      ],
       "cost": null,
       "legal": "eu-law",
-      "legalNote": { "fr": "Encadré par la directive 2003/88/CE sur le temps de travail (48 h hebdomadaires maximum en moyenne).", "en": "Bounded by Working Time Directive 2003/88/EC (48-hour average weekly maximum)." },
+      "legalNote": {
+        "fr": "Encadré par la directive 2003/88/CE sur le temps de travail (48 h hebdomadaires maximum en moyenne).",
+        "en": "Bounded by Working Time Directive 2003/88/EC (48-hour average weekly maximum)."
+      },
       "feasibility": "medium",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -176,11 +291,19 @@
       "id": "m10",
       "theme": "travail",
       "status": "new",
-      "texts": { "p27": "Exonérer de cotisations les heures supplémentaires, soit environ 1 000 € de plus par an au SMIC pour deux heures de plus par semaine" },
+      "texts": {
+        "p27": "Exonérer de cotisations les heures supplémentaires, soit environ 1 000 € de plus par an au SMIC pour deux heures de plus par semaine"
+      },
       "change": null,
       "sources": [
-        { "title": "Une France plus prospère — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere" },
-        { "title": "Euronews, 9 octobre 2026", "url": "https://fr.euronews.com/2026/10/09/presidentielle-2027-edouard-philippe-mise-sur-le-travail-et-la-reduction-des-depenses-publ" }
+        {
+          "title": "Une France plus prospère — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere"
+        },
+        {
+          "title": "Euronews, 9 octobre 2026",
+          "url": "https://fr.euronews.com/2026/10/09/presidentielle-2027-edouard-philippe-mise-sur-le-travail-et-la-reduction-des-depenses-publ"
+        }
       ],
       "cost": null,
       "legal": "ok",
@@ -197,25 +320,44 @@
         "e24": "Conserver la réforme de l'assurance chômage de juillet 2024 (mesure retenue par l'Institut Montaigne dans le chiffrage du programme)",
         "p27": "Réduire à 12 mois maximum la durée d'indemnisation chômage pour les moins de 50 ans, contre 18 mois aujourd'hui"
       },
-      "change": { "fr": "Durée maximale d'indemnisation des moins de 50 ans : 18 mois → 12 mois.", "en": "Maximum benefit duration for under-50s: 18 months → 12 months." },
+      "change": {
+        "fr": "Durée maximale d'indemnisation des moins de 50 ans : 18 mois → 12 mois.",
+        "en": "Maximum benefit duration for under-50s: 18 months → 12 months."
+      },
       "sources": [
-        { "title": "Une France plus prospère — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere" },
-        { "title": "Institut Montaigne, législatives 2024 : conserver la réforme de l'assurance chômage", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/conserver-la-reforme-de-lassurance-chomage-de-juillet-2024/" }
+        {
+          "title": "Une France plus prospère — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere"
+        },
+        {
+          "title": "Institut Montaigne, législatives 2024 : conserver la réforme de l'assurance chômage",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/conserver-la-reforme-de-lassurance-chomage-de-juillet-2024/"
+        }
       ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
       "feasibility": "high",
-      "feasibilityNote": { "fr": "L'Institut Montaigne estimait la réforme de 2024 à 4,5 Md€ d'économies par an ; la version 2027 n'est pas chiffrée.", "en": "Institut Montaigne put the 2024 reform at €4.5bn a year of savings; the 2027 version is not costed." },
+      "feasibilityNote": {
+        "fr": "L'Institut Montaigne estimait la réforme de 2024 à 4,5 Md€ d'économies par an ; la version 2027 n'est pas chiffrée.",
+        "en": "Institut Montaigne put the 2024 reform at €4.5bn a year of savings; the 2027 version is not costed."
+      },
       "broadBenefit": false
     },
     {
       "id": "m12",
       "theme": "travail",
       "status": "new",
-      "texts": { "p27": "3 jours de carence pour tout le monde, dans le privé comme le public" },
+      "texts": {
+        "p27": "3 jours de carence pour tout le monde, dans le privé comme le public"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus prospère — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere" } ],
+      "sources": [
+        {
+          "title": "Une France plus prospère — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-prospere"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -227,26 +369,44 @@
       "id": "m13",
       "theme": "social",
       "status": "new",
-      "texts": { "p27": "Créer une allocation familiale unique dès le premier enfant, à hauteur de 350 €, dégressive avec l'impôt sur le revenu" },
+      "texts": {
+        "p27": "Créer une allocation familiale unique dès le premier enfant, à hauteur de 350 €, dégressive avec l'impôt sur le revenu"
+      },
       "change": null,
       "sources": [
-        { "title": "Une France plus attentive à ses enfants — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-attentive-a-ses-enfants" },
-        { "title": "Euronews, 9 octobre 2026", "url": "https://fr.euronews.com/2026/10/09/presidentielle-2027-edouard-philippe-mise-sur-le-travail-et-la-reduction-des-depenses-publ" }
+        {
+          "title": "Une France plus attentive à ses enfants — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-attentive-a-ses-enfants"
+        },
+        {
+          "title": "Euronews, 9 octobre 2026",
+          "url": "https://fr.euronews.com/2026/10/09/presidentielle-2027-edouard-philippe-mise-sur-le-travail-et-la-reduction-des-depenses-publ"
+        }
       ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
       "feasibility": "medium",
-      "feasibilityNote": { "fr": "Coût total non publié par le candidat.", "en": "Total cost not published by the candidate." },
+      "feasibilityNote": {
+        "fr": "Coût total non publié par le candidat.",
+        "en": "Total cost not published by the candidate."
+      },
       "broadBenefit": true
     },
     {
       "id": "m14",
       "theme": "social",
       "status": "new",
-      "texts": { "p27": "Supprimer l'impôt sur le revenu pendant les trois premières années de l'enfant pour les classes moyennes ; accorder une réduction d'impôt de 3 000 € par an sur la même période aux familles plus aisées qui travaillent" },
+      "texts": {
+        "p27": "Supprimer l'impôt sur le revenu pendant les trois premières années de l'enfant pour les classes moyennes ; accorder une réduction d'impôt de 3 000 € par an sur la même période aux familles plus aisées qui travaillent"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus attentive à ses enfants — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-attentive-a-ses-enfants" } ],
+      "sources": [
+        {
+          "title": "Une France plus attentive à ses enfants — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-attentive-a-ses-enfants"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -258,9 +418,16 @@
       "id": "m15",
       "theme": "logement",
       "status": "new",
-      "texts": { "p27": "Faciliter le déménagement des familles qui s'agrandissent grâce à un prêt à taux zéro pour chaque naissance" },
+      "texts": {
+        "p27": "Faciliter le déménagement des familles qui s'agrandissent grâce à un prêt à taux zéro pour chaque naissance"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus attentive à ses enfants — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-attentive-a-ses-enfants" } ],
+      "sources": [
+        {
+          "title": "Une France plus attentive à ses enfants — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-attentive-a-ses-enfants"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -272,9 +439,16 @@
       "id": "m16",
       "theme": "social",
       "status": "new",
-      "texts": { "p27": "Créer le temps partiel parental : passer à 80 % payés 100 % pendant 2 mois" },
+      "texts": {
+        "p27": "Créer le temps partiel parental : passer à 80 % payés 100 % pendant 2 mois"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus attentive à ses enfants — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-attentive-a-ses-enfants" } ],
+      "sources": [
+        {
+          "title": "Une France plus attentive à ses enfants — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-attentive-a-ses-enfants"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -290,25 +464,44 @@
         "e24": "Relever l'abattement sur les droits de succession à 150 000 € en ligne directe (enfants) et 100 000 € en ligne indirecte",
         "p27": "Augmenter massivement les plafonds de donation du vivant aux enfants et petits-enfants"
       },
-      "change": { "fr": "Abattement sur les successions (2024) → plafonds de donation du vivant (2027), sans montant précisé.", "en": "Inheritance allowance (2024) → lifetime gift ceilings (2027), no amount given." },
+      "change": {
+        "fr": "Abattement sur les successions (2024) → plafonds de donation du vivant (2027), sans montant précisé.",
+        "en": "Inheritance allowance (2024) → lifetime gift ceilings (2027), no amount given."
+      },
       "sources": [
-        { "title": "Une France plus attentive à ses enfants — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-attentive-a-ses-enfants" },
-        { "title": "Institut Montaigne, législatives 2024 : abattement sur les droits de succession", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese" }
+        {
+          "title": "Une France plus attentive à ses enfants — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-attentive-a-ses-enfants"
+        },
+        {
+          "title": "Institut Montaigne, législatives 2024 : abattement sur les droits de succession",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese"
+        }
       ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
       "feasibility": "high",
-      "feasibilityNote": { "fr": "La version 2024 était chiffrée à 3 Md€ par an par l'Institut Montaigne ; la version 2027 n'est pas chiffrée.", "en": "The 2024 version was put at €3bn a year by Institut Montaigne; the 2027 version is not costed." },
+      "feasibilityNote": {
+        "fr": "La version 2024 était chiffrée à 3 Md€ par an par l'Institut Montaigne ; la version 2027 n'est pas chiffrée.",
+        "en": "The 2024 version was put at €3bn a year by Institut Montaigne; the 2027 version is not costed."
+      },
       "broadBenefit": false
     },
     {
       "id": "m18",
       "theme": "education",
       "status": "new",
-      "texts": { "p27": "Concentrer l'enseignement primaire sur les savoirs fondamentaux : lire, écrire, compter ; faire des chefs d'établissements les véritables patrons de l'école" },
+      "texts": {
+        "p27": "Concentrer l'enseignement primaire sur les savoirs fondamentaux : lire, écrire, compter ; faire des chefs d'établissements les véritables patrons de l'école"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus attentive à ses enfants — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-attentive-a-ses-enfants" } ],
+      "sources": [
+        {
+          "title": "Une France plus attentive à ses enfants — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-attentive-a-ses-enfants"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -320,23 +513,40 @@
       "id": "m19",
       "theme": "education",
       "status": "new",
-      "texts": { "p27": "Augmenter de 20 % la rémunération moyenne des enseignants sur le quinquennat" },
+      "texts": {
+        "p27": "Augmenter de 20 % la rémunération moyenne des enseignants sur le quinquennat"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus attentive à ses enfants — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-attentive-a-ses-enfants" } ],
+      "sources": [
+        {
+          "title": "Une France plus attentive à ses enfants — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-attentive-a-ses-enfants"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
       "feasibility": "medium",
-      "feasibilityNote": { "fr": "Coût non publié par le candidat.", "en": "Cost not published by the candidate." },
+      "feasibilityNote": {
+        "fr": "Coût non publié par le candidat.",
+        "en": "Cost not published by the candidate."
+      },
       "broadBenefit": false
     },
     {
       "id": "m20",
       "theme": "education",
       "status": "new",
-      "texts": { "p27": "Interdire strictement les téléphones portables à l'école primaire et au collège ; réduire les effectifs d'élèves en classe, en maternelle et en primaire" },
+      "texts": {
+        "p27": "Interdire strictement les téléphones portables à l'école primaire et au collège ; réduire les effectifs d'élèves en classe, en maternelle et en primaire"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus attentive à ses enfants — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-attentive-a-ses-enfants" } ],
+      "sources": [
+        {
+          "title": "Une France plus attentive à ses enfants — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-attentive-a-ses-enfants"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -348,12 +558,22 @@
       "id": "m21",
       "theme": "justice",
       "status": "new",
-      "texts": { "p27": "Mettre en place des peines planchers pour les infractions les plus graves ; mettre en place des courtes peines, en s'inspirant des pays du Nord" },
+      "texts": {
+        "p27": "Mettre en place des peines planchers pour les infractions les plus graves ; mettre en place des courtes peines, en s'inspirant des pays du Nord"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus sûre — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure" } ],
+      "sources": [
+        {
+          "title": "Une France plus sûre — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure"
+        }
+      ],
       "cost": null,
       "legal": "ok",
-      "legalNote": { "fr": "Les peines planchers de la loi de 2007 ont été validées (décision n° 2007-554 DC du 9 août 2007) parce que le juge pouvait y déroger ; un dispositif automatique serait plus exposé.", "en": "The 2007 minimum sentences were upheld (decision no. 2007-554 DC, 9 August 2007) because judges could depart from them; an automatic scheme would be more exposed." },
+      "legalNote": {
+        "fr": "Les peines planchers de la loi de 2007 ont été validées (décision n° 2007-554 DC du 9 août 2007) parce que le juge pouvait y déroger ; un dispositif automatique serait plus exposé.",
+        "en": "The 2007 minimum sentences were upheld (decision no. 2007-554 DC, 9 August 2007) because judges could depart from them; an automatic scheme would be more exposed."
+      },
       "feasibility": "high",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -362,9 +582,16 @@
       "id": "m22",
       "theme": "justice",
       "status": "new",
-      "texts": { "p27": "Supprimer le juge d'application des peines ; renforcer l'autorité du Garde des Sceaux sur le parquet ; donner un pouvoir de sanction pénale aux maires" },
+      "texts": {
+        "p27": "Supprimer le juge d'application des peines ; renforcer l'autorité du Garde des Sceaux sur le parquet ; donner un pouvoir de sanction pénale aux maires"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus sûre — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure" } ],
+      "sources": [
+        {
+          "title": "Une France plus sûre — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure"
+        }
+      ],
       "cost": null,
       "legal": "unknown",
       "legalNote": null,
@@ -376,12 +603,22 @@
       "id": "m23",
       "theme": "securite",
       "status": "new",
-      "texts": { "p27": "Créer un « état d'urgence narco » avec des moyens juridiques d'exception limités dans le temps et dans l'espace ; constituer une « fiche S financière »" },
+      "texts": {
+        "p27": "Créer un « état d'urgence narco » avec des moyens juridiques d'exception limités dans le temps et dans l'espace ; constituer une « fiche S financière »"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus sûre — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure" } ],
+      "sources": [
+        {
+          "title": "Une France plus sûre — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure"
+        }
+      ],
       "cost": null,
       "legal": "risk",
-      "legalNote": { "fr": "Un régime d'exception est soumis au contrôle de proportionnalité des atteintes aux libertés.", "en": "An emergency regime is subject to proportionality review of restrictions on freedoms." },
+      "legalNote": {
+        "fr": "Un régime d'exception est soumis au contrôle de proportionnalité des atteintes aux libertés.",
+        "en": "An emergency regime is subject to proportionality review of restrictions on freedoms."
+      },
       "feasibility": "medium",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -390,12 +627,22 @@
       "id": "m24",
       "theme": "justice",
       "status": "new",
-      "texts": { "p27": "Lever l'excuse de minorité pour les faits en lien avec le narcotrafic" },
+      "texts": {
+        "p27": "Lever l'excuse de minorité pour les faits en lien avec le narcotrafic"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus sûre — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure" } ],
+      "sources": [
+        {
+          "title": "Une France plus sûre — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure"
+        }
+      ],
       "cost": null,
       "legal": "unconstitutional-precedent",
-      "legalNote": { "fr": "L'atténuation de la responsabilité des mineurs est un principe fondamental reconnu par les lois de la République (décision n° 2002-461 DC du 29 août 2002) ; l'inversion du régime de l'excuse de minorité a été censurée par la décision n° 2025-886 DC du 19 juin 2025.", "en": "Reduced criminal responsibility of minors is a fundamental principle recognised by the laws of the Republic (decision no. 2002-461 DC, 29 August 2002); reversing the minority-excuse rule was struck down in decision no. 2025-886 DC, 19 June 2025." },
+      "legalNote": {
+        "fr": "L'atténuation de la responsabilité des mineurs est un principe fondamental reconnu par les lois de la République (décision n° 2002-461 DC du 29 août 2002) ; l'inversion du régime de l'excuse de minorité a été censurée par la décision n° 2025-886 DC du 19 juin 2025.",
+        "en": "Reduced criminal responsibility of minors is a fundamental principle recognised by the laws of the Republic (decision no. 2002-461 DC, 29 August 2002); reversing the minority-excuse rule was struck down in decision no. 2025-886 DC, 19 June 2025."
+      },
       "feasibility": "low",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -404,15 +651,26 @@
       "id": "m25",
       "theme": "immigration",
       "status": "new",
-      "texts": { "p27": "Diviser par deux l'immigration dans notre pays ; mettre en place une politique de quotas migratoires" },
+      "texts": {
+        "p27": "Diviser par deux l'immigration dans notre pays ; mettre en place une politique de quotas migratoires"
+      },
       "change": null,
       "sources": [
-        { "title": "Une France plus sûre — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure" },
-        { "title": "Euronews, 9 octobre 2026", "url": "https://fr.euronews.com/2026/10/09/presidentielle-2027-edouard-philippe-mise-sur-le-travail-et-la-reduction-des-depenses-publ" }
+        {
+          "title": "Une France plus sûre — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure"
+        },
+        {
+          "title": "Euronews, 9 octobre 2026",
+          "url": "https://fr.euronews.com/2026/10/09/presidentielle-2027-edouard-philippe-mise-sur-le-travail-et-la-reduction-des-depenses-publ"
+        }
       ],
       "cost": null,
       "legal": "risk",
-      "legalNote": { "fr": "Les quotas ne peuvent pas s'appliquer à l'asile ni aux droits tirés du droit de l'UE et de la CEDH (vie familiale).", "en": "Quotas cannot apply to asylum or rights derived from EU law and the ECHR (family life)." },
+      "legalNote": {
+        "fr": "Les quotas ne peuvent pas s'appliquer à l'asile ni aux droits tirés du droit de l'UE et de la CEDH (vie familiale).",
+        "en": "Quotas cannot apply to asylum or rights derived from EU law and the ECHR (family life)."
+      },
       "feasibility": "medium",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -421,12 +679,22 @@
       "id": "m26",
       "theme": "immigration",
       "status": "new",
-      "texts": { "p27": "Dénoncer l'accord de 1968 avec l'Algérie" },
+      "texts": {
+        "p27": "Dénoncer l'accord de 1968 avec l'Algérie"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus sûre — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure" } ],
+      "sources": [
+        {
+          "title": "Une France plus sûre — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure"
+        }
+      ],
       "cost": null,
       "legal": "ok",
-      "legalNote": { "fr": "La dénonciation d'un accord bilatéral relève de l'exécutif.", "en": "Denouncing a bilateral agreement is an executive power." },
+      "legalNote": {
+        "fr": "La dénonciation d'un accord bilatéral relève de l'exécutif.",
+        "en": "Denouncing a bilateral agreement is an executive power."
+      },
       "feasibility": "high",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -435,12 +703,22 @@
       "id": "m27",
       "theme": "immigration",
       "status": "new",
-      "texts": { "p27": "Suspendre le regroupement familial pour la durée du quinquennat" },
+      "texts": {
+        "p27": "Suspendre le regroupement familial pour la durée du quinquennat"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus sûre — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure" } ],
+      "sources": [
+        {
+          "title": "Une France plus sûre — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure"
+        }
+      ],
       "cost": null,
       "legal": "unconstitutional-precedent",
-      "legalNote": { "fr": "Le droit de mener une vie familiale normale a été reconnu aux étrangers résidant de manière stable (décision n° 93-325 DC du 13 août 1993) ; le regroupement familial est aussi encadré par la directive 2003/86/CE.", "en": "The right to a normal family life was recognised for settled foreign residents (decision no. 93-325 DC, 13 August 1993); family reunification is also governed by Directive 2003/86/EC." },
+      "legalNote": {
+        "fr": "Le droit de mener une vie familiale normale a été reconnu aux étrangers résidant de manière stable (décision n° 93-325 DC du 13 août 1993) ; le regroupement familial est aussi encadré par la directive 2003/86/CE.",
+        "en": "The right to a normal family life was recognised for settled foreign residents (decision no. 93-325 DC, 13 August 1993); family reunification is also governed by Directive 2003/86/EC."
+      },
       "feasibility": "low",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -449,15 +727,26 @@
       "id": "m28",
       "theme": "immigration",
       "status": "new",
-      "texts": { "p27": "Faire voter chaque année par le Parlement une liste de pays sûrs, en mettant fin à l'asile à vie ; liste européenne de pays « sûrs »" },
+      "texts": {
+        "p27": "Faire voter chaque année par le Parlement une liste de pays sûrs, en mettant fin à l'asile à vie ; liste européenne de pays « sûrs »"
+      },
       "change": null,
       "sources": [
-        { "title": "Une France plus sûre — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure" },
-        { "title": "Echos Plus, 9 octobre 2026", "url": "https://echosplus.com/2026/10/09/edouard-philippe-ce-que-ses-propositions-changeraient-pour-les-salaries-et-les-familles/" }
+        {
+          "title": "Une France plus sûre — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure"
+        },
+        {
+          "title": "Echos Plus, 9 octobre 2026",
+          "url": "https://echosplus.com/2026/10/09/edouard-philippe-ce-que-ses-propositions-changeraient-pour-les-salaries-et-les-familles/"
+        }
       ],
       "cost": null,
       "legal": "eu-law",
-      "legalNote": { "fr": "La notion de pays d'origine sûr est encadrée par le droit d'asile de l'UE ; une exclusion totale des demandes contreviendrait au droit d'asile constitutionnel (Préambule de 1946, al. 4).", "en": "Safe countries of origin are governed by EU asylum law; excluding claims outright would conflict with the constitutional right of asylum (1946 Preamble, para. 4)." },
+      "legalNote": {
+        "fr": "La notion de pays d'origine sûr est encadrée par le droit d'asile de l'UE ; une exclusion totale des demandes contreviendrait au droit d'asile constitutionnel (Préambule de 1946, al. 4).",
+        "en": "Safe countries of origin are governed by EU asylum law; excluding claims outright would conflict with the constitutional right of asylum (1946 Preamble, para. 4)."
+      },
       "feasibility": "medium",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -466,12 +755,22 @@
       "id": "m29",
       "theme": "immigration",
       "status": "new",
-      "texts": { "p27": "Aligner les aides sociales versées aux étrangers sur la moyenne européenne ; expulsion immédiate et fin des aides sociales pour les étrangers délinquants" },
+      "texts": {
+        "p27": "Aligner les aides sociales versées aux étrangers sur la moyenne européenne ; expulsion immédiate et fin des aides sociales pour les étrangers délinquants"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus sûre — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure" } ],
+      "sources": [
+        {
+          "title": "Une France plus sûre — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure"
+        }
+      ],
       "cost": null,
       "legal": "risk",
-      "legalNote": { "fr": "Une condition de résidence de cinq ans pour des prestations a été jugée contraire au Préambule de 1946 (décision n° 2024-6 RIP du 11 avril 2024).", "en": "A five-year residence condition for benefits was held contrary to the 1946 Preamble (decision no. 2024-6 RIP, 11 April 2024)." },
+      "legalNote": {
+        "fr": "Une condition de résidence de cinq ans pour des prestations a été jugée contraire au Préambule de 1946 (décision n° 2024-6 RIP du 11 avril 2024).",
+        "en": "A five-year residence condition for benefits was held contrary to the 1946 Preamble (decision no. 2024-6 RIP, 11 April 2024)."
+      },
       "feasibility": "low",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -480,12 +779,22 @@
       "id": "m30",
       "theme": "outremer",
       "status": "new",
-      "texts": { "p27": "Suspendre, pour la durée du quinquennat, l'enregistrement des demandes d'asile dans les départements d'outre-mer sous pression migratoire (Mayotte, Guyane) ; suspendre le droit du sol à Mayotte" },
+      "texts": {
+        "p27": "Suspendre, pour la durée du quinquennat, l'enregistrement des demandes d'asile dans les départements d'outre-mer sous pression migratoire (Mayotte, Guyane) ; suspendre le droit du sol à Mayotte"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus sûre — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure" } ],
+      "sources": [
+        {
+          "title": "Une France plus sûre — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-sure"
+        }
+      ],
       "cost": null,
       "legal": "constitutional-revision-needed",
-      "legalNote": { "fr": "Le droit d'asile est constitutionnel (Préambule de 1946) et européen ; le Conseil a admis une adaptation du droit du sol à Mayotte (décision n° 2018-770 DC du 6 septembre 2018), pas sa suppression.", "en": "Asylum is a constitutional and EU right; the Council accepted an adapted birthright-citizenship rule for Mayotte (decision no. 2018-770 DC, 6 September 2018), not its removal." },
+      "legalNote": {
+        "fr": "Le droit d'asile est constitutionnel (Préambule de 1946) et européen ; le Conseil a admis une adaptation du droit du sol à Mayotte (décision n° 2018-770 DC du 6 septembre 2018), pas sa suppression.",
+        "en": "Asylum is a constitutional and EU right; the Council accepted an adapted birthright-citizenship rule for Mayotte (decision no. 2018-770 DC, 6 September 2018), not its removal."
+      },
       "feasibility": "low",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -494,9 +803,16 @@
       "id": "m31",
       "theme": "ecologie",
       "status": "new",
-      "texts": { "p27": "Lancement de 8 EPR supplémentaires en plus des 6 déjà prévus ; développer les renouvelables et accélérer l'électrification" },
+      "texts": {
+        "p27": "Lancement de 8 EPR supplémentaires en plus des 6 déjà prévus ; développer les renouvelables et accélérer l'électrification"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus conquérante — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-conquerante" } ],
+      "sources": [
+        {
+          "title": "Une France plus conquérante — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-conquerante"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -508,10 +824,27 @@
       "id": "m32",
       "theme": "ecologie",
       "status": "new",
-      "texts": { "p27": "Un fonds unique d'adaptation au changement climatique de 2 milliards d'euros par an" },
+      "texts": {
+        "p27": "Un fonds unique d'adaptation au changement climatique de 2 milliards d'euros par an"
+      },
       "change": null,
-      "sources": [ { "title": "Euronews, 9 octobre 2026", "url": "https://fr.euronews.com/2026/10/09/presidentielle-2027-edouard-philippe-mise-sur-le-travail-et-la-reduction-des-depenses-publ" } ],
-      "cost": { "value": -2, "low": null, "high": null, "by": "Candidate", "url": "https://fr.euronews.com/2026/10/09/presidentielle-2027-edouard-philippe-mise-sur-le-travail-et-la-reduction-des-depenses-publ", "note": { "fr": "Montant annoncé ; on ignore quelle part regroupe des crédits existants.", "en": "Announced amount; how much merges existing credits is not known." } },
+      "sources": [
+        {
+          "title": "Euronews, 9 octobre 2026",
+          "url": "https://fr.euronews.com/2026/10/09/presidentielle-2027-edouard-philippe-mise-sur-le-travail-et-la-reduction-des-depenses-publ"
+        }
+      ],
+      "cost": {
+        "value": -2,
+        "low": null,
+        "high": null,
+        "by": "Candidate",
+        "url": "https://fr.euronews.com/2026/10/09/presidentielle-2027-edouard-philippe-mise-sur-le-travail-et-la-reduction-des-depenses-publ",
+        "note": {
+          "fr": "Montant annoncé ; on ignore quelle part regroupe des crédits existants.",
+          "en": "Announced amount; how much merges existing credits is not known."
+        }
+      },
       "legal": "ok",
       "legalNote": null,
       "feasibility": "high",
@@ -522,12 +855,22 @@
       "id": "m33",
       "theme": "europe",
       "status": "new",
-      "texts": { "p27": "Développer une infrastructure d'intelligence artificielle européenne souveraine, en doublant notre capacité de calcul en cinq ans ; un « Buy European Tech Act »" },
+      "texts": {
+        "p27": "Développer une infrastructure d'intelligence artificielle européenne souveraine, en doublant notre capacité de calcul en cinq ans ; un « Buy European Tech Act »"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus conquérante — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-conquerante" } ],
+      "sources": [
+        {
+          "title": "Une France plus conquérante — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-conquerante"
+        }
+      ],
       "cost": null,
       "legal": "eu-law",
-      "legalNote": { "fr": "Une préférence européenne dans les achats publics relève d'une décision au niveau de l'UE.", "en": "A European preference in public procurement requires an EU-level decision." },
+      "legalNote": {
+        "fr": "Une préférence européenne dans les achats publics relève d'une décision au niveau de l'UE.",
+        "en": "A European preference in public procurement requires an EU-level decision."
+      },
       "feasibility": "medium",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -536,9 +879,16 @@
       "id": "m34",
       "theme": "economie",
       "status": "new",
-      "texts": { "p27": "Créer un « livret capital France » pour mobiliser l'épargne dormante des Français ; massifier la production d'ingénieurs, de 40 000 à 100 000 par an en cinq ans" },
+      "texts": {
+        "p27": "Créer un « livret capital France » pour mobiliser l'épargne dormante des Français ; massifier la production d'ingénieurs, de 40 000 à 100 000 par an en cinq ans"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus conquérante — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-conquerante" } ],
+      "sources": [
+        {
+          "title": "Une France plus conquérante — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-conquerante"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -550,9 +900,16 @@
       "id": "m35",
       "theme": "agriculture",
       "status": "new",
-      "texts": { "p27": "Accélérer le stockage de l'eau agricole en plaçant « la protection avant la procédure » ; atteindre 10 % de réutilisation des eaux usées traitées, contre moins de 1 % aujourd'hui" },
+      "texts": {
+        "p27": "Accélérer le stockage de l'eau agricole en plaçant « la protection avant la procédure » ; atteindre 10 % de réutilisation des eaux usées traitées, contre moins de 1 % aujourd'hui"
+      },
       "change": null,
-      "sources": [ { "title": "Une France plus conquérante — edouardphilippe.fr", "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-conquerante" } ],
+      "sources": [
+        {
+          "title": "Une France plus conquérante — edouardphilippe.fr",
+          "url": "https://www.edouardphilippe.fr/priorites/pour-une-france-plus-conquerante"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -564,27 +921,61 @@
       "id": "m36",
       "theme": "institutions",
       "status": "new",
-      "texts": { "p27": "Présenter une vingtaine d'ordonnances lors d'une session parlementaire extraordinaire en juillet 2027" },
+      "texts": {
+        "p27": "Présenter une vingtaine d'ordonnances lors d'une session parlementaire extraordinaire en juillet 2027"
+      },
       "change": null,
       "sources": [
-        { "title": "Euronews, 9 octobre 2026", "url": "https://fr.euronews.com/2026/10/09/presidentielle-2027-edouard-philippe-mise-sur-le-travail-et-la-reduction-des-depenses-publ" },
-        { "title": "Echos Plus, 9 octobre 2026", "url": "https://echosplus.com/2026/10/09/edouard-philippe-ce-que-ses-propositions-changeraient-pour-les-salaries-et-les-familles/" }
+        {
+          "title": "Euronews, 9 octobre 2026",
+          "url": "https://fr.euronews.com/2026/10/09/presidentielle-2027-edouard-philippe-mise-sur-le-travail-et-la-reduction-des-depenses-publ"
+        },
+        {
+          "title": "Echos Plus, 9 octobre 2026",
+          "url": "https://echosplus.com/2026/10/09/edouard-philippe-ce-que-ses-propositions-changeraient-pour-les-salaries-et-les-familles/"
+        }
       ],
       "cost": null,
       "legal": "ok",
-      "legalNote": { "fr": "Les ordonnances (article 38) supposent une loi d'habilitation votée par le Parlement.", "en": "Ordinances (Article 38) require an enabling act passed by Parliament." },
+      "legalNote": {
+        "fr": "Les ordonnances (article 38) supposent une loi d'habilitation votée par le Parlement.",
+        "en": "Ordinances (Article 38) require an enabling act passed by Parliament."
+      },
       "feasibility": "medium",
-      "feasibilityNote": { "fr": "Dépend d'une majorité à l'Assemblée après les législatives.", "en": "Depends on a majority in the Assembly after the legislative elections." },
+      "feasibilityNote": {
+        "fr": "Dépend d'une majorité à l'Assemblée après les législatives.",
+        "en": "Depends on a majority in the Assembly after the legislative elections."
+      },
       "broadBenefit": false
     },
     {
       "id": "m37",
       "theme": "ecologie",
       "status": "dropped",
-      "texts": { "e24": "Baisser les factures d'électricité de 15 % dès février 2025" },
-      "change": { "fr": "Absente des propositions 2027 publiées au 8 novembre 2026.", "en": "Absent from the 2027 proposals published as of 8 November 2026." },
-      "sources": [ { "title": "Institut Montaigne, législatives 2024 : baisser les factures d'électricité de 15 %", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese" } ],
-      "cost": { "value": -2.4, "low": null, "high": null, "by": "Institut Montaigne 2024", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese", "note": { "fr": "Chiffrage de la version 2024.", "en": "Costing of the 2024 version." } },
+      "texts": {
+        "e24": "Baisser les factures d'électricité de 15 % dès février 2025"
+      },
+      "change": {
+        "fr": "Absente des propositions 2027 publiées au 8 novembre 2026.",
+        "en": "Absent from the 2027 proposals published as of 8 November 2026."
+      },
+      "sources": [
+        {
+          "title": "Institut Montaigne, législatives 2024 : baisser les factures d'électricité de 15 %",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese"
+        }
+      ],
+      "cost": {
+        "value": -2.4,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese",
+        "note": {
+          "fr": "Chiffrage de la version 2024.",
+          "en": "Costing of the 2024 version."
+        }
+      },
       "legal": "ok",
       "legalNote": null,
       "feasibility": null,
@@ -595,10 +986,30 @@
       "id": "m38",
       "theme": "education",
       "status": "dropped",
-      "texts": { "e24": "Généraliser le service national universel d'ici 2026" },
-      "change": { "fr": "Absente des propositions 2027 publiées au 8 novembre 2026.", "en": "Absent from the 2027 proposals published as of 8 November 2026." },
-      "sources": [ { "title": "Institut Montaigne, législatives 2024 : généraliser le SNU", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese" } ],
-      "cost": { "value": -3.6, "low": null, "high": null, "by": "Institut Montaigne 2024", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese", "note": { "fr": "Chiffrage de la version 2024.", "en": "Costing of the 2024 version." } },
+      "texts": {
+        "e24": "Généraliser le service national universel d'ici 2026"
+      },
+      "change": {
+        "fr": "Absente des propositions 2027 publiées au 8 novembre 2026.",
+        "en": "Absent from the 2027 proposals published as of 8 November 2026."
+      },
+      "sources": [
+        {
+          "title": "Institut Montaigne, législatives 2024 : généraliser le SNU",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese"
+        }
+      ],
+      "cost": {
+        "value": -3.6,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese",
+        "note": {
+          "fr": "Chiffrage de la version 2024.",
+          "en": "Costing of the 2024 version."
+        }
+      },
       "legal": "ok",
       "legalNote": null,
       "feasibility": null,
@@ -611,20 +1022,65 @@
       {
         "id": "l2024",
         "year": 2024,
-        "label": { "fr": "Législatives 2024 — programme Ensemble pour la République (coalition dont Horizons)", "en": "2024 legislative — Ensemble pour la République programme (coalition including Horizons)" },
-        "horizon": { "fr": "par an, à l'horizon 2027", "en": "a year, by 2027" },
+        "label": {
+          "fr": "Législatives 2024 — programme Ensemble pour la République (coalition dont Horizons)",
+          "en": "2024 legislative — Ensemble pour la République program (coalition including Horizons)"
+        },
+        "horizon": {
+          "fr": "par an, à l'horizon 2027",
+          "en": "a year, by 2027"
+        },
         "announced": null,
         "estimates": [
-          { "by": "Institut Montaigne", "spending": 26.9, "revenue": 6.3, "net": -20.6, "date": "2024-07", "note": { "fr": "Dépenses nouvelles et baisses d'impôts 26,9 Md€, économies 6,3 Md€ (réforme de l'assurance chômage, centres de rétention) ; environ 0,7 point de PIB de déficit en plus.", "en": "New spending and tax cuts €26.9bn, savings €6.3bn (unemployment-insurance reform, detention centres); about 0.7 GDP point of extra deficit." }, "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese" },
-          { "by": "Fondation iFRAP", "spending": null, "revenue": 4.0, "net": 4.0, "date": "2024-06-20", "note": { "fr": "Écart à la trajectoire du programme de stabilité en 2027 : 2,1 Md€ d'économies et 1,9 Md€ de recettes, soit environ 4 Md€ de déficit en moins ; dépenses nouvelles déjà incluses dans la trajectoire.", "en": "Gap against the stability-programme path in 2027: €2.1bn savings and €1.9bn revenue, about €4bn less deficit; new spending already in the baseline path." }, "url": "https://www.ifrap.org/budget-et-fiscalite/le-vrai-cout-du-programme-densemble-pour-la-republique" }
+          {
+            "by": "Institut Montaigne",
+            "spending": 26.9,
+            "revenue": 6.3,
+            "net": -20.6,
+            "date": "2024-07",
+            "note": {
+              "fr": "Dépenses nouvelles et baisses d'impôts 26,9 Md€, économies 6,3 Md€ (réforme de l'assurance chômage, centres de rétention) ; environ 0,7 point de PIB de déficit en plus.",
+              "en": "New spending and tax cuts €26.9bn, savings €6.3bn (unemployment-insurance reform, detention centres); about 0.7 GDP point of extra deficit."
+            },
+            "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese"
+          },
+          {
+            "by": "Fondation iFRAP",
+            "spending": null,
+            "revenue": 4,
+            "net": 4,
+            "date": "2024-06-20",
+            "note": {
+              "fr": "Écart à la trajectoire du programme de stabilité en 2027 : 2,1 Md€ d'économies et 1,9 Md€ de recettes, soit environ 4 Md€ de déficit en moins ; dépenses nouvelles déjà incluses dans la trajectoire.",
+              "en": "Gap against the stability-program path in 2027: €2.1bn savings and €1.9bn revenue, about €4bn less deficit; new spending already in the baseline path."
+            },
+            "url": "https://www.ifrap.org/budget-et-fiscalite/le-vrai-cout-du-programme-densemble-pour-la-republique"
+          }
         ]
       },
       {
         "id": "p2027",
         "year": 2027,
-        "label": { "fr": "Présidentielle 2027 — propositions d'Édouard Philippe", "en": "2027 presidential — Édouard Philippe's proposals" },
-        "horizon": { "fr": "par an, en année pleine", "en": "a year, full year" },
-        "announced": { "by": "Édouard Philippe", "spending": null, "revenue": 30, "net": null, "date": "2026-09-30", "note": { "fr": "Seul chiffre global avancé : 30 Md€ par an d'économies attendues de la réforme des retraites ; objectif de déficit de 2 % du PIB en fin de quinquennat. Pas de chiffrage d'ensemble ; l'Institut Montaigne chiffrera les candidats au 1er trimestre 2027.", "en": "Only overall figure given: €30bn a year expected from the pension reform; deficit target of 2% of GDP by the end of the term. No full costing; Institut Montaigne will cost candidates in Q1 2027." }, "url": "https://www.publicsenat.fr/actualites/politique/reculer-ou-avancer-lage-legal-avec-ou-sans-capitalisation-ce-que-proposent-les-principaux-candidats-a-lelection-presidentielle-sur-les-retraites" },
+        "label": {
+          "fr": "Présidentielle 2027 — propositions d'Édouard Philippe",
+          "en": "2027 presidential — Édouard Philippe's proposals"
+        },
+        "horizon": {
+          "fr": "par an, en année pleine",
+          "en": "a year, full year"
+        },
+        "announced": {
+          "by": "Édouard Philippe",
+          "spending": null,
+          "revenue": 30,
+          "net": null,
+          "date": "2026-09-30",
+          "note": {
+            "fr": "Seul chiffre global avancé : 30 Md€ par an d'économies attendues de la réforme des retraites ; objectif de déficit de 2 % du PIB en fin de quinquennat. Pas de chiffrage d'ensemble ; l'Institut Montaigne chiffrera les candidats au 1er trimestre 2027.",
+            "en": "Only overall figure given: €30bn a year expected from the pension reform; deficit target of 2% of GDP by the end of the term. No full costing; Institut Montaigne will cost candidates in Q1 2027."
+          },
+          "url": "https://www.publicsenat.fr/actualites/politique/reculer-ou-avancer-lage-legal-avec-ou-sans-capitalisation-ce-que-proposent-les-principaux-candidats-a-lelection-presidentielle-sur-les-retraites"
+        },
         "estimates": []
       }
     ],
@@ -632,7 +1088,7 @@
   },
   "summary": {
     "fr": "Les propositions 2027 d'Édouard Philippe portent sur la baisse des dépenses publiques (règle d'or constitutionnelle, déficit ramené à 2 % du PIB, 250 000 postes de fonctionnaires en moins), le travail, une politique familiale refondue et un durcissement de la politique migratoire et pénale. Par rapport au programme commun d'Ensemble de 2024, l'âge de départ passe de 64 à 65 ans avec 45 annuités et un volet par capitalisation, et la durée d'indemnisation chômage des moins de 50 ans est ramenée à 12 mois. Aucune estimation indépendante n'existe à ce stade ; le candidat attend 30 Md€ par an de sa réforme des retraites, et l'Institut Montaigne avait estimé le programme Ensemble 2024 à 20,6 Md€ de déficit supplémentaire par an.",
-    "en": "Édouard Philippe's 2027 proposals centre on cutting public spending (constitutional golden rule, deficit down to 2% of GDP, 250,000 fewer civil-service posts), work, an overhauled family policy and tougher migration and criminal-justice policy. Compared with the 2024 joint Ensemble programme, the retirement age moves from 64 to 65 with 45 contribution years and a funded component, and unemployment benefits for under-50s are capped at 12 months. No independent estimate exists yet; the candidate expects €30bn a year from his pension reform, and Institut Montaigne had put the 2024 Ensemble programme at €20.6bn a year of extra deficit."
+    "en": "Édouard Philippe's 2027 proposals centre on cutting public spending (constitutional golden rule, deficit down to 2% of GDP, 250,000 fewer civil-service posts), work, an overhauled family policy and tougher migration and criminal-justice policy. Compared with the 2024 joint Ensemble program, the retirement age moves from 64 to 65 with 45 contribution years and a funded component, and unemployment benefits for under-50s are capped at 12 months. No independent estimate exists yet; the candidate expects €30bn a year from his pension reform, and Institut Montaigne had put the 2024 Ensemble program at €20.6bn a year of extra deficit."
   },
   "group": "HOR",
   "votes": [
@@ -652,35 +1108,95 @@
           "date": "2024-10-31",
           "title": "l'ensemble de la proposition de loi visant à restaurer un système de retraite plus juste en annulant les dernières réformes portant sur l’âge de départ et le nombre d’annuités (première lecture).",
           "result": "rejeté",
-          "expect": "C"
+          "expect": "C",
+          "total": {
+            "P": 119,
+            "C": 197,
+            "A": 18
+          },
+          "group": {
+            "P": 0,
+            "C": 17,
+            "A": 0
+          },
+          "majority": "C",
+          "agrees": true
         },
         {
           "num": 468,
           "date": "2024-11-28",
           "title": "l'amendement de suppression n° 4 de M. Sitzenstuhl et les amendements identiques suivants à l'article premier de la proposition de loi d'abrogation de la retraite à 64 ans (première lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 100,
+            "C": 241,
+            "A": 1
+          },
+          "group": {
+            "P": 13,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 2257,
           "date": "2025-06-05",
           "title": "la proposition de résolution visant à abroger la loi n° 2023-270 du 14 avril 2023 de financement rectificative de la sécurité sociale pour 2023 dite réforme des retraites.",
           "result": "adopté",
-          "expect": "C"
+          "expect": "C",
+          "total": {
+            "P": 198,
+            "C": 35,
+            "A": 0
+          },
+          "group": {
+            "P": 0,
+            "C": 7,
+            "A": 0
+          },
+          "majority": "C",
+          "agrees": true
         },
         {
           "num": 3684,
           "date": "2025-11-12",
           "title": "l'article 45 bis (examen prioritaire) du projet de loi de financement de la sécurité sociale pour 2026 (première lecture).",
           "result": "adopté",
-          "expect": "C"
+          "expect": "C",
+          "total": {
+            "P": 255,
+            "C": 146,
+            "A": 104
+          },
+          "group": {
+            "P": 0,
+            "C": 24,
+            "A": 2
+          },
+          "majority": "C",
+          "agrees": true
         },
         {
           "num": 4642,
           "date": "2025-12-05",
           "title": "l'amendement n° 840 du Gouvernement et les amendements identiques suivants de rétablissement de l'article 45 bis (supprimé) (examen prioritaire) du projet de loi de financement de la sécurité sociale pour 2026 (nouvelle lecture).",
           "result": "adopté",
-          "expect": "C"
+          "expect": "C",
+          "total": {
+            "P": 162,
+            "C": 75,
+            "A": 46
+          },
+          "group": {
+            "P": 1,
+            "C": 11,
+            "A": 1
+          },
+          "majority": "C",
+          "agrees": true
         }
       ]
     },
@@ -697,7 +1213,19 @@
           "date": "2025-10-30",
           "title": "la proposition de résolution visant à dénoncer les accords franco-algériens du 27 décembre 1968 (article 34-1 de la Constitution).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 185,
+            "C": 184,
+            "A": 5
+          },
+          "group": {
+            "P": 13,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         }
       ]
     },
@@ -717,14 +1245,38 @@
           "date": "2025-02-06",
           "title": "l'ensemble de la proposition de loi visant à renforcer les conditions d'accès à la nationalité française à Mayotte (première lecture).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 162,
+            "C": 93,
+            "A": 3
+          },
+          "group": {
+            "P": 11,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 1308,
           "date": "2025-04-08",
           "title": "l'ensemble de la proposition de loi visant à renforcer les conditions d'accès à la nationalité française à Mayotte (texte de la commission mixte paritaire).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 339,
+            "C": 174,
+            "A": 11
+          },
+          "group": {
+            "P": 27,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         }
       ]
     },
@@ -744,14 +1296,38 @@
           "date": "2025-02-13",
           "title": "l'ensemble de la proposition de loi visant à restaurer l'autorité de la justice à l'égard des mineurs délinquants et de leurs parents (première lecture).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 125,
+            "C": 58,
+            "A": 0
+          },
+          "group": {
+            "P": 8,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 1624,
           "date": "2025-05-13",
           "title": "l'ensemble de la proposition de loi visant à renforcer l'autorité de la justice à l'égard des mineurs délinquants et de leurs parents (texte de la commission mixte paritaire).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 341,
+            "C": 187,
+            "A": 8
+          },
+          "group": {
+            "P": 27,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         }
       ]
     },
@@ -771,14 +1347,38 @@
           "date": "2025-04-01",
           "title": "l'ensemble de la proposition de loi visant à sortir la France du piège du narcotrafic (première lecture).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 436,
+            "C": 75,
+            "A": 39
+          },
+          "group": {
+            "P": 27,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 1473,
           "date": "2025-04-29",
           "title": "l'ensemble de la proposition de loi visant à sortir la France du piège du narcotrafic (texte de la commission mixte paritaire).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 396,
+            "C": 68,
+            "A": 34
+          },
+          "group": {
+            "P": 27,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         }
       ]
     },
@@ -798,7 +1398,19 @@
           "date": "2025-06-05",
           "title": "l'ensemble de la proposition de loi visant à accorder le versement des allocations familiales dès le premier enfant (première lecture).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 103,
+            "C": 17,
+            "A": 5
+          },
+          "group": {
+            "P": 0,
+            "C": 2,
+            "A": 2
+          },
+          "majority": "C",
+          "agrees": false
         }
       ]
     },
@@ -818,14 +1430,38 @@
           "date": "2026-01-22",
           "title": "la proposition de résolution visant à suspendre toute nouvelle création d'instances administratives pour lutter contre le phénomène d'agencification de l'État et rendre plus lisible le fonctionnement de l'administration française (art. 34-1 de la Constitution).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 136,
+            "C": 88,
+            "A": 0
+          },
+          "group": {
+            "P": 8,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 5846,
           "date": "2026-03-26",
           "title": "l'ensemble de la proposition de loi visant à renforcer le contrôle, la gouvernance et la responsabilité financière des opérateurs de l'Etat (première lecture).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 34,
+            "C": 14,
+            "A": 5
+          },
+          "group": {
+            "P": 1,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         }
       ]
     },
@@ -845,9 +1481,116 @@
           "date": "2025-02-20",
           "title": "l'ensemble de la proposition de loi instaurant un impôt plancher de 2 % sur le patrimoine des ultra riches (première lecture).",
           "result": "adopté",
-          "expect": "C"
+          "expect": "C",
+          "total": {
+            "P": 116,
+            "C": 39,
+            "A": 31
+          },
+          "group": {
+            "P": 0,
+            "C": 6,
+            "A": 3
+          },
+          "majority": "C",
+          "agrees": true
         }
       ]
     }
-  ]
+  ],
+  "growth": {
+    "assumed": {
+      "fr": "Aucun taux de croissance publié ; objectif d'un déficit de 2 % du PIB fin 2032, contre plus de 5 % aujourd'hui.",
+      "en": "No growth rate published; target of a 2% of GDP deficit by end-2032, against over 5% today."
+    },
+    "rate": null,
+    "verdict": "unstated",
+    "reason": {
+      "fr": "C'est la cible la plus exigeante des candidats, mais sans hypothèse de croissance ni chiffrage d'ensemble elle ne peut pas être vérifiée. Passer de plus de 5 % à 2 % suppose une croissance au moins au niveau du potentiel (environ 1 %) pendant tout le quinquennat, au-dessus de ce que prévoient l'OFCE (0,7 %) et la Banque de France (0,9 %) pour 2027.",
+      "en": "It is the most demanding target of any candidate, but with no growth assumption or full costing it cannot be checked. Going from over 5% to 2% needs growth at least at potential (about 1%) throughout the term, above what OFCE (0.7%) and the Banque de France (0.9%) forecast for 2027."
+    },
+    "sources": [
+      {
+        "title": "MoneyVox — Attal veut 100 000 départs volontaires de fonctionnaires (cible de 2 % de Philippe)",
+        "url": "https://www.moneyvox.fr/impot/actualites/109548/attal-veut-100-000-departs-volontaires-de-fonctionnaires-et-impunite-budgetaire-zero"
+      },
+      {
+        "title": "Public Sénat — Budget 2027 : le HCFP pointe des prévisions « optimistes »",
+        "url": "https://www.publicsenat.fr/actualites/economie/budget-2027-le-haut-conseil-des-finances-publiques-pointe-des-previsions-optimistes-du-gouvernement"
+      }
+    ],
+    "examples": [
+      {
+        "country": {
+          "fr": "Allemagne",
+          "en": "Germany"
+        },
+        "year": "2003–2005",
+        "policy": {
+          "fr": "Réformes Hartz : indemnisation chômage ramenée de 18 à 12 mois avant 55 ans, sanctions en cas de refus d'offre.",
+          "en": "Hartz reforms: unemployment benefits cut from 18 to 12 months under 55, sanctions for refusing offers."
+        },
+        "outcome": {
+          "fr": "Le chômage est passé de 11,3 % en 2005 à 5,5 % en 2012, mais les bas salaires et la pauvreté des chômeurs ont nettement augmenté.",
+          "en": "Unemployment fell from 11.3% in 2005 to 5.5% in 2012, but low-wage work and poverty among the unemployed rose markedly."
+        },
+        "result": "mixed",
+        "sources": [
+          {
+            "title": "CaixaBank Research — The Hartz reforms: achievements and less welcome effects",
+            "url": "https://www.caixabankresearch.com/en/node/7106/printable/print"
+          }
+        ]
+      },
+      {
+        "country": {
+          "fr": "États-Unis",
+          "en": "United States"
+        },
+        "year": "2017",
+        "policy": {
+          "fr": "Tax Cuts and Jobs Act : forte baisse de l'impôt sur les sociétés, censée s'autofinancer par la croissance.",
+          "en": "Tax Cuts and Jobs Act: large corporate tax cut meant to pay for itself through growth."
+        },
+        "outcome": {
+          "fr": "Le CBO estimait +0,3 point de croissance en 2018-2019 puis un effet quasi nul en 2023, et 1 900 Md$ de déficit supplémentaire sur 2018-2028.",
+          "en": "CBO estimated +0.3 points of growth in 2018–2019, essentially no effect by 2023, and $1.9tn of extra deficits over 2018–2028."
+        },
+        "result": "mixed",
+        "sources": [
+          {
+            "title": "Peter G. Peterson Foundation — How have tax cuts affected the economy and debt?",
+            "url": "https://www.pgpf.org/article/how-have-tax-cuts-affected-the-economy-and-debt-heres-what-we-know-so-far/"
+          }
+        ]
+      },
+      {
+        "country": {
+          "fr": "Suède",
+          "en": "Sweden"
+        },
+        "year": "1994–1998",
+        "policy": {
+          "fr": "Assainissement budgétaire puis cadre contraignant : objectif d'excédent et plafond de dépenses pluriannuel.",
+          "en": "Fiscal consolidation followed by a binding framework: surplus target and multi-year spending ceiling."
+        },
+        "outcome": {
+          "fr": "Amélioration structurelle de 10 points de PIB, excédent de 2,2 % en 1998 et croissance de 2,9 % la même année.",
+          "en": "Structural improvement of 10 points of GDP, a 2.2% surplus in 1998 and 2.9% growth that year."
+        },
+        "result": "worked",
+        "sources": [
+          {
+            "title": "IMF Public Information Notice 99/87 — Sweden, 1999 Article IV",
+            "url": "https://www.imf.org/external/np/sec/pn/1999/pn9987.htm"
+          },
+          {
+            "title": "IMF Blog — How to get the balance right: fiscal policy at a time of crisis",
+            "url": "https://www.imf.org/en/blogs/articles/2012/05/06/how-to-get-the-balance-right-fiscal-policy-at-a-time-of-crisis"
+          }
+        ]
+      }
+    ],
+    "checked": "2026-11-14"
+  }
 }

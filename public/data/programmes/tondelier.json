@@ -6,8 +6,8 @@
   "lite": true,
   "status": "published",
   "statusNote": {
-    "fr": "Programme présidentiel des Écologistes présenté le 13 juillet 2026, complété par un livret programmatique sur le travail le 4 novembre 2026 ; la version 2022 est celle de Yannick Jadot (référence du parti, pas de la candidate), et le document officiel 2026 n'a pu être consulté que via la presse.",
-    "en": "Les Écologistes' presidential programme presented on 13 July 2026, supplemented by a work-policy booklet on 4 November 2026; the 2022 version is Yannick Jadot's (party baseline, not the candidate's own), and the official 2026 document could only be read through press reports."
+    "fr": "Programme présidentiel des Écologistes, « Pour une prospérité écologique » (juillet 2026, 209 pages), complété par un livret sur le travail le 4 novembre 2026. Les mesures 2027 sont citées depuis le document lui-même, page à l’appui. La version 2022 est celle de Yannick Jadot (référence du parti, pas de la candidate).",
+    "en": "Les Écologistes' presidential program, “Pour une prospérité écologique” (July 2026, 209 pages), supplemented by a booklet on work on 4 November 2026. The 2027 measures are quoted from the document itself, with page numbers. The 2022 version is Yannick Jadot's (party baseline, not the candidate's own)."
   },
   "versions": [
     {
@@ -15,7 +15,7 @@
       "year": 2022,
       "label": {
         "fr": "Programme 2022 de Yannick Jadot (référence du parti)",
-        "en": "Yannick Jadot's 2022 programme (party baseline)"
+        "en": "Yannick Jadot's 2022 program (party baseline)"
       },
       "title": "Changer la France pour vivre mieux",
       "date": "2022-02",
@@ -38,13 +38,15 @@
       "id": "p27",
       "year": 2026,
       "label": {
-        "fr": "Programme 2027 (juillet et novembre 2026)",
-        "en": "2027 programme (July and November 2026)"
+        "fr": "Programme 2027 (juillet 2026, complété en novembre)",
+        "en": "2027 program (July 2026, supplemented in November)"
       },
-      "title": "Programme présidentiel des Écologistes",
+      "title": "Pour une prospérité écologique — le nouveau programme des Écologistes",
       "date": "2026-07",
-      "url": "https://www.parlons-politique.fr/elections/ce-que-le-programme-ecologiste-de-marine-tondelier-changerait-pour-les-retraites-le-nucleaire-et-les-impots_23570/",
-      "kind": "announcements"
+      "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf",
+      "kind": "pdf",
+      "pages": 209,
+      "press": "https://www.parlons-politique.fr/elections/ce-que-le-programme-ecologiste-de-marine-tondelier-changerait-pour-les-retraites-le-nucleaire-et-les-impots_23570/"
     }
   ],
   "measures": [
@@ -55,16 +57,20 @@
       "texts": {
         "p22": "Le SMIC sera augmenté à 1 500 euros net par mois en cours de mandat.",
         "p24": "Augmenter les salaires par le passage du SMIC à 1600€ net.",
-        "p27": "« Augmenter le Smic à 2.000 euros brut dès 2027 »."
+        "p27": "« Passer le salaire minimum à 2000 € brut par mois dès 2027. »"
       },
       "change": {
-        "fr": "1 500 € net en fin de mandat (2022) → 1 600 € net (NFP 2024) → 2 000 € brut dès 2027 (livret de novembre 2026). Le programme de juillet 2026 ne prévoyait, selon la presse, pas de hausse directe du Smic.",
-        "en": "€1,500 net by end of term (2022) → €1,600 net (NFP 2024) → €2,000 gross from 2027 (November 2026 booklet). According to the press, the July 2026 programme had no direct minimum-wage rise."
+        "fr": "1 500 € net en fin de mandat (2022) → 1 600 € net (NFP 2024) → 2 000 € brut dès 2027 (programme de juillet 2026, repris dans le livret de novembre).",
+        "en": "€1,500 net by end of term (2022) → €1,600 net (NFP 2024) → €2,000 gross from 2027 (July 2026 program, restated in the November booklet)."
       },
       "sources": [
         {
           "title": "Programme Yannick Jadot 2022 — « Changer la France pour vivre mieux » (PDF, copie)",
           "url": "https://patrickbayeux.com/wp-content/uploads/2022/02/2202-JADOT22_programme_A5_76p_interactif.pdf"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Institut Montaigne 2022 — Augmenter le SMIC de 125 euros nets en 2022 et le porter à 1 500 euros nets en 2027",
@@ -109,7 +115,12 @@
       },
       "feasibility": "medium",
       "feasibilityNote": null,
-      "broadBenefit": true
+      "broadBenefit": true,
+      "pages": {
+        "p22": 16,
+        "p24": 4,
+        "p27": 55
+      }
     },
     {
       "id": "m02",
@@ -118,7 +129,7 @@
       "texts": {
         "p22": "En aucun cas nous ne reporterons l'âge légal de départ à la retraite. Nous permettrons au contraire à toutes celles et ceux qui ont exercé des métiers pénibles de partir plus tôt.",
         "p24": "Abroger immédiatement les décrets d'application de la réforme passant l'âge de départ à 64 ans ; réaffirmer l'objectif commun du droit à la retraite à 60 ans.",
-        "p27": "« Retour immédiat à un âge minimum de 62 ans », avec un objectif de 60 ans pour les carrières longues et les métiers pénibles."
+        "p27": "« Abroger l’âge légal de départ à la retraite à 64 ans (réforme Borne) pour revenir immédiatement à un âge minimum à 62 ans et viser une retraite à 60 ans », d’abord pour les carrières longues et pénibles."
       },
       "change": {
         "fr": "Maintien à 62 ans (2022) → objectif de 60 ans (NFP 2024) → retour à 62 ans, 60 ans pour carrières longues et pénibles (2026).",
@@ -128,6 +139,10 @@
         {
           "title": "Programme Yannick Jadot 2022 — « Changer la France pour vivre mieux » (PDF, copie)",
           "url": "https://patrickbayeux.com/wp-content/uploads/2022/02/2202-JADOT22_programme_A5_76p_interactif.pdf"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
@@ -164,7 +179,11 @@
       },
       "feasibility": "medium",
       "feasibilityNote": null,
-      "broadBenefit": true
+      "broadBenefit": true,
+      "pages": {
+        "p22": 17,
+        "p27": 116
+      }
     },
     {
       "id": "m03",
@@ -172,16 +191,20 @@
       "status": "maintained",
       "texts": {
         "p22": "Nous sortirons du nucléaire. Les réacteurs actuels seront fermés au fur et à mesure de leur obsolescence, dont une dizaine d'ici 2035.",
-        "p27": "« Planifier la sortie du parc français sur une vingtaine d'années »."
+        "p27": "« Planifier la sortie du nucléaire. Mettre fin aux nouveaux programmes EPR-2 et SMR » ; arrêt progressif du parc « étalé sur une vingtaine d’années »."
       },
       "change": {
-        "fr": "Sortie du nucléaire maintenue ; calendrier d'une vingtaine d'années. La presse signale que la place du nucléaire restait un arbitrage ouvert en juillet 2026. Le contrat NFP 2024 ne tranchait pas.",
-        "en": "Nuclear phase-out kept; timetable of about twenty years. The press reported that nuclear policy was still open in July 2026. The 2024 NFP contract took no position."
+        "fr": "Sortie du nucléaire maintenue (2022 et 2026) ; le programme 2026 ajoute l’arrêt des EPR-2 et des SMR et un calendrier d’une vingtaine d’années. Le contrat NFP 2024 ne tranchait pas.",
+        "en": "Nuclear exit kept (2022 and 2026); the 2026 program adds an end to the EPR-2 and SMR plans and a timetable of about twenty years. The 2024 NFP contract did not decide."
       },
       "sources": [
         {
           "title": "Programme Yannick Jadot 2022 — « Changer la France pour vivre mieux » (PDF, copie)",
           "url": "https://patrickbayeux.com/wp-content/uploads/2022/02/2202-JADOT22_programme_A5_76p_interactif.pdf"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Institut Montaigne 2022 — Sortir progressivement du nucléaire",
@@ -214,7 +237,11 @@
         "fr": "Un scénario 100 % renouvelables exige une rupture de tendance (Institut Montaigne).",
         "en": "A 100% renewables scenario requires a break in trend (Institut Montaigne)."
       },
-      "broadBenefit": false
+      "broadBenefit": false,
+      "pages": {
+        "p22": 6,
+        "p27": 17
+      }
     },
     {
       "id": "m04",
@@ -223,7 +250,7 @@
       "texts": {
         "p22": "Nous créerons un impôt climatique sur la fortune, qui taxera les patrimoines supérieurs à 2 M€ et comportera un bonus-malus selon l'impact des actifs sur le climat, qui rapportera au moins 15 Mds€.",
         "p24": "Rétablir un impôt de solidarité sur la fortune (ISF) renforcé avec un volet climatique ; instaurer l'impôt Zucman sur les bénéfices des multinationales.",
-        "p27": "« Un prélèvement de 2 % sur les patrimoines de plus de 100 millions d'euros » (taxe Zucman) et un ISF climatique."
+        "p27": "« Mettre en place une taxe Zucman de 2 % au-delà de 100 millions d’euros de patrimoine » ; « Rétablir l’Impôt sur la Fortune (ISF) en lui ajoutant une composante climatique »."
       },
       "change": {
         "fr": "ISF climatique au-delà de 2 M€ (2022) → ISF renforcé (2024) → ajout d'une taxe de 2 % au-delà de 100 M€ (2026).",
@@ -233,6 +260,10 @@
         {
           "title": "Programme Yannick Jadot 2022 — « Changer la France pour vivre mieux » (PDF, copie)",
           "url": "https://patrickbayeux.com/wp-content/uploads/2022/02/2202-JADOT22_programme_A5_76p_interactif.pdf"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Institut Montaigne 2022 — Rétablir l'ISF et le transformer en ISF climatique",
@@ -276,7 +307,12 @@
         "fr": "Mise en œuvre possible par loi de finances ; risque d'exil fiscal discuté.",
         "en": "Can be enacted in a budget law; tax-exile risk debated."
       },
-      "broadBenefit": false
+      "broadBenefit": false,
+      "pages": {
+        "p22": 14,
+        "p24": 13,
+        "p27": 66
+      }
     },
     {
       "id": "m05",
@@ -284,16 +320,21 @@
       "status": "modified",
       "texts": {
         "p22": "L'impôt sur les successions sera payé en fonction de ce que chacun perçoit tout au long de sa vie, à partir d'un seuil de 200 000 €.",
-        "p24": "Réformer l'impôt sur l'héritage pour le rendre plus progressif en ciblant les plus hauts patrimoines et instaurer un héritage maximum."
+        "p24": "Réformer l'impôt sur l'héritage pour le rendre plus progressif en ciblant les plus hauts patrimoines et instaurer un héritage maximum.",
+        "p27": "Barème progressif unique sur l’héritage, avec deux tranches de plus au-delà de 4 et de 13 millions d’euros ; fin de l’abattement propre à l’assurance-vie ; pacte Dutreil plafonné à 50 % au-delà de 50 millions."
       },
       "change": {
-        "fr": "Abattement de 200 000 € sur la vie (2022) → progressivité accrue et « héritage maximum » (NFP 2024).",
-        "en": "€200,000 lifetime allowance (2022) → more progressive tax and a \"maximum inheritance\" (NFP 2024)."
+        "fr": "Abattement de 200 000 € sur la vie (2022) → « héritage maximum » (NFP 2024) → barème unique avec deux tranches au-delà de 4 et 13 M€, sans héritage maximum (2026).",
+        "en": "€200,000 lifetime allowance (2022) → a “maximum inheritance” (NFP 2024) → single scale with two brackets above €4m and €13m, no maximum inheritance (2026)."
       },
       "sources": [
         {
           "title": "Programme Yannick Jadot 2022 — « Changer la France pour vivre mieux » (PDF, copie)",
           "url": "https://patrickbayeux.com/wp-content/uploads/2022/02/2202-JADOT22_programme_A5_76p_interactif.pdf"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Institut Montaigne 2022 — Abattre jusqu'à 200 000 € sur le patrimoine hérité",
@@ -322,7 +363,12 @@
       },
       "feasibility": "medium",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "pages": {
+        "p22": 14,
+        "p24": 13,
+        "p27": 66
+      }
     },
     {
       "id": "m06",
@@ -330,16 +376,21 @@
       "status": "modified",
       "texts": {
         "p22": "Nous supprimerons le quotient conjugal. Nous renforcerons la progressivité [de l'impôt sur le revenu] par la baisse de la fiscalité sur les premières tranches et l'ajout de tranches supplémentaires pour les plus hauts revenus.",
-        "p24": "Accroître la progressivité de l'impôt sur le revenu à 14 tranches ; rendre la CSG progressive."
+        "p24": "Accroître la progressivité de l'impôt sur le revenu à 14 tranches ; rendre la CSG progressive.",
+        "p27": "« Diminuer l’impôt sur le revenu pour les tranches les plus basses. Créer une nouvelle tranche à 60 % au-delà de 250 000 € annuels » ; le quotient conjugal est à « réviser » (p. 138) ; CSG rendue progressive (p. 67)."
       },
       "change": {
-        "fr": "Tranches supplémentaires et fin du quotient conjugal (2022) → 14 tranches et CSG progressive (NFP 2024).",
-        "en": "Extra brackets and end of the marital quotient (2022) → 14 brackets and progressive CSG (NFP 2024)."
+        "fr": "Fin du quotient conjugal et tranches en plus (2022) → 14 tranches et CSG progressive (NFP 2024) → tranche à 60 % au-delà de 250 000 €, quotient conjugal à « réviser » et non plus supprimé (2026).",
+        "en": "End of the marital quotient and extra brackets (2022) → 14 brackets and a progressive CSG (NFP 2024) → a 60% bracket above €250,000, the marital quotient to be “revised” rather than abolished (2026)."
       },
       "sources": [
         {
           "title": "Programme Yannick Jadot 2022 — « Changer la France pour vivre mieux » (PDF, copie)",
           "url": "https://patrickbayeux.com/wp-content/uploads/2022/02/2202-JADOT22_programme_A5_76p_interactif.pdf"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Institut Montaigne 2022 — Renforcer la progressivité de l'impôt sur le revenu",
@@ -365,7 +416,12 @@
       "legalNote": null,
       "feasibility": "high",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "pages": {
+        "p22": 15,
+        "p24": 13,
+        "p27": 68
+      }
     },
     {
       "id": "m07",
@@ -373,16 +429,21 @@
       "status": "modified",
       "texts": {
         "p22": "Nous instaurerons un revenu citoyen qui sera versé automatiquement à partir de 18 ans et garantira que personne ne vive avec moins de 918 € mensuels.",
-        "p24": "Mettre en place une garantie d'autonomie qui complète les revenus des ménages situés sous le seuil de pauvreté (accessible dès 18 ans)."
+        "p24": "Mettre en place une garantie d'autonomie qui complète les revenus des ménages situés sous le seuil de pauvreté (accessible dès 18 ans).",
+        "p27": "« Créer une garantie d’autonomie […] en remplacement du Revenu de Solidarité Active (RSA). Augmenter son montant à 50 % du Smic net », dès 18 ans, sans les 15 heures d’activité."
       },
       "change": {
-        "fr": "Revenu citoyen à 918 € (2022) → garantie d'autonomie au seuil de pauvreté (NFP 2024).",
-        "en": "€918 citizen income (2022) → autonomy guarantee at the poverty line (NFP 2024)."
+        "fr": "Revenu citoyen de 918 € (2022) → garantie d’autonomie au seuil de pauvreté (NFP 2024) → garantie d’autonomie à 50 % du Smic net, en remplacement du RSA (2026).",
+        "en": "Citizen's income of €918 (2022) → autonomy guarantee at the poverty line (NFP 2024) → autonomy guarantee at 50% of the net minimum wage, replacing the RSA (2026)."
       },
       "sources": [
         {
           "title": "Programme Yannick Jadot 2022 — « Changer la France pour vivre mieux » (PDF, copie)",
           "url": "https://patrickbayeux.com/wp-content/uploads/2022/02/2202-JADOT22_programme_A5_76p_interactif.pdf"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Institut Montaigne 2022 — Créer un revenu citoyen de 918 euros",
@@ -411,7 +472,12 @@
         "fr": "« Coût très élevé » ; préparation lourde avec la CNAF et les départements (Institut Montaigne).",
         "en": "\"Very high cost\"; heavy preparation with CNAF and départements (Institut Montaigne)."
       },
-      "broadBenefit": true
+      "broadBenefit": true,
+      "pages": {
+        "p22": 17,
+        "p24": 10,
+        "p27": 119
+      }
     },
     {
       "id": "m08",
@@ -420,7 +486,7 @@
       "texts": {
         "p22": "Nous recruterons 65 000 enseignant·e·s et revaloriserons leurs salaires (20 % d'augmentation sur le quinquennat).",
         "p24": "Hausse de 10% du point d'indice des fonctionnaires.",
-        "p27": "Hausse de 15 % de la rémunération des enseignants et de 10 % pour les autres fonctionnaires ; réindexation du point d'indice sur l'inflation."
+        "p27": "Indexer le point d’indice sur l’inflation ; « Augmenter de 10 % la rémunération des catégories C et B » et des A qui ont perdu en pouvoir d’achat, les enseignants étant revalorisés « de 15 % dans le quinquennat »."
       },
       "change": {
         "fr": "+20 % et 65 000 recrutements (2022) → point d'indice +10 % (2024) → +15 % enseignants, +10 % autres agents, indexation (2026).",
@@ -430,6 +496,10 @@
         {
           "title": "Programme Yannick Jadot 2022 — « Changer la France pour vivre mieux » (PDF, copie)",
           "url": "https://patrickbayeux.com/wp-content/uploads/2022/02/2202-JADOT22_programme_A5_76p_interactif.pdf"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Institut Montaigne 2022 — Recruter 65 000 enseignants et revaloriser les salaires",
@@ -459,7 +529,12 @@
       "legalNote": null,
       "feasibility": "medium",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "pages": {
+        "p22": 22,
+        "p24": 4,
+        "p27": 55
+      }
     },
     {
       "id": "m09",
@@ -467,16 +542,21 @@
       "status": "modified",
       "texts": {
         "p22": "Nous construirons 700 000 nouveaux logements sociaux avant la fin du mandat, dont la moitié « très sociaux », et relèverons les seuils de la loi SRU.",
-        "p24": "Construire 200 000 logements publics par an pendant cinq ans aux normes écologiques les plus ambitieuses."
+        "p24": "Construire 200 000 logements publics par an pendant cinq ans aux normes écologiques les plus ambitieuses.",
+        "p27": "« Relancer la construction et la rénovation de logements locatifs sociaux », en supprimant la réduction de loyer de solidarité et en baissant la TVA sur la construction ; pas d’objectif chiffré de logements."
       },
       "change": {
-        "fr": "700 000 logements sociaux sur le mandat (2022) → 200 000 logements publics par an (NFP 2024).",
-        "en": "700,000 social homes over the term (2022) → 200,000 public homes a year (NFP 2024)."
+        "fr": "700 000 logements sociaux sur le mandat (2022) → 200 000 logements publics par an (NFP 2024) → relance sans objectif chiffré (2026).",
+        "en": "700,000 social homes over the term (2022) → 200,000 public homes a year (NFP 2024) → a revival with no numeric target (2026)."
       },
       "sources": [
         {
           "title": "Programme Yannick Jadot 2022 — « Changer la France pour vivre mieux » (PDF, copie)",
           "url": "https://patrickbayeux.com/wp-content/uploads/2022/02/2202-JADOT22_programme_A5_76p_interactif.pdf"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Institut Montaigne 2022 — Construire 700 000 logements sociaux",
@@ -502,7 +582,12 @@
       "legalNote": null,
       "feasibility": "medium",
       "feasibilityNote": null,
-      "broadBenefit": true
+      "broadBenefit": true,
+      "pages": {
+        "p22": 18,
+        "p24": 16,
+        "p27": 20
+      }
     },
     {
       "id": "m10",
@@ -511,7 +596,7 @@
       "texts": {
         "p22": "Nous réduirons la TVA à 5,5 % pour les transports collectifs et les services de réparation. Nous l'augmenterons à 20 % pour les transports polluants.",
         "p24": "Baisser la TVA sur la tarification des transports en commun à 5,5 %.",
-        "p27": "Une « fiscalité verte et juste » : TVA verte, transformation de la fiscalité des transports, hausse du prix des billets d'avion et baisse du coût du train."
+        "p27": "« Adopter une TVA verte différenciée selon l’impact environnemental et sanitaire des produits » ; hausse de la fiscalité des billets d’avion (p. 25) ; malus poids dès 1 300 kg pour les voitures thermiques."
       },
       "change": {
         "fr": "Mesures de TVA chiffrées (2022) → orientation générale de « TVA verte » (2026).",
@@ -521,6 +606,10 @@
         {
           "title": "Programme Yannick Jadot 2022 — « Changer la France pour vivre mieux » (PDF, copie)",
           "url": "https://patrickbayeux.com/wp-content/uploads/2022/02/2202-JADOT22_programme_A5_76p_interactif.pdf"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Institut Montaigne 2022 — TVA à 5,5 % sur les transports collectifs, 20 % sur les avions",
@@ -553,7 +642,12 @@
       },
       "feasibility": "high",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "pages": {
+        "p22": 14,
+        "p24": 19,
+        "p27": 67
+      }
     },
     {
       "id": "m11",
@@ -561,16 +655,21 @@
       "status": "modified",
       "texts": {
         "p22": "À horizon 2027, toute la nourriture servie dans les cantines publiques sera bio, locale, moins carnée. La loi portera un objectif de 100 % dans chaque cantine.",
-        "p24": "Garantir un débouché aux produits bio dans la restauration collective."
+        "p24": "Garantir un débouché aux produits bio dans la restauration collective.",
+        "p27": "« Atteindre 100 % de bio dans la restauration collective d’ici 2040 » ; 50 % de produits bio, locaux et végétaux dans la restauration commerciale en 2032."
       },
       "change": {
-        "fr": "Objectif légal de 100 % bio (2022) → débouché garanti, sans objectif chiffré (NFP 2024).",
-        "en": "Legal 100% organic target (2022) → guaranteed outlet, no figure (NFP 2024)."
+        "fr": "100 % bio dans les cantines dès 2027 (2022) → débouché garanti sans chiffre (NFP 2024) → 100 % bio d’ici 2040 (2026) : l’objectif revient, repoussé de treize ans.",
+        "en": "100% organic in canteens by 2027 (2022) → a guaranteed outlet, no figure (NFP 2024) → 100% organic by 2040 (2026): the target returns, pushed back thirteen years."
       },
       "sources": [
         {
           "title": "Programme Yannick Jadot 2022 — « Changer la France pour vivre mieux » (PDF, copie)",
           "url": "https://patrickbayeux.com/wp-content/uploads/2022/02/2202-JADOT22_programme_A5_76p_interactif.pdf"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Institut Montaigne 2022 — Établir une loi 100 % bio dans chaque cantine",
@@ -599,7 +698,12 @@
         "fr": "Production bio locale insuffisante à court terme (Institut Montaigne).",
         "en": "Insufficient local organic supply in the short term (Institut Montaigne)."
       },
-      "broadBenefit": false
+      "broadBenefit": false,
+      "pages": {
+        "p22": 11,
+        "p24": 20,
+        "p27": 46
+      }
     },
     {
       "id": "m12",
@@ -607,13 +711,18 @@
       "status": "maintained",
       "texts": {
         "p22": "La représentation proportionnelle doit être la norme pour l'ensemble des élections.",
-        "p24": "Instaurer la proportionnelle."
+        "p24": "Instaurer la proportionnelle.",
+        "p27": "« Instaurer la proportionnelle intégrale sans prime majoritaire aux élections législatives » à partir de circonscriptions régionales ; proportionnelle aux élections départementales."
       },
       "change": null,
       "sources": [
         {
           "title": "Institut Montaigne 2022 — Instaurer la proportionnelle aux législatives",
           "url": "https://www.institutmontaigne.org/presidentielle-2022/yannick-jadot/instaurer-la-proportionnelle-aux-legislatives-avec-une-parite-garantie"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
@@ -632,7 +741,11 @@
       },
       "feasibility": "high",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "pages": {
+        "p24": 17,
+        "p27": 162
+      }
     },
     {
       "id": "m13",
@@ -640,13 +753,18 @@
       "status": "maintained",
       "texts": {
         "p22": "Les étranger·es en situation régulière pourront participer aux élections locales.",
-        "p24": "Instituer le droit de vote des résidents étrangers aux élections locales."
+        "p24": "Instituer le droit de vote des résidents étrangers aux élections locales.",
+        "p27": "« Étendre le droit de vote aux étrangers extra-communautaires pour les élections » locales ; vote dès 16 ans."
       },
       "change": null,
       "sources": [
         {
           "title": "Institut Montaigne 2022 — Élargir le droit de vote aux étrangers pour les élections locales",
           "url": "https://www.institutmontaigne.org/presidentielle-2022/yannick-jadot/elargir-le-droit-de-vote-aux-etrangers-pour-les-elections-locales"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
@@ -661,7 +779,11 @@
       },
       "feasibility": "low",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "pages": {
+        "p24": 17,
+        "p27": 163
+      }
     },
     {
       "id": "m14",
@@ -670,7 +792,7 @@
       "texts": {
         "p22": "Nous inscrirons dans la Constitution que la France est une République écologique.",
         "p24": "Passer à une 6e République par la convocation d'une assemblée constituante citoyenne élue ; abroger le 49.3.",
-        "p27": "Créer une « Première République écologique et citoyenne », mettre fin au présidentialisme, « sacraliser l'indépendance de la justice »."
+        "p27": "« Passer à la Première République écologique et citoyenne » : un « vrai régime parlementaire », un septennat unique (p. 161), le référendum d’initiative citoyenne."
       },
       "change": {
         "fr": "Ajout constitutionnel (2022) → constituante (2024) → nouvelle République « écologique et citoyenne » (2026).",
@@ -680,6 +802,10 @@
         {
           "title": "Programme Yannick Jadot 2022 — « Changer la France pour vivre mieux » (PDF, copie)",
           "url": "https://patrickbayeux.com/wp-content/uploads/2022/02/2202-JADOT22_programme_A5_76p_interactif.pdf"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
@@ -702,7 +828,12 @@
       },
       "feasibility": "low",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "pages": {
+        "p22": 10,
+        "p24": 17,
+        "p27": 159
+      }
     },
     {
       "id": "m15",
@@ -710,7 +841,7 @@
       "status": "modified",
       "texts": {
         "p22": "Vers l'Europe fédérale ; nous instaurerons un « Buy european act ».",
-        "p27": "Créer un « haut conseil militaire intégré, rattaché au Conseil européen » ; soutenir Kiev militairement ; « préparer l'armée française à une guerre de haute intensité » avec d'autres pays européens ; partager davantage de compétences avec l'Union (politique étrangère, sécurité, fiscalité, protection sociale)."
+        "p27": "« Créer un commandement militaire intégré européen sous la tutelle du Conseil de l’Union européenne » ; « Préparer l’armée française à une guerre de haute intensité » (p. 193) ; « Soutenir militairement l’Ukraine » (p. 197)."
       },
       "change": {
         "fr": "Orientation fédéraliste maintenue ; la défense européenne devient centrale en 2026.",
@@ -720,6 +851,10 @@
         {
           "title": "Programme Yannick Jadot 2022 — « Changer la France pour vivre mieux » (PDF, copie)",
           "url": "https://patrickbayeux.com/wp-content/uploads/2022/02/2202-JADOT22_programme_A5_76p_interactif.pdf"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Tunisie Numérique (13/07/2026) — France : la « Première République écologique et citoyenne » en 2027",
@@ -738,7 +873,11 @@
       },
       "feasibility": "low",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "pages": {
+        "p22": 35,
+        "p27": 195
+      }
     },
     {
       "id": "m16",
@@ -746,13 +885,17 @@
       "status": "new",
       "texts": {
         "p24": "Reconnaître immédiatement l'État de Palestine aux côtés de l'État d'Israël ; décréter un embargo sur les livraisons d'armes à Israël.",
-        "p27": "Reconnaître la Palestine, interdire en Europe les produits des colonies israéliennes, exiger le retrait complet d'Israël de Gaza."
+        "p27": "« Exiger le retrait total d’Israël de Gaza », le démantèlement des colonies en Cisjordanie et « une interdiction de la commercialisation en Europe de tous les produits issus des colonies israéliennes »."
       },
       "change": {
         "fr": "Absent du programme 2022 ; présent depuis 2024.",
-        "en": "Not in the 2022 programme; present since 2024."
+        "en": "Not in the 2022 program; present since 2024."
       },
       "sources": [
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
+        },
         {
           "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
           "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
@@ -774,20 +917,28 @@
       },
       "feasibility": "medium",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "pages": {
+        "p24": 7,
+        "p27": 202
+      }
     },
     {
       "id": "m17",
       "theme": "travail",
       "status": "new",
       "texts": {
-        "p27": "Une échelle de 1 à 20 entre la rémunération des dirigeants et le salaire médian de l'entreprise, en « conditionner toute aide publique à cet objectif »."
+        "p27": "« Atteindre un écart de 1 à 20 dans les entreprises entre le salaire de dirigeants et le salaire médian dans l’entreprise en conditionnant toute aide publique à cet objectif. »"
       },
       "change": {
-        "fr": "Mesure du livret de novembre 2026.",
-        "en": "Measure from the November 2026 booklet."
+        "fr": "Absent de 2022 et du NFP 2024 ; présent dans le programme de juillet 2026, repris dans le livret de novembre.",
+        "en": "Not in 2022 or the 2024 NFP; in the July 2026 program, restated in the November booklet."
       },
       "sources": [
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
+        },
         {
           "title": "AFP via Marine & Océans (04/11/2026) — Présidentielle : Tondelier présente ses mesures pour « travailler mieux »",
           "url": "https://marine-oceans.com/actualites/presidentielle-tondelier-presente-ses-mesures-pour-travailler-mieux/"
@@ -805,7 +956,10 @@
       },
       "feasibility": "medium",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "pages": {
+        "p27": 55
+      }
     },
     {
       "id": "m18",
@@ -814,7 +968,7 @@
       "texts": {
         "p22": "Nous réduirons le temps de travail tout au long de la vie.",
         "p24": "Passage aux 32 heures dans les métiers pénibles ou de nuit immédiatement et son extension par la négociation collective.",
-        "p27": "Réduire la durée légale à 32 heures « sans perte de salaire dans les métiers pénibles et de nuit » ; « expérimenter la semaine de 4 jours en 32 heures pendant 3 ans dans 200 entreprises volontaires »."
+        "p27": "« Passer aux 32 heures sans perte de salaire dans les métiers pénibles ou de nuit en y conditionnant les aides aux entreprises » ; compte épargne-temps universel."
       },
       "change": {
         "fr": "Réduction du temps de travail sur la vie (2022) → 32 h pour les métiers pénibles (2024, 2026) et expérimentation de la semaine de 4 jours (2026).",
@@ -824,6 +978,10 @@
         {
           "title": "Programme Yannick Jadot 2022 — « Changer la France pour vivre mieux » (PDF, copie)",
           "url": "https://patrickbayeux.com/wp-content/uploads/2022/02/2202-JADOT22_programme_A5_76p_interactif.pdf"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
@@ -843,20 +1001,29 @@
       "legalNote": null,
       "feasibility": "medium",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "pages": {
+        "p22": 16,
+        "p24": 19,
+        "p27": 57
+      }
     },
     {
       "id": "m19",
       "theme": "travail",
       "status": "new",
       "texts": {
-        "p27": "Des congés climatiques : « cinq jours minimum par an » pour protéger les salariés des fortes chaleurs ou des catastrophes climatiques ; le burn-out reconnu comme maladie professionnelle ; « zéro mort au travail » en 2032."
+        "p27": "« Créer un congé climatique de 5 jours par an pour protéger les travailleurs face aux températures extrêmes » ou aux catastrophes climatiques ; « viser le zéro mort au travail »."
       },
       "change": {
-        "fr": "Mesures du livret de novembre 2026.",
-        "en": "Measures from the November 2026 booklet."
+        "fr": "Absent de 2022 et du NFP 2024 ; présent dans le programme de juillet 2026, détaillé dans le livret de novembre.",
+        "en": "Not in 2022 or the 2024 NFP; in the July 2026 program, detailed in the November booklet."
       },
       "sources": [
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
+        },
         {
           "title": "AFP via Marine & Océans (04/11/2026) — Présidentielle : Tondelier présente ses mesures pour « travailler mieux »",
           "url": "https://marine-oceans.com/actualites/presidentielle-tondelier-presente-ses-mesures-pour-travailler-mieux/"
@@ -867,7 +1034,10 @@
       "legalNote": null,
       "feasibility": "medium",
       "feasibilityNote": null,
-      "broadBenefit": true
+      "broadBenefit": true,
+      "pages": {
+        "p27": 57
+      }
     },
     {
       "id": "m20",
@@ -875,16 +1045,21 @@
       "status": "modified",
       "texts": {
         "p22": "6 millions de ménages français percevront un chèque énergie de 400 €.",
-        "p24": "Faire la gratuité des premiers KwH, abolir les coupures d'électricité, de chaleur et de gaz."
+        "p24": "Faire la gratuité des premiers KwH, abolir les coupures d'électricité, de chaleur et de gaz.",
+        "p27": "« Abolir les coupures d’électricité pour impayés en les remplaçant par une réduction de puissance » ; « bouclier climat » contre les hausses de prix (p. 15) ; pas de chèque énergie chiffré."
       },
       "change": {
-        "fr": "Chèque énergie de 400 € (2022) → gratuité des premiers kWh (NFP 2024).",
-        "en": "€400 energy voucher (2022) → first kWh free (NFP 2024)."
+        "fr": "Chèque énergie de 400 € (2022) → gratuité des premiers kWh (NFP 2024) → fin des coupures pour impayés et « bouclier climat », sans montant (2026).",
+        "en": "€400 energy voucher (2022) → first kWh free (NFP 2024) → no cut-offs for unpaid bills and a “climate shield”, no amount (2026)."
       },
       "sources": [
         {
           "title": "Programme Yannick Jadot 2022 — « Changer la France pour vivre mieux » (PDF, copie)",
           "url": "https://patrickbayeux.com/wp-content/uploads/2022/02/2202-JADOT22_programme_A5_76p_interactif.pdf"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Institut Montaigne 2022 — Porter à 400 euros le chèque énergie",
@@ -910,7 +1085,12 @@
       "legalNote": null,
       "feasibility": "high",
       "feasibilityNote": null,
-      "broadBenefit": true
+      "broadBenefit": true,
+      "pages": {
+        "p22": 6,
+        "p24": 9,
+        "p27": 119
+      }
     },
     {
       "id": "m21",
@@ -918,16 +1098,21 @@
       "status": "modified",
       "texts": {
         "p22": "La justice sera dotée d'un milliard d'euros supplémentaires d'ici 2027, notamment pour permettre le recrutement de 3 000 magistrat·e·s et 8 000 agent·e·s de tribunaux.",
-        "p24": "Augmenter les moyens de la justice pour garantir un traitement juste et dans un délai raisonnable."
+        "p24": "Augmenter les moyens de la justice pour garantir un traitement juste et dans un délai raisonnable.",
+        "p27": "« Créer 9000 postes de magistrats sur dix ans ainsi que 10 000 postes de greffiers et 7000 postes attachés de justice. »"
       },
       "change": {
-        "fr": "Montant et effectifs chiffrés (2022) → principe non chiffré (NFP 2024).",
-        "en": "Costed amount and staffing (2022) → unquantified principle (NFP 2024)."
+        "fr": "1 Md€ et 3 000 magistrats d’ici 2027 (2022) → principe non chiffré (NFP 2024) → 9 000 magistrats et 10 000 greffiers sur dix ans (2026).",
+        "en": "€1bn and 3,000 judges by 2027 (2022) → principle, no figure (NFP 2024) → 9,000 judges and 10,000 clerks over ten years (2026)."
       },
       "sources": [
         {
           "title": "Programme Yannick Jadot 2022 — « Changer la France pour vivre mieux » (PDF, copie)",
           "url": "https://patrickbayeux.com/wp-content/uploads/2022/02/2202-JADOT22_programme_A5_76p_interactif.pdf"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Institut Montaigne 2022 — Augmenter le budget de la justice d'1 Md€",
@@ -956,7 +1141,12 @@
         "fr": "Capacités de formation des magistrats à fortement augmenter.",
         "en": "Judge-training capacity would need to rise sharply."
       },
-      "broadBenefit": false
+      "broadBenefit": false,
+      "pages": {
+        "p22": 25,
+        "p24": 17,
+        "p27": 167
+      }
     },
     {
       "id": "m22",
@@ -964,16 +1154,21 @@
       "status": "modified",
       "texts": {
         "p22": "Nous interdirons les Ehpad privés à but lucratif ; dix accompagnants, dont huit soignants, pour dix pensionnaires.",
-        "p24": "Lancer un plan Grand âge en rénovant les EHPAD, en augmentant et en formant les professionnels du grand âge."
+        "p24": "Lancer un plan Grand âge en rénovant les EHPAD, en augmentant et en formant les professionnels du grand âge.",
+        "p27": "Développer des Ehpad publics ou de l’économie sociale et solidaire, « imposer une tarification encadrée » ; « augmenter le nombre de places » et le taux d’encadrement, sans ratio chiffré ni interdiction du privé lucratif."
       },
       "change": {
-        "fr": "Ratio d'encadrement et interdiction du lucratif (2022) → plan Grand âge non chiffré (NFP 2024).",
-        "en": "Staffing ratio and ban on for-profit care homes (2022) → unquantified ageing plan (NFP 2024)."
+        "fr": "Interdiction des Ehpad privés lucratifs et 8 soignants pour 10 résidents (2022) → plan Grand âge (NFP 2024) → Ehpad publics et tarifs encadrés, sans interdiction ni ratio (2026).",
+        "en": "Ban on for-profit care homes and 8 carers per 10 residents (2022) → an old-age plan (NFP 2024) → public homes and capped fees, no ban and no ratio (2026)."
       },
       "sources": [
         {
           "title": "Institut Montaigne 2022 — Grand plan pour la dépendance",
           "url": "https://www.institutmontaigne.org/presidentielle-2022/yannick-jadot/mettre-en-place-un-grand-plan-pour-la-dependance-interdiction-des-etablissements-prives-a-but-lucratif-recruter-9-a-10-aidants-pour-10-patients"
+        },
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
         },
         {
           "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
@@ -995,7 +1190,12 @@
       "legalNote": null,
       "feasibility": "low",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "pages": {
+        "p22": 17,
+        "p24": 15,
+        "p27": 128
+      }
     },
     {
       "id": "m23",
@@ -1003,13 +1203,17 @@
       "status": "modified",
       "texts": {
         "p24": "Bloquer les prix des biens de première nécessité dans l'alimentation, l'énergie et les carburants par décret.",
-        "p27": "Contrôle des prix limité aux cas d'« inflation anormale »."
+        "p27": "« Envisager le blocage des prix sur certains produits alimentaires qui souffriraient d’une inflation anormale » ; prix planchers agricoles (p. 48)."
       },
       "change": {
         "fr": "Blocage général des prix (NFP 2024) → contrôle limité aux épisodes d'inflation anormale (2026). Absent du programme 2022.",
-        "en": "General price freeze (NFP 2024) → controls limited to abnormal inflation (2026). Not in the 2022 programme."
+        "en": "General price freeze (NFP 2024) → controls limited to abnormal inflation (2026). Not in the 2022 program."
       },
       "sources": [
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
+        },
         {
           "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
           "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
@@ -1031,7 +1235,11 @@
       },
       "feasibility": "medium",
       "feasibilityNote": null,
-      "broadBenefit": true
+      "broadBenefit": true,
+      "pages": {
+        "p24": 4,
+        "p27": 63
+      }
     },
     {
       "id": "m24",
@@ -1039,13 +1247,17 @@
       "status": "new",
       "texts": {
         "p24": "Déployer de premières équipes de police de proximité, interdire les LBD et les grenades mutilantes, et démanteler les BRAV-M.",
-        "p27": "Abolir les LBD et démanteler la Brav-M."
+        "p27": "« Interdire les lanceurs de balles de défense (LBD40) et les grenades mutilantes. Démanteler les unités de type BRAV-M. »"
       },
       "change": {
         "fr": "Absent du programme 2022 étudié ; repris de 2024 à 2026.",
-        "en": "Not in the 2022 programme reviewed; carried from 2024 to 2026."
+        "en": "Not in the 2022 program reviewed; carried from 2024 to 2026."
       },
       "sources": [
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
+        },
         {
           "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
           "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
@@ -1060,7 +1272,11 @@
       "legalNote": null,
       "feasibility": "high",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "pages": {
+        "p24": 5,
+        "p27": 165
+      }
     },
     {
       "id": "m25",
@@ -1068,13 +1284,17 @@
       "status": "modified",
       "texts": {
         "p24": "Faire les premiers pas pour la gratuité intégrale à l'école : cantine scolaire, fournitures, transports, activités périscolaires.",
-        "p27": "Pas de gratuité générale ; « un accès avantageux à la cantine pour les familles monoparentales »."
+        "p27": "« Généraliser la tarification sociale dans la restauration publique » et rétablir les « cantines à 1 euro » ; pas de gratuité générale."
       },
       "change": {
-        "fr": "Gratuité intégrale (NFP 2024) → aide ciblée sur les familles monoparentales (2026).",
-        "en": "Fully free schooling (NFP 2024) → targeted help for single-parent families (2026)."
+        "fr": "Gratuité intégrale à l’école (NFP 2024) → tarification sociale et cantine à 1 € (2026). Absent du programme 2022.",
+        "en": "Free school in full (NFP 2024) → income-based pricing and €1 canteen meals (2026). Not in the 2022 program."
       },
       "sources": [
+        {
+          "title": "Les Écologistes — « Pour une prospérité écologique », le nouveau programme (PDF, juillet 2026)",
+          "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
+        },
         {
           "title": "Nouveau Front populaire — Contrat de législature (PDF, juin 2024)",
           "url": "https://lafranceinsoumise.fr/wp-content/uploads/2024/06/PROGRAMME-FRONT-POPULAIRE.pdf"
@@ -1093,7 +1313,11 @@
       "legalNote": null,
       "feasibility": "high",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "pages": {
+        "p24": 5,
+        "p27": 46
+      }
     }
   ],
   "costing": {
@@ -1119,7 +1343,7 @@
             "date": "2022-03",
             "note": {
               "fr": "Programme de Yannick Jadot : 92,5 Md€ de dépenses supplémentaires et 59,7 Md€ d'impôts en plus ; solde net : notre calcul. L'Institut Montaigne a chiffré 31 mesures mais n'a pas publié de total.",
-              "en": "Yannick Jadot's programme: €92.5bn of extra spending and €59.7bn of extra taxes; net balance: our calculation. Institut Montaigne costed 31 measures but published no total."
+              "en": "Yannick Jadot's program: €92.5bn of extra spending and €59.7bn of extra taxes; net balance: our calculation. Institut Montaigne costed 31 measures but published no total."
             },
             "url": "https://www.ifrap.org/la-revue/chiffrage-des-programmes-des-candidats-la-presidentielle-2022"
           }
@@ -1144,7 +1368,7 @@
           "date": "2024-06",
           "note": {
             "fr": "Chiffrage présenté le 21 juin 2024 : environ 150 Md€ de dépenses supplémentaires d'ici 2027, compensées par autant de recettes (25 Md€ de mesures d'urgence, environ 100 Md€ dès 2025). Programme commun de la coalition, pas un programme propre au candidat.",
-            "en": "Costing presented on 21 June 2024: about €150bn of extra spending by 2027, matched by as much revenue (€25bn of emergency measures, about €100bn in 2025). Joint coalition programme, not the candidate's own."
+            "en": "Costing presented on 21 June 2024: about €150bn of extra spending by 2027, matched by as much revenue (€25bn of emergency measures, about €100bn in 2025). Joint coalition program, not the candidate's own."
           },
           "url": "https://www.publicsenat.fr/actualites/economie/150-milliards-de-depenses-supplementaires-dici-fin-2027-le-nouveau-front-populaire-detaille-le-cout-de-son-programme"
         },
@@ -1167,8 +1391,8 @@
     "checked": "2026-11-08"
   },
   "summary": {
-    "fr": "Le programme écologiste pour 2027 combine fiscalité du patrimoine (taxe de 2 % au-delà de 100 M€, ISF climatique), retour de la retraite à 62 ans, sortie du nucléaire sur une vingtaine d'années, nouvelle République « écologique et citoyenne » et, depuis novembre 2026, un Smic à 2 000 € brut et des mesures sur le temps de travail. Par rapport au programme Jadot de 2022, la fiscalité des très hauts patrimoines s'est durcie et la défense européenne a pris de la place, tandis que plusieurs mesures du contrat NFP de 2024 ont été restreintes (retraite à 62 et non 60 ans, contrôle des prix limité, aide ciblée à la cantine). Le programme 2027 n'a pas de chiffrage indépendant ; l'iFRAP estimait le programme Jadot 2022 à 92,5 Md€ de dépenses pour 59,7 Md€ de recettes, et l'Institut Montaigne le contrat NFP à un déficit supplémentaire de 179 Md€ par an.",
-    "en": "The ecologists' 2027 programme combines wealth taxation (a 2% levy above €100m, a climate wealth tax), a return to retirement at 62, a nuclear phase-out over about twenty years, a new \"ecological and citizen\" Republic and, since November 2026, a €2,000 gross minimum wage plus working-time measures. Compared with Jadot's 2022 programme, taxation of the largest fortunes has hardened and European defence has gained ground, while several 2024 NFP measures were narrowed (retirement at 62 rather than 60, limited price controls, targeted canteen help). The 2027 programme has no independent costing; iFRAP put Jadot's 2022 programme at €92.5bn of spending against €59.7bn of revenue, and Institut Montaigne put the NFP contract at €179bn a year of extra deficit."
+    "fr": "Le programme écologiste pour 2027 combine fiscalité du patrimoine (taxe de 2 % au-delà de 100 M€, ISF climatique), retour de la retraite à 62 ans, sortie du nucléaire sur une vingtaine d'années, nouvelle République « écologique et citoyenne », un Smic à 2 000 € brut dès 2027 et des mesures sur le temps de travail (32 heures dans les métiers pénibles, congé climatique), détaillées dans un livret en novembre 2026. Par rapport au programme Jadot de 2022, la fiscalité des très hauts patrimoines s'est durcie et la défense européenne a pris de la place, tandis que plusieurs mesures du contrat NFP de 2024 ont été restreintes (retraite à 62 et non 60 ans, contrôle des prix limité, aide ciblée à la cantine). Le programme 2027 n'a pas de chiffrage indépendant ; l'iFRAP estimait le programme Jadot 2022 à 92,5 Md€ de dépenses pour 59,7 Md€ de recettes, et l'Institut Montaigne le contrat NFP à un déficit supplémentaire de 179 Md€ par an.",
+    "en": "The ecologists' 2027 program combines wealth taxation (a 2% levy above €100m, a climate wealth tax), a return to retirement at 62, a nuclear phase-out over about twenty years, a new \"ecological and citizen\" Republic, a €2,000 gross minimum wage from 2027 and working-time measures (32 hours in arduous jobs, climate leave), detailed in a booklet in November 2026. Compared with Jadot's 2022 program, taxation of the largest fortunes has hardened and European defence has gained ground, while several 2024 NFP measures were narrowed (retirement at 62 rather than 60, limited price controls, targeted canteen help). The 2027 program has no independent costing; iFRAP put Jadot's 2022 program at €92.5bn of spending against €59.7bn of revenue, and Institut Montaigne put the NFP contract at €179bn a year of extra deficit."
   },
   "group": "ECOS",
   "votes": [
@@ -1392,5 +1616,104 @@
         }
       ]
     }
-  ]
+  ],
+  "growth": {
+    "assumed": {
+      "fr": "Aucune hypothèse de croissance publiée : le programme de juillet 2026 refuse d'en faire une boussole et ne donne pas de chiffrage global",
+      "en": "No growth assumption published: the July 2026 program refuses to use GDP growth as a compass and gives no overall costing"
+    },
+    "rate": null,
+    "verdict": "unstated",
+    "reason": {
+      "fr": "Le programme compte sur une hausse des recettes fiscales (ISF climatique, taxe Zucman de 2 % au-delà de 100 M€, successions plus progressives) plutôt que sur la croissance. Son équilibre dépend donc du rendement de ces impôts, que l'exil ou l'optimisation peuvent réduire, et il ne peut guère compter sur des recettes spontanées avec 0,9 % de croissance prévue en 2027.",
+      "en": "The program relies on higher tax revenue (climate wealth tax, a 2% Zucman tax above €100m, steeper inheritance tax) rather than on growth. Its balance thus hinges on the yield of these taxes, which departures or tax planning can erode, and it cannot count on much windfall revenue with 0.9% growth forecast for 2027."
+    },
+    "sources": [
+      {
+        "title": "Les Écologistes — Pour une prospérité écologique (juillet 2026), p. 8 et p. 65",
+        "url": "/docs/programmes/ecologistes-2026-07-pour-une-prosperite-ecologique.pdf"
+      },
+      {
+        "title": "Banque de France — Projections macroéconomiques intermédiaires, septembre 2026",
+        "url": "https://www.banque-france.fr/fr/publications-et-statistiques/publications/projections-macroeconomiques-intermediaires-septembre-2026"
+      },
+      {
+        "title": "Public Sénat — Budget 2027 : le HCFP pointe des prévisions « optimistes »",
+        "url": "https://www.publicsenat.fr/actualites/economie/budget-2027-le-haut-conseil-des-finances-publiques-pointe-des-previsions-optimistes-du-gouvernement"
+      }
+    ],
+    "examples": [
+      {
+        "country": {
+          "fr": "Norvège",
+          "en": "Norway"
+        },
+        "year": "2022",
+        "policy": {
+          "fr": "Hausse de l'impôt sur la fortune (taux supérieur porté à 1,1 %) et de la taxe sur les dividendes",
+          "en": "Higher wealth tax (top rate raised to 1.1%) and dividend tax"
+        },
+        "outcome": {
+          "fr": "Au moins 30 grandes fortunes sont parties en 2022 (82 sur 2022-2023, surtout vers la Suisse), mais les recettes sur la propriété ont grimpé de 38 à 65 Md NOK.",
+          "en": "At least 30 of the very rich left in 2022 (82 over 2022-2023, mostly to Switzerland), yet ownership-tax receipts rose from NOK 38bn to 65bn."
+        },
+        "result": "mixed",
+        "sources": [
+          {
+            "title": "Swissinfo — Rich Norwegians flee to low-tax Switzerland as wealth levy bites",
+            "url": "https://www.swissinfo.ch/eng/business/rich-norwegians-flee-to-low-tax-switzerland-as-wealth-levy-bites/48140438"
+          },
+          {
+            "title": "Fortune — Wealthy Norwegians flee to Switzerland to evade high wealth taxes",
+            "url": "https://fortune.com/europe/2024/04/19/wealthy-norwegians-flee-to-switzerland-to-evade-high-wealth-taxes-bankers-following-dnb-abg-sundal-collier/"
+          }
+        ]
+      },
+      {
+        "country": {
+          "fr": "Suisse",
+          "en": "Switzerland"
+        },
+        "year": "ongoing",
+        "policy": {
+          "fr": "Impôt cantonal sur la fortune, à taux bas et assiette large",
+          "en": "Cantonal wealth tax, at low rates on a broad base"
+        },
+        "outcome": {
+          "fr": "C'est l'impôt sur la fortune qui rapporte le plus dans l'OCDE en part des recettes, mais une baisse de 1 point du taux accroît la fortune déclarée d'au moins 43 % en six ans : l'assiette réagit très fortement.",
+          "en": "It yields the highest revenue share of any wealth tax in the OECD, but a 1-point rate cut raises reported wealth by at least 43% within six years: the base is highly responsive."
+        },
+        "result": "mixed",
+        "sources": [
+          {
+            "title": "Brülhart, Gruber, Krapf, Schmidheiny — Behavioral Responses to Wealth Taxes: Evidence from Switzerland (CEPR DP 14054)",
+            "url": "https://econpapers.repec.org/paper/cprceprdp/14054.htm"
+          }
+        ]
+      },
+      {
+        "country": {
+          "fr": "Suède",
+          "en": "Sweden"
+        },
+        "year": "1991",
+        "policy": {
+          "fr": "Taxe carbone introduite dans une grande réforme fiscale, passée de 250 à 1 190 couronnes par tonne de CO2 (2020)",
+          "en": "Carbon tax introduced within a broad tax reform, raised from SEK 250 to SEK 1,190 per ton of CO2 (2020)"
+        },
+        "outcome": {
+          "fr": "Les émissions ont baissé de 27 % entre 1990 et 2018 tandis que le PIB par habitant a progressé de plus de 50 % ; la taxe ne rapporte toutefois qu'environ 1 % des recettes fiscales.",
+          "en": "Emissions fell 27% from 1990 to 2018 while GDP per capita grew more than 50%; the tax raises only about 1% of tax revenue, though."
+        },
+        "result": "worked",
+        "sources": [
+          {
+            "title": "Tax Foundation — Sweden's carbon tax: revenue and greenhouse gas emissions",
+            "url": "https://taxfoundation.org/research/all/eu/sweden-carbon-tax-revenue-greenhouse-gas-emissions/"
+          }
+        ]
+      }
+    ],
+    "checked": "2026-11-14"
+  }
 }
