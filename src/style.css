@@ -559,17 +559,20 @@ input[type="checkbox"], input[type="radio"] { accent-color: var(--ink); }
 @keyframes grow { to { transform: scale(1); } }
 
 /* ---------- red / blue feed ---------- */
-.feed-cols-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.4rem; position: sticky; top: calc(var(--bar-h) + 41px); z-index: 5; background: var(--paper); padding: 0.6rem 0; border-bottom: 1px solid var(--rule); font: 800 0.95rem var(--display); }
-.feed-cols-head span { border-top: 6px solid var(--c); padding-top: 0.45rem; }
 .story { border-top: 3px solid var(--ink); padding-top: 1rem; display: grid; gap: 0.9rem; }
 .story h2 { font-size: clamp(1.2rem, 1.05rem + 0.6vw, 1.45rem); }
 .story h2 a { color: var(--ink); text-decoration: none; }
 .story h2 a:hover { text-decoration: underline; }
-.feed-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.4rem; }
-.col-red, .col-blue { display: grid; gap: 1rem; align-content: start; min-width: 0; }
-.col-red .reaction { border-left: 4px solid var(--left); }
-.col-blue .reaction { border-left: 4px solid var(--right); }
-.reaction { padding: 0.1rem 0 0.1rem 0.85rem; min-width: 0; }
+/* one column per side that has posts (--n = 1 to 3) */
+.feed-cols { display: grid; grid-template-columns: repeat(var(--n, 2), minmax(0, 1fr)); gap: 2.4rem; }
+.feed-col, .feed-others { display: grid; gap: 1rem; align-content: start; min-width: 0; }
+.feed-col-head { margin: 0; font: 800 0.85rem var(--display); color: var(--ink-2); }
+.feed-col.side-left .feed-col-head { color: var(--left); }
+.feed-col.side-right .feed-col-head { color: var(--right); }
+.reaction { padding: 0.1rem 0 0.1rem 0.85rem; min-width: 0; border-left: 4px solid var(--rule-2); }
+.reaction.side-left { border-left-color: var(--left); }
+.reaction.side-centre { border-left-color: var(--centre); }
+.reaction.side-right { border-left-color: var(--right); }
 .reaction .who { margin: 0; font-size: 0.88rem; }
 .reaction .who a { color: var(--ink); font-weight: 700; }
 .reaction blockquote { margin: 0.35rem 0; font-size: 0.98rem; line-height: 1.5; white-space: pre-line; overflow-wrap: anywhere; }
@@ -579,8 +582,7 @@ input[type="checkbox"], input[type="radio"] { accent-color: var(--ink); }
 .meter-track i { position: absolute; top: -4px; width: 3px; height: 14px; background: var(--ink); transform: translateX(-1.5px); border-radius: 1px; }
 .verify { margin-top: 0.5rem; font-size: 0.85rem; line-height: 1.45; background: var(--panel); border-top: 3px solid var(--ink); padding: 0.5rem 0.7rem; }
 @media (max-width: 760px) {
-  .feed-cols, .feed-cols-head { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
-  .feed-cols-head { position: static; }
+  .feed-cols { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
   .timeline a { grid-template-columns: 4.4rem minmax(0, 1fr); }
   .t-year { font-size: 1.5rem; }
 }

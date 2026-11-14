@@ -37,6 +37,10 @@ jobs:
       - name: News (RSS)
         run: node scripts/sync-news.mjs
 
+      - name: X posts quoted by the press (embeds in the articles, free)
+        run: node scripts/sync-press-tweets.mjs
+        continue-on-error: true # keep the last scan if outlets are unreachable
+
       - name: MP posts (Bluesky, YouTube, Mastodon)
         run: node scripts/sync-mp-posts.mjs
         continue-on-error: true # keep the last posts if a platform is down
