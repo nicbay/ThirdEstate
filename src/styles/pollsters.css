@@ -18,3 +18,15 @@
 .pg-hist .better { color: var(--up-text); font-weight: 700; }
 .pg-hist .worse { color: var(--down-text); font-weight: 700; }
 .pg-grades { max-width: 520px; }
+
+/* how far off: a bar in the grade's colour, the figure, and the last election */
+.pg-miss { min-width: 11rem; }
+.pg-bar { display: block; height: 6px; margin-bottom: 0.25rem; border-radius: 1px; }
+.pg-bar.g-a { background: #1e8a4c; } .pg-bar.g-b { background: #5f9c2f; } .pg-bar.g-c { background: #c98a12; } .pg-bar.g-d { background: #d0612a; } .pg-bar.g-f { background: #b3261e; } .pg-bar.g-none { background: var(--rule-2); }
+.pg-miss b { font-variant-numeric: tabular-nums; }
+.pg-miss .tiny, .pg-last .tiny { display: block; }
+.pg-last { min-width: 10rem; white-space: nowrap; }
+.pg-h { font-size: 0.85rem; margin: 0.8rem 0 0.3rem; }
+.pg-recent { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.2rem; font-size: 0.88rem; }
+.pg-recent li { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.pg-recent li span { color: var(--ink-2); font-variant-numeric: tabular-nums; }

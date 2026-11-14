@@ -5,10 +5,10 @@
 // The selection is kept in the URL anchor (#/#scenario-<key>+<key>) so a "what if" view can be shared.
 import { fetchJson, type Market } from "../data";
 import { L, fmtDate } from "../i18n";
-import { lineChart, pollDots, type RugMark, type Series } from "../lib/chart";
+import { lineChart, pollDots, type Series } from "../lib/chart";
 import { meta } from "../lib/candidates";
 import { ELECTION_DAY, INCOMPATIBLE, PRIMARY, RALLY_SHARE, SCENARIOS, TREND_CAP, canonical, compatible, forecast, isScenario, type Forecast, type ScenarioKey } from "../lib/forecast";
-import { gradeColor, pollValue, pollsterAnchor, pollsterName, pollsterRating, trend, type PollFile } from "../lib/polls";
+import { gradeColor, pollValue, pollsterName, pollsterRating, trend, type PollFile } from "../lib/polls";
 import { dec } from "../lib/format";
 import { esc } from "../util";
 
@@ -133,19 +133,15 @@ export function mountForecastChart(box: HTMLElement, o: Opts) {
           name: n, label: m.surname, color: m.color,
           line: pts.filter((p) => p.values[n] != null).map((p) => ({ date: p.date, value: p.values[n] })),
           dots: pollDots(o.polls.firstRound, n, from, o.polls.source),
-          ring: lastPoll && v != null ? { date: lastPoll.end, value: v, color: gradeColor(lastGrade), title: `${pollsterName(lastPoll.pollster)} (${lastGrade ?? L("non noté", "not graded")}) · ${fmtDate(lastPoll.end)} · ${m.surname} ${dec(v)} %` } : undefined,
+          ring: lastPoll && v != null ? { date: lastPoll.end, value: v, color: gradeColor(lastGrade), mark: lastGrade ?? undefined, title: `${pollsterName(lastPoll.pollster)} (${lastGrade ?? L("non noté", "not graded")}) · ${fmtDate(lastPoll.end)} · ${m.surname} ${dec(v)} %` } : undefined,
         };
       })
       .filter((s) => s.line.length);
-    const marks: RugMark[] = inRange.map((p) => {
-      const g = pollsterRating(p.pollster)?.grade ?? null;
-      return { date: p.end, text: g ? g[0] : "–", color: gradeColor(g), href: `#/sondages/instituts#${pollsterAnchor(p.pollster)}`, title: `${pollsterName(p.pollster)} · ${g ? L(`note ${g}`, `grade ${g}`) : L("pas encore noté", "not yet graded")} · ${fmtDate(p.end)}` };
-    });
-    chartBox.innerHTML = lineChart(series, { height: o.height, rug: { marks, label: L("Note", "Grade") } });
+    chartBox.innerHTML = lineChart(series, { height: o.height });
     const who = lastPoll ? ` (${esc(pollsterName(lastPoll.pollster))})` : "";
     key.innerHTML = L(
-      `Ligne : moyenne des sondages jusqu’au ${fmtDate(lastDate)}, pondérée par la note des instituts. Points : chaque sondage ; cerclé, le dernier${who}, dans la couleur de sa note. Lettres en bas : la note de l’institut de chaque sondage, cliquez pour son classement. ${below}`,
-      `Line: polling average up to ${fmtDate(lastDate)}, weighted by institute grade. Dots: each poll; ringed, the latest${who}, in its grade’s colour. Letters along the bottom: each poll’s institute grade, click for its ranking. ${below}`,
+      `Ligne : moyenne des sondages jusqu’au ${fmtDate(lastDate)}, pondérée par la note des instituts. Points : chaque sondage (survolez pour l’institut et sa note) ; cerclé, le dernier${who}, dans la couleur de sa note. ${below}`,
+      `Line: polling average up to ${fmtDate(lastDate)}, weighted by institute grade. Dots: each poll (hover for the institute and its grade); ringed, the latest${who}, in its grade’s colour. ${below}`,
     );
     note.innerHTML = L(
       `Chaque sondage compte selon la note de son institut (de A+ à F), tirée de l’écart entre ses derniers sondages et les résultats depuis 2002. <a href="#/sondages/instituts">Le classement des instituts</a>.`,
