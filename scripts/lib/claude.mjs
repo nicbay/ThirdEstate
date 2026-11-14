@@ -65,6 +65,10 @@ let client;
  */
 export async function ask(params, job) {
   if (!process.env.ANTHROPIC_API_KEY) throw new Error("ANTHROPIC_API_KEY is not set");
+  // Haiku 5.5 thinks by default (adaptive, effort "medium") and its thinking counts against max_tokens: with a
+  // few hundred tokens it could think them all away and return no text at all ("Unexpected end of JSON input").
+  // Our jobs are short rewrites, so default to low effort, and leave room for the thinking on top of the answer.
+  params = { ...params, max_tokens: Math.max(params.max_tokens ?? 1024, 4000), output_config: { effort: "low", ...params.output_config } };
   client ??= new Anthropic();
   const ledger = await readLedger();
   // worst case: count input generously (~3 chars per token) and assume max_tokens are all used
