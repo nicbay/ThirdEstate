@@ -67,18 +67,20 @@
     },
     "lie": {
       "rows": [
-        "...........................K...K..",
-        "..........................KLK.KLK.",
-        "..........................KLMKMLK.",
-        ".........................KLLLLLLLK",
-        ".........................KLLLLLELLK",
-        "........KKKKKKKKKKKKKKKKKDLLLLLMMNK",
-        "......KKDLLLLLLLLLLLLLLLKDLLLMMMKK.",
-        ".....KDLLLLLLLLLLLLLLLLLLDLLMMMK..",
-        "....KDLLLLLLLLLLLLLLLLLLLLLMMMGK..",
-        "KKKKDLLLLLLLLLLLLLLLLLLLLLLKMMMMK.",
-        "KMMMLLLLLLLLLLLLLLLLLLKMMMMMMMMMMK",
-        ".KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK."
+        "......................K......K....",
+        ".....................KLK....KLK...",
+        ".....................KLMK..KMLK...",
+        ".....................KLMLKKLMLK...",
+        "....................KLLLLLLLLLLK..",
+        "....................KLLLLLLLLLLK..",
+        "....................KDLLLLLLELLK..",
+        ".....KKK...........KDLLLLLLLLMMMK.",
+        "...KKLLLK.KKKKKKKKKKDLLLLLMMMMMNK.",
+        ".KKMLLLLLKDLLLLLLLLLLLLMMMMMMKK...",
+        "KMMMLLLLKDLLLLLLLLLLLLLDMMMMMGK...",
+        "KMMMLLLLKDLLLLLLLLLLLLLLLMMMMGKKKK",
+        ".KGGDDDDKDDLLLLLLLLLLLLDSSSSSSSMMK",
+        "..KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK"
       ]
     },
     "stretch": {
