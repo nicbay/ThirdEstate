@@ -15,6 +15,7 @@ import { esc, safeUrl, safeColor } from "../util";
 import { PLATFORMS, age, presence } from "./assemblee";
 import { photoUrl } from "./deputes";
 import { renderTownLocal } from "./town-local";
+import { renderTownState } from "./town-state";
 import { renderQuartiers } from "./quartiers";
 import { townBrief } from "./brief";
 
@@ -556,6 +557,7 @@ export async function renderTown(app: HTMLElement, code: string) {
           : ""
       }
 
+      <div id="town-state"></div>
       <div id="town-quartiers"></div>
       <div id="town-local" class="stack-col"></div>
       <nav class="doors">${mps.map(({ d }) => `<a class="door" href="#/circo/${d.code}"><b>${L("Toute la circonscription", "The whole district")} ${d.code.slice(-2)}</b><span class="muted small">${L("Résultats électoraux, député, chiffres détaillés", "Election results, MP, detailed figures")}</span></a>`).join("")}<a class="door" href="#/explorer/${dep}"><b>${L("Les autres communes du département", "Other towns in the department")}</b><span class="muted small">${L("Liste et carte", "List and map")}</span></a></nav>
@@ -589,7 +591,7 @@ export async function renderTown(app: HTMLElement, code: string) {
     const box = app.querySelector<HTMLElement>("#brief-text");
     if (box) box.innerHTML = b.sentences.length ? `<p>${b.sentences.join(" ")}</p>` : `<p class="muted small">${L("Pas assez de données publiées pour résumer cette commune.", "Not enough published data to sum up this town.")}</p>`;
   }).catch(() => app.querySelector("#brief-text")?.remove());
-  const jumps: [string, string, string][] = [["elus", "Vos élus", "Officials"], ["chiffres", "Chiffres", "Figures"], ["securite", "Sécurité", "Safety"], ["ecoles", "Écoles", "Schools"], ["town-quartiers", "Quartiers", "Neighbourhoods"], ["town-local", "Vie locale", "Local life"]];
+  const jumps: [string, string, string][] = [["elus", "Vos élus", "Officials"], ["chiffres", "Chiffres", "Figures"], ["securite", "Sécurité", "Safety"], ["ecoles", "Écoles", "Schools"], ["town-state", "Finances", "Finances"], ["town-quartiers", "Quartiers", "Neighbourhoods"], ["town-local", "Vie locale", "Local life"]];
   const drawJump = () => {
     const nav = app.querySelector<HTMLElement>("#jump");
     if (!nav) return;
@@ -599,6 +601,7 @@ export async function renderTown(app: HTMLElement, code: string) {
   setTimeout(drawJump, 2500); // neighbourhoods and local life fill in asynchronously
   renderTownLocal(app.querySelector<HTMLElement>("#town-local")!, code, dep);
   renderQuartiers(app.querySelector<HTMLElement>("#town-quartiers")!, code);
+  renderTownState(app.querySelector<HTMLElement>("#town-state")!, code, name);
   crimeHist.then((h) => {
     const box = app.querySelector<HTMLElement>("#crime-chart");
     const series = h?.communes[code] ?? h?.communes[plmCity(code)];
