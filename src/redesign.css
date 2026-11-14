@@ -493,3 +493,14 @@ footer .brand .fox { width: 64px; height: 64px; }
 .scn-more summary { cursor: pointer; font: 600 0.75rem var(--mono); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-2); margin-top: 0.3rem; }
 .scn-more .scn-note { margin: 0.4rem 0 0; }
 #prevision p.small, #prevision p.tiny, #prevision .fc-method ol { max-width: 70ch; }
+
+/* the town page's way into the comparison: a full-width band under the header */
+.cmp-band { display: grid; grid-template-columns: auto 1fr auto; grid-template-areas: "k t go" "k d go"; align-items: center; gap: 0.15rem 1rem; margin: 0 0 1.2rem; padding: 0.9rem 1.1rem; background: var(--ink); color: var(--paper); text-decoration: none; }
+.cmp-band-k { grid-area: k; font: 700 0.75rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; padding: 0.3rem 0.5rem; border: 2px solid currentColor; }
+.cmp-band b { grid-area: t; font: 800 1.15rem/1.15 var(--display); }
+.cmp-band .muted { grid-area: d; color: inherit; opacity: 0.75; }
+.cmp-band-go { grid-area: go; font: 700 1.6rem var(--display); transition: transform 0.15s; }
+.cmp-band:hover .cmp-band-go, .cmp-band:focus-visible .cmp-band-go { transform: translateX(4px); }
+.cmp-band:focus-visible { outline: 3px solid var(--link); outline-offset: 2px; }
+.cmp-cta { display: inline-block; margin: 0.2rem 0 0.9rem; }
+@media (max-width: 640px) { .cmp-band { grid-template-columns: 1fr auto; grid-template-areas: "k go" "t go" "d go"; } .cmp-band-k { justify-self: start; } }

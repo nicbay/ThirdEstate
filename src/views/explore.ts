@@ -558,9 +558,9 @@ export async function renderTown(app: HTMLElement, code: string) {
             <figcaption class="tiny muted">${L("Extrait de", "Quoted from")} ${extra.description.url ? `<a href="${esc(safeUrl(extra.description.url))}" target="_blank" rel="noopener">${L("Wikipédia", "French Wikipedia")}</a>` : L("Wikipédia", "French Wikipedia")} (CC BY-SA)${fr ? "" : ", in French"}</figcaption></figure>` : ""}
           <div class="home-set" id="home-set"></div>
           ${searchBox(L("Chercher une autre adresse", "Search another address"))}
-          <p class="cmp-entry"><a href="#/comparer/${code}">${L(`Comparer ${esc(name)} avec une autre commune`, `Compare ${esc(name)} with another town`)} →</a></p>
         </div>
       </header>
+      <a class="cmp-band" href="#/comparer/${code}"><span class="cmp-band-k">${L("Comparer", "Compare")}</span><b>${L(`${esc(name)} face à une autre commune`, `${esc(name)} against another town`)}</b><span class="muted small">${L("Revenus, sécurité, police, écoles, ce que la commune reçoit de l’État, côte à côte", "Income, safety, police, schools, what the town gets from the state, side by side")}</span><span class="cmp-band-go" aria-hidden="true">→</span></a>
 
       <section class="card brief">
         <header class="card-head"><h2>${L(`${name} en bref`, `${name} in brief`)}</h2></header>

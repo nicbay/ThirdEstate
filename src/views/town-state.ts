@@ -4,6 +4,8 @@
 import { fetchJson } from "../data";
 import { L, colon, fmtNum, getLang } from "../i18n";
 import "../styles/state-balance.css";
+import { REDISTRIBUTION_SOURCE, residentBalance } from "../lib/redistribution";
+import { loadDepartmentTowns } from "./explore";
 
 type Row = [pop: number, dgf: number, fpic: number | null, fsrif: number, ir: number | null, dilico: number, strate: string, fpicScope: "c" | "e"];
 interface Stratum { label: string; n: number; balance: number; contributors: number; ir: number | null }
@@ -59,9 +61,18 @@ function stratumName(s: Stratum) {
   return s.label;
 }
 
+/** The town's median standard of living (INSEE Filosofi), the city's for an arrondissement without one. */
+async function townIncome(code: string) {
+  const { towns } = await loadDepartmentTowns(depOf(code)).catch(() => ({ towns: new Map() }));
+  return (towns.get(code)?.income ?? towns.get(plmCity(code))?.income ?? null) as number | null;
+}
+
 export async function renderTownState(box: HTMLElement, code: string, name: string) {
-  const b = await loadStateBalance(code);
+  const [b, income] = await Promise.all([loadStateBalance(code), townIncome(code)]);
   if (!b) { box.innerHTML = ""; return; }
+  const r = income ? residentBalance(income) : null;
+  const r10 = (v: number) => Math.round(v / 10) * 10;
+  const ordinal = (n: number) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? "th" : (["th", "st", "nd", "rd"][n % 10] ?? "th")}`;
   const fr = getLang() === "fr";
   const whole = b.code !== code;
   const cityName = b.code === "75056" ? "Paris" : b.code === "69123" ? "Lyon" : "Marseille";
@@ -76,9 +87,38 @@ export async function renderTownState(box: HTMLElement, code: string, name: stri
   const s = b.stratum;
 
   box.innerHTML = `<section class="card state-balance">
-    <header class="card-head" id="finances"><h2>${L("Ce que la commune reçoit et verse", "What the town receives and pays in")}</h2><span class="muted small">${L(`dotations et péréquation ${b.year}, par habitant`, `grants and equalisation, ${b.year}, per inhabitant`)}</span></header>
+    <header class="card-head" id="finances"><h2>${L("Contributeur ou bénéficiaire ?", "Net contributor or beneficiary?")}</h2><span class="muted small">${L("ses habitants face à l’impôt, sa mairie face à l’État", "its residents and taxes, its town hall and the state")}</span></header>
     ${whole ? `<p class="muted small">${L(`Chiffres de ${cityName} entier : les dotations sont versées à la ville, pas aux arrondissements.`, `Figures for the whole of ${cityName}: grants go to the city, not to its arrondissements.`)}</p>` : ""}
-    <p class="sb-verdict ${contributor ? "is-out" : "is-in"}"><span>${verdict}</span><strong>${eur(b.balance, true)}</strong><span class="muted small">${L("par habitant et par an", "per inhabitant per year")}</span></p>
+    <div class="sb-two">
+      ${r ? `<div class="sb-side">
+        <p class="sb-who">${L("Un habitant typique", "A typical resident")}</p>
+        <p class="sb-verdict ${r.net < 0 ? "is-out" : "is-in"}"><span>${r.net < 0 ? L("Contributeur net", "Net contributor") : L("Bénéficiaire net", "Net beneficiary")}</span><strong>${eur(r10(r.net), true)}</strong><span class="muted small">${L("par an et par unité de consommation", "per year per consumption unit")}</span></p>
+        <ul class="sb-why">
+          <li>${L("Paie", "Pays")} <b>${eur(r10(r.paid))}</b> ${L("d’impôts, de TVA et de cotisations", "in taxes, VAT and social contributions")}</li>
+          <li>${L("Reçoit", "Gets")} <b>${eur(r10(r.cash))}</b> ${L("de prestations et pensions", "in benefits and pensions")}, <b>${eur(r10(r.inKind))}</b> ${L("de services publics (santé, école…)", "in public services (health, school…)")} ${L("et", "and")} <b>${eur(r10(r.collective))}</b> ${L("de dépenses collectives", "in collective spending")}</li>
+        </ul>
+      </div>` : ""}
+      <div class="sb-side">
+        <p class="sb-who">${L("La mairie", "The town hall")}</p>
+        <p class="sb-verdict ${contributor ? "is-out" : "is-in"}"><span>${verdict}</span><strong>${eur(b.balance, true)}</strong><span class="muted small">${L("par habitant et par an", "per inhabitant per year")}</span></p>
+        <ul class="sb-why">
+          <li>${L("Reçoit", "Gets")} <b>${eur(received)}</b> ${L("de l’État et des fonds de péréquation", "from the state and equalisation funds")}</li>
+          <li>${L("Verse", "Pays in")} <b>${eur(paid)}</b> ${L("aux fonds de péréquation", "to equalisation funds")}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sb-explain">
+      <h3>${L("Pourquoi ce résultat", "Why this result")}</h3>
+      ${r ? `<p>${L(
+        `<b>Les habitants.</b> Le niveau de vie médian ${whole ? `de ${cityName}` : "ici"} est de ${eur(r.income)} par an, autour du ${Math.round(r.percentile)}<sup>e</sup> centile en France. ${r.net < 0 ? "À ce niveau, on paie en moyenne plus d’impôts et de cotisations qu’on ne reçoit en prestations et en services publics." : "À ce niveau, on reçoit en moyenne plus en prestations et en services publics qu’on ne paie d’impôts et de cotisations."} Le basculement se fait vers le 65<sup>e</sup> centile : en France, 57 % des personnes reçoivent plus qu’elles ne paient. Les retraites comptent comme des prestations, ce qui avantage les communes âgées.`,
+        `<b>Residents.</b> The median standard of living ${whole ? `in ${cityName}` : "here"} is ${eur(r.income)} a year, around the ${ordinal(Math.round(r.percentile))} percentile in France. ${r.net < 0 ? "At that level, people pay on average more in taxes and contributions than they get back in benefits and public services." : "At that level, people get back on average more in benefits and public services than they pay in taxes and contributions."} The tipping point is around the 65th percentile: in France, 57% of people receive more than they pay. Pensions count as benefits, which favours older towns.`,
+      )}</p>` : ""}
+      <p>${L(
+        `<b>La mairie.</b> Presque toutes les communes reçoivent la dotation globale de fonctionnement de l’État (DGF), calculée sur la population, la superficie et la faiblesse des ressources fiscales : à ce titre, presque toutes sont bénéficiaires nettes. Une commune ne verse que par la péréquation (FPIC, et FSRIF en Île-de-France), quand ses ressources fiscales dépassent nettement la moyenne. ${contributor ? `C’est le cas ici : ${eur(paid)} versés pour ${eur(received)} reçus par habitant.` : paid > 0 ? `Ici, les ${eur(paid)} versés par habitant restent inférieurs aux ${eur(received)} reçus.` : `Ici, la commune ne verse rien et reçoit ${eur(received)} par habitant.`}`,
+        `<b>The town hall.</b> Nearly every town receives the state’s operating grant (DGF), worked out from population, area and how weak its tax base is, so nearly every town comes out a net beneficiary on that count. A town only pays in through equalisation (FPIC, plus FSRIF in Île-de-France) when its tax resources are well above average. ${contributor ? `That is the case here: ${eur(paid)} paid in against ${eur(received)} received per inhabitant.` : paid > 0 ? `Here the ${eur(paid)} paid in per inhabitant stays below the ${eur(received)} received.` : `Here the town pays nothing in and receives ${eur(received)} per inhabitant.`}`,
+      )}</p>
+      <p><a href="#/contributeurs">${L("La carte des circonscriptions contributrices et bénéficiaires", "The map of contributor and beneficiary districts")} →</a></p>
+    </div>
     <div class="sb-bars" aria-hidden="true">
       <div><span class="small">${L("Reçu", "Received")} <b>${eur(received)}</b></span>${bar(received, "in")}</div>
       <div><span class="small">${L("Versé", "Paid in")} <b>${eur(paid)}</b></span>${bar(paid, "out")}</div>
@@ -91,6 +131,7 @@ export async function renderTownState(box: HTMLElement, code: string, name: stri
     ${s ? `<p class="small">${L(`Communes ${stratumName(s)}`, `Towns ${stratumName(s)}`)}${colon()}${L("solde médian", "median balance")} <b>${eur(s.balance, true)}</b>${fr ? " ; " : "; "}${fmtNum(s.contributors)}${L(" %", "%")} ${L("sont contributrices nettes", "are net contributors")} (${fmtNum(s.n)} ${L("communes", "towns")}).</p>` : ""}
     ${b.ir != null ? `<p class="small">${L("À part", "Separately")}${colon()}${L(`les foyers fiscaux ${whole ? "de la ville" : "de la commune"} ont payé`,`tax households in ${whole ? cityName : name} paid`)} <b>${eur(b.ir)}</b> ${L(`d’impôt sur le revenu par habitant (revenus ${b.irYear})`, `of income tax per inhabitant (${b.irYear} income)`)}${s?.ir != null ? `, ${L("contre", "against")} ${eur(s.ir)} ${L("pour la commune médiane de même taille", "in the median town of the same size")}` : ""}${fr ? " et " : " and "}${eur(b.france.ir)} ${L("en moyenne en France", "on average in France")}. ${L("Il finance tout le budget de l’État, pas les communes : il n’entre pas dans le solde.", "It funds the whole state budget, not the towns, so it is not in the balance.")}</p>` : ""}
     ${b.dilico > 0 ? `<p class="small muted">${L(`En ${b.year}, ${eur(b.dilico)} par habitant ont aussi été mis en réserve par l’État (DILICO), restitués à 90 % sur 2026-2028 : non comptés.`, `In ${b.year} the state also held back ${eur(b.dilico)} per inhabitant (DILICO reserve), 90% of it returned over 2026–2028: not counted.`)}</p>` : ""}
+    ${r ? `<p class="muted tiny">${L("Habitant typique : moyennes de l’Insee pour les personnes de même niveau de vie (comptes nationaux distribués 2019, euros 2019, par unité de consommation), le niveau de vie médian de la commune (Filosofi 2023) étant placé dans la distribution nationale (Insee, ERFS). Une estimation : à niveau de vie égal, les situations varient beaucoup.", "Typical resident: INSEE’s averages for people at the same standard of living (2019 distributed national accounts, 2019 euros, per consumption unit), with the town’s median standard of living (Filosofi 2023) placed in the national distribution (INSEE, ERFS). An estimate: at the same standard of living, situations vary a lot.")} <a href="${REDISTRIBUTION_SOURCE.page}" target="_blank" rel="noopener">${L("Insee, la redistribution élargie", "INSEE, extended redistribution")}</a>.</p>` : ""}
     <p class="muted tiny">${L("Méthode : solde = DGF reçue + FPIC et FSRIF nets (reversements moins prélèvements), divisés par la population Insee. Ne sont pas comptés : les autres concours de l’État (compensations d’exonérations, subventions d’investissement, FCTVA), le FNGIR et les impôts nationaux.", "Method: balance = DGF received + net FPIC and FSRIF (payouts minus levies), divided by the Insee population. Not counted: other state transfers (tax-exemption compensation, investment grants, VAT refund fund), the FNGIR, and national taxes.")}</p>
     <p class="source">${L("Sources", "Sources")}${colon()}<a href="${b.sources.dotations}" target="_blank" rel="noopener">${L("DGCL, dotations des communes", "DGCL, municipal grants")}</a>, <a href="${b.sources.fpic}" target="_blank" rel="noopener">${L("DGCL, FPIC des ensembles intercommunaux", "DGCL, FPIC by intercommunality")}</a> (${L("via l’OFGL", "via OFGL")}), <a href="${b.sources.ircom}" target="_blank" rel="noopener">${L("DGFiP, impôt sur le revenu par commune", "DGFiP, income tax by town")}</a>.</p>
   </section>`;

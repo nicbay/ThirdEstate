@@ -230,8 +230,8 @@ async function update() {
     // street addresses only when the query looks like one (it has a number); a name query wants towns
     const towns: Hit[] = places.filter((p) => /\d/.test(raw) || !/\b\d{5}\b/.test(p.label)).slice(0, 6).map((p, n) => ({
       kind: "town", label: p.label, context: p.context, href: `#/ville/${p.code}`,
-      // a postcode puts towns first; otherwise they rank by name match, just below an equal match of another kind
-      score: /^\d{5}$/.test(raw) ? 5 - n * 0.01 : Math.max(score(q, norm(p.label)), 1) - 0.05 - n * 0.01,
+      // towns come first: a postcode, or a name that matches a town (people mostly search for where they live)
+      score: /^\d{5}$/.test(raw) ? 5 - n * 0.01 : Math.max(score(q, norm(p.label)), 1) + 1 - n * 0.01,
     }));
     draw([...local, ...towns]);
   }, 200);

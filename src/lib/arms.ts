@@ -1,5 +1,5 @@
 // Coats of arms as pixel art. Each commune's and department's official arms (Wikidata P94, files on Wikimedia
-// Commons, listed by scripts/sync-arms.mjs) are fetched as a small thumbnail, shrunk to a grid about 22 pixels wide,
+// Commons, listed by scripts/sync-arms.mjs) are fetched as a small thumbnail, shrunk to fit a 22 × 26 pixel box,
 // every pixel snapped to the heraldic tinctures (azure, gules, or, argent, sable, vert, purpure), and outlined in
 // ink like the fox logo. The drawing is done once per file and kept for the visit.
 import "../styles/arms.css";
@@ -18,7 +18,8 @@ const TINCTURES: [number, number, number][] = [
   [168, 104, 52],  // brown (trees, towers, animals in their own colour)
 ];
 const INK: [number, number, number] = [17, 18, 22];
-const GRID = 22;
+/** Every coat of arms fits the same box (in pixels), so a town's and its department's come out the same size. */
+const BOX_W = 22, BOX_H = 26;
 
 /** Thumbnail of a Commons file, by its upload path ("a/ab/Name.svg"). */
 export function commonsThumb(path: string, width: number) {
@@ -56,7 +57,10 @@ function pixelate(path: string): Promise<ImageData | null> {
     img.onerror = () => resolve(null);
     img.onload = () => {
       try {
-        const w = GRID, h = Math.max(8, Math.min(40, Math.round((GRID * img.naturalHeight) / Math.max(1, img.naturalWidth))));
+        const k = Math.min(BOX_W / Math.max(1, img.naturalWidth), BOX_H / Math.max(1, img.naturalHeight));
+        const w = Math.max(4, Math.round(img.naturalWidth * k)), h = Math.max(4, Math.round(img.naturalHeight * k));
+        // centred in the shared box
+        const ox = Math.floor((BOX_W - w) / 2), oy = Math.floor((BOX_H - h) / 2);
         const src = document.createElement("canvas");
         src.width = w; src.height = h;
         const sx = src.getContext("2d", { willReadFrequently: true })!;
@@ -78,9 +82,9 @@ function pixelate(path: string): Promise<ImageData | null> {
           cells.push(best);
         }
         // one pixel of ink around the shape, like the fox
-        const W = w + 2, H = h + 2;
+        const W = BOX_W + 2, H = BOX_H + 2;
         const out = new ImageData(W, H);
-        const at = (x: number, y: number) => (x >= 0 && y >= 0 && x < w && y < h ? cells[y * w + x] : null);
+        const at = (x: number, y: number) => { x -= ox; y -= oy; return x >= 0 && y >= 0 && x < w && y < h ? cells[y * w + x] : null; };
         for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
           let c = at(x - 1, y - 1);
           if (!c && (at(x - 2, y - 1) || at(x, y - 1) || at(x - 1, y - 2) || at(x - 1, y))) c = INK;

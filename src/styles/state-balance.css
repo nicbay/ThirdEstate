@@ -8,3 +8,33 @@
 .sb-bar.in { background: var(--ink-2); }
 .sb-bar.out { background: repeating-linear-gradient(135deg, var(--ink-2) 0 3px, transparent 3px 6px); border: 1px solid var(--ink-2); }
 .sb-table { max-width: 34rem; }
+.sb-two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 0.4rem 2rem; }
+.sb-side { min-width: 0; }
+.sb-who { margin: 0; font: 600 0.75rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-3); }
+.sb-two .sb-verdict { margin-bottom: 0.5rem; }
+.sb-why { margin: 0 0 1rem; padding-left: 1.1rem; display: grid; gap: 0.2rem; font-size: 0.88rem; color: var(--ink-2); }
+.sb-why b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.sb-explain { border-left: 3px solid var(--rule-2); padding-left: 0.9rem; margin: 0.2rem 0 1rem; max-width: 70ch; display: grid; gap: 0.5rem; }
+.sb-explain h3 { margin: 0; font-size: 0.95rem; }
+.sb-explain p { margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--ink-2); }
+
+/* #/contributeurs: the district map (src/views/contributors.ts) */
+.cb-modes { display: inline-flex; border: 2px solid var(--rule-2); padding: 2px; margin: 0.4rem 0 0.6rem; }
+.cb-modes button { font: 600 0.78rem var(--mono); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-2); background: none; border: 0; padding: 0.5rem 0.8rem; cursor: pointer; }
+.cb-modes button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.cb-count { margin: 0 0 0.6rem; }
+.cb-maps { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 1rem; align-items: start; }
+.cb-maps figure { margin: 0; }
+.cb-maps svg { width: 100%; height: auto; display: block; }
+.cb-maps path { stroke: var(--paper); stroke-width: 0.4; }
+.cb-maps a:hover path, .cb-maps a:focus path { stroke: var(--ink); stroke-width: 1.2; }
+.cb-legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; align-items: center; margin: 0.6rem 0 1.2rem; }
+.cb-legend div { display: flex; align-items: center; gap: 0.25rem; }
+.cb-legend i { width: 18px; height: 12px; display: inline-block; }
+.cb-legend div span { margin-right: 0.3rem; }
+.cb-lists { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem 2rem; margin-bottom: 1rem; }
+.cb-lists h2 { font-size: 1rem; margin: 0 0 0.4rem; }
+.cb-lists ol { margin: 0; padding-left: 1.3rem; display: grid; gap: 0.15rem; }
+.cb-lists li { font-size: 0.9rem; }
+.cb-lists li b { float: right; font-variant-numeric: tabular-nums; }
+@media (max-width: 760px) { .cb-maps { grid-template-columns: 1fr; } }
