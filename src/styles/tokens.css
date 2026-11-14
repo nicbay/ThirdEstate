@@ -125,6 +125,14 @@
   --spacing-6: 32px;
   --shadow-hard: 6px 6px 0 rgba(11, 13, 24, 0.3);  /* a lifted interactive panel */
   --motion-step: var(--step);                        /* pixel motion moves in steps, never springs */
+
+  /* ---- the one box (2026-11): a thin line, a ground a shade off the page, and the red/blue underline of the
+     active tab and the quiz button. No offset shadow, no stepped frame. The rule that draws it is in
+     overhaul.css ("one box"); a box on a night band overrides --box-line and --box-bg locally. ---- */
+  --box-line: var(--rule-2);
+  --box-bg: color-mix(in srgb, var(--panel) 45%, var(--paper));
+  --box-bar-h: 4px;
+  --box-bar: linear-gradient(90deg, var(--split-red) 0 50%, var(--split-blue) 50% 100%);
 }
 
 /* phones and small tablets: the masthead is shorter */

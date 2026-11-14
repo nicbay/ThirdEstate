@@ -35,6 +35,7 @@ export function setHome(h: Home | null) {
     /* private mode */
   }
   presence?.track(presencePayload());
+  void logVisit(); // the department may have just been set
   for (const fn of homeListeners) fn(h);
 }
 const homeListeners = new Set<(h: Home | null) => void>();
@@ -59,6 +60,7 @@ const presencePayload = () => { const h = getHome(); return { dep: h?.dep ?? nul
 
 export function joinPresence() {
   if (!cloud || presence) return;
+  void logVisit();
   const id = crypto.randomUUID();
   presence = cloud.channel("visitors", { config: { presence: { key: id } } });
   presence
@@ -85,6 +87,33 @@ export function joinPresence() {
       if (status === "SUBSCRIBED") presence!.track(presencePayload());
     });
 }
+// ---------- readers this week (supabase/migrations/2026-11-14-weekly-readers.sql) ----------
+const VISITOR_KEY = "pv-visitor", VISIT_DAY_KEY = "pv-visit-day";
+/** Logs this browser's visit once a day: a random id, and the department if the reader chose one. */
+async function logVisit() {
+  if (!cloud) return;
+  try {
+    const day = new Date().toISOString().slice(0, 10), dep = getHome()?.dep ?? null;
+    const stamp = `${day}|${dep ?? ""}`;
+    if (localStorage.getItem(VISIT_DAY_KEY) === stamp) return;
+    let id = localStorage.getItem(VISITOR_KEY);
+    if (!id || !/^[0-9a-f-]{36}$/.test(id)) localStorage.setItem(VISITOR_KEY, (id = crypto.randomUUID()));
+    const { error } = await cloud.rpc("log_visit", { v: id, d: dep });
+    if (!error) localStorage.setItem(VISIT_DAY_KEY, stamp);
+  } catch {
+    /* private mode, or the migration isn't applied yet */
+  }
+}
+/** Distinct readers over the last 7 days, in total and per department; null without the backend or the migration. */
+export async function weeklyReaders(): Promise<{ readers: number; deps: Map<string, number> } | null> {
+  if (!cloud) return null;
+  const { data, error } = await cloud.rpc("weekly_readers");
+  if (error || !data || typeof data.readers !== "number") return null;
+  const deps = new Map<string, number>();
+  for (const [d, n] of Object.entries((data.deps ?? {}) as Record<string, unknown>)) if (/^(\d{2,3}|2[AB])$/.test(d) && typeof n === "number") deps.set(d, n);
+  return { readers: data.readers, deps };
+}
+
 export function onPresence(fn: (c: Counts, total: number, towns: TownCounts) => void) {
   presenceListeners.add(fn);
   if (!cloud) {

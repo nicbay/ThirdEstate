@@ -24,7 +24,7 @@ import { renderRace } from "./views/race";
 import { renderSenat, renderSenateur } from "./views/senat";
 import { depOf, loadDepartmentTowns, loadTownBundle, plmWhole, renderExplorer, renderTown } from "./views/explore";
 import { getHome, onHome } from "./lib/cloud";
-import { esc } from "./util";
+import { esc, FEED_ON } from "./util";
 import { renderEconomy } from "./views/economy";
 import { renderQuiz } from "./views/quiz";
 import { fetchJson, loadDeputes } from "./data";
@@ -175,7 +175,7 @@ function sections(): Section[] {
         { group: RACE, href: "#/sondages", match: /^#\/sondages$/, fr: "Sondages et marchés", en: "Polls and markets", desc: ["Chaque sondage, et ce que parient les marchés", "Every poll, and what the markets are betting"] },
         { group: RACE, href: "#/sondages/instituts", match: /^#\/sondages\/instituts/, fr: "Les instituts notés", en: "Pollsters graded", sub: ["Instituts", "Pollsters"], desc: ["De A+ à F, sur leurs sondages passés face aux résultats", "A+ to F, on their past polls against the results"] },
         { group: RACE, href: "#/sondages#point", match: NEVER, minor: true, fr: "Le point du jour", en: "Today’s brief", desc: ["Ce qui a bougé en 24 heures, et pourquoi peut-être", "What moved in 24 hours, and perhaps why"] },
-        { group: RACE, href: "#/fil", match: /^#\/fil/, fr: "Fil rouge, fil bleu", en: "Red feed, blue feed", desc: ["L’actualité vue de gauche et de droite", "The news as left and right see it"] },
+        ...(FEED_ON ? [{ group: RACE, href: "#/fil", match: /^#\/fil/, fr: "Fil rouge, fil bleu", en: "Red feed, blue feed", desc: ["L’actualité vue de gauche et de droite", "The news as left and right see it"] as [string, string] }] : []),
         { group: RACE, href: "#/2027/calendrier", match: /^#\/2027\/calendrier/, fr: "Calendrier de la campagne", en: "Campaign calendar", sub: ["Calendrier", "Calendar"], desc: ["Les dates clés jusqu’au second tour", "Key dates up to the runoff"] },
         { group: RACE, href: "#/2027/parrainages", match: /^#\/2027\/parrainages/, minor: true, fr: "Les parrainages", en: "Sponsorships", desc: ["Les 500 signatures d’élus pour être candidat", "The 500 officials’ signatures needed to run"] },
         { group: PROG, href: "#/programmes", match: /^#\/programmes(\/theme\/[\w-]+)?$/, fr: "Les programmes", en: "Programs", desc: ["Tous les candidats, de la gauche à la droite", "Every candidate, from left to right"] },
@@ -246,7 +246,7 @@ function nextSteps(path: string) {
   const france = { href: "#/chiffres", fr: "La France en chiffres", en: "France in numbers" };
   const shifts = { href: "#/resultats/bascules", fr: "Les cartes des bascules gauche-droite", en: "The left–right shift maps" };
   const pick = /^#\/(ville|explorer|comparer|classements)/.test(path) ? [race, mps, quiz]
-    : /^#\/(circo|depute|assemblee|elus|senat|senateur)/.test(path) ? [mine, /themes/.test(path) ? feed : words, race]
+    : /^#\/(circo|depute|assemblee|elus|senat|senateur)/.test(path) ? [mine, /themes/.test(path) && FEED_ON ? feed : words, race]
     : /^#\/quiz/.test(path) ? [race, progs, mps]
     : /^#\/programmes$/.test(path) ? [race, quiz, mps]
     : /^#\/programmes\/[\w-]+\/simulateur/.test(path) ? [byTheme, sim, vote]
@@ -435,6 +435,39 @@ nav.addEventListener("keydown", (e) => {
   }
 });
 document.addEventListener("click", (e) => { if (!(e.target as Element).closest?.(".nav-item.open")) closeMenus(); });
+// desktop hover, with intent: a menu opens only from its own trigger (the section link or its caret), after the
+// pointer rests there a moment; it stays while the pointer is on the trigger or the panel and closes shortly after
+// it leaves both. The item itself spans the masthead's height, so it is not a trigger: grazing the masthead on the
+// way to the section bar opens nothing. The links fill the masthead's height (a tall click target), so for hover
+// only their middle counts: the bottom 14px, next to the section bar, never opens a menu.
+const canHover = matchMedia("(hover: hover) and (min-width: 761px)");
+let hoverT = 0, hoverLi: Element | null = null;
+const openMenu = (li: Element) => { closeMenus(li); li.classList.add("open"); li.querySelector(".nav-caret")!.setAttribute("aria-expanded", "true"); };
+nav.addEventListener("pointermove", (e) => {
+  if (e.pointerType !== "mouse" || !canHover.matches) return;
+  const t = e.target as Element;
+  const trigger = t.closest<HTMLElement>(".nav-top, .nav-caret");
+  const r = trigger?.getBoundingClientRect();
+  const li = trigger && r && e.clientY > r.top + 8 && e.clientY < r.bottom - 14 ? trigger.closest(".nav-item") : null;
+  if (li) {
+    if (li.classList.contains("open")) { if (hoverLi) { clearTimeout(hoverT); hoverLi = null; } return; } // showing this one: keep it
+    if (li === hoverLi) return; // already waiting on this one
+    clearTimeout(hoverT);
+    hoverLi = li;
+    hoverT = window.setTimeout(() => { hoverLi = null; openMenu(li); }, nav.querySelector(".nav-item.open") ? 60 : 160);
+  } else if (!t.closest(".nav-item.open .nav-menu")) {
+    if (hoverLi === nav) return;
+    clearTimeout(hoverT);
+    hoverLi = nav; // waiting to close
+    hoverT = window.setTimeout(() => { hoverLi = null; closeMenus(); }, 220);
+  } else if (hoverLi) { clearTimeout(hoverT); hoverLi = null; } // inside the open panel: keep it
+});
+nav.addEventListener("pointerleave", (e) => {
+  if (e.pointerType !== "mouse" || !canHover.matches) return;
+  clearTimeout(hoverT);
+  hoverLi = nav;
+  hoverT = window.setTimeout(() => { hoverLi = null; if (!nav.contains(document.activeElement)) closeMenus(); }, 220);
+});
 nav.addEventListener("focusout", (e) => { const to = e.relatedTarget as Element | null; if (!to || !to.closest(".nav-item.open")) closeMenus(to?.closest(".nav-item")); });
 searchBtn.addEventListener("click", () => openSearch(searchBtn));
 skip.addEventListener("click", (e) => { e.preventDefault(); app.focus(); app.scrollIntoView(); });

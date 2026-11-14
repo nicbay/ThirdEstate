@@ -164,7 +164,7 @@ export async function renderQuiz(app: HTMLElement, code?: string) {
         <p class="dek">${L("Des votes réels de l’Assemblée et des mesures tirées des programmes : répondez, marquez ce qui compte vraiment pour vous, et voyez de quel candidat vos réponses vous rapprochent, sur quoi vous divergez, et où vous vous situez de la gauche à la droite.", "Real Assembly votes and measures taken from the programs: answer, mark what really matters to you, and see which candidate your answers bring you closest to, where you differ, and where you stand from left to right.")}</p>
       </header>
       ${stale ? `<p class="qz-stale">${L("Ce lien de résultats correspond à une ancienne série de questions : il ne peut plus être relu. Vous pouvez refaire le quiz.", "This results link was made for an earlier set of questions and can no longer be read. You can take the quiz again.")}</p>` : ""}
-      <div class="quiz qz" id="quiz" aria-live="polite"></div>
+      <div class="quiz qz" id="quiz"></div>
       ${methodNote(d)}
     </section>`;
   draw(app.querySelector<HTMLElement>("#quiz")!, d, 1);
@@ -182,77 +182,143 @@ function bindKeys(stage: HTMLElement, fn: ((e: KeyboardEvent) => void) | null) {
   if (keyHandler) document.addEventListener("keydown", keyHandler);
 }
 
+/** Moves one question forward or back. The run's frame (back button, progress, keys line) stays put; only the
+ *  question card is swapped, so nothing above or below it is rebuilt. */
+function go(stage: HTMLElement, d: QuizData, delta: 1 | -1) {
+  const s = st!, ts = s.ts ?? tokens(d, s.mode);
+  if (delta < 0 && s.step === 0) return;
+  s.w = false;
+  s.step = Math.max(0, s.step + delta);
+  if (s.step >= ts.length) history.replaceState(null, "", `#/quiz/${encode(d, s.mode, s.a)}`);
+  draw(stage, d, delta);
+  keepInView(stage);
+}
+
 function draw(stage: HTMLElement, d: QuizData, dir: 1 | -1) {
   const s = st!;
   const ts = s.ts ?? tokens(d, s.mode);
   if (!s.started) { bindKeys(stage, null); return intro(stage, d); }
-  if (s.step >= ts.length) { bindKeys(stage, null); return results(stage, d); }
+  if (s.step >= ts.length) {
+    bindKeys(stage, null);
+    results(stage, d);
+    // no live region on the quiz: focus carries the reader to the new content, so it is read out once
+    const h = stage.querySelector<HTMLElement>(".qz-results h2, .qz-q");
+    if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); }
+    return;
+  }
   const q = question(d, ts[s.step]);
   const ans = s.a.get(q.key);
   const total = ts.length;
   const isVote = q.kind === "v";
-  const btn = (p: Pos, n: number, label: string, icon: string) =>
-    `<button type="button" class="qz-ans qz-ans-${p}" data-a="${p}" aria-pressed="${ans?.p === p}"><kbd aria-hidden="true">${n}</kbd><span class="qz-ans-i" aria-hidden="true">${icon}</span><span>${label}</span></button>`;
-  stage.innerHTML = `
-    <div class="qz-top">
-      <button type="button" class="qz-back" ${s.step === 0 ? "disabled" : ""}><span aria-hidden="true">←</span> ${L("Retour", "Back")}</button>
-      <div class="qz-progress" role="progressbar" aria-label="${L("Progression", "Progress")}" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${s.step}">${ts.map((t, i) => `<i class="${i < s.step ? (s.a.has(t) ? "is-done" : "is-skip") : i === s.step ? "is-now" : ""}"></i>`).join("")}</div>
-      <span class="qz-count">${s.step + 1}<span>/${total}</span></span>
-    </div>
-    <div class="qz-card ${dir > 0 ? "qz-in-fwd" : "qz-in-back"}">
+
+  // the frame: built once per run, then only updated
+  let run = stage.querySelector<HTMLElement>(":scope > .qz-run");
+  const fresh = !run;
+  if (!run) {
+    stage.innerHTML = `<div class="qz-run">
+      <div class="qz-top">
+        <button type="button" class="qz-back"><span aria-hidden="true">←</span> ${L("Retour", "Back")}</button>
+        <div class="qz-progress" role="progressbar" aria-label="${L("Progression du quiz", "Quiz progress")}" aria-valuemin="0" aria-valuemax="${total}">${ts.map(() => "<i></i>").join("")}</div>
+        <span class="qz-count" aria-hidden="true"></span>
+      </div>
+      <div class="qz-stage"></div>
+      <p class="qz-keys muted small">${L("Clavier : 1, 2, 3 pour répondre, I pour « important », 0 pour passer, ← pour revenir.", "Keyboard: 1, 2, 3 to answer, I for “important”, 0 to skip, ← to go back.")}</p>
+    </div>`;
+    run = stage.querySelector<HTMLElement>(".qz-run")!;
+    run.querySelector(".qz-back")!.addEventListener("click", () => go(stage, d, -1));
+  }
+  const back = run.querySelector<HTMLButtonElement>(".qz-back")!;
+  back.disabled = s.step === 0;
+  const bar = run.querySelector<HTMLElement>(".qz-progress")!;
+  bar.setAttribute("aria-valuenow", String(s.step));
+  bar.setAttribute("aria-valuetext", L(`Question ${s.step + 1} sur ${total}`, `Question ${s.step + 1} of ${total}`));
+  bar.querySelectorAll("i").forEach((el, i) => { el.className = i < s.step ? (s.a.has(ts[i]) ? "is-done" : "is-skip") : i === s.step ? "is-now" : ""; });
+  run.querySelector(".qz-count")!.innerHTML = `${s.step + 1}<span>/${total}</span>`;
+
+  // the question card
+  const opt = (p: Pos, n: number, label: string, icon: string) =>
+    `<button type="button" class="qz-ans qz-ans-${p}" data-a="${p}" aria-pressed="${ans?.p === p}"><span class="qz-ans-i" aria-hidden="true">${icon}</span><span class="qz-ans-l">${label}</span><kbd aria-hidden="true">${n}</kbd></button>`;
+  const card = document.createElement("div");
+  card.className = "qz-card";
+  card.innerHTML = `
       <p class="qz-kicker"><i style="background:${THEME_COLOR[q.theme] ?? "var(--other)"}"></i>${esc(themeName(d, q.theme))} · ${isVote ? `${L("Vote à l’Assemblée,", "Assembly vote,")} ${fmtDate(q.vote!.d)}` : L("Proposition d’un candidat", "A candidate’s proposal")}</p>
-      <h2 class="qz-q">${esc(q.q)}</h2>
+      <h2 class="qz-q" tabindex="-1"><span class="sr-only">${L(`Question ${s.step + 1} sur ${total} : `, `Question ${s.step + 1} of ${total}: `)}</span>${esc(q.q)}</h2>
       <p class="qz-ctx">${isVote
         ? `${esc(q.ctx)} <a href="https://www.assemblee-nationale.fr/dyn/17/scrutins/${q.vote!.n}" target="_blank" rel="noopener">${L(`Scrutin n° ${q.vote!.n}`, `Vote no. ${q.vote!.n}`)} ↗</a>`
         : L("Mesure tirée du programme ou des annonces d’un des candidats. Son auteur est révélé avec vos résultats.", "A measure taken from one candidate’s program or announcements. Its author is revealed with your results.")}</p>
       <div class="qz-answers${isVote ? "" : " is-two"}" role="group" aria-label="${L("Votre position", "Your position")}">
-        ${isVote ? btn("P", 1, L("Pour", "For"), "✓") + btn("C", 2, L("Contre", "Against"), "✕") + btn("A", 3, L("Abstention", "Abstain"), "–")
-          : btn("P", 1, L("D’accord", "Agree"), "✓") + btn("C", 2, L("Pas d’accord", "Disagree"), "✕")}
+        ${isVote ? opt("P", 1, L("Pour", "For"), "✓") + opt("C", 2, L("Contre", "Against"), "✕") + opt("A", 3, L("Abstention", "Abstain"), "–")
+          : opt("P", 1, L("D’accord", "Agree"), "✓") + opt("C", 2, L("Pas d’accord", "Disagree"), "✕")}
       </div>
       <div class="qz-foot">
-        <button type="button" class="qz-weight" aria-pressed="${!!s.w}"><span aria-hidden="true">★</span> ${L("C’est très important pour moi", "This matters a lot to me")} <kbd aria-hidden="true">I</kbd></button>
+        <button type="button" class="qz-weight" aria-pressed="false"><span aria-hidden="true">★</span> ${L("C’est très important pour moi", "This matters a lot to me")} <kbd aria-hidden="true">I</kbd></button>
         <button type="button" class="qz-skip">${L("Sans avis · passer", "No opinion · skip")} <kbd aria-hidden="true">0</kbd></button>
-      </div>
-    </div>
-    <p class="qz-keys muted small">${L("Clavier : 1, 2, 3 pour répondre, I pour « important », 0 pour passer, ← pour revenir.", "Keyboard: 1, 2, 3 to answer, I for “important”, 0 to skip, ← to go back.")}</p>`;
-  const go = (delta: 1 | -1, delay = 0) => {
-    const run = () => {
-      s.w = false;
-      s.step = Math.max(0, s.step + delta);
-      if (s.step >= ts.length) history.replaceState(null, "", `#/quiz/${encode(d, s.mode, s.a)}`);
-      draw(stage, d, delta);
-      keepInView(stage);
-    };
-    if (delay && !reduced()) { stage.querySelector(".qz-card")?.classList.add(delta > 0 ? "qz-out-fwd" : "qz-out-back"); setTimeout(run, delay); } else run();
-  };
+      </div>`;
+
   // the "important" toggle applies to the answer about to be given, or to the one already there
   s.w = ans?.w ?? false;
-  const wb = stage.querySelector<HTMLButtonElement>(".qz-weight")!;
+  const wb = card.querySelector<HTMLButtonElement>(".qz-weight")!;
   wb.setAttribute("aria-pressed", String(s.w));
   const toggleW = () => { s.w = !s.w; wb.setAttribute("aria-pressed", String(s.w)); const cur = s.a.get(q.key); if (cur) cur.w = !!s.w; };
   let busy = false;
+  // a short beat on the picked answer, so the choice is seen before the next question slides in
+  const next = (wait: number) => { busy = true; setTimeout(() => go(stage, d, 1), reduced() ? 60 : wait); };
   const pick = (p: Pos) => {
     if (busy || (!isVote && p === "A")) return;
-    busy = true;
     s.a.set(q.key, { p, w: !!s.w });
-    stage.querySelectorAll<HTMLElement>(".qz-ans").forEach((x) => { const on = x.dataset.a === p; x.setAttribute("aria-pressed", String(on)); x.classList.toggle("is-picked", on); });
-    go(1, 240);
+    card.querySelectorAll<HTMLElement>(".qz-ans").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.a === p)));
+    next(220);
   };
-  const skip = () => { if (busy) return; busy = true; s.a.delete(q.key); go(1, 140); };
-  stage.querySelector(".qz-back")!.addEventListener("click", () => go(-1));
-  stage.querySelectorAll<HTMLButtonElement>(".qz-ans").forEach((b) => b.addEventListener("click", () => pick(b.dataset.a as Pos)));
+  const skip = () => { if (busy) return; s.a.delete(q.key); next(80); };
+  card.querySelectorAll<HTMLButtonElement>(".qz-ans").forEach((b) => b.addEventListener("click", () => pick(b.dataset.a as Pos)));
   wb.addEventListener("click", toggleW);
-  stage.querySelector(".qz-skip")!.addEventListener("click", skip);
+  card.querySelector(".qz-skip")!.addEventListener("click", skip);
   bindKeys(stage, (e) => {
+    if (busy) return;
     if (e.key === "1") pick("P");
     else if (e.key === "2") pick("C");
     else if (e.key === "3") pick("A");
     else if (e.key === "0" || e.key === "ArrowRight") skip();
     else if (e.key === "i" || e.key === "I" || e.key === "*") toggleW();
-    else if (e.key === "ArrowLeft" && s.step > 0) go(-1);
+    else if (e.key === "ArrowLeft" && s.step > 0) go(stage, d, -1);
     else return;
     e.preventDefault();
   });
+
+  const box = run.querySelector<HTMLElement>(".qz-stage")!;
+  const hadFocus = stage.contains(document.activeElement) && document.activeElement !== document.body;
+  swapCard(box, card, fresh ? 0 : dir);
+  // keep the reader's place: focus moves to the new question (read out by screen readers), without scrolling
+  if (hadFocus || !fresh) card.querySelector<HTMLElement>(".qz-q")!.focus({ preventScroll: true });
+}
+
+/** Replaces the question card in place: the old one fades out, the new one slides in from the side it came
+ *  from, and the box eases from the old height to the new one, so the page under it never jumps. */
+function swapCard(box: HTMLElement, card: HTMLElement, dir: 0 | 1 | -1) {
+  box.querySelectorAll(".qz-card.is-leaving").forEach((el) => el.remove());
+  const prev = box.querySelector<HTMLElement>(".qz-card");
+  box.getAnimations().forEach((a) => a.cancel());
+  if (!prev || reduced() || typeof box.animate !== "function") {
+    box.replaceChildren(card);
+    if (!prev && !reduced() && typeof card.animate === "function") card.animate([{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }], { duration: 220, easing: "cubic-bezier(0.16, 1, 0.3, 1)" });
+    return;
+  }
+  const h0 = box.offsetHeight;
+  prev.classList.add("is-leaving");
+  prev.setAttribute("aria-hidden", "true");
+  prev.inert = true;
+  box.append(card);
+  const h1 = card.offsetHeight;
+  const ease = "cubic-bezier(0.16, 1, 0.3, 1)", dx = 28 * (dir || 1);
+  box.classList.add("is-swapping");
+  const grow = box.animate([{ height: `${h0}px` }, { height: `${h1}px` }], { duration: 300, easing: ease });
+  const out = prev.animate([{ opacity: 1, transform: "none" }, { opacity: 0, transform: `translateX(${-dx}px)` }], { duration: 150, easing: "cubic-bezier(0.4, 0, 1, 1)", fill: "forwards" });
+  const enter = card.animate([{ opacity: 0, transform: `translateX(${dx}px)` }, { opacity: 1, transform: "none" }], { duration: 300, delay: 70, easing: ease, fill: "backwards" });
+  const done = () => { prev.remove(); box.classList.remove("is-swapping"); };
+  out.finished.then(() => prev.remove(), () => prev.remove());
+  grow.finished.then(done, done);
+  // a background tab pauses animations: never leave two cards stacked
+  setTimeout(() => { if (prev.isConnected) { [out, grow, enter].forEach((a) => a.finish()); done(); } }, 600);
 }
 
 /** After a step, bring the card back into view on small screens (the page header sits above it). */

@@ -84,7 +84,8 @@ main:focus { outline: none; }
 .nav-menu a[aria-current] { border-left-color: var(--ink); }
 .nav-menu a:focus-visible { outline-offset: -3px; }
 .nav-item.open .nav-menu { display: block; }
-@media (hover: hover) and (min-width: 761px) { .nav-item:hover .nav-menu { display: block; } }
+/* desktop hover opens a menu from its own trigger only, with an intent delay (src/main.ts, "masthead menus"): a CSS :hover on the
+   whole item opened it from anywhere in the masthead and let the open panel swallow the section bar under it */
 
 .top-tools { display: flex; align-items: center; gap: 0.55rem; margin-left: auto; }
 .search-btn { display: inline-flex; align-items: center; gap: 0.5rem; height: 34px; padding: 0 0.6rem; color: var(--night-text-2); background: none; border: 1px solid var(--night-rule-2); border-radius: 2px; font: 600 0.84rem var(--text); cursor: pointer; white-space: nowrap; }

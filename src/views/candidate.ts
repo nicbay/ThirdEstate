@@ -14,7 +14,7 @@ import { combineOdds, oddsFor, winShare } from "../lib/markets";
 import { lineChart } from "../lib/chart";
 import { pct, signed } from "../lib/format";
 import { estimatePay, UNPRICED, type Mandate, type PayScales } from "../lib/public-pay";
-import { esc, safeUrl } from "../util";
+import { esc, FEED_ON, safeUrl } from "../util";
 import { shiftDays } from "./home";
 import "../styles/candidate.css";
 
@@ -266,7 +266,7 @@ export async function renderCandidate(app: HTMLElement, slug: string) {
           ${d.an ? `<li><a href="#/depute/${esc(d.an)}">${L("Sa page à l’Assemblée sur Third Estate", "Their Assembly page on Third Estate")}</a><span class="muted small">${L("votes, interventions, présence", "votes, speeches, attendance")}</span></li>` : ""}
           ${d.links.map((l) => `<li><a href="${esc(safeUrl(l.url))}" target="_blank" rel="noopener">${esc(tr(l))}</a><span class="muted small">${esc(new URL(safeUrl(l.url), location.href).hostname.replace(/^www\./, ""))}</span></li>`).join("")}
           ${prog ? `<li><a href="#/programmes/${esc(prog.slug)}">${L("Son programme, mesure par mesure", "The manifesto, measure by measure")}</a><span class="muted small">Third Estate</span></li>` : ""}
-          <li><a href="#/fil">${L("Fil rouge, fil bleu", "Red feed, blue feed")}</a><span class="muted small">${L("l’actualité vue de gauche et de droite", "the news as left and right see it")}</span></li>
+          ${FEED_ON ? `<li><a href="#/fil">${L("Fil rouge, fil bleu", "Red feed, blue feed")}</a><span class="muted small">${L("l’actualité vue de gauche et de droite", "the news as left and right see it")}</span></li>` : ""}
         </ul>
       </section>
 
@@ -349,7 +349,7 @@ function newsCard(d: CandidateFile, items: Headline[], hours: number) {
   const shown = items.slice(0, 8);
   const t = (iso: string) => new Date(iso).toLocaleString(loc(), { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
   return `<section class="card" id="c-actu">
-    <header class="card-head"><h2>${L("Dans l’actualité", "In the news")}</h2><a href="#/fil">${L("Le fil", "The feed")}</a></header>
+    <header class="card-head"><h2>${L("Dans l’actualité", "In the news")}</h2>${FEED_ON ? `<a href="#/fil">${L("Le fil", "The feed")}</a>` : ""}</header>
     ${shown.length
       ? `<p class="muted small">${L(`${items.length} titre${items.length > 1 ? "s" : ""} le cit${items.length > 1 ? "ent" : "e"} dans le fil des ${hours} dernières heures (quinze médias, de gauche à droite)${items.length > shown.length ? ` ; les ${shown.length} plus récents` : ""}.`, `${items.length} headline${items.length > 1 ? "s" : ""} in the last ${hours} hours of our feed (fifteen outlets, left to right) name${items.length > 1 ? "" : "s"} this candidate${items.length > shown.length ? `; the ${shown.length} most recent` : ""}.`)}</p>
          <ol class="cand-news">${shown.map((h) => `<li><a href="${esc(safeUrl(h.link))}" target="_blank" rel="noopener">${esc(h.title)}</a><span class="muted small">${esc(h.outlet)} · ${esc(t(h.time))}</span></li>`).join("")}</ol>`

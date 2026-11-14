@@ -5,17 +5,18 @@
 import "../styles/hero-day.css";
 import { infoTip } from "../lib/infotip";
 import { geoConicConformal, geoPath } from "d3-geo";
-import { getHome, onPresence } from "../lib/cloud";
-import { fetchJson, loadDepartements, loadDeputes, loadFeed, loadMarkets, loadPolls, loadShiftsLatest, type FeedReaction } from "../data";
+import { getHome, onPresence, weeklyReaders } from "../lib/cloud";
+import { fetchJson, loadDepartements, loadDeputes, loadFeed, loadMarkets, loadPolls, loadShifts, loadShiftsLatest, type FeedReaction, type ShiftPair } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
 import { meta, registerParties } from "../lib/candidates";
 import { ELECTION_DAY } from "../lib/forecast";
 import { average, latestPollDate, pollsterName, pollsterRating, trend } from "../lib/polls";
 import { colon, dec, pct, signed } from "../lib/format";
 import { rewind } from "../lib/map";
-import { esc, safeUrl } from "../util";
+import { esc, FEED_ON, safeUrl } from "../util";
 import { heroViz } from "./hero";
-import { arrowPaths, legend, unitsPerPx } from "./shifts";
+import { bindSearch, searchBox } from "./explore";
+import { arrowPaths, legend, preselectShift, unitsPerPx } from "./shifts";
 import { pollMoves } from "./daily";
 import { scenarioForecast, scenarioFromUrl, scenarioLabel } from "./forecast-chart";
 import type { Forecast } from "../lib/forecast";
@@ -146,8 +147,8 @@ export async function heroDay() {
     <ul class="hday-take">${takeaways.map((t) => `<li>${t}</li>`).join("")}</ul>
     <div class="hday-note">
       ${eventsHtml ? `<section class="hday-block"><header><h2>${L("Ce qui a bougé", "What changed")}</h2><a href="#/2027">${L("Les candidats", "Candidates")} →</a></header><ul class="hde">${eventsHtml}</ul></section>` : ""}
-      ${storiesHtml ? `<section class="hday-block"><header><h2>${L("Fil rouge, fil bleu", "Red feed, blue feed")}</h2><a href="#/fil">${L("Tout le fil", "The whole feed")} →</a></header><ul class="hdn">${storiesHtml}</ul></section>` : ""}
-      ${postsHtml ? `<section class="hday-block"><header><h2>${L("Ce que publient les députés", "What MPs are posting")}</h2><a href="#/fil">${L("Tout le fil", "The whole feed")} →</a></header><ul class="hds">${postsHtml}</ul></section>` : ""}
+      ${storiesHtml ? `<section class="hday-block"><header><h2>${FEED_ON ? L("Fil rouge, fil bleu", "Red feed, blue feed") : L("Les titres du jour", "Today’s headlines")}</h2>${FEED_ON ? `<a href="#/fil">${L("Tout le fil", "The whole feed")} →</a>` : ""}</header><ul class="hdn">${storiesHtml}</ul></section>` : ""}
+      ${postsHtml ? `<section class="hday-block"><header><h2>${L("Ce que publient les députés", "What MPs are posting")}</h2>${FEED_ON ? `<a href="#/fil">${L("Tout le fil", "The whole feed")} →</a>` : ""}</header><ul class="hds">${postsHtml}</ul></section>` : ""}
     </div>
   </section>`;
 
@@ -156,8 +157,8 @@ export async function heroDay() {
   const viz = heroViz(geo, deputes, pair, true); // drawn on the night band, whatever the theme
   // widget 1: who is reading right now, department by department, and the towns readers marked as theirs
   const parliamentHtml = `<section class="hw hw-live" aria-labelledby="hw-live">
-    <div class="hw-head"><span class="hero-kicker"><i class="live-dot" aria-hidden="true"></i>${L("En direct", "Live")}</span><b id="hw-live">${L("Qui lit Third Estate en ce moment", "Who's reading Third Estate right now")}</b><span id="live-sum">${L("Connexion…", "Connecting…")}</span></div>
-    <figure class="hw-fig"><svg id="live-map" viewBox="0 0 600 580" role="img" aria-label="${L("Lecteurs en ligne par département", "Readers online by department")}"></svg>
+    <div class="hw-head"><span class="hero-kicker">${L("Cette semaine", "This week")}</span><b id="hw-live"><span class="hw-count" id="wk-n">…</span> <span id="wk-what">${L("lecteurs de Third Estate", "Third Estate readers")}</span></b><span id="live-sum"><i class="live-dot" aria-hidden="true"></i>${L("Connexion…", "Connecting…")}</span></div>
+    <figure class="hw-fig"><svg id="live-map" viewBox="0 0 600 580" role="img" aria-label="${L("Lecteurs par département", "Readers by department")}"></svg>
       <figcaption><p class="live-k">${L("Communes revendiquées par les lecteurs en ligne", "Towns claimed by readers online")}</p><ul class="live-towns" id="live-towns"></ul>
       <p class="small">${getHome()?.code ? L(`Vous : <a href="#/ville/${getHome()!.code}">${esc(getHome()!.commune ?? "")}</a>`, `You: <a href="#/ville/${getHome()!.code}">${esc(getHome()!.commune ?? "")}</a>`) : `<a href="#/explorer">${L("Revendiquez votre commune", "Claim your town")} →</a>`}</p>
       <p class="tiny muted">${L("Anonyme : seuls le département et, si vous l’avez choisie, la commune sont partagés, le temps de la visite.", "Anonymous: only the department and, if you chose it, the town are shared, for the length of the visit.")}</p></figcaption>
@@ -167,34 +168,59 @@ export async function heroDay() {
   const artHtml = `<figure class="hday-art hw-fig">${viz.svg}<figcaption><div class="hd-toggle" role="group" aria-label="${L("Vue", "View")}"><button type="button" data-hd="map">${L("Circonscriptions", "Districts")}</button><button type="button" data-hd="hemi">${L("Sièges", "Seats")}</button></div><p id="hd-caption"></p>${viz.legend}</figcaption></figure>`;
 
   // ---- widget 2: the shift map, small: the latest district arrows and the national change since 1848
+  // every pair of elections since 1848 (department level; the latest also district by district): the bars under the
+  // map pick one, and the map, the headline and the link follow, in place
   const series = (shifts?.pairs ?? []).filter((p) => p.level === "department" && p.national.lr).sort((x, y) => x.from - y.from);
+  const pairId = (p: ShiftPair) => `${p.fromId}>${p.toId}`;
   const nat = pair?.national.lr;
   const maxV = Math.max(1, ...series.map((p) => Math.abs(p.national.lr![2])));
+  const found = pair ? series.findIndex((p) => pairId(p) === pairId(pair)) : -1;
+  const onI = found >= 0 ? found : series.length - 1;
   const strip = series.map((p, n) => {
     const v = p.national.lr![2];
-    return `<i class="${v > 0 ? "is-pos" : "is-neg"}${n === series.length - 1 ? " is-on" : ""}" style="--h:${((48 * Math.abs(v)) / maxV).toFixed(1)}%" title="${p.from} → ${p.to} : ${signed(v)}"></i>`;
+    return `<button type="button" role="option" class="${v > 0 ? "is-pos" : "is-neg"}" data-i="${n}" aria-selected="${n === onI}" tabindex="${n === onI ? 0 : -1}" aria-label="${p.from} → ${p.to}${colon()}${signed(v)} ${L("pts", "pts")}" data-tip="${p.from} → ${p.to}\n${v > 0 ? L("Vers la droite", "Moved right") : L("Vers la gauche", "Moved left")} ${signed(v)} ${L("pts", "pts")}" style="--h:${((48 * Math.abs(v)) / maxV).toFixed(1)}%"><i></i></button>`;
   }).join("");
+  const shiftHead = (p: ShiftPair) => {
+    const n = p.national.lr!, district = p.level === "district";
+    return `<span class="hero-kicker">${L("Cartes des bascules", "Shift maps")} · ${p.from} → ${p.to}</span><b id="hw-shift">${n[2] > 0 ? L("La France a glissé à droite", "France moved right") : L("La France a glissé à gauche", "France moved left")} <span class="hw-big ${n[2] > 0 ? "is-pos" : "is-neg"}">${signed(n[2])} ${L("pts", "pts")}</span></b><span>${L(`Une flèche par ${district ? "circonscription" : "département"} : écart droite − gauche au premier tour des législatives, de ${fmt1(n[0])} à ${fmt1(n[1])} points au niveau national.`, `One arrow per ${district ? "district" : "department"}: right − left margin in the legislative first round, ${fmt1(n[0])} to ${fmt1(n[1])} points nationally.`)}</span>`;
+  };
   const shiftsHtml = pair && nat ? `<section class="hw hw-shift" aria-labelledby="hw-shift">
-    <a class="hw-head" href="#/resultats/bascules"><span class="hero-kicker">${L("Cartes des bascules", "Shift maps")} · ${pair.from} → ${pair.to}</span><b id="hw-shift">${nat[2] > 0 ? L("La France a glissé à droite", "France moved right") : L("La France a glissé à gauche", "France moved left")} <span class="hw-big ${nat[2] > 0 ? "is-pos" : "is-neg"}">${signed(nat[2])} ${L("pts", "pts")}</span></b><span>${L(`Une flèche par circonscription : écart droite − gauche au premier tour des législatives, de ${fmt1(nat[0])} à ${fmt1(nat[1])} points au niveau national.`, `One arrow per district: right − left margin in the legislative first round, ${fmt1(nat[0])} to ${fmt1(nat[1])} points nationally.`)}</span></a>
+    <a class="hw-head" id="hw-shift-head" href="#/resultats/bascules" data-pair="${esc(pairId(pair))}">${shiftHead(pair)}</a>
     <figure class="hw-fig">
       <svg id="hday-arrows" viewBox="0 0 800 780" class="home-arrows" role="img" aria-label="${L(`Bascules ${pair.from}–${pair.to}`, `Shifts ${pair.from}–${pair.to}`)}"></svg>
       <figcaption><div class="shift-legend" id="hday-legend"></div>
-        ${series.length > 3 ? `<div class="hw-strip" aria-hidden="true">${strip}</div><p class="hw-years"><span>${series[0].from}</span><span>${L("variation nationale à chaque élection", "national change at each election")}</span><span>${series.at(-1)!.to}</span></p>` : ""}
-        <a class="hw-more" href="#/resultats/bascules">${L("Remonter jusqu’à 1848", "Go back to 1848")} →</a></figcaption>
+        ${series.length > 3 ? `<div class="hw-time">
+          <button type="button" class="hw-step" data-step="-1" aria-label="${L("Élections précédentes", "Previous elections")}"><span aria-hidden="true">←</span></button>
+          <select class="hw-pick" id="hw-pick" aria-label="${L("Choisir deux élections", "Pick two elections")}">${series.map((p, n) => `<option value="${n}"${n === onI ? " selected" : ""}>${p.from} → ${p.to} (${signed(p.national.lr![2])})</option>`).join("")}</select>
+          <div class="hw-strip" role="listbox" aria-orientation="horizontal" aria-label="${L("Choisir deux élections : variation nationale à chaque élection, de 1848 à aujourd’hui", "Pick two elections: national change at each election, 1848 to today")}">${strip}</div>
+          <button type="button" class="hw-step" data-step="1" aria-label="${L("Élections suivantes", "Next elections")}"><span aria-hidden="true">→</span></button>
+        </div>
+        <p class="hw-years"><span>${series[0].from}</span><span>${L("variation nationale · choisissez une barre", "national change · pick a bar")}</span><span>${series.at(-1)!.to}</span></p>` : ""}
+        <a class="hw-more" id="hw-shift-more" href="#/resultats/bascules" data-pair="${esc(pairId(pair))}">${L("Ouvrir la carte des bascules, de 1848 à aujourd’hui", "Open the shift maps, 1848 to today")} →</a></figcaption>
     </figure>
   </section>` : "";
 
   // what the site is, before any number: neutral, so no reader is turned away by the race's state
   const headHtml = `<div class="hday-intro">
-      <p class="hday-kicker">${L("Présidentielle 2027", "2027 presidential election")} · ${fmtDate(today())} · ${L(`premier tour dans ${daysToGo} jours`, `first round in ${daysToGo} days`)}</p>
-      <h1 id="hday-title">${L("La présidentielle, chiffres en main.", "The French election, by the numbers.")}</h1>
+      <div class="hday-titlerow">
+        <h1 id="hday-title">${L("La présidentielle, chiffres en main.", "The French election, by the numbers.")}</h1>
+        <p class="hday-count"><b>${daysToGo}</b><span>${L(daysToGo > 1 ? "jours avant le premier tour" : "jour avant le premier tour", daysToGo === 1 ? "day to the first round" : "days to the first round")}</span><time datetime="${ELECTION_DAY}">${fmtDate(ELECTION_DAY)}</time></p>
+      </div>
       <p class="hday-dek">${L("Chaque sondage pesé, chaque promesse chiffrée, chaque vote de votre député. Pour se faire son avis sur pièces.", "Every poll weighed, every promise costed, every vote your MP casts. Make up your own mind, on the evidence.")}</p>
       <nav class="hday-doors" aria-label="${L("Par où commencer", "Where to start")}">
-        <a href="#/2027">${L("La prévision", "The forecast")}</a><a class="hday-quiz" href="#/quiz">${L("Le quiz : qui vous ressemble ?", "The quiz: who's closest to you?")}</a><a href="${"#/explorer"}">${L("Votre commune", "Your town")}</a><a href="#/assemblee/deputes">${L("Votre député", "Your MP")}</a><a href="#/programmes">${L("Les programmes", "The programs")}</a>
+        <a href="#/2027">${L("Qui gagnerait aujourd’hui", "See who would win today")}</a><a class="hday-quiz" href="#/quiz">${L("Faire le quiz · 2 min", "Take the quiz · 2 min")}</a><a href="#/assemblee/deputes">${L("Trouver mon député", "Find my MP")}</a><a href="#/programmes">${L("Comparer les programmes", "Compare the programmes")}</a>
       </nav>
+      <section class="box hday-town" aria-labelledby="hday-town-title">
+        <p class="hday-town-k">${L("Votre commune", "Your town")}</p>
+        <h2 id="hday-town-title">${L("Votre commune, votre député, et comment il a voté", "Your town, your MP, how it voted")}</h2>
+        ${searchBox(L("Une ville ou un code postal", "A town or a postcode"))}
+        ${getHome()?.code ? `<p class="hday-town-me">${L("Votre commune", "Your town")}${colon()}<a href="#/ville/${getHome()!.code}">${esc(getHome()!.commune ?? "")} →</a></p>` : ""}
+      </section>
     </div>`;
 
   const start = (root: HTMLElement) => {
+    const townBox = root.querySelector<HTMLElement>(".hday-town");
+    if (townBox) bindSearch(townBox);
     const art = root.querySelector<HTMLElement>(".hday-art");
     if (art) viz.start(art);
     // the live map: departments shaded by readers online, refreshed on every presence change
@@ -205,19 +231,43 @@ export async function heroDay() {
       const lpath = geoPath(lproj);
       const centre = new Map(deps.map((f) => [f.properties!.code as string, lpath.centroid(f)]));
       liveSvg.innerHTML = deps.map((f) => `<path d="${lpath(f)}" data-dep="${f.properties!.code}" class="live-dep"/>`).join("") + `<g id="live-pings"></g>`;
-      const off = onPresence((counts, total, towns) => {
-        if (!document.body.contains(liveSvg)) return off();
-        const max = Math.max(1, ...counts.values());
+      // departments shaded by readers this week; until that answers (or without the backend), by readers online now
+      let week: Awaited<ReturnType<typeof weeklyReaders>> = null;
+      let live = new Map<string, number>();
+      let liveTotal = 0;
+      // the live count sits under the weekly headline; without the weekly figure the headline already says it
+      const paintNow = () => { root.querySelector("#live-sum")!.innerHTML = week && liveTotal ? `<i class="live-dot" aria-hidden="true"></i>${L(`${liveTotal} en ce moment`, `${liveTotal} reading right now`)}` : ""; };
+      const shade = () => {
+        const counts = week?.deps ?? live, max = Math.max(1, ...counts.values());
         liveSvg.querySelectorAll<SVGPathElement>(".live-dep").forEach((p) => {
           const n = counts.get(p.dataset.dep!) ?? 0;
           p.style.setProperty("--k", n ? (0.25 + 0.75 * (n / max)).toFixed(2) : "0");
           p.classList.toggle("is-on", n > 0);
-          p.dataset.tip = `${geo.features.find((f) => f.properties!.code === p.dataset.dep)?.properties?.nom ?? p.dataset.dep}\n${n} ${L(n > 1 ? "lecteurs en ligne" : "lecteur en ligne", n > 1 ? "readers online" : "reader online")}`;
+          p.dataset.tip = `${geo.features.find((f) => f.properties!.code === p.dataset.dep)?.properties?.nom ?? p.dataset.dep}\n${n} ${week ? L(n > 1 ? "lecteurs cette semaine" : "lecteur cette semaine", n > 1 ? "readers this week" : "reader this week") : L(n > 1 ? "lecteurs en ligne" : "lecteur en ligne", n > 1 ? "readers online" : "reader online")}`;
         });
+      };
+      const nEl = root.querySelector<HTMLElement>("#wk-n")!, whatEl = root.querySelector<HTMLElement>("#wk-what")!;
+      void weeklyReaders().catch(() => null).then((w) => {
+        if (!w || !document.body.contains(liveSvg)) return;
+        week = w;
+        paintNow();
+        nEl.textContent = w.readers.toLocaleString(fr ? "fr-FR" : "en-GB");
+        const d = w.deps.size;
+        whatEl.textContent = fr
+          ? `${w.readers > 1 ? "lecteurs" : "lecteur"}${d ? `, dans ${d} département${d > 1 ? "s" : ""}` : ""}`
+          : `${w.readers > 1 ? "readers" : "reader"}${d ? `, from ${d} department${d > 1 ? "s" : ""}` : ""}`;
+        shade();
+      });
+      const off = onPresence((counts, total, towns) => {
+        if (!document.body.contains(liveSvg)) return off();
+        live = counts;
+        // no weekly figure (no backend, or the migration not applied yet): the headline counts readers online now
+        if (!week) { nEl.textContent = String(total); whatEl.textContent = L(total > 1 ? "lecteurs en ce moment" : "lecteur en ce moment", total > 1 ? "readers right now" : "reader right now"); }
+        shade();
         // a soft ping on every department with readers
         root.querySelector("#live-pings")!.innerHTML = [...counts].map(([d]) => { const c = centre.get(d); return c ? `<circle cx="${c[0].toFixed(1)}" cy="${c[1].toFixed(1)}" r="5" class="live-ping"/>` : ""; }).join("");
-        const located = [...counts.values()].reduce((a, b) => a + b, 0);
-        root.querySelector("#live-sum")!.textContent = L(`${total} ${total > 1 ? "lecteurs" : "lecteur"} en ce moment, dont ${located} ${located > 1 ? "situés" : "situé"} sur la carte.`, `${total} ${total > 1 ? "readers" : "reader"} right now, ${located} of them on the map.`);
+        liveTotal = total;
+        paintNow();
         const list = [...towns].sort((a, b) => b[1].n - a[1].n).slice(0, 8);
         root.querySelector("#live-towns")!.innerHTML = list.length
           ? list.map(([code, t]) => `<li><a href="#/ville/${code}">${esc(t.name)}</a>${t.n > 1 ? ` <b>${t.n}</b>` : ""}</li>`).join("")
@@ -226,19 +276,69 @@ export async function heroDay() {
     }
     const svg = root.querySelector<SVGSVGElement>("#hday-arrows");
     if (!svg || !pair) return;
-    const draw = () => {
-      const features = geo.features.map(rewind).filter((f) => f.properties!.code.length === 2);
-      const fcGeo = { type: "FeatureCollection", features } as GeoJSON.FeatureCollection;
-      const proj = geoConicConformal().parallels([44, 49]).rotate([-3, 0]).fitExtent([[10, 10], [790, 770]], fcGeo);
+    const features = geo.features.map(rewind).filter((f) => f.properties!.code.length === 2);
+    const fcGeo = { type: "FeatureCollection", features } as GeoJSON.FeatureCollection;
+    const proj = geoConicConformal().parallels([44, 49]).rotate([-3, 0]).fitExtent([[10, 10], [790, 770]], fcGeo);
+    const outlines = features.map((f) => `<path d="${geoPath(proj)(f)}" class="shift-base"/>`).join("");
+    let shown: ShiftPair = pair, at = onI, ticket = 0;
+    const draw = (p: ShiftPair) => {
       const k = unitsPerPx(svg, 800);
       svg.style.setProperty("--sw", `${(1.7 * k).toFixed(2)}px`);
-      svg.innerHTML = features.map((f) => `<path d="${geoPath(proj)(f)}" class="shift-base"/>`).join("") + arrowPaths(pair, "lr", (p) => proj(p) as [number, number] | null, { k, dark: isDarkTheme() });
-      root.querySelector("#hday-legend")!.innerHTML = legend("lr", 2.2 / k, true, isDarkTheme());
+      svg.innerHTML = outlines + arrowPaths(p, "lr", (q) => proj(q) as [number, number] | null, { k, dark: isDarkTheme() });
+      svg.setAttribute("aria-label", L(`Bascules ${p.from}–${p.to}`, `Shifts ${p.from}–${p.to}`));
+      root.querySelector("#hday-legend")!.innerHTML = legend("lr", (p.level === "district" ? 2.2 : 3) / k, true, isDarkTheme());
     };
+    // the older pairs carry only their national figure here; their departments come with the full file, on demand
+    const unitsFor = async (p: ShiftPair): Promise<ShiftPair> => {
+      if (pairId(p) === pairId(pair)) return pair;
+      const all = await loadShifts();
+      return all.pairs.find((x) => x.level === "department" && pairId(x) === pairId(p)) ?? p;
+    };
+    const head = root.querySelector<HTMLAnchorElement>("#hw-shift-head")!, more = root.querySelector<HTMLAnchorElement>("#hw-shift-more")!;
+    const stripEl = root.querySelector<HTMLElement>(".hw-strip");
+    const bars = [...(stripEl?.querySelectorAll<HTMLButtonElement>("button") ?? [])];
+    const steps = [...root.querySelectorAll<HTMLButtonElement>(".hw-step")];
+    const select = root.querySelector<HTMLSelectElement>("#hw-pick");
+    const paintControls = () => {
+      bars.forEach((b, n) => { b.setAttribute("aria-selected", String(n === at)); b.tabIndex = n === at ? 0 : -1; });
+      steps.forEach((b) => { b.disabled = Number(b.dataset.step) < 0 ? at === 0 : at === series.length - 1; });
+      if (select) select.value = String(at);
+    };
+    const pick = async (n: number, focus = false) => {
+      n = Math.max(0, Math.min(series.length - 1, n));
+      if (n === at && shown) { if (focus) bars[n]?.focus(); return; }
+      at = n;
+      const p = series[n], my = ++ticket;
+      paintControls();
+      if (focus) bars[n]?.focus();
+      // headline and links first (instant), then the map once its arrows are in
+      const latest = pairId(p) === pairId(pair) ? pair : p;
+      head.innerHTML = shiftHead(latest);
+      head.dataset.pair = more.dataset.pair = pairId(p);
+      svg.classList.add("is-loading");
+      const full = await unitsFor(p).catch(() => p);
+      if (my !== ticket) return; // a later pick won
+      shown = full;
+      draw(full);
+      svg.classList.remove("is-loading");
+    };
+    paintControls();
     // drawn once it comes near the screen (it sits at the foot of the page)
-    const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { io.disconnect(); draw(); } }, { rootMargin: "300px" });
+    const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { io.disconnect(); draw(shown); } }, { rootMargin: "300px" });
     io.observe(svg);
     svg.addEventListener("click", (e) => { const href = (e.target as Element).closest<SVGGElement>(".arrow")?.dataset.href; if (href) location.hash = href; });
+    stripEl?.addEventListener("click", (e) => { const b = (e.target as Element).closest<HTMLButtonElement>("button[data-i]"); if (b) void pick(Number(b.dataset.i)); });
+    stripEl?.addEventListener("keydown", (e) => {
+      const d = e.key === "ArrowLeft" || e.key === "ArrowDown" ? -1 : e.key === "ArrowRight" || e.key === "ArrowUp" ? 1 : 0;
+      const n = e.key === "Home" ? 0 : e.key === "End" ? series.length - 1 : d ? at + d : null;
+      if (n == null) return;
+      e.preventDefault();
+      void pick(n, true);
+    });
+    steps.forEach((b) => b.addEventListener("click", () => void pick(at + Number(b.dataset.step))));
+    select?.addEventListener("change", () => void pick(Number(select.value)));
+    // the page opens on the pair picked here
+    [head, more].forEach((a) => a.addEventListener("click", () => preselectShift(a.dataset.pair!)));
   };
   void head; // the race's headline now lives in the note of the day, not as the page's first words
   return { headHtml, artHtml, noteHtml, pollsHtml, parliamentHtml, shiftsHtml, start };

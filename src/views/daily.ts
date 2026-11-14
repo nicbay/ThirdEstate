@@ -15,7 +15,7 @@ import { forecast, type Forecast } from "../lib/forecast";
 import { combineOdds, oddsFor, winShare } from "../lib/markets";
 import { average, pollValue, pollsterName, type Poll, type PollFile } from "../lib/polls";
 import { dec, pct } from "../lib/format";
-import { esc, safeColor, safeUrl } from "../util";
+import { esc, FEED_ON, safeColor, safeUrl } from "../util";
 
 interface Headline { title: string; link: string; outlet: string; time: string; n: number }
 interface Brief {
@@ -187,7 +187,7 @@ export async function mountDaily(box: HTMLElement | null) {
           <p class="dy-mhead">${name(m.name)}${m.moves.map((x) => `<span class="dy-chip">${SRC[x.src]()} ${pill(x.d, x.days === 1 ? "24 h" : week)}</span>`).join("")}</p>
           ${m.headlines.length ? `<ul>${m.headlines.map((h) => `<li><a href="${esc(safeUrl(h.link))}" target="_blank" rel="noopener">${esc(h.title)}</a> <span class="muted small">${esc(h.outlet)}, ${fmtDate(h.time)}${h.n > 1 ? ` · ${h.n} ${L("articles sur le sujet", "articles on the story")}` : ""}</span></li>`).join("")}</ul>` : `<p class="muted small">${L("Aucun titre du fil d’actualité ne nomme ce candidat sur la période : pas d’explication évidente.", "No headline in the feed names this candidate over the period: no obvious explanation.")}</p>`}
         </li>`).join("")}</ul>
-        <p class="muted small">${L("Les mouvements des marchés et les titres viennent du point quotidien", "Market moves and headlines come from the daily brief of")} ${b ? fmtDate(b.date) : ""}. ${L("Les titres viennent du fil d’actualité du site (presse nationale) et nomment le candidat sur la période du mouvement. Ce sont des éléments de contexte, pas des causes établies : un marché prédictif peu liquide peut bouger sur un seul gros ordre, et une moyenne de sondages bouge aussi quand un sondage ancien en sort.", "Headlines come from the site’s news feed (national press) and name the candidate over the period of the move. They are context, not established causes: a thinly traded prediction market can move on a single large order, and a polling average also moves when an old poll drops out.")} <a href="#/fil">${L("Voir le fil", "See the feed")}</a></p>`
+        <p class="muted small">${L("Les mouvements des marchés et les titres viennent du point quotidien", "Market moves and headlines come from the daily brief of")} ${b ? fmtDate(b.date) : ""}. ${L("Les titres viennent du fil d’actualité du site (presse nationale) et nomment le candidat sur la période du mouvement. Ce sont des éléments de contexte, pas des causes établies : un marché prédictif peu liquide peut bouger sur un seul gros ordre, et une moyenne de sondages bouge aussi quand un sondage ancien en sort.", "Headlines come from the site’s news feed (national press) and name the candidate over the period of the move. They are context, not established causes: a thinly traded prediction market can move on a single large order, and a polling average also moves when an old poll drops out.")}${FEED_ON ? ` <a href="#/fil">${L("Voir le fil", "See the feed")}</a>` : ""}</p>`
         : `<p class="muted">${L("Aucun mouvement notable : moins d’un demi-point en 24 heures et d’un point en sept jours dans la moyenne des sondages, moins d’un point en 24 heures et de deux points en sept jours sur les marchés.", "No notable move: under half a point in 24 hours and one point in seven days in the polling average, under one point in 24 hours and two points in seven days on the markets.")}</p>`}
 
       <h3>${L("Les derniers sondages", "The latest polls")}</h3>
