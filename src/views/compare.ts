@@ -10,6 +10,7 @@ import { toast } from "../lib/toast";
 import { esc, safeColor } from "../util";
 import { CRIME_LABELS, bindSearch, depOf, loadDepartmentTowns, loadTownBundle, plmCity, plmWhole, searchBox, townExtra, type TownData } from "./explore";
 import "../styles/compare.css";
+import { armsSlot, loadCommuneArms, loadDepartmentArms, paintArms } from "../lib/arms";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type Any = any;
@@ -155,8 +156,21 @@ function gap(a: number, b: number, k: Kpi): string {
   return r >= 2 ? `×${r >= 10 ? fmtNum(Math.round(r)) : dec(r)}` : `+${Math.round((r - 1) * 100)}${L(" %", "%")}`;
 }
 
+/** Each town's coat of arms in pixel art, with its department's (a link to the department and its MPs). */
+async function fillFlags(root: HTMLElement) {
+  const da = await loadDepartmentArms();
+  for (const el of root.querySelectorAll<HTMLElement>(".town-flag[data-commune]")) {
+    const code = el.dataset.commune!, dep = el.dataset.dep!, name = el.dataset.name ?? code;
+    const ca = await loadCommuneArms(dep);
+    el.innerHTML = armsSlot(ca[code] ?? ca[plmCity(code)], L(`Armoiries : ${name}`, `Coat of arms: ${name}`), "m")
+      + armsSlot(da[dep], L("Le département, ses communes et ses députés", "The department, its towns and MPs"), "s", `#/explorer/${dep}`);
+    el.removeAttribute("aria-hidden");
+  }
+  paintArms(root);
+}
+
 function flagSlot(s: Side) {
-  // placeholder: a pixel-art flag renderer fills .town-flag later (keyed by data-commune / data-dep)
+  // filled by fillFlags: the town's arms and its department's
   return `<span class="town-flag" data-commune="${esc(s.code)}" data-dep="${esc(s.dep)}" data-name="${esc(s.name)}" aria-hidden="true"></span>`;
 }
 
@@ -226,6 +240,7 @@ export async function renderCompare(app: HTMLElement, codeA?: string, codeB?: st
     app.innerHTML = `<section class="page compare">${top}
       <div class="cmp-pick card"><p>${L("Choisissez une première commune.", "Pick a first town.")}</p>${searchBox(L("Une ville, un code postal", "A town, a postcode"))}</div></section>`;
     bindSearch(app, (c) => (location.hash = `#/comparer/${c}`));
+    void fillFlags(app);
     return;
   }
 
@@ -238,6 +253,7 @@ export async function renderCompare(app: HTMLElement, codeA?: string, codeB?: st
   if (!b) {
     app.innerHTML = `<section class="page compare">${top}${heads}</section>`;
     bindSearch(app, (c) => (location.hash = `#/comparer/${a.code}/${c}`));
+    void fillFlags(app);
     return;
   }
 
@@ -275,6 +291,7 @@ export async function renderCompare(app: HTMLElement, codeA?: string, codeB?: st
 
   // each "change town" box replaces its own side
   const [boxA, boxB] = [app.querySelector<HTMLElement>(".cmp-a"), app.querySelector<HTMLElement>(".cmp-b")];
+  void fillFlags(app);
   if (boxA) bindSearch(boxA, (c) => (location.hash = `#/comparer/${c}/${b.code}`));
   if (boxB) bindSearch(boxB, (c) => (location.hash = `#/comparer/${a.code}/${c}`));
   app.querySelectorAll<HTMLDetailsElement>(".cmp-change").forEach((d) => d.addEventListener("toggle", () => { if (d.open) d.querySelector("input")?.focus(); }));
