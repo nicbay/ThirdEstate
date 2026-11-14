@@ -4,6 +4,7 @@ import { fetchJson } from "../data";
 import { L, fmtDate, fmtNum, fmtPct } from "../i18n";
 import { SENATE_SEATS, hemicycle, senateSeatRank } from "../lib/hemicycle";
 import { esc, safeColor, safeUrl } from "../util";
+import { depArmsSlot } from "../lib/arms";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface Senateur {
@@ -79,7 +80,7 @@ export async function renderSenateur(app: HTMLElement, id: string) {
       <p class="crumbs"><a href="#/senat">${L("Sénat", "Senate")}</a></p>
       <div class="mp-head card" style="--c:${safeColor(s.groupe?.couleur)}">
         <img src="${senPhoto(s)}" alt="" data-hide-broken/>
-        <div class="mp-id"><p class="eyebrow">${L(s.civ === "Mme" ? "Sénatrice" : "Sénateur", "Senator")}, ${esc(s.circonscription)}</p><h1>${esc(s.civ)} ${esc(s.prenom)} ${esc(s.nom)}</h1><p><span class="chip">${esc(s.groupe?.abrev ?? "")}</span> ${esc(s.groupe?.libelle ?? "")}</p>
+        <div class="mp-id"><p class="eyebrow mp-where">${depArmsSlot(s.numDepartement, s.circonscription)}<span>${L(s.civ === "Mme" ? "Sénatrice" : "Sénateur", "Senator")}, ${esc(s.circonscription)}</span></p><h1>${esc(s.civ)} ${esc(s.prenom)} ${esc(s.nom)}</h1><p><span class="chip">${esc(s.groupe?.abrev ?? "")}</span> ${esc(s.groupe?.libelle ?? "")}</p>
         <p class="muted small">${age(s) ?? "?"} ${L("ans", "years old")}${s.profession ? `, ${esc(s.profession)}` : ""}${s.commission ? `. ${esc(s.commission.libelle)}${s.commission.fonction ? ` (${esc(s.commission.fonction)})` : ""}` : ""}</p></div>
       </div>
       <div class="mp-grid-2">

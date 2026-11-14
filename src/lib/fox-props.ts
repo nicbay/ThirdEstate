@@ -57,7 +57,7 @@ export class Prop {
   /** The fox's mouth (walking or sitting) or the tip of its nose (balancing), in page coordinates. */
   private anchor(m: "held" | "nose") {
     const f = this.api.face(), x = this.api.x(), y = this.api.y();
-    return m === "held" ? { x: x + f * 34 - this.w / 2, y: y - 34 - this.h / 2 } : { x: x + f * 18 - this.w / 2, y: y - 70 - this.h };
+    return m === "held" ? { x: x + f * 40 - this.w / 2, y: y - 36 - this.h / 2 } : { x: x + f * 18 - this.w / 2, y: y - 70 - this.h };
   }
   /** Glide to the mouth (or nose), then stay there. */
   hold(m: "held" | "nose" = "held", T = 0.16) { this.tweenTo(() => this.anchor(m), T, () => { this.mode = m; }); }

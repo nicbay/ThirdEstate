@@ -2,7 +2,7 @@
 // Used at the top of the town page and on the homepage for the reader's own town.
 // Everything comes from data the site already holds: district profiles (crime, income), the MPs,
 // and the 2022 → 2024 legislative first rounds by district.
-import { loadDeputes, loadShifts, type Depute } from "../data";
+import { loadDeputes, loadShiftsLatest, type Depute } from "../data";
 import { L, fmtNum, getLang, plural } from "../i18n";
 import { esc, safeColor } from "../util";
 import { photoUrl } from "./deputes";
@@ -22,7 +22,7 @@ const pts = (v: number) => `${v > 0 ? "+" : v < 0 ? "−" : "±"}${Math.abs(Math
 const list = (xs: string[]) => (xs.length < 2 ? xs.join("") : `${xs.slice(0, -1).join(", ")} ${L("et", "and")} ${xs.at(-1)}`);
 
 export async function townBrief(code: string, name: string): Promise<Brief> {
-  const [{ towns }, deputes, nat, shifts] = await Promise.all([loadDepartmentTowns(depOf(code)), loadDeputes(), loadNational().catch(() => null), loadShifts().catch(() => null)]);
+  const [{ towns }, deputes, nat, shifts] = await Promise.all([loadDepartmentTowns(depOf(code)), loadDeputes(), loadNational().catch(() => null), loadShiftsLatest().catch(() => null)]);
   const t = towns.get(code) ?? plmWhole(towns, code);
   const fr = getLang() === "fr";
   const mps = (t?.districts ?? [])

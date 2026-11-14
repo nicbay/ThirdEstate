@@ -8,6 +8,7 @@ import { esc, safeColor } from "../util";
 import { PLATFORMS, age, presence } from "./assemblee";
 import { photoUrl } from "./deputes";
 import { renderDistrictProfile } from "./district-profile";
+import { depArmsSlot } from "../lib/arms";
 
 export async function renderCirco(app: HTMLElement, code: string) {
   const dep = code.slice(0, -2);
@@ -20,7 +21,7 @@ export async function renderCirco(app: HTMLElement, code: string) {
   app.innerHTML = `
     <section class="page">
       <p class="muted small crumbs"><a href="#/assemblee">${L("Assemblée", "Assembly")}</a> › <a href="#/assemblee/${dep}">${esc(depName)}</a> › ${ordinal}</p>
-      <div class="page-head"><h1>${esc(depName)} · ${ordinal}</h1></div>
+      <div class="page-head head-arms">${depArmsSlot(dep, depName, "s")}<h1>${esc(depName)} · ${ordinal}</h1></div>
       <div class="pres-grid">
         <div class="stack-col">
           ${

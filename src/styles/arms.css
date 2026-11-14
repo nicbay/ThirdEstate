@@ -4,6 +4,8 @@
 .arms canvas { image-rendering: pixelated; width: auto; display: block; }
 .arms-s canvas, .arms-m canvas { height: 64px; }
 .arms-l canvas { height: 104px; }
+.arms-xs canvas { height: 40px; }
+.arms-xl canvas { height: clamp(96px, 22vw, 140px); }
 a.arms { border-radius: 2px; }
 a.arms:hover canvas, a.arms:focus-visible canvas { filter: brightness(1.12); }
 a.arms:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
@@ -21,4 +23,10 @@ a.arms:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .mine-id { display: flex; align-items: flex-end; gap: 0.9rem; margin-bottom: 0.9rem; }
 .mine-photo { flex: 0 1 260px; aspect-ratio: 16 / 9; overflow: hidden; display: block; }
 .mine-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.mine-arms { display: flex; align-items: flex-end; gap: 0.5rem; }
+/* the town's arms large, in the middle of the space beside the photo; the department's small, at its foot */
+.mine-arms { flex: 1 1 auto; align-self: stretch; display: flex; align-items: center; justify-content: center; gap: 0.6rem; min-height: 96px; }
+.mine-arms a.arms { align-self: flex-end; }
+/* the department's arms beside a person's district (MP, senator) or a district's title */
+.mp-where { display: flex; align-items: center; gap: 0.55rem; }
+.head-arms { display: flex; align-items: center; gap: 0.9rem; }
+.head-arms h1 { margin: 0; }
