@@ -83,10 +83,8 @@
   /* stepped corners for solid shapes (buttons, tags, photos) */
   --px-clip: polygon(0 4px, 2px 4px, 2px 2px, 4px 2px, 4px 0, calc(100% - 4px) 0, calc(100% - 4px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 4px, 100% 4px, 100% calc(100% - 4px), calc(100% - 2px) calc(100% - 4px), calc(100% - 2px) calc(100% - 2px), calc(100% - 4px) calc(100% - 2px), calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 2px), 2px calc(100% - 2px), 2px calc(100% - 4px), 0 calc(100% - 4px));
   /* a dark band dissolving into the page (and the page into the footer): two rows of 4px squares */
-  /* pixel separators: a small flag running along the edge, blue low, white high, red low, white high (the logo's
-     colours: bleu France #000091 on paper, its lighter on-dark blue on the night band) */
-  --px-dither: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' shape-rendering='crispEdges'%3E%3Cpath fill='%235470ff' d='M0 4h4v4H0z'/%3E%3Cpath fill='%23ffffff' d='M4 0h4v4H4zM12 0h4v4h-4z'/%3E%3Cpath fill='%23e1000f' d='M8 4h4v4H8z'/%3E%3C/svg%3E");
-  --px-dither-night: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' shape-rendering='crispEdges'%3E%3Cpath fill='%23000091' d='M0 4h4v4H0z'/%3E%3Cpath fill='%23ffffff' d='M4 0h4v4H4zM12 0h4v4h-4z'/%3E%3Cpath fill='%23e1000f' d='M8 4h4v4H8z'/%3E%3C/svg%3E");
+  --px-dither: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' shape-rendering='crispEdges'%3E%3Cpath fill='%23f2f0e9' d='M0 0h4v4H0zM4 4h4v4H4zM12 4h4v4h-4z'/%3E%3C/svg%3E");
+  --px-dither-night: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' shape-rendering='crispEdges'%3E%3Cpath fill='%230b0d18' d='M0 0h4v4H0zM4 4h4v4H4zM12 4h4v4h-4z'/%3E%3C/svg%3E");
   /* a faint grid of 2px squares for the dark bands */
   --px-grid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Cpath fill='%23fff' fill-opacity='.11' d='M0 0h2v2H0z'/%3E%3C/svg%3E");
 
@@ -160,8 +158,7 @@
   --shadow-hard: 6px 6px 0 rgba(0, 0, 0, 0.45);
   --px-soft: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' shape-rendering='crispEdges'%3E%3Cpath fill='%23171b2d' d='M4 2h10v2h2v10h-2v2H4v-2H2V4h2z'/%3E%3Cpath fill='%233a3f5c' d='M4 0h10v2H4zM2 2h2v2H2zM14 2h2v2h-2zM0 4h2v10H0zM16 4h2v10h-2zM2 14h2v2H2zM14 14h2v2h-2zM4 16h10v2H4z'/%3E%3C/svg%3E");
   --px-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' shape-rendering='crispEdges'%3E%3Cpath fill='%23171b2d' d='M4 2h10v2h2v10h-2v2H4v-2H2V4h2z'/%3E%3Cpath fill='%23e9ebf3' d='M4 0h10v2H4zM2 2h2v2H2zM14 2h2v2h-2zM0 4h2v10H0zM16 4h2v10h-2zM2 14h2v2H2zM14 14h2v2h-2zM4 16h10v2H4z'/%3E%3C/svg%3E");
-  --px-dither: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' shape-rendering='crispEdges'%3E%3Cpath fill='%235470ff' d='M0 4h4v4H0z'/%3E%3Cpath fill='%23ffffff' d='M4 0h4v4H4zM12 0h4v4h-4z'/%3E%3Cpath fill='%23e1000f' d='M8 4h4v4H8z'/%3E%3C/svg%3E");
-  --px-dither-night: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' shape-rendering='crispEdges'%3E%3Cpath fill='%235470ff' d='M0 4h4v4H0z'/%3E%3Cpath fill='%23ffffff' d='M4 0h4v4H4zM12 0h4v4h-4z'/%3E%3Cpath fill='%23e1000f' d='M8 4h4v4H8z'/%3E%3C/svg%3E");
+  --px-dither: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' shape-rendering='crispEdges'%3E%3Cpath fill='%230f1220' d='M0 0h4v4H0zM4 4h4v4H4zM12 4h4v4h-4z'/%3E%3C/svg%3E");
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -190,7 +187,6 @@
     --shadow-hard: 6px 6px 0 rgba(0, 0, 0, 0.45);
     --px-soft: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' shape-rendering='crispEdges'%3E%3Cpath fill='%23171b2d' d='M4 2h10v2h2v10h-2v2H4v-2H2V4h2z'/%3E%3Cpath fill='%233a3f5c' d='M4 0h10v2H4zM2 2h2v2H2zM14 2h2v2h-2zM0 4h2v10H0zM16 4h2v10h-2zM2 14h2v2H2zM14 14h2v2h-2zM4 16h10v2H4z'/%3E%3C/svg%3E");
     --px-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' shape-rendering='crispEdges'%3E%3Cpath fill='%23171b2d' d='M4 2h10v2h2v10h-2v2H4v-2H2V4h2z'/%3E%3Cpath fill='%23e9ebf3' d='M4 0h10v2H4zM2 2h2v2H2zM14 2h2v2h-2zM0 4h2v10H0zM16 4h2v10h-2zM2 14h2v2H2zM14 14h2v2h-2zM4 16h10v2H4z'/%3E%3C/svg%3E");
-    --px-dither: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' shape-rendering='crispEdges'%3E%3Cpath fill='%235470ff' d='M0 4h4v4H0z'/%3E%3Cpath fill='%23ffffff' d='M4 0h4v4H4zM12 0h4v4h-4z'/%3E%3Cpath fill='%23e1000f' d='M8 4h4v4H8z'/%3E%3C/svg%3E");
-    --px-dither-night: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' shape-rendering='crispEdges'%3E%3Cpath fill='%235470ff' d='M0 4h4v4H0z'/%3E%3Cpath fill='%23ffffff' d='M4 0h4v4H4zM12 0h4v4h-4z'/%3E%3Cpath fill='%23e1000f' d='M8 4h4v4H8z'/%3E%3C/svg%3E");
+    --px-dither: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' shape-rendering='crispEdges'%3E%3Cpath fill='%230f1220' d='M0 0h4v4H0zM4 4h4v4H4zM12 4h4v4h-4z'/%3E%3C/svg%3E");
   }
 }

@@ -4,7 +4,7 @@
 import "../styles/pollsters.css";
 import { loadPolls } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
-import { RATINGS, UNRATED_WEIGHT, pollWeight, pollsterName, pollsterRating, type Grade, type PollsterRating } from "../lib/polls";
+import { RATINGS, UNRATED_WEIGHT, pollWeight, pollsterAnchor, pollsterName, pollsterRating, type Grade, type PollsterRating } from "../lib/polls";
 import { dec, signed } from "../lib/format";
 import { esc, safeUrl } from "../util";
 
@@ -23,7 +23,7 @@ export async function renderPollsters(app: HTMLElement) {
   const unrated = R.pollsters.filter((p) => !p.grade);
   const presCount = R.elections.filter((e) => e.type === "presidential").length;
 
-  const row = (p: PollsterRating) => `<tr>
+  const row = (p: PollsterRating) => `<tr id="${pollsterAnchor(p.name)}">
       <th scope="row"><button type="button" class="pg-open" aria-expanded="false" data-name="${esc(p.name)}">${esc(p.name)}</button></th>
       <td>${badge(p.grade)}</td>
       <td class="num">${p.score == null ? "—" : `${signed(p.score, 2)}`}</td>
@@ -110,5 +110,10 @@ export async function renderPollsters(app: HTMLElement) {
       b.setAttribute("aria-expanded", String(open));
     }),
   );
+  // arriving from a grade letter on the homepage chart (#/sondages/instituts#pg-ifop): open that institute
+  const m = /#(pg-[\w-]+)$/.exec(location.hash);
+  const tr = m ? document.getElementById(m[1]) : null;
+  if (tr) { tr.querySelector<HTMLButtonElement>(".pg-open")?.click(); tr.scrollIntoView({ block: "center" }); }
   void pollWeight;
 }
+

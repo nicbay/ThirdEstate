@@ -13,6 +13,7 @@ import { mpChip, townBrief } from "./brief";
 import { mountForecastChart, scenarioForecast, scenarioFromUrl } from "./forecast-chart";
 import { forecastLine, heroDay } from "./hero-day";
 import { mountOcean } from "../lib/ocean";
+import { drawDayUpdate } from "./day-update";
 
 export async function renderHome(app: HTMLElement) {
   const [polls, markets, hero] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null), heroDay()]);
@@ -34,6 +35,8 @@ export async function renderHome(app: HTMLElement) {
         <div class="px-edge" aria-hidden="true"></div>
       </section>
 
+      <div id="dup"></div>
+
       <p class="quiz-line"><b>${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</b> <span>${L("Dix votes de l’Assemblée, et le député et le candidat les plus proches de vous.", "Ten Assembly votes, and the MP and the candidate closest to you.")}</span> <a class="button" href="#/quiz">${L("Faire le quiz", "Take the quiz")}</a></p>
 
       <div id="mine"></div>
@@ -47,13 +50,14 @@ export async function renderHome(app: HTMLElement) {
     </section>`;
   hero.start(app);
   mountOcean(app.querySelector<HTMLElement>(".hday")!);
+  void drawDayUpdate(app.querySelector<HTMLElement>("#dup")!);
   if (home?.code) drawMine(app.querySelector<HTMLElement>("#mine")!, home.code, home.commune ?? home.code);
 
   // ---------- polls chart with the projection to election day and the scenarios ----------
   // five months back on a wide screen, about three on a phone: the projection to the first round gets as much room
   const from = shiftDays(latest, window.innerWidth < 640 ? -100 : -150);
-  // every candidate in the model (polled at least FIELD_MIN_POLLS times lately), largest first: the figures at the
-  // line ends then add up to 100, whatever the scenarios
+  // every candidate in the model (polled at least FIELD_MIN_POLLS times lately), largest first; the chart leaves out
+  // those under 4 %
   const field = scenarioForecast(polls, markets, []).projection.map((p) => p.name);
   const rank = (n: string) => now.find((r) => r.name === n)?.avg ?? 0;
   const shown = [...field].sort((a, b) => rank(b) - rank(a));
@@ -61,7 +65,7 @@ export async function renderHome(app: HTMLElement) {
   const foot = app.querySelector<HTMLElement>("#hq-foot")!;
   const trendBox = app.querySelector<HTMLElement>("#trend")!;
   const redraw = mountForecastChart(trendBox, {
-    polls, markets, from: () => from, shown: () => shown, height: 340, after: foot,
+    polls, markets, from: () => from, shown: () => shown, height: 340, after: foot, views: true, minShare: 4,
     onChange: (fc) => { if (num) num.innerHTML = forecastLine(fc, fc.scenarios.length ? scenarioForecast(polls, markets, []) : undefined); },
   });
   // the method behind the average, folded with the rest of the method
