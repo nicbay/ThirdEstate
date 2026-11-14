@@ -140,12 +140,12 @@ export function mountForecastChart(box: HTMLElement, o: Opts) {
     chartBox.innerHTML = lineChart(series, { height: o.height });
     const who = lastPoll ? ` (${esc(pollsterName(lastPoll.pollster))})` : "";
     key.innerHTML = L(
-      `Ligne : moyenne des sondages jusqu’au ${fmtDate(lastDate)}, pondérée par la note des instituts. Points : chaque sondage (survolez pour l’institut et sa note) ; cerclé, le dernier${who}, dans la couleur de sa note. ${below}`,
-      `Line: polling average up to ${fmtDate(lastDate)}, weighted by institute grade. Dots: each poll (hover for the institute and its grade); ringed, the latest${who}, in its grade’s colour. ${below}`,
+      `Ligne : moyenne des sondages jusqu’au ${fmtDate(lastDate)}, pondérée par la note des instituts et corrigée du penchant de chacun. Points : chaque sondage (survolez pour l’institut et sa note) ; cerclé, le dernier${who}, dans la couleur de sa note. ${below}`,
+      `Line: polling average up to ${fmtDate(lastDate)}, weighted by institute grade and corrected for each institute's lean. Dots: each poll (hover for the institute and its grade); ringed, the latest${who}, in its grade’s colour. ${below}`,
     );
     note.innerHTML = L(
-      `Chaque sondage compte selon la note de son institut (de A+ à F), tirée de l’écart entre ses derniers sondages et les résultats depuis 2002. <a href="#/sondages/instituts">Le classement des instituts</a>.`,
-      `Each poll counts by its institute’s grade (A+ to F), from how far its final polls landed from the results since 2002. <a href="#/sondages/instituts">The pollster ranking</a>.`,
+      `Chaque sondage compte selon la note de son institut (de A+ à F), tirée de l’écart entre ses derniers sondages et les résultats depuis 2002, la taille de son échantillon, et moins quand l’institut publie souvent (ses sondages à moins de 14 jours se partagent un poids) ou quand un chiffre s’écarte nettement des autres. Le penchant de chaque institut (un candidat qu’il place toujours plus haut ou plus bas que les autres) est mesuré sur 120 jours et retiré de ses sondages, comme le fait FiveThirtyEight. Les points montrent les chiffres bruts. <a href="#/sondages/instituts">Le classement des instituts et leurs penchants</a>.`,
+      `Each poll counts by its institute’s grade (A+ to F), from how far its final polls landed from the results since 2002, by its sample size, and less when the institute publishes often (its polls within 14 days share one weight) or when a figure is far from the others. Each institute’s lean (a candidate it always puts higher or lower than the others) is measured over 120 days and taken off its polls, as FiveThirtyEight does. The dots show the raw figures. <a href="#/sondages/instituts">The pollster ranking and their leans</a>.`,
     );
     o.onChange?.(scenarioForecast(o.polls, o.markets, []));
   };

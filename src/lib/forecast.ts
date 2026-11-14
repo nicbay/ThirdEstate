@@ -21,7 +21,7 @@
 import type { Market } from "../data";
 import { meta, type Bloc } from "./candidates";
 import { combineOdds, winShare } from "./markets";
-import { average, duelAverages, pollWeight, pollsInWindow, referenceLineup, trend, type Duel, type Poll } from "./polls";
+import { average, duelAverages, houseEffects, pollWeight, pollsInWindow, pollsterName, pollsterRating, referenceLineup, trend, type Duel, type Poll } from "./polls";
 import primaryData from "../../public/data/2027/primary.json";
 import rejectionData from "../../public/data/2027/rejection.json";
 import candidateIndex from "../../public/data/candidates/index.json";
@@ -327,15 +327,18 @@ export function fieldLineup(polls: Poll[], asOf: string): { n: number; rows: { n
   const FIELD = fieldNames(polls, asOf);
   const score = (h: Record<string, number>) => Object.keys(h).reduce((s, k) => s + (FIELD.has(norm(k)) ? 1 : -1), 0);
   const acc = new Map<string, [number, number][]>(); // [value, the poll's grade weight]
+  // each institute's lean taken off, as in the polling average
+  const house = houseEffects(polls, ps.reduce((m, p) => (p.end > m ? p.end : m), ps[0]?.end ?? asOf));
   for (const p of ps) {
     const w = pollWeight(p);
+    const lean = house.get(pollsterRating(p.pollster)?.name ?? pollsterName(p.pollster));
     if (!p.hyps.length) continue;
     const best = Math.max(...p.hyps.map(score));
     const hs = p.hyps.filter((h) => score(h) === best);
     for (const n of new Set(hs.flatMap((h) => Object.keys(h)))) {
       if (!FIELD.has(norm(n))) continue; // tested too rarely so far: left out, the others scaled up to 100
       const v = hs.map((h) => h[n]).filter((x): x is number => x != null);
-      if (v.length) acc.set(n, [...(acc.get(n) ?? []), [v.reduce((a, b) => a + b, 0) / v.length, w]]);
+      if (v.length) acc.set(n, [...(acc.get(n) ?? []), [v.reduce((a, b) => a + b, 0) / v.length - (lean?.get(n)?.effect ?? 0), w]]);
     }
   }
   const rows = [...acc].map(([name, v]) => ({ name, share: v.reduce((a, [x, w]) => a + x * w, 0) / v.reduce((a, [, w]) => a + w, 0) }));

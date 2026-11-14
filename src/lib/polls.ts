@@ -10,7 +10,15 @@
 // 3. Candidates tested in fewer than 40% of those polls are left out of the average.
 // 4. Polls are weighted by their institute's grade (public/data/polls/pollsters.json, from how close each
 //    firm's final polls came to the results of past elections): an A+ poll counts 1, an F poll 0.2, a firm
-//    with no track record 0.6. A poorly graded poll moves the average less.
+//    with no track record 0.6. A poorly graded poll moves the average less. Three more factors, after
+//    FiveThirtyEight's averages: sample size (√ of the sample over the window's median, kept between 0.6 and
+//    1.4), frequency (an institute's polls within 14 days of each other share the weight of one) and outliers
+//    (a figure far from the others, more than 3 points and three times the typical gap, counts a quarter).
+// 5. House effects: each institute's lean on each candidate (does it run high on the RN, low on the left?)
+//    is measured over the last HOUSE_DAYS: every poll against the average of the *other* polls at its date,
+//    the gaps averaged per institute, shrunk toward zero when it has few polls (n / (n + HOUSE_SHRINK)), and
+//    taken relative to the field (the institutes' leans weighted by poll count sum to zero). The lean is
+//    taken off each poll's figure before averaging. Dots on charts keep the raw figures.
 // The same `average` feeds every number and chart line on the site (trend() is it, sampled weekly).
 
 import ratingsData from "../../public/data/polls/pollsters.json";
@@ -121,6 +129,82 @@ export function pollsInWindow(polls: Poll[], asOf: string, days = WINDOW, onePer
   return inWin.filter((p) => { const k = pollsterName(p.pollster); if (seen.has(k)) return false; seen.add(k); return true; });
 }
 
+/** Days of polls used to measure each institute's lean, and the shrinkage toward zero (in polls). */
+export const HOUSE_DAYS = 120, HOUSE_SHRINK = 3;
+const firmOf = (p: Pick<Poll, "pollster">) => pollsterRating(p.pollster)?.name ?? pollsterName(p.pollster);
+
+/** The plain weighted average of `win` for one candidate (grade × sample × frequency), or null. */
+function plainMean(win: Poll[], name: string, weights: Map<Poll, number>) {
+  let sw = 0, sv = 0;
+  for (const p of win) {
+    const v = pollValue(p, name);
+    if (v == null) continue;
+    const w = weights.get(p) ?? pollWeight(p);
+    sw += w; sv += w * v;
+  }
+  return sw > 0 ? sv / sw : null;
+}
+
+/** Each poll's weight in a window: grade × sample size × frequency (outliers are handled per candidate). */
+function windowWeights(win: Poll[]): Map<Poll, number> {
+  const ns = win.map((p) => p.sample).filter((n): n is number => !!n && n > 0).sort((a, b) => a - b);
+  const med = ns.length ? ns[Math.floor(ns.length / 2)] : 1000;
+  const out = new Map<Poll, number>();
+  for (const p of win) {
+    const size = p.sample ? Math.max(0.6, Math.min(1.4, Math.sqrt(p.sample / med))) : 1;
+    const t = Date.parse(p.end), f = firmOf(p);
+    const close = win.filter((q) => firmOf(q) === f && Math.abs(Date.parse(q.end) - t) <= 14 * DAY).length;
+    out.set(p, pollWeight(p) * size / Math.max(1, close));
+  }
+  return out;
+}
+
+export interface HouseEffect { effect: number; n: number }
+const houseCache = new WeakMap<Poll[], Map<string, Map<string, Map<string, HouseEffect>>>>();
+/** Institute → candidate → lean (points, + = runs high), measured on the HOUSE_DAYS up to `asOf`. */
+export function houseEffects(polls: Poll[], asOf: string, days = WINDOW): Map<string, Map<string, HouseEffect>> {
+  let byPolls = houseCache.get(polls);
+  if (!byPolls) houseCache.set(polls, (byPolls = new Map()));
+  const key = `${asOf}|${days}`;
+  const hit = byPolls.get(key);
+  if (hit) return hit;
+  const t = Date.parse(asOf);
+  const span = polls.filter((p) => Date.parse(p.end) <= t && Date.parse(p.end) > t - HOUSE_DAYS * DAY);
+  // gaps: each poll against the other polls' average at its own date
+  const gaps = new Map<string, Map<string, number[]>>();
+  for (const p of span) {
+    const others = polls.filter((q) => q !== p);
+    const win = pollsInWindow(others, p.end, days);
+    if (win.length < 3) continue;
+    const ws = windowWeights(win);
+    const f = firmOf(p);
+    for (const name of new Set(p.hyps.flatMap((h) => Object.keys(h)))) {
+      const v = pollValue(p, name), m = plainMean(win, name, ws);
+      if (v == null || m == null) continue;
+      const byCand = gaps.get(f) ?? new Map<string, number[]>();
+      gaps.set(f, byCand);
+      byCand.set(name, [...(byCand.get(name) ?? []), v - m]);
+    }
+  }
+  // shrink toward zero, then centre on the field for each candidate
+  const out = new Map<string, Map<string, HouseEffect>>();
+  const totals = new Map<string, { s: number; n: number }>();
+  for (const [f, byCand] of gaps) {
+    const m = new Map<string, HouseEffect>();
+    for (const [name, xs] of byCand) {
+      const e = (xs.reduce((a, b) => a + b, 0) / xs.length) * (xs.length / (xs.length + HOUSE_SHRINK));
+      m.set(name, { effect: e, n: xs.length });
+      const tt = totals.get(name) ?? { s: 0, n: 0 };
+      tt.s += e * xs.length; tt.n += xs.length;
+      totals.set(name, tt);
+    }
+    out.set(f, m);
+  }
+  for (const m of out.values()) for (const [name, h] of m) { const tt = totals.get(name)!; h.effect -= tt.s / tt.n; }
+  byPolls.set(key, out);
+  return out;
+}
+
 export interface AvgRow {
   name: string;
   avg: number;
@@ -131,16 +215,30 @@ export interface AvgRow {
 export function average(polls: Poll[], asOf: string, days = WINDOW, minShare = MIN_SHARE, onePerPollster = false): AvgRow[] {
   const win = pollsInWindow(polls, asOf, days, onePerPollster);
   const names = new Set(win.flatMap((p) => p.hyps.flatMap((h) => Object.keys(h))));
+  const ws = windowWeights(win);
+  const house = houseEffects(polls, win[0]?.end ?? asOf, days);
   const rows: AvgRow[] = [];
   for (const name of names) {
-    let sw = 0, sv = 0, n = 0;
+    // figures with the institute's lean taken off
+    const xs: { v: number; w: number }[] = [];
     for (const p of win) {
       const v = pollValue(p, name);
       if (v == null) continue;
-      const w = pollWeight(p);
-      sw += w; sv += w * v; n++;
+      xs.push({ v: v - (house.get(firmOf(p))?.get(name)?.effect ?? 0), w: ws.get(p)! });
     }
-    if (n && n >= minShare * win.length && sw > 0) rows.push({ name, avg: sv / sw, n });
+    if (!xs.length || xs.length < minShare * win.length) continue;
+    // outliers: far from the others (median), more than 3 points and three times the typical gap, count a quarter
+    const sorted = xs.map((x) => x.v).sort((a, b) => a - b);
+    const mid = sorted[Math.floor(sorted.length / 2)];
+    const dev = xs.map((x) => Math.abs(x.v - mid)).sort((a, b) => a - b);
+    const typical = Math.max(1, dev[Math.floor(dev.length / 2)]);
+    let sw = 0, sv = 0;
+    for (const x of xs) {
+      const d = Math.abs(x.v - mid);
+      const w = xs.length >= 4 && d > 3 && d > 3 * typical ? x.w * 0.25 : x.w;
+      sw += w; sv += w * x.v;
+    }
+    if (sw > 0) rows.push({ name, avg: sv / sw, n: xs.length });
   }
   return rows.sort((a, b) => b.avg - a.avg);
 }
