@@ -148,5 +148,9 @@ export async function mountEdition(box: HTMLElement) {
     const b = box.querySelector<HTMLButtonElement>(`.ed-go:${ev.key === "ArrowLeft" ? "first-child" : "last-child"}`);
     if (b) { ev.preventDefault(); b.click(); box.querySelector<HTMLButtonElement>(".ed-go")?.focus(); }
   });
-  await show(idx.at(-1)!.date);
+  // the latest edition, or the one before if it can't be read
+  for (let i = idx.length - 1; i >= Math.max(0, idx.length - 4); i--) {
+    if (await get(idx[i].date)) { await show(idx[i].date); return; }
+  }
+  box.remove();
 }

@@ -1,0 +1,242 @@
+{
+ "palette": {
+  "K": "#5470ff",
+  "L": "#e1000f",
+  "D": "#9c0a16",
+  "M": "#ffffff",
+  "G": "#c6cae0",
+  "E": "#0b0d18",
+  "N": "#0b0d18",
+  "U": "#1d2550",
+  "W": "#e9ebf5"
+ },
+ "frames": {
+  "sitA": {
+   "rows": [
+    "................K......K....",
+    "...............KLK....KLK...",
+    "...............KLMK..KMLK...",
+    "...............KLMLKKLMLK...",
+    "..............KLLLLLLLLLLK..",
+    "..............KLLLLLLLLLLK..",
+    "..............KDLLLLLLELLK..",
+    ".............KDLLLLLLLLMMMK.",
+    ".............KDLLLLLMMMMMNK.",
+    "..............KDLLMMMMMMKK..",
+    "...............KDMMMMMKK....",
+    "..............KDLLMMMMK.....",
+    ".............KDLLLMMMGK.....",
+    "............KDLLLLMMMGK.....",
+    "...........KDLLLLLMMMGK.....",
+    "..KKKK....KDLLLLLLMMGK......",
+    ".KMMMLK...KDLLLLLLLMGK......",
+    "KMMLLLLK..KDLLLLLLLLLK......",
+    "KMLLLLLLKKDLLLLLLLLLLK......",
+    ".KLLLLLLLLDLLLLLKLLLLK......",
+    "..KDDLLLLLLLLLLKMKKMMK......",
+    "...KKKKKKKKKKKKMMKKMMK......"
+   ]
+  },
+  "sitB": {
+   "rows": [
+    "................K......K....",
+    "...............KLK....KLK...",
+    "...............KLMK..KMLK...",
+    "...............KLMLKKLMLK...",
+    "..............KLLLLLLLLLLK..",
+    "..............KLLLLLLLLLLK..",
+    "..............KDLLLLLLELLK..",
+    ".............KDLLLLLLLLMMMK.",
+    ".............KDLLLLLMMMMMNK.",
+    "..............KDLLMMMMMMKK..",
+    "...............KDMMMMMKK....",
+    ".KKK..........KDLLMMMMK.....",
+    "KMMMK........KDLLLMMMGK.....",
+    "KMMLLK......KDLLLLMMMGK.....",
+    "KMLLLLK....KDLLLLLMMMGK.....",
+    ".KLLLLLK..KDLLLLLLMMGK......",
+    "..KLLLLLK.KDLLLLLLLMGK......",
+    "...KLLLLLKKDLLLLLLLLLK......",
+    "....KDLLLLDLLLLLLLLLLK......",
+    ".....KDLLLDLLLLLKLLLLK......",
+    "......KKDLLLLLLLKMKKMMK.....",
+    "........KKKKKKKKMMKKMMK....."
+   ]
+  },
+  "blink": {
+   "rows": [
+    "................K......K....",
+    "...............KLK....KLK...",
+    "...............KLMK..KMLK...",
+    "...............KLMLKKLMLK...",
+    "..............KLLLLLLLLLLK..",
+    "..............KLLLLLLLLLLK..",
+    "..............KDLLLLLLKKLK..",
+    ".............KDLLLLLLLLMMMK.",
+    ".............KDLLLLLMMMMMNK.",
+    "..............KDLLMMMMMMKK..",
+    "...............KDMMMMMKK....",
+    "..............KDLLMMMMK.....",
+    ".............KDLLLMMMGK.....",
+    "............KDLLLLMMMGK.....",
+    "...........KDLLLLLMMMGK.....",
+    "..KKKK....KDLLLLLLMMGK......",
+    ".KMMMLK...KDLLLLLLLMGK......",
+    "KMMLLLLK..KDLLLLLLLLLK......",
+    "KMLLLLLLKKDLLLLLLLLLLK......",
+    ".KLLLLLLLLDLLLLLKLLLLK......",
+    "..KDDLLLLLLLLLLKMKKMMK......",
+    "...KKKKKKKKKKKKMMKKMMK......"
+   ]
+  },
+  "walk1": {
+   "rows": [
+    "......................K...K...",
+    ".....................KLK.KLK..",
+    ".....................KLMKMLK..",
+    "....................KLLLLLLLK.",
+    "....................KLLLLLELLK",
+    "...................KDLLLLLMMNK",
+    ".KKK...............KDLLLMMMKK.",
+    "KMMMKK............KDLLLMMMK...",
+    "KMMLLLKK.......KKKDLLLLMMGK...",
+    ".KLLLLLLKKKKKKKDLLLLLLLLMGK...",
+    "..KDLLLLLLLLLLLLLLLLLLLLGK....",
+    "...KDDLLLLLLLLLLLLLLLLLLK.....",
+    "....KKDLLKKKKKKKKKKKDLLK......",
+    ".....KDLK..........KLLK.......",
+    ".....KLK...........KMK........",
+    "....KMMK..........KMMK........",
+    "....KKK...........KKK........."
+   ]
+  },
+  "walk2": {
+   "rows": [
+    "......................K...K...",
+    ".....................KLK.KLK..",
+    ".....................KLMKMLK..",
+    "....................KLLLLLLLK.",
+    "....................KLLLLLELLK",
+    "...................KDLLLLLMMNK",
+    ".KKK...............KDLLLMMMKK.",
+    "KMMMKK............KDLLLMMMK...",
+    "KMMLLLKK.......KKKDLLLLMMGK...",
+    ".KLLLLLLKKKKKKKDLLLLLLLLMGK...",
+    "..KDLLLLLLLLLLLLLLLLLLLLGK....",
+    "...KDDLLLLLLLLLLLLLLLLLLK.....",
+    "....KKDLLKKKKKKKKKKKDLLK......",
+    "......KDLK........KLLK........",
+    ".......KLK.......KMK..........",
+    ".......KMMK.....KMMK..........",
+    "........KKK.....KKK..........."
+   ]
+  },
+  "walk3": {
+   "rows": [
+    "......................K...K...",
+    ".....................KLK.KLK..",
+    ".....................KLMKMLK..",
+    "....................KLLLLLLLK.",
+    "....................KLLLLLELLK",
+    "...................KDLLLLLMMNK",
+    ".KKK...............KDLLLMMMKK.",
+    "KMMMKK............KDLLLMMMK...",
+    "KMMLLLKK.......KKKDLLLLMMGK...",
+    ".KLLLLLLKKKKKKKDLLLLLLLLMGK...",
+    "..KDLLLLLLLLLLLLLLLLLLLLGK....",
+    "...KDDLLLLLLLLLLLLLLLLLLK.....",
+    "....KKDLLKKKKKKKKKKKDLLK......",
+    ".....KDLKK.......KLLKK........",
+    "......KLK.........KMK.........",
+    "......KMMK........KMMK........",
+    ".......KKK.........KKK........"
+   ]
+  },
+  "lie": {
+   "rows": [
+    "...........................K...K..",
+    "..........................KLK.KLK.",
+    "..........................KLMKMLK.",
+    ".........................KLLLLLLLK",
+    ".........................KLLLLLELLK",
+    "........KKKKKKKKKKKKKKKKKDLLLLLMMNK",
+    "......KKDLLLLLLLLLLLLLLLKDLLLMMMKK.",
+    ".....KDLLLLLLLLLLLLLLLLLLDLLMMMK..",
+    "....KDLLLLLLLLLLLLLLLLLLLLLMMMGK..",
+    "KKKKDLLLLLLLLLLLLLLLLLLLLLLKMMMMK.",
+    "KMMMLLLLLLLLLLLLLLLLLLKMMMMMMMMMMK",
+    ".KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK."
+   ]
+  },
+  "stretch": {
+   "rows": [
+    ".KK.............................",
+    "KMMK............................",
+    "KMLLK...........................",
+    ".KLLLK..........................",
+    "..KLLLKKKKK.....................",
+    "...KDLLLLLLKKK..........K...K...",
+    "....KDLLLLLLLLKKK......KLK.KLK..",
+    ".....KDLLLLLLLLLLKKK...KLMKMLK..",
+    "......KDDLLLLLLLLLLLKKKLLLLLLLK.",
+    ".......KLLKKDLLLLLLLLLLLLLLLELLK",
+    ".......KLK...KKDLLLLLLLLLLLLMMNK",
+    "......KMMK......KKKKMMMMMMMMMKK.",
+    "......KKK.......KMMMMMMMMMMMK...",
+    "................KKKKKKKKKKKKK..."
+   ]
+  },
+  "bowl": {
+   "rows": [
+    "...........KKKKKKKKK....K....K...",
+    ".........KKDLLLLLLLDKK.KLK..KLK..",
+    "........KDLLLLLLLLLLLDKKLMKKMLK..",
+    ".......KDLLLLLLLLLLLLLDKLLLLLLLK.",
+    ".......KDLMMMMMLLLLLLLLKLLKKLLLK.",
+    "......KDMMMMMMMMMLLLLLLKLLLLLMMNK",
+    "......KMMMMMMMMMMMMLLLLLKKMMMMKK.",
+    "KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK",
+    "KWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWK",
+    "KUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUK",
+    ".KUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUK.",
+    "..KKUUUUUUUUUUUUUUUUUUUUUUUUUUKK..",
+    "....KKKKKKKKKKKKKKKKKKKKKKKKKK...."
+   ]
+  },
+  "edge": {
+   "baseline": 22,
+   "rows": [
+    "................K......K....",
+    "...............KLK....KLK...",
+    "...............KLMK..KMLK...",
+    "...............KLMLKKLMLK...",
+    "..............KLLLLLLLLLLK..",
+    "..............KLLLLLLLLLLK..",
+    "..............KDLLLLLLELLK..",
+    ".............KDLLLLLLLLMMMK.",
+    ".............KDLLLLLMMMMMNK.",
+    "..............KDLLMMMMMMKK..",
+    "...............KDMMMMMKK....",
+    "..............KDLLMMMMK.....",
+    ".............KDLLLMMMGK.....",
+    "............KDLLLLMMMGK.....",
+    "...........KDLLLLLMMMGK.....",
+    "..........KDLLLLLLMMGK......",
+    "..........KDLLLLLLLMGK......",
+    "..........KDLLLLLLLLLK......",
+    "..........KDLLLLLLLLLK......",
+    "..........KDLLLLLKLLLK......",
+    "...........KLLLLLKMKMMK.....",
+    "..........KDKKKKKKMKMMK.....",
+    ".........KDLLK..............",
+    "........KDLLLK..............",
+    "........KDLLLLK.............",
+    ".........KDLLLK.............",
+    ".........KDLLLK.............",
+    "..........KLMMK.............",
+    "..........KMMMK.............",
+    "...........KKK.............."
+   ]
+  }
+ }
+}

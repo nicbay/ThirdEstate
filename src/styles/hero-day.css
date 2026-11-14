@@ -258,12 +258,14 @@
 @media (prefers-reduced-motion: reduce) { .live-dot, .live-ping { animation: none; } }
 .ed-prov { margin: -0.3rem 0 0; font: 600 0.74rem var(--mono); color: var(--split-red); }
 
-/* the fox on the note of the day (src/lib/fox-pet.ts): it sits on the box's top edge */
-.ed-perch { position: relative; height: 0; z-index: 2; }
-.fox-pet { position: absolute; left: 18px; bottom: -3px; padding: 0; border: 0; background: none; cursor: pointer; line-height: 0; transform-origin: 50% 100%; }
-.fox-pet svg { display: block; image-rendering: pixelated; filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.35)); }
+/* the fox on the note of the day (src/lib/fox-pet.ts): its paws right on the box's top line, no glow */
+.ed-wrap { position: relative; }
+.ed-perch { position: absolute; left: 0; right: 0; top: 0; height: 0; z-index: 3; }
+.fox-pet { position: absolute; left: 16px; bottom: 0; padding: 0; border: 0; background: none; cursor: pointer; line-height: 0; transform-origin: 50% 100%; }
+.fp-sprite { display: block; line-height: 0; }
+.fp-sprite svg { display: block; image-rendering: pixelated; }
 .fox-pet:focus-visible { outline: 2px solid var(--night-text); outline-offset: 3px; }
-.fp-z { position: absolute; left: 40px; top: -6px; font: 700 0.75rem var(--mono); color: var(--night-text-2); white-space: nowrap; pointer-events: none; }
+.fp-z { position: absolute; right: 18px; top: -10px; font: 700 0.8rem var(--mono); color: var(--night-text-2); white-space: nowrap; pointer-events: none; }
 .fox-pet.is-asleep .fp-z { animation: fp-z 2.4s steps(6, end) infinite; }
-@keyframes fp-z { 0% { opacity: 0; transform: translate(0, 4px); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(10px, -14px); } }
+@keyframes fp-z { 0% { opacity: 0; transform: translate(0, 4px); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(10px, -16px); } }
 @media (prefers-reduced-motion: reduce) { .fox-pet.is-asleep .fp-z { animation: none; opacity: 1; } }
