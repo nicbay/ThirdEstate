@@ -14,6 +14,9 @@ import { armsSlot, loadCommuneArms, loadDepartmentArms, paintArms } from "../lib
 import { residentBalance } from "../lib/redistribution";
 import { loadMunicipalPolice, type MunicipalPolice } from "./town-police";
 import { loadStateBalance, type StateBalance } from "./town-state";
+import { loadRankMeta, rankHref, rankIn, rankText, townRankings, townRanks, type Meta } from "../lib/rankings";
+import { REDISTRIBUTION_SOURCE } from "../lib/redistribution";
+import "../styles/rankings.css";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type Any = any;
@@ -46,6 +49,8 @@ interface Side {
   /** figures that are not the town's own: city-wide for an arrondissement, or averaged over arrondissements */
   approx: Set<string>;
   cityWide: Set<string>;
+  /** national ranks: ranking data id → [rank, out of] (src/lib/rankings.ts) */
+  ranks: Record<string, [number, number]>;
 }
 
 const PLM_NAME: Record<string, string> = { "75056": "Paris", "69123": "Lyon", "13055": "Marseille" };
@@ -62,6 +67,7 @@ async function loadSide(code: string): Promise<Side | null> {
     loadMunicipalPolice(plmCity(code)).catch(() => null),
     loadStateBalance(code).catch(() => null),
   ]);
+  const ranks = await townRanks(code).catch(() => ({}));
   const own = towns.get(code);
   const t = own ?? plmWhole(towns, code);
   if (!info && !t) return null;
@@ -97,6 +103,7 @@ async function loadSide(code: string): Promise<Side | null> {
     state,
     approx,
     cityWide,
+    ranks,
   };
 }
 
@@ -169,6 +176,11 @@ const KPIS: Kpi[] = [
 ];
 
 // ---------- formatting ----------
+/** A name short enough for the narrow middle column: "Paris 15e Arrondissement" → "Paris 15e", then cut. */
+function shortName(name: string, max = 14) {
+  const n = name.replace(/\s+Arrondissement$/i, "").replace(/^Saint-/, "St-").replace(/^Sainte-/, "Ste-");
+  return n.length > max ? `${n.slice(0, max - 1).trimEnd()}…` : n;
+}
 const fr = () => getLang() === "fr";
 const dec = (v: number, d = 1) => v.toLocaleString(fr() ? "fr-FR" : "en-GB", { maximumFractionDigits: d });
 function fmtVal(v: number | undefined, unit: Unit): string {
@@ -250,18 +262,64 @@ function rowHtml(k: Kpi, a: Side, b: Side) {
   const mark = (s: Side) => (k.flag && s.approx.has(k.flag) ? "≈ " : "");
   const star = (s: Side) => (k.flag && s.cityWide.has(k.flag) ? `<sup title="${esc(L(`Chiffre de ${PLM_NAME[plmCity(s.code)] ?? ""} entier`, `Figure for the whole of ${PLM_NAME[plmCity(s.code)] ?? ""}`))}">*</sup>` : "");
   const note = (s: Side) => { const n = k.note?.(s); return n ? `<small class="cmp-note${k.id === "social" ? " bad" : ""}">${esc(n)}</small>` : ""; };
+  const rank = (s: Side) => {
+    const data = RANK_DATA[k.id];
+    if (!data) return "";
+    // a balance is ranked on the side the town is on (contributor or beneficiary)
+    const best = townRankings({ townhall: s.state?.balance }).filter((r) => r.data === data && !r.show).map((r) => ({ r, x: rankIn(r, s.ranks, rankMeta) })).find((o) => o.x);
+    return best ? `<a class="rank-of" href="${rankHref(best.r, s.code)}" title="${esc(L(...best.r.label))}">${rankText(best.x!)}</a>` : "";
+  };
   const hiName = hiSide === "a" ? a.name : b.name;
   // the gap, said once in the middle: red when the higher figure is the worse one, green when it's the better one
   const gapTone = hiSide && winner ? (hiSide === winner ? "good" : "bad") : "";
-  const gapHtml = g && g !== "≈" ? `<span class="cmp-gap ${gapTone}">${esc(g)} ${L("à", "at")} ${esc(hiName)}</span>` : g === "≈" ? `<span class="cmp-gap">${L("à égalité", "level")}</span>` : "";
+  const gapHtml = g && g !== "≈" ? `<span class="cmp-gap ${gapTone}" title="${esc(`${g} ${L("à", "at")} ${hiName}`)}">${esc(g)} ${L("à", "at")} ${esc(shortName(hiName))}</span>` : g === "≈" ? `<span class="cmp-gap">${L("à égalité", "level")}</span>` : "";
   return `<li class="cmp-row${winner ? ` win-${winner}` : ""}" data-kpi="${k.id}">
-    <span class="cmp-v a${tone("a")}">${va == null ? "—" : mark(a) + fmtVal(va, k.unit)}${star(a)}${note(a)}</span>
+    <span class="cmp-v a${tone("a")}">${va == null ? "—" : mark(a) + fmtVal(va, k.unit)}${star(a)}${note(a)}${rank(a)}</span>
     <span class="cmp-bar a" aria-hidden="true"><i style="width:${w(va).toFixed(1)}%"></i></span>
-    <span class="cmp-mid-label"><span class="cmp-label">${esc(fr() ? k.label[0] : k.label[1])}</span>${gapHtml}</span>
+    <span class="cmp-mid-label">${k.group === "public" ? `<button type="button" class="cmp-label cmp-calc-btn" aria-controls="cmp-calc">${esc(fr() ? k.label[0] : k.label[1])} <span aria-hidden="true">ⓘ</span></button>` : `<span class="cmp-label">${esc(fr() ? k.label[0] : k.label[1])}</span>`}${gapHtml}</span>
     <span class="cmp-bar b" aria-hidden="true"><i style="width:${w(vb).toFixed(1)}%"></i></span>
-    <span class="cmp-v b${tone("b")}">${vb == null ? "—" : mark(b) + fmtVal(vb, k.unit)}${star(b)}${note(b)}</span>
+    <span class="cmp-v b${tone("b")}">${vb == null ? "—" : mark(b) + fmtVal(vb, k.unit)}${star(b)}${note(b)}${rank(b)}</span>
   </li>`;
 }
+/** Comparison figure → the ranking data it is ranked on (src/lib/rankings.ts). */
+const RANK_DATA: Record<string, string> = {
+  quality: "quality", pop: "pop", income: "income", poverty: "poverty", unemployment: "unemployment", flat: "flat", house: "house",
+  apl: "apl", fibre: "fibre", spending: "spending", townhall: "townhall",
+  ...Object.fromEntries(Object.keys(CRIME_LABELS).map((k) => [`crime-${k}`, `crime-${k}`])),
+};
+let rankMeta: Meta | null = null;
+
+const eur = (n: number, sign = false) => `${sign && n > 0 ? "+" : n < 0 ? "−" : ""}${fmtNum(Math.abs(Math.round(n)))} €`;
+/** The two balances worked out for one town: what goes in, what comes out, the result. */
+function calcSide(s: Side) {
+  const out: string[] = [];
+  if (s.t?.income) {
+    const r = residentBalance(s.t.income);
+    out.push(`<h4>${L("Un habitant typique", "A typical resident")}</h4>
+      <p class="small">${L(`Niveau de vie médian ${eur(r.income)} par an, soit le ${Math.round(r.percentile)}ᵉ centile en France. À ce niveau de vie, en moyenne par an et par unité de consommation (Insee, 2019) :`, `Median standard of living ${eur(r.income)} a year, the ${Math.round(r.percentile)}th percentile in France. At that standard of living, on average a year and per consumption unit (INSEE, 2019):`)}</p>
+      <table class="table cmp-calc-t"><tbody>
+        <tr><td>${L("Impôts, cotisations et TVA payés", "Taxes, contributions and VAT paid")}</td><td class="num">${eur(-r.paid, true)}</td></tr>
+        <tr><td>${L("Prestations en espèces reçues (retraites comprises)", "Cash benefits received (pensions included)")}</td><td class="num">${eur(r.cash, true)}</td></tr>
+        <tr><td>${L("Services publics utilisés (santé, éducation…)", "Public services used (health, education…)")}</td><td class="num">${eur(r.inKind, true)}</td></tr>
+        <tr><td>${L("Part de la dépense collective (défense, justice…)", "Share of collective spending (defence, justice…)")}</td><td class="num">${eur(r.collective, true)}</td></tr>
+        <tr class="cmp-calc-sum"><td>${L("Solde publié par l’Insee à ce niveau de vie", "Balance INSEE publishes at this standard of living")}</td><td class="num"><b>${eur(r.net, true)}</b></td></tr>
+      </tbody></table>
+      <p class="tiny muted">${L("Le solde publié diffère un peu de la somme des lignes : l’Insee arrondit chaque poste et en répartit certains autrement. Une estimation pour un habitant typique, pas une mesure de la commune.", "The published balance differs slightly from the sum of the lines: INSEE rounds each item and allocates some differently. An estimate for a typical resident, not a measure of the town.")} <a href="${REDISTRIBUTION_SOURCE.page}" target="_blank" rel="noopener">Insee Analyses n° 88</a></p>`);
+  }
+  if (s.state) {
+    const st = s.state;
+    out.push(`<h4>${L("La mairie", "The town hall")} (${st.year})</h4>
+      <table class="table cmp-calc-t"><tbody>
+        <tr><td>${L("Dotation globale de fonctionnement reçue (DGF)", "General operating grant received (DGF)")}</td><td class="num">${eur(st.dgf, true)}</td></tr>
+        ${st.fpic != null ? `<tr><td>${st.fpicScope === "e" ? L("Péréquation intercommunale (FPIC), solde de l’intercommunalité par habitant", "Intercommunal equalisation (FPIC), the intercommunality's balance per inhabitant") : L("Péréquation intercommunale (FPIC), solde de la commune", "Intercommunal equalisation (FPIC), the town's balance")}</td><td class="num">${eur(st.fpic, true)}</td></tr>` : ""}
+        ${st.fsrif ? `<tr><td>${L("Solidarité des communes d’Île-de-France (FSRIF), solde", "Île-de-France solidarity fund (FSRIF), balance")}</td><td class="num">${eur(st.fsrif, true)}</td></tr>` : ""}
+        <tr class="cmp-calc-sum"><td>${L("Reçu moins versé, par habitant", "Received minus paid in, per inhabitant")}</td><td class="num"><b>${eur(st.balance, true)}</b></td></tr>
+      </tbody></table>
+      <p class="tiny muted">${L(`Par habitant au sens de la DGF (${fmtNum(st.pop)} habitants). Positif : la commune reçoit plus qu’elle ne verse ; négatif : contributrice nette. Ni l’impôt sur le revenu de ses habitants ni le prélèvement DILICO ne sont dans ce solde.`, `Per DGF inhabitant (${fmtNum(st.pop)} people). Positive: the town receives more than it pays in; negative: a net contributor. Neither its residents' income tax nor the DILICO levy is in this balance.`)} <a href="#/ville/${esc(s.code)}">${L("Le détail sur la page de la commune", "The detail on the town page")}</a></p>`);
+  }
+  return out.join("") || `<p class="muted small">—</p>`;
+}
+
 function winnerCell(s: Side, F: Any) {
   const w = s.muni?.y2026?.winner;
   if (!w) return `<span class="muted">—</span>`;
@@ -274,7 +332,8 @@ function winnerCell(s: Side, F: Any) {
 // ---------- page ----------
 export async function renderCompare(app: HTMLElement, codeA?: string, codeB?: string) {
   if (codeA && codeA === codeB) codeB = undefined;
-  const [a, b, fams] = await Promise.all([codeA ? loadSide(codeA) : null, codeB ? loadSide(codeB) : null, get("/data/municipal/families.json")]);
+  const [a, b, fams, meta] = await Promise.all([codeA ? loadSide(codeA) : null, codeB ? loadSide(codeB) : null, get("/data/municipal/families.json"), loadRankMeta().catch(() => null)]);
+  rankMeta = meta;
   const F = fams?.families ?? {};
 
   const top = `<header class="sec-hero cmp-hero">
@@ -327,7 +386,8 @@ export async function renderCompare(app: HTMLElement, codeA?: string, codeB?: st
       ? `<li class="cmp-row cmp-row-text"><span class="cmp-v a">${winnerCell(a, F)}</span><span></span><span class="cmp-mid-label"><span class="cmp-label">${L("Liste élue", "Winning list")}</span></span><span></span><span class="cmp-v b">${winnerCell(b, F)}</span></li>`
       : "";
     if (!ks.length && !winners) return "";
-    return `<section class="cmp-group"><h3>${L(f, e)}${roundWinner(g) ? ` <span class="cmp-round r-${roundWinner(g)}">${L("manche pour", "round to")} ${esc(roundWinner(g) === "a" ? a.name : b.name)}</span>` : ""}</h3><ol class="cmp-rows">${winners}${ks.map((k) => rowHtml(k, a, b)).join("")}</ol></section>`;
+    const calc = g === "public" && ks.length ? `<li class="cmp-calc"><details id="cmp-calc"><summary>${L("Voir le calcul, pour chaque commune", "See the calculation, for each town")}</summary><div class="cmp-calc-cols"><div><p class="eyebrow">${esc(a.name)}</p>${calcSide(a)}</div><div><p class="eyebrow">${esc(b.name)}</p>${calcSide(b)}</div></div></details></li>` : "";
+    return `<section class="cmp-group"><h3>${L(f, e)}${roundWinner(g) ? ` <span class="cmp-round r-${roundWinner(g)}">${L("manche pour", "round to")} ${esc(roundWinner(g) === "a" ? a.name : b.name)}</span>` : ""}</h3><ol class="cmp-rows">${winners}${ks.map((k) => rowHtml(k, a, b)).join("")}${calc}</ol></section>`;
   }).join("");
 
   const notes: string[] = [];
@@ -337,9 +397,9 @@ export async function renderCompare(app: HTMLElement, codeA?: string, codeB?: st
   app.innerHTML = `<section class="page compare">${top}${heads}
     <div class="cmp-tools">
       ${scored.length ? `<div class="cmp-score" title="${esc(L("Indicateurs où plus haut (revenu, accès aux soins…) ou plus bas (pauvreté, délinquance…) est clairement préférable", "Figures where higher (income, access to care…) or lower (poverty, crime…) is clearly better"))}">
-        <span class="a${nA > nB ? " lead" : ""}"><b>${nA}</b>${esc(a.name)}</span>
+        <span class="a${nA > nB ? " lead" : ""}" title="${esc(a.name)}"><b>${nA}</b>${esc(shortName(a.name, 22))}</span>
         <span class="cmp-score-mid">${L("indicateurs gagnés", "figures won")}<small>${L(`sur ${scored.length}`, `of ${scored.length}`)}</small></span>
-        <span class="b${nB > nA ? " lead" : ""}"><b>${nB}</b>${esc(b.name)}</span></div>` : ""}
+        <span class="b${nB > nA ? " lead" : ""}" title="${esc(b.name)}"><b>${nB}</b>${esc(shortName(b.name, 22))}</span></div>` : ""}
       <button type="button" class="home-btn cmp-share">${L("Copier le lien", "Copy link")}</button>
     </div>
     <div class="cmp-legend small"><span class="a">${esc(a.name)}</span><span class="b">${esc(b.name)}</span><span class="muted">${L("En vert la valeur la plus favorable, en rouge la moins favorable, quand l’une l’est clairement ; sans couleur, ni l’une ni l’autre.", "Green: the more favourable value; red: the less favourable one, where one clearly is; no colour, neither.")}</span></div>
@@ -353,6 +413,13 @@ export async function renderCompare(app: HTMLElement, codeA?: string, codeB?: st
   void fillFlags(app);
   if (boxA) bindSearch(boxA, (c) => (location.hash = `#/comparer/${c}/${b.code}`));
   if (boxB) bindSearch(boxB, (c) => (location.hash = `#/comparer/${a.code}/${c}`));
+  // the two balances' labels open the worked calculation
+  app.querySelectorAll<HTMLButtonElement>(".cmp-calc-btn").forEach((btn) => btn.addEventListener("click", () => {
+    const d = app.querySelector<HTMLDetailsElement>("#cmp-calc");
+    if (!d) return;
+    d.open = true;
+    d.scrollIntoView({ behavior: "smooth", block: "start" });
+  }));
   app.querySelectorAll<HTMLDetailsElement>(".cmp-change").forEach((d) => d.addEventListener("toggle", () => { if (d.open) d.querySelector("input")?.focus(); }));
   app.querySelector(".cmp-share")?.addEventListener("click", async () => {
     try { await navigator.clipboard.writeText(location.href); toast(L("Lien copié", "Link copied"), { uniqueID: "cmp-share" }); }

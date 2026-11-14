@@ -111,6 +111,7 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/contributeurs$/, () => import("./views/contributors").then((v) => v.renderContributors(app))],
   [/^#\/ville\/(\w{5})$/, (m) => renderTown(app, m[1])],
   [/^#\/comparer(?:\/(\w{5}))?(?:\/(\w{5}))?$/, (m) => import("./views/compare").then((v) => v.renderCompare(app, m[1], m[2]))],
+  [/^#\/classements(?:\/([\w-]+))?(?:\/(\w{5}))?$/, (m) => import("./views/rankings").then((v) => v.renderRankings(app, m[1], m[2]))],
   [/^#\/chiffres$/, () => renderEconomy(app)],
   [/^#\/quiz(?:\/([\w-]+))?$/, (m) => renderQuiz(app, m[1])],
   // section names as paths, so a typed or shared section link lands somewhere
@@ -189,13 +190,14 @@ function sections(): Section[] {
       ],
     },
     {
-      key: "chez-vous", icon: "home", short: ["Chez vous", "Your town"], href: mine, match: /^#\/(explorer|ville|comparer)/, fr: "Chez vous", en: "Your town",
+      key: "chez-vous", icon: "home", short: ["Chez vous", "Your town"], href: mine, match: /^#\/(explorer|ville|comparer|classements)/, fr: "Chez vous", en: "Your town",
       blurb: ["Votre commune, votre député, vos sénateurs.", "Your town, your MP, your senators."],
       children: [
         ...(home?.code ? [{ href: mine, match: new RegExp(`^#\\/ville\\/${home.code}$`), fr: "Ma commune", en: "My town", note: home.commune ?? home.code }] : []),
         ...(mp?.id ? [{ href: `#/depute/${mp.id}`, match: NEVER, fr: "Mon député", en: "My MP", note: mp.name }] : []),
         ...(home?.dep ? [{ href: `#/senat/${home.dep}`, match: NEVER, fr: "Mes sénateurs", en: "My senators", note: home.depName }] : []),
         { href: home?.code ? `#/comparer/${home.code}` : "#/comparer", match: /^#\/comparer/, fr: "Comparer deux communes", en: "Compare two towns", desc: ["Votre commune face à une autre : revenus, sécurité, finances", "Your town against another: income, safety, finances"] },
+        { href: "#/classements", match: /^#\/classements/, fr: "Classements des communes", en: "Town rankings", desc: ["Qualité de vie, revenus, sécurité, contributeurs nets : chaque commune classée", "Quality of life, income, safety, net contributors: every town ranked"] },
         { href: "#/explorer", match: home?.code ? new RegExp(`^#\\/(explorer|ville\\/(?!${home.code}$))`) : /^#\/(explorer|ville)/, fr: "Toutes les communes", en: "Every town", desc: ["Maire, conseil, écoles, sécurité, quartiers : 34 920 communes", "Mayor, council, schools, safety, neighbourhoods: 34,920 towns"] },
       ],
     },
@@ -243,7 +245,7 @@ function nextSteps(path: string) {
   const byTheme = { href: "#/programmes#comparer", fr: "Sur le même sujet, qui propose quoi", en: "On the same subject, who proposes what" };
   const france = { href: "#/chiffres", fr: "La France en chiffres", en: "France in numbers" };
   const shifts = { href: "#/resultats/bascules", fr: "Les cartes des bascules gauche-droite", en: "The left–right shift maps" };
-  const pick = /^#\/(ville|explorer|comparer)/.test(path) ? [race, mps, quiz]
+  const pick = /^#\/(ville|explorer|comparer|classements)/.test(path) ? [race, mps, quiz]
     : /^#\/(circo|depute|assemblee|elus|senat|senateur)/.test(path) ? [mine, /themes/.test(path) ? feed : words, race]
     : /^#\/quiz/.test(path) ? [race, progs, mps]
     : /^#\/programmes$/.test(path) ? [race, quiz, mps]
