@@ -110,7 +110,7 @@
 /* the two widgets: white panels side by side */
 .hw-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; align-items: stretch; }
 @media (max-width: 900px) { .hw-row { grid-template-columns: 1fr; } }
-.hw { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 1rem; padding: 1.3rem 1.4rem 1.4rem; background: var(--paper) padding-box; color: var(--ink); border: 6px solid transparent; border-image: var(--px-soft) 6 / 6px / 0 stretch; min-width: 0; }
+.hw { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 1rem; padding: 1.3rem 1.4rem calc(1.4rem + var(--box-bar-h)); color: var(--ink); min-width: 0; } /* the box itself: overhaul.css, "one box" */
 .hw-head { display: grid; gap: 0.35rem; color: var(--ink); text-decoration: none; }
 .hw-head .hero-kicker { margin: 0; color: var(--ink-3); }
 .hw-head b { font: 700 clamp(1.35rem, 1.1rem + 0.8vw, 1.7rem)/1.1 var(--display); font-stretch: 80%; letter-spacing: -0.012em; }
@@ -126,15 +126,28 @@
 .hw .home-arrows .shift-base { fill: var(--panel); stroke: var(--rule-2); stroke-width: 0.8; }
 .hw .home-arrows .arrow { cursor: pointer; }
 .hw-parl .hero-dots { max-height: 420px; }
+/* the national change at each election: one bar per pair, each a button that redraws the map above in place */
+.hw-time { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 0.4rem; }
+.hw-step { display: grid; place-items: center; width: 32px; height: 44px; padding: 0; font: 700 1rem var(--mono); color: var(--ink); background: none; border: 1px solid var(--rule-2); cursor: pointer; transition: border-color 0.15s, background-color 0.15s; }
+.hw-step:hover:not(:disabled) { border-color: var(--ink); background: var(--panel); }
+.hw-step:disabled { opacity: 0.35; cursor: default; }
 .hw-strip { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 2px; height: 44px; position: relative; }
-.hw-strip::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--rule-2); }
-.hw-strip i { position: relative; display: block; }
-.hw-strip i::before { content: ""; position: absolute; left: 0; right: 0; height: var(--h); }
-.hw-strip i.is-pos::before { bottom: 50%; background: var(--right); opacity: 0.55; }
-.hw-strip i.is-neg::before { top: 50%; background: var(--left); opacity: 0.55; }
-.hw-strip i.is-on::before { opacity: 1; }
+.hw-strip::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--rule-2); pointer-events: none; }
+.hw-strip button { position: relative; display: block; min-width: 0; padding: 0; border: 0; background: none; cursor: pointer; }
+.hw-strip button::before { content: ""; position: absolute; left: 0; right: 0; height: var(--h); min-height: 2px; transition: opacity 0.12s; }
+.hw-strip button.is-pos::before { bottom: 50%; background: var(--right); opacity: 0.45; }
+.hw-strip button.is-neg::before { top: 50%; background: var(--left); opacity: 0.45; }
+.hw-strip button:hover::before { opacity: 0.8; }
+.hw-strip button[aria-selected="true"]::before { opacity: 1; }
+/* the picked pair: a tick under the strip in the split colours, like the active tab */
+.hw-strip button[aria-selected="true"]::after { content: ""; position: absolute; left: -1px; right: -1px; bottom: -6px; height: 3px; background: linear-gradient(90deg, var(--split-red) 0 50%, var(--split-blue) 50% 100%); }
+.hw-strip button:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; z-index: 1; }
+.hw .home-arrows { transition: opacity 0.2s; }
+.hw .home-arrows.is-loading { opacity: 0.45; }
+@media (prefers-reduced-motion: reduce) { .hw .home-arrows, .hw-strip button::before { transition: none; } }
 .hw-years { display: flex; justify-content: space-between; gap: 0.6rem; font: 500 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.03em; color: var(--ink-3); }
 .hw-years span:nth-child(2) { text-align: center; }
+.hw-time + .hw-years { padding: 0 calc(32px + 0.4rem); }
 .hw-more { justify-self: start; font: 700 0.92rem var(--display); color: var(--ink); text-decoration: none; }
 .hw-more:hover { text-decoration: underline; }
 
@@ -240,8 +253,8 @@
 .hday-doors a.hday-quiz { background: var(--split-red); border-color: var(--split-red); color: var(--night); }
 .hday-doors a.hday-quiz:hover, .hday-doors a.hday-quiz:focus-visible { border-color: var(--night-text); }
 /* the note of the day, boxed so it reads as its own piece */
-.hday-chart .ed { border: 2px solid var(--night-text-2); background: color-mix(in srgb, var(--night-2) 88%, transparent); padding: 1.1rem 1.2rem 1.2rem; margin-bottom: 1.2rem; box-shadow: 6px 6px 0 var(--night-rule-2, #2a2f48); }
-@media (max-width: 640px) { .hday-chart .ed { padding: 0.9rem 0.8rem 1rem; box-shadow: 4px 4px 0 var(--night-rule-2, #2a2f48); } }
+.hday-chart .ed { padding: 1.1rem 1.2rem calc(1.2rem + var(--box-bar-h)); margin-bottom: 1.2rem; } /* the box: overhaul.css */
+@media (max-width: 640px) { .hday-chart .ed { padding: 0.9rem 0.8rem calc(1rem + var(--box-bar-h)); } }
 
 /* widget: who's reading right now (live presence), departments shaded by readers online */
 .hw-live .hw-head { cursor: default; }
@@ -277,3 +290,35 @@
 .ed-wk .ed-polls header { border-bottom-color: var(--rule-2); }
 .ed-wk .ed-polls .hday-small { font-size: 0.72rem; }
 .ed-week { max-height: 110px; }
+
+/* the headline with the countdown beside it (the date line above it is gone) */
+.hday-titlerow { display: grid; grid-template-columns: minmax(0, auto) auto; justify-content: start; align-items: end; gap: 0.6rem 1.4rem; margin: 0.3rem 0 0.8rem; }
+.hday .hday-titlerow h1 { margin: 0; }
+.hday-count { margin: 0; display: grid; justify-items: start; gap: 0.15rem; padding-left: 1rem; border-left: 1px solid var(--night-rule-2, #3a3f5a); }
+.hday-count b { font: 800 clamp(2.6rem, 1.8rem + 2.6vw, 4rem)/0.9 var(--display); font-stretch: 78%; color: var(--night-text); font-variant-numeric: tabular-nums; }
+.hday-count span { font: 600 0.82rem/1.2 var(--text); color: var(--night-text-2); max-width: 12ch; }
+.hday-count time { font: 500 0.7rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--night-text-3); }
+@media (max-width: 520px) { .hday-titlerow { grid-template-columns: 1fr; } .hday-count { padding-left: 0; border-left: 0; grid-template-columns: auto 1fr; align-items: end; column-gap: 0.6rem; } .hday-count time { grid-column: 2; } }
+
+/* "Your town": the reader's own entry point, a box on the night band */
+.hday-town { --box-line: var(--night-rule-2, #3a3f5a); --box-bg: color-mix(in srgb, var(--night-2) 88%, transparent); margin-top: 1.1rem; padding: 0.9rem 1rem calc(1rem + var(--box-bar-h)); max-width: 34rem; }
+.hday-town-k { margin: 0; font: 500 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--night-text-3); }
+.hday-town h2 { margin: 0.25rem 0 0; font: 700 1.15rem/1.15 var(--display); font-stretch: 85%; color: var(--night-text); text-wrap: balance; }
+.hday-town .town-search { margin-top: 0.7rem; max-width: none; }
+.hday-town .town-search input { font-size: 1rem; padding: 0.7rem 0.9rem 0.7rem 2.7rem; box-shadow: none; border-width: 1px; border-color: var(--night-rule-2, #3a3f5a); }
+.hday-town .town-search input:focus { box-shadow: none; border-color: var(--night-text); }
+.hday-town-me { margin: 0.6rem 0 0; font-size: 0.86rem; color: var(--night-text-2); }
+.hday-town-me a { color: var(--night-text); }
+
+/* widget: readers this week, the count as the headline */
+.hw-count { font-variant-numeric: tabular-nums; }
+#live-sum { display: inline-flex; align-items: center; }
+
+/* the elections picker: bars on wide screens, a dropdown on phones (each bar would be ~4px wide there) */
+.hw-pick { display: none; min-width: 0; height: 44px; padding: 0 0.6rem; font: 600 0.92rem var(--text); color: var(--ink); background: var(--paper); border: 1px solid var(--rule-2); border-radius: 0; }
+.hw-pick:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+@media (max-width: 600px) {
+  .hw-pick { display: block; }
+  .hw-time .hw-strip { display: none; }
+  .hw-years { display: none; }
+}

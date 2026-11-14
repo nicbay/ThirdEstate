@@ -4,7 +4,7 @@
 // Data loads on first open. Recent picks are kept in localStorage.
 import { fetchJson, loadDeputes, type Depute } from "../data";
 import { L, fmtNum, getLang } from "../i18n";
-import { esc, safeColor } from "../util";
+import { esc, FEED_ON, safeColor } from "../util";
 /** Recent searches come back from localStorage: only in-site routes are allowed as links. */
 const safeHref = (h: string | undefined) => (typeof h === "string" && /^#\/[\w\-/#.%]*$/.test(h) ? h : "#/assemblee/themes");
 import { searchPlaces } from "../views/explore";
@@ -16,7 +16,7 @@ type Kind = "page" | "town" | "mp" | "senator" | "word";
 interface Hit { kind: Kind; label: string; context: string; href?: string; word?: string; color?: string; score: number }
 
 /** Every section and page, both languages searchable whatever the current one. */
-const PAGES: { href: string; fr: string; en: string; k?: string }[] = [
+const PAGES: { href: string; fr: string; en: string; k?: string }[] = ([
   { href: "#/", fr: "Accueil", en: "Home", k: "une home" },
   { href: "#/explorer", fr: "Toutes les communes", en: "Every town", k: "chez vous ville commune town maire" },
   { href: "#/assemblee", fr: "Les députés, la carte des 577 circonscriptions", en: "The MPs, the map of the 577 districts", k: "parlement assemblée nationale assembly circonscriptions" },
@@ -41,7 +41,7 @@ const PAGES: { href: string; fr: string; en: string; k?: string }[] = [
   { href: "#/resultats/legislatives-2024", fr: "Législatives 2024", en: "2024 legislative election", k: "archives résultats results" },
   { href: "#/mentions-legales", fr: "Mentions légales, données personnelles, cookies", en: "Legal notice, personal data, cookies", k: "rgpd gdpr privacy vie privée éditeur hébergeur contact" },
   { href: "#/sources", fr: "Sources et méthode", en: "Sources and method", k: "données data méthodologie" },
-];
+] as { href: string; fr: string; en: string; k?: string }[]).filter((p) => FEED_ON || p.href !== "#/fil");
 
 const KIND_LABEL: Record<Kind, [string, string]> = {
   page: ["Pages", "Pages"], town: ["Communes", "Towns"], mp: ["Députés", "MPs"], senator: ["Sénateurs", "Senators"], word: ["Mots de l’hémicycle", "Words in the chamber"],

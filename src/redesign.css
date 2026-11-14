@@ -30,7 +30,7 @@ html.is-scrolled .topbar { box-shadow: 0 2px 0 var(--night-rule), 0 10px 0 -4px 
 .nav-item::after { display: none; }
 .nav-top { position: relative; padding: 0 0.1rem 0 0.75rem; font-weight: 650; color: var(--night-text-2); transition: color 0.12s; }
 .nav-top::after { content: ""; position: absolute; left: 0.75rem; right: 0.1rem; bottom: 10px; height: 4px; background: linear-gradient(90deg, var(--split-red) 0 50%, var(--split-blue) 50% 100%); transform: scaleX(0); transform-origin: left; transition: transform 0.18s var(--step); }
-.nav-item.active .nav-top::after, .nav-item:hover .nav-top::after, .nav-item.open .nav-top::after { transform: scaleX(1); }
+.nav-item.active .nav-top::after, .nav-top:hover::after, .nav-item.open .nav-top::after { transform: scaleX(1); }
 .nav-caret { color: #7d8198; padding: 0 0.5rem 0 0.3rem; }
 
 /* the menu: one panel as wide as the page column, under the bar — what the section is, then its pages */

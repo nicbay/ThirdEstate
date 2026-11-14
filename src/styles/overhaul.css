@@ -197,14 +197,20 @@
 .flow-link:focus-visible { outline: none; }
 .flow-link:focus-visible .flow-box { stroke: var(--focus); stroke-width: 3; }
 
-/* ---------- one box for the whole site (2026-11), after the homepage's note of the day ----------
-   a 2px line, a ground a shade off the page, a hard offset shadow; nested boxes stay flat */
-:root {
-  --box-line: var(--ink-2);
-  --box-bg: color-mix(in srgb, var(--panel) 55%, var(--paper));
-  --box-shadow: var(--rule-2);
+/* ---------- one box for the whole site (2026-11): a thin line, a ground a shade off the page, and the red/blue
+   underline of the active tab and the quiz button along its foot. Tokens in tokens.css (--box-*). Every static
+   panel takes it (sections, homepage widgets, the quiz card, simulator panels, callouts); nested boxes stay flat.
+   Page CSS that loads later must not set border/background/shadow on these, or it wins the cascade. ---------- */
+.box, .card, .hw, .hday-chart .ed, .qz-card, .qz-stale, .sim-panel, .sim-story, .hh-callout {
+  border: 1px solid var(--box-line); border-bottom: 0; border-image: none;
+  background: var(--box-bar) left bottom / 100% var(--box-bar-h) no-repeat border-box, var(--box-bg);
+  box-shadow: none; filter: none;
 }
-.card { border: 2px solid var(--box-line); border-image: none; background: var(--box-bg); box-shadow: 6px 6px 0 var(--box-shadow); padding: var(--spacing-4) 1.35rem 1.4rem; }
-.card .card, .sec-hero .card { border: 0; box-shadow: none; background: none; padding: 0; }
-.hday-chart .ed { border-color: var(--box-line); box-shadow: 6px 6px 0 var(--box-shadow); }
-@media (max-width: 640px) { .card { box-shadow: 4px 4px 0 var(--box-shadow); padding: var(--spacing-3) 0.95rem 1.1rem; } }
+.card { padding: var(--spacing-4) 1.35rem calc(1.4rem + var(--box-bar-h)); }
+.card .card, .sec-hero .card { border: 0; background: none; padding: 0; }
+/* a box you can follow: the underline thickens on hover, nothing jumps */
+a.box, a.hh-callout { transition: background-size 0.15s var(--ease), border-color 0.15s; text-decoration: none; }
+a.box:hover, a.hh-callout:hover, a.box:focus-visible, a.hh-callout:focus-visible { --box-bar-h: 7px; border-color: var(--ink-3); transform: none; box-shadow: none; }
+/* on the homepage's night band the box keeps its line and ground from the band */
+.hday-chart .ed { --box-line: var(--night-rule-2, #3a3f5a); --box-bg: color-mix(in srgb, var(--night-2) 88%, transparent); }
+@media (max-width: 640px) { .card { padding: var(--spacing-3) 0.95rem calc(1.1rem + var(--box-bar-h)); } }

@@ -29,7 +29,7 @@ h2.sim-k { font-stretch: 100%; }
 .sim-page .sim-card:focus-visible { outline-offset: -3px; }
 
 /* ---- the scenario in three steps, and its tools ---- */
-.sim-story { display: grid; gap: 0; border: 6px solid transparent; border-image: var(--px-dark) 6 / 6px / 0 stretch; background: var(--night) padding-box; color: #fff; }
+.sim-story { display: grid; gap: 0; color: #fff; padding-bottom: var(--box-bar-h); --box-line: var(--night-rule-2); --box-bg: var(--night); } /* the box: overhaul.css, "one box" */
 .sim-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1.5fr 1fr 1fr; }
 .sim-steps li { position: relative; display: grid; align-content: start; gap: 0.35rem; padding: 0.7rem 1.4rem 0.8rem 0.9rem; min-width: 0; }
 .sim-steps li + li { border-left: 2px solid var(--night-rule); }
@@ -55,8 +55,8 @@ h2.sim-k { font-stretch: 100%; }
 @media (pointer: coarse) { .sim-tool { min-height: 44px; } }
 
 /* ---- panels ---- */
-.sim-panel { border: 6px solid transparent; border-image: var(--px-soft) 6 / 6px / 0 stretch; background: var(--paper) padding-box; padding: 0.9rem 1.1rem 1.1rem; }
-.sim-p3 { border-image-source: var(--px-ink); }
+.sim-panel { padding: 0.9rem 1.1rem calc(1.1rem + var(--box-bar-h)); } /* the box: overhaul.css, "one box" */
+.sim-p3 { --box-line: var(--ink-3); }
 .sim-no { width: 1.9rem; height: 1.9rem; font: 400 0.75rem/1 var(--pixel); clip-path: var(--px-clip); }
 .sim-lede { margin: 0; font-size: 0.92rem; line-height: 1.45; color: var(--ink-2); max-width: 62ch; }
 .sim-chipbtn { border-width: 2px; min-height: 40px; }
