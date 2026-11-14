@@ -13,6 +13,7 @@ export const STATE = {
   posts: path("data/feed/posts.json"),
   accounts: path("data/feed/accounts.json"),
   ratings: path("data/feed/ratings.json"),
+  pressTweets: path("data/feed/press-tweets.json"), // X posts embedded in the articles (sync-press-tweets.mjs)
 };
 export const PUBLIC_DIR = path("public/data/feed/");
 export const DEPUTES = path("public/data/an/deputes.json");

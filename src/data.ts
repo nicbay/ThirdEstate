@@ -295,5 +295,14 @@ export interface FeedReaction {
     model: string; ratedAt: string;
   };
 }
-export interface FeedStory { id: string; title: string; firstTime: string; lastTime: string; outlets: string[]; items: { outlet: string; title: string; link: string; time: string; summary?: string }[]; reactions?: FeedReaction[] }
+/** An X post embedded in (or linked from) one of the story's articles; built by scripts/lib/press-tweets.mjs. */
+export interface FeedPress {
+  id: string; platform: "x"; url: string; handle: string; time: string | null; dateText: string | null; text: string | null;
+  author: { kind: "mp" | "senator" | "candidate" | "leader" | "account"; id: string | null; name: string | null; party?: string; group: { abrev: string; libelle: string; couleur: string } | null };
+  /** Placed from the post's rated content, else its author's group / party; null = not placed. */
+  side: "left" | "centre" | "right" | null; sideFrom: "content" | "group" | "party" | null;
+  rating: FeedReaction["rating"] | null;
+  quotedBy: { outlet: string; title: string; link: string }[];
+}
+export interface FeedStory { id: string; title: string; firstTime: string; lastTime: string; outlets: string[]; items: { outlet: string; title: string; link: string; time: string; summary?: string }[]; political?: boolean; press?: FeedPress[]; reactions?: (FeedReaction & { match?: { how: string | null } })[] }
 export const loadFeed = () => fetchJson<{ generatedAt: string; windowHours: number; outlets: { id: string; name: string; lean: string }[]; counts: Record<string, number>; stories: FeedStory[] }>("/data/feed/latest.json");
