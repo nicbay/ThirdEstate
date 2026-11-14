@@ -1,0 +1,97 @@
+{
+ "generated": "2026-11-14T12:17:44.574Z",
+ "coverage": [
+  {
+   "person": "Marine Le Pen",
+   "chamber": "AN",
+   "legislature": "15",
+   "from": "2017-07-04",
+   "to": "2022-01-16",
+   "votes": 411
+  },
+  {
+   "person": "Marine Le Pen",
+   "chamber": "AN",
+   "legislature": "16",
+   "from": "2022-07-11",
+   "to": "2024-06-03",
+   "votes": 558
+  },
+  {
+   "person": "Marine Le Pen",
+   "chamber": "AN",
+   "legislature": "17",
+   "from": "2024-10-24",
+   "to": "2026-11-04",
+   "votes": 849
+  },
+  {
+   "person": "Jordan Bardella",
+   "chamber": "PE",
+   "legislature": "9",
+   "from": "2019-07-15",
+   "to": "2024-04-24",
+   "votes": 17432
+  },
+  {
+   "person": "Jordan Bardella",
+   "chamber": "PE",
+   "legislature": "10",
+   "from": "2024-07-17",
+   "to": "2026-11-12",
+   "votes": 5134
+  }
+ ],
+ "notCovered": [
+  {
+   "person": "Marine Le Pen",
+   "chamber": "PE",
+   "from": "2004-07-20",
+   "to": "2017-06-18",
+   "why": {
+    "fr": "Les votes nominatifs du Parlement européen antérieurs à juillet 2019 ne sont pas couverts par les données de HowTheyVote.eu.",
+    "en": "European Parliament roll-call votes before July 2019 are not covered by the HowTheyVote.eu data."
+   }
+  }
+ ],
+ "people": [
+  {
+   "name": "Marine Le Pen",
+   "role": {
+    "fr": "Candidate, présidente du groupe RN à l'Assemblée nationale",
+    "en": "Candidate, leader of the RN group in the National Assembly"
+   }
+  },
+  {
+   "name": "Jordan Bardella",
+   "role": {
+    "fr": "Président du RN, député européen depuis 2019",
+    "en": "RN president, MEP since 2019"
+   }
+  }
+ ],
+ "contradictions": [
+  {
+   "person": "Jordan Bardella",
+   "chamber": "PE",
+   "legislature": "9",
+   "date": "2021-06-24",
+   "num": "134029",
+   "title": "European Climate Law — adoption of the provisional agreement with the Council",
+   "url": "https://howtheyvote.eu/votes/134029",
+   "position": "C",
+   "measure": {
+    "lineage": "m23",
+    "label": {
+     "fr": "Neutralité carbone « avant 2050 »",
+     "en": "Carbon neutrality 'before 2050'"
+    }
+   },
+   "explanation": {
+    "fr": "A voté contre la loi européenne sur le climat, qui inscrit l'objectif de neutralité climatique de l'Union d'ici 2050 (avec une baisse d'au moins 55 % des émissions en 2030), alors que le programme vise la neutralité carbone « avant 2050 ».",
+    "en": "Voted against the European Climate Law, which sets the EU's climate-neutrality target for 2050 (with emissions cut by at least 55% by 2030), while the programme aims for carbon neutrality 'before 2050'."
+   },
+   "strength": "partial"
+  }
+ ]
+}
