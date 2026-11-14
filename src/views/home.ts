@@ -17,6 +17,7 @@ import { mountForecastChart, scenarioForecast, scenarioFromUrl } from "./forecas
 import { forecastLine, heroDay } from "./hero-day";
 import { mountOcean } from "../lib/ocean";
 import { mountEdition } from "./edition";
+import { mountFox } from "../lib/fox-pet";
 
 export async function renderHome(app: HTMLElement) {
   const [polls, markets, hero] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null), heroDay()]);
@@ -31,6 +32,7 @@ export async function renderHome(app: HTMLElement) {
       <section class="hero-x hday" aria-labelledby="hday-title">
         <div class="hday-top">${hero.headHtml}${hero.artHtml}</div>
         <div class="hday-chart">
+          <div class="ed-perch"></div>
           <section id="edition" class="ed" aria-label="${L("L’édition du jour", "The day’s edition")}"></section>
           <div id="trend" class="reveal"></div>
           <div id="hq-num">${forecastLine(scenarioForecast(polls, markets, scenarioFromUrl()))}</div>
@@ -53,6 +55,9 @@ export async function renderHome(app: HTMLElement) {
   hero.start(app);
   mountOcean(app.querySelector<HTMLElement>(".hday")!);
   void mountEdition(app.querySelector<HTMLElement>("#edition")!);
+  // the fox lives on the note of the day's top edge (its own perch, so changing day doesn't redraw it)
+  const perch = app.querySelector<HTMLElement>(".ed-perch");
+  if (perch) mountFox(perch);
   if (home?.code) drawMine(app.querySelector<HTMLElement>("#mine")!, home.code, home.commune ?? home.code);
   else drawFindTown(app.querySelector<HTMLElement>("#mine")!);
 
