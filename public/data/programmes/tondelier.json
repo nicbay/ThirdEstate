@@ -1169,5 +1169,247 @@
   "summary": {
     "fr": "Le programme écologiste pour 2027 combine fiscalité du patrimoine (taxe de 2 % au-delà de 100 M€, ISF climatique), retour de la retraite à 62 ans, sortie du nucléaire sur une vingtaine d'années, nouvelle République « écologique et citoyenne » et, depuis novembre 2026, un Smic à 2 000 € brut et des mesures sur le temps de travail. Par rapport au programme Jadot de 2022, la fiscalité des très hauts patrimoines s'est durcie et la défense européenne a pris de la place, tandis que plusieurs mesures du contrat NFP de 2024 ont été restreintes (retraite à 62 et non 60 ans, contrôle des prix limité, aide ciblée à la cantine). Le programme 2027 n'a pas de chiffrage indépendant ; l'iFRAP estimait le programme Jadot 2022 à 92,5 Md€ de dépenses pour 59,7 Md€ de recettes, et l'Institut Montaigne le contrat NFP à un déficit supplémentaire de 179 Md€ par an.",
     "en": "The ecologists' 2027 programme combines wealth taxation (a 2% levy above €100m, a climate wealth tax), a return to retirement at 62, a nuclear phase-out over about twenty years, a new \"ecological and citizen\" Republic and, since November 2026, a €2,000 gross minimum wage plus working-time measures. Compared with Jadot's 2022 programme, taxation of the largest fortunes has hardened and European defence has gained ground, while several 2024 NFP measures were narrowed (retirement at 62 rather than 60, limited price controls, targeted canteen help). The 2027 programme has no independent costing; iFRAP put Jadot's 2022 programme at €92.5bn of spending against €59.7bn of revenue, and Institut Montaigne put the NFP contract at €179bn a year of extra deficit."
-  }
+  },
+  "group": "ECOS",
+  "votes": [
+    {
+      "lineage": "m02",
+      "topic": {
+        "fr": "Retraite : retour à 62 ans",
+        "en": "Pensions: back to 62"
+      },
+      "note": {
+        "fr": "217 : proposition de loi du Rassemblement national rétablissant l'âge de 62 ans (et annulant la hausse de la durée de cotisation), rejetée avec les voix de la gauche ; voter pour suit la promesse. 468 : amendement supprimant l'article premier de la proposition de loi d'abrogation ; voter contre suit la promesse. 3680 : amendements supprimant la suspension de la réforme dans le budget de la Sécurité sociale 2026 ; voter contre maintient la suspension, un pas vers l'abrogation.",
+        "en": "217: National Rally bill restoring age 62 (and undoing the longer contribution period), rejected with the left voting against; voting for follows the promise. 468: amendment deleting article 1 of the repeal bill; voting against follows the promise. 3680: amendments deleting the suspension of the reform from the 2026 social security budget; voting against keeps the suspension, a step towards repeal."
+      },
+      "scrutins": [
+        {
+          "num": 217,
+          "date": "2024-10-31",
+          "title": "l'ensemble de la proposition de loi visant à restaurer un système de retraite plus juste en annulant les dernières réformes portant sur l’âge de départ et le nombre d’annuités (première lecture).",
+          "result": "rejeté",
+          "total": {
+            "P": 119,
+            "C": 197,
+            "A": 18
+          },
+          "group": {
+            "P": 0,
+            "C": 26,
+            "A": 0
+          },
+          "majority": "C",
+          "expect": "P",
+          "agrees": false
+        },
+        {
+          "num": 2257,
+          "date": "2025-06-05",
+          "title": "la proposition de résolution visant à abroger la loi n° 2023-270 du 14 avril 2023 de financement rectificative de la sécurité sociale pour 2023 dite réforme des retraites.",
+          "result": "adopté",
+          "total": {
+            "P": 198,
+            "C": 35,
+            "A": 0
+          },
+          "group": {
+            "P": 33,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        },
+        {
+          "num": 468,
+          "date": "2024-11-28",
+          "title": "l'amendement de suppression n° 4 de M. Sitzenstuhl et les amendements identiques suivants à l'article premier de la proposition de loi d'abrogation de la retraite à 64 ans (première lecture).",
+          "result": "rejeté",
+          "total": {
+            "P": 100,
+            "C": 241,
+            "A": 1
+          },
+          "group": {
+            "P": 0,
+            "C": 33,
+            "A": 0
+          },
+          "majority": "C",
+          "expect": "C",
+          "agrees": true
+        },
+        {
+          "num": 3680,
+          "date": "2025-11-12",
+          "title": "l'amendement de suppression n° 653 de Mme Colin-Oesterlé et les amendements identiques suivants à l'article 45 bis (examen prioritaire) du projet de loi de financement de la sécurité sociale pour 2026 (première lecture).",
+          "result": "rejeté",
+          "total": {
+            "P": 70,
+            "C": 266,
+            "A": 158
+          },
+          "group": {
+            "P": 0,
+            "C": 35,
+            "A": 0
+          },
+          "majority": "C",
+          "expect": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "lineage": "m04",
+      "topic": {
+        "fr": "Taxe Zucman de 2 % et ISF climatique",
+        "en": "2% Zucman tax and a climate wealth tax"
+      },
+      "note": {
+        "fr": "3299 : amendement de Mme Sas au budget 2026 (impôt plancher de 2 % au-delà de 100 millions d'euros). 3295 : ISF climatique commun aux groupes de gauche.",
+        "en": "3299: Ms Sas's amendment to the 2026 budget (2% floor tax above 100 million euros). 3295: climate wealth tax tabled jointly by the left-wing groups."
+      },
+      "scrutins": [
+        {
+          "num": 878,
+          "date": "2025-02-20",
+          "title": "l'article unique de la proposition de loi instaurant un impôt plancher de 2 % sur le patrimoine des ultra riches (première lecture).",
+          "result": "adopté",
+          "total": {
+            "P": 117,
+            "C": 40,
+            "A": 29
+          },
+          "group": {
+            "P": 38,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        },
+        {
+          "num": 881,
+          "date": "2025-02-20",
+          "title": "l'ensemble de la proposition de loi instaurant un impôt plancher de 2 % sur le patrimoine des ultra riches (première lecture).",
+          "result": "adopté",
+          "total": {
+            "P": 116,
+            "C": 39,
+            "A": 31
+          },
+          "group": {
+            "P": 38,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        },
+        {
+          "num": 3299,
+          "date": "2025-10-31",
+          "title": "l'amendement n° 1 de Mme Sas après l'article 3 (examen prioritaire) du projet de loi de finances pour 2026 (première lecture).",
+          "result": "rejeté",
+          "total": {
+            "P": 168,
+            "C": 231,
+            "A": 5
+          },
+          "group": {
+            "P": 33,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        },
+        {
+          "num": 3295,
+          "date": "2025-10-31",
+          "title": "l'amendement n° 639 de M. Philippe Brun après l'article 3 (examen prioritaire) du projet de loi de finances pour 2026 (première lecture).",
+          "result": "rejeté",
+          "total": {
+            "P": 173,
+            "C": 233,
+            "A": 2
+          },
+          "group": {
+            "P": 34,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "lineage": "m15",
+      "topic": {
+        "fr": "Soutenir l'Ukraine",
+        "en": "Support Ukraine"
+      },
+      "note": null,
+      "scrutins": [
+        {
+          "num": 988,
+          "date": "2025-03-12",
+          "title": "l'article unique de la proposition de résolution européenne appelant au renforcement du soutien à l'Ukraine.",
+          "result": "adopté",
+          "total": {
+            "P": 288,
+            "C": 54,
+            "A": 132
+          },
+          "group": {
+            "P": 34,
+            "C": 0,
+            "A": 2
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "lineage": "m03",
+      "topic": {
+        "fr": "Sortir du nucléaire",
+        "en": "Phase out nuclear power"
+      },
+      "note": {
+        "fr": "Proposition de loi de programmation énergie-climat prévoyant la relance du nucléaire ; voter contre suit la promesse (le texte a été rejeté par une large coalition aux motifs divers).",
+        "en": "Energy-climate programming bill planning a nuclear revival; voting against follows the promise (it was rejected by a broad coalition for varied reasons)."
+      },
+      "scrutins": [
+        {
+          "num": 2653,
+          "date": "2025-06-24",
+          "title": "l'ensemble de la proposition de loi portant programmation nationale pour l'énergie et le climat pour les années 2025 à 2035 (première lecture).",
+          "result": "rejeté",
+          "total": {
+            "P": 142,
+            "C": 377,
+            "A": 47
+          },
+          "group": {
+            "P": 0,
+            "C": 37,
+            "A": 0
+          },
+          "majority": "C",
+          "expect": "C",
+          "agrees": true
+        }
+      ]
+    }
+  ]
 }

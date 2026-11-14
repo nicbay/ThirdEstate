@@ -1105,5 +1105,346 @@
   "summary": {
     "fr": "Le programme 2022 « La France des jours heureux » reposait sur la hausse des salaires (Smic à 1 500 € net, +30 % dans la fonction publique), la retraite à 60 ans, la semaine de 32 heures, 500 000 embauches publiques, le nucléaire et la nationalisation de grandes banques. En 2024, le PCF a signé le contrat du Nouveau Front populaire, aux objectifs voisins mais formulés autrement (Smic à 1 600 € net, retraite à 60 ans comme objectif, pôle public bancaire sans nationalisation) ; pour 2027, seules des annonces existent (Smic à 2 200 € brut, doublement de l'industrie et de la production d'électricité, sanctions pénales contre la fraude). L'iFRAP chiffrait le programme 2022 à 287 Md€ de dépenses pour 131,4 Md€ de recettes, et l'Institut Montaigne le contrat NFP à un déficit supplémentaire de 179 Md€ par an.",
     "en": "The 2022 programme \"La France des jours heureux\" centred on higher wages (€1,500 net minimum wage, +30% for civil servants), retirement at 60, a 32-hour week, 500,000 public hires, nuclear power and nationalising large banks. In 2024 the PCF signed the New Popular Front contract, with similar aims worded differently (€1,600 net minimum wage, retirement at 60 as an objective, a public banking pole without nationalisation); for 2027 there are only announcements (€2,200 gross minimum wage, doubling industry and electricity output, criminal penalties for tax fraud). iFRAP costed the 2022 programme at €287bn of spending against €131.4bn of revenue, and Institut Montaigne put the NFP contract at €179bn a year of extra deficit."
-  }
+  },
+  "group": "GDR",
+  "votes": [
+    {
+      "lineage": "m04",
+      "topic": {
+        "fr": "Retraite : abroger le report à 64 ans",
+        "en": "Pensions: repeal the move to age 64"
+      },
+      "note": {
+        "fr": "217 : proposition de loi du Rassemblement national rétablissant l'âge de 62 ans (et annulant la hausse de la durée de cotisation), rejetée avec les voix de la gauche ; voter pour suit la promesse. 468 : amendement supprimant l'article premier de la proposition de loi d'abrogation ; voter contre suit la promesse.",
+        "en": "217: National Rally bill restoring age 62 (and undoing the longer contribution period), rejected with the left voting against; voting for follows the promise. 468: amendment deleting article 1 of the repeal bill; voting against follows the promise."
+      },
+      "scrutins": [
+        {
+          "num": 217,
+          "date": "2024-10-31",
+          "title": "l'ensemble de la proposition de loi visant à restaurer un système de retraite plus juste en annulant les dernières réformes portant sur l’âge de départ et le nombre d’annuités (première lecture).",
+          "result": "rejeté",
+          "total": {
+            "P": 119,
+            "C": 197,
+            "A": 18
+          },
+          "group": {
+            "P": 0,
+            "C": 9,
+            "A": 0
+          },
+          "majority": "C",
+          "expect": "P",
+          "agrees": false
+        },
+        {
+          "num": 2257,
+          "date": "2025-06-05",
+          "title": "la proposition de résolution visant à abroger la loi n° 2023-270 du 14 avril 2023 de financement rectificative de la sécurité sociale pour 2023 dite réforme des retraites.",
+          "result": "adopté",
+          "total": {
+            "P": 198,
+            "C": 35,
+            "A": 0
+          },
+          "group": {
+            "P": 17,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        },
+        {
+          "num": 468,
+          "date": "2024-11-28",
+          "title": "l'amendement de suppression n° 4 de M. Sitzenstuhl et les amendements identiques suivants à l'article premier de la proposition de loi d'abrogation de la retraite à 64 ans (première lecture).",
+          "result": "rejeté",
+          "total": {
+            "P": 100,
+            "C": 241,
+            "A": 1
+          },
+          "group": {
+            "P": 0,
+            "C": 12,
+            "A": 0
+          },
+          "majority": "C",
+          "expect": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "lineage": "m07",
+      "topic": {
+        "fr": "Rétablir l'impôt sur la fortune",
+        "en": "Restore the wealth tax"
+      },
+      "note": {
+        "fr": "3306 : rétablissement de l'ISF d'avant 2018 ; 3295 : ISF climatique commun aux groupes de gauche (amendements au budget 2026).",
+        "en": "3306: restoring the pre-2018 wealth tax; 3295: climate wealth tax tabled jointly by the left-wing groups (amendments to the 2026 budget)."
+      },
+      "scrutins": [
+        {
+          "num": 3306,
+          "date": "2025-10-31",
+          "title": "l'amendement n° 2475 de M. Philippe Brun après l'article 3 (examen prioritaire) du projet de loi de finances pour 2026 (première lecture).",
+          "result": "rejeté",
+          "total": {
+            "P": 116,
+            "C": 189,
+            "A": 4
+          },
+          "group": {
+            "P": 8,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        },
+        {
+          "num": 3295,
+          "date": "2025-10-31",
+          "title": "l'amendement n° 639 de M. Philippe Brun après l'article 3 (examen prioritaire) du projet de loi de finances pour 2026 (première lecture).",
+          "result": "rejeté",
+          "total": {
+            "P": 173,
+            "C": 233,
+            "A": 2
+          },
+          "group": {
+            "P": 12,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "lineage": "m05",
+      "topic": {
+        "fr": "Relever les petites pensions",
+        "en": "Raise the lowest pensions"
+      },
+      "note": {
+        "fr": "Textes ciblés (retraites agricoles, retraités pauvres) ; le programme vise le minimum contributif au niveau du Smic.",
+        "en": "Targeted bills (farm pensions, poor retirees); the programme aims to lift the contributory minimum to the minimum wage."
+      },
+      "scrutins": [
+        {
+          "num": 7324,
+          "date": "2026-06-04",
+          "title": "l'ensemble de la proposition de loi portant plusieurs mesures de justice en faveur de la revalorisation des pensions de retraites agricoles (première lecture).",
+          "result": "adopté",
+          "total": {
+            "P": 82,
+            "C": 1,
+            "A": 5
+          },
+          "group": {
+            "P": 8,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        },
+        {
+          "num": 7354,
+          "date": "2026-06-11",
+          "title": "l'ensemble de la proposition de loi visant à renforcer la solidarité envers les retraités pauvres (première lecture).",
+          "result": "adopté",
+          "total": {
+            "P": 165,
+            "C": 0,
+            "A": 3
+          },
+          "group": {
+            "P": 15,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "lineage": "m23",
+      "topic": {
+        "fr": "Bloquer les prix des biens essentiels",
+        "en": "Freeze prices of essentials"
+      },
+      "note": {
+        "fr": "Les textes votés portent sur la vie chère en outre-mer (régulation des prix et des marges), pas sur tout le territoire.",
+        "en": "The bills voted concern the cost of living overseas (regulating prices and margins), not the whole country."
+      },
+      "scrutins": [
+        {
+          "num": 596,
+          "date": "2025-01-23",
+          "title": "l'ensemble de la proposition de loi visant à prendre des mesures d'urgence contre la vie chère et à réguler la concentration des acteurs économiques dans les territoires d'outre-mer (première lecture).",
+          "result": "adopté",
+          "total": {
+            "P": 180,
+            "C": 1,
+            "A": 64
+          },
+          "group": {
+            "P": 10,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        },
+        {
+          "num": 4755,
+          "date": "2025-12-11",
+          "title": "l'ensemble de la proposition de loi visant à prendre des mesures d'urgence contre la vie chère en outre-mer dans le secteur des services (première lecture).",
+          "result": "adopté",
+          "total": {
+            "P": 85,
+            "C": 0,
+            "A": 13
+          },
+          "group": {
+            "P": 4,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "lineage": "m26",
+      "topic": {
+        "fr": "Titre de séjour de long terme comme référence",
+        "en": "Long-term residence permits as the norm"
+      },
+      "note": {
+        "fr": "Proposition de loi garantissant le renouvellement automatique des titres de séjour de longue durée.",
+        "en": "Bill guaranteeing automatic renewal of long-term residence permits."
+      },
+      "scrutins": [
+        {
+          "num": 4754,
+          "date": "2025-12-11",
+          "title": "l'ensemble de la proposition de loi visant à garantir un renouvellement automatique des titres de séjour de longue durée (première lecture).",
+          "result": "adopté",
+          "total": {
+            "P": 98,
+            "C": 37,
+            "A": 2
+          },
+          "group": {
+            "P": 5,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "lineage": "m10",
+      "topic": {
+        "fr": "Doubler la production d'électricité, dont l'hydraulique",
+        "en": "Double electricity output, including hydropower"
+      },
+      "note": {
+        "fr": "Relance des investissements dans l'hydroélectricité (texte de la commission mixte paritaire).",
+        "en": "Relaunching investment in hydropower (joint committee text)."
+      },
+      "scrutins": [
+        {
+          "num": 7409,
+          "date": "2026-06-17",
+          "title": "l'ensemble de la proposition de loi visant à relancer les investissements dans le secteur de l'hydroélectricité pour contribuer à la transition énergétique (texte de la commission mixte paritaire).",
+          "result": "adopté",
+          "total": {
+            "P": 290,
+            "C": 59,
+            "A": 116
+          },
+          "group": {
+            "P": 16,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "lineage": "m11",
+      "topic": {
+        "fr": "Réindustrialiser : nationaliser ArcelorMittal France",
+        "en": "Reindustrialise: nationalise ArcelorMittal France"
+      },
+      "note": {
+        "fr": "Le programme vise à doubler la part de l'industrie ; la nationalisation de l'acier en est une application.",
+        "en": "The programme aims to double industry's share of GDP; nationalising steel is one application."
+      },
+      "scrutins": [
+        {
+          "num": 4438,
+          "date": "2025-11-27",
+          "title": "l'ensemble de la proposition de loi visant à la nationalisation d'ArcelorMittal France afin de préserver la souveraineté industrielle de la France (première lecture).",
+          "result": "adopté",
+          "total": {
+            "P": 127,
+            "C": 41,
+            "A": 42
+          },
+          "group": {
+            "P": 13,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        },
+        {
+          "num": 7380,
+          "date": "2026-06-11",
+          "title": "l'ensemble de la proposition de loi visant à la nationalisation d'ArcelorMittal France afin de préserver la souveraineté industrielle de la France (deuxième lecture).",
+          "result": "adopté",
+          "total": {
+            "P": 106,
+            "C": 49,
+            "A": 47
+          },
+          "group": {
+            "P": 16,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        }
+      ]
+    }
+  ]
 }

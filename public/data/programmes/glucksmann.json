@@ -690,5 +690,298 @@
   "summary": {
     "fr": "Le programme européen de 2024 « Réveiller l'Europe » portait sur la défense européenne et le soutien à l'Ukraine, la préférence européenne, la transition écologique et la fiscalité des plus riches à l'échelle de l'Union. Depuis sa candidature présidentielle (août 2026) et sa victoire à la primaire PS-Place publique (octobre 2026), les annonces portent sur des sujets nationaux : taxation des très gros héritages (15 Md€ annoncés) pour baisser la CSG des salariés, Smic à 1 700 € net, plan pour l'école publique, abrogation de la réforme des retraites de 2023, service civique obligatoire et convention citoyenne sur l'immigration. Aucun chiffrage indépendant de ces propositions n'a été publié à ce jour.",
     "en": "The 2024 European programme \"Réveiller l'Europe\" focused on European defence and support for Ukraine, European preference, the ecological transition and EU-level taxation of the richest. Since his presidential bid (August 2026) and his PS-Place publique primary win (October 2026), announcements address national issues: taxing very large inheritances (€15bn announced) to cut employees' CSG, a €1,700 net minimum wage, a public-school plan, repeal of the 2023 pension reform, compulsory civic service and a citizens' convention on immigration. No independent costing of these proposals has been published so far."
-  }
+  },
+  "group": "SOC",
+  "votes": [
+    {
+      "lineage": "m04",
+      "topic": {
+        "fr": "Retraite : abroger le report à 64 ans",
+        "en": "Pensions: repeal the move to age 64"
+      },
+      "note": {
+        "fr": "217 : proposition de loi du Rassemblement national rétablissant l'âge de 62 ans (et annulant la hausse de la durée de cotisation), rejetée avec les voix de la gauche ; voter pour suit la promesse. 468 : amendement supprimant l'article premier de la proposition de loi d'abrogation ; voter contre suit la promesse. 3680 : amendements supprimant la suspension de la réforme dans le budget de la Sécurité sociale 2026 ; voter contre maintient la suspension, un pas vers l'abrogation.",
+        "en": "217: National Rally bill restoring age 62 (and undoing the longer contribution period), rejected with the left voting against; voting for follows the promise. 468: amendment deleting article 1 of the repeal bill; voting against follows the promise. 3680: amendments deleting the suspension of the reform from the 2026 social security budget; voting against keeps the suspension, a step towards repeal."
+      },
+      "scrutins": [
+        {
+          "num": 217,
+          "date": "2024-10-31",
+          "title": "l'ensemble de la proposition de loi visant à restaurer un système de retraite plus juste en annulant les dernières réformes portant sur l’âge de départ et le nombre d’annuités (première lecture).",
+          "result": "rejeté",
+          "total": {
+            "P": 119,
+            "C": 197,
+            "A": 18
+          },
+          "group": {
+            "P": 1,
+            "C": 50,
+            "A": 0
+          },
+          "majority": "C",
+          "expect": "P",
+          "agrees": false
+        },
+        {
+          "num": 2257,
+          "date": "2025-06-05",
+          "title": "la proposition de résolution visant à abroger la loi n° 2023-270 du 14 avril 2023 de financement rectificative de la sécurité sociale pour 2023 dite réforme des retraites.",
+          "result": "adopté",
+          "total": {
+            "P": 198,
+            "C": 35,
+            "A": 0
+          },
+          "group": {
+            "P": 42,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        },
+        {
+          "num": 468,
+          "date": "2024-11-28",
+          "title": "l'amendement de suppression n° 4 de M. Sitzenstuhl et les amendements identiques suivants à l'article premier de la proposition de loi d'abrogation de la retraite à 64 ans (première lecture).",
+          "result": "rejeté",
+          "total": {
+            "P": 100,
+            "C": 241,
+            "A": 1
+          },
+          "group": {
+            "P": 0,
+            "C": 41,
+            "A": 0
+          },
+          "majority": "C",
+          "expect": "C",
+          "agrees": true
+        },
+        {
+          "num": 3680,
+          "date": "2025-11-12",
+          "title": "l'amendement de suppression n° 653 de Mme Colin-Oesterlé et les amendements identiques suivants à l'article 45 bis (examen prioritaire) du projet de loi de financement de la sécurité sociale pour 2026 (première lecture).",
+          "result": "rejeté",
+          "total": {
+            "P": 70,
+            "C": 266,
+            "A": 158
+          },
+          "group": {
+            "P": 0,
+            "C": 64,
+            "A": 0
+          },
+          "majority": "C",
+          "expect": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "lineage": "m15",
+      "topic": {
+        "fr": "Impôt minimum de 2 % sur les très grandes fortunes (taxe Zucman)",
+        "en": "2% minimum tax on the largest fortunes (Zucman tax)"
+      },
+      "note": {
+        "fr": "3299 et 3300 : amendements au budget 2026 instaurant un impôt plancher de 2 % sur les patrimoines de plus de 100 millions d'euros (écologiste, puis socialiste).",
+        "en": "3299 and 3300: amendments to the 2026 budget creating a 2% floor tax on wealth above 100 million euros (Green, then Socialist)."
+      },
+      "scrutins": [
+        {
+          "num": 878,
+          "date": "2025-02-20",
+          "title": "l'article unique de la proposition de loi instaurant un impôt plancher de 2 % sur le patrimoine des ultra riches (première lecture).",
+          "result": "adopté",
+          "total": {
+            "P": 117,
+            "C": 40,
+            "A": 29
+          },
+          "group": {
+            "P": 34,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        },
+        {
+          "num": 881,
+          "date": "2025-02-20",
+          "title": "l'ensemble de la proposition de loi instaurant un impôt plancher de 2 % sur le patrimoine des ultra riches (première lecture).",
+          "result": "adopté",
+          "total": {
+            "P": 116,
+            "C": 39,
+            "A": 31
+          },
+          "group": {
+            "P": 35,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        },
+        {
+          "num": 3299,
+          "date": "2025-10-31",
+          "title": "l'amendement n° 1 de Mme Sas après l'article 3 (examen prioritaire) du projet de loi de finances pour 2026 (première lecture).",
+          "result": "rejeté",
+          "total": {
+            "P": 168,
+            "C": 231,
+            "A": 5
+          },
+          "group": {
+            "P": 58,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        },
+        {
+          "num": 3300,
+          "date": "2025-10-31",
+          "title": "l'amendement n° 2359 de M. Vallaud et les amendements identiques suivants après l'article 3 (examen prioritaire) du projet de loi de finances pour 2026 (première lecture).",
+          "result": "rejeté",
+          "total": {
+            "P": 172,
+            "C": 228,
+            "A": 6
+          },
+          "group": {
+            "P": 58,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "lineage": "m12",
+      "topic": {
+        "fr": "Refuser les nouveaux accords de libre-échange (Mercosur)",
+        "en": "Refuse new free-trade deals (Mercosur)"
+      },
+      "note": null,
+      "scrutins": [
+        {
+          "num": 691,
+          "date": "2025-01-30",
+          "title": "l'article unique de la proposition de résolution européenne visant à refuser la ratification de l'accord commercial entre l'Union européenne et le Mercosur.",
+          "result": "adopté",
+          "total": {
+            "P": 77,
+            "C": 0,
+            "A": 0
+          },
+          "group": {
+            "P": 8,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        },
+        {
+          "num": 4244,
+          "date": "2025-11-27",
+          "title": "la proposition de résolution invitant le Gouvernement de la République française à s’opposer à l’adoption de l’accord commercial entre l’Union européenne et le Mercosur (article 34-1 de la Constitution).",
+          "result": "adopté",
+          "total": {
+            "P": 244,
+            "C": 1,
+            "A": 5
+          },
+          "group": {
+            "P": 28,
+            "C": 1,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "lineage": "m14",
+      "topic": {
+        "fr": "Agriculture : protéger les agriculteurs du libre-échange",
+        "en": "Farming: shield farmers from free trade"
+      },
+      "note": {
+        "fr": "Résolution européenne demandant des exigences à l'importation (mesures miroirs) ; une partie seulement de la mesure.",
+        "en": "European resolution calling for import requirements (mirror clauses); only part of the measure."
+      },
+      "scrutins": [
+        {
+          "num": 685,
+          "date": "2025-01-30",
+          "title": "l'ensemble de la proposition de résolution européenne relative à l’adoption et à la mise en œuvre d’exigences à l’importation pour le respect de normes de production équivalentes aux normes de production essentielles, en matière de santé, d’environnement, de biodiversité et de bien-être animal applicables dans l’Union européenne.",
+          "result": "adopté",
+          "total": {
+            "P": 79,
+            "C": 0,
+            "A": 14
+          },
+          "group": {
+            "P": 13,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "lineage": "m10",
+      "topic": {
+        "fr": "Saisir les avoirs russes gelés pour l'Ukraine",
+        "en": "Seize frozen Russian assets for Ukraine"
+      },
+      "note": {
+        "fr": "La résolution européenne de soutien à l'Ukraine exhorte l'Union à saisir les avoirs russes gelés (point 27).",
+        "en": "The European resolution supporting Ukraine urges the EU to seize frozen Russian assets (point 27)."
+      },
+      "scrutins": [
+        {
+          "num": 988,
+          "date": "2025-03-12",
+          "title": "l'article unique de la proposition de résolution européenne appelant au renforcement du soutien à l'Ukraine.",
+          "result": "adopté",
+          "total": {
+            "P": 288,
+            "C": 54,
+            "A": 132
+          },
+          "group": {
+            "P": 47,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "expect": "P",
+          "agrees": true
+        }
+      ]
+    }
+  ]
 }
