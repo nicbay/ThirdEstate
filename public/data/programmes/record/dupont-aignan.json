@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-14T12:12:39.990Z",
+  "generated": "2026-11-14T12:13:56.634Z",
   "coverage": [
     {
       "person": "Nicolas Dupont-Aignan",
@@ -94,28 +94,5 @@
       }
     }
   ],
-  "contradictions": [
-    {
-      "person": "Nicolas Dupont-Aignan",
-      "chamber": "AN",
-      "legislature": 15,
-      "date": "2020-06-15",
-      "num": 2756,
-      "title": "l'ensemble du projet de loi relatif à la dette sociale et à l'autonomie (première lecture).",
-      "url": "https://www.assemblee-nationale.fr/dyn/15/scrutins/2756",
-      "position": "C",
-      "measure": {
-        "lineage": "d22",
-        "label": {
-          "fr": "Faire de la dépendance une cinquième branche de la Sécurité sociale",
-          "en": "Make long-term care a fifth branch of social security"
-        }
-      },
-      "explanation": {
-        "fr": "Il a voté contre la loi de 2020 qui a créé la cinquième branche « autonomie » qu'il propose en 2022 ; ce texte organisait surtout le transfert de 136 Md€ de dette sociale à la CADES, ce qui peut expliquer son vote.",
-        "en": "He voted against the 2020 law that created the 'autonomy' fifth branch he proposed in 2022; the bill mainly moved €136bn of social debt to CADES, which may explain his vote."
-      },
-      "strength": "partial"
-    }
-  ]
+  "contradictions": []
 }

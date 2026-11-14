@@ -13,17 +13,7 @@
 // Considered and rejected: abstention on the 2023 immigration law (16/3213, CMP text), which then contained a
 // five-year residence condition for family benefits (measure d09). An abstention is not a vote against, and he
 // said publicly the text did not go far enough (Sud Radio, 20 December 2023), so it does not contradict d09.
-export const contradictions = [
-  {
-    leg: 15,
-    num: 2756,
-    expect: "C",
-    measure: "d22",
-    label: { fr: "Faire de la dépendance une cinquième branche de la Sécurité sociale", en: "Make long-term care a fifth branch of social security" },
-    explanation: {
-      fr: "Il a voté contre la loi de 2020 qui a créé la cinquième branche « autonomie » qu'il propose en 2022 ; ce texte organisait surtout le transfert de 136 Md€ de dette sociale à la CADES, ce qui peut expliquer son vote.",
-      en: "He voted against the 2020 law that created the 'autonomy' fifth branch he proposed in 2022; the bill mainly moved €136bn of social debt to CADES, which may explain his vote.",
-    },
-    strength: "partial",
-  },
-];
+// Also rejected (reviewed in Third Estate, 2026-11-14): his vote against the 2020 law creating the fifth branch
+// (15/2756) bears on measure d22, which is in his 2022 programme only, not his 2027 one: not a vote against what he
+// proposes now.
+export const contradictions = [];
