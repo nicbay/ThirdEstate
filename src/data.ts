@@ -281,6 +281,9 @@ export type Triple = [number, number, number];
 export interface ShiftUnit { lon: number; lat: number; name?: string; lr: Triple; farRight: Triple; centre: Triple; turnout: Triple; left: Triple; right: Triple }
 export interface ShiftPair { from: number; to: number; fromId: string; toId: string; fromDate: string; toDate: string; level: "department" | "district"; national: Omit<ShiftUnit, "lon" | "lat">; units: Record<string, ShiftUnit> }
 export const loadShifts = memo(() => fetchJson<{ metrics: Record<string, string>; pairs: ShiftPair[] }>("/data/history/legislative/shifts.json"));
+/** The same, with units only for the latest district pair (the others keep their national figures): for the
+ *  homepage and the town summary, which never draw older maps. */
+export const loadShiftsLatest = memo(() => fetchJson<{ pairs: ShiftPair[] }>("/data/history/legislative/shifts-latest.json"));
 
 // ---------- red / blue feed ----------
 export interface FeedReaction {

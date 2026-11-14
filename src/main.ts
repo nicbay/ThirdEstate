@@ -22,7 +22,7 @@ import { renderElection } from "./views/history";
 import { renderFeed } from "./views/feed";
 import { renderRace } from "./views/race";
 import { renderSenat, renderSenateur } from "./views/senat";
-import { depOf, loadDepartmentTowns, plmWhole, renderExplorer, renderTown } from "./views/explore";
+import { depOf, loadDepartmentTowns, loadTownBundle, plmWhole, renderExplorer, renderTown } from "./views/explore";
 import { getHome, onHome } from "./lib/cloud";
 import { esc } from "./util";
 import { renderEconomy } from "./views/economy";
@@ -34,6 +34,7 @@ import { pixelIcon, type PixelIcon } from "./lib/pixel-icons";
 import { initSearch, openSearch } from "./lib/search";
 import { foxBusy, initFox, initMotion, pageTransition } from "./lib/motion";
 import { foxLeave, foxVisit } from "./lib/fox-pet";
+import { paintDepArms } from "./lib/arms";
 import { renderCandidate } from "./views/candidate";
 
 const app = document.getElementById("app")!;
@@ -599,6 +600,7 @@ async function render(path: string, anchor: string | undefined) {
         await fn(m);
         if (seq !== renderSeq) return; // a newer navigation took over while this one loaded
         foxVisit(); // now and then the fox drops by (the homepage mounts its own)
+        paintDepArms(app); // a department's arms beside an MP, a district, a senator
         const page = app.querySelector(":scope > .page");
         if (page && !page.querySelector(".next-steps")) page.insertAdjacentHTML("beforeend", nextSteps(path));
         if (anchor) document.getElementById(anchor)?.scrollIntoView();
@@ -628,3 +630,10 @@ initTooltip();
 initInfoTips();
 joinPresence();
 route();
+// the reader's own town is one tap away from every page ("Chez vous"): once the first page has settled, fetch its
+// department's files in the background so that tap opens at once
+{
+  const warm = () => { const h = getHome(); if (h?.code) { const d = depOf(h.code); void loadDepartmentTowns(d).catch(() => {}); void loadTownBundle(d); } };
+  const idle = (window as Window & { requestIdleCallback?: (f: () => void, o?: { timeout: number }) => void }).requestIdleCallback;
+  setTimeout(() => (idle ? idle(warm, { timeout: 4000 }) : warm()), 2500);
+}

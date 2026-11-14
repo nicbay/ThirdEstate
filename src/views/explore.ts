@@ -48,14 +48,22 @@ export function loadDepartmentTowns(dep: string) {
     depCache.set(
       dep,
       (async () => {
-        const deputes = await loadDeputes();
-        const codes = [...new Set(deputes.filter((d) => d.numDepartement === dep && d.circo).map((d) => d.circo!))];
+        // the district codes come from the small index (department code + two digits), not the 500 KB list of MPs,
+        // and every profile and its events file are asked for at once: one round trip instead of three, which is
+        // what a phone on 4G feels
+        const idx = await loadNational().catch(() => null);
+        let codes: string[] = (idx?.districts ?? []).filter((c: string) => c.length === dep.length + 2 && c.startsWith(dep));
+        if (!codes.length) codes = [...new Set((await loadDeputes()).filter((d) => d.numDepartement === dep && d.circo).map((d) => d.circo!))];
         const profiles = new Map<string, Any>();
-        await Promise.all(codes.map(async (c) => { try { profiles.set(c, await fetchJson(`/data/districts/${c}.json`)); } catch { /* none */ } }));
         const events = new Map<string, Any[]>();
-        await Promise.all(codes.map(async (c) => { try { events.set(c, (await fetchJson<Any>(`/data/districts/events/${c}.json`)).events ?? []); } catch { /* none */ } }));
+        await Promise.all(codes.flatMap((c) => [
+          fetchJson<Any>(`/data/districts/${c}.json`).then((p) => void profiles.set(c, p), () => {}),
+          fetchJson<Any>(`/data/districts/events/${c}.json`).then((e) => void events.set(c, e.events ?? []), () => {}),
+        ]));
         const towns = new Map<string, TownData>();
-        for (const [c, p] of profiles) {
+        for (const c of codes) {
+          const p = profiles.get(c);
+          if (!p) continue;
           const I = p.indicators ?? {};
           for (const u of p.geography?.units ?? []) {
             const t: TownData = towns.get(u.code) ?? { code: u.code, name: u.name, pop: u.pop ?? 0, districts: [], schools: [], events: [] };

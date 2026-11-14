@@ -5,6 +5,7 @@
 import "../styles/arms.css";
 import { fetchJson } from "../data";
 import { esc } from "../util";
+import { L } from "../i18n";
 
 /** The heraldic tinctures, in pixel-art shades that hold up on paper and on the night band. */
 const TINCTURES: [number, number, number][] = [
@@ -40,7 +41,7 @@ export function loadCommuneArms(dep: string) {
 }
 
 /** A slot for a coat of arms; `paintArms` fills it. With `href` it's a link (e.g. the department's page). */
-export function armsSlot(path: string | null | undefined, label: string, size: "s" | "m" | "l" = "m", href?: string) {
+export function armsSlot(path: string | null | undefined, label: string, size: "xs" | "s" | "m" | "l" | "xl" = "m", href?: string) {
   if (!path) return "";
   const inner = `<canvas aria-hidden="true"></canvas>`;
   const attrs = `class="arms arms-${size}" data-arms="${esc(path)}" title="${esc(label)}"`;
@@ -111,5 +112,23 @@ export function paintArms(root: ParentNode = document) {
     cv.width = data.width; cv.height = data.height;
     cv.getContext("2d")!.putImageData(data, 0, 0);
     el.classList.add("is-in");
+  });
+}
+
+/** A placeholder for a department's arms on pages that render before the arms list has loaded (an MP, a district,
+ *  a senator); `paintDepArms` swaps it for the arms, linking to the department's towns and MPs. */
+export const depArmsSlot = (dep: string | null | undefined, name?: string | null, size: "xs" | "s" | "m" = "xs") =>
+  dep ? `<span class="dep-arms-slot" data-dep="${esc(dep)}" data-name="${esc(name ?? "")}" data-size="${size}"></span>` : "";
+export function paintDepArms(root: ParentNode = document) {
+  const slots = [...root.querySelectorAll<HTMLElement>(".dep-arms-slot")];
+  if (!slots.length) return;
+  void loadDepartmentArms().then((da) => {
+    for (const el of slots) {
+      const { dep = "", name = "", size = "xs" } = el.dataset;
+      const what = L("le département, ses communes et ses députés", "the department, its towns and MPs");
+      const label = name ? `${name}${L(" : ", ": ")}${what}` : what;
+      el.outerHTML = armsSlot(da[dep], label, size as "xs", `#/explorer/${dep}`);
+    }
+    paintArms(root);
   });
 }

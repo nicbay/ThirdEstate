@@ -92,7 +92,7 @@ function createFox(opts: Opts) {
   let lastActivity = performance.now(), idleHandled = false, hoverEl: Element | null = null, hoverSince = 0, hoverX = 0;
   let goneTimer = 0, leaveAt = opts.visitor ? performance.now() + rand(40000, 80000) : Infinity;
   const props = new Set<Prop>();
-  let shownFrame: Frame | null = null;
+  let shownFrame: Frame | null = null, walked = 0;
 
   const show = (f: Frame) => {
     if (f === shownFrame) return;
@@ -278,7 +278,9 @@ function createFox(opts: Opts) {
     }
     switch (act) {
       case "walk": {
+        const x0 = x;
         x = face > 0 ? Math.min(walkTarget, x + 64 * dt) : Math.max(walkTarget, x - 64 * dt);
+        walked += Math.abs(x - x0);
         break;
       }
       case "air": {
@@ -373,8 +375,16 @@ function createFox(opts: Opts) {
   function frameOf(now: number): Frame {
     const k = Math.floor((now - t0) / 240);
     switch (act) {
-      case "sit": case "look": return reduced ? (Math.floor(now / 250) % 18 === 0 ? "blink" : "sitA") : k % 13 === 12 ? "blink" : act === "look" ? "sitA" : k % 4 < 2 ? "sitA" : "sitB";
-      case "walk": return (["walk1", "walk2", "walk3", "walk2"] as Frame[])[Math.floor(now / 120) % 4];
+      case "sit": case "look": {
+        if (reduced) return Math.floor(now / 250) % 18 === 0 ? "blink" : "sitA";
+        // the tail rests on the ground and now and then sweeps up and back: twice through six poses every few
+        // seconds when sitting, without pause while something holds its attention
+        const per = act === "look" ? 840 : 4200, ph = (now - t0 + 1800) % per;
+        if (ph < 840) { const i = Math.floor(ph / 70) % 12, p = i < 6 ? i : 11 - i; if (p) return `wag${p}` as Frame; }
+        return k % 13 === 12 ? "blink" : "sitA";
+      }
+      // the walk cycle follows the distance walked (two sprite px a frame), so the paws grip the box instead of sliding
+      case "walk": return `walk${Math.floor(walked / 6) % 8}` as Frame;
       case "lie": case "sulk": return "lie";
       case "stretch": return "stretch";
       case "bowl": return "bowl";

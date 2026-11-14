@@ -6,7 +6,7 @@ import "../styles/hero-day.css";
 import { infoTip } from "../lib/infotip";
 import { geoConicConformal, geoPath } from "d3-geo";
 import { getHome, onPresence } from "../lib/cloud";
-import { fetchJson, loadDepartements, loadDeputes, loadFeed, loadMarkets, loadPolls, loadShifts, type FeedReaction } from "../data";
+import { fetchJson, loadDepartements, loadDeputes, loadFeed, loadMarkets, loadPolls, loadShiftsLatest, type FeedReaction } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
 import { meta, registerParties } from "../lib/candidates";
 import { ELECTION_DAY } from "../lib/forecast";
@@ -37,7 +37,7 @@ const ago = (iso: string, days: number) => Date.parse(iso) >= Date.now() - days 
 /** Builds the hero HTML and returns it with a start() that wires the maps once it's in the page. */
 export async function heroDay() {
   const [polls, markets, geo, deputes, shifts, feed, idx] = await Promise.all([
-    loadPolls("2027"), loadMarkets().catch(() => null), loadDepartements(), loadDeputes(), loadShifts().catch(() => null), loadFeed().catch(() => null),
+    loadPolls("2027"), loadMarkets().catch(() => null), loadDepartements(), loadDeputes(), loadShiftsLatest().catch(() => null), loadFeed().catch(() => null),
     fetchJson<{ candidates: { slug: string; pollName: string }[] }>("/data/candidates/index.json").catch(() => null),
   ]);
   registerParties(polls.parties);
