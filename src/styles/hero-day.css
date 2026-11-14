@@ -242,3 +242,17 @@
 /* the note of the day, boxed so it reads as its own piece */
 .hday-chart .ed { border: 2px solid var(--night-text-2); background: color-mix(in srgb, var(--night-2) 88%, transparent); padding: 1.1rem 1.2rem 1.2rem; margin-bottom: 1.2rem; box-shadow: 6px 6px 0 var(--night-rule-2, #2a2f48); }
 @media (max-width: 640px) { .hday-chart .ed { padding: 0.9rem 0.8rem 1rem; box-shadow: 4px 4px 0 var(--night-rule-2, #2a2f48); } }
+
+/* widget: who's reading right now (live presence), departments shaded by readers online */
+.hw-live .hw-head { cursor: default; }
+.live-dot { display: inline-block; width: 8px; height: 8px; background: var(--split-red); margin-right: 0.4rem; animation: live-blink 1.6s steps(2, end) infinite; }
+@keyframes live-blink { 50% { opacity: 0.2; } }
+#live-map { width: 100%; height: auto; max-height: 420px; }
+.live-dep { fill: var(--wash); stroke: var(--paper); stroke-width: 0.6; transition: fill 0.4s; }
+.live-dep.is-on { fill: color-mix(in srgb, var(--split-blue) calc(var(--k) * 100%), var(--wash)); }
+.live-ping { fill: none; stroke: var(--split-red); stroke-width: 2; animation: live-ping 2.4s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes live-ping { from { opacity: 0.9; transform: scale(0.6); } to { opacity: 0; transform: scale(3); } }
+.live-k { margin: 0; font: 600 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-3); }
+.live-towns { list-style: none; margin: 0.3rem 0 0.5rem; padding: 0; display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem; }
+.live-towns li { font-size: 0.9rem; } .live-towns b { font: 700 0.75rem var(--mono); color: var(--split-red); }
+@media (prefers-reduced-motion: reduce) { .live-dot, .live-ping { animation: none; } }

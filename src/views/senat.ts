@@ -79,7 +79,7 @@ export async function renderSenateur(app: HTMLElement, id: string) {
       <p class="crumbs"><a href="#/senat">${L("Sénat", "Senate")}</a></p>
       <div class="mp-head card" style="--c:${safeColor(s.groupe?.couleur)}">
         <img src="${senPhoto(s)}" alt="" data-hide-broken/>
-        <div class="mp-id"><p class="eyebrow">${L("Sénateur·rice", "Senator")}, ${esc(s.circonscription)}</p><h1>${esc(s.civ)} ${esc(s.prenom)} ${esc(s.nom)}</h1><p><span class="chip">${esc(s.groupe?.abrev ?? "")}</span> ${esc(s.groupe?.libelle ?? "")}</p>
+        <div class="mp-id"><p class="eyebrow">${L(s.civ === "Mme" ? "Sénatrice" : "Sénateur", "Senator")}, ${esc(s.circonscription)}</p><h1>${esc(s.civ)} ${esc(s.prenom)} ${esc(s.nom)}</h1><p><span class="chip">${esc(s.groupe?.abrev ?? "")}</span> ${esc(s.groupe?.libelle ?? "")}</p>
         <p class="muted small">${age(s) ?? "?"} ${L("ans", "years old")}${s.profession ? `, ${esc(s.profession)}` : ""}${s.commission ? `. ${esc(s.commission.libelle)}${s.commission.fonction ? ` (${esc(s.commission.fonction)})` : ""}` : ""}</p></div>
       </div>
       <div class="mp-grid-2">

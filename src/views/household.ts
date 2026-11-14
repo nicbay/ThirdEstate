@@ -28,12 +28,12 @@ const fmtPct = (n: number, d = 1) => pctRaw(n, d).replace("-", "−");
 const taxEur = (n: number) => (Math.round(n) < 0 ? `−${eur(-n)}` : eur(n));
 
 const JOBS: [Job, T][] = [
-  ["private", { fr: "Salarié·e du privé", en: "Private-sector employee" }],
+  ["private", { fr: "Salarié du privé", en: "Private-sector employee" }],
   ["public", { fr: "Fonctionnaire", en: "Civil servant" }],
-  ["self", { fr: "Indépendant·e", en: "Self-employed" }],
-  ["retired", { fr: "Retraité·e", en: "Retired" }],
+  ["self", { fr: "Indépendant", en: "Self-employed" }],
+  ["retired", { fr: "Retraité", en: "Retired" }],
   ["unemployed", { fr: "Au chômage (indemnisé)", en: "Unemployed (on benefit)" }],
-  ["student", { fr: "Étudiant·e", en: "Student" }],
+  ["student", { fr: "Étudiant", en: "Student" }],
   ["inactive", { fr: "Sans activité", en: "Not working" }],
 ];
 const incomeLabel = (j: Job) => ({
@@ -113,7 +113,7 @@ export async function renderHousehold(app: HTMLElement) {
           <fieldset>
             <legend>${L("Votre situation", "Your situation")}</legend>
             <div class="small-tabs hh-status" role="radiogroup" aria-label="${L("Situation familiale", "Family status")}">
-              ${([["single", L("Seul·e", "Single")], ["married", L("Marié·e ou pacsé·e", "Married or civil union")], ["cohab", L("En couple, non marié·e", "Couple, not married")]] as [Status, string][])
+              ${([["single", L("Seul", "Single")], ["married", L("Marié ou pacsé", "Married or civil union")], ["cohab", L("En couple, non marié", "Couple, not married")]] as [Status, string][])
                 .map(([v, lab]) => `<button type="button" role="radio" data-status="${v}" aria-checked="${h.status === v}">${lab}</button>`).join("")}
             </div>
             <div id="hh-adults"></div>
@@ -132,7 +132,7 @@ export async function renderHousehold(app: HTMLElement) {
               <label>${L("Logement", "Housing")}<select id="hh-housing">
                 <option value="tenant" ${h.housing === "tenant" ? "selected" : ""}>${L("Locataire", "Tenant")}</option>
                 <option value="owner" ${h.housing === "owner" ? "selected" : ""}>${L("Propriétaire", "Owner")}</option>
-                <option value="other" ${h.housing === "other" ? "selected" : ""}>${L("Logé·e gratuitement", "Housed for free")}</option>
+                <option value="other" ${h.housing === "other" ? "selected" : ""}>${L("Logé gratuitement", "Housed for free")}</option>
               </select></label>
               <label class="hh-rent">${L("Loyer mensuel (hors charges)", "Monthly rent (excl. charges)")}<input type="number" inputmode="numeric" min="0" step="10" id="hh-rent" value="${h.rent}"></label>
               <label class="hh-rent">${L("APL par mois", "Housing benefit a month")}<input type="number" inputmode="numeric" min="0" step="10" id="hh-apl" value="${h.apl}"></label>
