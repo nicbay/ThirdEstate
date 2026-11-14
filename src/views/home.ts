@@ -8,8 +8,10 @@ import { registerParties } from "../lib/candidates";
 import { getHome } from "../lib/cloud";
 import { average, latestPollDate, pollsInWindow, WINDOW } from "../lib/polls";
 import { colon } from "../lib/format";
-import { esc } from "../util";
+import { esc, safeUrl } from "../util";
 import { mpChip, townBrief } from "./brief";
+import { depOf, loadTownBundle, townExtra } from "./explore";
+import { armsSlot, loadCommuneArms, loadDepartmentArms, paintArms } from "../lib/arms";
 import { mountForecastChart, scenarioForecast, scenarioFromUrl } from "./forecast-chart";
 import { forecastLine, heroDay } from "./hero-day";
 import { mountOcean } from "../lib/ocean";
@@ -84,9 +86,14 @@ export async function renderHome(app: HTMLElement) {
 async function drawMine(box: HTMLElement, code: string, name: string) {
   box.innerHTML = `<section class="card mine"><header class="card-head"><h2>${L("Chez vous", "Where you live")}${colon()}${esc(name)}</h2><a href="#/ville/${code}">${L("Toute la commune", "The whole town")}</a></header><p class="muted small">${L("Chargement…", "Loading…")}</p></section>`;
   try {
-    const b = await townBrief(code, name);
+    const dep = depOf(code);
+    const [b, bundle, ca, da] = await Promise.all([townBrief(code, name), loadTownBundle(dep), loadCommuneArms(dep), loadDepartmentArms()]);
+    const photo = townExtra(bundle[code])?.photo;
+    // the town's own picture and coat of arms; the department's arms lead to the department, its towns and MPs
+    const ident = `<div class="mine-id">${photo ? `<a class="mine-photo" href="#/ville/${code}"><img src="${esc(safeUrl(photo.url))}" alt="${esc(name)}" loading="lazy"/></a>` : ""}<div class="mine-arms">${armsSlot(ca[code], L(`Armoiries : ${name}`, `Coat of arms: ${name}`), "m")}${armsSlot(da[dep], L("Le département, ses communes et ses députés", "The department, its towns and MPs"), "s", `#/explorer/${dep}`)}</div></div>`;
     box.innerHTML = `<section class="card mine">
       <header class="card-head"><h2>${L("Chez vous", "Where you live")}${colon()}<a href="#/ville/${code}">${esc(name)}</a></h2><a href="#/ville/${code}">${L("Toute la commune", "The whole town")}</a></header>
+      ${ident}
       <div class="mine-grid">
         <div class="brief-text">${b.sentences.length ? `<p>${b.sentences.join(" ")}</p>` : `<p class="muted">${L("Pas assez de données publiées pour résumer cette commune.", "Not enough published data to sum up this town.")}</p>`}</div>
         <aside>
@@ -95,6 +102,7 @@ async function drawMine(box: HTMLElement, code: string, name: string) {
         </aside>
       </div>
     </section>`;
+    paintArms(box);
   } catch {
     box.innerHTML = "";
   }

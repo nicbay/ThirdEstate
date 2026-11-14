@@ -16,7 +16,8 @@ import { PLATFORMS, age, presence } from "./assemblee";
 import { photoUrl } from "./deputes";
 import { renderTownLocal } from "./town-local";
 import { renderQuartiers } from "./quartiers";
-import { townBrief } from "./brief";
+import { mpChip, townBrief } from "./brief";
+import { armsSlot, loadCommuneArms, loadDepartmentArms, paintArms } from "../lib/arms";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type Any = any;
@@ -252,6 +253,7 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
         <label class="small">${L("Trier par", "Sort by")} <select id="sort"><option value="pop">${L("Population", "Population")}</option><option value="income">${L("Niveau de vie", "Standard of living")}</option><option value="unemployment">${L("Chômage", "Unemployment")}</option><option value="name">${L("Nom", "Name")}</option></select></label>
         <span id="count" class="muted small"></span>
       </div>
+      <section class="dep-card" id="dep-card" aria-label="${esc(depName)}"></section>
       <div class="split">
         <div class="town-pane" id="town-pane"><p class="town-pane-k">${L("Les communes de", "Towns in")} ${esc(depName)}</p><ol class="town-list" id="towns"><li class="muted">${L("Chargement de", "Loading")} ${esc(depName)}…</li></ol></div>
         <div class="split-map"><svg id="dep-map" viewBox="0 0 600 600" role="img" aria-label="${esc(depName)}"></svg><div class="legend-scale" id="legend"></div></div>
@@ -259,6 +261,16 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
       <p class="source">${L("Contours : geo.api.gouv.fr. Recherche : Base adresse nationale (Géoplateforme). Chiffres : INSEE, SSMSI, Éducation nationale, OFGL.", "Outlines: geo.api.gouv.fr. Search: National address base (Géoplateforme). Figures: INSEE, SSMSI, Ministry of Education, OFGL.")}</p>
     </section>`;
   bindSearch(app);
+  // the department: its coat of arms and its MPs, district by district
+  void (async () => {
+    const card = app.querySelector<HTMLElement>("#dep-card");
+    if (!card) return;
+    const mps = deputes.filter((d) => d.numDepartement === dep).sort((a, b) => (a.numCirco ?? 0) - (b.numCirco ?? 0));
+    const arms = (await loadDepartmentArms())[dep!];
+    card.innerHTML = `<div class="dep-id">${armsSlot(arms, L(`Armoiries : ${depName}`, `Coat of arms: ${depName}`), "l")}<div><p class="eyebrow">${L("Département", "Department")} ${esc(dep!)}</p><h2>${esc(depName)}</h2><p class="muted small">${mps.length} ${plural(mps.length, ["député", "députés"], ["MP", "MPs"])}</p></div></div>
+      ${mps.length ? `<div class="dep-mps">${mps.map(mpChip).join("")}</div>` : ""}`;
+    paintArms(card);
+  })();
   app.querySelector<HTMLSelectElement>("#dep")!.addEventListener("change", (e) => (location.hash = `#/explorer/${(e.target as HTMLSelectElement).value}`));
 
   const depCode: string = dep ?? "75";
@@ -480,6 +492,7 @@ export async function renderTown(app: HTMLElement, code: string) {
       <header class="town-hero ${photo ? "has-photo" : ""}">
         ${photo ? `<figure><img src="${esc(safeUrl(photo.url))}" alt="${esc(name)}" loading="eager"/><figcaption class="tiny">${esc(photo.author ?? "")} ${photo.licence ? `(${esc(photo.licence)})` : ""}, Wikimedia Commons</figcaption></figure>` : ""}
         <div>
+          <div class="town-arms" id="town-arms"></div>
           <p class="eyebrow">${esc(info?.departement?.nom ?? "")}${info?.region?.nom ? `, ${esc(info.region.nom)}` : ""}</p>
           <h1>${esc(name)}</h1>
           <p class="dek">${[info?.population ? `${fmtNum(info.population)} ${L("habitants", "inhabitants")}` : "", postcodes(info?.codesPostaux ?? [])].filter(Boolean).join(", ")}.</p>
@@ -561,6 +574,15 @@ export async function renderTown(app: HTMLElement, code: string) {
       <nav class="doors">${mps.map(({ d }) => `<a class="door" href="#/circo/${d.code}"><b>${L("Toute la circonscription", "The whole district")} ${d.code.slice(-2)}</b><span class="muted small">${L("Résultats électoraux, député, chiffres détaillés", "Election results, MP, detailed figures")}</span></a>`).join("")}<a class="door" href="#/explorer/${dep}"><b>${L("Les autres communes du département", "Other towns in the department")}</b><span class="muted small">${L("Liste et carte", "List and map")}</span></a></nav>
     </section>`;
   bindSearch(app);
+  // the town's coat of arms, and the department's beside it (a link to the department, its towns and MPs)
+  void Promise.all([loadCommuneArms(dep), loadDepartmentArms()]).then(([ca, da]) => {
+    const box = app.querySelector<HTMLElement>("#town-arms");
+    if (!box) return;
+    const depName = info?.departement?.nom ?? dep;
+    box.innerHTML = armsSlot(ca[code] ?? ca[/^751/.test(code) ? "75056" : /^6938/.test(code) ? "69123" : /^132/.test(code) ? "13055" : ""], L(`Armoiries : ${name}`, `Coat of arms: ${name}`), "m")
+      + armsSlot(da[dep], L(`${depName} : le département, ses communes et ses députés`, `${depName}: the department, its towns and MPs`), "s", `#/explorer/${dep}`);
+    paintArms(box);
+  });
   // "this is where I live": remembered on this device, and the department joins live presence
   const homeBox = app.querySelector<HTMLElement>("#home-set");
   const asHome = () => ({ dep, depName: info?.departement?.nom ?? dep, commune: name, code });

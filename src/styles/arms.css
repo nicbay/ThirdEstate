@@ -1,0 +1,25 @@
+/* coats of arms as pixel art (src/lib/arms.ts): crisp pixels, fixed heights, nothing shown until drawn */
+.arms { display: inline-block; line-height: 0; opacity: 0; transition: opacity 0.2s steps(3, end); flex: none; }
+.arms.is-in { opacity: 1; }
+.arms canvas { image-rendering: pixelated; width: auto; display: block; }
+.arms-s canvas { height: 28px; }
+.arms-m canvas { height: 52px; }
+.arms-l canvas { height: 96px; }
+a.arms { border-radius: 2px; }
+a.arms:hover canvas, a.arms:focus-visible canvas { filter: brightness(1.12); }
+a.arms:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+/* the department page: its arms and name, then its MPs */
+.dep-card { display: grid; gap: 0.9rem; margin: 1rem 0 1.2rem; }
+.dep-card:empty { display: none; }
+.dep-id { display: flex; align-items: center; gap: 1rem; }
+.dep-id h2 { margin: 0.1rem 0; }
+.dep-id p { margin: 0; }
+.dep-mps { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 0.5rem 1rem; }
+/* the town page: the town's arms, the department's beside it */
+.town-arms { display: flex; align-items: flex-end; gap: 0.6rem; margin-bottom: 0.4rem; }
+.town-arms:empty { display: none; }
+/* the homepage's "where you live": the town's photo with its arms and the department's */
+.mine-id { display: flex; align-items: flex-end; gap: 0.9rem; margin-bottom: 0.9rem; }
+.mine-photo { flex: 0 1 260px; aspect-ratio: 16 / 9; overflow: hidden; display: block; }
+.mine-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mine-arms { display: flex; align-items: flex-end; gap: 0.5rem; }
