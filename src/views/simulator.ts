@@ -830,10 +830,12 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
     const a = o[i], b = o[i + 1];
     if (!a || !b) return;
     const lo = o.slice(0, i).reduce((t, c) => t + c.share, 0);
-    const pair = r1(a.share + b.share);
-    a.share = r1(clamp(toPct - lo, 0, pair));
-    b.share = r1(pair - a.share);
-    afterShares();
+    // the divider shrinks one of the two: their voters go where they would likely go (closest camps first,
+    // as with a slider), not all to the neighbour on the bar; a grows only by its share of that
+    const target = r1(clamp(toPct - lo, 0, a.share + b.share));
+    if (target === a.share) return;
+    if (target < a.share) nudgeShare(a.name, target - a.share);
+    else nudgeShare(b.name, -(target - a.share));
   };
   const setTransfer = (name: string, idx: 0 | 1, v: number) => {
     const t = (s.transfers[name] ??= [35, 35]);
