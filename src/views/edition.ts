@@ -20,7 +20,7 @@ type Factor =
   | { kind: "split"; kalshi: number; poly: number }
   | { kind: "none" };
 interface Edition {
-  date: string; head: T; rows: Row[]; provisional?: boolean;
+  date: string; head: T; rows: Row[]; provisional?: boolean; note?: T & { by: string };
   polls: { pollster: string; end: string; url: string | null; top: { name: string; v: number }[] }[];
   headlines: Headline[];
   analysis: { name: string; market: number | null; d1: number | null; d7: number | null; factors: Factor[] }[];
@@ -64,7 +64,7 @@ function weekChart(e: Edition) {
   const names = Object.keys(e.week.at(-1)?.v ?? {}).slice(0, 4);
   const vals = e.week.flatMap((d) => names.map((n) => d.v[n])).filter((v): v is number => v != null);
   if (e.week.length < 2 || !vals.length) return "";
-  const W = 320, H = 150, P = 8, R = 92;
+  const W = 320, H = 92, P = 6, R = 92;
   const max = Math.ceil(Math.max(...vals) / 10) * 10, x = (i: number) => P + (i * (W - P - R)) / (e.week.length - 1), y = (v: number) => P + (1 - v / max) * (H - 2 * P);
   const ends: { n: string; y: number; v: number }[] = [];
   const lines = names.map((n) => {
@@ -81,7 +81,7 @@ function weekChart(e: Edition) {
   </svg>`;
 }
 
-function render(e: Edition, idx: { date: string }[]) {
+function render(e: Edition, idx: { date: string }[], pollsHtml = "") {
   const i = idx.findIndex((x) => x.date === e.date);
   const prev = idx[i - 1], next = idx[i + 1];
   const fav = e.rows[0];
@@ -101,6 +101,7 @@ function render(e: Edition, idx: { date: string }[]) {
     </div>
     <h2 class="ed-head">${esc(L(e.head.fr, e.head.en))}</h2>
     ${e.provisional ? `<p class="ed-prov">${L("Édition du jour en cours : cours des marchés de la dernière heure ; les sondages et l’analyse complète arrivent avec la synthèse quotidienne.", "Today's edition in progress: the latest hourly market prices; the polls and the full analysis come with the daily brief.")}</p>` : ""}
+    ${e.note ? `<p class="ed-note-text">${esc(L(e.note.fr, e.note.en))}</p>${e.note.by !== "template" ? `<p class="ed-by">${L("Résumé écrit par une IA (Claude) à partir des titres et des chiffres du jour, chaque chiffre vérifié", "Summary written by AI (Claude) from the day's headlines and figures, every figure checked")}</p>` : ""}` : ""}
     <p class="ed-what">${L("Chaque jour : ce qui a bougé sur les marchés de prédiction (les paris en argent réel sur Kalshi et Polymarket) et dans les sondages, et ce qui a pu le faire bouger.", "Every day: what moved on the prediction markets (real-money bets on Kalshi and Polymarket) and in the polls, and what could have moved it.")}</p>
     <div class="ed-cards">${cards}</div>
     <div class="ed-body">
@@ -111,7 +112,7 @@ function render(e: Edition, idx: { date: string }[]) {
         </li>`).join("")}</ol>` : `<p>${L("Aucun candidat n’a bougé d’un point en un jour, ni de 2,5 points en une semaine.", "No candidate moved a point in a day or 2.5 points in a week.")}</p>`}
         <p class="ed-note">${L("Des pistes, pas des causes : les titres sont ceux qui citent le candidat ce jour-là et la veille.", "Leads, not causes: the headlines are those naming the candidate that day and the day before.")}</p>
       </section>
-      <section class="ed-wk"><h3>${L("Chance de victoire sur les marchés de prédiction, 7 jours", "Chance of winning on the prediction markets, 7 days")}</h3>
+      <section class="ed-wk">${pollsHtml}<h3>${L("Chance de victoire sur les marchés de prédiction, 7 jours", "Chance of winning on the prediction markets, 7 days")}</h3>
         <a class="ed-wk-go" href="#trend" aria-label="${esc(L("Voir les sondages et le graphique complet", "See the polls and the full chart"))}">${weekChart(e)}<span>${L("Kalshi et Polymarket, en moyenne. Les sondages, plus bas", "Kalshi and Polymarket, averaged. The polls, below")} ↓</span></a></section>
     </div>`;
 }
@@ -129,7 +130,7 @@ function animate(root: HTMLElement) {
 }
 
 /** Mounts the edition into `box` (latest first); returns nothing, draws asynchronously. */
-export async function mountEdition(box: HTMLElement) {
+export async function mountEdition(box: HTMLElement, pollsHtml = "") {
   const idx = await fetchJson<{ date: string; head: T }[]>("/data/daily/editions/index.json").catch(() => null);
   if (!idx?.length) { box.remove(); return; }
   const cache = new Map<string, Promise<Edition | null>>();
@@ -137,7 +138,7 @@ export async function mountEdition(box: HTMLElement) {
   const show = async (d: string) => {
     const e = await get(d);
     if (!e) return;
-    box.innerHTML = render(e, idx);
+    box.innerHTML = render(e, idx, pollsHtml);
     box.querySelectorAll<HTMLButtonElement>(".ed-go").forEach((b) => b.addEventListener("click", () => void show(b.dataset.d!)));
     // the small chart leads to the polls chart below (an in-page scroll, not a route change)
     box.querySelector(".ed-wk-go")?.addEventListener("click", (ev) => { ev.preventDefault(); document.getElementById("trend")?.scrollIntoView({ behavior: reduced() ? "auto" : "smooth", block: "start" }); });

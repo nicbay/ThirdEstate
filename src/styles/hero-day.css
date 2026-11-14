@@ -269,3 +269,11 @@
 .fox-pet.is-asleep .fp-z { animation: fp-z 2.4s steps(6, end) infinite; }
 @keyframes fp-z { 0% { opacity: 0; transform: translate(0, 4px); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(10px, -16px); } }
 @media (prefers-reduced-motion: reduce) { .fox-pet.is-asleep .fp-z { animation: none; opacity: 1; } }
+
+/* the note of the day: the four-line note first, the poll average and a tight markets chart on the right */
+.ed-note-text { margin: 0; font-size: clamp(1rem, 0.95rem + 0.25vw, 1.12rem); line-height: 1.5; color: var(--ink); max-width: 72ch; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.ed-by { margin: -0.5rem 0 0; font: 500 0.7rem var(--mono); color: var(--ink-3); }
+.ed-wk .ed-polls { margin-bottom: 1rem; }
+.ed-wk .ed-polls header { border-bottom-color: var(--rule-2); }
+.ed-wk .ed-polls .hday-small { font-size: 0.72rem; }
+.ed-week { max-height: 110px; }
