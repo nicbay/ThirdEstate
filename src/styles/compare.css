@@ -74,3 +74,42 @@
   .cmp-v { font-size: 1rem; }
   .town-flag { width: 36px; height: 24px; }
 }
+
+/* the battle (2026-11 redesign): one full-width line per figure, the two towns facing across a spine */
+.cmp-body { display: block; }
+.cmp-group { margin-bottom: 1.4rem; }
+.cmp-group h3 { display: flex; align-items: baseline; justify-content: center; gap: 0.6rem; flex-wrap: wrap; text-align: center; font-size: 1.05rem; }
+.cmp-round { font: 600 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.04em; padding: 0.15rem 0.45rem; border: 2px solid currentColor; }
+.cmp-round.r-a { color: var(--cmp-a); } .cmp-round.r-b { color: var(--ink); }
+.cmp-row, .cmp-row-text { display: grid; grid-template-columns: minmax(6.5rem, 0.7fr) minmax(0, 1fr) minmax(9rem, 13rem) minmax(0, 1fr) minmax(6.5rem, 0.7fr); align-items: center; gap: 0.7rem; padding: 0.5rem 0; border-bottom: 1px solid var(--rule); }
+.cmp-row:last-child { border-bottom: 0; }
+.cmp-mid-label { display: grid; justify-items: center; text-align: center; gap: 0.1rem; border-left: 2px solid var(--rule-2); border-right: 2px solid var(--rule-2); padding: 0 0.4rem; }
+.cmp-mid-label .cmp-label { font-size: 0.84rem; color: var(--ink-2); line-height: 1.2; }
+.cmp-gap { font: 700 0.76rem var(--mono); white-space: nowrap; color: var(--ink-3); }
+.cmp-gap.good { color: var(--up-text); } .cmp-gap.bad { color: var(--down-text); }
+.cmp-bar { display: flex; height: 0.75rem; }
+.cmp-bar.a { justify-content: flex-end; } .cmp-bar.b { justify-content: flex-start; }
+.cmp-bar i { display: block; height: 100%; }
+.cmp-bar.a i { background: var(--cmp-a); } .cmp-bar.b i { background: var(--cmp-b); }
+.cmp-v { display: grid; gap: 0.1rem; }
+.cmp-v.a { text-align: right; justify-items: end; } .cmp-v.b { text-align: left; justify-items: start; }
+.cmp-v.good { color: var(--up-text); } .cmp-v.bad { color: var(--down-text); }
+.win-a .cmp-v.a::after, .win-b .cmp-v.b::before { content: none; }
+.cmp-note { font: 500 0.7rem var(--text); color: var(--ink-3); white-space: normal; }
+.cmp-note.bad { color: var(--down-text); }
+/* scoreboard */
+.cmp-score { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; width: 100%; margin: 0.4rem 0 0.8rem; }
+.cmp-score > span { display: flex; align-items: baseline; gap: 0.6rem; font: 700 1rem var(--display); }
+.cmp-score .a { justify-content: flex-end; flex-direction: row-reverse; }
+.cmp-score .b { justify-content: flex-start; }
+.cmp-score b { font: 800 clamp(2.4rem, 1.6rem + 3vw, 3.6rem)/1 var(--display); font-variant-numeric: tabular-nums; }
+.cmp-score .a b { color: var(--cmp-a); } .cmp-score .b b { color: var(--ink); }
+.cmp-score .lead b { text-decoration: underline; text-decoration-thickness: 4px; text-underline-offset: 6px; }
+.cmp-score-mid { display: grid !important; justify-items: center; font: 600 0.72rem var(--mono) !important; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-3); }
+.cmp-tools { flex-direction: column; align-items: stretch; }
+.cmp-tools .cmp-share { align-self: flex-end; }
+@media (max-width: 720px) {
+  .cmp-row, .cmp-row-text { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "m m" "va vb" "ba bb"; row-gap: 0.3rem; }
+  .cmp-mid-label { grid-area: m; border: 0; }
+  .cmp-v.a { grid-area: va; } .cmp-v.b { grid-area: vb; } .cmp-bar.a { grid-area: ba; } .cmp-bar.b { grid-area: bb; }
+}
