@@ -13160,6 +13160,31 @@
       },
       "check": null,
       "postTime": "2026-11-13T12:06:37.074Z"
+    },
+    "x:2120520850952929427": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T06:59:56.460Z",
+      "storyItems": [
+        "7eed3265cc7c"
+      ],
+      "storyTitle": "REPORTAGE. 11-Novembre : \"On ne construit pas la paix ni le sentiment d'appartenance nationale sur l'oubli\", prononce Marine Le Pen à Hénin-Beaumont après les refus d'hommages dans certaines écoles",
+      "political": true,
+      "lean": {
+        "score": 0.8,
+        "rationale_fr": "Le message défend la transmission de la mémoire nationale et critique implicitement ceux qui refusent les commémorations, thème associé à une droite nationaliste.",
+        "rationale_en": "The message defends passing on national memory and implicitly criticizes those who reject commemorations, a theme associated with the nationalist right."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Oppose implicitement « ceux qui dénient » la transmission à une position présentée comme évidente, sans forte rhétorique anti-élites.",
+        "rationale_en": "Implicitly sets 'those who deny' transmission against an obvious position, without strong anti-elite rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-11T14:15:42.896Z"
     }
   },
   "failures": {
