@@ -12,7 +12,10 @@
     {
       "id": "e24",
       "year": 2024,
-      "label": { "fr": "Législatives 2024 : programme Ensemble pour la République (campagne menée par G. Attal, alors Premier ministre)", "en": "2024 legislative: Ensemble pour la République programme (campaign led by G. Attal, then Prime Minister)" },
+      "label": {
+        "fr": "Législatives 2024 : programme Ensemble pour la République (campagne menée par G. Attal, alors Premier ministre)",
+        "en": "2024 legislative: Ensemble pour la République programme (campaign led by G. Attal, then Prime Minister)"
+      },
       "title": "Ensemble pour la République — programme des législatives 2024 (synthèse Institut Montaigne)",
       "date": "2024-06",
       "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese",
@@ -21,7 +24,10 @@
     {
       "id": "p27",
       "year": 2027,
-      "label": { "fr": "Programme 2027 en cours (site de campagne)", "en": "2027 programme in progress (campaign site)" },
+      "label": {
+        "fr": "Programme 2027 en cours (site de campagne)",
+        "en": "2027 programme in progress (campaign site)"
+      },
       "title": "attalpresident.fr — Programme",
       "date": "2026-11",
       "url": "https://attalpresident.fr/programme",
@@ -37,26 +43,48 @@
         "e24": "Repousser l'âge de départ à la retraite à 64 ans (maintien de la réforme de 2023)",
         "p27": "Supprimer l'âge légal et ne retenir que la durée de cotisation, avec décote et surcote : « Je propose qu'on prenne la durée de cotisation »"
       },
-      "change": { "fr": "Âge légal de 64 ans maintenu en 2024 → suppression de l'âge légal au profit de la seule durée de cotisation (système universel à points évoqué).", "en": "Legal age of 64 kept in 2024 → legal age abolished in favour of contribution length only (a universal points system is mentioned)." },
+      "change": {
+        "fr": "Âge légal de 64 ans maintenu en 2024 → suppression de l'âge légal au profit de la seule durée de cotisation (système universel à points évoqué).",
+        "en": "Legal age of 64 kept in 2024 → legal age abolished in favour of contribution length only (a universal points system is mentioned)."
+      },
       "sources": [
-        { "title": "Public Sénat, 30 septembre 2026 : ce que proposent les candidats sur les retraites", "url": "https://www.publicsenat.fr/actualites/politique/reculer-ou-avancer-lage-legal-avec-ou-sans-capitalisation-ce-que-proposent-les-principaux-candidats-a-lelection-presidentielle-sur-les-retraites" },
-        { "title": "Senioractu, 1er novembre 2026", "url": "https://www.senioractu.com/Gabriel-Attal-supprimerait-l-age-legal-de-votre-retraite-et-gelerait-un-an-les-pensions-hors-petites-retraites-ce-que_a28256.html" },
-        { "title": "Institut Montaigne, législatives 2024 : chiffrages retraites et fiscalité", "url": "https://institutmontaigne.org/communiques-de-presse/legislatives-2024-chiffrages-retraites-et-fiscalite" }
+        {
+          "title": "Public Sénat, 30 septembre 2026 : ce que proposent les candidats sur les retraites",
+          "url": "https://www.publicsenat.fr/actualites/politique/reculer-ou-avancer-lage-legal-avec-ou-sans-capitalisation-ce-que-proposent-les-principaux-candidats-a-lelection-presidentielle-sur-les-retraites"
+        },
+        {
+          "title": "Senioractu, 1er novembre 2026",
+          "url": "https://www.senioractu.com/Gabriel-Attal-supprimerait-l-age-legal-de-votre-retraite-et-gelerait-un-an-les-pensions-hors-petites-retraites-ce-que_a28256.html"
+        },
+        {
+          "title": "Institut Montaigne, législatives 2024 : chiffrages retraites et fiscalité",
+          "url": "https://institutmontaigne.org/communiques-de-presse/legislatives-2024-chiffrages-retraites-et-fiscalite"
+        }
       ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
       "feasibility": "medium",
-      "feasibilityNote": { "fr": "Paramètres (durée requise, taux de décote) non publiés.", "en": "Parameters (required length, penalty rate) not published." },
+      "feasibilityNote": {
+        "fr": "Paramètres (durée requise, taux de décote) non publiés.",
+        "en": "Parameters (required length, penalty rate) not published."
+      },
       "broadBenefit": false
     },
     {
       "id": "m02",
       "theme": "social",
       "status": "new",
-      "texts": { "p27": "Retraite : une part de capitalisation fléchée vers l'innovation ; flécher la moitié de l'intéressement vers l'épargne retraite" },
+      "texts": {
+        "p27": "Retraite : une part de capitalisation fléchée vers l'innovation ; flécher la moitié de l'intéressement vers l'épargne retraite"
+      },
       "change": null,
-      "sources": [ { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" } ],
+      "sources": [
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -68,10 +96,27 @@
       "id": "m03",
       "theme": "social",
       "status": "new",
-      "texts": { "p27": "Ouvrir pour chaque enfant né un plan d'épargne de 1 000 € abondé par l'État (« baby bonds »)" },
+      "texts": {
+        "p27": "Ouvrir pour chaque enfant né un plan d'épargne de 1 000 € abondé par l'État (« baby bonds »)"
+      },
       "change": null,
-      "sources": [ { "title": "Senioractu, 1er novembre 2026 (présentation économique du 28 octobre)", "url": "https://www.senioractu.com/Gabriel-Attal-supprimerait-l-age-legal-de-votre-retraite-et-gelerait-un-an-les-pensions-hors-petites-retraites-ce-que_a28256.html" } ],
-      "cost": { "value": -0.66, "low": null, "high": null, "by": "Candidate", "url": "https://www.senioractu.com/Gabriel-Attal-supprimerait-l-age-legal-de-votre-retraite-et-gelerait-un-an-les-pensions-hors-petites-retraites-ce-que_a28256.html", "note": { "fr": "660 M€ par an selon le chiffrage présenté le 28 octobre 2026.", "en": "€660m a year according to the figure presented on 28 October 2026." } },
+      "sources": [
+        {
+          "title": "Senioractu, 1er novembre 2026 (présentation économique du 28 octobre)",
+          "url": "https://www.senioractu.com/Gabriel-Attal-supprimerait-l-age-legal-de-votre-retraite-et-gelerait-un-an-les-pensions-hors-petites-retraites-ce-que_a28256.html"
+        }
+      ],
+      "cost": {
+        "value": -0.66,
+        "low": null,
+        "high": null,
+        "by": "Candidate",
+        "url": "https://www.senioractu.com/Gabriel-Attal-supprimerait-l-age-legal-de-votre-retraite-et-gelerait-un-an-les-pensions-hors-petites-retraites-ce-que_a28256.html",
+        "note": {
+          "fr": "660 M€ par an selon le chiffrage présenté le 28 octobre 2026.",
+          "en": "€660m a year according to the figure presented on 28 October 2026."
+        }
+      },
       "legal": "ok",
       "legalNote": null,
       "feasibility": "high",
@@ -82,15 +127,26 @@
       "id": "m04",
       "theme": "budget",
       "status": "new",
-      "texts": { "p27": "Ramener le déficit sous 3 % avant 2032 ; zéro déficit en 10 ans maximum" },
+      "texts": {
+        "p27": "Ramener le déficit sous 3 % avant 2032 ; zéro déficit en 10 ans maximum"
+      },
       "change": null,
       "sources": [
-        { "title": "attalpresident.fr — Dette de l'État", "url": "https://attalpresident.fr/programme/dette-de-letat" },
-        { "title": "Moneyvox, 3 juillet 2026", "url": "https://www.moneyvox.fr/impot/actualites/109548/attal-veut-100-000-departs-volontaires-de-fonctionnaires-et-impunite-budgetaire-zero" }
+        {
+          "title": "attalpresident.fr — Dette de l'État",
+          "url": "https://attalpresident.fr/programme/dette-de-letat"
+        },
+        {
+          "title": "Moneyvox, 3 juillet 2026",
+          "url": "https://www.moneyvox.fr/impot/actualites/109548/attal-veut-100-000-departs-volontaires-de-fonctionnaires-et-impunite-budgetaire-zero"
+        }
       ],
       "cost": null,
       "legal": "eu-law",
-      "legalNote": { "fr": "Le calendrier doit être articulé avec la procédure de déficit excessif ouverte par l'UE contre la France.", "en": "The timetable has to fit with the EU excessive-deficit procedure opened against France." },
+      "legalNote": {
+        "fr": "Le calendrier doit être articulé avec la procédure de déficit excessif ouverte par l'UE contre la France.",
+        "en": "The timetable has to fit with the EU excessive-deficit procedure opened against France."
+      },
       "feasibility": "medium",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -99,12 +155,22 @@
       "id": "m05",
       "theme": "budget",
       "status": "new",
-      "texts": { "p27": "Une règle d'or d'équilibre budgétaire sous sept ans, adoptée par référendum en début de mandat ; départ des ministres et directeurs d'administration centrale qui ne tiennent pas leur budget" },
+      "texts": {
+        "p27": "Une règle d'or d'équilibre budgétaire sous sept ans, adoptée par référendum en début de mandat ; départ des ministres et directeurs d'administration centrale qui ne tiennent pas leur budget"
+      },
       "change": null,
-      "sources": [ { "title": "Moneyvox, 3 juillet 2026", "url": "https://www.moneyvox.fr/impot/actualites/109548/attal-veut-100-000-departs-volontaires-de-fonctionnaires-et-impunite-budgetaire-zero" } ],
+      "sources": [
+        {
+          "title": "Moneyvox, 3 juillet 2026",
+          "url": "https://www.moneyvox.fr/impot/actualites/109548/attal-veut-100-000-departs-volontaires-de-fonctionnaires-et-impunite-budgetaire-zero"
+        }
+      ],
       "cost": null,
       "legal": "constitutional-revision-needed",
-      "legalNote": { "fr": "Une règle d'or contraignante suppose une révision constitutionnelle ou une loi organique.", "en": "A binding golden rule requires a constitutional amendment or an organic law." },
+      "legalNote": {
+        "fr": "Une règle d'or contraignante suppose une révision constitutionnelle ou une loi organique.",
+        "en": "A binding golden rule requires a constitutional amendment or an organic law."
+      },
       "feasibility": "medium",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -113,28 +179,47 @@
       "id": "m06",
       "theme": "budget",
       "status": "new",
-      "texts": { "p27": "150 milliards d'euros d'économies sur le quinquennat, dont deux tiers sur les dépenses sociales" },
+      "texts": {
+        "p27": "150 milliards d'euros d'économies sur le quinquennat, dont deux tiers sur les dépenses sociales"
+      },
       "change": null,
       "sources": [
-        { "title": "Senioractu, 1er novembre 2026", "url": "https://www.senioractu.com/Gabriel-Attal-supprimerait-l-age-legal-de-votre-retraite-et-gelerait-un-an-les-pensions-hors-petites-retraites-ce-que_a28256.html" },
-        { "title": "Moneyvox, 3 juillet 2026 (fourchette de 120 à 150 Md€)", "url": "https://www.moneyvox.fr/impot/actualites/109548/attal-veut-100-000-departs-volontaires-de-fonctionnaires-et-impunite-budgetaire-zero" }
+        {
+          "title": "Senioractu, 1er novembre 2026",
+          "url": "https://www.senioractu.com/Gabriel-Attal-supprimerait-l-age-legal-de-votre-retraite-et-gelerait-un-an-les-pensions-hors-petites-retraites-ce-que_a28256.html"
+        },
+        {
+          "title": "Moneyvox, 3 juillet 2026 (fourchette de 120 à 150 Md€)",
+          "url": "https://www.moneyvox.fr/impot/actualites/109548/attal-veut-100-000-departs-volontaires-de-fonctionnaires-et-impunite-budgetaire-zero"
+        }
       ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
       "feasibility": "low",
-      "feasibilityNote": { "fr": "Montant cumulé sur cinq ans ; ventilation par mesure non publiée.", "en": "Cumulative over five years; breakdown by measure not published." },
+      "feasibilityNote": {
+        "fr": "Montant cumulé sur cinq ans ; ventilation par mesure non publiée.",
+        "en": "Cumulative over five years; breakdown by measure not published."
+      },
       "broadBenefit": false
     },
     {
       "id": "m07",
       "theme": "budget",
       "status": "new",
-      "texts": { "p27": "Cent mille postes en moins dans l'État et les collectivités (départs volontaires, non-remplacement de départs en retraite ; Éducation, Armées, Justice et Intérieur épargnés)" },
+      "texts": {
+        "p27": "Cent mille postes en moins dans l'État et les collectivités (départs volontaires, non-remplacement de départs en retraite ; Éducation, Armées, Justice et Intérieur épargnés)"
+      },
       "change": null,
       "sources": [
-        { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" },
-        { "title": "Moneyvox, 3 juillet 2026", "url": "https://www.moneyvox.fr/impot/actualites/109548/attal-veut-100-000-departs-volontaires-de-fonctionnaires-et-impunite-budgetaire-zero" }
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        },
+        {
+          "title": "Moneyvox, 3 juillet 2026",
+          "url": "https://www.moneyvox.fr/impot/actualites/109548/attal-veut-100-000-departs-volontaires-de-fonctionnaires-et-impunite-budgetaire-zero"
+        }
       ],
       "cost": null,
       "legal": "ok",
@@ -147,9 +232,16 @@
       "id": "m08",
       "theme": "budget",
       "status": "new",
-      "texts": { "p27": "Aucune hausse d'impôts pendant 5 ans" },
+      "texts": {
+        "p27": "Aucune hausse d'impôts pendant 5 ans"
+      },
       "change": null,
-      "sources": [ { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" } ],
+      "sources": [
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -161,17 +253,28 @@
       "id": "m09",
       "theme": "budget",
       "status": "new",
-      "texts": { "p27": "Une « année blanche » dans le budget 2028 : gel de toutes les prestations sociales, petites retraites épargnées" },
+      "texts": {
+        "p27": "Une « année blanche » dans le budget 2028 : gel de toutes les prestations sociales, petites retraites épargnées"
+      },
       "change": null,
       "sources": [
-        { "title": "Moneyvox, 3 juillet 2026", "url": "https://www.moneyvox.fr/impot/actualites/109548/attal-veut-100-000-departs-volontaires-de-fonctionnaires-et-impunite-budgetaire-zero" },
-        { "title": "Senioractu, 1er novembre 2026", "url": "https://www.senioractu.com/Gabriel-Attal-supprimerait-l-age-legal-de-votre-retraite-et-gelerait-un-an-les-pensions-hors-petites-retraites-ce-que_a28256.html" }
+        {
+          "title": "Moneyvox, 3 juillet 2026",
+          "url": "https://www.moneyvox.fr/impot/actualites/109548/attal-veut-100-000-departs-volontaires-de-fonctionnaires-et-impunite-budgetaire-zero"
+        },
+        {
+          "title": "Senioractu, 1er novembre 2026",
+          "url": "https://www.senioractu.com/Gabriel-Attal-supprimerait-l-age-legal-de-votre-retraite-et-gelerait-un-an-les-pensions-hors-petites-retraites-ce-que_a28256.html"
+        }
       ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
       "feasibility": "high",
-      "feasibilityNote": { "fr": "Seuil des « petites retraites » non défini.", "en": "Threshold for \"small pensions\" not defined." },
+      "feasibilityNote": {
+        "fr": "Seuil des « petites retraites » non défini.",
+        "en": "Threshold for \"small pensions\" not defined."
+      },
       "broadBenefit": false
     },
     {
@@ -182,12 +285,31 @@
         "e24": "Conserver la réforme de l'assurance chômage de juillet 2024 (mesure retenue par l'Institut Montaigne dans le chiffrage du programme)",
         "p27": "Réformer l'assurance chômage et réaliser cinq milliards d'économies"
       },
-      "change": { "fr": "Réforme de 2024 (4,5 Md€ selon l'Institut Montaigne) → nouvelle réforme visant 5 Md€ d'économies.", "en": "2024 reform (€4.5bn per Institut Montaigne) → new reform targeting €5bn of savings." },
+      "change": {
+        "fr": "Réforme de 2024 (4,5 Md€ selon l'Institut Montaigne) → nouvelle réforme visant 5 Md€ d'économies.",
+        "en": "2024 reform (€4.5bn per Institut Montaigne) → new reform targeting €5bn of savings."
+      },
       "sources": [
-        { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" },
-        { "title": "Institut Montaigne, législatives 2024 : conserver la réforme de l'assurance chômage", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/conserver-la-reforme-de-lassurance-chomage-de-juillet-2024/" }
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        },
+        {
+          "title": "Institut Montaigne, législatives 2024 : conserver la réforme de l'assurance chômage",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/conserver-la-reforme-de-lassurance-chomage-de-juillet-2024/"
+        }
       ],
-      "cost": { "value": 5, "low": null, "high": null, "by": "Candidate", "url": "https://attalpresident.fr/programme", "note": { "fr": "Objectif d'économies affiché dans l'intitulé de la mesure.", "en": "Savings target stated in the measure's title." } },
+      "cost": {
+        "value": 5,
+        "low": null,
+        "high": null,
+        "by": "Candidate",
+        "url": "https://attalpresident.fr/programme",
+        "note": {
+          "fr": "Objectif d'économies affiché dans l'intitulé de la mesure.",
+          "en": "Savings target stated in the measure's title."
+        }
+      },
       "legal": "ok",
       "legalNote": null,
       "feasibility": "high",
@@ -198,14 +320,24 @@
       "id": "m11",
       "theme": "travail",
       "status": "new",
-      "texts": { "p27": "Droit au brut : un treizième mois pour les classes moyennes qui travaillent — 250 euros nets de plus par mois au niveau du salaire médian, par la suppression de cotisations" },
+      "texts": {
+        "p27": "Droit au brut : un treizième mois pour les classes moyennes qui travaillent — 250 euros nets de plus par mois au niveau du salaire médian, par la suppression de cotisations"
+      },
       "change": null,
-      "sources": [ { "title": "attalpresident.fr — Droit au brut", "url": "https://attalpresident.fr/programme/mesures/droit-au-brut" } ],
+      "sources": [
+        {
+          "title": "attalpresident.fr — Droit au brut",
+          "url": "https://attalpresident.fr/programme/mesures/droit-au-brut"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
       "feasibility": "medium",
-      "feasibilityNote": { "fr": "Coût total non publié ; financement annoncé « à l'euro près » par des économies sur l'assurance chômage et les indemnités journalières.", "en": "Total cost not published; to be financed \"to the euro\" by savings on unemployment insurance and sick-pay allowances." },
+      "feasibilityNote": {
+        "fr": "Coût total non publié ; financement annoncé « à l'euro près » par des économies sur l'assurance chômage et les indemnités journalières.",
+        "en": "Total cost not published; to be financed \"to the euro\" by savings on unemployment insurance and sick-pay allowances."
+      },
       "broadBenefit": true
     },
     {
@@ -216,25 +348,44 @@
         "e24": "Élargir la prime de partage de la valeur de 3 000 à 10 000 € par an",
         "p27": "Étendre l'intéressement aux petites structures"
       },
-      "change": { "fr": "Plafond de la prime de partage de la valeur (2024) → extension de l'intéressement aux petites entreprises (2027).", "en": "Value-sharing bonus ceiling (2024) → profit-sharing extended to small firms (2027)." },
+      "change": {
+        "fr": "Plafond de la prime de partage de la valeur (2024) → extension de l'intéressement aux petites entreprises (2027).",
+        "en": "Value-sharing bonus ceiling (2024) → profit-sharing extended to small firms (2027)."
+      },
       "sources": [
-        { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" },
-        { "title": "Institut Montaigne, législatives 2024 — synthèse Ensemble", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese" }
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        },
+        {
+          "title": "Institut Montaigne, législatives 2024 — synthèse Ensemble",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese"
+        }
       ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
       "feasibility": "high",
-      "feasibilityNote": { "fr": "La version 2024 était chiffrée à 2 Md€ par an par l'Institut Montaigne.", "en": "The 2024 version was put at €2bn a year by Institut Montaigne." },
+      "feasibilityNote": {
+        "fr": "La version 2024 était chiffrée à 2 Md€ par an par l'Institut Montaigne.",
+        "en": "The 2024 version was put at €2bn a year by Institut Montaigne."
+      },
       "broadBenefit": false
     },
     {
       "id": "m13",
       "theme": "travail",
       "status": "new",
-      "texts": { "p27": "Remplacer le Code du travail par une Constitution du travail ; un statut Auto-TPE pour embaucher son premier salarié ; rendre obligatoire un test PME avant chaque loi" },
+      "texts": {
+        "p27": "Remplacer le Code du travail par une Constitution du travail ; un statut Auto-TPE pour embaucher son premier salarié ; rendre obligatoire un test PME avant chaque loi"
+      },
       "change": null,
-      "sources": [ { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" } ],
+      "sources": [
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        }
+      ],
       "cost": null,
       "legal": "unknown",
       "legalNote": null,
@@ -246,17 +397,28 @@
       "id": "m14",
       "theme": "education",
       "status": "new",
-      "texts": { "p27": "200 à 500 euros nets de plus par mois pour les enseignants" },
+      "texts": {
+        "p27": "200 à 500 euros nets de plus par mois pour les enseignants"
+      },
       "change": null,
       "sources": [
-        { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" },
-        { "title": "La Gazette France (AFP), 1er septembre 2026", "url": "https://www.lagazettefrance.fr/article/attal-assume-de-vouloir-augmenter-le-salaire-des-enseignants-via-d-autres-economies-notamment-sur-le-social" }
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        },
+        {
+          "title": "La Gazette France (AFP), 1er septembre 2026",
+          "url": "https://www.lagazettefrance.fr/article/attal-assume-de-vouloir-augmenter-le-salaire-des-enseignants-via-d-autres-economies-notamment-sur-le-social"
+        }
       ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
       "feasibility": "medium",
-      "feasibilityNote": { "fr": "Coût non publié par le candidat ; financement annoncé par des économies sur le social.", "en": "Cost not published by the candidate; to be funded by social-spending savings." },
+      "feasibilityNote": {
+        "fr": "Coût non publié par le candidat ; financement annoncé par des économies sur le social.",
+        "en": "Cost not published by the candidate; to be funded by social-spending savings."
+      },
       "broadBenefit": false
     },
     {
@@ -269,10 +431,26 @@
       },
       "change": null,
       "sources": [
-        { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" },
-        { "title": "Institut Montaigne, législatives 2024 — synthèse Ensemble", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese" }
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        },
+        {
+          "title": "Institut Montaigne, législatives 2024 — synthèse Ensemble",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese"
+        }
       ],
-      "cost": { "value": -0.7, "low": null, "high": null, "by": "Institut Montaigne 2024", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese", "note": { "fr": "Chiffrage de la version 2024 de la mesure.", "en": "Costing of the 2024 version of the measure." } },
+      "cost": {
+        "value": -0.7,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese",
+        "note": {
+          "fr": "Chiffrage de la version 2024 de la mesure.",
+          "en": "Costing of the 2024 version of the measure."
+        }
+      },
       "legal": "ok",
       "legalNote": null,
       "feasibility": "medium",
@@ -283,11 +461,19 @@
       "id": "m16",
       "theme": "education",
       "status": "new",
-      "texts": { "p27": "Rétablir le redoublement ; rétablir un certificat d'études en fin de CM2 ; rétablir les groupes de niveau au collège ; le brevet obligatoire pour entrer au lycée" },
+      "texts": {
+        "p27": "Rétablir le redoublement ; rétablir un certificat d'études en fin de CM2 ; rétablir les groupes de niveau au collège ; le brevet obligatoire pour entrer au lycée"
+      },
       "change": null,
       "sources": [
-        { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" },
-        { "title": "La Gazette France (AFP), 1er septembre 2026", "url": "https://www.lagazettefrance.fr/article/attal-assume-de-vouloir-augmenter-le-salaire-des-enseignants-via-d-autres-economies-notamment-sur-le-social" }
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        },
+        {
+          "title": "La Gazette France (AFP), 1er septembre 2026",
+          "url": "https://www.lagazettefrance.fr/article/attal-assume-de-vouloir-augmenter-le-salaire-des-enseignants-via-d-autres-economies-notamment-sur-le-social"
+        }
       ],
       "cost": null,
       "legal": "ok",
@@ -300,10 +486,27 @@
       "id": "m17",
       "theme": "economie",
       "status": "new",
-      "texts": { "p27": "Investir 200 milliards d'euros pour l'IA et l'innovation d'ici dix ans, à parts égales entre financement public et privé (Plan France 2040)" },
+      "texts": {
+        "p27": "Investir 200 milliards d'euros pour l'IA et l'innovation d'ici dix ans, à parts égales entre financement public et privé (Plan France 2040)"
+      },
       "change": null,
-      "sources": [ { "title": "attalpresident.fr — Plan France 2040", "url": "https://attalpresident.fr/programme/mesures/plan-france-2040" } ],
-      "cost": { "value": -10, "low": null, "high": null, "by": "Candidate", "url": "https://attalpresident.fr/programme/mesures/plan-france-2040", "note": { "fr": "100 Md€ publics sur dix ans selon le candidat, soit environ 10 Md€ par an (division par nos soins) ; financés par des économies (arrêts maladie, gel des prestations).", "en": "€100bn of public money over ten years per the candidate, about €10bn a year (our division); funded by savings (sick leave, benefit freeze)." } },
+      "sources": [
+        {
+          "title": "attalpresident.fr — Plan France 2040",
+          "url": "https://attalpresident.fr/programme/mesures/plan-france-2040"
+        }
+      ],
+      "cost": {
+        "value": -10,
+        "low": null,
+        "high": null,
+        "by": "Candidate",
+        "url": "https://attalpresident.fr/programme/mesures/plan-france-2040",
+        "note": {
+          "fr": "100 Md€ publics sur dix ans selon le candidat, soit environ 10 Md€ par an (division par nos soins) ; financés par des économies (arrêts maladie, gel des prestations).",
+          "en": "€100bn of public money over ten years per the candidate, about €10bn a year (our division); funded by savings (sick leave, benefit freeze)."
+        }
+      },
       "legal": "ok",
       "legalNote": null,
       "feasibility": "medium",
@@ -318,25 +521,47 @@
         "e24": "Baisser les factures d'électricité de 15 % dès février 2025",
         "p27": "Garantir la stabilité des prix de l'électricité sur cinq ans"
       },
-      "change": { "fr": "Baisse de 15 % des factures (2024) → garantie de stabilité des prix sur cinq ans (2027).", "en": "15% bill cut (2024) → five-year price-stability guarantee (2027)." },
+      "change": {
+        "fr": "Baisse de 15 % des factures (2024) → garantie de stabilité des prix sur cinq ans (2027).",
+        "en": "15% bill cut (2024) → five-year price-stability guarantee (2027)."
+      },
       "sources": [
-        { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" },
-        { "title": "Institut Montaigne, législatives 2024 — synthèse Ensemble", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese" }
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        },
+        {
+          "title": "Institut Montaigne, législatives 2024 — synthèse Ensemble",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese"
+        }
       ],
       "cost": null,
       "legal": "eu-law",
-      "legalNote": { "fr": "Les mécanismes de prix de l'électricité sont encadrés par les règles européennes du marché de l'électricité et des aides d'État.", "en": "Electricity pricing mechanisms are bound by EU electricity-market and state-aid rules." },
+      "legalNote": {
+        "fr": "Les mécanismes de prix de l'électricité sont encadrés par les règles européennes du marché de l'électricité et des aides d'État.",
+        "en": "Electricity pricing mechanisms are bound by EU electricity-market and state-aid rules."
+      },
       "feasibility": "medium",
-      "feasibilityNote": { "fr": "La version 2024 était chiffrée à 2,4 Md€ par an par l'Institut Montaigne.", "en": "The 2024 version was put at €2.4bn a year by Institut Montaigne." },
+      "feasibilityNote": {
+        "fr": "La version 2024 était chiffrée à 2,4 Md€ par an par l'Institut Montaigne.",
+        "en": "The 2024 version was put at €2.4bn a year by Institut Montaigne."
+      },
       "broadBenefit": true
     },
     {
       "id": "m19",
       "theme": "ecologie",
       "status": "new",
-      "texts": { "p27": "Instaurer un bouclier tarifaire sur le prix de l'eau ; réparer les cinq cents réseaux d'eau les plus vétustes ; un plan Eau sans impôts nouveaux" },
+      "texts": {
+        "p27": "Instaurer un bouclier tarifaire sur le prix de l'eau ; réparer les cinq cents réseaux d'eau les plus vétustes ; un plan Eau sans impôts nouveaux"
+      },
       "change": null,
-      "sources": [ { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" } ],
+      "sources": [
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -348,9 +573,16 @@
       "id": "m20",
       "theme": "ecologie",
       "status": "new",
-      "texts": { "p27": "Multiplier par cinq les capacités de production en géoénergie d'ici 2035 ; doubler les subventions à la géoénergie" },
+      "texts": {
+        "p27": "Multiplier par cinq les capacités de production en géoénergie d'ici 2035 ; doubler les subventions à la géoénergie"
+      },
       "change": null,
-      "sources": [ { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" } ],
+      "sources": [
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -362,9 +594,16 @@
       "id": "m21",
       "theme": "ecologie",
       "status": "new",
-      "texts": { "p27": "Instaurer un droit à la climatisation ; plan d'urgence de climatisation des établissements" },
+      "texts": {
+        "p27": "Instaurer un droit à la climatisation ; plan d'urgence de climatisation des établissements"
+      },
       "change": null,
-      "sources": [ { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" } ],
+      "sources": [
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -376,15 +615,26 @@
       "id": "m22",
       "theme": "institutions",
       "status": "new",
-      "texts": { "p27": "Supprimer un échelon de collectivité pour lutter contre les doublons administratifs ; faire du maire l'élu le plus puissant de France" },
+      "texts": {
+        "p27": "Supprimer un échelon de collectivité pour lutter contre les doublons administratifs ; faire du maire l'élu le plus puissant de France"
+      },
       "change": null,
       "sources": [
-        { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" },
-        { "title": "Moneyvox, 3 juillet 2026", "url": "https://www.moneyvox.fr/impot/actualites/109548/attal-veut-100-000-departs-volontaires-de-fonctionnaires-et-impunite-budgetaire-zero" }
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        },
+        {
+          "title": "Moneyvox, 3 juillet 2026",
+          "url": "https://www.moneyvox.fr/impot/actualites/109548/attal-veut-100-000-departs-volontaires-de-fonctionnaires-et-impunite-budgetaire-zero"
+        }
       ],
       "cost": null,
       "legal": "constitutional-revision-needed",
-      "legalNote": { "fr": "L'article 72 de la Constitution nomme les communes, départements et régions ; supprimer l'un de ces niveaux suppose une révision.", "en": "Article 72 of the Constitution names communes, départements and regions; abolishing one tier requires an amendment." },
+      "legalNote": {
+        "fr": "L'article 72 de la Constitution nomme les communes, départements et régions ; supprimer l'un de ces niveaux suppose une révision.",
+        "en": "Article 72 of the Constitution names communes, départements and regions; abolishing one tier requires an amendment."
+      },
       "feasibility": "low",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -393,12 +643,22 @@
       "id": "m23",
       "theme": "institutions",
       "status": "new",
-      "texts": { "p27": "Instaurer une journée référendaire par an pour que les Français tranchent les grandes orientations du pays ; faciliter les référendums locaux" },
+      "texts": {
+        "p27": "Instaurer une journée référendaire par an pour que les Français tranchent les grandes orientations du pays ; faciliter les référendums locaux"
+      },
       "change": null,
-      "sources": [ { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" } ],
+      "sources": [
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        }
+      ],
       "cost": null,
       "legal": "risk",
-      "legalNote": { "fr": "Le champ du référendum de l'article 11 est limité (organisation des pouvoirs publics, politique économique, sociale ou environnementale, traités).", "en": "The scope of Article 11 referendums is limited (organisation of public authorities, economic, social or environmental policy, treaties)." },
+      "legalNote": {
+        "fr": "Le champ du référendum de l'article 11 est limité (organisation des pouvoirs publics, politique économique, sociale ou environnementale, traités).",
+        "en": "The scope of Article 11 referendums is limited (organisation of public authorities, economic, social or environmental policy, treaties)."
+      },
       "feasibility": "medium",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -407,12 +667,22 @@
       "id": "m24",
       "theme": "justice",
       "status": "new",
-      "texts": { "p27": "Instaurer la comparution immédiate pour les mineurs ; punir systématiquement les dégradations, même réalisées par des mineurs" },
+      "texts": {
+        "p27": "Instaurer la comparution immédiate pour les mineurs ; punir systématiquement les dégradations, même réalisées par des mineurs"
+      },
       "change": null,
-      "sources": [ { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" } ],
+      "sources": [
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        }
+      ],
       "cost": null,
       "legal": "unconstitutional-precedent",
-      "legalNote": { "fr": "La comparution immédiate des mineurs de 16 ans et plus, prévue par la loi Attal de 2025, a été censurée (décision n° 2025-886 DC du 19 juin 2025) au nom du principe fondamental de la justice des mineurs.", "en": "Immediate trial for minors aged 16 and over, in the 2025 Attal law, was struck down (decision no. 2025-886 DC, 19 June 2025) under the fundamental principle governing juvenile justice." },
+      "legalNote": {
+        "fr": "La comparution immédiate des mineurs de 16 ans et plus, prévue par la loi Attal de 2025, a été censurée (décision n° 2025-886 DC du 19 juin 2025) au nom du principe fondamental de la justice des mineurs.",
+        "en": "Immediate trial for minors aged 16 and over, in the 2025 Attal law, was struck down (decision no. 2025-886 DC, 19 June 2025) under the fundamental principle governing juvenile justice."
+      },
       "feasibility": "low",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -421,9 +691,16 @@
       "id": "m25",
       "theme": "justice",
       "status": "new",
-      "texts": { "p27": "Recruter 3 000 magistrats et greffiers pour raccourcir les délais de jugement ; accélérer les délais de jugement grâce à l'IA" },
+      "texts": {
+        "p27": "Recruter 3 000 magistrats et greffiers pour raccourcir les délais de jugement ; accélérer les délais de jugement grâce à l'IA"
+      },
       "change": null,
-      "sources": [ { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" } ],
+      "sources": [
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -435,12 +712,22 @@
       "id": "m26",
       "theme": "justice",
       "status": "new",
-      "texts": { "p27": "Rendre imprescriptibles les crimes sexuels sur mineurs ; instaurer la perpétuité réelle pour les prédateurs sexuels en série ; créer un parquet national dédié à la lutte contre la pédocriminalité" },
+      "texts": {
+        "p27": "Rendre imprescriptibles les crimes sexuels sur mineurs ; instaurer la perpétuité réelle pour les prédateurs sexuels en série ; créer un parquet national dédié à la lutte contre la pédocriminalité"
+      },
       "change": null,
-      "sources": [ { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" } ],
+      "sources": [
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        }
+      ],
       "cost": null,
       "legal": "risk",
-      "legalNote": { "fr": "L'imprescriptibilité est aujourd'hui réservée aux crimes contre l'humanité ; son extension serait examinée au regard des principes de nécessité et de proportionnalité.", "en": "Imprescriptibility is currently reserved for crimes against humanity; extending it would be reviewed for necessity and proportionality." },
+      "legalNote": {
+        "fr": "L'imprescriptibilité est aujourd'hui réservée aux crimes contre l'humanité ; son extension serait examinée au regard des principes de nécessité et de proportionnalité.",
+        "en": "Imprescriptibility is currently reserved for crimes against humanity; extending it would be reviewed for necessity and proportionality."
+      },
       "feasibility": "high",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -449,12 +736,22 @@
       "id": "m27",
       "theme": "immigration",
       "status": "new",
-      "texts": { "p27": "Instaurer un système à points pour l'immigration ; définir des quotas migratoires révisés tous les deux ans ; durcir les règles du regroupement familial" },
+      "texts": {
+        "p27": "Instaurer un système à points pour l'immigration ; définir des quotas migratoires révisés tous les deux ans ; durcir les règles du regroupement familial"
+      },
       "change": null,
-      "sources": [ { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" } ],
+      "sources": [
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        }
+      ],
       "cost": null,
       "legal": "risk",
-      "legalNote": { "fr": "Le regroupement familial est encadré par la directive 2003/86/CE et par le droit de mener une vie familiale normale (décision n° 93-325 DC du 13 août 1993).", "en": "Family reunification is bound by Directive 2003/86/EC and the right to a normal family life (decision no. 93-325 DC, 13 August 1993)." },
+      "legalNote": {
+        "fr": "Le regroupement familial est encadré par la directive 2003/86/CE et par le droit de mener une vie familiale normale (décision n° 93-325 DC du 13 août 1993).",
+        "en": "Family reunification is bound by Directive 2003/86/EC and the right to a normal family life (decision no. 93-325 DC, 13 August 1993)."
+      },
       "feasibility": "medium",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -463,12 +760,22 @@
       "id": "m28",
       "theme": "agriculture",
       "status": "new",
-      "texts": { "p27": "Refuser le traité Mercosur ; des clauses miroir dans tous les accords commerciaux ; des prix planchers indexés sur les coûts de production" },
+      "texts": {
+        "p27": "Refuser le traité Mercosur ; des clauses miroir dans tous les accords commerciaux ; des prix planchers indexés sur les coûts de production"
+      },
       "change": null,
-      "sources": [ { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" } ],
+      "sources": [
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        }
+      ],
       "cost": null,
       "legal": "eu-law",
-      "legalNote": { "fr": "La politique commerciale est une compétence exclusive de l'UE (article 3 TFUE) ; la France peut voter contre, pas bloquer seule.", "en": "Trade policy is an exclusive EU competence (Article 3 TFEU); France can vote against but not block alone." },
+      "legalNote": {
+        "fr": "La politique commerciale est une compétence exclusive de l'UE (article 3 TFUE) ; la France peut voter contre, pas bloquer seule.",
+        "en": "Trade policy is an exclusive EU competence (Article 3 TFEU); France can vote against but not block alone."
+      },
       "feasibility": "low",
       "feasibilityNote": null,
       "broadBenefit": false
@@ -477,9 +784,16 @@
       "id": "m29",
       "theme": "international",
       "status": "new",
-      "texts": { "p27": "Une préférence européenne dans la commande publique de défense ; créer un dôme de fer européen contre les missiles et les drones ; des fonds d'investissement dédiés aux PME de la défense" },
+      "texts": {
+        "p27": "Une préférence européenne dans la commande publique de défense ; créer un dôme de fer européen contre les missiles et les drones ; des fonds d'investissement dédiés aux PME de la défense"
+      },
       "change": null,
-      "sources": [ { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" } ],
+      "sources": [
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -491,9 +805,16 @@
       "id": "m30",
       "theme": "sante",
       "status": "new",
-      "texts": { "p27": "Un assistant médical IA pour chaque Français ; équilibrer les comptes de la Sécurité sociale" },
+      "texts": {
+        "p27": "Un assistant médical IA pour chaque Français ; équilibrer les comptes de la Sécurité sociale"
+      },
       "change": null,
-      "sources": [ { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" } ],
+      "sources": [
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -505,9 +826,16 @@
       "id": "m31",
       "theme": "social",
       "status": "new",
-      "texts": { "p27": "Créer une carte famille monoparentale ; créer un droit au répit pour les parents seuls ; défiscaliser les pensions alimentaires" },
+      "texts": {
+        "p27": "Créer une carte famille monoparentale ; créer un droit au répit pour les parents seuls ; défiscaliser les pensions alimentaires"
+      },
       "change": null,
-      "sources": [ { "title": "attalpresident.fr — Programme", "url": "https://attalpresident.fr/programme" } ],
+      "sources": [
+        {
+          "title": "attalpresident.fr — Programme",
+          "url": "https://attalpresident.fr/programme"
+        }
+      ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
@@ -523,26 +851,58 @@
         "e24": "Relever l'abattement sur les droits de succession à 150 000 € en ligne directe (enfants) et 100 000 € en ligne indirecte",
         "p27": "Ne pas augmenter les droits de succession ni la fiscalité de l'assurance-vie ; faciliter les donations aux petits-enfants"
       },
-      "change": { "fr": "Relèvement chiffré de l'abattement (2024) → engagement de non-hausse et facilitation des donations aux petits-enfants, sans montant (2027).", "en": "Costed allowance increase (2024) → pledge of no increase and easier gifts to grandchildren, no amount (2027)." },
+      "change": {
+        "fr": "Relèvement chiffré de l'abattement (2024) → engagement de non-hausse et facilitation des donations aux petits-enfants, sans montant (2027).",
+        "en": "Costed allowance increase (2024) → pledge of no increase and easier gifts to grandchildren, no amount (2027)."
+      },
       "sources": [
-        { "title": "Senioractu, 1er novembre 2026", "url": "https://www.senioractu.com/Gabriel-Attal-supprimerait-l-age-legal-de-votre-retraite-et-gelerait-un-an-les-pensions-hors-petites-retraites-ce-que_a28256.html" },
-        { "title": "Institut Montaigne, législatives 2024 : chiffrages retraites et fiscalité", "url": "https://institutmontaigne.org/communiques-de-presse/legislatives-2024-chiffrages-retraites-et-fiscalite" }
+        {
+          "title": "Senioractu, 1er novembre 2026",
+          "url": "https://www.senioractu.com/Gabriel-Attal-supprimerait-l-age-legal-de-votre-retraite-et-gelerait-un-an-les-pensions-hors-petites-retraites-ce-que_a28256.html"
+        },
+        {
+          "title": "Institut Montaigne, législatives 2024 : chiffrages retraites et fiscalité",
+          "url": "https://institutmontaigne.org/communiques-de-presse/legislatives-2024-chiffrages-retraites-et-fiscalite"
+        }
       ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
       "feasibility": "high",
-      "feasibilityNote": { "fr": "La version 2024 était chiffrée à environ 3 Md€ par an par l'Institut Montaigne.", "en": "The 2024 version was put at about €3bn a year by Institut Montaigne." },
+      "feasibilityNote": {
+        "fr": "La version 2024 était chiffrée à environ 3 Md€ par an par l'Institut Montaigne.",
+        "en": "The 2024 version was put at about €3bn a year by Institut Montaigne."
+      },
       "broadBenefit": false
     },
     {
       "id": "m33",
       "theme": "logement",
       "status": "dropped",
-      "texts": { "e24": "Supprimer les frais de notaires pour les primo-accédants lors de l'achat d'un logement jusqu'à 250 000 €" },
-      "change": { "fr": "Absente des 96 mesures publiées au 8 novembre 2026.", "en": "Absent from the 96 measures published as of 8 November 2026." },
-      "sources": [ { "title": "Institut Montaigne, législatives 2024 — synthèse Ensemble", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese" } ],
-      "cost": { "value": -2.8, "low": null, "high": null, "by": "Institut Montaigne 2024", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese", "note": { "fr": "Chiffrage de la version 2024.", "en": "Costing of the 2024 version." } },
+      "texts": {
+        "e24": "Supprimer les frais de notaires pour les primo-accédants lors de l'achat d'un logement jusqu'à 250 000 €"
+      },
+      "change": {
+        "fr": "Absente des 96 mesures publiées au 8 novembre 2026.",
+        "en": "Absent from the 96 measures published as of 8 November 2026."
+      },
+      "sources": [
+        {
+          "title": "Institut Montaigne, législatives 2024 — synthèse Ensemble",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese"
+        }
+      ],
+      "cost": {
+        "value": -2.8,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese",
+        "note": {
+          "fr": "Chiffrage de la version 2024.",
+          "en": "Costing of the 2024 version."
+        }
+      },
       "legal": "ok",
       "legalNote": null,
       "feasibility": null,
@@ -553,10 +913,30 @@
       "id": "m34",
       "theme": "education",
       "status": "dropped",
-      "texts": { "e24": "Généraliser le service national universel d'ici 2026" },
-      "change": { "fr": "Absente des 96 mesures publiées au 8 novembre 2026.", "en": "Absent from the 96 measures published as of 8 November 2026." },
-      "sources": [ { "title": "Institut Montaigne, législatives 2024 — synthèse Ensemble", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese" } ],
-      "cost": { "value": -3.6, "low": null, "high": null, "by": "Institut Montaigne 2024", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese", "note": { "fr": "Chiffrage de la version 2024.", "en": "Costing of the 2024 version." } },
+      "texts": {
+        "e24": "Généraliser le service national universel d'ici 2026"
+      },
+      "change": {
+        "fr": "Absente des 96 mesures publiées au 8 novembre 2026.",
+        "en": "Absent from the 96 measures published as of 8 November 2026."
+      },
+      "sources": [
+        {
+          "title": "Institut Montaigne, législatives 2024 — synthèse Ensemble",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese"
+        }
+      ],
+      "cost": {
+        "value": -3.6,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese",
+        "note": {
+          "fr": "Chiffrage de la version 2024.",
+          "en": "Costing of the 2024 version."
+        }
+      },
       "legal": "ok",
       "legalNote": null,
       "feasibility": null,
@@ -567,10 +947,30 @@
       "id": "m35",
       "theme": "social",
       "status": "dropped",
-      "texts": { "e24": "Verser à la source la prime d'activité, les allocations familiales, les allocations logement et le RSA" },
-      "change": { "fr": "Absente des 96 mesures publiées au 8 novembre 2026.", "en": "Absent from the 96 measures published as of 8 November 2026." },
-      "sources": [ { "title": "Institut Montaigne, législatives 2024 — synthèse Ensemble", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese" } ],
-      "cost": { "value": -5, "low": null, "high": null, "by": "Institut Montaigne 2024", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese", "note": { "fr": "Coût lié à la hausse du recours aux prestations, version 2024.", "en": "Cost from higher benefit take-up, 2024 version." } },
+      "texts": {
+        "e24": "Verser à la source la prime d'activité, les allocations familiales, les allocations logement et le RSA"
+      },
+      "change": {
+        "fr": "Absente des 96 mesures publiées au 8 novembre 2026.",
+        "en": "Absent from the 96 measures published as of 8 November 2026."
+      },
+      "sources": [
+        {
+          "title": "Institut Montaigne, législatives 2024 — synthèse Ensemble",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese"
+        }
+      ],
+      "cost": {
+        "value": -5,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese",
+        "note": {
+          "fr": "Coût lié à la hausse du recours aux prestations, version 2024.",
+          "en": "Cost from higher benefit take-up, 2024 version."
+        }
+      },
       "legal": "ok",
       "legalNote": null,
       "feasibility": null,
@@ -581,10 +981,30 @@
       "id": "m36",
       "theme": "ecologie",
       "status": "dropped",
-      "texts": { "e24": "Proposer chaque année 100 000 véhicules électriques en leasing social aux Français des classes moyennes et populaires" },
-      "change": { "fr": "Absente des 96 mesures publiées au 8 novembre 2026.", "en": "Absent from the 96 measures published as of 8 November 2026." },
-      "sources": [ { "title": "Institut Montaigne, législatives 2024 — synthèse Ensemble", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese" } ],
-      "cost": { "value": -1.3, "low": null, "high": null, "by": "Institut Montaigne 2024", "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese", "note": { "fr": "Chiffrage de la version 2024.", "en": "Costing of the 2024 version." } },
+      "texts": {
+        "e24": "Proposer chaque année 100 000 véhicules électriques en leasing social aux Français des classes moyennes et populaires"
+      },
+      "change": {
+        "fr": "Absente des 96 mesures publiées au 8 novembre 2026.",
+        "en": "Absent from the 96 measures published as of 8 November 2026."
+      },
+      "sources": [
+        {
+          "title": "Institut Montaigne, législatives 2024 — synthèse Ensemble",
+          "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese"
+        }
+      ],
+      "cost": {
+        "value": -1.3,
+        "low": null,
+        "high": null,
+        "by": "Institut Montaigne 2024",
+        "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese",
+        "note": {
+          "fr": "Chiffrage de la version 2024.",
+          "en": "Costing of the 2024 version."
+        }
+      },
       "legal": "ok",
       "legalNote": null,
       "feasibility": null,
@@ -597,20 +1017,65 @@
       {
         "id": "l2024",
         "year": 2024,
-        "label": { "fr": "Législatives 2024 — programme Ensemble pour la République", "en": "2024 legislative — Ensemble pour la République programme" },
-        "horizon": { "fr": "par an, à l'horizon 2027", "en": "a year, by 2027" },
+        "label": {
+          "fr": "Législatives 2024 — programme Ensemble pour la République",
+          "en": "2024 legislative — Ensemble pour la République programme"
+        },
+        "horizon": {
+          "fr": "par an, à l'horizon 2027",
+          "en": "a year, by 2027"
+        },
         "announced": null,
         "estimates": [
-          { "by": "Institut Montaigne", "spending": 26.9, "revenue": 6.3, "net": -20.6, "date": "2024-07", "note": { "fr": "Dépenses nouvelles et baisses d'impôts 26,9 Md€, économies 6,3 Md€ (réforme de l'assurance chômage, centres de rétention) ; environ 0,7 point de PIB de déficit en plus.", "en": "New spending and tax cuts €26.9bn, savings €6.3bn (unemployment-insurance reform, detention centres); about 0.7 GDP point of extra deficit." }, "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese" },
-          { "by": "Fondation iFRAP", "spending": null, "revenue": 4.0, "net": 4.0, "date": "2024-06-20", "note": { "fr": "Écart à la trajectoire du programme de stabilité en 2027 : 2,1 Md€ d'économies et 1,9 Md€ de recettes, soit environ 4 Md€ de déficit en moins ; dépenses nouvelles déjà incluses dans la trajectoire.", "en": "Gap against the stability-programme path in 2027: €2.1bn savings and €1.9bn revenue, about €4bn less deficit; new spending already in the baseline path." }, "url": "https://www.ifrap.org/budget-et-fiscalite/le-vrai-cout-du-programme-densemble-pour-la-republique" }
+          {
+            "by": "Institut Montaigne",
+            "spending": 26.9,
+            "revenue": 6.3,
+            "net": -20.6,
+            "date": "2024-07",
+            "note": {
+              "fr": "Dépenses nouvelles et baisses d'impôts 26,9 Md€, économies 6,3 Md€ (réforme de l'assurance chômage, centres de rétention) ; environ 0,7 point de PIB de déficit en plus.",
+              "en": "New spending and tax cuts €26.9bn, savings €6.3bn (unemployment-insurance reform, detention centres); about 0.7 GDP point of extra deficit."
+            },
+            "url": "https://www.institutmontaigne.org/legislatives-2024/ensemble-majorite-presidentielle/synthese"
+          },
+          {
+            "by": "Fondation iFRAP",
+            "spending": null,
+            "revenue": 4.0,
+            "net": 4.0,
+            "date": "2024-06-20",
+            "note": {
+              "fr": "Écart à la trajectoire du programme de stabilité en 2027 : 2,1 Md€ d'économies et 1,9 Md€ de recettes, soit environ 4 Md€ de déficit en moins ; dépenses nouvelles déjà incluses dans la trajectoire.",
+              "en": "Gap against the stability-programme path in 2027: €2.1bn savings and €1.9bn revenue, about €4bn less deficit; new spending already in the baseline path."
+            },
+            "url": "https://www.ifrap.org/budget-et-fiscalite/le-vrai-cout-du-programme-densemble-pour-la-republique"
+          }
         ]
       },
       {
         "id": "p2027",
         "year": 2027,
-        "label": { "fr": "Présidentielle 2027 — programme en cours de Gabriel Attal", "en": "2027 presidential — Gabriel Attal's programme in progress" },
-        "horizon": { "fr": "cumul sur le quinquennat", "en": "cumulative over the term" },
-        "announced": { "by": "Gabriel Attal", "spending": null, "revenue": 150, "net": null, "date": "2026-10-28", "note": { "fr": "150 Md€ d'économies sur le quinquennat, dont deux tiers sur le social, sans hausse d'impôts ; déficit sous 3 % avant 2032. Le coût des mesures nouvelles (droit au brut, enseignants, Plan France 2040) n'est pas totalisé. L'Institut Montaigne chiffrera les candidats au 1er trimestre 2027.", "en": "€150bn of savings over the term, two-thirds from social spending, with no tax rise; deficit under 3% before 2032. The cost of new measures (gross-pay pledge, teachers, France 2040 plan) is not totalled. Institut Montaigne will cost candidates in Q1 2027." }, "url": "https://www.senioractu.com/Gabriel-Attal-supprimerait-l-age-legal-de-votre-retraite-et-gelerait-un-an-les-pensions-hors-petites-retraites-ce-que_a28256.html" },
+        "label": {
+          "fr": "Présidentielle 2027 — programme en cours de Gabriel Attal",
+          "en": "2027 presidential — Gabriel Attal's programme in progress"
+        },
+        "horizon": {
+          "fr": "cumul sur le quinquennat",
+          "en": "cumulative over the term"
+        },
+        "announced": {
+          "by": "Gabriel Attal",
+          "spending": null,
+          "revenue": 150,
+          "net": null,
+          "date": "2026-10-28",
+          "note": {
+            "fr": "150 Md€ d'économies sur le quinquennat, dont deux tiers sur le social, sans hausse d'impôts ; déficit sous 3 % avant 2032. Le coût des mesures nouvelles (droit au brut, enseignants, Plan France 2040) n'est pas totalisé. L'Institut Montaigne chiffrera les candidats au 1er trimestre 2027.",
+            "en": "€150bn of savings over the term, two-thirds from social spending, with no tax rise; deficit under 3% before 2032. The cost of new measures (gross-pay pledge, teachers, France 2040 plan) is not totalled. Institut Montaigne will cost candidates in Q1 2027."
+          },
+          "url": "https://www.senioractu.com/Gabriel-Attal-supprimerait-l-age-legal-de-votre-retraite-et-gelerait-un-an-les-pensions-hors-petites-retraites-ce-que_a28256.html"
+        },
         "estimates": []
       }
     ],
@@ -622,47 +1087,6 @@
   },
   "group": "EPR",
   "votes": [
-    {
-      "lineage": "m01",
-      "topic": {
-        "fr": "Retraites : garder la réforme de 2023",
-        "en": "Pensions: keep the 2023 reform"
-      },
-      "note": {
-        "fr": "217 : proposition de loi d’abrogation de la réforme de 2023 (voter contre suit la promesse) ; 468 : amendements supprimant l’article premier d’un autre texte d’abrogation (voter pour suit la promesse) ; 3684 et 4642 : suspension de la réforme de 2023 dans le budget de la Sécurité sociale pour 2026 (voter contre suit la promesse). Promesse de 2024 ; le programme 2027 supprime l’âge légal au profit de la seule durée de cotisation.",
-        "en": "217: bill repealing the 2023 reform (voting against follows the promise); 468: amendments deleting article 1 of another repeal bill (voting for follows the promise); 3684 and 4642: suspension of the 2023 reform in the 2026 social security budget (voting against follows the promise). 2024 promise; the 2027 programme drops the legal age in favour of contribution length alone."
-      },
-      "scrutins": [
-        {
-          "num": 217,
-          "date": "2024-10-31",
-          "title": "l'ensemble de la proposition de loi visant à restaurer un système de retraite plus juste en annulant les dernières réformes portant sur l’âge de départ et le nombre d’annuités (première lecture).",
-          "result": "rejeté",
-          "expect": "C"
-        },
-        {
-          "num": 468,
-          "date": "2024-11-28",
-          "title": "l'amendement de suppression n° 4 de M. Sitzenstuhl et les amendements identiques suivants à l'article premier de la proposition de loi d'abrogation de la retraite à 64 ans (première lecture).",
-          "result": "rejeté",
-          "expect": "P"
-        },
-        {
-          "num": 3684,
-          "date": "2025-11-12",
-          "title": "l'article 45 bis (examen prioritaire) du projet de loi de financement de la sécurité sociale pour 2026 (première lecture).",
-          "result": "adopté",
-          "expect": "C"
-        },
-        {
-          "num": 4642,
-          "date": "2025-12-05",
-          "title": "l'amendement n° 840 du Gouvernement et les amendements identiques suivants de rétablissement de l'article 45 bis (supprimé) (examen prioritaire) du projet de loi de financement de la sécurité sociale pour 2026 (nouvelle lecture).",
-          "result": "adopté",
-          "expect": "C"
-        }
-      ]
-    },
     {
       "lineage": "m24",
       "topic": {
