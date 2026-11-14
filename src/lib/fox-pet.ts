@@ -1,135 +1,129 @@
-// The Third Estate fox, full body, living on the corner of the note of the day: it sits and wags its tail, now and
-// then walks a few steps along the box's top edge and back, and after a while curls up and sleeps (a few "z"
-// rise). Click it to wake it up, or to send it to sleep. Pixel art in the mark's palette (src/lib/fox.ts); still
-// under reduced motion; paused off screen and in a background tab.
+// The Third Estate fox, full body, living on the top edge of the note of the day. It sits and wags its tail,
+// blinks, walks along the edge (sometimes all the way to the far end, sometimes back to the corner, turning to
+// face where it goes), lies down, stretches, sits on the corner with its tail hanging over into the void, and now
+// and then curls up asleep in its bowl. Click it to wake it or send it to bed. Pixel art in the mark's palette
+// (frames in src/lib/fox-sprites.json); still under reduced motion; paused off screen and in background tabs.
+import sprites from "./fox-sprites.json";
 
-const PAL: Record<string, string> = { K: "#5470ff", L: "#e1000f", M: "#ffffff", E: "#111216", N: "#111216" };
-
-// Facing right. '.' is transparent. Rows top to bottom.
-const SIT_A = [
-  ".......K.K......",
-  "......KLKLK.....",
-  "......KLLLLK....",
-  "......KLLLELK...",
-  ".......KLLMMNK..",
-  ".......KLLMMK...",
-  "......KLLLMK....",
-  ".....KLLLLMK....",
-  "....KLLLLLMK....",
-  "KK..KLLLLLMK....",
-  "KLK.KLLLLLLK....",
-  "KLLKKLLLLLLK....",
-  ".KMLLLLLLLLK....",
-  "..KKKMMKKMMK....",
-];
-const SIT_B = [
-  ...SIT_A.slice(0, 8),
-  "KK..KLLLLLMK....",
-  "KMK.KLLLLLMK....",
-  "KLLKKLLLLLLK....",
-  ".KLLLLLLLLLK....",
-  "..KKLLLLLLLK....",
-  "....KMMKKMMK....",
-];
-const WALK_TOP = [
-  "..........K.K.....",
-  ".........KLKLK....",
-  "KK.......KLLELK...",
-  "KMK......KLLLMMNK.",
-  ".KLKKKKKKKLLLMMK..",
-  "..KLLLLLLLLLLMK...",
-  "..KLLLLLLLLLLLK...",
-  "..KLLKKKKKKKLLK...",
-];
-const WALK_A = [...WALK_TOP, "..KMK.....KMK.....", "..KK......KK......"];
-const WALK_B = [...WALK_TOP, "...KMK...KMK......", "...KK.....KK......"];
-const SLEEP = [
-  "................",
-  "................",
-  "................",
-  "................",
-  ".....KKKKKKK....",
-  "...KKLLLLLLLKK..",
-  "..KLLLLLLLLLLLK.",
-  ".KLLKKLLLLLLLLK.",
-  ".KLKEKMMMMLLLLK.",
-  "KNMMMMMMMMMMLLK.",
-  "KMMMMMMMMMMMMK..",
-  ".KKKKKKKKKKKK...",
-  "................",
-  "................",
-];
-
+type Frame = keyof typeof sprites.frames;
+const PAL = sprites.palette as Record<string, string>;
 const PX = 3; // CSS px per sprite pixel
-const W = 18, H = 14;
-function frame(rows: string[]) {
-  let out = "";
-  const dy = H - rows.length; // all frames stand on the same baseline
-  rows.forEach((row, r) => {
+
+/** One frame as an SVG, its pixels standing on the frame's baseline (rows below it hang under the edge). */
+function svg(name: Frame) {
+  const f = sprites.frames[name] as { rows: string[]; baseline?: number };
+  const w = Math.max(...f.rows.map((r) => r.length)), h = f.rows.length, base = f.baseline ?? h;
+  let rects = "";
+  f.rows.forEach((row, r) => {
     for (let c = 0; c < row.length; ) {
       const ch = row[c];
       let e = c + 1;
       while (e < row.length && row[e] === ch) e++;
-      if (PAL[ch]) out += `<rect x="${c}" y="${r + dy}" width="${e - c}" height="1" fill="${PAL[ch]}"/>`;
+      if (PAL[ch]) rects += `<rect x="${c}" y="${r}" width="${e - c}" height="1" fill="${PAL[ch]}"/>`;
       c = e;
     }
   });
-  return out;
+  return { html: `<svg viewBox="0 0 ${w} ${h}" width="${w * PX}" height="${h * PX}" shape-rendering="crispEdges" aria-hidden="true">${rects}</svg>`, w: w * PX, below: (h - base) * PX };
 }
-const FRAMES = { sitA: frame(SIT_A), sitB: frame(SIT_B), walkA: frame(WALK_A), walkB: frame(WALK_B), sleep: frame(SLEEP) };
+const FR = Object.fromEntries((Object.keys(sprites.frames) as Frame[]).map((k) => [k, svg(k)])) as Record<Frame, ReturnType<typeof svg>>;
 
-/** Puts the fox on the top-left corner of `box` (positioned). Returns a cleanup function. */
-export function mountFox(box: HTMLElement) {
+type Mode = "sit" | "walk" | "lie" | "bowl" | "stretch" | "edge";
+
+/** Puts the fox on the top edge of the box `perch` sits on (an absolutely positioned, zero-height strip). */
+export function mountFox(perch: HTMLElement) {
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const el = document.createElement("button");
   el.type = "button";
   el.className = "fox-pet";
   el.setAttribute("aria-label", "Le renard de Third Estate");
-  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="${W * PX}" height="${H * PX}" shape-rendering="crispEdges" aria-hidden="true"><g class="fp-body">${FRAMES.sitA}</g></svg><span class="fp-z" aria-hidden="true"></span>`;
-  box.append(el);
-  const body = el.querySelector<SVGGElement>(".fp-body")!;
+  el.innerHTML = `<span class="fp-sprite"></span><span class="fp-z" aria-hidden="true"></span>`;
+  perch.append(el);
+  const sprite = el.querySelector<HTMLElement>(".fp-sprite")!;
   const zs = el.querySelector<HTMLElement>(".fp-z")!;
+  let shown: Frame | null = null;
+  const show = (f: Frame) => {
+    if (f === shown) return;
+    shown = f;
+    sprite.innerHTML = FR[f].html;
+    sprite.style.marginBottom = `${-FR[f].below}px`; // the tail that hangs over the edge goes below the line
+  };
+  show("sitA");
   if (reduced) return () => el.remove();
 
-  type Mode = "sit" | "walk" | "sleep";
-  let mode: Mode = "sit", tick = 0, x = 0, dir = 1, target = 0, until = 0, timer = 0, visible = true, cycles = 0;
-  const show = (f: keyof typeof FRAMES) => { body.innerHTML = FRAMES[f]; };
-  const set = (m: Mode, ms: number) => {
-    mode = m; until = performance.now() + ms; tick = 0;
-    el.classList.toggle("is-asleep", m === "sleep");
-    zs.textContent = m === "sleep" ? "z z z" : "";
+  let mode: Mode = "sit", tick = 0, x = 0, face = 1, target = 0, until = 0, timer = 0, visible = true, rounds = 0;
+  const room = () => Math.max(60, perch.clientWidth - 110); // up to the far end of the box
+  const place = () => { el.style.transform = `translateX(${Math.round(x)}px) scaleX(${face})`; };
+  const go = (m: Mode, ms = 0) => {
+    mode = m; tick = 0; until = performance.now() + ms;
+    el.classList.toggle("is-asleep", m === "bowl");
+    zs.textContent = m === "bowl" ? "z z z" : "";
     if (m === "walk") {
-      const room = Math.max(40, Math.min(160, box.clientWidth * 0.25));
-      target = x === 0 ? room * (0.4 + 0.6 * Math.random()) : 0; // out along the edge, then back to the corner
-      dir = target > x ? 1 : -1;
+      const r = Math.random();
+      // all the way to the far edge, somewhere along it, or home to the corner
+      target = x > room() * 0.6 ? (r < 0.6 ? 0 : room() * (0.2 + 0.4 * Math.random())) : r < 0.5 ? room() : r < 0.8 ? room() * (0.3 + 0.5 * Math.random()) : 0;
+      face = target >= x ? 1 : -1;
     }
+    if (m === "edge") { x = -34; face = 1; } // on the corner, the tail hanging outside the box
+  };
+  const next = () => {
+    rounds++;
+    const r = Math.random();
+    if (x <= 0 && r < 0.35) return go("edge", 7000 + Math.random() * 5000);
+    if (rounds % 5 === 0) return go("bowl", 16000);
+    if (r < 0.55) return go("walk");
+    if (r < 0.8) return go("lie", 6000 + Math.random() * 5000);
+    return go("sit", 4000 + Math.random() * 3000);
   };
   const step = () => {
     timer = 0;
     if (!visible || document.hidden || !document.body.contains(el)) return;
     const now = performance.now();
     tick++;
-    if (mode === "sit") {
-      show(tick % 4 < 2 ? "sitA" : "sitB"); // the tail wags
-      if (now > until) { cycles++; set(cycles % 4 === 0 ? "sleep" : "walk", cycles % 4 === 0 ? 14000 : 0); }
-    } else if (mode === "walk") {
-      show(tick % 2 ? "walkA" : "walkB");
-      x += dir * 4;
-      if ((dir > 0 && x >= target) || (dir < 0 && x <= target)) { x = target; set("sit", 4000 + Math.random() * 5000); }
-    } else {
-      show("sleep");
-      if (now > until) set("sit", 5000);
+    let delay = 240;
+    switch (mode) {
+      case "sit":
+        // the tail wags; a blink now and then
+        show(tick % 13 === 0 ? "blink" : tick % 4 < 2 ? "sitA" : "sitB");
+        if (now > until) next();
+        break;
+      case "walk": {
+        show((["walk1", "walk2", "walk3", "walk2"] as Frame[])[tick % 4]);
+        x += face * 5;
+        delay = 120;
+        if ((face > 0 && x >= target) || (face < 0 && x <= target)) { x = target; go("sit", 3000 + Math.random() * 4000); }
+        break;
+      }
+      case "lie":
+        show("lie");
+        delay = 500;
+        if (now > until) go("stretch", 1400);
+        break;
+      case "stretch":
+        show("stretch");
+        if (now > until) go("sit", 2500);
+        break;
+      case "edge":
+        show("edge");
+        delay = 500;
+        if (now > until) { x = 0; go("sit", 2000); }
+        break;
+      case "bowl":
+        show("bowl");
+        delay = 700;
+        if (now > until) go("stretch", 1600);
+        break;
     }
-    el.style.transform = `translateX(${x}px) scaleX(${mode === "walk" ? dir : 1})`;
-    timer = window.setTimeout(step, mode === "walk" ? 140 : mode === "sleep" ? 600 : 260);
+    place();
+    timer = window.setTimeout(step, delay);
   };
-  const kick = () => { if (!timer) timer = window.setTimeout(step, 50); };
-  el.addEventListener("click", () => { set(mode === "sleep" ? "sit" : "sleep", mode === "sleep" ? 6000 : 12000); kick(); });
+  const kick = () => { if (!timer) timer = window.setTimeout(step, 60); };
+  el.addEventListener("click", () => { mode === "bowl" ? go("stretch", 1400) : go("bowl", 14000); kick(); });
   const io = new IntersectionObserver((es) => { visible = es.some((e) => e.isIntersecting); if (visible) kick(); });
-  io.observe(box);
+  io.observe(perch.parentElement ?? perch);
   const onVis = () => { if (!document.hidden) kick(); };
   document.addEventListener("visibilitychange", onVis);
-  set("sit", 5000);
+  go("sit", 5000);
+  place();
   kick();
   return () => { clearTimeout(timer); io.disconnect(); document.removeEventListener("visibilitychange", onVis); el.remove(); };
 }

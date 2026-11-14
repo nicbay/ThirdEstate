@@ -32,8 +32,8 @@ export async function renderHome(app: HTMLElement) {
       <section class="hero-x hday" aria-labelledby="hday-title">
         <div class="hday-top">${hero.headHtml}${hero.artHtml}</div>
         <div class="hday-chart">
-          <div class="ed-perch"></div>
-          <section id="edition" class="ed" aria-label="${L("L’édition du jour", "The day’s edition")}"></section>
+          <div class="ed-wrap"><div class="ed-perch"></div>
+          <section id="edition" class="ed" aria-label="${L("L’édition du jour", "The day’s edition")}"></section></div>
           <div id="trend" class="reveal"></div>
           <div id="hq-num">${forecastLine(scenarioForecast(polls, markets, scenarioFromUrl()))}</div>
           <div id="hq-foot" class="hday-small"></div>
