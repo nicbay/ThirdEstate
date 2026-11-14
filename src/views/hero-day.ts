@@ -150,11 +150,12 @@ export async function heroDay() {
 
   // ---- widget 1: the Assembly, 577 dots that fly from the map into the seats
   const pair = shifts?.pairs.filter((p) => p.level === "district").at(-1);
-  const viz = heroViz(geo, deputes, pair, isDarkTheme());
+  const viz = heroViz(geo, deputes, pair, true); // drawn on the night band, whatever the theme
   const parliamentHtml = `<section class="hw hw-parl" aria-labelledby="hw-parl">
     <a class="hw-head" href="#/assemblee"><span class="hero-kicker">${L("Parlement", "Parliament")}</span><b id="hw-parl">${L("577 sièges, et comment vote le vôtre", "577 seats, and how yours votes")}</b><span>${L("577 députés et 348 sénateurs : chacun de leurs votes, leur loyauté envers le groupe, ce qu’ils disent en séance.", "577 MPs and 348 senators: every vote they cast, their loyalty to their group, what they say in the chamber.")}</span></a>
-    <figure class="hw-fig">${viz.svg}<figcaption><div class="hd-toggle" role="group" aria-label="${L("Vue", "View")}"><button type="button" data-hd="map">${L("Circonscriptions", "Districts")}</button><button type="button" data-hd="hemi">${L("Sièges", "Seats")}</button></div><p id="hd-caption"></p>${viz.legend}</figcaption></figure>
   </section>`;
+  // the hero's art: the 577 districts on the map of France, flying into the 577 seats of the Assembly and back
+  const artHtml = `<figure class="hday-art hw-fig">${viz.svg}<figcaption><div class="hd-toggle" role="group" aria-label="${L("Vue", "View")}"><button type="button" data-hd="map">${L("Circonscriptions", "Districts")}</button><button type="button" data-hd="hemi">${L("Sièges", "Seats")}</button></div><p id="hd-caption"></p>${viz.legend}</figcaption></figure>`;
 
   // ---- widget 2: the shift map, small: the latest district arrows and the national change since 1848
   const series = (shifts?.pairs ?? []).filter((p) => p.level === "department" && p.national.lr).sort((x, y) => x.from - y.from);
@@ -174,12 +175,19 @@ export async function heroDay() {
     </figure>
   </section>` : "";
 
-  const headHtml = `<p class="hday-kicker">${L("Présidentielle 2027", "2027 presidential election")} · ${fmtDate(today())} · ${L(`premier tour dans ${daysToGo} jours`, `first round in ${daysToGo} days`)}</p>
-    <h1 id="hday-title">${esc(head)}</h1>`;
+  // what the site is, before any number: neutral, so no reader is turned away by the race's state
+  const headHtml = `<div class="hday-intro">
+      <p class="hday-kicker">${L("Présidentielle 2027", "2027 presidential election")} · ${fmtDate(today())} · ${L(`premier tour dans ${daysToGo} jours`, `first round in ${daysToGo} days`)}</p>
+      <h1 id="hday-title">${L("La présidentielle, chiffres en main.", "The French election, by the numbers.")}</h1>
+      <p class="hday-dek">${L("Chaque sondage pesé, chaque promesse chiffrée, chaque vote de votre député. Pour se faire son avis sur pièces.", "Every poll weighed, every promise costed, every vote your MP casts. Make up your own mind, on the evidence.")}</p>
+      <nav class="hday-doors" aria-label="${L("Par où commencer", "Where to start")}">
+        <a href="#/2027">${L("La prévision", "The forecast")}</a><a href="${"#/explorer"}">${L("Votre commune", "Your town")}</a><a href="#/assemblee/deputes">${L("Votre député", "Your MP")}</a><a href="#/programmes">${L("Les programmes", "The programmes")}</a>
+      </nav>
+    </div>`;
 
   const start = (root: HTMLElement) => {
-    const parl = root.querySelector<HTMLElement>(".hw-parl");
-    if (parl) viz.start(parl);
+    const art = root.querySelector<HTMLElement>(".hday-art");
+    if (art) viz.start(art);
     const svg = root.querySelector<SVGSVGElement>("#hday-arrows");
     if (!svg || !pair) return;
     const draw = () => {
@@ -196,7 +204,8 @@ export async function heroDay() {
     io.observe(svg);
     svg.addEventListener("click", (e) => { const href = (e.target as Element).closest<SVGGElement>(".arrow")?.dataset.href; if (href) location.hash = href; });
   };
-  return { headHtml, noteHtml, parliamentHtml, shiftsHtml, start };
+  void head; // the race's headline now lives in the note of the day, not as the page's first words
+  return { headHtml, artHtml, noteHtml, parliamentHtml, shiftsHtml, start };
 }
 
 /** The widgets sit on paper: party colours as they are, lifted only when the reader's paper is dark. */

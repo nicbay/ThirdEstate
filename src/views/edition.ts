@@ -89,17 +89,18 @@ function render(e: Edition, idx: { date: string }[]) {
   const poll = e.polls[0], top = e.headlines[0];
   const day = new Date(e.date).toLocaleDateString(L("fr-FR", "en-GB"), { weekday: "long", day: "numeric", month: "long" });
   const cards = [
-    fav?.market != null ? `<div class="ed-card" style="--c:${meta(fav.name).color}"><p class="ed-ck">${L("Le favori des marchés", "The markets' favourite")}</p><p class="ed-big">${count(fav.market, " %")}</p><p>${sur(fav.name)}</p><p class="ed-chips">${chip(fav.d1, L("24 h", "24h"))}${chip(fav.d7, L("7 j", "7d"))}</p></div>` : "",
+    fav?.market != null ? `<div class="ed-card" style="--c:${meta(fav.name).color}"><p class="ed-ck">${L("Favori des marchés de prédiction", "Prediction markets' favourite")}</p><p class="ed-big">${count(fav.market, " %")}</p><p>${sur(fav.name)}</p><p class="ed-chips">${chip(fav.d1, L("24 h", "24h"))}${chip(fav.d7, L("7 j", "7d"))}</p></div>` : "",
     big && big.name !== fav?.name ? `<div class="ed-card" style="--c:${meta(big.name).color}"><p class="ed-ck">${L("Le mouvement du jour", "The move of the day")}</p><p class="ed-big">${count(big.d1!, "", true)}<small> pt</small></p><p>${sur(big.name)}, ${dec(big.market ?? 0)} %</p><p class="ed-chips">${chip(big.d7, L("7 j", "7d"))}</p></div>` : "",
     poll ? `<div class="ed-card"><p class="ed-ck">${L("Nouveau sondage", "New poll")}</p><p class="ed-poll">${poll.url ? `<a href="${esc(safeUrl(poll.url))}" target="_blank" rel="noopener">${esc(pollsterName(poll.pollster))}</a>` : esc(pollsterName(poll.pollster))}${(() => { const g = pollsterRating(poll.pollster)?.grade; return g ? ` <b style="color:${gradeColor(g)}">${g}</b>` : ""; })()}</p><p class="ed-small">${poll.top.slice(0, 3).map((t) => `${sur(t.name)} ${dec(t.v)}`).join(" · ")}</p></div>` : "",
     top ? `<div class="ed-card ed-news"><p class="ed-ck">${L("L’info la plus reprise", "Most-covered story")}</p><p>${story(top)}</p></div>` : "",
   ].filter(Boolean).join("");
   return `<div class="ed-nav">
       ${prev ? `<button type="button" class="ed-go" data-d="${prev.date}" aria-label="${esc(L(`Édition du ${fmtDate(prev.date)}`, `Edition of ${fmtDate(prev.date)}`))}">◀ ${esc(fmtDate(prev.date).replace(/\s\d{4}$/, ""))}</button>` : `<span></span>`}
-      <p class="ed-k">${L("L’édition du jour", "The day’s edition")} · ${esc(day)}</p>
+      <p class="ed-k"><b>${L("La note du jour", "Note of the day")}</b><span>${esc(day)}</span></p>
       ${next ? `<button type="button" class="ed-go" data-d="${next.date}" aria-label="${esc(L(`Édition du ${fmtDate(next.date)}`, `Edition of ${fmtDate(next.date)}`))}">${esc(fmtDate(next.date).replace(/\s\d{4}$/, ""))} ▶</button>` : `<span></span>`}
     </div>
     <h2 class="ed-head">${esc(L(e.head.fr, e.head.en))}</h2>
+    <p class="ed-what">${L("Chaque jour : ce qui a bougé sur les marchés de prédiction (les paris en argent réel sur Kalshi et Polymarket) et dans les sondages, et ce qui a pu le faire bouger.", "Every day: what moved on the prediction markets (real-money bets on Kalshi and Polymarket) and in the polls, and what could have moved it.")}</p>
     <div class="ed-cards">${cards}</div>
     <div class="ed-body">
       <section class="ed-why"><h3>${L("Ce qui a pu les faire bouger", "What could have moved them")}</h3>
@@ -109,7 +110,8 @@ function render(e: Edition, idx: { date: string }[]) {
         </li>`).join("")}</ol>` : `<p>${L("Aucun candidat n’a bougé d’un point en un jour, ni de 2,5 points en une semaine.", "No candidate moved a point in a day or 2.5 points in a week.")}</p>`}
         <p class="ed-note">${L("Des pistes, pas des causes : les titres sont ceux qui citent le candidat ce jour-là et la veille.", "Leads, not causes: the headlines are those naming the candidate that day and the day before.")}</p>
       </section>
-      <section class="ed-wk"><h3>${L("La semaine sur les marchés", "The week on the markets")}</h3>${weekChart(e)}</section>
+      <section class="ed-wk"><h3>${L("Chance de victoire sur les marchés de prédiction, 7 jours", "Chance of winning on the prediction markets, 7 days")}</h3>
+        <a class="ed-wk-go" href="#trend" aria-label="${esc(L("Voir les sondages et le graphique complet", "See the polls and the full chart"))}">${weekChart(e)}<span>${L("Kalshi et Polymarket, en moyenne. Les sondages, plus bas", "Kalshi and Polymarket, averaged. The polls, below")} ↓</span></a></section>
     </div>`;
 }
 
@@ -136,6 +138,8 @@ export async function mountEdition(box: HTMLElement) {
     if (!e) return;
     box.innerHTML = render(e, idx);
     box.querySelectorAll<HTMLButtonElement>(".ed-go").forEach((b) => b.addEventListener("click", () => void show(b.dataset.d!)));
+    // the small chart leads to the polls chart below (an in-page scroll, not a route change)
+    box.querySelector(".ed-wk-go")?.addEventListener("click", (ev) => { ev.preventDefault(); document.getElementById("trend")?.scrollIntoView({ behavior: reduced() ? "auto" : "smooth", block: "start" }); });
     animate(box);
   };
   box.addEventListener("keydown", (ev) => {

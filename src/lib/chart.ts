@@ -1,7 +1,7 @@
 // Minimal SVG line chart: polling-average lines with individual poll dots.
 import { esc, safeUrl } from "../util";
 import { L, fmtDate } from "../i18n";
-import { gradeColor, pollValue, pollWeight, pollsterName, pollsterRating, type Poll } from "./polls";
+import { gradeColor, pollValue, pollWeight, pollsterAnchor, pollsterName, pollsterRating, type Poll } from "./polls";
 import { dec, pct } from "./format";
 
 export interface Series {
@@ -111,7 +111,7 @@ export function lineChart(series: Series[], opts: { height?: number; yMax?: numb
     ${series
       .map(
         (s) => `<g class="series" data-name="${esc(s.name)}" style="--c:${s.color}">
-          ${(s.dots ?? []).map((p) => { const c = `<circle cx="${x(p.date)}" cy="${y(p.value)}" r="${compact ? 3.6 : 3}" class="dot" fill="${s.color}"${p.mark ? ` data-tip-mark="${esc(p.mark.text)}" data-tip-color="${esc(p.mark.color)}"` : ""}><title>${esc(p.title)}</title></circle>`; return p.href ? `<a href="${esc(safeUrl(p.href))}" target="_blank" rel="noopener" class="dot-link">${c}</a>` : c; }).join("")}
+          ${(s.dots ?? []).map((p) => { const c = `<circle cx="${x(p.date)}" cy="${y(p.value)}" r="${compact ? 3.6 : 3}" class="dot" fill="${s.color}"${p.mark ? ` data-tip-mark="${esc(p.mark.text)}" data-tip-color="${esc(p.mark.color)}"` : ""}><title>${esc(p.title)}</title></circle>`; return p.href ? (p.href.startsWith("#") ? `<a href="${esc(p.href)}" class="dot-link">${c}</a>` : `<a href="${esc(safeUrl(p.href))}" target="_blank" rel="noopener" class="dot-link">${c}</a>`) : c; }).join("")}
           ${proj(s)}
           <polyline class="halo" points="${s.line.map((p) => `${x(p.date)},${y(p.value)}`).join(" ")}"/>
           <polyline class="line" pathLength="1" fill="none" stroke="${s.color}" stroke-width="${compact ? 3.4 : 2.6}" stroke-linejoin="round" stroke-linecap="round" points="${s.line.map((p) => `${x(p.date)},${y(p.value)}`).join(" ")}"/>
@@ -132,12 +132,11 @@ export function pollDots(polls: Poll[], name: string, from: string, _fallback?: 
   return polls.filter((p) => p.end >= from).flatMap((p) => {
     const v = pollValue(p, name);
     if (v == null) return [];
-    const href = p.url;
+    // a dot opens the institute on our ranking page (its grade, its lean, its polls with their sources)
+    const href = `#/sondages/instituts#${pollsterAnchor(p.pollster)}`;
     const r = pollsterRating(p.pollster);
     const grade = r?.grade ? L(`note ${r.grade}`, `grade ${r.grade}`) : L("pas encore noté", "not yet graded");
-    const open = !href ? "" : p.urlKind === "pollster" ? L("Cliquer : la publication de l’institut", "Click: the pollster’s publication")
-      : p.urlKind === "commission" ? L("Cliquer : la notice officielle (Commission des sondages)", "Click: the official notice (Commission des sondages)")
-      : L("Cliquer : l’article de presse (publication de l’institut introuvable)", "Click: the press article (the pollster’s own release wasn’t found)");
+    const open = L("Cliquer : l’institut, sa note et ses sondages (avec leurs sources)", "Click: the institute, its grade and its polls (with their sources)");
     return [{ date: p.end, value: v, href, mark: r?.grade ? { text: grade, color: gradeColor(r.grade) } : undefined, title: `${pollsterName(p.pollster)} (${grade}, ${L("poids", "weight")} ${dec(pollWeight(p), 2)}) · ${fmtDate(p.end)}
 ${name} ${dec(v)} %${open ? `
 ${open}` : ""}` }];

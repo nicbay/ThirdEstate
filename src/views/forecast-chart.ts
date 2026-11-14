@@ -133,15 +133,14 @@ export function mountForecastChart(box: HTMLElement, o: Opts) {
           name: n, label: m.surname, color: m.color,
           line: pts.filter((p) => p.values[n] != null).map((p) => ({ date: p.date, value: p.values[n] })),
           dots: pollDots(o.polls.firstRound, n, from, o.polls.source),
-          ring: lastPoll && v != null ? { date: lastPoll.end, value: v, color: gradeColor(lastGrade), mark: lastGrade ?? undefined, title: `${pollsterName(lastPoll.pollster)} (${lastGrade ?? L("non noté", "not graded")}) · ${fmtDate(lastPoll.end)} · ${m.surname} ${dec(v)} %` } : undefined,
         };
       })
       .filter((s) => s.line.length);
     chartBox.innerHTML = lineChart(series, { height: o.height });
     const who = lastPoll ? ` (${esc(pollsterName(lastPoll.pollster))})` : "";
     key.innerHTML = L(
-      `Ligne : moyenne des sondages jusqu’au ${fmtDate(lastDate)}, pondérée par la note des instituts et corrigée du penchant de chacun. Points : chaque sondage (survolez pour l’institut et sa note) ; cerclé, le dernier${who}, dans la couleur de sa note. ${below}`,
-      `Line: polling average up to ${fmtDate(lastDate)}, weighted by institute grade and corrected for each institute's lean. Dots: each poll (hover for the institute and its grade); ringed, the latest${who}, in its grade’s colour. ${below}`,
+      `Ligne : moyenne des sondages jusqu’au ${fmtDate(lastDate)}, pondérée par la note des instituts et corrigée du penchant de chacun. Points : chaque sondage, le dernier${who} ; survolez pour l’institut et sa note, cliquez pour sa page. ${below}`,
+      `Line: polling average up to ${fmtDate(lastDate)}, weighted by institute grade and corrected for each institute's lean. Dots: each poll, the latest${who}; hover for the institute and its grade, click for its page. ${below}`,
     );
     note.innerHTML = L(
       `Chaque sondage compte selon la note de son institut (de A+ à F), tirée de l’écart entre ses derniers sondages et les résultats depuis 2002, la taille de son échantillon, et moins quand l’institut publie souvent (ses sondages à moins de 14 jours se partagent un poids) ou quand un chiffre s’écarte nettement des autres. Le penchant de chaque institut (un candidat qu’il place toujours plus haut ou plus bas que les autres) est mesuré sur 120 jours et retiré de ses sondages, comme le fait FiveThirtyEight. Les points montrent les chiffres bruts. <a href="#/sondages/instituts">Le classement des instituts et leurs penchants</a>.`,

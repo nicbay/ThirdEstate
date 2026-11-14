@@ -28,7 +28,7 @@ export async function renderHome(app: HTMLElement) {
   app.innerHTML = `
     <section class="page home">
       <section class="hero-x hday" aria-labelledby="hday-title">
-        ${hero.headHtml}
+        <div class="hday-top">${hero.headHtml}${hero.artHtml}</div>
         <div class="hday-chart">
           <section id="edition" class="ed" aria-label="${L("L’édition du jour", "The day’s edition")}"></section>
           <div id="trend" class="reveal"></div>
