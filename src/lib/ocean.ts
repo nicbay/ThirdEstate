@@ -201,23 +201,22 @@ export function mountOcean(host: HTMLElement) {
     R = Math.max(90, Math.min(wide ? 120 : 104, (room - 6) / 1.6));
     meX = Math.floor(Math.min(r.width * (wide ? 0.8 : 0.84), r.width - R * 0.8 - 6) / CELL) * CELL;
     meY = Math.floor((R * 0.8 + 3) / CELL) * CELL;
-    // with the seats animation on the right, the reader's pixel sits in the open space above the intro text
-    if (intro && art && wide) {
-      const ib = intro.getBoundingClientRect();
+    // an easter egg: the reader's pixel hides to the right of the map of France, in the margin when there is one
+    if (art && wide) {
+      const ab = art.getBoundingClientRect();
       R = 84;
-      meX = Math.floor((ib.right - r.left - R * 0.9) / CELL) * CELL;
-      meY = Math.floor(Math.max(R * 0.55, ib.top - r.top - 46) / CELL) * CELL;
+      const right = ab.right - r.left, margin = r.width - right;
+      meX = Math.floor((margin > 2 * R * 0.8 ? right + margin / 2 : r.width - R * 0.8 - 6) / CELL) * CELL;
+      meY = Math.floor((ab.top - r.top + ab.height * 0.42) / CELL) * CELL;
     }
+    void intro;
     for (const el of [me, say]) { el.style.left = `${meX + CELL / 2}px`; el.style.top = `${meY + CELL / 2}px`; }
     say.style.setProperty("--r", `${R}px`);
     if (chart) {
       const c = chart.getBoundingClientRect();
       mask = [c.left - r.left, c.top - r.top, c.right - r.left, c.bottom - r.top];
     }
-    if (art) {
-      const a = art.getBoundingClientRect();
-      mask2 = [a.left - r.left, a.top - r.top, a.right - r.left, a.bottom - r.top];
-    }
+    mask2 = [-9, -9, -9, -9]; // the animation sits on the pixels; only the chart keeps them out
     frame(performance.now());
     kick();
   };
