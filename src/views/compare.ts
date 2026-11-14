@@ -11,6 +11,9 @@ import { esc, safeColor } from "../util";
 import { CRIME_LABELS, bindSearch, depOf, loadDepartmentTowns, loadTownBundle, plmCity, plmWhole, searchBox, townExtra, type TownData } from "./explore";
 import "../styles/compare.css";
 import { armsSlot, loadCommuneArms, loadDepartmentArms, paintArms } from "../lib/arms";
+import { residentBalance } from "../lib/redistribution";
+import { loadMunicipalPolice, type MunicipalPolice } from "./town-police";
+import { loadStateBalance, type StateBalance } from "./town-state";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type Any = any;
@@ -34,6 +37,12 @@ interface Side {
   t?: TownData;
   extra: ReturnType<typeof townExtra>;
   muni?: Any;
+  /** INSEE 2022 census, whole town (towns split into IRIS neighbourhoods: about 3,900) */
+  census?: Record<string, number>;
+  /** our quality-of-life score (scripts/build-quality.mjs): [score 0–100, rank, parts] */
+  quality?: [number, number, Record<string, number>];
+  police?: MunicipalPolice | null;
+  state?: StateBalance | null;
   /** figures that are not the town's own: city-wide for an arrondissement, or averaged over arrondissements */
   approx: Set<string>;
   cityWide: Set<string>;
@@ -43,11 +52,15 @@ const PLM_NAME: Record<string, string> = { "75056": "Paris", "69123": "Lyon", "1
 
 async function loadSide(code: string): Promise<Side | null> {
   const dep = depOf(code);
-  const [{ towns }, bundle, info, muni] = await Promise.all([
+  const [{ towns }, bundle, info, muni, quartiers, quality, police, state] = await Promise.all([
     loadDepartmentTowns(dep).catch(() => ({ towns: new Map<string, TownData>() })),
     loadTownBundle(dep),
     get(`https://geo.api.gouv.fr/communes/${code}?fields=nom,code,population,departement,surface`),
     get(`/data/municipal/${dep}.json`),
+    get(`/data/quartiers/${code}.json`),
+    get(`/data/quality/${dep}.json`),
+    loadMunicipalPolice(plmCity(code)).catch(() => null),
+    loadStateBalance(code).catch(() => null),
   ]);
   const own = towns.get(code);
   const t = own ?? plmWhole(towns, code);
@@ -78,20 +91,24 @@ async function loadSide(code: string): Promise<Side | null> {
     t,
     extra: townExtra(bundle[code]),
     muni: m,
+    census: quartiers?.comparison?.commune,
+    quality: quality?.[code] ?? quality?.[plmCity(code)],
+    police,
+    state,
     approx,
     cityWide,
   };
 }
 
 // ---------- the figures ----------
-type Unit = "€" | "%" | "‰" | "pop" | "density" | "€/m²" | "apl" | "per10k";
+type Unit = "€" | "€±" | "%" | "‰" | "pop" | "density" | "€/m²" | "apl" | "per10k" | "score";
 interface Kpi {
   id: string;
   group: string;
   label: [string, string];
   unit: Unit;
   /** "pts" for rates (difference in points), "rel" for amounts (relative difference) */
-  diff: "pts" | "rel";
+  diff: "pts" | "rel" | "abs";
   /** which way is better, when there is one; drives the green mark only, never the wording */
   better: "high" | "low" | null;
   get: (s: Side) => number | undefined;
@@ -100,20 +117,39 @@ interface Kpi {
   note?: (s: Side) => string | undefined;
 }
 const GROUPS: [string, string, string][] = [
+  ["score", "Qualité de vie", "Quality of life"],
   ["people", "Habitants", "People"],
   ["money", "Revenus et emploi", "Income and jobs"],
   ["housing", "Logement", "Housing"],
   ["services", "Services", "Services"],
   ["safety", "Sécurité, faits pour 1 000 habitants", "Safety, offences per 1,000 people"],
+  ["public", "Contributeur ou bénéficiaire", "Net contributor or beneficiary"],
   ["vote", "Municipales 2026", "2026 municipal elections"],
 ];
+/** SRU law: towns of 3,500+ people (1,500+ in Île-de-France) in larger urban areas must reach 25 % social housing
+ *  (20 % in some areas). Census share of households renting social housing, a close proxy for the SRU count. */
+const IDF = new Set(["75", "77", "78", "91", "92", "93", "94", "95"]);
+const sruNote = (s: Side) => {
+  const v = s.census?.socialHousing;
+  if (v == null || !s.pop || s.pop < (IDF.has(s.dep) ? 1500 : 3500)) return undefined;
+  return v < 20 ? L("sous le plancher de 20 % de la loi SRU", "below the SRU law's 20% floor") : v < 25 ? L("sous l’objectif de 25 % de la loi SRU", "below the SRU law's 25% target") : undefined;
+};
 const decisive = (m: Any) => m?.y2026?.rounds?.find((r: Any) => r.round === m.y2026.decidedRound) ?? m?.y2026?.rounds?.at(-1);
 const KPIS: Kpi[] = [
+  { id: "quality", group: "score", label: ["Score de qualité de vie (sur 100)", "Quality-of-life score (out of 100)"], unit: "score", diff: "pts", better: "high", get: (s) => s.quality?.[0],
+    note: (s) => (s.quality ? L(`${fmtNum(s.quality[1])}ᵉ commune de France`, `#${fmtNum(s.quality[1])} in France`) : undefined) },
   { id: "pop", group: "people", label: ["Population", "Population"], unit: "pop", diff: "rel", better: null, get: (s) => s.pop },
   { id: "density", group: "people", label: ["Densité", "Density"], unit: "density", diff: "rel", better: null, get: (s) => (s.pop && s.area ? s.pop / s.area : undefined) },
+  { id: "under15", group: "people", label: ["Moins de 15 ans", "Under 15"], unit: "%", diff: "pts", better: null, get: (s) => s.census?.under15 },
+  { id: "over65", group: "people", label: ["65 ans et plus", "65 and over"], unit: "%", diff: "pts", better: null, get: (s) => s.census?.over65 },
+  { id: "higherEd", group: "people", label: ["Diplômés du supérieur", "Degree holders"], unit: "%", diff: "pts", better: null, get: (s) => s.census?.higherEducation },
+  { id: "noDiploma", group: "people", label: ["Sans diplôme", "No qualifications"], unit: "%", diff: "pts", better: null, get: (s) => s.census?.noDiploma },
   { id: "income", group: "money", label: ["Niveau de vie médian", "Median standard of living"], unit: "€", diff: "rel", better: "high", get: (s) => s.t?.income, flag: "income" },
   { id: "poverty", group: "money", label: ["Taux de pauvreté", "Poverty rate"], unit: "%", diff: "pts", better: "low", get: (s) => s.t?.poverty, flag: "poverty" },
   { id: "unemployment", group: "money", label: ["Chômage (recensement)", "Unemployment (census)"], unit: "%", diff: "pts", better: "low", get: (s) => s.t?.unemployment, flag: "unemployment" },
+  { id: "owners", group: "housing", label: ["Propriétaires", "Homeowners"], unit: "%", diff: "pts", better: null, get: (s) => s.census?.owners },
+  { id: "social", group: "housing", label: ["Logement social (HLM)", "Social housing"], unit: "%", diff: "pts", better: null, get: (s) => s.census?.socialHousing, note: sruNote },
+  { id: "vacancy", group: "housing", label: ["Logements vacants", "Empty homes"], unit: "%", diff: "pts", better: "low", get: (s) => s.census?.vacancy },
   { id: "flat", group: "housing", label: ["Prix au m², appartements", "Price per m², flats"], unit: "€/m²", diff: "rel", better: null, get: (s) => s.extra?.prices?.apartment?.median },
   { id: "house", group: "housing", label: ["Prix au m², maisons", "Price per m², houses"], unit: "€/m²", diff: "rel", better: null, get: (s) => s.extra?.prices?.house?.median },
   { id: "apl", group: "services", label: ["Accès aux généralistes", "Access to GPs"], unit: "apl", diff: "rel", better: "high", get: (s) => s.extra?.health?.apl },
@@ -123,6 +159,11 @@ const KPIS: Kpi[] = [
   ...Object.entries(CRIME_LABELS).map(([k, [fr, en]]): Kpi => ({
     id: `crime-${k}`, group: "safety", label: k === "burglary" ? [`${fr} (pour 1 000 logements)`, `${en} (per 1,000 homes)`] : [fr, en], unit: "‰", diff: "rel", better: "low", get: (s) => s.t?.crime?.[k]?.[1], flag: "crime",
   })),
+  { id: "police", group: "safety", label: ["Policiers municipaux, pour 10 000 habitants", "Municipal police, per 10,000 people"], unit: "per10k", diff: "rel", better: null, get: (s) => s.police?.per10k },
+  { id: "resident", group: "public", label: ["Un habitant typique : reçu − payé, par an", "A typical resident: received − paid, a year"], unit: "€±", diff: "abs", better: null, get: (s) => (s.t?.income ? Math.round(residentBalance(s.t.income).net / 10) * 10 : undefined),
+    note: (s) => (s.t?.income ? (residentBalance(s.t.income).net < 0 ? L("contributeur net", "net contributor") : L("bénéficiaire net", "net beneficiary")) : undefined) },
+  { id: "townhall", group: "public", label: ["La mairie : dotations et péréquation, par habitant", "The town hall: grants and equalisation, per inhabitant"], unit: "€±", diff: "abs", better: null, get: (s) => s.state?.balance,
+    note: (s) => (s.state ? (s.state.balance < 0 ? L("contributrice nette", "net contributor") : L("bénéficiaire nette", "net beneficiary")) : undefined) },
   { id: "turnout", group: "vote", label: ["Participation", "Turnout"], unit: "%", diff: "pts", better: null, get: (s) => decisive(s.muni)?.turnoutPct, flag: "vote" },
   { id: "winnerShare", group: "vote", label: ["Score de la liste élue", "Winning list’s share"], unit: "%", diff: "pts", better: null, get: (s) => s.muni?.y2026?.winner?.pctExpressed, flag: "vote" },
 ];
@@ -134,6 +175,8 @@ function fmtVal(v: number | undefined, unit: Unit): string {
   if (v == null || !Number.isFinite(v)) return "—";
   switch (unit) {
     case "€": return `${fmtNum(Math.round(v))} €`;
+    case "€±": return `${v > 0 ? "+" : v < 0 ? "−" : ""}${fmtNum(Math.abs(Math.round(v)))} €`;
+    case "score": return `${Math.round(v)}<small>/100</small>`;
     case "€/m²": return `${fmtNum(Math.round(v))} €`;
     case "%": return `${dec(v)}${L(" %", "%")}`;
     case "‰": return dec(v, v < 10 ? 2 : 1);
@@ -146,6 +189,7 @@ function fmtVal(v: number | undefined, unit: Unit): string {
 /** "+3,2 pts", "+24 %", "×2,4" or "≈": always the gap from the lower to the higher. */
 function gap(a: number, b: number, k: Kpi): string {
   const hi = Math.max(a, b), lo = Math.min(a, b);
+  if (k.diff === "abs") { const d = Math.abs(a - b); return d < 1 ? "≈" : `${fmtNum(Math.round(d))} €`; }
   if (k.diff === "pts") {
     const d = hi - lo;
     return d < 0.05 ? "≈" : `+${dec(d)} ${L(d >= 2 ? "pts" : "pt", d >= 2 ? "pts" : "pt")}`;
@@ -196,26 +240,28 @@ function quickPicks(a: Side) {
 function rowHtml(k: Kpi, a: Side, b: Side) {
   const va = k.get(a), vb = k.get(b);
   const has = va != null && vb != null && Number.isFinite(va) && Number.isFinite(vb);
-  const max = has ? Math.max(Math.abs(va!), Math.abs(vb!)) : Math.abs(va ?? vb ?? 0);
+  const max = Math.max(Math.abs(va ?? 0), Math.abs(vb ?? 0));
   const w = (v?: number) => (v != null && max ? Math.max(2, (100 * Math.abs(v)) / max) : 0);
   const hiSide = has && va !== vb ? (va! > vb! ? "a" : "b") : null;
   const g = has ? gap(va!, vb!, k) : "";
   const winner = hiSide && g !== "≈" && k.better ? (k.better === "high" ? hiSide : hiSide === "a" ? "b" : "a") : null;
+  const loser = winner ? (winner === "a" ? "b" : "a") : null;
+  const tone = (side: "a" | "b") => (winner === side ? " good" : loser === side ? " bad" : "");
   const mark = (s: Side) => (k.flag && s.approx.has(k.flag) ? "≈ " : "");
   const star = (s: Side) => (k.flag && s.cityWide.has(k.flag) ? `<sup title="${esc(L(`Chiffre de ${PLM_NAME[plmCity(s.code)] ?? ""} entier`, `Figure for the whole of ${PLM_NAME[plmCity(s.code)] ?? ""}`))}">*</sup>` : "");
+  const note = (s: Side) => { const n = k.note?.(s); return n ? `<small class="cmp-note${k.id === "social" ? " bad" : ""}">${esc(n)}</small>` : ""; };
   const hiName = hiSide === "a" ? a.name : b.name;
+  // the gap, said once in the middle: red when the higher figure is the worse one, green when it's the better one
+  const gapTone = hiSide && winner ? (hiSide === winner ? "good" : "bad") : "";
+  const gapHtml = g && g !== "≈" ? `<span class="cmp-gap ${gapTone}">${esc(g)} ${L("à", "at")} ${esc(hiName)}</span>` : g === "≈" ? `<span class="cmp-gap">${L("à égalité", "level")}</span>` : "";
   return `<li class="cmp-row${winner ? ` win-${winner}` : ""}" data-kpi="${k.id}">
-    <div class="cmp-row-head"><span class="cmp-label">${esc(fr() ? k.label[0] : k.label[1])}</span>${
-      g && g !== "≈" ? `<span class="cmp-gap gap-${hiSide}" title="${esc(L(`Plus élevé à ${hiName}`, `Higher in ${hiName}`))}"><b>${esc(hiName)}</b> ${g}</span>` : g === "≈" ? `<span class="cmp-gap">${L("à peu près égal", "about the same")}</span>` : ""
-    }</div>
-    <div class="cmp-row-vals">
-      <span class="cmp-v a${hiSide === "a" ? " hi" : ""}">${va == null ? "—" : mark(a) + fmtVal(va, k.unit)}${star(a)}</span>
-      <span class="cmp-bars" aria-hidden="true"><i class="a" style="width:${w(va).toFixed(1)}%"></i><i class="b" style="width:${w(vb).toFixed(1)}%"></i></span>
-      <span class="cmp-v b${hiSide === "b" ? " hi" : ""}">${vb == null ? "—" : mark(b) + fmtVal(vb, k.unit)}${star(b)}</span>
-    </div>
+    <span class="cmp-v a${tone("a")}">${va == null ? "—" : mark(a) + fmtVal(va, k.unit)}${star(a)}${note(a)}</span>
+    <span class="cmp-bar a" aria-hidden="true"><i style="width:${w(va).toFixed(1)}%"></i></span>
+    <span class="cmp-mid-label"><span class="cmp-label">${esc(fr() ? k.label[0] : k.label[1])}</span>${gapHtml}</span>
+    <span class="cmp-bar b" aria-hidden="true"><i style="width:${w(vb).toFixed(1)}%"></i></span>
+    <span class="cmp-v b${tone("b")}">${vb == null ? "—" : mark(b) + fmtVal(vb, k.unit)}${star(b)}${note(b)}</span>
   </li>`;
 }
-
 function winnerCell(s: Side, F: Any) {
   const w = s.muni?.y2026?.winner;
   if (!w) return `<span class="muted">—</span>`;
@@ -264,14 +310,24 @@ export async function renderCompare(app: HTMLElement, codeA?: string, codeB?: st
     return (va > vb) === (k.better === "high") ? "a" : "b";
   }).filter(Boolean);
   const nA = scored.filter((x) => x === "a").length, nB = scored.filter((x) => x === "b").length;
+  /** a group is a round: the town ahead on more of its figures takes it */
+  function roundWinner(g: string): "a" | "b" | null {
+    let x = 0, y = 0;
+    for (const k of KPIS.filter((k) => k.group === g && k.better)) {
+      const va = k.get(a!), vb = k.get(b!);
+      if (va == null || vb == null || gap(va, vb, k) === "≈") continue;
+      if ((va > vb) === (k.better === "high")) x++; else y++;
+    }
+    return x > y ? "a" : y > x ? "b" : null;
+  }
 
   const groups = GROUPS.map(([g, f, e]) => {
     const ks = KPIS.filter((k) => k.group === g && (k.get(a) != null || k.get(b) != null));
     const winners = g === "vote" && (a.muni?.y2026?.winner || b.muni?.y2026?.winner)
-      ? `<li class="cmp-row cmp-row-text"><div class="cmp-row-head"><span class="cmp-label">${L("Liste élue", "Winning list")}</span></div><div class="cmp-row-vals"><span class="cmp-v a">${winnerCell(a, F)}</span><span></span><span class="cmp-v b">${winnerCell(b, F)}</span></div></li>`
+      ? `<li class="cmp-row cmp-row-text"><span class="cmp-v a">${winnerCell(a, F)}</span><span></span><span class="cmp-mid-label"><span class="cmp-label">${L("Liste élue", "Winning list")}</span></span><span></span><span class="cmp-v b">${winnerCell(b, F)}</span></li>`
       : "";
     if (!ks.length && !winners) return "";
-    return `<section class="cmp-group"><h3>${L(f, e)}</h3><ol class="cmp-rows">${winners}${ks.map((k) => rowHtml(k, a, b)).join("")}</ol></section>`;
+    return `<section class="cmp-group"><h3>${L(f, e)}${roundWinner(g) ? ` <span class="cmp-round r-${roundWinner(g)}">${L("manche pour", "round to")} ${esc(roundWinner(g) === "a" ? a.name : b.name)}</span>` : ""}</h3><ol class="cmp-rows">${winners}${ks.map((k) => rowHtml(k, a, b)).join("")}</ol></section>`;
   }).join("");
 
   const notes: string[] = [];
@@ -280,12 +336,15 @@ export async function renderCompare(app: HTMLElement, codeA?: string, codeB?: st
 
   app.innerHTML = `<section class="page compare">${top}${heads}
     <div class="cmp-tools">
-      ${scored.length ? `<p class="cmp-score" title="${esc(L("Indicateurs où plus haut (revenu, accès aux soins…) ou plus bas (pauvreté, délinquance…) est clairement préférable", "Figures where higher (income, access to care…) or lower (poverty, crime…) is clearly better"))}"><span class="a"><b>${nA}</b> ${esc(a.name)}</span><span class="muted small">${L(`plus favorable, sur ${scored.length} indicateurs`, `ahead, out of ${scored.length} figures`)}</span><span class="b"><b>${nB}</b> ${esc(b.name)}</span></p>` : ""}
+      ${scored.length ? `<div class="cmp-score" title="${esc(L("Indicateurs où plus haut (revenu, accès aux soins…) ou plus bas (pauvreté, délinquance…) est clairement préférable", "Figures where higher (income, access to care…) or lower (poverty, crime…) is clearly better"))}">
+        <span class="a${nA > nB ? " lead" : ""}"><b>${nA}</b>${esc(a.name)}</span>
+        <span class="cmp-score-mid">${L("indicateurs gagnés", "figures won")}<small>${L(`sur ${scored.length}`, `of ${scored.length}`)}</small></span>
+        <span class="b${nB > nA ? " lead" : ""}"><b>${nB}</b>${esc(b.name)}</span></div>` : ""}
       <button type="button" class="home-btn cmp-share">${L("Copier le lien", "Copy link")}</button>
     </div>
-    <div class="cmp-legend small"><span class="a">${esc(a.name)}</span><span class="b">${esc(b.name)}</span><span class="muted">${L("En vert : la valeur la plus favorable, quand il y en a une.", "In green: the more favourable value, where there is one.")}</span></div>
+    <div class="cmp-legend small"><span class="a">${esc(a.name)}</span><span class="b">${esc(b.name)}</span><span class="muted">${L("En vert la valeur la plus favorable, en rouge la moins favorable, quand l’une l’est clairement ; sans couleur, ni l’une ni l’autre.", "Green: the more favourable value; red: the less favourable one, where one clearly is; no colour, neither.")}</span></div>
     <div class="cmp-body">${groups}</div>
-    <p class="muted tiny">${[...notes, L("« — » : chiffre non publié pour cette commune. Sources : Insee (revenus, chômage), SSMSI (délinquance), DVF (prix), DREES (accès aux soins), Arcep (fibre), OFGL (dépense), ministère de l’Intérieur (municipales).", "“—”: figure not published for this town. Sources: INSEE (income, jobs), SSMSI (crime), DVF (prices), DREES (access to care), Arcep (fibre), OFGL (spending), Ministry of the Interior (municipal elections).")].join(" ")} <a href="#/sources">${L("Toutes les sources", "All sources")}</a></p>
+    <p class="muted tiny">${[...notes, L("« — » : chiffre non publié pour cette commune. Sources : Insee (revenus, chômage, recensement 2022), SSMSI (délinquance), ministère de l’Intérieur (police municipale), DGCL et Insee (contributeur ou bénéficiaire, voir la page de la commune), score de qualité de vie : notre moyenne des rangs de la commune en France sur le revenu, la pauvreté, le chômage, la délinquance, l’accès aux généralistes et la fibre, DVF (prix), DREES (accès aux soins), Arcep (fibre), OFGL (dépense), ministère de l’Intérieur (municipales).", "“—”: figure not published for this town. Sources: INSEE (income, jobs, 2022 census), SSMSI (crime), Ministry of the Interior (municipal police), DGCL and INSEE (contributor or beneficiary, see the town page), quality-of-life score: our average of the town's national ranks on income, poverty, unemployment, crime, access to GPs and fibre, DVF (prices), DREES (access to care), Arcep (fibre), OFGL (spending), Ministry of the Interior (municipal elections).")].join(" ")} <a href="#/sources">${L("Toutes les sources", "All sources")}</a></p>
     <nav class="doors"><a class="door" href="#/ville/${esc(a.code)}"><b>${esc(a.name)}</b><span class="muted small">${L("La page complète de la commune", "The full town page")}</span></a><a class="door" href="#/ville/${esc(b.code)}"><b>${esc(b.name)}</b><span class="muted small">${L("La page complète de la commune", "The full town page")}</span></a></nav>
   </section>`;
 
