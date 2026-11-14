@@ -1,0 +1,27 @@
+/* The fox's layer (src/lib/fox-pet.ts). A zero-size box at the document's origin: the fox and its props are placed
+   in page coordinates by transform, so they scroll with the page and never move the layout. Under the masthead
+   and the phone tab bar (z-index 15+), above the content. Only painted pixels take the pointer. */
+.fox-layer { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 12; pointer-events: none; }
+.fox-layer .fox-pet {
+  position: absolute; left: 0; top: 0; bottom: auto; width: 102px; height: 0; padding: 0; border: 0; background: none;
+  line-height: 0; pointer-events: none; transform-origin: 0 0; will-change: transform;
+  -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; user-select: none; -webkit-user-select: none;
+}
+.fox-layer .fp-body { position: absolute; left: 0; bottom: 0; width: 102px; transform-origin: 51px 100%; }
+.fox-layer .fp-sprite { display: block; line-height: 0; }
+.fox-layer svg { display: block; image-rendering: pixelated; }
+.fox-layer .fp-sprite rect, .fox-layer .fp-tail rect { pointer-events: visiblePainted; cursor: grab; }
+.fox-layer .fox-pet.is-held rect { cursor: grabbing; }
+/* the tail is its own piece only while the fox tumbles (the "fly" frame is drawn without one) */
+.fox-layer .fp-tail { display: none; position: absolute; left: -21px; bottom: 9px; transform-origin: 100% 50%; }
+.fox-layer .fox-pet.is-flying .fp-tail { display: block; }
+.fox-layer .fox-pet:focus-visible { outline: none; }
+.fox-layer .fox-pet:focus-visible .fp-body { outline: 2px solid var(--focus); outline-offset: 3px; }
+.fox-layer .fp-z {
+  position: absolute; left: 58px; right: auto; top: auto; bottom: 74px; font: 700 0.8rem var(--mono); color: var(--ink-3);
+  white-space: nowrap; pointer-events: none; line-height: 1;
+}
+.fox-layer .fox-pet.is-asleep .fp-z { animation: fox-z 2.4s steps(6, end) infinite; }
+@keyframes fox-z { 0% { opacity: 0; transform: translate(0, 4px); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(10px, -16px); } }
+.fox-layer .fox-prop { z-index: 1; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .fox-layer .fox-pet.is-asleep .fp-z { animation: none; opacity: 1; } }
