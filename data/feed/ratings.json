@@ -13768,6 +13768,217 @@
       },
       "check": null,
       "postTime": "2026-11-13T16:00:25.000Z"
+    },
+    "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3n2cedjmvg22c": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T20:55:47.934Z",
+      "storyItems": [
+        "2800547ed9c3",
+        "30f0302e1b6e",
+        "ba349626b649",
+        "155795d9004f",
+        "c10accd283f8"
+      ],
+      "storyTitle": "Tout comprendre au smic, le salaire minimum que le gouvernement va revaloriser",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique de la position du RN contre la hausse du SMIC et des « coupes budgétaires », associée à l'accusation de racisme ; ton de gauche sociale.",
+        "rationale_en": "Criticises the RN's opposition to the minimum wage rise and budget cuts, adding a racism accusation; socially left-leaning tone."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Présente le programme adverse comme raciste, sans arguments détaillés.",
+        "rationale_en": "Presents the opposing programme as racist without detailed argument."
+      },
+      "check": null,
+      "postTime": "2026-11-14T20:41:50.193Z"
+    },
+    "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3n2ce3lno4s2c": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T20:55:47.934Z",
+      "storyItems": [
+        "2800547ed9c3",
+        "30f0302e1b6e",
+        "ba349626b649",
+        "155795d9004f",
+        "c10accd283f8"
+      ],
+      "storyTitle": "Tout comprendre au smic, le salaire minimum que le gouvernement va revaloriser",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Propose un SMIC net à 1700 euros et dénonce la revalorisation ; programme de gauche redistributive.",
+        "rationale_en": "Proposes a 1,700 euro net minimum wage and denounces the increase; redistributive left-wing programme."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Formule indignée (« foutage de gueule ») mise en avant plutôt qu'un argument chiffré.",
+        "rationale_en": "Indignant wording ('foutage de gueule') used in place of a quantified argument."
+      },
+      "check": {
+        "claim": "Le gouvernement a augmenté le SMIC de 9 euros.",
+        "why_fr": "Un article fourni évoque une hausse d'environ 24 euros (revalorisation de 1,6 %) ; l'écart peut tenir au brut ou au net, la base de comparaison n'étant pas précisée dans le message.",
+        "why_en": "A provided article cites an increase of about 24 euros (1.6%); the gap may reflect gross versus net, and the comparison base is not specified in the message.",
+        "sources": [
+          {
+            "title": "TEMOIGNAGES : salariés au smic, ils racontent un quotidien de privations",
+            "url": "https://www.franceinfo.fr/economie/pouvoir-achat/temoignages-j-ai-l-impression-de-travailler-a-perte-salaries-au-smic-ils-racontent-un-quotidien-de-privations-de-galeres-et-de-declassement_8276399.html"
+          }
+        ]
+      },
+      "postTime": "2026-11-14T20:37:23.876Z"
+    },
+    "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3n2cczzaxj22w": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T20:55:47.934Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.4,
+        "rationale_fr": "Promet d'abroger Parcoursup et de lutter contre le « tri social » ; orientation sociale de gauche.",
+        "rationale_en": "Promises to repeal Parcoursup and fight 'social sorting'; socially left-leaning orientation."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Mise en scène d'une « génération sacrifiée » pour mobiliser l'émotion.",
+        "rationale_en": "Frames a 'sacrificed generation' to mobilise emotion."
+      },
+      "check": null,
+      "postTime": "2026-11-14T20:18:37.291Z"
+    },
+    "yt:CQ_VHJjtxlA": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T20:55:47.934Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.4,
+        "rationale_fr": "Présentation d'une vidéo sur Parcoursup, le mérite et l'accès au logement ; orientation conservatrice modérée selon la description.",
+        "rationale_en": "Video description on Parcoursup, merit and housing access; moderately conservative orientation based on the description."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Pas de rhétorique populiste marquée dans la description.",
+        "rationale_en": "No marked populist rhetoric in the description."
+      },
+      "check": null,
+      "postTime": "2026-11-14T19:16:16.000Z"
+    },
+    "yt:C9wOWsfFRAo": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T20:55:47.934Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.9,
+        "rationale_fr": "Reprend l'idée de « remigration » et d'obligation de quitter le pays pour ceux qui rejettent la culture française ; droite identitaire.",
+        "rationale_en": "Repeats the idea of 'remigration' and of compelling those who reject French culture to leave; identitarian right."
+      },
+      "populism": {
+        "score": 0.6,
+        "markers": [
+          "nativisme",
+          "peuple_homogene"
+        ],
+        "rationale_fr": "Oppose « nous » et « notre culture » aux étrangers présentés comme ne respectant pas les lois.",
+        "rationale_en": "Opposes 'us' and 'our culture' to foreigners presented as not respecting the laws."
+      },
+      "check": null,
+      "postTime": "2026-11-14T18:00:25.000Z"
+    },
+    "x:2121664116314022293": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T20:55:47.934Z",
+      "storyItems": [
+        "003c740f08a6",
+        "ff639f3b27fd"
+      ],
+      "storyTitle": "Michel Destot, ancien maire PS de Grenoble et député de l’Isère, est mort",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Hommage funèbre sans position politique.",
+        "rationale_en": "Funeral tribute with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-14T17:58:38.599Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3n2by5k6wzs2g": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T20:55:47.934Z",
+      "storyItems": [
+        "c73d1a293291"
+      ],
+      "storyTitle": "Protection des enfants, opposition au «permis de tuer» et au gouvernement : à Paris, un mouvement social aux revendications multiples et en perte de vitesse",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Critique du projet de « permis de tuer » pour la police et de la politique de Macron ; position de gauche antiautoritaire.",
+        "rationale_en": "Criticises the proposed 'licence to kill' for police and Macron's policy; anti-authoritarian left position."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "appel_emotionnel",
+          "delegitimation"
+        ],
+        "rationale_fr": "Dénonciation émotionnelle des violences et du mandat de Macron, présenté comme illégitime à finir son mandat ainsi.",
+        "rationale_en": "Emotional denunciation of violence and of Macron, framed as illegitimately finishing his term this way."
+      },
+      "check": null,
+      "postTime": "2026-11-14T17:03:44.551Z"
+    },
+    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3n2bw75ekyc2b": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T20:55:47.934Z",
+      "storyItems": [
+        "8f2fd4e943aa"
+      ],
+      "storyTitle": "« Je vis en hypervigilance constante » : Sandrine Rousseau sur une liste du terroriste de Trappes",
+      "political": true,
+      "lean": {
+        "score": -0.4,
+        "rationale_fr": "Attribue la violence à une idéologie et critique le traitement médiatique de l'extrême droite ; positionnement de gauche.",
+        "rationale_en": "Attributes the violence to an ideology and criticises media treatment of the far right; left-leaning position."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Appel à l'émotion (peur, hypervigilance) plutôt qu'à des arguments détaillés.",
+        "rationale_en": "Appeals to emotion (fear, hypervigilance) rather than detailed arguments."
+      },
+      "check": null,
+      "postTime": "2026-11-14T16:28:50.733Z"
     }
   },
   "failures": {
