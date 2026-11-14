@@ -1,0 +1,76 @@
+/* Town comparison (#/comparer/<a>/<b>), src/views/compare.ts. Town A is the accent violet, town B ink:
+   neither is a party colour. Green (--up-text) marks the more favourable value where there is one. */
+.compare { --cmp-a: var(--accent); --cmp-b: var(--ink-2); }
+.cmp-hero h1 { max-width: none; }
+.cmp-vs { font-weight: 500; color: var(--ink-3); font-size: 0.6em; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* the two towns */
+.cmp-heads { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 1rem; align-items: start; margin: 1.2rem 0 1.4rem; }
+.cmp-town { border-top: 4px solid var(--cmp-a); padding-top: 0.8rem; display: grid; gap: 0.25rem; align-content: start; min-width: 0; }
+.cmp-town.cmp-b { border-top-color: var(--cmp-b); }
+.cmp-town h2 { margin: 0; font-size: clamp(1.5rem, 3.4vw, 2.3rem); line-height: 1.05; overflow-wrap: anywhere; }
+.cmp-town h2 a { color: inherit; text-decoration: none; }
+.cmp-town h2 a:hover { text-decoration: underline; }
+.cmp-town .eyebrow { margin: 0; }
+.cmp-town p { margin: 0; }
+.cmp-mid { align-self: center; padding-top: 2rem; }
+.cmp-swap { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border: 2px solid var(--ink); border-radius: 50%; font-size: 1.1rem; text-decoration: none; color: var(--ink); background: var(--paper); }
+.cmp-swap:hover { background: var(--panel); }
+.cmp-change summary { cursor: pointer; font-size: 0.85rem; color: var(--link); margin-top: 0.3rem; }
+.cmp-change .town-search { margin-top: 0.5rem; }
+.cmp-empty .town-search { margin-top: 0.3rem; }
+.cmp-picks { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem !important; }
+.cmp-picks .chip { text-decoration: none; }
+.cmp-pick { max-width: 640px; }
+
+/* flag slot: neutral placeholder until the pixel-art flag renderer fills .town-flag */
+.town-flag { display: block; width: 48px; height: 32px; border: 1.5px dashed var(--rule-2); background: var(--panel); margin-bottom: 0.4rem; image-rendering: pixelated; }
+.town-flag:not(:empty) { border: 0; background: none; }
+
+/* tools: tally + share */
+.cmp-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.8rem 1.2rem; margin-bottom: 0.6rem; }
+.cmp-score { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.9rem; margin: 0; }
+.cmp-score b { font: 800 1.7rem/1 var(--display); font-variant-numeric: tabular-nums; }
+.cmp-score .a b { color: var(--cmp-a); }
+.cmp-score .b b { color: var(--cmp-b); }
+.cmp-legend { display: flex; flex-wrap: wrap; gap: 0.3rem 1.1rem; margin-bottom: 1rem; }
+.cmp-legend .a, .cmp-legend .b { font-weight: 700; }
+.cmp-legend .a::before, .cmp-legend .b::before { content: ""; display: inline-block; width: 0.8rem; height: 0.55rem; margin-right: 0.35rem; background: var(--cmp-a); }
+.cmp-legend .b::before { background: var(--cmp-b); }
+
+/* figures */
+.cmp-body { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 0.6rem 2.4rem; }
+.cmp-group { border-top: 3px solid var(--ink); padding-top: 0.6rem; min-width: 0; }
+.cmp-group h3 { margin: 0 0 0.3rem; font-size: 1rem; }
+.cmp-rows { list-style: none; margin: 0 0 1rem; padding: 0; }
+.cmp-row { padding: 0.55rem 0; border-bottom: 1px solid var(--rule); }
+.cmp-row:last-child { border-bottom: 0; }
+.cmp-row-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.6rem; font-size: 0.86rem; }
+.cmp-label { color: var(--ink-2); }
+.cmp-gap { font: 600 0.78rem var(--mono); white-space: nowrap; color: var(--ink-2); }
+.cmp-gap b { font-family: var(--text); font-weight: 700; }
+.cmp-gap.gap-a b { color: var(--cmp-a); }
+.cmp-row-vals { display: grid; grid-template-columns: minmax(5.5rem, auto) minmax(0, 1fr) minmax(5.5rem, auto); align-items: center; gap: 0.7rem; margin-top: 0.25rem; }
+.cmp-v { font: 700 1.15rem/1.15 var(--display); font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
+.cmp-v small { font-size: 0.7em; font-weight: 500; color: var(--ink-3); }
+.cmp-v.a { text-align: left; }
+.cmp-v.b { text-align: right; }
+.cmp-v sup { color: var(--ink-3); font-weight: 500; }
+.win-a .cmp-v.a, .win-b .cmp-v.b { color: var(--up-text); }
+.win-a .cmp-v.a::after, .win-b .cmp-v.b::before { content: "●"; font-size: 0.55em; vertical-align: middle; margin: 0 0.3em; }
+/* butterfly: A grows left from the middle, B grows right */
+.cmp-bars { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; height: 0.7rem; }
+.cmp-bars i { display: block; height: 100%; }
+.cmp-bars i.a { justify-self: end; background: var(--cmp-a); }
+.cmp-bars i.b { justify-self: start; background: var(--cmp-b); }
+.cmp-row-text .cmp-row-vals { grid-template-columns: 1fr 0.2fr 1fr; align-items: start; }
+.cmp-winner { display: grid; gap: 0.1rem; font: 400 0.95rem var(--text); white-space: normal; }
+.cmp-winner b::before { content: ""; display: inline-block; width: 0.6rem; height: 0.6rem; margin-right: 0.35rem; background: var(--c); vertical-align: 0.05em; }
+
+@media (max-width: 640px) {
+  .cmp-heads { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 0.6rem; }
+  .cmp-mid { padding-top: 2.4rem; }
+  .cmp-row-vals { grid-template-columns: minmax(4.5rem, auto) minmax(0, 1fr) minmax(4.5rem, auto); gap: 0.45rem; }
+  .cmp-v { font-size: 1rem; }
+  .town-flag { width: 36px; height: 24px; }
+}
