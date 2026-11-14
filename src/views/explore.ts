@@ -15,6 +15,7 @@ import { esc, safeUrl, safeColor } from "../util";
 import { PLATFORMS, age, presence } from "./assemblee";
 import { photoUrl } from "./deputes";
 import { renderTownLocal } from "./town-local";
+import { renderTownPolice } from "./town-police";
 import { renderQuartiers } from "./quartiers";
 import { townBrief } from "./brief";
 
@@ -543,6 +544,7 @@ export async function renderTown(app: HTMLElement, code: string) {
                   .join("")}</tbody></table><p class="muted tiny">${L("Faits enregistrés par la police et la gendarmerie (SSMSI). Cambriolages : pour 1 000 logements. Courbes : la commune (trait plein) et la France (pointillés), chaque année depuis 2016 ; cliquez sur une ligne pour l’agrandir. Une année manque quand le ministère ne l’a pas publiée (trop peu de faits). Dans une petite commune, quelques faits suffisent à faire bondir le taux.", "Offences recorded by police and gendarmerie (SSMSI). Burglary: per 1,000 dwellings. Curves: the town (solid) and France (dotted), every year since 2016; click a row to enlarge it. A year is missing when the ministry didn’t publish it (too few offences). In a small town, a handful of offences is enough to make the rate jump.")}</p>`
               : `<p class="muted small">${L("Pas de chiffres publiés pour cette commune : le ministère ne publie pas les communes où les faits sont très peu nombreux.", "No figures published for this town: the ministry doesn’t publish towns with very few offences.")}</p>`
           }
+          <div id="town-police" class="town-police"></div>
         </section>
       </div>
 
@@ -598,6 +600,7 @@ export async function renderTown(app: HTMLElement, code: string) {
   drawJump();
   setTimeout(drawJump, 2500); // neighbourhoods and local life fill in asynchronously
   renderTownLocal(app.querySelector<HTMLElement>("#town-local")!, code, dep);
+  renderTownPolice(app.querySelector<HTMLElement>("#town-police")!, cityCode, isArr ? cityName : null);
   renderQuartiers(app.querySelector<HTMLElement>("#town-quartiers")!, code);
   crimeHist.then((h) => {
     const box = app.querySelector<HTMLElement>("#crime-chart");
