@@ -44,19 +44,15 @@ export async function renderPollsters(app: HTMLElement) {
   if (polls) registerParties(polls.parties);
   const lastElection = (p: PollsterRating) => { const e = elections.get(p.history[0].election); return e ? L(e.label.fr, e.label.en) : p.history[0].election; };
 
-  const row = (p: PollsterRating) => `<tr id="${pollsterAnchor(p.name)}">
-      <th scope="row"><button type="button" class="pg-open" aria-expanded="false" data-name="${esc(p.name)}">${esc(p.name)}</button></th>
-      <td>${badge(p.grade)}</td>
-      <td class="num">${p.score == null ? "—" : `${signed(p.score, 2)}`}</td>
-      <td class="pg-miss">${p.mae == null ? "—" : `<span class="pg-bar ${gradeClass(p.grade)}" style="width:${((100 * p.mae) / maxMae).toFixed(0)}%"></span><b>${dec(p.mae, 1)}</b> ${L("pt", "pt")}${p.history[0] ? `<span class="muted tiny">${L("dernière fois", "last time")} ${dec(p.history[0].mae, 1)} (${esc(lastElection(p))})</span>` : ""}`}</td>
-      <td class="num">${p.elections || "—"}</td>
-      <td class="num">${p.biasFarRight == null ? "—" : signed(p.biasFarRight, 1)}</td>
+  // five columns a reader can scan; the score, election count and far-right bias go in the detail row
+  const row = (p: PollsterRating) => `<tr id="${pollsterAnchor(p.name)}" class="pg-row">
+      <th scope="row"><span class="pg-who">${badge(p.grade)}<button type="button" class="pg-open" aria-expanded="false" data-name="${esc(p.name)}">${esc(p.name)}</button></span></th>
+      <td class="pg-miss">${p.mae == null ? `<span class="muted">${L("pas encore noté", "not yet graded")}</span>` : `<span class="pg-miss-v"><b>${dec(p.mae, 1)}</b> ${L("pt", "pt")}</span><span class="pg-bar ${gradeClass(p.grade)}" style="width:${((100 * p.mae) / maxMae).toFixed(0)}%"></span>${p.history[0] ? `<span class="muted tiny">${L("dernière fois", "last time")} ${dec(p.history[0].mae, 1)} · ${esc(lastElection(p))}</span>` : ""}`}</td>
       <td class="pg-lean">${lean(p.name)}</td>
-      <td class="num">${dec(p.weight ?? UNRATED_WEIGHT, 2)}</td>
-      <td class="num">${n2027.get(p.name) ?? 0}</td>
-      <td class="pg-last">${(() => { const x = byFirm.get(p.name)?.[0]; return x ? `${pollLink(x, fmtDate(x.end))}<span class="muted tiny">${top(x)}</span>` : `<span class="muted">—</span>`; })()}</td>
+      <td class="pg-last">${(() => { const n = n2027.get(p.name) ?? 0, x = byFirm.get(p.name)?.[0]; return x ? `<span class="pg-n"><b>${n}</b> ${L(n > 1 ? "sondages" : "sondage", n > 1 ? "polls" : "poll")} · ${pollLink(x, fmtDate(x.end))}</span><span class="muted tiny">${top(x)}</span>` : `<span class="muted">${L("aucun en 2027", "none in 2027")}</span>`; })()}</td>
+      <td class="num pg-w">${dec(p.weight ?? UNRATED_WEIGHT, 2)}</td>
     </tr>
-    <tr class="pg-detail" hidden data-for="${esc(p.name)}"><td colspan="10">${detail(p)}</td></tr>`;
+    <tr class="pg-detail" hidden data-for="${esc(p.name)}"><td colspan="5">${detail(p)}</td></tr>`;
 
   const detail = (p: PollsterRating) => {
     const m = p.methodology;
@@ -73,7 +69,12 @@ export async function renderPollsters(app: HTMLElement) {
       : `<p class="muted">${L("Pas encore de sondage final comparable à un résultat : pas de note, poids par défaut dans la moyenne.", "No final poll yet to compare with a result: no grade, default weight in the average.")}</p>`;
     const recent = (byFirm.get(p.name) ?? []).slice(0, 5);
     const recentHtml = recent.length ? `<h3 class="pg-h">${L("Ses derniers sondages 2027", "Its latest 2027 polls")}</h3><ul class="pg-recent">${recent.map((x) => `<li>${pollLink(x, fmtDate(x.end))}<span>${top(x, 4)}</span></li>`).join("")}</ul>` : "";
-    return `<div class="pg-detail-in">${meth}${aliases}${recentHtml}<h3 class="pg-h">${L("Ses erreurs passées", "How far off it was")}</h3>${hist}</div>`;
+    const stats = `<dl class="pg-stats">
+      <div><dt>${L("Score", "Score")}</dt><dd>${p.score == null ? "—" : signed(p.score, 2)}</dd><dd class="muted tiny">${L("écart à la moyenne des instituts (négatif = meilleur)", "gap to the field (negative = better)")}</dd></div>
+      <div><dt>${L("Élections notées", "Elections graded")}</dt><dd>${p.elections || "—"}</dd></div>
+      <div><dt>${L("Biais extrême droite", "Far-right bias")}</dt><dd>${p.biasFarRight == null ? "—" : `${signed(p.biasFarRight, 1)} pt`}</dd><dd class="muted tiny">${L("sondage moins résultat ; positif = surestimée", "poll minus result; positive = overestimated")}</dd></div>
+    </dl>`;
+    return `<div class="pg-detail-in">${stats}${meth}${aliases}${recentHtml}<h3 class="pg-h">${L("Ses erreurs passées", "How far off it was")}</h3>${hist}</div>`;
   };
 
   app.innerHTML = `
@@ -92,12 +93,11 @@ export async function renderPollsters(app: HTMLElement) {
         <header class="card-head"><h2>${L("Le classement", "The ranking")}</h2></header>
         ${R.pollsters.length ? `<div class="table-wrap"><table class="table pg-table">
           <thead><tr>
-            <th>${L("Institut", "Institute")}</th><th>${L("Note", "Grade")}</th>
-            <th class="num" title="${esc(L("Écart moyen à la moyenne des instituts, en points (négatif = meilleur que les autres)", "Average gap to the field, in points (negative = better than the others)"))}">${L("Score", "Score")}</th>
-            <th title="${esc(L("Écart moyen entre son dernier sondage et le résultat, en points, sur toutes les élections notées", "Average gap between its final poll and the result, in points, across every graded election"))}">${L("Erreur moyenne", "Off by, on average")}</th><th class="num">${L("Élections", "Elections")}</th>
-            <th class="num" title="${esc(L("Sondage moins résultat pour l’extrême droite (RN/FN et Reconquête), en moyenne : positif = surestimée", "Poll minus result for the far right (RN/FN and Reconquête), on average: positive = overestimated"))}">${L("Biais ext. droite", "Far-right bias")}</th>
+            <th>${L("Institut et note", "Institute and grade")}</th>
+            <th title="${esc(L("Écart moyen entre son dernier sondage et le résultat, en points, sur toutes les élections notées", "Average gap between its final poll and the result, in points, across every graded election"))}">${L("Erreur moyenne", "Off by, on average")}</th>
             <th title="${esc(L(`Penchant de l’institut en 2027 : de combien ses sondages placent un candidat au-dessus (+) ou au-dessous (−) des autres instituts, sur ${HOUSE_DAYS} jours, en points. Nous le retirons de ses sondages dans la moyenne.`, `The institute's 2027 lean: how far its polls put a candidate above (+) or below (−) the other institutes, over ${HOUSE_DAYS} days, in points. We take it off its polls in the average.`))}">${L("Penchant 2027", "2027 lean")}</th>
-            <th class="num">${L("Poids", "Weight")}</th><th class="num">${L("Sondages 2027", "2027 polls")}</th><th>${L("Dernier sondage", "Latest poll")}</th>
+            <th>${L("Sondages 2027", "2027 polls")}</th>
+            <th class="num" title="${esc(L("Poids de ses sondages dans notre moyenne", "Weight of its polls in our average"))}">${L("Poids", "Weight")}</th>
           </tr></thead>
           <tbody>${rated.map(row).join("")}${unrated.map(row).join("")}</tbody>
         </table></div>

@@ -256,3 +256,4 @@
 .live-towns { list-style: none; margin: 0.3rem 0 0.5rem; padding: 0; display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem; }
 .live-towns li { font-size: 0.9rem; } .live-towns b { font: 700 0.75rem var(--mono); color: var(--split-red); }
 @media (prefers-reduced-motion: reduce) { .live-dot, .live-ping { animation: none; } }
+.ed-prov { margin: -0.3rem 0 0; font: 600 0.74rem var(--mono); color: var(--split-red); }

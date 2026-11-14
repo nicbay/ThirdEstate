@@ -25,6 +25,22 @@ const surname = (name) => name.split(" ").slice(1).join(" ").replace(/^de /, "")
 const hist = await read("daily/history.json");
 const polls = (await read("polls/2027.json")).firstRound;
 const days = [...hist.days].sort((a, b) => a.date.localeCompare(b.date));
+// The daily brief runs once a day, sometimes hours late: when today has no snapshot yet, today's edition is built
+// from the hourly market prices (public/data/markets.json), with the polling figures of the last snapshot, so the
+// homepage always shows today. The real snapshot replaces it at the next daily run.
+const todayIso = iso(Date.now());
+if (days.length && days.at(-1).date < todayIso) {
+  const m = await read("markets.json").catch(() => null);
+  const probs = (mk) => {
+    if (!mk) return null;
+    const total = mk.outcomes.reduce((t, o) => t + o.prob, 0) || 1;
+    const k = total > 100 ? 100 / total : 1; // winner markets sum a little over 100: the platform's margin
+    return Object.fromEntries(mk.outcomes.filter((o) => !/^other|^autre/i.test(o.name)).map((o) => [o.name, Math.round(o.prob * k * 10) / 10]));
+  };
+  const kalshi = probs(m?.markets?.find((x) => x.id === "KXFRENCHPRES-27"));
+  const poly = probs(m?.markets?.find((x) => x.id === "next-french-presidential-election"));
+  if (kalshi || poly) days.push({ date: todayIso, polls: days.at(-1).polls, kalshi, poly, seen: [], provisional: true });
+}
 const byDate = new Map(days.map((d) => [d.date, d]));
 const before = (date, n) => { // the snapshot n days earlier, or the nearest earlier one
   for (let k = n; k <= n + 3; k++) { const d = byDate.get(iso(Date.parse(date) - k * DAY)); if (d) return d; }
@@ -95,7 +111,7 @@ for (const day of days) {
   // the week in review: the markets' figure for the leading candidates, each day of the last seven
   const week = days.filter((d) => d.date > iso(Date.parse(D) - 7 * DAY) && d.date <= D).map((d) => ({ date: d.date, v: Object.fromEntries(rows.slice(0, 5).map((r) => [r.name, market(d, r.name) == null ? null : r1(market(d, r.name))])) }));
 
-  const edition = { date: D, prev: y1?.date ?? null, head, rows: rows.slice(0, 8), polls: fresh, headlines: headlines.slice(0, 5), analysis, week };
+  const edition = { date: D, provisional: !!day.provisional, prev: y1?.date ?? null, head, rows: rows.slice(0, 8), polls: fresh, headlines: headlines.slice(0, 5), analysis, week };
   await writeFile(new URL(`daily/editions/${D}.json`, ROOT), JSON.stringify(edition));
   index.push({ date: D, head });
 }

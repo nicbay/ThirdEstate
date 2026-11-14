@@ -20,7 +20,7 @@ type Factor =
   | { kind: "split"; kalshi: number; poly: number }
   | { kind: "none" };
 interface Edition {
-  date: string; head: T; rows: Row[];
+  date: string; head: T; rows: Row[]; provisional?: boolean;
   polls: { pollster: string; end: string; url: string | null; top: { name: string; v: number }[] }[];
   headlines: Headline[];
   analysis: { name: string; market: number | null; d1: number | null; d7: number | null; factors: Factor[] }[];
@@ -100,6 +100,7 @@ function render(e: Edition, idx: { date: string }[]) {
       ${next ? `<button type="button" class="ed-go" data-d="${next.date}" aria-label="${esc(L(`Édition du ${fmtDate(next.date)}`, `Edition of ${fmtDate(next.date)}`))}">${esc(fmtDate(next.date).replace(/\s\d{4}$/, ""))} ▶</button>` : `<span></span>`}
     </div>
     <h2 class="ed-head">${esc(L(e.head.fr, e.head.en))}</h2>
+    ${e.provisional ? `<p class="ed-prov">${L("Édition du jour en cours : cours des marchés de la dernière heure ; les sondages et l’analyse complète arrivent avec la synthèse quotidienne.", "Today's edition in progress: the latest hourly market prices; the polls and the full analysis come with the daily brief.")}</p>` : ""}
     <p class="ed-what">${L("Chaque jour : ce qui a bougé sur les marchés de prédiction (les paris en argent réel sur Kalshi et Polymarket) et dans les sondages, et ce qui a pu le faire bouger.", "Every day: what moved on the prediction markets (real-money bets on Kalshi and Polymarket) and in the polls, and what could have moved it.")}</p>
     <div class="ed-cards">${cards}</div>
     <div class="ed-body">
