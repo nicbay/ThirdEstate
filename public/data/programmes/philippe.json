@@ -633,5 +633,221 @@
   "summary": {
     "fr": "Les propositions 2027 d'Édouard Philippe portent sur la baisse des dépenses publiques (règle d'or constitutionnelle, déficit ramené à 2 % du PIB, 250 000 postes de fonctionnaires en moins), le travail, une politique familiale refondue et un durcissement de la politique migratoire et pénale. Par rapport au programme commun d'Ensemble de 2024, l'âge de départ passe de 64 à 65 ans avec 45 annuités et un volet par capitalisation, et la durée d'indemnisation chômage des moins de 50 ans est ramenée à 12 mois. Aucune estimation indépendante n'existe à ce stade ; le candidat attend 30 Md€ par an de sa réforme des retraites, et l'Institut Montaigne avait estimé le programme Ensemble 2024 à 20,6 Md€ de déficit supplémentaire par an.",
     "en": "Édouard Philippe's 2027 proposals centre on cutting public spending (constitutional golden rule, deficit down to 2% of GDP, 250,000 fewer civil-service posts), work, an overhauled family policy and tougher migration and criminal-justice policy. Compared with the 2024 joint Ensemble programme, the retirement age moves from 64 to 65 with 45 contribution years and a funded component, and unemployment benefits for under-50s are capped at 12 months. No independent estimate exists yet; the candidate expects €30bn a year from his pension reform, and Institut Montaigne had put the 2024 Ensemble programme at €20.6bn a year of extra deficit."
-  }
+  },
+  "group": "HOR",
+  "votes": [
+    {
+      "lineage": "m01",
+      "topic": {
+        "fr": "Retraites : âge relevé, pas de retour en arrière",
+        "en": "Pensions: a higher age, no going back"
+      },
+      "note": {
+        "fr": "217 : proposition de loi d’abrogation de la réforme de 2023 (voter contre suit la promesse) ; 468 : amendements supprimant l’article premier d’un autre texte d’abrogation (voter pour suit la promesse) ; 2257 : résolution demandant l’abrogation de la réforme (voter contre suit la promesse) ; 3684 et 4642 : suspension de la réforme de 2023 dans le budget de la Sécurité sociale pour 2026 (voter contre suit la promesse).",
+        "en": "217: bill repealing the 2023 reform (voting against follows the promise); 468: amendments deleting article 1 of another repeal bill (voting for follows the promise); 2257: resolution calling for the repeal of the reform (voting against follows the promise); 3684 and 4642: suspension of the 2023 reform in the 2026 social security budget (voting against follows the promise)."
+      },
+      "scrutins": [
+        {
+          "num": 217,
+          "date": "2024-10-31",
+          "title": "l'ensemble de la proposition de loi visant à restaurer un système de retraite plus juste en annulant les dernières réformes portant sur l’âge de départ et le nombre d’annuités (première lecture).",
+          "result": "rejeté",
+          "expect": "C"
+        },
+        {
+          "num": 468,
+          "date": "2024-11-28",
+          "title": "l'amendement de suppression n° 4 de M. Sitzenstuhl et les amendements identiques suivants à l'article premier de la proposition de loi d'abrogation de la retraite à 64 ans (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        },
+        {
+          "num": 2257,
+          "date": "2025-06-05",
+          "title": "la proposition de résolution visant à abroger la loi n° 2023-270 du 14 avril 2023 de financement rectificative de la sécurité sociale pour 2023 dite réforme des retraites.",
+          "result": "adopté",
+          "expect": "C"
+        },
+        {
+          "num": 3684,
+          "date": "2025-11-12",
+          "title": "l'article 45 bis (examen prioritaire) du projet de loi de financement de la sécurité sociale pour 2026 (première lecture).",
+          "result": "adopté",
+          "expect": "C"
+        },
+        {
+          "num": 4642,
+          "date": "2025-12-05",
+          "title": "l'amendement n° 840 du Gouvernement et les amendements identiques suivants de rétablissement de l'article 45 bis (supprimé) (examen prioritaire) du projet de loi de financement de la sécurité sociale pour 2026 (nouvelle lecture).",
+          "result": "adopté",
+          "expect": "C"
+        }
+      ]
+    },
+    {
+      "lineage": "m26",
+      "topic": {
+        "fr": "Dénoncer l’accord franco-algérien de 1968",
+        "en": "Denounce the 1968 Franco-Algerian agreement"
+      },
+      "note": null,
+      "scrutins": [
+        {
+          "num": 3260,
+          "date": "2025-10-30",
+          "title": "la proposition de résolution visant à dénoncer les accords franco-algériens du 27 décembre 1968 (article 34-1 de la Constitution).",
+          "result": "adopté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m30",
+      "topic": {
+        "fr": "Restreindre le droit du sol à Mayotte",
+        "en": "Restrict birthright citizenship in Mayotte"
+      },
+      "note": {
+        "fr": "Le texte durcit les conditions d’accès à la nationalité par le droit du sol à Mayotte, sans le suspendre : il va dans le sens de la promesse.",
+        "en": "The bill tightens birthright citizenship in Mayotte without suspending it: it goes the promise’s way."
+      },
+      "scrutins": [
+        {
+          "num": 738,
+          "date": "2025-02-06",
+          "title": "l'ensemble de la proposition de loi visant à renforcer les conditions d'accès à la nationalité française à Mayotte (première lecture).",
+          "result": "adopté",
+          "expect": "P"
+        },
+        {
+          "num": 1308,
+          "date": "2025-04-08",
+          "title": "l'ensemble de la proposition de loi visant à renforcer les conditions d'accès à la nationalité française à Mayotte (texte de la commission mixte paritaire).",
+          "result": "adopté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m24",
+      "topic": {
+        "fr": "Durcir la justice des mineurs (excuse de minorité)",
+        "en": "Tougher juvenile justice (age mitigation)"
+      },
+      "note": {
+        "fr": "Proposition de loi Attal qui restreint notamment l’atténuation de peine liée à la minorité : elle va dans le sens de la promesse, plus étroite (narcotrafic).",
+        "en": "Attal bill restricting, among other things, the sentence reduction for minors: it goes the way of the narrower promise (drug trafficking)."
+      },
+      "scrutins": [
+        {
+          "num": 805,
+          "date": "2025-02-13",
+          "title": "l'ensemble de la proposition de loi visant à restaurer l'autorité de la justice à l'égard des mineurs délinquants et de leurs parents (première lecture).",
+          "result": "adopté",
+          "expect": "P"
+        },
+        {
+          "num": 1624,
+          "date": "2025-05-13",
+          "title": "l'ensemble de la proposition de loi visant à renforcer l'autorité de la justice à l'égard des mineurs délinquants et de leurs parents (texte de la commission mixte paritaire).",
+          "result": "adopté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m23",
+      "topic": {
+        "fr": "Moyens d’exception contre le narcotrafic",
+        "en": "Exceptional tools against drug trafficking"
+      },
+      "note": {
+        "fr": "Loi « sortir la France du piège du narcotrafic » (parquet national, moyens d’enquête renforcés) : elle va dans le sens de la promesse sans créer d’état d’urgence.",
+        "en": "The 2025 drug-trafficking law (national prosecutor, stronger investigative powers): it goes the promise’s way without creating a state of emergency."
+      },
+      "scrutins": [
+        {
+          "num": 1194,
+          "date": "2025-04-01",
+          "title": "l'ensemble de la proposition de loi visant à sortir la France du piège du narcotrafic (première lecture).",
+          "result": "adopté",
+          "expect": "P"
+        },
+        {
+          "num": 1473,
+          "date": "2025-04-29",
+          "title": "l'ensemble de la proposition de loi visant à sortir la France du piège du narcotrafic (texte de la commission mixte paritaire).",
+          "result": "adopté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m13",
+      "topic": {
+        "fr": "Allocations familiales dès le premier enfant",
+        "en": "Family allowance from the first child"
+      },
+      "note": {
+        "fr": "Proposition de loi versant les allocations familiales dès le premier enfant (sans la dégressivité prévue par la promesse) : voter pour suit la promesse.",
+        "en": "Bill paying family allowance from the first child (without the means-tapering in the promise): voting for follows the promise."
+      },
+      "scrutins": [
+        {
+          "num": 2272,
+          "date": "2025-06-05",
+          "title": "l'ensemble de la proposition de loi visant à accorder le versement des allocations familiales dès le premier enfant (première lecture).",
+          "result": "adopté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m06",
+      "topic": {
+        "fr": "Supprimer des agences et opérateurs",
+        "en": "Cut state agencies and operators"
+      },
+      "note": {
+        "fr": "5107 : résolution pour suspendre la création de nouvelles instances administratives ; 5846 : contrôle et responsabilité financière des opérateurs de l’État.",
+        "en": "5107: resolution to halt the creation of new administrative bodies; 5846: oversight and financial accountability of state operators."
+      },
+      "scrutins": [
+        {
+          "num": 5107,
+          "date": "2026-01-22",
+          "title": "la proposition de résolution visant à suspendre toute nouvelle création d'instances administratives pour lutter contre le phénomène d'agencification de l'État et rendre plus lisible le fonctionnement de l'administration française (art. 34-1 de la Constitution).",
+          "result": "adopté",
+          "expect": "P"
+        },
+        {
+          "num": 5846,
+          "date": "2026-03-26",
+          "title": "l'ensemble de la proposition de loi visant à renforcer le contrôle, la gouvernance et la responsabilité financière des opérateurs de l'Etat (première lecture).",
+          "result": "adopté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m08",
+      "topic": {
+        "fr": "Pas de nouvel impôt",
+        "en": "No new tax"
+      },
+      "note": {
+        "fr": "Proposition de loi créant un impôt plancher de 2 % sur les très grands patrimoines, soit un impôt nouveau : voter contre suit la promesse.",
+        "en": "Bill creating a 2% minimum tax on the largest fortunes, i.e. a new tax: voting against follows the promise."
+      },
+      "scrutins": [
+        {
+          "num": 881,
+          "date": "2025-02-20",
+          "title": "l'ensemble de la proposition de loi instaurant un impôt plancher de 2 % sur le patrimoine des ultra riches (première lecture).",
+          "result": "adopté",
+          "expect": "C"
+        }
+      ]
+    }
+  ]
 }

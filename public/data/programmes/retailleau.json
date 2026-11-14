@@ -306,5 +306,211 @@
   "summary": {
     "fr": "Les annonces de Bruno Retailleau portent sur la réduction de la dépense publique (197 Md€ cumulés d'ici 2032), le travail (fin des 35 heures, plafond des aides à 70 % du SMIC) et une révision constitutionnelle élargissant le référendum à l'immigration et à la politique pénale. Par rapport au programme LR de 2022 porté par Valérie Pécresse, l'âge de 65 ans devient un âge minimal de 63 ans avec taux plein à 65 ans, et l'objectif de non-remplacement des fonctionnaires double (200 000 → environ 400 000). Aucun chiffrage indépendant du plan 2026 n'est publié ; l'Institut Montaigne estimait le programme Pécresse à 35,1 Md€/an de déficit supplémentaire, et la condition de cinq ans pour les prestations a été censurée sous sa forme référendaire (n° 2024-6 RIP).",
     "en": "Bruno Retailleau's announcements focus on cutting public spending (€197bn cumulated to 2032), work (end of the 35-hour week, benefits capped at 70% of the minimum wage) and a constitutional revision extending referendums to immigration and criminal policy. Compared with LR's 2022 programme led by Valérie Pécresse, age 65 becomes a minimum age of 63 with full rate at 65, and the target for not replacing civil servants doubles (200,000 → about 400,000). No independent costing of the 2026 plan is published; Institut Montaigne estimated the Pécresse programme at €35.1bn a year of extra deficit, and the five-year condition for benefits was struck down in its referendum form (no. 2024-6 RIP)."
-  }
+  },
+  "group": "DR",
+  "votes": [
+    {
+      "lineage": "r01",
+      "topic": {
+        "fr": "Retraites : pas de retour en arrière sur l’âge",
+        "en": "Pensions: no going back on the age"
+      },
+      "note": {
+        "fr": "217 : proposition de loi d’abrogation de la réforme de 2023 (voter contre suit la promesse) ; 468 : amendements supprimant l’article premier d’un autre texte d’abrogation (voter pour suit la promesse) ; 2257 : résolution demandant l’abrogation de la réforme (voter contre suit la promesse) ; 3684 et 4642 : suspension de la réforme de 2023 dans le budget de la Sécurité sociale pour 2026 (voter contre suit la promesse). À l’Assemblée, les députés LR siègent dans le groupe Droite républicaine (DR).",
+        "en": "217: bill repealing the 2023 reform (voting against follows the promise); 468: amendments deleting article 1 of another repeal bill (voting for follows the promise); 2257: resolution calling for the repeal of the reform (voting against follows the promise); 3684 and 4642: suspension of the 2023 reform in the 2026 social security budget (voting against follows the promise). In the Assembly, LR MPs sit in the Droite républicaine (DR) group."
+      },
+      "scrutins": [
+        {
+          "num": 217,
+          "date": "2024-10-31",
+          "title": "l'ensemble de la proposition de loi visant à restaurer un système de retraite plus juste en annulant les dernières réformes portant sur l’âge de départ et le nombre d’annuités (première lecture).",
+          "result": "rejeté",
+          "expect": "C"
+        },
+        {
+          "num": 468,
+          "date": "2024-11-28",
+          "title": "l'amendement de suppression n° 4 de M. Sitzenstuhl et les amendements identiques suivants à l'article premier de la proposition de loi d'abrogation de la retraite à 64 ans (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        },
+        {
+          "num": 2257,
+          "date": "2025-06-05",
+          "title": "la proposition de résolution visant à abroger la loi n° 2023-270 du 14 avril 2023 de financement rectificative de la sécurité sociale pour 2023 dite réforme des retraites.",
+          "result": "adopté",
+          "expect": "C"
+        },
+        {
+          "num": 3684,
+          "date": "2025-11-12",
+          "title": "l'article 45 bis (examen prioritaire) du projet de loi de financement de la sécurité sociale pour 2026 (première lecture).",
+          "result": "adopté",
+          "expect": "C"
+        },
+        {
+          "num": 4642,
+          "date": "2025-12-05",
+          "title": "l'amendement n° 840 du Gouvernement et les amendements identiques suivants de rétablissement de l'article 45 bis (supprimé) (examen prioritaire) du projet de loi de financement de la sécurité sociale pour 2026 (nouvelle lecture).",
+          "result": "adopté",
+          "expect": "C"
+        }
+      ]
+    },
+    {
+      "lineage": "r14",
+      "topic": {
+        "fr": "Courtes peines et fermeté pour les mineurs",
+        "en": "Short sentences and firmness for minors"
+      },
+      "note": {
+        "fr": "Proposition de loi Attal qui durcit la justice des mineurs : elle va dans le sens de la promesse.",
+        "en": "Attal bill toughening juvenile justice: it goes the promise’s way."
+      },
+      "scrutins": [
+        {
+          "num": 805,
+          "date": "2025-02-13",
+          "title": "l'ensemble de la proposition de loi visant à restaurer l'autorité de la justice à l'égard des mineurs délinquants et de leurs parents (première lecture).",
+          "result": "adopté",
+          "expect": "P"
+        },
+        {
+          "num": 1624,
+          "date": "2025-05-13",
+          "title": "l'ensemble de la proposition de loi visant à renforcer l'autorité de la justice à l'égard des mineurs délinquants et de leurs parents (texte de la commission mixte paritaire).",
+          "result": "adopté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "r13",
+      "topic": {
+        "fr": "Lutte renforcée contre le narcotrafic",
+        "en": "A tougher fight against drug trafficking"
+      },
+      "note": {
+        "fr": "Loi « sortir la France du piège du narcotrafic » : elle va dans le sens de la promesse sans en reprendre l’état d’urgence.",
+        "en": "The 2025 drug-trafficking law: it goes the promise’s way without its state of emergency."
+      },
+      "scrutins": [
+        {
+          "num": 1194,
+          "date": "2025-04-01",
+          "title": "l'ensemble de la proposition de loi visant à sortir la France du piège du narcotrafic (première lecture).",
+          "result": "adopté",
+          "expect": "P"
+        },
+        {
+          "num": 1473,
+          "date": "2025-04-29",
+          "title": "l'ensemble de la proposition de loi visant à sortir la France du piège du narcotrafic (texte de la commission mixte paritaire).",
+          "result": "adopté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "r12",
+      "topic": {
+        "fr": "Droit du sol restreint (Mayotte)",
+        "en": "Birthright citizenship restricted (Mayotte)"
+      },
+      "note": {
+        "fr": "Le texte durcit le droit du sol à Mayotte seulement ; la promesse vise sa suppression dans tout le pays par référendum.",
+        "en": "The bill tightens birthright citizenship in Mayotte only; the promise is to abolish it nationwide by referendum."
+      },
+      "scrutins": [
+        {
+          "num": 738,
+          "date": "2025-02-06",
+          "title": "l'ensemble de la proposition de loi visant à renforcer les conditions d'accès à la nationalité française à Mayotte (première lecture).",
+          "result": "adopté",
+          "expect": "P"
+        },
+        {
+          "num": 1308,
+          "date": "2025-04-08",
+          "title": "l'ensemble de la proposition de loi visant à renforcer les conditions d'accès à la nationalité française à Mayotte (texte de la commission mixte paritaire).",
+          "result": "adopté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "r16",
+      "topic": {
+        "fr": "Supprimer des opérateurs de l’État",
+        "en": "Cut state operators"
+      },
+      "note": {
+        "fr": "5107 : résolution pour suspendre la création de nouvelles instances administratives ; 5846 : contrôle et responsabilité financière des opérateurs de l’État.",
+        "en": "5107: resolution to halt the creation of new administrative bodies; 5846: oversight and financial accountability of state operators."
+      },
+      "scrutins": [
+        {
+          "num": 5107,
+          "date": "2026-01-22",
+          "title": "la proposition de résolution visant à suspendre toute nouvelle création d'instances administratives pour lutter contre le phénomène d'agencification de l'État et rendre plus lisible le fonctionnement de l'administration française (art. 34-1 de la Constitution).",
+          "result": "adopté",
+          "expect": "P"
+        },
+        {
+          "num": 5846,
+          "date": "2026-03-26",
+          "title": "l'ensemble de la proposition de loi visant à renforcer le contrôle, la gouvernance et la responsabilité financière des opérateurs de l'Etat (première lecture).",
+          "result": "adopté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "r20",
+      "topic": {
+        "fr": "Supprimer des normes pour les entreprises",
+        "en": "Scrap rules for businesses"
+      },
+      "note": {
+        "fr": "Projet de loi de simplification de la vie économique (première lecture et texte de la commission mixte paritaire).",
+        "en": "Business simplification bill (first reading and joint committee text)."
+      },
+      "scrutins": [
+        {
+          "num": 2458,
+          "date": "2025-06-17",
+          "title": "l'ensemble du projet de loi de simplification de la vie économique (première lecture).",
+          "result": "adopté",
+          "expect": "P"
+        },
+        {
+          "num": 6184,
+          "date": "2026-04-14",
+          "title": "l'ensemble du projet de loi de simplification de la vie économique (texte de la commission mixte paritaire).",
+          "result": "adopté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "r08",
+      "topic": {
+        "fr": "Pas d’impôt nouveau",
+        "en": "No new tax"
+      },
+      "note": {
+        "fr": "Proposition de loi créant un impôt plancher de 2 % sur les très grands patrimoines, soit un impôt nouveau : voter contre suit la promesse.",
+        "en": "Bill creating a 2% minimum tax on the largest fortunes, i.e. a new tax: voting against follows the promise."
+      },
+      "scrutins": [
+        {
+          "num": 881,
+          "date": "2025-02-20",
+          "title": "l'ensemble de la proposition de loi instaurant un impôt plancher de 2 % sur le patrimoine des ultra riches (première lecture).",
+          "result": "adopté",
+          "expect": "C"
+        }
+      ]
+    }
+  ]
 }
