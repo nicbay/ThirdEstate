@@ -15,7 +15,7 @@ import { armsSlot, loadCommuneArms, loadDepartmentArms, paintArms } from "../lib
 import { mountForecastChart, scenarioForecast, scenarioFromUrl } from "./forecast-chart";
 import { forecastLine, heroDay } from "./hero-day";
 import { mountOcean } from "../lib/ocean";
-import { drawDayUpdate } from "./day-update";
+import { mountEdition } from "./edition";
 
 export async function renderHome(app: HTMLElement) {
   const [polls, markets, hero] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null), heroDay()]);
@@ -30,14 +30,13 @@ export async function renderHome(app: HTMLElement) {
       <section class="hero-x hday" aria-labelledby="hday-title">
         ${hero.headHtml}
         <div class="hday-chart">
+          <section id="edition" class="ed" aria-label="${L("L’édition du jour", "The day’s edition")}"></section>
           <div id="trend" class="reveal"></div>
           <div id="hq-num">${forecastLine(scenarioForecast(polls, markets, scenarioFromUrl()))}</div>
           <div id="hq-foot" class="hday-small"></div>
         </div>
         <div class="px-edge" aria-hidden="true"></div>
       </section>
-
-      <div id="dup"></div>
 
       <p class="quiz-line"><b>${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</b> <span>${L("Dix votes de l’Assemblée, et le député et le candidat les plus proches de vous.", "Ten Assembly votes, and the MP and the candidate closest to you.")}</span> <a class="button" href="#/quiz">${L("Faire le quiz", "Take the quiz")}</a></p>
 
@@ -52,7 +51,7 @@ export async function renderHome(app: HTMLElement) {
     </section>`;
   hero.start(app);
   mountOcean(app.querySelector<HTMLElement>(".hday")!);
-  void drawDayUpdate(app.querySelector<HTMLElement>("#dup")!);
+  void mountEdition(app.querySelector<HTMLElement>("#edition")!);
   if (home?.code) drawMine(app.querySelector<HTMLElement>("#mine")!, home.code, home.commune ?? home.code);
   else drawFindTown(app.querySelector<HTMLElement>("#mine")!);
 

@@ -23,7 +23,7 @@
     "sync:parrainages": "node scripts/sync-parrainages.mjs",
     "sync:police": "node scripts/sync-police.mjs",
     "sync:state-balance": "node scripts/sync-state-balance.mjs && node scripts/build-district-balance.mjs",
-    "sync:daily": "esbuild scripts/daily-brief.ts --bundle --platform=node --format=esm --packages=external --outfile=.cache/daily-brief.mjs --log-level=warning && node .cache/daily-brief.mjs"
+    "sync:daily": "esbuild scripts/daily-brief.ts --bundle --platform=node --format=esm --packages=external --outfile=.cache/daily-brief.mjs --log-level=warning && node .cache/daily-brief.mjs && node scripts/build-editions.mjs"
   },
   "devDependencies": {
     "@types/d3-geo": "3.1.0",
