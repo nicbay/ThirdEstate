@@ -638,6 +638,7 @@ input[type="checkbox"], input[type="radio"] { accent-color: var(--ink); }
 .town-search input { width: 100%; font: 500 1.05rem var(--text); padding: 0.85rem 1rem 0.85rem 2.9rem; border: 2px solid var(--ink); border-radius: 4px; background: var(--paper); color: var(--ink); box-shadow: 4px 4px 0 var(--ink); transition: box-shadow 0.15s, transform 0.15s; }
 .town-search input:focus { outline: none; box-shadow: 4px 4px 0 var(--accent); border-color: var(--accent); }
 .town-search input::placeholder { color: var(--ink-3); }
+.cmp-entry { margin: 0.7rem 0 0; font-weight: 600; } .cmp-entry a { text-decoration: none; } .cmp-entry a:hover { text-decoration: underline; } /* town page → #/comparer */
 /* the town's Wikipedia introduction: a quotation in French, with its source under it */
 .town-wiki { margin: 0.7rem 0 0; max-width: 62ch; }
 .town-wiki blockquote { margin: 0; quotes: "« " " »" "“" "”"; }
