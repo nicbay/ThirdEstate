@@ -1,7 +1,7 @@
 // Minimal SVG line chart: polling-average lines with individual poll dots.
 import { esc, safeUrl } from "../util";
 import { L, fmtDate } from "../i18n";
-import { pollValue, pollWeight, pollsterName, pollsterRating, type Poll } from "./polls";
+import { gradeColor, pollValue, pollWeight, pollsterName, pollsterRating, type Poll } from "./polls";
 import { dec, pct } from "./format";
 
 export interface Series {
@@ -9,13 +9,13 @@ export interface Series {
   label: string;
   color: string;
   line: { date: string; value: number }[];
-  dots?: { date: string; value: number; title: string; href?: string }[];
+  dots?: { date: string; value: number; title: string; href?: string; /** part of the title shown in colour */ mark?: { text: string; color: string } }[];
   /** Final value shown as a diamond (e.g. actual election result). */
   final?: { date: string; value: number; title: string };
   /** Projection: a dotted line through the knots' `mid` inside a band through their [lo, hi]; the first knot is
    *  today (lo = mid = hi), and the band opens like a funnel from there. */
   /** a ring around one point (the latest poll), in a given colour */
-  ring?: { date: string; value: number; color: string; title: string };
+  ring?: { date: string; value: number; color: string; title: string; mark?: string };
   proj?: { knots: { date: string; mid: number; lo: number; hi: number }[]; label?: string; title?: string; /** the candidate withdraws at the last knot: the line stops there with a cross */ out?: boolean };
 }
 
@@ -111,11 +111,11 @@ export function lineChart(series: Series[], opts: { height?: number; yMax?: numb
     ${series
       .map(
         (s) => `<g class="series" data-name="${esc(s.name)}" style="--c:${s.color}">
-          ${(s.dots ?? []).map((p) => { const c = `<circle cx="${x(p.date)}" cy="${y(p.value)}" r="${compact ? 3.6 : 3}" class="dot" fill="${s.color}"><title>${esc(p.title)}</title></circle>`; return p.href ? `<a href="${esc(safeUrl(p.href))}" target="_blank" rel="noopener" class="dot-link">${c}</a>` : c; }).join("")}
+          ${(s.dots ?? []).map((p) => { const c = `<circle cx="${x(p.date)}" cy="${y(p.value)}" r="${compact ? 3.6 : 3}" class="dot" fill="${s.color}"${p.mark ? ` data-tip-mark="${esc(p.mark.text)}" data-tip-color="${esc(p.mark.color)}"` : ""}><title>${esc(p.title)}</title></circle>`; return p.href ? `<a href="${esc(safeUrl(p.href))}" target="_blank" rel="noopener" class="dot-link">${c}</a>` : c; }).join("")}
           ${proj(s)}
           <polyline class="halo" points="${s.line.map((p) => `${x(p.date)},${y(p.value)}`).join(" ")}"/>
           <polyline class="line" pathLength="1" fill="none" stroke="${s.color}" stroke-width="${compact ? 3.4 : 2.6}" stroke-linejoin="round" stroke-linecap="round" points="${s.line.map((p) => `${x(p.date)},${y(p.value)}`).join(" ")}"/>
-          ${s.ring ? `<circle cx="${x(s.ring.date)}" cy="${y(s.ring.value)}" r="${compact ? 8 : 6.5}" class="ring" fill="none" stroke="${s.ring.color}" stroke-width="${compact ? 2.6 : 2}"><title>${esc(s.ring.title)}</title></circle>` : ""}
+          ${s.ring ? `<circle cx="${x(s.ring.date)}" cy="${y(s.ring.value)}" r="${compact ? 8 : 6.5}" class="ring" fill="none" stroke="${s.ring.color}" stroke-width="${compact ? 2.6 : 2}"${s.ring.mark ? ` data-tip-mark="${esc(s.ring.mark)}" data-tip-color="${esc(s.ring.color)}"` : ""}><title>${esc(s.ring.title)}</title></circle>` : ""}
           ${s.final ? `<path d="M${x(s.final.date)},${y(s.final.value) - 6}l6,6l-6,6l-6,-6z" fill="${s.color}" stroke="var(--card)"><title>${esc(s.final.title)}</title></path>` : ""}
         </g>`,
       )
@@ -138,7 +138,7 @@ export function pollDots(polls: Poll[], name: string, from: string, _fallback?: 
     const open = !href ? "" : p.urlKind === "pollster" ? L("Cliquer : la publication de l’institut", "Click: the pollster’s publication")
       : p.urlKind === "commission" ? L("Cliquer : la notice officielle (Commission des sondages)", "Click: the official notice (Commission des sondages)")
       : L("Cliquer : l’article de presse (publication de l’institut introuvable)", "Click: the press article (the pollster’s own release wasn’t found)");
-    return [{ date: p.end, value: v, href, title: `${pollsterName(p.pollster)} (${grade}, ${L("poids", "weight")} ${dec(pollWeight(p), 2)}) · ${fmtDate(p.end)}
+    return [{ date: p.end, value: v, href, mark: r?.grade ? { text: grade, color: gradeColor(r.grade) } : undefined, title: `${pollsterName(p.pollster)} (${grade}, ${L("poids", "weight")} ${dec(pollWeight(p), 2)}) · ${fmtDate(p.end)}
 ${name} ${dec(v)} %${open ? `
 ${open}` : ""}` }];
   });

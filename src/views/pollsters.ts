@@ -4,7 +4,8 @@
 import "../styles/pollsters.css";
 import { loadPolls } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
-import { RATINGS, UNRATED_WEIGHT, pollWeight, pollsterAnchor, pollsterName, pollsterRating, type Grade, type PollsterRating } from "../lib/polls";
+import { RATINGS, UNRATED_WEIGHT, pollValue, pollWeight, pollsterAnchor, pollsterName, pollsterRating, type Grade, type Poll, type PollsterRating } from "../lib/polls";
+import { meta, registerParties } from "../lib/candidates";
 import { dec, signed } from "../lib/format";
 import { esc, safeUrl } from "../util";
 
@@ -19,21 +20,36 @@ export async function renderPollsters(app: HTMLElement) {
   // how many 2027 polls each institute has published, and their weight in today's average
   const n2027 = new Map<string, number>();
   for (const p of polls?.firstRound ?? []) { const k = pollsterRating(p.pollster)?.name ?? pollsterName(p.pollster); n2027.set(k, (n2027.get(k) ?? 0) + 1); }
+  // each institute's 2027 polls, latest first
+  const byFirm = new Map<string, Poll[]>();
+  for (const p of polls?.firstRound ?? []) { const k = pollsterRating(p.pollster)?.name ?? pollsterName(p.pollster); byFirm.set(k, [...(byFirm.get(k) ?? []), p]); }
+  for (const xs of byFirm.values()) xs.sort((a, b) => b.end.localeCompare(a.end));
+  /** "Le Pen 33 · Mélenchon 18 · Philippe 12" for one poll */
+  const top = (p: Poll, n = 3) => {
+    const names = [...new Set(p.hyps.flatMap((h) => Object.keys(h)))];
+    return names.map((nm) => ({ nm, v: pollValue(p, nm) ?? 0 })).sort((a, b) => b.v - a.v).slice(0, n)
+      .map((x) => `${esc(meta(x.nm).surname)} ${Math.round(x.v)}`).join(" · ");
+  };
+  const pollLink = (p: Poll, body: string) => (p.url ? `<a href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">${body}</a>` : body);
+  const maxMae = Math.max(1, ...R.pollsters.map((p) => p.mae ?? 0));
   const rated = R.pollsters.filter((p) => p.grade);
   const unrated = R.pollsters.filter((p) => !p.grade);
   const presCount = R.elections.filter((e) => e.type === "presidential").length;
+  if (polls) registerParties(polls.parties);
+  const lastElection = (p: PollsterRating) => { const e = elections.get(p.history[0].election); return e ? L(e.label.fr, e.label.en) : p.history[0].election; };
 
   const row = (p: PollsterRating) => `<tr id="${pollsterAnchor(p.name)}">
       <th scope="row"><button type="button" class="pg-open" aria-expanded="false" data-name="${esc(p.name)}">${esc(p.name)}</button></th>
       <td>${badge(p.grade)}</td>
       <td class="num">${p.score == null ? "—" : `${signed(p.score, 2)}`}</td>
-      <td class="num">${p.mae == null ? "—" : dec(p.mae, 1)}</td>
+      <td class="pg-miss">${p.mae == null ? "—" : `<span class="pg-bar ${gradeClass(p.grade)}" style="width:${((100 * p.mae) / maxMae).toFixed(0)}%"></span><b>${dec(p.mae, 1)}</b> ${L("pt", "pt")}${p.history[0] ? `<span class="muted tiny">${L("dernière fois", "last time")} ${dec(p.history[0].mae, 1)} (${esc(lastElection(p))})</span>` : ""}`}</td>
       <td class="num">${p.elections || "—"}</td>
       <td class="num">${p.biasFarRight == null ? "—" : signed(p.biasFarRight, 1)}</td>
       <td class="num">${dec(p.weight ?? UNRATED_WEIGHT, 2)}</td>
       <td class="num">${n2027.get(p.name) ?? 0}</td>
+      <td class="pg-last">${(() => { const x = byFirm.get(p.name)?.[0]; return x ? `${pollLink(x, fmtDate(x.end))}<span class="muted tiny">${top(x)}</span>` : `<span class="muted">—</span>`; })()}</td>
     </tr>
-    <tr class="pg-detail" hidden data-for="${esc(p.name)}"><td colspan="8">${detail(p)}</td></tr>`;
+    <tr class="pg-detail" hidden data-for="${esc(p.name)}"><td colspan="9">${detail(p)}</td></tr>`;
 
   const detail = (p: PollsterRating) => {
     const m = p.methodology;
@@ -48,7 +64,9 @@ export async function renderPollsters(app: HTMLElement) {
           })
           .join("")}</tbody></table>`
       : `<p class="muted">${L("Pas encore de sondage final comparable à un résultat : pas de note, poids par défaut dans la moyenne.", "No final poll yet to compare with a result: no grade, default weight in the average.")}</p>`;
-    return `<div class="pg-detail-in">${meth}${aliases}${hist}</div>`;
+    const recent = (byFirm.get(p.name) ?? []).slice(0, 5);
+    const recentHtml = recent.length ? `<h3 class="pg-h">${L("Ses derniers sondages 2027", "Its latest 2027 polls")}</h3><ul class="pg-recent">${recent.map((x) => `<li>${pollLink(x, fmtDate(x.end))}<span>${top(x, 4)}</span></li>`).join("")}</ul>` : "";
+    return `<div class="pg-detail-in">${meth}${aliases}${recentHtml}<h3 class="pg-h">${L("Ses erreurs passées", "How far off it was")}</h3>${hist}</div>`;
   };
 
   app.innerHTML = `
@@ -69,13 +87,13 @@ export async function renderPollsters(app: HTMLElement) {
           <thead><tr>
             <th>${L("Institut", "Institute")}</th><th>${L("Note", "Grade")}</th>
             <th class="num" title="${esc(L("Écart moyen à la moyenne des instituts, en points (négatif = meilleur que les autres)", "Average gap to the field, in points (negative = better than the others)"))}">${L("Score", "Score")}</th>
-            <th class="num">${L("Écart moyen", "Mean error")}</th><th class="num">${L("Élections", "Elections")}</th>
+            <th title="${esc(L("Écart moyen entre son dernier sondage et le résultat, en points, sur toutes les élections notées", "Average gap between its final poll and the result, in points, across every graded election"))}">${L("Erreur moyenne", "Off by, on average")}</th><th class="num">${L("Élections", "Elections")}</th>
             <th class="num" title="${esc(L("Sondage moins résultat pour l’extrême droite (RN/FN et Reconquête), en moyenne : positif = surestimée", "Poll minus result for the far right (RN/FN and Reconquête), on average: positive = overestimated"))}">${L("Biais ext. droite", "Far-right bias")}</th>
-            <th class="num">${L("Poids", "Weight")}</th><th class="num">${L("Sondages 2027", "2027 polls")}</th>
+            <th class="num">${L("Poids", "Weight")}</th><th class="num">${L("Sondages 2027", "2027 polls")}</th><th>${L("Dernier sondage", "Latest poll")}</th>
           </tr></thead>
           <tbody>${rated.map(row).join("")}${unrated.map(row).join("")}</tbody>
         </table></div>
-        <p class="muted small">${L("Cliquer sur un institut : sa méthode et chaque élection, avec le lien vers son dernier sondage. Écarts en points de pourcentage.", "Click an institute: its method and every election, with a link to its final poll. Gaps in percentage points.")}</p>`
+        <p class="muted small">${L("Cliquer sur un institut : sa méthode, ses derniers sondages et son erreur à chaque élection. Écarts en points de pourcentage.", "Click an institute: its method, its latest polls and how far off it was at each election. Gaps in percentage points.")}</p>`
         : `<p class="muted">${L("Notes en cours de calcul.", "Grades being computed.")}</p>`}
       </article>
 

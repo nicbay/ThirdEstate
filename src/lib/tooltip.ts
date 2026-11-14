@@ -29,6 +29,15 @@ export function initTooltip() {
     const text = el && textFor(el);
     if (!text || !tip) return;
     tip.textContent = text;
+    // one part of the text in colour (a poll's grade): data-tip-mark="B+" data-tip-color="#7cb342"
+    const mark = (el as HTMLElement).dataset?.tipMark, color = (el as HTMLElement).dataset?.tipColor;
+    const at = mark ? text.indexOf(mark) : -1;
+    if (mark && color && /^#[0-9a-f]{3,8}$/i.test(color) && at >= 0) {
+      const b = document.createElement("b");
+      b.style.color = color;
+      b.textContent = mark;
+      tip.replaceChildren(text.slice(0, at), b, text.slice(at + mark.length));
+    }
     tip.hidden = false;
   });
   document.addEventListener("pointermove", (e) => {
