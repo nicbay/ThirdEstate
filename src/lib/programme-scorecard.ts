@@ -1,6 +1,7 @@
-// The 2022 → 2027 scorecard of a programme: one node per commitment on each side (the oldest version on the
-// left, the newest on the right), wired through four status hubs (changed, kept, dropped, new), in the spirit
-// of a workflow editor but drawn in the site's pixel style: square ports, orthogonal 2px wires, stepped panels.
+// The 2022 → 2027 scorecard of a programme: grouped by status (changed, kept, dropped, new), each commitment on one
+// line, its oldest version on the left and its newest on the right, joined by a short link carrying the status
+// icon. (It used to be wired through one hub per status, workflow-editor style: pretty, but you couldn't tell which
+// old promise had become which new one.)
 // Every node opens its own source: the version's PDF at the right page, the website section, or the article.
 // Shared by the full (Mélenchon) and the curated ("lite") programme pages (src/views/programme.ts).
 import { L, fmtNum } from "../i18n";
@@ -63,85 +64,33 @@ export function scorecardHtml(items: ScItem[], o: ScOptions) {
       <span class="sc-bar"><i style="width:${((100 * n(s)) / total).toFixed(1)}%"></i></span></a>`).join("")}</div>`;
   const groups = SC_ORDER.filter((s) => by[s].length).map((s) => {
     const rows = by[s];
-    return `<section class="sc-group is-${s}" id="${o.id}-${s}" data-status="${s}" style="--rows:${rows.length}">
-      <div class="sc-hub" style="grid-row: 1 / span ${Math.min(rows.length, fold) + (rows.length > fold ? 1 : 0)}">
-        <span class="sc-tile">${icon[s]}</span><span class="sc-hub-t"><b>${esc(scLabel(s))}</b><span>${fmtNum(n(s))} · ${esc(scHelp(s, o.yearA, o.yearB))}</span></span>
-      </div>
-      ${rows.map((it, i) => `<div class="sc-row${i >= fold ? " is-folded" : ""}" data-id="${esc(it.id)}"${i >= fold ? " hidden" : ""}>${node(it.before, s, it, "a", o)}${node(it.after, s, it, "b", o)}</div>`).join("")}
-      ${rows.length > fold ? `<button type="button" class="sc-more" aria-expanded="false" data-n="${rows.length - fold}">${L(`+ ${rows.length - fold} autres`, `+ ${rows.length - fold} more`)}</button>` : ""}
-      ${n(s) > rows.length && o.listHref ? `<a class="sc-all" href="${esc(o.listHref(s))}">${L(`Les ${fmtNum(n(s))} dans la liste complète`, `All ${fmtNum(n(s))} in the full list`)} →</a>` : ""}
+    const link = (it: ScItem) => `<span class="sc-link${!it.before || !it.after ? " is-ghost" : ""}" aria-hidden="true"><span class="sc-tile">${icon[s]}</span></span>`;
+    return `<section class="sc-group is-${s}" id="${o.id}-${s}" data-status="${s}">
+      <header class="sc-head"><span class="sc-tile">${icon[s]}</span><b>${esc(scLabel(s))} <span class="sc-head-n">${fmtNum(n(s))}</span></b><span>${esc(scHelp(s, o.yearA, o.yearB))}</span></header>
+      ${rows.map((it, i) => `<div class="sc-row${i >= fold ? " is-folded" : ""}" data-id="${esc(it.id)}"${i >= fold ? " hidden" : ""}>${node(it.before, s, it, "a", o)}${link(it)}${node(it.after, s, it, "b", o)}</div>`).join("")}
+      ${rows.length > fold || (n(s) > rows.length && o.listHref) ? `<div class="sc-foot">${rows.length > fold ? `<button type="button" class="sc-more" aria-expanded="false" data-n="${rows.length - fold}">${L(`+ ${rows.length - fold} autres`, `+ ${rows.length - fold} more`)}</button>` : ""}${n(s) > rows.length && o.listHref ? `<a class="sc-all" href="${esc(o.listHref(s))}">${L(`Les ${fmtNum(n(s))} dans la liste complète`, `All ${fmtNum(n(s))} in the full list`)} →</a>` : ""}</div>` : ""}
     </section>`;
   }).join("");
   return `<div class="sc" id="${o.id}">
     ${counts}
     <div class="sc-cols" aria-hidden="true"><span>${o.yearA}</span><span></span><span>${o.yearB}</span></div>
-    <div class="sc-graph">${groups}<svg class="sc-wires" aria-hidden="true"></svg></div>
+    <div class="sc-graph">${groups}</div>
   </div>`;
 }
 
-/** Draws the wires (and redraws them on resize or when a hub unfolds). */
+/** Wires up the fold buttons and the count tiles' jumps. */
 export function mountScorecard(root: HTMLElement, id: string) {
   const sc = root.querySelector<HTMLElement>(`#${id}`);
   if (!sc) return;
-  const graph = sc.querySelector<HTMLElement>(".sc-graph")!;
-  const svg = sc.querySelector<SVGSVGElement>(".sc-wires")!;
-  const draw = () => {
-    const g = graph.getBoundingClientRect();
-    svg.setAttribute("viewBox", `0 0 ${g.width.toFixed(0)} ${g.height.toFixed(0)}`);
-    svg.setAttribute("width", g.width.toFixed(0));
-    svg.setAttribute("height", g.height.toFixed(0));
-    // stacked layout (phones): the hub sits above its rows and CSS draws the links
-    if (getComputedStyle(graph).getPropertyValue("--sc-stacked").trim() === "1") { svg.innerHTML = ""; return; }
-    const r = (el: Element) => { const b = el.getBoundingClientRect(); return { x1: b.left - g.left, x2: b.right - g.left, y: Math.round(b.top - g.top + b.height / 2) }; };
-    let out = "";
-    sc.querySelectorAll<HTMLElement>(".sc-group").forEach((grp) => {
-      const s = grp.dataset.status!;
-      const hub = r(grp.querySelector(".sc-hub")!);
-      const rows = [...grp.querySelectorAll<HTMLElement>(".sc-row:not([hidden])")];
-      const more = grp.querySelector<HTMLElement>(".sc-more");
-      // fan-in rails: 2px orthogonal wires, x-step in the gap's middle (pixel elbows, no curves)
-      for (const row of rows) {
-        const a = r(row.querySelector('[data-end="a"]')!), b = r(row.querySelector('[data-end="b"]')!);
-        const ghostA = row.querySelector('[data-end="a"]')!.classList.contains("is-ghost");
-        const ghostB = row.querySelector('[data-end="b"]')!.classList.contains("is-ghost");
-        const mx1 = Math.round((a.x2 + hub.x1) / 2), mx2 = Math.round((hub.x2 + b.x1) / 2);
-        out += `<path class="sc-w is-${s}${ghostA ? " is-ghost" : ""}" data-id="${esc(row.dataset.id)}" d="M${Math.round(a.x2)},${a.y}H${mx1}V${hub.y}H${Math.round(hub.x1)}"/>`;
-        out += `<path class="sc-w is-${s}${ghostB ? " is-ghost" : ""}" data-id="${esc(row.dataset.id)}" d="M${Math.round(hub.x2)},${hub.y}H${mx2}V${b.y}H${Math.round(b.x1)}"/>`;
-        out += `<rect class="sc-port is-${s}" x="${Math.round(a.x2) - 3}" y="${a.y - 3}" width="6" height="6"/><rect class="sc-port is-${s}" x="${Math.round(b.x1) - 3}" y="${b.y - 3}" width="6" height="6"/>`;
-      }
-      if (more && !more.hidden) {
-        const m = r(more);
-        out += `<path class="sc-w is-${s} is-ghost" d="M${Math.round(hub.x1)},${hub.y}H${Math.round((m.x1 + hub.x1) / 2)}V${m.y}"/>`;
-      }
-      out += `<rect class="sc-port is-${s}" x="${Math.round(hub.x1) - 3}" y="${hub.y - 3}" width="6" height="6"/><rect class="sc-port is-${s}" x="${Math.round(hub.x2) - 3}" y="${hub.y - 3}" width="6" height="6"/>`;
-    });
-    svg.innerHTML = out;
-  };
-  // hover a node: light up its two wires and its partner
-  graph.addEventListener("pointerover", (e) => {
-    const row = (e.target as Element).closest<HTMLElement>(".sc-row");
-    sc.querySelectorAll(".is-hot").forEach((x) => x.classList.remove("is-hot"));
-    if (!row) return;
-    row.classList.add("is-hot");
-    svg.querySelectorAll(`[data-id="${CSS.escape(row.dataset.id!)}"]`).forEach((p) => p.classList.add("is-hot"));
-  });
-  graph.addEventListener("pointerleave", () => sc.querySelectorAll(".is-hot").forEach((x) => x.classList.remove("is-hot")));
   sc.querySelectorAll<HTMLButtonElement>(".sc-more").forEach((b) => b.addEventListener("click", () => {
     const grp = b.closest<HTMLElement>(".sc-group")!;
     const open = b.getAttribute("aria-expanded") !== "true";
     grp.querySelectorAll<HTMLElement>(".sc-row.is-folded").forEach((x) => (x.hidden = !open));
-    const hub = grp.querySelector<HTMLElement>(".sc-hub")!;
-    const n = grp.querySelectorAll(".sc-row:not([hidden])").length;
-    hub.style.gridRow = `1 / span ${n + 1}`;
     b.setAttribute("aria-expanded", String(open));
     b.textContent = open ? L("Replier", "Show fewer") : L(`+ ${b.dataset.n} autres`, `+ ${b.dataset.n} more`);
-    draw();
   }));
   sc.querySelectorAll<HTMLAnchorElement>("[data-sc-jump]").forEach((a) => a.addEventListener("click", (e) => {
     e.preventDefault();
     sc.querySelector(`#${id}-${a.dataset.scJump}`)?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
   }));
-  const ro = new ResizeObserver(() => requestAnimationFrame(draw));
-  ro.observe(graph);
-  draw();
 }

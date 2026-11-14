@@ -85,9 +85,9 @@ export function heroViz(geo: GeoJSON.FeatureCollection, deputes: Depute[], pair:
   // one dot per district = one per statutory seat; vacant seats are the dots without an MP
   const sum = seatSummary(Math.max(order.length, AN_SEATS), order.filter((d) => d.mp).length);
 
-  const svg = `<svg class="hero-dots" id="hero-dots" viewBox="0 0 ${W} ${H}" role="img" aria-label="${L("Les 577 circonscriptions sur la carte de France, puis les 577 sièges de l’Assemblée nationale", "The 577 districts on the map of France, then the 577 seats of the National Assembly")}">
+  const svg = `<svg class="hero-dots" id="hero-dots" viewBox="0 0 ${W} ${H}" role="img" aria-label="${L(`Les circonscriptions sur la carte de France, puis l’Assemblée nationale : ${sum.sitting} députés${sum.vacant ? `, ${sum.vacant} sièges vacants` : ""}`, `The districts on the map of France, then the National Assembly: ${sum.sitting} MPs${sum.vacant ? `, ${sum.vacant} vacant seats` : ""}`)}">
     <g class="hd-map">${mainland.map((f) => `<path d="${geoPath(proj)(f)}"/>`).join("")}<text x="14" y="388" class="hd-note">${L("Outre-mer et étranger", "Overseas and abroad")}</text></g>
-    <g class="hd-hemi"><line x1="${W / 2}" x2="${W / 2}" y1="${H - 30 - 312}" y2="${H - 30 - 104}"/><text x="${W / 2}" y="${H - 72}" text-anchor="middle" class="hd-total">${sum.statutory}</text><text x="${W / 2}" y="${H - 44}" text-anchor="middle" class="hd-note">${sum.vacant ? `${sum.sitting} ${L("députés", "MPs")} · ` : `${L("sièges", "seats")} · `}${L("majorité", "majority")} ${sum.majority}</text></g>
+    <g class="hd-hemi"><line x1="${W / 2}" x2="${W / 2}" y1="${H - 30 - 312}" y2="${H - 30 - 104}"/><text x="${W / 2}" y="${H - 72}" text-anchor="middle" class="hd-total">${sum.sitting}</text><text x="${W / 2}" y="${H - 44}" text-anchor="middle" class="hd-note">${L("députés", "MPs")} · ${L("majorité", "majority")} ${sum.majority}</text></g>
     ${dots
       .map((d) => {
         const tip = d.mp ? `${d.mp.prenom} ${d.mp.nom}\n${d.mp.groupe?.libelle ?? ""}\n${L("Circonscription", "District")} ${Number(d.code.slice(-2))}, ${d.code.startsWith("99") ? L("Français de l’étranger", "French abroad") : d.code.slice(0, d.code.length - 2)}` : `${L("Siège vacant", "Vacant seat")}\n${L("Circonscription", "District")} ${d.code}`;
@@ -111,7 +111,9 @@ export function heroViz(geo: GeoJSON.FeatureCollection, deputes: Depute[], pair:
     const buttons = root.querySelectorAll<HTMLButtonElement>("[data-hd]");
     const text = {
       map: L("Chaque point est une circonscription, coloré selon le groupe de son député.", "Each dot is a district, coloured by its MP’s group."),
-      hemi: L("Les mêmes 577 points, assis à l’Assemblée, de gauche à droite.", "The same 577 dots, seated in the Assembly, left to right."),
+      hemi: sum.vacant
+        ? L(`Les mêmes points, assis à l’Assemblée de gauche à droite : ${sum.sitting} députés et ${sum.vacant} ${sum.vacant > 1 ? "sièges vacants" : "siège vacant"}.`, `The same dots, seated in the Assembly left to right: ${sum.sitting} MPs and ${sum.vacant} vacant ${sum.vacant > 1 ? "seats" : "seat"}.`)
+        : L(`Les mêmes points, assis à l’Assemblée de gauche à droite : ${sum.sitting} députés.`, `The same dots, seated in the Assembly left to right: ${sum.sitting} MPs.`),
     };
     let mode: "map" | "hemi" = "map", auto = !reduced(), paused = false, timer = 0;
     const set = (m: "map" | "hemi") => {

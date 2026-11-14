@@ -238,9 +238,14 @@ function applyScenario(key: ScenarioKey, base: Cand[], firstRound: Poll[], aff: 
 export const P_SHOCK = 0.5;
 /** Chance, per camp (left; centre and right), that its voters rally late behind its best-placed candidate. */
 export const P_RALLY = 0.25;
-/** A slow trend carried forward: a fifth of the last 120 days' slope of the polling average, capped at 1.5 points
- *  by election day. Polls don't move in straight lines: most of a recent slide or climb doesn't carry on. */
-export const TREND_DAYS = 120, TREND_DAMP = 0.2, TREND_CAP = 1.5;
+/** Momentum, discounted: the slope of the polling average over the last MOMENTUM_DAYS carries on, but fades
+ *  (an exponential decay with a MOMENTUM_TAU-day time constant), so a candidate climbing or sliding today moves
+ *  about MOMENTUM_TAU days' worth of that slope by election day, and most of it in the first weeks. Capped at
+ *  MOMENTUM_CAP points. Momentum in polls is real but short-lived (FiveThirtyEight's primary models weight the
+ *  recent trend, Silver calls lasting momentum "mostly a mirage"): the decay is that discount. */
+export const MOMENTUM_DAYS = 42, MOMENTUM_TAU = 21, MOMENTUM_CAP = 4;
+/** Points carried by day `t` (from today) for a slope `s` (points per day). */
+export const momentumAt = (s: number, t: number) => Math.max(-MOMENTUM_CAP, Math.min(MOMENTUM_CAP, s * MOMENTUM_TAU * (1 - Math.exp(-Math.max(0, t) / MOMENTUM_TAU))));
 // Errors have fat tails (one draw in ten is about twice as wide), so big misses aren't vanishingly rare.
 /** Ceiling: a candidate can climb at most this fraction of the way from today's share to their maximum
  *  electorate (everyone who doesn't completely rule out voting for them, Cluster17 for Politico). */
@@ -267,19 +272,24 @@ export const PRIMARY: Primary = { rallyFrom: [], rallyFromShare: 0, declined: []
 /** The primary's deciding day (its last round). */
 export const PRIMARY_DAY = PRIMARY.rounds.at(-1)!;
 
-/** Linear slope of each candidate's polling average over the last TREND_DAYS, in points per day. */
-export function trendSlopes(firstRound: Poll[], asOf: string): Map<string, number> {
-  const from = new Date(Date.parse(asOf) - TREND_DAYS * 86400000).toISOString().slice(0, 10);
+/** Slope of each candidate's polling average over the last `days` (recent days weigh more), in points per day. A candidate needs
+ *  half that span of history (a newcomer like Lisnard counts once polled for three weeks). */
+export function trendSlopes(firstRound: Poll[], asOf: string, days = MOMENTUM_DAYS): Map<string, number> {
+  const from = new Date(Date.parse(asOf) - days * 86400000).toISOString().slice(0, 10);
   const pts = trend(firstRound, from, { to: asOf });
   const out = new Map<string, number>();
   const names = new Set(pts.flatMap((p) => Object.keys(p.values)));
   for (const n of names) {
     const xs: number[] = [], ys: number[] = [];
     for (const p of pts) if (p.values[n] != null) { xs.push(Date.parse(p.date) / 86400000); ys.push(p.values[n]); }
-    if (xs.length < 6 || xs.at(-1)! - xs[0] < TREND_DAYS / 2) continue;
-    const mx = xs.reduce((a, b) => a + b, 0) / xs.length, my = ys.reduce((a, b) => a + b, 0) / ys.length;
+    if (xs.length < 6 || xs.at(-1)! - xs[0] < days / 2) continue;
+    // recent days count more (weight halves every two weeks back): a rise then a fall reads as falling
+    const now = Date.parse(asOf) / 86400000;
+    const ws = xs.map((xx) => Math.pow(0.5, (now - xx) / 14));
+    const sw = ws.reduce((a, b) => a + b, 0);
+    const mx = xs.reduce((a, xx, i) => a + ws[i] * xx, 0) / sw, my = ys.reduce((a, yy, i) => a + ws[i] * yy, 0) / sw;
     let sxy = 0, sxx = 0;
-    for (let i = 0; i < xs.length; i++) { sxy += (xs[i] - mx) * (ys[i] - my); sxx += (xs[i] - mx) ** 2; }
+    for (let i = 0; i < xs.length; i++) { sxy += ws[i] * (xs[i] - mx) * (ys[i] - my); sxx += ws[i] * (xs[i] - mx) ** 2; }
     if (sxx > 0) out.set(n, sxy / sxx);
   }
   return out;
@@ -383,9 +393,10 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
   }
   const n = base.length;
 
-  // long-term trend carried forward (points by election day)
+  // momentum carried forward, fading: points gained or lost by day t
   const slopes = trendSlopes(firstRound, asOf);
-  const drift = base.map((c) => { const s = slopes.get(c.name); return s == null ? 0 : Math.max(-TREND_CAP, Math.min(TREND_CAP, s * daysToGo * TREND_DAMP)); });
+  const slope = base.map((c) => slopes.get(c.name) ?? 0);
+  const driftAt = (i: number, t: number) => momentumAt(slope[i], t);
 
   // the primary: when it would be decided, and who takes part (only those in the field)
   const tPrim = Math.round((Date.parse(PRIMARY_DAY) - Date.parse(asOf)) / 86400000);
@@ -403,7 +414,11 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
   // who the primary picks: the participant best placed in the polls at the end of December, as projected today
   // (today's share plus the trend carried to that date); once December's polls are in, that is simply who leads
   const fDec = Math.max(0, Math.min(1, (Date.parse(PRIMARY.decidedBy || PRIMARY_DAY) - Date.parse(asOf)) / 86400000 / Math.max(1, daysToGo)));
-  const primWinner = primIdx.length ? primIdx.reduce((a, b) => (base[b].share + drift[b] * fDec > base[a].share + drift[a] * fDec ? b : a)) : -1;
+  const tDec = fDec * daysToGo;
+  const primWinner = primIdx.length ? primIdx.reduce((a, b) => (base[b].share + driftAt(b, tDec) > base[a].share + driftAt(a, tDec) ? b : a)) : -1;
+  // momentum split between the two stages (today → primary, primary → election day)
+  const t1 = f1 * daysToGo;
+  const d1 = base.map((_, i) => driftAt(i, t1)), d2 = base.map((_, i) => driftAt(i, daysToGo) - d1[i]);
 
   const polledShare = (a: string, b: string) => {
     const d = duels.find((x) => [x.winner, x.loser].sort().join() === [a, b].sort().join());
@@ -468,7 +483,7 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
     const hcap = new Map(handicap);
     // stage 1: today → primary
     const b1 = [0, 1, 2, 3, 4].map(() => sdBloc * Math.sqrt(f1) * gauss(rand));
-    for (let i = 0; i < n; i++) x[i] = base[i].share + drift[i] * f1 + (base[i].bloc != null ? b1[base[i].bloc!] : 0) + sd1 * Math.sqrt(f1) * tdist();
+    for (let i = 0; i < n; i++) x[i] = base[i].share + d1[i] + (base[i].bloc != null ? b1[base[i].bloc!] : 0) + sd1 * Math.sqrt(f1) * tdist();
     settle(out);
     for (let i = 0; i < n; i++) atPrimary[i][r] = x[i];
     // the primary: whoever is best placed at the end of December wins it; the others withdraw and most of their
@@ -484,7 +499,7 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
     // stage 2: primary → election day
     if (f1 < 1) {
       const b2 = [0, 1, 2, 3, 4].map(() => sdBloc * Math.sqrt(1 - f1) * gauss(rand));
-      for (let i = 0; i < n; i++) if (!out.has(i)) x[i] += drift[i] * (1 - f1) + (base[i].bloc != null ? b2[base[i].bloc!] : 0) + sd1 * Math.sqrt(1 - f1) * tdist();
+      for (let i = 0; i < n; i++) if (!out.has(i)) x[i] += d2[i] + (base[i].bloc != null ? b2[base[i].bloc!] : 0) + sd1 * Math.sqrt(1 - f1) * tdist();
     }
     // a late rally in a camp
     for (const camp of [[0, 1], [2, 3]]) {
@@ -530,7 +545,7 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
   // none of the random black swans and late rallies (those only widen the band). Adds up to 100 at every step.
   const path = (() => {
     const out = new Set<number>();
-    for (let i = 0; i < n; i++) x[i] = base[i].share + drift[i] * f1;
+    for (let i = 0; i < n; i++) x[i] = base[i].share + d1[i];
     settle(out);
     const p1 = Array.from(x);
     if (sure && primWinner >= 0) {
@@ -540,10 +555,18 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
       settle(out);
     }
     const p2 = Array.from(x);
-    for (let i = 0; i < n; i++) if (!out.has(i)) x[i] += drift[i] * (1 - f1);
+    for (let i = 0; i < n; i++) if (!out.has(i)) x[i] += d2[i];
     settle(out);
     return { p1, p2, p3: Array.from(x) };
   })();
+  // the dotted line between today and the first knot, every few weeks, so the fading momentum shows as a curve
+  // (the band there is the next knot's, narrowed with the square root of time)
+  const stepDays = [10, 21, 35, 56, 84, 120].filter((d) => d < t1 - 5);
+  const early = stepDays.map((t) => {
+    for (let i = 0; i < n; i++) x[i] = base[i].share + driftAt(i, t);
+    settle(new Set());
+    return { t, date: new Date(Date.parse(asOf) + t * 86400000).toISOString().slice(0, 10), mid: Array.from(x) };
+  });
   const knot = (date: string, arr: Float32Array, mid: number) => {
     const sorted = arr.sort(); // in place: the arrays aren't used again
     const at = (f: number) => sorted[Math.min(sorted.length - 1, Math.floor(f * sorted.length))];
@@ -556,11 +579,22 @@ export function forecast(firstRound: Poll[], secondRound: Duel[], markets: Marke
       ...(out ? { outAt: PRIMARY_DAY } : {}),
       knots: [
         { date: asOf, mid: c.share, lo: c.share, hi: c.share },
+        ...early.map((e) => ({ date: e.date, mid: e.mid[i], lo: NaN, hi: NaN, t: e.t })),
         ...(primaryOn ? [knot(PRIMARY_DAY, atPrimary[i], path.p1[i])] : []),
         ...(primaryOn && !out ? [knot(new Date(Date.parse(PRIMARY_DAY) + 86400000).toISOString().slice(0, 10), afterPrimary[i], path.p2[i])] : []),
         ...(out ? [] : [knot(ELECTION_DAY, final[i], path.p3[i])]),
       ],
     };
+  }).map((p) => {
+    // fill the early knots' band from the first simulated knot after them
+    const k1 = p.knots.find((k, j) => j > 0 && !Number.isNaN(k.lo));
+    if (k1) for (const k of p.knots as ({ date: string; mid: number; lo: number; hi: number; t?: number })[]) if (Number.isNaN(k.lo)) {
+      const g = Math.sqrt((k.t ?? 0) / Math.max(1, t1));
+      k.lo = Math.min(k.mid, k.mid - (k1.mid - k1.lo) * g);
+      k.hi = Math.max(k.mid, k.mid + (k1.hi - k1.mid) * g);
+      delete k.t;
+    }
+    return p;
   }) : [];
   const primary = primaryOn ? {
     day: PRIMARY_DAY, pHeld, held: (100 * nHeld) / RUNS,

@@ -25,19 +25,25 @@ async function optionalFiles(code: string): Promise<[Any, Any]> {
   return Promise.all([hasCouncil ? once(`/data/municipal/councils/${code}.json`) : null, hasPromises ? once(`/data/municipal/promises/${code}.json`) : null]);
 }
 
+const PLM_CITY: Record<string, string> = { "75": "Paris", "69": "Lyon", "13": "Marseille" };
+
 export async function renderTownLocal(box: HTMLElement, code: string, dep: string) {
-  const [muni, fams, news, [council, promises], sens] = await Promise.all([
+  const plm = /^(751\d\d|6938\d|132\d\d)$/.test(code);
+  const [muni, fams, news, [council, promises], sens, arrs] = await Promise.all([
     once(`/data/municipal/${dep}.json`),
     once("/data/municipal/families.json"),
     once(`/data/news/${dep}.json`),
     optionalFiles(code),
     loadSenateurs().catch(() => [] as Any[]),
+    // an arrondissement of Paris, Lyon or Marseille: its own council and mayor (scripts/sync-municipal-plm.mjs)
+    plm ? once("/data/municipal/arrondissements.json") : null,
   ]);
   const fr = getLang() === "fr";
   const F = fams?.families ?? {};
   const famColor = (f?: string) => safeColor(F[f ?? ""]?.color, "#a3a7ae");
   const famName = (f?: string) => (f && F[f] && f !== "unclassified" ? (fr ? F[f].fr : F[f].en) : L("sans étiquette attribuée", "no label assigned"));
-  const c = muni?.communes?.[code];
+  const arr = arrs?.arrondissements?.[code];
+  const c = muni?.communes?.[code] ?? arr;
   const items: Any[] = news?.communes?.[code] ?? [];
   const mySens = (sens as Any[]).filter((s) => s.numDepartement === dep || s.codeCirconscription === dep);
   const parts: string[] = [];
@@ -62,14 +68,16 @@ export async function renderTownLocal(box: HTMLElement, code: string, dep: strin
     const prevRound = prev?.rounds?.at(-1);
     const prevWinner = prevRound?.lists ? [...prevRound.lists].sort((a: Any, b: Any) => (b.seats ?? 0) - (a.seats ?? 0) || (b.votes ?? 0) - (a.votes ?? 0))[0] : null;
     parts.push(`<section class="card">
-      <header class="card-head"><h2>${L("Élections municipales 2026", "2026 municipal elections")}</h2><span class="muted small">${y.decidedRound === 1 ? L("élue au 1er tour", "won in the first round") : L("2nd tour", "runoff")}${decisive?.turnoutPct != null ? `, ${L("participation", "turnout")} ${decisive.turnoutPct.toFixed(1)} %` : ""}</span></header>
+      <header class="card-head"><h2>${arr ? L("Conseil d’arrondissement 2026", "2026 arrondissement council") : L("Élections municipales 2026", "2026 municipal elections")}</h2><span class="muted small">${y.decidedRound === 1 ? L("élue au 1er tour", "won in the first round") : L("2nd tour", "runoff")}${decisive?.turnoutPct != null ? `, ${L("participation", "turnout")} ${decisive.turnoutPct.toFixed(1)} %` : ""}</span></header>
       ${w ? `<p class="lead-result" style="--c:${famColor(w.family)}"><b>${esc(w.label ?? "")}</b>${w.head?.name ? `, ${L("menée par", "led by")} ${esc(titleName(w.head.name))}` : ""}<br><span class="small">${esc(famName(w.family))}${w.nuance ? ` (${esc(w.nuance)})` : ""}, ${w.seats ?? "?"} ${L("sièges sur", "seats out of")} ${c.seats ?? "?"}</span></p>` : ""}
       <ol class="bars">${lists
         .slice(0, 8)
         .map((l: Any) => `<li><div class="bar-label"><span>${esc(l.label ?? l.head?.name ?? "")} <span class="muted small">${l.head?.name ? esc(titleName(l.head.name)) : ""}${l.family && l.family !== "unclassified" ? `, ${esc(famName(l.family))}` : ""}</span></span><b>${(l.pctExpressed ?? 0).toFixed(1)} %</b></div><div class="bar"><div style="width:${l.pctExpressed ?? 0}%;background:${famColor(l.family)}"></div></div></li>`)
         .join("")}</ol>
       ${prevWinner ? `<p class="muted small">${L("En 2020", "In 2020")}${colon()}${esc(prevWinner.label ?? "")}${prevWinner.head?.name ? ` (${esc(titleName(prevWinner.head.name))})` : ""}, ${esc(famName(prevWinner.family))}.${prevWinner.family && w?.family && prevWinner.family !== w.family && prevWinner.family !== "unclassified" && w.family !== "unclassified" ? ` <b>${L("La mairie a changé de camp.", "The town hall changed hands.")}</b>` : ""}</p>` : ""}
-      <p class="muted tiny">${L("Étiquettes politiques attribuées par le ministère de l’Intérieur aux listes des communes de 3 500 habitants et plus. Le maire est élu ensuite par le conseil municipal.", "Political labels assigned by the Ministry of the Interior to lists in towns of 3,500+. The mayor is then elected by the town council.")}</p>
+      <p class="muted tiny">${arr
+        ? L(`Le vote pour le conseil d’arrondissement${arr.arrondissements.length > 1 ? ` (secteur commun à ${arr.arrondissements.length} arrondissements)` : ""}, qui élit le maire d’arrondissement. Le conseil de ${esc(PLM_CITY[code.slice(0, 2)])} et son maire sont élus sur un second bulletin, à l’échelle de la ville. Étiquettes attribuées par le ministère de l’Intérieur.`, `The vote for the arrondissement council${arr.arrondissements.length > 1 ? ` (a sector shared by ${arr.arrondissements.length} arrondissements)` : ""}, which elects the arrondissement's mayor. The ${esc(PLM_CITY[code.slice(0, 2)])} city council and its mayor are elected on a second, city-wide ballot. Labels assigned by the Ministry of the Interior.`)
+        : L("Étiquettes politiques attribuées par le ministère de l’Intérieur aux listes des communes de 3 500 habitants et plus. Le maire est élu ensuite par le conseil municipal.", "Political labels assigned by the Ministry of the Interior to lists in towns of 3,500+. The mayor is then elected by the town council.")}</p>
     </section>`);
   }
 

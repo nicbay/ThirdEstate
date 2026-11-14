@@ -89,6 +89,7 @@
   --px-grid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Cpath fill='%23fff' fill-opacity='.11' d='M0 0h2v2H0z'/%3E%3C/svg%3E");
 
   /* ---- night bands (masthead, heroes, footer): text and rules on --night ---- */
+  --night-panel: #1d2236;   /* filled shapes on night (the hero's map) */
   --night-rule-2: #3a3f5c;  /* outlines of controls on night */
   --night-edge: #343a58;    /* hairlines between blocks on night */
   --night-text: #fff;
