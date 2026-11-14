@@ -191,13 +191,15 @@ export function searchBox(placeholder?: string) {
     <ul class="suggest" role="listbox" hidden></ul>
   </form>`;
 }
-export function bindSearch(root: HTMLElement) {
+/** Wire the town search boxes under root. By default a pick opens the town page; onPick overrides that (the comparison page). */
+export function bindSearch(root: HTMLElement, onPick?: (code: string) => void) {
   root.querySelectorAll<HTMLFormElement>(".town-search").forEach((form) => {
     const input = form.querySelector("input")!;
     const list = form.querySelector<HTMLUListElement>(".suggest")!;
     let timer = 0, seq = 0;
     const go = (code: string) => {
       list.hidden = true;
+      if (onPick) return onPick(code);
       try { sessionStorage.setItem("te-picked", code); } catch { /* private mode */ }
       location.hash = `#/ville/${code}`;
     };
@@ -487,6 +489,7 @@ export async function renderTown(app: HTMLElement, code: string) {
             <figcaption class="tiny muted">${L("Extrait de", "Quoted from")} ${extra.description.url ? `<a href="${esc(safeUrl(extra.description.url))}" target="_blank" rel="noopener">${L("Wikipédia", "French Wikipedia")}</a>` : L("Wikipédia", "French Wikipedia")} (CC BY-SA)${fr ? "" : ", in French"}</figcaption></figure>` : ""}
           <div class="home-set" id="home-set"></div>
           ${searchBox(L("Chercher une autre adresse", "Search another address"))}
+          <p class="cmp-entry"><a href="#/comparer/${code}">${L(`Comparer ${esc(name)} avec une autre commune`, `Compare ${esc(name)} with another town`)} →</a></p>
         </div>
       </header>
 
