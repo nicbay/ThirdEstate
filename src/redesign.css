@@ -577,3 +577,8 @@ footer .brand .fox { width: 64px; height: 64px; }
 .dis-past { border-top: 2px dashed var(--rule-2); margin-top: 1.6rem; padding-top: 0.6rem; }
 .dis-person h4 { margin: 1rem 0 0.4rem; font-size: 1rem; }
 @media (max-width: 640px) { .dis-kpis { grid-template-columns: 1fr; } .dis-topic-btn { grid-template-columns: minmax(0, 1fr) 6rem; } .dis-tbar { grid-column: 1 / -1; grid-row: 2; } }
+
+/* events: the town hall's own, marked */
+.ev-mairie { display: inline-block; font: 700 0.66rem var(--mono); text-transform: uppercase; letter-spacing: 0.04em; padding: 0.05rem 0.35rem; margin-left: 0.3rem; background: var(--split-blue); color: #fff; }
+.mine-events { margin-top: 1rem; }
+.mine-events h3 { font-size: 1rem; margin: 0 0 0.4rem; }
