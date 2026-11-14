@@ -19,8 +19,11 @@ type Factor =
   | { kind: "news"; headlines: Headline[] }
   | { kind: "split"; kalshi: number; poly: number }
   | { kind: "none" };
+interface Story { title: string; link: string | null; outlet: string; n: number }
+interface Pick { name: string; fr: string; en: string; story: Story | null }
+interface Insight { head: T; surprise: Pick | null; good: Pick[]; bad: Pick[]; by: string }
 interface Edition {
-  date: string; head: T; rows: Row[]; provisional?: boolean; note?: T & { by: string };
+  date: string; head: T; rows: Row[]; provisional?: boolean; note?: T & { by: string }; insight?: Insight;
   polls: { pollster: string; end: string; url: string | null; top: { name: string; v: number }[] }[];
   headlines: Headline[];
   analysis: { name: string; market: number | null; d1: number | null; d7: number | null; factors: Factor[] }[];
@@ -60,6 +63,16 @@ function verdict(fs: Factor[]) {
   return L("Pas d’explication dans nos données.", "No explanation in our records.");
 }
 
+/** One column of the day's verdict: a candidate per line, why in a sentence, and the headline behind it. */
+function verdictCol(xs: Pick[], dir: "up" | "down", title: string) {
+  if (!xs.length) return `<section class="ed-col is-${dir}"><h3>${title}</h3><p class="ed-none">${L("Personne aujourd’hui.", "Nobody today.")}</p></section>`;
+  return `<section class="ed-col is-${dir}"><h3><span aria-hidden="true">${dir === "up" ? "▲" : "▼"}</span> ${title}</h3><ul>${xs.map((p) => `<li style="--c:${meta(p.name).color}">
+    <b class="ed-name"><i aria-hidden="true"></i>${sur(p.name)}</b>
+    <span>${esc(L(p.fr, p.en))}</span>
+    ${p.story ? `<span class="ed-ev">${story(p.story)}</span>` : ""}
+  </li>`).join("")}</ul></section>`;
+}
+
 function weekChart(e: Edition) {
   const names = Object.keys(e.week.at(-1)?.v ?? {}).slice(0, 4);
   const vals = e.week.flatMap((d) => names.map((n) => d.v[n])).filter((v): v is number => v != null);
@@ -86,32 +99,35 @@ function render(e: Edition, idx: { date: string }[], pollsHtml = "") {
   const prev = idx[i - 1], next = idx[i + 1];
   const fav = e.rows[0];
   const big = [...e.rows].filter((r) => r.d1 != null).sort((a, b) => Math.abs(b.d1!) - Math.abs(a.d1!))[0];
-  const poll = e.polls[0], top = e.headlines[0];
+  const poll = e.polls[0];
   const day = new Date(e.date).toLocaleDateString(L("fr-FR", "en-GB"), { weekday: "long", day: "numeric", month: "long" });
   const cards = [
     fav?.market != null ? `<div class="ed-card" style="--c:${meta(fav.name).color}"><p class="ed-ck">${L("Favori des marchés de prédiction", "Prediction markets' favourite")}</p><p class="ed-big">${count(fav.market, " %")}</p><p>${sur(fav.name)}</p><p class="ed-chips">${chip(fav.d1, L("24 h", "24h"))}${chip(fav.d7, L("7 j", "7d"))}</p></div>` : "",
     big && big.name !== fav?.name ? `<div class="ed-card" style="--c:${meta(big.name).color}"><p class="ed-ck">${L("Le mouvement du jour", "The move of the day")}</p><p class="ed-big">${count(big.d1!, "", true)}<small> pt</small></p><p>${sur(big.name)}, ${dec(big.market ?? 0)} %</p><p class="ed-chips">${chip(big.d7, L("7 j", "7d"))}</p></div>` : "",
     poll ? `<div class="ed-card"><p class="ed-ck">${L("Nouveau sondage", "New poll")}</p><p class="ed-poll">${poll.url ? `<a href="${esc(safeUrl(poll.url))}" target="_blank" rel="noopener">${esc(pollsterName(poll.pollster))}</a>` : esc(pollsterName(poll.pollster))}${(() => { const g = pollsterRating(poll.pollster)?.grade; return g ? ` <b style="color:${gradeColor(g)}">${g}</b>` : ""; })()}</p><p class="ed-small">${poll.top.slice(0, 3).map((t) => `${sur(t.name)} ${dec(t.v)}`).join(" · ")}</p></div>` : "",
-    top ? `<div class="ed-card ed-news"><p class="ed-ck">${L("L’info la plus reprise", "Most-covered story")}</p><p>${story(top)}</p></div>` : "",
   ].filter(Boolean).join("");
   return `<div class="ed-nav">
       ${prev ? `<button type="button" class="ed-go" data-d="${prev.date}" aria-label="${esc(L(`Édition du ${fmtDate(prev.date)}`, `Edition of ${fmtDate(prev.date)}`))}">◀ ${esc(fmtDate(prev.date).replace(/\s\d{4}$/, ""))}</button>` : `<span></span>`}
       <p class="ed-k"><b>${L("La note du jour", "Note of the day")}</b><span>${esc(day)}</span></p>
       ${next ? `<button type="button" class="ed-go" data-d="${next.date}" aria-label="${esc(L(`Édition du ${fmtDate(next.date)}`, `Edition of ${fmtDate(next.date)}`))}">${esc(fmtDate(next.date).replace(/\s\d{4}$/, ""))} ▶</button>` : `<span></span>`}
     </div>
-    <h2 class="ed-head">${esc(L(e.head.fr, e.head.en))}</h2>
+    <h2 class="ed-head">${esc(L((e.insight?.head ?? e.head).fr, (e.insight?.head ?? e.head).en))}</h2>
     ${e.provisional ? `<p class="ed-prov">${L("Édition du jour en cours : cours des marchés de la dernière heure ; les sondages et l’analyse complète arrivent avec la synthèse quotidienne.", "Today's edition in progress: the latest hourly market prices; the polls and the full analysis come with the daily brief.")}</p>` : ""}
-    ${e.note ? `<p class="ed-note-text">${esc(L(e.note.fr, e.note.en))}</p>${e.note.by !== "template" ? `<p class="ed-by">${L("Résumé écrit par une IA (Claude) à partir des titres et des chiffres du jour, chaque chiffre vérifié", "Summary written by AI (Claude) from the day's headlines and figures, every figure checked")}</p>` : ""}` : ""}
-    <p class="ed-what">${L("Chaque jour : ce qui a bougé sur les marchés de prédiction (les paris en argent réel sur Kalshi et Polymarket) et dans les sondages, et ce qui a pu le faire bouger.", "Every day: what moved on the prediction markets (real-money bets on Kalshi and Polymarket) and in the polls, and what could have moved it.")}</p>
     <div class="ed-cards">${cards}</div>
+    ${e.insight?.surprise ? `<p class="ed-surprise" style="--c:${meta(e.insight.surprise.name).color}"><span class="ed-surprise-k">${L("La surprise", "The surprise")}</span><span>${esc(L(e.insight.surprise.fr, e.insight.surprise.en))}${e.insight.surprise.story ? ` <span class="ed-ev">${story(e.insight.surprise.story)}</span>` : ""}</span></p>` : ""}
+    ${e.insight && (e.insight.good.length || e.insight.bad.length) ? `<div class="ed-days">
+      ${verdictCol(e.insight.good, "up", L("Bonne journée pour", "A good day for"))}
+      ${verdictCol(e.insight.bad, "down", L("Mauvaise journée pour", "A bad day for"))}
+    </div>` : ""}
+    ${e.insight && e.insight.by !== "template" ? `<p class="ed-by">${L("Verdicts écrits par une IA (Claude) à partir des chiffres et des titres du jour ; chaque nom et chaque chiffre vérifiés. Ils jugent la position dans la course, jamais les idées.", "Verdicts written by AI (Claude) from the day's figures and headlines; every name and figure checked. They judge standing in the race, never ideas.")}</p>` : `<p class="ed-by">${L("Verdicts calculés à partir des marchés (Kalshi et Polymarket) et de la moyenne des sondages sur 7 jours. Ils jugent la position dans la course, jamais les idées.", "Verdicts computed from the markets (Kalshi and Polymarket) and the 7-day polling average. They judge standing in the race, never ideas.")}</p>`}
     <div class="ed-body">
-      <section class="ed-why"><h3>${L("Ce qui a pu les faire bouger", "What could have moved them")}</h3>
+      <details class="ed-why"><summary>${L("Le détail : ce qui a pu les faire bouger", "In detail: what could have moved them")}</summary>
         ${e.analysis.length ? `<ol>${e.analysis.map((a) => `<li style="--c:${meta(a.name).color}">
-          <p class="ed-who"><b>${sur(a.name)}</b> ${chip(a.d1, L("24 h", "24h"))}${chip(a.d7, L("7 j", "7d"))} <span class="ed-verdict">${verdict(a.factors)}</span></p>
+          <p class="ed-who"><b>${sur(a.name)}</b> ${chip(a.d1, L("24 h", "24h"))}${chip(a.d7, L("7 j", "7d"))} <span class="ed-verdict-line">${verdict(a.factors)}</span></p>
           <ul class="ed-factors">${a.factors.map((f) => `<li>${factorHtml(f, a.name)}</li>`).join("")}</ul>
         </li>`).join("")}</ol>` : `<p>${L("Aucun candidat n’a bougé d’un point en un jour, ni de 2,5 points en une semaine.", "No candidate moved a point in a day or 2.5 points in a week.")}</p>`}
         <p class="ed-note">${L("Des pistes, pas des causes : les titres sont ceux qui citent le candidat ce jour-là et la veille.", "Leads, not causes: the headlines are those naming the candidate that day and the day before.")}</p>
-      </section>
+      </details>
       <section class="ed-wk">${pollsHtml}<h3>${L("Chance de victoire sur les marchés de prédiction, 7 jours", "Chance of winning on the prediction markets, 7 days")}</h3>
         <a class="ed-wk-go" href="#trend" aria-label="${esc(L("Voir les sondages et le graphique complet", "See the polls and the full chart"))}">${weekChart(e)}<span>${L("Kalshi et Polymarket, en moyenne. Les sondages, plus bas", "Kalshi and Polymarket, averaged. The polls, below")} ↓</span></a></section>
     </div>`;

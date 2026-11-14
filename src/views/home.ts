@@ -45,8 +45,6 @@ export async function renderHome(app: HTMLElement) {
 
       <div id="mine"></div>
 
-      ${hero.noteHtml}
-
       <div class="hw-row">
         ${hero.parliamentHtml}
         ${hero.shiftsHtml}
