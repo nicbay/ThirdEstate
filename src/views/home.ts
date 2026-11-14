@@ -10,7 +10,7 @@ import { average, latestPollDate, pollsInWindow, WINDOW } from "../lib/polls";
 import { colon } from "../lib/format";
 import { esc, safeUrl } from "../util";
 import { mpChip, townBrief } from "./brief";
-import { depOf, loadTownBundle, townExtra } from "./explore";
+import { bindSearch, depOf, loadTownBundle, searchBox, townExtra } from "./explore";
 import { armsSlot, loadCommuneArms, loadDepartmentArms, paintArms } from "../lib/arms";
 import { mountForecastChart, scenarioForecast, scenarioFromUrl } from "./forecast-chart";
 import { forecastLine, heroDay } from "./hero-day";
@@ -54,6 +54,7 @@ export async function renderHome(app: HTMLElement) {
   mountOcean(app.querySelector<HTMLElement>(".hday")!);
   void drawDayUpdate(app.querySelector<HTMLElement>("#dup")!);
   if (home?.code) drawMine(app.querySelector<HTMLElement>("#mine")!, home.code, home.commune ?? home.code);
+  else drawFindTown(app.querySelector<HTMLElement>("#mine")!);
 
   // ---------- polls chart with the projection to election day and the scenarios ----------
   // five months back on a wide screen, about three on a phone: the projection to the first round gets as much room
@@ -82,6 +83,16 @@ export async function renderHome(app: HTMLElement) {
   app.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 }
 
+/** No town set yet: a search box for it, and the comparison of two towns. */
+function drawFindTown(box: HTMLElement) {
+  box.innerHTML = `<section class="card mine mine-find">
+    <header class="card-head"><h2>${L("Et chez vous ?", "And where you live?")}</h2><a href="#/comparer">${L("Comparer deux communes", "Compare two towns")} →</a></header>
+    <p class="muted small">${L("Vos élus, la sécurité, les écoles, ce que la commune reçoit de l’État, et comment elle se compare aux autres.", "Your officials, safety, schools, what the town gets from the state, and how it compares with others.")}</p>
+    ${searchBox(L("Votre commune ou votre code postal", "Your town or postcode"))}
+  </section>`;
+  bindSearch(box);
+}
+
 /** The reader's own town, under the hero: the four-sentence brief, their MPs, shortcuts into the town page. */
 async function drawMine(box: HTMLElement, code: string, name: string) {
   box.innerHTML = `<section class="card mine"><header class="card-head"><h2>${L("Chez vous", "Where you live")}${colon()}${esc(name)}</h2><a href="#/ville/${code}">${L("Toute la commune", "The whole town")}</a></header><p class="muted small">${L("Chargement…", "Loading…")}</p></section>`;
@@ -90,10 +101,11 @@ async function drawMine(box: HTMLElement, code: string, name: string) {
     const [b, bundle, ca, da] = await Promise.all([townBrief(code, name), loadTownBundle(dep), loadCommuneArms(dep), loadDepartmentArms()]);
     const photo = townExtra(bundle[code])?.photo;
     // the town's own picture and coat of arms; the department's arms lead to the department, its towns and MPs
+    const compare = `<a class="button cmp-cta" href="#/comparer/${code}">${L(`Comparer ${esc(name)} avec une autre commune`, `Compare ${esc(name)} with another town`)} →</a>`;
     const ident = `<div class="mine-id">${photo ? `<a class="mine-photo" href="#/ville/${code}"><img src="${esc(safeUrl(photo.url))}" alt="${esc(name)}" loading="lazy"/></a>` : ""}<div class="mine-arms">${armsSlot(ca[code], L(`Armoiries : ${name}`, `Coat of arms: ${name}`), "m")}${armsSlot(da[dep], L("Le département, ses communes et ses députés", "The department, its towns and MPs"), "s", `#/explorer/${dep}`)}</div></div>`;
     box.innerHTML = `<section class="card mine">
       <header class="card-head"><h2>${L("Chez vous", "Where you live")}${colon()}<a href="#/ville/${code}">${esc(name)}</a></h2><a href="#/ville/${code}">${L("Toute la commune", "The whole town")}</a></header>
-      ${ident}
+      ${ident}${compare}
       <div class="mine-grid">
         <div class="brief-text">${b.sentences.length ? `<p>${b.sentences.join(" ")}</p>` : `<p class="muted">${L("Pas assez de données publiées pour résumer cette commune.", "Not enough published data to sum up this town.")}</p>`}</div>
         <aside>

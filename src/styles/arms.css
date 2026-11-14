@@ -2,9 +2,8 @@
 .arms { display: inline-block; line-height: 0; opacity: 0; transition: opacity 0.2s steps(3, end); flex: none; }
 .arms.is-in { opacity: 1; }
 .arms canvas { image-rendering: pixelated; width: auto; display: block; }
-.arms-s canvas { height: 28px; }
-.arms-m canvas { height: 52px; }
-.arms-l canvas { height: 96px; }
+.arms-s canvas, .arms-m canvas { height: 64px; }
+.arms-l canvas { height: 104px; }
 a.arms { border-radius: 2px; }
 a.arms:hover canvas, a.arms:focus-visible canvas { filter: brightness(1.12); }
 a.arms:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
