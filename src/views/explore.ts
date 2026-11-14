@@ -68,7 +68,7 @@ export function loadDepartmentTowns(dep: string) {
             t.crime ??= I.crime?.communes?.[u.code] ?? I.crime?.communes?.[plmCity(u.code)];
             t.spending ??= I.localSpending?.communes?.values?.[u.code];
             for (const s of I.schools?.list ?? []) if (s.commune === u.code && !t.schools.some((x: Any) => x.uai === s.uai)) t.schools.push(s);
-            for (const e of events.get(c) ?? []) if ((e.commune === u.name || e.postcode?.startsWith(dep)) && e.commune === u.name && !t.events.some((x: Any) => x.name === e.name)) t.events.push(e);
+            for (const e of upcoming(events.get(c) ?? [])) if ((e.commune === u.name || e.postcode?.startsWith(dep)) && e.commune === u.name && !t.events.some((x: Any) => x.name === e.name)) t.events.push(e);
             towns.set(u.code, t);
           }
         }
@@ -122,6 +122,18 @@ export function townExtra(d: Any) {
 }
 const titleCase = (n: string) => String(n ?? "").replace(/\b([A-ZÀ-ÖØ-Ý][A-ZÀ-ÖØ-Ý'-]+)\b/g, (w) => (w.length > 1 && w === w.toUpperCase() ? w.charAt(0) + w.slice(1).toLowerCase() : w));
 const loadTownExtra = async (code: string) => townExtra((await loadTownBundle(depOf(code)))[code]);
+/** Events still to come (ending today or later), soonest first. The tourist-office files keep past ones for weeks. */
+export function upcoming<E extends { start: string; end?: string | null }>(events: E[], today = new Date().toISOString().slice(0, 10)): E[] {
+  return events.filter((e) => (e.end || e.start) >= today).sort((a, b) => a.start.localeCompare(b.start));
+}
+/** An event the town hall itself publishes ("Mairie de…", "Ville de…", "Commune de…"). */
+export const byTownHall = (e: { publisher?: string | null }) => /\b(mairie|ville de|commune de|h[ôo]tel de ville)\b/i.test(e.publisher ?? "");
+/** The event list of a town page or card: date, place, a "Mairie" badge for the town hall's own. */
+export function eventItem(e: Any, withPlace = false) {
+  const when = `${fmtDate(e.start)}${e.end && e.end !== e.start ? ` – ${fmtDate(e.end)}` : ""}`;
+  return `<li><span class="muted small">${when}${withPlace && e.commune ? `, ${esc(e.commune)}` : ""}${byTownHall(e) ? ` <span class="ev-mairie">${L("Mairie", "Town hall")}</span>` : ""}</span><br><a href="${esc(safeUrl(e.url ?? e.datatourisme))}" target="_blank" rel="noopener">${esc(e.name)}</a></li>`;
+}
+
 export const depOf = (code: string) => (code.startsWith("97") ? code.slice(0, 3) : code.slice(0, 2));
 
 // ---------- search (address, street, town, postcode or INSEE code) ----------
@@ -602,7 +614,7 @@ export async function renderTown(app: HTMLElement, code: string) {
         <section class="card">
           <header class="card-head"><h2>${L("Ce qui fait vivre la commune", "What makes the town tick")}</h2></header>
           ${positives.length ? `<ul class="positives">${positives.join("")}</ul>` : `<p class="muted small">${L("Monuments, musées et équipements : bientôt.", "Monuments, museums and facilities: coming soon.")}</p>`}
-          ${t?.events.length ? `<h3>${L("À venir", "Coming up")}</h3><ul class="events">${t.events.slice(0, 6).map((e: Any) => `<li><span class="muted small">${fmtDate(e.start)}</span><br><a href="${esc(safeUrl(e.url ?? e.datatourisme))}" target="_blank" rel="noopener">${esc(e.name)}</a></li>`).join("")}</ul>` : ""}
+          ${t?.events.length ? `<h3>${L("À venir", "Coming up")}</h3><ul class="events">${[...upcoming(t.events)].sort((a, b) => Number(byTownHall(b)) - Number(byTownHall(a))).slice(0, 6).map((e: Any) => eventItem(e)).join("")}</ul>` : ""}
         </section>
         <section class="card">
           <header class="card-head" id="securite"><h2>${L("Sécurité", "Safety")}</h2><span class="muted small">${L("faits pour 1 000 habitants", "per 1,000 people")}</span></header>

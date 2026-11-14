@@ -4,6 +4,7 @@
 import { fetchJson } from "../data";
 import { L, colon, fmtDate, fmtNum, getLang } from "../i18n";
 import { esc, safeUrl } from "../util";
+import { eventItem, upcoming } from "./explore";
 
 type Bench = { fr: string; en: string; unit: string; year?: number; n: number; median: number; deciles: number[]; min: number; max: number };
 interface Index { indicators: Record<string, Bench>; national: Record<string, { rates?: Record<string, number>; france?: number; year?: number }> }
@@ -145,10 +146,10 @@ export async function renderDistrictProfile(box: HTMLElement, code: string) {
           : ""
       }
       ${
-        ev?.events?.length
+        ev?.events?.length && upcoming(ev.events).length
           ? `<section class="card">
               <header class="card-head"><h2>${L("À venir près de chez vous", "Coming up nearby")}</h2></header>
-              <ul class="events">${ev.events.slice(0, 8).map((e) => `<li><span class="muted small">${fmtDate(e.start)}${e.end && e.end !== e.start ? ` – ${fmtDate(e.end)}` : ""}, ${esc(e.commune ?? "")}</span><br><a href="${esc(safeUrl(e.url ?? e.datatourisme))}" target="_blank" rel="noopener">${esc(e.name)}</a></li>`).join("")}</ul>
+              <ul class="events">${upcoming(ev.events).slice(0, 8).map((e) => eventItem(e, true)).join("")}</ul>
               <p class="source">DATAtourisme, ${L("offices de tourisme", "tourist offices")}.</p>
             </section>`
           : ""

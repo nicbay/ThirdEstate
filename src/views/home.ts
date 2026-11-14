@@ -10,7 +10,8 @@ import { average, latestPollDate, pollsInWindow, WINDOW } from "../lib/polls";
 import { colon } from "../lib/format";
 import { esc, safeUrl } from "../util";
 import { mpChip, townBrief } from "./brief";
-import { bindSearch, depOf, loadTownBundle, searchBox, townExtra } from "./explore";
+import { bindSearch, byTownHall, depOf, eventItem, loadDepartmentTowns, loadTownBundle, searchBox, townExtra, upcoming } from "./explore";
+import { fetchJson } from "../data";
 import { armsSlot, loadCommuneArms, loadDepartmentArms, paintArms } from "../lib/arms";
 import { mountForecastChart, scenarioForecast, scenarioFromUrl } from "./forecast-chart";
 import { forecastLine, heroDay } from "./hero-day";
@@ -99,12 +100,24 @@ async function drawMine(box: HTMLElement, code: string, name: string) {
     const dep = depOf(code);
     const [b, bundle, ca, da] = await Promise.all([townBrief(code, name), loadTownBundle(dep), loadCommuneArms(dep), loadDepartmentArms()]);
     const photo = townExtra(bundle[code])?.photo;
+    // coming up: the town's own events (town hall first), else the district's nearest ones
+    const { towns } = await loadDepartmentTowns(dep).catch(() => ({ towns: new Map() }));
+    const t = towns.get(code);
+    let evs: { start: string; end?: string; commune?: string; publisher?: string }[] = upcoming(t?.events ?? []);
+    let nearby = false;
+    if (!evs.length && t?.districts?.[0]) {
+      const ev = await fetchJson<{ events: { start: string; end?: string; commune?: string; publisher?: string }[] }>(`/data/districts/events/${t.districts[0].code}.json`).catch(() => null);
+      evs = upcoming(ev?.events ?? []);
+      nearby = true;
+    }
+    evs = [...evs].sort((a, b) => Number(byTownHall(b)) - Number(byTownHall(a)) || a.start.localeCompare(b.start)).slice(0, 5);
+    const eventsHtml = evs.length ? `<section class="mine-events"><h3>${nearby ? L("À venir près de chez vous", "Coming up nearby") : L(`À venir à ${esc(name)}`, `Coming up in ${esc(name)}`)}</h3><ul class="events">${evs.map((e) => eventItem(e, nearby)).join("")}</ul></section>` : "";
     // the town's own picture and coat of arms; the department's arms lead to the department, its towns and MPs
     const compare = `<a class="button cmp-cta" href="#/comparer/${code}">${L(`Comparer ${esc(name)} avec une autre commune`, `Compare ${esc(name)} with another town`)} →</a>`;
     const ident = `<div class="mine-id">${photo ? `<a class="mine-photo" href="#/ville/${code}"><img src="${esc(safeUrl(photo.url))}" alt="${esc(name)}" loading="lazy"/></a>` : ""}<div class="mine-arms">${armsSlot(ca[code], L(`Armoiries : ${name}`, `Coat of arms: ${name}`), "m")}${armsSlot(da[dep], L("Le département, ses communes et ses députés", "The department, its towns and MPs"), "s", `#/explorer/${dep}`)}</div></div>`;
     box.innerHTML = `<section class="card mine">
       <header class="card-head"><h2>${L("Chez vous", "Where you live")}${colon()}<a href="#/ville/${code}">${esc(name)}</a></h2><a href="#/ville/${code}">${L("Toute la commune", "The whole town")}</a></header>
-      ${ident}${compare}
+      ${ident}${compare}${eventsHtml}
       <div class="mine-grid">
         <div class="brief-text">${b.sentences.length ? `<p>${b.sentences.join(" ")}</p>` : `<p class="muted">${L("Pas assez de données publiées pour résumer cette commune.", "Not enough published data to sum up this town.")}</p>`}</div>
         <aside>

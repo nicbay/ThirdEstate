@@ -457,9 +457,8 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
         const m = meta(c.name);
         return `<li class="sim-cand" data-c="${esc(c.name)}" style="--c:${color(c.name)}">
           <span class="sim-cand-n"><b>${esc(m.surname)}</b>${m.party ? ` <small>${esc(m.party)}</small>` : ""}<em class="sim-q">${L("qualifié", "through")}</em></span>
-          <span class="sim-stepper"><button type="button" class="sim-step" data-step="${esc(c.name)}" data-d="-0.5" aria-label="${esc(L(`${c.name} : un demi-point de moins`, `${c.name}: half a point less`))}">−</button>
-          <label class="sim-cand-v"><span class="sim-sr">${esc(L(`Score de ${c.name} au premier tour, en %`, `${c.name}’s first-round share, %`))}</span><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" maxlength="5" data-share="${esc(c.name)}"/><i aria-hidden="true">%</i></label>
-          <button type="button" class="sim-step" data-step="${esc(c.name)}" data-d="0.5" aria-label="${esc(L(`${c.name} : un demi-point de plus`, `${c.name}: half a point more`))}">+</button></span>
+          <span class="sim-stepper"><input type="range" class="sim-range" min="0" max="60" step="0.5" data-range="${esc(c.name)}" aria-label="${esc(L(`Score de ${c.name} au premier tour`, `${c.name}’s first-round share`))}"/>
+          <label class="sim-cand-v"><span class="sim-sr">${esc(L(`Score de ${c.name} au premier tour, en %`, `${c.name}’s first-round share, %`))}</span><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" maxlength="5" data-share="${esc(c.name)}"/><i aria-hidden="true">%</i></label></span>
           <span class="sim-delta" data-delta="${esc(c.name)}"></span>
           <button type="button" class="sim-x" data-remove="${esc(c.name)}" title="${esc(L("Se retire : ses voix vont aux candidats les plus proches", "Withdraws: their votes go to the closest candidates"))}" aria-label="${esc(L(`${c.name} se retire`, `${c.name} withdraws`))}" ${s.cands.length <= 2 ? "disabled" : ""}>×</button>
         </li>`;
@@ -561,6 +560,10 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
     for (const c of s.cands) {
       const inp = app.querySelector<HTMLInputElement>(`[data-share="${CSS.escape(c.name)}"]`);
       if (inp && document.activeElement !== inp) inp.value = dec(c.share);
+      // the slider follows the share (not while it's being dragged)
+      const rg = app.querySelector<HTMLInputElement>(`[data-range="${CSS.escape(c.name)}"]`);
+      if (rg && document.activeElement !== rg) rg.value = String(c.share);
+      rg?.style.setProperty("--p", `${Math.min(100, (100 * c.share) / 60).toFixed(1)}%`);
       const d = app.querySelector<HTMLElement>(`[data-delta="${CSS.escape(c.name)}"]`);
       if (d) { const v = r1(c.share - refShare(c.name)); d.textContent = v ? signed(v) : "="; d.title = L("Écart à la moyenne des sondages", "Gap to the polling average"); }
       app.querySelector(`[data-c="${CSS.escape(c.name)}"]`)?.classList.toggle("is-fin", s.finalists.includes(c.name));
@@ -963,6 +966,16 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
     }
   });
 
+  // a candidate's slider: drag to set the share, the others rebalance as with the bar's dividers
+  root.addEventListener("input", (e) => {
+    const r = (e.target as Element).closest<HTMLInputElement>("input[data-range]");
+    if (!r) return;
+    const c = cand(r.dataset.range!);
+    if (!c) return;
+    nudgeCheckpoint(`range:${c.name}`);
+    nudgeShare(c.name, Number(r.value) - c.share);
+    r.style.setProperty("--p", `${Math.min(100, (100 * c.share) / 60).toFixed(1)}%`);
+  });
   root.addEventListener("click", (e) => {
     const b = (e.target as Element).closest<HTMLButtonElement>("button");
     if (!b || b.disabled) return;

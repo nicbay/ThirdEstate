@@ -147,3 +147,15 @@ h2.sim-k { font-stretch: 100%; }
   .sim-cand-v { justify-content: center; }
   .sim-cand-v input { width: 100%; max-width: 6rem; }
 }
+
+/* first round: a slider per candidate in their colour (replaces the − / + buttons), the figure beside it */
+.sim-cand { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr) 2.9rem auto; }
+.sim-stepper { display: flex; align-items: center; gap: 0.5rem; min-width: 0; }
+.sim-range { -webkit-appearance: none; appearance: none; flex: 1; min-width: 70px; height: 28px; background: transparent; cursor: pointer; margin: 0; }
+.sim-range::-webkit-slider-runnable-track { height: 8px; background: linear-gradient(90deg, var(--c) var(--p, 0%), var(--wash, #2a2f48) var(--p, 0%)); }
+.sim-range::-moz-range-track { height: 8px; background: var(--wash, #2a2f48); }
+.sim-range::-moz-range-progress { height: 8px; background: var(--c); }
+.sim-range::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 22px; margin-top: -7px; background: var(--paper); border: 3px solid var(--c); box-shadow: 2px 2px 0 var(--ink); }
+.sim-range::-moz-range-thumb { width: 14px; height: 18px; background: var(--paper); border: 3px solid var(--c); border-radius: 0; box-shadow: 2px 2px 0 var(--ink); }
+.sim-range:focus-visible { outline: 2px solid var(--focus, var(--ink)); outline-offset: 2px; }
+@media (max-width: 640px) { .sim-cand { grid-template-columns: minmax(0, 1fr) 2.9rem auto; } .sim-stepper { grid-column: 1 / -1; grid-row: 2; padding-bottom: 0.3rem; } }
