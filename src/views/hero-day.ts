@@ -130,6 +130,13 @@ export async function heroDay() {
     : `Our forecast gives <b>${esc(meta(fav.name).surname)}</b> a ${pct(fav.win, 0)} chance of being elected${pair0 ? `; most likely runoff: ${esc(meta(pair0.a).surname)} – ${esc(meta(pair0.b).surname)} (${Math.round(pair0.p)}% of simulations)` : ""}.`);
   if (events[0]) takeaways.push(`${L("Dans la campagne", "On the trail")}${colon()}${events[0].html.replace(/\.\s*$/, "")}.`);
 
+  // ---- the poll average (bars, 7-day move, 60-day sparkline): shown inside the note of the day at the top
+  const pollsHtml = `<section class="hday-block ed-polls">
+        <header><h2>${L(`Moyenne des sondages au ${fmtDate(latest)}`, `Poll average, ${fmtDate(latest)}`)}</h2><a href="#/sondages">${L("Chaque sondage", "Every poll")} →</a></header>
+        <ol class="hdp">${pollRows}</ol>
+        <p class="hday-small">${L("Intentions de vote aujourd’hui, pondérées par la note des instituts, corrigées de leurs penchants · variation sur 7 jours. Le graphique au-dessus prolonge ces moyennes jusqu’au premier tour.", "Voting intention today, weighted by institute grade, corrected for their leans · change over 7 days. The chart above carries these averages forward to the first round.")}${infoTip(L("Chaque sondage compte selon la note de son institut (de A+ à F), gagnée par l’écart entre ses derniers sondages et les résultats depuis 2002. La flèche donne la variation sur les 7 derniers jours.", "Each poll counts by its institute’s grade (A+ to F), earned from how far its final polls landed from the results since 2002. The arrow is the change over the last 7 days."), L("À propos de la moyenne", "About the average"))}${lastLine ? ` · ${lastLine}` : ""}</p>
+      </section>`;
+
   // ---- the note of the day: takeaways, then the polls, what changed, the stories and the posts
   // a dated desk brief: a few run-in lines under an ink rule, no boxes, no counters
   const dayLabel = new Date(today()).toLocaleDateString(fr ? "fr-FR" : "en-GB", { day: "numeric", month: "long" });
@@ -138,11 +145,6 @@ export async function heroDay() {
     <header class="hday-panel-head"><h2 id="hday-note-title">${L(`Ce qu’il faut retenir du ${dayLabelFr}`, `What to know on ${dayLabel}`)}</h2></header>
     <ul class="hday-take">${takeaways.map((t) => `<li>${t}</li>`).join("")}</ul>
     <div class="hday-note">
-      <section class="hday-block">
-        <header><h2>${L(`Moyenne des sondages au ${fmtDate(latest)}`, `Poll average, ${fmtDate(latest)}`)}</h2><a href="#/sondages">${L("Chaque sondage", "Every poll")} →</a></header>
-        <ol class="hdp">${pollRows}</ol>
-        <p class="hday-small">${L("Intentions de vote aujourd’hui, pondérées par la note des instituts, corrigées de leurs penchants · variation sur 7 jours. Le graphique au-dessus prolonge ces moyennes jusqu’au premier tour.", "Voting intention today, weighted by institute grade, corrected for their leans · change over 7 days. The chart above carries these averages forward to the first round.")}${infoTip(L("Chaque sondage compte selon la note de son institut (de A+ à F), gagnée par l’écart entre ses derniers sondages et les résultats depuis 2002. La flèche donne la variation sur les 7 derniers jours.", "Each poll counts by its institute’s grade (A+ to F), earned from how far its final polls landed from the results since 2002. The arrow is the change over the last 7 days."), L("À propos de la moyenne", "About the average"))}${lastLine ? ` · ${lastLine}` : ""}</p>
-      </section>
       ${eventsHtml ? `<section class="hday-block"><header><h2>${L("Ce qui a bougé", "What changed")}</h2><a href="#/2027">${L("Les candidats", "Candidates")} →</a></header><ul class="hde">${eventsHtml}</ul></section>` : ""}
       ${storiesHtml ? `<section class="hday-block"><header><h2>${L("Fil rouge, fil bleu", "Red feed, blue feed")}</h2><a href="#/fil">${L("Tout le fil", "The whole feed")} →</a></header><ul class="hdn">${storiesHtml}</ul></section>` : ""}
       ${postsHtml ? `<section class="hday-block"><header><h2>${L("Ce que publient les députés", "What MPs are posting")}</h2><a href="#/fil">${L("Tout le fil", "The whole feed")} →</a></header><ul class="hds">${postsHtml}</ul></section>` : ""}
@@ -239,7 +241,7 @@ export async function heroDay() {
     svg.addEventListener("click", (e) => { const href = (e.target as Element).closest<SVGGElement>(".arrow")?.dataset.href; if (href) location.hash = href; });
   };
   void head; // the race's headline now lives in the note of the day, not as the page's first words
-  return { headHtml, artHtml, noteHtml, parliamentHtml, shiftsHtml, start };
+  return { headHtml, artHtml, noteHtml, pollsHtml, parliamentHtml, shiftsHtml, start };
 }
 
 /** The widgets sit on paper: party colours as they are, lifted only when the reader's paper is dark. */

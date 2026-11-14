@@ -111,7 +111,25 @@ for (const day of days) {
   // the week in review: the markets' figure for the leading candidates, each day of the last seven
   const week = days.filter((d) => d.date > iso(Date.parse(D) - 7 * DAY) && d.date <= D).map((d) => ({ date: d.date, v: Object.fromEntries(rows.slice(0, 5).map((r) => [r.name, market(d, r.name) == null ? null : r1(market(d, r.name))])) }));
 
-  const edition = { date: D, provisional: !!day.provisional, prev: y1?.date ?? null, head, rows: rows.slice(0, 8), polls: fresh, headlines: headlines.slice(0, 5), analysis, week };
+  // the note of the day: Claude's four lines when the daily brief wrote them (daily/notes/<date>.json), else a
+  // plain one from the figures: the biggest moves, whether polls agree, and the most-covered story
+  const ai = await read(`daily/notes/${D}.json`).catch(() => null);
+  const fmt = (v, fr) => `${v > 0 ? "+" : "−"}${fr ? String(Math.abs(v)).replace(".", ",") : Math.abs(v)}`;
+  // a headline, short: without the "Présidentielle 2027 :" prefix, cut at a word near 80 characters
+  const short = (t) => { const x = t.replace(/^(EN DIRECT\s*[-–]\s*)?(Présidentielle|Élection présidentielle)\s*2027\s*:\s*/i, ""); return x.length <= 80 ? x : `${x.slice(0, 80).replace(/\s+\S*$/, "")}…`; };
+  const plain = (fr) => {
+    const lines = analysis.slice(0, 2).map((a) => {
+      const pol = a.factors.find((f) => f.kind === "polls"), news = a.factors.find((f) => f.kind === "news");
+      const mv = a.d1 != null && Math.abs(a.d1) >= 1 ? (fr ? `${fmt(a.d1, true)} point en 24 h` : `${fmt(a.d1, false)} pt in 24h`) : (fr ? `${fmt(a.d7, true)} points en 7 jours` : `${fmt(a.d7, false)} pts in 7 days`);
+      const why = pol?.same ? (fr ? "comme dans les sondages" : "in line with the polls") : news ? (fr ? `l’actualité a pu jouer (« ${short(news.headlines[0].title)} »)` : `the news may have played a part ("${short(news.headlines[0].title)}")`) : (fr ? "sans explication claire" : "with no clear explanation");
+      return `${surname(a.name)}${fr ? " : " : ": "}${mv} ${fr ? "sur les marchés" : "on the markets"}, ${why}.`;
+    });
+    if (!lines.length) lines.push(fr ? "Pas de mouvement notable sur les marchés ni dans les sondages." : "No notable move on the markets or in the polls.");
+    if (headlines[0]) lines.push(fr ? `L’info la plus reprise : « ${short(headlines[0].title)} » (${headlines[0].n} médias).` : `Most-covered story: "${short(headlines[0].title)}" (${headlines[0].n} outlets).`);
+    return lines.slice(0, 3).join(" ");
+  };
+  const note = ai ? { fr: ai.fr, en: ai.en, by: ai.by } : { fr: plain(true), en: plain(false), by: "template" };
+  const edition = { date: D, provisional: !!day.provisional, note, prev: y1?.date ?? null, head, rows: rows.slice(0, 8), polls: fresh, headlines: headlines.slice(0, 5), analysis, week };
   await writeFile(new URL(`daily/editions/${D}.json`, ROOT), JSON.stringify(edition));
   index.push({ date: D, head });
 }
