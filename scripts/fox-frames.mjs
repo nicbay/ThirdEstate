@@ -10,7 +10,7 @@ const SRC = process.env.FOX_SRC ? new URL(`file:///${process.env.FOX_SRC}`) : FI
 const sprites = JSON.parse(await readFile(SRC, "utf8"));
 sprites.palette = { ...sprites.palette, S: "#6e1220", R: "#4a0d1a" };
 
-const W = 34, H = 22;
+const W = 34, H = 23;
 const blank = (w = W, h = H) => Array.from({ length: h }, () => Array(w).fill("."));
 const put = (g, rows, ox = 0, oy = 0) => rows.forEach((r, y) => [...r].forEach((c, x) => { if (c !== "." && g[y + oy]?.[x + ox] !== undefined) g[y + oy][x + ox] = c; }));
 const outline = (g, part) => {
@@ -54,15 +54,16 @@ const BODY = [
   "....................KLLLLLLLLLLK..",
   "....................KDLLLLLLELLK..",
   "...................KDLLLLLLLLMMMK.",
-  "...................KDLLLLLMMMMMNK.",
-  "...........KKKKKKKKKKDLLMMMMMMKK..",
+  "............KKKKKKKKDLLLLLMMMMMNK.",
+  "...........KDLLLLLLLLLLLMMMMMMKK..",
   "..........KDLLLLLLLLLLDMMMMMGK....",
   "..........KDLLLLLLLLLLLLMMMMGK....",
+  "..........KDLLLLLLLLLLLLLMMMGK....",
   "..........KDLLLLLLLLLLLLLMMMGK....",
   "..........KDDLLLLLLLLLLLLLMMGK....",
   "..........KDDLLLKKKKKKKKDDLMGK....",
 ];
-const HIP = 14, GROUND = 21, STRIDE = 4;
+const HIP = 15, GROUND = 22, STRIDE = 4;
 // [hip x, gait phase, near?]: a trot, each near leg paired with the far leg at the other end
 const LEGS = [
   [15, 0.0, false], // far hind
@@ -95,7 +96,7 @@ const walk = [];
 for (let f = 0; f < 8; f++) {
   const g = blank();
   // the tail swings a little with the gait, held out behind, its tip a touch low
-  const tl = tail(12, 10, 10, 1, [1, 0, -1, -2, -2, -1, 0, 1][f]);
+  const tl = tail(12, 11, 10, 1, [1, 0, -1, -2, -2, -1, 0, 1][f]);
   for (const [hx, ph, near] of LEGS.filter((l) => !l[2])) layer(g, leg(hx, (f / 8 + ph) % 1, near));
   layer(g, tl);
   put(g, BODY);
@@ -122,14 +123,34 @@ const SWEEP = [[0, 0], [0, -2], [-1, -4], [-1, -6], [-2, -7], [-2, -8]];
 const sitWith = (body, k) => {
   const g = blank(28, 22);
   const [bend, lift] = SWEEP[k];
-  const tl = tail(10, 19, 9, bend, lift, 20).map((r) => r.slice(0, 28));
+  const tl = tail(10, 19, 9, bend, lift, 20).slice(0, 22).map((r) => r.slice(0, 28));
   layer(g, tl);
   put(g, body);
   return rows(g);
 };
 
+
+// ---- asleep: curled into a ball, head down on the paws, eyes shut, the tail wrapped round over the nose
+const CURL = [
+  "........KKKKKKK.............",
+  "......KKLLLLLLLKK...........",
+  ".....KLLLLLLLLLLLK..........",
+  "....KLLLLLLLLLLLLLK..K...K..",
+  "...KDLLLLLLLLLLLLLLKKLK.KLK.",
+  "...KDLLLLLLLLLLLLLKLLMLKLMLK",
+  "..KDLLLLLLLLLLLLLLKLLLLLLLLK",
+  "..KDLLLLLLLLLLLLLLKLEELLLLLK",
+  "..KDDLLLLLLLLLLLLKLLLLLLMMMK",
+  ".KDDLLLLLLLLLLLLLKLLLLLMMMNK",
+  ".KDDKKKKKKKKKKKKKKKKKKKKKKK.",
+  ".KDKLLLLLLLLLLLLLLLLLMMMMMK.",
+  ".KDKDDDDDDDDDDDDDDDDDGGGGGK.",
+  "..KKKKKKKKKKKKKKKKKKKKKKKK..",
+];
+
 const frames = { ...sprites.frames };
-for (const k of Object.keys(frames)) if (/^(walk\d|wag\d|sitB)$/.test(k)) delete frames[k];
+for (const k of Object.keys(frames)) if (/^(walk\d|wag\d|sitB|bowl)$/.test(k)) delete frames[k];
+frames.curl = { rows: CURL };
 walk.forEach((r, i) => { frames[`walk${i}`] = { rows: r }; });
 frames.sitA = { rows: sitWith(sitBody, 0) };
 frames.blink = { rows: sitWith(blinkBody, 0) };

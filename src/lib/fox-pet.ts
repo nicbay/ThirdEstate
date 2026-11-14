@@ -5,7 +5,7 @@
 // - Where: one absolutely positioned layer at the document's origin (`.fox-layer`), so the fox is placed in page
 //   coordinates and scrolls with the boxes it stands on without any work; it never takes part in layout. Only the
 //   fox's painted pixels take the pointer, everything else under it stays clickable.
-// - Body: one state (`act`) drives both the frame and the motion: sit, walk, lie, stretch, bowl (asleep), edge
+// - Body: one state (`act`) drives both the frame and the motion: sit, walk, lie, stretch, sleep (curled up), edge
 //   (tail over a corner), look, crouch → air → land (a jump, an authored parabola, fox-physics.ts), hang (held
 //   by the scruff), fly (thrown: simulated, with a spring tail), dizzy, flip (its trick), gone (off screen).
 // - Mind: `life()` is an async loop that picks what to do next (wander, hop to another box, sleep, play with a
@@ -44,8 +44,8 @@ function svg(name: Frame) {
 }
 const FR = Object.fromEntries((Object.keys(sprites.frames) as Frame[]).map((k) => [k, svg(k)])) as Record<Frame, ReturnType<typeof svg>>;
 
-type Act = "sit" | "walk" | "lie" | "stretch" | "bowl" | "edge" | "look" | "crouch" | "air" | "land" | "hang" | "fly" | "dizzy" | "flip" | "sulk" | "gone";
-const RESTING = new Set<Act>(["sit", "lie", "bowl", "edge", "look", "sulk", "dizzy"]);
+type Act = "sit" | "walk" | "lie" | "stretch" | "sleep" | "edge" | "look" | "crouch" | "air" | "land" | "hang" | "fly" | "dizzy" | "flip" | "sulk" | "gone";
+const RESTING = new Set<Act>(["sit", "lie", "sleep", "edge", "look", "sulk", "dizzy"]);
 
 // what the visit remembers: how often the fox was thrown, and when last
 const MEM = "te-fox";
@@ -103,12 +103,12 @@ function createFox(opts: Opts) {
   const say = (t: string) => { if (bubble.textContent !== t) bubble.textContent = t; };
   const setAct = (a: Act) => {
     act = a; t0 = performance.now();
-    el.classList.toggle("is-asleep", a === "bowl");
+    el.classList.toggle("is-asleep", a === "sleep");
     el.classList.toggle("is-flying", a === "fly");
     el.classList.toggle("is-held", a === "hang");
     el.style.visibility = a === "gone" ? "hidden" : "";
     if (a === "gone" && document.activeElement === el) el.blur(); // decorative: never keep focus on an absent fox
-    say(a === "bowl" ? "z z z" : a === "sulk" ? "…" : "");
+    say(a === "sleep" ? "z z z" : a === "sulk" ? "…" : "");
     wake();
   };
 
@@ -235,7 +235,7 @@ function createFox(opts: Opts) {
     const now = performance.now(), r = Math.random(), [lo, hi] = standRange(surf);
     // a trick now and then, rare enough to surprise: at most every 70 s, one chance in eight
     if (now - lastTrick > 70000 && Math.random() < 0.125) { lastTrick = now; if (await playTrick(api)) return true; }
-    if (rounds % 8 === 0) return (await timed("bowl", 16000)) && timed("stretch", 1500);
+    if (rounds % 8 === 0) return (await timed("sleep", 16000)) && timed("stretch", 1500);
     if (r < 0.2) return hopSomewhere();
     if (r < 0.5) {
       const tx = x - lo > (hi - lo) * 0.6 ? (Math.random() < 0.6 ? lo : rand(lo, hi)) : Math.random() < 0.5 ? hi : rand(lo, hi);
@@ -387,7 +387,7 @@ function createFox(opts: Opts) {
       case "walk": return `walk${Math.floor(walked / 6) % 8}` as Frame;
       case "lie": case "sulk": return "lie";
       case "stretch": return "stretch";
-      case "bowl": return "bowl";
+      case "sleep": return "curl";
       case "edge": return "edge";
       case "crouch": case "land": case "flip": return "crouch";
       case "air": return "leap";
@@ -405,6 +405,7 @@ function createFox(opts: Opts) {
     let rot = 0, sx = 1, sy = 1, py = 0, lift = 0;
     switch (act) {
       case "crouch": sx = 1.06; sy = 0.86; break;
+      case "sleep": if (!reduced) sy = 1 + 0.035 * Math.sin(e / 650); break; // slow breathing
       case "land": {
         const u = Math.min(1, e / 150);
         sx = 1.16 - 0.16 * u; sy = 0.8 + 0.2 * u; py = 20; rot = landRot * (1 - u);
@@ -456,7 +457,7 @@ function createFox(opts: Opts) {
 
   // ---- attention: the reader idle, or lingering on something
   function attentionCheck(now: number) {
-    if (reduced || !surf || attention || props.size || act === "bowl" || act === "sulk" || act === "dizzy") return;
+    if (reduced || !surf || attention || props.size || act === "sleep" || act === "sulk" || act === "dizzy") return;
     const calm = act === "sit" || act === "lie" || act === "walk" || act === "edge";
     if (!calm) return;
     let found: { el: Element; px: number } | null = null;
@@ -539,7 +540,7 @@ function createFox(opts: Opts) {
   el.addEventListener("click", () => {
     if (suppressClick) { suppressClick = false; return; }
     if (reduced || !surf) return;
-    if (act === "bowl") { const g = ++gen; void timed("stretch", 1200).then((ok) => { if (ok && g === gen) void life(); }); return; }
+    if (act === "sleep") { const g = ++gen; void timed("stretch", 1200).then((ok) => { if (ok && g === gen) void life(); }); return; }
     if (!RESTING.has(act) && act !== "walk") return;
     const g = ++gen;
     void timed("flip", 620).then(async (ok) => { if (ok && g === gen && (await timed("sit", 1200)) && g === gen) void life(); });
