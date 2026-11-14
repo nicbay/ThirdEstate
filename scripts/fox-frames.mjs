@@ -148,9 +148,34 @@ const CURL = [
   "..KKKKKKKKKKKKKKKKKKKKKKKK..",
 ];
 
+// ---- lying down: the same head, the body low on the box, front paws stretched out, the tail behind on the ground
+const LIE = [
+  "......................K......K....",
+  ".....................KLK....KLK...",
+  ".....................KLMK..KMLK...",
+  ".....................KLMLKKLMLK...",
+  "....................KLLLLLLLLLLK..",
+  "....................KLLLLLLLLLLK..",
+  "....................KDLLLLLLELLK..",
+  "...................KDLLLLLLLLMMMK.",
+  "..........KKKKKKKKKKDLLLLLMMMMMNK.",
+  ".........KDLLLLLLLLLLLLMMMMMMKK...",
+  "........KDLLLLLLLLLLLLLDMMMMMGK...",
+  "........KDLLLLLLLLLLLLLLLMMMMGKKKK",
+  "........KDDLLLLLLLLLLLLDSSSSSSSMMK",
+  "........KKKKKKKKKKKKKKKKKKKKKKKKKK",
+];
+const lie = (() => {
+  const g = blank(34, LIE.length);
+  layer(g, tail(10, 11, 9, 0.5, 0, 12).slice(0, LIE.length));
+  put(g, LIE);
+  return rows(g);
+})();
+
 const frames = { ...sprites.frames };
 for (const k of Object.keys(frames)) if (/^(walk\d|wag\d|sitB|bowl)$/.test(k)) delete frames[k];
 frames.curl = { rows: CURL };
+frames.lie = { rows: lie };
 walk.forEach((r, i) => { frames[`walk${i}`] = { rows: r }; });
 frames.sitA = { rows: sitWith(sitBody, 0) };
 frames.blink = { rows: sitWith(blinkBody, 0) };
