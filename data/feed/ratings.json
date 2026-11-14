@@ -13185,6 +13185,589 @@
       },
       "check": null,
       "postTime": "2026-11-11T14:15:42.896Z"
+    },
+    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3n2brbhw22s2l": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:20:58.118Z",
+      "storyItems": [
+        "3a30426a6510"
+      ],
+      "storyTitle": "\"Franc-Jeu\". Avec Michel-Edouard Leclerc",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message promotionnel annonçant un débat, sans position politique.",
+        "rationale_en": "Promotional post announcing a debate, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste : simple annonce d'émission.",
+        "rationale_en": "No populist rhetoric: simple broadcast announcement."
+      },
+      "check": null,
+      "postTime": "2026-11-14T15:00:40.191Z"
+    },
+    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3n2bqvzpb3k2l": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:20:58.118Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Solidarité avec une famille après un décès en garde à vue, sans contenu idéologique clair sur l'axe gauche-droite.",
+        "rationale_en": "Solidarity with a family after a death in custody, with no clear left-right ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Dénonciation factuelle sans opposition peuple contre élites ni rhétorique populiste.",
+        "rationale_en": "Factual statement without people-versus-elites framing or populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-14T14:54:16.187Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3n2bqkhry4k2l": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:20:58.118Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Compte rendu d'une visite de terrain, sans position politique.",
+        "rationale_en": "Report of a field visit, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-14T14:47:48.305Z"
+    },
+    "yt:Sv-e5yT6ejU": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:20:58.118Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Promotion d'une émission, sans position politique exprimée.",
+        "rationale_en": "Promotion of a show, with no political position expressed."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-14T14:00:28.000Z"
+    },
+    "yt:_F_s723eJy0": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:20:58.118Z",
+      "storyItems": [
+        "939f450ecf3a",
+        "360164b8a69a",
+        "c06dbd48869a",
+        "4d0105ccc983",
+        "bec3cf5634fd",
+        "aa4288fbb4d4"
+      ],
+      "storyTitle": "France - Afrique du Sud : le résumé de la victoire sur le fil des Bleus face aux Springboks",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Réaction sportive sans contenu idéologique.",
+        "rationale_en": "Sports reaction with no ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-14T12:10:12.000Z"
+    },
+    "yt:HJl9Bh9q4KE": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:20:58.118Z",
+      "storyItems": [
+        "1d342bb707ac",
+        "ccbda74e2dc3",
+        "172b2af9b15a",
+        "d8bd702d4218",
+        "a233be124026",
+        "dadaa835cf28"
+      ],
+      "storyTitle": "\"Il nous manque encore une centaine\" de parrainages pour la candidature à la présidentielle de Marine Le Pen, chiffre Edwige Diaz",
+      "political": true,
+      "lean": {
+        "score": 0.8,
+        "rationale_fr": "Opposition à la poursuite des financements français à l'Ukraine, position de droite nationaliste selon le contexte RN.",
+        "rationale_en": "Opposition to continued French funding for Ukraine, a right-nationalist position in the RN context."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Réponse d'entretien sans opposition peuple contre élites ni rhétorique populiste marquée.",
+        "rationale_en": "Interview answer without marked people-versus-elites framing or populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-14T11:00:33.000Z"
+    },
+    "bsky:at://did:plc:4yo5qhevwdkksmmxtvlben3v/app.bsky.feed.post/3n2bbsfpxne22": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:20:58.118Z",
+      "storyItems": [
+        "03641afefc4c"
+      ],
+      "storyTitle": "\"La voix des citoyens ne doit pas être ignorée\" : à Antalya, des milliers de manifestants dénoncent une COP sourde aux populations",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Demande de financements climatiques et d'une transition écologique juste, position d'écologie de gauche.",
+        "rationale_en": "Calls for climate financing and a just ecological transition, a left-ecologist position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Interpellation directe du président sans opposition peuple contre élites marquée.",
+        "rationale_en": "Direct challenge to the president without marked people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-14T10:23:48.424Z"
+    },
+    "yt:idOgOKP7SI0": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:20:58.119Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.9,
+        "rationale_fr": "Critique du système capitaliste et de la socialisation des pertes des entreprises, rhétorique anticapitaliste.",
+        "rationale_en": "Critique of the capitalist system and the socialization of company losses, anticapitalist rhetoric."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "simplisme",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Formule simplificatrice sur le capitalisme et appel à l'indignation avec « Ce n'est plus possible ».",
+        "rationale_en": "Simplifying formula about capitalism and an indignation appeal with 'Ce n'est plus possible'."
+      },
+      "check": {
+        "claim": "211 milliards d'euros d'aides directes ou indirectes aux entreprises chaque année",
+        "why_fr": "Ce montant dépend fortement des définitions retenues (aides directes, niches fiscales, exonérations) et varie selon les études ; le périmètre gagne à être précisé.",
+        "why_en": "This figure depends heavily on the definitions used (direct aid, tax expenditures, exemptions) and varies across studies; the scope should be specified.",
+        "sources": [
+          {
+            "title": "Vie publique, dossiers sur les aides aux entreprises",
+            "url": "https://www.vie-publique.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-14T09:55:19.000Z"
+    },
+    "yt:hBWMa13X1x8": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:21:06.724Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Appel à signer pour soutenir la candidature de Jean-Luc Mélenchon, figure de la gauche radicale et de LFI.",
+        "rationale_en": "Call to sign in support of Jean-Luc Mélenchon's candidacy, a figure of the radical left (LFI)."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Pas de rhétorique populiste marquée ; simple invitation à une réunion et à une signature.",
+        "rationale_en": "No marked populist rhetoric; simply an invitation to a meeting and a petition signature."
+      },
+      "check": null,
+      "postTime": "2026-11-14T09:44:37.000Z"
+    },
+    "yt:8wyrIB5rzG4": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:21:06.724Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Débat sur les alternatives au néolibéralisme et la place de la puissance publique, cadre de la gauche radicale insoumise.",
+        "rationale_en": "Debate on alternatives to neoliberalism and the role of public power, framed within the radical left LFI tradition."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "anti_elites"
+        ],
+        "rationale_fr": "Critique générale du néolibéralisme dominant, sans appel direct au peuple contre des élites nommées.",
+        "rationale_en": "General critique of dominant neoliberalism, without direct appeal to the people against named elites."
+      },
+      "check": null,
+      "postTime": "2026-11-14T09:37:06.000Z"
+    },
+    "bsky:at://did:plc:hiebgjpdm7uhdm2zjafcg5on/app.bsky.feed.post/3n2b5yqmg4j2g": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:21:06.724Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de partage d'un passage médiatique, sans contenu idéologique explicite.",
+        "rationale_en": "Sharing a media appearance, with no explicit ideological content."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Formule « garde à vue médiatique » mobilise une tonalité de victimisation, sans argument développé.",
+        "rationale_en": "The phrase « garde à vue médiatique » conveys a victimhood tone without developed argument."
+      },
+      "check": null,
+      "postTime": "2026-11-14T09:15:46.004Z"
+    },
+    "bsky:at://did:plc:k4zxrbhn35w47kyskzs3pse4/app.bsky.feed.post/3n2ayr6ey222q": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:21:06.724Z",
+      "storyItems": [
+        "f7ea34d82dd0",
+        "60b052fb5ad8"
+      ],
+      "storyTitle": "Jeune Garde : Un assistant du député LFI Raphaël Arnault entendu dans l’enquête sur la reconstitution du groupuscule",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Dénonce la répression des lycéen·nes et les gardes à vue, positions de gauche radicale sur les libertés et la jeunesse.",
+        "rationale_en": "Denounces repression of high-school students and police custody, a radical-left position on civil liberties and youth."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel",
+          "delegitimation"
+        ],
+        "rationale_fr": "Mise en avant de la violence subie par la jeunesse et de l'indignation, avec des autorités implicitement présentées comme oppressives.",
+        "rationale_en": "Emphasises violence against youth and indignation, with authorities implicitly cast as oppressive."
+      },
+      "check": null,
+      "postTime": "2026-11-14T07:42:03.514Z"
+    },
+    "bsky:at://did:plc:skhpi6tvodwwkygydxmka5tm/app.bsky.feed.post/3n2at3ls3ac24": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:21:06.724Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.3,
+        "rationale_fr": "Proposition d'un fonds pour l'emploi des jeunes, mesure active de politique de l'emploi plutôt sociale-démocrate.",
+        "rationale_en": "Proposal for a fund for youth-specific jobs, an active employment policy with a social-democratic flavour."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "peuple_homogene"
+        ],
+        "rationale_fr": "« La jeunesse veut » présente un groupe comme bloc unique, sans rhétorique anti-élites.",
+        "rationale_en": "« La jeunesse veut » presents a group as a single bloc, without anti-elite rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-14T06:00:30.650Z"
+    },
+    "yt:7Yv0xZJ4ZVc": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:21:06.724Z",
+      "storyItems": [
+        "c0cbc831bae8",
+        "1cff93014edd",
+        "28b62127c232",
+        "b0662d21617a",
+        "5d068a03ccbe"
+      ],
+      "storyTitle": "Le suspect de l'attentat raciste de Trappes et La Verrière avait dressé une liste de personnalités de gauche et d'extrême gauche",
+      "political": true,
+      "lean": {
+        "score": 1,
+        "rationale_fr": "Dénonce l'extrême gauche et s'appuie sur la liste de personnalités de gauche ; positionnement de droite nationaliste.",
+        "rationale_en": "Attacks the far left and comments on the list of left-wing figures; nationalist right positioning."
+      },
+      "populism": {
+        "score": 0.5,
+        "markers": [
+          "delegitimation",
+          "nativisme",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Présente les adversaires comme des « militants d'extrême gauche » dangereux et mobilise l'indignation face aux perturbations.",
+        "rationale_en": "Presents opponents as dangerous « far-left militants » and mobilises indignation over the disruption."
+      },
+      "check": null,
+      "postTime": "2026-11-13T21:30:04.000Z"
+    },
+    "yt:WYTFeFa7gyI": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:21:06.724Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Critique de la gestion du logement et des « puissants » ; cadre de gauche radicale sur les inégalités sociales.",
+        "rationale_en": "Criticises housing conditions and « the powerful »; radical-left framing on social inequality."
+      },
+      "populism": {
+        "score": 0.7,
+        "markers": [
+          "peuple_vs_elites",
+          "anti_elites",
+          "appel_emotionnel",
+          "delegitimation"
+        ],
+        "rationale_fr": "Oppose « les puissants » aux enfants malades et accuse Macron de « détruire méthodiquement » les conditions de vie, avec forte charge émotionnelle.",
+        "rationale_en": "Opposes « the powerful » to sick children and accuses Macron of systematically destroying living conditions, with strong emotional charge."
+      },
+      "check": null,
+      "postTime": "2026-11-13T19:48:18.000Z"
+    },
+    "yt:idfk1Pz_dOQ": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:21:06.724Z",
+      "storyItems": [
+        "28411cd28b78"
+      ],
+      "storyTitle": "Entreprises inondées, évacuations, routes fermées, éboulements : la dépression Charles frappe la Côte d'Azur",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce d'une réunion publique et d'un passage médiatique, sans position idéologique explicite.",
+        "rationale_en": "Announces a public meeting and a media appearance, with no explicit ideological position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Message purement informatif, sans rhétorique populiste.",
+        "rationale_en": "Purely informational message with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-13T19:10:48.000Z"
+    },
+    "bsky:at://did:plc:7qlw6gig76xhkjjkxl35xpxe/app.bsky.feed.post/3n27m5fdi2k2a": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:21:14.463Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique de l'inaction écologique et des coupes dans la décarbonation et la rénovation énergétique, position de gauche écologiste.",
+        "rationale_en": "Criticizes ecological inaction and budget cuts to decarbonization and energy renovation, a left-ecologist position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Critique politique classique du gouvernement, sans rhétorique de peuple contre élites.",
+        "rationale_en": "Standard government criticism without people-versus-elites rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-13T18:23:35.082Z"
+    },
+    "yt:2d6pqeGqMU4": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:21:14.463Z",
+      "storyItems": [
+        "e4ad7369916f",
+        "7c0009b7a4a1",
+        "b73adecce0df",
+        "d7088ab50c74",
+        "9cf5156b9121"
+      ],
+      "storyTitle": "Patrick et Isabelle Balkany expulsés de leur moulin de Giverny, dans l'Eure",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Propositions de garantie universelle des loyers, encadrement à la baisse des loyers et 200 000 logements publics par an, typiques de la gauche radicale insoumise.",
+        "rationale_en": "Proposes universal rent guarantee, rent caps and 200,000 public housing units yearly, typical of the radical left."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "appel_emotionnel",
+          "peuple_vs_elites"
+        ],
+        "rationale_fr": "Indignation mise en avant (« la misère à tous les étages ») et opposition implicite entre les Balkany et les ménages modestes.",
+        "rationale_en": "Emphasizes outrage (« misery at every level ») and implicitly contrasts the Balkanys with ordinary households."
+      },
+      "check": {
+        "claim": "En France, 35 500 ménages concernés par les expulsions locatives l'an passé, soit 83 par jour.",
+        "why_fr": "Le chiffre mérite d'être vérifié auprès des statistiques officielles sur les expulsions locatives, la période et le périmètre n'étant pas précisés.",
+        "why_en": "The figure should be checked against official eviction statistics, as the period and scope are not specified.",
+        "sources": [
+          {
+            "title": "Insee, statistiques",
+            "url": "https://www.insee.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-13T18:21:29.000Z"
+    },
+    "yt:sS9ZNaWMouU": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:21:14.463Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Simple partage d'une émission musicale, sans position politique.",
+        "rationale_en": "Simple sharing of a music show, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-13T17:36:42.000Z"
+    },
+    "bsky:at://did:plc:skhpi6tvodwwkygydxmka5tm/app.bsky.feed.post/3n27hlsew7b2k": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:21:14.463Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce d'une représentation théâtrale à l'Assemblée, sans contenu idéologique.",
+        "rationale_en": "Announcement of a theatre performance at the Assembly, with no ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-13T17:02:09.807Z"
+    },
+    "yt:BfZyYTBhrk0": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:21:14.463Z",
+      "storyItems": [
+        "60a1af00133b",
+        "184005ffc3db"
+      ],
+      "storyTitle": "Budget 2027 : après un passage chaotique à l’Assemblée, les sénateurs prennent le relais",
+      "political": true,
+      "lean": {
+        "score": 0,
+        "rationale_fr": "Critique de Macron et du budget rejeté, sans position claire sur le fond des politiques économiques.",
+        "rationale_en": "Criticizes Macron and the rejected budget without a clear position on substantive economic policy."
+      },
+      "populism": {
+        "score": 0.35,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Qualifie la fin de règne de « pathétique » et insiste sur l'isolement du président, sur un ton moqueur.",
+        "rationale_en": "Calls the end of the presidency « pathetic » and mocks the president's isolation in a sarcastic tone."
+      },
+      "check": null,
+      "postTime": "2026-11-13T17:00:21.000Z"
+    },
+    "yt:28T49FLJLFQ": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:21:14.463Z",
+      "storyItems": [
+        "681a7b1f93d0",
+        "7f489df761af",
+        "a84c495a19e0",
+        "04cde026d8b1",
+        "30636718f1c2",
+        "3c3389afbb5c"
+      ],
+      "storyTitle": "Israël interdit à Jean-Luc Mélenchon et Mathilde Panot l'entrée sur son territoire, dénonçant \"la position anti-israélienne virulente\" de La France insoumise",
+      "political": true,
+      "lean": {
+        "score": 0.3,
+        "rationale_fr": "Dénonciation des « méthodes de l'extrême gauche » et critique de Mélenchon, sans proposition économique ou sociale détaillée.",
+        "rationale_en": "Denounces « far-left methods » and criticizes Mélenchon, without detailed economic or social proposals."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "delegitimation",
+          "anti_elites"
+        ],
+        "rationale_fr": "Présente un adversaire politique comme illégitime pour faire respecter la démocratie, avec un ton d'accusation.",
+        "rationale_en": "Presents a political rival as illegitimate on democratic grounds, in an accusatory tone."
+      },
+      "check": null,
+      "postTime": "2026-11-13T16:43:58.000Z"
+    },
+    "yt:WStMYsq3YKk": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-14T15:21:14.463Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Présentation d'une émission sur le mouvement social, sans prise de position explicite sur une mesure précise.",
+        "rationale_en": "Presents a show on the social movement, without an explicit position on a specific measure."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel",
+          "delegitimation"
+        ],
+        "rationale_fr": "Parle de « bascule autoritaire » et de « macronie » avec un cadrage militant et alarmiste.",
+        "rationale_en": "Speaks of an « authoritarian shift » with militant, alarmist framing."
+      },
+      "check": null,
+      "postTime": "2026-11-13T16:00:25.000Z"
     }
   },
   "failures": {
