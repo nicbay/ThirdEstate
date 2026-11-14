@@ -1,0 +1,14 @@
+// Nathalie Arthaud's parliamentary record: none. Lutte ouvrière spokeswoman, never elected to the Assembly,
+// the Senate or the European Parliament (checked in _no-mandate.mjs).
+import { writeNoMandateRecord } from "./_no-mandate.mjs";
+
+await writeNoMandateRecord({
+  slug: "arthaud",
+  first: "Nathalie",
+  last: "Arthaud",
+  people: [{ name: "Nathalie Arthaud", role: { fr: "Porte-parole de Lutte ouvrière", en: "Spokeswoman of Lutte ouvrière" } }],
+  notCovered: [
+    { person: "Nathalie Arthaud", chamber: "AN", from: null, to: null, why: { fr: "Aucun mandat parlementaire : elle n'a jamais été élue députée, sénatrice ni députée européenne.", en: "No parliamentary mandate: never elected MP, senator or MEP." } },
+    { person: "Lutte ouvrière", chamber: "AN", from: "2024-07-18", to: null, why: { fr: "Lutte ouvrière n'a aucun député ni sénateur ; ses dernières élues au Parlement européen ont siégé de 1999 à 2004.", en: "Lutte ouvrière has no MP or senator; its last MEPs sat from 1999 to 2004." } },
+  ],
+});
