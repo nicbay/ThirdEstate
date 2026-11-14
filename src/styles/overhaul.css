@@ -196,3 +196,15 @@
 .flow-link:hover .flow-doc, .flow-link:focus-visible .flow-doc { text-decoration: underline; }
 .flow-link:focus-visible { outline: none; }
 .flow-link:focus-visible .flow-box { stroke: var(--focus); stroke-width: 3; }
+
+/* ---------- one box for the whole site (2026-11), after the homepage's note of the day ----------
+   a 2px line, a ground a shade off the page, a hard offset shadow; nested boxes stay flat */
+:root {
+  --box-line: var(--ink-2);
+  --box-bg: color-mix(in srgb, var(--panel) 55%, var(--paper));
+  --box-shadow: var(--rule-2);
+}
+.card { border: 2px solid var(--box-line); border-image: none; background: var(--box-bg); box-shadow: 6px 6px 0 var(--box-shadow); padding: var(--spacing-4) 1.35rem 1.4rem; }
+.card .card, .sec-hero .card { border: 0; box-shadow: none; background: none; padding: 0; }
+.hday-chart .ed { border-color: var(--box-line); box-shadow: 6px 6px 0 var(--box-shadow); }
+@media (max-width: 640px) { .card { box-shadow: 4px 4px 0 var(--box-shadow); padding: var(--spacing-3) 0.95rem 1.1rem; } }

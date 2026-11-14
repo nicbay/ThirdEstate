@@ -33,3 +33,24 @@
 .pg-lean { white-space: nowrap; font: 600 0.82rem var(--mono); font-variant-numeric: tabular-nums; }
 .pg-lean .pg-hi { color: var(--up-text); }
 .pg-lean .pg-lo { color: var(--down-text); }
+
+/* the ranking, readable (2026-11): five columns, the grade beside the name, rows aligned on their middle */
+.pg-table { min-width: 720px; border-collapse: collapse; }
+.pg-table th, .pg-table td { vertical-align: middle; padding: 0.7rem 0.8rem; }
+.pg-table thead th { white-space: nowrap; font-size: 0.72rem; }
+.pg-row { border-bottom: 1px solid var(--rule); }
+.pg-row:hover { background: var(--panel); }
+.pg-who { display: flex; align-items: center; gap: 0.6rem; }
+.pg-who .pg-open { font-size: 0.98rem; }
+.pg-miss { min-width: 13rem; }
+.pg-miss-v { display: block; margin-bottom: 0.25rem; }
+.pg-miss-v b { font: 800 1.15rem var(--display); }
+.pg-bar { margin: 0 0 0.25rem; height: 6px; max-width: 12rem; }
+.pg-last { min-width: 14rem; white-space: normal; }
+.pg-n { display: block; }
+.pg-n b { font-variant-numeric: tabular-nums; }
+.pg-w { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.pg-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 0.6rem 1.2rem; margin: 0 0 0.8rem; }
+.pg-stats div { display: grid; gap: 0.1rem; }
+.pg-stats dt { font: 600 0.7rem var(--mono); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-3); }
+.pg-stats dd { margin: 0; font-weight: 700; }
