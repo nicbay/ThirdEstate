@@ -6,7 +6,7 @@
   "status": "published",
   "statusNote": {
     "fr": "Brochure de campagne « Présidentielle 2027 » diffusée par Lutte ouvrière en mai 2026 ; comme en 2022, le parti présente des revendications à imposer par les luttes, sans programme de gouvernement ni chiffrage.",
-    "en": "\"Présidentielle 2027\" campaign brochure released by Lutte ouvrière in May 2026; as in 2022, the party presents demands to be won through struggle, with no government programme or costing."
+    "en": "\"Présidentielle 2027\" campaign brochure released by Lutte ouvrière in May 2026; as in 2022, the party presents demands to be won through struggle, with no government program or costing."
   },
   "versions": [
     {
@@ -66,7 +66,7 @@
       "feasibility": "low",
       "feasibilityNote": {
         "fr": "Lutte ouvrière présente ces mesures comme des revendications à imposer par les luttes, non comme un programme de gouvernement chiffré.",
-        "en": "Lutte ouvrière presents these as demands to be won through struggle, not as a costed government programme."
+        "en": "Lutte ouvrière presents these as demands to be won through struggle, not as a costed government program."
       },
       "broadBenefit": true
     },
@@ -429,7 +429,7 @@
       },
       "change": {
         "fr": "Même conception : des revendications à imposer par les luttes, pas un programme électoral.",
-        "en": "Same approach: demands to be won through struggle, not an electoral programme."
+        "en": "Same approach: demands to be won through struggle, not an electoral program."
       },
       "sources": [
         {
@@ -481,6 +481,57 @@
   "costing": null,
   "summary": {
     "fr": "Les documents de Lutte ouvrière pour 2022 et 2027 avancent des revendications pour les salariés (plancher de revenu, indexation des salaires sur les prix, répartition du travail sans perte de salaire, embauches dans les services publics, levée du secret des affaires) dans une perspective de renversement du capitalisme, et non un programme de gouvernement. Entre 2022 et 2026, le plancher passe de 2 000 à 2 200 € net, et s'ajoutent la confiscation des bénéfices et l'expropriation sans indemnité des groupes pétroliers et d'armement, la régularisation de tous les sans-papiers et l'opposition à la hausse du budget militaire. Aucun organisme indépendant n'a chiffré ce programme : l'Institut Montaigne et l'iFRAP ne l'avaient pas inclus en 2022.",
-    "en": "Lutte ouvrière's 2022 and 2027 documents set out demands for workers (an income floor, wage indexation on prices, sharing work without pay loss, public-service hiring, lifting trade secrecy) with the aim of overthrowing capitalism, not a government programme. Between 2022 and 2026 the floor rises from €2,000 to €2,200 net, and new demands appear: confiscating profits and expropriating oil and arms groups without compensation, regularising all undocumented migrants and opposing higher military spending. No independent body has costed this programme: Institut Montaigne and iFRAP did not include it in 2022."
+    "en": "Lutte ouvrière's 2022 and 2027 documents set out demands for workers (an income floor, wage indexation on prices, sharing work without pay loss, public-service hiring, lifting trade secrecy) with the aim of overthrowing capitalism, not a government program. Between 2022 and 2026 the floor rises from €2,000 to €2,200 net, and new demands appear: confiscating profits and expropriating oil and arms groups without compensation, regularising all undocumented migrants and opposing higher military spending. No independent body has costed this program: Institut Montaigne and iFRAP did not include it in 2022."
+  },
+  "growth": {
+    "assumed": {
+      "fr": "Aucune hypothèse de croissance ni chiffrage : Lutte ouvrière avance des revendications, pas un programme de gouvernement",
+      "en": "No growth assumption and no costing: Lutte ouvrière puts forward demands, not a program for government"
+    },
+    "rate": null,
+    "verdict": "unstated",
+    "reason": {
+      "fr": "La brochure 2026 ne parle pas de croissance : elle exige 2 200 € net minimum et l'expropriation sans indemnité des groupes pétroliers et d'armement, à imposer « par les luttes ». Aucun équilibre budgétaire n'est recherché, donc aucune croissance n'est requise ni promise.",
+      "en": "The 2026 brochure never mentions growth: it demands a €2,200 net minimum and expropriation without compensation of oil and arms groups, to be won \"through struggle\". It seeks no budget balance, so it neither needs nor promises any growth rate."
+    },
+    "sources": [
+      {
+        "title": "Lutte ouvrière — Brochure de campagne 2026",
+        "url": "https://www.lutte-ouvriere.org/medias/document/fichiers/2026/06/brochure_caravane_2026-01_-_couleur.pdf"
+      },
+      {
+        "title": "Banque de France — Projections macroéconomiques intermédiaires, septembre 2026",
+        "url": "https://www.banque-france.fr/fr/publications-et-statistiques/publications/projections-macroeconomiques-intermediaires-septembre-2026"
+      }
+    ],
+    "examples": [
+      {
+        "country": {
+          "fr": "Venezuela",
+          "en": "Venezuela"
+        },
+        "year": "2007",
+        "policy": {
+          "fr": "Prise de contrôle forcée des projets pétroliers étrangers (ExxonMobil, ConocoPhillips) par la compagnie d'État PDVSA",
+          "en": "Forced takeover of foreign oil projects (ExxonMobil, ConocoPhillips) by state oil company PDVSA"
+        },
+        "outcome": {
+          "fr": "La production est passée d'environ 3 millions de barils par jour en 1999 à moins de 0,5 million en 2020, sous l'effet de la corruption, de la mauvaise gestion puis des sanctions américaines ; Caracas a été condamné à indemniser Exxon (1,6 Md$).",
+          "en": "Output fell from about 3 million barrels a day in 1999 to under 0.5 million in 2020, due to corruption, mismanagement and later US sanctions; Caracas was ordered to compensate Exxon ($1.6bn)."
+        },
+        "result": "failed",
+        "sources": [
+          {
+            "title": "Congressional Research Service — Venezuela Oil Sector: Context for Recent Developments (IN12637, January 2026)",
+            "url": "https://www.everycrsreport.com/files/2026-01-09_IN12637_a4007bef91ea6737136832461ba1759cf82ee950.html"
+          },
+          {
+            "title": "Al Jazeera — Venezuela ordered to pay $1.6bn to Exxon",
+            "url": "https://www.aljazeera.com/economy/2014/10/10/venezuela-ordered-to-pay-1-6bn-to-exxon"
+          }
+        ]
+      }
+    ],
+    "checked": "2026-11-14"
   }
 }

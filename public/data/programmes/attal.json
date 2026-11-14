@@ -6,7 +6,7 @@
   "status": "partial",
   "statusNote": {
     "fr": "Candidat déclaré depuis le 22 mai 2026, Gabriel Attal publie sur son site un programme en cours de constitution (96 « premières mesures annoncées » au 8 novembre 2026, avec un volet économique présenté le 28 octobre) ; aucune date n'est donnée pour le programme complet.",
-    "en": "A declared candidate since 22 May 2026, Gabriel Attal publishes a programme in progress on his site (96 \"first announced measures\" as of 8 November 2026, with an economic package presented on 28 October); no date is given for the full programme."
+    "en": "A declared candidate since 22 May 2026, Gabriel Attal publishes a program in progress on his site (96 \"first announced measures\" as of 8 November 2026, with an economic package presented on 28 October); no date is given for the full program."
   },
   "versions": [
     {
@@ -14,7 +14,7 @@
       "year": 2024,
       "label": {
         "fr": "Législatives 2024 : programme Ensemble pour la République (campagne menée par G. Attal, alors Premier ministre)",
-        "en": "2024 legislative: Ensemble pour la République programme (campaign led by G. Attal, then Prime Minister)"
+        "en": "2024 legislative: Ensemble pour la République program (campaign led by G. Attal, then Prime Minister)"
       },
       "title": "Ensemble pour la République — programme des législatives 2024 (synthèse Institut Montaigne)",
       "date": "2024-06",
@@ -26,7 +26,7 @@
       "year": 2027,
       "label": {
         "fr": "Programme 2027 en cours (site de campagne)",
-        "en": "2027 programme in progress (campaign site)"
+        "en": "2027 program in progress (campaign site)"
       },
       "title": "attalpresident.fr — Programme",
       "date": "2026-11",
@@ -1019,7 +1019,7 @@
         "year": 2024,
         "label": {
           "fr": "Législatives 2024 — programme Ensemble pour la République",
-          "en": "2024 legislative — Ensemble pour la République programme"
+          "en": "2024 legislative — Ensemble pour la République program"
         },
         "horizon": {
           "fr": "par an, à l'horizon 2027",
@@ -1042,12 +1042,12 @@
           {
             "by": "Fondation iFRAP",
             "spending": null,
-            "revenue": 4.0,
-            "net": 4.0,
+            "revenue": 4,
+            "net": 4,
             "date": "2024-06-20",
             "note": {
               "fr": "Écart à la trajectoire du programme de stabilité en 2027 : 2,1 Md€ d'économies et 1,9 Md€ de recettes, soit environ 4 Md€ de déficit en moins ; dépenses nouvelles déjà incluses dans la trajectoire.",
-              "en": "Gap against the stability-programme path in 2027: €2.1bn savings and €1.9bn revenue, about €4bn less deficit; new spending already in the baseline path."
+              "en": "Gap against the stability-program path in 2027: €2.1bn savings and €1.9bn revenue, about €4bn less deficit; new spending already in the baseline path."
             },
             "url": "https://www.ifrap.org/budget-et-fiscalite/le-vrai-cout-du-programme-densemble-pour-la-republique"
           }
@@ -1058,7 +1058,7 @@
         "year": 2027,
         "label": {
           "fr": "Présidentielle 2027 — programme en cours de Gabriel Attal",
-          "en": "2027 presidential — Gabriel Attal's programme in progress"
+          "en": "2027 presidential — Gabriel Attal's program in progress"
         },
         "horizon": {
           "fr": "cumul sur le quinquennat",
@@ -1083,7 +1083,7 @@
   },
   "summary": {
     "fr": "Le programme en cours de Gabriel Attal (96 mesures publiées) combine 150 Md€ d'économies sur le quinquennat, dont deux tiers sur les dépenses sociales, une hausse du salaire net par baisse de cotisations, un plan de 200 Md€ sur dix ans pour l'IA et l'innovation, des mesures scolaires (redoublement, certificat d'études, hausse des salaires des enseignants) et pénales visant les mineurs. Par rapport au programme Ensemble de 2024, l'âge légal de départ serait supprimé au profit de la seule durée de cotisation, et plusieurs mesures chiffrées de 2024 (frais de notaire, SNU, versement à la source des aides) ne figurent plus. Aucune estimation indépendante n'est publiée pour 2027 ; l'Institut Montaigne avait estimé le programme Ensemble 2024 à 20,6 Md€ de déficit supplémentaire par an.",
-    "en": "Gabriel Attal's programme in progress (96 published measures) combines €150bn of savings over the term, two-thirds from social spending, a net-pay rise through lower contributions, a €200bn ten-year AI and innovation plan, school measures (grade repetition, end-of-primary certificate, teacher pay rises) and criminal-justice measures aimed at minors. Compared with the 2024 Ensemble programme, the legal retirement age would be abolished in favour of contribution length alone, and several costed 2024 measures (notary fees, universal national service, automatic benefit payment) no longer appear. No independent estimate has been published for 2027; Institut Montaigne had put the 2024 Ensemble programme at €20.6bn a year of extra deficit."
+    "en": "Gabriel Attal's program in progress (96 published measures) combines €150bn of savings over the term, two-thirds from social spending, a net-pay rise through lower contributions, a €200bn ten-year AI and innovation plan, school measures (grade repetition, end-of-primary certificate, teacher pay rises) and criminal-justice measures aimed at minors. Compared with the 2024 Ensemble program, the legal retirement age would be abolished in favour of contribution length alone, and several costed 2024 measures (notary fees, universal national service, automatic benefit payment) no longer appear. No independent estimate has been published for 2027; Institut Montaigne had put the 2024 Ensemble program at €20.6bn a year of extra deficit."
   },
   "group": "EPR",
   "votes": [
@@ -1103,14 +1103,38 @@
           "date": "2025-02-13",
           "title": "l'ensemble de la proposition de loi visant à restaurer l'autorité de la justice à l'égard des mineurs délinquants et de leurs parents (première lecture).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 125,
+            "C": 58,
+            "A": 0
+          },
+          "group": {
+            "P": 41,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 1624,
           "date": "2025-05-13",
           "title": "l'ensemble de la proposition de loi visant à renforcer l'autorité de la justice à l'égard des mineurs délinquants et de leurs parents (texte de la commission mixte paritaire).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 341,
+            "C": 187,
+            "A": 8
+          },
+          "group": {
+            "P": 62,
+            "C": 1,
+            "A": 4
+          },
+          "majority": "P",
+          "agrees": true
         }
       ]
     },
@@ -1130,14 +1154,38 @@
           "date": "2024-11-26",
           "title": "la déclaration du Gouvernement portant sur les négociations en cours relatives à l'accord d'association entre l'Union européenne et le Mercosur (application de l'article 50-1 de la Constitution).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 485,
+            "C": 69,
+            "A": 1
+          },
+          "group": {
+            "P": 65,
+            "C": 0,
+            "A": 1
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 4244,
           "date": "2025-11-27",
           "title": "la proposition de résolution invitant le Gouvernement de la République française à s’opposer à l’adoption de l’accord commercial entre l’Union européenne et le Mercosur (article 34-1 de la Constitution).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 244,
+            "C": 1,
+            "A": 5
+          },
+          "group": {
+            "P": 0,
+            "C": 0,
+            "A": 4
+          },
+          "majority": "A",
+          "agrees": false
         }
       ]
     },
@@ -1157,7 +1205,19 @@
           "date": "2026-04-08",
           "title": "l'ensemble de la proposition de loi visant à simplifier le millefeuille territorial par la collectivité unique (première lecture).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 131,
+            "C": 100,
+            "A": 12
+          },
+          "group": {
+            "P": 32,
+            "C": 3,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         }
       ]
     },
@@ -1177,9 +1237,116 @@
           "date": "2025-02-20",
           "title": "l'ensemble de la proposition de loi instaurant un impôt plancher de 2 % sur le patrimoine des ultra riches (première lecture).",
           "result": "adopté",
-          "expect": "C"
+          "expect": "C",
+          "total": {
+            "P": 116,
+            "C": 39,
+            "A": 31
+          },
+          "group": {
+            "P": 0,
+            "C": 11,
+            "A": 0
+          },
+          "majority": "C",
+          "agrees": true
         }
       ]
     }
-  ]
+  ],
+  "growth": {
+    "assumed": {
+      "fr": "Aucun taux de croissance publié ; 150 Md€ d'économies sur le quinquennat sans hausse d'impôts, déficit sous 3 % avant 2032 et zéro déficit en 2037.",
+      "en": "No growth rate published; €150bn of savings over the term with no tax rise, deficit under 3% before 2032 and zero deficit in 2037."
+    },
+    "rate": null,
+    "verdict": "unstated",
+    "reason": {
+      "fr": "La trajectoire ne peut pas être vérifiée sans hypothèse. Le coût des mesures nouvelles (droit au brut, Plan France 2040) n'étant pas totalisé, l'équilibre dépend d'une croissance au moins égale au 1 % du gouvernement pour 2027, déjà jugé optimiste par le HCFP.",
+      "en": "The path cannot be checked without an assumption. As the cost of new measures (gross-pay pledge, France 2040 plan) is not totalled, the balance relies on growth at least equal to the government's 1% for 2027, which the HCFP already calls optimistic."
+    },
+    "sources": [
+      {
+        "title": "MoneyVox — Attal veut 100 000 départs volontaires de fonctionnaires",
+        "url": "https://www.moneyvox.fr/impot/actualites/109548/attal-veut-100-000-departs-volontaires-de-fonctionnaires-et-impunite-budgetaire-zero"
+      },
+      {
+        "title": "Public Sénat — Budget 2027 : le HCFP pointe des prévisions « optimistes »",
+        "url": "https://www.publicsenat.fr/actualites/economie/budget-2027-le-haut-conseil-des-finances-publiques-pointe-des-previsions-optimistes-du-gouvernement"
+      }
+    ],
+    "examples": [
+      {
+        "country": {
+          "fr": "Suède",
+          "en": "Sweden"
+        },
+        "year": "1998",
+        "policy": {
+          "fr": "Retraite en comptes notionnels, sans âge légal fixe, avec un mécanisme d'équilibrage automatique.",
+          "en": "Notional-account pensions with no fixed legal age and an automatic balancing mechanism."
+        },
+        "outcome": {
+          "fr": "Le système est resté équilibré : les fonds de réserve sont passés de 535 Md de couronnes en 2001 à plus de 2 200 Md en 2025 ; mais le « frein » déclenché par la crise de 2008 a fait baisser les pensions versées.",
+          "en": "The system stayed balanced: buffer funds grew from SEK 535bn in 2001 to over SEK 2,200bn in 2025; but the 'brake' triggered by the 2008 crisis cut pensions in payment."
+        },
+        "result": "worked",
+        "sources": [
+          {
+            "title": "AP2 — A unique pension system",
+            "url": "https://ap2.se/en/about-ap2/a-unique-pension-system/"
+          },
+          {
+            "title": "Center for Retirement Research at Boston College — Improving Sweden's automatic pension adjustment mechanism",
+            "url": "https://crr.bc.edu/improving-swedens-automatic-pension-adjustment-mechanism/"
+          }
+        ]
+      },
+      {
+        "country": {
+          "fr": "Allemagne",
+          "en": "Germany"
+        },
+        "year": "2003–2005",
+        "policy": {
+          "fr": "Réformes Hartz : assurance chômage plus courte (12 mois avant 55 ans) et plus exigeante.",
+          "en": "Hartz reforms: shorter (12 months under 55) and stricter unemployment insurance."
+        },
+        "outcome": {
+          "fr": "Le chômage est passé de 11,3 % en 2005 à 5,5 % en 2012, mais avec une hausse des bas salaires et de la pauvreté des chômeurs.",
+          "en": "Unemployment fell from 11.3% in 2005 to 5.5% in 2012, but with more low-wage work and more poverty among the unemployed."
+        },
+        "result": "mixed",
+        "sources": [
+          {
+            "title": "CaixaBank Research — The Hartz reforms: achievements and less welcome effects",
+            "url": "https://www.caixabankresearch.com/en/node/7106/printable/print"
+          }
+        ]
+      },
+      {
+        "country": {
+          "fr": "Canada",
+          "en": "Canada"
+        },
+        "year": "1995",
+        "policy": {
+          "fr": "Revue des programmes : économies surtout sur les dépenses, avec des objectifs par ministère.",
+          "en": "Program Review: mostly spending-based savings with targets for each department."
+        },
+        "outcome": {
+          "fr": "Déficit réduit de 4,7 points de PIB en trois ans, excédent dès 1997-98, dette nette fédérale en baisse de 40 points de PIB en une décennie.",
+          "en": "Deficit cut by 4.7 points of GDP in three years, surplus by 1997–98, federal net debt down 40 points of GDP in a decade."
+        },
+        "result": "worked",
+        "sources": [
+          {
+            "title": "IMF Finance & Development (2011) — Great Expectations: Canada's fiscal consolidation",
+            "url": "https://www.imf.org/external/pubs/ft/fandd/2011/09/jonas.htm"
+          }
+        ]
+      }
+    ],
+    "checked": "2026-11-14"
+  }
 }

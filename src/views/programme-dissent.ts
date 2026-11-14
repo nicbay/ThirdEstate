@@ -56,12 +56,12 @@ export async function mountDissent(app: HTMLElement, slug: string, candidate: st
     html += `
       <p class="prog-lede">${L(
         `Les ${d.scrutins} votes de l’Assemblée (depuis 2024) rattachés aux mesures du programme, et comment s’y sont prononcés les ${d.groupSize} députés ${esc(d.group)}.`,
-        `The ${d.scrutins} Assembly votes (since 2024) matched to the programme's measures, and how the ${d.groupSize} ${esc(d.group)} MPs voted on them.`,
+        `The ${d.scrutins} Assembly votes (since 2024) matched to the program's measures, and how the ${d.groupSize} ${esc(d.group)} MPs voted on them.`,
       )}</p>
       <div class="dis-kpis">
         <div class="is-against"><b>${against.length}</b><span>${L("ont voté contre au moins une fois", "voted against at least once")}</span></div>
         <div class="is-abst"><b>${onlyAbst.length}</b><span>${L("se sont seulement abstenus", "only abstained")}</span></div>
-        <div><b>${loyal}</b><span>${L("ont toujours voté avec le programme", "always voted with the programme")}</span></div>
+        <div><b>${loyal}</b><span>${L("ont toujours voté avec le programme", "always voted with the program")}</span></div>
       </div>
       <h3 class="dis-h">${L("Mesure par mesure", "Measure by measure")}</h3>
       <ol class="dis-topics">${topics.map((t, i) => `<li><button type="button" class="dis-topic-btn" data-t="${i}" aria-expanded="false">

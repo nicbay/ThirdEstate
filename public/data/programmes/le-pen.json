@@ -7,7 +7,7 @@
   "status": "partial",
   "statusNote": {
     "fr": "Le 7 juillet 2026, la cour d'appel de Paris a confirmé la condamnation de Marine Le Pen (affaire des assistants parlementaires européens) : trois ans de prison dont un an sous bracelet électronique, 100 000 € d'amende et une inéligibilité réduite (15 mois ferme ; 45 mois dont 30 avec sursis selon France 24). Elle reste éligible, s'est pourvue en cassation et a confirmé sa candidature le soir même, Jordan Bardella étant annoncé comme son Premier ministre. Aucun programme complet n'est publié au 8 novembre 2026 : le RN a présenté un contre-budget le 6 octobre 2026 et des annonces thématiques.",
-    "en": "On 7 July 2026 the Paris appeal court upheld Marine Le Pen's conviction (European Parliament assistants case): three years in prison including one year under electronic tag, a €100,000 fine and a shorter ineligibility (15 months; reported by France 24 as 45 months with 30 suspended). She remains eligible, has appealed to the Cour de cassation and confirmed her candidacy that evening, with Jordan Bardella named as her future Prime Minister. No full programme has been published as of 8 November 2026: the RN presented a counter-budget on 6 October 2026 plus thematic announcements."
+    "en": "On 7 July 2026 the Paris appeal court upheld Marine Le Pen's conviction (European Parliament assistants case): three years in prison including one year under electronic tag, a €100,000 fine and a shorter ineligibility (15 months; reported by France 24 as 45 months with 30 suspended). She remains eligible, has appealed to the Cour de cassation and confirmed her candidacy that evening, with Jordan Bardella named as her future Prime Minister. No full program has been published as of 8 November 2026: the RN presented a counter-budget on 6 October 2026 plus thematic announcements."
   },
   "versions": [
     {
@@ -15,7 +15,7 @@
       "year": 2022,
       "label": {
         "fr": "Programme 2022",
-        "en": "2022 programme"
+        "en": "2022 program"
       },
       "title": "M la France — 22 mesures pour 2022",
       "date": "2022-02",
@@ -532,7 +532,7 @@
         }
       ],
       "cost": {
-        "value": 2.0,
+        "value": 2,
         "low": null,
         "high": null,
         "by": "Institut Montaigne 2024",
@@ -668,7 +668,7 @@
       },
       "change": {
         "fr": "Recensée dans le programme législatif 2024 (coût jugé marginal par l'Institut Montaigne).",
-        "en": "Listed in the 2024 legislative programme (cost rated marginal by Institut Montaigne)."
+        "en": "Listed in the 2024 legislative program (cost rated marginal by Institut Montaigne)."
       },
       "sources": [
         {
@@ -795,7 +795,7 @@
         }
       ],
       "cost": {
-        "value": 9.0,
+        "value": 9,
         "low": null,
         "high": null,
         "by": "Candidate",
@@ -919,7 +919,7 @@
         "announced": {
           "by": "Marine Le Pen",
           "spending": 68.3,
-          "revenue": 55.0,
+          "revenue": 55,
           "net": -13.3,
           "date": "2022-03",
           "note": {
@@ -1000,7 +1000,7 @@
   },
   "summary": {
     "fr": "Le projet du RN repose sur la priorité nationale (prestations, logement social, emploi), la baisse de la TVA sur l'énergie et un retour partiel sur la réforme des retraites. L'âge de départ proposé est passé de 60 ans (2022) à 62 ans avec 60 ans pour les carrières longues (2026), et le RN met désormais en avant un contre-budget de 140 Md€ d'économies d'ici 2032 avec une règle d'or. L'Institut Montaigne estimait le coût net à 101,8 Md€/an en 2022 et 71 Md€/an pour le programme législatif de 2024 ; plusieurs mesures sur les étrangers se heurtent à des décisions du Conseil constitutionnel (n° 89-269 DC, n° 2024-6 RIP).",
-    "en": "The RN's project centres on national priority (benefits, social housing, jobs), lower VAT on energy and a partial rollback of the pension reform. The proposed retirement age has moved from 60 (2022) to 62, with 60 for long careers (2026), and the RN now leads with a counter-budget of €140bn in savings by 2032 and a golden rule. Institut Montaigne put the net cost at €101.8bn a year in 2022 and €71bn a year for the 2024 legislative programme; several measures on foreigners conflict with Conseil constitutionnel rulings (no. 89-269 DC, no. 2024-6 RIP)."
+    "en": "The RN's project centres on national priority (benefits, social housing, jobs), lower VAT on energy and a partial rollback of the pension reform. The proposed retirement age has moved from 60 (2022) to 62, with 60 for long careers (2026), and the RN now leads with a counter-budget of €140bn in savings by 2032 and a golden rule. Institut Montaigne put the net cost at €101.8bn a year in 2022 and €71bn a year for the 2024 legislative program; several measures on foreigners conflict with Conseil constitutionnel rulings (no. 89-269 DC, no. 2024-6 RIP)."
   },
   "group": "RN",
   "votes": [
@@ -1020,28 +1020,76 @@
           "date": "2024-10-31",
           "title": "l'ensemble de la proposition de loi visant à restaurer un système de retraite plus juste en annulant les dernières réformes portant sur l’âge de départ et le nombre d’annuités (première lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 119,
+            "C": 197,
+            "A": 18
+          },
+          "group": {
+            "P": 106,
+            "C": 0,
+            "A": 3
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 468,
           "date": "2024-11-28",
           "title": "l'amendement de suppression n° 4 de M. Sitzenstuhl et les amendements identiques suivants à l'article premier de la proposition de loi d'abrogation de la retraite à 64 ans (première lecture).",
           "result": "rejeté",
-          "expect": "C"
+          "expect": "C",
+          "total": {
+            "P": 100,
+            "C": 241,
+            "A": 1
+          },
+          "group": {
+            "P": 0,
+            "C": 76,
+            "A": 0
+          },
+          "majority": "C",
+          "agrees": true
         },
         {
           "num": 2257,
           "date": "2025-06-05",
           "title": "la proposition de résolution visant à abroger la loi n° 2023-270 du 14 avril 2023 de financement rectificative de la sécurité sociale pour 2023 dite réforme des retraites.",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 198,
+            "C": 35,
+            "A": 0
+          },
+          "group": {
+            "P": 37,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 3684,
           "date": "2025-11-12",
           "title": "l'article 45 bis (examen prioritaire) du projet de loi de financement de la sécurité sociale pour 2026 (première lecture).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 255,
+            "C": 146,
+            "A": 104
+          },
+          "group": {
+            "P": 103,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         }
       ]
     },
@@ -1061,21 +1109,57 @@
           "date": "2025-02-06",
           "title": "l'ensemble de la proposition de loi visant à renforcer les conditions d'accès à la nationalité française à Mayotte (première lecture).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 162,
+            "C": 93,
+            "A": 3
+          },
+          "group": {
+            "P": 82,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 1307,
           "date": "2025-04-08",
           "title": "la motion de rejet préalable, déposée par Mme Mathilde Panot, de la proposition de loi visant à renforcer les conditions d'accès à la nationalité française à Mayotte (texte de la commission mixte paritaire).",
           "result": "rejeté",
-          "expect": "C"
+          "expect": "C",
+          "total": {
+            "P": 105,
+            "C": 185,
+            "A": 0
+          },
+          "group": {
+            "P": 0,
+            "C": 68,
+            "A": 0
+          },
+          "majority": "C",
+          "agrees": true
         },
         {
           "num": 1308,
           "date": "2025-04-08",
           "title": "l'ensemble de la proposition de loi visant à renforcer les conditions d'accès à la nationalité française à Mayotte (texte de la commission mixte paritaire).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 339,
+            "C": 174,
+            "A": 11
+          },
+          "group": {
+            "P": 112,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         }
       ]
     },
@@ -1095,28 +1179,76 @@
           "date": "2025-11-20",
           "title": "l'amendement n° 792 de Mme Le Pen après l'article 25 du projet de loi de finances pour 2026 (première lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 97,
+            "C": 167,
+            "A": 4
+          },
+          "group": {
+            "P": 80,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 4044,
           "date": "2025-11-20",
           "title": "l'amendement n° 795 de M. Jean-Philippe Tanguy après l'article 25 du projet de loi de finances pour 2026 (première lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 86,
+            "C": 158,
+            "A": 3
+          },
+          "group": {
+            "P": 71,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 9488,
           "date": "2026-11-02",
           "title": "l'amendement n° 635 de Mme Le Pen après l'article 16 du projet de loi de finances pour 2027 (première lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 28,
+            "C": 40,
+            "A": 2
+          },
+          "group": {
+            "P": 25,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 9490,
           "date": "2026-11-02",
           "title": "l'amendement n° 748 de M. Jean-Philippe Tanguy après l'article 16 du projet de loi de finances pour 2027 (première lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 27,
+            "C": 41,
+            "A": 1
+          },
+          "group": {
+            "P": 25,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         }
       ]
     },
@@ -1136,7 +1268,19 @@
           "date": "2026-10-15",
           "title": "l'amendement n° 640 de M. Jean-Philippe Tanguy après l'article 3 du projet de loi de finances pour 2027 (première lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 67,
+            "C": 84,
+            "A": 0
+          },
+          "group": {
+            "P": 61,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         }
       ]
     },
@@ -1156,21 +1300,57 @@
           "date": "2024-10-23",
           "title": "l'amendement n° 845 de M. Sabatou après l'article 3 du projet de loi de finances pour 2025 (première lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 90,
+            "C": 130,
+            "A": 2
+          },
+          "group": {
+            "P": 71,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 3092,
           "date": "2025-10-25",
           "title": "l'amendement n° 774 de M. Jean-Philippe Tanguy et l'amendement identique suivant après l'article 2 du projet de loi de finances pour 2026 (première lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 87,
+            "C": 172,
+            "A": 21
+          },
+          "group": {
+            "P": 72,
+            "C": 1,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 8759,
           "date": "2026-10-15",
           "title": "l'amendement n° 639 de M. Jean-Philippe Tanguy après l'article 3 du projet de loi de finances pour 2027 (première lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 61,
+            "C": 68,
+            "A": 0
+          },
+          "group": {
+            "P": 57,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         }
       ]
     },
@@ -1190,21 +1370,57 @@
           "date": "2024-10-25",
           "title": "l'amendement n° 835 de M. Jean-Philippe Tanguy après l'article 3 du projet de loi de finances pour 2025 (première lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 77,
+            "C": 110,
+            "A": 3
+          },
+          "group": {
+            "P": 64,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 3292,
           "date": "2025-10-31",
           "title": "l'amendement n° 3796 de M. Jean-Philippe Tanguy et l'amendement identique suivant à l'article 3 du projet de loi de finances pour 2026 (première lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 90,
+            "C": 260,
+            "A": 1
+          },
+          "group": {
+            "P": 77,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 5023,
           "date": "2026-01-15",
           "title": "l'amendement n° 160 de M. Jean-Philippe Tanguy à l'article 3 bis du projet de loi de finances pour 2026 (nouvelle lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 51,
+            "C": 85,
+            "A": 2
+          },
+          "group": {
+            "P": 46,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         }
       ]
     },
@@ -1224,7 +1440,19 @@
           "date": "2026-10-30",
           "title": "l'amendement n° 667 (rect.) de M. Jean-Philippe Tanguy après l'article 7 du projet de loi de finances pour 2027 (première lecture).",
           "result": "adopté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 29,
+            "C": 18,
+            "A": 0
+          },
+          "group": {
+            "P": 29,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         }
       ]
     },
@@ -1244,7 +1472,19 @@
           "date": "2026-11-04",
           "title": "l'amendement n° 736 de M. Ballard à l'article 42 du projet de loi de finances pour 2027 (première lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 66,
+            "C": 109,
+            "A": 2
+          },
+          "group": {
+            "P": 62,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         }
       ]
     },
@@ -1264,21 +1504,57 @@
           "date": "2024-12-16",
           "title": "l'amendement n° 6 de M. Jean-Philippe Tanguy après l'article premier du projet de loi spéciale prévue par l'article 45 de la loi organique du 1er août 2001 relative aux lois de finances (première lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 118,
+            "C": 198,
+            "A": 4
+          },
+          "group": {
+            "P": 95,
+            "C": 1,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 4943,
           "date": "2025-12-23",
           "title": "l'amendement n° 5 de M. Jean-Philippe Tanguy après l'article premier du projet de loi spéciale prévue par l'article 45 de la loi organique du 1er août 2001 relative aux lois de finances (première lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 86,
+            "C": 212,
+            "A": 10
+          },
+          "group": {
+            "P": 75,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         },
         {
           "num": 8715,
           "date": "2026-10-14",
           "title": "l'amendement n° 3694 de M. Jean-Philippe Tanguy à l'article 55 (examen prioritaire) du projet de loi de finances pour 2027 (première lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 76,
+            "C": 110,
+            "A": 2
+          },
+          "group": {
+            "P": 73,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         }
       ]
     },
@@ -1298,7 +1574,19 @@
           "date": "2026-11-02",
           "title": "l'amendement n° 680 de M. Jean-Philippe Tanguy après l'article 23 du projet de loi de finances pour 2027 (première lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 37,
+            "C": 58,
+            "A": 0
+          },
+          "group": {
+            "P": 35,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         }
       ]
     },
@@ -1318,9 +1606,124 @@
           "date": "2026-06-11",
           "title": "l'article premier de la proposition de loi visant à lever dans les territoires d'outre-mer l'interdiction de recherche, d'exploration et d'exploitation des hydrocarbures (première lecture).",
           "result": "rejeté",
-          "expect": "P"
+          "expect": "P",
+          "total": {
+            "P": 64,
+            "C": 74,
+            "A": 1
+          },
+          "group": {
+            "P": 35,
+            "C": 0,
+            "A": 0
+          },
+          "majority": "P",
+          "agrees": true
         }
       ]
     }
-  ]
+  ],
+  "growth": {
+    "assumed": {
+      "fr": "Croissance de 1,8 % par an retenue dans le contre-budget du RN (octobre 2026), avec 140 Md€ d'économies nettes d'ici 2032 et un déficit sous 3 % en 2030.",
+      "en": "1.8% annual growth assumed in the RN counter-budget (October 2026), with €140bn of net savings by 2032 and a deficit under 3% in 2030."
+    },
+    "rate": 1.8,
+    "verdict": "improbable",
+    "reason": {
+      "fr": "C'est deux fois la prévision de la Banque de France pour 2027 (0,9 %) et nettement au-dessus de 2028 (1,2 %) comme de la croissance potentielle (environ 1 à 1,2 %). Même le 1 % du gouvernement pour 2027 est jugé optimiste par le HCFP ; le ministre de l'Économie juge le chiffre du RN « bien au-dessus » de toutes les prévisions sérieuses.",
+      "en": "That is twice the Banque de France forecast for 2027 (0.9%) and well above 2028 (1.2%) and potential growth (about 1–1.2%). Even the government's 1% for 2027 is called optimistic by the HCFP; the economy minister said the RN figure is 'well above' every serious forecast."
+    },
+    "sources": [
+      {
+        "title": "Euronews, 7 octobre 2026 — le gouvernement tire à boulets rouges sur le contre-budget de Marine Le Pen",
+        "url": "https://fr.euronews.com/2026/10/07/france-le-gouvernement-tire-a-boulets-rouges-sur-le-contre-budget-de-marine-le-pen"
+      },
+      {
+        "title": "Public Sénat — 140 milliards d'euros d'économies d'ici 2032",
+        "url": "https://www.publicsenat.fr/actualites/politique/140-milliards-deuros-deconomies-dici-2032-leffort-radical-propose-par-marine-le-pen-pour-redresser-les-f"
+      },
+      {
+        "title": "Banque de France — Projections macroéconomiques intermédiaires, septembre 2026",
+        "url": "https://www.banque-france.fr/fr/publications-et-statistiques/publications/projections-macroeconomiques-intermediaires-septembre-2026"
+      },
+      {
+        "title": "Public Sénat — Budget 2027 : le HCFP pointe des prévisions « optimistes »",
+        "url": "https://www.publicsenat.fr/actualites/economie/budget-2027-le-haut-conseil-des-finances-publiques-pointe-des-previsions-optimistes-du-gouvernement"
+      }
+    ],
+    "examples": [
+      {
+        "country": {
+          "fr": "Pologne",
+          "en": "Poland"
+        },
+        "year": "2022",
+        "policy": {
+          "fr": "« Bouclier anti-inflation » : baisse de la TVA et des accises sur l'énergie, les carburants et l'alimentation.",
+          "en": "'Anti-inflation shield': VAT and excise cuts on energy, fuel and food."
+        },
+        "outcome": {
+          "fr": "La baisse sur l'énergie n'a retiré qu'environ 0,7 point à l'inflation, et seulement quelques mois ; l'inflation a quand même atteint 17,9 % en octobre 2022, pour un coût de 30,6 Md de zlotys, et Bruxelles a obtenu le retrait des baisses de TVA.",
+          "en": "The energy cut took only about 0.7 points off inflation, and only for a few months; inflation still hit 17.9% in October 2022, at a cost of 30.6bn zloty, and Brussels forced the VAT cuts to be withdrawn."
+        },
+        "result": "mixed",
+        "sources": [
+          {
+            "title": "ING Think — Poland's anti-inflation shield will only temporarily slow CPI",
+            "url": "https://think.ing.com/snaps/poland-anti-inflation-shield-will-slow-cpi-only-temporarily"
+          },
+          {
+            "title": "Notes from Poland — Polish government to withdraw anti-inflation measures due to threats from EU",
+            "url": "https://notesfrompoland.com/2022/11/07/polish-government-to-withdraw-anti-inflation-measures-due-to-threats-from-eu/"
+          }
+        ]
+      },
+      {
+        "country": {
+          "fr": "Italie",
+          "en": "Italy"
+        },
+        "year": "2019",
+        "policy": {
+          "fr": "« Quota 100 » : retraite anticipée à 62 ans avec 38 ans de cotisations, au lieu de 67 ans.",
+          "en": "'Quota 100': early retirement at 62 with 38 years of contributions, instead of 67."
+        },
+        "outcome": {
+          "fr": "Environ 380 000 départs, mais à peine un jeune embauché pour trois retraités ; le dispositif a coûté des milliards et a été abandonné au bout de trois ans.",
+          "en": "About 380,000 people retired early, but barely one young worker was hired for every three retirees; the scheme cost billions and was dropped after three years."
+        },
+        "result": "failed",
+        "sources": [
+          {
+            "title": "SHARE-ERIC — Italy's early retirement reform harmed both workers and the party that designed it",
+            "url": "https://share-eric.eu/research-results-details/italys-early-retirement-reform-harmed-both-workers-and-the-party-that-designed-it-1"
+          }
+        ]
+      },
+      {
+        "country": {
+          "fr": "Hongrie",
+          "en": "Hungary"
+        },
+        "year": "2021",
+        "policy": {
+          "fr": "Prix des carburants plafonné à 480 forints le litre par l'État.",
+          "en": "State cap on fuel prices at 480 forints a litre."
+        },
+        "outcome": {
+          "fr": "Les importateurs ont cessé de livrer : en décembre 2022, environ un quart des stations MOL étaient à sec et le plafond a dû être supprimé, avec une inflation déjà supérieure à 21 %.",
+          "en": "Importers stopped supplying: by December 2022 about a quarter of MOL's stations had run dry and the cap had to be scrapped, with inflation already above 21%."
+        },
+        "result": "failed",
+        "sources": [
+          {
+            "title": "Reuters (via Yahoo Finance) — Hungarian government scraps price cap on fuels as shortage worsens",
+            "url": "https://uk.finance.yahoo.com/news/hungary-government-scraps-price-cap-215957922.html"
+          }
+        ]
+      }
+    ],
+    "checked": "2026-11-14"
+  }
 }
