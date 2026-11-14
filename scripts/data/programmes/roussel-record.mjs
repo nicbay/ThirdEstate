@@ -66,7 +66,7 @@ export default {
   // "pouvoir d'achat" bill articles (content not stated in the titles). Both voted for the 2023 nuclear acceleration law.
   // No clear contradiction found; the partial ones below are votes against wider texts that held a smaller version.
   contradictions: [
-    { person: "Stéphane Peu", chamber: "AN", legislature: 17, num: 217, position: "C", measure: "m04", strength: "clear",
+    { person: "Stéphane Peu", chamber: "AN", legislature: 17, num: 217, position: "C", measure: "m04", strength: "partial",
       explanation: {
         fr: "A voté contre la proposition de loi du Rassemblement national qui abrogeait le report de l'âge à 64 ans (retour à 62 ans), ce que promet le programme ; la gauche a refusé de voter ce texte du RN, rejeté.",
         en: "Voted against the National Rally bill that repealed the move to age 64 (back to 62), which the programme promises; the left refused to back this RN bill, which was rejected.",

@@ -67,7 +67,7 @@ export default {
   // programming bill (in line with a nuclear exit); abstentions on the 2023 renewables law and military programming
   // law (abstaining is not voting against); housing bills of the 17th legislature (not public housing construction).
   contradictions: [
-    { person: "Cyrielle Chatelain", chamber: "AN", legislature: 17, num: 217, position: "C", measure: "m02", strength: "clear",
+    { person: "Cyrielle Chatelain", chamber: "AN", legislature: 17, num: 217, position: "C", measure: "m02", strength: "partial",
       explanation: {
         fr: "A voté contre la proposition de loi du Rassemblement national qui rétablissait l'âge légal de 62 ans, exactement ce que promet le programme ; la gauche a refusé de voter ce texte du RN, rejeté.",
         en: "Voted against the National Rally bill that restored the legal pension age of 62, exactly what the programme promises; the left refused to back this RN bill, which was rejected.",
