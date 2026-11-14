@@ -25,7 +25,7 @@
 
 /* flag slot: neutral placeholder until the pixel-art flag renderer fills .town-flag */
 .town-flag { display: block; width: 48px; height: 32px; border: 1.5px dashed var(--rule-2); background: var(--panel); margin-bottom: 0.4rem; image-rendering: pixelated; }
-.town-flag:not(:empty) { border: 0; background: none; }
+.town-flag:not(:empty) { border: 0; background: none; width: auto; height: auto; display: flex; align-items: flex-end; gap: 0.4rem; }
 
 /* tools: tally + share */
 .cmp-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.8rem 1.2rem; margin-bottom: 0.6rem; }
