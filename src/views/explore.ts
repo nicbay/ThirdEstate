@@ -448,6 +448,60 @@ export function plmWhole(towns: Map<string, TownData>, code: string): TownData |
   };
 }
 
+/** Up to this many schools, the town page lists them all; above, a summary and a short selection. */
+const SCHOOLS_SHOWN = 10;
+const schoolRow = (s: Any) => {
+  const r = s.dnb ?? s.bacGT ?? s.bacPro;
+  return `<tr><td>${esc(s.name)}<br><span class="muted tiny">${s.type === "college" ? L("collège", "collège") : L("lycée", "lycée")}, ${s.sector === "private" ? L("privé", "private") : L("public", "public")}</span></td><td class="num">${s.ips?.value ?? "–"}</td><td class="num">${r?.successRate != null ? `${r.successRate} %` : "–"}</td><td class="num">${r?.successVA != null ? `${r.successVA > 0 ? "+" : ""}${r.successVA}` : "–"}</td></tr>`;
+};
+const schoolTable = (rows: Any[], attrs = "") =>
+  `<table class="table"${attrs}><thead><tr><th>${L("Établissement", "School")}</th><th class="num">IPS</th><th class="num">${L("Réussite", "Pass rate")}</th><th class="num">VA</th></tr></thead><tbody>${rows.map(schoolRow).join("")}</tbody></table>`;
+const ordinal = (n: number) => L(`${n}${n === 1 ? "er" : "e"}`, `${n}${n % 10 === 1 && n !== 11 ? "st" : n % 10 === 2 && n !== 12 ? "nd" : n % 10 === 3 && n !== 13 ? "rd" : "th"}`);
+
+/** Collèges et lycées. Big towns get counts by level and sector, the schools nearest the town centre
+ *  (half collèges, half lycées), links to each arrondissement for Paris, Lyon and Marseille, and a button for the full list. */
+function schoolsSection(schools: Any[], town: { code: string; name: string; centre?: [number, number] }) {
+  const head = `<header class="card-head" id="ecoles"><h2>${L("Collèges et lycées", "Secondary schools")}</h2></header>`;
+  const foot = `<p class="muted tiny">${L("IPS : indice de position sociale (100 = moyenne nationale). VA : valeur ajoutée de l’établissement.", "IPS: social position index (100 = national average). VA: the school’s value added.")}</p>`;
+  if (schools.length <= SCHOOLS_SHOWN + 2) return `<section class="card">${head}${schoolTable(schools)}${foot}</section>`;
+
+  const n = schools.length;
+  const colleges = schools.filter((s) => s.type === "college");
+  const lycees = schools.filter((s) => s.type !== "college");
+  const priv = schools.filter((s) => s.sector === "private").length;
+  const rep = schools.filter((s) => s.priorityEducation).length;
+  const b = (m: number) => `<b>${fmtNum(m)}</b>`;
+  const and = L(" et ", " and ");
+  const semi = L(" ; ", "; ");
+  const summary = `${b(n)} ${L("établissements", "schools")}${colon()}${b(colleges.length)} ${plural(colleges.length, ["collège", "collèges"], ["collège", "collèges"])}${and}${b(lycees.length)} ${plural(lycees.length, ["lycée", "lycées"], ["lycée", "lycées"])}${semi}${b(n - priv)} ${plural(n - priv, ["public", "publics"], ["public", "public"])}${and}${b(priv)} ${plural(priv, ["privé", "privés"], ["private", "private"])}${rep ? `${semi}${b(rep)} ${L("en éducation prioritaire", "in priority education")}` : ""}.`;
+
+  // nearest the town centre (geo.api.gouv.fr), else the schools' own midpoint
+  const located = schools.filter((s) => s.lat != null && s.lon != null);
+  const [cLon, cLat] = town.centre ?? (located.length ? [located.reduce((a, s) => a + s.lon, 0) / located.length, located.reduce((a, s) => a + s.lat, 0) / located.length] : [0, 0]);
+  const k = Math.cos((cLat * Math.PI) / 180);
+  const dist = (s: Any) => (s.lat == null || s.lon == null ? Infinity : ((s.lon - cLon) * k) ** 2 + (s.lat - cLat) ** 2);
+  const near = (list: Any[]) => [...list].sort((a, b) => dist(a) - dist(b));
+  const half = Math.ceil(SCHOOLS_SHOWN / 2);
+  const nc = near(colleges), nl = near(lycees);
+  const takeC = Math.min(nc.length, Math.max(half, SCHOOLS_SHOWN - nl.length));
+  const pick = [...nc.slice(0, takeC), ...nl.slice(0, SCHOOLS_SHOWN - takeC)];
+  const all = [...colleges, ...lycees].sort((a, b) => Number(a.type !== "college") - Number(b.type !== "college") || String(a.name).localeCompare(String(b.name), "fr"));
+
+  // Paris, Lyon, Marseille as a whole: one link per arrondissement
+  const byArr = new Map<string, number>();
+  if (town.code === plmCity(town.code)) for (const s of schools) if (s.commune && s.commune !== town.code) byArr.set(s.commune, (byArr.get(s.commune) ?? 0) + 1);
+  const arrs = byArr.size > 1
+    ? `<p class="small">${L("Par arrondissement", "By arrondissement")}${colon()}${[...byArr].sort(([a], [b]) => a.localeCompare(b)).map(([c, m]) => `<a href="#/ville/${c}#ecoles">${ordinal(Number(c.slice(-2)))}</a>&nbsp;<span class="muted">(${m})</span>`).join(", ")}</p>`
+    : "";
+
+  return `<section class="card">${head}
+    <p>${summary}</p>${arrs}
+    <p class="muted small" data-sch-note>${L(`Les ${pick.length} plus proches du centre de ${esc(town.name)}.`, `The ${pick.length} nearest the centre of ${esc(town.name)}.`)}</p>
+    ${schoolTable(pick, " data-sch-pick")}${schoolTable(all, " data-sch-all hidden")}
+    <p><button type="button" class="button" data-sch-toggle aria-expanded="false" data-more="${esc(L(`Voir les ${fmtNum(n)} établissements`, `Show all ${fmtNum(n)} schools`))}" data-less="${esc(L("Revenir à la sélection", "Back to the selection"))}">${L(`Voir les ${fmtNum(n)} établissements`, `Show all ${fmtNum(n)} schools`)}</button></p>
+    ${foot}</section>`;
+}
+
 export async function renderTown(app: HTMLElement, code: string) {
   const dep = depOf(code);
   const crimeHist = fetchJson<CrimeHistory>(`/data/crime-history/${dep}.json`).catch(() => null);
@@ -559,15 +613,7 @@ export async function renderTown(app: HTMLElement, code: string) {
         </section>
       </div>
 
-      ${
-        t?.schools.length
-          ? `<section class="card"><header class="card-head" id="ecoles"><h2>${L("Collèges et lycées", "Secondary schools")}</h2></header>
-              <table class="table"><thead><tr><th>${L("Établissement", "School")}</th><th class="num">IPS</th><th class="num">${L("Réussite", "Pass rate")}</th><th class="num">VA</th></tr></thead><tbody>${t.schools
-                .map((s: Any) => { const r = s.dnb ?? s.bacGT ?? s.bacPro; return `<tr><td>${esc(s.name)}<br><span class="muted tiny">${s.type === "college" ? L("collège", "collège") : L("lycée", "lycée")}, ${s.sector === "private" ? L("privé", "private") : L("public", "public")}</span></td><td class="num">${s.ips?.value ?? "–"}</td><td class="num">${r?.successRate != null ? `${r.successRate} %` : "–"}</td><td class="num">${r?.successVA != null ? `${r.successVA > 0 ? "+" : ""}${r.successVA}` : "–"}</td></tr>`; })
-                .join("")}</tbody></table>
-              <p class="muted tiny">${L("IPS : indice de position sociale (100 = moyenne nationale). VA : valeur ajoutée de l’établissement.", "IPS: social position index (100 = national average). VA: the school’s value added.")}</p></section>`
-          : ""
-      }
+      ${t?.schools.length ? schoolsSection(t.schools, { code, name, centre: info?.centre?.coordinates }) : ""}
 
       <div id="town-quartiers"></div>
       <div id="town-local" class="stack-col"></div>
@@ -582,6 +628,16 @@ export async function renderTown(app: HTMLElement, code: string) {
     box.innerHTML = armsSlot(ca[code] ?? ca[/^751/.test(code) ? "75056" : /^6938/.test(code) ? "69123" : /^132/.test(code) ? "13055" : ""], L(`Armoiries : ${name}`, `Coat of arms: ${name}`), "m")
       + armsSlot(da[dep], L(`${depName} : le département, ses communes et ses députés`, `${depName}: the department, its towns and MPs`), "s", `#/explorer/${dep}`);
     paintArms(box);
+  });
+  app.querySelector<HTMLButtonElement>("[data-sch-toggle]")?.addEventListener("click", (e) => {
+    const btn = e.currentTarget as HTMLButtonElement;
+    const open = btn.getAttribute("aria-expanded") !== "true";
+    btn.setAttribute("aria-expanded", String(open));
+    btn.textContent = (open ? btn.dataset.less : btn.dataset.more) ?? "";
+    app.querySelector<HTMLElement>("[data-sch-all]")!.hidden = !open;
+    app.querySelector<HTMLElement>("[data-sch-pick]")!.hidden = open;
+    app.querySelector<HTMLElement>("[data-sch-note]")!.hidden = open;
+    if (!open) app.querySelector("#ecoles")?.scrollIntoView({ block: "start" });
   });
   // "this is where I live": remembered on this device, and the department joins live presence
   const homeBox = app.querySelector<HTMLElement>("#home-set");
