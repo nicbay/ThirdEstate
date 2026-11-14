@@ -181,7 +181,7 @@ export async function heroDay() {
       <h1 id="hday-title">${L("La présidentielle, chiffres en main.", "The French election, by the numbers.")}</h1>
       <p class="hday-dek">${L("Chaque sondage pesé, chaque promesse chiffrée, chaque vote de votre député. Pour se faire son avis sur pièces.", "Every poll weighed, every promise costed, every vote your MP casts. Make up your own mind, on the evidence.")}</p>
       <nav class="hday-doors" aria-label="${L("Par où commencer", "Where to start")}">
-        <a href="#/2027">${L("La prévision", "The forecast")}</a><a href="${"#/explorer"}">${L("Votre commune", "Your town")}</a><a href="#/assemblee/deputes">${L("Votre député", "Your MP")}</a><a href="#/programmes">${L("Les programmes", "The programmes")}</a>
+        <a href="#/2027">${L("La prévision", "The forecast")}</a><a class="hday-quiz" href="#/quiz">${L("Le quiz : qui vous ressemble ?", "The quiz: who's closest to you?")}</a><a href="${"#/explorer"}">${L("Votre commune", "Your town")}</a><a href="#/assemblee/deputes">${L("Votre député", "Your MP")}</a><a href="#/programmes">${L("Les programmes", "The programmes")}</a>
       </nav>
     </div>`;
 

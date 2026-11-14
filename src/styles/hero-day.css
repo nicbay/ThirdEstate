@@ -235,3 +235,10 @@
 .hday-art .hd-toggle { border-color: var(--night-rule-2, #3a3f5a); }
 .hday-art .hd-toggle button { color: var(--night-text-2); }
 .hday-art .hd-toggle.hd-toggle button[aria-pressed="true"] { background: var(--night-text); color: var(--night); }
+
+/* the quiz, beside the forecast, in the flag's red */
+.hday-doors a.hday-quiz { background: var(--split-red); border-color: var(--split-red); color: var(--night); }
+.hday-doors a.hday-quiz:hover, .hday-doors a.hday-quiz:focus-visible { border-color: var(--night-text); }
+/* the note of the day, boxed so it reads as its own piece */
+.hday-chart .ed { border: 2px solid var(--night-text-2); background: color-mix(in srgb, var(--night-2) 88%, transparent); padding: 1.1rem 1.2rem 1.2rem; margin-bottom: 1.2rem; box-shadow: 6px 6px 0 var(--night-rule-2, #2a2f48); }
+@media (max-width: 640px) { .hday-chart .ed { padding: 0.9rem 0.8rem 1rem; box-shadow: 4px 4px 0 var(--night-rule-2, #2a2f48); } }
