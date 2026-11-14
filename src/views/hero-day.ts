@@ -1,24 +1,24 @@
-// Homepage parts, built from the day's numbers: the headline; "the note of the day" (key takeaways, then the polls,
-// new and departing candidates, the day's stories, what MPs are posting); and two widgets for the foot of the page,
+// Homepage parts, built from the day's numbers: the headline, the poll average (shown inside the day's edition,
+// src/views/edition.ts, which also carries the day's verdict); and two widgets for the foot of the page,
 // the Assembly (577 districts coloured by the sitting MP, which fly into the seats) and a small shift map (how each
 // district moved between the last two legislative elections, with the national change at every election since 1848).
 import "../styles/hero-day.css";
 import { infoTip } from "../lib/infotip";
 import { geoConicConformal, geoPath } from "d3-geo";
 import { getHome, onPresence, weeklyReaders } from "../lib/cloud";
-import { fetchJson, loadDepartements, loadDeputes, loadFeed, loadMarkets, loadPolls, loadShifts, loadShiftsLatest, type FeedReaction, type ShiftPair } from "../data";
+import { fetchJson, loadDepartements, loadDeputes, loadPolls, loadShifts, loadShiftsLatest, type ShiftPair } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
 import { meta, registerParties } from "../lib/candidates";
 import { ELECTION_DAY } from "../lib/forecast";
 import { average, latestPollDate, pollsterName, pollsterRating, trend } from "../lib/polls";
 import { colon, dec, pct, signed } from "../lib/format";
 import { rewind } from "../lib/map";
-import { esc, FEED_ON, safeUrl } from "../util";
+import { esc, safeUrl } from "../util";
 import { heroViz } from "./hero";
 import { bindSearch, searchBox } from "./explore";
 import { arrowPaths, legend, preselectShift, unitsPerPx } from "./shifts";
 import { pollMoves } from "./daily";
-import { scenarioForecast, scenarioFromUrl, scenarioLabel } from "./forecast-chart";
+import { scenarioLabel } from "./forecast-chart";
 import type { Forecast } from "../lib/forecast";
 
 /** Our forecast in one line; under a scenario (picked in the chart below), its figure and the like-for-like one. */
@@ -30,15 +30,13 @@ export function forecastLine(fc: Forecast, base?: Forecast) {
   return `<p class="hday-fc is-scenario">${L("Scénario", "Scenario")} « ${esc(scenarioLabel(fc.scenarios))} »${colon()}<b>${esc(fav.name)}</b> ${pct(fav.win, 0)} ${L("de chances", "chance")}${ref == null ? "" : ` (${L("sans", "without")} : ${pct(ref, 0)})`}, ${L("modèle des sondages seul", "polls model alone")} · <a href="#/">${L("revenir aux sondages du jour", "back to today’s polls")}</a></p>`;
 }
 
-interface CandFile { slug: string; name: string; pollName: string; campaign?: { date: string; fr: string; en: string }[]; withdrawn?: { date: string; fr?: string; en?: string } }
 const DAY = 86400000;
 const today = () => new Date().toISOString().slice(0, 10);
-const ago = (iso: string, days: number) => Date.parse(iso) >= Date.now() - days * DAY;
 
 /** Builds the hero HTML and returns it with a start() that wires the maps once it's in the page. */
 export async function heroDay() {
-  const [polls, markets, geo, deputes, shifts, feed, idx] = await Promise.all([
-    loadPolls("2027"), loadMarkets().catch(() => null), loadDepartements(), loadDeputes(), loadShiftsLatest().catch(() => null), loadFeed().catch(() => null),
+  const [polls, geo, deputes, shifts, idx] = await Promise.all([
+    loadPolls("2027"), loadDepartements(), loadDeputes(), loadShiftsLatest().catch(() => null),
     fetchJson<{ candidates: { slug: string; pollName: string }[] }>("/data/candidates/index.json").catch(() => null),
   ]);
   registerParties(polls.parties);
@@ -47,7 +45,6 @@ export async function heroDay() {
   const now = average(polls.firstRound, latest);
   const moves = pollMoves(polls.firstRound);
   const daysToGo = Math.max(0, Math.round((Date.parse(ELECTION_DAY) - Date.parse(today())) / DAY));
-  const fc = scenarioForecast(polls, markets, scenarioFromUrl());
   const [a, b, c] = now;
 
   // ---- headline, written from the numbers
@@ -79,78 +76,12 @@ export async function heroDay() {
   const last = [...polls.firstRound].sort((x, y) => y.end.localeCompare(x.end))[0];
   const lastLine = last ? `${L("Dernier sondage", "Latest poll")}${colon()}${last.url ? `<a href="${esc(safeUrl(last.url))}" target="_blank" rel="noopener">${esc(pollsterName(last.pollster))}</a>` : esc(pollsterName(last.pollster))}${pollsterRating(last.pollster)?.grade ? ` <span class="hdp-grade">${pollsterRating(last.pollster)!.grade}</span>` : ""}, ${fmtDate(last.end)}` : "";
 
-  // ---- what changed: candidates who entered or left the race lately, names new to the polls
-  const files = await Promise.all((idx?.candidates ?? []).map((x) => fetchJson<CandFile>(`/data/candidates/${x.slug}.json`).catch(() => null)));
-  const events: { date: string; html: string }[] = [];
-  for (const f of files) {
-    if (!f) continue;
-    if (f.withdrawn && ago(f.withdrawn.date, 21)) events.push({ date: f.withdrawn.date, html: `<b>${esc(meta(f.pollName).surname)}</b> ${L("se retire", "drops out")}` });
-    // one line per candidate: their latest milestone
-    const m = (f.campaign ?? []).filter((x) => ago(x.date, 10)).sort((x, y) => y.date.localeCompare(x.date))[0];
-    if (m) events.push({ date: m.date, html: `<a href="#/candidat/${f.slug}"><b>${esc(meta(f.pollName).surname)}</b></a> · ${esc(L(m.fr, m.en))}` });
-  }
-  const firstSeen = new Map<string, string>();
-  for (const p of [...polls.firstRound].sort((x, y) => x.end.localeCompare(y.end))) for (const h of p.hyps) for (const n of Object.keys(h)) if (!firstSeen.has(n)) firstSeen.set(n, p.end);
-  for (const [n, d] of firstSeen) if (ago(d, 14) && polls.firstRound.length > 5) events.push({ date: d, html: `<b>${esc(meta(n).surname)}</b> ${L("testé pour la première fois", "polled for the first time")} (${esc(pollsterName(polls.firstRound.find((p) => p.hyps.some((h) => n in h) && p.end === d)?.pollster ?? ""))})` });
-  events.sort((x, y) => y.date.localeCompare(x.date));
-  const eventsHtml = events.slice(0, 4).map((e) => `<li><time>${fmtDate(e.date).replace(/\s\d{4}$/, "")}</time><span>${e.html}</span></li>`).join("");
-
-  // ---- the day's stories (most outlets), and the MPs' most shared posts
-  const stories = [...(feed?.stories ?? [])].sort((x, y) => y.outlets.length - x.outlets.length).slice(0, 3);
-  const storiesHtml = stories.map((s) => `<li><a href="${esc(safeUrl(s.items[0].link))}" target="_blank" rel="noopener">${esc(s.title)}</a><span>${s.outlets.length} ${L("médias", "outlets")}</span></li>`).join("");
-  const reach = (r: FeedReaction) => (r.metrics?.likes ?? 0) + 2 * (r.metrics?.reposts ?? 0);
-  // the most shared posts that say something (60+ characters), one per MP
-  const seenMp = new Set<string>();
-  const posts = (feed?.stories ?? []).flatMap((s) => s.reactions ?? [])
-    .filter((r) => r.rating?.political !== false && r.text.trim().length >= 60)
-    .sort((x, y) => reach(y) - reach(x))
-    .filter((r) => (seenMp.has(r.mp.id) ? false : (seenMp.add(r.mp.id), true)))
-    .slice(0, 2);
-  const postsHtml = posts.map((r) => `<li><a href="${esc(safeUrl(r.url))}" target="_blank" rel="noopener"><span class="hds-who"><i style="background:${esc(r.mp.group?.couleur ?? "#888")}"></i>${esc(r.mp.name)}${r.mp.group ? ` <span>${esc(r.mp.group.abrev)}</span>` : ""}</span><span class="hds-text">${esc(r.text.length > 150 ? `${r.text.slice(0, 147).trim()}…` : r.text)}</span></a></li>`).join("");
-
-  // ---- key takeaways: three or four sentences written from the numbers
-  const fav = fc.rows[0];
-  const pair0 = fc.pairs[0];
-  const movers = top
-    .map((r) => ({ r, d: moves.get(r.name)?.d7 ?? null }))
-    .filter((x): x is { r: (typeof top)[number]; d: number } => x.d != null && Math.abs(x.d) >= 0.5)
-    .sort((x, y) => Math.abs(y.d) - Math.abs(x.d));
-  const pts = (v: number) => `${dec(Math.abs(v))} point${Math.abs(v) >= 2 ? "s" : ""}`;
-  const takeaways: string[] = [];
-  if (a && b) takeaways.push(fr
-    ? `<b>${esc(meta(a.name).surname)}</b> est en tête avec ${pct(a.avg)}, ${pts(gap)} devant ${esc(meta(b.name).surname)} (${pct(b.avg)}).`
-    : `<b>${esc(meta(a.name).surname)}</b> leads on ${pct(a.avg)}, ${pts(gap)} ahead of ${esc(meta(b.name).surname)} (${pct(b.avg)}).`);
-  if (movers[0]) {
-    const { r, d } = movers[0];
-    takeaways.push(fr
-      ? `Le plus fort mouvement de la semaine : <b>${esc(meta(r.name).surname)}</b>, ${d > 0 ? "+" : "−"}${pts(d)} en 7 jours.`
-      : `Biggest move of the week: <b>${esc(meta(r.name).surname)}</b>, ${d > 0 ? "+" : "−"}${pts(d)} in 7 days.`);
-  } else takeaways.push(L("Aucun candidat n’a bougé d’un demi-point ou plus en 7 jours.", "No candidate moved half a point or more in 7 days."));
-  if (fav) takeaways.push(fr
-    ? `Notre prévision donne à <b>${esc(meta(fav.name).surname)}</b> ${pct(fav.win, 0)} de chances d’être élu${pair0 ? ` ; second tour le plus probable : ${esc(meta(pair0.a).surname)} – ${esc(meta(pair0.b).surname)} (${Math.round(pair0.p)} % des simulations)` : ""}.`
-    : `Our forecast gives <b>${esc(meta(fav.name).surname)}</b> a ${pct(fav.win, 0)} chance of being elected${pair0 ? `; most likely runoff: ${esc(meta(pair0.a).surname)} – ${esc(meta(pair0.b).surname)} (${Math.round(pair0.p)}% of simulations)` : ""}.`);
-  if (events[0]) takeaways.push(`${L("Dans la campagne", "On the trail")}${colon()}${events[0].html.replace(/\.\s*$/, "")}.`);
-
   // ---- the poll average (bars, 7-day move, 60-day sparkline): shown inside the note of the day at the top
   const pollsHtml = `<section class="hday-block ed-polls">
         <header><h2>${L(`Moyenne des sondages au ${fmtDate(latest)}`, `Poll average, ${fmtDate(latest)}`)}</h2><a href="#/sondages">${L("Chaque sondage", "Every poll")} →</a></header>
         <ol class="hdp">${pollRows}</ol>
         <p class="hday-small">${L("Intentions de vote aujourd’hui, pondérées par la note des instituts, corrigées de leurs penchants · variation sur 7 jours. Le graphique au-dessus prolonge ces moyennes jusqu’au premier tour.", "Voting intention today, weighted by institute grade, corrected for their leans · change over 7 days. The chart above carries these averages forward to the first round.")}${infoTip(L("Chaque sondage compte selon la note de son institut (de A+ à F), gagnée par l’écart entre ses derniers sondages et les résultats depuis 2002. La flèche donne la variation sur les 7 derniers jours.", "Each poll counts by its institute’s grade (A+ to F), earned from how far its final polls landed from the results since 2002. The arrow is the change over the last 7 days."), L("À propos de la moyenne", "About the average"))}${lastLine ? ` · ${lastLine}` : ""}</p>
       </section>`;
-
-  // ---- the note of the day: takeaways, then the polls, what changed, the stories and the posts
-  // a dated desk brief: a few run-in lines under an ink rule, no boxes, no counters
-  const dayLabel = new Date(today()).toLocaleDateString(fr ? "fr-FR" : "en-GB", { day: "numeric", month: "long" });
-  const dayLabelFr = dayLabel.replace(/^1 /, "1er ");
-  const noteHtml = `<section class="hday-panel" aria-labelledby="hday-note-title">
-    <header class="hday-panel-head"><h2 id="hday-note-title">${L(`Ce qu’il faut retenir du ${dayLabelFr}`, `What to know on ${dayLabel}`)}</h2></header>
-    <ul class="hday-take">${takeaways.map((t) => `<li>${t}</li>`).join("")}</ul>
-    <div class="hday-note">
-      ${eventsHtml ? `<section class="hday-block"><header><h2>${L("Ce qui a bougé", "What changed")}</h2><a href="#/2027">${L("Les candidats", "Candidates")} →</a></header><ul class="hde">${eventsHtml}</ul></section>` : ""}
-      ${storiesHtml ? `<section class="hday-block"><header><h2>${FEED_ON ? L("Fil rouge, fil bleu", "Red feed, blue feed") : L("Les titres du jour", "Today’s headlines")}</h2>${FEED_ON ? `<a href="#/fil">${L("Tout le fil", "The whole feed")} →</a>` : ""}</header><ul class="hdn">${storiesHtml}</ul></section>` : ""}
-      ${postsHtml ? `<section class="hday-block"><header><h2>${L("Ce que publient les députés", "What MPs are posting")}</h2>${FEED_ON ? `<a href="#/fil">${L("Tout le fil", "The whole feed")} →</a>` : ""}</header><ul class="hds">${postsHtml}</ul></section>` : ""}
-    </div>
-  </section>`;
 
   // ---- widget 1: the Assembly, 577 dots that fly from the map into the seats
   const pair = shifts?.pairs.filter((p) => p.level === "district").at(-1);
@@ -341,7 +272,7 @@ export async function heroDay() {
     [head, more].forEach((a) => a.addEventListener("click", () => preselectShift(a.dataset.pair!)));
   };
   void head; // the race's headline now lives in the note of the day, not as the page's first words
-  return { headHtml, artHtml, noteHtml, pollsHtml, parliamentHtml, shiftsHtml, start };
+  return { headHtml, artHtml, pollsHtml, parliamentHtml, shiftsHtml, start };
 }
 
 /** The widgets sit on paper: party colours as they are, lifted only when the reader's paper is dark. */
