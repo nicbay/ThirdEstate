@@ -33,6 +33,7 @@ import { wordmarkSvg } from "./lib/wordmark";
 import { pixelIcon, type PixelIcon } from "./lib/pixel-icons";
 import { initSearch, openSearch } from "./lib/search";
 import { foxBusy, initFox, initMotion, pageTransition } from "./lib/motion";
+import { foxLeave, foxVisit } from "./lib/fox-pet";
 import { renderCandidate } from "./views/candidate";
 
 const app = document.getElementById("app")!;
@@ -591,11 +592,13 @@ async function render(path: string, anchor: string | undefined) {
   for (const [re, fn] of routes) {
     const m = path.match(re);
     if (m) {
+      foxLeave(); // the pet fox of the previous page goes with it
       app.innerHTML = loaderHtml();
       foxBusy(true);
       try {
         await fn(m);
         if (seq !== renderSeq) return; // a newer navigation took over while this one loaded
+        foxVisit(); // now and then the fox drops by (the homepage mounts its own)
         const page = app.querySelector(":scope > .page");
         if (page && !page.querySelector(".next-steps")) page.insertAdjacentHTML("beforeend", nextSteps(path));
         if (anchor) document.getElementById(anchor)?.scrollIntoView();
