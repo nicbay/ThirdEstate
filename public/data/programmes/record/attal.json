@@ -1,0 +1,63 @@
+{
+ "generated": "2026-11-14T12:19:29.735Z",
+ "coverage": [
+  {
+   "person": "Gabriel Attal",
+   "chamber": "AN",
+   "legislature": 15,
+   "from": "2017-07-04",
+   "to": "2018-10-15",
+   "votes": 268
+  },
+  {
+   "person": "Gabriel Attal",
+   "chamber": "AN",
+   "legislature": 17,
+   "from": "2024-10-09",
+   "to": "2026-11-04",
+   "votes": 1771
+  }
+ ],
+ "notCovered": [
+  {
+   "person": "Gabriel Attal",
+   "chamber": "AN",
+   "from": "2018-10-16",
+   "to": "2024-09-21",
+   "why": {
+    "fr": "Membre du Gouvernement (secrétaire d’État, porte-parole, ministre puis Premier ministre) : élu député en 2022 mais remplacé par son suppléant, il n’a pas voté durant la 16e législature.",
+    "en": "Member of the government (junior minister, spokesman, minister, then Prime Minister): elected MP in 2022 but replaced by his substitute, he cast no vote in the 16th legislature."
+   }
+  },
+  {
+   "person": "Gabriel Attal",
+   "chamber": "Sénat",
+   "from": null,
+   "to": null,
+   "why": {
+    "fr": "N’a jamais été sénateur.",
+    "en": "Never a senator."
+   }
+  },
+  {
+   "person": "Gabriel Attal",
+   "chamber": "PE",
+   "from": null,
+   "to": null,
+   "why": {
+    "fr": "N’a jamais été député européen.",
+    "en": "Never an MEP."
+   }
+  }
+ ],
+ "people": [
+  {
+   "name": "Gabriel Attal",
+   "role": {
+    "fr": "Candidat ; député des Hauts-de-Seine (2017–2018, depuis 2024), Premier ministre (2024), président du groupe Ensemble pour la République",
+    "en": "Candidate; MP for Hauts-de-Seine (2017–2018, since 2024), Prime Minister (2024), leader of the Ensemble pour la République group"
+   }
+  }
+ ],
+ "contradictions": []
+}

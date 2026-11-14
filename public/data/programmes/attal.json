@@ -619,5 +619,143 @@
   "summary": {
     "fr": "Le programme en cours de Gabriel Attal (96 mesures publiées) combine 150 Md€ d'économies sur le quinquennat, dont deux tiers sur les dépenses sociales, une hausse du salaire net par baisse de cotisations, un plan de 200 Md€ sur dix ans pour l'IA et l'innovation, des mesures scolaires (redoublement, certificat d'études, hausse des salaires des enseignants) et pénales visant les mineurs. Par rapport au programme Ensemble de 2024, l'âge légal de départ serait supprimé au profit de la seule durée de cotisation, et plusieurs mesures chiffrées de 2024 (frais de notaire, SNU, versement à la source des aides) ne figurent plus. Aucune estimation indépendante n'est publiée pour 2027 ; l'Institut Montaigne avait estimé le programme Ensemble 2024 à 20,6 Md€ de déficit supplémentaire par an.",
     "en": "Gabriel Attal's programme in progress (96 published measures) combines €150bn of savings over the term, two-thirds from social spending, a net-pay rise through lower contributions, a €200bn ten-year AI and innovation plan, school measures (grade repetition, end-of-primary certificate, teacher pay rises) and criminal-justice measures aimed at minors. Compared with the 2024 Ensemble programme, the legal retirement age would be abolished in favour of contribution length alone, and several costed 2024 measures (notary fees, universal national service, automatic benefit payment) no longer appear. No independent estimate has been published for 2027; Institut Montaigne had put the 2024 Ensemble programme at €20.6bn a year of extra deficit."
-  }
+  },
+  "group": "EPR",
+  "votes": [
+    {
+      "lineage": "m01",
+      "topic": {
+        "fr": "Retraites : garder la réforme de 2023",
+        "en": "Pensions: keep the 2023 reform"
+      },
+      "note": {
+        "fr": "217 : proposition de loi d’abrogation de la réforme de 2023 (voter contre suit la promesse) ; 468 : amendements supprimant l’article premier d’un autre texte d’abrogation (voter pour suit la promesse) ; 3684 et 4642 : suspension de la réforme de 2023 dans le budget de la Sécurité sociale pour 2026 (voter contre suit la promesse). Promesse de 2024 ; le programme 2027 supprime l’âge légal au profit de la seule durée de cotisation.",
+        "en": "217: bill repealing the 2023 reform (voting against follows the promise); 468: amendments deleting article 1 of another repeal bill (voting for follows the promise); 3684 and 4642: suspension of the 2023 reform in the 2026 social security budget (voting against follows the promise). 2024 promise; the 2027 programme drops the legal age in favour of contribution length alone."
+      },
+      "scrutins": [
+        {
+          "num": 217,
+          "date": "2024-10-31",
+          "title": "l'ensemble de la proposition de loi visant à restaurer un système de retraite plus juste en annulant les dernières réformes portant sur l’âge de départ et le nombre d’annuités (première lecture).",
+          "result": "rejeté",
+          "expect": "C"
+        },
+        {
+          "num": 468,
+          "date": "2024-11-28",
+          "title": "l'amendement de suppression n° 4 de M. Sitzenstuhl et les amendements identiques suivants à l'article premier de la proposition de loi d'abrogation de la retraite à 64 ans (première lecture).",
+          "result": "rejeté",
+          "expect": "P"
+        },
+        {
+          "num": 3684,
+          "date": "2025-11-12",
+          "title": "l'article 45 bis (examen prioritaire) du projet de loi de financement de la sécurité sociale pour 2026 (première lecture).",
+          "result": "adopté",
+          "expect": "C"
+        },
+        {
+          "num": 4642,
+          "date": "2025-12-05",
+          "title": "l'amendement n° 840 du Gouvernement et les amendements identiques suivants de rétablissement de l'article 45 bis (supprimé) (examen prioritaire) du projet de loi de financement de la sécurité sociale pour 2026 (nouvelle lecture).",
+          "result": "adopté",
+          "expect": "C"
+        }
+      ]
+    },
+    {
+      "lineage": "m24",
+      "topic": {
+        "fr": "Justice des mineurs plus rapide et plus ferme",
+        "en": "Faster, firmer juvenile justice"
+      },
+      "note": {
+        "fr": "Proposition de loi de Gabriel Attal sur la justice des mineurs (première lecture et texte de la commission mixte paritaire).",
+        "en": "Gabriel Attal’s juvenile justice bill (first reading and joint committee text)."
+      },
+      "scrutins": [
+        {
+          "num": 805,
+          "date": "2025-02-13",
+          "title": "l'ensemble de la proposition de loi visant à restaurer l'autorité de la justice à l'égard des mineurs délinquants et de leurs parents (première lecture).",
+          "result": "adopté",
+          "expect": "P"
+        },
+        {
+          "num": 1624,
+          "date": "2025-05-13",
+          "title": "l'ensemble de la proposition de loi visant à renforcer l'autorité de la justice à l'égard des mineurs délinquants et de leurs parents (texte de la commission mixte paritaire).",
+          "result": "adopté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m28",
+      "topic": {
+        "fr": "Refuser l’accord avec le Mercosur",
+        "en": "Reject the Mercosur agreement"
+      },
+      "note": {
+        "fr": "456 : déclaration du Gouvernement contre l’accord en l’état ; 4244 : résolution invitant le Gouvernement à s’opposer à l’accord.",
+        "en": "456: government statement against the agreement as it stands; 4244: resolution calling on the government to oppose it."
+      },
+      "scrutins": [
+        {
+          "num": 456,
+          "date": "2024-11-26",
+          "title": "la déclaration du Gouvernement portant sur les négociations en cours relatives à l'accord d'association entre l'Union européenne et le Mercosur (application de l'article 50-1 de la Constitution).",
+          "result": "adopté",
+          "expect": "P"
+        },
+        {
+          "num": 4244,
+          "date": "2025-11-27",
+          "title": "la proposition de résolution invitant le Gouvernement de la République française à s’opposer à l’adoption de l’accord commercial entre l’Union européenne et le Mercosur (article 34-1 de la Constitution).",
+          "result": "adopté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m22",
+      "topic": {
+        "fr": "Supprimer un échelon de collectivité",
+        "en": "Remove a tier of local government"
+      },
+      "note": {
+        "fr": "Proposition de loi regroupant des échelons dans une collectivité unique.",
+        "en": "Bill merging tiers into a single local authority."
+      },
+      "scrutins": [
+        {
+          "num": 6045,
+          "date": "2026-04-08",
+          "title": "l'ensemble de la proposition de loi visant à simplifier le millefeuille territorial par la collectivité unique (première lecture).",
+          "result": "adopté",
+          "expect": "P"
+        }
+      ]
+    },
+    {
+      "lineage": "m08",
+      "topic": {
+        "fr": "Aucune hausse d’impôts",
+        "en": "No tax rises"
+      },
+      "note": {
+        "fr": "Proposition de loi créant un impôt plancher de 2 % sur les très grands patrimoines, soit un impôt nouveau : voter contre suit la promesse.",
+        "en": "Bill creating a 2% minimum tax on the largest fortunes, i.e. a new tax: voting against follows the promise."
+      },
+      "scrutins": [
+        {
+          "num": 881,
+          "date": "2025-02-20",
+          "title": "l'ensemble de la proposition de loi instaurant un impôt plancher de 2 % sur le patrimoine des ultra riches (première lecture).",
+          "result": "adopté",
+          "expect": "C"
+        }
+      ]
+    }
+  ]
 }

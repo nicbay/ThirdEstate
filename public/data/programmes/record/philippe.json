@@ -1,0 +1,110 @@
+{
+ "generated": "2026-11-14T12:19:29.231Z",
+ "coverage": [
+  {
+   "person": "Édouard Philippe",
+   "chamber": "AN",
+   "legislature": 14,
+   "from": "2012-07-03",
+   "to": "2016-11-22",
+   "votes": 141
+  }
+ ],
+ "notCovered": [
+  {
+   "person": "Édouard Philippe",
+   "chamber": "AN",
+   "from": "2016-11-25",
+   "to": "2017-06-15",
+   "why": {
+    "fr": "Le fichier de données ouvertes de la 14e législature s’arrête au 24 novembre 2016 : ses derniers mois de mandat ne sont pas couverts.",
+    "en": "The 14th-legislature open-data file stops on 24 November 2016: his last months as an MP are not covered."
+   }
+  },
+  {
+   "person": "Édouard Philippe",
+   "chamber": "AN",
+   "from": "2017-06-21",
+   "to": null,
+   "why": {
+    "fr": "Premier ministre (2017–2020) puis maire du Havre : il n’a plus siégé à l’Assemblée depuis 2017.",
+    "en": "Prime Minister (2017–2020), then mayor of Le Havre: he has not sat in the Assembly since 2017."
+   }
+  },
+  {
+   "person": "Édouard Philippe",
+   "chamber": "Sénat",
+   "from": null,
+   "to": null,
+   "why": {
+    "fr": "N’a jamais été sénateur.",
+    "en": "Never a senator."
+   }
+  },
+  {
+   "person": "Édouard Philippe",
+   "chamber": "PE",
+   "from": null,
+   "to": null,
+   "why": {
+    "fr": "N’a pas été député européen depuis 2019.",
+    "en": "Not an MEP since 2019."
+   }
+  }
+ ],
+ "people": [
+  {
+   "name": "Édouard Philippe",
+   "role": {
+    "fr": "Candidat ; député de la Seine-Maritime (2012–2017, groupe UMP puis Les Républicains), Premier ministre (2017–2020), maire du Havre, président d’Horizons",
+    "en": "Candidate; MP for Seine-Maritime (2012–2017, UMP then Les Républicains group), Prime Minister (2017–2020), mayor of Le Havre, leader of Horizons"
+   }
+  }
+ ],
+ "contradictions": [
+  {
+   "person": "Édouard Philippe",
+   "chamber": "AN",
+   "legislature": 14,
+   "date": "2013-11-26",
+   "num": 726,
+   "title": "l'ensemble du projet de loi garantissant l'avenir et la justice du système de retraites (nouvelle lecture).",
+   "url": "https://www.assemblee-nationale.fr/dyn/14/scrutins/726",
+   "position": "C",
+   "measure": {
+    "lineage": "m01",
+    "label": {
+     "fr": "Allonger la durée de cotisation (45 ans) et relever l’âge de départ",
+     "en": "Longer contribution period (45 years) and a higher pension age"
+    }
+   },
+   "explanation": {
+    "fr": "Il a voté contre la réforme Touraine (nouvelle lecture), qui allongeait la durée de cotisation à 43 ans (172 trimestres) d’ici 2035 ; il propose aujourd’hui de la porter à 45 ans. Son groupe reprochait au texte de ne pas relever l’âge légal et d’augmenter les cotisations.",
+    "en": "He voted against the Touraine pension reform (second reading), which lengthened the contribution period to 43 years (172 quarters) by 2035; he now proposes 45 years. His group objected that the bill left the legal age untouched and raised contributions."
+   },
+   "strength": "partial"
+  },
+  {
+   "person": "Édouard Philippe",
+   "chamber": "AN",
+   "legislature": 14,
+   "date": "2013-10-15",
+   "num": 647,
+   "title": "l'ensemble du projet de loi garantissant l'avenir et la justice du système de retraites.",
+   "url": "https://www.assemblee-nationale.fr/dyn/14/scrutins/647",
+   "position": "C",
+   "measure": {
+    "lineage": "m01",
+    "label": {
+     "fr": "Allonger la durée de cotisation (45 ans) et relever l’âge de départ",
+     "en": "Longer contribution period (45 years) and a higher pension age"
+    }
+   },
+   "explanation": {
+    "fr": "Il a voté contre la réforme Touraine, qui allongeait la durée de cotisation à 43 ans (172 trimestres) d’ici 2035 ; il propose aujourd’hui de la porter à 45 ans. Son groupe reprochait au texte de ne pas relever l’âge légal et d’augmenter les cotisations.",
+    "en": "He voted against the Touraine pension reform, which lengthened the contribution period to 43 years (172 quarters) by 2035; he now proposes 45 years. His group objected that the bill left the legal age untouched and raised contributions."
+   },
+   "strength": "partial"
+  }
+ ]
+}
