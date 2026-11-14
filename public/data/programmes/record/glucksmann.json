@@ -1,0 +1,97 @@
+{
+ "generated": "2026-11-14",
+ "coverage": [
+  {
+   "person": "Raphaël Glucksmann",
+   "chamber": "PE",
+   "from": "2019-07-18",
+   "to": "2026-10-21",
+   "votes": 24003
+  },
+  {
+   "person": "Aurore Lalucq",
+   "chamber": "PE",
+   "from": "2019-07-18",
+   "to": "2026-11-12",
+   "votes": 23563
+  }
+ ],
+ "notCovered": [
+  {
+   "person": "Raphaël Glucksmann",
+   "chamber": "AN",
+   "from": 2019,
+   "to": 2026,
+   "why": "jamais député ni sénateur ; seul mandat parlementaire : Parlement européen"
+  },
+  {
+   "person": "Aurore Lalucq",
+   "chamber": "AN",
+   "from": 2019,
+   "to": 2026,
+   "why": "jamais députée ni sénatrice ; seul mandat parlementaire : Parlement européen"
+  }
+ ],
+ "people": [
+  {
+   "name": "Raphaël Glucksmann",
+   "role": {
+    "fr": "Candidat, député européen depuis 2019 (S&D)",
+    "en": "Candidate, Member of the European Parliament since 2019 (S&D)"
+   }
+  },
+  {
+   "name": "Aurore Lalucq",
+   "role": {
+    "fr": "Coprésidente de Place publique, députée européenne depuis 2019 (S&D)",
+    "en": "Place publique co-leader, Member of the European Parliament since 2019 (S&D)"
+   }
+  }
+ ],
+ "contradictions": [
+  {
+   "person": "Raphaël Glucksmann",
+   "chamber": "PE",
+   "legislature": 9,
+   "date": "2022-07-06",
+   "num": 146888,
+   "title": "Objection pursuant to Rule 111(3): Amending the Taxonomy Climate Delegated Act and the Taxonomy Disclosures Delegated Act",
+   "url": "https://howtheyvote.eu/votes/146888",
+   "position": "P",
+   "measure": {
+    "lineage": "m09",
+    "label": {
+     "fr": "Sortir des fossiles, garder le nucléaire comme transition",
+     "en": "Exit fossil fuels, keep nuclear as a transition"
+    }
+   },
+   "explanation": {
+    "fr": "A voté l'objection visant à retirer le gaz et le nucléaire de la taxonomie des activités durables, alors que le programme garde le nucléaire comme énergie de transition ; l'acte visait aussi le gaz fossile, que le programme veut faire décliner.",
+    "en": "Voted for the objection removing gas and nuclear from the EU taxonomy of sustainable activities, while the programme keeps nuclear as a transition energy; the act also covered fossil gas, which the programme wants to phase down."
+   },
+   "strength": "partial"
+  },
+  {
+   "person": "Aurore Lalucq",
+   "chamber": "PE",
+   "legislature": 9,
+   "date": "2022-07-06",
+   "num": 146888,
+   "title": "Objection pursuant to Rule 111(3): Amending the Taxonomy Climate Delegated Act and the Taxonomy Disclosures Delegated Act",
+   "url": "https://howtheyvote.eu/votes/146888",
+   "position": "P",
+   "measure": {
+    "lineage": "m09",
+    "label": {
+     "fr": "Sortir des fossiles, garder le nucléaire comme transition",
+     "en": "Exit fossil fuels, keep nuclear as a transition"
+    }
+   },
+   "explanation": {
+    "fr": "A voté l'objection visant à retirer le gaz et le nucléaire de la taxonomie des activités durables, alors que le programme garde le nucléaire comme énergie de transition ; l'acte visait aussi le gaz fossile, que le programme veut faire décliner.",
+    "en": "Voted for the objection removing gas and nuclear from the EU taxonomy of sustainable activities, while the programme keeps nuclear as a transition energy; the act also covered fossil gas, which the programme wants to phase down."
+   },
+   "strength": "partial"
+  }
+ ]
+}

@@ -1,0 +1,105 @@
+{
+ "generated": "2026-11-14",
+ "coverage": [
+  {
+   "person": "Cyrielle Chatelain",
+   "chamber": "AN",
+   "from": "2022-07-11",
+   "to": "2026-11-04",
+   "votes": 4189
+  }
+ ],
+ "notCovered": [
+  {
+   "person": "Marine Tondelier",
+   "chamber": "AN",
+   "from": 2006,
+   "to": 2026,
+   "why": "jamais élue députée, sénatrice ou députée européenne : aucun vote parlementaire à analyser"
+  }
+ ],
+ "people": [
+  {
+   "name": "Marine Tondelier",
+   "role": {
+    "fr": "Candidate, secrétaire nationale des Écologistes ; aucun mandat parlementaire",
+    "en": "Candidate, national secretary of Les Écologistes; no seat in Parliament"
+   }
+  },
+  {
+   "name": "Cyrielle Chatelain",
+   "role": {
+    "fr": "Présidente du groupe Écologiste et social à l'Assemblée, députée de l'Isère depuis 2022",
+    "en": "President of the Ecologist and Social group in the Assembly, MP for Isère since 2022"
+   }
+  }
+ ],
+ "contradictions": [
+  {
+   "person": "Cyrielle Chatelain",
+   "chamber": "AN",
+   "legislature": 17,
+   "date": "2026-07-01",
+   "num": 7905,
+   "title": "l'ensemble du projet de loi actualisant la programmation militaire pour les années 2024 à 2030 et portant diverses dispositions intéressant la défense (texte de la commission mixte paritaire).",
+   "url": "https://www.assemblee-nationale.fr/dyn/17/scrutins/7905",
+   "position": "C",
+   "measure": {
+    "lineage": "m15",
+    "label": {
+     "fr": "Soutenir l'Ukraine, une défense européenne",
+     "en": "Support Ukraine, a European defence"
+    }
+   },
+   "explanation": {
+    "fr": "A voté contre l'actualisation de la loi de programmation militaire (texte final, 2026), qui renforçait les moyens des armées, alors que le programme veut préparer l'armée à une guerre de haute intensité ; le programme insiste sur le cadre européen, absent du texte.",
+    "en": "Voted against the update of the military programming law (final text, 2026), which boosted the armed forces' resources, while the programme wants to prepare the army for high-intensity war; the programme stresses a European framework the text lacked."
+   },
+   "strength": "partial"
+  },
+  {
+   "person": "Cyrielle Chatelain",
+   "chamber": "AN",
+   "legislature": 17,
+   "date": "2024-10-31",
+   "num": 217,
+   "title": "l'ensemble de la proposition de loi visant à restaurer un système de retraite plus juste en annulant les dernières réformes portant sur l’âge de départ et le nombre d’annuités (première lecture).",
+   "url": "https://www.assemblee-nationale.fr/dyn/17/scrutins/217",
+   "position": "C",
+   "measure": {
+    "lineage": "m02",
+    "label": {
+     "fr": "Retour à la retraite à 62 ans",
+     "en": "Back to pension age 62"
+    }
+   },
+   "explanation": {
+    "fr": "A voté contre la proposition de loi du Rassemblement national qui rétablissait l'âge légal de 62 ans, exactement ce que promet le programme ; la gauche a refusé de voter ce texte du RN, rejeté.",
+    "en": "Voted against the National Rally bill that restored the legal pension age of 62, exactly what the programme promises; the left refused to back this RN bill, which was rejected."
+   },
+   "strength": "clear"
+  },
+  {
+   "person": "Cyrielle Chatelain",
+   "chamber": "AN",
+   "legislature": 16,
+   "date": "2023-10-10",
+   "num": 2719,
+   "title": "l'ensemble du projet de loi d'orientation et de programmation du ministère de la justice 2023-2027 (texte de la commission mixte paritaire).",
+   "url": "https://www.assemblee-nationale.fr/dyn/16/scrutins/2719",
+   "position": "C",
+   "measure": {
+    "lineage": "m21",
+    "label": {
+     "fr": "Plus de moyens pour la justice",
+     "en": "More resources for justice"
+    }
+   },
+   "explanation": {
+    "fr": "A voté contre la loi de programmation de la justice 2023-2027 (texte final), qui augmentait le budget et les effectifs de la justice, alors que le programme veut plus de moyens ; le texte contenait aussi d'autres mesures.",
+    "en": "Voted against the 2023–2027 justice programming law (final text), which raised the justice budget and staff, while the programme wants more resources; the text also held other measures."
+   },
+   "strength": "partial"
+  }
+ ]
+}

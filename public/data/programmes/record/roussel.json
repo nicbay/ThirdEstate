@@ -1,0 +1,178 @@
+{
+ "generated": "2026-11-14",
+ "coverage": [
+  {
+   "person": "Fabien Roussel",
+   "chamber": "AN",
+   "from": "2017-07-04",
+   "to": "2024-06-04",
+   "votes": 888
+  },
+  {
+   "person": "Stéphane Peu",
+   "chamber": "AN",
+   "from": "2017-07-04",
+   "to": "2026-11-04",
+   "votes": 3580
+  }
+ ],
+ "notCovered": [
+  {
+   "person": "Fabien Roussel",
+   "chamber": "AN",
+   "from": 2024,
+   "to": 2026,
+   "why": "battu aux législatives de 2024, plus de mandat parlementaire depuis"
+  }
+ ],
+ "people": [
+  {
+   "name": "Fabien Roussel",
+   "role": {
+    "fr": "Candidat, député du Nord de 2017 à 2024 (GDR)",
+    "en": "Candidate, MP for Nord 2017–2024 (GDR)"
+   }
+  },
+  {
+   "name": "Stéphane Peu",
+   "role": {
+    "fr": "Président du groupe GDR à l'Assemblée, député de Seine-Saint-Denis depuis 2017",
+    "en": "GDR group president in the Assembly, MP for Seine-Saint-Denis since 2017"
+   }
+  }
+ ],
+ "contradictions": [
+  {
+   "person": "Stéphane Peu",
+   "chamber": "AN",
+   "legislature": 17,
+   "date": "2026-05-05",
+   "num": 6319,
+   "title": "l'ensemble du projet de loi relatif à la lutte contre les fraudes sociales et fiscales (texte de la commission mixte paritaire).",
+   "url": "https://www.assemblee-nationale.fr/dyn/17/scrutins/6319",
+   "position": "C",
+   "measure": {
+    "lineage": "m12",
+    "label": {
+     "fr": "Combattre la fraude fiscale",
+     "en": "Fight tax fraud"
+    }
+   },
+   "explanation": {
+    "fr": "A voté contre la loi de 2026 relative à la lutte contre les fraudes sociales et fiscales (texte final), qui comportait des mesures contre la fraude fiscale, alors que le programme fait de ce combat une priorité.",
+    "en": "Voted against the 2026 law on social and tax fraud (final text), which included measures against tax fraud, while the programme makes that fight a priority."
+   },
+   "strength": "partial"
+  },
+  {
+   "person": "Stéphane Peu",
+   "chamber": "AN",
+   "legislature": 17,
+   "date": "2024-10-31",
+   "num": 217,
+   "title": "l'ensemble de la proposition de loi visant à restaurer un système de retraite plus juste en annulant les dernières réformes portant sur l’âge de départ et le nombre d’annuités (première lecture).",
+   "url": "https://www.assemblee-nationale.fr/dyn/17/scrutins/217",
+   "position": "C",
+   "measure": {
+    "lineage": "m04",
+    "label": {
+     "fr": "Abroger la retraite à 64 ans, objectif 60 ans",
+     "en": "Repeal pension age 64, aim for 60"
+    }
+   },
+   "explanation": {
+    "fr": "A voté contre la proposition de loi du Rassemblement national qui abrogeait le report de l'âge à 64 ans (retour à 62 ans), ce que promet le programme ; la gauche a refusé de voter ce texte du RN, rejeté.",
+    "en": "Voted against the National Rally bill that repealed the move to age 64 (back to 62), which the programme promises; the left refused to back this RN bill, which was rejected."
+   },
+   "strength": "clear"
+  },
+  {
+   "person": "Stéphane Peu",
+   "chamber": "AN",
+   "legislature": 16,
+   "date": "2023-01-31",
+   "num": 897,
+   "title": "l'ensemble du projet de loi relatif à l'accélération de la production d'énergies renouvelables (texte de la commission mixte paritaire).",
+   "url": "https://www.assemblee-nationale.fr/dyn/16/scrutins/897",
+   "position": "C",
+   "measure": {
+    "lineage": "m10",
+    "label": {
+     "fr": "Doubler la production d'électricité nucléaire et renouvelable",
+     "en": "Double nuclear and renewable electricity output"
+    }
+   },
+   "explanation": {
+    "fr": "A voté contre la loi d'accélération de la production d'énergies renouvelables (texte final, 2023), alors que le programme veut doubler la production d'électricité, renouvelables comprises.",
+    "en": "Voted against the law speeding up renewable energy production (final text, 2023), while the programme wants to double electricity output, renewables included."
+   },
+   "strength": "partial"
+  },
+  {
+   "person": "Fabien Roussel",
+   "chamber": "AN",
+   "legislature": 16,
+   "date": "2022-08-03",
+   "num": 186,
+   "title": "l'ensemble du projet de loi portant mesures d'urgence pour la protection du pouvoir d'achat (texte de la commission paritaire).",
+   "url": "https://www.assemblee-nationale.fr/dyn/16/scrutins/186",
+   "position": "C",
+   "measure": {
+    "lineage": "m24",
+    "label": {
+     "fr": "Revaloriser les APL de 10 %",
+     "en": "Raise housing benefit by 10%"
+    }
+   },
+   "explanation": {
+    "fr": "A voté contre la loi pouvoir d'achat de 2022 (texte final), qui revalorisait notamment les APL de 3,5 % ; le programme promet 10 %, mais ce vote a rejeté une hausse plus faible.",
+    "en": "Voted against the 2022 purchasing-power law (final text), which among other things raised housing benefit by 3.5%; the programme promises 10%, but this vote turned down a smaller rise."
+   },
+   "strength": "partial"
+  },
+  {
+   "person": "Stéphane Peu",
+   "chamber": "AN",
+   "legislature": 16,
+   "date": "2022-08-03",
+   "num": 186,
+   "title": "l'ensemble du projet de loi portant mesures d'urgence pour la protection du pouvoir d'achat (texte de la commission paritaire).",
+   "url": "https://www.assemblee-nationale.fr/dyn/16/scrutins/186",
+   "position": "C",
+   "measure": {
+    "lineage": "m24",
+    "label": {
+     "fr": "Revaloriser les APL de 10 %",
+     "en": "Raise housing benefit by 10%"
+    }
+   },
+   "explanation": {
+    "fr": "A voté contre la loi pouvoir d'achat de 2022 (texte final), qui revalorisait notamment les APL de 3,5 % ; le programme promet 10 %, mais ce vote a rejeté une hausse plus faible.",
+    "en": "Voted against the 2022 purchasing-power law (final text), which among other things raised housing benefit by 3.5%; the programme promises 10%, but this vote turned down a smaller rise."
+   },
+   "strength": "partial"
+  },
+  {
+   "person": "Fabien Roussel",
+   "chamber": "AN",
+   "legislature": 15,
+   "date": "2018-10-10",
+   "num": 1215,
+   "title": "l'ensemble du projet de loi relatif à la lutte contre la fraude (texte de la commission mixte paritaire).",
+   "url": "https://www.assemblee-nationale.fr/dyn/15/scrutins/1215",
+   "position": "C",
+   "measure": {
+    "lineage": "m12",
+    "label": {
+     "fr": "Combattre la fraude fiscale",
+     "en": "Fight tax fraud"
+    }
+   },
+   "explanation": {
+    "fr": "A voté contre la loi de 2018 relative à la lutte contre la fraude (texte final), qui durcissait les sanctions de la fraude fiscale et assouplissait le « verrou de Bercy », alors qu'il fait de ce combat une priorité.",
+    "en": "Voted against the 2018 anti-fraud law (final text), which toughened penalties for tax fraud and loosened the 'Bercy lock', while he makes that fight a priority."
+   },
+   "strength": "partial"
+  }
+ ]
+}
