@@ -44,22 +44,23 @@ function tail(rx, ry, n, bend, lift, floor = H - 2) {
 }
 
 // ---- walk: the body (head and trunk, no legs, no tail), then legs from a gait
+// the head is the sitting fox's own (big enough to read at 3px a pixel), on a long trunk
 const BODY = [
-  "..........................K...K...",
-  ".........................KLK.KLK..",
-  ".........................KLMKMLK..",
-  "........................KLLLLLLLK.",
-  "........................KLLLLLELLK",
-  ".......................KDLLLLLMMNK",
-  "......................KDLLLLMMMKK.",
-  ".................KKKKKDLLLLMMMK...",
-  "...............KKDLLLLLLLLLMMGK...",
-  ".............KKDLLLLLLLLLLLLMMGK..",
-  "............KDLLLLLLLLLLLLLLMMGK..",
-  "...........KDLLLLLLLLLLLLLLLLMMK..",
-  "...........KDLLLLLLLLLLLLLLLLMGK..",
-  "...........KDDLLLLLLLLLLLLLLLGK...",
-  "............KDDLLKKKKKKKKKKDLGK...",
+  "......................K......K....",
+  ".....................KLK....KLK...",
+  ".....................KLMK..KMLK...",
+  ".....................KLMLKKLMLK...",
+  "....................KLLLLLLLLLLK..",
+  "....................KLLLLLLLLLLK..",
+  "....................KDLLLLLLELLK..",
+  "...................KDLLLLLLLLMMMK.",
+  "...................KDLLLLLMMMMMNK.",
+  "...........KKKKKKKKKKDLLMMMMMMKK..",
+  "..........KDLLLLLLLLLLDMMMMMGK....",
+  "..........KDLLLLLLLLLLLLMMMMGK....",
+  "..........KDLLLLLLLLLLLLLMMMGK....",
+  "..........KDDLLLLLLLLLLLLLMMGK....",
+  "..........KDDLLLKKKKKKKKDDLMGK....",
 ];
 const HIP = 14, GROUND = 21, STRIDE = 4;
 // [hip x, gait phase, near?]: a trot, each near leg paired with the far leg at the other end
