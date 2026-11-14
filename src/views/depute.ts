@@ -60,6 +60,8 @@ export async function renderDepute(app: HTMLElement, id: string) {
         </nav>
       </div>
 
+      <div id="mp-speech"></div>
+
       <div class="mp-grid-2">
         <div class="card">
           <dl class="facts">
@@ -99,9 +101,8 @@ export async function renderDepute(app: HTMLElement, id: string) {
         </div>
       </div>
 
-      <div id="mp-speech"></div>
-
-      <div class="card">
+      <details class="card mp-votes">
+        <summary><h2>${L(`Tous ses votes, un par un (${fmtNum(st.scrutins)})`, `All their votes, one by one (${fmtNum(st.scrutins)})`)}</h2></summary>
         <div class="filters">
           <input id="vq" type="search" placeholder="${s.searchVotes}" />
           <select id="vpos">
@@ -113,7 +114,7 @@ export async function renderDepute(app: HTMLElement, id: string) {
         </div>
         <ul id="votes" class="votes"></ul>
         <div class="pager"><button id="vprev" type="button">${s.prev}</button><span id="vpage" class="muted"></span><button id="vnext" type="button">${s.next}</button></div>
-      </div>
+      </details>
       <p class="source muted">${s.sourceAN(fmtDate(meta.syncedAt))}</p>
     </section>`;
 

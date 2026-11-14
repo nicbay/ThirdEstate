@@ -3,6 +3,7 @@
 // added or dropped, and how the candidate's Assembly group voted on matching texts since 2024.
 // Data: public/data/programmes/<slug>.json, built by scripts/build-programme.mjs. Generic over slug.
 // Tone: descriptive only. Status chips use neutral ink/grey styles; colour is kept for vote positions.
+import { mountDissent } from "./programme-dissent";
 import "../styles/programme.css";
 import { fetchJson } from "../data";
 import { L, fmtDate, fmtNum, fmtPct } from "../i18n";
@@ -506,6 +507,7 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
   if (deep && byId.has(deep)) state.focus = deep;
   draw();
   mountMeasureTable(app, "mt-mel", assessRows);
+  void mountDissent(app, f.slug, f.candidate);
 
   // ---------- flow view ----------
   const canvas = app.querySelector<HTMLElement>("#fcanvas")!;
@@ -629,6 +631,7 @@ function renderLite(app: HTMLElement, f: LiteFile) {
       </article>
     </section>`;
   mountMeasureTable(app, "mt-lite", rows);
+  void mountDissent(app, f.slug, f.candidate);
   const list = app.querySelector<HTMLOListElement>("#llist")!;
   const canvas = app.querySelector<HTMLElement>("#fcanvas");
   const draw = () => {
