@@ -30,3 +30,6 @@
 .pg-recent { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.2rem; font-size: 0.88rem; }
 .pg-recent li { display: flex; gap: 0.8rem; flex-wrap: wrap; }
 .pg-recent li span { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.pg-lean { white-space: nowrap; font: 600 0.82rem var(--mono); font-variant-numeric: tabular-nums; }
+.pg-lean .pg-hi { color: var(--up-text); }
+.pg-lean .pg-lo { color: var(--down-text); }

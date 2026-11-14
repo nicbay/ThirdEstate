@@ -72,7 +72,7 @@ export async function renderHome(app: HTMLElement) {
     onChange: (fc) => { if (num) num.innerHTML = forecastLine(fc, fc.scenarios.length ? scenarioForecast(polls, markets, []) : undefined); },
   });
   // the method behind the average, folded with the rest of the method
-  foot.querySelector(".scn-more")?.insertAdjacentHTML("beforeend", `<p>${L(`Moyenne des sondages du premier tour sur ${WINDOW} jours, pondérée par la note des instituts (<a href="#/sondages/instituts">le classement</a>), jusqu’au dernier sondage (${fmtDate(latest)}, ${nPolls} sondages dans la fenêtre). Points : sondages individuels.`, `First-round polling average over ${WINDOW} days, weighted by each institute’s grade (<a href="#/sondages/instituts">the ranking</a>), up to the latest poll (${fmtDate(latest)}, ${nPolls} polls in the window). Dots: individual polls.`)}</p>`);
+  foot.querySelector(".scn-more")?.insertAdjacentHTML("beforeend", `<p>${L(`Moyenne des sondages du premier tour sur ${WINDOW} jours, pondérée par la note des instituts et corrigée de leurs penchants (<a href="#/sondages/instituts">le classement</a>), jusqu’au dernier sondage (${fmtDate(latest)}, ${nPolls} sondages dans la fenêtre). Points : sondages individuels.`, `First-round polling average over ${WINDOW} days, weighted by each institute’s grade and corrected for their leans (<a href="#/sondages/instituts">the ranking</a>), up to the latest poll (${fmtDate(latest)}, ${nPolls} polls in the window). Dots: individual polls.`)}</p>`);
   // phones get a narrower canvas: redraw when the window crosses the 640px line
   const narrow = matchMedia("(max-width: 639px)");
   const onNarrow = () => { if (!document.body.contains(trendBox)) return narrow.removeEventListener("change", onNarrow); redraw(); };

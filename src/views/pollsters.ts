@@ -4,7 +4,7 @@
 import "../styles/pollsters.css";
 import { loadPolls } from "../data";
 import { L, fmtDate, getLang } from "../i18n";
-import { RATINGS, UNRATED_WEIGHT, pollValue, pollWeight, pollsterAnchor, pollsterName, pollsterRating, type Grade, type Poll, type PollsterRating } from "../lib/polls";
+import { HOUSE_DAYS, RATINGS, UNRATED_WEIGHT, houseEffects, latestPollDate, pollValue, pollWeight, pollsterAnchor, pollsterName, pollsterRating, type Grade, type Poll, type PollsterRating } from "../lib/polls";
 import { meta, registerParties } from "../lib/candidates";
 import { dec, signed } from "../lib/format";
 import { esc, safeUrl } from "../util";
@@ -32,6 +32,12 @@ export async function renderPollsters(app: HTMLElement) {
   };
   const pollLink = (p: Poll, body: string) => (p.url ? `<a href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">${body}</a>` : body);
   const maxMae = Math.max(1, ...R.pollsters.map((p) => p.mae ?? 0));
+  // each institute's lean in 2027 (taken off its polls in our average): the two largest, 0.5 point or more
+  const house = polls ? houseEffects(polls.firstRound, latestPollDate(polls.firstRound)) : new Map();
+  const lean = (name: string) => {
+    const xs = [...(house.get(name) ?? new Map()).entries()].filter(([, h]) => h.n >= 2 && Math.abs(h.effect) >= 0.5).sort((a, b) => Math.abs(b[1].effect) - Math.abs(a[1].effect)).slice(0, 2);
+    return xs.length ? xs.map(([nm, h]) => `<span class="${h.effect > 0 ? "pg-hi" : "pg-lo"}">${esc(meta(nm).surname)} ${signed(h.effect, 1)}</span>`).join("<br>") : `<span class="muted">${house.has(name) ? L("aucun", "none") : "—"}</span>`;
+  };
   const rated = R.pollsters.filter((p) => p.grade);
   const unrated = R.pollsters.filter((p) => !p.grade);
   const presCount = R.elections.filter((e) => e.type === "presidential").length;
@@ -45,11 +51,12 @@ export async function renderPollsters(app: HTMLElement) {
       <td class="pg-miss">${p.mae == null ? "—" : `<span class="pg-bar ${gradeClass(p.grade)}" style="width:${((100 * p.mae) / maxMae).toFixed(0)}%"></span><b>${dec(p.mae, 1)}</b> ${L("pt", "pt")}${p.history[0] ? `<span class="muted tiny">${L("dernière fois", "last time")} ${dec(p.history[0].mae, 1)} (${esc(lastElection(p))})</span>` : ""}`}</td>
       <td class="num">${p.elections || "—"}</td>
       <td class="num">${p.biasFarRight == null ? "—" : signed(p.biasFarRight, 1)}</td>
+      <td class="pg-lean">${lean(p.name)}</td>
       <td class="num">${dec(p.weight ?? UNRATED_WEIGHT, 2)}</td>
       <td class="num">${n2027.get(p.name) ?? 0}</td>
       <td class="pg-last">${(() => { const x = byFirm.get(p.name)?.[0]; return x ? `${pollLink(x, fmtDate(x.end))}<span class="muted tiny">${top(x)}</span>` : `<span class="muted">—</span>`; })()}</td>
     </tr>
-    <tr class="pg-detail" hidden data-for="${esc(p.name)}"><td colspan="9">${detail(p)}</td></tr>`;
+    <tr class="pg-detail" hidden data-for="${esc(p.name)}"><td colspan="10">${detail(p)}</td></tr>`;
 
   const detail = (p: PollsterRating) => {
     const m = p.methodology;
@@ -89,11 +96,12 @@ export async function renderPollsters(app: HTMLElement) {
             <th class="num" title="${esc(L("Écart moyen à la moyenne des instituts, en points (négatif = meilleur que les autres)", "Average gap to the field, in points (negative = better than the others)"))}">${L("Score", "Score")}</th>
             <th title="${esc(L("Écart moyen entre son dernier sondage et le résultat, en points, sur toutes les élections notées", "Average gap between its final poll and the result, in points, across every graded election"))}">${L("Erreur moyenne", "Off by, on average")}</th><th class="num">${L("Élections", "Elections")}</th>
             <th class="num" title="${esc(L("Sondage moins résultat pour l’extrême droite (RN/FN et Reconquête), en moyenne : positif = surestimée", "Poll minus result for the far right (RN/FN and Reconquête), on average: positive = overestimated"))}">${L("Biais ext. droite", "Far-right bias")}</th>
+            <th title="${esc(L(`Penchant de l’institut en 2027 : de combien ses sondages placent un candidat au-dessus (+) ou au-dessous (−) des autres instituts, sur ${HOUSE_DAYS} jours, en points. Nous le retirons de ses sondages dans la moyenne.`, `The institute's 2027 lean: how far its polls put a candidate above (+) or below (−) the other institutes, over ${HOUSE_DAYS} days, in points. We take it off its polls in the average.`))}">${L("Penchant 2027", "2027 lean")}</th>
             <th class="num">${L("Poids", "Weight")}</th><th class="num">${L("Sondages 2027", "2027 polls")}</th><th>${L("Dernier sondage", "Latest poll")}</th>
           </tr></thead>
           <tbody>${rated.map(row).join("")}${unrated.map(row).join("")}</tbody>
         </table></div>
-        <p class="muted small">${L("Cliquer sur un institut : sa méthode, ses derniers sondages et son erreur à chaque élection. Écarts en points de pourcentage.", "Click an institute: its method, its latest polls and how far off it was at each election. Gaps in percentage points.")}</p>`
+        <p class="muted small">${L(`Cliquer sur un institut : sa méthode, ses derniers sondages et son erreur à chaque élection. Écarts en points de pourcentage. Penchant 2027 : de combien l’institut place un candidat au-dessus ou au-dessous des autres sur les ${HOUSE_DAYS} derniers jours, ramené vers zéro quand il a peu de sondages ; notre moyenne le retire de ses sondages.`, `Click an institute: its method, its latest polls and how far off it was at each election. Gaps in percentage points. 2027 lean: how far the institute puts a candidate above or below the others over the last ${HOUSE_DAYS} days, pulled toward zero when it has few polls; our average takes it off its polls.`)}</p>`
         : `<p class="muted">${L("Notes en cours de calcul.", "Grades being computed.")}</p>`}
       </article>
 
