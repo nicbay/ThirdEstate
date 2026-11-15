@@ -1,4 +1,4 @@
-// "Qui vous ressemble ?" (#/quiz): two versions of the same quiz.
+// "Le quiz : qui vous ressemble ?" (#/quiz): two versions of the same quiz.
 //   Short: the ten Assembly votes that tell the 2027 candidates apart fastest (about two minutes).
 //   Long:  fourteen votes and two measures from each candidate's own programme, asked without saying whose
 //          they are (about eight minutes). Its results add, candidate by candidate, the deal breakers (what you
@@ -9,6 +9,7 @@
 // Answers never leave the browser: everything is computed here, and the share link carries them in the URL hash
 // (#/quiz/<code>), which browsers do not send to any server.
 import "../styles/quiz.css";
+import { toast } from "../lib/toast";
 import { fetchJson, loadPolls } from "../data";
 import { L, colon, fmtDate, fmtNum, fmtPct } from "../i18n";
 import { meta, registerParties, spectrumRank } from "../lib/candidates";
@@ -158,12 +159,12 @@ export async function renderQuiz(app: HTMLElement, code?: string) {
   app.innerHTML = `
     <section class="page quiz-page qz-page">
       <header class="page-head">
-        <p class="eyebrow">${L("Quiz · présidentielle 2027", "Quiz · 2027 presidential")}</p>
-        <h1>${L("Qui vous ressemble, parmi les candidats de 2027 ?", "Who is closest to you, among the 2027 candidates?")}</h1>
-        <p class="dek">${L("Des votes réels de l’Assemblée et des mesures tirées des programmes : répondez, marquez ce qui compte vraiment pour vous, et voyez de quel candidat vos réponses vous rapprochent, sur quoi vous divergez, et où vous vous situez de la gauche à la droite.", "Real Assembly votes and measures taken from the programmes: answer, mark what really matters to you, and see which candidate your answers bring you closest to, where you differ, and where you stand from left to right.")}</p>
+        <p class="eyebrow">${L("Présidentielle 2027", "2027 presidential")}</p>
+        <h1>${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</h1>
+        <p class="dek">${L("Des votes réels de l’Assemblée et des mesures tirées des programmes : répondez, marquez ce qui compte vraiment pour vous, et voyez de quel candidat vos réponses vous rapprochent, sur quoi vous divergez, et où vous vous situez de la gauche à la droite.", "Real Assembly votes and measures taken from the programs: answer, mark what really matters to you, and see which candidate your answers bring you closest to, where you differ, and where you stand from left to right.")}</p>
       </header>
       ${stale ? `<p class="qz-stale">${L("Ce lien de résultats correspond à une ancienne série de questions : il ne peut plus être relu. Vous pouvez refaire le quiz.", "This results link was made for an earlier set of questions and can no longer be read. You can take the quiz again.")}</p>` : ""}
-      <div class="quiz qz" id="quiz" aria-live="polite"></div>
+      <div class="quiz qz" id="quiz"></div>
       ${methodNote(d)}
     </section>`;
   draw(app.querySelector<HTMLElement>("#quiz")!, d, 1);
@@ -181,77 +182,143 @@ function bindKeys(stage: HTMLElement, fn: ((e: KeyboardEvent) => void) | null) {
   if (keyHandler) document.addEventListener("keydown", keyHandler);
 }
 
+/** Moves one question forward or back. The run's frame (back button, progress, keys line) stays put; only the
+ *  question card is swapped, so nothing above or below it is rebuilt. */
+function go(stage: HTMLElement, d: QuizData, delta: 1 | -1) {
+  const s = st!, ts = s.ts ?? tokens(d, s.mode);
+  if (delta < 0 && s.step === 0) return;
+  s.w = false;
+  s.step = Math.max(0, s.step + delta);
+  if (s.step >= ts.length) history.replaceState(null, "", `#/quiz/${encode(d, s.mode, s.a)}`);
+  draw(stage, d, delta);
+  keepInView(stage);
+}
+
 function draw(stage: HTMLElement, d: QuizData, dir: 1 | -1) {
   const s = st!;
   const ts = s.ts ?? tokens(d, s.mode);
   if (!s.started) { bindKeys(stage, null); return intro(stage, d); }
-  if (s.step >= ts.length) { bindKeys(stage, null); return results(stage, d); }
+  if (s.step >= ts.length) {
+    bindKeys(stage, null);
+    results(stage, d);
+    // no live region on the quiz: focus carries the reader to the new content, so it is read out once
+    const h = stage.querySelector<HTMLElement>(".qz-results h2, .qz-q");
+    if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); }
+    return;
+  }
   const q = question(d, ts[s.step]);
   const ans = s.a.get(q.key);
   const total = ts.length;
   const isVote = q.kind === "v";
-  const btn = (p: Pos, n: number, label: string, icon: string) =>
-    `<button type="button" class="qz-ans qz-ans-${p}" data-a="${p}" aria-pressed="${ans?.p === p}"><kbd aria-hidden="true">${n}</kbd><span class="qz-ans-i" aria-hidden="true">${icon}</span><span>${label}</span></button>`;
-  stage.innerHTML = `
-    <div class="qz-top">
-      <button type="button" class="qz-back" ${s.step === 0 ? "disabled" : ""}><span aria-hidden="true">←</span> ${L("Retour", "Back")}</button>
-      <div class="qz-progress" role="progressbar" aria-label="${L("Progression", "Progress")}" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${s.step}">${ts.map((t, i) => `<i class="${i < s.step ? (s.a.has(t) ? "is-done" : "is-skip") : i === s.step ? "is-now" : ""}"></i>`).join("")}</div>
-      <span class="qz-count">${s.step + 1}<span>/${total}</span></span>
-    </div>
-    <div class="qz-card ${dir > 0 ? "qz-in-fwd" : "qz-in-back"}">
-      <p class="qz-kicker"><i style="background:${THEME_COLOR[q.theme] ?? "#9a9ea6"}"></i>${esc(themeName(d, q.theme))} · ${isVote ? `${L("Vote à l’Assemblée,", "Assembly vote,")} ${fmtDate(q.vote!.d)}` : L("Proposition d’un candidat", "A candidate’s proposal")}</p>
-      <h2 class="qz-q">${esc(q.q)}</h2>
+
+  // the frame: built once per run, then only updated
+  let run = stage.querySelector<HTMLElement>(":scope > .qz-run");
+  const fresh = !run;
+  if (!run) {
+    stage.innerHTML = `<div class="qz-run">
+      <div class="qz-top">
+        <button type="button" class="qz-back"><span aria-hidden="true">←</span> ${L("Retour", "Back")}</button>
+        <div class="qz-progress" role="progressbar" aria-label="${L("Progression du quiz", "Quiz progress")}" aria-valuemin="0" aria-valuemax="${total}">${ts.map(() => "<i></i>").join("")}</div>
+        <span class="qz-count" aria-hidden="true"></span>
+      </div>
+      <div class="qz-stage"></div>
+      <p class="qz-keys muted small">${L("Clavier : 1, 2, 3 pour répondre, I pour « important », 0 pour passer, ← pour revenir.", "Keyboard: 1, 2, 3 to answer, I for “important”, 0 to skip, ← to go back.")}</p>
+    </div>`;
+    run = stage.querySelector<HTMLElement>(".qz-run")!;
+    run.querySelector(".qz-back")!.addEventListener("click", () => go(stage, d, -1));
+  }
+  const back = run.querySelector<HTMLButtonElement>(".qz-back")!;
+  back.disabled = s.step === 0;
+  const bar = run.querySelector<HTMLElement>(".qz-progress")!;
+  bar.setAttribute("aria-valuenow", String(s.step));
+  bar.setAttribute("aria-valuetext", L(`Question ${s.step + 1} sur ${total}`, `Question ${s.step + 1} of ${total}`));
+  bar.querySelectorAll("i").forEach((el, i) => { el.className = i < s.step ? (s.a.has(ts[i]) ? "is-done" : "is-skip") : i === s.step ? "is-now" : ""; });
+  run.querySelector(".qz-count")!.innerHTML = `${s.step + 1}<span>/${total}</span>`;
+
+  // the question card
+  const opt = (p: Pos, n: number, label: string, icon: string) =>
+    `<button type="button" class="qz-ans qz-ans-${p}" data-a="${p}" aria-pressed="${ans?.p === p}"><span class="qz-ans-i" aria-hidden="true">${icon}</span><span class="qz-ans-l">${label}</span><kbd aria-hidden="true">${n}</kbd></button>`;
+  const card = document.createElement("div");
+  card.className = "qz-card";
+  card.innerHTML = `
+      <p class="qz-kicker"><i style="background:${THEME_COLOR[q.theme] ?? "var(--other)"}"></i>${esc(themeName(d, q.theme))} · ${isVote ? `${L("Vote à l’Assemblée,", "Assembly vote,")} ${fmtDate(q.vote!.d)}` : L("Proposition d’un candidat", "A candidate’s proposal")}</p>
+      <h2 class="qz-q" tabindex="-1"><span class="sr-only">${L(`Question ${s.step + 1} sur ${total} : `, `Question ${s.step + 1} of ${total}: `)}</span>${esc(q.q)}</h2>
       <p class="qz-ctx">${isVote
         ? `${esc(q.ctx)} <a href="https://www.assemblee-nationale.fr/dyn/17/scrutins/${q.vote!.n}" target="_blank" rel="noopener">${L(`Scrutin n° ${q.vote!.n}`, `Vote no. ${q.vote!.n}`)} ↗</a>`
-        : L("Mesure tirée du programme ou des annonces d’un des candidats. Son auteur est révélé avec vos résultats.", "A measure taken from one candidate’s programme or announcements. Its author is revealed with your results.")}</p>
+        : L("Mesure tirée du programme ou des annonces d’un des candidats. Son auteur est révélé avec vos résultats.", "A measure taken from one candidate’s program or announcements. Its author is revealed with your results.")}</p>
       <div class="qz-answers${isVote ? "" : " is-two"}" role="group" aria-label="${L("Votre position", "Your position")}">
-        ${isVote ? btn("P", 1, L("Pour", "For"), "✓") + btn("C", 2, L("Contre", "Against"), "✕") + btn("A", 3, L("Abstention", "Abstain"), "–")
-          : btn("P", 1, L("D’accord", "Agree"), "✓") + btn("C", 2, L("Pas d’accord", "Disagree"), "✕")}
+        ${isVote ? opt("P", 1, L("Pour", "For"), "✓") + opt("C", 2, L("Contre", "Against"), "✕") + opt("A", 3, L("Abstention", "Abstain"), "–")
+          : opt("P", 1, L("D’accord", "Agree"), "✓") + opt("C", 2, L("Pas d’accord", "Disagree"), "✕")}
       </div>
       <div class="qz-foot">
-        <button type="button" class="qz-weight" aria-pressed="${!!s.w}"><span aria-hidden="true">★</span> ${L("C’est très important pour moi", "This matters a lot to me")} <kbd aria-hidden="true">I</kbd></button>
+        <button type="button" class="qz-weight" aria-pressed="false"><span aria-hidden="true">★</span> ${L("C’est très important pour moi", "This matters a lot to me")} <kbd aria-hidden="true">I</kbd></button>
         <button type="button" class="qz-skip">${L("Sans avis · passer", "No opinion · skip")} <kbd aria-hidden="true">0</kbd></button>
-      </div>
-    </div>
-    <p class="qz-keys muted small">${L("Clavier : 1, 2, 3 pour répondre, I pour « important », 0 pour passer, ← pour revenir.", "Keyboard: 1, 2, 3 to answer, I for “important”, 0 to skip, ← to go back.")}</p>`;
-  const go = (delta: 1 | -1, delay = 0) => {
-    const run = () => {
-      s.w = false;
-      s.step = Math.max(0, s.step + delta);
-      if (s.step >= ts.length) history.replaceState(null, "", `#/quiz/${encode(d, s.mode, s.a)}`);
-      draw(stage, d, delta);
-      keepInView(stage);
-    };
-    if (delay && !reduced()) { stage.querySelector(".qz-card")?.classList.add(delta > 0 ? "qz-out-fwd" : "qz-out-back"); setTimeout(run, delay); } else run();
-  };
+      </div>`;
+
   // the "important" toggle applies to the answer about to be given, or to the one already there
   s.w = ans?.w ?? false;
-  const wb = stage.querySelector<HTMLButtonElement>(".qz-weight")!;
+  const wb = card.querySelector<HTMLButtonElement>(".qz-weight")!;
   wb.setAttribute("aria-pressed", String(s.w));
   const toggleW = () => { s.w = !s.w; wb.setAttribute("aria-pressed", String(s.w)); const cur = s.a.get(q.key); if (cur) cur.w = !!s.w; };
   let busy = false;
+  // a short beat on the picked answer, so the choice is seen before the next question slides in
+  const next = (wait: number) => { busy = true; setTimeout(() => go(stage, d, 1), reduced() ? 60 : wait); };
   const pick = (p: Pos) => {
     if (busy || (!isVote && p === "A")) return;
-    busy = true;
     s.a.set(q.key, { p, w: !!s.w });
-    stage.querySelectorAll<HTMLElement>(".qz-ans").forEach((x) => { const on = x.dataset.a === p; x.setAttribute("aria-pressed", String(on)); x.classList.toggle("is-picked", on); });
-    go(1, 240);
+    card.querySelectorAll<HTMLElement>(".qz-ans").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.a === p)));
+    next(220);
   };
-  const skip = () => { if (busy) return; busy = true; s.a.delete(q.key); go(1, 140); };
-  stage.querySelector(".qz-back")!.addEventListener("click", () => go(-1));
-  stage.querySelectorAll<HTMLButtonElement>(".qz-ans").forEach((b) => b.addEventListener("click", () => pick(b.dataset.a as Pos)));
+  const skip = () => { if (busy) return; s.a.delete(q.key); next(80); };
+  card.querySelectorAll<HTMLButtonElement>(".qz-ans").forEach((b) => b.addEventListener("click", () => pick(b.dataset.a as Pos)));
   wb.addEventListener("click", toggleW);
-  stage.querySelector(".qz-skip")!.addEventListener("click", skip);
+  card.querySelector(".qz-skip")!.addEventListener("click", skip);
   bindKeys(stage, (e) => {
+    if (busy) return;
     if (e.key === "1") pick("P");
     else if (e.key === "2") pick("C");
     else if (e.key === "3") pick("A");
     else if (e.key === "0" || e.key === "ArrowRight") skip();
     else if (e.key === "i" || e.key === "I" || e.key === "*") toggleW();
-    else if (e.key === "ArrowLeft" && s.step > 0) go(-1);
+    else if (e.key === "ArrowLeft" && s.step > 0) go(stage, d, -1);
     else return;
     e.preventDefault();
   });
+
+  const box = run.querySelector<HTMLElement>(".qz-stage")!;
+  const hadFocus = stage.contains(document.activeElement) && document.activeElement !== document.body;
+  swapCard(box, card, fresh ? 0 : dir);
+  // keep the reader's place: focus moves to the new question (read out by screen readers), without scrolling
+  if (hadFocus || !fresh) card.querySelector<HTMLElement>(".qz-q")!.focus({ preventScroll: true });
+}
+
+/** Replaces the question card in place: the old one fades out, the new one slides in from the side it came
+ *  from, and the box eases from the old height to the new one, so the page under it never jumps. */
+function swapCard(box: HTMLElement, card: HTMLElement, dir: 0 | 1 | -1) {
+  box.querySelectorAll(".qz-card.is-leaving").forEach((el) => el.remove());
+  const prev = box.querySelector<HTMLElement>(".qz-card");
+  box.getAnimations().forEach((a) => a.cancel());
+  if (!prev || reduced() || typeof box.animate !== "function") {
+    box.replaceChildren(card);
+    if (!prev && !reduced() && typeof card.animate === "function") card.animate([{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }], { duration: 220, easing: "cubic-bezier(0.16, 1, 0.3, 1)" });
+    return;
+  }
+  const h0 = box.offsetHeight;
+  prev.classList.add("is-leaving");
+  prev.setAttribute("aria-hidden", "true");
+  prev.inert = true;
+  box.append(card);
+  const h1 = card.offsetHeight;
+  const ease = "cubic-bezier(0.16, 1, 0.3, 1)", dx = 28 * (dir || 1);
+  box.classList.add("is-swapping");
+  const grow = box.animate([{ height: `${h0}px` }, { height: `${h1}px` }], { duration: 300, easing: ease });
+  const out = prev.animate([{ opacity: 1, transform: "none" }, { opacity: 0, transform: `translateX(${-dx}px)` }], { duration: 150, easing: "cubic-bezier(0.4, 0, 1, 1)", fill: "forwards" });
+  const enter = card.animate([{ opacity: 0, transform: `translateX(${dx}px)` }, { opacity: 1, transform: "none" }], { duration: 300, delay: 70, easing: ease, fill: "backwards" });
+  const done = () => { prev.remove(); box.classList.remove("is-swapping"); };
+  out.finished.then(() => prev.remove(), () => prev.remove());
+  grow.finished.then(done, done);
+  // a background tab pauses animations: never leave two cards stacked
+  setTimeout(() => { if (prev.isConnected) { [out, grow, enter].forEach((a) => a.finish()); done(); } }, 600);
 }
 
 /** After a step, bring the card back into view on small screens (the page header sits above it). */
@@ -261,32 +328,18 @@ function keepInView(stage: HTMLElement) {
 }
 
 function intro(stage: HTMLElement, d: QuizData) {
-  const nV = d.long.filter((t) => t[0] === "v").length, nM = d.long.length - nV;
-  const per = nM / d.candidates.length;
   const themes = [...new Set(d.long.map((t) => question(d, t).theme))];
-  const card = (m: Mode, title: string, time: string, n: number, lines: string[], tag: string) => `
-    <button type="button" class="qz-pick is-${m}" data-mode="${m}">
-      <span class="px-tag">${tag}</span>
-      <strong>${title}</strong>
-      <span class="qz-pick-n"><b>${n}</b> ${L("questions", "questions")} · ${time}</span>
-      <span class="qz-pick-lines">${lines.map((x) => `<span>${x}</span>`).join("")}</span>
-      <span class="qz-pick-go">${L("Commencer", "Start")} <i aria-hidden="true">→</i></span>
-    </button>`;
+  const nS = d.short.length, nL = d.long.length;
   stage.innerHTML = `<div class="qz-intro qz-in-fwd">
-      <div class="qz-picks">
-        ${card("s", L("Version courte", "Short version"), L("2 minutes", "2 minutes"), d.short.length, [
-          L(`Les ${d.short.length} votes de l’Assemblée qui départagent le mieux les candidats`, `The ${d.short.length} Assembly votes that best tell the candidates apart`),
-          L("Votre classement des candidats et votre place sur l’axe gauche-droite", "Your ranking of the candidates and your place on the left–right axis"),
-        ], L("Rapide", "Quick"))}
-        ${card("l", L("Version longue", "Long version"), L("8 minutes", "8 minutes"), d.long.length, [
-          L(`${nV} votes et ${nM} mesures tirées des programmes : ${per} par candidat, sans dire de qui`, `${nV} votes and ${nM} measures from the programmes: ${per} per candidate, without saying whose`),
-          L("En plus : vos points de rupture avec chaque candidat, ce qui pourrait vous rapprocher, votre position sujet par sujet", "Also: your deal breakers with each candidate, what could bring you closer, your position subject by subject"),
-        ], L("La plus précise", "Most precise"))}
+      <p class="qz-lede">${L(`La version courte pose les ${nS} votes de l’Assemblée qui départagent le mieux les candidats, puis vous classe parmi eux et vous situe de la gauche à la droite.`, `The short version asks the ${nS} Assembly votes that best tell the candidates apart, then ranks them against your answers and places you from left to right.`)}</p>
+      <div class="qz-go">
+        <button type="button" class="qz-cta qz-start" data-mode="s">${L(`Commencer : ${nS} questions, 2 minutes`, `Start: ${nS} questions, 2 minutes`)} <i aria-hidden="true">→</i></button>
+        <button type="button" class="qz-long" data-mode="l">${L(`ou la version longue : ${nL} questions, sujet par sujet, avec vos lignes rouges`, `or the long version: ${nL} questions, subject by subject, with your deal breakers`)}</button>
       </div>
-      <p class="qz-topics">${themes.map((t) => `<span><i style="background:${THEME_COLOR[t] ?? "#9a9ea6"}"></i>${esc(themeName(d, t))}</span>`).join("")}</p>
+      <ul class="qz-topics" aria-label="${L("Sujets abordés", "Subjects covered")}">${themes.map((t) => `<li><i style="background:${THEME_COLOR[t] ?? "var(--other)"}"></i>${esc(themeName(d, t))}</li>`).join("")}</ul>
       <p class="muted small">${L("Vous pouvez passer une question, revenir en arrière, et marquer celles qui comptent vraiment pour vous : elles pèsent double. Vos réponses restent dans votre navigateur. Ce quiz mesure une proximité avec des votes et des mesures ; il ne dit pas pour qui voter.", "You can skip a question, go back, and mark the ones that really matter to you: they count double. Your answers stay in your browser. This quiz measures how close you are to votes and measures; it does not say who to vote for.")}</p>
     </div>`;
-  stage.querySelectorAll<HTMLButtonElement>(".qz-pick").forEach((b) => b.addEventListener("click", () => {
+  stage.querySelectorAll<HTMLButtonElement>("[data-mode]").forEach((b) => b.addEventListener("click", () => {
     st = { mode: b.dataset.mode as Mode, step: 0, a: new Map(), started: true };
     draw(stage, d, 1);
     keepInView(stage);
@@ -326,7 +379,7 @@ function results(stage: HTMLElement, d: QuizData) {
       <p>${i.important ? `<span class="qz-star" title="${L("Important pour vous", "Important to you")}">★</span> ` : ""}${esc(i.q.q)}</p>
       ${i.q.kind === "m" ? `<p class="qz-quote" lang="fr">« ${esc(i.q.measure!.text.length > 240 ? `${i.q.measure!.text.slice(0, 240)}…` : i.q.measure!.text)} »</p>` : ""}
       <p class="qz-vs"><span class="qz-pos qz-pos-${i.u}">${L("Vous", "You")}${colon()}${posWord(i.q, i.u)}</span>${i.q.kind === "v" ? `<span class="qz-pos qz-pos-${i.theirs.length === 1 ? i.theirs : "X"}">${esc(c.groups.join(" + "))}${colon()}${posWord(i.q, i.theirs)}</span>` : `<span class="qz-pos qz-pos-own">${L("Sa mesure", "Their measure")}</span>`}
-      ${i.q.kind === "m" ? `<a class="small" href="#/programmes/${esc(c.slug)}#m-${esc(i.q.measure!.id)}">${L("La mesure dans son programme", "The measure in their programme")} →</a>` : `<a class="small" href="https://www.assemblee-nationale.fr/dyn/17/scrutins/${i.q.vote!.n}" target="_blank" rel="noopener">${L(`Scrutin n° ${i.q.vote!.n}`, `Vote no. ${i.q.vote!.n}`)} ↗</a>`}</p></li>`;
+      ${i.q.kind === "m" ? `<a class="small" href="#/programmes/${esc(c.slug)}#m-${esc(i.q.measure!.id)}">${L("La mesure dans son programme", "The measure in their program")} →</a>` : `<a class="small" href="https://www.assemblee-nationale.fr/dyn/17/scrutins/${i.q.vote!.n}" target="_blank" rel="noopener">${L(`Scrutin n° ${i.q.vote!.n}`, `Vote no. ${i.q.vote!.n}`)} ↗</a>`}</p></li>`;
   const own = (x: Item, y: Item) => Number(y.q.kind === "m") - Number(x.q.kind === "m") || Number(y.important) - Number(x.important);
   const list = (c: QuizCand, items: Item[], max = 6) => `<ul class="qz-items">${items.slice(0, max).map((i) => itemLi(c, i)).join("")}</ul>${items.length > max ? `<p class="muted small">${L(`et ${items.length - max} autres`, `and ${items.length - max} more`)}</p>` : ""}`;
   const detail = (r: CandScore, isTop: boolean) => {
@@ -343,7 +396,7 @@ function results(stage: HTMLElement, d: QuizData) {
       blocks.push(`<div class="qz-block is-ok"><h4>${L("Ce qui pourrait être compatible", "What could be compatible")} <b>${withThem.length}</b></h4>${withThem.length ? list(r.c, withThem, 5) : `<p class="muted small">${L("Aucun accord complet sur les questions comparables.", "No full agreement on the comparable questions.")}</p>`}</div>`);
     }
     return `<div class="qz-detail">${blocks.join("")}
-      <p class="qz-links"><a href="#/programmes/${esc(r.c.slug)}">${L("Son programme, mesure par mesure", "Their programme, measure by measure")} →</a><a href="#/candidat/${esc(r.c.slug)}">${L("Sa fiche", "Their file")} →</a></p></div>`;
+      <p class="qz-links"><a href="#/programmes/${esc(r.c.slug)}">${L("Son programme, mesure par mesure", "Their program, measure by measure")} →</a><a href="#/candidat/${esc(r.c.slug)}">${L("Sa fiche", "Their file")} →</a></p></div>`;
   };
   const row = (r: CandScore & { s: number }, i: number) => {
     const col = colorOf(r.c), isTop = ties.includes(r);
@@ -433,7 +486,7 @@ function results(stage: HTMLElement, d: QuizData) {
     ${axis}
 
     <section class="card qz-cands" id="quiz-cands">
-      <header class="card-head"><h2>${L("Les candidats, du plus proche au plus éloigné", "The candidates, closest first")}</h2><a href="#/programmes">${L("Comparer les programmes", "Compare the programmes")}</a></header>
+      <header class="card-head"><h2>${L("Les candidats, du plus proche au plus éloigné", "The candidates, closest first")}</h2><a href="#/programmes">${L("Comparer les programmes", "Compare the programs")}</a></header>
       <p class="prog-lede">${long
         ? L("Ouvrez un candidat pour voir vos points de rupture (désaccords sur ce que vous jugez très important) et ce qui pourrait être compatible.", "Open a candidate to see your deal breakers (disagreements on what you marked as very important) and what could be compatible.")
         : L("Version courte : le score repose sur les votes du groupe parlementaire qui représente chaque candidat. Ouvrez un candidat pour voir accords et désaccords.", "Short version: the score rests on the votes of the parliamentary group standing for each candidate. Open a candidate to see where you agree and differ.")}</p>
@@ -490,7 +543,8 @@ function results(stage: HTMLElement, d: QuizData) {
     const out = stage.querySelector<HTMLElement>(".qz-copied")!;
     try {
       await navigator.clipboard.writeText(url);
-      out.textContent = L("Lien copié. Il contient vos réponses ; rien n’est envoyé ailleurs.", "Link copied. It holds your answers; nothing is sent anywhere.");
+      out.textContent = "";
+      toast(L("Lien copié. Il contient vos réponses ; rien n’est envoyé ailleurs.", "Link copied. It holds your answers; nothing is sent anywhere."), { uniqueID: "quiz-link" });
     } catch {
       out.innerHTML = `<input class="quiz-url" readonly value="${esc(url)}" aria-label="${L("Lien de vos résultats", "Link to your results")}" />`;
       out.querySelector<HTMLInputElement>("input")!.select();
@@ -506,12 +560,12 @@ function methodNote(d: QuizData) {
       <p>${L(`<b>Les votes.</b> ${d.questions.length} scrutins publics de la 17e législature ont été retenus parmi les plus clivants, un ou deux par sujet, en variant le camp gagnant ; chaque question décrit ce que fait le texte et renvoie au scrutin officiel. Quand le vote portait sur la suppression du texte, les positions sont inversées pour que « Pour » signifie toujours pour la proposition. Un programme range ensuite ces votes dans l’ordre qui sépare le plus vite les candidats (chacun prend la position du ou des groupes de son parti), en évitant de poser deux fois le même sujet : la version courte pose les ${d.short.length} premiers, la version longue les ${nV} premiers.`,
         `<b>The votes.</b> ${d.questions.length} public votes of the 17th legislature were kept from among the most divisive, one or two per subject, varying which side won; each question describes what the text does and links to the official record. When the vote was on deleting the text, positions are flipped so that “For” always means for the proposal. A program then sorts these votes in the order that separates the candidates fastest (each takes the position of their party’s group or groups), avoiding the same subject twice: the short version asks the first ${d.short.length}, the long one the first ${nV}.`)}</p>
       <p>${L(`<b>Les mesures.</b> La version longue ajoute ${nM} mesures : ${nM / d.candidates.length} pour chacun des ${d.candidates.length} candidats, choisies dans le relevé de leur programme ou de leurs annonces pour être des propositions concrètes, sur des sujets variés. Elles sont reformulées en termes neutres et posées sans nom d’auteur ; le texte du candidat et sa source sont donnés avec les résultats. Seul l’auteur d’une mesure est compté : nous ne supposons pas ce que les autres en pensent.`,
-        `<b>The measures.</b> The long version adds ${nM} measures: ${nM / d.candidates.length} for each of the ${d.candidates.length} candidates, chosen from the record of their programme or announcements to be concrete proposals on varied subjects. They are reworded in neutral terms and asked without their author’s name; the candidate’s own wording and source come with the results. Only a measure’s author is counted: we do not assume what the others think of it.`)}</p>
+        `<b>The measures.</b> The long version adds ${nM} measures: ${nM / d.candidates.length} for each of the ${d.candidates.length} candidates, chosen from the record of their program or announcements to be concrete proposals on varied subjects. They are reworded in neutral terms and asked without their author’s name; the candidate’s own wording and source come with the results. Only a measure’s author is counted: we do not assume what the others think of it.`)}</p>
       <p>${L(`<b>Le calcul.</b> Sur un vote : 1 point si votre position est celle du groupe du candidat, ½ si l’un de vous s’abstient, 0 si elles s’opposent. Sur une mesure du candidat : 1 si vous êtes d’accord, 0 sinon. Une question marquée « très importante » compte double ; une mesure du candidat compte double d’un vote de son groupe, parce que c’est son propre engagement. Le score est la part d’accord ainsi pondérée, avec un demi-point neutre ; il faut au moins ${MIN_COMPARED} questions comparables pour être classé. Un « point de rupture » est un désaccord complet sur une question que vous avez marquée très importante. Les députés et les groupes sont classés sur les seuls votes.`,
         `<b>The scoring.</b> On a vote: 1 point if your position is that of the candidate’s group, ½ if one of you abstains, 0 if opposite. On one of the candidate’s measures: 1 if you agree, 0 if not. A question marked “very important” counts double; a candidate’s own measure counts double a vote of their group, because it is their own commitment. The score is that weighted share of agreement, with a neutral half-point; at least ${MIN_COMPARED} comparable questions are needed to be ranked. A “deal breaker” is a complete disagreement on a question you marked very important. MPs and groups are ranked on the votes alone.`)}</p>
-      <p>${L("<b>Les limites.</b> Un candidat n’est pas son groupe parlementaire : les votes sont ceux des députés de son parti, ou des groupes les plus proches quand il n’en a pas, ce qui est signalé. Quelques dizaines de questions ne résument ni un programme ni une personne ; les programmes évoluent pendant la campagne. Sur une motion de censure seuls les votes pour existent : un député en fonction qui n’a pas voté pour est compté contre. Ce n’est ni un sondage ni une consigne de vote.", "<b>Limits.</b> A candidate is not their parliamentary group: the votes are those of their party’s MPs, or of the nearest groups when it has none, which is flagged. A few dozen questions sum up neither a programme nor a person; programmes change during the campaign. On a censure motion only votes for exist: a sitting MP who did not vote for it counts as against. This is neither a poll nor voting advice.")}</p>
+      <p>${L("<b>Les limites.</b> Un candidat n’est pas son groupe parlementaire : les votes sont ceux des députés de son parti, ou des groupes les plus proches quand il n’en a pas, ce qui est signalé. Quelques dizaines de questions ne résument ni un programme ni une personne ; les programmes évoluent pendant la campagne. Sur une motion de censure seuls les votes pour existent : un député en fonction qui n’a pas voté pour est compté contre. Ce n’est ni un sondage ni une consigne de vote.", "<b>Limits.</b> A candidate is not their parliamentary group: the votes are those of their party’s MPs, or of the nearest groups when it has none, which is flagged. A few dozen questions sum up neither a program nor a person; programs change during the campaign. On a censure motion only votes for exist: a sitting MP who did not vote for it counts as against. This is neither a poll nor voting advice.")}</p>
       <p>${L("<b>Vos réponses</b> ne quittent pas votre navigateur : tout est calculé sur votre appareil, rien n’est enregistré ni envoyé. Le lien de partage contient vos réponses, codées dans l’adresse après le #, que les navigateurs ne transmettent pas aux serveurs.", "<b>Your answers</b> never leave your browser: everything is computed on your device, nothing is stored or sent. The share link holds your answers, encoded in the address after the #, which browsers do not send to servers.")}</p>
     </div>
-    <p class="source">${L(`Sources : open data de l’Assemblée nationale (scrutins) et relevé des programmes du site ; jeu de données du quiz généré le ${fmtDate(d.generatedAt)}.`, `Sources: Assemblée nationale open data (votes) and the site’s record of the programmes; quiz dataset built ${fmtDate(d.generatedAt)}.`)} <a href="#/programmes">${L("Les programmes", "The programmes")}</a></p>
+    <p class="source">${L(`Sources : open data de l’Assemblée nationale (scrutins) et relevé des programmes du site ; jeu de données du quiz généré le ${fmtDate(d.generatedAt)}.`, `Sources: Assemblée nationale open data (votes) and the site’s record of the programs; quiz dataset built ${fmtDate(d.generatedAt)}.`)} <a href="#/programmes">${L("Les programmes", "The programs")}</a></p>
   </details>`;
 }

@@ -1,0 +1,1538 @@
+{
+ "updated": "2026-11-13",
+ "method": {
+  "fr": "Pour chaque élection et chaque institut, on retient son dernier sondage dont le terrain s'achève dans les 14 jours précédant le scrutin. Erreur = écart absolu moyen (en points) entre ce sondage et le résultat, sur les candidats ou listes ayant obtenu au moins 2 % (législatives : partis et blocs tels que tabulés ; quand un institut ou le résultat regroupe plusieurs listes en un seul chiffre, ces listes sont regroupées pour tous les instituts de cette élection). Score relatif = cette erreur moins l'erreur moyenne de tous les instituts sur la même élection, pour qu'un scrutin difficile ne pénalise pas tout le monde. Note globale = moyenne pondérée des scores relatifs (1er tour de présidentielle : poids 1 ; autres scrutins : 0,6 ; ×0.85 par cycle de cinq ans en arrière), multipliée par n/(n+2) (n = nombre d'élections notées) pour ramener vers 0 les instituts peu observés. Score négatif = plus précis que la moyenne. A+ exige au moins 4 élections dont 75 % meilleures que la moyenne ; F au moins 3 élections dont 75 % moins bonnes ; un institut noté sur une seule élection reste entre B+ et C-. Le biais « extrême droite » (sondage − résultat pour RN/FN et Reconquête réunis) est donné à titre d'information et n'entre pas dans la note. Sources : tableaux de sondages de Wikipédia (en anglais), résultats officiels.",
+  "en": "For each election and firm we take its latest poll with fieldwork ending in the 14 days before the vote. Error = mean absolute difference (in points) between that poll and the result, over candidates or lists that won at least 2% (legislative: parties and blocs as tabulated; when a firm or the result reports several lists as one figure, those lists are merged for every firm in that election). Relative score = that error minus the average error of all firms in the same election, so a hard election doesn't punish everyone. Overall score = weighted mean of relative scores (presidential first rounds weight 1, other elections 0.6, ×0.85 per five-year cycle back), multiplied by n/(n+2) (n = elections rated) to pull thinly-observed firms toward 0. Negative = more accurate than the field. A+ needs at least 4 elections, 75% of them better than the field; F at least 3 elections, 75% of them worse; a firm rated on one election stays between B+ and C-. The far-right bias (poll − result for RN/FN and Reconquête combined) is shown for information only and does not enter the grade. Sources: Wikipedia (English) poll tables, official results."
+ },
+ "grades": [
+  {
+   "grade": "A+",
+   "min": null,
+   "max": -0.3,
+   "weight": 1
+  },
+  {
+   "grade": "A",
+   "min": -0.3,
+   "max": -0.2,
+   "weight": 0.95
+  },
+  {
+   "grade": "A-",
+   "min": -0.2,
+   "max": -0.12,
+   "weight": 0.9
+  },
+  {
+   "grade": "B+",
+   "min": -0.12,
+   "max": -0.05,
+   "weight": 0.85
+  },
+  {
+   "grade": "B",
+   "min": -0.05,
+   "max": 0.05,
+   "weight": 0.8
+  },
+  {
+   "grade": "B-",
+   "min": 0.05,
+   "max": 0.12,
+   "weight": 0.75
+  },
+  {
+   "grade": "C+",
+   "min": 0.12,
+   "max": 0.2,
+   "weight": 0.65
+  },
+  {
+   "grade": "C",
+   "min": 0.2,
+   "max": 0.3,
+   "weight": 0.6
+  },
+  {
+   "grade": "C-",
+   "min": 0.3,
+   "max": 0.45,
+   "weight": 0.55
+  },
+  {
+   "grade": "D",
+   "min": 0.45,
+   "max": 0.65,
+   "weight": 0.4
+  },
+  {
+   "grade": "F",
+   "min": 0.65,
+   "max": null,
+   "weight": 0.2
+  }
+ ],
+ "elections": [
+  {
+   "id": "leg-2024-r1",
+   "type": "legislative",
+   "round": 1,
+   "date": "2024-06-30",
+   "label": {
+    "fr": "Législatives 2024, 1er tour",
+    "en": "2024 legislative, first round"
+   },
+   "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2024_French_legislative_election",
+   "resultSource": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2024_French_legislative_election (official-result row \"Ministry of the Interior\" of the poll table)",
+   "pollsters": 7,
+   "avgError": 1.62
+  },
+  {
+   "id": "euro-2024",
+   "type": "european",
+   "round": 1,
+   "date": "2024-06-09",
+   "label": {
+    "fr": "Européennes 2024",
+    "en": "2024 European election"
+   },
+   "source": "https://en.wikipedia.org/wiki/2024_European_Parliament_election_in_France",
+   "resultSource": "https://en.wikipedia.org/wiki/2024_European_Parliament_election_in_France#Results",
+   "pollsters": 9,
+   "avgError": 0.72
+  },
+  {
+   "id": "leg-2022-r1",
+   "type": "legislative",
+   "round": 1,
+   "date": "2022-06-12",
+   "label": {
+    "fr": "Législatives 2022, 1er tour",
+    "en": "2022 legislative, first round"
+   },
+   "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2022_French_legislative_election",
+   "resultSource": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2022_French_legislative_election (official-result row \"Ministry of the Interior (Le Monde)\" of the poll table)",
+   "pollsters": 7,
+   "avgError": 1.33
+  },
+  {
+   "id": "pres-2022-r2",
+   "type": "presidential",
+   "round": 2,
+   "date": "2022-04-24",
+   "label": {
+    "fr": "Présidentielle 2022, 2d tour",
+    "en": "2022 presidential, second round"
+   },
+   "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2022_French_presidential_election",
+   "resultSource": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2022 (via public/data/history/presidential/2022.json)",
+   "pollsters": 11,
+   "avgError": 3.32
+  },
+  {
+   "id": "pres-2022-r1",
+   "type": "presidential",
+   "round": 1,
+   "date": "2022-04-10",
+   "label": {
+    "fr": "Présidentielle 2022, 1er tour",
+    "en": "2022 presidential, first round"
+   },
+   "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2022_French_presidential_election",
+   "resultSource": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2022 (via public/data/history/presidential/2022.json)",
+   "pollsters": 11,
+   "avgError": 1.63
+  },
+  {
+   "id": "euro-2019",
+   "type": "european",
+   "round": 1,
+   "date": "2019-05-26",
+   "label": {
+    "fr": "Européennes 2019",
+    "en": "2019 European election"
+   },
+   "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2019_European_Parliament_election_in_France",
+   "resultSource": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2019_European_Parliament_election_in_France (official-result row \"2019 election\" of the poll table)",
+   "pollsters": 6,
+   "avgError": 1.61
+  },
+  {
+   "id": "leg-2017-r1",
+   "type": "legislative",
+   "round": 1,
+   "date": "2017-06-11",
+   "label": {
+    "fr": "Législatives 2017, 1er tour",
+    "en": "2017 legislative, first round"
+   },
+   "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2017_French_legislative_election",
+   "resultSource": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2017_French_legislative_election (official-result row \"2017 election\" of the poll table)",
+   "pollsters": 8,
+   "avgError": 1.47
+  },
+  {
+   "id": "pres-2017-r2",
+   "type": "presidential",
+   "round": 2,
+   "date": "2017-05-07",
+   "label": {
+    "fr": "Présidentielle 2017, 2d tour",
+    "en": "2017 presidential, second round"
+   },
+   "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2017_French_presidential_election",
+   "resultSource": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2017 (via public/data/history/presidential/2017.json)",
+   "pollsters": 8,
+   "avgError": 4.47
+  },
+  {
+   "id": "pres-2017-r1",
+   "type": "presidential",
+   "round": 1,
+   "date": "2017-04-23",
+   "label": {
+    "fr": "Présidentielle 2017, 1er tour",
+    "en": "2017 presidential, first round"
+   },
+   "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2017_French_presidential_election",
+   "resultSource": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2017 (via public/data/history/presidential/2017.json)",
+   "pollsters": 9,
+   "avgError": 0.86
+  },
+  {
+   "id": "euro-2014",
+   "type": "european",
+   "round": 1,
+   "date": "2014-05-25",
+   "label": {
+    "fr": "Européennes 2014",
+    "en": "2014 European election"
+   },
+   "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2014_European_Parliament_election_in_France",
+   "resultSource": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2014_European_Parliament_election_in_France (official-result row \"2014 election\" of the poll table)",
+   "pollsters": 8,
+   "avgError": 1.26
+  },
+  {
+   "id": "pres-2012-r2",
+   "type": "presidential",
+   "round": 2,
+   "date": "2012-05-06",
+   "label": {
+    "fr": "Présidentielle 2012, 2d tour",
+    "en": "2012 presidential, second round"
+   },
+   "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2012_French_presidential_election",
+   "resultSource": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2012 (via public/data/history/presidential/2012.json)",
+   "pollsters": 8,
+   "avgError": 1.11
+  },
+  {
+   "id": "pres-2012-r1",
+   "type": "presidential",
+   "round": 1,
+   "date": "2012-04-22",
+   "label": {
+    "fr": "Présidentielle 2012, 1er tour",
+    "en": "2012 presidential, first round"
+   },
+   "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2012_French_presidential_election",
+   "resultSource": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2012 (via public/data/history/presidential/2012.json)",
+   "pollsters": 8,
+   "avgError": 1.32
+  },
+  {
+   "id": "euro-2009",
+   "type": "european",
+   "round": 1,
+   "date": "2009-06-07",
+   "label": {
+    "fr": "Européennes 2009",
+    "en": "2009 European election"
+   },
+   "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2009_European_Parliament_election_in_France",
+   "resultSource": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2009_European_Parliament_election_in_France (official-result row \"2009 election\" of the poll table)",
+   "pollsters": 6,
+   "avgError": 1.7
+  },
+  {
+   "id": "pres-2007-r2",
+   "type": "presidential",
+   "round": 2,
+   "date": "2007-05-06",
+   "label": {
+    "fr": "Présidentielle 2007, 2d tour",
+    "en": "2007 presidential, second round"
+   },
+   "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2007_French_presidential_election",
+   "resultSource": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2007 (via public/data/history/presidential/2007.json)",
+   "pollsters": 7,
+   "avgError": 1.06
+  },
+  {
+   "id": "pres-2007-r1",
+   "type": "presidential",
+   "round": 1,
+   "date": "2007-04-22",
+   "label": {
+    "fr": "Présidentielle 2007, 1er tour",
+    "en": "2007 presidential, first round"
+   },
+   "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2007_French_presidential_election",
+   "resultSource": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2007 (via public/data/history/presidential/2007.json)",
+   "pollsters": 6,
+   "avgError": 1.68
+  },
+  {
+   "id": "pres-2002-r2",
+   "type": "presidential",
+   "round": 2,
+   "date": "2002-05-05",
+   "label": {
+    "fr": "Présidentielle 2002, 2d tour",
+    "en": "2002 presidential, second round"
+   },
+   "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2002_French_presidential_election",
+   "resultSource": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2002 (via public/data/history/presidential/2002.json)",
+   "pollsters": 3,
+   "avgError": 3.21
+  },
+  {
+   "id": "pres-2002-r1",
+   "type": "presidential",
+   "round": 1,
+   "date": "2002-04-21",
+   "label": {
+    "fr": "Présidentielle 2002, 1er tour",
+    "en": "2002 presidential, first round"
+   },
+   "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2002_French_presidential_election",
+   "resultSource": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2002 (via public/data/history/presidential/2002.json)",
+   "pollsters": 6,
+   "avgError": 1.18
+  }
+ ],
+ "pollsters": [
+  {
+   "name": "Ipsos",
+   "aliases": [
+    "Ipsos-Sopra Steria"
+   ],
+   "grade": "A",
+   "weight": 0.95,
+   "score": -0.24,
+   "mae": 1.46,
+   "elections": 17,
+   "polls": 97,
+   "biasFarRight": 1.04,
+   "history": [
+    {
+     "election": "leg-2024-r1",
+     "mae": 1.76,
+     "rel": 0.14,
+     "end": "2024-06-28",
+     "url": "https://www.ipsos.com/sites/default/files/ct/news/documents/2024-06/ipsos-le-monde-legislatives-premier-tour-intentions-de-vote-28-juin-2024.pdf"
+    },
+    {
+     "election": "euro-2024",
+     "mae": 0.44,
+     "rel": -0.28,
+     "end": "2024-06-07",
+     "url": "https://www.ipsos.com/sites/default/files/ct/news/documents/2024-06/ipsos-intentions-vote-europeennes-2024-7-juin-2024-rapport-complet-WEB.pdf"
+    },
+    {
+     "election": "leg-2022-r1",
+     "mae": 1.07,
+     "rel": -0.26,
+     "end": "2022-06-10",
+     "url": "https://www.ipsos.com/fr-fr/legislatives-2022/legislatives-ensemble-et-nupes-au-coude-coude-faible-participation-attendue"
+    },
+    {
+     "election": "pres-2022-r2",
+     "mae": 2.05,
+     "rel": -1.27,
+     "end": "2022-04-22",
+     "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9634-ipsos-le-monde-22-avril.pdf"
+    },
+    {
+     "election": "pres-2022-r1",
+     "mae": 1.64,
+     "rel": 0.01,
+     "end": "2022-04-08",
+     "url": "https://www.ipsos.com/sites/default/files/ct/news/documents/2022-04/Rapport%20Ipsos_LEMONDE%20_Intention%20de%20vote%20pre%CC%81sidentielle%201er%20tour%202022.pdf"
+    },
+    {
+     "election": "euro-2019",
+     "mae": 1.37,
+     "rel": -0.24,
+     "end": "2019-05-24",
+     "url": "https://www.ipsos.com/sites/default/files/ct/news/documents/2019-05/rapport_ipsos_intentions_de_vote_europeennes_soir24mai.pdf"
+    },
+    {
+     "election": "leg-2017-r1",
+     "mae": 1.21,
+     "rel": -0.26,
+     "end": "2017-06-08",
+     "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/svv1er_tour_9juin.pdf"
+    },
+    {
+     "election": "pres-2017-r2",
+     "mae": 3.1,
+     "rel": -1.37,
+     "end": "2017-05-05",
+     "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/rapport_ipsoslemonde5mai.pdf"
+    },
+    {
+     "election": "pres-2017-r1",
+     "mae": 0.69,
+     "rel": -0.17,
+     "end": "2017-04-20",
+     "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/intention_de_vote_ipsos_ft-rf_-_21_avril_2017.pdf"
+    },
+    {
+     "election": "euro-2014",
+     "mae": 1,
+     "rel": -0.26,
+     "end": "2014-05-23",
+     "url": "https://www.ipsos.com/fr-fr/le-front-national-toujours-en-tete-et-une-gauche-en-recul"
+    },
+    {
+     "election": "pres-2012-r2",
+     "mae": 0.86,
+     "rel": -0.25,
+     "end": "2012-05-03",
+     "url": "https://web.archive.org/web/20120602010845/http://www.ipsos.fr/sites/default/files/attachments/rapport_barometre_iv_vague_20.pdf"
+    },
+    {
+     "election": "pres-2012-r1",
+     "mae": 1.34,
+     "rel": 0.02,
+     "end": "2012-04-19",
+     "url": "https://web.archive.org/web/20120601194938/http://www.ipsos.fr/sites/default/files/attachments/rapport_barometre_iv_vague_18.pdf"
+    },
+    {
+     "election": "euro-2009",
+     "mae": 0.68,
+     "rel": -1.02,
+     "end": "2009-06-06",
+     "url": "https://www.ipsos.com/fr-fr/europeennes-09-le-sondage-interdit"
+    },
+    {
+     "election": "pres-2007-r2",
+     "mae": 1.94,
+     "rel": 0.88,
+     "end": "2007-05-04",
+     "url": "https://www.ipsos.com/fr-fr/intention-de-vote-presidentielle-64"
+    },
+    {
+     "election": "pres-2007-r1",
+     "mae": 1.47,
+     "rel": -0.2,
+     "end": "2007-04-20",
+     "url": "https://web.archive.org/web/20070605010944/http://www.ipsos.fr/presidentielle-2007/pdf/200407-2.pdf"
+    },
+    {
+     "election": "pres-2002-r2",
+     "mae": 3.21,
+     "rel": 0,
+     "end": "2002-05-02",
+     "url": "https://www.ipsos.com/fr-fr/le-barometre-presidentielle-legislatives-2002-vague-9"
+    },
+    {
+     "election": "pres-2002-r1",
+     "mae": 1.08,
+     "rel": -0.1,
+     "end": "2002-04-18",
+     "url": "https://www.ipsos.com/fr-fr/le-barometre-presidentielle-legislatives-2002-vague-7"
+    }
+   ],
+   "methodology": {
+    "mode": {
+     "fr": "En ligne, Access panel Ipsos (auto-administré)",
+     "en": "Online, Ipsos access panel (self-administered)"
+    },
+    "sample": "≈1 500 ; ≈10 000–13 000 pour l'Enquête électorale (Le Monde)",
+    "notes": {
+     "fr": "Quotas (sexe, âge, profession, région, catégorie d'agglomération) ; redressement sur ces variables et le souvenir de vote (européennes 2024, présidentielle 2022). Opère sous le nom « Ipsos bva » depuis le rachat de BVA (2025). Notices déposées à la Commission des sondages.",
+     "en": "Quotas (sex, age, occupation, region, town size); weighted on those and recalled vote (2024 European, 2022 presidential). Trades as \"Ipsos bva\" since buying BVA (2025). Files notices with the Commission des sondages."
+    },
+    "url": "https://www.commission-des-sondages.fr/notices/medias/fichiers/add/2275"
+   }
+  },
+  {
+   "name": "Elabe",
+   "aliases": [
+    "Elabe BFMTV"
+   ],
+   "grade": "A-",
+   "weight": 0.9,
+   "score": -0.17,
+   "mae": 1.68,
+   "elections": 9,
+   "polls": 25,
+   "biasFarRight": 2.37,
+   "history": [
+    {
+     "election": "leg-2024-r1",
+     "mae": 1.49,
+     "rel": -0.13,
+     "end": "2024-06-27",
+     "url": "https://elabe.fr/wp-content/uploads/2024/06/28062024_elabe_bfmtv_la-tribune-dimanche_les-francais-et-les-elections-legislatives.pdf"
+    },
+    {
+     "election": "euro-2024",
+     "mae": 0.59,
+     "rel": -0.13,
+     "end": "2024-06-07",
+     "url": "https://elabe.fr/elections-europeennes-vague-9/"
+    },
+    {
+     "election": "leg-2022-r1",
+     "mae": 0.94,
+     "rel": -0.38,
+     "end": "2022-06-09",
+     "url": "https://elabe.fr/wp-content/uploads/2022/06/20220610_elabe_bfmtv_lexpress_sfr_les-francais-et-les-elections-legislatives-2022.pdf"
+    },
+    {
+     "election": "pres-2022-r2",
+     "mae": 3.05,
+     "rel": -0.27,
+     "end": "2022-04-22",
+     "url": "https://elabe.fr/wp-content/uploads/2022/04/les-francais-et-le-2nd-tour-de-lelection-presidentielle-2022.pdf"
+    },
+    {
+     "election": "pres-2022-r1",
+     "mae": 1.64,
+     "rel": 0.01,
+     "end": "2022-04-08",
+     "url": "https://elabe.fr/wp-content/uploads/2022/04/les-francais-et-lelection-presidentielle-2022-1.pdf"
+    },
+    {
+     "election": "euro-2019",
+     "mae": 1.64,
+     "rel": 0.03,
+     "end": "2019-05-24",
+     "url": "https://elabe.fr/wp-content/uploads/2019/05/20190524_elabe_bfmtv_les-francais-et-lelection-europeenne.pdf"
+    },
+    {
+     "election": "leg-2017-r1",
+     "mae": 1.44,
+     "rel": -0.03,
+     "end": "2017-06-08",
+     "url": "https://elabe.fr/wp-content/uploads/2017/06/08062017_bfmtv_les-francais-et-les-elections-legislatives-v2.pdf"
+    },
+    {
+     "election": "pres-2017-r2",
+     "mae": 4.1,
+     "rel": -0.37,
+     "end": "2017-05-04",
+     "url": "https://elabe.fr/wp-content/uploads/2017/05/04052017_bfmtv_lexpress_intentions-de-vote-presidentielles-vague-13.pdf"
+    },
+    {
+     "election": "pres-2017-r1",
+     "mae": 0.27,
+     "rel": -0.59,
+     "end": "2017-04-20",
+     "url": "https://elabe.fr/wp-content/uploads/2017/04/20042017_bfmtv_lexpress_intentions-de-vote-presidentielles-vague-10.pdf"
+    }
+   ],
+   "methodology": {
+    "mode": {
+     "fr": "En ligne",
+     "en": "Online"
+    },
+    "sample": "≈1 500–1 700",
+    "notes": {
+     "fr": "Quotas (sexe, âge, CSP, région, catégorie d'agglomération) ; redressement également sur le statut d'occupation du logement et les votes de 2022 et 2024. Notices déposées à la Commission des sondages.",
+     "en": "Quotas (sex, age, occupation, region, town size); also weighted on housing tenure and 2022/2024 vote. Files notices with the Commission des sondages."
+    },
+    "url": "https://www.commission-des-sondages.fr/notices/medias/fichiers/add/2339"
+   }
+  },
+  {
+   "name": "Harris Interactive",
+   "aliases": [
+    "Harris-Interactive"
+   ],
+   "grade": "B+",
+   "weight": 0.85,
+   "score": -0.11,
+   "mae": 1.62,
+   "elections": 12,
+   "polls": 52,
+   "biasFarRight": 1.78,
+   "history": [
+    {
+     "election": "leg-2024-r1",
+     "mae": 1.86,
+     "rel": 0.24,
+     "end": "2024-06-28",
+     "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2024/06/KYJUGTRUJH5H.pdf"
+    },
+    {
+     "election": "euro-2024",
+     "mae": 0.57,
+     "rel": -0.15,
+     "end": "2024-06-07",
+     "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2024/06/JTYRVZQEBZNSRHUJN.pdf"
+    },
+    {
+     "election": "leg-2022-r1",
+     "mae": 1.02,
+     "rel": -0.31,
+     "end": "2022-06-10",
+     "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2022/06/ZheShiWAVE52.pdf"
+    },
+    {
+     "election": "pres-2022-r2",
+     "mae": 3.55,
+     "rel": 0.23,
+     "end": "2022-04-22",
+     "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2022/04/ZCRNHVE-24.pdf"
+    },
+    {
+     "election": "pres-2022-r1",
+     "mae": 1.32,
+     "rel": -0.31,
+     "end": "2022-04-08",
+     "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9561-harris-interactive-challenges-v41.pdf"
+    },
+    {
+     "election": "euro-2019",
+     "mae": 1.73,
+     "rel": 0.12,
+     "end": "2019-05-24",
+     "url": "https://www.2019opinions.com/uploads/media/5ce806133b4d7_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-35.pdf"
+    },
+    {
+     "election": "leg-2017-r1",
+     "mae": 1.36,
+     "rel": -0.11,
+     "end": "2017-06-08",
+     "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/06/Rapport-Harris-Indeed-Intentions-de-vote-aux-elections-legislatives-LCP1.pdf"
+    },
+    {
+     "election": "pres-2017-r2",
+     "mae": 4.1,
+     "rel": -0.37,
+     "end": "2017-05-05",
+     "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/05/Rapport-Harris-Indeed-Intentions-de-vote-a-lelection-presidentielle-LCP.pdf"
+    },
+    {
+     "election": "pres-2017-r1",
+     "mae": 0.54,
+     "rel": -0.33,
+     "end": "2017-04-20",
+     "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/04/rapport-Harris-Indeed-Intentions-vote-election-presidentielle-LCP.pdf"
+    },
+    {
+     "election": "euro-2014",
+     "mae": 0.85,
+     "rel": -0.41,
+     "end": "2014-05-22",
+     "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2015/09/Results_HIFR_LCP_23052014.pdf"
+    },
+    {
+     "election": "pres-2012-r2",
+     "mae": 1.36,
+     "rel": 0.25,
+     "end": "2012-05-03",
+     "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2015/09/Results_HIFR_VSD_04052012.pdf"
+    },
+    {
+     "election": "pres-2012-r1",
+     "mae": 1.19,
+     "rel": -0.13,
+     "end": "2012-04-19",
+     "url": "https://harris-interactive.fr/wp-content/uploads/sites/6/2015/09/Results_HIFR_VSD_20042012.pdf"
+    }
+   ],
+   "methodology": {
+    "mode": {
+     "fr": "En ligne, panel propriétaire Toluna Harris Interactive",
+     "en": "Online, Toluna Harris Interactive proprietary panel"
+    },
+    "sample": "≈1 700–2 100",
+    "notes": {
+     "fr": "Quotas et redressement : sexe, âge, CSP, région, comportement électoral passé. Notices déposées à la Commission des sondages.",
+     "en": "Quotas and weighting on sex, age, occupation, region and past voting behaviour. Files notices with the Commission des sondages."
+    },
+    "url": "https://www.commission-des-sondages.fr/notices/medias/fichiers/add/2381"
+   }
+  },
+  {
+   "name": "Ifop",
+   "aliases": [
+    "Ifop for DLF",
+    "Ifop-Fiducial",
+    "Ifop/Hexagone"
+   ],
+   "grade": "B+",
+   "weight": 0.85,
+   "score": -0.1,
+   "mae": 1.49,
+   "elections": 16,
+   "polls": 121,
+   "biasFarRight": 1.18,
+   "history": [
+    {
+     "election": "leg-2024-r1",
+     "mae": 2.01,
+     "rel": 0.39,
+     "end": "2024-06-28",
+     "url": "https://www.ifop.com/wp-content/uploads/2024/06/ROL24_20240628.pdf"
+    },
+    {
+     "election": "euro-2024",
+     "mae": 0.52,
+     "rel": -0.2,
+     "end": "2024-06-07",
+     "url": "https://www.ifop.com/wp-content/uploads/2024/06/ROL24_20240607.pdf"
+    },
+    {
+     "election": "leg-2022-r1",
+     "mae": 1.16,
+     "rel": -0.17,
+     "end": "2022-06-09",
+     "url": "https://www.ifop.com/wp-content/uploads/2022/06/119254-Rapport.pdf"
+    },
+    {
+     "election": "pres-2022-r2",
+     "mae": 3.55,
+     "rel": 0.23,
+     "end": "2022-04-22",
+     "url": "https://www.ifop.com/wp-content/uploads/2022/04/ROL22_2022.04.22.pdf"
+    },
+    {
+     "election": "pres-2022-r1",
+     "mae": 1.73,
+     "rel": 0.11,
+     "end": "2022-04-08",
+     "url": "https://www.ifop.com/wp-content/uploads/2022/04/ROL22_2022.04.08.pdf"
+    },
+    {
+     "election": "euro-2019",
+     "mae": 1.73,
+     "rel": 0.12,
+     "end": "2019-05-24",
+     "url": "https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/24-05-2019.pdf"
+    },
+    {
+     "election": "leg-2017-r1",
+     "mae": 1.35,
+     "rel": -0.12,
+     "end": "2017-06-08",
+     "url": "https://www.ifop.com/wp-content/uploads/2018/03/3789-1-study_file.pdf"
+    },
+    {
+     "election": "pres-2017-r2",
+     "mae": 3.1,
+     "rel": -1.37,
+     "end": "2017-05-05",
+     "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_05-05-2017.pdf"
+    },
+    {
+     "election": "pres-2017-r1",
+     "mae": 0.77,
+     "rel": -0.09,
+     "end": "2017-04-21",
+     "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_21-04-2017.pdf"
+    },
+    {
+     "election": "euro-2014",
+     "mae": 1.7,
+     "rel": 0.43,
+     "end": "2014-05-23",
+     "url": "http://www.parismatch.com/var/partenaire/ifop/rapport-23-05-14.pdf"
+    },
+    {
+     "election": "pres-2012-r2",
+     "mae": 0.36,
+     "rel": -0.75,
+     "end": "2012-05-04",
+     "url": "http://www.ifopelections.fr/resources/Downloads/310/Documents.pdf"
+    },
+    {
+     "election": "pres-2012-r1",
+     "mae": 1.03,
+     "rel": -0.29,
+     "end": "2012-04-20",
+     "url": "https://www.ifop.com/wp-content/uploads/2018/03/1849-1-study_file.pdf"
+    },
+    {
+     "election": "euro-2009",
+     "mae": 1.63,
+     "rel": -0.07,
+     "end": "2009-06-05",
+     "url": "http://www.parismatch.com/Actu/Politique/Sondage-europeennes-29-30-mai-139909"
+    },
+    {
+     "election": "pres-2007-r2",
+     "mae": 0.06,
+     "rel": -1,
+     "end": "2007-05-03",
+     "url": "https://www.ifop.com/wp-content/uploads/2018/03/intentiondevote0405.pdf"
+    },
+    {
+     "election": "pres-2007-r1",
+     "mae": 1.82,
+     "rel": 0.14,
+     "end": "2007-04-19",
+     "url": "https://www.challenges.fr/entreprise/sondage-2007-sarkozy-toujoursen-tete-au-1er-tour_387608"
+    },
+    {
+     "election": "pres-2002-r1",
+     "mae": 1.33,
+     "rel": 0.15,
+     "end": "2002-04-13",
+     "url": "https://web.archive.org/web/20020425110704/http://www.ifop.com/europe/sondages/OPINIONF/presidv8.asp"
+    }
+   ],
+   "methodology": {
+    "mode": {
+     "fr": "Questionnaire auto-administré en ligne (panel)",
+     "en": "Self-administered online questionnaire (panel)"
+    },
+    "sample": "≈1 500",
+    "notes": {
+     "fr": "Quotas (sexe, âge, profession) après stratification par région et catégorie d'agglomération ; redressement sociodémographique et sur les votes passés (présidentielle 2022, européennes et législatives 2024). Notices déposées à la Commission des sondages.",
+     "en": "Quotas (sex, age, occupation) after stratification by region and town size; weighted on demographics and past vote (2022 presidential, 2024 European and legislative). Files notices with the Commission des sondages."
+    },
+    "url": "https://www.commission-des-sondages.fr/notices/medias/fichiers/add/2376"
+   }
+  },
+  {
+   "name": "OpinionWay",
+   "aliases": [
+    "OpinionWay-Kéa"
+   ],
+   "grade": "B+",
+   "weight": 0.85,
+   "score": -0.1,
+   "mae": 1.55,
+   "elections": 14,
+   "polls": 70,
+   "biasFarRight": 1.27,
+   "history": [
+    {
+     "election": "leg-2024-r1",
+     "mae": 1.86,
+     "rel": 0.24,
+     "end": "2024-06-27",
+     "url": "https://f.dviz.factoviz.com/Pdfs/3/e/8/OpinionWay%20et%20Vae%20Solis%20pour%20Les%20Echos%20et%20Radio%20classique%20-%20Legitrack%20-%20Vague%203%20-%2027%20juin%202024.pdf"
+    },
+    {
+     "election": "euro-2024",
+     "mae": 0.91,
+     "rel": 0.19,
+     "end": "2024-06-06",
+     "url": "https://f.dviz.factoviz.com/Pdfs/3/e/8/Eurotrack%20OpinionWay%20Vae%20Solis%20pour%20Les%20Echos%20-%20Radio%20Classique%20-%20Vague%2012%20-%204%20juin%202024.pdf"
+    },
+    {
+     "election": "leg-2022-r1",
+     "mae": 0.95,
+     "rel": -0.38,
+     "end": "2022-06-08",
+     "url": "https://f.dviz.factoviz.com/UserFiles/3/f/f/Barom%C3%A8tre%20OpinionWay%20-%20Kea%20Partners%20pour%20Les%20Echos%20et%20Radio%20Classique%20-%209%20juin%20-%20vague%205.pdf"
+    },
+    {
+     "election": "pres-2022-r2",
+     "mae": 1.55,
+     "rel": -1.77,
+     "end": "2022-04-22",
+     "url": "https://www.opinion-way.com/fr/barometre-opinionway-kea-partners-election-presidentielle-2022"
+    },
+    {
+     "election": "pres-2022-r1",
+     "mae": 1.71,
+     "rel": 0.08,
+     "end": "2022-04-08",
+     "url": "https://www.opinion-way.com/fr/barometre-opinionway-kea-partners-election-presidentielle-2022"
+    },
+    {
+     "election": "euro-2019",
+     "mae": 1.64,
+     "rel": 0.03,
+     "end": "2019-05-22",
+     "url": "https://www.opinion-way.com/fr/component/edocman/opinionway-pour-tilder-les-echos-radio-classique-resultats-eurotrack-23-mai-2019/viewdocument.html"
+    },
+    {
+     "election": "leg-2017-r1",
+     "mae": 1.72,
+     "rel": 0.25,
+     "end": "2017-06-08",
+     "url": "https://web.archive.org/web/20170814175019/http://opinionlab.opinion-way.com/dokumenty/LegiTrack-OpinionWayOrpi-Quatrieme-vague.pdf"
+    },
+    {
+     "election": "pres-2017-r2",
+     "mae": 4.1,
+     "rel": -0.37,
+     "end": "2017-05-04",
+     "url": "https://web.archive.org/web/20170509210516/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-semaine-du-1er-au-5-mai.pdf"
+    },
+    {
+     "election": "pres-2017-r1",
+     "mae": 1.1,
+     "rel": 0.24,
+     "end": "2017-04-20",
+     "url": "https://web.archive.org/web/20170422041348/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultatsdelasemainedu17au21avril.pdf"
+    },
+    {
+     "election": "euro-2014",
+     "mae": 1.46,
+     "rel": 0.2,
+     "end": "2014-05-22",
+     "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/les-francais-a-3-jours-des-europeennes-20-minutes-23-mai-2014/viewdocument.html"
+    },
+    {
+     "election": "pres-2012-r2",
+     "mae": 0.86,
+     "rel": -0.25,
+     "end": "2012-05-03",
+     "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/le-barometre-de-la-presidentielle-2012-vague-9-fiducial-pour-le-figaro-et-lci/viewdocument.html"
+    },
+    {
+     "election": "pres-2012-r1",
+     "mae": 1.07,
+     "rel": -0.25,
+     "end": "2012-04-17",
+     "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/le-barometre-de-la-presidentielle-2012-vague-8-fiducial-pour-le-figaro-et-lci/viewdocument.html"
+    },
+    {
+     "election": "euro-2009",
+     "mae": 1.76,
+     "rel": 0.06,
+     "end": "2009-06-03",
+     "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/opinionway-fiducial-barometre-des-elections-europeennes-v5/viewdocument.html"
+    },
+    {
+     "election": "pres-2007-r2",
+     "mae": 0.94,
+     "rel": -0.12,
+     "end": "2007-05-03",
+     "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/jdd-online-intention-de-vote-second-tour/viewdocument.html"
+    }
+   ],
+   "methodology": {
+    "mode": {
+     "fr": "Questionnaire auto-administré en ligne (CAWI)",
+     "en": "Self-administered online questionnaire (CAWI)"
+    },
+    "sample": "≈1 000",
+    "notes": {
+     "fr": "Quotas (sexe, âge, CSP, catégorie d'agglomération, région) ; redressement sociodémographique et sur les votes de 2022 (présidentielle) et 2024 (législatives). Notices déposées à la Commission des sondages.",
+     "en": "Quotas (sex, age, occupation, town size, region); weighted on demographics and 2022 presidential / 2024 legislative vote. Files notices with the Commission des sondages."
+    },
+    "url": "https://www.commission-des-sondages.fr/notices/medias/fichiers/add/2352"
+   }
+  },
+  {
+   "name": "Cluster17",
+   "aliases": [],
+   "grade": "B+",
+   "weight": 0.85,
+   "score": -0.1,
+   "mae": 1.54,
+   "elections": 5,
+   "polls": 15,
+   "biasFarRight": 1.02,
+   "history": [
+    {
+     "election": "leg-2024-r1",
+     "mae": 1.38,
+     "rel": -0.24,
+     "end": "2024-06-27",
+     "url": "https://cluster17.com/wp-content/uploads/2024/06/Notice-Publique-LEG-280624-C17-Le-Point.pdf"
+    },
+    {
+     "election": "euro-2024",
+     "mae": 0.5,
+     "rel": -0.22,
+     "end": "2024-06-06",
+     "url": "https://cluster17.com/wp-content/uploads/2024/06/Notice-CLUSTER17-LE-POINT-EUROPEENNES-7-JUIN-3.pdf"
+    },
+    {
+     "election": "leg-2022-r1",
+     "mae": 1.45,
+     "rel": 0.13,
+     "end": "2022-06-09",
+     "url": "https://pbs.twimg.com/media/FU10nt_WYCMT_w2?format=jpg&name=large"
+    },
+    {
+     "election": "pres-2022-r2",
+     "mae": 2.55,
+     "rel": -0.77,
+     "end": "2022-04-22",
+     "url": "https://cluster17.com/wp-content/uploads/2022/04/20220422_Cluster17_Notice-Technique-2.pdf"
+    },
+    {
+     "election": "pres-2022-r1",
+     "mae": 1.84,
+     "rel": 0.21,
+     "end": "2022-04-08",
+     "url": "https://cluster17.com/wp-content/uploads/2022/04/20220408_Cluster17_Rolling_hebdomadaire_Notice_technique_Publique.pdf"
+    }
+   ],
+   "methodology": {
+    "mode": {
+     "fr": "Questionnaire auto-administré en ligne (panel propriétaire depuis 2023)",
+     "en": "Self-administered online questionnaire (own panel since 2023)"
+    },
+    "sample": "≈1 200",
+    "notes": {
+     "fr": "Quotas (sexe, âge, CSP, taille de commune, région) ; redressement sociodémographique et politique (présidentielle 2022, européennes 2024), pondération par la probabilité de vote. Notices déposées à la Commission des sondages.",
+     "en": "Quotas (sex, age, occupation, town size, region); weighted on demographics and past vote (2022 presidential, 2024 European) and by likelihood to vote. Files notices with the Commission des sondages."
+    },
+    "url": "https://www.commission-des-sondages.fr/notices/medias/fichiers/add/2387"
+   }
+  },
+  {
+   "name": "CSA",
+   "aliases": [],
+   "grade": "B",
+   "weight": 0.8,
+   "score": 0.03,
+   "mae": 1.5,
+   "elections": 8,
+   "polls": 23,
+   "biasFarRight": -0.65,
+   "history": [
+    {
+     "election": "euro-2014",
+     "mae": 0.93,
+     "rel": -0.34,
+     "end": "2014-05-22",
+     "url": "https://web.archive.org/web/20140522194655/http://www.csa.eu/multimedia/data/sondages/data2014/opi20140520-csa-pour-bfmtv-groupe-nice-matin-les-elections-europeennes-mai-2014.pdf"
+    },
+    {
+     "election": "pres-2012-r2",
+     "mae": 1.36,
+     "rel": 0.25,
+     "end": "2012-05-03",
+     "url": "https://web.archive.org/web/20120523003731/http://www.csa.eu/multimedia/data/sondages/data2012/opi20120503-la-course-2012-vague-26-mai-2012.pdf"
+    },
+    {
+     "election": "pres-2012-r1",
+     "mae": 1.63,
+     "rel": 0.31,
+     "end": "2012-04-19",
+     "url": "https://web.archive.org/web/20120617031959/http://www.csa.eu/multimedia/data/sondages/data2012/opi20120419-la-course-2012-vague-24-avril-2012.pdf"
+    },
+    {
+     "election": "euro-2009",
+     "mae": 2.32,
+     "rel": 0.62,
+     "end": "2009-06-04",
+     "url": "https://web.archive.org/web/20091009144412/http://www.csa-fr.com/dataset/data2009/opi20090604-intentions-de-vote-dans-la-perspective-des-elections-europeennes.pdf"
+    },
+    {
+     "election": "pres-2007-r2",
+     "mae": 0.06,
+     "rel": -1,
+     "end": "2007-05-03",
+     "url": "https://web.archive.org/web/20071017141953/http://www.csa-fr.com/dataset/data2007/opi20070503-les-reactions-au-debat-televise-royal-sarkozy-et-les-intentions-de-vote-presidentielles-pour-le-second-tour.pdf"
+    },
+    {
+     "election": "pres-2007-r1",
+     "mae": 2.56,
+     "rel": 0.88,
+     "end": "2007-04-20",
+     "url": "https://web.archive.org/web/20070605010942/http://www.csa-fr.com/dataset/data2007/opi20070420-intentions-de-vote-a-l-election-presidentielle-de-2007-vague-27.pdf"
+    },
+    {
+     "election": "pres-2002-r2",
+     "mae": 2.21,
+     "rel": -1,
+     "end": "2002-05-03",
+     "url": "https://web.archive.org/web/20020611183151/http://www.csa-tmo.fr/fra/dataset/data2002/opi20020503a.htm"
+    },
+    {
+     "election": "pres-2002-r1",
+     "mae": 0.96,
+     "rel": -0.22,
+     "end": "2002-04-18",
+     "url": "https://web.archive.org/web/20020618193356/http://www.csa-fr.com/fra/dataset/data2002/indic20020418.htm"
+    }
+   ],
+   "methodology": {
+    "mode": {
+     "fr": "Par internet, panel en ligne CSA",
+     "en": "Online, CSA online panel"
+    },
+    "sample": "≈1 000",
+    "notes": {
+     "fr": "Quotas (sexe, âge, profession) après stratification par région et catégorie d'agglomération ; redressement sur le vote à la présidentielle 2022. Taille d'échantillon relevée sur un sondage politique (pas d'intentions de vote). Notices déposées à la Commission des sondages.",
+     "en": "Quotas (sex, age, occupation) after stratification by region and town size; weighted on 2022 presidential vote. Sample size taken from a political (not voting-intention) poll. Files notices with the Commission des sondages."
+    },
+    "url": "https://www.commission-des-sondages.fr/notices/medias/fichiers/add/2374"
+   }
+  },
+  {
+   "name": "Odoxa",
+   "aliases": [],
+   "grade": "B-",
+   "weight": 0.75,
+   "score": 0.08,
+   "mae": 2.16,
+   "elections": 7,
+   "polls": 14,
+   "biasFarRight": 3.09,
+   "history": [
+    {
+     "election": "leg-2024-r1",
+     "mae": 0.99,
+     "rel": -0.63,
+     "end": "2024-06-27",
+     "url": "https://www.odoxa.fr/wp-content/uploads/2024/06/Barometre-des-legislatives-2024-Intentions-de-vote-Odoxa-28-juin-2024.pdf"
+    },
+    {
+     "election": "euro-2024",
+     "mae": 0.76,
+     "rel": 0.04,
+     "end": "2024-06-06",
+     "url": "https://www.odoxa.fr/sondage/bardella-est-toujours-largement-en-tete-avec-32-devant-hayer-15-et-glucksmann-14-au-coude-a-coude/"
+    },
+    {
+     "election": "pres-2022-r2",
+     "mae": 5.55,
+     "rel": 2.23,
+     "end": "2022-04-21",
+     "url": "https://www.odoxa.fr/wp-content/plugins/pdf-viewer/stable/web/viewer.html?file=http://www.odoxa.fr/wp-content/uploads/2022/04/Intentions-de-vote-Odoxa-LObs-Mascaret-Vague-10.pdf"
+    },
+    {
+     "election": "pres-2022-r1",
+     "mae": 1.26,
+     "rel": -0.36,
+     "end": "2022-04-06",
+     "url": "https://www.odoxa.fr/sondage/intentions-de-vote-la-dynamique-marine-le-pen-se-confirme/"
+    },
+    {
+     "election": "leg-2017-r1",
+     "mae": 1.6,
+     "rel": 0.13,
+     "end": "2017-06-01",
+     "url": "http://www.odoxa.fr/wp-content/uploads/2017/06/Intention-de-vote-legislatives-Odoxa-Dentsu-Consulting-juin-2017.pdf"
+    },
+    {
+     "election": "pres-2017-r2",
+     "mae": 4.1,
+     "rel": -0.37,
+     "end": "2017-05-04",
+     "url": "http://www.odoxa.fr/wp-content/uploads/2017/05/Intention-de-vote-Odoxa-DentsuConsulting-LePoint-du-5-mai-2017.pdf"
+    },
+    {
+     "election": "pres-2017-r1",
+     "mae": 0.85,
+     "rel": -0.01,
+     "end": "2017-04-21",
+     "url": "http://www.odoxa.fr/wp-content/uploads/2017/04/Intention-de-vote-presidentielle-Odoxa-LePoint_210417.pdf"
+    }
+   ],
+   "methodology": {
+    "mode": {
+     "fr": "Par internet (selon Public Sénat ; la notice ne le précise pas)",
+     "en": "Online (per Public Sénat; the notice does not say)"
+    },
+    "sample": "≈1 000 ; 12 005 pour une vague régionale (2026)",
+    "notes": {
+     "fr": "Quotas (sexe, âge, profession, département, catégorie d'agglomération) ; redressement sur les quotas et le vote à la présidentielle 2022. Notices déposées à la Commission des sondages.",
+     "en": "Quotas (sex, age, occupation, département, town size); weighted on quotas and 2022 presidential vote. Files notices with the Commission des sondages."
+    },
+    "url": "https://www.commission-des-sondages.fr/notices/medias/fichiers/add/2325"
+   }
+  },
+  {
+   "name": "BVA",
+   "aliases": [],
+   "grade": "C+",
+   "weight": 0.65,
+   "score": 0.12,
+   "mae": 1.85,
+   "elections": 14,
+   "polls": 30,
+   "biasFarRight": 1.12,
+   "history": [
+    {
+     "election": "euro-2024",
+     "mae": 0.88,
+     "rel": 0.16,
+     "end": "2024-06-05",
+     "url": "https://www.bva-xsight.com/wp-content/uploads/2024/06/BVA-Xsight-Intentions-de-vote-aux-elections-europeennes-vague-5.pdf"
+    },
+    {
+     "election": "pres-2022-r2",
+     "mae": 3.05,
+     "rel": -0.27,
+     "end": "2022-04-21",
+     "url": "https://presidentielle2022.bva-group.com/wp-content/uploads/2022/04/BVA-Orange-RTL-Presidentielle-2022-Vague-15-IV-22.04.22.pdf"
+    },
+    {
+     "election": "pres-2022-r1",
+     "mae": 1.52,
+     "rel": -0.11,
+     "end": "2022-04-07",
+     "url": "https://www.commission-des-sondages.fr/notices/files/notices/2022/avril/9559-bva-orange-rtl-presidentielle-2022-vague-13-le-8-avril.pdf"
+    },
+    {
+     "election": "euro-2019",
+     "mae": 1.55,
+     "rel": -0.06,
+     "end": "2019-05-21",
+     "url": "https://staticswww.bva-group.com/wp-content/uploads/2019/05/Intentions-de-vote-aux-%C3%A9lections-europ%C3%A9ennes-BVA-Orange-La-Tribune-Europe-1-Presse-r%C3%A9gionale-22-mai-2019.pdf"
+    },
+    {
+     "election": "leg-2017-r1",
+     "mae": 1.66,
+     "rel": 0.19,
+     "end": "2017-06-05",
+     "url": "http://www.bva.fr/data/sondage/sondage_fiche/1993/fichier_intentions_de_vote_-_elections_legislatives_-_pop2017_-_07_juin_20174bfd2.pdf"
+    },
+    {
+     "election": "pres-2017-r2",
+     "mae": 6.1,
+     "rel": 1.63,
+     "end": "2017-05-02",
+     "url": "http://www.bva.fr/data/sondage/sondage_fiche/1983/fichier_intentions_de_vote_-_vague_21_-_pop2017_-_02_mai_2017_-_presentation3185f.pdf"
+    },
+    {
+     "election": "pres-2017-r1",
+     "mae": 1.02,
+     "rel": 0.16,
+     "end": "2017-04-21",
+     "url": "https://web.archive.org/web/20170422133150/https://staticswww.bva-group.com/wp-content/uploads/2017/04/Intentions-de-vote-Vague-19-POP2017-21-avril-2017-Pr%C3%A9sentation.pdf"
+    },
+    {
+     "election": "euro-2014",
+     "mae": 1.09,
+     "rel": -0.18,
+     "end": "2014-05-16",
+     "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_aux_elections_europeennes_bva_-_orange_-_lexpress_-_presse_regionale_-_france_inter380ca.pdf"
+    },
+    {
+     "election": "pres-2012-r2",
+     "mae": 0.86,
+     "rel": -0.25,
+     "end": "2012-05-03",
+     "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_-_le_parisien7d161.pdf"
+    },
+    {
+     "election": "pres-2012-r1",
+     "mae": 1.67,
+     "rel": 0.35,
+     "end": "2012-04-19",
+     "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_intention_de_vote_-_le_parisien21a91.pdf"
+    },
+    {
+     "election": "euro-2009",
+     "mae": 2.33,
+     "rel": 0.63,
+     "end": "2009-06-01",
+     "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_2-_les_elections_europeennes_20098e053.pdf"
+    },
+    {
+     "election": "pres-2007-r2",
+     "mae": 1.94,
+     "rel": 0.88,
+     "end": "2007-05-04",
+     "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_bvaorange_4mai__5e28d.pdf"
+    },
+    {
+     "election": "pres-2007-r1",
+     "mae": 1.18,
+     "rel": -0.5,
+     "end": "2007-04-20",
+     "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_bvaorange_20avril_synthase_38759.pdf"
+    },
+    {
+     "election": "pres-2002-r1",
+     "mae": 1.07,
+     "rel": -0.11,
+     "end": "2002-04-18",
+     "url": "https://web.archive.org/web/20020611091604/http://www.bva.fr/new/baro_observatoire_presidentiel20011127.html"
+    }
+   ],
+   "methodology": null
+  },
+  {
+   "name": "Le Terrain",
+   "aliases": [],
+   "grade": "C+",
+   "weight": 0.65,
+   "score": 0.16,
+   "mae": 1.33,
+   "elections": 1,
+   "polls": 1,
+   "biasFarRight": 0.2,
+   "history": [
+    {
+     "election": "pres-2017-r1",
+     "mae": 1.33,
+     "rel": 0.47,
+     "end": "2017-04-15",
+     "url": "https://blogleterrain.wordpress.com/2017/04/17/jl-melenchon-devance-de-peu-m-le-pen/"
+    }
+   ],
+   "methodology": null
+  },
+  {
+   "name": "LH2",
+   "aliases": [
+    "Louis Harris"
+   ],
+   "grade": "C+",
+   "weight": 0.65,
+   "score": 0.19,
+   "mae": 1.51,
+   "elections": 5,
+   "polls": 8,
+   "biasFarRight": -3.13,
+   "history": [
+    {
+     "election": "pres-2012-r2",
+     "mae": 1.36,
+     "rel": 0.25,
+     "end": "2012-05-02",
+     "url": "https://web.archive.org/web/20120504001235/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2yahooimpactdebatteleviseentrdeuxtours3mai2012.pdf"
+    },
+    {
+     "election": "pres-2012-r1",
+     "mae": 1.61,
+     "rel": 0.29,
+     "end": "2012-04-18",
+     "url": "https://web.archive.org/web/20120503225731/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2yahoointentionsvotepresidentielle201219avril2012.pdf"
+    },
+    {
+     "election": "pres-2007-r2",
+     "mae": 1.06,
+     "rel": 0,
+     "end": "2007-04-28",
+     "url": "https://web.archive.org/web/20070913134701/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/intentions_de_vote_second_tour_1_._vague_2._30_avril_2007.pdf"
+    },
+    {
+     "election": "pres-2007-r1",
+     "mae": 2.12,
+     "rel": 0.44,
+     "end": "2007-04-15",
+     "url": "https://web.archive.org/web/20070605010946/http://www.lh2.fr/_upload/ressources/sondages/politique_nationale/lh2rmcbfmtv20mn16_17avril07.pdf"
+    },
+    {
+     "election": "pres-2002-r1",
+     "mae": 1.42,
+     "rel": 0.24,
+     "end": "2002-04-17",
+     "url": "https://web.archive.org/web/20061123034026/http://www.lh2.fr/_upload/ressources/sondages/election/LHFLibeAOLIntentdevote1617avril.pdf"
+    }
+   ],
+   "methodology": null
+  },
+  {
+   "name": "Verian",
+   "aliases": [
+    "Kantar",
+    "Kantar Sofres",
+    "Sofres",
+    "TNS Sofres"
+   ],
+   "grade": "C",
+   "weight": 0.6,
+   "score": 0.23,
+   "mae": 2.19,
+   "elections": 13,
+   "polls": 25,
+   "biasFarRight": 1.57,
+   "history": [
+    {
+     "election": "pres-2022-r2",
+     "mae": 3.55,
+     "rel": 0.23,
+     "end": "2022-04-18",
+     "url": "https://kantarpublic.com/download/inspiration/104/2022-04-19-le-rapport-de-force-electoral.pdf"
+    },
+    {
+     "election": "pres-2022-r1",
+     "mae": 1.93,
+     "rel": 0.31,
+     "end": "2022-04-05",
+     "url": "https://kantarpublic.com/fr/inspiration/election-presidentielle-2022/presidentielle-2022-le-potentiel-et-le-rapport-de-force-electoral-5-avril-2022"
+    },
+    {
+     "election": "leg-2017-r1",
+     "mae": 1.41,
+     "rel": -0.06,
+     "end": "2017-05-28",
+     "url": "https://fr.kantar.com/elections/legislatives/2017/legislatives-2017-intentions-de-vote-30-mai-2017/"
+    },
+    {
+     "election": "pres-2017-r2",
+     "mae": 7.1,
+     "rel": 2.63,
+     "end": "2017-04-30",
+     "url": "https://fr.kantar.com/elections/presidentielle/2017/intentions-de-vote-des-francais-au-2nd-tour-de-l-election-presidentielle/"
+    },
+    {
+     "election": "pres-2017-r1",
+     "mae": 1.19,
+     "rel": 0.33,
+     "end": "2017-04-17",
+     "url": "https://fr.kantar.com/elections/presidentielle/2017/intentions-de-vote-l-hypothese-d-un-match-a-quatre-se-confirme/"
+    },
+    {
+     "election": "euro-2014",
+     "mae": 1.06,
+     "rel": -0.2,
+     "end": "2014-05-11",
+     "url": "https://www.tns-sofres.com/sites/default/files/2014.05.14-europeennes-iv.pdf"
+    },
+    {
+     "election": "pres-2012-r2",
+     "mae": 1.86,
+     "rel": 0.75,
+     "end": "2012-05-03",
+     "url": "https://www.tns-sofres.com/sites/default/files/2012.05.04-iv13.pdf"
+    },
+    {
+     "election": "pres-2012-r1",
+     "mae": 1.03,
+     "rel": -0.29,
+     "end": "2012-04-19",
+     "url": "https://www.tns-sofres.com/sites/default/files/2012.04.20-intentionsvote.pdf"
+    },
+    {
+     "election": "euro-2009",
+     "mae": 1.48,
+     "rel": -0.22,
+     "end": "2009-06-04",
+     "url": "https://www.tns-sofres.com/sites/default/files/050609_iv4Europe.pdf"
+    },
+    {
+     "election": "pres-2007-r2",
+     "mae": 1.44,
+     "rel": 0.38,
+     "end": "2007-05-03",
+     "url": "https://www.tns-sofres.com/publications/presidentielle-2007-barometre-presidentiel-vague-24"
+    },
+    {
+     "election": "pres-2007-r1",
+     "mae": 0.92,
+     "rel": -0.75,
+     "end": "2007-04-21",
+     "url": "https://www.tns-sofres.com/publications/presidentielle-2007-derniere-intention-de-vote-avant-le-1er-tour"
+    },
+    {
+     "election": "pres-2002-r2",
+     "mae": 4.21,
+     "rel": 1,
+     "end": "2002-04-21",
+     "url": "https://web.archive.org/web/20030730202051/http://www.tns-sofres.com/etudes/pol/210402_intentions_t2.htm"
+    },
+    {
+     "election": "pres-2002-r1",
+     "mae": 1.23,
+     "rel": 0.04,
+     "end": "2002-04-18",
+     "url": "https://web.archive.org/web/20030822222733/http://www.tns-sofres.com/etudes/pol/190402_intentions_r.htm"
+    }
+   ],
+   "methodology": {
+    "mode": {
+     "fr": "En ligne, sur panel",
+     "en": "Online panel"
+    },
+    "sample": "≈1 000",
+    "notes": {
+     "fr": "Quotas (sexe, âge, profession, région) ; redressement sociodémographique et politique (présidentielle 2022, européennes 2024). Anciennement Sofres / TNS Sofres / Kantar Public. Notices déposées à la Commission des sondages.",
+     "en": "Quotas (sex, age, occupation, region); weighted on demographics and past vote (2022 presidential, 2024 European). Formerly Sofres / TNS Sofres / Kantar Public. Files notices with the Commission des sondages."
+    },
+    "url": "https://www.commission-des-sondages.fr/notices/medias/fichiers/add/2230"
+   }
+  },
+  {
+   "name": "YouGov",
+   "aliases": [],
+   "grade": "C",
+   "weight": 0.6,
+   "score": 0.27,
+   "mae": 2.07,
+   "elections": 5,
+   "polls": 6,
+   "biasFarRight": 3.36,
+   "history": [
+    {
+     "election": "euro-2024",
+     "mae": 1.3,
+     "rel": 0.58,
+     "end": "2024-06-05",
+     "url": "https://ygo-assets-websites-editorial-emea.yougov.net/documents/R%C3%A9sultats_YouGov_pour_le_HuffPost_IV_%C3%A9lections_europ%C3%A9ennes_2024_V6_As_Sent_6.0_F4nCdrB.pdf"
+    },
+    {
+     "election": "leg-2022-r1",
+     "mae": 2.7,
+     "rel": 1.37,
+     "end": "2022-06-08",
+     "url": "https://docs.cdn.yougov.com/gzp6ruw96d/VI_Tables_10-Jun-2022-Publish.pdf"
+    },
+    {
+     "election": "pres-2022-r2",
+     "mae": 2.55,
+     "rel": -0.77,
+     "end": "2022-04-21",
+     "url": "https://docs.cdn.yougov.com/i63qza2v0q/Website_FranceVI_Round2_FinalCall_Tables.pdf"
+    },
+    {
+     "election": "pres-2022-r1",
+     "mae": 1.77,
+     "rel": 0.15,
+     "end": "2022-04-07",
+     "url": "https://docs.cdn.yougov.com/fjg18u456t/France_Vote_Intention_07-Apr-2022_website_v2.pdf"
+    },
+    {
+     "election": "euro-2014",
+     "mae": 2.03,
+     "rel": 0.76,
+     "end": "2014-05-22",
+     "url": "https://cdn.yougov.com/cumulus_uploads/document/hryak7mply/Results(Europ%C3%A9ennes_2014)_FRANCE.pdf"
+    }
+   ],
+   "methodology": {
+    "mode": {
+     "fr": "En ligne, panel propriétaire YouGov",
+     "en": "Online, YouGov proprietary panel"
+    },
+    "sample": "≈1 000",
+    "notes": {
+     "fr": "Quotas (genre, âge, région, CSP, vote à la présidentielle 2022). Notices déposées à la Commission des sondages.",
+     "en": "Quotas on gender, age, region, occupation and 2022 presidential vote. Files notices with the Commission des sondages."
+    },
+    "url": "https://www.commission-des-sondages.fr/notices/medias/fichiers/add/2384"
+   }
+  },
+  {
+   "name": "AtlasIntel",
+   "aliases": [],
+   "grade": "C-",
+   "weight": 0.55,
+   "score": 0.39,
+   "mae": 3.54,
+   "elections": 2,
+   "polls": 3,
+   "biasFarRight": 4.31,
+   "history": [
+    {
+     "election": "pres-2022-r2",
+     "mae": 5.55,
+     "rel": 2.23,
+     "end": "2022-04-21",
+     "url": "https://atlasintel.org/poll/france-national-2022-04-22"
+    },
+    {
+     "election": "pres-2022-r1",
+     "mae": 1.54,
+     "rel": -0.09,
+     "end": "2022-04-06",
+     "url": "https://cdn.atlasintel.org/cd03767f-0b01-4810-b2b8-7ad965f7942d.pdf"
+    }
+   ],
+   "methodology": null
+  }
+ ]
+}

@@ -36,6 +36,8 @@ const NIGHT: Record<Metric, [pos: string, neg: string]> = { lr: ["#6b9bff", "#ff
 const colorOf = (metric: Metric, positive: boolean, dark = false) => (dark ? NIGHT[metric][positive ? 0 : 1] : METRICS[metric][positive ? "pos" : "neg"][2]);
 
 const ui = { pair: "", level: "district" as "district" | "department", metric: "lr" as Metric };
+/** Opens the page on a given pair ("fromId>toId"), e.g. the one picked on the homepage's small shift map. */
+export const preselectShift = (pairId: string) => { ui.pair = pairId; ui.level = "district"; ui.metric = "lr"; };
 /** Arrow tilt for the left/right metric: 30° above horizontal, like the NYT maps. */
 const TILT = Math.PI / 6;
 /** Paris and the inner suburbs, drawn again at a larger scale. */

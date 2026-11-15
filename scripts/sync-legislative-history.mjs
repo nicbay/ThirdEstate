@@ -653,6 +653,13 @@ await writeFile(
     pairs,
   })
 );
+// the homepage and the town summary need only the national series and the latest district pair: a slim copy
+// (about a tenth of the size) so they don't wait for every department since 1848
+const lastDistrict = pairs.filter((p) => p.level === "district").at(-1);
+await writeFile(
+  new URL("shifts-latest.json", OUT),
+  JSON.stringify({ generated: new Date().toISOString().slice(0, 10), pairs: pairs.map((p) => (p === lastDistrict ? p : { ...p, units: {} })) })
+);
 const nUnits = pairs.map((p) => `${p.fromId}→${p.toId} ${p.level[0]}:${Object.keys(p.units).length}`).join(", ");
 console.log(`✓ shifts.json: ${nUnits}`);
 for (const w of warnings) console.warn(`⚠ ${w}`);

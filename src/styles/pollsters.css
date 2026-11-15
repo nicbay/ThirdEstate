@@ -1,0 +1,56 @@
+/* Polling institutes, graded (views/pollsters.ts) */
+.pg .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.pg-table { min-width: 640px; }
+.pg-table th[scope="row"] { font-weight: 600; text-align: left; }
+.pg-open { all: unset; cursor: pointer; font: inherit; font-weight: 700; color: var(--ink); border-bottom: 1px dashed var(--rule-2); }
+.pg-open:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.pg-open[aria-expanded="true"] { border-bottom-style: solid; }
+.pg-badge { display: inline-block; min-width: 2.2em; text-align: center; font: 800 0.82rem var(--mono); padding: 0.15rem 0.4rem; border-radius: 3px; color: #fff; }
+.pg-badge.g-a { background: #1e8a4c; }
+.pg-badge.g-b { background: #5f9c2f; }
+.pg-badge.g-c { background: #c98a12; }
+.pg-badge.g-d { background: #d0612a; }
+.pg-badge.g-f { background: #b3261e; }
+.pg-badge.g-none { background: var(--rule-2); color: var(--ink); }
+.pg-detail td { background: var(--paper); padding: 0.6rem 0.8rem 1rem; }
+.pg-detail-in p { margin: 0.2rem 0 0.6rem; max-width: 75ch; }
+.pg-hist { margin-top: 0.4rem; }
+.pg-hist .better { color: var(--up-text); font-weight: 700; }
+.pg-hist .worse { color: var(--down-text); font-weight: 700; }
+.pg-grades { max-width: 520px; }
+
+/* how far off: a bar in the grade's colour, the figure, and the last election */
+.pg-miss { min-width: 11rem; }
+.pg-bar { display: block; height: 6px; margin-bottom: 0.25rem; border-radius: 1px; }
+.pg-bar.g-a { background: #1e8a4c; } .pg-bar.g-b { background: #5f9c2f; } .pg-bar.g-c { background: #c98a12; } .pg-bar.g-d { background: #d0612a; } .pg-bar.g-f { background: #b3261e; } .pg-bar.g-none { background: var(--rule-2); }
+.pg-miss b { font-variant-numeric: tabular-nums; }
+.pg-miss .tiny, .pg-last .tiny { display: block; }
+.pg-last { min-width: 10rem; white-space: nowrap; }
+.pg-h { font-size: 0.85rem; margin: 0.8rem 0 0.3rem; }
+.pg-recent { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.2rem; font-size: 0.88rem; }
+.pg-recent li { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.pg-recent li span { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.pg-lean { white-space: nowrap; font: 600 0.82rem var(--mono); font-variant-numeric: tabular-nums; }
+.pg-lean .pg-hi { color: var(--up-text); }
+.pg-lean .pg-lo { color: var(--down-text); }
+
+/* the ranking, readable (2026-11): five columns, the grade beside the name, rows aligned on their middle */
+.pg-table { min-width: 720px; border-collapse: collapse; }
+.pg-table th, .pg-table td { vertical-align: middle; padding: 0.7rem 0.8rem; }
+.pg-table thead th { white-space: nowrap; font-size: 0.72rem; }
+.pg-row { border-bottom: 1px solid var(--rule); }
+.pg-row:hover { background: var(--panel); }
+.pg-who { display: flex; align-items: center; gap: 0.6rem; }
+.pg-who .pg-open { font-size: 0.98rem; }
+.pg-miss { min-width: 13rem; }
+.pg-miss-v { display: block; margin-bottom: 0.25rem; }
+.pg-miss-v b { font: 800 1.15rem var(--display); }
+.pg-bar { margin: 0 0 0.25rem; height: 6px; max-width: 12rem; }
+.pg-last { min-width: 14rem; white-space: normal; }
+.pg-n { display: block; }
+.pg-n b { font-variant-numeric: tabular-nums; }
+.pg-w { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.pg-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 0.6rem 1.2rem; margin: 0 0 0.8rem; }
+.pg-stats div { display: grid; gap: 0.1rem; }
+.pg-stats dt { font: 600 0.7rem var(--mono); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-3); }
+.pg-stats dd { margin: 0; font-weight: 700; }

@@ -15,15 +15,16 @@ a white blaze, snout and inner ears (`#ffffff`), ink eyes `#111216` and an ink n
 face. On the black masthead and footer the outline takes a lighter blue `#5470ff` (bleu France would vanish on ink);
 everything else stays. The red-left/blue-right split bar (active tab, kickers) is the political convention and is not
 part of the mark. Keep the grid exact;
-render it at multiples of 16px (24, 28, 32, 112) so pixels stay square. Wordmark: Archivo 850 condensed **THIRD** +
-300 **ESTATE**, uppercase. Favicon: the fox on a rounded ink tile (`public/favicon.svg`). Pixel type (Silkscreen) is
+render it at multiples of 16px (24, 28, 32, 112) so pixels stay square. Wordmark: **THIRD ESTATE** drawn in pixel capitals on the same grid (`wordmarkSvg(px)` in `src/lib/wordmark.ts`, 5×7 glyphs): THIRD in a doubled stroke, ESTATE single-stroke in a quieter grey; rendered at whole multiples (2px masthead, 3px menu and footer, 8px share card). Options explored: `docs/brand/identity-v3-options.html` (chosen: M1 + W3). Favicon: the fox on a rounded ink tile (`public/favicon.svg`). Pixel type (Silkscreen) is
 allowed only for tiny accents, never for text people read (see "Pixel theme"). The 12×12 section icons of
 the phone tab bar and the search glyph (`src/lib/pixel-icons.ts`) share the fox's pixel style, drawn in currentColor.
 Catchphrase: Article 15 of the 1789 Declaration, *« La société a le droit de demander compte à tout agent public de son administration »*, shortened on the homepage to « Demander compte à tout agent public ». Share image: `public/og.png` (1200×630, screenshot of `docs/brand/og-source.html`).
 
 A data desk, not a blog template. The page is a black-framed news product: one grotesk for
 everything people read, a monospace for everything that annotates, a 3px ink rule to open
-every section, and colour spent only on data. Tokens live at the top of `src/style.css`.
+every section, and colour spent only on data. Every token (palette, night-band text, the red/blue split, pixel shapes, and semantic aliases named after the
+Astryx design system: `--color-background-*`, `--color-text-*`, `--spacing-1…6`) lives in `src/styles/tokens.css`,
+loaded before `style.css` and `redesign.css`; write new CSS against tokens, not hex values.
 
 ## Pixel theme (beta, `src/redesign.css`)
 
@@ -36,13 +37,70 @@ The frame takes its grammar from the fox. Loaded after `style.css`, the re-skin 
 - **Page and surfaces.** The page is warm paper `--bg #f2f0e9`; sections are white panels on it. Dark bands (masthead,
   hero, footer) are `--night #0b0d18` with a faint grid of 2px squares, and dissolve into the page through two rows
   of 4px squares (`.px-edge`, `.foot-strip`).
-- **Pixel type.** Silkscreen (self-hosted, OFL), for the smallest uppercase labels only: kickers, tags, the tab bar,
-  menu indexes, footer heads. Never for a sentence, never for a number people compare.
+- **Pixel type.** Silkscreen (self-hosted, OFL), for decorative uppercase labels only (card-head links, menu
+  indexes). Never for a sentence, never for a number people compare, never for a control or a status people must
+  read: kickers, crumbs, tags, status chips, the tab bar, footer links and sub-bar labels are IBM Plex Mono uppercase.
+  Nothing people read or click is under 11px; body and source lines are 12px or more.
 - **Hard shadows, block motion.** Interactive panels lift up-left onto a hard offset shadow; presses and menu reveals
-  move in `steps()`. The scroll bar under the masthead advances in 40 blocks. Sections below the fold rise in once
-  as they enter the screen (`.rv-in`, added by `reveal()` in `src/main.ts`): nothing waits hidden, and all of it is
-  off under `prefers-reduced-motion`.
+  move in `steps()`. The scroll bar under the masthead advances in 40 blocks. Content starts visible: no headline
+  rise, no per-section entrance, no blinking caret. Motion is kept where it explains data (chart draw-ins, the 577
+  dots flying into the seats, the fox assembling), and all of it is off under `prefers-reduced-motion`.
 - **The hero's 577 dots are pixels** (squares), on the map and in the hemicycle.
+
+## Pixel Desk v2 (beta, `src/styles/overhaul.css`)
+
+The overhaul keeps the pixel grammar and calms the frame. Loaded last, written against `src/styles/tokens.css`.
+Component behaviour follows the Astryx design system's specs (read through its MCP); Astryx itself is not installed
+(React + StyleX, ~49 KB gzip for the touch helpers alone), so components are small vanilla TS/CSS.
+
+- **Answer first.** Inner pages open with a paper headline strip, not a hero: crumbs, an optional short kicker
+  (≤ 4 words, dropped by `trimKicker()` when the crumbs, h1 or section bar already say it), an ink headline
+  (≤ 2.9rem) written as a sentence of its own shape (no comma-split, no gradient text), a dek (≤ ~68 characters a
+  line), then the main chart inside the first screen. `sectionHero()` in `src/main.ts` builds it. The tall dark
+  hero is the homepage's alone; below it the homepage returns to paper and white panels.
+- **Numbers in sentences, not tiles.** A page has at most one big number. Supporting figures go in a typeset line
+  with mono numbers ("13 candidats et 439 mesures…, dont 182 chiffrées"), never a row of 4 KPI tiles. Movers are
+  a line with ▲/▼ in the data colour, not tinted tiles.
+- **No side stripes on callouts.** A note, verdict or caveat is a `--panel` block with a 3px ink top rule. A
+  coloured left rule is allowed only when it encodes a party, bloc or candidate colour.
+- **Same figure, same number.** When two modules show the race, label what each is ("1er tour, projeté" on the
+  forecast chart, "Moyenne des sondages au <date>" on the poll widget); a forecast chart ends on today's live figure.
+- **Specific labels.** No "Key takeaways", "Top stories", "All →", "Start →", "Open the programme →". Say what is
+  there: "Ce qu'il faut retenir du 13 novembre", "Fil rouge, fil bleu", "Les 23 mesures de Lisnard, une par une".
+  Page footers close with "Ailleurs sur Third Estate", a short typeset list of links.
+- **One local bar.** Under the masthead, the section's pages; a page's own views (`.page-tabs`, e.g. the Assemblée's
+  map / who they are / toeing the line / what they say) are moved into that bar by `mergeLocalTabs()` in `src/main.ts`,
+  nested after their page. No second row of tabs.
+- **Calm panels.** A static section (`.card`) is a white sheet opened by a 3px ink rule. The stepped pixel frame and
+  the hard shadow mean *clickable*: next steps, candidate cards, quiz picks, simulator cards.
+- **Detail sheet** (`src/lib/sheet.ts`, Astryx BottomSheet spec, no scrim). Up to 860px a page's side panel
+  (Assemblée: the picked department) rises from the bottom over the map: peek / half / near-full snap points, slow
+  drags settle on the nearest, flicks go to the next, Escape folds to the peek, the grab bar is a button. Steps, not
+  springs; none under reduced motion. Desktop keeps the docked panel.
+- **Dark theme.** Follows the system; the masthead sun/moon button overrides it (`localStorage` `te-theme`, applied
+  before paint by `public/theme-boot.js`). Only the paper side flips; night bands stay night. Party colours stay data,
+  with one exception: RN's navy `#1c2c6c` lifts to `#6a78e0` so it stays legible on dark paper.
+- The sheet also carries the picked department on the **presidential results map** (`presidential.ts`, unpicking folds
+  it) and the **Explorer town list** (resting at its peek over the department map). A view writes into a sheet with
+  `panelBody(el)` and raises or folds it with the controller `detailSheet()` returns. A tab row in a page head that
+  only repeats the section bar is hidden (Résultats).
+- **Toasts** (`src/lib/toast.ts`, Astryx Toast spec): polite live region, never takes focus, 5 s auto-hide paused on
+  hover/focus, `uniqueID` replaces, optional action, close button. Used for "I live here" (with Undo) and copied
+  quiz links. Slide-only entrance, so a toast is readable even when animations are paused.
+- **InfoTips** (`src/lib/infotip.ts`, Astryx InfoTip / toggletip spec): a pixel "i" beside a figure; hover and focus
+  preview, click/tap/Enter pins (`aria-expanded`, announced once), Escape / outside press / focus leaving closes.
+  Views call `infoTip(text, label)`; one delegated handler. On the 2027 forecast, the homepage poll average and a
+  candidate's chance of winning.
+- **Sortable tables** (`src/lib/sortable.ts`): any `table.table` with a head and 6+ rows, no spans; numeric columns
+  high-to-low first (French or English numbers), text A-Z; Total/France rows stay last; `data-nosort` opts out.
+  Above 760px a table that fits its column gets a sticky header row under the bars (`--sub-h`).
+- **Long reads** (`src/lib/toc.ts`): How to vote, Sources, Legal notice get "On this page": a sticky rail with the
+  current section marked from 1100px, a folded list below. Pages with their own jump links are left alone.
+- **Identity strip** (`src/lib/id-strip.ts`): on MP, senator and candidate pages, once the header scrolls away, a slim
+  strip with photo, name and party chip in the party colour. `aria-hidden`, no controls.
+- `.page` keeps no transform after its entrance (`animation-fill-mode: backwards`): a transformed ancestor would trap
+  the fixed sheets and strip.
+- **The kit** (`#/kit`, beta and local hosts only, `src/views/kit.ts`): every token and component on one page.
 
 Navigation: six sections (Chez vous, Parlement, 2027, **Programmes**, La France, Archives). On desktop each opens one
 panel as wide as the page column: what the section is, then its pages with a one-line description (the Programmes
@@ -125,7 +183,9 @@ glyphs as well as colour.
 - **Masthead**: black bar, the fox and the condensed wordmark, five sections (Chez vous, Parlement, 2027, La France,
   Archives), each a link plus a caret button that opens its menu (white panel, 3px ink rule; hover on desktop, click or
   keyboard everywhere, Esc closes). Active section underlined with the red/blue split bar. Right side: search button
-  (Ctrl/⌘ K), the white "Qui vous ressemble ?" call to action (red/blue offset shadow) to `#/quiz`, FR/EN. The current
+  (Ctrl/⌘ K), the white quiz call to action (one 3px blue offset shadow; "Quiz" on phones) to `#/quiz`. The quiz has one
+  name everywhere: « Le quiz : qui vous ressemble ? » / "The quiz: who is closest to you?"; its entry is one
+  primary button with the real count and length, and a text link to the long version, FR/EN. The current
   section's pages repeat in a row under the bar. Below 760px: one top row (mark, search, quiz, language), the section
   pages as a sideways-scrolling row, and a fixed bottom tab bar with the five sections (pixel icon + short label,
   safe-area padding).
@@ -134,7 +194,10 @@ glyphs as well as colour.
 - **Section (`.card`)**: 3px ink rule, condensed `h2`, mono "→" link at the right.
 - **Tabs**: pill row (`.tabs`), segmented control for in-module switches (`.small-tabs`).
 - **Bars**: 10px on a `--wash` track, bold value right-aligned, grow-in animation.
-- **KPIs / `.lk` / hero stats**: 2px ink rule on top, big condensed number, mono label.
+- **KPIs / `.lk` / hero stats**: 2px ink rule on top, big condensed number, mono label. One per page at most (see
+  "Numbers in sentences, not tiles").
+- **Programme list** (`#/programmes`): one row per candidate in seating order, left to right, party colour as a thin
+  mark, the kept/changed/new bar inline; the whole row is the link.
 - **Spectrum strip**: 58px (40px on phones), parties in seating order, axis labelled ← LEFT / RIGHT →
   in the left/right colours.
 - **Tables**: mono uppercase headers over a 2px ink rule, tabular right-aligned numbers, hover rows,
