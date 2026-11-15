@@ -2,9 +2,10 @@
 // top edge read once (getBoundingClientRect + scroll) stays right while the reader scrolls; only layout changes
 // (resize, content loading, a page change) move it, and the fox re-reads its own box once a frame.
 
-/** Boxes the fox may land on and walk along: cards, the note of the day, the hero's buttons, the Assembly widget
- *  and its legend chips, the homepage widgets. */
-export const SURF_SEL = ".card, .ed, .hday-doors a, .hday-art, .hd-legend li, .hw, .quiz-line .button";
+/** What the fox may land on and walk along: only buttons and boxes with an edge of their own (cards, the note of the
+ *  day, the hero's buttons, the bordered boxes, the homepage widgets). Never a bare figure, a map or a legend: there
+ *  the fox would look as if it sat on nothing. */
+export const SURF_SEL = ".card, .ed, .box, .hday-doors a, .hw, .quiz-line .button";
 /** What a lingering pointer can draw the fox's attention to (a chart, a card, a button). */
 export const ATTN_SEL = ".card, figure, .hw, .ed, .hday-doors a, .button, .hd-legend, table";
 /** Elements that carry words: the fox never sits where its painted pixels would hide them. */

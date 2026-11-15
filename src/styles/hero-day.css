@@ -465,3 +465,9 @@
 /* the fox under "Our take": the line is ours */
 .lg-logo { display: block; margin-top: 0.5rem; line-height: 0; }
 .lg-logo svg { display: block; }
+
+/* a comment of ours above a table: the fox, then one or two sentences */
+.lg-note { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.6rem; align-items: start; margin: 0 0 0.7rem; font-size: 0.98rem; line-height: 1.42; color: var(--ink); }
+.lg-note svg { display: block; margin-top: 0.15rem; }
+.lg-note + .lg-table, .lg-note + table { margin-top: 0.9rem; }
+.lg-table + .lg-note, .lg-cost + .lg-note { margin-top: 0.8rem; }

@@ -68,6 +68,8 @@ const yields = await read("daily/yields.json").catch(() => null);
 // the week's other figures: INSEE's surveys and car registrations (scripts/sync-indicators.mjs), growth, prices and
 // unemployment (scripts/sync-economy.mjs). "fresh" marks a figure published in the seven days before the edition.
 const indicators = await read("daily/indicators.json").catch(() => null);
+// the CAC 40's week and its two biggest movers (scripts/sync-cac.mjs)
+const cacWeek = await read("daily/cac.json").catch(() => null);
 const economyKpis = (await read("economy.json").catch(() => null))?.kpis ?? [];
 function weekKpis(D) {
   const fresh = (u) => !!u && u > iso(Date.parse(D) - 7 * DAY) && u <= D;
@@ -291,6 +293,8 @@ for (const day of days) {
   // statements of the day when Claude wrote none: the most-covered headlines that quote someone and name a candidate
   const quoted = [];
   for (const h of headlines) { const r = /[«“"]/.test(h.title) ? whoIn(h) : null; if (!r || quoted.some((q) => q.name === r.name)) continue; quoted.push({ name: r.name, fr: "", en: "", story: { title: h.title, link: h.link, outlet: h.outlet, n: h.n } }); if (quoted.length === 3) break; }
+  // Sunday's hand-written file, when there is one: the brief's three lines, and comments that take precedence over Claude's
+  const briefFile = sunday ? await read("daily/briefs/" + D + ".json").catch(() => null) : null;
   const ledger = {
     span: sunday ? "week" : "day",
     world: hl?.world?.[0] ?? null,
@@ -300,7 +304,10 @@ for (const day of days) {
     // Sunday's figures: today's for the current week; an older Sunday keeps the ones it was built with
     kpis: !sunday ? null : D >= iso(Date.now() - 6 * DAY) ? weekKpis(D) : (await read("daily/editions/" + D + ".json").catch(() => null))?.ledger?.kpis ?? null,
     // Sunday's brief: three lines that take a stand, written by hand (daily/briefs/<date>.json), each with its lead and its story
-    brief: sunday ? (await read("daily/briefs/" + D + ".json").catch(() => null))?.lines ?? null : null,
+    brief: briefFile?.lines ?? null,
+    // comments: two on why the polls moved, one on the week's figures, one on the CAC 40 (the last two on Sundays)
+    notes: { polls: briefFile?.polls ?? insight.pollNotes ?? [], kpis: briefFile?.kpis ?? insight.kpiNote ?? null, cac: briefFile?.cac ?? insight.cacNote ?? null },
+    cac: !sunday ? null : D >= iso(Date.now() - 6 * DAY) ? cacWeek : (await read("daily/editions/" + D + ".json").catch(() => null))?.ledger?.cac ?? null,
     table: tableRows,
     // the day's facts: our take (Claude's, none without it), the surprises, the statements, the post the press quoted most
     take: insight.take ?? null,

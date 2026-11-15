@@ -3,21 +3,56 @@
  "by": "Third Estate",
  "lines": [
   {
-   "lead": { "fr": "Riner est d’abord un problème pour Mélenchon.", "en": "Riner is first of all a problem for Mélenchon." },
+   "lead": {
+    "fr": "Riner est d’abord un problème pour Mélenchon.",
+    "en": "Riner is first of all a problem for Mélenchon."
+   },
    "fr": "Sondé à 2,6 % en moyenne dès sa première semaine, il plaît aux sympathisants LFI, selon un sondage. Ce sont des voix dont Mélenchon a besoin pour atteindre le second tour.",
    "en": "Polled at 2.6% on average in his first week, he appeals to LFI sympathisers, one poll found. Those are votes Mélenchon needs to reach the run-off.",
-   "story": { "title": "Le Pen au plus haut, Lisnard monte encore, Riner séduit les sympathisants LFI... Les enseignements d'un nouveau sondage", "link": "https://www.lejdd.fr/politique/presidentielle-le-pen-au-plus-haut-lisnard-monte-encore-riner-seduit-les-sympathisants-lfi-les-enseignements-dun-nouveau-sondage-188370", "outlet": "Le JDD" }
+   "story": {
+    "title": "Le Pen au plus haut, Lisnard monte encore, Riner séduit les sympathisants LFI... Les enseignements d'un nouveau sondage",
+    "link": "https://www.lejdd.fr/politique/presidentielle-le-pen-au-plus-haut-lisnard-monte-encore-riner-seduit-les-sympathisants-lfi-les-enseignements-dun-nouveau-sondage-188370",
+    "outlet": "Le JDD"
+   }
   },
   {
-   "lead": { "fr": "C’est pour cela que Mélenchon le range à droite.", "en": "That is why Mélenchon files him on the right." },
+   "lead": {
+    "fr": "C’est pour cela que Mélenchon le range à droite.",
+    "en": "That is why Mélenchon files him on the right."
+   },
    "fr": "« La droite a trouvé un candidat qui a de l’allure », dit-il. Présenter Riner comme un candidat de droite, c’est dire à ses propres électeurs qu’il n’est pas des leurs.",
    "en": "“The right has found a candidate with some style,” he says. Casting Riner as a right-wing candidate tells his own voters that Riner is not one of them.",
-   "story": { "title": "Avec Teddy Riner, la « droite » a trouvé un candidat qui « a de l’allure », juge Jean-Luc Mélenchon", "link": "https://www.leparisien.fr/politique/avec-teddy-riner-la-droite-a-trouve-un-candidat-qui-a-de-lallure-juge-jean-luc-melenchon-11-11-2026-NAMQDSTNAREIJNFVDWS3BXDTR4.php", "outlet": "Le Parisien" }
+   "story": {
+    "title": "Avec Teddy Riner, la « droite » a trouvé un candidat qui « a de l’allure », juge Jean-Luc Mélenchon",
+    "link": "https://www.leparisien.fr/politique/avec-teddy-riner-la-droite-a-trouve-un-candidat-qui-a-de-lallure-juge-jean-luc-melenchon-11-11-2026-NAMQDSTNAREIJNFVDWS3BXDTR4.php",
+    "outlet": "Le Parisien"
+   }
   },
   {
-   "lead": { "fr": "Au centre, Philippe décroche.", "en": "In the centre, Philippe is slipping away." },
+   "lead": {
+    "fr": "Au centre, Philippe décroche.",
+    "en": "In the centre, Philippe is slipping away."
+   },
    "fr": "Il a perdu plus de 3 %pt sur les marchés en une semaine et 1,7 %pt dans les sondages, pendant que Lisnard progresse. La primaire qu’il refuse se joue déjà sans lui.",
    "en": "He lost more than 3%pt on the markets in a week and 1.7%pt in the polls, while Lisnard gains. The primary he refuses is already being played without him."
   }
- ]
+ ],
+ "polls": [
+  {
+   "fr": "Philippe paie son refus de la primaire : −1,7 %pt en une semaine, pendant que Lisnard, qui y participe, en gagne 1,4 %pt.",
+   "en": "Philippe is paying for staying out of the primary: −1.7%pt in a week, while Lisnard, who is in it, gains 1.4%pt."
+  },
+  {
+   "fr": "Glucksmann recule de 1,9 %pt : le « ni droite ni gauche » de Riner chasse sur ses terres, et il l’attaque déjà.",
+   "en": "Glucksmann is down 1.9%pt: Riner’s “neither right nor left” hunts on his ground, and he is already attacking it."
+  }
+ ],
+ "kpis": {
+  "fr": "Les ménages décrochent pendant que les prêteurs se tendent : la confiance tombe à 80, loin de sa moyenne de 100, et l’écart avec l’Allemagne atteint 1,54 %pt. Seul le chômage, à 8,2 %, va dans l’autre sens.",
+  "en": "Households are losing heart while lenders tighten: confidence falls to 80, far from its average of 100, and the gap with Germany reaches 1.54%pt. Only unemployment, at 8.2%, points the other way."
+ },
+ "cac": {
+  "fr": "Le CAC 40 gagne 2,8 % alors que la confiance des ménages chute : ses groupes vivent surtout de l’étranger. L’automobile décroche (Stellantis, −12,6 %) et les semi-conducteurs s’envolent (STMicroelectronics, +11,5 %), deux mouvements qui tiennent aux marchés mondiaux plus qu’à la France.",
+  "en": "The CAC 40 gains 2.8% while household confidence drops: its groups earn mostly abroad. Carmakers slide (Stellantis, −12.6%) and chipmakers soar (STMicroelectronics, +11.5%), two moves that owe more to world markets than to France."
+ }
 }

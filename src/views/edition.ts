@@ -36,6 +36,8 @@ interface Ledger {
   take?: { fr: string; en: string; story: Headline | null } | null; surprises?: Line[]; declarations?: Line[];
   post?: { handle: string; name: string | null; text: string; url: string; outlets: string[] } | null;
   trend?: { date: string; v: Record<string, number | null> }[] | null;
+  notes?: { polls: T[]; kpis: T | null; cac: T | null } | null;
+  cac?: { asOf: string; level: number; d7: number; movers: { name: string; d7: number }[] } | null;
   borrow?: Borrow | null; brief?: BriefLine[] | null;
   world: Headline | null; france: Headline | null; candidates: (Headline & { name: string })[];
   lead: { span: "day" | "week"; up: Mv[]; down: Mv[] };
@@ -176,9 +178,12 @@ function per(p: string) {
 }
 const whole = (v: number) => Math.round(v).toLocaleString(L("fr-FR", "en-GB"));
 
+/** A comment of ours above a table: short, signed by the fox, its figures in bold. */
+const noteHtml = (t: T | null | undefined) => (t?.fr ? `<p class="lg-note">${foxSvg(18, true)}<span>${figures(esc(L(t.fr, t.en)))}</span></p>` : "");
+
 function kpisHtml(g: Ledger) {
-  const b = g.borrow, fresh = (g.kpis?.items ?? []).filter((x) => x.fresh && KPIS[x.id]);
-  if (!b && !fresh.length) return "";
+  const b = g.borrow, c = g.cac, fresh = (g.kpis?.items ?? []).filter((x) => x.fresh && KPIS[x.id]);
+  if (!b && !c && !fresh.length) return "";
   const line = (label: string, sub: string, value: string, change: string) => `<tr><th scope="row">${label}<small>${sub}</small></th><td>${value}</td><td>${change}</td></tr>`;
   const close = b ? `${L("clôture du", "close of")} ${esc(fmtDate(b.asOf).replace(/\s\d{4}$/, ""))}, ${L("sur 7 jours", "over 7 days")}` : "";
   const rates = b ? [
@@ -190,13 +195,17 @@ function kpisHtml(g: Ledger) {
     if (d.unit === "count") return line(label, sub, whole(x.value), x.yearAgo ? `${delta((x.value / x.yearAgo - 1) * 100, L(" %", "%"), d.goodUp)} <small>${L("sur un an", "on the year")}</small>` : "–");
     return line(label, sub, d.unit === "pct" ? pct(x.value) : dec(x.value, x.value % 1 ? 1 : 0), x.prev == null ? "–" : delta(x.value - x.prev, d.unit === "pct" ? ppt() : "", d.goodUp));
   }).join("");
-  return `<table class="lg-table lg-kpi">
+  const wk7 = c ? `${L("clôture du", "close of")} ${esc(fmtDate(c.asOf).replace(/\s\d{4}$/, ""))}, ${L("sur 7 jours", "over 7 days")}` : "";
+  const pc = (v: number) => delta(v, L("\u00a0%", "%"), true);
+  const market = c ? [line("CAC 40", wk7, whole(c.level), pc(c.d7)), ...c.movers.map((m) => line(esc(m.name), L("la plus forte variation du CAC 40, sur 7 jours", "among the CAC 40’s biggest moves, over 7 days"), "", pc(m.d7)))].join("") : "";
+  return `${noteHtml(g.notes?.kpis)}<table class="lg-table lg-kpi">
     <caption><span>${L("Les chiffres de la semaine", "The week’s numbers")}</span><a href="#/chiffres#conjoncture">${L("Tous les chiffres", "Every figure")} →</a></caption>
     <thead><tr><th scope="col">${L("Indicateur", "Indicator")}</th><th scope="col">${L("Niveau", "Level")}</th><th scope="col">${L("Variation", "Change")}</th></tr></thead>
-    <tbody>${rates}${rows}</tbody>
+    <tbody>${rates}${rows}${market}</tbody>
   </table>
   ${b ? `<p class="lg-cost">${borrowHtml(b, true)}</p>` : ""}
-  <p class="lg-cap">${L("Vert : mieux, rouge : moins bien. Sources : Insee, Eurostat, Teleborsa via Borsa Italiana.", "Green: better, red: worse. Sources: INSEE, Eurostat, Teleborsa via Borsa Italiana.")}</p>`;
+  ${noteHtml(g.notes?.cac)}
+  <p class="lg-cap">${L("Vert : mieux, rouge : moins bien. Sources : Insee, Eurostat, Teleborsa via Borsa Italiana, Yahoo Finance.", "Green: better, red: worse. Sources: INSEE, Eurostat, Teleborsa via Borsa Italiana, Yahoo Finance.")}</p>`;
 }
 
 /** The polling averages over the last weeks, one line per candidate: the simple version of the big chart below. */
@@ -247,10 +256,11 @@ function bodyHtml(g: Ledger, s: Pick | null | undefined) {
     ${g.declarations?.length ? row(L("Déclarations", "Statements"), linesHtml(g.declarations)) : ""}
     ${g.post ? row(wk ? L("Le post de la semaine", "Post of the week") : L("Le post du jour", "Post of the day"), postHtml(g.post)) : ""}
     ${row(L("Dynamique", "Momentum"), leadHtml(g))}`;
-  if (!wk) return `<div class="ed-lg"><div class="lg">${takeRow}${facts}</div><div class="lg-side">${tableHtml(g)}</div></div>`;
+  const why = (g.notes?.polls ?? []).slice(0, 2).map(noteHtml).join("");
+  if (!wk) return `<div class="ed-lg"><div class="lg">${takeRow}${facts}</div><div class="lg-side">${why}${tableHtml(g)}</div></div>`;
   return `<div class="ed-lg is-week">
     ${takeRow ? `<div class="lg">${takeRow}</div>` : ""}
-    <div class="lg-mid"><div class="lg-side">${tableHtml(g)}${trendHtml(g)}</div><div class="lg-side">${kpisHtml(g)}</div></div>
+    <div class="lg-mid"><div class="lg-side">${why}${tableHtml(g)}${trendHtml(g)}</div><div class="lg-side">${kpisHtml(g)}</div></div>
     <div class="lg">${g.recap ? row(L("La semaine", "The week"), recapHtml(g.recap), "is-week") : ""}${facts}</div>
   </div>`;
 }

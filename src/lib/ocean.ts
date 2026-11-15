@@ -107,11 +107,12 @@ void main(){
     col = mix(base, BLUE, toBlue * 0.85);
     // calm behind the words on the left, fuller toward the right
     float side = smoothstep(0.05, 0.85, uv.x);
-    float vis = (0.25 + 0.75 * side) * clear * bottom;
+    // the ocean thins out around the reader's pixel (while the room is closed), so it can be found among brighter neighbours
+    float vis = (0.25 + 0.75 * side) * clear * bottom * mix(1.0, smoothstep(12.0, 70.0, dMe), 1.0 - uOpen);
     a = ((0.018 + 0.16 * swell) * (0.84 + 0.16 * f) * (0.6 + 0.4 * r2) * k + 0.1 * glint * k) * vis;
   }
   // the reader's pixel glows a little, between the pixels too (only while the room is closed)
-  float glow = exp(-(dMe * dMe) / (2.0 * 7.0 * 7.0)) * (0.32 + 0.08 * sin(uT * 2.2)) * (1.0 - uOpen);
+  float glow = exp(-(dMe * dMe) / (2.0 * 9.0 * 9.0)) * (0.44 + 0.12 * sin(uT * 2.2)) * (1.0 - uOpen);
   vec3 outc = col * min(a, 1.0) + GOLD * glow;
   float outa = min(1.0, min(a, 1.0) + glow);
   gl_FragColor = vec4(outc, outa);
