@@ -134,7 +134,7 @@ export async function heroDay() {
   // what the site is, before any number: neutral, so no reader is turned away by the race's state
   const headHtml = `<div class="hday-intro">
       <div class="hday-titlerow">
-        <h1 id="hday-title">${L("La présidentielle, chiffres en main.", "The French election, by the numbers.")}</h1>
+        <h1 id="hday-title">${L("Des faits, des chiffres, vos conclusions.", "Facts, figures. The conclusions are yours.")}</h1>
         <p class="hday-count"><b>${daysToGo}</b><span>${L(daysToGo > 1 ? "jours avant le premier tour" : "jour avant le premier tour", daysToGo === 1 ? "day to the first round" : "days to the first round")}</span><time datetime="${ELECTION_DAY}">${fmtDate(ELECTION_DAY)}</time></p>
       </div>
       <p class="hday-dek">${L("Chaque sondage pesé, chaque promesse chiffrée, chaque vote de votre député. Pour se faire son avis sur pièces.", "Every poll weighed, every promise costed, every vote your MP casts. Make up your own mind, on the evidence.")}</p>
