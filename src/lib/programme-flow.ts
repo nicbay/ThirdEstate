@@ -9,7 +9,7 @@ export interface FlowBranch { id: string; icon: string; title: string; n: number
 /** A source document: where a version box (and the final programme box) links to. `kind` is the data's version kind. */
 export interface FlowDoc { url: string; kind?: string }
 export interface FlowSource { id: string; icon: string; title: string; sub: string; out: string[]; doc?: FlowDoc }
-export interface FlowSpec { sources: FlowSource[]; branches: FlowBranch[]; keepTitle: string; keepN: number; goneN: number; label: string; keepDoc?: FlowDoc }
+export interface FlowSpec { sources: FlowSource[]; branches: FlowBranch[]; keepTitle: string; keepN: number; goneN: number; goneTitle?: string; label: string; keepDoc?: FlowDoc }
 
 interface Box { id: string; x: number; y: number; w: number; h: number; kind: "source" | "branch" | "sink"; icon: string; title: string; sub: string; branch?: string; drop?: boolean; doc?: FlowDoc }
 
@@ -35,7 +35,7 @@ export function flowSvg(spec: FlowSpec, pick = "", compact = false) {
     if (keepY < goneY) goneY = keepY + 90; else keepY = goneY + 90;
   }
   N.push({ id: "keep", x: 712, y: Math.max(4, keepY), w: 186, h: 70, kind: "sink", icon: "✓", title: spec.keepTitle, sub: items(spec.keepN), doc: spec.keepDoc });
-  if (goneIds.length) N.push({ id: "gone", x: 712, y: Math.max(4, goneY), w: 186, h: 70, kind: "sink", icon: "×", title: L("Abandonnées", "Dropped"), sub: items(spec.goneN), drop: true });
+  if (goneIds.length) N.push({ id: "gone", x: 712, y: Math.max(4, goneY), w: 186, h: 70, kind: "sink", icon: "×", title: spec.goneTitle ?? L("Abandonnées", "Dropped"), sub: items(spec.goneN), drop: true });
   const byId = Object.fromEntries(N.map((x) => [x.id, x]));
   const nOf = Object.fromEntries(spec.branches.map((b) => [b.id, b.n]));
   const E: [string, string, number][] = [

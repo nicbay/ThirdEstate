@@ -21,7 +21,7 @@ export interface Assessed {
   sources?: { title: string; url: string }[];
 }
 /** Values from data files used as CSS class suffixes: letters, digits and dashes only. */
-const cls = (v: unknown) => String(v ?? "").replace(/[^w-]/g, "");
+const cls = (v: unknown) => String(v ?? "").replace(/[^\w-]/g, "");
 export type Pop = "yes" | "partly" | "no";
 
 export function populism(m: Assessed): Pop {
@@ -63,13 +63,48 @@ const FILTERS: [Filter, () => string, (m: Assessed) => boolean][] = [
   ["pop", () => L("Populisme économique", "Economic populism"), (m) => populism(m) === "yes"],
 ];
 
-/** Totals and table; `mount` wires the filters and the row toggles. */
-export function measureTable(rows: Assessed[], opts: { id: string; partyName: string }) {
+const rowHtml = (m: Assessed) => {
+  const p = populism(m);
+  return `<tr class="mt-row" data-id="${esc(m.id)}" tabindex="0" aria-expanded="false">
+    <td><b>${esc(m.label)}</b>${m.statusLabel ? ` <span class="prog-chip prog-${cls(m.status === "new" ? "new2027" : m.status)}">${esc(m.statusLabel)}</span>` : ""}</td>
+    <td class="num">${m.cost == null ? `<span class="muted">—</span>` : `<b class="${m.cost < 0 ? "mt-neg" : "mt-pos"}">${md(m.cost)}</b>${m.low != null && m.high != null ? `<br><span class="muted small">${md(m.low)} / ${md(m.high)}</span>` : ""}${m.by ? `<br><span class="muted small">${esc(m.by)}</span>` : ""}`}</td>
+    <td><span class="mt-f f-${cls(m.feasibility ?? "na")}">${esc(feasLabel(m.feasibility))}</span></td>
+    <td><span class="mt-l l-${cls(m.legal)}">${esc(legalLabel(m.legal))}</span></td>
+    <td><span class="mt-p p-${cls(p)}">${esc(popLabel(p))}</span></td>
+  </tr>
+  <tr class="mt-detail" hidden><td colspan="5">
+    ${m.text ? `<p class="prog-quote" lang="fr">« ${esc(m.text)} »</p>` : ""}
+    ${m.basis ? `<p><b>${L("Coût", "Cost")}${L(" : ", ": ")}</b>${esc(m.basis)}${m.party != null ? ` ${L(`Chiffre du parti : ${md(m.party)}.`, `Party’s figure: ${md(m.party)}.`)}` : ""}</p>` : ""}
+    ${m.feasibilityNote ? `<p><b>${L("Faisabilité", "Feasibility")}${L(" : ", ": ")}</b>${esc(m.feasibilityNote)}</p>` : ""}
+    ${m.legalNote ? `<p><b>${L("Droit", "Law")}${L(" : ", ": ")}</b>${esc(m.legalNote)}</p>` : ""}
+    <p class="muted small">${L("Populisme économique", "Economic populism")}${L(" : ", ": ")}${esc(popWhy(m, p))}</p>
+    ${m.sources?.length ? `<p class="small">${L("Sources", "Sources")}${L(" : ", ": ")}${m.sources.map((s) => `<a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join(" · ")}</p>` : ""}
+    ${m.href ? `<p class="small"><a href="${esc(m.href)}">${L("Voir la mesure dans le programme", "See the measure in the program")}</a></p>` : ""}
+  </td></tr>`;
+};
+
+/** One theme's balance for its folded header: spending and revenue of the costed measures, and its warning signs. */
+const groupStats = (ms: Assessed[]) => ({
+  spend: ms.filter((m) => m.cost != null && m.cost < 0).reduce((s, m) => s + m.cost!, 0),
+  rev: ms.filter((m) => m.cost != null && m.cost > 0).reduce((s, m) => s + m.cost!, 0),
+  legal: ms.filter((m) => m.legal !== "ok" && m.legal !== "unknown").length,
+  low: ms.filter((m) => m.feasibility === "low").length,
+  pop: ms.filter((m) => populism(m) === "yes").length,
+});
+
+/** Totals, filters, then the measures folded by theme (biggest budget first); `mount` wires the filters and the toggles. */
+export function measureTable(rows: Assessed[], opts: { id: string; partyName: string; themeName?: (id: string) => string }) {
   const costed = rows.filter((m) => m.cost != null);
   const spend = costed.filter((m) => m.cost! < 0).reduce((s, m) => s + m.cost!, 0);
   const rev = costed.filter((m) => m.cost! > 0).reduce((s, m) => s + m.cost!, 0);
   const pops = rows.map(populism);
   const nLegal = rows.filter((m) => m.legal !== "ok" && m.legal !== "unknown").length;
+  const byTheme = new Map<string, Assessed[]>();
+  for (const m of rows) { const t = m.theme ?? ""; byTheme.set(t, [...(byTheme.get(t) ?? []), m]); }
+  const weight = (ms: Assessed[]) => ms.reduce((s, m) => s + Math.abs(m.cost ?? 0), 0);
+  const groups = [...byTheme.entries()].sort((a, b) => weight(b[1]) - weight(a[1]) || b[1].length - a[1].length);
+  const name = (t: string) => (t ? (opts.themeName?.(t) ?? t) : L("Autres", "Other"));
+  const plural = (n: number, fr: string, frs: string, en: string, ens: string) => `${n} ${n > 1 ? L(frs, ens) : L(fr, en)}`;
   const html = `
     <div class="mt-kpis">
       <div><strong>${costed.length}</strong><span>${L(`mesures chiffrées sur ${rows.length}`, `of ${rows.length} measures costed`)}</span></div>
@@ -79,30 +114,33 @@ export function measureTable(rows: Assessed[], opts: { id: string; partyName: st
       <div><strong>${pops.filter((p) => p === "yes").length}</strong><span>${L("signes de populisme économique", "show economic populism")}</span></div>
     </div>
     <div class="mt-filters" role="group" aria-label="${L("Filtrer", "Filter")}">${FILTERS.map(([k, lab, fn]) => `<button type="button" data-f="${k}" aria-pressed="${k === ""}">${esc(lab())} <span>${rows.filter(fn).length}</span></button>`).join("")}</div>
-    <div class="mt-wrap"><table class="table mt" id="${esc(opts.id)}">
-      <thead><tr><th>${L("Mesure", "Measure")}</th><th class="num">${L("Coût / an", "Cost / year")}</th><th>${L("Faisabilité", "Feasibility")}</th><th>${L("Constitution, droit", "Constitution, law")}</th><th><abbr title="${esc(L("Avantage large et immédiat dont le financement n’est pas assuré (Dornbusch et Edwards, 1991). Critères en bas du tableau.", "A broad, immediate benefit whose funding isn’t secured (Dornbusch & Edwards, 1991). Criteria below the table."))}">${L("Populisme éco.", "Econ. populism")}</abbr></th></tr></thead>
-      <tbody>${[...rows].sort((a, b) => Math.abs(b.cost ?? 0) - Math.abs(a.cost ?? 0)).map((m) => {
-        const p = populism(m);
-        return `<tr class="mt-row" data-id="${esc(m.id)}" tabindex="0" aria-expanded="false">
-          <td><b>${esc(m.label)}</b>${m.statusLabel ? ` <span class="prog-chip prog-${cls(m.status === "new" ? "new2027" : m.status)}">${esc(m.statusLabel)}</span>` : ""}</td>
-          <td class="num">${m.cost == null ? `<span class="muted">—</span>` : `<b class="${m.cost < 0 ? "mt-neg" : "mt-pos"}">${md(m.cost)}</b>${m.low != null && m.high != null ? `<br><span class="muted small">${md(m.low)} / ${md(m.high)}</span>` : ""}${m.by ? `<br><span class="muted small">${esc(m.by)}</span>` : ""}`}</td>
-          <td><span class="mt-f f-${cls(m.feasibility ?? "na")}">${esc(feasLabel(m.feasibility))}</span></td>
-          <td><span class="mt-l l-${cls(m.legal)}">${esc(legalLabel(m.legal))}</span></td>
-          <td><span class="mt-p p-${cls(p)}">${esc(popLabel(p))}</span></td>
-        </tr>
-        <tr class="mt-detail" hidden><td colspan="5">
-          ${m.text ? `<p class="prog-quote" lang="fr">« ${esc(m.text)} »</p>` : ""}
-          ${m.basis ? `<p><b>${L("Coût", "Cost")}${L(" : ", ": ")}</b>${esc(m.basis)}${m.party != null ? ` ${L(`Chiffre du parti : ${md(m.party)}.`, `Party’s figure: ${md(m.party)}.`)}` : ""}</p>` : ""}
-          ${m.feasibilityNote ? `<p><b>${L("Faisabilité", "Feasibility")}${L(" : ", ": ")}</b>${esc(m.feasibilityNote)}</p>` : ""}
-          ${m.legalNote ? `<p><b>${L("Droit", "Law")}${L(" : ", ": ")}</b>${esc(m.legalNote)}</p>` : ""}
-          <p class="muted small">${L("Populisme économique", "Economic populism")}${L(" : ", ": ")}${esc(popWhy(m, p))}</p>
-          ${m.sources?.length ? `<p class="small">${L("Sources", "Sources")}${L(" : ", ": ")}${m.sources.map((s) => `<a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join(" · ")}</p>` : ""}
-          ${m.href ? `<p class="small"><a href="${esc(m.href)}">${L("Voir la mesure dans le programme", "See the measure in the program")}</a></p>` : ""}
-        </td></tr>`;
-      }).join("")}</tbody></table></div>
+    <div class="mt-groups" id="${esc(opts.id)}">
+      <p class="mt-bar"><span class="muted small">${L(`${groups.length} thèmes, du plus coûteux au moins coûteux. Ouvrez un thème pour voir ses mesures, puis une mesure pour le détail.`, `${groups.length} themes, most expensive first. Open a theme to see its measures, then a measure for the details.`)}</span>
+        <button type="button" class="linkish mt-all" data-open="1">${L("Tout ouvrir", "Open all")}</button></p>
+      ${groups.map(([t, ms]) => {
+        const g = groupStats(ms);
+        const flags = [
+          g.legal ? `<span class="mt-l l-risk">${plural(g.legal, "obstacle juridique", "obstacles juridiques", "legal obstacle", "legal obstacles")}</span>` : "",
+          g.low ? `<span class="mt-f f-low">${plural(g.low, "peu réalisable", "peu réalisables", "hard to deliver", "hard to deliver")}</span>` : "",
+          g.pop ? `<span class="mt-p p-yes">${g.pop} ${L("populisme éco.", "econ. populism")}</span>` : "",
+        ].join("");
+        return `<details class="mt-group" data-theme="${esc(t)}">
+        <summary>
+          <span class="mt-g-name">${esc(name(t))}</span>
+          <span class="mt-g-n"><span class="mt-g-shown">${ms.length}</span> ${ms.length > 1 ? L("mesures", "measures") : L("mesure", "measure")}</span>
+          <span class="mt-g-cost">${g.spend ? `<b class="mt-neg">${md(g.spend)}</b>` : ""}${g.rev ? ` <b class="mt-pos">${md(g.rev)}</b>` : ""}${!g.spend && !g.rev ? `<span class="muted">${L("non chiffré", "not costed")}</span>` : ""}</span>
+          <span class="mt-g-flags">${flags}</span>
+        </summary>
+        <div class="mt-wrap"><table class="table mt" data-nosort>
+          <thead><tr><th>${L("Mesure", "Measure")}</th><th class="num">${L("Coût / an", "Cost / year")}</th><th>${L("Faisabilité", "Feasibility")}</th><th>${L("Constitution, droit", "Constitution, law")}</th><th><abbr title="${esc(L("Avantage large et immédiat dont le financement n’est pas assuré (Dornbusch et Edwards, 1991). Critères en bas du tableau.", "A broad, immediate benefit whose funding isn’t secured (Dornbusch & Edwards, 1991). Criteria below the table."))}">${L("Populisme éco.", "Econ. populism")}</abbr></th></tr></thead>
+          <tbody>${[...ms].sort((a, b) => Math.abs(b.cost ?? 0) - Math.abs(a.cost ?? 0)).map(rowHtml).join("")}</tbody>
+        </table></div>
+      </details>`;
+      }).join("")}
+    </div>
     <p class="muted small">${L(
-      `Coûts en milliards d’euros par an, en régime de croisière ; négatif = dépense ou perte de recettes, positif = recette. Quand l’Institut Montaigne a chiffré la mesure en 2022, son chiffre est repris ; sinon, l’estimation de la rédaction est indiquée avec son calcul et ses sources. Les totaux additionnent des chiffrages d’origines différentes : un ordre de grandeur, pas un budget. « Populisme économique » : avantage large et immédiat pour les ménages, coûtant au moins 2 Md€ par an, et soit jugé peu réalisable, soit face à un obstacle juridique sérieux, soit chiffré par un tiers à au moins 1,5 fois le chiffre du parti (« en partie » : avantage large et coûteux, sans ces signes). Ce critère décrit la forme d’une promesse, pas les intentions de ${opts.partyName}.`,
-      `Costs in € billions a year at full speed; negative = spending or lost revenue, positive = revenue. Where Institut Montaigne costed the measure in 2022 its figure is used; otherwise our estimate is shown with its calculation and sources. Totals add up costings from different sources: an order of magnitude, not a budget. ‘Economic populism’: a broad, immediate benefit for households, costing at least €2bn a year, and either judged hard to deliver, facing a serious legal obstacle, or costed by a third party at 1.5× the party’s figure or more (‘partly’: a broad, costly benefit without those signs). The test describes the shape of a promise, not the intentions of ${opts.partyName}.`)}</p>`;
+      `Coûts en milliards d’euros par an, en régime de croisière ; négatif = dépense ou perte de recettes, positif = recette. Quand l’Institut Montaigne a chiffré la mesure, son chiffre est repris ; sinon, l’estimation de la rédaction est indiquée avec son calcul et ses sources. Les totaux additionnent des chiffrages d’origines différentes : un ordre de grandeur, pas un budget. « Populisme économique » : avantage large et immédiat pour les ménages, coûtant au moins 2 Md€ par an, et soit jugé peu réalisable, soit face à un obstacle juridique sérieux, soit chiffré par un tiers à au moins 1,5 fois le chiffre du parti (« en partie » : avantage large et coûteux, sans ces signes). Ce critère décrit la forme d’une promesse, pas les intentions de ${opts.partyName}.`,
+      `Costs in € billions a year at full speed; negative = spending or lost revenue, positive = revenue. Where Institut Montaigne costed the measure its figure is used; otherwise our estimate is shown with its calculation and sources. Totals add up costings from different sources: an order of magnitude, not a budget. ‘Economic populism’: a broad, immediate benefit for households, costing at least €2bn a year, and either judged hard to deliver, facing a serious legal obstacle, or costed by a third party at 1.5× the party’s figure or more (‘partly’: a broad, costly benefit without those signs). The test describes the shape of a promise, not the intentions of ${opts.partyName}.`)}</p>`;
   return html;
 }
 
@@ -118,43 +156,56 @@ function popWhy(m: Assessed, p: Pop) {
 }
 
 export function mountMeasureTable(root: HTMLElement, id: string, rows: Assessed[]) {
-  const table = root.querySelector<HTMLTableElement>(`#${CSS.escape(id)}`);
-  if (!table) return;
+  const box = root.querySelector<HTMLElement>(`#${CSS.escape(id)}`);
+  if (!box) return;
   const byId = new Map(rows.map((m) => [m.id, m]));
-  const wrap = table.closest(".mt-wrap")!.parentElement!;
+  const wrap = box.parentElement!;
+  const groups = [...box.querySelectorAll<HTMLDetailsElement>(".mt-group")];
+  const allBtn = box.querySelector<HTMLButtonElement>(".mt-all")!;
+  const syncAll = () => {
+    const open = groups.filter((g) => !g.hidden).every((g) => g.open);
+    allBtn.dataset.open = open ? "0" : "1";
+    allBtn.textContent = open ? L("Tout replier", "Fold all") : L("Tout ouvrir", "Open all");
+  };
+  groups.forEach((g) => g.addEventListener("toggle", syncAll));
+  allBtn.addEventListener("click", () => { const open = allBtn.dataset.open === "1"; groups.forEach((g) => { if (!g.hidden) g.open = open; }); syncAll(); });
+  /** Keeps only the measures `fn` passes and hides the themes left empty; a filter opens the themes it leaves, "All" folds them back. */
+  const apply = (fn: (m: Assessed) => boolean, opened: boolean, expandRows = false) => {
+    groups.forEach((g) => {
+      let n = 0;
+      g.querySelectorAll<HTMLTableRowElement>(".mt-row").forEach((tr) => {
+        const show = fn(byId.get(tr.dataset.id!)!);
+        tr.hidden = !show;
+        if (expandRows) tr.setAttribute("aria-expanded", String(show));
+        (tr.nextElementSibling as HTMLElement).hidden = !show || tr.getAttribute("aria-expanded") !== "true";
+        if (show) n++;
+      });
+      g.hidden = n === 0;
+      g.querySelector(".mt-g-shown")!.textContent = String(n);
+      g.open = opened && n > 0;
+    });
+    syncAll();
+  };
   wrap.querySelectorAll<HTMLButtonElement>(".mt-filters button").forEach((b) => b.addEventListener("click", () => {
     wrap.querySelectorAll(".mt-filters button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
-    const fn = FILTERS.find((f) => f[0] === b.dataset.f)![2];
-    table.querySelectorAll<HTMLTableRowElement>(".mt-row").forEach((tr) => {
-      const show = fn(byId.get(tr.dataset.id!)!);
-      tr.hidden = !show;
-      const det = tr.nextElementSibling as HTMLTableRowElement;
-      if (!show) det.hidden = true;
-      else det.hidden = tr.getAttribute("aria-expanded") !== "true";
-    });
+    apply(FILTERS.find((f) => f[0] === b.dataset.f)![2], b.dataset.f !== "");
   }));
   // arriving from a bar on the programmes page: only those measures, each opened on its reason and sources
   const linked = /#eval-([\w-]+)$/.exec(location.hash)?.[1];
   const lf = linked ? LINKED[linked] : undefined;
   if (lf) {
     const [label, fn] = lf;
-    let n = 0;
-    table.querySelectorAll<HTMLTableRowElement>(".mt-row").forEach((tr) => {
-      const show = fn(byId.get(tr.dataset.id!)!);
-      tr.hidden = !show;
-      tr.setAttribute("aria-expanded", String(show));
-      (tr.nextElementSibling as HTMLElement).hidden = !show;
-      if (show) n++;
-    });
+    apply(fn, true, true);
+    const n = rows.filter(fn).length;
     wrap.querySelectorAll(".mt-filters button").forEach((x) => x.setAttribute("aria-pressed", "false"));
     const note = document.createElement("p");
     note.className = "mt-linked";
     note.innerHTML = `${esc(label())}${L(" : ", ": ")}<b>${n}</b> ${L("mesures, avec la raison et les sources", "measures, with the reason and the sources")} · <button type="button" class="linkish">${L("tout afficher", "show all")}</button>`;
     note.querySelector("button")!.addEventListener("click", () => { note.remove(); (wrap.querySelector<HTMLButtonElement>('.mt-filters button[data-f=""]'))?.click(); });
-    table.closest(".mt-wrap")!.before(note);
+    box.before(note);
     requestAnimationFrame(() => note.scrollIntoView({ block: "start" }));
   }
-  table.querySelectorAll<HTMLTableRowElement>(".mt-row").forEach((tr) => {
+  box.querySelectorAll<HTMLTableRowElement>(".mt-row").forEach((tr) => {
     const toggle = () => { const open = tr.getAttribute("aria-expanded") !== "true"; tr.setAttribute("aria-expanded", String(open)); (tr.nextElementSibling as HTMLElement).hidden = !open; };
     tr.addEventListener("click", (e) => { if (!(e.target as Element).closest("a")) toggle(); });
     tr.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });

@@ -410,7 +410,7 @@ export async function renderProgramme(app: HTMLElement, slug: string) {
       ${assessRows.length ? `<article class="card" id="evaluation">
         <header class="card-head"><h2>${L("Mesure par mesure : coût, faisabilité, Constitution", "Measure by measure: cost, feasibility, constitution")}</h2></header>
         <p class="prog-lede">${L(`Les ${fmtNum(assessRows.length)} mesures du programme 2027 qui sont soit des « mesures clés », soit chiffrées par l’Institut Montaigne en 2022. Le chiffre de Montaigne est conservé quand la mesure n’a pas changé de montant ; sinon, et pour les mesures nouvelles, l’estimation est la nôtre, calcul et sources à l’appui. Cliquez une ligne pour le détail.`, `The ${fmtNum(assessRows.length)} measures of the 2027 program that are either ‘key measures’ or were costed by Institut Montaigne in 2022. Montaigne’s figure is kept where the measure’s amount hasn’t changed; otherwise, and for new measures, the estimate is ours, with its calculation and sources. Click a row for details.`)}</p>
-        ${measureTable(assessRows, { id: "mt-mel", partyName: f.candidate })}
+        ${measureTable(assessRows, { id: "mt-mel", partyName: f.candidate, themeName })}
       </article>` : ""}
 
       <article class="card" id="mesures">
@@ -635,11 +635,14 @@ interface LiteFile {
   versions: { id: string; year: number; label: { fr: string; en: string }; title: string; date: string; url?: string; kind: string; press?: string }[];
   measures: LiteMeasure[]; costing: { rounds: CostRound[]; checked: string } | null;
   growth?: Growth; group?: string; votes?: VoteLink[];
+  /** the newest version is only part of the program (e.g. a first booklet): absent measures are pending, not dropped */
+  partialLatest?: boolean;
 }
 /** Values from data files used as CSS class suffixes: letters, digits and dashes only. */
 const cls = (v: unknown) => String(v ?? "").replace(/[^\w-]/g, "");
 const LITE_STATUS: LiteStatus[] = ["maintained", "modified", "new", "dropped"];
-const liteLabel = (s: LiteStatus) => ({ maintained: L("Gardées", "Kept"), modified: L("Modifiées", "Changed"), new: L("Nouvelles", "New"), dropped: L("Abandonnées", "Dropped") })[s];
+/** `pending`: the newest document covers only part of the program, so a measure missing from it is "not yet restated", not dropped */
+const liteLabel = (s: LiteStatus, pending = false) => ({ maintained: L("Gardées", "Kept"), modified: L("Modifiées", "Changed"), new: L("Nouvelles", "New"), dropped: pending ? L("Pas encore reprises", "Not yet restated") : L("Abandonnées", "Dropped") })[s];
 const THEME_NAMES: Record<string, [string, string]> = {
   securite: ["Sécurité", "Security"], immigration: ["Immigration", "Immigration"], sante: ["Santé", "Health"], social: ["Social, famille", "Welfare & family"], education: ["Éducation", "Education"],
   travail: ["Travail, retraites", "Work & pensions"], economie: ["Économie", "Economy"], budget: ["Budget, impôts", "Budget & tax"], ecologie: ["Écologie, énergie", "Ecology & energy"], agriculture: ["Agriculture", "Agriculture"],
@@ -649,6 +652,9 @@ const themeLabel = (t: string) => (THEME_NAMES[t] ? L(THEME_NAMES[t][0], THEME_N
 
 function renderLite(app: HTMLElement, f: LiteFile) {
   const vs = f.versions, first = vs[0], last = vs[vs.length - 1];
+  /** one document only: nothing to compare, so no kept/changed status */
+  const single = vs.length < 2;
+  const lab = (s: LiteStatus) => liteLabel(s, !!f.partialLatest);
   const latestText = (m: LiteMeasure) => m.texts[last.id] ?? m.texts[first.id] ?? Object.values(m.texts)[0] ?? "";
   const c = Object.fromEntries(LITE_STATUS.map((s) => [s, f.measures.filter((m) => m.status === s).length])) as Record<LiteStatus, number>;
   const items = (k: number) => `${fmtNum(k)} ${k > 1 ? L("mesures", "measures") : L("mesure", "measure")}`;
@@ -657,8 +663,8 @@ function renderLite(app: HTMLElement, f: LiteFile) {
       { id: "old", icon: String(first.year).slice(2), title: L(`Socle ${first.year}`, `${first.year} baseline`), sub: items(c.maintained + c.modified + c.dropped), out: ["maintained", "modified", "dropped"], doc: docOf(first, f.site) },
       { id: "nw", icon: String(last.year).slice(2), title: L(`Propositions ${last.year}`, `${last.year} proposals`), sub: L("propositions nouvelles", "new proposals"), out: ["new"], doc: docOf(last, f.site) },
     ],
-    branches: (["maintained", "modified", "dropped", "new"] as LiteStatus[]).map((s) => ({ id: s, icon: { maintained: "=", modified: "≠", dropped: "−", new: "★" }[s], title: liteLabel(s), n: c[s], drop: s === "dropped" })),
-    keepTitle: L(`Programme ${last.year}`, `${last.year} program`), keepN: c.maintained + c.modified + c.new, goneN: c.dropped, keepDoc: docOf(last, f.site),
+    branches: (["maintained", "modified", "dropped", "new"] as LiteStatus[]).map((s) => ({ id: s, icon: { maintained: "=", modified: "≠", dropped: "−", new: "★" }[s], title: lab(s), n: c[s], drop: s === "dropped" })),
+    keepTitle: L(`Programme ${last.year}`, `${last.year} program`), keepN: c.maintained + c.modified + c.new, goneN: c.dropped, goneTitle: lab("dropped"), keepDoc: docOf(last, f.site),
     label: L(`${f.measures.length} mesures suivies de ${first.year} à ${last.year}`, `${f.measures.length} measures followed from ${first.year} to ${last.year}`),
   } : null;
   const rows: Assessed[] = f.measures.map((m) => ({
@@ -667,7 +673,7 @@ function renderLite(app: HTMLElement, f: LiteFile) {
     basis: m.cost?.note ? L(m.cost.note.fr, m.cost.note.en) : null,
     legal: m.legal ?? "unknown", legalNote: m.legalNote ? L(m.legalNote.fr, m.legalNote.en) : null,
     feasibility: m.feasibility ?? null, feasibilityNote: m.feasibilityNote ? L(m.feasibilityNote.fr, m.feasibilityNote.en) : null,
-    broadBenefit: !!m.broadBenefit, sources: m.sources, status: m.status, statusLabel: liteLabel(m.status),
+    broadBenefit: !!m.broadBenefit, sources: m.sources, status: single ? undefined : m.status, statusLabel: single ? undefined : lab(m.status),
   }));
   // scorecard: oldest wording on the left, newest on the right, each opening its own source
   const SC_LITE: Record<LiteStatus, ScStatus> = { maintained: "kept", modified: "changed", dropped: "dropped", new: "new" };
@@ -695,7 +701,7 @@ function renderLite(app: HTMLElement, f: LiteFile) {
     <section class="page prog">
       <div class="page-head">
         <p class="eyebrow">${L("Programmes 2027", "2027 programs")} · ${esc(f.candidate)} · ${esc(f.party)}</p>
-        <h1>${L(`Le programme de ${f.candidate}, de ${first.year} à ${last.year}`, `${f.candidate}’s program, ${first.year} to ${last.year}`)}</h1>
+        <h1>${single ? L(`Le programme de ${f.candidate} (${first.year})`, `${f.candidate}’s program (${first.year})`) : L(`Le programme de ${f.candidate}, de ${first.year} à ${last.year}`, `${f.candidate}’s program, ${first.year} to ${last.year}`)}</h1>
         <p class="dek">${esc(L(f.summary.fr, f.summary.en))}</p>
         <p class="prog-status-note"><span class="prog-chip">${esc(statusTxt)}</span> ${esc(L(f.statusNote.fr, f.statusNote.en))}</p>
         <nav class="prog-jump" aria-label="${L("Sur cette page", "On this page")}">
@@ -710,15 +716,20 @@ function renderLite(app: HTMLElement, f: LiteFile) {
       ${spec ? `<article class="card sc-card" id="parcours">
         <header class="card-head"><h2>${L(`Le bilan : ce qui a changé, tenu ou disparu depuis ${first.year}`, `At a glance: what changed, held or went since ${first.year}`)}</h2></header>
         <p class="prog-lede">${L(`Les ${fmtNum(f.measures.length)} mesures principales. À gauche, la plus ancienne version de chaque mesure ; à droite, la plus récente ; au milieu, ce qu’elle est devenue. Chaque boîte ouvre sa source : le PDF à la bonne page quand il existe, sinon le site ou l’article.`, `The ${fmtNum(f.measures.length)} main measures. Left, the oldest version of each; right, the newest; in between, what became of it. Each box opens its source: the PDF at the right page where there is one, else the website or the article.`)}</p>
-        ${scorecardHtml(scItems, { id: "sc-lite", yearA: first.year, yearB: last.year, droppedNote: () => L(`Absente en ${last.year}`, `Not in ${last.year}`) })}
+        ${scorecardHtml(scItems, { id: "sc-lite", yearA: first.year, yearB: last.year, dropped: f.partialLatest ? { label: lab("dropped"), help: L(`en ${first.year}, pas encore dans la partie du programme ${last.year} publiée`, `in ${first.year}, not yet in the part of the ${last.year} program published`) } : undefined, droppedNote: () => f.partialLatest ? L(`Pas encore dans le programme ${last.year} publié`, `Not yet in the published ${last.year} program`) : L(`Absente en ${last.year}`, `Not in ${last.year}`) })}
+      </article>
+      <article class="card flow-card" id="flux">
+        <header class="card-head"><h2>${L(`Le parcours des mesures, de ${first.year} à ${last.year}`, `Where the measures went, ${first.year} to ${last.year}`)}</h2></header>
+        <p class="prog-lede">${L("Chaque version entre à gauche ; chaque mesure suit une branche : gardée, modifiée, nouvelle ou abandonnée. Cliquez une branche pour filtrer la liste des mesures.", "Each version enters on the left; each measure follows a branch: kept, changed, new or dropped. Click a branch to filter the list of measures.")}</p>
+        <div class="flow-canvas" id="fcanvas"></div>
       </article>` : ""}
       ${costCard({ slug: f.slug, costing: f.costing, growth: f.growth })}
       <article class="card" id="evaluation">
         <header class="card-head"><h2>${L("Mesure par mesure : coût, faisabilité, Constitution", "Measure by measure: cost, feasibility, constitution")}</h2></header>
-        ${measureTable(rows, { id: "mt-lite", partyName: f.candidate })}
+        ${measureTable(rows, { id: "mt-lite", partyName: f.candidate, themeName: themeLabel })}
       </article>
       <article class="card" id="mesures">
-        <header class="card-head"><h2>${L("Les mesures, version par version", "The measures, version by version")}</h2></header>
+        <header class="card-head"><h2>${single ? L("Les mesures, citées du programme", "The measures, quoted from the program") : L("Les mesures, version par version", "The measures, version by version")}</h2></header>
         <p id="lcount" class="muted small"></p>
         <ol class="prog-list" id="llist"></ol>
       </article>
@@ -735,15 +746,28 @@ function renderLite(app: HTMLElement, f: LiteFile) {
   const list = app.querySelector<HTMLOListElement>("#llist")!;
   const draw = () => {
     const ms = f.measures.filter((m) => !pick || m.status === pick);
-    app.querySelector("#lcount")!.innerHTML = `${fmtNum(ms.length)} ${L("mesures", "measures")}${pick ? ` · ${esc(liteLabel(pick))} <button type="button" class="linkish" id="lclr">${L("tout afficher", "show all")}</button>` : ""}`;
-    app.querySelector("#lclr")?.addEventListener("click", () => { pick = ""; draw(); });
+    app.querySelector("#lcount")!.innerHTML = `${fmtNum(ms.length)} ${L("mesures", "measures")}${pick ? ` · ${esc(lab(pick))} <button type="button" class="linkish" id="lclr">${L("tout afficher", "show all")}</button>` : ""}`;
+    app.querySelector("#lclr")?.addEventListener("click", () => { pick = ""; draw(); drawFlow(); });
     list.innerHTML = ms.map((m) => `<li class="prog-item" id="m-${esc(m.id)}">
-      <div class="prog-item-head"><span class="prog-chip prog-${m.status === "new" ? "new2027" : cls(m.status)}">${esc(liteLabel(m.status))}</span><span class="prog-theme">${esc(themeLabel(m.theme))}</span></div>
-      <div class="prog-vers">${vs.map((v) => `<div class="prog-ver${m.texts[v.id] ? "" : " prog-absent"}"><p class="prog-year">${v.year}</p><p class="prog-text${m.texts[v.id] ? "" : " muted"}" lang="fr">${m.texts[v.id] ? esc(m.texts[v.id]) : L("Absente", "Absent")}</p>${m.texts[v.id] && m.pages?.[v.id] && v.url ? `<span class="prog-loc"><a href="${esc(safeUrl(`${v.url}#page=${m.pages[v.id]}`))}" target="_blank" rel="noopener">PDF p. ${m.pages[v.id]} ↗</a></span>` : ""}</div>`).join("")}</div>
+      <div class="prog-item-head">${single ? "" : `<span class="prog-chip prog-${m.status === "new" ? "new2027" : cls(m.status)}">${esc(lab(m.status))}</span>`}<span class="prog-theme">${esc(themeLabel(m.theme))}</span></div>
+      <div class="prog-vers">${vs.map((v) => `<div class="prog-ver${m.texts[v.id] ? "" : " prog-absent"}"><p class="prog-year">${v.year}</p><p class="prog-text${m.texts[v.id] ? "" : " muted"}" lang="fr">${m.texts[v.id] ? esc(m.texts[v.id]) : f.partialLatest && v === last ? L("Pas encore reprise", "Not yet restated") : L("Absente", "Absent")}</p>${m.texts[v.id] && m.pages?.[v.id] && v.url ? `<span class="prog-loc"><a href="${esc(safeUrl(`${v.url}#page=${m.pages[v.id]}`))}" target="_blank" rel="noopener">PDF p. ${m.pages[v.id]} ↗</a></span>` : ""}</div>`).join("")}</div>
       ${m.change ? `<p class="prog-change">${esc(L(m.change.fr, m.change.en))}</p>` : ""}
       <p class="prog-an small">${m.sources.map((s) => `<a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join(" · ")}</p>
     </li>`).join("");
   };
+  // the animated flow: dots run along each branch; a click filters the list below (the dots stop after the first draw)
+  const canvas = app.querySelector<HTMLElement>("#fcanvas");
+  function drawFlow() {
+    if (!canvas || !spec) return;
+    if (canvas.firstChild) canvas.classList.add("flow-static");
+    canvas.innerHTML = flowSvg(spec, pick);
+    canvas.querySelectorAll<SVGGElement>("[data-branch]").forEach((g) => {
+      const go = () => { pick = pick === g.dataset.branch ? "" : (g.dataset.branch as LiteStatus); drawFlow(); draw(); if (pick) app.querySelector("#mesures")?.scrollIntoView({ behavior: "smooth", block: "start" }); };
+      g.addEventListener("click", go);
+      g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+    });
+  }
+  drawFlow();
   draw();
 }
 
