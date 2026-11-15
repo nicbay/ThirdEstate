@@ -234,6 +234,7 @@
 .hday-dek { margin: 0 0 1.1rem; font-size: clamp(1rem, 0.95rem + 0.3vw, 1.18rem); line-height: 1.45; color: var(--night-text-2); max-width: 38ch; }
 .hday-doors { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .hday-doors a { font: 600 0.9rem var(--text); color: var(--night-text); text-decoration: none; border: 2px solid var(--night-rule-2, #3a3f5a); padding: 0.5rem 0.8rem; }
+.hday-doors .hday-break { flex-basis: 100%; height: 0; } /* the two main doors on the first line, the others below */
 .hday-doors a:first-child { background: var(--night-text); color: var(--night); border-color: var(--night-text); }
 .hday-doors a:hover, .hday-doors a:focus-visible { border-color: var(--night-text); }
 .hday-art { margin: 0; }

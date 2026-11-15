@@ -138,8 +138,9 @@ export async function heroDay() {
         <h1 id="hday-title">${L("Des faits, des chiffres, vos conclusions.", "Facts, figures. The conclusions are yours.")}</h1>
         <p class="hday-count"><b>${daysToGo}</b><span>${L(daysToGo > 1 ? "jours avant le premier tour" : "jour avant le premier tour", daysToGo === 1 ? "day to the first round" : "days to the first round")}</span><time datetime="${ELECTION_DAY}">${fmtDate(ELECTION_DAY)}</time></p>
       </div>
+      <p class="hday-dek">${L("Une tentative de comprendre la politique française.", "An attempt at understanding French politics.")}</p>
       <nav class="hday-doors" aria-label="${L("Par où commencer", "Where to start")}">
-        <a href="#/2027">${L("Qui gagnerait aujourd’hui", "See who would win today")}</a><a class="hday-quiz" href="#/quiz">${L("Faire le quiz · 3 min", "Take the quiz · 3 min")}</a><a href="#/assemblee/deputes">${L("Trouver mon député", "Find my MP")}</a><a href="#/programmes">${L("Comparer les programmes", "Compare the programs")}</a>
+        <a href="#/2027">${L("Qui gagnerait aujourd’hui", "See who would win today")}</a><a class="hday-quiz" href="#/quiz">${L("Faire le quiz · 3 min", "Take the quiz · 3 min")}</a><span class="hday-break"></span><a href="#/assemblee/deputes">${L("Trouver mon député", "Find my MP")}</a><a href="#/programmes">${L("Comparer les programmes", "Compare the programs")}</a><a href="#/simulateur">${L("Simuler un scénario", "Run a scenario")}</a>
       </nav>
       <section class="box hday-town" aria-labelledby="hday-town-title">
         <p class="hday-town-k">${L("Votre commune", "Your town")}</p>
