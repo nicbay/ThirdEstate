@@ -69,6 +69,6 @@ jobs:
           git add data/feed public/data/feed
           [ -d data/usage ] && git add data/usage
           git diff --cached --quiet && { echo "No change."; exit 0; }
-          git commit -m "data: sync red/blue feed ($(date -u +'%F %H:%M'))"
+          git commit -m "update"
           git pull --rebase --autostash
           git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:${GITHUB_REF_NAME}"

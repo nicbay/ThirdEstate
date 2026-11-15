@@ -55,6 +55,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
           git add $files
-          git commit -m "data: sync polls and markets ($(date -u +'%F %H:%M'))"
+          git commit -m "update"
           git pull --rebase --autostash
           git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:${GITHUB_REF_NAME}"

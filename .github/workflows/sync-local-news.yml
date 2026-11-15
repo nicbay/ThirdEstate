@@ -54,6 +54,6 @@ jobs:
           git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
           git add public/data/news
           git diff --cached --quiet && { echo "No data change."; exit 0; }
-          git commit -m "data: sync local news ($(date -u +'%F %H:%M'))"
+          git commit -m "update"
           git pull --rebase --autostash
           git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:${GITHUB_REF_NAME}"
