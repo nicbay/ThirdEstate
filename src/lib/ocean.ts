@@ -28,6 +28,9 @@ uniform vec2 uMe; uniform float uOpen; uniform float uR; uniform float uDpr; uni
 // a cell's identity, hashed in two small parts so precision never smears neighbours together
 float h1(vec2 p){ p = fract(p * vec2(0.1031, 0.1030)); p += dot(p, p.yx + 33.33); return fract((p.x + p.y) * p.x); }
 float hash(vec2 c){ vec2 lo = mod(c, 64.0), hi = floor(c / 64.0); return fract(h1(lo + 0.5) + h1(hi * 1.37 + 7.0) * 1.618); }
+// smooth value noise, for the slow swells of light
+float vnoise(vec2 p){ vec2 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f);
+  return mix(mix(h1(mod(i, 289.0)), h1(mod(i + vec2(1.0, 0.0), 289.0)), f.x), mix(h1(mod(i + vec2(0.0, 1.0), 289.0)), h1(mod(i + vec2(1.0, 1.0), 289.0)), f.x), f.y); }
 const vec3 BLUE = vec3(0.36, 0.5, 1.0);
 const vec3 GOLD = vec3(1.0, 1.0, 1.0); // the reader's pixel: plain bright white
 vec2 meC; float L;
@@ -89,15 +92,22 @@ void main(){
   if (hit && cell != meCell) {
     vec2 c = mod(cell + uOff, uSide);
     float r1 = hash(c), r2 = hash(c + 17.0), r3 = hash(c + 41.0), r4 = hash(c + 83.0);
-    vec3 base = vec3(0.37, 0.38, 0.44); float k = 0.55;
+    vec3 base = vec3(0.37, 0.38, 0.44); float k = 0.35;
     if (r1 < uShare) { base = r2 < 0.34 ? BLUE : (r2 < 0.67 ? vec3(0.93, 0.93, 0.97) : vec3(1.0, 0.37, 0.44)); k = 1.0; }
-    // a soft flicker, each pixel on its own rhythm
+    // slow swells of light roll over the grid, like light on water: the pixels stay put, only their brightness travels
+    vec2 sp = fc / 46.0;
+    float swell = vnoise(sp + vec2(uT * 0.035, uT * 0.012)) * 0.65 + vnoise(sp * 2.3 - vec2(uT * 0.02, -uT * 0.03)) * 0.35;
+    swell = smoothstep(0.38, 0.85, swell);
+    // most pixels breathe faintly; a few, here and there, catch the light for a moment
     float f = 0.5 + 0.5 * sin(uT * (0.35 + r3 * 0.9) + r4 * 6.2832);
+    float glint = pow(f, 24.0) * step(0.86, r3);
     // now and then a pixel drifts to blue and back
     float toBlue = smoothstep(0.82, 1.0, sin(uT * (0.08 + r4 * 0.12) + r3 * 6.2832));
     col = mix(base, BLUE, toBlue * 0.85);
-    float vis = (0.3 + 0.7 * smoothstep(0.1, 0.75, uv.x)) * clear * bottom;
-    a = (0.05 + 0.24 * (0.35 + 0.65 * f) * (0.6 + 0.4 * r2)) * k * vis;
+    // calm behind the words on the left, fuller toward the right
+    float side = smoothstep(0.05, 0.85, uv.x);
+    float vis = (0.25 + 0.75 * side) * clear * bottom;
+    a = ((0.018 + 0.16 * swell) * (0.55 + 0.45 * f) * (0.6 + 0.4 * r2) * k + 0.4 * glint * k) * vis;
   }
   // the reader's pixel glows a little, between the pixels too (only while the room is closed)
   float glow = exp(-(dMe * dMe) / (2.0 * 7.0 * 7.0)) * (0.32 + 0.08 * sin(uT * 2.2)) * (1.0 - uOpen);
