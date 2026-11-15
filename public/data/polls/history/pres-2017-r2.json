@@ -1,0 +1,2332 @@
+{
+ "id": "pres-2017-r2",
+ "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2017_French_presidential_election",
+ "resultSource": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2017 (via public/data/history/presidential/2017.json)",
+ "result": {
+  "Emmanuel Macron": 66.1,
+  "Marine Le Pen": 33.9
+ },
+ "polls": [
+  {
+   "pollster": "Ipsos",
+   "start": "2017-05-05",
+   "end": "2017-05-05",
+   "sample": 5331,
+   "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/rapport_ipsoslemonde5mai.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-05-04",
+   "end": "2017-05-05",
+   "sample": 2270,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/05/Rapport-Harris-Indeed-Intentions-de-vote-a-lelection-presidentielle-LCP.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-05-02",
+   "end": "2017-05-05",
+   "sample": 1861,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_05-05-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-05-04",
+   "end": "2017-05-04",
+   "sample": 1009,
+   "url": "https://elabe.fr/wp-content/uploads/2017/05/04052017_bfmtv_lexpress_intentions-de-vote-presidentielles-vague-13.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2017-05-04",
+   "end": "2017-05-04",
+   "sample": 1605,
+   "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/intention_de_vote_ipsos_ft-rf_-5_mai_2017_def.pdf",
+   "values": {
+    "Emmanuel Macron": 61.5,
+    "Marine Le Pen": 38.5
+   }
+  },
+  {
+   "pollster": "Odoxa",
+   "start": "2017-05-04",
+   "end": "2017-05-04",
+   "sample": 809,
+   "url": "http://www.odoxa.fr/wp-content/uploads/2017/05/Intention-de-vote-Odoxa-DentsuConsulting-LePoint-du-5-mai-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-05-02",
+   "end": "2017-05-04",
+   "sample": 2264,
+   "url": "https://web.archive.org/web/20170509210516/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-semaine-du-1er-au-5-mai.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-05-01",
+   "end": "2017-05-04",
+   "sample": 1400,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_04-05-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-05-02",
+   "end": "2017-05-03",
+   "sample": 2349,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/05/Rapport-Harris-Indeed-Intentions-de-vote-a-lelection-presidentielle-LCP.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-05-01",
+   "end": "2017-05-03",
+   "sample": 2264,
+   "url": "https://web.archive.org/web/20170509210516/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-semaine-du-1er-au-5-mai.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-30",
+   "end": "2017-05-03",
+   "sample": 1405,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_03-05-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2017-05-01",
+   "end": "2017-05-02",
+   "sample": 1012,
+   "url": "http://www.bva.fr/data/sondage/sondage_fiche/1983/fichier_intentions_de_vote_-_vague_21_-_pop2017_-_02_mai_2017_-_presentation3185f.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-30",
+   "end": "2017-05-02",
+   "sample": 1936,
+   "url": "https://web.archive.org/web/20170509210516/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-semaine-du-1er-au-5-mai.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-04-28",
+   "end": "2017-05-02",
+   "sample": 3817,
+   "url": "https://www.slideshare.net/contactElabe/intentions-de-vote-prsidentielles-vague-12",
+   "values": {
+    "Emmanuel Macron": 59,
+    "Marine Le Pen": 41
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-28",
+   "end": "2017-05-02",
+   "sample": 1388,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_02-05-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 59.5,
+    "Marine Le Pen": 40.5
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2017-04-30",
+   "end": "2017-05-01",
+   "sample": 8936,
+   "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/publication_rapport_eef2017_-_vague14_cevipof_ipsos_le_monde.pdf",
+   "values": {
+    "Emmanuel Macron": 59,
+    "Marine Le Pen": 41
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-29",
+   "end": "2017-05-01",
+   "sample": 1764,
+   "url": "https://web.archive.org/web/20170509210516/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-semaine-du-1er-au-5-mai.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-27",
+   "end": "2017-05-01",
+   "sample": 1385,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_01-05-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 59,
+    "Marine Le Pen": 41
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2017-04-28",
+   "end": "2017-04-30",
+   "sample": 1031,
+   "url": "https://fr.kantar.com/elections/presidentielle/2017/intentions-de-vote-des-francais-au-2nd-tour-de-l-election-presidentielle/",
+   "values": {
+    "Emmanuel Macron": 59,
+    "Marine Le Pen": 41
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-28",
+   "end": "2017-04-30",
+   "sample": 1488,
+   "url": "https://web.archive.org/web/20170509210516/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-semaine-du-1er-au-5-mai.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2017-04-28",
+   "end": "2017-04-29",
+   "sample": 918,
+   "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/rapport_entre2tours_v2.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2017-04-26",
+   "end": "2017-04-28",
+   "sample": 944,
+   "url": "http://www.bva.fr/data/sondage/sondage_fiche/1982/fichier_intentions_de_vote_-_vague_20_-_pop2017_-_28_avril_2017_-_presentation886c1.pdf",
+   "values": {
+    "Emmanuel Macron": 59,
+    "Marine Le Pen": 41
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-25",
+   "end": "2017-04-28",
+   "sample": 1399,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_28-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "Odoxa",
+   "start": "2017-04-26",
+   "end": "2017-04-27",
+   "sample": 803,
+   "url": "http://www.odoxa.fr/wp-content/uploads/2017/04/Intention-de-vote-presidentielle-2nd-tour-Odoxa-LePoint_280417_ok-1.pdf",
+   "values": {
+    "Emmanuel Macron": 59,
+    "Marine Le Pen": 41
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-04-25",
+   "end": "2017-04-27",
+   "sample": 940,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/04/Rapport-Harris-Indeed-Intentions-de-vote-a-lelection-presidentielle-LCP.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-25",
+   "end": "2017-04-27",
+   "sample": 1790,
+   "url": "https://web.archive.org/web/20170509210526/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultatsdelasemainedu24au28avril.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-24",
+   "end": "2017-04-27",
+   "sample": 1407,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_27-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60.5,
+    "Marine Le Pen": 39.5
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-24",
+   "end": "2017-04-26",
+   "sample": 1800,
+   "url": "https://web.archive.org/web/20170509210526/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultatsdelasemainedu24au28avril.pdf",
+   "values": {
+    "Emmanuel Macron": 59,
+    "Marine Le Pen": 41
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-23",
+   "end": "2017-04-26",
+   "sample": 1893,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_26-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60.5,
+    "Marine Le Pen": 39.5
+   }
+  },
+  {
+   "pollster": "Odoxa",
+   "start": "2017-04-24",
+   "end": "2017-04-25",
+   "sample": 1000,
+   "url": "http://www.odoxa.fr/wp-content/uploads/2017/04/Intention-de-vote-presidentielle-2nd-tour-Odoxa-LePoint_280417_ok-1.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-23",
+   "end": "2017-04-25",
+   "sample": 1416,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_25-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-23",
+   "end": "2017-04-25",
+   "sample": 2828,
+   "url": "https://web.archive.org/web/20170509210526/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultatsdelasemainedu24au28avril.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-04-24",
+   "end": "2017-04-24",
+   "sample": 967,
+   "url": "https://elabe.fr/wp-content/uploads/2017/04/24042017_bfmtv_lexpress_intentions-de-vote-presidentielles-vague-11-avec-synthese.pdf",
+   "values": {
+    "Emmanuel Macron": 64,
+    "Marine Le Pen": 36
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-23",
+   "end": "2017-04-24",
+   "sample": 846,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_24-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-23",
+   "end": "2017-04-24",
+   "sample": 2222,
+   "url": "https://web.archive.org/web/20170509210526/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultatsdelasemainedu24au28avril.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-23",
+   "end": "2017-04-24",
+   "sample": 1461,
+   "url": "https://web.archive.org/web/20170509210526/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultatsdelasemainedu24au28avril.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-04-23",
+   "end": "2017-04-23",
+   "sample": 2684,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/04/Rapport-Harris-Sondage-Soir-du-Vote-1er-tour-de-lelection-presidentielle-M6.pdf",
+   "values": {
+    "Emmanuel Macron": 64,
+    "Marine Le Pen": 36
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2017-04-23",
+   "end": "2017-04-23",
+   "sample": 1379,
+   "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/ipsos_sopra_steria_les_francais_et_le_2nd_tour_macron-le_pen_23_avril_20.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Odoxa",
+   "start": "2017-04-21",
+   "end": "2017-04-21",
+   "sample": 774,
+   "url": "http://www.odoxa.fr/wp-content/uploads/2017/04/Intention-de-vote-presidentielle-Odoxa-LePoint_210417.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-18",
+   "end": "2017-04-21",
+   "sample": 2823,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_21-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60.5,
+    "Marine Le Pen": 39.5
+   }
+  },
+  {
+   "pollster": "Odoxa",
+   "start": "2017-04-20",
+   "end": "2017-04-20",
+   "sample": 1433,
+   "url": "http://www.odoxa.fr/wp-content/uploads/2017/04/Intention-de-vote-presidentielle-Odoxa-LePoint_210417.pdf",
+   "values": {
+    "Emmanuel Macron": 65,
+    "Marine Le Pen": 35
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-04-19",
+   "end": "2017-04-20",
+   "sample": 1445,
+   "url": "https://elabe.fr/wp-content/uploads/2017/04/20042017_bfmtv_lexpress_intentions-de-vote-presidentielles-vague-10.pdf",
+   "values": {
+    "Emmanuel Macron": 65,
+    "Marine Le Pen": 35
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-04-18",
+   "end": "2017-04-20",
+   "sample": 962,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/04/rapport-Harris-Indeed-Intentions-vote-election-presidentielle-LCP.pdf",
+   "values": {
+    "Emmanuel Macron": 67,
+    "Marine Le Pen": 33
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-18",
+   "end": "2017-04-20",
+   "sample": 2269,
+   "url": "https://web.archive.org/web/20170422041348/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultatsdelasemainedu17au21avril.pdf",
+   "values": {
+    "Emmanuel Macron": 64,
+    "Marine Le Pen": 36
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-17",
+   "end": "2017-04-20",
+   "sample": 2810,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_20-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2017-04-18",
+   "end": "2017-04-19",
+   "sample": 947,
+   "url": "http://www.bva.fr/data/sondage/sondage_fiche/1978/fichier_intentions_de_vote_-_vague_18_-_pop2017_-_19_avril_2017_-_presentation5e34d.pdf",
+   "values": {
+    "Emmanuel Macron": 65,
+    "Marine Le Pen": 35
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-04-18",
+   "end": "2017-04-19",
+   "sample": 2812,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/04/Rapport-Harris-intentions-vote-presidentielle-france-televisions-20042017.pdf",
+   "values": {
+    "Emmanuel Macron": 66,
+    "Marine Le Pen": 34
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-17",
+   "end": "2017-04-19",
+   "sample": 2394,
+   "url": "https://web.archive.org/web/20170422041348/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultatsdelasemainedu17au21avril.pdf",
+   "values": {
+    "Emmanuel Macron": 65,
+    "Marine Le Pen": 35
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-16",
+   "end": "2017-04-19",
+   "sample": 2792,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_19-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60.5,
+    "Marine Le Pen": 39.5
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-16",
+   "end": "2017-04-18",
+   "sample": 2417,
+   "url": "https://web.archive.org/web/20170422041348/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultatsdelasemainedu17au21avril.pdf",
+   "values": {
+    "Emmanuel Macron": 65,
+    "Marine Le Pen": 35
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-14",
+   "end": "2017-04-18",
+   "sample": 2804,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_18-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60.5,
+    "Marine Le Pen": 39.5
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-04-16",
+   "end": "2017-04-17",
+   "sample": 1438,
+   "url": "https://elabe.fr/wp-content/uploads/2017/04/17042017_bfmtv_lexpress_intentions-de-vote-presidentielles-vague-9.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2017-04-16",
+   "end": "2017-04-17",
+   "sample": 8274,
+   "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/rapport_vague13.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-15",
+   "end": "2017-04-17",
+   "sample": 2423,
+   "url": "https://web.archive.org/web/20170422041348/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultatsdelasemainedu17au21avril.pdf",
+   "values": {
+    "Emmanuel Macron": 64,
+    "Marine Le Pen": 36
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2017-04-14",
+   "end": "2017-04-17",
+   "sample": 982,
+   "url": "https://fr.kantar.com/elections/presidentielle/2017/intentions-de-vote-l-hypothese-d-un-match-a-quatre-se-confirme/",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-13",
+   "end": "2017-04-17",
+   "sample": 2796,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_17-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-14",
+   "end": "2017-04-16",
+   "sample": 2168,
+   "url": "https://web.archive.org/web/20170422041348/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultatsdelasemainedu17au21avril.pdf",
+   "values": {
+    "Emmanuel Macron": 64,
+    "Marine Le Pen": 36
+   }
+  },
+  {
+   "pollster": "Le Terrain",
+   "start": "2017-04-13",
+   "end": "2017-04-15",
+   "sample": 642,
+   "url": "https://blogleterrain.wordpress.com/2017/04/17/jl-melenchon-devance-de-peu-m-le-pen/",
+   "values": {
+    "Emmanuel Macron": 71,
+    "Marine Le Pen": 29
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2017-04-12",
+   "end": "2017-04-14",
+   "sample": 918,
+   "url": "https://www.bva-group.com/wp-content/uploads/2017/04/Intentions-de-vote-Vague-17-POP2017-14-avril-2017-Pr%C3%A9sentation.pdf",
+   "values": {
+    "Emmanuel Macron": 64,
+    "Marine Le Pen": 36
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-11",
+   "end": "2017-04-14",
+   "sample": 2776,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_14-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 59,
+    "Marine Le Pen": 41
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2017-04-12",
+   "end": "2017-04-13",
+   "sample": 927,
+   "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/enquete_presidentielle_ipsos_le_monde.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "Odoxa",
+   "start": "2017-04-12",
+   "end": "2017-04-13",
+   "sample": 732,
+   "url": "http://www.odoxa.fr/wp-content/uploads/2017/04/Intention-de-vote-presidentielle-Dentsu-Consulting-LePoint_140417.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-04-11",
+   "end": "2017-04-13",
+   "sample": 904,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/04/Rapport-Harris-Indeed-Intentions-vote-election-presidentielle-LCP.pdf",
+   "values": {
+    "Emmanuel Macron": 67,
+    "Marine Le Pen": 33
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-11",
+   "end": "2017-04-13",
+   "sample": 1443,
+   "url": "https://web.archive.org/web/20170415012050/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultatsdu10au14avril.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-10",
+   "end": "2017-04-13",
+   "sample": 2797,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_13-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 58.5,
+    "Marine Le Pen": 41.5
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-04-11",
+   "end": "2017-04-12",
+   "sample": 1010,
+   "url": "https://elabe.fr/wp-content/uploads/2017/04/13042017_les_echos_radio_classique_intentions-de-vote-presidentielles.pdf",
+   "values": {
+    "Emmanuel Macron": 65,
+    "Marine Le Pen": 35
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-10",
+   "end": "2017-04-12",
+   "sample": 1423,
+   "url": "https://web.archive.org/web/20170415012050/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultatsdu10au14avril.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-09",
+   "end": "2017-04-12",
+   "sample": 2800,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_12-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 58.5,
+    "Marine Le Pen": 41.5
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-09",
+   "end": "2017-04-11",
+   "sample": 1395,
+   "url": "https://web.archive.org/web/20170415012050/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultatsdu10au14avril.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-07",
+   "end": "2017-04-11",
+   "sample": 2806,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_11-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 58.5,
+    "Marine Le Pen": 41.5
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-04-09",
+   "end": "2017-04-10",
+   "sample": 1002,
+   "url": "https://elabe.fr/wp-content/uploads/2017/04/11042017_bfmtv_lexpress_intentions-de-vote-presidentielles-vague-8.pdf",
+   "values": {
+    "Emmanuel Macron": 64,
+    "Marine Le Pen": 36
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-08",
+   "end": "2017-04-10",
+   "sample": 1498,
+   "url": "https://web.archive.org/web/20170415012050/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultatsdu10au14avril.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-06",
+   "end": "2017-04-10",
+   "sample": 2616,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_10-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 58,
+    "Marine Le Pen": 42
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2017-04-07",
+   "end": "2017-04-09",
+   "sample": 1002,
+   "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/notice-technique-etat-desprit-francais-ipsos-ft-rf-1004.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-07",
+   "end": "2017-04-09",
+   "sample": 1565,
+   "url": "https://web.archive.org/web/20170415012050/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultatsdu10au14avril.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2017-04-05",
+   "end": "2017-04-07",
+   "sample": 861,
+   "url": "http://www.bva.fr/data/sondage/sondage_fiche/1977/fichier_intentions_de_vote_-_vague_16_-_pop2017_-_8_avril_2017_-_presentationbbd1d.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2017-04-05",
+   "end": "2017-04-07",
+   "sample": 934,
+   "url": "https://fr.kantar.com/elections/presidentielle/2017/intentions-de-vote-forte-percee-de-jean-luc-melenchon/",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-04",
+   "end": "2017-04-07",
+   "sample": 2246,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_07-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 59,
+    "Marine Le Pen": 41
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-04-05",
+   "end": "2017-04-06",
+   "sample": 928,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/04/Rapport-Harris-Intentions-vote-election-presidentielle-LCP.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-04",
+   "end": "2017-04-06",
+   "sample": 1589,
+   "url": "https://web.archive.org/web/20170408171349/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultats-semaine-3au7avril.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-03",
+   "end": "2017-04-06",
+   "sample": 2243,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_06-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-04-05",
+   "end": "2017-04-05",
+   "sample": 995,
+   "url": "https://elabe.fr/wp-content/uploads/2017/04/05042017_bfmtv_lexpress_intentions-de-vote-presidentielles-vague-7.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-04-05",
+   "end": "2017-04-05",
+   "sample": 2097,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/04/Rapport-Harris-Intentions-de-vote-a-lelection-presidentielle-France-TV.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Odoxa",
+   "start": "2017-04-05",
+   "end": "2017-04-05",
+   "sample": 766,
+   "url": "http://www.odoxa.fr/wp-content/uploads/2017/04/Intention-de-vote-presidentielle-Dentsu-Consulting-LePoint-07-04-17_15h.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-04-03",
+   "end": "2017-04-04",
+   "sample": 3639,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/04/Rapport-Harris-Intentions-de-vote-a-lelection-presidentielle-France-TV.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-03",
+   "end": "2017-04-05",
+   "sample": 1553,
+   "url": "https://web.archive.org/web/20170408171349/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultats-semaine-3au7avril.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-04-02",
+   "end": "2017-04-05",
+   "sample": 2245,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_05-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 59.5,
+    "Marine Le Pen": 40.5
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-02",
+   "end": "2017-04-04",
+   "sample": 1541,
+   "url": "https://web.archive.org/web/20170408171349/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultats-semaine-3au7avril.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-31",
+   "end": "2017-04-04",
+   "sample": 2254,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_04-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60.5,
+    "Marine Le Pen": 39.5
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-04-01",
+   "end": "2017-04-03",
+   "sample": 1583,
+   "url": "https://web.archive.org/web/20170408171349/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultats-semaine-3au7avril.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-30",
+   "end": "2017-04-03",
+   "sample": 2232,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_03-04-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2017-03-31",
+   "end": "2017-04-02",
+   "sample": 9460,
+   "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/cevipof_vague12bis.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-31",
+   "end": "2017-04-02",
+   "sample": 1624,
+   "url": "https://web.archive.org/web/20170408171349/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultats-semaine-3au7avril.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-28",
+   "end": "2017-03-31",
+   "sample": 2204,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_31-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2017-03-29",
+   "end": "2017-03-30",
+   "sample": 872,
+   "url": "http://www.bva.fr/data/sondage/sondage_fiche/1974/fichier_intentions_de_vote_-_vague_15_-_pop2017_-_1er_avril_2017_-_presentation70fea.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "Odoxa",
+   "start": "2017-03-29",
+   "end": "2017-03-30",
+   "sample": 753,
+   "url": "http://www.odoxa.fr/wp-content/uploads/2017/03/Intention-de-vote-presidentielle-Dentsu-Consulting-LePoint-31-03-17.pdf",
+   "values": {
+    "Emmanuel Macron": 59,
+    "Marine Le Pen": 41
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-28",
+   "end": "2017-03-30",
+   "sample": 1609,
+   "url": "https://web.archive.org/web/20170404220730/http://opinionlab.opinion-way.com/dokumenty/Presitrack-synthese-27au31mars.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-27",
+   "end": "2017-03-30",
+   "sample": 2215,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_30-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-03-28",
+   "end": "2017-03-29",
+   "sample": 998,
+   "url": "https://elabe.fr/wp-content/uploads/2017/03/29032017_bfmtv_lexpress_intentions-de-vote-presidentielles-vague-6.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-27",
+   "end": "2017-03-29",
+   "sample": 1636,
+   "url": "https://web.archive.org/web/20170404220730/http://opinionlab.opinion-way.com/dokumenty/Presitrack-synthese-27au31mars.pdf",
+   "values": {
+    "Emmanuel Macron": 64,
+    "Marine Le Pen": 36
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-26",
+   "end": "2017-03-29",
+   "sample": 2241,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_29-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-26",
+   "end": "2017-03-28",
+   "sample": 1618,
+   "url": "https://web.archive.org/web/20170404220730/http://opinionlab.opinion-way.com/dokumenty/Presitrack-synthese-27au31mars.pdf",
+   "values": {
+    "Emmanuel Macron": 64,
+    "Marine Le Pen": 36
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-24",
+   "end": "2017-03-28",
+   "sample": 2231,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_28-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2017-03-25",
+   "end": "2017-03-27",
+   "sample": 1005,
+   "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/enquetepresidentielle1v4_1.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-25",
+   "end": "2017-03-27",
+   "sample": 1599,
+   "url": "https://web.archive.org/web/20170404220730/http://opinionlab.opinion-way.com/dokumenty/Presitrack-synthese-27au31mars.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-23",
+   "end": "2017-03-27",
+   "sample": 2235,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_27-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60.5,
+    "Marine Le Pen": 39.5
+   }
+  },
+  {
+   "pollster": "Le Terrain",
+   "start": "2017-03-23",
+   "end": "2017-03-27",
+   "sample": 647,
+   "url": "https://www.slideshare.net/slideshow/embed_code/key/tCIDiAaa3EnoJm",
+   "values": {
+    "Emmanuel Macron": 70,
+    "Marine Le Pen": 30
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-24",
+   "end": "2017-03-26",
+   "sample": 1676,
+   "url": "https://web.archive.org/web/20170404220730/http://opinionlab.opinion-way.com/dokumenty/Presitrack-synthese-27au31mars.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2017-03-22",
+   "end": "2017-03-24",
+   "sample": 880,
+   "url": "http://www.bva.fr/data/sondage/sondage_fiche/1969/fichier_intentions_de_vote_-_vague_14_-_pop2017_-_25_mars_2017_-_presentationdcc7f.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-21",
+   "end": "2017-03-24",
+   "sample": 2225,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_24-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 61.5,
+    "Marine Le Pen": 38.5
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-21",
+   "end": "2017-03-23",
+   "sample": 1675,
+   "url": "https://web.archive.org/web/20170325025043/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultats-de-la-semaine20-24-03.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-20",
+   "end": "2017-03-23",
+   "sample": 2245,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_23-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 61.5,
+    "Marine Le Pen": 38.5
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-03-21",
+   "end": "2017-03-22",
+   "sample": 6383,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/03/Rapport-Intentions-de-vote-election-presidentielle-France-TV.pdf",
+   "values": {
+    "Emmanuel Macron": 65,
+    "Marine Le Pen": 35
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-20",
+   "end": "2017-03-22",
+   "sample": 1672,
+   "url": "https://web.archive.org/web/20170325025043/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultats-de-la-semaine20-24-03.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-19",
+   "end": "2017-03-22",
+   "sample": 1974,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_22-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-03-21",
+   "end": "2017-03-21",
+   "sample": 997,
+   "url": "https://elabe.fr/wp-content/uploads/2017/03/21032017_bfmtv_lexpress_intentions-de-vote-presidentielles-vague-5-1.pdf",
+   "values": {
+    "Emmanuel Macron": 64,
+    "Marine Le Pen": 36
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-19",
+   "end": "2017-03-21",
+   "sample": 1676,
+   "url": "https://web.archive.org/web/20170325025043/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultats-de-la-semaine20-24-03.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-18",
+   "end": "2017-03-21",
+   "sample": 1695,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_21-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60.5,
+    "Marine Le Pen": 39.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-18",
+   "end": "2017-03-20",
+   "sample": 935,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_20-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-18",
+   "end": "2017-03-20",
+   "sample": 1667,
+   "url": "https://web.archive.org/web/20170325025043/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultats-de-la-semaine20-24-03.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-03-17",
+   "end": "2017-03-19",
+   "sample": 2847,
+   "url": "https://elabe.fr/wp-content/uploads/2017/03/20032017_bfmtv_lexpress_intentions-de-vote-presidentielles-vague-4-1.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-17",
+   "end": "2017-03-19",
+   "sample": 1593,
+   "url": "https://web.archive.org/web/20170325025043/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-Resultats-de-la-semaine20-24-03.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2017-03-15",
+   "end": "2017-03-17",
+   "sample": 858,
+   "url": "http://www.bva.fr/data/sondage/sondage_fiche/1962/fichier_intentions_de_vote_-_vague_13_-_pop2017_-_18_mars_2017_-_presentationd5dd0.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-14",
+   "end": "2017-03-17",
+   "sample": 1376,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_17-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Odoxa",
+   "start": "2017-03-15",
+   "end": "2017-03-16",
+   "sample": 603,
+   "url": "http://www.odoxa.fr/wp-content/uploads/2017/03/Odoxa-Dentsu-pour-13h15-Intention-de-Vote-Presidentielle-2.pdf",
+   "values": {
+    "Emmanuel Macron": 64,
+    "Marine Le Pen": 36
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-14",
+   "end": "2017-03-16",
+   "sample": 1571,
+   "url": "https://web.archive.org/web/20170318083803/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-semaine-13-17mars.pdf",
+   "values": {
+    "Emmanuel Macron": 59,
+    "Marine Le Pen": 41
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-13",
+   "end": "2017-03-16",
+   "sample": 1386,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_16-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2017-03-14",
+   "end": "2017-03-15",
+   "sample": 8205,
+   "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/rapport_cevipof-eef2017_vague_12_ipsos_lemonde.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-13",
+   "end": "2017-03-15",
+   "sample": 1554,
+   "url": "https://web.archive.org/web/20170318083803/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-semaine-13-17mars.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-12",
+   "end": "2017-03-15",
+   "sample": 1399,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_15-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 61.5,
+    "Marine Le Pen": 38.5
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-12",
+   "end": "2017-03-14",
+   "sample": 1529,
+   "url": "https://web.archive.org/web/20170318083803/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-semaine-13-17mars.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-10",
+   "end": "2017-03-14",
+   "sample": 1413,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_14-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60.5,
+    "Marine Le Pen": 39.5
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-11",
+   "end": "2017-03-13",
+   "sample": 1528,
+   "url": "https://web.archive.org/web/20170318083803/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-semaine-13-17mars.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "Future Thinking",
+   "start": "2017-03-10",
+   "end": "2017-03-13",
+   "sample": 717,
+   "url": "http://www.commission-des-sondages.fr/notices/files/notices/2017/mars/8306-pres-future-thinking-womensports.pdf",
+   "values": {
+    "Emmanuel Macron": 59.5,
+    "Marine Le Pen": 40.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-09",
+   "end": "2017-03-13",
+   "sample": 1397,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_13-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60.5,
+    "Marine Le Pen": 39.5
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-10",
+   "end": "2017-03-12",
+   "sample": 1610,
+   "url": "https://web.archive.org/web/20170318083803/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-Orpi-semaine-13-17mars.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2017-03-08",
+   "end": "2017-03-10",
+   "sample": 839,
+   "url": "http://www.bva.fr/data/sondage/sondage_fiche/1960/fichier_intentions_de_vote_-_vague_12_-_pop2017_-_11_mars_2017_-_presentation395b5.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-07",
+   "end": "2017-03-10",
+   "sample": 1379,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_10-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60.5,
+    "Marine Le Pen": 39.5
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-07",
+   "end": "2017-03-09",
+   "sample": 1571,
+   "url": "https://web.archive.org/web/20170312070248/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-06au10-03.pdf",
+   "values": {
+    "Emmanuel Macron": 65,
+    "Marine Le Pen": 35
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-06",
+   "end": "2017-03-09",
+   "sample": 1395,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_09-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60.5,
+    "Marine Le Pen": 39.5
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-03-06",
+   "end": "2017-03-08",
+   "sample": 4533,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/03/Rapport-Harris-Intentions-vote-election-presidentielle-France-TV-2.pdf",
+   "values": {
+    "Emmanuel Macron": 65,
+    "Marine Le Pen": 35
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-06",
+   "end": "2017-03-08",
+   "sample": 1509,
+   "url": "https://web.archive.org/web/20170312070248/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-06au10-03.pdf",
+   "values": {
+    "Emmanuel Macron": 64,
+    "Marine Le Pen": 36
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-05",
+   "end": "2017-03-08",
+   "sample": 1394,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_08-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60.5,
+    "Marine Le Pen": 39.5
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-05",
+   "end": "2017-03-07",
+   "sample": 1574,
+   "url": "https://web.archive.org/web/20170312070248/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-06au10-03.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-03",
+   "end": "2017-03-07",
+   "sample": 1390,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_07-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 61.5,
+    "Marine Le Pen": 38.5
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-03-05",
+   "end": "2017-03-06",
+   "sample": 1000,
+   "url": "https://elabe.fr/wp-content/uploads/2017/03/07032017_bfmtv_lexpress_intentions-de-vote-presidentielles-vague-3-1.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-04",
+   "end": "2017-03-06",
+   "sample": 1559,
+   "url": "https://web.archive.org/web/20170312070248/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-06au10-03.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-02",
+   "end": "2017-03-06",
+   "sample": 1381,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_06-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-03-03",
+   "end": "2017-03-05",
+   "sample": 1671,
+   "url": "https://web.archive.org/web/20170312070248/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-06au10-03.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2017-03-01",
+   "end": "2017-03-05",
+   "sample": 10854,
+   "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/rapport_cevipof_fjj_-_eef2017_vague_mars_ipsos_lemonde_-_publication.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-03-02",
+   "end": "2017-03-04",
+   "sample": 1822,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/3677-1-study_file.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-28",
+   "end": "2017-03-03",
+   "sample": 1383,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_03-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2017-02-28",
+   "end": "2017-03-02",
+   "sample": 855,
+   "url": "http://www.bva.fr/data/sondage/sondage_fiche/1955/fichier_intentions_de_vote_-_vague_11_-_pop2017_-_4_mars_2017_-_presentation33d6b.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-02-28",
+   "end": "2017-03-02",
+   "sample": 1507,
+   "url": "https://elabe.fr/wp-content/uploads/2017/03/02032017_les_echos_radio_classique_intentions-de-vote-presidentielles-vague-7.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-28",
+   "end": "2017-03-02",
+   "sample": 1654,
+   "url": "https://web.archive.org/web/20170307022801/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-27-02au03-03.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-27",
+   "end": "2017-03-02",
+   "sample": 1394,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_02-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-27",
+   "end": "2017-03-01",
+   "sample": 1639,
+   "url": "https://web.archive.org/web/20170307022801/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-27-02au03-03.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-26",
+   "end": "2017-03-01",
+   "sample": 1392,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_01-03-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-26",
+   "end": "2017-02-28",
+   "sample": 1629,
+   "url": "https://web.archive.org/web/20170307022801/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-27-02au03-03.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-24",
+   "end": "2017-02-28",
+   "sample": 1398,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_28-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-25",
+   "end": "2017-02-27",
+   "sample": 1624,
+   "url": "https://web.archive.org/web/20170307022801/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-27-02au03-03.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-23",
+   "end": "2017-02-27",
+   "sample": 1404,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_27-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-24",
+   "end": "2017-02-26",
+   "sample": 1631,
+   "url": "https://web.archive.org/web/20170307022801/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-27-02au03-03.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2017-02-23",
+   "end": "2017-02-24",
+   "sample": 600,
+   "url": "https://fr.kantar.com/elections/presidentielle/2017/intentions-de-vote-marine-le-pen-et-emmanuel-macron-creusent-l-ecart/",
+   "values": {
+    "Emmanuel Macron": 58,
+    "Marine Le Pen": 42
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-21",
+   "end": "2017-02-24",
+   "sample": 1417,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_24-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 61.5,
+    "Marine Le Pen": 38.5
+   }
+  },
+  {
+   "pollster": "Odoxa",
+   "start": "2017-02-22",
+   "end": "2017-02-23",
+   "sample": 879,
+   "url": "http://www.odoxa.fr/wp-content/uploads/2017/02/Intention-de-vote-Odoxa-Dentsu-Consulting-du-26022017.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-21",
+   "end": "2017-02-23",
+   "sample": 1431,
+   "url": "https://web.archive.org/web/20170226130832/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-ORPI-Resultats-de-la-semaine-du-20-au-24-02.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-20",
+   "end": "2017-02-23",
+   "sample": 1395,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_23-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "start": "2017-02-20",
+   "end": "2017-02-22",
+   "sample": 5249,
+   "url": "http://harris-interactive.fr/wp-content/uploads/sites/6/2017/02/Rapport-Harris-Intentions-vote-election-presidentielle-France-TV.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-20",
+   "end": "2017-02-22",
+   "sample": 1615,
+   "url": "https://web.archive.org/web/20170226130832/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-ORPI-Resultats-de-la-semaine-du-20-au-24-02.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-19",
+   "end": "2017-02-22",
+   "sample": 1399,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_22-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-19",
+   "end": "2017-02-21",
+   "sample": 1545,
+   "url": "https://web.archive.org/web/20170226130832/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-ORPI-Resultats-de-la-semaine-du-20-au-24-02.pdf",
+   "values": {
+    "Emmanuel Macron": 59,
+    "Marine Le Pen": 41
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-17",
+   "end": "2017-02-21",
+   "sample": 1386,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_21-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2017-02-19",
+   "end": "2017-02-20",
+   "sample": 554,
+   "url": "http://www.bva.fr/data/sondage/sondage_fiche/1948/fichier_intentions_de_vote_-_vague_10_-_pop2017_-_23_fevrier_2017_-_presentation5e659.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-02-18",
+   "end": "2017-02-20",
+   "sample": 995,
+   "url": "https://elabe.fr/wp-content/uploads/2017/02/21022017bfmtv_lexpress_intentions-de-vote-presidentielles-vague-2.pdf",
+   "values": {
+    "Emmanuel Macron": 59,
+    "Marine Le Pen": 41
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-18",
+   "end": "2017-02-20",
+   "sample": 1535,
+   "url": "https://web.archive.org/web/20170226130832/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-ORPI-Resultats-de-la-semaine-du-20-au-24-02.pdf",
+   "values": {
+    "Emmanuel Macron": 58,
+    "Marine Le Pen": 42
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-16",
+   "end": "2017-02-20",
+   "sample": 1397,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_20-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 61.5,
+    "Marine Le Pen": 38.5
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-17",
+   "end": "2017-02-19",
+   "sample": 1534,
+   "url": "https://web.archive.org/web/20170226130832/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-ORPI-Resultats-de-la-semaine-du-20-au-24-02.pdf",
+   "values": {
+    "Emmanuel Macron": 58,
+    "Marine Le Pen": 42
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-14",
+   "end": "2017-02-17",
+   "sample": 1399,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_17-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-14",
+   "end": "2017-02-16",
+   "sample": 1605,
+   "url": "https://web.archive.org/web/20170225205714/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-ORPI-Resultats-semaine13-17-fev.pdf",
+   "values": {
+    "Emmanuel Macron": 60,
+    "Marine Le Pen": 40
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-13",
+   "end": "2017-02-16",
+   "sample": 1396,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_16-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 62.5,
+    "Marine Le Pen": 37.5
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-13",
+   "end": "2017-02-15",
+   "sample": 1602,
+   "url": "https://web.archive.org/web/20170225205714/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-ORPI-Resultats-semaine13-17-fev.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-12",
+   "end": "2017-02-15",
+   "sample": 1394,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_15-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-12",
+   "end": "2017-02-14",
+   "sample": 1456,
+   "url": "https://web.archive.org/web/20170225205714/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-ORPI-Resultats-semaine13-17-fev.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-10",
+   "end": "2017-02-14",
+   "sample": 1402,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_14-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 62.5,
+    "Marine Le Pen": 37.5
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-11",
+   "end": "2017-02-13",
+   "sample": 1422,
+   "url": "https://web.archive.org/web/20170225205714/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-ORPI-Resultats-semaine13-17-fev.pdf",
+   "values": {
+    "Emmanuel Macron": 64,
+    "Marine Le Pen": 36
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-09",
+   "end": "2017-02-13",
+   "sample": 1392,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_13-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-10",
+   "end": "2017-02-12",
+   "sample": 1590,
+   "url": "https://web.archive.org/web/20170225205714/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-ORPI-Resultats-semaine13-17-fev.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-07",
+   "end": "2017-02-10",
+   "sample": 1396,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_10-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 62.5,
+    "Marine Le Pen": 37.5
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-07",
+   "end": "2017-02-09",
+   "sample": 1496,
+   "url": "https://web.archive.org/web/20170225205744/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-ORPI-Resultats-de-la-semaine-du-6-au-10-fevrier.pdf",
+   "values": {
+    "Emmanuel Macron": 65,
+    "Marine Le Pen": 35
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-06",
+   "end": "2017-02-09",
+   "sample": 1407,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_09-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-02-07",
+   "end": "2017-02-08",
+   "sample": 961,
+   "url": "https://elabe.fr/wp-content/uploads/2017/02/08022017_bfmtv_lexpress_intentions-de-vote-presidentielles_vague_1.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-06",
+   "end": "2017-02-08",
+   "sample": 1454,
+   "url": "https://web.archive.org/web/20170225205744/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-ORPI-Resultats-de-la-semaine-du-6-au-10-fevrier.pdf",
+   "values": {
+    "Emmanuel Macron": 65,
+    "Marine Le Pen": 35
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-05",
+   "end": "2017-02-08",
+   "sample": 1409,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_08-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 64,
+    "Marine Le Pen": 36
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-05",
+   "end": "2017-02-07",
+   "sample": 1487,
+   "url": "https://web.archive.org/web/20170225205744/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-ORPI-Resultats-de-la-semaine-du-6-au-10-fevrier.pdf",
+   "values": {
+    "Emmanuel Macron": 66,
+    "Marine Le Pen": 34
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-03",
+   "end": "2017-02-07",
+   "sample": 1424,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_07-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 64,
+    "Marine Le Pen": 36
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-02-04",
+   "end": "2017-02-06",
+   "sample": 993,
+   "url": "https://elabe.fr/wp-content/uploads/2017/02/08022017_bfmtv_lexpress_intentions-de-vote-presidentielles_vague_1.pdf",
+   "values": {
+    "Emmanuel Macron": 64,
+    "Marine Le Pen": 36
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-04",
+   "end": "2017-02-06",
+   "sample": 1568,
+   "url": "https://web.archive.org/web/20170225205744/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-ORPI-Resultats-de-la-semaine-du-6-au-10-fevrier.pdf",
+   "values": {
+    "Emmanuel Macron": 66,
+    "Marine Le Pen": 34
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-02-02",
+   "end": "2017-02-06",
+   "sample": 1433,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_06-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2017-02-03",
+   "end": "2017-02-05",
+   "sample": 1700,
+   "url": "https://web.archive.org/web/20170225205744/http://opinionlab.opinion-way.com/dokumenty/PresiTRACK-OpinionWay-ORPI-Resultats-de-la-semaine-du-6-au-10-fevrier.pdf",
+   "values": {
+    "Emmanuel Macron": 65,
+    "Marine Le Pen": 35
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-01-31",
+   "end": "2017-02-03",
+   "sample": 1430,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_03-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2017-02-01",
+   "end": "2017-02-02",
+   "sample": 580,
+   "url": "http://www.bva.fr/data/sondage/sondage_fiche/1945/fichier_intentions_de_vote_-_vague_9_-_pop2017_-_4_fevrier_20171bc7f.pdf",
+   "values": {
+    "Emmanuel Macron": 66,
+    "Marine Le Pen": 34
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-01-30",
+   "end": "2017-02-02",
+   "sample": 1414,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_02-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-01-29",
+   "end": "2017-02-01",
+   "sample": 1409,
+   "url": "http://dataviz.ifop.com:8080/IFOP_ROLLING/IFOP_01-02-2017.pdf",
+   "values": {
+    "Emmanuel Macron": 63,
+    "Marine Le Pen": 37
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "start": "2017-01-30",
+   "end": "2017-01-31",
+   "sample": 993,
+   "url": "https://elabe.fr/wp-content/uploads/2017/02/01022017_les_echos_radio_classique_intentions-de-vote-presidentielles_vague_6.pdf",
+   "values": {
+    "Emmanuel Macron": 65,
+    "Marine Le Pen": 35
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2017-01-26",
+   "end": "2017-01-27",
+   "sample": 600,
+   "url": "https://fr.kantar.com/elections/presidentielle/2017/intentions-de-vote-la-situation-politique-au-soir-de-la-victoire-de-benoit-hamon-a-la-primaire-de-la-gauche/",
+   "values": {
+    "Emmanuel Macron": 65,
+    "Marine Le Pen": 35
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2017-01-20",
+   "end": "2017-01-20",
+   "sample": 992,
+   "url": "https://www.ipsos.com/sites/default/files/files-fr-fr/doc_associe/notice_technique_enquete_gauche_-_ipsos_france_2_janvier_2017.pdf",
+   "values": {
+    "Emmanuel Macron": 64,
+    "Marine Le Pen": 36
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2017-01-03",
+   "end": "2017-01-06",
+   "sample": 1860,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/3605-1-study_file.pdf",
+   "values": {
+    "Emmanuel Macron": 65,
+    "Marine Le Pen": 35
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2016-11-28",
+   "end": "2016-11-30",
+   "sample": 1882,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/3576-1-study_file.pdf",
+   "values": {
+    "Emmanuel Macron": 62,
+    "Marine Le Pen": 38
+   }
+  },
+  {
+   "pollster": "Odoxa",
+   "start": "2016-04-14",
+   "end": "2016-04-15",
+   "sample": 949,
+   "url": "http://www.odoxa.fr/wp-content/uploads/2016/04/odoxa-dentsuconsulting-bfm-leparisien-intentiondevotelaprsidentiellede201715avril2016-160415162721.pdf",
+   "values": {
+    "Emmanuel Macron": 61,
+    "Marine Le Pen": 39
+   }
+  },
+  {
+   "pollster": "Odoxa",
+   "start": "2016-01-14",
+   "end": "2016-01-15",
+   "sample": 1011,
+   "url": "http://www.odoxa.fr/wp-content/uploads/2016/01/odoxapourleparisien-aujourdhuienfrance-lesfranaisetlaprsiden-160116210046.pdf",
+   "values": {
+    "Emmanuel Macron": 65,
+    "Marine Le Pen": 35
+   }
+  }
+ ]
+}

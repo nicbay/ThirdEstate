@@ -7,6 +7,7 @@ import { photoUrl } from "./deputes";
 import { pcsCategoryLabel, pcsGroup, pcsGroupLabel } from "../lib/pcs";
 import { mountMpLoyalty } from "./loyalty";
 import { renderMpSpeech } from "./speeches";
+import { depArmsSlot } from "../lib/arms";
 
 const PAGE = 20;
 const href = (platform: string, v: string) => (v.startsWith("http") ? v : (SOCIAL_URL[platform] ?? ((h: string) => h))(v));
@@ -52,13 +53,15 @@ export async function renderDepute(app: HTMLElement, id: string) {
           <h1>${esc(d.civ)} ${esc(d.prenom)} ${esc(d.nom)}</h1>
           <p><span class="chip">${esc(d.groupe?.abrev ?? "—")}</span> ${esc(d.groupe?.libelle ?? "")}${entryTag(d) ? ` <span class="tag mp-entry-tag">${esc(entryTag(d)!)}</span>` : ""}</p>
           <p class="mp-entry small">${esc(entrySentence(d))}</p>
-          <p class="muted">${d.departement && d.numCirco ? `<a href="#/circo/${d.circo}">${esc(s.district(d.departement, d.numCirco))}</a>` : ""}</p>
+          <p class="muted mp-where">${depArmsSlot(d.numDepartement, d.departement)}${d.departement && d.numCirco ? `<a href="#/circo/${d.circo}">${esc(s.district(d.departement, d.numCirco))}</a>` : ""}</p>
         </div>
         <nav class="mp-nav small">
           ${prev ? `<a href="#/depute/${prev.id}">← ${esc(prev.prenom)} ${esc(prev.nom)}</a>` : "<span></span>"}
           ${next ? `<a href="#/depute/${next.id}">${esc(next.prenom)} ${esc(next.nom)}</a>` : ""}
         </nav>
       </div>
+
+      <div id="mp-speech"></div>
 
       <div class="mp-grid-2">
         <div class="card">
@@ -99,9 +102,8 @@ export async function renderDepute(app: HTMLElement, id: string) {
         </div>
       </div>
 
-      <div id="mp-speech"></div>
-
-      <div class="card">
+      <details class="card mp-votes">
+        <summary><h2>${L(`Tous ses votes, un par un (${fmtNum(st.scrutins)})`, `All their votes, one by one (${fmtNum(st.scrutins)})`)}</h2></summary>
         <div class="filters">
           <input id="vq" type="search" placeholder="${s.searchVotes}" />
           <select id="vpos">
@@ -113,7 +115,7 @@ export async function renderDepute(app: HTMLElement, id: string) {
         </div>
         <ul id="votes" class="votes"></ul>
         <div class="pager"><button id="vprev" type="button">${s.prev}</button><span id="vpage" class="muted"></span><button id="vnext" type="button">${s.next}</button></div>
-      </div>
+      </details>
       <p class="source muted">${s.sourceAN(fmtDate(meta.syncedAt))}</p>
     </section>`;
 

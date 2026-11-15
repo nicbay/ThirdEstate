@@ -1,13 +1,14 @@
 // 2027 front page: the state of the race in one headline and one strip, then the detail.
 import { loadMarkets, loadPolls } from "../data";
+import { infoTip } from "../lib/infotip";
 import { L, fmtDate, getLang } from "../i18n";
-import { meta, registerParties, spectrumRank } from "../lib/candidates";
+import { candidateSlug, meta, registerParties, spectrumRank } from "../lib/candidates";
 import { average, duelAverages, pollValue, pollsInWindow } from "../lib/polls";
 import { combineOdds, platformShare, winShare } from "../lib/markets";
 import { dec, pair100, pct, signed } from "../lib/format";
 import { esc, safeUrl, safeColor } from "../util";
 import { shiftDays } from "./home";
-import { ELECTION_DAY, MARKET_WEIGHT, forecast, type Forecast } from "../lib/forecast";
+import { ELECTION_DAY, FIELD_DAYS, FIELD_MIN_POLLS, MARKET_WEIGHT, PRIMARY, REJECTION, P_RALLY, P_SHOCK, RALLY_SHARE, SETBACK_RUNOFF, SETBACK_SHARE, MOMENTUM_CAP, MOMENTUM_DAYS, MOMENTUM_TAU, forecast, type Forecast } from "../lib/forecast";
 import { oddsSentence } from "../lib/scenario-odds";
 import { lineChart } from "../lib/chart";
 import { fetchJson } from "../data";
@@ -76,7 +77,7 @@ export async function renderRace(app: HTMLElement) {
                 // the change is always shown when there is a figure 30 days back (a stable average reads "0,0")
                 const delta = prev != null ? Math.round(10 * r.avg) / 10 - Math.round(10 * prev) / 10 : null;
                 return `<li>
-                  <div class="bar-label"><span>${esc(r.name)} <span class="muted">${esc(m.party ?? "")}</span></span>
+                  <div class="bar-label"><span>${who(r.name, cindex)} <span class="muted">${esc(m.party ?? "")}</span></span>
                   <span>${delta != null ? `<span class="${Math.abs(delta) < 0.05 ? "muted" : delta > 0 ? "up" : "down"}" title="${L("sur 30 jours", "over 30 days")}">${signed(delta)}</span> ` : `<span class="muted small">${L("nouveau", "new")}</span> `}<b>${pct(r.avg)}</b></span></div>
                   <div class="bar"><div style="width:${(100 * r.avg) / max}%;background:${m.color}"></div></div>
                 </li>`;
@@ -97,7 +98,7 @@ export async function renderRace(app: HTMLElement) {
                    .map((o) => {
                      const v = winShare(odds, o) ?? 0;
                      const detail = (["kalshi", "polymarket"] as const).map((pl) => { const x = platformShare(odds, o, pl); return x == null ? "" : `${pl === "kalshi" ? "Kalshi" : "Polymarket"} ${pct(x, 0)}`; }).filter(Boolean).join(" · ");
-                     return `<li><div class="bar-label"><span>${esc(o.name)}${detail ? ` <span class="muted small">${detail}</span>` : ""}</span><b>${pct(v, 0)}</b></div><div class="bar"><div style="width:${v}%;background:${meta(o.name).color}"></div></div></li>`;
+                     return `<li><div class="bar-label"><span>${who(o.name, cindex)}${detail ? ` <span class="muted small">${detail}</span>` : ""}</span><b>${pct(v, 0)}</b></div><div class="bar"><div style="width:${v}%;background:${meta(o.name).color}"></div></div></li>`;
                    })
                    .join("")}</ol>`
               : `<p class="muted">${L("Données de marché indisponibles.", "Market data unavailable.")}</p>`
@@ -142,7 +143,7 @@ export async function renderRace(app: HTMLElement) {
       </nav>
       <p class="source">${L("Sondages compilés par Wikipédia (CC BY-SA)", "Polls compiled by Wikipedia (CC BY-SA)")}, <a href="${esc(safeUrl(polls.source))}" target="_blank" rel="noopener">${L("page source", "source page")}</a>, ${L("mis à jour le", "updated")} ${fmtDate(polls.fetchedAt)}.</p>
     </section>`;
-  drawForecastTrend(app);
+  drawForecastTrend(app, fc);
   // the "Method" link (and #/2027#methode links) open the method box
   const md = app.querySelector<HTMLDetailsElement>("#methode");
   app.querySelectorAll('a[href="#/2027#methode"]').forEach((x) => x.addEventListener("click", () => md && (md.open = true)));
@@ -167,15 +168,21 @@ function forecastCard(fc: Forecast) {
   const pairWinner = pair ? (pair.aWins >= 50 ? pair.a : pair.b) : "";
   const pairPct = pair ? fmt(Math.max(pair.aWins, 100 - pair.aWins)) : "";
   const added = fc.added.map(esc).join(", ");
+  const pr = fc.primary ?? { day: PRIMARY.rounds.at(-1)!, pHeld: 0, held: 0, winner: null, losers: [] as string[] }; // described even when it is only a scenario
+  const ceil = Object.entries(fc.ceilings).sort((a, b) => b[1] - a[1]).map(([n, v]) => `${esc(meta(n).surname)} ${dec(v)} %`).join(", ");
+  const PRIMARY_LINE_FR = pr ? ` Scénario « Primaire du centre » (proposée par Retailleau, pas actée, donc hors de la prévision) : fin janvier, ${PRIMARY.participants.map((n) => esc(meta(n).surname)).join(", ")} se rangent derrière le mieux placé dans les sondages de fin décembre${pr.winner ? ` (selon la tendance actuelle : ${esc(meta(pr.winner).surname)})` : ""} ; les autres se retirent et ${Math.round(100 * RALLY_SHARE)} % de leurs électeurs suivent. ${PRIMARY.rallyFrom.map((n) => esc(meta(n).surname)).join(", ")} n’y participe pas : seuls ${Math.round(100 * PRIMARY.rallyFromShare)} % de ses électeurs rejoignent le candidat désigné. S’il annonce qu’il y participe, ce scénario sera revu.` : "";
+  const PRIMARY_LINE_EN = pr ? ` “Centre primary” scenario (proposed by Retailleau, not agreed, so outside the forecast): at the end of January ${PRIMARY.participants.map((n) => esc(meta(n).surname)).join(", ")} line up behind whoever is best placed in the end-of-December polls${pr.winner ? ` (on the current trend: ${esc(meta(pr.winner).surname)})` : ""}; the others withdraw and ${Math.round(100 * RALLY_SHARE)}% of their voters follow. ${PRIMARY.rallyFrom.map((n) => esc(meta(n).surname)).join(", ")} stays out: only ${Math.round(100 * PRIMARY.rallyFromShare)}% of his voters join the chosen candidate. If he announces he’ll take part, this scenario will be redone.` : "";
+  const CEIL_FR = ceil ? ` Plafonds : un candidat ne peut gagner au plus que la moitié du chemin entre son score actuel et l’électorat qui n’exclut pas de voter pour lui (${REJECTION.poll.pollster} pour ${REJECTION.poll.sponsor}, ${fmtDate(REJECTION.poll.fieldwork[1])}) : ${ceil}. Les scores de tous les candidats font toujours 100 %.` : "";
+  const CEIL_EN = ceil ? ` Ceilings: a candidate can gain at most half the way from today’s score to the electorate that doesn’t rule out voting for them (${REJECTION.poll.pollster} for ${REJECTION.poll.sponsor}, ${fmtDate(REJECTION.poll.fieldwork[1])}): ${ceil}. All candidates’ scores always add up to 100%.` : "";
   return `<section class="card forecast" id="prevision">
-    <header class="card-head"><h2>${L("Qui sera élu en 2027 ?", "Who will win in 2027?")}</h2><a href="#/2027#methode">${L("Méthode", "Method")}</a></header>
+    <header class="card-head"><h2>${L("Qui sera élu en 2027 ?", "Who will win in 2027?")}${infoTip(L("La chance de chaque candidat d’être élu : les sondages récents passés dans 20 000 élections simulées, mêlés aux prix des marchés prédictifs (Kalshi, Polymarket). « Sondages » et « Marchés » montrent chaque source seule ; « au second tour », la chance de s’y qualifier.", "Each candidate’s chance of being elected: recent polls run through 20,000 simulated elections, blended with prediction-market prices (Kalshi, Polymarket). “Polls” and “Markets” show each source alone; “reaches runoff” is the chance of making the second round."), L("Comment lire ces chances", "How to read these chances"))}</h2><a href="#/2027#methode">${L("Méthode", "Method")}</a></header>
     <div class="fc-grid">
       <ol class="fc-rows">${shown
         .map((r) => {
           const c = meta(r.name).color;
           const party = meta(r.name).party;
           return `<li>
-            <div class="fc-name"><i class="dot" style="background:${c}"></i><b>${esc(r.name)}</b>${party ? ` <span class="muted small">${esc(party)}</span>` : ""}</div>
+            <div class="fc-name"><i class="dot" style="background:${c}"></i><b>${who(r.name, null)}</b>${party ? ` <span class="muted small">${esc(party)}</span>` : ""}</div>
             <div class="fc-pct"><strong>${fmt(r.win)}</strong><span>%</span></div>
             <div class="fc-bar"><div style="width:${(100 * r.win) / max}%;background:${c}"></div></div>
             <div class="fc-src small muted">${L("Sondages", "Polls")} <b>${r.polls ? `${fmtP(r.polls.win)}` : L("non testé", "not polled")}</b> · ${L("Marchés", "Markets")} <b>${r.markets?.win != null ? `${fmtP(r.markets.win)}` : "–"}</b>${r.qualify != null ? ` · ${L("au second tour", "reaches runoff")} <b>${fmtP(r.qualify)}</b>` : ""}</div>
@@ -201,21 +208,27 @@ function forecastCard(fc: Forecast) {
       <summary>${L("Comment la prévision est calculée", "How the forecast works")}</summary>
       <ol class="small">
         <li>${fr
-          ? `<b>Sondages.</b> Point de départ : la moyenne des sondages pour la liste de candidats la plus testée (${fc.nLineupPolls} sondages ces trois dernières semaines)${added ? `, plus ${added}, que les marchés jugent crédible${fc.added.length > 1 ? "s" : ""}, à sa moyenne dans les sondages où il figure ; ses points sont pris aux candidats les plus proches politiquement` : ""}.`
-          : `<b>Polls.</b> Starting point: the polling average for the most-tested line-up (${fc.nLineupPolls} polls over the last three weeks)${added ? `, plus ${added}, whom the markets rate as credible, at their average in the polls that test them, with the points taken from the politically closest candidates` : ""}.`}</li>
+          ? `<b>Sondages.</b> Point de départ : dans chacun des ${fc.nLineupPolls} sondages des trois dernières semaines, la liste la plus proche des candidats déclarés, moyennée et ramenée à 100 %. Un nouveau nom entre dans le modèle dès que ${FIELD_MIN_POLLS} sondages des ${FIELD_DAYS} derniers jours l’ont testé aux côtés des principaux candidats, pas à la place de l’un d’eux (Riner et Lagarde entreront ainsi ; Hollande, testé à la place de Glucksmann, non)${added ? `, plus ${added}, que les marchés jugent crédible${fc.added.length > 1 ? "s" : ""}, à sa moyenne dans les sondages où il figure ; ses points sont pris aux candidats les plus proches politiquement` : ""}.`
+          : `<b>Polls.</b> Starting point: in each of the ${fc.nLineupPolls} polls of the last three weeks, the line-up closest to the declared candidates, averaged and scaled to 100%. A new name joins the model once ${FIELD_MIN_POLLS} polls in the last ${FIELD_DAYS} days have tested them alongside the main candidates, not in place of one (Riner and Lagarde will join this way; Hollande, tested in place of Glucksmann, won’t)${added ? `, plus ${added}, whom the markets rate as credible, at their average in the polls that test them, with the points taken from the politically closest candidates` : ""}.`}</li>
         <li>${fr
           ? `<b>20 000 simulations.</b> À chaque tirage, chaque candidat reçoit une erreur de sondage aléatoire : une part commune à sa famille politique (σ = 1,5 point) et une part propre (σ = ${dec(fc.sd1)} points à ${fc.daysToGo} jours ; elle se resserre jusqu’à 2 points la veille). Les deux premiers vont au second tour.`
           : `<b>20,000 simulations.</b> In each draw every candidate gets a random polling error: a part shared with their political family (σ = 1.5 pts) and their own part (σ = ${dec(fc.sd1)} pts at ${fc.daysToGo} days out, narrowing to 2 pts on the eve). The top two go to the runoff.`}</li>
         <li>${fr
-          ? `<b>Second tour.</b> Le score attendu vient des sondages de second tour pour ce duel s’ils existent, sinon d’un modèle de reports de voix selon la proximité politique (le même que le simulateur). On y ajoute une erreur (σ = ${dec(fc.sd2)} points aujourd’hui) : les duels sondés avant le premier tour se trompent souvent de beaucoup.`
-          : `<b>Runoff.</b> The expected score comes from runoff polls for that pairing when they exist, otherwise from a vote-transfer model based on political proximity (the same as the simulator). An error is added (σ = ${dec(fc.sd2)} pts today): runoff polls taken before the first round often miss by a lot.`}</li>
+          ? `<b>Second tour.</b> Le score attendu vient des sondages de second tour pour ce duel s’ils existent, sinon du duel sondé le plus proche (même adversaire, candidat de la même famille), corrigé de l’écart que voit le modèle de reports de voix selon la proximité politique, dont les taux sont ajustés pour reproduire au mieux les duels réellement sondés (aujourd’hui : ${fc.affinity.map((a) => pct(100 * a, 0)).join(" / ")} des voix vont à un candidat de la même famille / à 1, 2, 3, 4 crans). On y ajoute une erreur (σ = ${dec(fc.sd2)} points aujourd’hui) : les duels sondés avant le premier tour se trompent souvent de beaucoup.`
+          : `<b>Runoff.</b> The expected score comes from runoff polls for that pairing when they exist, otherwise from the closest polled match-up (same opponent, a candidate of the same family), corrected by the gap seen by a vote-transfer model based on political proximity, its rates fitted to reproduce the match-ups pollsters did test (today: ${fc.affinity.map((a) => pct(100 * a, 0)).join(" / ")} of voters go to a candidate of the same family / 1, 2, 3, 4 steps away). An error is added (σ = ${dec(fc.sd2)} pts today): runoff polls taken before the first round often miss by a lot.`}</li>
         <li>${L(
           "<b>Marchés.</b> Les cotes « vainqueur » de Kalshi et Polymarket, ramenées à 100 % pour retirer la marge des plateformes, puis moyennées en pondérant par les montants échangés.",
           "<b>Markets.</b> Kalshi and Polymarket “winner” prices, rescaled to 100% to remove the platforms’ margin, then averaged weighted by traded volume.",
         )}</li>
         <li>${fr
-          ? `<b>Mélange.</b> ${Math.round(100 * (1 - MARKET_WEIGHT))} % sondages, ${Math.round(100 * MARKET_WEIGHT)} % marchés. Un nom que seuls les marchés couvrent (non testé par les instituts) ne garde que la moitié « marchés ». Premier tour supposé le ${fmtDate(ELECTION_DAY)} (date à fixer par décret, entre mi et fin avril).`
-          : `<b>Blend.</b> ${Math.round(100 * (1 - MARKET_WEIGHT))}% polls, ${Math.round(100 * MARKET_WEIGHT)}% markets. A name only the markets cover (not tested by pollsters) keeps only the markets half. First round assumed on ${fmtDate(ELECTION_DAY)} (the date is set by decree, mid to late April).`}</li>
+          ? `<b>Mélange.</b> ${Math.round(100 * (1 - MARKET_WEIGHT))} % sondages, ${Math.round(100 * MARKET_WEIGHT)} % marchés. Un nom que seuls les marchés couvrent (non testé par les instituts) ne garde que la moitié « marchés ». Premier tour le ${fmtDate(ELECTION_DAY)} (date retenue en Conseil des ministres le 1er juillet 2026, officialisée par le décret de convocation).`
+          : `<b>Blend.</b> ${Math.round(100 * (1 - MARKET_WEIGHT))}% polls, ${Math.round(100 * MARKET_WEIGHT)}% markets. A name only the markets cover (not tested by pollsters) keeps only the markets half. First round on ${fmtDate(ELECTION_DAY)} (chosen at the Council of Ministers on 1 July 2026, made official by the convening decree).`}</li>
+        <li>${fr
+          ? `<b>Ce que les sondages ne voient pas.</b> Chaque campagne simulée peut aussi contenir : un élan qui s’essouffle (la pente des ${MOMENTUM_DAYS} derniers jours continue en s’amortissant : environ ${MOMENTUM_TAU} jours de cette pente d’ici le vote, surtout dans les premières semaines, ${MOMENTUM_CAP} points au plus) ; un cygne noir pour un grand candidat tiré au hasard, dans n’importe quel camp (${Math.round(100 * P_SHOCK)} % des campagnes : Balladur, Fillon et Pécresse se sont effondrés dans trois des cinq dernières présidentielles) ; un ralliement tardif d’un camp derrière son mieux placé (${Math.round(100 * P_RALLY)} % des campagnes, par camp) ; des erreurs à queue épaisse (un tirage sur dix est deux fois plus large).${CEIL_FR}${PRIMARY_LINE_FR}`
+          : `<b>What polls don’t see.</b> Each simulated campaign can also include: fading momentum (the last ${MOMENTUM_DAYS} days’ slope carries on but dies away: about ${MOMENTUM_TAU} days’ worth of it by the vote, mostly in the first weeks, ${MOMENTUM_CAP} points at most); a black swan for one big candidate picked at random, from any camp (${Math.round(100 * P_SHOCK)}% of campaigns: Balladur, Fillon and Pécresse collapsed in three of the last five presidential elections); a late rally of a camp behind its best-placed candidate (${Math.round(100 * P_RALLY)}% of campaigns, per camp); fat-tailed errors (one draw in ten is twice as wide).${CEIL_EN}${PRIMARY_LINE_EN}`}</li>
+        <li>${fr
+          ? `<b>Scénarios.</b> Sur la page d’accueil et celle des sondages, des boutons « Et si… ? », combinables (ceux qui se contredisent sont grisés), relancent les 20 000 simulations avec un autre point de départ : le centre et la droite (ou la gauche) se rassemblent derrière leur candidat le mieux placé, qui récupère ${Math.round(100 * RALLY_SHARE)} % des voix des autres ; Le Pen remplacée par Bardella, au niveau que lui donnent les sondages qui le testent ; ou un cygne noir, de même taille pour chaque camp et calqué sur ceux de la vie politique française : ${Math.round(100 * SETBACK_SHARE)} % des voix du premier tour en moins (Fillon a perdu environ un quart de son score entre décembre 2016 et le vote, Balladur près de 40 % en 1995, Pécresse plus des deux tiers en 2022), réparties entre les candidats les plus proches, et ${SETBACK_RUNOFF} points en moins dans chaque duel. Un chiffre de scénario vient du seul modèle des sondages : les marchés ne peuvent pas être recalculés pour un monde imaginé. La zone colorée du graphique montre où le score du premier tour a 8 chances sur 10 de tomber.`
+          : `<b>Scenarios.</b> On the homepage and the polls page, “What if…?” buttons, which combine (clashing ones are greyed out), re-run the 20,000 simulations from a different starting point: the centre and right (or the left) rally behind their best-placed candidate, who takes ${Math.round(100 * RALLY_SHARE)}% of the others’ votes; Le Pen replaced by Bardella, at the level the polls that test him give him; or a black swan, the same size for every camp and based on past ones in French political life: ${Math.round(100 * SETBACK_SHARE)}% of the first-round vote lost (Fillon lost about a quarter of his score between December 2016 and the vote, Balladur nearly 40% in 1995, Pécresse over two thirds in 2022), shared among the closest candidates, and ${SETBACK_RUNOFF} points lost in every runoff. A scenario figure comes from the polls model alone: markets can’t be re-priced for an imagined world. The chart’s shaded area shows where the first-round score has an 8-in-10 chance of landing.`}</li>
       </ol>
       <p class="small muted">${L("Les tailles d’erreur sont un jugement, pas une estimation tirée des présidentielles passées (trop peu nombreuses pour être ajustées). Ce n’est pas une prédiction certaine : un candidat à 70 % perd trois fois sur dix. Information, pas incitation à parier.", "Error sizes are a judgement, not estimated from past presidential elections (too few to fit). This isn’t a certainty: a candidate at 70% loses three times in ten. Information, not an invitation to bet.")}</p>
     </details>
@@ -224,10 +237,16 @@ function forecastCard(fc: Forecast) {
 
 interface FcDay { date: string; live: boolean; sources: string[]; rows: { name: string; win: number; polls: number | null; markets: number | null }[] }
 /** The forecast over time (public/data/forecast/history.json, written daily by scripts/forecast-history.ts). */
-async function drawForecastTrend(app: HTMLElement) {
+async function drawForecastTrend(app: HTMLElement, fc: Forecast) {
   const h = await fetchJson<{ days: FcDay[] }>("/data/forecast/history.json").catch(() => null);
   const box = app.querySelector<HTMLElement>("#fc-trend");
   if (!h || !box || h.days.length < 2) return;
+  // the chart ends on today's forecast, the very figures in the headline and the card above: the history file is
+  // written once a day, with that day's market prices, so its last point can lag the live page by a few points
+  const today = new Date().toISOString().slice(0, 10);
+  const live: FcDay = { date: today, live: true, sources: [], rows: fc.rows.map((r) => ({ name: r.name, win: r.win, polls: r.polls?.win ?? null, markets: r.markets?.win ?? null })) };
+  const recorded = h.days.at(-1)!;
+  h.days = [...h.days.filter((d) => d.date < today), live];
   box.hidden = false;
   const last = h.days.at(-1)!;
   const names = last.rows.slice(0, 6).map((r) => r.name);
@@ -248,27 +267,38 @@ async function drawForecastTrend(app: HTMLElement) {
   const back = h.days.filter((d) => !d.live);
   const kalshiOnly = back.filter((d) => !d.sources.includes("Polymarket")).length;
   app.querySelector("#fc-trend-note")!.textContent = [
-    L(`Chance de victoire, en %, chaque jour depuis le ${fmtDate(h.days[0].date)}.`, `Chance of winning, %, every day since ${fmtDate(h.days[0].date)}.`),
+    L(`Chance de victoire, en %, chaque jour depuis le ${fmtDate(h.days[0].date)} ; le dernier point est la prévision d’aujourd’hui (${fmtDate(today)}), celle affichée plus haut.`, `Chance of winning, %, every day since ${fmtDate(h.days[0].date)}; the last point is today’s forecast (${fmtDate(today)}), the one shown above.`),
+    recorded.date < today ? L(`Dernier relevé enregistré : ${fmtDate(recorded.date)}.`, `Last recorded day: ${fmtDate(recorded.date)}.`) : "",
     back.length && firstLive ? L(`Avant le ${fmtDate(firstLive)}, la prévision est reconstituée : le même modèle rejoué jour par jour avec les sondages connus ce jour-là et le cours de clôture des marchés${kalshiOnly ? ` (Kalshi seul ${kalshiOnly > 1 ? `${kalshiOnly} jours` : "un jour"}, faute de cours Polymarket)` : ""}.`, `Before ${fmtDate(firstLive)} the forecast is reconstructed: the same model replayed day by day with the polls known that day and each market's closing price${kalshiOnly ? ` (Kalshi only on ${kalshiOnly > 1 ? `${kalshiOnly} days` : "one day"} with no Polymarket price)` : ""}.`) : "",
     L("Ensuite, enregistrée chaque jour.", "From then on, recorded daily."),
   ].filter(Boolean).join(" ");
 }
 
-/** "Les candidats": one card per name in the polling average (the same set as every number above), linking to its page. */
+/** A name, linked to the candidate's page (#/candidat/<slug>) when there is a candidate file for it. */
+function who(name: string, idx: CandidateIndex | null) {
+  const slug = idx?.candidates.find((c) => c.pollName === name)?.slug ?? candidateSlug(name);
+  return slug ? `<a href="#/candidat/${esc(slug)}">${esc(name)}</a>` : esc(name);
+}
+
+/** "Les candidats": one card per name in the polling average (the same set as every number above), linking to its
+ *  page; then anyone with a candidate file who is missing from the average (not polled lately), so every file is reachable. */
 function candidatesSection(rows: { name: string; avg: number }[], idx: CandidateIndex | null) {
   const by = new Map((idx?.candidates ?? []).map((c) => [c.pollName, c]));
+  const inAvg = new Set(rows.map((r) => r.name));
+  const extra = (idx?.candidates ?? []).filter((c) => !inAvg.has(c.pollName)).sort((a, b) => spectrumRank(a.pollName) - spectrumRank(b.pollName));
+  const card = (name: string, v: string, note = "") => {
+    const m = meta(name);
+    const c = by.get(name);
+    const inner = `${c?.photo ? `<img src="${esc(safeUrl(c.photo))}" alt="" width="64" height="64" loading="lazy" referrerpolicy="no-referrer">` : `<span class="cand-noimg" aria-hidden="true"></span>`}
+      <span class="cand-card-t"><b>${esc(c?.name ?? name)}</b><span class="muted small">${esc(c ? L(c.party.fr, c.party.en) : m.party ?? "")}</span></span>
+      <span class="cand-card-v">${v}</span>${note}`;
+    return `<li style="--c:${safeColor(m.color)}">${c ? `<a class="cand-card" href="#/candidat/${esc(c.slug)}">${inner}</a>` : `<div class="cand-card">${inner}<span class="muted tiny">${L("Fiche à venir", "Page coming")}</span></div>`}</li>`;
+  };
   return `<section class="card" id="candidats">
     <header class="card-head"><h2>${L("Les candidats", "The candidates")}</h2><a href="#/sondages">${L("Sondages", "Polls")}</a></header>
-    <p class="muted small">${L("Chaque personne testée dans les sondages récents (celles qui comptent dans la moyenne). Leur fiche réunit patrimoine déclaré, condamnations, candidatures, argent public perçu et parcours, chaque ligne sourcée.", "Everyone tested in recent polls (those in the average). Each page gathers declared assets, convictions, elections contested, public money received and career, every line sourced.")}</p>
-    <ul class="cand-cards">${rows
-      .map((r) => {
-        const m = meta(r.name);
-        const c = by.get(r.name);
-        const inner = `${c?.photo ? `<img src="${esc(safeUrl(c.photo))}" alt="" width="64" height="64" loading="lazy" referrerpolicy="no-referrer">` : `<span class="cand-noimg" aria-hidden="true"></span>`}
-          <span class="cand-card-t"><b>${esc(r.name)}</b><span class="muted small">${esc(c ? L(c.party.fr, c.party.en) : m.party ?? "")}</span></span>
-          <span class="cand-card-v">${pct(r.avg)}</span>`;
-        return `<li style="--c:${safeColor(m.color)}">${c ? `<a class="cand-card" href="#/candidat/${esc(c.slug)}">${inner}</a>` : `<div class="cand-card">${inner}<span class="muted tiny">${L("Fiche à venir", "Page coming")}</span></div>`}</li>`;
-      })
-      .join("")}</ul>
+    <p class="muted small">${L("Chaque personne testée dans les sondages récents (celles qui comptent dans la moyenne). Sa page réunit sondages et prévision, programme, votes au Parlement, actualité, patrimoine déclaré, condamnations, candidatures, argent public perçu et parcours, chaque ligne sourcée.", "Everyone tested in recent polls (those in the average). Each page gathers polls and forecast, manifesto, votes in Parliament, news, declared assets, convictions, elections contested, public money received and career, every line sourced.")}</p>
+    <ul class="cand-cards">${rows.map((r) => card(r.name, pct(r.avg))).join("")}</ul>
+    ${extra.length ? `<h3 class="cand-h3">${L("Pas dans la moyenne récente", "Not in the recent average")}</h3>
+    <ul class="cand-cards">${extra.map((c) => card(c.pollName, "–", `<span class="muted tiny">${L("pas testé ces trois dernières semaines", "not polled in the last three weeks")}</span>`)).join("")}</ul>` : ""}
   </section>`;
 }

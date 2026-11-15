@@ -1,0 +1,163 @@
+<title>Homepage UX Choices</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: one column of numbered recommendations; each shows Before, then 2–3 option cards to pick from. Mocks always render in the site's night look. */
+:root{
+  --bg:#f4f3ee; --surface:#ffffff; --fg:#0d0f1a; --fg-2:#474c56; --fg-3:#686d77; --line:#dcd8cc;
+  --red:#d4253a; --blue:#1f5fcf; --pick:#4b2fd0;
+  /* the site's night band, used inside every mock in both themes */
+  --n-bg:#11131f; --n-panel:#1a1d2c; --n-line:#2e3247; --n-fg:#eef0f6; --n-fg-2:#a8adbf; --n-fg-3:#7d8296; --n-red:#ff5a6a; --n-blue:#6f9bff; --n-violet:#c4b5ff;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0d16;--surface:#151826;--fg:#eef0f6;--fg-2:#b3b8c8;--fg-3:#8a8fa2;--line:#2a2e42;--red:#ff5a6a;--blue:#6f9bff;--pick:#a08cff;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b0d16;--surface:#151826;--fg:#eef0f6;--fg-2:#b3b8c8;--fg-3:#8a8fa2;--line:#2a2e42;--red:#ff5a6a;--blue:#6f9bff;--pick:#a08cff;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:1180px;margin:0 auto}
+header.top{padding-block:40px 20px;display:grid;gap:10px}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3)}
+h1{font-weight:850;font-stretch:80%;font-size:clamp(30px,5vw,48px);line-height:1;margin:0;text-wrap:balance}
+.lede{max-width:64ch;color:var(--fg-2);margin:0}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-block:10px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.count{font:600 13px var(--mono);font-variant-numeric:tabular-nums}
+.meter{flex:1;min-width:120px;height:6px;background:var(--line);display:flex;gap:2px}
+.meter i{flex:1;background:transparent}.meter i.on{background:linear-gradient(90deg,var(--red),var(--blue))}
+button.copy{font:600 14px var(--display);background:var(--fg);color:var(--bg);border:0;padding:9px 14px;cursor:pointer;border-bottom:3px solid var(--pick)}
+button.copy:focus-visible,.opt:focus-within{outline:2px solid var(--pick);outline-offset:2px}
+.copied{font:500 12px var(--mono);color:var(--fg-3)}
+section.rec{padding-block:34px 8px;border-bottom:1px solid var(--line);display:grid;gap:14px}
+.rh{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:baseline}
+.num{font:600 13px var(--mono);color:var(--fg-3);font-variant-numeric:tabular-nums}
+.rh h2{margin:0;font-weight:800;font-stretch:85%;font-size:22px;line-height:1.15;text-wrap:balance}
+.rh p{grid-column:2;margin:0;color:var(--fg-2);max-width:72ch}
+.file{grid-column:2;font:500 12px var(--mono);color:var(--fg-3)}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;align-items:stretch}
+.before,.opt{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);min-width:0}
+.before{border-style:dashed}
+.lab{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:10px 12px 0;font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3)}
+.opt{cursor:pointer;position:relative;border-bottom:4px solid var(--line);transition:border-color .15s}
+.opt:hover{border-bottom-color:var(--fg-3)}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt.on{border-color:var(--pick);border-bottom:4px solid;border-image:linear-gradient(90deg,var(--red),var(--blue)) 1;box-shadow:0 0 0 1px var(--pick)}
+.opt .lab b{color:var(--fg);letter-spacing:.02em}
+.tick{width:18px;height:18px;border:1.5px solid var(--fg-3);display:grid;place-items:center;font-size:12px;color:transparent}
+.opt.on .tick{background:var(--pick);border-color:var(--pick);color:#fff}
+.rec-tag{font:600 10px var(--mono);color:var(--pick);border:1px solid var(--pick);padding:1px 5px;letter-spacing:.05em}
+.desc{padding:0 12px 12px;margin:0;color:var(--fg-2);font-size:13.5px}
+.skip{display:flex;align-items:center;gap:8px;font:500 13px var(--mono);color:var(--fg-3);cursor:pointer;width:max-content}
+.skip input{accent-color:var(--pick)}
+@media (prefers-reduced-motion:reduce){.opt{transition:none}}
+
+/* ---------- mocks: the site's night look ---------- */
+.m{margin:10px 12px 12px;background:var(--n-bg);color:var(--n-fg);padding:14px;font-size:12px;line-height:1.35;flex:1;display:flex;flex-direction:column;gap:9px;overflow:hidden;min-height:150px}
+.m .k{font:500 9px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--n-fg-3)}
+.m .h{font-weight:850;font-stretch:78%;font-size:19px;line-height:1.02;color:var(--n-fg)}
+.m .d{color:var(--n-fg-2);font-size:11px}
+.m .bs{display:flex;flex-wrap:wrap;gap:5px}
+.b{font-weight:700;font-size:10.5px;padding:5px 8px;border:1px solid var(--n-line);color:var(--n-fg);white-space:nowrap}
+.b.w{background:#fff;color:#0d0f1a;border-color:#fff}
+.b.r{background:var(--n-red);color:#fff;border-color:var(--n-red)}
+.b.p{background:#fff;color:#0d0f1a;border:0;border-bottom:3px solid var(--n-blue)}
+.l{font-weight:600;font-size:10.5px;color:var(--n-violet);text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
+.ls{display:flex;flex-wrap:wrap;gap:4px 12px}
+.f{display:flex;border:1px solid var(--n-line);background:var(--n-panel)}
+.f span{flex:1;padding:6px 8px;color:var(--n-fg-3);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.f em{font-style:normal;font-weight:700;font-size:10.5px;padding:6px 9px;background:#fff;color:#0d0f1a}
+.card{background:var(--n-panel);border:1px solid var(--n-line);border-bottom:3px solid;border-image:linear-gradient(90deg,var(--n-red),var(--n-blue)) 1;padding:9px}
+.px{background:var(--n-panel);border:2px solid var(--n-fg);box-shadow:4px 4px 0 var(--n-fg);padding:8px}
+.big{font:700 26px var(--display);font-stretch:80%;color:var(--n-fg);line-height:1}
+.sr{font:500 10.5px var(--mono);color:var(--n-fg-2);background:var(--n-panel);border-left:0;padding:6px 8px}
+.sr b{color:var(--n-fg)}
+.ph{width:140px;margin:0 auto;border:2px solid var(--n-line);padding:10px 8px;display:flex;flex-direction:column;gap:6px;background:var(--n-bg)}
+.ph .h{font-size:14px}
+.bars{display:flex;align-items:center;gap:1px;height:46px}
+.bars i{flex:1;background:var(--n-blue);opacity:.7}
+.bars i.dn{background:var(--n-red);align-self:flex-start;margin-top:23px}
+.bars i.up{align-self:flex-end;margin-bottom:23px}
+.bars i.sel{opacity:1;outline:1px solid #fff}
+.muted{opacity:.35}
+.x{text-decoration:line-through;opacity:.6}
+.note{font:500 10px var(--mono);color:var(--n-fg-3)}
+.bubble{align-self:flex-start;background:#fff;color:#0d0f1a;font:600 10px var(--mono);padding:3px 6px}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <span class="eyebrow">Third Estate · UX pass, 14 Nov 2026</span>
+  <h1>Ten fixes for the homepage. Pick one option for each.</h1>
+  <p class="lede">Each recommendation shows the site as it is now, then two or three ways to fix it. Click the option you want, or skip it. When you're done, copy your choices and paste them into the chat. Your picks are kept in this browser.</p>
+</header>
+<div class="bar"><span class="count" id="count">0 of 10 decided</span><span class="meter" id="meter" aria-hidden="true"></span><button class="copy" id="copy" type="button">Copy my choices</button><span class="copied" id="copied" role="status"></span></div>
+<main id="list"></main>
+</div>
+
+<script>
+const R=[
+{t:"Too many main buttons in the hero",p:"“The forecast” (white fill), the hero quiz button (red fill) and the masthead quiz button all compete. Nothing tells the reader where to start.",f:"src/views/hero-day.ts (.hday-doors) · src/styles/hero-day.css",
+ before:`<span class="h">The French election, by the numbers.</span><div class="bs"><span class="b w">The forecast</span><span class="b r">The quiz: who's closest to you?</span><span class="b">Your town</span><span class="b">Your MP</span><span class="b">The programs</span></div>`,
+ o:[{n:"Quiz is the one main button",r:1,d:"The quiz is the fastest payoff for a new reader. Everything else becomes a quiet text link.",m:`<span class="h">The French election, by the numbers.</span><div class="bs"><span class="b p">Take the quiz · 2 min</span></div><div class="ls"><span class="l">The forecast</span><span class="l">Your town</span><span class="l">Your MP</span><span class="l">The programs</span></div>`},
+    {n:"Town search is the main action",d:"A field instead of a button. Personal from the first click; the quiz moves to the masthead only.",m:`<span class="h">The French election, by the numbers.</span><div class="f"><span>Your town or postcode</span><em>Go</em></div><div class="ls"><span class="l">The forecast</span><span class="l">The quiz</span><span class="l">The programs</span></div>`},
+    {n:"Forecast first, quiz second",d:"Keeps the data-first identity: one filled button, one outlined, then links.",m:`<span class="h">The French election, by the numbers.</span><div class="bs"><span class="b p">See the forecast</span><span class="b">Take the quiz</span></div><div class="ls"><span class="l">Your town</span><span class="l">Your MP</span><span class="l">The programs</span></div>`}]},
+{t:"No personal entry point in the hero",p:"“Your town” leads to a list of 35,000 communes. The site's most personal content (your town, your MP, how they voted) is two clicks away.",f:"src/views/hero-day.ts · src/style.css (.hero-x .town-search already exists)",
+ before:`<span class="h">The French election, by the numbers.</span><div class="bs"><span class="b">Your town</span></div><span class="note">→ opens the full commune list</span>`,
+ o:[{n:"Inline field under the intro",r:1,d:"One line, reuses the existing town-search style. Suggestions appear as you type.",m:`<span class="d">Every poll weighed, every promise costed…</span><div class="f"><span>Gif-sur-Yvette, 91190…</span><em>Find</em></div><span class="note">Your town · your MP · how it voted</span>`},
+    {n:"A boxed “Your town” panel",d:"A card beside the headline with the field and three promises. More visible, takes more room.",m:`<div class="card"><span class="k">Your town</span><div class="h" style="font-size:15px;margin:4px 0 6px">Your town, your MP, how it voted</div><div class="f"><span>Town or postcode</span><em>Go</em></div></div>`},
+    {n:"Keep the button, open a search popover",d:"Smallest change: same button, but it opens a search box instead of the list.",m:`<div class="bs"><span class="b">Your town ▾</span></div><div class="card" style="width:85%"><div class="f"><span>Type a town…</span></div><span class="note">Gif-sur-Yvette · Gif · Gisors…</span></div>`}]},
+{t:"“Your MP” opens the list of all 577 MPs",p:"The reader wants their own MP, not a directory.",f:"src/views/hero-day.ts",
+ before:`<div class="bs"><span class="b">Your MP</span></div><span class="note">→ #/assemblee/deputes, 577 rows</span>`,
+ o:[{n:"Saved town first, else ask for a postcode",r:1,d:"If the reader already claimed a town, go straight to that MP. Otherwise a one-field prompt.",m:`<div class="bs"><span class="b">Find my MP</span></div><span class="bubble">Gif-sur-Yvette saved → Essonne, 5th district</span><span class="note">no town saved → “Your postcode?”</span>`},
+    {n:"Show the MP's name on the button",d:"Once a town is known, the button reads with the district. Strongest pull, needs a saved town.",m:`<div class="bs"><span class="b">Your MP · Essonne 5th →</span></div><span class="note">no town saved → “Find my MP”</span>`},
+    {n:"Keep the list, add a search at the top",d:"Least work. Still a directory, but the field is focused on arrival.",m:`<div class="f"><span>Postcode or town…</span><em>Search</em></div><span class="note muted">577 MPs · A–Z</span><span class="note muted">Abad · Adam · Alauzet…</span>`}]},
+{t:"Button labels are nouns",p:"“The forecast”, “Your MP”, “The programs” name sections. Labels that promise a result get more clicks.",f:"src/views/hero-day.ts",
+ before:`<div class="bs"><span class="b">The forecast</span><span class="b">The quiz: who's closest to you?</span><span class="b">Your MP</span><span class="b">The programs</span></div>`,
+ o:[{n:"Verbs that promise the result",r:1,d:"Short, active, with the quiz's length to lower the barrier.",m:`<div class="bs"><span class="b">See who would win today</span><span class="b">Take the quiz · 2 min</span><span class="b">Find my MP</span><span class="b">Compare the programmes</span></div>`},
+    {n:"Questions",d:"Matches the quiz's existing voice. A bit longer, stronger curiosity.",m:`<div class="bs"><span class="b">Who would win today?</span><span class="b">Who's closest to you?</span><span class="b">How did my MP vote?</span><span class="b">What would they change?</span></div>`},
+    {n:"Keep nouns, add a sub-line",d:"Keeps the section names readers learn, adds what's inside.",m:`<div class="bs"><span class="b">The forecast<br><span style="font-weight:400;color:var(--n-fg-3)">who wins today</span></span><span class="b">Your MP<br><span style="font-weight:400;color:var(--n-fg-3)">every vote cast</span></span></div>`}]},
+{t:"Weak empty state on the live readers map",p:"With few readers the widget says “1 reader, 0 on the map” over an empty France. It reads as an unused site.",f:"src/views/hero-day.ts (parliamentHtml)",
+ before:`<span class="k">● Live</span><b>Who's reading Third Estate right now</b><span class="note">1 reader · 0 on the map</span><div class="muted" style="height:60px;background:var(--n-panel)"></div>`,
+ o:[{n:"Hide below a threshold",r:1,d:"Under ~10 readers, the widget is replaced by the swing map at full width. It returns on busy days.",m:`<span class="note">readers &lt; 10 → widget hidden</span><div class="card"><span class="k">Moved left / moved right</span><div class="bars"><i class="up" style="height:14px"></i><i class="dn" style="height:10px"></i><i class="up" style="height:18px"></i><i class="up" style="height:8px"></i><i class="dn" style="height:16px"></i><i class="up" style="height:12px"></i></div></div>`},
+    {n:"Turn it into “claim your town”",d:"Same map, but the call is to add yourself, so an empty map is an invitation.",m:`<b>Put your town on the map</b><div class="f"><span>Your town</span><em>Add</em></div><span class="note">2 towns claimed so far</span>`},
+    {n:"Count the week, not the minute",d:"“312 readers this week, from 41 departments”. Always looks alive; loses the live feel.",m:`<span class="k">This week</span><span class="big">312</span><span class="note">readers from 41 departments</span>`}]},
+{t:"A label line above the headline",p:"“2027 presidential election · date · first round in N days” sits above the H1 as a small-caps label. It splits attention before the headline.",f:"src/views/hero-day.ts (headHtml)",
+ before:`<span class="k">2027 presidential election · 14 Nov 2026 · first round in 148 days</span><span class="h">The French election, by the numbers.</span><span class="d">Every poll weighed, every promise costed…</span>`,
+ o:[{n:"Countdown moves into the intro text",r:1,d:"The headline opens the page; the countdown closes the first sentence.",m:`<span class="h">The French election, by the numbers.</span><span class="d">148 days to the first round. Every poll weighed, every promise costed…</span>`},
+    {n:"Countdown as a big number beside the headline",d:"Makes the countdown a feature in itself. Stronger, but adds a second focal point.",m:`<div style="display:flex;gap:10px;align-items:flex-end"><span class="h" style="flex:1">The French election, by the numbers.</span><div><span class="big">148</span><div class="note">days to round 1</div></div></div>`},
+    {n:"Keep the line, drop the date",d:"Smallest change: shorter label, same position.",m:`<span class="k">First round in 148 days</span><span class="h">The French election, by the numbers.</span><span class="d">Every poll weighed…</span>`}]},
+{t:"Small tiles still use the old pixel frame",p:"Simulator candidate cards and programme scorecard nodes keep the hard offset shadow while every big box now has the underline.",f:"src/styles/simulator.css · src/styles/programme.css",
+ before:`<div style="display:flex;gap:8px"><div class="px" style="flex:1"><b>Candidate A</b><div class="note">24.5%</div></div><div class="px" style="flex:1"><b>Candidate B</b><div class="note">19.0%</div></div></div>`,
+ o:[{n:"Same underline box as everything else",r:1,d:"One box style everywhere; the underline thickens on hover to show it's clickable.",m:`<div style="display:flex;gap:8px"><div class="card" style="flex:1"><b>Candidate A</b><div class="note">24.5%</div></div><div class="card" style="flex:1"><b>Candidate B</b><div class="note">19.0%</div></div></div>`},
+    {n:"Underline box, pixel shadow on hover only",d:"Keeps a trace of the pixel identity as a hover effect on clickable tiles.",m:`<div style="display:flex;gap:8px"><div class="card" style="flex:1;box-shadow:3px 3px 0 var(--n-fg)"><b>Candidate A</b><div class="note">hovered</div></div><div class="card" style="flex:1"><b>Candidate B</b><div class="note">19.0%</div></div></div>`},
+    {n:"Leave the tiles as they are",d:"Pixel frame marks “you can click this”, the underline marks “this is a box”. Two styles on purpose.",m:`<div style="display:flex;gap:8px"><div class="px" style="flex:1"><b>Candidate A</b></div><div class="card" style="flex:1"><b>Reading box</b></div></div>`}]},
+{t:"Quiz: questions may be read out twice",p:"Screen readers. The quiz area announces new content and focus also moves to the new question, so some readers hear it twice. The results screen gets no focus at all.",f:"src/views/quiz.ts",
+ before:`<div class="sr">🔊 <b>Question 4 of 20.</b> Raise the minimum wage…</div><div class="sr">🔊 <b>Question 4 of 20.</b> Raise the minimum wage…</div><span class="note">results screen: focus stays on the last button</span>`,
+ o:[{n:"Move focus only, for questions and results",r:1,d:"Remove the live announcement; focus goes to each question's heading and to the results heading.",m:`<div class="sr">🔊 <b>Question 4 of 20.</b> Raise the minimum wage…</div><div class="sr">🔊 <b>Your results.</b> Closest: …</div>`},
+    {n:"Announce only, don't move focus",d:"Keeps the reader's place on the keyboard; relies on the announcement alone.",m:`<div class="sr">🔊 <b>Question 4 of 20.</b> (focus stays on the answers)</div>`}]},
+{t:"Hero buttons wrap into three rows on phones",p:"At 375px the five hero buttons stack into three ragged rows and push the map below the fold.",f:"src/styles/hero-day.css",
+ before:`<div class="ph"><span class="h">The French election, by the numbers.</span><div class="bs"><span class="b w">The forecast</span><span class="b r">The quiz</span><span class="b">Your town</span><span class="b">Your MP</span><span class="b">The programs</span></div></div>`,
+ o:[{n:"Two buttons and a “More” link",r:1,d:"The main action plus one, then a link that opens the rest.",m:`<div class="ph"><span class="h">The French election, by the numbers.</span><div class="bs"><span class="b p">Take the quiz</span><span class="b">Find my MP</span></div><span class="l">More ↓</span></div>`},
+    {n:"One row that scrolls sideways",d:"All five kept, as chips on a single line. Some are hidden off-screen.",m:`<div class="ph" style="overflow:hidden"><span class="h">The French election, by the numbers.</span><div style="display:flex;gap:5px;white-space:nowrap"><span class="b p">Quiz</span><span class="b">Forecast</span><span class="b">Your town</span><span class="b muted">Your MP</span></div></div>`},
+    {n:"Full-width list",d:"Each entry a full-width row with an arrow. Clear, but long.",m:`<div class="ph"><span class="h">The French election…</span><span class="b p">Take the quiz →</span><span class="b">See the forecast →</span><span class="b">Find my MP →</span></div>`}]},
+{t:"Swing-map bars too thin to tap on phones",p:"Each election bar is about 4px wide at 375px. The ‹ › buttons work, but picking 1936 means 30 taps.",f:"src/views/hero-day.ts · src/styles/hero-day.css",
+ before:`<div class="bars"><i class="up" style="height:8px"></i><i class="dn" style="height:12px"></i><i class="up" style="height:20px"></i><i class="up" style="height:6px"></i><i class="dn" style="height:14px"></i><i class="up" style="height:10px"></i><i class="dn" style="height:8px"></i><i class="up sel" style="height:12px"></i></div><div class="bs"><span class="b">‹</span><span class="b">›</span></div>`,
+ o:[{n:"Drag along the bars to scrub",r:1,d:"Press and slide across the chart; a label follows your finger and the map updates on release.",m:`<span class="bubble">1932 → 1936</span><div class="bars"><i class="up" style="height:8px"></i><i class="dn" style="height:12px"></i><i class="up sel" style="height:20px"></i><i class="up" style="height:6px"></i><i class="dn" style="height:14px"></i><i class="up" style="height:10px"></i></div><span class="note">◀ drag ▶</span>`},
+    {n:"A dropdown of elections",d:"Plain select beside ‹ ›. Precise and accessible, less playful.",m:`<div class="f"><span>1932 → 1936 ▾</span></div><div class="bs"><span class="b">‹</span><span class="b">›</span></div>`},
+    {n:"Bigger bars, chart scrolls sideways",d:"Each bar gets a 24px tap area; the chart scrolls inside its box.",m:`<div class="bars" style="gap:6px"><i class="up" style="height:8px"></i><i class="dn" style="height:12px"></i><i class="up sel" style="height:20px"></i><i class="up" style="height:6px"></i><i class="dn muted" style="height:14px"></i></div><span class="note">← scroll →</span>`}]}
+];
+const KEY="te-ux-picks-v1";let picks={};try{picks=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(picks))}catch(e){}};
+const L="ABC";
+document.getElementById("list").innerHTML=R.map((r,i)=>`<section class="rec" id="rec-${i+1}">
+<div class="rh"><span class="num">${String(i+1).padStart(2,"0")}</span><h2>${r.t}</h2><p>${r.p}</p><span class="file">${r.f}</span></div>
+<div class="row"><div class="before"><div class="lab">Before · now</div><div class="m">${r.before}</div></div>
+${r.o.map((o,j)=>`<label class="opt" data-r="${i}" data-o="${L[j]}"><input type="radio" name="r${i}" id="r${i}${L[j]}" value="${L[j]}"><div class="lab"><b>${L[j]} · ${o.n}</b><span style="display:flex;gap:6px;align-items:center">${o.r?'<span class="rec-tag">REC</span>':''}<span class="tick">✓</span></span></div><div class="m">${o.m}</div><p class="desc">${o.d}</p></label>`).join("")}
+</div><label class="skip"><input type="radio" name="r${i}" id="r${i}skip" value="skip"> Skip this one</label></section>`).join("");
+document.getElementById("meter").innerHTML=R.map(()=>"<i></i>").join("");
+function paint(){let n=0;R.forEach((r,i)=>{const v=picks[i];if(v)n++;document.querySelectorAll(`input[name="r${i}"]`).forEach(x=>{x.checked=x.value===v});document.querySelectorAll(`.opt[data-r="${i}"]`).forEach(el=>el.classList.toggle("on",el.dataset.o===v))});
+document.getElementById("count").textContent=`${n} of 10 decided`;[...document.getElementById("meter").children].forEach((el,i)=>el.classList.toggle("on",!!picks[i]))}
+document.addEventListener("change",e=>{const m=e.target.name&&e.target.name.match(/^r(\d+)$/);if(!m)return;picks[m[1]]=e.target.value;save();paint()});
+paint();
+document.getElementById("copy").addEventListener("click",()=>{const txt="UX choices:\n"+R.map((r,i)=>{const v=picks[i];if(!v)return`${i+1}. ${r.t}: (not decided)`;if(v==="skip")return`${i+1}. ${r.t}: skip`;return`${i+1}. ${r.t}: ${v} (${r.o[L.indexOf(v)].n})`}).join("\n");
+const out=document.getElementById("copied");navigator.clipboard.writeText(txt).then(()=>{out.textContent="Copied. Paste it in the chat."},()=>{out.textContent="Copy blocked: select the text below.";let pre=document.getElementById("fallback");if(!pre){pre=document.createElement("pre");pre.id="fallback";pre.style.cssText="white-space:pre-wrap;font:12px var(--mono);padding:12px;border:1px solid var(--line)";document.querySelector(".wrap").append(pre)}pre.textContent=txt})});
+</script>

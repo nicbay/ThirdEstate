@@ -1,7 +1,7 @@
 // Minimal SVG line chart: polling-average lines with individual poll dots.
 import { esc, safeUrl } from "../util";
 import { L, fmtDate } from "../i18n";
-import { pollValue, pollsterName, type Poll } from "./polls";
+import { gradeColor, pollValue, pollWeight, pollsterAnchor, pollsterName, pollsterRating, type Poll } from "./polls";
 import { dec, pct } from "./format";
 
 export interface Series {
@@ -9,22 +9,54 @@ export interface Series {
   label: string;
   color: string;
   line: { date: string; value: number }[];
-  dots?: { date: string; value: number; title: string; href?: string }[];
+  dots?: { date: string; value: number; title: string; href?: string; /** part of the title shown in colour */ mark?: { text: string; color: string } }[];
   /** Final value shown as a diamond (e.g. actual election result). */
   final?: { date: string; value: number; title: string };
+  /** Projection: a dotted line through the knots' `mid` inside a band through their [lo, hi]; the first knot is
+   *  today (lo = mid = hi), and the band opens like a funnel from there. */
+  /** a ring around one point (the latest poll), in a given colour */
+  ring?: { date: string; value: number; color: string; title: string; mark?: string };
+  proj?: { knots: { date: string; mid: number; lo: number; hi: number }[]; label?: string; title?: string; /** the candidate withdraws at the last knot: the line stops there with a cross */ out?: boolean };
 }
 
-export function lineChart(series: Series[], opts: { height?: number; yMax?: number } = {}) {
-  // Phones get a narrower canvas so 11px labels stay ~11px instead of shrinking to 4px.
+/** One mark per poll under the plot: a short text (the institute's grade) in a colour, linked. */
+export interface RugMark { date: string; text: string; color: string; href: string; title: string }
+
+export function lineChart(series: Series[], opts: { height?: number; yMax?: number; markers?: { date: string; label: string; title?: string }[]; /** a short head over the end labels, saying what the figures there are */ endHead?: string; /** marks along the bottom, one per poll, with a label at the left */ rug?: { marks: RugMark[]; label: string } } = {}) {
+  // Phones get a narrower canvas so labels stay at 11px or more on a 343px-wide chart (16px units × 343/460).
   const compact = typeof window !== "undefined" && window.innerWidth < 640;
-  const W = compact ? 520 : 900, H = Math.round((opts.height ?? 380) * (compact ? 1.05 : 1)), L = compact ? 40 : 44, R = compact ? 172 : 150, T = 12, B = compact ? 34 : 28;
+  const head = opts.endHead ? (compact ? 24 : 18) : 0;
+  const W = compact ? 460 : 900, H = Math.round((opts.height ?? 380) * (compact ? 1.05 : 1)) + head, L = compact ? 40 : 44, R = compact ? 136 : 150, T = (opts.markers?.length ? (compact ? 34 : 28) : 12) + head, B0 = compact ? 34 : 28;
   const gap = compact ? 19 : 13;
-  const all = series.flatMap((s) => [...s.line, ...(s.dots ?? []), ...(s.final ? [s.final] : [])]);
+  const rugMarks = opts.rug?.marks ?? [];
+  const all = series.flatMap((s) => [...s.line, ...(s.dots ?? []), ...(s.final ? [s.final] : []), ...(s.proj ? s.proj.knots.map((k) => ({ date: k.date, value: k.hi })) : [])]);
   if (!all.length) return "";
   const t = (d: string) => Date.parse(d);
   const x0 = Math.min(...all.map((p) => t(p.date))), x1 = Math.max(...all.map((p) => t(p.date)));
   const yMax = opts.yMax ?? Math.ceil(Math.max(...all.map((p) => p.value)) / 5) * 5 + 5;
-  const x = (d: string) => L + ((t(d) - x0) / Math.max(1, x1 - x0)) * (W - L - R);
+  // a projection gets at most a fifth of the width, whatever the range shown: the months ahead are squeezed (not to
+  // scale, marked by a break on the axis) so six months of polls don't shrink to make room for five of forecast
+  const tNow = Math.max(...series.flatMap((s) => [...s.line, ...(s.dots ?? [])].map((p) => t(p.date))), x0);
+  const natural = series.some((s) => s.proj) && x1 > tNow && tNow > x0 ? (x1 - tNow) / (x1 - x0) : 0;
+  const fut = Math.min(natural, 0.2), squeezed = natural - fut > 0.01;
+  const pw = W - L - R, xNow = L + (1 - fut) * pw;
+  const x = (d: string) => {
+    const v = t(d);
+    if (!natural) return L + ((v - x0) / Math.max(1, x1 - x0)) * pw;
+    return v <= tNow ? L + ((v - x0) / Math.max(1, tNow - x0)) * (1 - fut) * pw : xNow + ((v - tNow) / Math.max(1, x1 - tNow)) * fut * pw;
+  };
+  // the rug: marks laid left to right in up to four rows, a new row when one would touch the previous
+  const rugFs = compact ? 14 : 10, rugRow = rugFs + 2, rugMin = rugFs * 1.05;
+  const rows: number[] = [];
+  const placed = rugMarks.filter((m) => t(m.date) >= x0 && t(m.date) <= x1).sort((a, b) => t(a.date) - t(b.date)).map((m) => {
+    const mx = x(m.date);
+    let r = rows.findIndex((end) => mx - end >= rugMin);
+    if (r < 0) r = rows.length < 4 ? rows.length : rows.indexOf(Math.min(...rows));
+    rows[r] = mx;
+    return { m, mx, r };
+  });
+  const rugH = placed.length ? rows.length * rugRow + 8 : 0;
+  const B = B0 + rugH;
   const y = (v: number) => T + (1 - v / yMax) * (H - T - B);
 
   const grid = [];
@@ -38,12 +70,17 @@ export function lineChart(series: Series[], opts: { height?: number; yMax?: numb
     d.setUTCMonth(d.getUTCMonth() + 1);
   }
   const step = Math.ceil(months.length / (compact ? 4 : 8));
-  const ticks = months.filter((_, i) => i % step === 0).map((m) => `<text x="${x(m)}" y="${H - 8}" text-anchor="middle" class="axis">${fmtDate(m).replace(/^\d+\s/, "")}</text>`);
+  // phones: month only, with the year on January ("Sept", "Nov", "Jan 27"), so the ticks don't run into each other
+  const tickLabel = (m: string) => { const full = fmtDate(m).replace(/^\d+\s/, ""); if (!compact) return full; const [mon, yr] = full.split(" "); return m.slice(5, 7) === "01" && yr ? `${mon} ${yr.slice(2)}` : mon; };
+  // and never closer than a label's width (the squeezed months ahead would otherwise run into each other)
+  let lastTick = -Infinity;
+  const ticks = months.filter((_, i) => i % step === 0).filter((m) => { const ok = x(m) - lastTick >= (compact ? 95 : 80); if (ok) lastTick = x(m); return ok; }).map((m) => `<text x="${x(m)}" y="${H - 8}" text-anchor="middle" class="axis">${esc(tickLabel(m))}</text>`);
 
   // end labels, nudged apart so they don't overlap
+  const endValue = (s: Series) => (s.proj ? s.proj.knots.at(-1)!.mid : s.line.at(-1)!.value);
   const ends = series
     .filter((s) => s.line.length)
-    .map((s) => ({ s, y: y(s.line.at(-1)!.value) }))
+    .map((s) => ({ s, y: y(endValue(s)) }))
     .sort((a, b) => a.y - b.y);
   for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < gap) ends[i].y = ends[i - 1].y + gap;
   // if the stack ran past the bottom, push it back up from the last label
@@ -52,31 +89,88 @@ export function lineChart(series: Series[], opts: { height?: number; yMax?: numb
     for (let i = ends.length - 2; i >= 0; i--) if (ends[i + 1].y - ends[i].y < gap) ends[i].y = ends[i + 1].y - gap;
   }
 
-  return `<svg viewBox="0 0 ${W} ${H}" class="chart${compact ? " compact" : ""}" role="img" aria-label="${esc(series.map((s) => `${s.label} ${dec(s.line.at(-1)?.value)}`).join(", "))}">
-    ${grid.join("")}${ticks.join("")}
+  // projection: a band that opens like a funnel (width grows with the square root of time) and a dotted centre line
+  const proj = (s: Series) => {
+    const ks = s.proj?.knots;
+    if (!ks || ks.length < 2) return "";
+    const up: string[] = [], dn: string[] = [], mid: string[] = [];
+    for (let k = 0; k + 1 < ks.length; k++) {
+      const A = ks[k], B = ks[k + 1];
+      const N = k === 0 ? 14 : 4;
+      for (let i = k === 0 ? 0 : 1; i <= N; i++) {
+        const f = i / N, g = k === 0 ? Math.sqrt(f) : f; // the first stretch opens like a funnel
+        const xx = x(new Date(t(A.date) + f * (t(B.date) - t(A.date))).toISOString());
+        const m = A.mid + (B.mid - A.mid) * f;
+        const lo = A.lo + (B.lo - A.lo) * g, hi = A.hi + (B.hi - A.hi) * g;
+        up.push(`${xx},${y(Math.max(m, hi))}`);
+        dn.push(`${xx},${y(Math.max(0, Math.min(m, lo)))}`);
+        mid.push(`${xx},${y(m)}`);
+      }
+    }
+    const endK = ks.at(-1)!;
+    const cross = s.proj?.out ? (() => { const cx = x(endK.date), cy = y(endK.mid), r = compact ? 6 : 5; return `<path class="proj-out" d="M${cx - r},${cy - r}L${cx + r},${cy + r}M${cx - r},${cy + r}L${cx + r},${cy - r}" stroke="${s.color}"><title>${esc(s.proj?.title ?? "")}</title></path>`; })() : "";
+    return `<g class="proj"><polygon class="band" points="${[...up, ...dn.reverse()].join(" ")}" fill="${s.color}"><title>${esc(s.proj?.title ?? "")}</title></polygon>
+      <polyline class="proj-line" fill="none" stroke="${s.color}" points="${mid.join(" ")}"/><polyline class="proj-hit" fill="none" points="${mid.join(" ")}"/>${cross}</g>`;
+  };
+  const mw = (m: { label: string }) => m.label.length * (compact ? 9.4 : 7) + 14;
+  const ms = (opts.markers ?? []).filter((m) => t(m.date) >= x0 && t(m.date) <= x1).sort((a, b) => t(a.date) - t(b.date));
+  // labels laid left to right: one that would run into the next sits to the left of its own line, and the next
+  // moves right of where the previous one ends if it still has to
+  let prevEnd = -Infinity;
+  const markers = ms.map((m, i) => {
+    const mx = x(m.date), w = mw(m), h = compact ? 24 : 18;
+    const next = ms[i + 1];
+    const left = next && x(next.date) - mw(next) / 2 < mx + w / 2 + 4;
+    const bx = Math.max(left ? mx - w : mx - w / 2, prevEnd + 4);
+    prevEnd = bx + w;
+    return `<g class="marker"><title>${esc(m.title ?? m.label)}</title><line x1="${mx}" x2="${mx}" y1="${T - 4}" y2="${H - B}"/>
+      <rect x="${bx}" y="${T - 6 - h}" width="${w}" height="${h}"/><text x="${bx + w / 2}" y="${T - 6 - h / 2}" text-anchor="middle" dominant-baseline="central">${esc(m.label)}</text></g>`;
+  }).join("")
+  // where the squeezed months begin: a small break on the time axis
+  const brk = squeezed ? `<path class="axis-break" d="M${xNow - 5},${H - B + 5}l4,-10M${xNow + 1},${H - B + 5}l4,-10"><title>${esc(fmtDate(new Date(tNow).toISOString().slice(0, 10)))}</title></path>` : "";
+
+  const endLabel = (s: Series) => {
+    const e = ends.find((z) => z.s === s);
+    if (!e) return "";
+    const y0 = y(endValue(s)), lx = W - R + 8;
+    const lead = Math.abs(e.y - y0) > 3 ? `<path class="end-lead" d="M${W - R + 1},${y0}L${lx - 2},${e.y}" stroke="${s.color}"/>` : "";
+    const name = compact && (s.proj?.label ?? s.label).length > 11 ? `${(s.proj?.label ?? s.label).slice(0, 10).trim()}…` : s.proj?.label ?? s.label;
+    return `${lead}<text x="${lx}" y="${e.y + 4}" class="end-label" fill="${s.color}"><title>${esc(s.proj?.title ?? s.label)}</title>${esc(name)} <tspan class="v">${s.proj?.out ? "✕" : `${s.proj ? "≈" : ""}${dec(endValue(s))}`}</tspan></text>`;
+  };
+  const hasProj = series.some((s) => s.proj);
+  return `<svg viewBox="0 0 ${W} ${H}" class="chart${compact ? " compact" : ""}${hasProj ? " has-proj" : ""}" role="img" aria-label="${esc(series.map((s) => `${s.label} ${dec(s.line.at(-1)?.value)}`).join(", "))}">
+    ${opts.endHead ? `<text x="${W - 2}" y="${compact ? 17 : 13}" text-anchor="end" class="axis end-head">${esc(opts.endHead)}</text>` : ""}${grid.join("")}${ticks.join("")}${markers}${brk}
     ${series
       .map(
         (s) => `<g class="series" data-name="${esc(s.name)}" style="--c:${s.color}">
-          ${(s.dots ?? []).map((p) => { const c = `<circle cx="${x(p.date)}" cy="${y(p.value)}" r="${compact ? 3.6 : 3}" class="dot" fill="${s.color}"><title>${esc(p.title)}</title></circle>`; return p.href ? `<a href="${esc(safeUrl(p.href))}" target="_blank" rel="noopener" class="dot-link">${c}</a>` : c; }).join("")}
+          ${(s.dots ?? []).map((p) => { const c = `<circle cx="${x(p.date)}" cy="${y(p.value)}" r="${compact ? 3.6 : 3}" class="dot" fill="${s.color}"${p.mark ? ` data-tip-mark="${esc(p.mark.text)}" data-tip-color="${esc(p.mark.color)}"` : ""}><title>${esc(p.title)}</title></circle>`; return p.href ? (p.href.startsWith("#") ? `<a href="${esc(p.href)}" class="dot-link">${c}</a>` : `<a href="${esc(safeUrl(p.href))}" target="_blank" rel="noopener" class="dot-link">${c}</a>`) : c; }).join("")}
+          ${proj(s)}
           <polyline class="halo" points="${s.line.map((p) => `${x(p.date)},${y(p.value)}`).join(" ")}"/>
           <polyline class="line" pathLength="1" fill="none" stroke="${s.color}" stroke-width="${compact ? 3.4 : 2.6}" stroke-linejoin="round" stroke-linecap="round" points="${s.line.map((p) => `${x(p.date)},${y(p.value)}`).join(" ")}"/>
+          ${s.ring ? `<circle cx="${x(s.ring.date)}" cy="${y(s.ring.value)}" r="${compact ? 8 : 6.5}" class="ring" fill="none" stroke="${s.ring.color}" stroke-width="${compact ? 2.6 : 2}"${s.ring.mark ? ` data-tip-mark="${esc(s.ring.mark)}" data-tip-color="${esc(s.ring.color)}"` : ""}><title>${esc(s.ring.title)}</title></circle>` : ""}
           ${s.final ? `<path d="M${x(s.final.date)},${y(s.final.value) - 6}l6,6l-6,6l-6,-6z" fill="${s.color}" stroke="var(--card)"><title>${esc(s.final.title)}</title></path>` : ""}
+          ${endLabel(s)}
         </g>`,
       )
       .join("")}
-    ${ends.map(({ s, y: yy }) => `<text x="${W - R + 8}" y="${yy + 4}" class="end-label" fill="${s.color}"><title>${esc(s.label)}</title>${esc(compact && s.label.length > 14 ? `${s.label.slice(0, 13).trim()}…` : s.label)} <tspan class="v">${dec(s.line.at(-1)!.value)}</tspan></text>`).join("")}
+    ${placed.length ? `<g class="rug"><text x="${L - 6}" y="${H - B + 6 + rugRow * 0.8}" text-anchor="end" class="axis">${esc(opts.rug!.label)}</text>${placed.map(({ m, mx, r }) => `<a href="${esc(m.href)}"><text x="${mx}" y="${H - B + 6 + rugRow * (r + 0.8)}" text-anchor="middle" fill="${m.color}" font-size="${rugFs}"><title>${esc(m.title)}</title>${esc(m.text)}</text></a>`).join("")}</g>` : ""}
   </svg>`;
 }
 
-/** Every poll that tested `name` since `from`, as chart dots: hover for the figure, click for the poll's source
- *  (the pollster's or outlet's page when the record cites one, else the page the record comes from). */
-export function pollDots(polls: Poll[], name: string, from: string, fallback?: string) {
+/** Every poll that tested `name` since `from`, as chart dots: hover for the figure, the institute's grade and the
+ *  poll's weight in the average; click for the poll's own publication (the pollster's release, else its official
+ *  notice at the Commission des sondages; a press article only when neither was found). Never Wikipedia. */
+export function pollDots(polls: Poll[], name: string, from: string, _fallback?: string) {
   return polls.filter((p) => p.end >= from).flatMap((p) => {
     const v = pollValue(p, name);
     if (v == null) return [];
-    const href = p.url ?? fallback;
-    return [{ date: p.end, value: v, href, title: `${pollsterName(p.pollster)} · ${fmtDate(p.end)}
-${name} ${dec(v)} %${href ? `
-${L("Cliquer pour ouvrir la source", "Click to open the source")}` : ""}` }];
+    // a dot opens the institute on our ranking page (its grade, its lean, its polls with their sources)
+    const href = `#/sondages/instituts#${pollsterAnchor(p.pollster)}`;
+    const r = pollsterRating(p.pollster);
+    const grade = r?.grade ? L(`note ${r.grade}`, `grade ${r.grade}`) : L("pas encore noté", "not yet graded");
+    const open = L("Cliquer : l’institut, sa note et ses sondages (avec leurs sources)", "Click: the institute, its grade and its polls (with their sources)");
+    return [{ date: p.end, value: v, href, mark: r?.grade ? { text: grade, color: gradeColor(r.grade) } : undefined, title: `${pollsterName(p.pollster)} (${grade}, ${L("poids", "weight")} ${dec(pollWeight(p), 2)}) · ${fmtDate(p.end)}
+${name} ${dec(v)} %${open ? `
+${open}` : ""}` }];
   });
 }

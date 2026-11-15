@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/check-candidates.mjs && node scripts/build-programmes-index.mjs && tsc && vite build",
+    "build": "node scripts/check-candidates.mjs && node scripts/build-programmes-index.mjs && node scripts/build-editions.mjs && tsc && vite build",
     "check:candidates": "node scripts/check-candidates.mjs",
     "preview": "vite preview",
     "sync:an": "node scripts/sync-assemblee.mjs",
@@ -14,11 +14,17 @@
     "sync:geo": "node scripts/sync-geo.mjs",
     "sync": "npm run sync:geo && npm run sync:results && npm run sync:an && npm run sync:polls && npm run sync:markets",
     "sync:polls": "node scripts/sync-polls.mjs",
+    "sync:pollster-ratings": "node scripts/sync-pollster-ratings.mjs",
     "sync:markets": "node scripts/sync-markets.mjs",
     "sync:results": "node scripts/sync-results.mjs",
     "sync:economy": "node scripts/sync-economy.mjs",
+    "sync:arms": "node scripts/sync-arms.mjs",
+    "build:feed": "node scripts/sync-press-tweets.mjs && node scripts/build-feed.mjs",
     "sync:forecast": "esbuild scripts/forecast-history.ts --bundle --platform=node --format=esm --outfile=.cache/forecast-history.mjs --log-level=warning && node .cache/forecast-history.mjs",
-    "sync:daily": "esbuild scripts/daily-brief.ts --bundle --platform=node --format=esm --packages=external --outfile=.cache/daily-brief.mjs --log-level=warning && node .cache/daily-brief.mjs"
+    "sync:parrainages": "node scripts/sync-parrainages.mjs",
+    "sync:police": "node scripts/sync-police.mjs",
+    "sync:state-balance": "node scripts/sync-state-balance.mjs && node scripts/build-district-balance.mjs",
+    "sync:daily": "esbuild scripts/daily-brief.ts --bundle --platform=node --format=esm --packages=external --outfile=.cache/daily-brief.mjs --log-level=warning && node .cache/daily-brief.mjs && node scripts/build-editions.mjs"
   },
   "devDependencies": {
     "@types/d3-geo": "3.1.0",

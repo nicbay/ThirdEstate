@@ -4,7 +4,7 @@
 // Data loads on first open. Recent picks are kept in localStorage.
 import { fetchJson, loadDeputes, type Depute } from "../data";
 import { L, fmtNum, getLang } from "../i18n";
-import { esc, safeColor } from "../util";
+import { esc, FEED_ON, safeColor } from "../util";
 /** Recent searches come back from localStorage: only in-site routes are allowed as links. */
 const safeHref = (h: string | undefined) => (typeof h === "string" && /^#\/[\w\-/#.%]*$/.test(h) ? h : "#/assemblee/themes");
 import { searchPlaces } from "../views/explore";
@@ -16,23 +16,23 @@ type Kind = "page" | "town" | "mp" | "senator" | "word";
 interface Hit { kind: Kind; label: string; context: string; href?: string; word?: string; color?: string; score: number }
 
 /** Every section and page, both languages searchable whatever the current one. */
-const PAGES: { href: string; fr: string; en: string; k?: string }[] = [
+const PAGES: { href: string; fr: string; en: string; k?: string }[] = ([
   { href: "#/", fr: "Accueil", en: "Home", k: "une home" },
   { href: "#/explorer", fr: "Toutes les communes", en: "Every town", k: "chez vous ville commune town maire" },
   { href: "#/assemblee", fr: "Les députés, la carte des 577 circonscriptions", en: "The MPs, the map of the 577 districts", k: "parlement assemblée nationale assembly circonscriptions" },
   { href: "#/assemblee/deputes", fr: "Liste des députés", en: "List of MPs", k: "parlement deputes mps" },
   { href: "#/assemblee/loyaute", fr: "Doigt sur la couture : la discipline de vote", en: "Toeing the line: party discipline", k: "loyauté loyalty rebelles frondeurs" },
   { href: "#/assemblee/themes", fr: "Ce qu’ils disent : les mots de l’hémicycle", en: "What they say: words in the chamber", k: "thèmes themes nuage cloud discours speeches" },
-  { href: "#/assemblee/composition", fr: "Composition de l’Assemblée", en: "Who sits in the Assembly", k: "professions métiers sociologie" },
+  { href: "#/assemblee/composition", fr: "Qui ils sont : la composition de l’Assemblée", en: "Who they are: who sits in the Assembly", k: "professions métiers sociologie" },
   { href: "#/senat", fr: "Sénat : les 348 sénateurs", en: "Senate: the 348 senators", k: "parlement senateurs senators" },
   { href: "#/2027", fr: "Présidentielle 2027 : la course", en: "2027 presidential: the race", k: "prévision forecast élection" },
   { href: "#/sondages", fr: "Sondages et marchés prédictifs", en: "Polls and prediction markets", k: "polls polymarket intentions de vote" },
   { href: "#/simulateur", fr: "Simulateur du second tour", en: "Runoff simulator", k: "simulateur simulation reports de voix" },
   { href: "#/fil", fr: "Fil rouge, fil bleu : l’actualité vue de gauche et de droite", en: "Red feed, blue feed: the news from left and right", k: "feed actualité news presse" },
   { href: "#/quiz", fr: "Le quiz : qui vous ressemble ?", en: "The quiz: who is most like you?", k: "candidat test" },
-  { href: "#/programmes", fr: "Programmes 2027 : tous les candidats, mesure par mesure", en: "2027 programmes: every candidate, measure by measure", k: "programme propositions mesures promesses comparer" },
-  { href: "#/programmes#comparer", fr: "Comparer les programmes par thème", en: "Compare the programmes by theme", k: "retraites immigration impôts écologie santé sécurité themes" },
-  { href: "#/programmes#couts", fr: "Ce que coûtent les programmes", en: "What the programmes cost", k: "chiffrage coût budget institut montaigne ifrap" },
+  { href: "#/programmes", fr: "Programmes 2027 : tous les candidats, mesure par mesure", en: "2027 programs: every candidate, measure by measure", k: "programme propositions mesures promesses comparer" },
+  { href: "#/programmes#comparer", fr: "Comparer les programmes par thème", en: "Compare the programs by theme", k: "retraites immigration impôts écologie santé sécurité themes" },
+  { href: "#/programmes#couts", fr: "Ce que coûtent les programmes", en: "What the programs cost", k: "chiffrage coût budget institut montaigne ifrap" },
   { href: "#/chiffres", fr: "La France en chiffres", en: "France in numbers", k: "économie economy dette debt chômage inflation" },
   { href: "#/chiffres#depuis", fr: "La dette en direct", en: "The debt, live", k: "économie economy compteur" },
   { href: "#/resultats/bascules", fr: "Cartes des bascules gauche-droite", en: "Left–right shift maps", k: "flèches arrows shifts carte map" },
@@ -41,7 +41,7 @@ const PAGES: { href: string; fr: string; en: string; k?: string }[] = [
   { href: "#/resultats/legislatives-2024", fr: "Législatives 2024", en: "2024 legislative election", k: "archives résultats results" },
   { href: "#/mentions-legales", fr: "Mentions légales, données personnelles, cookies", en: "Legal notice, personal data, cookies", k: "rgpd gdpr privacy vie privée éditeur hébergeur contact" },
   { href: "#/sources", fr: "Sources et méthode", en: "Sources and method", k: "données data méthodologie" },
-];
+] as { href: string; fr: string; en: string; k?: string }[]).filter((p) => FEED_ON || p.href !== "#/fil");
 
 const KIND_LABEL: Record<Kind, [string, string]> = {
   page: ["Pages", "Pages"], town: ["Communes", "Towns"], mp: ["Députés", "MPs"], senator: ["Sénateurs", "Senators"], word: ["Mots de l’hémicycle", "Words in the chamber"],
@@ -230,8 +230,8 @@ async function update() {
     // street addresses only when the query looks like one (it has a number); a name query wants towns
     const towns: Hit[] = places.filter((p) => /\d/.test(raw) || !/\b\d{5}\b/.test(p.label)).slice(0, 6).map((p, n) => ({
       kind: "town", label: p.label, context: p.context, href: `#/ville/${p.code}`,
-      // a postcode puts towns first; otherwise they rank by name match, just below an equal match of another kind
-      score: /^\d{5}$/.test(raw) ? 5 - n * 0.01 : Math.max(score(q, norm(p.label)), 1) - 0.05 - n * 0.01,
+      // towns come first: a postcode, or a name that matches a town (people mostly search for where they live)
+      score: /^\d{5}$/.test(raw) ? 5 - n * 0.01 : Math.max(score(q, norm(p.label)), 1) + 1 - n * 0.01,
     }));
     draw([...local, ...towns]);
   }, 200);

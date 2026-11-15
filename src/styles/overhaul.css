@@ -1,0 +1,216 @@
+/* Third Estate — Pixel Desk v2 (beta). Loaded last; see todo/ui-overhaul.md and docs/design.md.
+   Same pixel grammar, a calmer frame: the answer comes first, one local bar, and the pixel panel
+   means "you can click this". Written against src/styles/tokens.css. */
+
+/* ---------- answer-first page header: a paper headline strip (style.css), the content right under it ---------- */
+.sec-hero-in { gap: var(--spacing-3); }
+.sec-hero h1 { font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.9rem); line-height: 0.98; max-width: 40ch; }
+.page-tabs[hidden], .page-head nav.tabs[hidden] { display: none; }
+.sec-hero .dek { font-size: clamp(0.98rem, 0.94rem + 0.2vw, 1.08rem); line-height: 1.45; }
+.sec-hero .page-head, .sec-hero .page-head > div { gap: var(--spacing-2); }
+.sec-hero .mp-head { gap: var(--spacing-5); }
+.sec-hero .mp-head img { width: 104px; height: 104px; }
+.sec-hero .crumbs { margin: 0; font-size: 0.78rem; }
+@media (max-width: 760px) {
+  .sec-hero-in { gap: var(--spacing-2); }
+  .sec-hero h1 { font-size: clamp(1.6rem, 1.2rem + 2.6vw, 2.1rem); }
+  .sec-hero .mp-head { grid-template-columns: auto minmax(0, 1fr); gap: var(--spacing-4); }
+  .sec-hero .mp-head img { width: 72px; height: 72px; }
+}
+
+/* ---------- one local bar: section pages, and the current page's views nested after it ---------- */
+.subnav-bar .sub-tabs { display: flex; align-items: center; gap: 0.1rem; padding: 0 0.5rem 0 0.2rem; margin-right: 0.4rem; border-right: 2px solid var(--night-rule); }
+.subnav-bar .sub-tabs::before { content: ""; flex: none; width: 6px; height: 6px; margin: 0 0.35rem 0 0; background: var(--night-rule-2); box-shadow: 4px 0 0 var(--night-rule-2); }
+.subnav-bar.has-tabs a.active { border-image: none; border-bottom-color: transparent; color: #fff; }
+.subnav-bar .sub-tabs a { font-weight: 550; font-size: 0.84rem; color: var(--night-label); padding-left: 0.55rem; padding-right: 0.55rem; }
+.subnav-bar .sub-tabs a[aria-current] { color: #fff; border-image: linear-gradient(90deg, var(--split-red) 0 50%, var(--split-blue) 50% 100%) 1; }
+.subnav-bar .sub-tabs a:hover { color: #fff; background: rgba(255, 255, 255, 0.05); }
+
+/* ---------- calm panels: a section is a white sheet opened by an ink rule; the stepped pixel frame and the
+   hard shadow are kept for what you can click (candidate cards, next steps, quiz picks, simulator cards) ---------- */
+.card { border: 0; border-top: 3px solid var(--ink); border-image: none; background: var(--paper); padding: var(--spacing-4) 1.35rem 1.4rem; }
+.card .card, .sec-hero .card { border-top: 0; background: none; padding: 0; }
+.page { row-gap: var(--spacing-5); }
+@media (max-width: 760px) { .card { padding: var(--spacing-3) var(--spacing-3) var(--spacing-4); } }
+
+/* ---------- detail sheet (src/lib/sheet.ts): phones only, the side panel rises from the bottom ---------- */
+@media (max-width: 860px) {
+  .px-sheet { position: fixed; left: 0; right: 0; z-index: 24; display: grid; grid-template-rows: auto minmax(0, 1fr); margin: 0; padding: 0; background: var(--paper); border: 6px solid transparent; border-bottom: 0; border-image: var(--px-ink) 6 / 6px / 0 stretch; background-clip: padding-box; filter: drop-shadow(0 -4px 0 rgba(11, 13, 24, 0.18)); transition: transform 0.24s steps(6, end); will-change: transform; }
+  .px-sheet-grab { display: grid; place-items: center; height: 30px; padding: 0; border: 0; background: none; cursor: grab; touch-action: none; }
+  .px-sheet-grab::before { content: ""; width: 40px; height: 6px; background: var(--rule-2); box-shadow: 0 0 0 0 var(--ink); clip-path: var(--px-clip); }
+  .px-sheet-grab:active { cursor: grabbing; }
+  .px-sheet-grab:focus-visible { outline-offset: -4px; }
+  .px-sheet-body { overflow-y: auto; overscroll-behavior: contain; max-height: calc(var(--sheet-visible, 50vh) - 36px); padding: 0 var(--spacing-4) var(--spacing-4); }
+  .px-sheet.is-peek .px-sheet-body { overflow: hidden; }
+  .px-sheet-space { display: block; }
+}
+.px-sheet-space { display: none; }
+
+/* ---------- theme toggle (masthead) ---------- */
+.theme-btn { display: grid; place-items: center; width: 36px; height: 36px; padding: 0; color: #fff; background: none; border: 2px solid var(--night-rule-2); cursor: pointer; }
+.theme-btn:hover { border-color: #fff; }
+.theme-btn .px-icon { width: 12px; height: 12px; }
+@media (max-width: 760px) { .theme-btn { width: 32px; height: 32px; } }
+
+/* ---------- dark theme: the few light-only tints (warnings, flags) get dark tints with light text ---------- */
+:root[data-theme="dark"] .verify { background: #2b2614; }
+:root[data-theme="dark"] .mp-entry-tag, :root[data-theme="dark"] .ph-flag.is-risk { background: #2b2614; border-color: #4d4220; color: #f0cf7a; }
+:root[data-theme="dark"] .ph-flag.is-serious { background: #33161c; border-color: #5c2530; color: #ff9aa6; }
+:root[data-theme="dark"] .ph-lstack .l-ok, :root[data-theme="dark"] .ph-key .l-ok { background: #4a4f66; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .verify { background: #2b2614; }
+  :root:not([data-theme="light"]) .mp-entry-tag, :root:not([data-theme="light"]) .ph-flag.is-risk { background: #2b2614; border-color: #4d4220; color: #f0cf7a; }
+  :root:not([data-theme="light"]) .ph-flag.is-serious { background: #33161c; border-color: #5c2530; color: #ff9aa6; }
+  :root:not([data-theme="light"]) .ph-lstack .l-ok, :root:not([data-theme="light"]) .ph-key .l-ok { background: #4a4f66; }
+}
+
+/* ---------- dark theme: the far-right navy (#1c2c6c) vanishes on dark paper, so it lifts to a lighter
+   violet-navy, still apart from the right's blue. The only party colour the theme touches. ---------- */
+:root[data-theme="dark"] { --far-right: #6a78e0; }
+:root[data-theme="dark"] [fill="#1c2c6c"] { fill: #6a78e0; }
+:root[data-theme="dark"] [stroke="#1c2c6c"] { stroke: #6a78e0; }
+:root[data-theme="dark"] [style*="#1c2c6c"] { --c: #6a78e0 !important; --col: #6a78e0 !important; }
+:root[data-theme="dark"] [style*="background:#1c2c6c"], :root[data-theme="dark"] [style*="background: #1c2c6c"] { background: #6a78e0 !important; }
+:root[data-theme="dark"] [style*="color:#1c2c6c"]:not([style*="background"]), :root[data-theme="dark"] [style*="color: #1c2c6c"]:not([style*="background"]) { color: #6a78e0 !important; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --far-right: #6a78e0; }
+  :root:not([data-theme="light"]) [fill="#1c2c6c"] { fill: #6a78e0; }
+  :root:not([data-theme="light"]) [stroke="#1c2c6c"] { stroke: #6a78e0; }
+  :root:not([data-theme="light"]) [style*="#1c2c6c"] { --c: #6a78e0 !important; --col: #6a78e0 !important; }
+  :root:not([data-theme="light"]) [style*="background:#1c2c6c"], :root:not([data-theme="light"]) [style*="background: #1c2c6c"] { background: #6a78e0 !important; }
+  :root:not([data-theme="light"]) [style*="color:#1c2c6c"]:not([style*="background"]), :root:not([data-theme="light"]) [style*="color: #1c2c6c"]:not([style*="background"]) { color: #6a78e0 !important; }
+}
+
+/* ---------- the kit page (#/kit) ---------- */
+.kit-sws { list-style: none; margin: 0.6rem 0 1rem; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: var(--spacing-3); }
+.kit-sw { display: grid; grid-template-columns: 36px minmax(0, 1fr); column-gap: var(--spacing-2); align-items: center; font-size: 0.78rem; }
+.kit-sw i { grid-row: span 2; width: 36px; height: 36px; border: 2px solid var(--rule-2); clip-path: var(--px-clip); }
+.kit-sw code { font: 500 0.72rem var(--mono); overflow-wrap: anywhere; }
+.kit-sw small { color: var(--ink-3); font: 500 0.68rem var(--mono); }
+.kit-type { display: grid; gap: var(--spacing-2); }
+.kit-type > * { margin: 0; }
+.kit-h1 { font: 850 clamp(1.8rem, 1.1rem + 2.2vw, 2.9rem)/0.98 var(--display); font-stretch: 72%; letter-spacing: -0.028em; }
+.kit-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-3); margin: 0 0 var(--spacing-4); }
+.kit-icons span { display: grid; place-items: center; width: 40px; height: 40px; color: var(--ink); background: var(--panel); }
+.kit-hemi { max-width: 420px; margin-top: var(--spacing-4); }
+.town-pane { min-width: 0; }
+.town-pane-k { display: none; margin: 0 0 var(--spacing-2); font: 400 0.625rem var(--pixel); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-3); }
+@media (max-width: 860px) {
+  .px-sheet .town-pane-k { display: block; }
+  .px-sheet .town-list { border-top: 0; }
+}
+
+/* the page's entrance must not leave a transform behind: a transformed .page would trap the fixed detail sheet */
+.page { animation-fill-mode: backwards; }
+@media (max-width: 860px) {
+  /* a sheet nested in another card (presidential results) keeps its surface and frame */
+  .card .px-sheet.card, .card .px-sheet { background: var(--paper); background-clip: padding-box; border: 6px solid transparent; border-bottom: 0; border-image: var(--px-ink) 6 / 6px / 0 stretch; padding: 0; }
+}
+
+/* ---------- toasts (src/lib/toast.ts) ---------- */
+.px-toasts { position: fixed; z-index: 60; left: 50%; bottom: var(--spacing-5); transform: translateX(-50%); display: grid; gap: var(--spacing-2); width: min(440px, calc(100vw - 2 * var(--gutter))); pointer-events: none; }
+@media (max-width: 900px) { .px-toasts { bottom: calc(72px + env(safe-area-inset-bottom)); } }
+.px-toast { pointer-events: auto; display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: var(--spacing-3); padding: var(--spacing-3) var(--spacing-3) var(--spacing-3) var(--spacing-4); background: var(--night); color: #fff; border: 6px solid transparent; border-image: var(--px-dark-hi) 6 / 6px / 0 stretch; background-clip: padding-box; filter: drop-shadow(5px 5px 0 var(--split-blue)); animation: px-toast-in 0.2s steps(4, end); }
+.px-toast.is-error { filter: drop-shadow(5px 5px 0 var(--split-red)); }
+.px-toast.is-out { animation: px-toast-out 0.18s steps(3, end) forwards; }
+.px-toast p { margin: 0; font-size: 0.92rem; line-height: 1.35; }
+.px-toast-act { font: 400 0.625rem var(--pixel); text-transform: uppercase; letter-spacing: 0.04em; color: var(--night); background: #fff; border: 0; padding: 0.5rem 0.6rem; cursor: pointer; text-decoration: none; clip-path: var(--px-clip); }
+.px-toast-x { display: grid; place-items: center; width: 28px; height: 28px; padding: 0; color: var(--night-text-2); background: none; border: 0; cursor: pointer; }
+.px-toast-x:hover { color: #fff; }
+@keyframes px-toast-in { from { transform: translateY(12px); } } /* slide only: a toast must be readable even if animations are paused */
+@keyframes px-toast-out { to { transform: translateY(8px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .px-toast, .px-toast.is-out { animation: none; } }
+
+/* ---------- InfoTip (src/lib/infotip.ts): a pixel "i" that explains a label or a figure ---------- */
+.px-info { position: relative; display: inline-flex; vertical-align: 0.1em; margin-left: 0.3em; text-transform: none; letter-spacing: 0; }
+.px-info-btn { display: grid; place-items: center; width: 16px; height: 16px; padding: 0; font: 700 10px/1 var(--mono); color: var(--paper); background: var(--ink-3); border: 0; cursor: help; clip-path: var(--px-clip); }
+.px-info-btn:hover, .px-info-btn[aria-expanded="true"] { background: var(--accent); color: #fff; }
+.px-info-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; clip-path: none; }
+.px-info-pop { position: absolute; z-index: 40; left: -8px; top: calc(100% + 8px); width: max-content; max-width: min(18rem, 80vw); padding: 0.55rem 0.7rem; font: 400 0.82rem/1.4 var(--text); color: #fff; background: var(--night); text-align: left; white-space: normal; filter: drop-shadow(4px 4px 0 var(--split-blue)); }
+.px-info-pop.is-left { left: auto; right: -8px; }
+.px-info-pop.is-up { top: auto; bottom: calc(100% + 8px); }
+
+/* ---------- sortable tables with sticky header rows (src/lib/sortable.ts) ---------- */
+.table th[aria-sort] { padding: 0; }
+.th-sort { all: unset; box-sizing: border-box; display: inline-flex; align-items: center; gap: 0.3rem; width: 100%; padding: 0.4rem 0.6rem 0.45rem 0; cursor: pointer; font: inherit; color: inherit; text-transform: inherit; letter-spacing: inherit; }
+.table th.num .th-sort { justify-content: flex-end; padding: 0.4rem 0 0.45rem 0.7rem; }
+.th-sort:hover { color: var(--ink); }
+.th-sort:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.th-ar { flex: none; width: 7px; height: 9px; opacity: 0.35; background: currentColor; clip-path: polygon(50% 0, 100% 40%, 0 40%, 0 60%, 100% 60%, 50% 100%); }
+.table th[aria-sort="ascending"] .th-ar { opacity: 1; clip-path: polygon(50% 0, 100% 50%, 0 50%); }
+.table th[aria-sort="descending"] .th-ar { opacity: 1; clip-path: polygon(0 50%, 100% 50%, 50% 100%); }
+.table th[aria-sort="ascending"], .table th[aria-sort="descending"] { color: var(--ink); }
+@media (min-width: 761px) {
+  .table-scroll.fits, .table-wrap.fits { overflow: visible !important; } /* page styles load later and reset it; a table that fits needs no sideways scroll */
+  .fits > .table thead th, .fits > .table-scroll > .table thead th, .card > .table thead th { position: sticky; top: calc(var(--bar-h) + var(--sub-h, 0px)); z-index: 2; background: var(--paper); box-shadow: inset 0 -2px 0 var(--ink); }
+}
+
+/* ---------- long reads: "On this page" (src/lib/toc.ts) ---------- */
+.px-toc details { border-top: 3px solid var(--ink); background: var(--paper); padding: var(--spacing-3) var(--spacing-4); }
+.px-toc summary { cursor: pointer; font: 400 0.625rem var(--pixel); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-2); list-style: none; }
+.px-toc summary::-webkit-details-marker { display: none; }
+.px-toc summary span { color: var(--ink-3); }
+.px-toc ol { list-style: none; margin: var(--spacing-3) 0 0; padding: 0; display: grid; gap: 0.1rem; counter-reset: toc; }
+.px-toc li { counter-increment: toc; }
+.px-toc a { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); padding: 0.35rem 0.4rem; color: var(--ink-2); text-decoration: none; font-size: 0.88rem; line-height: 1.3; }
+.px-toc a::before { content: counter(toc, decimal-leading-zero); font: 500 0.68rem/1.6 var(--mono); color: var(--ink-3); }
+.px-toc a:hover { background: var(--panel); color: var(--ink); }
+.px-toc a[aria-current] { color: var(--ink); font-weight: 650; box-shadow: inset 3px 0 0 var(--accent); background: var(--panel); }
+@media (min-width: 1100px) {
+  .page.has-toc { grid-template-columns: minmax(0, 1fr) 15rem; column-gap: 2.4rem; }
+  .page.has-toc > * { grid-column: 1; }
+  .page.has-toc > .sec-hero, .page.has-toc > .next-steps { grid-column: 1 / -1; }
+  .page.has-toc > .px-toc { grid-column: 2; grid-row: 2 / span var(--toc-rows, 1); align-self: start; position: sticky; top: calc(var(--bar-h) + var(--sub-h, 0px) + 16px); max-height: calc(100vh - var(--bar-h) - var(--sub-h, 0px) - 32px); overflow-y: auto; }
+  .px-toc summary { pointer-events: none; }
+}
+
+/* ---------- profile identity strip (src/lib/id-strip.ts) ---------- */
+.id-strip { position: fixed; left: 0; right: 0; top: calc(var(--bar-h) + var(--sub-h, 0px)); z-index: 14; background: var(--paper); border-bottom: 3px solid var(--c, var(--ink)); box-shadow: 0 4px 0 rgba(11, 13, 24, 0.08); transform: translateY(-110%); visibility: hidden; transition: transform 0.18s steps(4, end), visibility 0s 0.18s; pointer-events: none; }
+.id-strip.is-on { transform: none; visibility: visible; transition: transform 0.18s steps(4, end); }
+.id-in { max-width: var(--col); margin: 0 auto; padding: 0.4rem var(--gutter); display: flex; align-items: center; gap: var(--spacing-3); }
+.id-in img { width: 32px; height: 32px; object-fit: cover; clip-path: var(--px-clip); background: var(--wash); }
+.id-in b { font: 800 1.02rem/1.1 var(--display); font-stretch: 80%; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 760px) { .id-strip { top: var(--bar-h); } }
+@media (prefers-reduced-motion: reduce) { .id-strip, .id-strip.is-on { transition: none; } }
+.id-in b { flex: 0 0 auto; max-width: 62%; }
+.id-in .chip { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ---------- dark theme: things painted var(--ink) with hard white text ---------- */
+/* the chart tooltip and the simulator dock are night surfaces in every theme */
+.tip, .sim-dock { background: var(--night); color: #fff; }
+.tip { box-shadow: 4px 4px 0 var(--split-blue); }
+/* selected tabs and solid buttons invert: --ink turns light in dark mode, so their text takes the paper colour */
+:root[data-theme="dark"] :is(.tabs [aria-selected="true"], .tabs a[role="tab"][aria-selected="true"], .page-tabs a[aria-current="page"], .button, .quiz-next, .quiz-start, .quiz-share, .debtp-mode button[aria-pressed="true"], .sim-no, .sim-chipbtn[aria-pressed="true"], .sim-q, .sim-btn:hover, .sim-btn.ink, .mt-filters button[aria-pressed="true"], .p-yes, .hh-cut, .ph-status.is-published, .ph-themes button[aria-selected="true"], .qz-pick-go, .qz-weight[aria-pressed="true"], .sim-src[data-k="survey"], .sim-src[data-k="survey-partial"]) { color: var(--paper); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) :is(.tabs [aria-selected="true"], .tabs a[role="tab"][aria-selected="true"], .page-tabs a[aria-current="page"], .button, .quiz-next, .quiz-start, .quiz-share, .debtp-mode button[aria-pressed="true"], .sim-no, .sim-chipbtn[aria-pressed="true"], .sim-q, .sim-btn:hover, .sim-btn.ink, .mt-filters button[aria-pressed="true"], .p-yes, .hh-cut, .ph-status.is-published, .ph-themes button[aria-selected="true"], .qz-pick-go, .qz-weight[aria-pressed="true"], .sim-src[data-k="survey"], .sim-src[data-k="survey-partial"]) { color: var(--paper); }
+}
+/* the homepage map toggle sits on the night band: its pressed state is white with night text in every theme */
+.hday .hd-toggle button[aria-pressed="true"], .hd-toggle.hd-toggle button[aria-pressed="true"] { color: var(--night); }
+/* the count in a selected programme-theme button follows the button's inverted text */
+.ph-themes button[aria-selected="true"] b { color: inherit; opacity: 0.75; }
+
+/* ---------- programme flow: version boxes link to their source document (PDF, else the site) ---------- */
+.flow-link { cursor: pointer; text-decoration: none; }
+.flow-node.is-link .flow-doc { font: 600 10px var(--mono); letter-spacing: 0.04em; fill: var(--link); }
+.flow-link:hover .flow-box, .flow-link:focus-visible .flow-box { stroke: var(--accent); stroke-width: 2.5; }
+.flow-link:hover .flow-doc, .flow-link:focus-visible .flow-doc { text-decoration: underline; }
+.flow-link:focus-visible { outline: none; }
+.flow-link:focus-visible .flow-box { stroke: var(--focus); stroke-width: 3; }
+
+/* ---------- one box for the whole site (2026-11): a thin line, a ground a shade off the page, and the red/blue
+   underline of the active tab and the quiz button along its foot. Tokens in tokens.css (--box-*). Every static
+   panel takes it (sections, homepage widgets, the quiz card, simulator panels, callouts); nested boxes stay flat.
+   Page CSS that loads later must not set border/background/shadow on these, or it wins the cascade. ---------- */
+.box, .card, .hw, .hday-chart .ed, .qz-card, .qz-stale, .sim-panel, .sim-story, .hh-callout {
+  border: 1px solid var(--box-line); border-bottom: 0; border-image: none;
+  background: var(--box-bar) left bottom / 100% var(--box-bar-h) no-repeat border-box, var(--box-bg);
+  box-shadow: none; filter: none;
+}
+.card { padding: var(--spacing-4) 1.35rem calc(1.4rem + var(--box-bar-h)); }
+.card .card, .sec-hero .card { border: 0; background: none; padding: 0; }
+/* a box you can follow: the underline thickens on hover, nothing jumps */
+a.box, a.hh-callout { transition: background-size 0.15s var(--ease), border-color 0.15s; text-decoration: none; }
+a.box:hover, a.hh-callout:hover, a.box:focus-visible, a.hh-callout:focus-visible { --box-bar-h: 7px; border-color: var(--ink-3); transform: none; box-shadow: none; }
+/* on the homepage's night band the box keeps its line and ground from the band */
+.hday-chart .ed { --box-line: var(--night-rule-2, #3a3f5a); --box-bg: color-mix(in srgb, var(--night-2) 88%, transparent); }
+@media (max-width: 640px) { .card { padding: var(--spacing-3) 0.95rem calc(1.1rem + var(--box-bar-h)); } }

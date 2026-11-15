@@ -29,34 +29,34 @@ h2.sim-k { font-stretch: 100%; }
 .sim-page .sim-card:focus-visible { outline-offset: -3px; }
 
 /* ---- the scenario in three steps, and its tools ---- */
-.sim-story { display: grid; gap: 0; border: 6px solid transparent; border-image: var(--px-dark) 6 / 6px / 0 stretch; background: var(--night) padding-box; color: #fff; }
+.sim-story { display: grid; gap: 0; color: #fff; padding-bottom: var(--box-bar-h); --box-line: var(--night-rule-2); --box-bg: var(--night); } /* the box: overhaul.css, "one box" */
 .sim-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1.5fr 1fr 1fr; }
 .sim-steps li { position: relative; display: grid; align-content: start; gap: 0.35rem; padding: 0.7rem 1.4rem 0.8rem 0.9rem; min-width: 0; }
 .sim-steps li + li { border-left: 2px solid var(--night-rule); }
 .sim-steps li:not(:last-child)::after { content: ""; position: absolute; right: -9px; top: 50%; width: 16px; height: 16px; margin-top: -8px; z-index: 1; background: var(--night); border: 2px solid var(--night-rule); border-width: 2px 2px 0 0; transform: rotate(45deg); }
-.sim-steps .sim-k { color: #8f94ad; }
+.sim-steps .sim-k { color: var(--night-text-3); }
 .sim-steps p { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.7rem; font-size: 0.95rem; line-height: 1.3; }
 .sim-steps p b { font: 800 1.12rem/1.1 var(--display); font-stretch: 82%; font-variant-numeric: tabular-nums lining-nums; }
-.sim-steps p small { flex-basis: 100%; font-size: 0.76rem; color: #a7abc0; }
-#st-1 span { display: inline-flex; align-items: baseline; gap: 0.3rem; color: #a7abc0; white-space: nowrap; }
+.sim-steps p small { flex-basis: 100%; font-size: 0.76rem; color: var(--night-label); }
+#st-1 span { display: inline-flex; align-items: baseline; gap: 0.3rem; color: var(--night-label); white-space: nowrap; }
 #st-1 span::before { content: ""; width: 8px; height: 8px; background: var(--c); align-self: center; }
 #st-1 span.is-fin { color: #fff; }
 #st-1 span b { font-size: 0.98rem; }
 .sim-steps .is-res { background: var(--night-2); }
 #st-3 b { font-size: 1.5rem; box-shadow: inset 0 -6px 0 var(--c); padding: 0 0.1rem; }
 .sim-tools { display: flex; flex-wrap: wrap; gap: 6px; padding: 0.55rem 0.7rem; border-top: 2px solid var(--night-rule); }
-.sim-tool { min-height: 36px; padding: 0 0.75rem; border: 2px solid #3a3f5c; background: none; color: #fff; font: 600 0.8rem var(--text); cursor: pointer; white-space: nowrap; transition: border-color 0.1s, background 0.1s, transform 0.1s steps(2); }
+.sim-tool { min-height: 36px; padding: 0 0.75rem; border: 2px solid var(--night-rule-2); background: none; color: #fff; font: 600 0.8rem var(--text); cursor: pointer; white-space: nowrap; transition: border-color 0.1s, background 0.1s, transform 0.1s steps(2); }
 .sim-tool:hover:not(:disabled) { border-color: #fff; background: rgba(255, 255, 255, 0.08); }
 .sim-tool:active:not(:disabled) { transform: translate(1px, 1px); }
 .sim-tool:disabled { opacity: 0.4; cursor: default; }
 .sim-tool[aria-pressed="true"] { background: #fff; color: var(--night); border-color: #fff; }
-.sim-tool.ink { margin-left: auto; background: #fff; color: var(--night); border-color: #fff; box-shadow: 3px 3px 0 #5b8dff; }
+.sim-tool.ink { margin-left: auto; background: #fff; color: var(--night); border-color: #fff; box-shadow: 3px 3px 0 var(--split-blue); }
 .sim-story :focus-visible { outline-color: #fff; }
 @media (pointer: coarse) { .sim-tool { min-height: 44px; } }
 
 /* ---- panels ---- */
-.sim-panel { border: 6px solid transparent; border-image: var(--px-soft) 6 / 6px / 0 stretch; background: var(--paper) padding-box; padding: 0.9rem 1.1rem 1.1rem; }
-.sim-p3 { border-image-source: var(--px-ink); }
+.sim-panel { padding: 0.9rem 1.1rem calc(1.1rem + var(--box-bar-h)); } /* the box: overhaul.css, "one box" */
+.sim-p3 { --box-line: var(--ink-3); }
 .sim-no { width: 1.9rem; height: 1.9rem; font: 400 0.75rem/1 var(--pixel); clip-path: var(--px-clip); }
 .sim-lede { margin: 0; font-size: 0.92rem; line-height: 1.45; color: var(--ink-2); max-width: 62ch; }
 .sim-chipbtn { border-width: 2px; min-height: 40px; }
@@ -99,7 +99,7 @@ h2.sim-k { font-stretch: 100%; }
 
 /* the runoff: reading and comparison */
 .sim-kpi { border-top-width: 4px; }
-.sim-read { display: grid; gap: 0.3rem; padding: 0.7rem 0.8rem 0.8rem; background: var(--panel); box-shadow: inset 4px 0 0 var(--ink); }
+.sim-read { display: grid; gap: 0.3rem; padding: 0.7rem 0.8rem 0.8rem; background: var(--panel); }
 .sim-read p:last-child { margin: 0; font-size: 0.9rem; line-height: 1.5; }
 .sim-against { display: grid; gap: 0.45rem; }
 .sim-vs-t { width: 100%; border-collapse: collapse; font-size: 0.8rem; font-variant-numeric: tabular-nums lining-nums; }
@@ -147,3 +147,15 @@ h2.sim-k { font-stretch: 100%; }
   .sim-cand-v { justify-content: center; }
   .sim-cand-v input { width: 100%; max-width: 6rem; }
 }
+
+/* first round: a slider per candidate in their colour (replaces the − / + buttons), the figure beside it */
+.sim-cand { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr) 2.9rem auto; }
+.sim-stepper { display: flex; align-items: center; gap: 0.5rem; min-width: 0; }
+.sim-range { -webkit-appearance: none; appearance: none; flex: 1; min-width: 70px; height: 28px; background: transparent; cursor: pointer; margin: 0; }
+.sim-range::-webkit-slider-runnable-track { height: 8px; background: linear-gradient(90deg, var(--c) var(--p, 0%), var(--wash, #2a2f48) var(--p, 0%)); }
+.sim-range::-moz-range-track { height: 8px; background: var(--wash, #2a2f48); }
+.sim-range::-moz-range-progress { height: 8px; background: var(--c); }
+.sim-range::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 22px; margin-top: -7px; background: var(--paper); border: 3px solid var(--c); box-shadow: 2px 2px 0 var(--ink); }
+.sim-range::-moz-range-thumb { width: 14px; height: 18px; background: var(--paper); border: 3px solid var(--c); border-radius: 0; box-shadow: 2px 2px 0 var(--ink); }
+.sim-range:focus-visible { outline: 2px solid var(--focus, var(--ink)); outline-offset: 2px; }
+@media (max-width: 640px) { .sim-cand { grid-template-columns: minmax(0, 1fr) 2.9rem auto; } .sim-stepper { grid-column: 1 / -1; grid-row: 2; padding-bottom: 0.3rem; } }

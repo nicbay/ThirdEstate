@@ -486,12 +486,12 @@ export async function renderEconomy(app: HTMLElement) {
         <div class="debt-live" aria-live="off">
           <p class="debt-k">${L("Dette publique estimée", "Estimated public debt")}</p>
           <p class="debt-n" id="debt-n">${eur(Math.round(debtAt(e, Date.now())))}</p>
-          <dl class="debt-per">
-            <div><dt>${L("Par habitant", "Per resident")}</dt><dd id="debt-pop">–</dd></div>
-            <div><dt>${L("Par personne en emploi", "Per person in work")}</dt><dd id="debt-emp">–</dd></div>
-            <div><dt>${L("En plus chaque jour", "Added each day")}</dt><dd>${big(perDay, 0)}</dd></div>
-            ${e.debt.pct != null ? `<div><dt>${L(`Rapportée au PIB, ${period(e.debt.period)}`, `As a share of GDP, ${period(e.debt.period)}`)}</dt><dd>${pct(e.debt.pct)}</dd></div>` : ""}
-          </dl>
+          <p class="debt-per">
+            <span><b id="debt-pop">–</b> ${L("par habitant", "per resident")}</span><span class="debt-sep" aria-hidden="true"> · </span>
+            <span><b id="debt-emp">–</b> ${L("par personne en emploi", "per person in work")}</span><span class="debt-sep" aria-hidden="true"> · </span>
+            <span><b>${big(perDay, 0)}</b> ${L("de plus chaque jour", "added each day")}</span>${e.debt.pct != null ? `<span class="debt-sep" aria-hidden="true"> · </span>
+            <span><b>${pct(e.debt.pct)}</b> ${L(`du PIB (${period(e.debt.period)})`, `of GDP (${period(e.debt.period)})`)}</span>` : ""}
+          </p>
         </div>
       </header>
 
@@ -583,19 +583,4 @@ export async function renderEconomy(app: HTMLElement) {
   const md = app.querySelector<HTMLDetailsElement>("#methode");
   app.querySelectorAll('a[href="#/chiffres#methode"]').forEach((x) => x.addEventListener("click", () => md && (md.open = true)));
   if (md && location.hash.endsWith("#methode")) md.open = true;
-}
-
-/** One-line live debt figure for the homepage, linking to the page. */
-export async function mountDebtTeaser(el: HTMLElement | null) {
-  if (!el) return;
-  const e = await loadEconomy().catch(() => null);
-  if (!e || !el.isConnected) return;
-  const perSec = e.debt.ratePerYear / (YEAR_MS / 1000);
-  el.innerHTML = `<a class="debt-teaser" href="#/chiffres">
-    <span class="hx-k">${L("Dette publique, estimée à cet instant", "Public debt, estimated as of now")}</span>
-    <strong id="teaser-n">${eur(Math.round(debtAt(e, Date.now())))}</strong>
-    <span>${L(`environ ${eur(Math.round(perSec))} de plus par seconde. La France en chiffres`, `about ${eur(Math.round(perSec))} more every second. France in numbers`)}</span>
-  </a>`;
-  const n = el.querySelector<HTMLElement>("#teaser-n")!;
-  tick(n, (now) => { n.textContent = eur(Math.round(debtAt(e, now))); });
 }

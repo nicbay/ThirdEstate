@@ -1,0 +1,348 @@
+/* Homepage hero, "the note of the day" (views/hero-day.ts) */
+.hday { padding-bottom: 0; } /* the pixel fade closes the band, flush with the page */
+.hday h1 { font: 850 clamp(1.9rem, 1.2rem + 2.6vw, 3.1rem)/1.02 var(--display); font-stretch: 78%; letter-spacing: -0.015em; color: var(--night-text); margin: 0.35rem 0 1.1rem; max-width: 26ch; text-wrap: balance; }
+.hday-note { display: grid; gap: 1.05rem; min-width: 0; }
+/* the kicker over the headline: a sentence, so mono, not the pixel face */
+.hday-kicker { margin: 0 0 0.6rem; font: 500 0.75rem/1.5 var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--night-text-2); }
+.hday-block header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; border-bottom: 1px solid var(--rule-2); padding-bottom: 0.3rem; margin-bottom: 0.45rem; }
+.hday-block h2 { margin: 0; font: 700 0.75rem var(--mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-2); }
+.hday-block header a { flex: none; font: 600 0.75rem var(--mono); color: var(--link); text-decoration: none; }
+.hday-block header a:hover { text-decoration: underline; }
+.hday-small { margin: 0.45rem 0 0; font-size: 0.76rem; color: var(--night-text-3); }
+.hday-small a { color: var(--night-text-2); }
+.hday-panel .hday-small { color: var(--ink-3); max-width: 70ch; }
+.hday-panel .hday-small a { color: var(--link); }
+.hdp-grade { font: 700 0.69rem var(--mono); padding: 0 0.3rem; border: 1px solid var(--rule-2); color: var(--ink-2); }
+.hday-fc { margin: 0.35rem 0 0; font-size: 0.86rem; color: var(--night-text-2); }
+.hday-fc b { color: var(--night-text); }
+.hday-fc a { color: var(--night-text); }
+
+/* poll rows */
+/* the rows share one set of columns (subgrid), sized to the longest name, so no surname is cut */
+.hdp { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: max-content minmax(2.5rem, 1fr) auto auto 56px; gap: 0.32rem 0.55rem; }
+.hdp li { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: center; font-size: 0.9rem; color: var(--ink-2); }
+.hdp-name { display: flex; align-items: center; gap: 0.4rem; white-space: nowrap; font-weight: 700; color: var(--ink); }
+.hdp-name i { width: 8px; height: 8px; flex: none; }
+.hdp-name a { color: var(--ink); text-decoration: none; }
+.hdp-name a:hover { text-decoration: underline; }
+.hdp-bar { height: 8px; background: var(--wash); }
+.hdp-bar b { display: block; height: 100%; }
+.hdp-v { font: 700 0.92rem var(--mono); text-align: right; color: var(--ink); font-variant-numeric: tabular-nums; }
+.hdp-d { font: 600 0.76rem var(--mono); text-align: right; font-variant-numeric: tabular-nums; min-width: 2.6rem; }
+.hdp-d.up { color: var(--up); } .hdp-d.down { color: var(--down); } .hdp-d.flat { color: var(--ink-3); }
+.hdp-d.up::before, .hdp-d.down::before { content: none; }
+.hd-spark { width: 56px; height: 18px; display: block; }
+@media (max-width: 480px) { .hdp { grid-template-columns: max-content minmax(2rem, 1fr) auto auto; } .hd-spark { display: none; } }
+
+/* events, stories, posts */
+.hde, .hdn, .hds { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
+.hde li { display: grid; grid-template-columns: 3.6rem 1fr; gap: 0.5rem; font-size: 0.86rem; color: var(--ink-2); line-height: 1.38; }
+.hde time { font: 600 0.72rem var(--mono); color: var(--ink-3); padding-top: 0.1rem; }
+.hde b { color: var(--ink); } .hde a { color: var(--ink); text-decoration: none; }
+.hdn li { display: flex; justify-content: space-between; gap: 0.8rem; font-size: 0.9rem; line-height: 1.35; }
+.hdn a { color: var(--ink); text-decoration: none; } .hdn a:hover { text-decoration: underline; }
+.hdn span { flex: none; font: 600 0.7rem var(--mono); color: var(--ink-3); padding-top: 0.15rem; }
+.hds li + li { border-top: 1px solid var(--rule); padding-top: 0.4rem; }
+.hds a { display: grid; gap: 0.15rem; color: var(--ink-2); text-decoration: none; font-size: 0.84rem; line-height: 1.4; }
+.hds a:hover .hds-text { text-decoration: underline; }
+.hds-who { display: flex; align-items: center; gap: 0.35rem; font-weight: 700; color: var(--ink); font-size: 0.8rem; }
+.hds-who i { width: 7px; height: 7px; }
+.hds-who span { font: 600 0.69rem var(--mono); color: var(--ink-3); }
+
+/* the dots (restored from the earlier hero) */
+.hero-dots { width: 100%; height: auto; display: block; overflow: visible; }
+.hero-dots .hd { cursor: pointer; transform: translate(var(--mx), var(--my)) scale(0); transition: transform 1.5s cubic-bezier(0.7, 0, 0.25, 1) var(--dm), opacity 0.3s; }
+.hero-dots.ready .hd { transform: translate(var(--mx), var(--my)) scale(1); }
+.hero-dots.ready.is-hemi .hd { transform: translate(var(--hx), var(--hy)) scale(1.18); transition-delay: var(--dh); }
+.hero-dots .hd:hover { stroke: var(--night-text); stroke-width: 2; }
+.hero-dots .hd-map path { fill: var(--night-panel); stroke: var(--night-rule-2); stroke-width: 0.6; }
+.hero-dots .hd-map, .hero-dots .hd-hemi { transition: opacity 0.9s 0.4s; }
+.hero-dots.is-hemi .hd-map { opacity: 0; transition-delay: 0s; }
+.hero-dots:not(.is-hemi) .hd-hemi { opacity: 0; transition-delay: 0s; }
+.hero-dots .hd-hemi line { stroke: var(--night-label); stroke-dasharray: 3 4; }
+.hd-total { font: 850 64px var(--display); font-stretch: 72%; fill: var(--night-text); letter-spacing: -0.02em; font-variant-numeric: tabular-nums lining-nums; }
+/* the dots sit on the night band in both themes: night colours, not the page's ink */
+.hd-note { font: 500 13px var(--mono); fill: var(--night-label); text-transform: uppercase; letter-spacing: 0.08em; }
+.hd-toggle { display: inline-flex; justify-self: start; border: 2px solid var(--rule-2); padding: 2px; }
+.hd-toggle button { font: 600 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-2); background: none; border: 0; padding: 0.45rem 0.7rem; cursor: pointer; }
+.hw .hd-toggle.hd-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.hd-legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 0.85rem; font: 500 0.72rem var(--mono); color: var(--ink-2); }
+.hd-legend li { display: inline-flex; align-items: center; gap: 0.3rem; }
+.hd-legend i { width: 8px; height: 8px; }
+.hd-legend b { color: var(--ink); font-weight: 600; }
+
+@media (prefers-reduced-motion: reduce) { .hero-dots .hd { transition: none; } }
+
+/* ===================== homepage order: polls hero → quiz line → note of the day → widgets ===================== */
+/* the polls chart sits on the night band: the chart reads its colours from these variables */
+.hday-chart { --ink: var(--night-text); --ink-2: var(--night-text-2); --ink-3: var(--night-text-3); --paper: var(--night); --panel: var(--night-2); --wash: #20243a; --rule: var(--night-rule); --rule-2: var(--night-rule-2); --link: #c4b5ff; --accent: #8f7bff; --far-right: #6a78e0; color: var(--night-text); display: grid; gap: 0.6rem; margin-top: 0.4rem; }
+.hday-chart [stroke="#1c2c6c"] { stroke: #6a78e0; }
+.hday-chart [fill="#1c2c6c"] { fill: #6a78e0; }
+.hday-chart [style*="#1c2c6c"] { --c: #6a78e0 !important; }
+.hday-chart > * { min-width: 0; }
+.hday-chart .hday-small { margin: 0; max-width: 70ch; }
+.hday-chart .hday-small p { margin: 0.35rem 0 0; }
+.hday-chart .scn-key { margin: 0; }
+.hday-chart .scn-more summary { cursor: pointer; font: 600 0.75rem var(--mono); text-transform: uppercase; letter-spacing: 0.04em; color: var(--night-text-2); margin-top: 0.3rem; }
+.hday-chart .scn-more .scn-note { color: var(--night-text-3); }
+.hday-chart .scn-more .scn-note b { color: var(--night-text); }
+.hday-chart .hday-fc { font-size: 0.95rem; }
+.hday > h1 { max-width: 30ch; }
+
+/* the quiz: one quiet line under the hero, one plain button */
+.quiz-line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; margin: 1.5rem 0; padding: 1rem 1.2rem calc(1rem + var(--box-bar-h)); color: var(--ink-2); font-size: 0.95rem; line-height: 1.45; } /* the box: overhaul.css */
+.quiz-line > span { flex: 1 1 22rem; min-width: 0; }
+.quiz-line b { color: var(--ink); font: 700 1.05rem var(--display); }
+.quiz-line .button { margin: 0 0 0 auto; flex: none; }
+@media (max-width: 640px) { .quiz-line .button { margin-left: 0; } }
+
+/* the note of the day: a white sheet on the paper; a dated brief under an ink rule, then the blocks in two columns */
+.hday-panel { background: var(--paper); color: var(--ink); padding: 1.4rem 1.6rem 1.6rem; display: grid; gap: 1.1rem; }
+.hday-panel-head { display: grid; gap: 0.3rem; }
+.hday-panel-head h2 { margin: 0; color: var(--ink); font-size: clamp(1.4rem, 1.15rem + 0.9vw, 1.85rem); }
+.hday-take { margin: 0; padding: 0.75rem 0 0 1.1rem; border-top: 3px solid var(--ink); list-style: square; display: grid; gap: 0.35rem; max-width: 70ch; color: var(--ink-2); font-size: 0.98rem; line-height: 1.5; }
+.hday-take li::marker { color: var(--ink-3); }
+.hday-take b, .hday-take a { color: var(--ink); }
+.hday-panel .hday-note { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 2.2rem; }
+@media (max-width: 900px) {
+  .hday-panel .hday-note { grid-template-columns: 1fr; }
+  .hday-panel { padding: 1.1rem 1rem 1.3rem; }
+}
+
+/* the two widgets: white panels side by side */
+.hw-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; align-items: stretch; }
+@media (max-width: 900px) { .hw-row { grid-template-columns: 1fr; } }
+.hw { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 1rem; padding: 1.3rem 1.4rem calc(1.4rem + var(--box-bar-h)); color: var(--ink); min-width: 0; } /* the box itself: overhaul.css, "one box" */
+.hw-head { display: grid; gap: 0.35rem; color: var(--ink); text-decoration: none; }
+.hw-head .hero-kicker { margin: 0; color: var(--ink-3); }
+.hw-head b { font: 700 clamp(1.35rem, 1.1rem + 0.8vw, 1.7rem)/1.1 var(--display); font-stretch: 80%; letter-spacing: -0.012em; }
+.hw-head:hover b { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+.hw-head > span:last-child { color: var(--ink-2); font-size: 0.92rem; line-height: 1.45; }
+.hw-big { display: inline-block; margin-left: 0.25rem; font-variant-numeric: tabular-nums; }
+.hw-big.is-pos { color: var(--right); }
+.hw-big.is-neg { color: var(--left); }
+.hw-fig { margin: 0; display: grid; gap: 0.6rem; align-content: end; min-width: 0; }
+.hw-fig figcaption { display: grid; gap: 0.55rem; color: var(--ink-3); font-size: 0.8rem; }
+.hw-fig figcaption p { margin: 0; }
+.hw .home-arrows { width: 100%; height: auto; max-height: 420px; display: block; }
+.hw .home-arrows .shift-base { fill: var(--panel); stroke: var(--rule-2); stroke-width: 0.8; }
+.hw .home-arrows .arrow { cursor: pointer; }
+.hw-parl .hero-dots { max-height: 420px; }
+/* the national change at each election: one bar per pair, each a button that redraws the map above in place */
+.hw-time { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 0.4rem; }
+.hw-step { display: grid; place-items: center; width: 32px; height: 44px; padding: 0; font: 700 1rem var(--mono); color: var(--ink); background: none; border: 1px solid var(--rule-2); cursor: pointer; transition: border-color 0.15s, background-color 0.15s; }
+.hw-step:hover:not(:disabled) { border-color: var(--ink); background: var(--panel); }
+.hw-step:disabled { opacity: 0.35; cursor: default; }
+.hw-strip { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 2px; height: 44px; position: relative; }
+.hw-strip::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--rule-2); pointer-events: none; }
+.hw-strip button { position: relative; display: block; min-width: 0; padding: 0; border: 0; background: none; cursor: pointer; }
+.hw-strip button::before { content: ""; position: absolute; left: 0; right: 0; height: var(--h); min-height: 2px; transition: opacity 0.12s; }
+.hw-strip button.is-pos::before { bottom: 50%; background: var(--right); opacity: 0.45; }
+.hw-strip button.is-neg::before { top: 50%; background: var(--left); opacity: 0.45; }
+.hw-strip button:hover::before { opacity: 0.8; }
+.hw-strip button[aria-selected="true"]::before { opacity: 1; }
+/* the picked pair: a tick under the strip in the split colours, like the active tab */
+.hw-strip button[aria-selected="true"]::after { content: ""; position: absolute; left: -1px; right: -1px; bottom: -6px; height: 3px; background: linear-gradient(90deg, var(--split-red) 0 50%, var(--split-blue) 50% 100%); }
+.hw-strip button:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; z-index: 1; }
+.hw .home-arrows { transition: opacity 0.2s; }
+.hw .home-arrows.is-loading { opacity: 0.45; }
+@media (prefers-reduced-motion: reduce) { .hw .home-arrows, .hw-strip button::before { transition: none; } }
+.hw-years { display: flex; justify-content: space-between; gap: 0.6rem; font: 500 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.03em; color: var(--ink-3); }
+.hw-years span:nth-child(2) { text-align: center; }
+.hw-time + .hw-years { padding: 0 calc(32px + 0.4rem); }
+.hw-more { justify-self: start; font: 700 0.92rem var(--display); color: var(--ink); text-decoration: none; }
+.hw-more:hover { text-decoration: underline; }
+
+/* the pixel ocean behind the hero (src/lib/ocean.ts): one pixel per inhabitant, the reader's one glowing */
+.ocean { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; display: block; pointer-events: none; image-rendering: pixelated; }
+.hero-x.has-ocean::before { background: none; }
+.ocean-me { position: absolute; z-index: 3; width: 32px; height: 32px; margin: -16px 0 0 -16px; padding: 0; border: 0; background: none; cursor: pointer; }
+.ocean-me:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+/* the circle the pixels leave around the reader's: the band's own colour, the message inside, the pixel kept */
+.ocean-say { position: absolute; z-index: 3; width: calc(2 * var(--r, 118px)); height: calc(2 * var(--r, 118px)); margin: calc(-1 * var(--r, 118px)) 0 0 calc(-1 * var(--r, 118px)); border-radius: 50%; background: radial-gradient(closest-side, var(--night) 76%, transparent 84%); opacity: 0; display: grid; align-content: center; justify-items: center; gap: 0.3rem; padding: 2.4rem 1.1rem 0; box-sizing: border-box; text-align: center; color: var(--night-text-2); pointer-events: none; }
+.ocean-say i { position: absolute; left: 50%; top: 50%; width: 3px; height: 3px; margin: -1.5px 0 0 -1.5px; background: #fff; box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.5); }
+/* one small pixel-type line under the reader's pixel, clear of the arrow cursor that sits on it */
+.ocean-say p { position: absolute; left: 0; right: 0; top: calc(50% + 26px); margin: 0; opacity: 0; transition: opacity 0.15s; }
+.ocean-say.is-on p { opacity: 1; transition: opacity 0.3s 0.22s; }
+.ocean-say b { display: block; font: 400 0.6875rem/1 var(--pixel); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; color: var(--night-text); }
+@media (prefers-reduced-motion: reduce) { .ocean-say p, .ocean-say.is-on p { transition: none; } }
+.hday > :not(.ocean):not(.ocean-me):not(.ocean-say) { position: relative; }
+
+/* the forecast chart's views (src/views/forecast-chart.ts): polls, prediction markets, odds of winning, scenarios */
+.fc-views { display: flex; flex-wrap: wrap; gap: 0 1.2rem; border-bottom: 1px solid var(--rule-2); margin-bottom: 0.7rem; }
+.fc-views button { font: 600 0.8rem var(--mono); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-3); background: none; border: 0; border-bottom: 3px solid transparent; margin-bottom: -1px; padding: 0.55rem 0; cursor: pointer; }
+.fc-views button:hover { color: var(--ink); }
+.fc-views button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+.fc-views button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.fc-views + .scn[hidden] { display: none; }
+@media (max-width: 640px) { .fc-views { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; } .fc-views button { flex: none; } }
+.chart .rug text { font-family: var(--mono); font-weight: 700; cursor: pointer; }
+.chart .rug a:hover text, .chart .rug a:focus text { text-decoration: underline; }
+.chart .ring { pointer-events: auto; }
+
+
+/* the day's edition (src/views/edition.ts): dated, steppable, figures that count up, the week drawn in */
+.ed { display: grid; gap: 0.9rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--rule-2); margin-bottom: 0.4rem; }
+.ed:empty { display: none; }
+.ed-nav { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0.8rem; }
+.ed-k { margin: 0; text-align: center; font: 600 0.75rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); }
+.ed-go { font: 600 0.78rem var(--mono); color: var(--ink); background: none; border: 2px solid var(--rule-2); padding: 0.35rem 0.6rem; cursor: pointer; }
+.ed-go:hover, .ed-go:focus-visible { border-color: var(--ink); }
+.ed-head { margin: 0; font: 800 clamp(1.25rem, 1rem + 1vw, 1.75rem)/1.12 var(--display); font-stretch: 82%; color: var(--ink); text-wrap: balance; }
+.ed-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: 0.6rem; }
+.ed-card { background: var(--panel); border-top: 3px solid var(--c, var(--rule-2)); padding: 0.7rem 0.8rem; display: grid; gap: 0.2rem; align-content: start; min-width: 0; }
+.ed-card p { margin: 0; }
+.ed-ck { font: 600 0.7rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-3); }
+.ed-big { font: 800 1.9rem/1 var(--display); font-variant-numeric: tabular-nums; color: var(--ink); }
+.ed-big small { font-size: 0.9rem; color: var(--ink-2); }
+.ed-poll { font-weight: 700; } .ed-small { font-size: 0.82rem; color: var(--ink-2); }
+.ed-news p:last-child { font-size: 0.86rem; line-height: 1.3; }
+.ed-news a, .ed-why a { color: var(--ink); }
+.ed-src { font-size: 0.72rem; color: var(--ink-3); white-space: nowrap; }
+.ed-chips { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+.ed-chip { display: inline-flex; gap: 0.25rem; align-items: baseline; font: 700 0.74rem var(--mono); padding: 0.1rem 0.35rem; background: var(--wash); color: var(--ink-2); }
+.ed-chip small { font-weight: 500; font-size: 0.66rem; color: var(--ink-3); }
+.ed-chip.is-up { color: var(--up-night, var(--up-text)); } .ed-chip.is-down { color: var(--down-night, var(--down-text)); }
+.ed-body { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 1.2rem; align-items: start; }
+.ed-body h3 { margin: 0 0 0.5rem; font: 600 0.75rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-2); }
+.ed-why ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.8rem; }
+.ed-why ol > li { border-left: 3px solid var(--c); padding-left: 0.7rem; }
+.ed-who { margin: 0 0 0.25rem; display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
+.ed-who b { font: 700 1rem var(--display); color: var(--ink); }
+.ed-verdict-line { font-size: 0.82rem; color: var(--ink-2); font-style: italic; }
+.ed-factors { margin: 0; padding-left: 1rem; display: grid; gap: 0.25rem; font-size: 0.86rem; line-height: 1.4; color: var(--ink-2); }
+.ed-factors b { color: var(--ink); }
+.ed-factors ul { margin: 0.2rem 0 0; padding-left: 1rem; display: grid; gap: 0.15rem; }
+.ed-note { margin: 0.6rem 0 0; font-size: 0.74rem; color: var(--ink-3); }
+.ed-week { width: 100%; height: auto; display: block; }
+.ed-week .ed-grid { stroke: var(--rule-2); stroke-width: 0.6; }
+.ed-week text { font: 700 10px var(--text); }
+.ed-week polyline { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.ed.is-in .ed-week polyline { animation: ed-draw 1.1s ease-out backwards; }
+.ed.is-in .ed-card { animation: ed-rise 0.45s ease-out backwards; }
+.ed.is-in .ed-card:nth-child(2) { animation-delay: 0.08s; } .ed.is-in .ed-card:nth-child(3) { animation-delay: 0.16s; } .ed.is-in .ed-card:nth-child(4) { animation-delay: 0.24s; }
+.ed.is-in .ed-why ol > li { animation: ed-rise 0.45s ease-out backwards; animation-delay: 0.3s; }
+@keyframes ed-draw { from { stroke-dashoffset: 1; } }
+@keyframes ed-rise { from { opacity: 0; transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { .ed.is-in * { animation: none !important; } }
+@media (max-width: 760px) { .ed-body { grid-template-columns: 1fr; } .ed-k { font-size: 0.68rem; } }
+
+/* the hero's opening: what the site is (left), the 577 seats animation (right) */
+.hday-top { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 1.5rem 2.5rem; align-items: center; margin-bottom: 1.6rem; }
+.hday-intro { display: grid; gap: 0.2rem; align-content: center; }
+.hday .hday-intro h1 { font-size: clamp(2.2rem, 1.3rem + 3.4vw, 4rem); line-height: 0.98; margin: 0.3rem 0 0.8rem; max-width: 14ch; }
+.hday-dek { margin: 0 0 1.1rem; font-size: clamp(1rem, 0.95rem + 0.3vw, 1.18rem); line-height: 1.45; color: var(--night-text-2); max-width: 38ch; }
+.hday-doors { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.hday-doors a { font: 600 0.9rem var(--text); color: var(--night-text); text-decoration: none; border: 2px solid var(--night-rule-2, #3a3f5a); padding: 0.5rem 0.8rem; }
+.hday-doors a:first-child { background: var(--night-text); color: var(--night); border-color: var(--night-text); }
+.hday-doors a:hover, .hday-doors a:focus-visible { border-color: var(--night-text); }
+.hday-art { margin: 0; }
+.hday-art .hero-dots { width: 100%; height: auto; max-height: 440px; }
+.hday-art figcaption { color: var(--night-text-3); }
+@media (max-width: 860px) { .hday-top { grid-template-columns: 1fr; } .hday-art .hero-dots { max-height: 320px; } }
+/* the note of the day: named as such */
+.ed-k { display: flex; flex-direction: column; align-items: center; gap: 0.15rem; }
+.ed-k b { font: 800 1rem var(--display); letter-spacing: 0.02em; text-transform: uppercase; color: var(--ink); }
+.ed-k span { font: 500 0.75rem var(--mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); }
+.ed-what { margin: -0.4rem 0 0; font-size: 0.86rem; color: var(--ink-3); max-width: 75ch; }
+.ed-wk-go { display: block; text-decoration: none; color: var(--ink-3); font-size: 0.76rem; }
+.ed-wk-go span { display: block; margin-top: 0.3rem; }
+.ed-wk-go:hover span, .ed-wk-go:focus-visible span { color: var(--ink); text-decoration: underline; }
+.hday-art .hd-toggle { border-color: var(--night-rule-2, #3a3f5a); }
+.hday-art .hd-toggle button { color: var(--night-text-2); }
+.hday-art .hd-toggle.hd-toggle button[aria-pressed="true"] { background: var(--night-text); color: var(--night); }
+
+/* the quiz, beside the forecast, in the flag's red */
+.hday-doors a.hday-quiz { background: var(--split-red); border-color: var(--split-red); color: var(--night); }
+.hday-doors a.hday-quiz:hover, .hday-doors a.hday-quiz:focus-visible { border-color: var(--night-text); }
+/* the note of the day, boxed so it reads as its own piece */
+.hday-chart .ed { padding: 1.1rem 1.2rem calc(1.2rem + var(--box-bar-h)); margin-bottom: 1.2rem; } /* the box: overhaul.css */
+@media (max-width: 640px) { .hday-chart .ed { padding: 0.9rem 0.8rem calc(1rem + var(--box-bar-h)); } }
+
+/* widget: who's reading right now (live presence), departments shaded by readers online */
+.hw-live .hw-head { cursor: default; }
+.live-dot { display: inline-block; width: 8px; height: 8px; background: var(--split-red); margin-right: 0.4rem; animation: live-blink 1.6s steps(2, end) infinite; }
+@keyframes live-blink { 50% { opacity: 0.2; } }
+#live-map { width: 100%; height: auto; max-height: 420px; }
+.live-dep { fill: var(--wash); stroke: var(--paper); stroke-width: 0.6; transition: fill 0.4s; }
+.live-dep.is-on { fill: color-mix(in srgb, var(--split-blue) calc(var(--k) * 100%), var(--wash)); }
+.live-ping { fill: none; stroke: var(--split-red); stroke-width: 2; animation: live-ping 2.4s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes live-ping { from { opacity: 0.9; transform: scale(0.6); } to { opacity: 0; transform: scale(3); } }
+.live-k { margin: 0; font: 600 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-3); }
+.live-towns { list-style: none; margin: 0.3rem 0 0.5rem; padding: 0; display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem; }
+.live-towns li { font-size: 0.9rem; } .live-towns b { font: 700 0.75rem var(--mono); color: var(--split-red); }
+@media (prefers-reduced-motion: reduce) { .live-dot, .live-ping { animation: none; } }
+.ed-prov { margin: -0.3rem 0 0; font: 600 0.74rem var(--mono); color: var(--split-red); }
+
+/* the fox on the note of the day (src/lib/fox-pet.ts): its paws right on the box's top line, no glow */
+.ed-wrap { position: relative; }
+.ed-perch { position: absolute; left: 0; right: 0; top: 0; height: 0; z-index: 3; }
+.fox-pet { position: absolute; left: 16px; bottom: 0; padding: 0; border: 0; background: none; cursor: pointer; line-height: 0; transform-origin: 50% 100%; }
+.fp-sprite { display: block; line-height: 0; }
+.fp-sprite svg { display: block; image-rendering: pixelated; }
+.fox-pet:focus-visible { outline: 2px solid var(--night-text); outline-offset: 3px; }
+.fp-z { position: absolute; right: 18px; top: -10px; font: 700 0.8rem var(--mono); color: var(--night-text-2); white-space: nowrap; pointer-events: none; }
+.fox-pet.is-asleep .fp-z { animation: fp-z 2.4s steps(6, end) infinite; }
+@keyframes fp-z { 0% { opacity: 0; transform: translate(0, 4px); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(10px, -16px); } }
+@media (prefers-reduced-motion: reduce) { .fox-pet.is-asleep .fp-z { animation: none; opacity: 1; } }
+
+/* the note of the day: the four-line note first, the poll average and a tight markets chart on the right */
+.ed-note-text { margin: 0; font-size: clamp(1rem, 0.95rem + 0.25vw, 1.12rem); line-height: 1.5; color: var(--ink); max-width: 72ch; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.ed-by { margin: -0.5rem 0 0; font: 500 0.7rem var(--mono); color: var(--ink-3); }
+.ed-wk .ed-polls { margin-bottom: 1rem; }
+.ed-wk .ed-polls header { border-bottom-color: var(--rule-2); }
+.ed-wk .ed-polls .hday-small { font-size: 0.72rem; }
+.ed-week { max-height: 110px; }
+
+/* the headline with the countdown beside it (the date line above it is gone) */
+.hday-titlerow { display: grid; grid-template-columns: minmax(0, auto) auto; justify-content: start; align-items: end; gap: 0.6rem 1.4rem; margin: 0.3rem 0 0.8rem; }
+.hday .hday-titlerow h1 { margin: 0; }
+.hday-count { margin: 0; display: grid; justify-items: start; gap: 0.15rem; padding-left: 1rem; border-left: 1px solid var(--night-rule-2, #3a3f5a); }
+.hday-count b { font: 800 clamp(2.6rem, 1.8rem + 2.6vw, 4rem)/0.9 var(--display); font-stretch: 78%; color: var(--night-text); font-variant-numeric: tabular-nums; }
+.hday-count span { font: 600 0.82rem/1.2 var(--text); color: var(--night-text-2); max-width: 12ch; }
+.hday-count time { font: 500 0.7rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--night-text-3); }
+@media (max-width: 520px) { .hday-titlerow { grid-template-columns: 1fr; } .hday-count { padding-left: 0; border-left: 0; grid-template-columns: auto 1fr; align-items: end; column-gap: 0.6rem; } .hday-count time { grid-column: 2; } }
+
+/* "Your town": the reader's own entry point, a box on the night band */
+.hday-town { --box-line: var(--night-rule-2, #3a3f5a); --box-bg: color-mix(in srgb, var(--night-2) 88%, transparent); margin-top: 1.1rem; padding: 0.9rem 1rem calc(1rem + var(--box-bar-h)); max-width: 34rem; }
+.hday-town-k { margin: 0; font: 500 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--night-text-3); }
+.hday-town h2 { margin: 0.25rem 0 0; font: 700 1.15rem/1.15 var(--display); font-stretch: 85%; color: var(--night-text); text-wrap: balance; }
+.hday-town .town-search { margin-top: 0.7rem; max-width: none; }
+.hday-town .town-search input { font-size: 1rem; padding: 0.7rem 0.9rem 0.7rem 2.7rem; box-shadow: none; border-width: 1px; border-color: var(--night-rule-2, #3a3f5a); }
+.hday-town .town-search input:focus { box-shadow: none; border-color: var(--night-text); }
+.hday-town-me { margin: 0.6rem 0 0; font-size: 0.86rem; color: var(--night-text-2); }
+.hday-town-me a { color: var(--night-text); }
+
+/* widget: readers this week, the count as the headline */
+.hw-count { font-variant-numeric: tabular-nums; }
+#live-sum { display: inline-flex; align-items: center; }
+
+/* the elections picker: bars on wide screens, a dropdown on phones (each bar would be ~4px wide there) */
+.hw-pick { display: none; min-width: 0; height: 44px; padding: 0 0.6rem; font: 600 0.92rem var(--text); color: var(--ink); background: var(--paper); border: 1px solid var(--rule-2); border-radius: 0; }
+.hw-pick:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+@media (max-width: 600px) {
+  .hw-pick { display: block; }
+  .hw-time .hw-strip { display: none; }
+  .hw-years { display: none; }
+}
+
+/* the day's verdict, inside the edition: the surprise, then whose day it was */
+.ed-surprise { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.3rem 0.9rem; align-items: baseline; padding: 0.75rem 0.9rem; background: var(--panel); font-size: 1rem; line-height: 1.45; color: var(--ink); }
+.ed-surprise-k { font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--c, var(--ink)); white-space: nowrap; }
+.ed-surprise-k::before { content: "✦ "; }
+.ed-days { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.6rem; }
+.ed-col h3 { margin: 0 0 0.55rem; padding-bottom: 0.4rem; border-bottom: 2px solid currentColor; font: 700 0.78rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; }
+.ed-col.is-up h3 { color: var(--up-night, var(--up-text)); }
+.ed-col.is-down h3 { color: var(--down-night, var(--down-text)); }
+.ed-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+.ed-col li { display: grid; gap: 0.15rem; font-size: 0.92rem; line-height: 1.4; color: var(--ink-2); }
+.ed-name { display: inline-flex; align-items: center; gap: 0.4rem; font: 700 1.02rem var(--display); color: var(--ink); }
+.ed-name i { width: 10px; height: 10px; background: var(--c); flex: none; }
+.ed-ev { font-size: 0.8rem; color: var(--ink-3); }
+.ed-ev a { color: var(--ink-2); }
+.ed-none { margin: 0; font-size: 0.9rem; color: var(--ink-3); }
+.ed-why > summary { cursor: pointer; font: 600 0.75rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-2); padding: 0.2rem 0; }
+.ed-why > summary:hover { color: var(--ink); }
+.ed-why[open] > summary { margin-bottom: 0.6rem; }
+.ed.is-in .ed-col li { animation: ed-rise 0.45s ease-out backwards; animation-delay: 0.2s; }
+@media (max-width: 640px) { .ed-days { grid-template-columns: 1fr; } .ed-surprise { grid-template-columns: 1fr; } }

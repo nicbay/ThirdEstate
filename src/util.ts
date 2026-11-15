@@ -32,3 +32,7 @@ export function safeColor(c: string | null | undefined, fallback = "#9aa0aa") {
   if (c == null) return undefined;
   return COLOR_RE.test(c.trim()) ? c.trim() : fallback;
 }
+
+/** "Fil rouge, fil bleu" (#/fil) is off until it works again: its links, menu entries and search entry are hidden.
+ *  The page and its data stay; set true to bring every entry point back. */
+export const FEED_ON = false;

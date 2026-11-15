@@ -5,6 +5,8 @@
 // district profiles (crime, income, jobs, schools, spending, events) and, when built,
 // per-town files from scripts/sync-communes.mjs (councillors, monuments, prices, photos).
 import { geoMercator, geoPath } from "d3-geo";
+import { toast } from "../lib/toast";
+import { detailSheet } from "../lib/sheet";
 import { fetchJson, loadDeputes, type Depute } from "../data";
 import { getHome, setHome } from "../lib/cloud";
 import { L, colon, fmtDate, fmtNum, getLang, plural } from "../i18n";
@@ -13,8 +15,15 @@ import { esc, safeUrl, safeColor } from "../util";
 import { PLATFORMS, age, presence } from "./assemblee";
 import { photoUrl } from "./deputes";
 import { renderTownLocal } from "./town-local";
+import { renderTownPolice } from "./town-police";
+import { renderTownState } from "./town-state";
 import { renderQuartiers } from "./quartiers";
-import { townBrief } from "./brief";
+import { mpChip, townBrief } from "./brief";
+import { loadRankMeta, rankHref, rankIn, rankText, townRankings, townRanks } from "../lib/rankings";
+import { residentBalance } from "../lib/redistribution";
+import { loadStateBalance } from "./town-state";
+import "../styles/rankings.css";
+import { armsSlot, loadCommuneArms, loadDepartmentArms, paintArms } from "../lib/arms";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type Any = any;
@@ -43,14 +52,22 @@ export function loadDepartmentTowns(dep: string) {
     depCache.set(
       dep,
       (async () => {
-        const deputes = await loadDeputes();
-        const codes = [...new Set(deputes.filter((d) => d.numDepartement === dep && d.circo).map((d) => d.circo!))];
+        // the district codes come from the small index (department code + two digits), not the 500 KB list of MPs,
+        // and every profile and its events file are asked for at once: one round trip instead of three, which is
+        // what a phone on 4G feels
+        const idx = await loadNational().catch(() => null);
+        let codes: string[] = (idx?.districts ?? []).filter((c: string) => c.length === dep.length + 2 && c.startsWith(dep));
+        if (!codes.length) codes = [...new Set((await loadDeputes()).filter((d) => d.numDepartement === dep && d.circo).map((d) => d.circo!))];
         const profiles = new Map<string, Any>();
-        await Promise.all(codes.map(async (c) => { try { profiles.set(c, await fetchJson(`/data/districts/${c}.json`)); } catch { /* none */ } }));
         const events = new Map<string, Any[]>();
-        await Promise.all(codes.map(async (c) => { try { events.set(c, (await fetchJson<Any>(`/data/districts/events/${c}.json`)).events ?? []); } catch { /* none */ } }));
+        await Promise.all(codes.flatMap((c) => [
+          fetchJson<Any>(`/data/districts/${c}.json`).then((p) => void profiles.set(c, p), () => {}),
+          fetchJson<Any>(`/data/districts/events/${c}.json`).then((e) => void events.set(c, e.events ?? []), () => {}),
+        ]));
         const towns = new Map<string, TownData>();
-        for (const [c, p] of profiles) {
+        for (const c of codes) {
+          const p = profiles.get(c);
+          if (!p) continue;
           const I = p.indicators ?? {};
           for (const u of p.geography?.units ?? []) {
             const t: TownData = towns.get(u.code) ?? { code: u.code, name: u.name, pop: u.pop ?? 0, districts: [], schools: [], events: [] };
@@ -63,7 +80,7 @@ export function loadDepartmentTowns(dep: string) {
             t.crime ??= I.crime?.communes?.[u.code] ?? I.crime?.communes?.[plmCity(u.code)];
             t.spending ??= I.localSpending?.communes?.values?.[u.code];
             for (const s of I.schools?.list ?? []) if (s.commune === u.code && !t.schools.some((x: Any) => x.uai === s.uai)) t.schools.push(s);
-            for (const e of events.get(c) ?? []) if ((e.commune === u.name || e.postcode?.startsWith(dep)) && e.commune === u.name && !t.events.some((x: Any) => x.name === e.name)) t.events.push(e);
+            for (const e of upcoming(events.get(c) ?? [])) if ((e.commune === u.name || e.postcode?.startsWith(dep)) && e.commune === u.name && !t.events.some((x: Any) => x.name === e.name)) t.events.push(e);
             towns.set(u.code, t);
           }
         }
@@ -117,6 +134,18 @@ export function townExtra(d: Any) {
 }
 const titleCase = (n: string) => String(n ?? "").replace(/\b([A-ZÀ-ÖØ-Ý][A-ZÀ-ÖØ-Ý'-]+)\b/g, (w) => (w.length > 1 && w === w.toUpperCase() ? w.charAt(0) + w.slice(1).toLowerCase() : w));
 const loadTownExtra = async (code: string) => townExtra((await loadTownBundle(depOf(code)))[code]);
+/** Events still to come (ending today or later), soonest first. The tourist-office files keep past ones for weeks. */
+export function upcoming<E extends { start: string; end?: string | null }>(events: E[], today = new Date().toISOString().slice(0, 10)): E[] {
+  return events.filter((e) => (e.end || e.start) >= today).sort((a, b) => a.start.localeCompare(b.start));
+}
+/** An event the town hall itself publishes ("Mairie de…", "Ville de…", "Commune de…"). */
+export const byTownHall = (e: { publisher?: string | null }) => /\b(mairie|ville de|commune de|h[ôo]tel de ville)\b/i.test(e.publisher ?? "");
+/** The event list of a town page or card: date, place, a "Mairie" badge for the town hall's own. */
+export function eventItem(e: Any, withPlace = false) {
+  const when = `${fmtDate(e.start)}${e.end && e.end !== e.start ? ` – ${fmtDate(e.end)}` : ""}`;
+  return `<li><span class="muted small">${when}${withPlace && e.commune ? `, ${esc(e.commune)}` : ""}${byTownHall(e) ? ` <span class="ev-mairie">${L("Mairie", "Town hall")}</span>` : ""}</span><br><a href="${esc(safeUrl(e.url ?? e.datatourisme))}" target="_blank" rel="noopener">${esc(e.name)}</a></li>`;
+}
+
 export const depOf = (code: string) => (code.startsWith("97") ? code.slice(0, 3) : code.slice(0, 2));
 
 // ---------- search (address, street, town, postcode or INSEE code) ----------
@@ -189,13 +218,15 @@ export function searchBox(placeholder?: string) {
     <ul class="suggest" role="listbox" hidden></ul>
   </form>`;
 }
-export function bindSearch(root: HTMLElement) {
+/** Wire the town search boxes under root. By default a pick opens the town page; onPick overrides that (the comparison page). */
+export function bindSearch(root: HTMLElement, onPick?: (code: string) => void) {
   root.querySelectorAll<HTMLFormElement>(".town-search").forEach((form) => {
     const input = form.querySelector("input")!;
     const list = form.querySelector<HTMLUListElement>(".suggest")!;
     let timer = 0, seq = 0;
     const go = (code: string) => {
       list.hidden = true;
+      if (onPick) return onPick(code);
       try { sessionStorage.setItem("te-picked", code); } catch { /* private mode */ }
       location.hash = `#/ville/${code}`;
     };
@@ -240,7 +271,7 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
     <section class="page explorer">
       <header class="page-head">
         <p class="eyebrow">${L("Ma commune", "My town")}</p>
-        <h1>${L("Ce qui se passe près de chez vous", "What’s happening where you live")}</h1>
+        <h1>${L("Votre commune, de la mairie à l’Assemblée", "Your town, from the town hall to the Assembly")}</h1>
         <p class="dek">${L("Vos élus et leurs votes, la vie locale, l’emploi, les écoles, la sécurité, et ce qui fait le charme du coin. Cherchez une adresse ou parcourez un département.", "Your elected officials and how they vote, local life, jobs, schools, safety, and what makes the place good. Search an address or browse a department.")}</p>
         ${searchBox()}
       </header>
@@ -250,13 +281,24 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
         <label class="small">${L("Trier par", "Sort by")} <select id="sort"><option value="pop">${L("Population", "Population")}</option><option value="income">${L("Niveau de vie", "Standard of living")}</option><option value="unemployment">${L("Chômage", "Unemployment")}</option><option value="name">${L("Nom", "Name")}</option></select></label>
         <span id="count" class="muted small"></span>
       </div>
+      <section class="dep-card" id="dep-card" aria-label="${esc(depName)}"></section>
       <div class="split">
-        <ol class="town-list" id="towns"><li class="muted">${L("Chargement de", "Loading")} ${esc(depName)}…</li></ol>
+        <div class="town-pane" id="town-pane"><p class="town-pane-k">${L("Les communes de", "Towns in")} ${esc(depName)}</p><ol class="town-list" id="towns"><li class="muted">${L("Chargement de", "Loading")} ${esc(depName)}…</li></ol></div>
         <div class="split-map"><svg id="dep-map" viewBox="0 0 600 600" role="img" aria-label="${esc(depName)}"></svg><div class="legend-scale" id="legend"></div></div>
       </div>
       <p class="source">${L("Contours : geo.api.gouv.fr. Recherche : Base adresse nationale (Géoplateforme). Chiffres : INSEE, SSMSI, Éducation nationale, OFGL.", "Outlines: geo.api.gouv.fr. Search: National address base (Géoplateforme). Figures: INSEE, SSMSI, Ministry of Education, OFGL.")}</p>
     </section>`;
   bindSearch(app);
+  // the department: its coat of arms and its MPs, district by district
+  void (async () => {
+    const card = app.querySelector<HTMLElement>("#dep-card");
+    if (!card) return;
+    const mps = deputes.filter((d) => d.numDepartement === dep).sort((a, b) => (a.numCirco ?? 0) - (b.numCirco ?? 0));
+    const arms = (await loadDepartmentArms())[dep!];
+    card.innerHTML = `<div class="dep-id">${armsSlot(arms, L(`Armoiries : ${depName}`, `Coat of arms: ${depName}`), "l")}<div><p class="eyebrow">${L("Département", "Department")} ${esc(dep!)}</p><h2>${esc(depName)}</h2><p class="muted small">${mps.length} ${plural(mps.length, ["député", "députés"], ["MP", "MPs"])}</p></div></div>
+      ${mps.length ? `<div class="dep-mps">${mps.map(mpChip).join("")}</div>` : ""}`;
+    paintArms(card);
+  })();
   app.querySelector<HTMLSelectElement>("#dep")!.addEventListener("change", (e) => (location.hash = `#/explorer/${(e.target as HTMLSelectElement).value}`));
 
   const depCode: string = dep ?? "75";
@@ -299,7 +341,7 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
           ${ex?.photo ? `<img class="tc-photo" src="${esc(safeUrl(ex.photo.url))}" alt="" loading="lazy"/>` : ""}
           <span class="tc-head"><b>${esc(t.name)}</b><span class="muted small">${fmtNum(t.pop)} ${L("hab.", "people")}</span></span>
           <span class="tc-stats small">${t.income ? `<span><i>${L("Niveau de vie", "Living standard")}</i>${fmtNum(t.income)} €</span>` : ""}${t.unemployment != null ? `<span><i>${L("Chômage", "Unemployment")}</i>${fmt(t.unemployment)} %</span>` : ""}${t.schools.length ? `<span><i>${L("Écoles", "Schools")}</i>${t.schools.length}</span>` : ""}${t.events.length ? `<span><i>${L("Événements", "Events")}</i>${t.events.length}</span>` : ""}</span>
-          ${mp ? `<span class="small muted">${L("Député·e", "MP")}${colon()}${esc(mp.prenom)} ${esc(mp.nom)} <span class="chip" style="--c:${safeColor(mp.groupe?.couleur) ?? "#999"}">${esc(mp.groupe?.abrev ?? "")}</span></span>` : ""}
+          ${mp ? `<span class="small muted">${L(mp.civ === "Mme" ? "Députée" : "Député", "MP")}${colon()}${esc(mp.prenom)} ${esc(mp.nom)} <span class="chip" style="--c:${safeColor(mp.groupe?.couleur) ?? "#999"}">${esc(mp.groupe?.abrev ?? "")}</span></span>` : ""}
         </a></li>`;
       })
       .join("") + (list.length > 150 ? `<li class="muted small">${L("Les 150 premières ; cherchez une commune pour les autres.", "First 150 shown; search for others.")}</li>` : "");
@@ -307,6 +349,8 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
     const hl = (code: string, on: boolean) => app.querySelector(`#dep-map [data-code="${code}"]`)?.classList.toggle("hl", on);
     app.querySelectorAll<HTMLElement>(".town-card").forEach((a) => { a.addEventListener("mouseenter", () => hl(a.dataset.code!, true)); a.addEventListener("mouseleave", () => hl(a.dataset.code!, false)); });
     app.querySelectorAll<SVGPathElement>("#dep-map .town").forEach((p) => p.addEventListener("click", () => (location.hash = `#/ville/${p.dataset.code}`)));
+    // phones: the town list rests as a sheet over the map (peek: its title), pulled up to browse
+    detailSheet(app.querySelector<HTMLElement>("#town-pane")!, L("Les communes", "The towns"), { start: 0 });
   };
   app.querySelector<HTMLSelectElement>("#metric")!.addEventListener("change", (e) => { ui.metric = (e.target as HTMLSelectElement).value as Metric; draw(); });
   app.querySelector<HTMLSelectElement>("#sort")!.addEventListener("change", (e) => { ui.sort = (e.target as HTMLSelectElement).value as Metric; draw(); });
@@ -432,6 +476,60 @@ export function plmWhole(towns: Map<string, TownData>, code: string): TownData |
   };
 }
 
+/** Up to this many schools, the town page lists them all; above, a summary and a short selection. */
+const SCHOOLS_SHOWN = 10;
+const schoolRow = (s: Any) => {
+  const r = s.dnb ?? s.bacGT ?? s.bacPro;
+  return `<tr><td>${esc(s.name)}<br><span class="muted tiny">${s.type === "college" ? L("collège", "collège") : L("lycée", "lycée")}, ${s.sector === "private" ? L("privé", "private") : L("public", "public")}</span></td><td class="num">${s.ips?.value ?? "–"}</td><td class="num">${r?.successRate != null ? `${r.successRate} %` : "–"}</td><td class="num">${r?.successVA != null ? `${r.successVA > 0 ? "+" : ""}${r.successVA}` : "–"}</td></tr>`;
+};
+const schoolTable = (rows: Any[], attrs = "") =>
+  `<table class="table"${attrs}><thead><tr><th>${L("Établissement", "School")}</th><th class="num">IPS</th><th class="num">${L("Réussite", "Pass rate")}</th><th class="num">VA</th></tr></thead><tbody>${rows.map(schoolRow).join("")}</tbody></table>`;
+const ordinal = (n: number) => L(`${n}${n === 1 ? "er" : "e"}`, `${n}${n % 10 === 1 && n !== 11 ? "st" : n % 10 === 2 && n !== 12 ? "nd" : n % 10 === 3 && n !== 13 ? "rd" : "th"}`);
+
+/** Collèges et lycées. Big towns get counts by level and sector, the schools nearest the town centre
+ *  (half collèges, half lycées), links to each arrondissement for Paris, Lyon and Marseille, and a button for the full list. */
+function schoolsSection(schools: Any[], town: { code: string; name: string; centre?: [number, number] }) {
+  const head = `<header class="card-head" id="ecoles"><h2>${L("Collèges et lycées", "Secondary schools")}</h2></header>`;
+  const foot = `<p class="muted tiny">${L("IPS : indice de position sociale (100 = moyenne nationale). VA : valeur ajoutée de l’établissement.", "IPS: social position index (100 = national average). VA: the school’s value added.")}</p>`;
+  if (schools.length <= SCHOOLS_SHOWN + 2) return `<section class="card">${head}${schoolTable(schools)}${foot}</section>`;
+
+  const n = schools.length;
+  const colleges = schools.filter((s) => s.type === "college");
+  const lycees = schools.filter((s) => s.type !== "college");
+  const priv = schools.filter((s) => s.sector === "private").length;
+  const rep = schools.filter((s) => s.priorityEducation).length;
+  const b = (m: number) => `<b>${fmtNum(m)}</b>`;
+  const and = L(" et ", " and ");
+  const semi = L(" ; ", "; ");
+  const summary = `${b(n)} ${L("établissements", "schools")}${colon()}${b(colleges.length)} ${plural(colleges.length, ["collège", "collèges"], ["collège", "collèges"])}${and}${b(lycees.length)} ${plural(lycees.length, ["lycée", "lycées"], ["lycée", "lycées"])}${semi}${b(n - priv)} ${plural(n - priv, ["public", "publics"], ["public", "public"])}${and}${b(priv)} ${plural(priv, ["privé", "privés"], ["private", "private"])}${rep ? `${semi}${b(rep)} ${L("en éducation prioritaire", "in priority education")}` : ""}.`;
+
+  // nearest the town centre (geo.api.gouv.fr), else the schools' own midpoint
+  const located = schools.filter((s) => s.lat != null && s.lon != null);
+  const [cLon, cLat] = town.centre ?? (located.length ? [located.reduce((a, s) => a + s.lon, 0) / located.length, located.reduce((a, s) => a + s.lat, 0) / located.length] : [0, 0]);
+  const k = Math.cos((cLat * Math.PI) / 180);
+  const dist = (s: Any) => (s.lat == null || s.lon == null ? Infinity : ((s.lon - cLon) * k) ** 2 + (s.lat - cLat) ** 2);
+  const near = (list: Any[]) => [...list].sort((a, b) => dist(a) - dist(b));
+  const half = Math.ceil(SCHOOLS_SHOWN / 2);
+  const nc = near(colleges), nl = near(lycees);
+  const takeC = Math.min(nc.length, Math.max(half, SCHOOLS_SHOWN - nl.length));
+  const pick = [...nc.slice(0, takeC), ...nl.slice(0, SCHOOLS_SHOWN - takeC)];
+  const all = [...colleges, ...lycees].sort((a, b) => Number(a.type !== "college") - Number(b.type !== "college") || String(a.name).localeCompare(String(b.name), "fr"));
+
+  // Paris, Lyon, Marseille as a whole: one link per arrondissement
+  const byArr = new Map<string, number>();
+  if (town.code === plmCity(town.code)) for (const s of schools) if (s.commune && s.commune !== town.code) byArr.set(s.commune, (byArr.get(s.commune) ?? 0) + 1);
+  const arrs = byArr.size > 1
+    ? `<p class="small">${L("Par arrondissement", "By arrondissement")}${colon()}${[...byArr].sort(([a], [b]) => a.localeCompare(b)).map(([c, m]) => `<a href="#/ville/${c}#ecoles">${ordinal(Number(c.slice(-2)))}</a>&nbsp;<span class="muted">(${m})</span>`).join(", ")}</p>`
+    : "";
+
+  return `<section class="card">${head}
+    <p>${summary}</p>${arrs}
+    <p class="muted small" data-sch-note>${L(`Les ${pick.length} plus proches du centre de ${esc(town.name)}.`, `The ${pick.length} nearest the centre of ${esc(town.name)}.`)}</p>
+    ${schoolTable(pick, " data-sch-pick")}${schoolTable(all, " data-sch-all hidden")}
+    <p><button type="button" class="button" data-sch-toggle aria-expanded="false" data-more="${esc(L(`Voir les ${fmtNum(n)} établissements`, `Show all ${fmtNum(n)} schools`))}" data-less="${esc(L("Revenir à la sélection", "Back to the selection"))}">${L(`Voir les ${fmtNum(n)} établissements`, `Show all ${fmtNum(n)} schools`)}</button></p>
+    ${foot}</section>`;
+}
+
 export async function renderTown(app: HTMLElement, code: string) {
   const dep = depOf(code);
   const crimeHist = fetchJson<CrimeHistory>(`/data/crime-history/${dep}.json`).catch(() => null);
@@ -476,14 +574,17 @@ export async function renderTown(app: HTMLElement, code: string) {
       <header class="town-hero ${photo ? "has-photo" : ""}">
         ${photo ? `<figure><img src="${esc(safeUrl(photo.url))}" alt="${esc(name)}" loading="eager"/><figcaption class="tiny">${esc(photo.author ?? "")} ${photo.licence ? `(${esc(photo.licence)})` : ""}, Wikimedia Commons</figcaption></figure>` : ""}
         <div>
+          <div class="town-arms" id="town-arms"></div>
           <p class="eyebrow">${esc(info?.departement?.nom ?? "")}${info?.region?.nom ? `, ${esc(info.region.nom)}` : ""}</p>
           <h1>${esc(name)}</h1>
-          <p class="dek">${[info?.population ? `${fmtNum(info.population)} ${L("habitants", "inhabitants")}` : "", postcodes(info?.codesPostaux ?? [])].filter(Boolean).join(", ")}.${extra?.description?.text ? ` <span lang="fr">${esc(extra.description.text)}</span>` : ""}</p>
-          ${extra?.description?.url ? `<p class="tiny muted">${L("Extrait de", "From")} <a href="${esc(safeUrl(extra.description.url))}" target="_blank" rel="noopener">${L("Wikipédia", "French Wikipedia")}</a> (CC BY-SA)${fr ? "" : ", text in French"}</p>` : ""}
+          <p class="dek">${[info?.population ? `${fmtNum(info.population)} ${L("habitants", "inhabitants")}` : "", postcodes(info?.codesPostaux ?? [])].filter(Boolean).join(", ")}.</p>
+          ${extra?.description?.text ? `<figure class="town-wiki"><blockquote lang="fr"${extra.description.url ? ` cite="${esc(safeUrl(extra.description.url))}"` : ""}><p>${esc(extra.description.text)}</p></blockquote>
+            <figcaption class="tiny muted">${L("Extrait de", "Quoted from")} ${extra.description.url ? `<a href="${esc(safeUrl(extra.description.url))}" target="_blank" rel="noopener">${L("Wikipédia", "French Wikipedia")}</a>` : L("Wikipédia", "French Wikipedia")} (CC BY-SA)${fr ? "" : ", in French"}</figcaption></figure>` : ""}
           <div class="home-set" id="home-set"></div>
           ${searchBox(L("Chercher une autre adresse", "Search another address"))}
         </div>
       </header>
+      <a class="cmp-band" href="#/comparer/${code}"><span class="cmp-band-k">${L("Comparer", "Compare")}</span><b>${L(`${esc(name)} face à une autre commune`, `${esc(name)} against another town`)}</b><span class="muted small">${L("Revenus, sécurité, police, écoles, ce que la commune reçoit de l’État, côte à côte", "Income, safety, police, schools, what the town gets from the state, side by side")}</span><span class="cmp-band-go" aria-hidden="true">→</span></a>
 
       <section class="card brief">
         <header class="card-head"><h2>${L(`${name} en bref`, `${name} in brief`)}</h2></header>
@@ -494,7 +595,7 @@ export async function renderTown(app: HTMLElement, code: string) {
       <section class="card">
         <header class="card-head" id="elus"><h2>${L("Vos élus", "Your elected officials")}</h2></header>
         <div class="grid-2">
-          <div>${mps.map(({ d, mp }) => `<a class="mp-mini" href="#/depute/${mp.id}" style="--c:${safeColor(mp.groupe?.couleur) ?? "#999"}"><img src="${photoUrl(mp.id)}" alt="" loading="lazy" data-hide-broken/><span><span class="muted small">${L("Député·e", "MP")}, ${esc(mp.departement ?? "")} ${d.code.slice(-2)}${d.share < 1 ? ` (${L("partie de la commune", "part of the town")})` : ""}</span><br><b>${esc(mp.prenom)} ${esc(mp.nom)}</b> <span class="chip">${esc(mp.groupe?.abrev ?? "")}</span><br><span class="small muted">${age(mp) ?? "?"} ${L("ans", "years old")}, ${L("participation aux votes", "votes attended")} ${Math.round(100 * mp.stats.participation)} %, ${L("présence en ligne", "online presence")} ${presence(mp)}/${PLATFORMS.length}</span></span></a>`).join("") || `<p class="muted">${L("Député non trouvé pour cette commune.", "No MP found for this town.")}</p>`}</div>
+          <div>${mps.map(({ d, mp }) => `<a class="mp-mini" href="#/depute/${mp.id}" style="--c:${safeColor(mp.groupe?.couleur) ?? "#999"}"><img src="${photoUrl(mp.id)}" alt="" loading="lazy" data-hide-broken/><span><span class="muted small">${L(mp.civ === "Mme" ? "Députée" : "Député", "MP")}, ${esc(mp.departement ?? "")} ${d.code.slice(-2)}${d.share < 1 ? ` (${L("partie de la commune", "part of the town")})` : ""}</span><br><b>${esc(mp.prenom)} ${esc(mp.nom)}</b> <span class="chip">${esc(mp.groupe?.abrev ?? "")}</span><br><span class="small muted">${age(mp) ?? "?"} ${L("ans", "years old")}, ${L("participation aux votes", "votes attended")} ${Math.round(100 * mp.stats.participation)} %, ${L("présence en ligne", "online presence")} ${presence(mp)}/${PLATFORMS.length}</span></span></a>`).join("") || `<p class="muted">${L("Député non trouvé pour cette commune.", "No MP found for this town.")}</p>`}</div>
           <div>${
             extra?.officials
               ? `<ul class="officials">${officialsList(extra.officials, isArr ? cityName : null)}${extra.officials.departmental?.length ? `<li><span class="muted small">${L("Conseillers départementaux", "Departmental councillors")}</span><br>${extra.officials.departmental.slice(0, 6).map((n: string) => esc(n)).join(", ")}</li>` : ""}</ul><p class="muted tiny">${L("Répertoire national des élus (ministère de l’Intérieur).", "National register of elected officials (Ministry of the Interior).")}</p>`
@@ -521,11 +622,13 @@ export async function renderTown(app: HTMLElement, code: string) {
           : ""
       }
 
+      <div id="town-ranks"></div>
+
       <div class="grid-2">
         <section class="card">
           <header class="card-head"><h2>${L("Ce qui fait vivre la commune", "What makes the town tick")}</h2></header>
           ${positives.length ? `<ul class="positives">${positives.join("")}</ul>` : `<p class="muted small">${L("Monuments, musées et équipements : bientôt.", "Monuments, museums and facilities: coming soon.")}</p>`}
-          ${t?.events.length ? `<h3>${L("À venir", "Coming up")}</h3><ul class="events">${t.events.slice(0, 6).map((e: Any) => `<li><span class="muted small">${fmtDate(e.start)}</span><br><a href="${esc(safeUrl(e.url ?? e.datatourisme))}" target="_blank" rel="noopener">${esc(e.name)}</a></li>`).join("")}</ul>` : ""}
+          ${t?.events.length ? `<h3>${L("À venir", "Coming up")}</h3><ul class="events">${[...upcoming(t.events)].sort((a, b) => Number(byTownHall(b)) - Number(byTownHall(a))).slice(0, 6).map((e: Any) => eventItem(e)).join("")}</ul>` : ""}
         </section>
         <section class="card">
           <header class="card-head" id="securite"><h2>${L("Sécurité", "Safety")}</h2><span class="muted small">${L("faits pour 1 000 habitants", "per 1,000 people")}</span></header>
@@ -538,24 +641,38 @@ export async function renderTown(app: HTMLElement, code: string) {
                   .join("")}</tbody></table><p class="muted tiny">${L("Faits enregistrés par la police et la gendarmerie (SSMSI). Cambriolages : pour 1 000 logements. Courbes : la commune (trait plein) et la France (pointillés), chaque année depuis 2016 ; cliquez sur une ligne pour l’agrandir. Une année manque quand le ministère ne l’a pas publiée (trop peu de faits). Dans une petite commune, quelques faits suffisent à faire bondir le taux.", "Offences recorded by police and gendarmerie (SSMSI). Burglary: per 1,000 dwellings. Curves: the town (solid) and France (dotted), every year since 2016; click a row to enlarge it. A year is missing when the ministry didn’t publish it (too few offences). In a small town, a handful of offences is enough to make the rate jump.")}</p>`
               : `<p class="muted small">${L("Pas de chiffres publiés pour cette commune : le ministère ne publie pas les communes où les faits sont très peu nombreux.", "No figures published for this town: the ministry doesn’t publish towns with very few offences.")}</p>`
           }
+          <div id="town-police" class="town-police"></div>
         </section>
       </div>
 
-      ${
-        t?.schools.length
-          ? `<section class="card"><header class="card-head" id="ecoles"><h2>${L("Collèges et lycées", "Secondary schools")}</h2></header>
-              <table class="table"><thead><tr><th>${L("Établissement", "School")}</th><th class="num">IPS</th><th class="num">${L("Réussite", "Pass rate")}</th><th class="num">VA</th></tr></thead><tbody>${t.schools
-                .map((s: Any) => { const r = s.dnb ?? s.bacGT ?? s.bacPro; return `<tr><td>${esc(s.name)}<br><span class="muted tiny">${s.type === "college" ? L("collège", "collège") : L("lycée", "lycée")}, ${s.sector === "private" ? L("privé", "private") : L("public", "public")}</span></td><td class="num">${s.ips?.value ?? "–"}</td><td class="num">${r?.successRate != null ? `${r.successRate} %` : "–"}</td><td class="num">${r?.successVA != null ? `${r.successVA > 0 ? "+" : ""}${r.successVA}` : "–"}</td></tr>`; })
-                .join("")}</tbody></table>
-              <p class="muted tiny">${L("IPS : indice de position sociale (100 = moyenne nationale). VA : valeur ajoutée de l’établissement.", "IPS: social position index (100 = national average). VA: the school’s value added.")}</p></section>`
-          : ""
-      }
+      ${t?.schools.length ? schoolsSection(t.schools, { code, name, centre: info?.centre?.coordinates }) : ""}
 
+      <div id="town-state"></div>
       <div id="town-quartiers"></div>
       <div id="town-local" class="stack-col"></div>
       <nav class="doors">${mps.map(({ d }) => `<a class="door" href="#/circo/${d.code}"><b>${L("Toute la circonscription", "The whole district")} ${d.code.slice(-2)}</b><span class="muted small">${L("Résultats électoraux, député, chiffres détaillés", "Election results, MP, detailed figures")}</span></a>`).join("")}<a class="door" href="#/explorer/${dep}"><b>${L("Les autres communes du département", "Other towns in the department")}</b><span class="muted small">${L("Liste et carte", "List and map")}</span></a></nav>
     </section>`;
   bindSearch(app);
+  void drawTownRanks(app.querySelector<HTMLElement>("#town-ranks"), code, name, t?.income);
+  // the town's coat of arms, and the department's beside it (a link to the department, its towns and MPs)
+  void Promise.all([loadCommuneArms(dep), loadDepartmentArms()]).then(([ca, da]) => {
+    const box = app.querySelector<HTMLElement>("#town-arms");
+    if (!box) return;
+    const depName = info?.departement?.nom ?? dep;
+    box.innerHTML = armsSlot(ca[code] ?? ca[/^751/.test(code) ? "75056" : /^6938/.test(code) ? "69123" : /^132/.test(code) ? "13055" : ""], L(`Armoiries : ${name}`, `Coat of arms: ${name}`), "m")
+      + armsSlot(da[dep], L(`${depName} : le département, ses communes et ses députés`, `${depName}: the department, its towns and MPs`), "s", `#/explorer/${dep}`);
+    paintArms(box);
+  });
+  app.querySelector<HTMLButtonElement>("[data-sch-toggle]")?.addEventListener("click", (e) => {
+    const btn = e.currentTarget as HTMLButtonElement;
+    const open = btn.getAttribute("aria-expanded") !== "true";
+    btn.setAttribute("aria-expanded", String(open));
+    btn.textContent = (open ? btn.dataset.less : btn.dataset.more) ?? "";
+    app.querySelector<HTMLElement>("[data-sch-all]")!.hidden = !open;
+    app.querySelector<HTMLElement>("[data-sch-pick]")!.hidden = open;
+    app.querySelector<HTMLElement>("[data-sch-note]")!.hidden = open;
+    if (!open) app.querySelector("#ecoles")?.scrollIntoView({ block: "start" });
+  });
   // "this is where I live": remembered on this device, and the department joins live presence
   const homeBox = app.querySelector<HTMLElement>("#home-set");
   const asHome = () => ({ dep, depName: info?.departement?.nom ?? dep, commune: name, code });
@@ -567,8 +684,13 @@ export async function renderTown(app: HTMLElement, code: string) {
       : `<button type="button" class="home-btn" data-home="on">${L("C’est chez moi", "I live here")}</button> <span class="muted small">${h?.code ? L(`à la place de ${esc(h.commune ?? h.code)}`, `instead of ${esc(h.commune ?? h.code)}`) : L("pour retrouver votre commune, vos élus et votre circonscription partout sur le site", "to keep your town, officials and district one click away across the site")}</span>`;
     homeBox.querySelector<HTMLButtonElement>("[data-home]")?.addEventListener("click", (e) => {
       const on = (e.currentTarget as HTMLElement).dataset.home === "on";
+      const before = getHome();
       setHome(on ? asHome() : null);
       drawHomeSet(false);
+      toast(on ? L(`${name} est maintenant votre commune`, `${name} is now your town`) : L("Commune oubliée sur cet appareil", "Town forgotten on this device"), {
+        uniqueID: "home",
+        action: { label: L("Annuler", "Undo"), onClick: () => { setHome(before?.code ? before : null); drawHomeSet(false); } },
+      });
     });
   };
   let picked: string | null = null;
@@ -579,7 +701,7 @@ export async function renderTown(app: HTMLElement, code: string) {
     const box = app.querySelector<HTMLElement>("#brief-text");
     if (box) box.innerHTML = b.sentences.length ? `<p>${b.sentences.join(" ")}</p>` : `<p class="muted small">${L("Pas assez de données publiées pour résumer cette commune.", "Not enough published data to sum up this town.")}</p>`;
   }).catch(() => app.querySelector("#brief-text")?.remove());
-  const jumps: [string, string, string][] = [["elus", "Vos élus", "Officials"], ["chiffres", "Chiffres", "Figures"], ["securite", "Sécurité", "Safety"], ["ecoles", "Écoles", "Schools"], ["town-quartiers", "Quartiers", "Neighbourhoods"], ["town-local", "Vie locale", "Local life"]];
+  const jumps: [string, string, string][] = [["elus", "Vos élus", "Officials"], ["chiffres", "Chiffres", "Figures"], ["securite", "Sécurité", "Safety"], ["ecoles", "Écoles", "Schools"], ["town-state", "Finances", "Finances"], ["town-quartiers", "Quartiers", "Neighbourhoods"], ["town-local", "Vie locale", "Local life"]];
   const drawJump = () => {
     const nav = app.querySelector<HTMLElement>("#jump");
     if (!nav) return;
@@ -588,7 +710,9 @@ export async function renderTown(app: HTMLElement, code: string) {
   drawJump();
   setTimeout(drawJump, 2500); // neighbourhoods and local life fill in asynchronously
   renderTownLocal(app.querySelector<HTMLElement>("#town-local")!, code, dep);
+  renderTownPolice(app.querySelector<HTMLElement>("#town-police")!, cityCode, isArr ? cityName : null);
   renderQuartiers(app.querySelector<HTMLElement>("#town-quartiers")!, code);
+  renderTownState(app.querySelector<HTMLElement>("#town-state")!, code, name);
   crimeHist.then((h) => {
     const box = app.querySelector<HTMLElement>("#crime-chart");
     const series = h?.communes[code] ?? h?.communes[plmCity(code)];
@@ -610,4 +734,18 @@ export async function renderTown(app: HTMLElement, code: string) {
     }
     show(rows[0].dataset.crime!);
   });
+}
+
+/** Where the town stands in France on every ranked figure, each a link to the ranking with the town highlighted.
+ *  A balance is ranked on the side the town is on (contributor or beneficiary). */
+async function drawTownRanks(box: HTMLElement | null, code: string, name: string, income?: number) {
+  if (!box) return;
+  const [ranks, meta, state] = await Promise.all([townRanks(code).catch(() => ({})), loadRankMeta().catch(() => null), loadStateBalance(code).catch(() => null)]);
+  const list = townRankings({ townhall: state?.balance, resident: income ? residentBalance(income).net : null })
+    .map((rk) => ({ rk, r: rankIn(rk, ranks, meta) }))
+    .filter((x): x is { rk: typeof x.rk; r: [number, number] } => !!x.r);
+  if (!list.length || !box.isConnected) return;
+  box.innerHTML = `<section class="card"><header class="card-head" id="classements"><h2>${L(`Où se classe ${esc(name)}`, `Where ${esc(name)} ranks`)}</h2><a href="#/classements">${L("Tous les classements", "All rankings")} →</a></header>
+    <ul class="town-ranks">${list.map(({ rk, r }) => `<li><a href="${rankHref(rk, code)}"><span>${esc(L(...rk.label))}</span></a><b>${rankText(r)}</b></li>`).join("")}</ul>
+    <p class="muted tiny">${L("Rang en France parmi les communes qui ont ce chiffre (1 : la première dans l’ordre du classement). Cliquez pour voir le classement, filtrer par département ou par taille.", "Rank in France among the towns that have the figure (1: first in the ranking’s order). Click to see the ranking, filter by department or size.")}</p></section>`;
 }

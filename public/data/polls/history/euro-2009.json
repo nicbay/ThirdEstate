@@ -1,0 +1,654 @@
+{
+ "id": "euro-2009",
+ "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2009_European_Parliament_election_in_France",
+ "resultSource": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2009_European_Parliament_election_in_France (official-result row \"2009 election\" of the poll table)",
+ "result": {
+  "LO": 1.2,
+  "NPA": 4.88,
+  "FG": 6.05,
+  "PS": 16.48,
+  "EE": 16.28,
+  "AEI": 3.63,
+  "MoDem": 8.46,
+  "NC + UMP": 27.88,
+  "MPF + CPNT": 4.8,
+  "DLR": 1.77,
+  "FN": 6.34,
+  "PDF": 0.51,
+  "DIV": 1.73
+ },
+ "polls": [
+  {
+   "pollster": "Ipsos",
+   "start": "2009-06-05",
+   "end": "2009-06-06",
+   "sample": 888,
+   "url": "https://www.ipsos.com/fr-fr/europeennes-09-le-sondage-interdit",
+   "values": {
+    "LO": 1.5,
+    "NPA": 5,
+    "FG": 6.5,
+    "PS": 18,
+    "EE": 16.5,
+    "AEI": 1.5,
+    "MoDem": 8.5,
+    "NC + UMP": 28.5,
+    "MPF + CPNT": 5,
+    "DLR": 1,
+    "FN": 5.5,
+    "DIV": 2.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2009-06-04",
+   "end": "2009-06-05",
+   "sample": 856,
+   "url": "http://www.parismatch.com/Actu/Politique/Sondage-europeennes-29-30-mai-139909",
+   "values": {
+    "LO": 1.5,
+    "NPA": 5,
+    "FG": 6,
+    "PS": 20,
+    "EE": 12,
+    "MoDem": 12,
+    "NC + UMP": 27.5,
+    "MPF + CPNT": 4.5,
+    "DLR": 1.5,
+    "FN": 5.5,
+    "DIV": 4.5
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2009-06-03",
+   "end": "2009-06-04",
+   "sample": 875,
+   "url": "https://web.archive.org/web/20091009144412/http://www.csa-fr.com/dataset/data2009/opi20090604-intentions-de-vote-dans-la-perspective-des-elections-europeennes.pdf",
+   "values": {
+    "LO": 1,
+    "NPA": 5,
+    "FG": 6,
+    "PS": 20,
+    "EE": 11,
+    "AEI": 2,
+    "MoDem": 14,
+    "NC + UMP": 25,
+    "MPF + CPNT": 6,
+    "DLR": 1,
+    "FN": 7,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2009-06-03",
+   "end": "2009-06-04",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/sites/default/files/050609_iv4Europe.pdf",
+   "values": {
+    "LO": 1.5,
+    "NPA": 4.5,
+    "FG": 6.5,
+    "PS": 19,
+    "EE": 15.5,
+    "AEI": 1.5,
+    "MoDem": 12.5,
+    "NC + UMP": 27,
+    "MPF + CPNT": 4,
+    "DLR": 1,
+    "FN": 5,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2009-06-02",
+   "end": "2009-06-03",
+   "sample": 1002,
+   "url": "https://www.ipsos.com/fr-fr/europeennes-lump-solidement-en-tete-suspens-pour-les-3eme-et-5eme-places-0",
+   "values": {
+    "LO": 1.5,
+    "NPA": 6.5,
+    "FG": 6,
+    "PS": 21,
+    "EE": 11,
+    "AEI": 1.5,
+    "MoDem": 11,
+    "NC + UMP": 27,
+    "MPF + CPNT": 6,
+    "DLR": 1,
+    "FN": 5.5,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2009-06-02",
+   "end": "2009-06-03",
+   "sample": 4970,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/opinionway-fiducial-barometre-des-elections-europeennes-v5/viewdocument.html",
+   "values": {
+    "LO": 2.5,
+    "NPA": 5,
+    "FG": 6,
+    "PS": 20,
+    "EE": 12,
+    "AEI": 2,
+    "MoDem": 12.5,
+    "NC + UMP": 26,
+    "MPF + CPNT": 5,
+    "DLR": 0.5,
+    "FN": 6.5,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2009-06-02",
+   "end": "2009-06-02",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/sites/default/files/2009.06.04-baro-europ2009-v3.pdf",
+   "values": {
+    "LO": 2.5,
+    "NPA": 5.5,
+    "FG": 6.5,
+    "PS": 20,
+    "EE": 13.5,
+    "AEI": 2,
+    "MoDem": 11,
+    "NC + UMP": 27,
+    "MPF + CPNT": 4,
+    "DLR": 1,
+    "FN": 4,
+    "DIV": 3
+   }
+  },
+  {
+   "pollster": "BVA",
+   "start": "2009-05-27",
+   "end": "2009-06-01",
+   "sample": 3527,
+   "url": "https://staticswww.bva-group.com/wp-content/uploads/2017/02/fichier_2-_les_elections_europeennes_20098e053.pdf",
+   "values": {
+    "LO": 1.5,
+    "NPA": 6.5,
+    "FG": 6,
+    "PS": 21.5,
+    "EE": 11,
+    "AEI": 1.5,
+    "MoDem": 11,
+    "NC + UMP": 26,
+    "MPF + CPNT": 4.5,
+    "DLR": 0.5,
+    "FN": 8.5,
+    "DIV": 1.5
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2009-05-29",
+   "end": "2009-05-30",
+   "sample": 861,
+   "url": "https://www.ipsos.com/fr-fr/europeennes-leger-sursaut-de-mobilisation-qui-profite-au-parti-socialiste-0",
+   "values": {
+    "LO": 1.5,
+    "NPA": 7,
+    "FG": 5.5,
+    "PS": 21,
+    "EE": 11,
+    "AEI": 2,
+    "MoDem": 12,
+    "NC + UMP": 26,
+    "MPF + CPNT": 6,
+    "DLR": 0.5,
+    "FN": 5.5,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2009-05-28",
+   "end": "2009-05-29",
+   "sample": 858,
+   "url": "https://web.archive.org/web/20090611210201/http://www.ifop.com/europe/docs/europeennes2009_9.pdf",
+   "values": {
+    "LO": 1,
+    "NPA": 7,
+    "FG": 7,
+    "PS": 21,
+    "EE": 9.5,
+    "MoDem": 13,
+    "NC + UMP": 27,
+    "MPF + CPNT": 5,
+    "DLR": 1,
+    "FN": 6,
+    "DIV": 2.5
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2009-05-27",
+   "end": "2009-05-28",
+   "sample": 862,
+   "url": "https://web.archive.org/web/20091009144213/http://www.csa-fr.com/dataset/data2009/opi20090528-intentions-de-vote-dans-la-perspective-des-elections-europeennes.pdf",
+   "values": {
+    "LO": 2,
+    "NPA": 5,
+    "FG": 6,
+    "PS": 21,
+    "EE": 9,
+    "AEI": 2,
+    "MoDem": 13,
+    "NC + UMP": 25,
+    "MPF + CPNT": 6,
+    "DLR": 1,
+    "FN": 8,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2009-05-27",
+   "end": "2009-05-28",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/europeennes-2009-intentions-de-vote-vague-2",
+   "values": {
+    "LO": 2.5,
+    "NPA": 6,
+    "FG": 7,
+    "PS": 20,
+    "EE": 11,
+    "AEI": 1.5,
+    "MoDem": 13,
+    "NC + UMP": 26,
+    "MPF + CPNT": 4.5,
+    "DLR": 0.5,
+    "FN": 6,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2009-05-25",
+   "end": "2009-05-27",
+   "sample": 5581,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/opinionway-fiducial-barometre-des-elections-europeennes-v4/viewdocument.html",
+   "values": {
+    "LO": 1,
+    "NPA": 6,
+    "FG": 5,
+    "PS": 20,
+    "EE": 10,
+    "AEI": 2.5,
+    "MoDem": 13,
+    "NC + UMP": 26,
+    "MPF + CPNT": 6,
+    "DLR": 0.5,
+    "FN": 7,
+    "DIV": 3
+   }
+  },
+  {
+   "pollster": "Verian",
+   "start": "2009-05-25",
+   "end": "2009-05-26",
+   "sample": 1000,
+   "url": "https://www.tns-sofres.com/publications/europeennes-2009-intentions-de-vote-vague-1",
+   "values": {
+    "LO": 2,
+    "NPA": 6,
+    "FG": 7,
+    "PS": 19,
+    "EE": 11,
+    "AEI": 1.5,
+    "MoDem": 14,
+    "NC + UMP": 26,
+    "MPF + CPNT": 4,
+    "DLR": 0.5,
+    "FN": 6,
+    "DIV": 3
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2009-05-22",
+   "end": "2009-05-23",
+   "sample": 861,
+   "url": "https://www.ipsos.com/fr-fr/europeennes-2009-labstention-largement-en-tete",
+   "values": {
+    "LO": 2,
+    "NPA": 7,
+    "FG": 5,
+    "PS": 20,
+    "EE": 10.5,
+    "MoDem": 13,
+    "NC + UMP": 26,
+    "MPF + CPNT": 6,
+    "DLR": 1,
+    "FN": 5.5,
+    "DIV": 4
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2009-05-19",
+   "end": "2009-05-20",
+   "sample": 903,
+   "url": "https://web.archive.org/web/20091009144720/http://www.csa-fr.com/dataset/data2009/opi20090520-intentions-de-vote-dans-la-perspective-des-elections-europeennes.pdf",
+   "values": {
+    "LO": 1,
+    "NPA": 6,
+    "FG": 5,
+    "PS": 21,
+    "EE": 9,
+    "AEI": 2,
+    "MoDem": 14,
+    "NC + UMP": 26,
+    "MPF + CPNT": 6,
+    "DLR": 1,
+    "FN": 7,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2009-05-15",
+   "end": "2009-05-18",
+   "sample": 4724,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/opinionway-fiducial-barometre-des-elections-europeennes-v3/viewdocument.html",
+   "values": {
+    "LO": 2,
+    "NPA": 6,
+    "FG": 5,
+    "PS": 21,
+    "EE": 10,
+    "AEI": 2,
+    "MoDem": 13,
+    "NC + UMP": 28,
+    "MPF + CPNT": 5.5,
+    "DLR": 0.5,
+    "FN": 6,
+    "DIV": 1
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2009-05-15",
+   "end": "2009-05-16",
+   "sample": 862,
+   "url": "https://www.ipsos.com/fr-fr/europeennes-des-intentions-de-vote-favorables-la-gauche-mais-pas-au-ps",
+   "values": {
+    "LO": 2,
+    "NPA": 7,
+    "FG": 5,
+    "PS": 22,
+    "EE": 10,
+    "MoDem": 11,
+    "NC + UMP": 28,
+    "MPF + CPNT": 6,
+    "DLR": 1,
+    "FN": 5,
+    "DIV": 3
+   }
+  },
+  {
+   "pollster": "Viavoice",
+   "start": "2009-05-13",
+   "end": "2009-05-15",
+   "sample": 1010,
+   "url": "http://www.institut-viavoice.com/wp-content/uploads/2009/05/viavoice_liberation_les_elections_europeennes_Mai_2009.pdf",
+   "values": {
+    "LO": 2,
+    "NPA": 6,
+    "FG": 6,
+    "PS": 22,
+    "EE": 9,
+    "MoDem": 13,
+    "NC + UMP": 27,
+    "MPF + CPNT": 5,
+    "DLR": 2,
+    "FN": 6,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2009-05-13",
+   "end": "2009-05-14",
+   "sample": 1003,
+   "url": "https://web.archive.org/web/20091009144024/http://www.csa-fr.com/dataset/data2009/opi20090514-les-francais-et-l-europe-intentions-de-vote-et-jugements-sur-les-effets-de-la-construction-europeenne.pdf",
+   "values": {
+    "LO": 2,
+    "NPA": 5,
+    "FG": 4,
+    "PS": 22,
+    "EE": 10,
+    "AEI": 2,
+    "MoDem": 13,
+    "NC + UMP": 28,
+    "MPF + CPNT": 5,
+    "DLR": 1,
+    "FN": 6,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2009-05-07",
+   "end": "2009-05-10",
+   "sample": 5079,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/opinionway-fiducial-barometre-des-elections-europeennes/viewdocument.html",
+   "values": {
+    "LO": 2,
+    "NPA": 7,
+    "FG": 5,
+    "PS": 22,
+    "EE": 9,
+    "AEI": 1,
+    "MoDem": 13,
+    "NC + UMP": 27,
+    "MPF + CPNT": 5,
+    "DLR": 1,
+    "FN": 7,
+    "DIV": 1
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2009-05-06",
+   "end": "2009-05-07",
+   "sample": 886,
+   "url": "http://www.parismatch.com/Actu/Politique/Europeennes-l-UMP-largement-en-tete-139209",
+   "values": {
+    "LO": 2,
+    "NPA": 7,
+    "FG": 6.5,
+    "PS": 21.5,
+    "EE": 7,
+    "MoDem": 13.5,
+    "NC + UMP": 27,
+    "MPF + CPNT": 5,
+    "DLR": 1,
+    "FN": 7.5,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2009-04-29",
+   "end": "2009-05-07",
+   "sample": 1741,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/853-1-study_file.pdf",
+   "values": {
+    "LO": 2,
+    "NPA": 7.5,
+    "FG": 6.5,
+    "PS": 21.5,
+    "EE": 8,
+    "MoDem": 14,
+    "NC + UMP": 26,
+    "MPF + CPNT": 5,
+    "FN": 7.5,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2009-04-30",
+   "end": "2009-05-02",
+   "sample": 861,
+   "url": "https://www.ipsos.com/fr-fr/intentions-de-vote-aux-elections-europeennes",
+   "values": {
+    "LO": 2,
+    "NPA": 7,
+    "FG": 6,
+    "PS": 23,
+    "EE": 10,
+    "MoDem": 11,
+    "NC + UMP": 27,
+    "MPF + CPNT": 6,
+    "DLR": 1,
+    "FN": 5,
+    "DIV": 2
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2009-04-23",
+   "end": "2009-04-24",
+   "sample": 853,
+   "url": "https://web.archive.org/web/20090520143102/http://www.ifop.com/europe/docs/europeennes2009_4.pdf",
+   "values": {
+    "LO": 3,
+    "NPA": 7,
+    "FG": 5.5,
+    "PS": 22.5,
+    "EE": 7.5,
+    "MoDem": 14,
+    "NC + UMP": 26.5,
+    "MPF + CPNT": 5,
+    "DLR": 1,
+    "FN": 7.5,
+    "PDF": 0.5
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "start": "2009-04-16",
+   "end": "2009-04-17",
+   "sample": 1005,
+   "url": "https://www.opinion-way.com/fr/sondage-d-opinion/sondages-publies/le-figaro-lci-le-politoscope-saison-3-vague-30/viewdocument.html",
+   "values": {
+    "NPA": 7,
+    "FG": 5,
+    "PS": 23,
+    "EE": 10,
+    "MoDem": 12,
+    "NC + UMP": 28,
+    "MPF + CPNT": 5,
+    "DLR": 1,
+    "FN": 6,
+    "DIV": 3
+   }
+  },
+  {
+   "pollster": "CSA",
+   "start": "2009-04-15",
+   "end": "2009-04-16",
+   "sample": 904,
+   "url": "https://web.archive.org/web/20091009144056/http://www.csa-fr.com/dataset/data2009/opi20090416-intentions-de-vote-dans-la-perspective-des-elections-europeennes.pdf",
+   "values": {
+    "LO": 2,
+    "NPA": 7,
+    "FG": 3,
+    "PS": 25,
+    "EE": 10,
+    "MoDem": 12,
+    "NC + UMP": 27,
+    "MPF + CPNT": 5,
+    "DLR": 1,
+    "FN": 8
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "start": "2009-03-13",
+   "end": "2009-03-14",
+   "sample": 887,
+   "url": "https://www.ipsos.com/fr-fr/europeennes-la-gauche-moins-demobilisee-que-la-droite",
+   "values": {
+    "LO": 2,
+    "NPA": 9,
+    "FG": 6,
+    "PS": 24,
+    "EE": 9,
+    "MoDem": 10,
+    "NC + UMP": 27,
+    "MPF + CPNT": 6,
+    "DLR": 1,
+    "FN": 5.5,
+    "PDF": 0.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2009-02-12",
+   "end": "2009-02-13",
+   "sample": 862,
+   "url": "https://web.archive.org/web/20090306081117/http://www.ifop.com/europe/docs/europeennes2009_3.pdf",
+   "values": {
+    "LO": 3,
+    "NPA": 9,
+    "FG": 4,
+    "PS": 23,
+    "EE": 7,
+    "MoDem": 14.5,
+    "NC + UMP": 26,
+    "MPF + CPNT": 5,
+    "DLR": 2,
+    "FN": 6,
+    "PDF": 0.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2009-01-22",
+   "end": "2009-01-23",
+   "sample": 876,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/europeennes2009_2.pdf",
+   "values": {
+    "LO + NPA + FG": 14.5,
+    "PS": 22.5,
+    "EE": 7,
+    "MoDem": 14,
+    "NC + UMP": 25.5,
+    "MPF": 6,
+    "CPNT": 2.5,
+    "DLR": 1.5,
+    "FN": 6.5
+   }
+  },
+  {
+   "pollster": "Ifop",
+   "start": "2008-11-27",
+   "end": "2008-11-28",
+   "sample": 881,
+   "url": "https://www.ifop.com/wp-content/uploads/2018/03/europeennes2009.pdf",
+   "values": {
+    "LO": 4,
+    "NPA": 8,
+    "FG": 4,
+    "PS": 22,
+    "EE": 11,
+    "MoDem": 12,
+    "NC": 2,
+    "UMP": 22,
+    "MPF": 4,
+    "CPNT": 3,
+    "DLR": 1,
+    "FN": 7
+   }
+  }
+ ]
+}

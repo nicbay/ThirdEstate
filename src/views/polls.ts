@@ -1,20 +1,31 @@
 // Polls & markets: trend, runoff match-ups, every poll, prediction markets.
 import { loadMarkets, loadPolls } from "../data";
 import { L, fmtDate, fmtNum, getLang } from "../i18n";
-import { lineChart, pollDots } from "../lib/chart";
 import { meta, registerParties } from "../lib/candidates";
-import { WINDOW, average, duelAverages, pollValue, pollsterName, trend } from "../lib/polls";
+import { WINDOW, average, duelAverages, latestPollDate, pollsterName } from "../lib/polls";
 import { colon, dec, pair100, pct } from "../lib/format";
+import { combineOdds, oddsFor, winShare } from "../lib/markets";
 import { esc, safeUrl } from "../util";
 import { shiftDays } from "./home";
-import { mountDaily } from "./daily";
+import { liveForecast, mountDaily } from "./daily";
+import { mountForecastChart } from "./forecast-chart";
 
-const ui = { range: 365, hidden: new Set<string>(), pollster: "" };
+const ui = { range: 180, hidden: new Set<string>(), pollster: "" };
+
+/** Ink or white, whichever reads at 4.5:1 or better on a party colour (light ones like the centre's yellow need ink). */
+const textOn = (hex: string) => {
+  const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
+  if (!m) return "#fff";
+  const lin = (i: number) => { const c = parseInt(m[1].slice(i, i + 2), 16) / 255; return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; };
+  const y = 0.2126 * lin(0) + 0.7152 * lin(2) + 0.0722 * lin(4);
+  return 1.05 / (y + 0.05) >= 4.5 ? "#fff" : "#0d0f1a";
+};
+const duelCell = (w: number, color: string) => { const t = textOn(color); return `<span style="width:${w}%;background:${color};color:${t}${t === "#fff" ? "" : ";text-shadow:none"}">${w}</span>`; };
 
 export async function renderPolls(app: HTMLElement) {
   const [polls, markets] = await Promise.all([loadPolls("2027"), loadMarkets().catch(() => null)]);
   registerParties(polls.parties);
-  const latest = polls.firstRound[0]?.end ?? new Date().toISOString().slice(0, 10);
+  const latest = latestPollDate(polls.firstRound);
   const current = average(polls.firstRound, latest);
   const pollsters = [...new Set(polls.firstRound.map((p) => pollsterName(p.pollster)))].sort();
   const allDuels = duelAverages(polls.secondRound);
@@ -32,6 +43,7 @@ export async function renderPolls(app: HTMLElement) {
           <a href="#/sondages#second-tour">${L("Second tour", "Runoff")}</a>
           <a href="#/sondages#liste">${L("Tous les sondages", "All polls")}</a>
           <a href="#/sondages#marches">${L("Marchés", "Markets")}</a>
+          <a href="#/sondages/instituts">${L("Les instituts notés", "Pollsters graded")}</a>
         </nav>
       </div>
 
@@ -43,7 +55,7 @@ export async function renderPolls(app: HTMLElement) {
         </header>
         <div id="chart"></div>
         <div class="legend" id="legend"></div>
-        <p class="muted small">${L(`Lignes : moyenne des sondages sur ${WINDOW} jours glissants, la même que partout sur le site. Points : sondages individuels (moyenne des hypothèses testées).`, `Lines: ${WINDOW}-day rolling polling average, the same one used across the site. Dots: individual polls (mean across tested line-ups).`)} <a href="#/sources">${L("Méthode", "Method")}</a></p>
+        <p class="muted small">${L(`Lignes pleines : moyenne des sondages sur ${WINDOW} jours glissants, pondérée par la note de chaque institut (un sondage mal noté la fait moins bouger) et corrigée du penchant de chacun, la même que partout sur le site. Points : sondages individuels (moyenne des hypothèses testées).`, `Solid lines: ${WINDOW}-day rolling polling average, weighted by each institute’s grade (a poorly graded poll moves it less) and corrected for each one’s lean, the same one used across the site. Dots: individual polls (mean across tested line-ups).`)} <a href="#/sondages/instituts">${L("Les instituts notés", "Pollsters graded")}</a> · <a href="#/sources">${L("Méthode", "Method")}</a></p>
       </article>
 
       <article class="card" id="second-tour">
@@ -55,7 +67,7 @@ export async function renderPolls(app: HTMLElement) {
               const w = meta(d.winner), l = meta(d.loser);
               const [rw, rl] = pair100(d.pw, d.pl);
               return `<tr><td><b>${esc(d.winner)}</b> ${L("contre", "vs")} ${esc(d.loser)}</td>
-                <td class="num"><div class="duel"><span style="width:${rw}%;background:${w.color}">${rw}</span><span style="width:${rl}%;background:${l.color}">${rl}</span></div></td>
+                <td class="num"><div class="duel">${duelCell(rw, w.color)}${duelCell(rl, l.color)}</div></td>
                 <td class="num muted">${d.total}</td><td class="muted">${fmtDate(d.last)}</td></tr>`;
             })
             .join("")}</tbody>
@@ -71,8 +83,8 @@ export async function renderPolls(app: HTMLElement) {
       </article>
 
       <article class="card" id="marches">
-        <header class="card-head"><h2>${L("Marchés prédictifs", "Prediction markets")}</h2></header>
-        ${markets ? marketsHtml(markets) : `<p class="muted">${L("Données indisponibles.", "Data unavailable.")}</p>`}
+        <header class="card-head"><h2>${L("Marchés prédictifs, pour comparaison", "Prediction markets, for comparison")}</h2></header>
+        ${markets ? marketsHtml(markets, polls) : `<p class="muted">${L("Données indisponibles.", "Data unavailable.")}</p>`}
       </article>
 
       <p class="source muted">${L("Sondages : Wikipédia (CC BY-SA), mis à jour le", "Polls: Wikipedia (CC BY-SA), updated")} ${fmtDate(polls.fetchedAt)} · <a href="${esc(safeUrl(polls.source))}" target="_blank" rel="noopener">${L("page source", "source page")}</a></p>
@@ -80,24 +92,12 @@ export async function renderPolls(app: HTMLElement) {
 
   void mountDaily(app.querySelector<HTMLElement>("#daily")).then(() => { if (/#point$/.test(location.hash)) document.getElementById("point")?.scrollIntoView(); });
 
+  const shown = current.slice(0, 12).map((r) => r.name);
+  const redraw = mountForecastChart(app.querySelector<HTMLElement>("#chart")!, {
+    polls, markets, from: () => shiftDays(latest, -ui.range), shown: () => shown, hidden: () => ui.hidden,
+  });
   const drawChart = () => {
-    const from = shiftDays(latest, -ui.range);
-    const pts = trend(polls.firstRound, from);
-    const shown = current.slice(0, 12).map((r) => r.name);
-    const series = shown
-      .filter((n) => !ui.hidden.has(n))
-      .map((n) => {
-        const m = meta(n);
-        return {
-          name: n,
-          label: m.surname,
-          color: m.color,
-          line: pts.filter((p) => p.values[n] != null).map((p) => ({ date: p.date, value: p.values[n] })),
-          dots: pollDots(polls.firstRound, n, from, polls.source),
-        };
-      })
-      .filter((s) => s.line.length);
-    app.querySelector("#chart")!.innerHTML = lineChart(series);
+    redraw();
     app.querySelector("#legend")!.innerHTML = shown
       .map((n) => `<button type="button" class="chip-toggle" data-name="${esc(n)}" aria-pressed="${!ui.hidden.has(n)}" style="--c:${meta(n).color}">${esc(meta(n).surname)}</button>`)
       .join("");
@@ -144,8 +144,15 @@ export async function renderPolls(app: HTMLElement) {
   drawList();
 }
 
-function marketsHtml(data: NonNullable<Awaited<ReturnType<typeof loadMarkets>>>) {
+function marketsHtml(data: NonNullable<Awaited<ReturnType<typeof loadMarkets>>>, polls: Awaited<ReturnType<typeof loadPolls>>) {
+  const top = liveForecast(polls, data).rows[0];
+  const odds = combineOdds(data.markets);
+  const mk = top ? winShare(odds, oddsFor(odds, top.name)) : null;
+  const fr = getLang() === "fr";
   return `
+    ${top ? `<p class="mk-vs">${fr
+      ? `Notre prévision donne ${pct(top.win, 0)} de chances à ${esc(top.name)}${mk != null ? ` ; les marchés réunis, ${pct(mk, 0)}` : ""}. Le chiffre de référence du site est la prévision ; les marchés sont un second avis, qui intègre aussi la question de savoir qui sera candidat.`
+      : `Our forecast gives ${esc(top.name)} a ${pct(top.win, 0)} chance${mk != null ? `; the markets combined, ${pct(mk, 0)}` : ""}. The site’s reference figure is the forecast; the markets are a second opinion, one that also prices who will actually stand.`} <a href="#/sondages#point">${L("Pourquoi les deux diffèrent", "Why the two differ")}</a></p>` : ""}
     <p class="muted small">${L(
       "Prix des contrats « oui », lus comme une probabilité implicite. Ce ne sont pas des sondages : ils reflètent les paris d’une poignée de parieurs, souvent hors de France. Polymarket est bloqué en France ; il est interrogé depuis un serveur hors de France.",
       "Price of “yes” contracts, read as an implied probability. These aren’t polls: they reflect bets by a small number of traders, mostly outside France. Polymarket is blocked in France and is queried from a server outside the country.",
