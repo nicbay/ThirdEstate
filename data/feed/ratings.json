@@ -14026,6 +14026,188 @@
       },
       "check": null,
       "postTime": "2026-11-14T22:28:53.921Z"
+    },
+    "yt:_6zHQVez75U": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T09:54:10.137Z",
+      "storyItems": [
+        "4bf7fc43294b",
+        "a6912d160801"
+      ],
+      "storyTitle": "Présidentielle 2027 : les gauches seront-elles vraiment irréconciliables ?",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Appel à l'unité de la gauche face à l'extrême droite et au bloc central, sans programme économique détaillé ; orientation de gauche sociale-démocrate.",
+        "rationale_en": "Calls for left unity against the far right and the central bloc, without a detailed economic programme; centre-left leaning."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Ton politique classique, sans attaque contre des élites ni appel au peuple homogène.",
+        "rationale_en": "Conventional political tone, with no attack on elites and no appeal to a homogeneous people."
+      },
+      "check": null,
+      "postTime": "2026-11-15T09:26:22.000Z"
+    },
+    "yt:iNJJ4zSJnRk": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T09:54:10.138Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.9,
+        "rationale_fr": "Lien entre immigration et chômage, « nous ne pouvons plus importer des chômeurs » : position nationaliste et identitaire.",
+        "rationale_en": "Links immigration to unemployment with 'we can no longer import unemployed': nationalist, identitarian position."
+      },
+      "populism": {
+        "score": 0.5,
+        "markers": [
+          "nativisme"
+        ],
+        "rationale_fr": "Opposition entre « nous » et les immigrés, présentés comme cause de la déstabilisation sociale.",
+        "rationale_en": "Opposes 'us' to immigrants, presented as a cause of social destabilisation."
+      },
+      "check": {
+        "claim": "Le taux de chômage des étrangers en France serait deux fois plus élevé que celui des Français.",
+        "why_fr": "Le ratio dépend de la définition retenue (nationalité, origine, population active) ; il mérite d'être vérifié contre les séries officielles de l'Insee.",
+        "why_en": "The ratio depends on the definition used (nationality, origin, labour force); it should be checked against official INSEE series.",
+        "sources": [
+          {
+            "title": "Insee, site d'accueil",
+            "url": "https://www.insee.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-15T08:00:37.000Z"
+    },
+    "yt:Q3g3FGQBmwc": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T09:54:10.138Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Simple annonce d'un débat, sans position politique exprimée.",
+        "rationale_en": "Simple announcement of a debate, with no political position expressed."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste dans ce message.",
+        "rationale_en": "No populist rhetoric in this message."
+      },
+      "check": null,
+      "postTime": "2026-11-15T07:30:18.000Z"
+    },
+    "yt:mItJ0LhiwIQ": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T09:54:10.138Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Présentation du programme « L'Avenir en commun » de La France insoumise, de gauche radicale.",
+        "rationale_en": "Presents the 'L'Avenir en commun' programme of La France insoumise, a radical left programme."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Mise en avant d'une dynamique et d'un enthousiasme militant plutôt que d'arguments détaillés.",
+        "rationale_en": "Emphasises momentum and militant enthusiasm rather than detailed arguments."
+      },
+      "check": null,
+      "postTime": "2026-11-15T07:00:09.000Z"
+    },
+    "yt:JFNb-O8yFDE": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T09:54:10.138Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Réplique moqueuse sur des militants et des adversaires, sans contenu idéologique explicite.",
+        "rationale_en": "Mocking reply about activists and opponents, with no explicit ideological content."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Présente les adversaires comme dangereux et leurs critiques comme dénuées de légitimité.",
+        "rationale_en": "Presents opponents as dangerous and their criticism as lacking legitimacy."
+      },
+      "check": null,
+      "postTime": "2026-11-14T21:30:16.000Z"
+    },
+    "bsky:at://did:plc:bnulcjvue27qpnwzup3y7hv3/app.bsky.feed.post/3n2butarfg22x": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T09:54:10.138Z",
+      "storyItems": [
+        "3b19c1725485",
+        "a099e6f963f0",
+        "968d25dd05e6",
+        "bf4c416905b9",
+        "aad9e13e8969",
+        "8ef284e32708"
+      ],
+      "storyTitle": "Mouvement lycéen: le gouvernement annonce une saisine \"systématique\" de la justice pour les violences contre le personnel de l'Éducation nationale",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Dénonce la répression et les politiques du gouvernement, et défend la justice sociale et le vivant : gauche écologiste et sociale.",
+        "rationale_en": "Denounces repression and government policies, and defends social justice and environment: left-wing ecologist and social stance."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Qualifie les politiques du gouvernement de liberticides et mortifères, sans attaquer des élites.",
+        "rationale_en": "Describes government policies as liberticidal and deadly, without attacking elites."
+      },
+      "check": null,
+      "postTime": "2026-11-14T16:04:17.896Z"
+    },
+    "x:2121282250826199195": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T09:54:10.138Z",
+      "storyItems": [
+        "1d342bb707ac",
+        "a233be124026",
+        "dadaa835cf28",
+        "88e451ec5e66",
+        "edc5a68ef353",
+        "0f89dbcfab1d"
+      ],
+      "storyTitle": "Marine Le Pen ouverte à une rencontre avec Volodymyr Zelensky, qu’elle propose d’organiser à Bruxelles",
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Interroge le financement de l'Ukraine et ses emprunts européens, position souverainiste proche de la droite nationale.",
+        "rationale_en": "Questions EU borrowing for Ukraine, a sovereigntist position close to the national right."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message mesuré, sans opposition peuple contre élites.",
+        "rationale_en": "Measured message, with no people-versus-elites opposition."
+      },
+      "check": null,
+      "postTime": "2026-11-13T16:41:14.772Z"
     }
   },
   "failures": {
