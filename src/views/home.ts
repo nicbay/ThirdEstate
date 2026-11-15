@@ -52,7 +52,7 @@ export async function renderHome(app: HTMLElement) {
     </section>`;
   hero.start(app);
   mountOcean(app.querySelector<HTMLElement>(".hday")!);
-  void mountEdition(app.querySelector<HTMLElement>("#edition")!, hero.pollsHtml);
+  void mountEdition(app.querySelector<HTMLElement>("#edition")!);
   // the fox lives on the note of the day's top edge (its own perch, so changing day doesn't redraw it)
   const perch = app.querySelector<HTMLElement>(".ed-perch");
   if (perch) mountFox(perch);

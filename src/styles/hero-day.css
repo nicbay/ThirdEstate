@@ -346,3 +346,48 @@
 .ed-why[open] > summary { margin-bottom: 0.6rem; }
 .ed.is-in .ed-col li { animation: ed-rise 0.45s ease-out backwards; animation-delay: 0.2s; }
 @media (max-width: 640px) { .ed-days { grid-template-columns: 1fr; } .ed-surprise { grid-template-columns: 1fr; } }
+
+/* the note of the day as a ledger (src/views/edition.ts): labelled lines on the left, one table of polls and odds
+   on the right, the city of the day as the last line */
+.ed-lg { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 1.2rem 2rem; align-items: start; }
+@media (max-width: 860px) { .ed-lg { grid-template-columns: 1fr; } }
+.lg { display: grid; min-width: 0; }
+.lg-row { display: grid; grid-template-columns: 6.8rem minmax(0, 1fr); gap: 0.2rem 0.9rem; padding: 0.65rem 0; border-top: 1px solid var(--rule); }
+.lg-row:first-child { border-top: 2px solid var(--ink); }
+.lg-k { font: 400 0.6875rem/1.6 var(--pixel); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); padding-top: 0.2rem; }
+.lg-row.is-te .lg-k { color: var(--split-red); }
+.lg-b { min-width: 0; color: var(--ink); font-size: 0.98rem; line-height: 1.42; }
+.lg-b a { color: var(--ink); text-decoration: none; }
+.lg-b a:hover, .lg-b a:focus-visible { text-decoration: underline; }
+.lg-list, .lg-recap, .lg-recap ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
+.lg-who { white-space: nowrap; }
+.lg-who i { display: inline-block; width: 9px; height: 9px; margin-right: 0.35rem; background: var(--c); }
+.lg-recap > li > span { display: block; font: 600 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-3); }
+.lg-recap ol { margin-top: 0.2rem; font-size: 0.92rem; }
+@media (max-width: 480px) { .lg-row { grid-template-columns: 1fr; } }
+.lg-side { min-width: 0; }
+.lg-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.lg-table caption { text-align: left; padding-bottom: 0.4rem; }
+.lg-table caption span { font: 700 0.75rem var(--mono); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-2); margin-right: 0.8rem; }
+.lg-table caption a { font: 600 0.75rem var(--mono); color: var(--link); text-decoration: none; white-space: nowrap; }
+.lg-table caption a:hover { text-decoration: underline; }
+.lg-table thead th { font: 500 0.6875rem var(--mono); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-3); text-align: right; padding: 0.25rem 0 0.25rem 0.6rem; border-bottom: 1px solid var(--rule-2); }
+.lg-table thead th:first-child { text-align: left; padding-left: 0; }
+.lg-table td, .lg-table tbody th { padding: 0.34rem 0 0.34rem 0.6rem; text-align: right; font: 700 0.9rem var(--mono); color: var(--ink); border-bottom: 1px solid var(--rule); white-space: nowrap; }
+.lg-table tbody th { text-align: left; padding-left: 0; font: 700 0.92rem var(--display); }
+.lg-table tbody th i { display: inline-block; width: 9px; height: 9px; margin-right: 0.4rem; }
+.lg-table small { display: inline-block; min-width: 2.7rem; margin-left: 0.35rem; font: 600 0.72rem var(--mono); text-align: right; }
+.lg-table small.up { color: var(--up-night, var(--up-text)); } .lg-table small.down { color: var(--down-night, var(--down-text)); } .lg-table small.flat { color: var(--ink-3); }
+.lg-cap { margin: 0.45rem 0 0; font-size: 0.72rem; color: var(--ink-3); }
+.ed-city { display: flex; gap: 0.9rem; align-items: center; border-top: 1px solid var(--rule); padding-top: 0.9rem; min-width: 0; }
+.ed-city .arms canvas { height: 52px; }
+.ed-city p { margin: 0; min-width: 0; color: var(--ink); font-size: 0.95rem; line-height: 1.4; }
+.ed-city .lg-k { display: block; padding: 0; }
+.ed-city a { color: var(--ink); text-decoration: none; }
+.ed-city a:hover, .ed-city a:focus-visible { text-decoration: underline; }
+.ed-city-name { font: 700 1.02rem var(--display); }
+.ed .ed-by { margin: 0; }
+.ed.is-in .lg-row { animation: ed-rise 0.45s ease-out backwards; }
+
+/* the ocean's caption: what the pixels are, in one pixel-type line at the foot of the hero's opening */
+.ocean-cap { margin: -0.9rem 0 1.3rem; text-align: right; font: 400 0.6875rem/1.4 var(--pixel); text-transform: uppercase; letter-spacing: 0.06em; color: var(--night-text-3); }
