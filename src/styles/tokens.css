@@ -59,7 +59,7 @@
   --sans: var(--text);
 
   --measure: 66ch;
-  --col: 1160px;
+  --col: clamp(1160px, 80vw, 1560px); /* the page column: 1160px up to a 1450px window, then four fifths of it, up to 1560px on very wide screens */
   /* viewport width without the classic scrollbar (set from JS in main.ts; 100vw includes it, so full-bleed bands overflowed) */
   --vw: 100vw;
   --gutter: 16px;
