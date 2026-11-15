@@ -446,3 +446,22 @@
 .hw-debt .hd-oat { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 0.3rem 1.8rem; margin-top: 0.5rem; padding-top: 0.7rem; border-top: 1px solid var(--rule); font-size: 0.95rem; color: var(--ink-2); }
 .hw-debt .hd-oat b { font: 700 1rem var(--mono); color: var(--ink); font-variant-numeric: tabular-nums; }
 .hw-debt .hd-oat b.num-up { color: var(--up-text); } .hw-debt .hd-oat b.num-down { color: var(--down-text); }
+
+/* the note: a rule between our take and the figures, the polling trend under the table, the quoted post */
+.lg-mid { border-top: 2px solid var(--ink); margin-top: 0.5rem; padding-top: 1.1rem; }
+.lg-trend { margin: 1.1rem 0 0; }
+.lg-trend figcaption { font: 700 0.75rem var(--mono); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-2); margin-bottom: 0.4rem; }
+.lg-trend svg { display: block; width: 100%; height: auto; overflow: visible; }
+.lg-trend-grid { stroke: var(--rule-2); stroke-width: 0.6; }
+.lg-trend-end { font: 700 11px var(--text); }
+.lg-trend-ax { font: 500 10px var(--mono); fill: var(--ink-3); }
+.lg-kpi caption a { font: 600 0.75rem var(--mono); color: var(--link); text-decoration: none; white-space: nowrap; }
+.lg-kpi caption a:hover { text-decoration: underline; }
+.lg-b a.ed-src { color: var(--ink-3); text-decoration: underline; text-underline-offset: 2px; }
+.lg-brief .ed-src { display: inline; margin: 0; }
+.lg-post { margin: 0 0 0.3rem; padding: 0; font-size: 0.98rem; line-height: 1.45; color: var(--ink); }
+.lg-post::before { content: "« "; color: var(--ink-3); } .lg-post::after { content: " »"; color: var(--ink-3); }
+
+/* the fox under "Our take": the line is ours */
+.lg-logo { display: block; margin-top: 0.5rem; line-height: 0; }
+.lg-logo svg { display: block; }

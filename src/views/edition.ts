@@ -8,6 +8,7 @@ import { fetchJson } from "../data";
 import { L, fmtDate } from "../i18n";
 import { meta } from "../lib/candidates";
 import { armsSlot, paintArms } from "../lib/arms";
+import { foxSvg } from "../lib/fox";
 import { dec, pct } from "../lib/format";
 import { gradeColor, pollsterName, pollsterRating } from "../lib/polls";
 import { esc, safeUrl } from "../util";
@@ -27,10 +28,14 @@ interface Mv { name: string; market: number | null; polls: number | null }
 interface Ext { name: string; now: number | null; d: number }
 interface Borrow { span: "day" | "week"; asOf: string; spread: number; dSpread: number; oat10: number | null; bund10: number | null; dOat: number | null; basis: "oat" | "spread"; base: number | null; cost: number | null; why: Headline | null }
 interface BriefLine { lead: T; fr: string; en: string; story?: Headline | null }
+type Line = { name: string; fr: string; en: string; story: Headline | null };
 interface Kpi { id: string; period: string; value: number; prev: number | null; yearAgo: number | null; updated: string | null; url: string | null; fresh?: boolean }
 interface Ledger {
   span: "day" | "week";
-  kpis?: { items: Kpi[]; confidence: { series: [string, number][]; parts: Kpi[] } | null } | null;
+  kpis?: { items: Kpi[] } | null;
+  take?: { fr: string; en: string; story: Headline | null } | null; surprises?: Line[]; declarations?: Line[];
+  post?: { handle: string; name: string | null; text: string; url: string; outlets: string[] } | null;
+  trend?: { date: string; v: Record<string, number | null> }[] | null;
   borrow?: Borrow | null; brief?: BriefLine[] | null;
   world: Headline | null; france: Headline | null; candidates: (Headline & { name: string })[];
   lead: { span: "day" | "week"; up: Mv[]; down: Mv[] };
@@ -121,8 +126,10 @@ function borrowHtml(b: Borrow, short = false) {
   return `${short ? "" : `${level.charAt(0).toUpperCase()}${level.slice(1)}. `}${cost} ${why} <a class="lg-more" href="#/chiffres#taux">${L("Le détail", "The detail")} →</a>`;
 }
 
-/** Sunday's brief: three lines that take a stand, each a bold lead, a sentence, and the story behind it. */
-const briefHtml = (lines: BriefLine[]) => `<ol class="lg-brief">${lines.slice(0, 3).map((l) => `<li><b>${esc(L(l.lead.fr, l.lead.en))}</b> ${esc(L(l.fr, l.en)).replace(/\d+(?:[.,]\d+)?[ \u00a0]?%(?:pt)?/g, (m) => `<b>${m}</b>`)}${l.story ? ` <span class="ed-ev">${story(l.story)}</span>` : ""}</li>`).join("")}</ol>`;
+/** Figures in a line of ours ("2,6 %", "3 %pt"), in bold. */
+const figures = (html: string) => html.replace(/\d+(?:[.,]\d+)?[ \u00a0]?%(?:pt)?/g, (m) => `<b>${m}</b>`);
+/** Sunday's brief: three lines that take a stand, each a bold lead, a sentence, and its source (the outlet alone). */
+const briefHtml = (lines: BriefLine[]) => `<ol class="lg-brief">${lines.slice(0, 3).map((l) => `<li><b>${esc(L(l.lead.fr, l.lead.en))}</b> ${figures(esc(L(l.fr, l.en)))}${l.story ? ` ${src(l.story)}` : ""}</li>`).join("")}</ol>`;
 
 /** Sunday's longer recap: the week's largest rise and fall in the polls and in the odds, the polls published, the most-covered stories. */
 function recapHtml(r: NonNullable<Ledger["recap"]>) {
@@ -149,7 +156,9 @@ function tableHtml(g: Ledger) {
   <p class="lg-cap">${L("Moyenne des sondages (intentions de vote) ; Kalshi et Polymarket, en moyenne.", "Poll average (voting intention); Kalshi and Polymarket, averaged.")}</p>`;
 }
 
-// ---------- the week's numbers (Sundays): the rates France borrows at, then INSEE's and Eurostat's latest figures ----------
+// ---------- the week's key numbers (Sundays) ----------
+// Only what matters that week: the rates France borrows at, and the figures INSEE or Eurostat published in the
+// last seven days. The full set, with its history, is on the "France in numbers" page (views/economy.ts).
 const KPIS: Record<string, { fr: string; en: string; unit: "pct" | "index" | "count"; goodUp: boolean }> = {
   growth_q: { fr: "Croissance du PIB, sur le trimestre", en: "GDP growth, on the quarter", unit: "pct", goodUp: true },
   inflation: { fr: "Inflation, sur un an", en: "Inflation, year on year", unit: "pct", goodUp: false },
@@ -158,17 +167,6 @@ const KPIS: Record<string, { fr: string; en: string; unit: "pct" | "index" | "co
   climate: { fr: "Climat des affaires (moyenne : 100)", en: "Business climate (average: 100)", unit: "index", goodUp: true },
   jobsClimate: { fr: "Climat de l’emploi (moyenne : 100)", en: "Employment climate (average: 100)", unit: "index", goodUp: true },
   cars: { fr: "Voitures neuves immatriculées, par mois", en: "New cars registered, a month", unit: "count", goodUp: true },
-};
-const PARTS: Record<string, { fr: string; en: string; goodUp: boolean }> = {
-  ownPast: { fr: "Leurs finances, depuis un an", en: "Their own finances, past year", goodUp: true },
-  ownFuture: { fr: "Leurs finances, dans l’année", en: "Their own finances, year ahead", goodUp: true },
-  livingPast: { fr: "Niveau de vie en France, depuis un an", en: "Living standards in France, past year", goodUp: true },
-  livingFuture: { fr: "Niveau de vie en France, dans l’année", en: "Living standards in France, year ahead", goodUp: true },
-  unemployment: { fr: "Craintes de chômage", en: "Fear of unemployment", goodUp: false },
-  purchases: { fr: "Bon moment pour un achat important", en: "A good time for a major purchase", goodUp: true },
-  savingNow: { fr: "Capacité d’épargne aujourd’hui", en: "Ability to save now", goodUp: true },
-  savingFuture: { fr: "Capacité d’épargne dans l’année", en: "Ability to save, year ahead", goodUp: true },
-  pricesFuture: { fr: "Hausse des prix attendue", en: "Price rises expected", goodUp: false },
 };
 /** "2026-10" → "oct. 2026", "2026-Q3" → "T3 2026". */
 function per(p: string) {
@@ -179,71 +177,81 @@ function per(p: string) {
 const whole = (v: number) => Math.round(v).toLocaleString(L("fr-FR", "en-GB"));
 
 function kpisHtml(g: Ledger) {
-  const b = g.borrow, k = g.kpis;
-  if (!b && !k?.items.length) return "";
-  const line = (label: string, sub: string, value: string, change: string, fresh = false) => `<tr><th scope="row">${label}<small>${sub}${fresh ? ` · <em>${L("publié cette semaine", "out this week")}</em>` : ""}</small></th><td>${value}</td><td>${change}</td></tr>`;
+  const b = g.borrow, fresh = (g.kpis?.items ?? []).filter((x) => x.fresh && KPIS[x.id]);
+  if (!b && !fresh.length) return "";
+  const line = (label: string, sub: string, value: string, change: string) => `<tr><th scope="row">${label}<small>${sub}</small></th><td>${value}</td><td>${change}</td></tr>`;
   const close = b ? `${L("clôture du", "close of")} ${esc(fmtDate(b.asOf).replace(/\s\d{4}$/, ""))}, ${L("sur 7 jours", "over 7 days")}` : "";
   const rates = b ? [
     b.oat10 != null ? line(`<a href="#/chiffres#taux">${L("Taux de l’OAT à 10 ans", "10-year OAT rate")}</a>`, close, pct(b.oat10, 2), b.dOat == null ? "–" : delta(b.dOat, ppt(), false, 2)) : "",
     line(`<a href="#/chiffres#taux">${L("Écart avec l’Allemagne", "Gap with Germany")}</a>`, close, `${dec(b.spread / 100, 2)}${ppt()}`, delta(b.dSpread / 100, ppt(), false, 3)),
   ].join("") : "";
-  const rows = (k?.items ?? []).filter((x) => KPIS[x.id]).map((x) => {
-    const d = KPIS[x.id], label = x.url ? `<a href="${esc(safeUrl(x.url))}" target="_blank" rel="noopener">${L(d.fr, d.en)}</a>` : L(d.fr, d.en);
-    if (d.unit === "count") return line(label, per(x.period), whole(x.value), x.yearAgo ? `${delta((x.value / x.yearAgo - 1) * 100, L("\u00a0%", "%"), d.goodUp)} <small>${L("sur un an", "on the year")}</small>` : "–", x.fresh);
-    const change = x.prev == null ? "–" : delta(x.value - x.prev, d.unit === "pct" ? ppt() : "", d.goodUp);
-    return line(label, per(x.period), d.unit === "pct" ? pct(x.value) : dec(x.value, x.value % 1 ? 1 : 0), change, x.fresh);
+  const rows = fresh.map((x) => {
+    const d = KPIS[x.id], label = `<a href="#/chiffres#conjoncture">${L(d.fr, d.en)}</a>`, sub = `${per(x.period)} · ${L("publié cette semaine", "out this week")}`;
+    if (d.unit === "count") return line(label, sub, whole(x.value), x.yearAgo ? `${delta((x.value / x.yearAgo - 1) * 100, L(" %", "%"), d.goodUp)} <small>${L("sur un an", "on the year")}</small>` : "–");
+    return line(label, sub, d.unit === "pct" ? pct(x.value) : dec(x.value, x.value % 1 ? 1 : 0), x.prev == null ? "–" : delta(x.value - x.prev, d.unit === "pct" ? ppt() : "", d.goodUp));
   }).join("");
   return `<table class="lg-table lg-kpi">
-    <caption><span>${L("Les chiffres de la semaine", "The week’s numbers")}</span></caption>
+    <caption><span>${L("Les chiffres de la semaine", "The week’s numbers")}</span><a href="#/chiffres#conjoncture">${L("Tous les chiffres", "Every figure")} →</a></caption>
     <thead><tr><th scope="col">${L("Indicateur", "Indicator")}</th><th scope="col">${L("Niveau", "Level")}</th><th scope="col">${L("Variation", "Change")}</th></tr></thead>
     <tbody>${rates}${rows}</tbody>
   </table>
   ${b ? `<p class="lg-cost">${borrowHtml(b, true)}</p>` : ""}
-  <p class="lg-cap">${L("Variation depuis la publication précédente ; vert : mieux, rouge : moins bien. Sources : Insee, Eurostat, Teleborsa via Borsa Italiana.", "Change since the previous release; green: better, red: worse. Sources: INSEE, Eurostat, Teleborsa via Borsa Italiana.")}</p>
-  ${k?.confidence?.series.length ? confidenceHtml(k.confidence) : ""}`;
+  <p class="lg-cap">${L("Vert : mieux, rouge : moins bien. Sources : Insee, Eurostat, Teleborsa via Borsa Italiana.", "Green: better, red: worse. Sources: INSEE, Eurostat, Teleborsa via Borsa Italiana.")}</p>`;
 }
 
-/** Household confidence: ten years of the index against its long-run average, and the answers it is built from. */
-function confidenceHtml(c: { series: [string, number][]; parts: Kpi[] }) {
-  const s = c.series, W = 520, H = 130, P = { l: 6, r: 34, t: 10, b: 18 };
-  const vs = s.map((r) => r[1]), lo = Math.min(...vs, 100) - 2, hi = Math.max(...vs, 100) + 2;
-  const x = (i: number) => P.l + (i * (W - P.l - P.r)) / Math.max(1, s.length - 1), y = (v: number) => P.t + (1 - (v - lo) / (hi - lo)) * (H - P.t - P.b);
-  const last = s.at(-1)!;
-  const parts = c.parts.filter((p) => PARTS[p.id]).map((p) => {
-    const d = PARTS[p.id];
-    return `<tr><th scope="row">${L(d.fr, d.en)}</th><td>${p.value > 0 ? "+" : p.value < 0 ? "−" : ""}${dec(Math.abs(p.value), 0)}</td><td>${p.prev == null ? "–" : delta(p.value - p.prev, "", d.goodUp, 0)}</td><td>${p.yearAgo == null ? "–" : delta(p.value - p.yearAgo, "", d.goodUp, 0)}</td></tr>`;
+/** The polling averages over the last weeks, one line per candidate: the simple version of the big chart below. */
+function trendHtml(g: Ledger) {
+  const t = g.trend ?? [], names = g.table.filter((r) => r.polls != null).slice(0, 5).map((r) => r.name);
+  const vals = t.flatMap((d) => names.map((n) => d.v[n])).filter((v): v is number => v != null);
+  if (t.length < 3 || !vals.length) return "";
+  const W = 520, H = 170, P = { l: 6, r: 118, t: 8, b: 18 };
+  const max = Math.ceil(Math.max(...vals) / 5) * 5, x = (i: number) => P.l + (i * (W - P.l - P.r)) / (t.length - 1), y = (v: number) => P.t + (1 - v / max) * (H - P.t - P.b);
+  const ends: { n: string; y: number; v: number }[] = [];
+  const paths = names.map((n) => {
+    const pts = t.map((d, i) => (d.v[n] == null ? null : `${x(i).toFixed(1)},${y(d.v[n]!).toFixed(1)}`)).filter(Boolean);
+    const last = t.at(-1)!.v[n];
+    if (last != null) ends.push({ n, y: y(last), v: last });
+    return `<polyline points="${pts.join(" ")}" fill="none" stroke="${esc(meta(n).color)}" stroke-width="2.2" stroke-linejoin="round"/>`;
   }).join("");
-  return `<details class="lg-conf"><summary>${L("La confiance des ménages sur dix ans, et ce qui la compose", "Household confidence over ten years, and what it is made of")}</summary>
-    <svg class="lg-conf-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(L(`Confiance des ménages de ${per(s[0][0])} à ${per(last[0])} : ${dec(last[1], 0)}, pour une moyenne de longue période de 100`, `Household confidence from ${per(s[0][0])} to ${per(last[0])}: ${dec(last[1], 0)}, against a long-run average of 100`))}">
-      <line x1="${P.l}" x2="${W - P.r}" y1="${y(100).toFixed(1)}" y2="${y(100).toFixed(1)}" class="lg-conf-avg"/>
-      <text x="${W - P.r + 5}" y="${(y(100) + 4).toFixed(1)}" class="lg-conf-ax">100</text>
-      <polyline fill="none" class="lg-conf-line" points="${s.map((r, i) => `${x(i).toFixed(1)},${y(r[1]).toFixed(1)}`).join(" ")}"/>
-      <circle cx="${x(s.length - 1).toFixed(1)}" cy="${y(last[1]).toFixed(1)}" r="3.5" class="lg-conf-dot"/>
-      <text x="${W - P.r + 5}" y="${(y(last[1]) + (Math.abs(y(last[1]) - y(100)) < 12 ? (last[1] < 100 ? 14 : -6) : 4)).toFixed(1)}" class="lg-conf-end">${dec(last[1], 0)}</text>
-      <text x="${P.l}" y="${H - 3}" class="lg-conf-ax">${esc(per(s[0][0]))}</text>
-      <text x="${W - P.r}" y="${H - 3}" text-anchor="end" class="lg-conf-ax">${esc(per(last[0]))}</text>
-    </svg>
-    <table class="lg-table lg-parts">
-      <thead><tr><th scope="col">${L("Ce que disent les ménages (solde d’opinion)", "What households say (balance of opinion)")}</th><th scope="col">${esc(per(last[0]))}</th><th scope="col">${L("Sur un mois", "On the month")}</th><th scope="col">${L("Sur un an", "On the year")}</th></tr></thead>
-      <tbody>${parts}</tbody>
-    </table>
-    <p class="lg-cap">${L("Solde : part des réponses favorables moins part des réponses défavorables, corrigé des variations saisonnières. Source : Insee, enquête mensuelle de conjoncture auprès des ménages.", "Balance: share of positive answers minus share of negative ones, seasonally adjusted. Source: INSEE, monthly household survey.")}</p>
-  </details>`;
+  ends.sort((a, b) => a.y - b.y);
+  for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < 14) ends[i].y = ends[i - 1].y + 14;
+  const day = (iso: string) => new Date(iso).toLocaleDateString(L("fr-FR", "en-GB"), { day: "numeric", month: "short" });
+  return `<figure class="lg-trend"><figcaption>${L(`La tendance des sondages, ${t.length} jours`, `The polling trend, ${t.length} days`)}</figcaption>
+    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(L("Moyenne des sondages des cinq premiers candidats", "Poll average of the five leading candidates"))}">
+      ${[0, max / 2, max].map((v) => `<line x1="${P.l}" x2="${W - P.r}" y1="${y(v).toFixed(1)}" y2="${y(v).toFixed(1)}" class="lg-trend-grid"/>`).join("")}
+      ${paths}
+      ${ends.map((e2) => `<text x="${W - P.r + 6}" y="${(e2.y + 4).toFixed(1)}" fill="${esc(meta(e2.n).color)}" class="lg-trend-end">${sur(e2.n)} ${pct(e2.v)}</text>`).join("")}
+      <text x="${P.l}" y="${H - 3}" class="lg-trend-ax">${esc(day(t[0].date))}</text>
+      <text x="${W - P.r}" y="${H - 3}" text-anchor="end" class="lg-trend-ax">${esc(day(t.at(-1)!.date))}</text>
+    </svg></figure>`;
 }
 
-/** The note's body. A day: the lines on the left, the table on the right. A week: the brief across the box, then the
- *  polls table beside the week's numbers, then the recap and the news lines across the box. */
+/** The source of one of our own lines: the outlet alone, linked, never the article's title (it would compete with the line). */
+const src = (h: Headline) => (h.link ? `<a class="ed-src" href="${esc(safeUrl(h.link))}" target="_blank" rel="noopener">${esc(h.outlet)}</a>` : `<span class="ed-src">${esc(h.outlet)}</span>`);
+/** Our lines as a list; a line with no text of its own (no AI that day) shows its headline instead. */
+const linesHtml = (xs: Line[]) => `<ul class="lg-list">${xs.map((l) => `<li>${l.fr ? `${figures(esc(L(l.fr, l.en)))}${l.story ? ` ${src(l.story)}` : ""}` : l.story ? story(l.story) : ""}</li>`).join("")}</ul>`;
+/** The X post the press quoted most, with who wrote it and which outlets carried it. */
+const postHtml = (p: NonNullable<Ledger["post"]>) => `<blockquote class="lg-post">${esc(p.text)}</blockquote>
+  <span class="ed-src"><a href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">@${esc(p.handle)}</a>${p.name ? ` (${esc(p.name)})` : ""} · X · ${L("repris par", "quoted by")} ${esc(p.outlets.join(", "))}</span>`;
+
+/** The note's body. A day: our take, then the facts on the left and the table on the right. A week: the brief across
+ *  the box, a rule, the polls (table and trend) beside the week's key numbers, then the recap and the facts across the box. */
 function bodyHtml(g: Ledger, s: Pick | null | undefined) {
-  const news = `${g.world ? row(L("Monde", "World"), story(g.world)) : ""}${g.france ? row("France", story(g.france)) : ""}`;
-  const rest = `${s ? row(L("La surprise", "Surprise"), `${esc(L(s.fr, s.en))}${s.story ? ` <span class="ed-ev">${story(s.story)}</span>` : ""}`) : ""}
-    ${g.candidates.length ? row(L("Candidats", "Candidates"), `<ul class="lg-list">${g.candidates.map((c) => `<li>${story(c)}</li>`).join("")}</ul>`) : ""}
-    ${row("Third Estate", leadHtml(g), "is-te")}`;
-  if (g.span !== "week") return `<div class="ed-lg"><div class="lg">${news}${g.borrow ? row(L("La dette", "Borrowing"), borrowHtml(g.borrow)) : ""}${rest}</div><div class="lg-side">${tableHtml(g)}</div></div>`;
-  const brief = g.brief?.length ? row(L("Notre lecture", "Our take"), briefHtml(g.brief), "is-te") : "";
+  const wk = g.span === "week";
+  const surprises: Line[] = g.surprises ?? (s ? [s] : []);
+  const take = g.brief?.length ? briefHtml(g.brief) : g.take ? `${figures(esc(L(g.take.fr, g.take.en)))}${g.take.story ? ` ${src(g.take.story)}` : ""}` : "";
+  // our own voice is signed: the fox sits under the label
+  const takeRow = take ? row(`${L("Notre lecture", "Our take")}<span class="lg-logo">${foxSvg(30, true, 'role="img" aria-label="Third Estate"')}</span>`, take, "is-te") : "";
+  const facts = `${g.world ? row(L("Monde", "World"), story(g.world)) : ""}${g.france ? row("France", story(g.france)) : ""}
+    ${surprises.length ? row(surprises.length > 1 ? L("Les surprises", "Surprises") : L("La surprise", "Surprise"), linesHtml(surprises)) : ""}
+    ${g.declarations?.length ? row(L("Déclarations", "Statements"), linesHtml(g.declarations)) : ""}
+    ${g.post ? row(wk ? L("Le post de la semaine", "Post of the week") : L("Le post du jour", "Post of the day"), postHtml(g.post)) : ""}
+    ${row(L("Dynamique", "Momentum"), leadHtml(g))}`;
+  if (!wk) return `<div class="ed-lg"><div class="lg">${takeRow}${facts}</div><div class="lg-side">${tableHtml(g)}</div></div>`;
   return `<div class="ed-lg is-week">
-    ${brief ? `<div class="lg">${brief}</div>` : ""}
-    <div class="lg-mid"><div class="lg-side">${tableHtml(g)}</div><div class="lg-side">${kpisHtml(g)}</div></div>
-    <div class="lg">${g.recap ? row(L("La semaine", "The week"), recapHtml(g.recap), "is-week") : ""}${news}${rest}</div>
+    ${takeRow ? `<div class="lg">${takeRow}</div>` : ""}
+    <div class="lg-mid"><div class="lg-side">${tableHtml(g)}${trendHtml(g)}</div><div class="lg-side">${kpisHtml(g)}</div></div>
+    <div class="lg">${g.recap ? row(L("La semaine", "The week"), recapHtml(g.recap), "is-week") : ""}${facts}</div>
   </div>`;
 }
 

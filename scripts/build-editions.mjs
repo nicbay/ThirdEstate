@@ -134,6 +134,22 @@ async function cityOf(D) {
   return cands[0];
 }
 
+// The X post of the day (of the week on a Sunday): among the posts the press embedded in its articles
+// (feed/archive/<date>.json, stories[].press), the one the most outlets quoted. With fewer than two outlets, none.
+const archive = async (date) => (await read(`feed/archive/${date}.json`).catch(() => null))?.stories ?? [];
+async function postOf(D, sunday) {
+  const span = sunday ? 6 : 1, from = iso(Date.parse(D) - span * DAY), seen = new Map();
+  for (let k = 0; k <= span; k++) for (const st of await archive(iso(Date.parse(D) - k * DAY))) for (const p of st.press ?? []) {
+    if (p.platform !== "x" || !p.text || !p.url || !p.handle || !p.time || p.time.slice(0, 10) < from || p.time.slice(0, 10) > D) continue;
+    const cur = seen.get(p.id) ?? { p, outs: new Set() };
+    for (const q of p.quotedBy ?? []) if (q.outlet) cur.outs.add(q.outlet);
+    seen.set(p.id, cur);
+  }
+  const best = [...seen.values()].sort((a, b) => b.outs.size - a.outs.size || b.p.time.localeCompare(a.p.time))[0];
+  if (!best || best.outs.size < 2) return null;
+  return { handle: best.p.handle, name: best.p.author?.name ?? null, text: best.p.text.replace(/\s*https:\/\/t\.co\/\S+/g, "").trim().slice(0, 420), url: best.p.url, time: best.p.time, outlets: [...best.outs].map((o) => outletName.get(o) ?? o) };
+}
+
 await mkdir(new URL("daily/editions/", ROOT), { recursive: true });
 const index = [];
 for (const day of days) {
@@ -271,17 +287,28 @@ for (const day of days) {
       stories: wkNews.filter((x) => (wkSeen.has(x.title) ? false : (wkSeen.add(x.title), true))).sort((x, y) => y.n - x.n).slice(0, 3),
     };
   }
+  const tableRows = [...rows].sort((x, y) => (y.polls ?? -1) - (x.polls ?? -1) || (y.market ?? 0) - (x.market ?? 0)).slice(0, 7).map(({ name, polls, polls1, polls7, market, d1, d7 }) => ({ name, polls, polls1, polls7, market, d1, d7 }));
+  // statements of the day when Claude wrote none: the most-covered headlines that quote someone and name a candidate
+  const quoted = [];
+  for (const h of headlines) { const r = /[«“"]/.test(h.title) ? whoIn(h) : null; if (!r || quoted.some((q) => q.name === r.name)) continue; quoted.push({ name: r.name, fr: "", en: "", story: { title: h.title, link: h.link, outlet: h.outlet, n: h.n } }); if (quoted.length === 3) break; }
   const ledger = {
     span: sunday ? "week" : "day",
     world: hl?.world?.[0] ?? null,
     france: hl?.france?.find((h) => !whoIn(h)) ?? hl?.france?.[0] ?? headlines.find((h) => !whoIn(h)) ?? null,
     candidates: candNews, lead, recap,
-    borrow: borrowing(D, sunday, headlines),
+    borrow: sunday ? borrowing(D, sunday, headlines) : null, // the borrowing line belongs to the week's note only
     // Sunday's figures: today's for the current week; an older Sunday keeps the ones it was built with
     kpis: !sunday ? null : D >= iso(Date.now() - 6 * DAY) ? weekKpis(D) : (await read("daily/editions/" + D + ".json").catch(() => null))?.ledger?.kpis ?? null,
     // Sunday's brief: three lines that take a stand, written by hand (daily/briefs/<date>.json), each with its lead and its story
     brief: sunday ? (await read("daily/briefs/" + D + ".json").catch(() => null))?.lines ?? null : null,
-    table: [...rows].sort((x, y) => (y.polls ?? -1) - (x.polls ?? -1) || (y.market ?? 0) - (x.market ?? 0)).slice(0, 7).map(({ name, polls, polls1, polls7, market, d1, d7 }) => ({ name, polls, polls1, polls7, market, d1, d7 })),
+    table: tableRows,
+    // the day's facts: our take (Claude's, none without it), the surprises, the statements, the post the press quoted most
+    take: insight.take ?? null,
+    surprises: insight.surprises ?? (insight.surprise ? [insight.surprise] : []),
+    declarations: insight.declarations?.length ? insight.declarations : quoted,
+    post: await postOf(D, sunday),
+    // Sunday: the polling averages of the leading candidates, day by day (up to 30 days), for the small trend chart
+    trend: sunday ? days.filter((d) => d.date <= D && d.polls).slice(-30).map((d) => ({ date: d.date, v: Object.fromEntries(tableRows.filter((r) => r.polls != null).slice(0, 5).map((r) => [r.name, d.polls[r.name] ?? null])) })) : null,
     city: await cityOf(D),
   };
 

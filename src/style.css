@@ -2122,3 +2122,14 @@ a.cand-card:hover { background: var(--wash); text-decoration: none; }
 /* a figure that moved: green when it is the good direction, red when it is the bad one */
 .num-up { color: var(--up-text); font-weight: 700; }
 .num-down { color: var(--down-text); font-weight: 700; }
+
+/* the economic climate on "France in numbers" (views/economy.ts, indicatorsHtml) */
+#conj-slot:empty { display: none; }
+.conj-h { margin: 1.4rem 0 0.5rem; font: 700 1.05rem var(--display); }
+.conj-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.conj-line { stroke: var(--ink); stroke-width: 2.2; stroke-linejoin: round; }
+.conj-avg { stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 4 4; }
+.conj-grid { stroke: var(--rule); stroke-width: 1; }
+.conj-dot { fill: var(--ink); }
+.conj-end { font: 700 13px var(--mono); fill: var(--ink); }
+.conj-ax { font: 500 11px var(--mono); fill: var(--ink-3); }

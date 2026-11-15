@@ -456,6 +456,68 @@ const count = (n: number) => (n < 10 ? num(n, 1) : num(Math.floor(n)));
 
 /** The homepage's box under the two widgets: the public debt added since the reader arrived on the site (same
  *  estimate as the counter on this page), what that sum would pay for, and a link here. Drawn into `host`. */
+// ---------- the economic climate (scripts/sync-indicators.mjs): INSEE's surveys and car registrations ----------
+interface Ind { id: string; period: string; value: number; prev: number | null; yearAgo: number | null; updated: string | null; url: string | null }
+interface Indicators { fetchedAt: string; items: Ind[]; confidence: { series: [string, number][]; parts: Ind[] } | null }
+const IND: Record<string, { fr: string; en: string; unit: "index" | "count"; goodUp: boolean; noteFr: string; noteEn: string }> = {
+  confidence: { fr: "Confiance des ménages", en: "Household confidence", unit: "index", goodUp: true, noteFr: "indice, moyenne de longue période : 100", noteEn: "index, long-run average: 100" },
+  climate: { fr: "Climat des affaires", en: "Business climate", unit: "index", goodUp: true, noteFr: "indice, tous secteurs, moyenne : 100", noteEn: "index, all sectors, average: 100" },
+  jobsClimate: { fr: "Climat de l’emploi", en: "Employment climate", unit: "index", goodUp: true, noteFr: "indice, tous secteurs, moyenne : 100", noteEn: "index, all sectors, average: 100" },
+  cars: { fr: "Voitures neuves immatriculées", en: "New cars registered", unit: "count", goodUp: true, noteFr: "par mois, corrigé des variations saisonnières", noteEn: "a month, seasonally adjusted" },
+};
+const IND_PARTS: Record<string, { fr: string; en: string; goodUp: boolean }> = {
+  ownPast: { fr: "Leurs finances, depuis un an", en: "Their own finances, past year", goodUp: true },
+  ownFuture: { fr: "Leurs finances, dans l’année", en: "Their own finances, year ahead", goodUp: true },
+  livingPast: { fr: "Niveau de vie en France, depuis un an", en: "Living standards in France, past year", goodUp: true },
+  livingFuture: { fr: "Niveau de vie en France, dans l’année", en: "Living standards in France, year ahead", goodUp: true },
+  unemployment: { fr: "Craintes de chômage", en: "Fear of unemployment", goodUp: false },
+  purchases: { fr: "Bon moment pour un achat important", en: "A good time for a major purchase", goodUp: true },
+  savingNow: { fr: "Capacité d’épargne aujourd’hui", en: "Ability to save now", goodUp: true },
+  savingFuture: { fr: "Capacité d’épargne dans l’année", en: "Ability to save, year ahead", goodUp: true },
+  pricesFuture: { fr: "Hausse des prix attendue", en: "Price rises expected", goodUp: false },
+};
+/** A signed change in bold, green when it is the good direction and red when it is the bad one. */
+const move = (v: number, goodUp: boolean, d = 0, unit = "") => `<b class="${Math.abs(v) < 10 ** -d / 2 ? "" : (v > 0) === goodUp ? "num-up" : "num-down"}">${signed(`${num(Math.abs(v), d)}${unit}`, v)}</b>`;
+
+function indicatorsHtml(d: Indicators) {
+  const rows = d.items.filter((x) => IND[x.id]).map((x) => {
+    const k = IND[x.id], count = k.unit === "count", dg = count ? 0 : x.value % 1 || (x.prev ?? 0) % 1 ? 1 : 0;
+    const vs = (ref: number | null) => (ref == null ? "–" : count ? move((x.value / ref - 1) * 100, k.goodUp, 1, L(" %", "%")) : move(x.value - ref, k.goodUp, dg));
+    return `<tr><td><b>${x.url ? `<a href="${esc(safeUrl(x.url))}" target="_blank" rel="noopener">${L(k.fr, k.en)}</a>` : L(k.fr, k.en)}</b><br><span class="muted small">${L(k.noteFr, k.noteEn)}</span></td><td>${esc(period(x.period))}</td><td class="num"><b>${num(x.value, dg)}</b></td><td class="num">${vs(x.prev)}</td><td class="num">${vs(x.yearAgo)}</td></tr>`;
+  }).join("");
+  const c = d.confidence;
+  let conf = "";
+  if (c?.series.length) {
+    const s = c.series, W = 760, H = 190, P = { l: 6, r: 40, t: 12, b: 20 };
+    const vs = s.map((r) => r[1]), lo = Math.min(...vs, 100) - 2, hi = Math.max(...vs, 100) + 2, last = s.at(-1)!;
+    const x = (i: number) => P.l + (i * (W - P.l - P.r)) / Math.max(1, s.length - 1), y = (v: number) => P.t + (1 - (v - lo) / (hi - lo)) * (H - P.t - P.b);
+    const years = s.map((r, i) => ({ p: r[0], i })).filter((r) => r.p.endsWith("-01"));
+    const parts = c.parts.filter((p) => IND_PARTS[p.id]).map((p) => {
+      const k = IND_PARTS[p.id];
+      return `<tr><td>${L(k.fr, k.en)}</td><td class="num"><b>${signed(num(Math.abs(p.value)), p.value)}</b></td><td class="num">${p.prev == null ? "–" : move(p.value - p.prev, k.goodUp)}</td><td class="num">${p.yearAgo == null ? "–" : move(p.value - p.yearAgo, k.goodUp)}</td></tr>`;
+    }).join("");
+    conf = `<h3 class="conj-h">${L("La confiance des ménages sur dix ans", "Household confidence over ten years")}</h3>
+      <svg class="conj-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(L(`Confiance des ménages de ${period(s[0][0])} à ${period(last[0])} : ${num(last[1])}, pour une moyenne de longue période de 100`, `Household confidence from ${period(s[0][0])} to ${period(last[0])}: ${num(last[1])}, against a long-run average of 100`))}">
+        ${years.map((r) => `<line x1="${x(r.i).toFixed(1)}" x2="${x(r.i).toFixed(1)}" y1="${P.t}" y2="${H - P.b}" class="conj-grid"/><text x="${x(r.i).toFixed(1)}" y="${H - 5}" text-anchor="middle" class="conj-ax">${r.p.slice(0, 4)}</text>`).join("")}
+        <line x1="${P.l}" x2="${W - P.r}" y1="${y(100).toFixed(1)}" y2="${y(100).toFixed(1)}" class="conj-avg"/>
+        <text x="${W - P.r + 6}" y="${(y(100) + 4).toFixed(1)}" class="conj-ax">100</text>
+        <polyline fill="none" class="conj-line" points="${s.map((r, i) => `${x(i).toFixed(1)},${y(r[1]).toFixed(1)}`).join(" ")}"/>
+        <circle cx="${x(s.length - 1).toFixed(1)}" cy="${y(last[1]).toFixed(1)}" r="4" class="conj-dot"/>
+        <text x="${W - P.r + 6}" y="${(y(last[1]) + (Math.abs(y(last[1]) - y(100)) < 13 ? (last[1] < 100 ? 15 : -7) : 4)).toFixed(1)}" class="conj-end">${num(last[1])}</text>
+      </svg>
+      <h3 class="conj-h">${L("Ce qui la compose", "What it is made of")}</h3>
+      <div class="table-scroll"><table class="table"><thead><tr><th>${L("Ce que disent les ménages (solde d’opinion)", "What households say (balance of opinion)")}</th><th class="num">${esc(period(last[0]))}</th><th class="num">${L("Sur un mois", "On the month")}</th><th class="num">${L("Sur un an", "On the year")}</th></tr></thead><tbody>${parts}</tbody></table></div>
+      <p class="muted small">${L("Solde : part des réponses favorables moins part des réponses défavorables, corrigé des variations saisonnières. Vert : mieux, rouge : moins bien (pour les craintes de chômage et les prix attendus, une hausse est en rouge).", "Balance: share of positive answers minus share of negative ones, seasonally adjusted. Green: better, red: worse (for fear of unemployment and expected prices, a rise is red).")}</p>`;
+  }
+  return `<section class="card" id="conjoncture">
+    <header class="card-head"><h2>${L("La conjoncture, mois après mois", "The economic climate, month by month")}</h2><span class="since-t">${L("mis à jour le", "refreshed")} ${fmtDate(d.fetchedAt)}</span></header>
+    <p class="muted small">${L("Les enquêtes de l’Insee auprès des ménages et des entreprises, et les immatriculations de voitures neuves : ce que les marchés regardent entre deux chiffres de croissance.", "INSEE’s household and business surveys, and new car registrations: what markets watch between two growth figures.")}</p>
+    <div class="table-scroll"><table class="table"><thead><tr><th>${L("Indicateur", "Indicator")}</th><th>${L("Période", "Period")}</th><th class="num">${L("Niveau", "Level")}</th><th class="num">${L("Sur un mois", "On the month")}</th><th class="num">${L("Sur un an", "On the year")}</th></tr></thead><tbody>${rows}</tbody></table></div>
+    ${conf}
+    <p class="source">${L("Source", "Source")}${colon()}<a href="https://www.insee.fr/fr/statistiques?theme=30" target="_blank" rel="noopener">Insee</a>${L(", Banque de données macroéconomiques. Les voitures sont comparées à l’an dernier, faute de prévisions d’analystes en accès libre.", ", macroeconomic database. Cars are compared with a year earlier, for want of freely available analyst forecasts.")}</p>
+  </section>`;
+}
+
 /** The gap's last seven days: the last close against the last close at least seven days earlier, the sessions in
  *  between, and what the move is worth in interest on a year of new debt (move in points × the debt added in a year). */
 function weekOf(y: Yields, e: Economy) {
@@ -604,6 +666,7 @@ export async function renderEconomy(app: HTMLElement) {
       </section>
 
       <div id="taux-slot"></div>
+      <div id="conj-slot"></div>
 
       ${debtSection(e)}
 
@@ -667,6 +730,7 @@ export async function renderEconomy(app: HTMLElement) {
   });
 
   mountDebtChart(app, e);
+  void fetchJson<Indicators>("/data/daily/indicators.json").then((d) => { const slot = app.querySelector("#conj-slot"); if (slot && d?.items?.length) slot.outerHTML = indicatorsHtml(d); }).catch(() => {});
   // the borrowing-cost block arrives on its own: the page doesn't wait for it, and stays whole without it
   void fetchJson<Yields>("/data/daily/yields.json").then((y) => { const slot = app.querySelector("#taux-slot"); if (slot && y?.history?.length) slot.outerHTML = yieldsHtml(y, e); }).catch(() => {});
 
