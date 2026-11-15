@@ -456,20 +456,40 @@ const count = (n: number) => (n < 10 ? num(n, 1) : num(Math.floor(n)));
 
 /** The homepage's box under the two widgets: the public debt added since the reader arrived on the site (same
  *  estimate as the counter on this page), what that sum would pay for, and a link here. Drawn into `host`. */
-/** The borrowing-cost block: the 10-year OAT rate, the gap with Germany's Bund, and that gap over the last seven sessions. */
-function yieldsHtml(y: Yields) {
-  const wk = y.history.slice(-7);
-  const d7 = wk.length > 1 ? wk.at(-1)![1] - wk[0][1] : null;
+/** The gap's last seven days: the last close against the last close at least seven days earlier, the sessions in
+ *  between, and what the move is worth in interest on a year of new debt (move in points × the debt added in a year). */
+function weekOf(y: Yields, e: Economy) {
+  const last = y.history.at(-1)!;
+  const cut = new Date(Date.parse(last[0]) - 7 * 864e5).toISOString().slice(0, 10);
+  let i = 0;
+  y.history.forEach((r, j) => { if (r[0] <= cut) i = j; });
+  const wk = y.history.slice(i);
+  const d = wk.length > 1 ? last[1] - wk[0][1] : null;
+  return { wk, d, cost: d == null || !(e.debt.ratePerYear > 0) ? null : (e.debt.ratePerYear * d) / 10000 };
+}
+/** Percentage points, written "%pt": "1,54 %pt". */
+const ppt = (v: number, d = 2) => `${num(v, d)}${L("\u00a0%pt", "%pt")}`;
+/** "+0,025 %pt, soit 45 M€ d’intérêts de plus par an": the week's move in the gap and its notional cost, coloured. */
+function weekMoveHtml(w: { d: number | null; cost: number | null }) {
+  if (w.d == null) return "";
+  const cls = Math.abs(w.d) < 0.05 ? "" : w.d > 0 ? "num-down" : "num-up", more = w.d > 0;
+  const move = `<b class="${cls}">${signed(ppt(Math.abs(w.d) / 100, 3), w.d)}</b>`;
+  if (w.cost == null || Math.abs(w.cost) < 1e5) return move;
+  return `${move}${L(", soit ", ", or ")}<b class="${cls}">${big(Math.abs(w.cost), Math.abs(w.cost) < 1e7 ? 1 : 0)}</b> ${L(`d’intérêts de ${more ? "plus" : "moins"} par an`, `${more ? "more" : "less"} in interest a year`)}`;
+}
+
+/** The borrowing-cost block: the 10-year OAT rate, the gap with Germany's Bund, and that gap over the last seven days. */
+function yieldsHtml(y: Yields, e: Economy) {
+  const w = weekOf(y, e), wk = w.wk;
   const W = 340, H = 104, P = { l: 6, r: 44, t: 14, b: 20 };
   const vs = wk.map((r) => r[1]), lo = Math.min(...vs), hi = Math.max(...vs), span = Math.max(hi - lo, 4);
   const x = (i: number) => P.l + (i * (W - P.l - P.r)) / Math.max(1, wk.length - 1);
   const yy = (v: number) => P.t + (1 - (v - lo) / span) * (H - P.t - P.b);
   const day = (iso: string) => new Date(iso).toLocaleDateString(locale(), { day: "numeric", month: "short" });
-  const pts = (v: number, d = 0) => `${num(v, d)} ${L(Math.abs(v) >= 2 ? "points" : "point", Math.abs(v) === 1 ? "point" : "points")}`;
-  const chart = wk.length > 1 ? `<svg class="yld-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(L(`Écart OAT-Bund, ${wk.length} dernières séances : de ${num(wk[0][1], 0)} à ${num(wk.at(-1)![1], 0)} points`, `OAT-Bund spread, last ${wk.length} sessions: from ${num(wk[0][1], 0)} to ${num(wk.at(-1)![1], 0)} points`))}">
+  const chart = wk.length > 1 ? `<svg class="yld-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(L(`Écart OAT-Bund sur 7 jours : de ${ppt(wk[0][1] / 100)} à ${ppt(wk.at(-1)![1] / 100)}`, `OAT-Bund gap over 7 days: from ${ppt(wk[0][1] / 100)} to ${ppt(wk.at(-1)![1] / 100)}`))}">
       <polyline points="${wk.map((r, i) => `${x(i).toFixed(1)},${yy(r[1]).toFixed(1)}`).join(" ")}" fill="none" class="yld-line"/>
-      ${wk.map((r, i) => `<circle cx="${x(i).toFixed(1)}" cy="${yy(r[1]).toFixed(1)}" r="${i === wk.length - 1 ? 3.5 : 2}" class="yld-dot"><title>${esc(day(r[0]))}${colon()}${num(r[1], 1)}</title></circle>`).join("")}
-      <text x="${(x(wk.length - 1) + 7).toFixed(1)}" y="${(yy(wk.at(-1)![1]) + 4).toFixed(1)}" class="yld-end">${num(wk.at(-1)![1], 0)}</text>
+      ${wk.map((r, i) => `<circle cx="${x(i).toFixed(1)}" cy="${yy(r[1]).toFixed(1)}" r="${i === wk.length - 1 ? 3.5 : 2}" class="yld-dot"><title>${esc(day(r[0]))}${colon()}${ppt(r[1] / 100, 3)}</title></circle>`).join("")}
+      <text x="${(x(wk.length - 1) + 7).toFixed(1)}" y="${(yy(wk.at(-1)![1]) + 4).toFixed(1)}" class="yld-end">${num(wk.at(-1)![1] / 100, 2)}</text>
       <text x="${P.l}" y="${H - 4}" class="yld-ax">${esc(day(wk[0][0]))}</text>
       <text x="${x(wk.length - 1).toFixed(1)}" y="${H - 4}" text-anchor="end" class="yld-ax">${esc(day(wk.at(-1)![0]))}</text>
     </svg>` : "";
@@ -477,10 +497,10 @@ function yieldsHtml(y: Yields) {
     <header class="card-head"><h2>${L("Ce que la France paie pour emprunter", "What France pays to borrow")}</h2><span class="since-t">${L("clôture du", "close of")} ${fmtDate(y.asOf)}</span></header>
     <div class="yld-grid">
       <div><p class="debt-k">${L("OAT à 10 ans", "10-year OAT")}</p><p class="yld-n">${pct(y.oat10, 2)}</p><p class="yld-s">${L("Le taux d’intérêt de l’emprunt d’État français à dix ans.", "The interest rate on France’s ten-year government bond.")}</p></div>
-      <div><p class="debt-k">${L("Écart avec l’Allemagne", "Gap with Germany")}</p><p class="yld-n">${pts(y.spread)}</p><p class="yld-s">${L(`Le Bund allemand à 10 ans est à ${pct(y.bund10, 2)}. 100 points font un point de pourcentage : la France paie ${num(y.spread / 100, 2)} point de plus.`, `Germany’s 10-year Bund is at ${pct(y.bund10, 2)}. 100 points make one percentage point: France pays ${num(y.spread / 100, 2)} points more.`)}</p></div>
-      <figure class="yld-wk"><figcaption><span class="debt-k">${L(`L’écart sur ${wk.length} séances`, `The gap over ${wk.length} sessions`)}</span>${d7 == null ? "" : ` <b class="${d7 > 0.05 ? "is-up" : d7 < -0.05 ? "is-down" : ""}">${signed(pts(Math.abs(d7), 1), d7)}</b>`}</figcaption>${chart}</figure>
+      <div><p class="debt-k">${L("Écart avec l’Allemagne", "Gap with Germany")}</p><p class="yld-n">${ppt(y.spread / 100)}</p><p class="yld-s">${L(`Le Bund allemand à 10 ans est à ${pct(y.bund10, 2)} : la France paie ${ppt(y.spread / 100)} de plus que l’Allemagne.`, `Germany’s 10-year Bund is at ${pct(y.bund10, 2)}: France pays ${ppt(y.spread / 100)} more than Germany.`)}</p></div>
+      <figure class="yld-wk"><figcaption><span class="debt-k">${L("L’écart sur 7 jours", "The gap over 7 days")}</span> ${weekMoveHtml(w)}</figcaption>${chart}</figure>
     </div>
-    <p class="source">${L("Source", "Source")}${colon()}<a href="${esc(safeUrl(y.source.url))}" target="_blank" rel="noopener">${esc(y.source.name)}</a>${L(", valeurs de clôture, différées de 15 minutes. Un écart qui monte veut dire que les prêteurs demandent davantage à la France qu’à l’Allemagne.", ", closing values, 15 minutes delayed. A widening gap means lenders ask more of France than of Germany.")}</p>
+    <p class="source">${L("Source", "Source")}${colon()}<a href="${esc(safeUrl(y.source.url))}" target="_blank" rel="noopener">${esc(y.source.name)}</a>${L(`, valeurs de clôture, différées de 15 minutes. Un écart qui monte veut dire que les prêteurs demandent davantage à la France qu’à l’Allemagne. Le coût en intérêts est théorique : la variation de l’écart appliquée à la dette ajoutée en un an (${big(e.debt.ratePerYear, 0)}).`, `, closing values, 15 minutes delayed. A widening gap means lenders ask more of France than of Germany. The interest cost is notional: the move in the gap applied to the debt added in a year (${big(e.debt.ratePerYear, 0)}).`)}</p>
   </section>`;
 }
 
@@ -489,13 +509,22 @@ export async function mountDebtStrip(host: HTMLElement) {
   if (!e || !(e.debt.ratePerYear > 0) || !host.isConnected) return;
   const perSec = e.debt.ratePerYear / (YEAR_MS / 1000);
   const items = [...EQUIVALENTS].sort((x, y) => x.cost - y.cost);
-  host.innerHTML = `<a class="box hw-debt" href="#/chiffres#depuis">
+  host.innerHTML = `<a class="box hw-debt" href="#/chiffres">
     <span class="hd-k">${L("Depuis votre arrivée sur le site · estimation au rythme de l’année écoulée", "Since you arrived on the site · estimate at the past year’s pace")}</span>
     <span class="hd-main"><b class="hd-n">${eur(0)}</b> <span>${L("de dette publique en plus", "more public debt")}</span></span>
     <span class="hd-eq"></span>
     <span class="hd-go">${L("La dette en direct", "The debt, live")} →</span>
   </a>`;
   const nEl = host.querySelector(".hd-n")!, eqEl = host.querySelector(".hd-eq")!;
+  // under the counter, the rates France borrows at and what the last seven days' move is worth in interest
+  void fetchJson<Yields>("/data/daily/yields.json").then((y) => {
+    if (!y?.history?.length || !host.isConnected) return;
+    host.querySelector(".hw-debt")?.insertAdjacentHTML("beforeend", `<span class="hd-oat">
+      <span><b>${pct(y.oat10, 2)}</b> ${L("taux de l’OAT à 10 ans", "10-year OAT rate")}</span>
+      <span><b>${ppt(y.spread / 100)}</b> ${L("d’écart avec l’Allemagne", "gap with Germany")}</span>
+      <span>${L("Sur 7 jours", "Over 7 days")}${colon()}${weekMoveHtml(weekOf(y, e))}</span>
+    </span>`);
+  }).catch(() => {});
   const t0 = performance.timeOrigin; // when the site was opened, so coming back to the homepage doesn't start again
   let lastSlow = 0;
   tick(nEl, (now) => {
@@ -639,7 +668,7 @@ export async function renderEconomy(app: HTMLElement) {
 
   mountDebtChart(app, e);
   // the borrowing-cost block arrives on its own: the page doesn't wait for it, and stays whole without it
-  void fetchJson<Yields>("/data/daily/yields.json").then((y) => { const slot = app.querySelector("#taux-slot"); if (slot && y?.history?.length) slot.outerHTML = yieldsHtml(y); }).catch(() => {});
+  void fetchJson<Yields>("/data/daily/yields.json").then((y) => { const slot = app.querySelector("#taux-slot"); if (slot && y?.history?.length) slot.outerHTML = yieldsHtml(y, e); }).catch(() => {});
 
   const md = app.querySelector<HTMLDetailsElement>("#methode");
   app.querySelectorAll('a[href="#/chiffres#methode"]').forEach((x) => x.addEventListener("click", () => md && (md.open = true)));

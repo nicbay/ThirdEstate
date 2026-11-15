@@ -413,3 +413,36 @@
 .lg-brief li b { font: 700 1.02rem var(--display); color: var(--ink); }
 .lg-brief .ed-ev { display: block; margin-top: 0.1rem; }
 .lg-b .lg-more { font: 600 0.75rem var(--mono); color: var(--link); white-space: nowrap; }
+
+/* the note of the week: the lines run across the whole box, the polls table and the week's numbers sit side by side */
+.ed-lg.is-week { grid-template-columns: minmax(0, 1fr); }
+.lg-mid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 2.4rem; align-items: start; padding: 0.4rem 0 0.6rem; }
+@media (max-width: 860px) { .lg-mid { grid-template-columns: 1fr; } }
+.ed-lg.is-week .lg-row { grid-template-columns: 8rem minmax(0, 1fr); }
+@media (max-width: 480px) { .ed-lg.is-week .lg-row { grid-template-columns: 1fr; } }
+.lg-kpi tbody th { font: 600 0.88rem var(--text); white-space: normal; }
+.lg-kpi tbody th a { color: var(--ink); text-decoration: none; }
+.lg-kpi tbody th a:hover, .lg-kpi tbody th a:focus-visible { text-decoration: underline; }
+.lg-kpi tbody th small { display: block; margin: 0; min-width: 0; text-align: left; font: 500 0.6875rem var(--mono); color: var(--ink-3); }
+.lg-kpi tbody th small em { font-style: normal; color: var(--split-red); }
+.lg-kpi td small { min-width: 0; font-weight: 500; color: var(--ink-3); }
+.lg-cost { margin: 0.6rem 0 0; font-size: 0.9rem; line-height: 1.45; color: var(--ink); }
+.lg-cost a { color: var(--ink); }
+.lg-conf { margin-top: 0.8rem; }
+.lg-conf > summary { cursor: pointer; font: 600 0.75rem var(--mono); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-2); }
+.lg-conf > summary:hover { color: var(--ink); }
+.lg-conf-svg { display: block; width: 100%; height: auto; margin: 0.6rem 0; overflow: visible; }
+.lg-conf-line { stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; }
+.lg-conf-avg { stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 3 4; }
+.lg-conf-dot { fill: var(--ink); }
+.lg-conf-end { font: 700 12px var(--mono); fill: var(--ink); }
+.lg-conf-ax { font: 500 10px var(--mono); fill: var(--ink-3); }
+.lg-parts tbody th { font: 500 0.84rem var(--text); white-space: normal; }
+.lg-table small { font-weight: 700; }
+/* figures that moved, on the night band */
+.hday-chart .num-up { color: var(--up-night); }
+.hday-chart .num-down { color: var(--down-night); }
+/* the homepage debt box: the rates France borrows at, under the counter */
+.hw-debt .hd-oat { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 0.3rem 1.8rem; margin-top: 0.5rem; padding-top: 0.7rem; border-top: 1px solid var(--rule); font-size: 0.95rem; color: var(--ink-2); }
+.hw-debt .hd-oat b { font: 700 1rem var(--mono); color: var(--ink); font-variant-numeric: tabular-nums; }
+.hw-debt .hd-oat b.num-up { color: var(--up-text); } .hw-debt .hd-oat b.num-down { color: var(--down-text); }

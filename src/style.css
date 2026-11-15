@@ -2118,3 +2118,7 @@ a.cand-card:hover { background: var(--wash); text-decoration: none; }
 .yld-dot { fill: var(--ink); }
 .yld-end { font: 700 12px var(--mono); fill: var(--ink); }
 .yld-ax { font: 500 11px var(--mono); fill: var(--ink-3); }
+
+/* a figure that moved: green when it is the good direction, red when it is the bad one */
+.num-up { color: var(--up-text); font-weight: 700; }
+.num-down { color: var(--down-text); font-weight: 700; }

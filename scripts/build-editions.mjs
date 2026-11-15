@@ -65,6 +65,15 @@ const stories = async (date) => {
 // a city is kept (daily/cities.json): the press files only cover the last two weeks, so past days can't be redone.
 // what France pays to borrow (scripts/sync-yields.mjs) and the pace of new debt (scripts/sync-economy.mjs)
 const yields = await read("daily/yields.json").catch(() => null);
+// the week's other figures: INSEE's surveys and car registrations (scripts/sync-indicators.mjs), growth, prices and
+// unemployment (scripts/sync-economy.mjs). "fresh" marks a figure published in the seven days before the edition.
+const indicators = await read("daily/indicators.json").catch(() => null);
+const economyKpis = (await read("economy.json").catch(() => null))?.kpis ?? [];
+function weekKpis(D) {
+  const fresh = (u) => !!u && u > iso(Date.parse(D) - 7 * DAY) && u <= D;
+  const eco = (id) => { const k = economyKpis.find((x) => x.id === id); return k ? { id, period: k.period, value: k.value, prev: k.prev ?? null, yearAgo: null, updated: k.updated ?? null, url: k.source?.url ?? null, fresh: fresh(k.updated) } : null; };
+  return { items: [eco("growth_q"), eco("inflation"), eco("unemployment"), ...(indicators?.items ?? []).map((x) => ({ ...x, fresh: fresh(x.updated) }))].filter(Boolean), confidence: indicators?.confidence ?? null };
+}
 const newDebtPerYear = (await read("economy.json").catch(() => null))?.debt?.ratePerYear ?? null;
 // headlines that can move a government bond: the budget, the debt, a rating, a censure vote, the central bank
 const BOND_NEWS = /budget|dette publique|la dette|d[ée]ficit|notation|moody|fitch|standard ?& ?poor|agence de notation|censure|49[.,]3|dissolution|bce|banque centrale|emprunt|obligations?|march[ée]s financiers|spread|oat|taux d.int[ée]r[êe]t/i;
@@ -170,8 +179,8 @@ for (const day of days) {
   // the edition's headline: the week's largest rise and fall on the markets
   const wk = rows.filter((r) => r.d7 != null).sort((a, b) => b.d7 - a.d7);
   const up = wk[0]?.d7 >= 1 ? wk[0] : null, down = wk.at(-1)?.d7 <= -1 ? wk.at(-1) : null;
-  const pts = (v) => `${Math.abs(v).toString().replace(".", ",")} point${Math.abs(v) >= 2 ? "s" : ""}`;
-  const ptsEn = (v) => `${Math.abs(v)} point${Math.abs(v) >= 2 ? "s" : ""}`;
+  const pts = (v) => `${Math.abs(v).toString().replace(".", ",")} %pt`; // percentage points, written "%pt" everywhere in the note
+  const ptsEn = (v) => `${Math.abs(v)}%pt`;
   const dy = rows.filter((r) => r.d1 != null).sort((a, b) => b.d1 - a.d1);
   const upD = dy[0]?.d1 >= 1 ? dy[0] : null, downD = dy.at(-1)?.d1 <= -1 ? dy.at(-1) : null;
   const sunday = new Date(D + "T12:00:00Z").getUTCDay() === 0;
@@ -268,6 +277,8 @@ for (const day of days) {
     france: hl?.france?.find((h) => !whoIn(h)) ?? hl?.france?.[0] ?? headlines.find((h) => !whoIn(h)) ?? null,
     candidates: candNews, lead, recap,
     borrow: borrowing(D, sunday, headlines),
+    // Sunday's figures: today's for the current week; an older Sunday keeps the ones it was built with
+    kpis: !sunday ? null : D >= iso(Date.now() - 6 * DAY) ? weekKpis(D) : (await read("daily/editions/" + D + ".json").catch(() => null))?.ledger?.kpis ?? null,
     // Sunday's brief: three lines that take a stand, written by hand (daily/briefs/<date>.json), each with its lead and its story
     brief: sunday ? (await read("daily/briefs/" + D + ".json").catch(() => null))?.lines ?? null : null,
     table: [...rows].sort((x, y) => (y.polls ?? -1) - (x.polls ?? -1) || (y.market ?? 0) - (x.market ?? 0)).slice(0, 7).map(({ name, polls, polls1, polls7, market, d1, d7 }) => ({ name, polls, polls1, polls7, market, d1, d7 })),
