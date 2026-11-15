@@ -1975,6 +1975,31 @@ a.cand-card:hover { background: var(--wash); text-decoration: none; }
 .p-yes { background: var(--ink); color: #fff; }
 .p-partly { border-color: var(--ink-3); color: var(--ink-2); }
 .p-no { color: var(--ink-3); }
+/* measures folded by theme: one <details> per theme, its balance and warning signs on the folded line */
+.mt-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.4rem 1rem; margin: 0.2rem 0 0.4rem; }
+.mt-groups { border-top: 2px solid var(--ink); margin-bottom: 0.8rem; }
+.mt-group { border-bottom: 1px solid var(--rule); }
+.mt-group > summary { display: grid; grid-template-columns: minmax(9rem, 1.3fr) 6.5rem minmax(7rem, 0.9fr) 2fr; align-items: center; gap: 0.3rem 1rem; padding: 0.7rem 0.4rem; cursor: pointer; list-style: none; transition: background 0.15s; }
+.mt-group > summary::-webkit-details-marker { display: none; }
+.mt-group > summary:hover, .mt-group > summary:focus-visible { background: var(--panel); outline: none; }
+.mt-g-name { font: 700 1rem var(--display); }
+.mt-g-name::before { content: "▸"; display: inline-block; width: 1.1em; color: var(--ink-3); transition: transform 0.2s; }
+.mt-group[open] > summary .mt-g-name::before { transform: rotate(90deg); }
+.mt-g-n { font: 0.8rem var(--mono); color: var(--ink-2); }
+.mt-g-cost { font-size: 0.9rem; white-space: nowrap; }
+.mt-g-cost .muted { font-size: 0.8rem; }
+.mt-g-flags { display: flex; flex-wrap: wrap; gap: 0.3rem; justify-content: flex-end; }
+.mt-group[open] > summary { border-bottom: 1px solid var(--rule); }
+.mt-group .mt-wrap { padding: 0 0 0.6rem 1.1rem; }
+.mt-groups .mt { table-layout: fixed; } /* same columns in every theme */
+.mt-groups .mt th:nth-child(2) { width: 9.5rem; } .mt-groups .mt th:nth-child(3) { width: 8.5rem; } .mt-groups .mt th:nth-child(4) { width: 11.5rem; } .mt-groups .mt th:nth-child(5) { width: 7.5rem; }
+.mt-groups .mt td { overflow-wrap: anywhere; }
+.mt-groups .mt-group .mt thead th { position: static; box-shadow: none; } /* beats overhaul.css's sticky header rows, which floated over the first measures */
+@media (max-width: 640px) {
+  .mt-group > summary { grid-template-columns: 1fr auto; }
+  .mt-g-flags { grid-column: 1 / -1; justify-content: flex-start; }
+  .mt-group .mt-wrap { padding-left: 0; }
+}
 
 /* ---------- household simulator (#/programmes/melenchon/simulateur, src/views/household.ts) ---------- */
 .hh-callout { display: grid; gap: 0.25rem; margin-top: 0.4rem; padding: 0.9rem 1.1rem; color: var(--ink); text-decoration: none; background: var(--paper); border: 2px solid var(--ink); border-radius: 4px; box-shadow: 4px 4px 0 var(--left), 8px 8px 0 var(--right); max-width: 62ch; transition: transform 0.15s var(--ease), box-shadow 0.15s var(--ease); }

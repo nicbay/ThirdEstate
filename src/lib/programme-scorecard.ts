@@ -15,6 +15,8 @@ export interface ScOptions {
   id: string; yearA: number; yearB: number;
   /** shown under the "dropped" ghost node (e.g. "retirée en 2025") */
   droppedNote?: (it: ScItem) => string;
+  /** renames the "dropped" group, e.g. "not yet restated" when the newest document is only part of the program */
+  dropped?: { label: string; help: string };
   /** link to the full list of a status, under the graph */
   listHref?: (s: ScStatus) => string;
   /** commitments per hub before "show the others" (default 3) */
@@ -56,17 +58,19 @@ function node(side: ScSide | undefined, s: ScStatus, it: ScItem, end: "a" | "b",
 /** Scorecard markup: the four counts, then the node graph. Call mountScorecard after it is in the DOM. */
 export function scorecardHtml(items: ScItem[], o: ScOptions) {
   const fold = o.fold ?? 3;
+  const lab = (s: ScStatus) => (s === "dropped" && o.dropped ? o.dropped.label : scLabel(s));
+  const help = (s: ScStatus) => (s === "dropped" && o.dropped ? o.dropped.help : scHelp(s, o.yearA, o.yearB));
   const by = Object.fromEntries(SC_ORDER.map((s) => [s, items.filter((x) => x.status === s)])) as Record<ScStatus, ScItem[]>;
   const n = (s: ScStatus) => o.totals?.[s] ?? by[s].length;
   const total = SC_ORDER.reduce((a, s) => a + n(s), 0) || 1;
   const counts = `<div class="sc-counts" role="list">${SC_ORDER.map((s) => `<a role="listitem" class="sc-count is-${s}" href="#${o.id}-${s}" data-sc-jump="${s}">
-      <span class="sc-tile">${icon[s]}</span><b>${fmtNum(n(s))}</b><span>${esc(scLabel(s))}</span>
+      <span class="sc-tile">${icon[s]}</span><b>${fmtNum(n(s))}</b><span>${esc(lab(s))}</span>
       <span class="sc-bar"><i style="width:${((100 * n(s)) / total).toFixed(1)}%"></i></span></a>`).join("")}</div>`;
   const groups = SC_ORDER.filter((s) => by[s].length).map((s) => {
     const rows = by[s];
     const link = (it: ScItem) => `<span class="sc-link${!it.before || !it.after ? " is-ghost" : ""}" aria-hidden="true"><span class="sc-tile">${icon[s]}</span></span>`;
     return `<section class="sc-group is-${s}" id="${o.id}-${s}" data-status="${s}">
-      <header class="sc-head"><span class="sc-tile">${icon[s]}</span><b>${esc(scLabel(s))} <span class="sc-head-n">${fmtNum(n(s))}</span></b><span>${esc(scHelp(s, o.yearA, o.yearB))}</span></header>
+      <header class="sc-head"><span class="sc-tile">${icon[s]}</span><b>${esc(lab(s))} <span class="sc-head-n">${fmtNum(n(s))}</span></b><span>${esc(help(s))}</span></header>
       ${rows.map((it, i) => `<div class="sc-row${i >= fold ? " is-folded" : ""}" data-id="${esc(it.id)}"${i >= fold ? " hidden" : ""}>${node(it.before, s, it, "a", o)}${link(it)}${node(it.after, s, it, "b", o)}</div>`).join("")}
       ${rows.length > fold || (n(s) > rows.length && o.listHref) ? `<div class="sc-foot">${rows.length > fold ? `<button type="button" class="sc-more" aria-expanded="false" data-n="${rows.length - fold}">${L(`+ ${rows.length - fold} autres`, `+ ${rows.length - fold} more`)}</button>` : ""}${n(s) > rows.length && o.listHref ? `<a class="sc-all" href="${esc(o.listHref(s))}">${L(`Les ${fmtNum(n(s))} dans la liste complète`, `All ${fmtNum(n(s))} in the full list`)} →</a>` : ""}</div>` : ""}
     </section>`;

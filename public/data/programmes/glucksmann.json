@@ -6,281 +6,777 @@
   "lite": true,
   "status": "partial",
   "statusNote": {
-    "fr": "Candidat déclaré le 23 août 2026, vainqueur de la primaire PS-Place publique le 11 octobre 2026 (66,17 %) ; pas de programme 2027 complet publié, seulement des annonces (fiscalité, salaires, école, retraites, immigration) ; la version de référence est le programme des européennes 2024, non présidentiel.",
-    "en": "Declared on 23 August 2026, won the PS-Place publique primary on 11 October 2026 (66.17%); no full 2027 program published, only announcements (tax, wages, schools, pensions, immigration); the baseline is the 2024 European election program, not a presidential one."
+    "fr": "Candidat déclaré le 23 août 2026, vainqueur de la primaire PS-Place publique le 11 octobre 2026 (66,17 %). Seuls ses propres documents sont cités, mot pour mot : le texte de Place publique « Notre vision pour la France » (Acte I, juin 2025) et la première partie de son programme 2027, consacrée à la révolution écologique (novembre 2026). Les mesures de 2025 absentes de ce livret sont « pas encore reprises » : les autres parties du programme ne sont pas publiées. Le programme européen de 2024 et les annonces rapportées par la presse ne sont pas utilisés.",
+    "en": "Declared on 23 August 2026, winner of the PS-Place publique primary on 11 October 2026 (66.17%). Only his own documents are quoted, word for word: Place publique’s “Notre vision pour la France” (Act I, June 2025) and the first part of his 2027 program, on the ecological revolution (November 2026). 2025 measures missing from that booklet are “not yet restated”: the other parts of the program are not published. The 2024 European program and announcements reported by the press are not used."
   },
   "versions": [
     {
-      "id": "p24",
-      "year": 2024,
+      "id": "a25",
+      "year": 2025,
       "label": {
-        "fr": "Programme européen 2024 (référence, non présidentiel)",
-        "en": "2024 European program (baseline, not presidential)"
+        "fr": "Place publique, « Notre vision pour la France » (Acte I, juin 2025)",
+        "en": "Place publique, “Notre vision pour la France” (Act I, June 2025)"
       },
-      "title": "Réveiller l'Europe",
-      "date": "2024-05",
-      "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf",
+      "title": "Notre vision pour la France — les chantiers de Place publique",
+      "date": "2025-06",
+      "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf",
       "kind": "pdf"
     },
     {
       "id": "p27",
       "year": 2026,
       "label": {
-        "fr": "Annonces 2026-2027",
-        "en": "2026-2027 announcements"
+        "fr": "Programme 2027, 1re partie : la révolution écologique (novembre 2026)",
+        "en": "2027 program, part 1: the ecological revolution (November 2026)"
       },
-      "title": "Candidature présidentielle — annonces",
-      "date": "2026-08",
-      "url": "https://www.publicsenat.fr/actualites/politique/fiscalite-ecole-immigration-ce-que-propose-raphael-glucksmann",
-      "kind": "announcements"
+      "title": "Révolution écologique — les premiers 100 jours pour sortir des énergies fossiles",
+      "date": "2026-11",
+      "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf",
+      "kind": "pdf"
     }
   ],
   "measures": [
     {
       "id": "m01",
-      "theme": "budget",
+      "theme": "ecologie",
       "status": "new",
       "texts": {
-        "p27": "Taxer les 1 % des plus gros héritages (« méga-héritages ») pour récupérer 15 milliards d'euros, reversés aux salariés ; seuil évoqué : 2 millions d'euros."
+        "p27": "Nous déclarerons l’état d’urgence écologique et nous l’inscrirons dans la Constitution : l’article 1 dit aujourd’hui que la France est une République indivisible, laïque, démocratique et sociale. Elle sera aussi écologique."
       },
-      "change": {
-        "fr": "Annonce de la campagne 2026 ; pas d'équivalent dans le programme européen 2024.",
-        "en": "2026 campaign announcement; no equivalent in the 2024 European program."
-      },
+      "change": null,
       "sources": [
         {
-          "title": "France 24 (23/08/2026) — Raphaël Glucksmann annonce sa candidature à la présidentielle de 2027",
-          "url": "https://www.france24.com/fr/france/20260823-rapha%C3%ABl-glucksmann-annonce-sa-candidature-%C3%A0-la-pr%C3%A9sidentielle-de-2027"
-        },
-        {
-          "title": "Public Sénat (24/08/2026) — Fiscalité, école, immigration : ce que propose Raphaël Glucksmann",
-          "url": "https://www.publicsenat.fr/actualites/politique/fiscalite-ecole-immigration-ce-que-propose-raphael-glucksmann"
-        },
-        {
-          "title": "Public Sénat (30/10/2026) — Présidentielle : que proposent les candidats pour augmenter les salaires ?",
-          "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-que-proposent-les-candidats-pour-augmenter-les-salaires"
-        },
-        {
-          "title": "Senioractu (24/09/2026) — Au premier débat de la primaire socialiste, Faure et Glucksmann ont promis d'abroger la réforme des retraites",
-          "url": "https://www.senioractu.com/Pas-encore-retraite-Au-premier-debat-de-la-primaire-socialiste-Faure-et-Glucksmann-ont-promis-d-abroger-la-reforme-qui_a28076.html"
+          "title": "Raphaël Glucksmann — Programme 2027, première partie : « Révolution écologique » (PDF, novembre 2026)",
+          "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf"
         }
       ],
-      "cost": {
-        "value": 15,
-        "low": null,
-        "high": null,
-        "by": "Candidate",
-        "url": "https://www.publicsenat.fr/actualites/politique/fiscalite-ecole-immigration-ce-que-propose-raphael-glucksmann",
-        "note": {
-          "fr": "Recette annoncée par le candidat, intégralement redistribuée via la baisse de cotisations (voir m02). Pas de chiffrage indépendant.",
-          "en": "Revenue announced by the candidate, fully returned through lower contributions (see m02). No independent costing."
-        }
-      },
-      "legal": "ok",
+      "cost": null,
+      "legal": "constitutional-revision-needed",
       "legalNote": {
-        "fr": "Hausse de droits de succession possible par loi de finances, sous réserve de ne pas revêtir de caractère confiscatoire (décision n° 2012-662 DC du 29 décembre 2012).",
-        "en": "Higher inheritance tax can be set in a budget law, provided it is not confiscatory (decision no. 2012-662 DC of 29 December 2012)."
+        "fr": "Révision de la Constitution (article 89) : vote des deux assemblées en termes identiques, puis référendum ou Congrès aux trois cinquièmes.",
+        "en": "Constitutional amendment (Article 89): both houses must pass the same text, then a referendum or a three-fifths Congress vote."
       },
-      "feasibility": "medium",
-      "feasibilityNote": {
-        "fr": "Rendement contesté par des commentateurs ; risque d'optimisation.",
-        "en": "Yield disputed by commentators; avoidance risk."
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false,
+      "short": {
+        "fr": "L’écologie inscrite à l’article 1 de la Constitution",
+        "en": "Ecology written into Article 1 of the Constitution"
       },
-      "broadBenefit": false
+      "pages": {
+        "p27": 8
+      }
     },
     {
       "id": "m02",
-      "theme": "travail",
+      "theme": "budget",
       "status": "new",
       "texts": {
-        "p27": "« Augmenter la rémunération nette des travailleurs » en baissant les cotisations salariales : barème de CSG progressif de 0,25 % à 10,2 %, jusqu'à « 200 euros nets sur la fiche de salaire » (environ 130 € par mois au Smic pour une personne seule)."
+        "p27": "Nous investirons, sur la durée du quinquennat, 200 milliards d’euros d’argent public."
       },
-      "change": {
-        "fr": "Annonce de la campagne 2026 ; pas d'équivalent dans le programme européen 2024.",
-        "en": "2026 campaign announcement; no equivalent in the 2024 European program."
-      },
+      "change": null,
       "sources": [
         {
-          "title": "France 24 (23/08/2026) — Raphaël Glucksmann annonce sa candidature à la présidentielle de 2027",
-          "url": "https://www.france24.com/fr/france/20260823-rapha%C3%ABl-glucksmann-annonce-sa-candidature-%C3%A0-la-pr%C3%A9sidentielle-de-2027"
-        },
-        {
-          "title": "Public Sénat (24/08/2026) — Fiscalité, école, immigration : ce que propose Raphaël Glucksmann",
-          "url": "https://www.publicsenat.fr/actualites/politique/fiscalite-ecole-immigration-ce-que-propose-raphael-glucksmann"
-        },
-        {
-          "title": "Public Sénat (30/10/2026) — Présidentielle : que proposent les candidats pour augmenter les salaires ?",
-          "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-que-proposent-les-candidats-pour-augmenter-les-salaires"
-        },
-        {
-          "title": "Senioractu (24/09/2026) — Au premier débat de la primaire socialiste, Faure et Glucksmann ont promis d'abroger la réforme des retraites",
-          "url": "https://www.senioractu.com/Pas-encore-retraite-Au-premier-debat-de-la-primaire-socialiste-Faure-et-Glucksmann-ont-promis-d-abroger-la-reforme-qui_a28076.html"
+          "title": "Raphaël Glucksmann — Programme 2027, première partie : « Révolution écologique » (PDF, novembre 2026)",
+          "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf"
         }
       ],
       "cost": {
-        "value": -15,
         "low": null,
         "high": null,
-        "by": "Candidate",
-        "url": "https://www.publicsenat.fr/actualites/politique/fiscalite-ecole-immigration-ce-que-propose-raphael-glucksmann",
+        "value": -40,
+        "by": "Candidat (livret 2027)",
+        "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf",
         "note": {
-          "fr": "Baisse de prélèvements financée, selon le candidat, par les 15 Md€ de la taxation des héritages (voir m01).",
-          "en": "Cut in levies funded, according to the candidate, by the €15bn from the inheritance tax (see m01)."
+          "fr": "200 Md€ sur cinq ans, soit 40 Md€ par an en moyenne ; montant annoncé par le candidat, pas un chiffrage indépendant.",
+          "en": "€200bn over five years, €40bn a year on average; the candidate’s own figure, not an independent costing."
         }
       },
-      "legal": "unconstitutional-precedent",
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": {
+        "fr": "Le livret ne chiffre qu’une recette, la contribution exceptionnelle de 50 Md€ ; le reste n’est pas détaillé.",
+        "en": "The booklet costs only one revenue source, the €50bn one-off levy; the rest is not detailed."
+      },
+      "broadBenefit": true,
+      "short": {
+        "fr": "200 Md€ d’argent public investis sur le quinquennat",
+        "en": "€200bn of public money invested over the term"
+      },
+      "pages": {
+        "p27": 8
+      }
+    },
+    {
+      "id": "m15",
+      "theme": "budget",
+      "status": "modified",
+      "texts": {
+        "a25": "Effort fiscal nouveau, ciblé sur les très hauts patrimoines et les grands groupes, pour contrer leur optimisation fiscale, afin qu’ils contribuent équitablement à la solidarité nationale.",
+        "p27": "C’est le sens de notre contribution exceptionnelle pour l’investissement climatique sur les plus hauts patrimoines, dont le produit sera affecté à un fonds dédié exclusivement au financement de mesures d’investissement dans la transition climatique. Cette contribution concernera une infime minorité de foyers, tout en haut de l’échelle des patrimoines, et rapportera 50 milliards d’euros."
+      },
+      "change": {
+        "fr": "Un effort fiscal ciblé sur les très hauts patrimoines, sans montant (2025) → une contribution exceptionnelle, une seule année, de 50 Md€ affectée à la transition (2026).",
+        "en": "A targeted tax effort on the largest fortunes, no amount (2025) → a one-off levy, a single year, of €50bn earmarked for the transition (2026)."
+      },
+      "sources": [
+        {
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
+        },
+        {
+          "title": "Raphaël Glucksmann — Programme 2027, première partie : « Révolution écologique » (PDF, novembre 2026)",
+          "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf"
+        }
+      ],
+      "cost": {
+        "low": null,
+        "high": null,
+        "value": 10,
+        "by": "Candidat (livret 2027)",
+        "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf",
+        "note": {
+          "fr": "50 Md€ une seule année, soit 10 Md€ par an en moyenne sur le quinquennat ; montant annoncé par le candidat.",
+          "en": "€50bn in a single year, €10bn a year on average over the term; the candidate’s own figure."
+        }
+      },
+      "legal": "risk",
       "legalNote": {
-        "fr": "Le Conseil constitutionnel a censuré en 2000 une réduction dégressive de CSG sur les bas salaires, faute de prendre en compte les revenus et charges de famille du foyer (décision n° 2000-437 DC du 19 décembre 2000). Un barème progressif devra en tenir compte.",
-        "en": "The Constitutional Council struck down a sliding CSG cut on low wages in 2000 for ignoring household income and family burdens (decision no. 2000-437 DC of 19 December 2000). A progressive schedule would need to address this."
+        "fr": "Un prélèvement sur le patrimoine ne doit pas être confiscatoire et doit tenir compte des capacités contributives (article 13 de la Déclaration de 1789).",
+        "en": "A wealth levy must not be confiscatory and must reflect ability to pay (Article 13 of the 1789 Declaration)."
       },
       "feasibility": "medium",
-      "feasibilityNote": null,
-      "broadBenefit": true
+      "feasibilityNote": {
+        "fr": "Rendement d’une recette unique de cette taille incertain : départs, optimisation, recours.",
+        "en": "Uncertain yield for a one-off levy of this size: departures, tax planning, legal challenges."
+      },
+      "broadBenefit": false,
+      "short": {
+        "fr": "Contribution exceptionnelle des plus hauts patrimoines : 50 Md€",
+        "en": "One-off levy on the largest fortunes: €50bn"
+      },
+      "pages": {
+        "a25": 85,
+        "p27": 9
+      }
     },
     {
       "id": "m03",
-      "theme": "travail",
-      "status": "new",
+      "theme": "budget",
+      "status": "modified",
       "texts": {
-        "p27": "Porter le Smic à 1 700 euros net par mois ; gratification minimale des stages de plus de deux mois portée à 1 000 euros ; hausses non financées par « la casse du modèle social ou l'aggravation de la dette »."
+        "a25": "Mise en place d’un mécanisme automatique de taxation des superprofits des multinationales et des profiteurs de guerre.",
+        "p27": "Par ailleurs, nous défendrons la création d’une taxe sur les superprofits pétroliers et gaziers au niveau européen."
       },
       "change": {
-        "fr": "Annonce de la campagne 2026 ; pas d'équivalent dans le programme européen 2024.",
-        "en": "2026 campaign announcement; no equivalent in the 2024 European program."
+        "fr": "Toutes les multinationales et les « profiteurs de guerre » (2025) → les seuls pétroliers et gaziers, au niveau européen (2026).",
+        "en": "All multinationals and “war profiteers” (2025) → oil and gas companies only, at EU level (2026)."
       },
       "sources": [
         {
-          "title": "Public Sénat (30/10/2026) — Présidentielle : que proposent les candidats pour augmenter les salaires ?",
-          "url": "https://www.publicsenat.fr/actualites/economie/presidentielle-que-proposent-les-candidats-pour-augmenter-les-salaires"
-        }
-      ],
-      "cost": null,
-      "legal": "ok",
-      "legalNote": {
-        "fr": "Revalorisation du Smic par décret ; gratification des stages par la loi.",
-        "en": "Minimum wage by decree; internship pay by law."
-      },
-      "feasibility": "medium",
-      "feasibilityNote": null,
-      "broadBenefit": true
-    },
-    {
-      "id": "m04",
-      "theme": "social",
-      "status": "new",
-      "texts": {
-        "p27": "Abroger la réforme des retraites de 2023 ; une « réforme juste et ambitieuse », sans retour à 60 ans, ceux qui ont une espérance de vie en bonne santé plus longue partant plus tard."
-      },
-      "change": {
-        "fr": "Annonce de la campagne 2026 ; pas d'équivalent dans le programme européen 2024.",
-        "en": "2026 campaign announcement; no equivalent in the 2024 European program."
-      },
-      "sources": [
-        {
-          "title": "Public Sénat (24/08/2026) — Fiscalité, école, immigration : ce que propose Raphaël Glucksmann",
-          "url": "https://www.publicsenat.fr/actualites/politique/fiscalite-ecole-immigration-ce-que-propose-raphael-glucksmann"
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
         },
         {
-          "title": "Senioractu (24/09/2026) — Au premier débat de la primaire socialiste, Faure et Glucksmann ont promis d'abroger la réforme des retraites",
-          "url": "https://www.senioractu.com/Pas-encore-retraite-Au-premier-debat-de-la-primaire-socialiste-Faure-et-Glucksmann-ont-promis-d-abroger-la-reforme-qui_a28076.html"
+          "title": "Raphaël Glucksmann — Programme 2027, première partie : « Révolution écologique » (PDF, novembre 2026)",
+          "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf"
         }
       ],
       "cost": null,
-      "legal": "ok",
-      "legalNote": null,
-      "feasibility": null,
-      "feasibilityNote": {
-        "fr": "Paramètres non précisés.",
-        "en": "Parameters not specified."
+      "legal": "eu-law",
+      "legalNote": {
+        "fr": "Une taxe européenne exige l’unanimité du Conseil en matière fiscale.",
+        "en": "An EU tax requires unanimity in the Council."
       },
-      "broadBenefit": true
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false,
+      "short": {
+        "fr": "Taxer les superprofits pétroliers et gaziers (Europe)",
+        "en": "Tax oil and gas windfall profits (EU-wide)"
+      },
+      "pages": {
+        "a25": 85,
+        "p27": 9
+      }
     },
     {
       "id": "m05",
-      "theme": "education",
+      "theme": "ecologie",
       "status": "modified",
       "texts": {
-        "p24": "La rénovation de toutes les écoles européennes d'ici 2030 (plan « Nos écoles »), afin de protéger nos enfants et les personnels éducatifs des vagues de froid et des canicules.",
-        "p27": "Un « plan de sauvetage de l'école publique » sur cinq ans : hausse de la rémunération des enseignants, moins d'élèves par classe en primaire, rénovation des bâtiments scolaires."
+        "a25": "Mettre fin aux privilèges actuels des transports polluants : suppression des exonérations de TVA et de taxe sur le kérosène, étendre l’interdiction des vols intérieurs avec alternative ferroviaire viable, taxation des plus gros pollueurs individuels (jets privés, yachts, SUV…).",
+        "p27": "Dès les 100 premiers jours, nous mettrons fin aux exonérations fiscales sur le carburant pour les vols intérieurs et nous augmenterons la taxe sur les billets d’avion. Nous porterons aussi ces combats au niveau européen. Nous ferons porter l’effort avant tout sur la consommation ostentatoire: les jets privés, comme les yachts, seront particulièrement ciblés."
       },
       "change": {
-        "fr": "Rénovation des écoles à l'échelle européenne (2024) → plan national sur cinq ans incluant salaires et effectifs (2026).",
-        "en": "EU-wide school renovation (2024) → five-year national plan including pay and class sizes (2026)."
+        "fr": "2025 : fin des exonérations de TVA et de taxe sur le kérosène, extension de l’interdiction des vols intérieurs. 2026 : fin des exonérations sur le carburant des vols intérieurs dès les 100 premiers jours et hausse de la taxe sur les billets ; l’extension de l’interdiction des vols n’est plus mentionnée.",
+        "en": "2025: end VAT and kerosene-tax exemptions, extend the ban on domestic flights. 2026: end fuel exemptions on domestic flights within 100 days and raise the ticket tax; extending the flight ban is no longer mentioned."
       },
       "sources": [
         {
-          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
-          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
         },
         {
-          "title": "France 24 (23/08/2026) — Raphaël Glucksmann annonce sa candidature à la présidentielle de 2027",
-          "url": "https://www.france24.com/fr/france/20260823-rapha%C3%ABl-glucksmann-annonce-sa-candidature-%C3%A0-la-pr%C3%A9sidentielle-de-2027"
-        },
+          "title": "Raphaël Glucksmann — Programme 2027, première partie : « Révolution écologique » (PDF, novembre 2026)",
+          "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": {
+        "fr": "Les vols intérieurs peuvent être taxés par la loi de finances ; les vols internationaux relèvent des conventions internationales et du droit européen.",
+        "en": "Domestic flights can be taxed in the budget law; international flights fall under international conventions and EU law."
+      },
+      "feasibility": "high",
+      "feasibilityNote": null,
+      "broadBenefit": false,
+      "short": {
+        "fr": "Taxer l’aérien : fin des exonérations sur le kérosène des vols intérieurs",
+        "en": "Tax aviation: end fuel-tax exemptions on domestic flights"
+      },
+      "pages": {
+        "a25": 29,
+        "p27": 9
+      }
+    },
+    {
+      "id": "m06",
+      "theme": "budget",
+      "status": "new",
+      "texts": {
+        "p27": "Nous mobiliserons également l’épargne des Français : le plafond du livret A sera doublé et le livret fusionné avec le Livret de développement durable et solidaire pour devenir un Livret de souveraineté écologique et sociale, rémunéré à 2,5 %, afin de prêter aux collectivités à taux bas."
+      },
+      "change": null,
+      "sources": [
         {
-          "title": "Public Sénat (24/08/2026) — Fiscalité, école, immigration : ce que propose Raphaël Glucksmann",
-          "url": "https://www.publicsenat.fr/actualites/politique/fiscalite-ecole-immigration-ce-que-propose-raphael-glucksmann"
+          "title": "Raphaël Glucksmann — Programme 2027, première partie : « Révolution écologique » (PDF, novembre 2026)",
+          "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf"
         }
       ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
-      "feasibility": null,
+      "feasibility": "medium",
       "feasibilityNote": {
-        "fr": "Montant non précisé.",
-        "en": "Amount not specified."
+        "fr": "Un taux fixé à 2,5 % renchérit la ressource des prêts aux collectivités « à taux bas ».",
+        "en": "A fixed 2.5% rate makes the funds lent to local authorities “at low rates” dearer."
       },
-      "broadBenefit": true
-    },
-    {
-      "id": "m06",
-      "theme": "education",
-      "status": "new",
-      "texts": {
-        "p27": "Un service civique obligatoire de dix mois effectué par « tous les jeunes Français » (Ehpad, écoles, services publics, associations) ; relance des colonies de vacances, avec un séjour collectif pour chaque enfant."
+      "broadBenefit": true,
+      "short": {
+        "fr": "Livret A doublé, rémunéré à 2,5 %",
+        "en": "Livret A savings cap doubled, paid 2.5%"
       },
-      "change": {
-        "fr": "Annonce de la campagne 2026 ; pas d'équivalent dans le programme européen 2024.",
-        "en": "2026 campaign announcement; no equivalent in the 2024 European program."
-      },
-      "sources": [
-        {
-          "title": "Public Sénat (24/08/2026) — Fiscalité, école, immigration : ce que propose Raphaël Glucksmann",
-          "url": "https://www.publicsenat.fr/actualites/politique/fiscalite-ecole-immigration-ce-que-propose-raphael-glucksmann"
-        }
-      ],
-      "cost": null,
-      "legal": "unknown",
-      "legalNote": {
-        "fr": "Une obligation de service civil généralisée hors défense nationale soulève une question constitutionnelle (article 34 et libertés individuelles) ; pas de décision du Conseil constitutionnel identifiée sur ce point.",
-        "en": "A general civil-service obligation outside national defence raises a constitutional question (Article 34 and individual liberties); no Constitutional Council decision on this point identified."
-      },
-      "feasibility": "low",
-      "feasibilityNote": {
-        "fr": "Financement et encadrement non précisés.",
-        "en": "Funding and supervision not specified."
-      },
-      "broadBenefit": false
+      "pages": {
+        "p27": 10
+      }
     },
     {
       "id": "m07",
-      "theme": "immigration",
+      "theme": "europe",
+      "status": "new",
+      "texts": {
+        "p27": "… nous lancerons avec nos partenaires européens un grand emprunt pour le financement de la transition écologique au niveau européen. Sans attendre un accord, nous mobiliserons l’ensemble des financements européens disponibles."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Raphaël Glucksmann — Programme 2027, première partie : « Révolution écologique » (PDF, novembre 2026)",
+          "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": {
+        "fr": "Un emprunt commun suppose une décision du Conseil à l’unanimité et la ratification des ressources propres (article 311 TFUE).",
+        "en": "Joint borrowing needs a unanimous Council decision and ratification of own resources (Article 311 TFEU)."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false,
+      "short": {
+        "fr": "Un grand emprunt européen pour la transition",
+        "en": "A large EU loan for the green transition"
+      },
+      "pages": {
+        "p27": 10
+      }
+    },
+    {
+      "id": "m08",
+      "theme": "social",
+      "status": "new",
+      "texts": {
+        "p27": "Chèque énergie : sans attendre, face à l’explosion des prix de l’énergie, nous verserons un chèque énergie de 500 euros pour six millions de familles, de 200 euros pour dix millions de familles des classes moyennes."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Raphaël Glucksmann — Programme 2027, première partie : « Révolution écologique » (PDF, novembre 2026)",
+          "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf"
+        }
+      ],
+      "cost": {
+        "low": null,
+        "high": null,
+        "value": -5,
+        "by": "Notre calcul",
+        "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf",
+        "note": {
+          "fr": "500 € × 6 millions + 200 € × 10 millions de familles, pour un versement ; le livret n’en donne pas le coût.",
+          "en": "€500 × 6 million + €200 × 10 million families, for one payment; the booklet gives no cost."
+        }
+      },
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "high",
+      "feasibilityNote": null,
+      "broadBenefit": true,
+      "short": {
+        "fr": "Chèque énergie de 500 € (6 millions de familles) et 200 € (10 millions)",
+        "en": "€500 energy cheque (6m families) and €200 (10m)"
+      },
+      "pages": {
+        "p27": 12
+      }
+    },
+    {
+      "id": "m09",
+      "theme": "ecologie",
       "status": "modified",
       "texts": {
-        "p24": "En créant des voies légales et sécurisées de migration ; en harmonisant les procédures d'asile via un espace européen de protection des demandeurs d'asile.",
-        "p27": "Une convention citoyenne sur l'immigration, composée de citoyens tirés au sort, dont les propositions seraient soumises au débat et au vote du Parlement."
+        "a25": "Soutenir la filière française de la petite voiture électrique, légère, abordable et réparable, accessible aux classes moyennes et populaires. L’acquisition de ces voitures sera facilitée par le déploiement à grande échelle du leasing social pour que les ménages modestes puissent accéder à une voiture électrique, l’objectif de flottes 100 % électriques pour les grandes entreprises et collectivités sera fixé et le réseau de bornes de recharge des voitures électriques sera renforcé.",
+        "p27": "Leasing social : 1 million de voitures électriques sur 5 ans, à 100€ par mois et sans apport, dont 100 000 mises tout de suite à la disposition des auxiliaires de vie et professionnels du soin en zone rurale."
       },
       "change": {
-        "fr": "Propositions européennes sur l'asile (2024) → méthode nationale par convention citoyenne (2026).",
-        "en": "EU asylum proposals (2024) → national citizens' convention (2026)."
+        "fr": "Leasing social « à grande échelle », sans objectif chiffré (2025) → 1 million de voitures sur cinq ans, à 100 € par mois sans apport (2026).",
+        "en": "Social leasing “on a large scale”, no figure (2025) → 1 million cars over five years, €100 a month, no deposit (2026)."
       },
       "sources": [
         {
-          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
-          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
         },
         {
-          "title": "Public Sénat (24/08/2026) — Fiscalité, école, immigration : ce que propose Raphaël Glucksmann",
-          "url": "https://www.publicsenat.fr/actualites/politique/fiscalite-ecole-immigration-ce-que-propose-raphael-glucksmann"
+          "title": "Raphaël Glucksmann — Programme 2027, première partie : « Révolution écologique » (PDF, novembre 2026)",
+          "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": true,
+      "short": {
+        "fr": "Leasing social : 1 million de voitures électriques à 100 € par mois",
+        "en": "Social leasing: 1 million electric cars at €100 a month"
+      },
+      "pages": {
+        "a25": 16,
+        "p27": 13
+      }
+    },
+    {
+      "id": "m11",
+      "theme": "ecologie",
+      "status": "new",
+      "texts": {
+        "p27": "Pompes à chaleur : 1 million de pompes à chaleur à 1 € par jour, réversibles avec climatisation quand c’est pertinent, en priorité pour les logements chauffés au fioul et au gaz ou les plus exposés aux fortes chaleurs."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Raphaël Glucksmann — Programme 2027, première partie : « Révolution écologique » (PDF, novembre 2026)",
+          "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": true,
+      "short": {
+        "fr": "1 million de pompes à chaleur à 1 € par jour",
+        "en": "1 million heat pumps at €1 a day"
+      },
+      "pages": {
+        "p27": 13
+      }
+    },
+    {
+      "id": "m13",
+      "theme": "ecologie",
+      "status": "modified",
+      "texts": {
+        "a25": "Faire le Ticket climat : un titre de transport unique, à tarif fixe, abordable et valable à l’échelle nationale pour les transports du quotidien, d’abord réservé aux jeunes et aux publics précaires.",
+        "p27": "Transports du quotidien : 5 000 lignes de covoiturage d’ici 2035, avec un premier appel à projets dès les 100 premiers jours ; un Pass Mobilité Durable Jeunes à 1 euro par jour pour les jeunes de moins de 25 ans"
+      },
+      "change": {
+        "fr": "Un « Ticket climat » national, d’abord pour les jeunes et les plus précaires (2025) → un pass à 1 € par jour pour les moins de 25 ans et 5 000 lignes de covoiturage d’ici 2035 (2026).",
+        "en": "A national “climate ticket”, first for young and low-income people (2025) → a €1-a-day pass for under-25s and 5,000 car-pool lines by 2035 (2026)."
+      },
+      "sources": [
+        {
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
+        },
+        {
+          "title": "Raphaël Glucksmann — Programme 2027, première partie : « Révolution écologique » (PDF, novembre 2026)",
+          "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": true,
+      "short": {
+        "fr": "Pass transport à 1 € par jour pour les moins de 25 ans",
+        "en": "€1-a-day transport pass for under-25s"
+      },
+      "pages": {
+        "a25": 29,
+        "p27": 13
+      }
+    },
+    {
+      "id": "m16",
+      "theme": "ecologie",
+      "status": "modified",
+      "texts": {
+        "a25": "Lancer un grand plan d’investissement pluriannuel dans toutes les énergies renouvelables.",
+        "p27": "Nous proposerons donc aux régions un contrat avec l’État pour produire l’énergie au plus près des territoires, en concertation avec leurs habitants, et au moins doubler, d’ici 2035, compte tenu du retard pris, les capacités installées de production d’énergie renouvelable."
+      },
+      "change": {
+        "fr": "Un plan pluriannuel sans objectif chiffré (2025) → au moins doubler les capacités renouvelables d’ici 2035, par des contrats État-régions (2026).",
+        "en": "A multi-year plan with no target (2025) → at least double renewable capacity by 2035, through state-region contracts (2026)."
+      },
+      "sources": [
+        {
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
+        },
+        {
+          "title": "Raphaël Glucksmann — Programme 2027, première partie : « Révolution écologique » (PDF, novembre 2026)",
+          "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false,
+      "short": {
+        "fr": "Doubler les renouvelables d’ici 2035",
+        "en": "Double renewable capacity by 2035"
+      },
+      "pages": {
+        "a25": 17,
+        "p27": 15
+      }
+    },
+    {
+      "id": "m17",
+      "theme": "ecologie",
+      "status": "modified",
+      "texts": {
+        "a25": "Conforter le rôle du nucléaire, énergie pilotable et décarbonée, en assurant la sûreté des centrales existantes et la construction à temps de nouvelles unités.",
+        "p27": "Le mix s’appuiera sur un déploiement massif des énergies renouvelables et la pérennisation de l’énergie nucléaire. […] Nous prolongerons et sécuriserons les réacteurs nucléaires existants. Pour l’avenir du nucléaire en France, nous rendrons de nouveau indépendant le contrôle crucial de la sûreté et de la sécurité nucléaire."
+      },
+      "change": {
+        "fr": "2025 : sûreté des centrales existantes et « construction à temps de nouvelles unités ». 2026 : prolonger et sécuriser les réacteurs existants, contrôle de sûreté de nouveau indépendant ; les nouvelles unités ne sont plus mentionnées.",
+        "en": "2025: safety of existing plants and “building new units on time”. 2026: extend and secure existing reactors, independent safety oversight again; new units are no longer mentioned."
+      },
+      "sources": [
+        {
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
+        },
+        {
+          "title": "Raphaël Glucksmann — Programme 2027, première partie : « Révolution écologique » (PDF, novembre 2026)",
+          "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false,
+      "short": {
+        "fr": "Prolonger les réacteurs nucléaires existants",
+        "en": "Extend existing nuclear reactors"
+      },
+      "pages": {
+        "a25": 17,
+        "p27": 15
+      }
+    },
+    {
+      "id": "m18",
+      "theme": "ecologie",
+      "status": "modified",
+      "texts": {
+        "a25": "Annuler la hausse de taxe sur l’électricité imposée en 2024.",
+        "p27": "Nous adopterons un moratoire sur les hausses de taxes sur l’électricité, et nous garantirons que son prix n’augmente pas plus vite que l’inflation."
+      },
+      "change": {
+        "fr": "Annuler la hausse de taxe de 2024 (2025) → un moratoire sur les hausses de taxes et un prix qui n’augmente pas plus vite que l’inflation (2026).",
+        "en": "Reverse the 2024 tax rise (2025) → a moratorium on tax rises and a price rising no faster than inflation (2026)."
+      },
+      "sources": [
+        {
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
+        },
+        {
+          "title": "Raphaël Glucksmann — Programme 2027, première partie : « Révolution écologique » (PDF, novembre 2026)",
+          "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": {
+        "fr": "Le prix de marché ne dépend pas de l’État : la garantie suppose d’agir sur les taxes ou les tarifs réglementés.",
+        "en": "The market price is not set by the state: the guarantee means acting on taxes or regulated tariffs."
+      },
+      "broadBenefit": true,
+      "short": {
+        "fr": "Prix de l’électricité : pas plus vite que l’inflation",
+        "en": "Electricity prices: no faster than inflation"
+      },
+      "pages": {
+        "a25": 17,
+        "p27": 16
+      }
+    },
+    {
+      "id": "m19",
+      "theme": "international",
+      "status": "new",
+      "texts": {
+        "p27": "Nous engagerons le retrait d’EDF, de Framatome et d’Orano des partenariats avec Rosatom, l’opérateur nucléaire russe lié à Poutine."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Raphaël Glucksmann — Programme 2027, première partie : « Révolution écologique » (PDF, novembre 2026)",
+          "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": false,
+      "short": {
+        "fr": "Sortir EDF, Framatome et Orano des partenariats avec Rosatom",
+        "en": "Pull EDF, Framatome and Orano out of Rosatom partnerships"
+      },
+      "pages": {
+        "p27": 15
+      }
+    },
+    {
+      "id": "m21",
+      "theme": "education",
+      "status": "modified",
+      "texts": {
+        "a25": "Lancer un vaste plan pour rénover les écoles, en intégrant les enjeux climatiques et les méthodes pédagogiques modernes, aménager les espaces extérieurs pour lutter contre la chaleur, favoriser le jeu partagé, la pédagogie en plein air et l’inclusion.",
+        "p27": "Écoles : nous viserons la rénovation de 4 000 écoles primaires chaque année et plus de 2800 collèges et lycées, pour garantir aux enfants des conditions dignes d’apprentissage, en commençant par ceux qui ont dû fermer cet été."
+      },
+      "change": {
+        "fr": "Un vaste plan sans objectif (2025) → 4 000 écoles primaires par an et plus de 2 800 collèges et lycées (2026).",
+        "en": "A vast plan with no target (2025) → 4,000 primary schools a year and over 2,800 secondary schools (2026)."
+      },
+      "sources": [
+        {
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
+        },
+        {
+          "title": "Raphaël Glucksmann — Programme 2027, première partie : « Révolution écologique » (PDF, novembre 2026)",
+          "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": {
+        "fr": "Les bâtiments scolaires appartiennent aux communes, départements et régions : l’État doit les financer ou les convaincre.",
+        "en": "School buildings belong to local authorities: the state must fund or persuade them."
+      },
+      "broadBenefit": true,
+      "short": {
+        "fr": "Rénover 4 000 écoles par an",
+        "en": "Renovate 4,000 schools a year"
+      },
+      "pages": {
+        "a25": 68,
+        "p27": 18
+      }
+    },
+    {
+      "id": "m12",
+      "theme": "economie",
+      "status": "modified",
+      "texts": {
+        "a25": "Imposer des mesures miroirs aux importations agricoles, contre le dumping social, sanitaire et environnemental, harmoniser les normes en Europe pour mettre fin à la concurrence déloyale au sein du marché unique, s’opposer aux traités comme le Mercosur qui placent nos éleveurs dans une situation injuste et intenable.",
+        "p27": "Commerce international : nous mettrons fin au dumping social, environnemental et sanitaire qui détruit nos entreprises, notre environnement et notre santé, en renforçant notamment le mécanisme d’ajustement carbone aux frontières (MACF) et le devoir de vigilance, en imposant des mesures miroirs dans les accords commerciaux et en sortant des logiques de libre-échange."
+      },
+      "change": {
+        "fr": "Mesures miroirs sur les importations agricoles et refus du Mercosur (2025) → mesures miroirs dans tous les accords, ajustement carbone aux frontières renforcé et sortie des « logiques de libre-échange » (2026).",
+        "en": "Mirror clauses on farm imports and opposing Mercosur (2025) → mirror clauses in every agreement, a stronger carbon border adjustment and leaving “free-trade logic” behind (2026)."
+      },
+      "sources": [
+        {
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
+        },
+        {
+          "title": "Raphaël Glucksmann — Programme 2027, première partie : « Révolution écologique » (PDF, novembre 2026)",
+          "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "eu-law",
+      "legalNote": {
+        "fr": "La politique commerciale est une compétence exclusive de l’Union (article 3 TFUE).",
+        "en": "Trade policy is an exclusive EU competence (Article 3 TFEU)."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false,
+      "short": {
+        "fr": "Mesures miroirs et sortie des logiques de libre-échange",
+        "en": "Mirror clauses and an end to free-trade logic"
+      },
+      "pages": {
+        "a25": 34,
+        "p27": 16
+      }
+    },
+    {
+      "id": "m22",
+      "theme": "securite",
+      "status": "new",
+      "texts": {
+        "p27": "Sécurité civile : nous préparerons notre pays à mieux faire face aux risques de canicules et d’incendies, en allouant 1 Md € d’investissement, dès juin 2027, à la sécurité civile."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Raphaël Glucksmann — Programme 2027, première partie : « Révolution écologique » (PDF, novembre 2026)",
+          "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf"
+        }
+      ],
+      "cost": {
+        "low": null,
+        "high": null,
+        "value": -1,
+        "by": "Candidat (livret 2027)",
+        "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf",
+        "note": {
+          "fr": "1 Md€ d’investissement annoncé, sans précision de durée.",
+          "en": "€1bn of investment announced, duration not specified."
+        }
+      },
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "high",
+      "feasibilityNote": null,
+      "broadBenefit": true,
+      "short": {
+        "fr": "1 Md€ pour la sécurité civile dès juin 2027",
+        "en": "€1bn for civil protection from June 2027"
+      },
+      "pages": {
+        "p27": 18
+      }
+    },
+    {
+      "id": "m23",
+      "theme": "travail",
+      "status": "dropped",
+      "texts": {
+        "a25": "Augmenter le SMIC à 1600 euros net dans les deux ans qui suivent notre accession au pouvoir."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": {
+        "fr": "Revalorisation par décret.",
+        "en": "Raised by decree."
+      },
+      "feasibility": "medium",
+      "feasibilityNote": null,
+      "broadBenefit": true,
+      "short": {
+        "fr": "Smic à 1 600 € net en deux ans",
+        "en": "€1,600 net minimum wage within two years"
+      },
+      "pages": {
+        "a25": 40
+      }
+    },
+    {
+      "id": "m04",
+      "theme": "travail",
+      "status": "dropped",
+      "texts": {
+        "a25": "Abroger la réforme Macron de 2023."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": {
+        "fr": "Coût non chiffré dans le texte.",
+        "en": "Cost not given in the text."
+      },
+      "broadBenefit": true,
+      "short": {
+        "fr": "Abroger la réforme des retraites de 2023",
+        "en": "Repeal the 2023 pension reform"
+      },
+      "pages": {
+        "a25": 43
+      }
+    },
+    {
+      "id": "m33",
+      "theme": "social",
+      "status": "dropped",
+      "texts": {
+        "a25": "Abroger la réforme Macron de l’assurance chômage, injuste et inefficace."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
         }
       ],
       "cost": null,
@@ -288,416 +784,329 @@
       "legalNote": null,
       "feasibility": "high",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "short": {
+        "fr": "Abroger la réforme de l’assurance chômage",
+        "en": "Repeal the unemployment-insurance reform"
+      },
+      "pages": {
+        "a25": 53
+      }
     },
     {
-      "id": "m08",
-      "theme": "ecologie",
-      "status": "modified",
+      "id": "m24",
+      "theme": "immigration",
+      "status": "dropped",
       "texts": {
-        "p24": "Nous défendrons chaque texte d'un Pacte Vert ; réduction des émissions d'au moins 90 % à 92 % au plus tard en 2040, neutralité carbone au plus tard en 2050.",
-        "p27": "« La mise en place d'un état d'urgence écologique », préparée par Yannick Jadot ; appel à fonder « la République écologique »."
+        "a25": "Abroger la loi immigration de 2024."
       },
-      "change": {
-        "fr": "Objectifs européens chiffrés (2024) → « état d'urgence écologique » national, non détaillé (2026).",
-        "en": "Quantified EU targets (2024) → national \"ecological state of emergency\", not detailed (2026)."
-      },
+      "change": null,
       "sources": [
         {
-          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
-          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
-        },
-        {
-          "title": "France 24 (23/08/2026) — Raphaël Glucksmann annonce sa candidature à la présidentielle de 2027",
-          "url": "https://www.france24.com/fr/france/20260823-rapha%C3%ABl-glucksmann-annonce-sa-candidature-%C3%A0-la-pr%C3%A9sidentielle-de-2027"
-        }
-      ],
-      "cost": null,
-      "legal": "unknown",
-      "legalNote": null,
-      "feasibility": null,
-      "feasibilityNote": null,
-      "broadBenefit": false
-    },
-    {
-      "id": "m09",
-      "theme": "ecologie",
-      "status": "new",
-      "texts": {
-        "p24": "Le déclin rapide des énergies fossiles et le développement massif des énergies renouvelables, en conservant une part de nucléaire comme une énergie de transition dans notre mix énergétique."
-      },
-      "change": {
-        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
-        "en": "Measure from the 2024 European program (only version available); no sourced 2027 position yet."
-      },
-      "sources": [
-        {
-          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
-          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
         }
       ],
       "cost": null,
       "legal": "ok",
       "legalNote": null,
-      "feasibility": null,
+      "feasibility": "high",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "short": {
+        "fr": "Abroger la loi immigration de 2024",
+        "en": "Repeal the 2024 immigration law"
+      },
+      "pages": {
+        "a25": 82
+      }
+    },
+    {
+      "id": "m25",
+      "theme": "institutions",
+      "status": "dropped",
+      "texts": {
+        "a25": "Instaurer immédiatement la proportionnelle, de préférence par circonscriptions régionales avec un fléchage départemental des candidats."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "ok",
+      "legalNote": {
+        "fr": "Le mode de scrutin relève de la loi ordinaire.",
+        "en": "The voting system is set by ordinary law."
+      },
+      "feasibility": "high",
+      "feasibilityNote": null,
+      "broadBenefit": false,
+      "short": {
+        "fr": "La proportionnelle aux législatives",
+        "en": "Proportional representation"
+      },
+      "pages": {
+        "a25": 46
+      }
+    },
+    {
+      "id": "m26",
+      "theme": "institutions",
+      "status": "dropped",
+      "texts": {
+        "a25": "Ouvrir le droit de vote à 16 ans et pour les étrangers extra-communautaires aux élections locales, généraliser l’inscription automatique sur les listes électorales."
+      },
+      "change": null,
+      "sources": [
+        {
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
+        }
+      ],
+      "cost": null,
+      "legal": "constitutional-revision-needed",
+      "legalNote": {
+        "fr": "Le vote des étrangers non européens exige une révision de la Constitution (article 3 ; l’article 88-3 ne vise que les citoyens de l’Union).",
+        "en": "Votes for non-EU foreigners require a constitutional amendment (Article 3; Article 88-3 covers EU citizens only)."
+      },
+      "feasibility": "low",
+      "feasibilityNote": null,
+      "broadBenefit": false,
+      "short": {
+        "fr": "Vote à 16 ans et vote des étrangers aux élections locales",
+        "en": "Votes at 16 and for foreign residents in local elections"
+      },
+      "pages": {
+        "a25": 47
+      }
     },
     {
       "id": "m10",
       "theme": "international",
-      "status": "new",
+      "status": "dropped",
       "texts": {
-        "p24": "Nous saisirons la totalité des 206 milliards d'avoirs publics russes gelés dans les banques européennes pour les affecter au soutien à la résistance ukrainienne."
+        "a25": "Augmenter drastiquement l’aide militaire à l’Ukraine qui est notre première ligne de défense et notre soutien aux alliés européens comme la Moldavie et l’Arménie."
       },
-      "change": {
-        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
-        "en": "Measure from the 2024 European program (only version available); no sourced 2027 position yet."
-      },
+      "change": null,
       "sources": [
         {
-          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
-          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
         }
       ],
       "cost": null,
-      "legal": "risk",
-      "legalNote": {
-        "fr": "La confiscation d'avoirs d'une banque centrale étrangère se heurte au principe d'immunité des États.",
-        "en": "Confiscating a foreign central bank's assets runs into state immunity."
-      },
-      "feasibility": "low",
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "short": {
+        "fr": "Augmenter fortement l’aide militaire à l’Ukraine",
+        "en": "Sharply increase military aid to Ukraine"
+      },
+      "pages": {
+        "a25": 11
+      }
     },
     {
-      "id": "m11",
+      "id": "m27",
       "theme": "international",
-      "status": "new",
+      "status": "dropped",
       "texts": {
-        "p24": "Un fonds européen de défense de 100 milliards d'euros financé par un emprunt commun pour investir dans nos industries de défense ; un « Buy European Act » de l'armement."
+        "a25": "Proposer à nos partenaires de l’UE d’étendre la dissuasion nucléaire française aux autres pays de l’Union européenne, en conservant la souveraineté française sur la décision d’emploi, pour en faire le pilier d’un grand pacte de sécurité européen."
       },
-      "change": {
-        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
-        "en": "Measure from the 2024 European program (only version available); no sourced 2027 position yet."
-      },
+      "change": null,
       "sources": [
         {
-          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
-          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
         }
       ],
       "cost": null,
-      "legal": "eu-law",
-      "legalNote": {
-        "fr": "Emprunt commun et préférence européenne relèvent d'une décision de l'Union (unanimité pour les ressources propres, article 311 TFUE).",
-        "en": "Joint borrowing and European preference require EU decisions (unanimity for own resources, Article 311 TFEU)."
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "low",
+      "feasibilityNote": {
+        "fr": "Dépend de l’accord des partenaires européens.",
+        "en": "Depends on European partners agreeing."
       },
-      "feasibility": "medium",
-      "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "short": {
+        "fr": "Étendre la dissuasion nucléaire aux pays de l’Union",
+        "en": "Extend nuclear deterrence to EU countries"
+      },
+      "pages": {
+        "a25": 11
+      }
     },
     {
-      "id": "m12",
+      "id": "m28",
       "theme": "economie",
-      "status": "new",
+      "status": "dropped",
       "texts": {
-        "p24": "Une loi « acheter européen » (« Buy European Act ») qui conditionnera l'accès à tous les dispositifs de soutien public (commande publique, subvention, prix garantis) à une priorité donnée aux produits et services européens ; refus de tout nouvel accord de libre-échange."
+        "a25": "Porter une loi « Acheter européen » (un “Buy European Act”) dans les institutions européennes pour prioriser les productions européennes dans les marchés publics."
       },
-      "change": {
-        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
-        "en": "Measure from the 2024 European program (only version available); no sourced 2027 position yet."
-      },
+      "change": null,
       "sources": [
         {
-          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
-          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
         }
       ],
       "cost": null,
       "legal": "eu-law",
       "legalNote": {
-        "fr": "Relève du législateur européen et des engagements de l'Union à l'OMC (accord sur les marchés publics).",
-        "en": "A matter for EU legislation and the EU's WTO commitments (Government Procurement Agreement)."
+        "fr": "Relève du législateur européen et des engagements de l’Union à l’OMC (accord sur les marchés publics).",
+        "en": "Up to EU lawmakers and the EU’s WTO commitments (Government Procurement Agreement)."
       },
       "feasibility": "medium",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "short": {
+        "fr": "Une loi « Acheter européen »",
+        "en": "A “Buy European Act”"
+      },
+      "pages": {
+        "a25": 14
+      }
     },
     {
-      "id": "m13",
-      "theme": "ecologie",
-      "status": "new",
-      "texts": {
-        "p24": "Généraliser le mécanisme d'ajustement carbone (taxe carbone) aux frontières de l'Union européenne à tous les produits et services qui causent une concurrence déloyale ; taxer le kérosène et réduire les vols court-courriers."
-      },
-      "change": {
-        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
-        "en": "Measure from the 2024 European program (only version available); no sourced 2027 position yet."
-      },
-      "sources": [
-        {
-          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
-          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
-        }
-      ],
-      "cost": null,
-      "legal": "eu-law",
-      "legalNote": {
-        "fr": "Compétence de l'Union ; la fiscalité de l'énergie exige l'unanimité.",
-        "en": "EU competence; energy taxation requires unanimity."
-      },
-      "feasibility": "medium",
-      "feasibilityNote": null,
-      "broadBenefit": false
-    },
-    {
-      "id": "m14",
+      "id": "m29",
       "theme": "agriculture",
-      "status": "new",
+      "status": "dropped",
       "texts": {
-        "p24": "Garantir le revenu des agriculteurs via des prix planchers rémunérateurs et sortir l'agriculture du libre-échange ; plafonner les aides de la PAC à 100 000 € pour aider les petites exploitations."
+        "a25": "Garantir le revenu des agriculteurs par la mise en place de prix planchers rémunérateurs, et en mettant fin aux contournements de la Loi EGALIM."
       },
-      "change": {
-        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
-        "en": "Measure from the 2024 European program (only version available); no sourced 2027 position yet."
-      },
+      "change": null,
       "sources": [
         {
-          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
-          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
         }
       ],
       "cost": null,
-      "legal": "eu-law",
-      "legalNote": {
-        "fr": "Réforme de la PAC et de la politique commerciale, compétences de l'Union.",
-        "en": "CAP and trade-policy reform, EU competences."
-      },
-      "feasibility": "low",
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
       "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "short": {
+        "fr": "Prix planchers pour les agriculteurs",
+        "en": "Floor prices for farmers"
+      },
+      "pages": {
+        "a25": 34
+      }
     },
     {
-      "id": "m15",
-      "theme": "budget",
-      "status": "new",
+      "id": "m30",
+      "theme": "education",
+      "status": "dropped",
       "texts": {
-        "p24": "Une imposition minimale de 2 % sur le patrimoine des centi-millionnaires et des milliardaires ; taxation des multinationales portée de 15 % à 25 % ; taxation automatique des superprofits des multinationales et des profiteurs de guerre."
+        "a25": "Revaloriser le salaire de tous les enseignants de manière continue et planifiée sur 5 ans."
       },
-      "change": {
-        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
-        "en": "Measure from the 2024 European program (only version available); no sourced 2027 position yet."
-      },
+      "change": null,
       "sources": [
         {
-          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
-          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
         }
       ],
       "cost": null,
-      "legal": "eu-law",
-      "legalNote": {
-        "fr": "L'harmonisation fiscale exige l'unanimité au Conseil (article 115 TFUE) ; le programme demande la fin de cette unanimité.",
-        "en": "Tax harmonisation requires unanimity in the Council (Article 115 TFEU); the program calls for ending it."
+      "legal": "ok",
+      "legalNote": null,
+      "feasibility": "medium",
+      "feasibilityNote": {
+        "fr": "Montant non précisé.",
+        "en": "Amount not specified."
       },
-      "feasibility": "low",
-      "feasibilityNote": null,
-      "broadBenefit": false
+      "broadBenefit": false,
+      "short": {
+        "fr": "Revaloriser les enseignants sur cinq ans",
+        "en": "Raise teachers’ pay over five years"
+      },
+      "pages": {
+        "a25": 68
+      }
     },
     {
-      "id": "m16",
-      "theme": "europe",
-      "status": "new",
+      "id": "m31",
+      "theme": "social",
+      "status": "dropped",
       "texts": {
-        "p24": "Augmenter le budget européen pour atteindre 5 % du PIB, via de nouvelles ressources propres comme une contribution des grandes entreprises, notamment des géants du numérique ; mutualiser les dettes européennes."
+        "a25": "Interdire les réseaux sociaux pour les moins de 15 ans"
       },
-      "change": {
-        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
-        "en": "Measure from the 2024 European program (only version available); no sourced 2027 position yet."
-      },
+      "change": null,
       "sources": [
         {
-          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
-          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
         }
       ],
       "cost": null,
       "legal": "eu-law",
       "legalNote": {
-        "fr": "Ressources propres : unanimité et ratification nationale (article 311 TFUE).",
-        "en": "Own resources: unanimity and national ratification (Article 311 TFEU)."
+        "fr": "Le règlement européen sur les services numériques (DSA) encadre les obligations des plateformes : une interdiction nationale doit s’y conformer.",
+        "en": "The EU Digital Services Act governs platforms’ duties: a national ban has to fit within it."
       },
-      "feasibility": "low",
+      "feasibility": "medium",
       "feasibilityNote": null,
-      "broadBenefit": false
-    },
-    {
-      "id": "m17",
-      "theme": "europe",
-      "status": "new",
-      "texts": {
-        "p24": "Passer au vote à la majorité qualifiée au Conseil pour les questions encore soumises à l'unanimité ; donner le pouvoir d'initiative législative au Parlement européen."
+      "broadBenefit": false,
+      "short": {
+        "fr": "Interdire les réseaux sociaux avant 15 ans",
+        "en": "Ban social media under 15"
       },
-      "change": {
-        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
-        "en": "Measure from the 2024 European program (only version available); no sourced 2027 position yet."
-      },
-      "sources": [
-        {
-          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
-          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
-        }
-      ],
-      "cost": null,
-      "legal": "eu-law",
-      "legalNote": {
-        "fr": "Révision des traités (article 48 TUE), sauf usage des clauses passerelles.",
-        "en": "Treaty revision (Article 48 TEU), unless passerelle clauses are used."
-      },
-      "feasibility": "low",
-      "feasibilityNote": null,
-      "broadBenefit": false
-    },
-    {
-      "id": "m18",
-      "theme": "europe",
-      "status": "new",
-      "texts": {
-        "p24": "Inscrire le droit à l'IVG et à la contraception dans la Charte des droits fondamentaux."
-      },
-      "change": {
-        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
-        "en": "Measure from the 2024 European program (only version available); no sourced 2027 position yet."
-      },
-      "sources": [
-        {
-          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
-          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
-        }
-      ],
-      "cost": null,
-      "legal": "eu-law",
-      "legalNote": {
-        "fr": "Modifier la Charte exige l'accord unanime des États membres.",
-        "en": "Amending the Charter requires all member states' agreement."
-      },
-      "feasibility": "low",
-      "feasibilityNote": null,
-      "broadBenefit": false
-    },
-    {
-      "id": "m19",
-      "theme": "europe",
-      "status": "new",
-      "texts": {
-        "p24": "Soutenir l'élargissement aux pays candidats à l'accession à l'UE, notamment à l'Ukraine, en transformant notre Union, ses institutions comme ses politiques structurelles."
-      },
-      "change": {
-        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
-        "en": "Measure from the 2024 European program (only version available); no sourced 2027 position yet."
-      },
-      "sources": [
-        {
-          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
-          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
-        }
-      ],
-      "cost": null,
-      "legal": "eu-law",
-      "legalNote": {
-        "fr": "Adhésion à l'unanimité et ratification par chaque État (article 49 TUE).",
-        "en": "Accession by unanimity and ratification by each state (Article 49 TEU)."
-      },
-      "feasibility": "low",
-      "feasibilityNote": null,
-      "broadBenefit": false
+      "pages": {
+        "a25": 21
+      }
     },
     {
       "id": "m20",
-      "theme": "travail",
-      "status": "new",
+      "theme": "international",
+      "status": "dropped",
       "texts": {
-        "p24": "Favoriser l'équilibre vie professionnelle et vie personnelle avec la réduction du temps de travail et les expérimentations de la semaine de quatre jours."
+        "a25": "Interdire immédiatement toute importation de gaz russe, afin que la France cesse d’être le premier importateur de gaz naturel liquéfié russe en Europe."
       },
-      "change": {
-        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
-        "en": "Measure from the 2024 European program (only version available); no sourced 2027 position yet."
-      },
+      "change": null,
       "sources": [
         {
-          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
-          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
+          "title": "Place publique — « Notre vision pour la France », Acte I (PDF, juin 2025)",
+          "url": "https://place-publique.eu/document/6J8wjk3EW8dBCLwKxa7J96/projet-placepublique-acte1.pdf"
         }
       ],
       "cost": null,
-      "legal": "ok",
-      "legalNote": null,
-      "feasibility": null,
+      "legal": "eu-law",
+      "legalNote": {
+        "fr": "Les sanctions et la politique commerciale relèvent de l’Union.",
+        "en": "Sanctions and trade policy are EU matters."
+      },
+      "feasibility": "medium",
       "feasibilityNote": null,
-      "broadBenefit": false
-    },
-    {
-      "id": "m21",
-      "theme": "sante",
-      "status": "new",
-      "texts": {
-        "p24": "Créer un service public du médicament ; soutenir la production en Europe de matériels, de masques et de médicaments."
+      "broadBenefit": false,
+      "short": {
+        "fr": "Interdire toute importation de gaz russe",
+        "en": "Ban all Russian gas imports"
       },
-      "change": {
-        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
-        "en": "Measure from the 2024 European program (only version available); no sourced 2027 position yet."
-      },
-      "sources": [
-        {
-          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
-          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
-        }
-      ],
-      "cost": null,
-      "legal": "unknown",
-      "legalNote": null,
-      "feasibility": null,
-      "feasibilityNote": null,
-      "broadBenefit": false
-    },
-    {
-      "id": "m22",
-      "theme": "logement",
-      "status": "new",
-      "texts": {
-        "p24": "Stimuler une offre de logement abordable et durable ; renforcer le modèle « logement d'abord » ; le déficit annuel d'investissement dans le logement social et abordable dans l'UE est estimé à plus de 50 milliards d'euros."
-      },
-      "change": {
-        "fr": "Mesure du programme européen 2024 (seule version disponible) ; pas de position 2027 sourcée à ce jour.",
-        "en": "Measure from the 2024 European program (only version available); no sourced 2027 position yet."
-      },
-      "sources": [
-        {
-          "title": "Programme européen 2024 PS-Place publique — « Réveiller l'Europe » (PDF, copie)",
-          "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/Raphael-Glucksmann-PSPP.pdf"
-        }
-      ],
-      "cost": null,
-      "legal": "ok",
-      "legalNote": null,
-      "feasibility": null,
-      "feasibilityNote": null,
-      "broadBenefit": true
+      "pages": {
+        "a25": 17
+      }
     }
   ],
   "costing": null,
   "summary": {
-    "fr": "Le programme européen de 2024 « Réveiller l'Europe » portait sur la défense européenne et le soutien à l'Ukraine, la préférence européenne, la transition écologique et la fiscalité des plus riches à l'échelle de l'Union. Depuis sa candidature présidentielle (août 2026) et sa victoire à la primaire PS-Place publique (octobre 2026), les annonces portent sur des sujets nationaux : taxation des très gros héritages (15 Md€ annoncés) pour baisser la CSG des salariés, Smic à 1 700 € net, plan pour l'école publique, abrogation de la réforme des retraites de 2023, service civique obligatoire et convention citoyenne sur l'immigration. Aucun chiffrage indépendant de ces propositions n'a été publié à ce jour.",
-    "en": "The 2024 European program \"Réveiller l'Europe\" focused on European defence and support for Ukraine, European preference, the ecological transition and EU-level taxation of the richest. Since his presidential bid (August 2026) and his PS-Place publique primary win (October 2026), announcements address national issues: taxing very large inheritances (€15bn announced) to cut employees' CSG, a €1,700 net minimum wage, a public-school plan, repeal of the 2023 pension reform, compulsory civic service and a citizens' convention on immigration. No independent costing of these proposals has been published so far."
+    "fr": "En juin 2025, Place publique, le parti de Raphaël Glucksmann, publiait « Notre vision pour la France » : défense européenne et aide militaire à l’Ukraine, Smic à 1 600 € net en deux ans, abrogation de la réforme des retraites de 2023 et de la loi immigration de 2024, proportionnelle, nucléaire conforté. En novembre 2026, la première partie de son programme présidentiel porte sur la sortie des énergies fossiles : 200 Md€ d’argent public sur le quinquennat, une contribution exceptionnelle de 50 Md€ sur les plus hauts patrimoines, un chèque énergie, le leasing social et des pompes à chaleur, l’écologie inscrite dans la Constitution. Aucun chiffrage indépendant n’a été publié.",
+    "en": "In June 2025, Place publique, Raphaël Glucksmann’s party, published “Notre vision pour la France”: European defence and military aid to Ukraine, a €1,600 net minimum wage within two years, repealing the 2023 pension reform and the 2024 immigration law, proportional representation, a confirmed role for nuclear power. In November 2026, the first part of his presidential program covers leaving fossil fuels: €200bn of public money over the term, a €50bn one-off levy on the largest fortunes, an energy cheque, social leasing and heat pumps, and ecology written into the Constitution. No independent costing has been published."
   },
   "group": "SOC",
   "votes": [
     {
       "lineage": "m04",
       "topic": {
-        "fr": "Retraite : abroger le report à 64 ans",
-        "en": "Pensions: repeal the move to age 64"
+        "fr": "Retraite : abroger la réforme de 2023",
+        "en": "Pensions: repeal the 2023 reform"
       },
       "note": {
         "fr": "217 : proposition de loi du Rassemblement national rétablissant l'âge de 62 ans (et annulant la hausse de la durée de cotisation), rejetée avec les voix de la gauche ; voter pour suit la promesse. 468 : amendement supprimant l'article premier de la proposition de loi d'abrogation ; voter contre suit la promesse. 3680 : amendements supprimant la suspension de la réforme dans le budget de la Sécurité sociale 2026 ; voter contre maintient la suspension, un pas vers l'abrogation.",
@@ -766,12 +1175,12 @@
     {
       "lineage": "m15",
       "topic": {
-        "fr": "Impôt minimum de 2 % sur les très grandes fortunes (taxe Zucman)",
-        "en": "2% minimum tax on the largest fortunes (Zucman tax)"
+        "fr": "Faire contribuer les plus hauts patrimoines",
+        "en": "Make the largest fortunes pay"
       },
       "note": {
-        "fr": "3299 et 3300 : amendements au budget 2026 instaurant un impôt plancher de 2 % sur les patrimoines de plus de 100 millions d'euros (écologiste, puis socialiste).",
-        "en": "3299 and 3300: amendments to the 2026 budget creating a 2% floor tax on wealth above 100 million euros (Green, then Socialist)."
+        "fr": "3299 et 3300 : amendements au budget 2026 instaurant un impôt plancher de 2 % sur les patrimoines de plus de 100 millions d’euros (écologiste, puis socialiste). Le programme prévoit une contribution exceptionnelle, une seule année : voter pour va dans le même sens, sans être la même mesure.",
+        "en": "3299 and 3300: amendments to the 2026 budget creating a 2% minimum tax on fortunes above €100m (Ecologist, then Socialist). The program plans a one-off levy, a single year: voting for goes the same way without being the same measure."
       },
       "scrutins": [
         {
@@ -855,10 +1264,13 @@
     {
       "lineage": "m12",
       "topic": {
-        "fr": "Refuser les nouveaux accords de libre-échange (Mercosur)",
-        "en": "Refuse new free-trade deals (Mercosur)"
+        "fr": "Mesures miroirs, refus du Mercosur",
+        "en": "Mirror clauses, no to Mercosur"
       },
-      "note": null,
+      "note": {
+        "fr": "Résolutions contre l’accord avec le Mercosur et pour des exigences à l’importation (mesures miroirs).",
+        "en": "Resolutions against the Mercosur deal and for import requirements (mirror clauses)."
+      },
       "scrutins": [
         {
           "num": 691,
@@ -897,20 +1309,7 @@
           "majority": "P",
           "expect": "P",
           "agrees": true
-        }
-      ]
-    },
-    {
-      "lineage": "m14",
-      "topic": {
-        "fr": "Agriculture : protéger les agriculteurs du libre-échange",
-        "en": "Farming: shield farmers from free trade"
-      },
-      "note": {
-        "fr": "Résolution européenne demandant des exigences à l'importation (mesures miroirs) ; une partie seulement de la mesure.",
-        "en": "European resolution calling for import requirements (mirror clauses); only part of the measure."
-      },
-      "scrutins": [
+        },
         {
           "num": 685,
           "date": "2025-01-30",
@@ -935,12 +1334,12 @@
     {
       "lineage": "m10",
       "topic": {
-        "fr": "Saisir les avoirs russes gelés pour l'Ukraine",
-        "en": "Seize frozen Russian assets for Ukraine"
+        "fr": "Soutien militaire à l’Ukraine",
+        "en": "Military support for Ukraine"
       },
       "note": {
-        "fr": "La résolution européenne de soutien à l'Ukraine exhorte l'Union à saisir les avoirs russes gelés (point 27).",
-        "en": "The European resolution supporting Ukraine urges the EU to seize frozen Russian assets (point 27)."
+        "fr": "Résolution européenne de soutien à l’Ukraine, qui demande aussi la saisie des avoirs russes gelés.",
+        "en": "European resolution supporting Ukraine, which also calls for seizing frozen Russian assets."
       },
       "scrutins": [
         {
@@ -973,13 +1372,13 @@
     "rate": null,
     "verdict": "unstated",
     "reason": {
-      "fr": "Le plan de 200 Md€ d'investissements publics annoncé le 9 novembre 2026 n'est chiffré qu'à hauteur de 50 Md€ de recettes (prélèvement unique de 5 % sur les patrimoines au-delà de 100 M€) ; le reste renvoie à des taxes non chiffrées et à un emprunt européen. Avec 0,9 % de croissance prévue en 2027, ce solde reposerait sur la dette ou sur des économies non précisées.",
-      "en": "The €200bn public investment plan announced on November 9, 2026 is matched by only €50bn of costed revenue (a one-off 5% levy on fortunes above €100m); the rest relies on uncosted taxes and a European loan. With 0.9% growth forecast for 2027, the gap would fall on debt or unspecified savings."
+      "fr": "Le livret de novembre 2026 annonce 200 Md€ d’argent public sur le quinquennat et ne chiffre qu’une recette : la contribution exceptionnelle sur les plus hauts patrimoines, 50 Md€ une seule année. Le reste renvoie à une taxe européenne sur les superprofits pétroliers et gaziers, à la hausse des taxes sur l’aérien (non chiffrées) et à un grand emprunt européen. Le livret vise la stabilisation de la dette en 2032 sans hypothèse de croissance ; avec 0,9 % de croissance prévue en 2027, le solde reposerait sur la dette ou sur des économies non précisées.",
+      "en": "The November 2026 booklet announces €200bn of public money over the term and costs only one revenue source: the one-off levy on the largest fortunes, €50bn in a single year. The rest relies on an EU tax on oil and gas windfall profits, higher aviation taxes (uncosted) and a large EU loan. The booklet aims to stabilise debt by 2032 with no growth assumption; with 0.9% growth forecast for 2027, the gap would fall on debt or unspecified savings."
     },
     "sources": [
       {
-        "title": "Public Sénat — Raphaël Glucksmann met 200 milliards sur la table (9 novembre 2026)",
-        "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2027-raphael-glucksmann-met-200-milliards-sur-la-table-et-invite-le-senat-a-voter-en-faveur-dune-future-republique-ecologique"
+        "title": "Raphaël Glucksmann — Programme 2027, 1re partie (PDF, novembre 2026), p. 8 à 10",
+        "url": "https://glucks2027.fr/wp-content/uploads/2026/11/livret_progr_revolution_ecologique_2027.pdf#page=8"
       },
       {
         "title": "Banque de France — Projections macroéconomiques intermédiaires, septembre 2026",
@@ -1066,6 +1465,7 @@
         ]
       }
     ],
-    "checked": "2026-11-14"
-  }
+    "checked": "2026-11-15"
+  },
+  "partialLatest": true
 }
