@@ -17,6 +17,7 @@ import { mountForecastChart, scenarioForecast, scenarioFromUrl } from "./forecas
 import { forecastLine, heroDay } from "./hero-day";
 import { mountOcean } from "../lib/ocean";
 import { mountEdition } from "./edition";
+import { mountDebtStrip } from "./economy";
 import { mountFox } from "../lib/fox-pet";
 
 export async function renderHome(app: HTMLElement) {
@@ -49,10 +50,12 @@ export async function renderHome(app: HTMLElement) {
         ${hero.parliamentHtml}
         ${hero.shiftsHtml}
       </div>
+      <div id="home-debt"></div>
     </section>`;
   hero.start(app);
   mountOcean(app.querySelector<HTMLElement>(".hday")!);
   void mountEdition(app.querySelector<HTMLElement>("#edition")!);
+  void mountDebtStrip(app.querySelector<HTMLElement>("#home-debt")!);
   // the fox lives on the note of the day's top edge (its own perch, so changing day doesn't redraw it)
   const perch = app.querySelector<HTMLElement>(".ed-perch");
   if (perch) mountFox(perch);

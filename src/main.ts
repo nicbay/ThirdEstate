@@ -352,7 +352,7 @@ function renderChrome(path: string) {
   const row = sub.firstElementChild as HTMLElement | null, on = sub.querySelector<HTMLElement>("a.active");
   if (row && on && row.scrollWidth > row.clientWidth) row.scrollLeft = Math.max(0, on.offsetLeft - (row.clientWidth - on.offsetWidth) / 2);
 
-  searchBtn.innerHTML = `${pixelIcon("search", 12)}<span class="sb-label">${L("Rechercher", "Search")}</span><kbd>${isMac ? "⌘" : "Ctrl"} K</kbd>`;
+  searchBtn.innerHTML = `${pixelIcon("search", 12)}<span class="sb-label">${L("Rechercher", "Search")}</span>`;
   searchBtn.setAttribute("aria-label", L(`Rechercher (${isMac ? "Cmd" : "Ctrl"}+K)`, `Search (${isMac ? "Cmd" : "Ctrl"}+K)`));
   quizBtn.innerHTML = `<span class="q-long">${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</span><span class="q-short">Quiz</span>`;
   quizBtn.toggleAttribute("aria-current", /^#\/quiz/.test(path));
@@ -364,12 +364,12 @@ function renderChrome(path: string) {
 
   footer.innerHTML = `<div class="foot-strip" aria-hidden="true"></div><div class="foot">
     <div class="foot-id"><a class="brand" href="#/" aria-label="Third Estate">${foxSvg(64, true)}${wordmarkSvg(3)}</a>
-      <p>${L("Données électorales françaises, de la commune à l’Élysée. Sources publiques, méthode ouverte, code libre.", "French election data, from your town hall to the Élysée. Public sources, open method, open code.")}</p>
+      <p>${L("Données électorales françaises, de la commune à l’Élysée. Sources publiques, méthode ouverte.", "French election data, from your town hall to the Élysée. Public sources, open method.")}</p>
       <p class="foot-quote">${L("« Qu’est-ce que le tiers état ? Tout. Qu’a-t-il été jusqu’à présent dans l’ordre politique ? Rien. Que demande-t-il ? À y devenir quelque chose. »", "“What is the Third Estate? Everything. What has it been until now in the political order? Nothing. What does it ask? To become something.”")} <span>Sieyès, 1789</span></p></div>
     <nav class="foot-map" aria-label="${L("Plan du site", "Site map")}">${SECTIONS.map((s) => `<div${isGrouped(s) ? ` class="foot-wide"` : ""}><a class="foot-h" href="${s.href}">${pixelIcon(s.icon, 12)}${L(s.fr, s.en)}</a>${isGrouped(s)
         ? `<div class="foot-cols">${groupsOf(s).map((g) => `<div>${g.head ? `<span class="foot-g">${esc(L(...g.head))}</span>` : ""}${g.items.map((c) => `<a href="${c.href}">${esc(L(c.fr, c.en))}</a>`).join("")}</div>`).join("")}</div>`
         : s.children.map((c) => `<a href="${c.href}">${esc(L(c.fr, c.en))}</a>`).join("")}</div>`).join("")}
-      <div><span class="foot-h">${L("Le site", "About")}</span><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/mentions-legales">${L("Mentions légales, vos données", "Legal notice, your data")}</a><a href="https://github.com/nicbay/ThirdEstate" target="_blank" rel="noopener">GitHub</a></div></nav>
+      <div><span class="foot-h">${L("Le site", "About")}</span><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/mentions-legales">${L("Mentions légales, vos données", "Legal notice, your data")}</a></div></nav>
     <p class="foot-legal">${L("Aucun cookie, aucune publicité, aucun suivi.", "No cookies, no ads, no tracking.")} <a href="#/mentions-legales#cookies">${L("Pourquoi il n’y a pas de bandeau", "Why there is no banner")}</a></p>
   </div>`;
 }

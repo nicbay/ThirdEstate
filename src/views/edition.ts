@@ -25,8 +25,11 @@ interface Pick { name: string; fr: string; en: string; story: Headline | null }
 interface Insight { head: T; surprise: Pick | null; good: Pick[]; bad: Pick[]; by: string }
 interface Mv { name: string; market: number | null; polls: number | null }
 interface Ext { name: string; now: number | null; d: number }
+interface Borrow { span: "day" | "week"; asOf: string; spread: number; dSpread: number; oat10: number | null; bund10: number | null; dOat: number | null; basis: "oat" | "spread"; base: number | null; cost: number | null; why: Headline | null }
+interface BriefLine { lead: T; fr: string; en: string; story?: Headline | null }
 interface Ledger {
   span: "day" | "week";
+  borrow?: Borrow | null; brief?: BriefLine[] | null;
   world: Headline | null; france: Headline | null; candidates: (Headline & { name: string })[];
   lead: { span: "day" | "week"; up: Mv[]; down: Mv[] };
   recap: { polls: { up: Ext | null; down: Ext | null }; markets: { up: Ext | null; down: Ext | null }; newPolls: { pollster: string; end: string; url: string | null }[]; stories: Headline[] } | null;
@@ -92,6 +95,30 @@ function leadHtml(g: Ledger) {
   ].filter(Boolean).join(" ");
 }
 
+/** The borrowing line: the OAT rate and the gap with Germany, how they moved, what the move is worth in interest on a
+ *  year of new debt (a notional figure), and the headline that may have played a part (a lead, not a cause). */
+function borrowHtml(b: Borrow) {
+  const when = b.span === "week" ? L("en une semaine", "in a week") : L("en une séance", "in one session");
+  const s2 = (v: number) => `${v > 0 ? "+" : "−"}${dec(Math.abs(v), 2)}`;
+  const flatOat = b.dOat == null || Math.abs(b.dOat) < 0.005, flatGap = !moved(b.dSpread);
+  const level = [
+    b.oat10 != null ? `${L("OAT à 10 ans à", "10-year OAT at")} <b>${pct(b.oat10, 2)}</b>${flatOat ? "" : ` (${s2(b.dOat!)} pt ${when})`}` : "",
+    `${L("écart avec l’Allemagne à", "gap with Germany at")} <b>${dec(b.spread, 0)} points</b> (${flatGap ? L("stable", "unchanged") : `${sgn(b.dSpread)} ${when}`})`,
+  ].filter(Boolean).join(L(" ; ", "; "));
+  const still = b.basis === "oat" ? flatOat : flatGap;
+  const m = b.cost == null ? 0 : Math.abs(b.cost) / 1e6;
+  const sum = L(`${dec(m, m < 10 ? 1 : 0)} M€`, `€${dec(m, m < 10 ? 1 : 0)}m`), base = b.base ? L(`${dec(b.base / 1e9, 0)} Md€`, `€${dec(b.base / 1e9, 0)}bn`) : "";
+  const more = (b.cost ?? 0) > 0;
+  const cost = still || !b.cost || !b.base || m < 0.1 ? "" : b.basis === "oat"
+    ? L(`Coût théorique : à ce taux, la dette ajoutée en un an (${base}) coûterait <b>${sum} d’intérêts de ${more ? "plus" : "moins"} par an</b>.`, `Notional cost: at this rate, a year of new debt (${base}) would cost <b>${sum} ${more ? "more" : "less"} in interest each year</b>.`)
+    : L(`Coût théorique : sur la dette ajoutée en un an (${base}), ce mouvement de l’écart pèse <b>${sum} d’intérêts de ${more ? "plus" : "moins"} par an</b> par rapport à l’Allemagne.`, `Notional cost: on a year of new debt (${base}), this move in the gap is worth <b>${sum} ${more ? "more" : "less"} in interest each year</b>, relative to Germany.`);
+  const why = still ? "" : b.why ? `${L("Dans l’actualité", "In the news")}${L(" : ", ": ")}${story(b.why)}` : L("Aucun titre de nos flux ne l’explique.", "No headline in our feeds explains it.");
+  return `${level.charAt(0).toUpperCase()}${level.slice(1)}. ${cost} ${why} <a class="lg-more" href="#/chiffres#taux">${L("Le détail", "The detail")} →</a>`;
+}
+
+/** Sunday's brief: three lines that take a stand, each a bold lead, a sentence, and the story behind it. */
+const briefHtml = (lines: BriefLine[]) => `<ol class="lg-brief">${lines.slice(0, 3).map((l) => `<li><b>${esc(L(l.lead.fr, l.lead.en))}</b> ${esc(L(l.fr, l.en))}${l.story ? ` <span class="ed-ev">${story(l.story)}</span>` : ""}</li>`).join("")}</ol>`;
+
 /** Sunday's longer recap: the week's largest rise and fall in the polls and in the odds, the polls published, the most-covered stories. */
 function recapHtml(r: NonNullable<Ledger["recap"]>) {
   const ext = (x: Ext | null, up: boolean) => (x ? `<b>${sur(x.name)}</b> ${up ? L("gagne le plus", "gains the most") : L("perd le plus", "loses the most")}, ${sgn(x.d)} pt ${L("à", "to")} ${pct(x.now)}` : "");
@@ -132,9 +159,11 @@ function render(e: Edition, idx: { date: string }[]) {
     ${e.provisional ? `<p class="ed-prov">${L("Édition du jour en cours : cours des marchés de la dernière heure ; les sondages et l’analyse complète arrivent avec la synthèse quotidienne.", "Today's edition in progress: the latest hourly market prices; the polls and the full analysis come with the daily brief.")}</p>` : ""}
     ${g ? `<div class="ed-lg">
       <div class="lg">
+        ${g.brief?.length ? row(L("Notre lecture", "Our take"), briefHtml(g.brief), "is-te") : ""}
         ${g.recap ? row(L("La semaine", "The week"), recapHtml(g.recap), "is-week") : ""}
         ${g.world ? row(L("Monde", "World"), story(g.world)) : ""}
         ${g.france ? row("France", story(g.france)) : ""}
+        ${g.borrow ? row(L("La dette", "Borrowing"), borrowHtml(g.borrow)) : ""}
         ${s ? row(L("La surprise", "Surprise"), `${esc(L(s.fr, s.en))}${s.story ? ` <span class="ed-ev">${story(s.story)}</span>` : ""}`) : ""}
         ${g.candidates.length ? row(L("Candidats", "Candidates"), `<ul class="lg-list">${g.candidates.map((c) => `<li>${story(c)}</li>`).join("")}</ul>`) : ""}
         ${row("Third Estate", leadHtml(g), "is-te")}

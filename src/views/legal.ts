@@ -25,7 +25,7 @@ export function renderLegal(app: HTMLElement) {
         <header class="card-head"><h2>${L("Hébergement", "Hosting")}</h2></header>
         <ul>
           <li><b>${L("Site", "Site")}</b> — Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, ${L("États-Unis", "United States")} · <a href="https://vercel.com" target="_blank" rel="noopener">vercel.com</a></li>
-          <li><b>${L("Code et données mises à jour en continu (sondages, marchés, fil d’actualité)", "Code and continuously updated data (polls, markets, news feed)")}</b> — GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, ${L("États-Unis", "United States")} · <a href="${REPO}" target="_blank" rel="noopener">github.com/nicbay/ThirdEstate</a></li>
+          <li><b>${L("Données mises à jour en continu (sondages, marchés, fil d’actualité)", "Continuously updated data (polls, markets, news feed)")}</b> — GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, ${L("États-Unis", "United States")} · <a href="https://github.com" target="_blank" rel="noopener">github.com</a></li>
           <li><b>${L("Compteur de visiteurs et scénarios enregistrés", "Visitor counter and saved scenarios")}</b> — Supabase Inc. · <a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a></li>
         </ul>
       </article>

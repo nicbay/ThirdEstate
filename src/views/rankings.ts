@@ -18,6 +18,17 @@ const PAGE = 100;
 // remembered for the visit: the reader's last choice of scope and size
 const state = { dep: "", min: 0, flip: false };
 
+/** Where a ranking's figure comes from, each source a link to the dataset itself (the quality-of-life score has six). */
+function sourceLine(data: string) {
+  const a = (label: string, url: string) => `<a href="${url}" target="_blank" rel="noopener">${label}</a>`;
+  if (data !== "quality") return "";
+  const insee = "https://catalogue-donnees.insee.fr/fr/catalogue/recherche/";
+  return L(
+    `Le score, sur 100, est la moyenne de six rangs parmi les communes (0 : la dernière, 100 : la première) : ${a("niveau de vie médian et taux de pauvreté (Insee, Filosofi)", insee + "DS_FILOSOFI_CC")}, ${a("chômage (Insee, recensement)", insee + "DS_RP_EMPLOI_LR_COMP")}, ${a("délinquance enregistrée (SSMSI)", "https://www.data.gouv.fr/datasets/bases-statistiques-communale-departementale-et-regionale-de-la-delinquance-enregistree-par-la-police-et-la-gendarmerie-nationales")}, ${a("accès aux médecins généralistes (DREES, APL)", "https://www.data.gouv.fr/datasets/accessibilite-potentielle-localisee-apl-aux-professionnels-de-sante")} et ${a("couverture en fibre (Arcep)", "https://www.data.gouv.fr/datasets/le-marche-du-haut-et-tres-haut-debit-fixe-deploiements/")}. Une commune est notée quand au moins quatre des six chiffres sont publiés pour elle.`,
+    `The score, out of 100, is the average of six ranks among towns (0: last, 100: first): ${a("median standard of living and poverty rate (INSEE, Filosofi)", insee + "DS_FILOSOFI_CC")}, ${a("unemployment (INSEE, census)", insee + "DS_RP_EMPLOI_LR_COMP")}, ${a("recorded crime (SSMSI)", "https://www.data.gouv.fr/datasets/bases-statistiques-communale-departementale-et-regionale-de-la-delinquance-enregistree-par-la-police-et-la-gendarmerie-nationales")}, ${a("access to GPs (DREES, APL)", "https://www.data.gouv.fr/datasets/accessibilite-potentielle-localisee-apl-aux-professionnels-de-sante")} and ${a("fibre coverage (Arcep)", "https://www.data.gouv.fr/datasets/le-marche-du-haut-et-tres-haut-debit-fixe-deploiements/")}. A town is scored when at least four of the six figures are published for it.`,
+  );
+}
+
 export async function renderRankings(app: HTMLElement, slug?: string, focus?: string) {
   const rk0 = rankingBySlug(slug) ?? RANKINGS[0];
   app.innerHTML = `<section class="page rankings"><header class="sec-hero"><p class="eyebrow">${L("Classements des communes", "Town rankings")}</p><h1>${esc(L(...rk0.title))}</h1></header><p class="muted small">${L("Chargement…", "Loading…")}</p></section>`;
@@ -46,6 +57,7 @@ export async function renderRankings(app: HTMLElement, slug?: string, focus?: st
     </div>
     <p class="rk-mine small"></p>
     <div class="table-scroll"><table class="table rk-table"><thead><tr><th class="num">${L("Rang", "Rank")}</th><th>${L("Commune", "Town")}</th><th>${L("Département", "Department")}</th><th class="num rk-vh"></th><th class="num">${L("Habitants", "People")}</th></tr></thead><tbody></tbody></table></div>
+    <p class="source rk-src"></p>
     <p class="rk-more-wrap"><button type="button" class="button rk-more">${L(`Afficher ${PAGE} de plus`, `Show ${PAGE} more`)}</button></p>
     <p class="muted tiny">${L("Rang 1 : le premier dans l’ordre choisi ; les ex æquo partagent un rang. Une commune manque quand le chiffre n’est pas publié pour elle (la délinquance, par exemple, n’est publiée que pour les communes où les faits sont assez nombreux). Dans une petite commune, quelques faits ou quelques ventes suffisent à faire bondir un chiffre : le filtre de taille aide à comparer des communes comparables. Contributeur ou bénéficiaire : pour la mairie, dotations et péréquation reçues moins versées par habitant (DGCL) ; pour un habitant typique, impôts et cotisations payés moins prestations et services reçus au niveau de vie médian de la commune (Insee). Sources : celles de chaque commune, voir ", "Rank 1: first in the chosen order; ties share a rank. A town is missing when the figure isn’t published for it (crime, for one, is only published where offences are numerous enough). In a small town a handful of offences or sales is enough to make a figure jump: the size filter helps compare like with like. Contributor or beneficiary: for the town hall, grants and equalisation received minus paid in, per inhabitant (DGCL); for a typical resident, taxes and contributions paid minus benefits and services received, at the town’s median standard of living (INSEE). Sources: each town’s, see ")}<a href="#/sources">${L("les sources", "the sources")}</a>.</p>
   </section>`;
@@ -86,6 +98,9 @@ export async function renderRankings(app: HTMLElement, slug?: string, focus?: st
     const title = flipped ? L(`${L(...rk.label)} : l’autre bout du classement`, `${L(...rk.label)}: the other end of the ranking`) : L(...rk.title);
     $<HTMLElement>(".rk-title").textContent = title;
     document.title = `${title} — Third Estate`;
+    const src = sourceLine(rk.data);
+    $<HTMLElement>(".rk-src").innerHTML = src;
+    $<HTMLElement>(".rk-src").style.display = src ? "" : "none";
     $<HTMLElement>(".rk-vh").textContent = L(...rk.label);
     $<HTMLElement>(".rk-flip").textContent = flipped ? L("Revenir au début du classement", "Back to the top of the ranking") : L("Voir l’autre bout", "See the other end");
     const q = $<HTMLInputElement>(".rk-q").value.trim().toLocaleLowerCase("fr");

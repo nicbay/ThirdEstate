@@ -37,6 +37,8 @@ interface DebtSide {
 
 const YEAR_MS = 365.25 * 86400e3;
 const loadEconomy = () => fetchJson<Economy>("/data/economy.json");
+/** What France pays to borrow (scripts/sync-yields.mjs): yields in percent, spread and its daily closes in basis points. */
+interface Yields { fetchedAt: string; asOf: string; oat10: number; bund10: number; spread: number; history: [string, number][]; source: { name: string; url: string } }
 const locale = () => (getLang() === "fr" ? "fr-FR" : "en-GB");
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -452,6 +454,61 @@ const label = (q: Equivalent, n: number) => {
 };
 const count = (n: number) => (n < 10 ? num(n, 1) : num(Math.floor(n)));
 
+/** The homepage's box under the two widgets: the public debt added since the reader arrived on the site (same
+ *  estimate as the counter on this page), what that sum would pay for, and a link here. Drawn into `host`. */
+/** The borrowing-cost block: the 10-year OAT rate, the gap with Germany's Bund, and that gap over the last seven sessions. */
+function yieldsHtml(y: Yields) {
+  const wk = y.history.slice(-7);
+  const d7 = wk.length > 1 ? wk.at(-1)![1] - wk[0][1] : null;
+  const W = 340, H = 104, P = { l: 6, r: 44, t: 14, b: 20 };
+  const vs = wk.map((r) => r[1]), lo = Math.min(...vs), hi = Math.max(...vs), span = Math.max(hi - lo, 4);
+  const x = (i: number) => P.l + (i * (W - P.l - P.r)) / Math.max(1, wk.length - 1);
+  const yy = (v: number) => P.t + (1 - (v - lo) / span) * (H - P.t - P.b);
+  const day = (iso: string) => new Date(iso).toLocaleDateString(locale(), { day: "numeric", month: "short" });
+  const pts = (v: number, d = 0) => `${num(v, d)} ${L(Math.abs(v) >= 2 ? "points" : "point", Math.abs(v) === 1 ? "point" : "points")}`;
+  const chart = wk.length > 1 ? `<svg class="yld-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(L(`Écart OAT-Bund, ${wk.length} dernières séances : de ${num(wk[0][1], 0)} à ${num(wk.at(-1)![1], 0)} points`, `OAT-Bund spread, last ${wk.length} sessions: from ${num(wk[0][1], 0)} to ${num(wk.at(-1)![1], 0)} points`))}">
+      <polyline points="${wk.map((r, i) => `${x(i).toFixed(1)},${yy(r[1]).toFixed(1)}`).join(" ")}" fill="none" class="yld-line"/>
+      ${wk.map((r, i) => `<circle cx="${x(i).toFixed(1)}" cy="${yy(r[1]).toFixed(1)}" r="${i === wk.length - 1 ? 3.5 : 2}" class="yld-dot"><title>${esc(day(r[0]))}${colon()}${num(r[1], 1)}</title></circle>`).join("")}
+      <text x="${(x(wk.length - 1) + 7).toFixed(1)}" y="${(yy(wk.at(-1)![1]) + 4).toFixed(1)}" class="yld-end">${num(wk.at(-1)![1], 0)}</text>
+      <text x="${P.l}" y="${H - 4}" class="yld-ax">${esc(day(wk[0][0]))}</text>
+      <text x="${x(wk.length - 1).toFixed(1)}" y="${H - 4}" text-anchor="end" class="yld-ax">${esc(day(wk.at(-1)![0]))}</text>
+    </svg>` : "";
+  return `<section class="card yld" id="taux">
+    <header class="card-head"><h2>${L("Ce que la France paie pour emprunter", "What France pays to borrow")}</h2><span class="since-t">${L("clôture du", "close of")} ${fmtDate(y.asOf)}</span></header>
+    <div class="yld-grid">
+      <div><p class="debt-k">${L("OAT à 10 ans", "10-year OAT")}</p><p class="yld-n">${pct(y.oat10, 2)}</p><p class="yld-s">${L("Le taux d’intérêt de l’emprunt d’État français à dix ans.", "The interest rate on France’s ten-year government bond.")}</p></div>
+      <div><p class="debt-k">${L("Écart avec l’Allemagne", "Gap with Germany")}</p><p class="yld-n">${pts(y.spread)}</p><p class="yld-s">${L(`Le Bund allemand à 10 ans est à ${pct(y.bund10, 2)}. 100 points font un point de pourcentage : la France paie ${num(y.spread / 100, 2)} point de plus.`, `Germany’s 10-year Bund is at ${pct(y.bund10, 2)}. 100 points make one percentage point: France pays ${num(y.spread / 100, 2)} points more.`)}</p></div>
+      <figure class="yld-wk"><figcaption><span class="debt-k">${L(`L’écart sur ${wk.length} séances`, `The gap over ${wk.length} sessions`)}</span>${d7 == null ? "" : ` <b class="${d7 > 0.05 ? "is-up" : d7 < -0.05 ? "is-down" : ""}">${signed(pts(Math.abs(d7), 1), d7)}</b>`}</figcaption>${chart}</figure>
+    </div>
+    <p class="source">${L("Source", "Source")}${colon()}<a href="${esc(safeUrl(y.source.url))}" target="_blank" rel="noopener">${esc(y.source.name)}</a>${L(", valeurs de clôture, différées de 15 minutes. Un écart qui monte veut dire que les prêteurs demandent davantage à la France qu’à l’Allemagne.", ", closing values, 15 minutes delayed. A widening gap means lenders ask more of France than of Germany.")}</p>
+  </section>`;
+}
+
+export async function mountDebtStrip(host: HTMLElement) {
+  const e = await loadEconomy().catch(() => null);
+  if (!e || !(e.debt.ratePerYear > 0) || !host.isConnected) return;
+  const perSec = e.debt.ratePerYear / (YEAR_MS / 1000);
+  const items = [...EQUIVALENTS].sort((x, y) => x.cost - y.cost);
+  host.innerHTML = `<a class="box hw-debt" href="#/chiffres#depuis">
+    <span class="hd-k">${L("Depuis votre arrivée sur le site · estimation au rythme de l’année écoulée", "Since you arrived on the site · estimate at the past year’s pace")}</span>
+    <span class="hd-main"><b class="hd-n">${eur(0)}</b> <span>${L("de dette publique en plus", "more public debt")}</span></span>
+    <span class="hd-eq"></span>
+    <span class="hd-go">${L("La dette en direct", "The debt, live")} →</span>
+  </a>`;
+  const nEl = host.querySelector(".hd-n")!, eqEl = host.querySelector(".hd-eq")!;
+  const t0 = performance.timeOrigin; // when the site was opened, so coming back to the homepage doesn't start again
+  let lastSlow = 0;
+  tick(nEl, (now) => {
+    const added = (perSec * (now - t0)) / 1000;
+    nEl.textContent = eur(Math.floor(added));
+    if (now - lastSlow < 500) return;
+    lastSlow = now;
+    let top: { q: Equivalent; n: number } | null = null;
+    for (const q of items) if (added >= q.cost) top = { q, n: added / q.cost };
+    eqEl.textContent = top ? L(`Soit environ ${count(top.n)} ${label(top.q, top.n)}.`, `About ${count(top.n)} ${label(top.q, top.n)}.`) : L(`Pas encore une ${label(items[0], 1)}.`, `Not yet one ${label(items[0], 1)}.`);
+  });
+}
+
 export async function renderEconomy(app: HTMLElement) {
   const e = await loadEconomy();
   const by = new Map(e.kpis.map((k) => [k.id, k]));
@@ -517,6 +574,8 @@ export async function renderEconomy(app: HTMLElement) {
         <div class="eco-grid">${DEFS.filter((d) => by.has(d.id)).map((d) => kpiCard(d, by.get(d.id)!, by)).join("")}</div>
       </section>
 
+      <div id="taux-slot"></div>
+
       ${debtSection(e)}
 
       <details class="card eco-method" id="methode">
@@ -579,6 +638,8 @@ export async function renderEconomy(app: HTMLElement) {
   });
 
   mountDebtChart(app, e);
+  // the borrowing-cost block arrives on its own: the page doesn't wait for it, and stays whole without it
+  void fetchJson<Yields>("/data/daily/yields.json").then((y) => { const slot = app.querySelector("#taux-slot"); if (slot && y?.history?.length) slot.outerHTML = yieldsHtml(y); }).catch(() => {});
 
   const md = app.querySelector<HTMLDetailsElement>("#methode");
   app.querySelectorAll('a[href="#/chiffres#methode"]').forEach((x) => x.addEventListener("click", () => md && (md.open = true)));
