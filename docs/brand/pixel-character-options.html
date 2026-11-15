@@ -1,0 +1,155 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pixel character options</title>
+<!-- Served by the Vite dev server: http://localhost:<port>/docs/brand/pixel-character-options.html (fonts come from /public/fonts).
+     Second round. The first one filtered the photos (pixelation, dithering, palettes) and
+     none of it worked: a small photo is not a character. Here each person is DRAWN, like the fox (src/lib/fox.ts):
+     flat colours, a bleu France outline, dot eyes, and the two or three traits that make them recognisable. One
+     description per person (hair, skin, smile, clothes) draws the character at every size, so the sizes below are
+     the same character, not five separate drawings. -->
+<style>
+@font-face{font-family:Archivo;src:url(/fonts/archivo-100-900-latin.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%}
+@font-face{font-family:Silkscreen;src:url(/fonts/silkscreen-400-latin.woff2) format("woff2");font-weight:400}
+:root{--night:#0b0d18;--ink:#111216;--ink2:#474c56;--ink3:#565b65;--rule:#dcd8cb;--paper:#f2f0e9;--panel:#faf9f5;--accent:#4b2fd0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.5 Archivo,system-ui,sans-serif}
+main{max-width:1280px;margin:0 auto;padding:40px 16px 96px}
+h1{font:850 40px/1.05 Archivo;font-stretch:75%;letter-spacing:-.02em;margin:0 0 12px}
+.dek{margin:0 0 12px;max-width:76ch;color:var(--ink2);font-size:18px}
+.k{font:400 11px/16px Silkscreen;text-transform:uppercase;letter-spacing:.04em;color:var(--ink3);margin:0}
+h2{font:850 28px/1.1 Archivo;font-stretch:78%;margin:56px 0 6px;padding-top:20px;border-top:3px solid var(--ink)}
+h3{font:800 18px/1.2 Archivo;font-stretch:84%;margin:32px 0 4px}
+.sub{margin:0 0 14px;color:var(--ink2);max-width:76ch;font-size:15px}
+.row{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.tile{background:var(--panel);border:1px solid var(--rule);padding:12px;display:grid;gap:8px;align-content:start;justify-items:start;min-width:0}
+.tile b{font:800 16px/1.2 Archivo;font-stretch:84%}
+.tile small{font:400 11px/14px Silkscreen;color:var(--ink3);text-transform:uppercase}
+.tile p{margin:0;font-size:13px;line-height:1.4;color:var(--ink2)}
+.tile svg{display:block}
+.big{display:flex;align-items:flex-end;gap:10px}
+.real{display:flex;align-items:flex-end;gap:8px;padding:6px;border:1px dashed var(--rule)}
+.real.night{background:var(--night);border-color:var(--night)}
+.pair{display:flex;gap:6px;flex-wrap:wrap}
+.line{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px 18px;background:var(--panel);border:1px solid var(--rule);padding:14px}
+.line.night{background:var(--night);border-color:var(--night)}
+.line figure{margin:0;display:grid;gap:4px;justify-items:center}
+.line figcaption{font:400 11px/14px Silkscreen;text-transform:uppercase;color:var(--ink3)}
+.line.night figcaption{color:#a7abc0}
+.src{display:flex;gap:14px;align-items:flex-end;margin:10px 0 0}
+.src img{width:120px;height:120px;object-fit:cover;object-position:center 15%}
+.src p{margin:0;font-size:13px;color:var(--ink2);max-width:56ch}
+</style></head><body><main>
+<p class="k">Third Estate · identity · round 3</p>
+<h1>Pixel characters: 32 px, ink outline</h1>
+<p class="dek">The direction chosen from round 2: a 32-pixel grid and a thin ink outline (a pale one on the night band). Each character is shown large, then at the sizes the site uses. Corrected since round 2: Marine Le Pen's hair is rounded and stays inside the head's outline, and her mouth is a plain closed smile set low on the face.</p>
+<div id="out"></div>
+</main>
+<script>
+// ---------- a tiny pixel painter: shapes given in 0–1 coordinates, drawn on an N×N grid of letters ----------
+function canvas(N) {
+  const g = Array.from({ length: N }, () => Array(N).fill("."));
+  const each = (fn) => { for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) fn(x, y, (x + 0.5) / N, (y + 0.5) / N); };
+  const api = {
+    N, g,
+    set(x, y, c) { if (x >= 0 && y >= 0 && x < N && y < N) g[y][x] = c; },
+    get(x, y) { return x >= 0 && y >= 0 && x < N && y < N ? g[y][x] : "."; },
+    ell(cx, cy, rx, ry, c, only) { each((x, y, px, py) => { if (((px - cx) / rx) ** 2 + ((py - cy) / ry) ** 2 <= 1 && (!only || only.includes(g[y][x]))) g[y][x] = c; }); },
+    rect(x0, y0, x1, y1, c, only) { each((x, y, px, py) => { if (px >= x0 && px <= x1 && py >= y0 && py <= y1 && (!only || only.includes(g[y][x]))) g[y][x] = c; }); },
+    poly(pts, c, only) { each((x, y, px, py) => { let inside = false; for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) { const [xi, yi] = pts[i], [xj, yj] = pts[j]; if ((yi > py) !== (yj > py) && px < ((xj - xi) * (py - yi)) / (yj - yi) + xi) inside = !inside; } if (inside && (!only || only.includes(g[y][x]))) g[y][x] = c; }); },
+    /** a block of whole pixels, mirrored left/right when `mirror` (features must stay symmetrical on a small grid) */
+    px(x, y, w, h, c, mirror) { for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) { api.set(x + i, y + j, c); if (mirror) api.set(N - 1 - x - i, y + j, c); } },
+    /** the fox's outline: every empty cell touching the figure */
+    outline(c = "K") { const add = []; each((x, y) => { if (g[y][x] === "." && [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => { const v = api.get(x + dx, y + dy); return v !== "." && v !== c; })) add.push([x, y]); }); add.forEach(([x, y]) => (g[y][x] = c)); },
+  };
+  return api;
+}
+const even = (n) => (n % 2 ? n + 1 : n);
+
+// ---------- the characters ----------
+// Each takes a grid size and a detail level: "icon" (fox-like: hair, dot eyes, mouth) or "face" (adds brows, nose,
+// teeth, highlights when the grid has room for them).
+function lePen(N, detail) {
+  const c = canvas(N), face = detail === "face";
+  c.poly([[0.06, 1.01], [0.14, 0.84], [0.36, 0.78], [0.64, 0.78], [0.86, 0.84], [0.94, 1.01]], "C");        // jacket
+  c.poly([[0.40, 0.78], [0.60, 0.78], [0.50, 0.97]], "W");                                                // blouse
+  c.rect(0.42, 0.66, 0.58, 0.82, "n");                                                                    // neck
+  c.ell(0.5, 0.40, 0.355, 0.36, "H");                                                                     // hair, top
+  c.poly([[0.145, 0.40], [0.855, 0.40], [0.855, 0.64], [0.80, 0.74], [0.68, 0.77], [0.32, 0.77], [0.20, 0.74], [0.145, 0.64]], "H"); // the bob, rounded in at the jaw
+  c.ell(0.5, 0.49, 0.225, 0.275, "S");                                                                    // face
+  c.poly([[0.20, 0.10], [0.80, 0.10], [0.80, 0.30], [0.66, 0.27], [0.30, 0.47], [0.20, 0.47]], "H", ["S", "H"]); // the fringe, swept from the parting: only over the face and the hair, so the head stays round
+  if (N >= 24) { c.poly([[0.34, 0.14], [0.62, 0.13], [0.60, 0.19], [0.36, 0.28]], "h", ["H"]); c.rect(0.16, 0.50, 0.20, 0.72, "h", ["H"]); c.rect(0.80, 0.50, 0.84, 0.72, "h", ["H"]); } // lights in the hair
+  const ew = Math.max(1, Math.round(N / 14)), eh = N >= 40 ? 2 : 1, ex = Math.round(N * 0.385), ey = Math.round(N * 0.47);
+  c.px(ex, ey, ew, eh, "E", true);
+  if (face && N >= 24) c.px(ex - (N >= 32 ? 1 : 0), ey - 2, ew + (N >= 32 ? 1 : 0), 1, "B", true);
+  const mw = even(Math.max(2, Math.round(N * 0.2))), mx = (N - mw) / 2, my = Math.round(N * 0.66);
+  c.px(mx, my, mw / 2, 1, "M", true);                                                                     // a closed smile, low on the face, nothing between it and the eyes
+  if (N >= 20) c.px(mx - 1, my - 1, 1, 1, "M", true);                                                      // the corners turn up
+  if (face && N >= 32) c.px(Math.round(N * 0.29), Math.round(N * 0.56), Math.max(1, Math.round(N / 16)), 1, "b", true); // cheeks
+  c.outline();
+  return c.g;
+}
+function lisnard(N, detail) {
+  const c = canvas(N), face = detail === "face";
+  c.poly([[0.05, 1.01], [0.12, 0.86], [0.36, 0.79], [0.64, 0.79], [0.88, 0.86], [0.95, 1.01]], "C");        // suit
+  c.poly([[0.38, 0.79], [0.62, 0.79], [0.50, 0.99]], "W");                                                // shirt
+  if (N >= 20) c.poly([[0.47, 0.84], [0.53, 0.84], [0.55, 1.01], [0.45, 1.01]], "T");                       // tie
+  c.rect(0.41, 0.68, 0.59, 0.83, "n");                                                                    // neck
+  c.ell(0.255, 0.50, 0.045, 0.06, "S"); c.ell(0.745, 0.50, 0.045, 0.06, "S");                              // ears
+  c.ell(0.5, 0.50, 0.235, 0.29, "S");                                                                     // face, a little square at the jaw
+  c.rect(0.30, 0.52, 0.70, 0.70, "S"); c.ell(0.5, 0.70, 0.20, 0.09, "S");
+  c.ell(0.5, 0.255, 0.265, 0.155, "H");                                                                   // short dark hair
+  c.ell(0.57, 0.165, 0.19, 0.085, "H");                                                                   // swept up at the front
+  c.rect(0.245, 0.25, 0.30, 0.42, "H"); c.rect(0.70, 0.25, 0.755, 0.42, "H");                              // sides
+  c.poly([[0.30, 0.25], [0.70, 0.25], [0.70, 0.33], [0.60, 0.30], [0.40, 0.30], [0.30, 0.33]], "H");
+  if (N >= 24) c.poly([[0.44, 0.12], [0.68, 0.11], [0.66, 0.16], [0.46, 0.18]], "h", ["H"]);
+  const ew = Math.max(1, Math.round(N / 14)), eh = N >= 40 ? 2 : 1, ex = Math.round(N * 0.385), ey = Math.round(N * 0.47);
+  c.px(ex, ey, ew, eh, "E", true);
+  if (N >= 20) c.px(ex - 1, ey - 2, ew + 2, N >= 40 ? 2 : 1, "B", true);                                   // heavy brows: part of the likeness
+  const mw = even(Math.max(4, Math.round(N * 0.26))), mx = (N - mw) / 2, my = Math.round(N * 0.66), th = Math.max(1, Math.round(N / 26));
+  if (face && N >= 32) c.rect(0.30, 0.66, 0.70, 0.78, "s", ["S"]);                                         // a shadow of beard
+  c.px(mx, my, mw / 2, th, "W", true);                                                                    // the wide white smile
+  if (N >= 20) c.px(mx - 1, my - 1, 1, 1, "n", true);
+  if (face && N >= 24) c.px(mx + 1, my + th, mw / 2 - 1, 1, "n", true);
+  if (face && N >= 32) c.px(Math.round(N * 0.29), my - 1, 1, th + 1, "n", true);                           // smile lines
+  c.outline();
+  return c.g;
+}
+
+// hand-set 16×16 grids, typed cell by cell exactly like the fox
+const HAND = {
+  "Marine Le Pen": ["....KKKKKKKK....", "...KHHHHHHHHK...", "..KHHHHHHHHHHK..", ".KHHHHHHHHHHHHK.", ".KHHHHHSSSSHHHK.", ".KHHHSSSSSSSHHK.", ".KHHSSSSSSSSHHK.", ".KHHSSESSESSHHK.", ".KHHSSSSSSSSHHK.", ".KHHSSMMMMSSHHK.", ".KHHHSSSSSSHHHK.", ".KHHHKSSSSKHHHK.", "..KHHKKnnKKHHK..", "..KKKCCWWCCKKK..", ".KCCCCCWWCCCCCK.", ".KCCCCCCCCCCCCK."],
+  "David Lisnard": ["................", ".....KKKKKKK....", "...KKHHHHHHHK...", "..KHHHHHHHHHHK..", "..KHHHHHHHHHHK..", "..KHHSSSSSSHHK..", "..KHSBBSSBBSHK..", ".KSSSSESSESSSSK.", ".KSSSSSSSSSSSSK.", "..KSSSSSSSSSSK..", "..KSSWWWWWWSSK..", "..KSSSSSSSSSSK..", "...KSSSSSSSSK...", "....KKnnnnKK....", "..KKCCWTTWCCKK..", ".KCCCCWTTWCCCCK."],
+};
+
+const PEOPLE = [
+  { name: "Marine Le Pen", draw: lePen, party: "#1c2c6c", traits: "blonde bob with a swept fringe, dark jacket over a white top, closed smile",
+    src: "Marine_Le_Pen_2025_(cropped).jpg", credit: "Vox España, CC0 1.0",
+    pal: { S: "#f3c9a5", n: "#dba57f", s: "#e9b892", b: "#f0a99a", H: "#e9c46a", h: "#f6dc8f", E: "#111216", B: "#a8843a", M: "#c9605a", W: "#ffffff", C: "#1f2a52", T: "#1f2a52" } },
+  { name: "David Lisnard", draw: lisnard, party: "#1f5fcf", traits: "short dark hair swept up, tanned, heavy brows, wide white smile, suit and tie",
+    src: "David_Lisnard_en_2026.jpg", credit: "Grégor Sauvagère, CC BY-SA 4.0",
+    pal: { S: "#d99b6f", n: "#b9784d", s: "#c98a60", b: "#d99b6f", H: "#2b211c", h: "#4a3a30", E: "#111216", B: "#2b211c", M: "#8c3b2e", W: "#ffffff", C: "#252a3a", T: "#1f5fcf" } },
+];
+
+// ---------- rendering: one <rect> per run of the same colour, exactly as the fox is drawn ----------
+function svg(grid, pal, size, opts = {}) {
+  const N = grid.length, p = { ...pal, K: opts.outline === "blue" ? (opts.dark ? "#5470ff" : "#000091") : opts.dark ? "#dcd8cb" : "#111216" };
+  if (opts.outline === "none") delete p.K;
+  let out = opts.tile ? `<rect width="${N}" height="${N}" fill="${opts.tile}"/>` : "";
+  grid.forEach((row, y) => { for (let x = 0; x < N;) { const ch = row[x]; let e = x + 1; while (e < N && p[row[e]] === p[ch]) e++; if (p[ch]) out += `<rect x="${x}" y="${y}" width="${e - x}" height="1" fill="${p[ch]}"/>`; x = e; } });
+  return `<svg viewBox="0 0 ${N} ${N}" width="${size}" height="${size}" shape-rendering="crispEdges" role="img">${out}</svg>`;
+}
+const fox = (size, dark) => { const G = ["..K..........K..", ".KLK........KRK.", ".KLLK......KRRK.", ".KLILK....KRIRK.", "KLLILLKKKKRRIRRK", "KLLLLLLMMRRRRRRK", "KLLLLLLMMRRRRRRK", "KLLEELLMMRREERRK", "KLLLLLLMMRRRRRRK", ".KMMLLLMMRRRMMK.", "..KMMMLMMRMMMK..", "...KMMMMMMMMK...", "....KMMMMMMK....", ".....KMNNMK.....", "......KNNK......", ".......KK......."].map((r) => [...r]);
+  return svg(G, { L: "#e1000f", R: "#e1000f", I: "#fff", M: "#fff", E: "#111216", N: "#111216" }, size, { dark }); };
+
+const out = document.getElementById("out");
+const N = 32;
+for (const P of PEOPLE) {
+  const sec = document.createElement("section"), g = P.draw(N, "face");
+  const set = (dark) => [256, 128, 64, 40, 28].map((px) => `<figure>${svg(g, P.pal, px, { dark })}<figcaption>${px} px</figcaption></figure>`).join("");
+  sec.innerHTML = `<h2>${P.name}</h2>
+    <div class="src"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/${P.src}?width=320" alt=""><p><b>What the drawing keeps:</b> ${P.traits}.<br>Reference photo: ${P.credit}, Wikimedia Commons.</p></div>
+    <h3>On paper</h3><div class="line">${set(false)}</div>
+    <h3>On the night band, next to the fox</h3><div class="line night">${set(true)}<figure>${fox(40, true)}<figcaption>the fox</figcaption></figure></div>
+    <h3>On the party colour, no outline</h3><div class="line">${[128, 64, 40].map((px) => `<figure>${svg(g, P.pal, px, { outline: "none", tile: P.party })}<figcaption>${px} px</figcaption></figure>`).join("")}</div>`;
+  out.append(sec);
+}
+</script></body></html>

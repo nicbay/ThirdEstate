@@ -41,7 +41,7 @@ export function loadCommuneArms(dep: string) {
 }
 
 /** A slot for a coat of arms; `paintArms` fills it. With `href` it's a link (e.g. the department's page). */
-export function armsSlot(path: string | null | undefined, label: string, size: "xs" | "s" | "m" | "l" | "xl" = "m", href?: string) {
+export function armsSlot(path: string | null | undefined, label: string, size: "xs" | "s" | "m" | "l" | "xl" | "xxl" = "m", href?: string) {
   if (!path) return "";
   const inner = `<canvas aria-hidden="true"></canvas>`;
   const attrs = `class="arms arms-${size}" data-arms="${esc(path)}" title="${esc(label)}"`;

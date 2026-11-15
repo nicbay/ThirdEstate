@@ -113,6 +113,7 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/comparer(?:\/(\w{5}))?(?:\/(\w{5}))?$/, (m) => import("./views/compare").then((v) => v.renderCompare(app, m[1], m[2]))],
   [/^#\/classements(?:\/([\w-]+))?(?:\/(\w{5}))?$/, (m) => import("./views/rankings").then((v) => v.renderRankings(app, m[1], m[2]))],
   [/^#\/chiffres$/, () => renderEconomy(app)],
+  [/^#\/quiz\/citations$/, () => import("./views/quiz-quotes").then((v) => v.renderQuotes(app))],
   [/^#\/quiz(?:\/([\w-]+))?$/, (m) => renderQuiz(app, m[1])],
   // section names as paths, so a typed or shared section link lands somewhere
   // (old six-section names included: "la-france" and "france" now live under Data & archives)

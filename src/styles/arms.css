@@ -6,6 +6,7 @@
 .arms-l canvas { height: 104px; }
 .arms-xs canvas { height: 40px; }
 .arms-xl canvas { height: clamp(72px, 18vw, 120px); }
+.arms-xxl canvas { height: clamp(104px, 11vw, 152px); }
 a.arms { border-radius: 2px; }
 a.arms:hover canvas, a.arms:focus-visible canvas { filter: brightness(1.12); }
 a.arms:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
@@ -17,7 +18,28 @@ a.arms:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .dep-id p { margin: 0; }
 .dep-mps { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 0.5rem 1rem; }
 /* the town page: the town's arms, the department's beside it */
-.town-arms { display: flex; align-items: flex-end; gap: 0.6rem; margin-bottom: 0.4rem; }
+/* The town page's header. The arms are large and start on the photo's top line, the name beside them; the text
+   column is as tall as the photo, and the search box sits on the photo's bottom line (when the text runs longer,
+   the photo grows with it, so the box never drops below the picture). */
+.town-id { display: flex; align-items: flex-start; gap: 1.1rem; }
+.town-id > div:last-child { min-width: 0; padding-top: 0.2rem; }
+.town-arms { display: flex; align-items: flex-end; gap: 0.5rem; flex: none; }
+.town-hero.has-photo { align-items: stretch; }
+.town-hero.has-photo > figure { display: flex; flex-direction: column; }
+.town-hero.has-photo > figure img { flex: 1 1 auto; min-height: 0; }
+.town-hero-text { display: flex; flex-direction: column; }
+.town-hero.has-photo .town-hero-text { padding-bottom: calc(1.3rem + 5px); } /* the photo's credit line, and the box's shadow */
+.town-hero-text .town-search { width: 100%; margin-top: auto; padding-top: 0.8rem; }
+.town-hero-text .town-search::before { top: calc(50% + 0.4rem); }
+.town-hero-text .town-search::after { top: calc(50% + 0.4rem + 4px); }
+.town-quip { margin: 0.6rem 0 0; max-width: 62ch; padding-left: 0.7rem; border-left: 4px solid var(--accent); font-size: 1rem; line-height: 1.45; font-weight: 600; text-wrap: pretty; }
+.town-quip .tiny { display: block; font-weight: 400; margin-top: 0.15rem; }
+@media (max-width: 760px) {
+  .town-hero.has-photo .town-hero-text { padding-bottom: 0; }
+  .town-id { gap: 0.8rem; }
+  .arms-xxl canvas { height: 96px; }
+  .town-arms .arms-s { display: none; }
+}
 .town-arms:empty { display: none; }
 /* the homepage's "where you live": the town's photo with its arms and the department's */
 .mine-id { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 0.9rem; }

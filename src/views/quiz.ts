@@ -274,6 +274,40 @@ function drawRun(d: QuizData, mode: Mode, keep: string[] = []): string[] {
 }
 const freshRun = (d: QuizData, mode: Mode = "s", started = false): Run => { const ts = drawRun(d, mode); return { mode, step: 0, a: new Map(), started, ts, all: ts }; };
 
+// ---------- abroad: the closest well-known politicians in the reader's own country ----------
+// public/data/quiz-abroad.json: for seven countries, eight well-known figures and their stance (P/C) on the general
+// idea behind some of the quiz's questions, coded from their public record. Far rougher than the French side (the
+// idea, not the French text; other institutions; fewer questions), which the section says, with the number of
+// questions each rate rests on.
+interface AbroadFigure { name: string; role: Two; s: Record<string, "P" | "C"> }
+interface AbroadCountry { code: string; name: Two; figures: AbroadFigure[] }
+let abroadP: Promise<{ rev: string; countries: AbroadCountry[] }> | null = null;
+const loadAbroad = () => (abroadP ??= fetchJson<{ rev: string; countries: AbroadCountry[] }>("/data/quiz-abroad.json"));
+/** Fewer comparable questions than this and a foreign figure is not ranked. */
+const MIN_ABROAD = 2;
+/** Small flags drawn as pixels' worth of rectangles (emoji flags do not render on Windows). */
+const FLAGS: Record<string, string> = {
+  us: `<rect width="30" height="20" fill="#fff"/>${[0, 2, 4, 6].map((i) => `<rect y="${i * 2.86}" width="30" height="2.86" fill="#b22234"/>`).join("")}<rect width="13" height="11.4" fill="#3c3b6e"/>${[2, 5, 8, 11].flatMap((x) => [2, 5, 8].map((y) => `<rect x="${x - 0.6}" y="${y}" width="1.2" height="1.2" fill="#fff"/>`)).join("")}`,
+  gb: `<rect width="30" height="20" fill="#012169"/><path d="M0 0l30 20M30 0L0 20" stroke="#fff" stroke-width="4"/><path d="M0 0l30 20M30 0L0 20" stroke="#c8102e" stroke-width="1.6"/><path d="M15 0v20M0 10h30" stroke="#fff" stroke-width="6.4"/><path d="M15 0v20M0 10h30" stroke="#c8102e" stroke-width="3.6"/>`,
+  de: `<rect width="30" height="6.67" fill="#000"/><rect y="6.67" width="30" height="6.67" fill="#dd0000"/><rect y="13.33" width="30" height="6.67" fill="#ffce00"/>`,
+  it: `<rect width="10" height="20" fill="#009246"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ce2b37"/>`,
+  es: `<rect width="30" height="20" fill="#aa151b"/><rect y="5" width="30" height="10" fill="#f1bf00"/>`,
+  ca: `<rect width="30" height="20" fill="#fff"/><rect width="7.5" height="20" fill="#d80621"/><rect x="22.5" width="7.5" height="20" fill="#d80621"/><path d="M15 3l1.6 3 2.4-1-.8 4 3-1.4-.6 2.2 1.8.8-3.6 3 .4 1.6-3.6-.6V17h-1.2v-2.4l-3.6.6.4-1.6-3.6-3 1.8-.8-.6-2.2 3 1.4-.8-4 2.4 1z" fill="#d80621"/>`,
+  be: `<rect width="10" height="20" fill="#000"/><rect x="10" width="10" height="20" fill="#fdda24"/><rect x="20" width="10" height="20" fill="#ef3340"/>`,
+};
+const flag = (code: string) => `<svg class="qz-flag" viewBox="0 0 30 20" width="30" height="20" aria-hidden="true">${FLAGS[code] ?? ""}</svg>`;
+/** Agreement with a foreign figure on the questions both the reader and the figure have a position on. */
+function scoreAbroad(f: AbroadFigure, a: Answers) {
+  let sw = 0, sa = 0, n = 0;
+  for (const [key, ans] of a) {
+    const t = f.s[key];
+    if (!t) continue;
+    const w = ans.w ? IMPORTANT : 1;
+    sw += w; sa += w * (ans.p === "A" ? 0.5 : ans.p === t ? 1 : 0); n++;
+  }
+  return n >= MIN_ABROAD ? { s: (sa + PRIOR / 2) / (sw + PRIOR), n } : null;
+}
+
 // ---------- page ----------
 export async function renderQuiz(app: HTMLElement, code?: string) {
   const [d, polls] = await Promise.all([loadQuiz(), loadPolls("2027").catch(() => null)]);
@@ -397,6 +431,7 @@ function draw(stage: HTMLElement, d: QuizData, dir: 1 | -1) {
     // enough answers to rank: the rest of the run can be left unanswered
     run.querySelector(".qz-now")!.addEventListener("click", () => { const r = st!; r.step = r.ts.length - 1; go(stage, d, 1); });
     stage.querySelector(".qz-go-long")?.addEventListener("click", () => begin(stage, d, freshRun(d, "l", true)));
+    stage.querySelector(".qz-go-short")?.addEventListener("click", () => begin(stage, d, { ...st!, started: true }));
     stage.querySelector(".qz-redraw")?.addEventListener("click", () => { st = freshRun(d); stage.innerHTML = ""; draw(stage, d, 1); });
     stage.querySelector(".qz-resume")?.addEventListener("click", () => { const r = savedRun(d); if (r) begin(stage, d, r); });
   }
@@ -516,19 +551,39 @@ function introSide(d: QuizData) {
     </section>`;
 }
 
-/** Just above the first question: a run to pick up again, if there is one, and what answering starts. */
-function introTop(d: QuizData, total: number) {
-  const saved = savedRun(d);
-  return `${saved ? `<button type="button" class="qz-only-intro qz-resume"><b>${L("Reprendre votre quiz en cours", "Pick up your quiz where you left it")}</b><span>${L(`question ${saved.step + 1} sur ${saved.ts.length}`, `question ${saved.step + 1} of ${saved.ts.length}`)}</span><i aria-hidden="true">→</i></button>` : ""}
-    <p class="qz-only-intro qz-pitch"><b>${L("Version express", "Express version")}</b><span>${L(`${total} questions tirées au sort · 3 minutes`, `${total} questions drawn at random · 3 minutes`)}</span><em>${L("Répondez à la première pour commencer", "Answer the first one to start")} <i aria-hidden="true">↓</i></em></p>`;
+/** One of the three experiences, as a box: a big figure, what it is, and one clear button. Shared with the
+ *  "Who said it?" page (quiz-quotes.ts), so the three are presented the same way wherever they are offered. */
+export function quizBox(o: { cls?: string; big: string; unit: string; title: string; text: string; cta: string; href?: string; primary?: boolean }) {
+  const btn = `<span class="qz-exp-go">${o.cta} <i aria-hidden="true">→</i></span>`;
+  const inner = `<span class="qz-exp-n"><b>${o.big}</b><span>${o.unit}</span></span><span class="qz-exp-t">${o.title}</span><span class="qz-exp-d">${o.text}</span>${btn}`;
+  const cls = `qz-exp-b${o.primary ? " is-primary" : ""}${o.cls ? ` ${o.cls}` : ""}`;
+  return o.href ? `<a class="${cls}" href="${o.href}">${inner}</a>` : `<button type="button" class="${cls}">${inner}</button>`;
+}
+/** The three boxes. `skip` leaves one out (the page the reader is already on). */
+export function quizBoxes(nShort: number, nLong: number, nCand: number, skip?: "s" | "l" | "q") {
+  const boxes = [
+    skip === "s" ? "" : quizBox({ cls: "qz-go-short", primary: true, big: String(nShort), unit: L("questions · 3 min", "questions · 3 min"), title: L("Le quiz express", "The express quiz"),
+      text: L("Des votes, des programmes et des annonces, tirés au sort. À la fin : le candidat le plus proche de vous et votre place de la gauche à la droite.", "Votes, programs and announcements, drawn at random. At the end: the candidate closest to you and your place from left to right."), cta: L("Commencer", "Start"), href: skip ? "#/quiz" : undefined }),
+    skip === "l" ? "" : quizBox({ cls: "qz-go-long", big: String(nLong), unit: L("questions · 10 min", "questions · 10 min"), title: L("Le quiz complet", "The complete quiz"),
+      text: L(`Deux mesures de chacun des ${nCand} candidats, sans leur nom. À la fin : vos points de rupture, et qui proposait quoi.`, `Two measures from each of the ${nCand} candidates, unnamed. At the end: your deal breakers, and who proposed what.`), cta: L("Faire le complet", "Take the full one"), href: skip ? "#/quiz" : undefined }),
+    skip === "q" ? "" : quizBox({ cls: "qz-go-quotes", big: "10", unit: L("citations · 2 min", "quotes · 2 min"), title: L("Qui a dit ça ?", "Who said it?"),
+      text: L("Des phrases qui ont fait parler, toutes réelles, tweets compris. Retrouvez leur auteur, et méfiez-vous du judoka.", "Lines that got people talking, all real, tweets included. Find who said each one, and watch out for the judoka."), cta: L("Deviner", "Guess"), href: "#/quiz/citations" }),
+  ].filter(Boolean);
+  return `<div class="qz-exp" style="--n:${boxes.length}">${boxes.join("")}</div>`;
 }
 
-/** Below the first question: what the questions are made of, the other ways in, and what the reader can count on. */
+/** Above the first question: the three experiences, a run to pick up again if there is one, and what answering starts. */
+function introTop(d: QuizData, total: number) {
+  const saved = savedRun(d);
+  return `<div class="qz-only-intro">${quizBoxes(total, LONG_V + PER_CAND * d.candidates.length, d.candidates.length)}</div>
+    ${saved ? `<button type="button" class="qz-only-intro qz-resume"><b>${L("Reprendre votre quiz en cours", "Pick up your quiz where you left it")}</b><span>${L(`question ${saved.step + 1} sur ${saved.ts.length}`, `question ${saved.step + 1} of ${saved.ts.length}`)}</span><i aria-hidden="true">→</i></button>` : ""}
+    <p class="qz-only-intro qz-pitch"><b>${L("Ou commencez tout de suite", "Or start right here")}</b><span>${L(`question 1 sur ${total} du quiz express`, `question 1 of ${total} of the express quiz`)}</span><button type="button" class="qz-redraw">${L("Tirer d’autres questions", "Draw other questions")} <i aria-hidden="true">↻</i></button></p>`;
+}
+
+/** Below the first question: the faces on a narrow screen, what the questions are made of, what the reader can count on. */
 function introBelow(d: QuizData) {
-  const nL = LONG_V + PER_CAND * d.candidates.length, pool = d.questions.length + d.measures.length;
   const nS = d.measures.filter((m) => m.src.kind === "statement").length, nP = d.measures.length - nS;
   const tile = (cls: string, n: number, strong: string, rest: string) => `<li class="is-${cls}"><b>${n}</b><span><strong>${strong}</strong> ${rest}</span></li>`;
-  // on a narrow screen the faces band comes after the first question (beside the title there is no room for it)
   return `<div class="qz-only-intro qz-below">
       <div class="qz-hero-m">${introSide(d)}</div>
       <ul class="qz-srcs" aria-label="${L("Ce dont les questions sont faites", "What the questions are made of")}">
@@ -536,20 +591,6 @@ function introBelow(d: QuizData) {
         ${tile("p", nP, L("mesures", "measures"), L("tirées de leurs programmes", "from their programs"))}
         ${tile("s", nS, L("annonces publiques", "public announcements"), L("des candidats", "by the candidates"))}
       </ul>
-      <div class="qz-alts">
-        <button type="button" class="qz-alt qz-go-long">
-          <span class="qz-alt-k">${L("Version complète", "Complete version")}</span>
-          <b>${L(`${nL} questions · 10 minutes`, `${nL} questions · 10 minutes`)}</b>
-          <span>${L(`${PER_CAND} mesures de chacun des ${d.candidates.length} candidats, sans leur nom. À la fin : vos points de rupture, et qui proposait quoi.`, `${PER_CAND} measures from each of the ${d.candidates.length} candidates, unnamed. At the end: your deal breakers, and who proposed what.`)}</span>
-          <i aria-hidden="true">→</i>
-        </button>
-        <button type="button" class="qz-alt qz-redraw">
-          <span class="qz-alt-k">${L("Tirage au sort", "Random draw")}</span>
-          <b>${L("Tirer d’autres questions", "Draw other questions")}</b>
-          <span>${L(`Chaque partie tire les siennes parmi ${pool}, dans un ordre différent : deux parties ne se ressemblent pas.`, `Each run draws its own from ${pool}, in a different order: no two runs are alike.`)}</span>
-          <i aria-hidden="true">↻</i>
-        </button>
-      </div>
       <ul class="qz-trust">
         <li>${L("Vos réponses restent dans votre navigateur", "Your answers stay in your browser")}</li>
         <li>${L("Sans compte ni e-mail", "No account, no email")}</li>
@@ -722,6 +763,15 @@ function results(stage: HTMLElement, d: QuizData) {
       <p class="muted small">${long ? L("Chaque candidat a le même nombre de mesures dans la version complète.", "Every candidate has the same number of measures in the complete version.") : L("La version express tire une mesure dans chaque quart de l’éventail gauche-droite ; la version complète en pose deux de chaque candidat.", "The express version draws one measure from each quarter of the left–right range; the complete one asks two from every candidate.")} ${L("D’autres candidats peuvent défendre une mesure voisine : seul son auteur est compté.", "Other candidates may back a similar measure: only its author is counted.")}</p>
     </section>` : ""}
 
+    ${quizBoxes(SHORT_V + SHORT_M, LONG_V + PER_CAND * d.candidates.length, d.candidates.length, long ? "l" : "s").replace('class="qz-exp"', 'class="qz-exp qz-exp-more"')}
+
+    <section class="card qz-abroad">
+      <header class="card-head"><h2>${L("Vous venez d’un de ces pays ?", "Are you from one of these countries?")}</h2></header>
+      <p class="prog-lede">${L("Choisissez le vôtre : voici, chez vous, les personnalités politiques dont les positions connues se rapprochent le plus de vos réponses.", "Pick yours: here are the politicians at home whose known positions come closest to your answers.")}</p>
+      <div class="qz-flags" role="group" aria-label="${L("Votre pays", "Your country")}">${[["us", "États-Unis", "United States"], ["gb", "Royaume-Uni", "United Kingdom"], ["de", "Allemagne", "Germany"], ["it", "Italie", "Italy"], ["es", "Espagne", "Spain"], ["ca", "Canada", "Canada"], ["be", "Belgique", "Belgium"]].map(([c, fr, en]) => `<button type="button" class="qz-flag-b" data-c="${c}" aria-pressed="false">${flag(c)}<span>${L(fr, en)}</span></button>`).join("")}</div>
+      <div class="qz-abroad-out" id="qz-abroad" aria-live="polite"></div>
+    </section>
+
     <section class="card">
       <header class="card-head"><h2>${L("À l’Assemblée : vos députés et groupes les plus proches", "In the Assembly: your closest MPs and groups")}</h2><span class="muted small">${L(`sur vos ${nVotes} réponses à des votes`, `on your ${nVotes} answers to votes`)}</span></header>
       ${mps.length ? `<ol class="quiz-rank">${mps.slice(0, 5).map((r, i) => `<li><span class="quiz-rk">${i + 1}</span>
@@ -743,6 +793,24 @@ function results(stage: HTMLElement, d: QuizData) {
     if (reduced() || !("IntersectionObserver" in window)) go();
     else { const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { io.disconnect(); setTimeout(go, 150); } }, { threshold: 0.35 }); io.observe(spec.querySelector(".qz-axis")!); setTimeout(go, 4000); /* never leave the marker in the middle if the observer stays silent */ }
   }
+  // abroad: the figures of the chosen country, closest first
+  stage.querySelectorAll<HTMLButtonElement>(".qz-flag-b").forEach((b) => b.addEventListener("click", async () => {
+    const box = stage.querySelector<HTMLElement>("#qz-abroad")!;
+    stage.querySelectorAll(".qz-flag-b").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    const data = await loadAbroad().catch(() => null);
+    const c = data?.countries.find((x) => x.code === b.dataset.c);
+    if (!data || !c || data.rev !== d.rev) { box.innerHTML = `<p class="muted small">${L("Ces comparaisons ne sont pas disponibles pour le moment.", "These comparisons are not available right now.")}</p>`; return; }
+    const rows = c.figures.map((f) => ({ f, sc: scoreAbroad(f, a) })).filter((r): r is { f: AbroadFigure; sc: { s: number; n: number } } => !!r.sc).sort((p, q) => q.sc.s - p.sc.s || q.sc.n - p.sc.n);
+    const none = c.figures.filter((f) => !scoreAbroad(f, a));
+    box.innerHTML = rows.length ? `
+      <ol class="qz-ab">${rows.map((r, i) => `<li class="${i === 0 ? "is-top" : ""}" style="--i:${i}"><span class="qz-rk">${i + 1}</span>
+        <span class="qz-who"><b>${esc(r.f.name)}</b><span>${esc(L(r.f.role.fr, r.f.role.en))}</span></span>
+        <span class="qz-bar"><i style="width:${(100 * r.sc.s).toFixed(1)}%"></i></span><span class="qz-pct">${pctS(r.sc.s)}</span>
+        <span class="qz-meta">${L(`sur ${r.sc.n} question${r.sc.n > 1 ? "s" : ""}`, `on ${r.sc.n} question${r.sc.n > 1 ? "s" : ""}`)}</span></li>`).join("")}</ol>
+      ${none.length ? `<p class="muted small">${L("Pas assez de questions en commun pour", "Not enough questions in common for")} ${none.map((f) => esc(f.name)).join(", ")}.</p>` : ""}
+      <p class="muted small">${L("Un taux très approximatif : il compare vos réponses à la position publique connue de chacun sur l’idée générale de la question (taxer les grandes fortunes, légaliser l’aide à mourir, reculer l’âge de la retraite…), pas sur le texte français, et seulement là où cette position est documentée. Le nombre de questions est indiqué : en dessous de cinq, prenez-le comme un indice.", "A very rough rate: it compares your answers with each figure’s known public position on the general idea behind the question (taxing large fortunes, legalising assisted dying, raising the retirement age…), not on the French text, and only where that position is documented. The number of questions is shown: below five, take it as a hint.")}${long ? "" : ` ${L("La version complète compare sur environ trois fois plus de questions.", "The complete version compares on about three times as many questions.")}`}</p>`
+      : `<p class="muted small">${L("Trop peu de vos réponses portent sur des questions comparables à l’étranger. La version complète en pose davantage.", "Too few of your answers are on questions that compare abroad. The complete version asks more of them.")}</p>`;
+  }));
   stage.querySelector("#qz-restart")!.addEventListener("click", () => begin(stage, d, freshRun(d)));
   // keep the answers already given: this run only asks what the complete version still needs
   stage.querySelector("#qz-longer")?.addEventListener("click", () => begin(stage, d, { mode: "l", step: 0, a, started: true, ts: moreAsk, all: more }));

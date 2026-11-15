@@ -99,6 +99,9 @@ export const loadTownBundle = (dep: string) => {
   if (!bundleCache.has(dep)) bundleCache.set(dep, fetchJson<Any>(`/data/communes-dep/${dep}.json`).then((b) => b.communes ?? {}).catch(() => ({})));
   return bundleCache.get(dep)!;
 };
+let quipsP: Promise<Record<string, { fr: string; en: string }>> | null = null;
+/** One AI-written line per town, for the towns that have one (public/data/town-quips.json). */
+const loadTownQuips = () => (quipsP ??= fetchJson<Any>("/data/town-quips.json").then((f) => f.quips ?? {}).catch(() => ({})));
 /** Map a town file onto the shape the town page renders. */
 export function townExtra(d: Any) {
   if (!d) return null;
@@ -573,13 +576,18 @@ export async function renderTown(app: HTMLElement, code: string) {
       <p class="crumbs"><a href="#/explorer/${dep}">${esc(info?.departement?.nom ?? dep)}</a></p>
       <header class="town-hero ${photo ? "has-photo" : ""}">
         ${photo ? `<figure><img src="${esc(safeUrl(photo.url))}" alt="${esc(name)}" loading="eager"/><figcaption class="tiny">${esc(photo.author ?? "")} ${photo.licence ? `(${esc(photo.licence)})` : ""}, Wikimedia Commons</figcaption></figure>` : ""}
-        <div>
-          <div class="town-arms" id="town-arms"></div>
-          <p class="eyebrow">${esc(info?.departement?.nom ?? "")}${info?.region?.nom ? `, ${esc(info.region.nom)}` : ""}</p>
-          <h1>${esc(name)}</h1>
-          <p class="dek">${[info?.population ? `${fmtNum(info.population)} ${L("habitants", "inhabitants")}` : "", postcodes(info?.codesPostaux ?? [])].filter(Boolean).join(", ")}.</p>
+        <div class="town-hero-text">
+          <div class="town-id">
+            <div class="town-arms" id="town-arms"></div>
+            <div>
+              <p class="eyebrow">${esc(info?.departement?.nom ?? "")}${info?.region?.nom ? `, ${esc(info.region.nom)}` : ""}</p>
+              <h1>${esc(name)}</h1>
+              <p class="dek">${[info?.population ? `${fmtNum(info.population)} ${L("habitants", "inhabitants")}` : "", postcodes(info?.codesPostaux ?? [])].filter(Boolean).join(", ")}.</p>
+            </div>
+          </div>
           ${extra?.description?.text ? `<figure class="town-wiki"><blockquote lang="fr"${extra.description.url ? ` cite="${esc(safeUrl(extra.description.url))}"` : ""}><p>${esc(extra.description.text)}</p></blockquote>
             <figcaption class="tiny muted">${L("Extrait de", "Quoted from")} ${extra.description.url ? `<a href="${esc(safeUrl(extra.description.url))}" target="_blank" rel="noopener">${L("Wikipédia", "French Wikipedia")}</a>` : L("Wikipédia", "French Wikipedia")} (CC BY-SA)${fr ? "" : ", in French"}</figcaption></figure>` : ""}
+          <p class="town-quip" id="town-quip" hidden></p>
           <div class="home-set" id="home-set"></div>
           ${searchBox(L("Chercher une autre adresse", "Search another address"))}
         </div>
@@ -659,9 +667,17 @@ export async function renderTown(app: HTMLElement, code: string) {
     const box = app.querySelector<HTMLElement>("#town-arms");
     if (!box) return;
     const depName = info?.departement?.nom ?? dep;
-    box.innerHTML = armsSlot(ca[code] ?? ca[/^751/.test(code) ? "75056" : /^6938/.test(code) ? "69123" : /^132/.test(code) ? "13055" : ""], L(`Armoiries : ${name}`, `Coat of arms: ${name}`), "m")
+    box.innerHTML = armsSlot(ca[code] ?? ca[/^751/.test(code) ? "75056" : /^6938/.test(code) ? "69123" : /^132/.test(code) ? "13055" : ""], L(`Armoiries : ${name}`, `Coat of arms: ${name}`), "xxl")
       + armsSlot(da[dep], L(`${depName} : le département, ses communes et ses députés`, `${depName}: the department, its towns and MPs`), "s", `#/explorer/${dep}`);
     paintArms(box);
+  });
+  // one light-hearted line about the town, written by an AI and labelled as such (scripts/sync-town-quips.mjs)
+  void loadTownQuips().then((quips) => {
+    const q = quips[code] ?? quips[/^751/.test(code) ? "75056" : /^6938/.test(code) ? "69123" : /^132/.test(code) ? "13055" : ""];
+    const box = app.querySelector<HTMLElement>("#town-quip");
+    if (!q || !box) return;
+    box.innerHTML = `${esc(L(q.fr, q.en))} <span class="tiny muted">${L("Phrase écrite par une IA, pour sourire", "Line written by an AI, for fun")}</span>`;
+    box.hidden = false;
   });
   app.querySelector<HTMLButtonElement>("[data-sch-toggle]")?.addEventListener("click", (e) => {
     const btn = e.currentTarget as HTMLButtonElement;
