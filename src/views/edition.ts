@@ -260,7 +260,8 @@ function bodyHtml(g: Ledger, s: Pick | null | undefined) {
     ${g.post ? row(wk ? L("Le post de la semaine", "Post of the week") : L("Le post du jour", "Post of the day"), postHtml(g.post)) : ""}
     ${row(L("Dynamique", "Momentum"), leadHtml(g))}`;
   const why = (g.notes?.polls ?? []).slice(0, 2).map(noteHtml).join("");
-  if (!wk) return `<div class="ed-lg"><div class="lg">${takeRow}${facts}</div><div class="lg-side">${why}${tableHtml(g)}</div></div>`;
+  // a day: our analysis across the whole note, then the facts on the left and the table on the right
+  if (!wk) return `${takeRow ? `<div class="lg lg-take">${takeRow}</div>` : ""}<div class="ed-lg"><div class="lg">${facts}</div><div class="lg-side">${why}${tableHtml(g)}</div></div>`;
   return `<div class="ed-lg is-week">
     ${takeRow ? `<div class="lg">${takeRow}</div>` : ""}
     <div class="lg-mid"><div class="lg-side">${why}${tableHtml(g)}${trendHtml(g)}</div><div class="lg-side">${kpisHtml(g)}</div></div>

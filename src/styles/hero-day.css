@@ -357,8 +357,8 @@
 .lg-row:first-child { border-top: 2px solid var(--ink); }
 .lg-k { font: 400 0.6875rem/1.6 var(--pixel); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); padding-top: 0.2rem; }
 .lg-row.is-te .lg-k { color: var(--split-red); }
-/* our take can run to a few paragraphs: kept to a readable line length, even across the weekly box */
-.lg-row.is-te .lg-b { max-width: 80ch; }
+/* our take can run to a few paragraphs, across the full width of the note */
+.lg-row.is-te .lg-b { max-width: none; }
 .lg-row.is-te .lg-b > p { margin: 0; }
 .lg-row.is-te .lg-b > p + p { margin-top: 0.55rem; }
 .lg-b { min-width: 0; color: var(--ink); font-size: 0.98rem; line-height: 1.42; }
