@@ -55,34 +55,54 @@ export type TownCounts = Map<string, { name: string; dep: string; n: number }>;
 let presence: ReturnType<SupabaseClient["channel"]> | null = null;
 const presenceListeners = new Set<(c: Counts, total: number, towns: TownCounts) => void>();
 let lastTowns: TownCounts = new Map();
-/** What a visitor shares while online: their department and, if they chose it, their town (code and name). */
-const presencePayload = () => { const h = getHome(); return { dep: h?.dep ?? null, code: h?.code ?? null, town: h?.code ? h.commune ?? null : null }; };
+/** What a visitor shares while online: their department and, if they chose it, their town's INSEE code (never a name). */
+const presencePayload = () => { const h = getHome(); return { dep: h?.dep ?? null, code: h?.code ?? null }; };
+// A town's name is never taken from another visitor (anyone can join the channel and send any text): it is looked
+// up from its INSEE code at geo.api.gouv.fr, once per code, and a town shows only once its name is known. At most
+// 40 lookups a visit, so a flood of made-up codes can't turn this browser into a request loop.
+const townNames = new Map<string, string | null>();
+let townLookups = 0;
+function townName(code: string, then: () => void): string | null {
+  const own = getHome();
+  if (own?.code === code && own.commune) return own.commune;
+  if (townNames.has(code)) return townNames.get(code)!;
+  if (townLookups >= 40) return null;
+  townLookups++;
+  townNames.set(code, null);
+  fetch(`https://geo.api.gouv.fr/communes/${encodeURIComponent(code)}?fields=nom&format=json`)
+    .then((r) => (r.ok ? r.json() : null))
+    .then((j: { nom?: unknown } | null) => { if (typeof j?.nom === "string" && j.nom.length <= 60) { townNames.set(code, j.nom); then(); } })
+    .catch(() => {});
+  return null;
+}
 
 export function joinPresence() {
   if (!cloud || presence) return;
   void logVisit();
   const id = crypto.randomUUID();
   presence = cloud.channel("visitors", { config: { presence: { key: id } } });
-  presence
-    .on("presence", { event: "sync" }, () => {
-      const state = presence!.presenceState<{ dep: string | null; code?: string | null; town?: string | null }>();
-      const counts: Counts = new Map();
-      const towns: TownCounts = new Map();
-      let total = 0;
-      for (const metas of Object.values(state)) {
-        total++;
-        const m = metas[0];
-        if (m?.dep && /^(\d{2,3}|2[AB])$/.test(m.dep)) counts.set(m.dep, (counts.get(m.dep) ?? 0) + 1);
-        // other visitors' payloads are untrusted: a town is kept only with a valid code and a short name
-        if (m?.code && /^(\d{5}|2[AB]\d{3})$/.test(m.code) && typeof m.town === "string") {
-          const t = towns.get(m.code) ?? { name: m.town.slice(0, 60), dep: m.dep ?? "", n: 0 };
-          t.n++;
-          towns.set(m.code, t);
-        }
+  const sync = () => {
+    const state = presence!.presenceState<{ dep: string | null; code?: string | null }>();
+    const counts: Counts = new Map();
+    const towns: TownCounts = new Map();
+    let total = 0;
+    for (const metas of Object.values(state)) {
+      total++;
+      const m = metas[0];
+      if (m?.dep && /^(\d{2,3}|2[AB])$/.test(m.dep)) counts.set(m.dep, (counts.get(m.dep) ?? 0) + 1);
+      // other visitors' payloads are untrusted: a town is kept only with a valid code, under the name we look up ourselves
+      const name = m?.code && /^(\d{5}|2[AB]\d{3})$/.test(m.code) ? townName(m.code, sync) : null;
+      if (m?.code && name) {
+        const t = towns.get(m.code) ?? { name, dep: m.dep ?? "", n: 0 };
+        t.n++;
+        towns.set(m.code, t);
       }
-      lastTowns = towns;
-      for (const fn of presenceListeners) fn(counts, total, towns);
-    })
+    }
+    lastTowns = towns;
+    for (const fn of presenceListeners) fn(counts, total, towns);
+  };
+  presence
+    .on("presence", { event: "sync" }, sync)
     .subscribe((status) => {
       if (status === "SUBSCRIBED") presence!.track(presencePayload());
     });

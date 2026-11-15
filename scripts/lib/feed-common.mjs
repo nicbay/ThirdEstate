@@ -38,10 +38,15 @@ export async function writeJson(file, data, pretty = false) {
 
 export const hash = (s, n = 12) => createHash("sha1").update(s).digest("hex").slice(0, n);
 
+const MAX_BODY = 20e6;
 export async function fetchText(url, { timeout = 20000, headers = {} } = {}) {
   const res = await fetch(url, { headers: { "user-agent": UA, ...headers }, signal: AbortSignal.timeout(timeout) });
   if (!res.ok) throw new Error(`HTTP ${res.status} ${url}`);
-  return res.text();
+  // feeds and API answers are a few hundred kB; a body beyond 20 MB is refused rather than parsed
+  if (Number(res.headers.get("content-length")) > MAX_BODY) throw new Error(`body too large ${url}`);
+  const text = await res.text();
+  if (text.length > MAX_BODY) throw new Error(`body too large ${url}`);
+  return text;
 }
 export async function fetchJson(url, opts) {
   return JSON.parse(await fetchText(url, { ...opts, headers: { accept: "application/json", ...(opts?.headers ?? {}) } }));
@@ -64,10 +69,12 @@ export async function pool(items, n, fn) {
 
 // ---------- text ----------
 const ENTITIES = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", laquo: "«", raquo: "»", rsquo: "’", lsquo: "‘", ldquo: "“", rdquo: "”", hellip: "…", ndash: "–", mdash: "—", eacute: "é", egrave: "è", agrave: "à", ccedil: "ç", ecirc: "ê", ocirc: "ô", icirc: "î", ucirc: "û", euro: "€" };
+/** A numeric character reference; one outside Unicode (a broken or hostile feed) is dropped instead of throwing. */
+const codePoint = (n) => (Number.isInteger(n) && n >= 0 && n <= 0x10ffff ? String.fromCodePoint(n) : "");
 export function decodeEntities(s) {
   return s
-    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
-    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(+d))
+    .replace(/&#x([0-9a-f]+);/gi, (_, h) => codePoint(parseInt(h, 16)))
+    .replace(/&#(\d+);/g, (_, d) => codePoint(+d))
     .replace(/&([a-z]+);/gi, (m, e) => ENTITIES[e.toLowerCase()] ?? m);
 }
 export function cleanText(s) {

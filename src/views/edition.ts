@@ -53,7 +53,7 @@ function factorHtml(f: Factor, name: string) {
       : L(`<b>Pas les sondages</b> : ils l’ont fait bouger de ${sgn(f.d)} en 7 jours, dans l’autre sens.`, `<b>Not the polls</b>: they moved ${sgn(f.d)} in 7 days, the other way.`);
     case "poll": {
       const g = pollsterRating(f.pollster)?.grade;
-      const who = `${f.url ? `<a href="${esc(safeUrl(f.url))}" target="_blank" rel="noopener">${esc(pollsterName(f.pollster))}</a>` : esc(pollsterName(f.pollster))}${g ? ` <b style="color:${gradeColor(g)}">${g}</b>` : ""}`;
+      const who = `${f.url ? `<a href="${esc(safeUrl(f.url))}" target="_blank" rel="noopener">${esc(pollsterName(f.pollster))}</a>` : esc(pollsterName(f.pollster))}${g ? ` <b style="color:${esc(gradeColor(g))}">${esc(g)}</b>` : ""}`;
       return L(`<b>Un sondage du jour</b> : ${who} ${f.same ? "le confirme" : "va dans l’autre sens"}, ${sur(name)} à ${pct(f.v)}, ${sgn(f.v - f.avg)} par rapport à sa moyenne.`, `<b>A poll that day</b>: ${who} ${f.same ? "backs it" : "points the other way"}, ${sur(name)} on ${pct(f.v)}, ${sgn(f.v - f.avg)} from their average.`);
     }
     case "news": return `<b>${L("Dans l’actualité", "In the news")}</b>${L(" :", ":")}<ul>${f.headlines.map((h) => `<li>${story(h)}</li>`).join("")}</ul>`;
@@ -112,7 +112,7 @@ function tableHtml(g: Ledger) {
   return `<table class="lg-table">
     <caption><span>${L("Sondages et marchés de prédiction", "Polls and prediction markets")}</span><a class="ed-wk-go" href="#trend">${L("Tous les sondages", "Every poll")} ↓</a></caption>
     <thead><tr><th scope="col">${L("Candidat", "Candidate")}</th><th scope="col">${L("Sondages", "Polls")}, ${span}</th><th scope="col">${L("Chance de victoire", "Chance to win")}, ${span}</th></tr></thead>
-    <tbody>${g.table.map((r) => `<tr><th scope="row"><i style="background:${meta(r.name).color}" aria-hidden="true"></i>${sur(r.name)}</th><td>${r.polls == null ? "–" : pct(r.polls)}${d(wk ? r.polls7 : r.polls1)}</td><td>${r.market == null ? "–" : pct(r.market)}${d(wk ? r.d7 : r.d1)}</td></tr>`).join("")}</tbody>
+    <tbody>${g.table.map((r) => `<tr><th scope="row"><i style="background:${esc(meta(r.name).color)}" aria-hidden="true"></i>${sur(r.name)}</th><td>${r.polls == null ? "–" : pct(r.polls)}${d(wk ? r.polls7 : r.polls1)}</td><td>${r.market == null ? "–" : pct(r.market)}${d(wk ? r.d7 : r.d1)}</td></tr>`).join("")}</tbody>
   </table>
   <p class="lg-cap">${L("Moyenne des sondages (intentions de vote) ; Kalshi et Polymarket, en moyenne.", "Poll average (voting intention); Kalshi and Polymarket, averaged.")}</p>`;
 }
@@ -124,9 +124,9 @@ function render(e: Edition, idx: { date: string }[]) {
   const g = e.ledger, s = e.insight?.surprise;
   const city = g?.city;
   return `<div class="ed-nav">
-      ${prev ? `<button type="button" class="ed-go" data-d="${prev.date}" aria-label="${esc(L(`Édition du ${fmtDate(prev.date)}`, `Edition of ${fmtDate(prev.date)}`))}">◀ ${esc(fmtDate(prev.date).replace(/\s\d{4}$/, ""))}</button>` : `<span></span>`}
+      ${prev ? `<button type="button" class="ed-go" data-d="${esc(prev.date)}" aria-label="${esc(L(`Édition du ${fmtDate(prev.date)}`, `Edition of ${fmtDate(prev.date)}`))}">◀ ${esc(fmtDate(prev.date).replace(/\s\d{4}$/, ""))}</button>` : `<span></span>`}
       <p class="ed-k"><b>${g?.span === "week" ? L("La note de la semaine", "Note of the week") : L("La note du jour", "Note of the day")}</b><span>${esc(day)}</span></p>
-      ${next ? `<button type="button" class="ed-go" data-d="${next.date}" aria-label="${esc(L(`Édition du ${fmtDate(next.date)}`, `Edition of ${fmtDate(next.date)}`))}">${esc(fmtDate(next.date).replace(/\s\d{4}$/, ""))} ▶</button>` : `<span></span>`}
+      ${next ? `<button type="button" class="ed-go" data-d="${esc(next.date)}" aria-label="${esc(L(`Édition du ${fmtDate(next.date)}`, `Edition of ${fmtDate(next.date)}`))}">${esc(fmtDate(next.date).replace(/\s\d{4}$/, ""))} ▶</button>` : `<span></span>`}
     </div>
     <h2 class="ed-head">${esc(L((e.insight?.head ?? e.head).fr, (e.insight?.head ?? e.head).en))}</h2>
     ${e.provisional ? `<p class="ed-prov">${L("Édition du jour en cours : cours des marchés de la dernière heure ; les sondages et l’analyse complète arrivent avec la synthèse quotidienne.", "Today's edition in progress: the latest hourly market prices; the polls and the full analysis come with the daily brief.")}</p>` : ""}
