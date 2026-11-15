@@ -391,3 +391,25 @@
 
 /* the ocean's caption: what the pixels are, in one pixel-type line at the foot of the hero's opening */
 .ocean-cap { margin: -0.9rem 0 1.3rem; text-align: right; font: 400 0.6875rem/1.4 var(--pixel); text-transform: uppercase; letter-spacing: 0.06em; color: var(--night-text-3); }
+
+/* the hero's seats legend sits on the night band in both themes: its counts take the band's text colour, not the
+   page's ink (which is dark in light mode and made the numbers vanish) */
+.hday-art .hd-legend { color: var(--night-text-2); }
+.hday-art .hd-legend b { color: var(--night-text); }
+
+/* the debt since the reader arrived (views/economy.ts, mountDebtStrip): one box across the two widgets, the whole
+   of it a link to the debt page */
+.hw-debt { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: baseline; gap: 0.25rem 1.6rem; margin-top: 1.4rem; padding: 1.1rem 1.4rem calc(1.2rem + var(--box-bar-h)); color: var(--ink); }
+.hw-debt .hd-k { grid-column: 1 / -1; font: 600 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); }
+.hw-debt .hd-n { font: 850 clamp(1.7rem, 1.2rem + 2vw, 2.6rem)/1 var(--display); font-stretch: 76%; letter-spacing: -0.015em; font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+.hw-debt .hd-main span { font-size: 1rem; color: var(--ink-2); }
+.hw-debt .hd-eq { font-size: 1rem; line-height: 1.4; color: var(--ink-2); min-width: 0; }
+.hw-debt .hd-go { font: 700 0.92rem var(--display); white-space: nowrap; }
+.hw-debt:hover .hd-go, .hw-debt:focus-visible .hd-go { text-decoration: underline; }
+@media (max-width: 900px) { .hw-debt { grid-template-columns: 1fr; } }
+
+/* the week's brief (three lines that take a stand) and the borrowing line's link */
+.lg-brief { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.lg-brief li b { font: 700 1.02rem var(--display); color: var(--ink); }
+.lg-brief .ed-ev { display: block; margin-top: 0.1rem; }
+.lg-b .lg-more { font: 600 0.75rem var(--mono); color: var(--link); white-space: nowrap; }

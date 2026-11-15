@@ -71,6 +71,7 @@ export async function renderSources(app: HTMLElement) {
     ]],
     [L("Économie", "Economy"), [
       { data: L("Dette, déficit, croissance, prix, chômage", "Debt, deficit, growth, prices, unemployment"), source: L("Eurostat (API de diffusion), INSEE (Banque de données macroéconomiques)", "Eurostat (dissemination API), INSEE (macroeconomic database)"), url: "https://ec.europa.eu/eurostat/data/database", refresh: at(L("Hebdomadaire (mardi)", "Weekly (Tuesday)"), economy?.fetchedAt), licence: `CC BY 4.0 (Eurostat), ${LO()}` },
+      { data: L("Taux de l’OAT et du Bund à 10 ans, écart OAT-Bund", "10-year OAT and Bund yields, OAT-Bund spread"), source: L("Teleborsa, via Borsa Italiana (page publique, différé de 15 minutes)", "Teleborsa, via Borsa Italiana (public page, 15 minutes delayed)"), url: "https://www.borsaitaliana.it/obbligazioni/spread/francia/oat-bund.en.htm", refresh: L("Quotidienne", "Daily"), licence: L("Conditions du site ; valeurs de clôture citées avec leur source", "The site’s terms; closing values cited with their source") },
     ]],
     [L("Cartes", "Maps"), [
       { data: L("Contours des départements", "Department outlines"), source: "Etalab / IGN", url: "https://etalab-datasets.geo.data.gouv.fr/contours-administratifs/", refresh: L("Statique", "Static"), licence: LO() },

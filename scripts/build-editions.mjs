@@ -63,6 +63,33 @@ const stories = async (date) => {
 // (public/data/news/<dep>.json), whose headline names it, with a coat of arms to show and at least 10,000
 // inhabitants. Crime and accident stories are left out, and a town does not come back within 30 days. Once picked
 // a city is kept (daily/cities.json): the press files only cover the last two weeks, so past days can't be redone.
+// what France pays to borrow (scripts/sync-yields.mjs) and the pace of new debt (scripts/sync-economy.mjs)
+const yields = await read("daily/yields.json").catch(() => null);
+const newDebtPerYear = (await read("economy.json").catch(() => null))?.debt?.ratePerYear ?? null;
+// headlines that can move a government bond: the budget, the debt, a rating, a censure vote, the central bank
+const BOND_NEWS = /budget|dette publique|la dette|d[ée]ficit|notation|moody|fitch|standard ?& ?poor|agence de notation|censure|49[.,]3|dissolution|bce|banque centrale|emprunt|obligations?|march[ée]s financiers|spread|oat|taux d.int[ée]r[êe]t/i;
+/** The borrowing line of an edition: the OAT-Bund gap at the last close on or before D, its move over a session (a week
+ *  on a Sunday), the OAT rate and its move when both days were recorded, and what the move is worth in interest on a
+ *  year of new debt (the move in points × the debt France adds in a year): a notional figure, an order of magnitude. */
+function borrowing(D, sunday, headlines) {
+  const h = (yields?.history ?? []).filter(([d]) => d <= D);
+  const last = h.at(-1);
+  if (!last || last[0] < iso(Date.parse(D) - 4 * DAY)) return null;
+  const back = sunday ? h.filter(([d]) => d <= iso(Date.parse(last[0]) - 7 * DAY)).at(-1) : h.at(-2);
+  if (!back) return null;
+  const rate = (d) => (yields.rates ?? []).find((r) => r[0] === d) ?? null;
+  const now = rate(last[0]), then = rate(back[0]);
+  const dSpread = r1(last[1] - back[1]);
+  const dOat = now && then ? Math.round((now[1] - then[1]) * 100) / 100 : null; // percentage points
+  const moveBp = dOat != null ? dOat * 100 : dSpread;
+  const why = headlines.filter((x) => BOND_NEWS.test(x.title)).sort((a, b) => b.n - a.n)[0] ?? null;
+  return {
+    span: sunday ? "week" : "day", asOf: last[0], from: back[0], spread: last[1], dSpread,
+    oat10: now?.[1] ?? null, bund10: now?.[2] ?? null, dOat, basis: dOat != null ? "oat" : "spread",
+    base: newDebtPerYear > 0 ? newDebtPerYear : null, cost: newDebtPerYear > 0 ? Math.round((newDebtPerYear * moveBp) / 10000) : null,
+    why: why ? { title: why.title, link: why.link, outlet: why.outlet, n: why.n } : null,
+  };
+}
 const cities = await read("daily/cities.json").catch(() => ({}));
 let citiesChanged = false, localNews = null;
 const GRIM = /meurtr|\bmorts?\b|\bmorte|tu[ée]e?s?\b|d[ée]c[èe]s|d[ée]c[èe]d|\bviols?\b|agress|accident|poignard|fusillade|incendie|drame|suicide|disparu|bless[ée]|proc[èe]s|condamn|prison|drogue|narco|braquage|cambriol|attentat|homicide|f[ée]minicide|noyade|cadavre|\bcorps\b|garde à vue|mis en examen|interpell|lacrymog|violen|heurts|[ée]meut|menac|enqu[êe]te|plainte/i;
@@ -240,6 +267,9 @@ for (const day of days) {
     world: hl?.world?.[0] ?? null,
     france: hl?.france?.find((h) => !whoIn(h)) ?? hl?.france?.[0] ?? headlines.find((h) => !whoIn(h)) ?? null,
     candidates: candNews, lead, recap,
+    borrow: borrowing(D, sunday, headlines),
+    // Sunday's brief: three lines that take a stand, written by hand (daily/briefs/<date>.json), each with its lead and its story
+    brief: sunday ? (await read("daily/briefs/" + D + ".json").catch(() => null))?.lines ?? null : null,
     table: [...rows].sort((x, y) => (y.polls ?? -1) - (x.polls ?? -1) || (y.market ?? 0) - (x.market ?? 0)).slice(0, 7).map(({ name, polls, polls1, polls7, market, d1, d7 }) => ({ name, polls, polls1, polls7, market, d1, d7 })),
     city: await cityOf(D),
   };
