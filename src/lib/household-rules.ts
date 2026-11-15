@@ -243,7 +243,7 @@ export function simulate(h: Household): Result {
   const oneOff: Line[] = [];
   const assumptions: T[] = [
     t("Effets statiques : pas de changement de comportement, d’emploi, de prix ni de salaires au-delà de ceux que la mesure fixe.", "Static effects: no change in behaviour, jobs, prices or wages beyond what the measure sets."),
-    t("Le financement des mesures (cotisations, impôts non détaillés) n’est compté que lorsque le programme ou un texte de LFI en donne le barème.", "How the measures are paid for (contributions, unspecified taxes) is counted only where the programme or an LFI text gives the rates."),
+    t("Le financement des mesures (cotisations, impôts non détaillés) n’est compté que lorsque le programme ou un texte de LFI en donne le barème.", "How the measures are paid for (contributions, unspecified taxes) is counted only where the program or an LFI text gives the rates."),
     t("Revenu imposable estimé à partir du net mensuel (CSG/CRDS non déductibles et abattement de 10 % approchés).", "Taxable income estimated from net monthly pay (non-deductible CSG/CRDS and the 10% deduction approximated)."),
   ];
   const baseNets = h.adults.map((a) => a.net);
@@ -282,7 +282,7 @@ export function simulate(h: Household): Result {
   if (pens) {
     lines.push({ id: "pension", measure: "L2bddf3", kind: "income", amount: pens, assumption: true,
       label: t("Pension minimale au niveau du SMIC (carrière complète)", "Minimum pension at the minimum wage (full career)"),
-      note: t("Pension nette portée à 1 700 € par mois ; le programme dit « au niveau du SMIC revalorisé », lu ici en net.", "Net pension raised to €1,700 a month; the programme says ‘at the level of the raised minimum wage’, read here as net.") });
+      note: t("Pension nette portée à 1 700 € par mois ; le programme dit « au niveau du SMIC revalorisé », lu ici en net.", "Net pension raised to €1,700 a month; the program says ‘at the level of the raised minimum wage’, read here as net.") });
   }
 
   // --- income tax (sequential decomposition) ---
@@ -298,12 +298,12 @@ export function simulate(h: Household): Result {
     note: t("Les hausses de salaire ou de pension ci-dessus entrent dans le revenu imposable.", "The pay or pension rises above are part of taxable income.") });
   lines.push({ id: "ir14", measure: "L846994", kind: "tax", amount: -(S2 - S1), assumption: true,
     label: t("Impôt sur le revenu à 14 tranches", "Income tax with 14 brackets"),
-    note: t("Barème de l’amendement LFI-NFP I-CF748 (PLF 2025) : 0 % jusqu’à 10 434 €, puis 5 % à 70 % au-delà de 400 000 € par part. Le programme ne donne pas les taux.", "Scale of LFI-NFP amendment I-CF748 (2025 budget): 0% up to €10,434, then 5% to 70% above €400,000 per part. The programme gives no rates.") });
+    note: t("Barème de l’amendement LFI-NFP I-CF748 (PLF 2025) : 0 % jusqu’à 10 434 €, puis 5 % à 70 % au-delà de 400 000 € par part. Le programme ne donne pas les taux.", "Scale of LFI-NFP amendment I-CF748 (2025 budget): 0% up to €10,434, then 5% to 70% above €400,000 per part. The program gives no rates.") });
   assumptions.push(t("Barème à 14 tranches : celui de l’amendement LFI-NFP I-CF748 au budget 2025 (rejeté), non réindexé ; décote et plafond du quotient familial inchangés.", "14-bracket scale: the one in LFI-NFP amendment I-CF748 to the 2025 budget (rejected), not re-indexed; décote and family-quotient cap unchanged."));
   if (h.status === "married" && h.adults.length === 2) {
     lines.push({ id: "conjugal", measure: "Le4b9b7", kind: "tax", amount: -(S3 - S2), assumption: true,
       label: t("Fin du quotient conjugal (imposition séparée)", "End of joint filing for married couples"),
-      note: t("Chaque conjoint est imposé sur ses propres revenus ; les enfants sont rattachés au conjoint au revenu le plus élevé (le programme ne dit pas comment).", "Each spouse is taxed on their own income; children are attached to the higher earner (the programme does not say how).") });
+      note: t("Chaque conjoint est imposé sur ses propres revenus ; les enfants sont rattachés au conjoint au revenu le plus élevé (le programme ne dit pas comment).", "Each spouse is taxed on their own income; children are attached to the higher earner (the program does not say how).") });
     assumptions.push(t("Fin du quotient conjugal : enfants rattachés au conjoint qui gagne le plus, revenus du capital partagés à parts égales.", "End of joint filing: children attached to the higher-earning spouse, capital income split equally."));
   }
   if (cap > 0) {
@@ -367,7 +367,7 @@ export function simulate(h: Household): Result {
   }
   lines.push({ id: "energy", measure: "L0bd9c8", kind: "service", amount: ENERGY.kwh * ENERGY.price, assumption: true,
     label: t("Première tranche d’énergie gratuite", "Free first tranche of energy"),
-    note: t(`Le programme ne fixe pas le volume. Hypothèse : ${fmt(ENERGY.kwh)} kWh d’électricité par foyer à ≈ ${dfr(ENERGY.price, 2)} €/kWh. Le prix des tranches suivantes n’est pas connu.`, `The programme sets no volume. Assumption: ${fmt(ENERGY.kwh)} kWh of electricity per household at ≈ €${fmtDec(ENERGY.price, 2)}/kWh. The price of the following tranches is unknown.`) });
+    note: t(`Le programme ne fixe pas le volume. Hypothèse : ${fmt(ENERGY.kwh)} kWh d’électricité par foyer à ≈ ${dfr(ENERGY.price, 2)} €/kWh. Le prix des tranches suivantes n’est pas connu.`, `The program sets no volume. Assumption: ${fmt(ENERGY.kwh)} kWh of electricity per household at ≈ €${fmtDec(ENERGY.price, 2)}/kWh. The price of the following tranches is unknown.`) });
   const mutDefault = h.adults.reduce((s, a) => s + (a.job === "private" ? MUTUELLE_DEFAULT.private : a.job === "public" ? MUTUELLE_DEFAULT.public : a.job === "retired" ? MUTUELLE_DEFAULT.retired : MUTUELLE_DEFAULT.other), 0)
     + MUTUELLE_DEFAULT.child * nKidsTax(h.kids);
   const mut = h.mutuelle ?? mutDefault;
@@ -375,8 +375,8 @@ export function simulate(h: Household): Result {
     lines.push({ id: "secu", measure: "L171b77", kind: "service", amount: mut * 12, assumption: h.mutuelle == null,
       label: t("« 100 % Sécu » : plus de mutuelle à payer", "‘100% Sécu’: no complementary health premium"),
       note: h.mutuelle == null
-        ? t(`Cotisation estimée à ${fmt(mutDefault)} € par mois pour le foyer (ordre de grandeur, part à votre charge). Le financement par cotisations n’est pas chiffré par le programme.`, `Premium estimated at €${fmt(mutDefault)} a month for the household (order of magnitude, your share). The programme does not cost the contributions that would replace it.`)
-        : t("Votre cotisation déclarée disparaît. Le financement par cotisations n’est pas chiffré par le programme.", "The premium you entered disappears. The programme does not cost the contributions that would replace it.") });
+        ? t(`Cotisation estimée à ${fmt(mutDefault)} € par mois pour le foyer (ordre de grandeur, part à votre charge). Le financement par cotisations n’est pas chiffré par le programme.`, `Premium estimated at €${fmt(mutDefault)} a month for the household (order of magnitude, your share). The program does not cost the contributions that would replace it.`)
+        : t("Votre cotisation déclarée disparaît. Le financement par cotisations n’est pas chiffré par le programme.", "The premium you entered disappears. The program does not cost the contributions that would replace it.") });
   }
 
   // --- inheritance (one-off) ---
@@ -384,7 +384,7 @@ export function simulate(h: Household): Result {
     const now = inheritanceTax(h.inheritance), then = inheritanceTaxLFI(h.inheritance);
     oneOff.push({ id: "inherit", measure: h.inheritance > INHERIT_LFI.cap ? "L5e0934" : "L9dd3b8", kind: "tax", amount: now - then, assumption: h.inheritance > INHERIT_LFI.exempt && h.inheritance <= INHERIT_LFI.cap,
       label: t("Droits de succession (une fois)", "Inheritance tax (one-off)"),
-      note: t(`Aujourd’hui ${fmt(now)} € en ligne directe ; avec le programme ${fmt(then)} € : exonération sous 150 000 €, héritage maximal de 12 M€. Entre les deux, le programme annonce une hausse sur « les plus hauts patrimoines » sans barème : droits actuels conservés ici.`, `Today €${fmt(now)} in direct line; under the programme €${fmt(then)}: no duty under €150,000, maximum inheritance €12m. In between, the programme announces a rise on ‘the largest estates’ with no scale: current duties kept here.`) });
+      note: t(`Aujourd’hui ${fmt(now)} € en ligne directe ; avec le programme ${fmt(then)} € : exonération sous 150 000 €, héritage maximal de 12 M€. Entre les deux, le programme annonce une hausse sur « les plus hauts patrimoines » sans barème : droits actuels conservés ici.`, `Today €${fmt(now)} in direct line; under the program €${fmt(then)}: no duty under €150,000, maximum inheritance €12m. In between, the program announces a rise on ‘the largest estates’ with no scale: current duties kept here.`) });
   }
 
   for (const l of lines) l.amount = Math.round(l.amount);

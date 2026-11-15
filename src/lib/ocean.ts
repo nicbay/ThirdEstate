@@ -155,11 +155,8 @@ export function mountOcean(host: HTMLElement) {
   say.className = "ocean-say";
   say.id = "ocean-say";
   say.innerHTML = `<i aria-hidden="true"></i><p><b>${L("Votre voix compte", "Your vote matters")}</b></p>`;
-  // what the pixels are, said once, under the hero's opening
-  const cap = document.createElement("p");
-  cap.className = "ocean-cap";
-  cap.textContent = L(`${POPULATION.toLocaleString("fr-FR")} pixels, un par habitant. L’un d’eux, c’est vous.`, `${POPULATION.toLocaleString("en-GB")} pixels, one per inhabitant. One of them is you.`);
-  host.querySelector(".hday-top")?.after(cap);
+  // (the caption line under the hero's opening, "69 million pixels, one per inhabitant", was removed: the hero's
+  // foot keeps only the Assembly animation)
   host.classList.add("has-ocean");
   host.prepend(canvas);
   // the room and the message are for a mouse (and the keyboard); on touch screens the pixel only glows

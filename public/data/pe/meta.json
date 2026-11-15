@@ -1,0 +1,41 @@
+{
+  "syncedAt": "2026-11-15T13:58:38.876Z",
+  "term": 10,
+  "window": {
+    "from": "2024-07-16",
+    "to": "2026-11-15",
+    "fullTerm": true
+  },
+  "sources": {
+    "api": "https://data.europarl.europa.eu/api/v2",
+    "docs": "https://data.europarl.europa.eu/en/developer-corner/opendata-api",
+    "licence": "© European Union – European Parliament, reuse authorised (https://www.europarl.europa.eu/legal-notice/en/)"
+  },
+  "meps": {
+    "current": 81,
+    "term": 85
+  },
+  "votes": {
+    "from": "2024-07-17",
+    "to": "2026-11-12",
+    "sittings": 126,
+    "sittingsWithRollCalls": 116,
+    "rollCalls": 6506,
+    "items": 800
+  },
+  "speeches": {
+    "total": 3060,
+    "french": 2988,
+    "notFrench": 50,
+    "langs": {
+      "ENG": 47,
+      "ITA": 3
+    },
+    "chair": 22,
+    "empty": 0,
+    "meps": 81,
+    "from": "2024-07-17",
+    "to": "2026-11-11"
+  },
+  "missing": []
+}

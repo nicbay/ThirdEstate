@@ -214,3 +214,9 @@ a.box:hover, a.hh-callout:hover, a.box:focus-visible, a.hh-callout:focus-visible
 /* on the homepage's night band the box keeps its line and ground from the band */
 .hday-chart .ed { --box-line: var(--night-rule-2, #3a3f5a); --box-bg: color-mix(in srgb, var(--night-2) 88%, transparent); }
 @media (max-width: 640px) { .card { padding: var(--spacing-3) 0.95rem calc(1.1rem + var(--box-bar-h)); } }
+
+/* the "Élus" hub (src/views/elus.ts): the three chambers side by side, each with its head count and its doors */
+.elus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: var(--spacing-4); align-items: start; }
+.elus-ch .elus-n { display: block; font: 800 2.6rem/1 var(--display); font-stretch: 80%; letter-spacing: -0.015em; }
+.elus-ch > p { margin: 0.2rem 0 0.9rem; }
+.elus-ch .doors { grid-template-columns: 1fr; }

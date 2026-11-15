@@ -1,0 +1,19 @@
+{
+  "syncedAt": "2026-11-15T13:27:14.875Z",
+  "source": {
+    "url": "https://data.senat.fr/data/debats/cri.zip",
+    "page": "https://data.senat.fr/la-base-comptes-rendus/",
+    "lastModified": "Sun, 15 Nov 2026 13:17:22 GMT"
+  },
+  "coverage": {
+    "from": "2023-10-02",
+    "to": "2026-11-13",
+    "sittingDays": 349,
+    "senatorsWithSpeeches": 337,
+    "senatorsWithCloud": 334,
+    "senators": 348
+  },
+  "skippedFiles": [
+    "cri/d20261204.xml"
+  ]
+}

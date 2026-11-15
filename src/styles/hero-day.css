@@ -356,6 +356,10 @@
 .lg-row:first-child { border-top: 2px solid var(--ink); }
 .lg-k { font: 400 0.6875rem/1.6 var(--pixel); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); padding-top: 0.2rem; }
 .lg-row.is-te .lg-k { color: var(--split-red); }
+/* our take can run to a few paragraphs: kept to a readable line length, even across the weekly box */
+.lg-row.is-te .lg-b { max-width: 80ch; }
+.lg-row.is-te .lg-b > p { margin: 0; }
+.lg-row.is-te .lg-b > p + p { margin-top: 0.55rem; }
 .lg-b { min-width: 0; color: var(--ink); font-size: 0.98rem; line-height: 1.42; }
 .lg-b a { color: var(--ink); text-decoration: none; }
 .lg-b a:hover, .lg-b a:focus-visible { text-decoration: underline; }
@@ -388,9 +392,6 @@
 .ed-city-name { font: 700 1.02rem var(--display); }
 .ed .ed-by { margin: 0; }
 .ed.is-in .lg-row { animation: ed-rise 0.45s ease-out backwards; }
-
-/* the ocean's caption: what the pixels are, in one pixel-type line at the foot of the hero's opening */
-.ocean-cap { margin: -0.9rem 0 1.3rem; text-align: right; font: 400 0.6875rem/1.4 var(--pixel); text-transform: uppercase; letter-spacing: 0.06em; color: var(--night-text-3); }
 
 /* the hero's seats legend sits on the night band in both themes: its counts take the band's text colour, not the
    page's ink (which is dark in light mode and made the numbers vanish) */
@@ -470,4 +471,36 @@
 .lg-note { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.6rem; align-items: start; margin: 0 0 0.7rem; font-size: 0.98rem; line-height: 1.42; color: var(--ink); }
 .lg-note svg { display: block; margin-top: 0.15rem; }
 .lg-note + .lg-table, .lg-note + table { margin-top: 0.9rem; }
+.lg-note + .lg-note { margin-top: 0.2rem; }
 .lg-table + .lg-note, .lg-cost + .lg-note { margin-top: 0.8rem; }
+
+/* the note's name ("La note du jour / de la semaine"): a square outline, so the box reads as the note at a glance */
+.ed-k b { display: inline-block; padding: 0.3rem 0.75rem 0.25rem; border: 2px solid var(--accent); color: var(--ink); }
+
+/* light theme: the note of the day / week is a sheet of white paper laid on the dark pixel ocean (the band, the chart
+   and the rest of the hero stay night). The night overrides of .hday-chart are reset to the paper palette inside it.
+   Dark theme: unchanged. */
+:root[data-theme="light"] .hday-chart .ed {
+  --ink: #0d0f1a; --ink-2: #474c56; --ink-3: #686d77; --paper: #fff; --panel: #f3f1ea; --wash: #e6e3d9;
+  --rule: #e2dfd4; --rule-2: #cfcabb; --link: #3d23b8; --accent: #4b2fd0; --far-right: #1c2c6c;
+  --up-night: var(--up-text); --down-night: var(--down-text);
+  --box-line: #cfcabb; --box-bg: #fff;
+  color: var(--ink);
+}
+:root[data-theme="light"] .hday-chart .ed [stroke="#1c2c6c"] { stroke: #1c2c6c; }
+:root[data-theme="light"] .hday-chart .ed [fill="#1c2c6c"] { fill: #1c2c6c; }
+:root[data-theme="light"] .hday-chart .ed [style*="#1c2c6c"] { --c: #1c2c6c !important; }
+:root[data-theme="light"] .hday-chart .ed :is(.lg-row.is-te .lg-k, .ed-prov, .lg-kpi tbody th small em) { color: var(--left-text); }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) .hday-chart .ed {
+    --ink: #0d0f1a; --ink-2: #474c56; --ink-3: #686d77; --paper: #fff; --panel: #f3f1ea; --wash: #e6e3d9;
+    --rule: #e2dfd4; --rule-2: #cfcabb; --link: #3d23b8; --accent: #4b2fd0; --far-right: #1c2c6c;
+    --up-night: var(--up-text); --down-night: var(--down-text);
+    --box-line: #cfcabb; --box-bg: #fff;
+    color: var(--ink);
+  }
+  :root:not([data-theme]) .hday-chart .ed [stroke="#1c2c6c"] { stroke: #1c2c6c; }
+  :root:not([data-theme]) .hday-chart .ed [fill="#1c2c6c"] { fill: #1c2c6c; }
+  :root:not([data-theme]) .hday-chart .ed [style*="#1c2c6c"] { --c: #1c2c6c !important; }
+  :root:not([data-theme]) .hday-chart .ed :is(.lg-row.is-te .lg-k, .ed-prov, .lg-kpi tbody th small em) { color: var(--left-text); }
+}

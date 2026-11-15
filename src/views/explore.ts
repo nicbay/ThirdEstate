@@ -667,8 +667,16 @@ export async function renderTown(app: HTMLElement, code: string) {
     const box = app.querySelector<HTMLElement>("#town-arms");
     if (!box) return;
     const depName = info?.departement?.nom ?? dep;
-    box.innerHTML = armsSlot(ca[code] ?? ca[/^751/.test(code) ? "75056" : /^6938/.test(code) ? "69123" : /^132/.test(code) ? "13055" : ""], L(`Armoiries : ${name}`, `Coat of arms: ${name}`), "xxl")
-      + armsSlot(da[dep], L(`${depName} : le département, ses communes et ses députés`, `${depName}: the department, its towns and MPs`), "s", `#/explorer/${dep}`);
+    // an arrondissement of Paris, Lyon or Marseille: its own arms, then the city's at the same size (Paris is also the
+    // department, so its arms lead to the department); the department's small arms follow for Lyon and Marseille
+    const city = /^751/.test(code) ? { code: "75056", name: "Paris" } : /^6938/.test(code) ? { code: "69123", name: "Lyon" } : /^132/.test(code) ? { code: "13055", name: "Marseille" } : null;
+    const own = ca[code];
+    const cityArms = city && own && ca[city.code]
+      ? armsSlot(ca[city.code], city.code === "75056" ? L("Paris : la ville et le département, ses arrondissements et ses députés", "Paris: the city and department, its arrondissements and MPs") : L(`Armoiries : ${city.name}`, `Coat of arms: ${city.name}`), "xxl", city.code === "75056" ? `#/explorer/${dep}` : `#/ville/${city.code}`)
+      : "";
+    box.innerHTML = armsSlot(own ?? (city ? ca[city.code] : undefined), L(`Armoiries : ${name}`, `Coat of arms: ${name}`), "xxl")
+      + cityArms
+      + (city?.code === "75056" && cityArms ? "" : armsSlot(da[dep], L(`${depName} : le département, ses communes et ses députés`, `${depName}: the department, its towns and MPs`), "s", `#/explorer/${dep}`));
     paintArms(box);
   });
   // one light-hearted line about the town, written by an AI and labelled as such (scripts/sync-town-quips.mjs)

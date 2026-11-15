@@ -5,6 +5,7 @@ import { L, fmtDate, fmtNum, fmtPct } from "../i18n";
 import { SENATE_SEATS, hemicycle, senateSeatRank } from "../lib/hemicycle";
 import { esc, safeColor, safeUrl } from "../util";
 import { depArmsSlot } from "../lib/arms";
+import { renderChamberCloud, renderSpeakerSpeech, type SpeechChamber } from "./speeches";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface Senateur {
@@ -26,6 +27,26 @@ const PARTICIPATION_NOTE = () =>
     "Au Sénat, le délégué de chaque groupe vote pour tous ses membres lors des scrutins publics ordinaires : la participation y mesure donc la présence d’une position, pas la présence en séance. Le président du Sénat ne vote pas, par usage.",
     "In the Senate, each group’s delegate casts the vote for all its members in ordinary public votes, so participation shows that a position was recorded, not attendance. By custom, the Senate President doesn’t vote.",
   );
+
+/** What senators say in the chamber: scripts/sync-senat-interventions.mjs (Sénat, comptes rendus intégraux). */
+const SENATE_SPEECH: SpeechChamber = {
+  base: "/data/senat/interventions/",
+  people: loadSenateurs,
+  href: (id) => `#/senateur/${esc(id)}`,
+  photo: (p) => senPhoto(p as Senateur),
+  record: "https://www.senat.fr/seances/",
+  link: () => ["#/senat", L("Ce que disent les sénateurs", "What senators say")],
+  members: () => L("sénateurs", "senators"),
+  house: () => L("Sénat", "whole Senate"),
+  barNote: () => L("Barre : part de ses interventions ; trait : moyenne du Sénat.", "Bar: share of their speeches; tick: whole-Senate average."),
+  methodNote: () => L("Les mots du nuage sont ceux que ce sénateur emploie nettement plus que les autres (TF-IDF)", "Cloud words are those this senator uses far more than the others (TF-IDF)"),
+  briefLabel: () => L("Brèves interventions", "Brief remarks"),
+  sourceLine: (p) =>
+    `<p class="source muted">${L(
+      `Source : Sénat, comptes rendus intégraux de la séance publique (data.senat.fr, base Comptes rendus, Licence Ouverte), ${fmtNum(p.sittings)} jours de séance du ${fmtDate(p.from)} au ${fmtDate(p.to)}. Interventions de la présidence de séance exclues ; « brèves » : un seul paragraphe de moins de 15 mots.`,
+      `Source: French Senate verbatim records of public sittings (data.senat.fr, Comptes rendus database, Licence Ouverte), ${fmtNum(p.sittings)} sitting days from ${fmtDate(p.from)} to ${fmtDate(p.to)}. Remarks made from the chair excluded; “brief”: a single paragraph under 15 words.`,
+    )} · <a href="https://data.senat.fr/la-base-comptes-rendus/" target="_blank" rel="noopener">${L("jeu de données", "dataset")} ↗</a></p>`,
+};
 
 const filter = { q: "", g: "", dep: "" };
 /** `dep`: open on one department's senators (#/senat/92, "Mes sénateurs" in the menu); typing in the box lifts it. */
@@ -50,6 +71,7 @@ export async function renderSenat(app: HTMLElement, dep?: string) {
         <div class="filters"><input id="q" type="search" placeholder="${L("Nom ou département…", "Name or department…")}" value="${esc(filter.q)}"/><select id="g"><option value="">${L("Tous les groupes", "All groups")}</option>${groups.map((g) => `<option value="${esc(g.id)}" ${g.id === filter.g ? "selected" : ""}>${esc(g.abrev)}</option>`).join("")}</select><span id="count" class="muted small"></span></div>
         <div class="mp-grid" id="list"></div>
       </section>
+      <div id="sen-cloud"></div>
       <p class="source">${L("Source : Sénat (data.senat.fr, senat.fr), Licence Ouverte.", "Source: French Senate (data.senat.fr, senat.fr), Licence Ouverte.")}</p>
     </section>`;
   const norm = (x: string) => x.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
@@ -64,6 +86,16 @@ export async function renderSenat(app: HTMLElement, dep?: string) {
   app.querySelector<HTMLInputElement>("#q")!.addEventListener("input", (e) => { filter.q = (e.target as HTMLInputElement).value; filter.dep = ""; draw(); });
   app.querySelector<HTMLSelectElement>("#g")!.addEventListener("change", (e) => { filter.g = (e.target as HTMLSelectElement).value; draw(); });
   draw();
+  void renderChamberCloud(
+    app.querySelector<HTMLElement>("#sen-cloud")!,
+    SENATE_SPEECH,
+    L("Ce dont parle le Sénat", "What the Senate talks about"),
+    (s) =>
+      L(
+        `${fmtNum(s.chamber.speeches)} interventions de sénateurs en séance publique, ${fmtNum(s.period.sittings)} jours de séance du ${fmtDate(s.period.from)} au ${fmtDate(s.period.to)}. Les mots les plus présents, pondérés par leur concentration sur certains débats. Survolez un mot pour un extrait, cliquez pour voir qui le prononce.`,
+        `${fmtNum(s.chamber.speeches)} speeches by senators in public sitting, ${fmtNum(s.period.sittings)} sitting days from ${fmtDate(s.period.from)} to ${fmtDate(s.period.to)}. The most used words, weighted by how concentrated they are in particular debates. Hover a word for a quote, click it to see who says it.`,
+      ),
+  ).catch(console.error);
 }
 
 const PAGE = 20;
@@ -77,7 +109,7 @@ export async function renderSenateur(app: HTMLElement, id: string) {
   const mine = scrutins.filter((x) => x[1] >= s.debutMandat);
   app.innerHTML = `
     <section class="page">
-      <p class="crumbs"><a href="#/senat">${L("Sénat", "Senate")}</a></p>
+      <p class="crumbs"><a href="#/elus">${L("Élus", "Elected officials")}</a> › <a href="#/senat">${L("Sénateurs", "Senators")}</a></p>
       <div class="mp-head card" style="--c:${safeColor(s.groupe?.couleur)}">
         <img src="${senPhoto(s)}" alt="" data-hide-broken/>
         <div class="mp-id"><p class="eyebrow mp-where">${depArmsSlot(s.numDepartement, s.circonscription)}<span>${L(s.civ === "Mme" ? "Sénatrice" : "Sénateur", "Senator")}, ${esc(s.circonscription)}</span></p><h1>${esc(s.civ)} ${esc(s.prenom)} ${esc(s.nom)}</h1><p><span class="chip">${esc(s.groupe?.abrev ?? "")}</span> ${esc(s.groupe?.libelle ?? "")}</p>
@@ -93,6 +125,7 @@ export async function renderSenateur(app: HTMLElement, id: string) {
           <p class="muted tiny">${PARTICIPATION_NOTE()}</p>
         </div>
       </div>
+      <div id="sen-speech"></div>
       <div class="card">
         <div class="filters"><input id="vq" type="search" placeholder="${L("Rechercher dans les scrutins…", "Search votes…")}"/><select id="vpos"><option value="">${L("Toutes positions", "All positions")}</option>${["P", "C", "A", "N", "-"].map((k) => `<option value="${k}">${label[k]}</option>`).join("")}</select><span id="vcount" class="muted small"></span></div>
         <ul class="votes" id="votes"></ul>
@@ -119,4 +152,5 @@ export async function renderSenateur(app: HTMLElement, id: string) {
   app.querySelector("#vprev")!.addEventListener("click", () => { f.page--; draw(); });
   app.querySelector("#vnext")!.addEventListener("click", () => { f.page++; draw(); });
   draw();
+  void renderSpeakerSpeech(app.querySelector<HTMLElement>("#sen-speech")!, s, SENATE_SPEECH).catch(console.error);
 }

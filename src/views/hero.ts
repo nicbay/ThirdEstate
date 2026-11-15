@@ -107,7 +107,7 @@ export function heroViz(geo: GeoJSON.FeatureCollection, deputes: Depute[], pair:
   const start = (root: HTMLElement) => {
     const el = root.querySelector<SVGSVGElement>("#hero-dots");
     if (!el) return;
-    const caption = root.querySelector<HTMLElement>("#hd-caption")!;
+    const caption = root.querySelector<HTMLElement>("#hd-caption"); // optional: the homepage hero shows none
     const buttons = root.querySelectorAll<HTMLButtonElement>("[data-hd]");
     const text = {
       map: L("Chaque point est une circonscription, coloré selon le groupe de son député.", "Each dot is a district, coloured by its MP’s group."),
@@ -119,7 +119,7 @@ export function heroViz(geo: GeoJSON.FeatureCollection, deputes: Depute[], pair:
     const set = (m: "map" | "hemi") => {
       mode = m;
       el.classList.toggle("is-hemi", m === "hemi");
-      caption.textContent = text[m];
+      if (caption) caption.textContent = text[m];
       buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.hd === m)));
     };
     const tick = () => {

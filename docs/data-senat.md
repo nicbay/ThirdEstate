@@ -210,3 +210,78 @@ Coverage (2026-11-07, 348 senators): after senat → + Wikidata → + own sites
 - It runs `git pull --rebase` before pushing, because other jobs push to the same branch.
 
 There is no `package.json` script for this (out of scope); the workflow calls the script directly.
+
+## What senators say: word clouds and themes (`public/data/senat/interventions/`)
+
+`scripts/sync-senat-interventions.mjs` is the Senate counterpart of `scripts/sync-interventions.mjs` (MPs). It reads
+the Sénat's verbatim record of public sittings and writes, for each senator, a cloud of their most distinctive
+words and the share of their speeches per theme, plus a chamber-wide cloud. Shown on the senator's page
+(`renderSenateur`, card "Ce qu'il/elle dit dans l'hémicycle") and on the Senate page (`renderSenat`, "Ce dont parle
+le Sénat"), through the shared code in `src/views/speeches.ts` (`renderSpeakerSpeech`, `renderChamberCloud`, with the
+`SENATE_SPEECH` chamber config in `src/views/senat.ts`).
+
+```
+npm run sync:senat-interventions             # downloads cri.zip (~550 MB) if the cached copy is older than 20 h; ~45 s to parse
+npm run sync:senat-interventions -- --cache  # always reuse .cache/senat-debats/cri.zip
+```
+
+**Source**: data.senat.fr, base « Comptes rendus » (<https://data.senat.fr/la-base-comptes-rendus/>), XML export
+`https://data.senat.fr/data/debats/cri.zip` (refreshed nightly, Licence Ouverte): one file `cri/dYYYYMMDD.xml` per
+sitting day since 2003, ISO-8859-1. Each `<cri:intervenant mat="19647E" qua="…" type="1|2">` is one speech, tagged
+with the speaker's **matricule** (same id as `senateurs.json`; `type="2"` is the Government). The same page also
+offers `debats.zip` (PostgreSQL dump): it indexes interventions by Dosleg author code and URL but holds **no text**,
+so it is not used.
+
+**Kept**: speeches since 2023-10-01 by the 348 sitting senators, `type="1"`, not `qua="président de séance"`
+(chairing the sitting). Removed from the text: the speaker's name and title (`orateurnom`, `orateurqualite`), stage
+directions (`infoentreparentheses`, any remaining parentheses), amendment and article texts read out, vote tables.
+A speech of a single paragraph under 15 words ("Très bien !", "C'est faux !") counts as a **brief remark**
+(`interjections` field, KPI "Brèves interventions"): the Senate record has no interjection tag like the Assemblée's.
+
+**Method**: identical to the MPs' (tokenising, French stopwords, crude plural/feminine folding, two-word phrases
+said ≥ 25 times by ≥ 4 senators, TF-IDF with each senator as a document, the same 17-theme keyword lexicon `THEMES`
+with the agenda-item titles as a prior). The code is a copy of `sync-interventions.mjs`, so the Assemblée script
+and its output are untouched; keep `THEMES` identical in both (the site colours themes by id). Senate additions to
+the stopwords: sénatrice(s), haute (assemblée), rectifié, bis/ter/quater…, identique(s), présenté, libellé,
+défendu, explication, émet/émis/émettra (un avis), sollicite (le retrait), satisfait, défaut (à défaut),
+rédaction, relatif/relative, saluer, secrétaire (d'État), toutefois, conséquent, outre; "Monsieur le sénateur"
+like "Monsieur le ministre". Senators' own names, group names ("Union centriste", "Les Républicains", RDPI…) and
+the bare word "Union" are kept out of clouds.
+
+**Links**: each quote links to its paragraph in the day's single-page record on senat.fr,
+`https://www.senat.fr/seances/sYYYYMM/sYYYYMMDD/sYYYYMMDD_mono.html#par_N` (`par_N` = the intervention's `parid`).
+The quote's caption is the agenda item (`titreS1` libelle; for questions, "Questions orales : <subject>"); changes of
+chair ("Présidence de …") don't reset it. A speech before the day's first agenda heading has no caption.
+
+### Files
+
+| File | Size (2026-11-15) | What |
+|---|---|---|
+| `summary.json` | 73 KB | themes, chamber and per-group shares and top terms, per-senator stats (`mps`, keyed by matricule) |
+| `<matricule>.json` | 337 files, ~11 MB in all | one senator: `speeches`, `interjections` (brief remarks), `words`, `classified`, `first`, `last`, `terms` (top 60, each with count and 2 latest quotes), `themes` |
+| `words.json` | 512 KB | chamber/group cloud words: times said, by how many senators, 3 recent quotes |
+| `ranks/NN.json` | 32 files, 2.8 MB | every senator who said each cloud word, most first (FNV-1a sharding as for MPs) |
+| `meta.json` | <1 KB | sync time, source URL and Last-Modified, coverage, skipped files |
+
+Same shapes as `public/data/an/interventions/` (no `words-index.json`: the site search covers MPs only).
+
+### Coverage (run of 2026-11-15)
+
+- 349 sitting days, **2023-10-02 → 2026-11-13**; 57,980 speeches and 27,243 brief remarks by sitting senators.
+- **337 of 348** senators have at least one speech, **334 have a cloud**. No speech yet: the 11 senators first
+  elected in September 2026 who have not spoken in public sitting (Blanchet, Bounie, Brunet, Dollinger, Labar,
+  Le Mèner, Merle, Missioux, Simon, Suaud, Tukumuli). Speeches but too few words for a cloud: Bazin-Malgras,
+  Goy-Chavent, Guilloteau. Their page shows a message, never a made-up cloud.
+- Senators re-elected in 2026 keep their speeches from the previous mandate (same matricule). Senators first
+  elected in 2026 only have October–November 2026, so their clouds are thin.
+- The President of the Sénat (Larcher) chairs most of his interventions, so his cloud is built from 2 speeches.
+- The archive contains a stale, misdated file, `cri/d20261204.xml` (written January 2026; it is the sitting of
+  4 December 2025, also present as `d20251204.xml`). Files dated after the run day are skipped and listed in
+  `meta.skippedFiles`.
+
+### Limits
+
+- Crude lexicon method, indicative: the same caveats as the MPs' clouds (`docs/` on the Assemblée interventions).
+- Senate questions (QAG, oral questions) and budget debates weigh heavily in the clouds ("crédits", "autorisations
+  d'engagement" are real budget vocabulary, kept).
+- Not in the daily workflow yet (the zip is ~550 MB per download); run it by hand or add a weekly job.

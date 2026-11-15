@@ -43,3 +43,10 @@ poll list is read from that hourly file, so a poll appears on the page within th
   valid JSON, of plausible length, and every number in it is one it was given; otherwise the template stays.
   The page states which of the two wrote the summary. `--no-ai` never calls it.
 - Same tone as the rest of the site: descriptive, no adjective about a candidate, no prediction.
+- **Our take and our notes (2026-11) may be longer and take a stand.** The day's take ("Notre lecture") runs to two
+  to four sentences (≤ 520 characters asked, 800 accepted; on a Sunday up to two paragraphs, separated by a blank
+  line); the poll notes ≤ 300 (340 accepted), Sunday's figures note ≤ 400 (440) and CAC 40 note ≤ 420 (460); the
+  note of the day up to six lines (800 characters); the summary 90 to 170 words. The other checks are unchanged:
+  only numbers it was given, only candidates on the list, no link, judged on standing and strategy, never on the
+  merits of anyone's ideas. On the homepage the weekly note's right column opens with the CAC 40 note, then the
+  figures' note, then the table, mirroring the polls column; the hand-written Sunday brief shows up to five lines.

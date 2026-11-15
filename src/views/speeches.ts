@@ -1,7 +1,10 @@
-// What MPs say in the chamber: word clouds and themes, from the verbatim record of public sittings
-// (built by scripts/sync-interventions.mjs into public/data/an/interventions/).
-// - renderMpSpeech: the section on one MP's page
-// - renderThemes:   the "Thèmes" tab of the Assemblée section
+// What MPs (and senators) say in the chamber: word clouds and themes, from the verbatim record of public
+// sittings (built by scripts/sync-interventions.mjs into public/data/an/interventions/, and for the Senate by
+// scripts/sync-senat-interventions.mjs into public/data/senat/interventions/, same file shapes).
+// - renderMpSpeech:      the section on one MP's page
+// - renderSpeakerSpeech: the same section for any chamber (senators: SpeechChamber built in senat.ts)
+// - renderChamberCloud:  one chamber's word cloud on its own (the Senate list page)
+// - renderThemes:        the "Thèmes" tab of the Assemblée section
 import { fetchJson, loadDeputes, type Depute } from "../data";
 import { L, colon, fmtDate, fmtNum, fmtPct } from "../i18n";
 import { seatRank } from "../lib/hemicycle";
@@ -28,11 +31,45 @@ interface Summary {
 }
 interface MpSpeech { id: string; speeches: number; interjections: number; words: number; classified: number; first: string; last: string; terms: Term[]; themes: Shares }
 
-let summaryP: Promise<Summary> | null = null;
-const loadSummary = () => (summaryP ??= fetchJson<Summary>("/data/an/interventions/summary.json"));
-const loadMp = (id: string) => fetchJson<MpSpeech>(`/data/an/interventions/${id}.json`);
-let wordsP: Promise<Words> | null = null;
-const loadWords = () => (wordsP ??= fetchJson<Words>("/data/an/interventions/words.json").catch(() => ({}) as Words));
+/** Whoever speaks: an MP (Depute) or a senator (Senateur) both fit. */
+export interface Speaker { id: string; civ: string; prenom: string; nom: string; groupe?: { abrev: string; couleur: string } | null }
+/** What differs between the Assemblée and the Senate: where the data lives, links, and the words for members. */
+export interface SpeechChamber {
+  /** data folder, e.g. "/data/an/interventions/" */
+  base: string;
+  people: () => Promise<Speaker[]>;
+  href: (id: string) => string;
+  /** photo URL, ready to go in an attribute */
+  photo: (p: Speaker) => string;
+  /** official record base; a quote's `u` is appended */
+  record: string;
+  /** the card header link: [href, label] */
+  link: () => [string, string];
+  /** "députés" / "MPs" */
+  members: () => string;
+  /** chamber name in a tooltip: "Assemblée" / "whole house" */
+  house: () => string;
+  /** "Barre : part de ses interventions ; trait : moyenne de l’Assemblée." */
+  barNote: () => string;
+  /** "Les mots du nuage sont ceux que ce député emploie…" */
+  methodNote: () => string;
+  /** label of the short-remarks KPI */
+  briefLabel: () => string;
+  /** extra line under the section (source and coverage), given the summary period */
+  sourceLine?: (period: Summary["period"]) => string;
+}
+
+const summaryP = new Map<string, Promise<Summary>>();
+const loadSummary = (c: SpeechChamber = AN) => {
+  if (!summaryP.has(c.base)) summaryP.set(c.base, fetchJson<Summary>(`${c.base}summary.json`));
+  return summaryP.get(c.base)!;
+};
+const loadMp = (id: string, c: SpeechChamber = AN) => fetchJson<MpSpeech>(`${c.base}${id}.json`);
+const wordsP = new Map<string, Promise<Words>>();
+const loadWords = (c: SpeechChamber = AN) => {
+  if (!wordsP.has(c.base)) wordsP.set(c.base, fetchJson<Words>(`${c.base}words.json`).catch(() => ({}) as Words));
+  return wordsP.get(c.base)!;
+};
 
 /** One colour per theme, dark enough to read as text on white. */
 export const THEME_COLOR: Record<string, string> = {
@@ -75,14 +112,15 @@ const shardOf = (text: string) => {
   return h % SHARDS;
 };
 interface Shard { ids: string[]; w: Record<string, number[]> }
-const shardP = new Map<number, Promise<Shard>>();
-const loadShard = (i: number) => {
-  if (!shardP.has(i)) shardP.set(i, fetchJson<Shard>(`/data/an/interventions/ranks/${String(i).padStart(2, "0")}.json`).catch(() => ({ ids: [], w: {} })));
-  return shardP.get(i)!;
+const shardP = new Map<string, Promise<Shard>>();
+const loadShard = (i: number, c: SpeechChamber) => {
+  const url = `${c.base}ranks/${String(i).padStart(2, "0")}.json`;
+  if (!shardP.has(url)) shardP.set(url, fetchJson<Shard>(url).catch(() => ({ ids: [], w: {} })));
+  return shardP.get(url)!;
 };
 /** n: times said in the chamber; rows: [MP id, times], most first */
-async function wordRanking(text: string) {
-  const sh = await loadShard(shardOf(text));
+async function wordRanking(text: string, c: SpeechChamber) {
+  const sh = await loadShard(shardOf(text), c);
   const v = sh.w[text];
   if (!v) return null;
   const rows: [string, number][] = [];
@@ -90,7 +128,7 @@ async function wordRanking(text: string) {
   return { n: v[0], rows };
 }
 
-interface PopupOpts { s: Summary; term: Term; byId: Map<string, Depute>; current?: Depute; quotes?: Src[]; group?: string }
+interface PopupOpts { s: Summary; term: Term; byId: Map<string, Speaker>; current?: Speaker; quotes?: Src[]; group?: string; c?: SpeechChamber }
 let dialog: HTMLDialogElement | null = null;
 function ensureDialog() {
   if (dialog) return dialog;
@@ -111,14 +149,15 @@ async function openWordPopup(o: PopupOpts) {
   if (!dlg.open) dlg.showModal();
   const close = () => dlg.close();
   dlg.querySelector(".word-close")!.addEventListener("click", close);
-  const r = await wordRanking(text);
+  const c = o.c ?? AN;
+  const r = await wordRanking(text, c);
   if (!dlg.open) return;
   const rows = (r?.rows ?? []).filter(([id]) => o.byId.has(id));
   const max = rows[0]?.[1] || 1;
   const mine = o.current ? rows.findIndex(([id]) => id === o.current!.id) : -1;
   const groups = [...new Set(rows.map(([id]) => o.byId.get(id)!.groupe?.abrev ?? "NI"))].sort((a, b) => seatRank(a) - seatRank(b));
   const intro = r
-    ? L(`Prononcé ${times(r.n)} en séance par ${fmtNum(rows.length)} députés.`, `Said ${times(r.n)} in the chamber by ${fmtNum(rows.length)} MPs.`) +
+    ? L(`Prononcé ${times(r.n)} en séance par ${fmtNum(rows.length)} ${c.members()}.`, `Said ${times(r.n)} in the chamber by ${fmtNum(rows.length)} ${c.members()}.`) +
       (o.current && mine >= 0 ? ` ${esc(mpName(o.current))}${L(" : ", ": ")}${times(rows[mine][1])}, ${L(`${mine + 1}${mine === 0 ? "er" : "e"} sur ${fmtNum(rows.length)}`, `ranked ${fmtNum(mine + 1)} of ${fmtNum(rows.length)}`)}.` : "")
     : L("Pas de classement pour ce mot.", "No ranking for this word.");
   // header stays put while the list scrolls: the word, the totals, the group filter
@@ -131,15 +170,15 @@ async function openWordPopup(o: PopupOpts) {
         const g = d.groupe?.abrev ?? "NI";
         return `<li data-g="${esc(g)}"${o.current?.id === id ? ` class="is-current" aria-current="true"` : ""}>
           <span class="wr-rank">${i + 1}</span>
-          <img src="${photoUrl(d.id)}" alt="" loading="lazy" data-hide-broken />
-          <a href="#/depute/${d.id}" class="wr-name">${esc(d.prenom)} ${esc(d.nom)}</a>
+          <img src="${c.photo(d)}" alt="" loading="lazy" data-hide-broken />
+          <a href="${c.href(d.id)}" class="wr-name">${esc(d.prenom)} ${esc(d.nom)}</a>
           <span class="chip" style="--c:${safeColor(d.groupe?.couleur) ?? NEUTRAL}">${esc(g)}</span>
           <span class="wr-bar"><span style="width:${(100 * n) / max}%;background:${color(theme)}"></span></span>
           <b class="wr-n">${fmtNum(n)}</b>
         </li>`;
       })
       .join("")}</ol>
-    ${o.quotes?.length ? `<h3 class="wp-sub">${o.current ? L(`Ses dernières interventions qui l’emploient`, "Their latest speeches using it") : L("Derniers extraits", "Latest quotes")}</h3>${quotesHtml(o.quotes, o.byId)}` : ""}`;
+    ${o.quotes?.length ? `<h3 class="wp-sub">${o.current ? L(`Ses dernières interventions qui l’emploient`, "Their latest speeches using it") : L("Derniers extraits", "Latest quotes")}</h3>${quotesHtml(o.quotes, o.byId, c)}` : ""}`;
   dlg.querySelector(".word-close")!.addEventListener("click", close);
   const filter = (g: string) => {
     dlg.querySelectorAll<HTMLButtonElement>(".wp-groups [data-g]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.g === g)));
@@ -161,19 +200,19 @@ export async function openWordByText(text: string) {
 // ---------- quotes and counts behind each word ----------
 const AN_CR = "https://www.assemblee-nationale.fr/dyn/17/comptes-rendus/seance/";
 const times = (n: number) => (n === 1 ? L("1 fois", "once") : L(`${fmtNum(n)} fois`, `${fmtNum(n)} times`));
-const mpName = (d?: Depute) => (d ? `${d.prenom} ${d.nom}` : "");
+const mpName = (d?: Speaker) => (d ? `${d.prenom} ${d.nom}` : "");
 /** The extract with the word marked. */
 function quoteHtml(q: Src) {
   const x = q.h ? `${esc(q.x.slice(0, q.h[0]))}<mark>${esc(q.x.slice(q.h[0], q.h[1]))}</mark>${esc(q.x.slice(q.h[1]))}` : esc(q.x);
   return `« ${x} »`;
 }
-function quotesHtml(list: Src[], byId?: Map<string, Depute>) {
+function quotesHtml(list: Src[], byId?: Map<string, Speaker>, c: SpeechChamber = AN) {
   if (!list.length) return "";
   return `<ul class="word-quotes">${list
     .map((q) => {
       const d = q.m ? byId?.get(q.m) : undefined;
       return `<li><blockquote>${quoteHtml(q)}</blockquote>
-        <div class="muted small">${d ? `<a href="#/depute/${d.id}"><b>${esc(mpName(d))}</b></a> <span class="chip" style="--c:${safeColor(d.groupe?.couleur) ?? NEUTRAL}">${esc(d.groupe?.abrev ?? "—")}</span> · ` : ""}${fmtDate(q.d)}${q.t ? ` · ${esc(q.t)}` : ""} · <a href="${AN_CR}${esc(q.u)}" target="_blank" rel="noopener">${L("compte rendu", "official record")} ↗</a></div></li>`;
+        <div class="muted small">${d ? `<a href="${c.href(d.id)}"><b>${esc(mpName(d))}</b></a> <span class="chip" style="--c:${safeColor(d.groupe?.couleur) ?? NEUTRAL}">${esc(d.groupe?.abrev ?? "—")}</span> · ` : ""}${fmtDate(q.d)}${q.t ? ` · ${esc(q.t)}` : ""} · <a href="${c.record}${esc(q.u)}" target="_blank" rel="noopener">${L("compte rendu", "official record")} ↗</a></div></li>`;
     })
     .join("")}</ul>`;
 }
@@ -184,22 +223,22 @@ function tipText(s: Summary, t: Term, line: string, q?: Src, who?: string) {
   return `${head}\n${line}${quote}\n\n${L("Cliquez pour le détail", "Click for details")}`;
 }
 /** Chamber and group clouds: hover = count and a quote; click = the popup ranking every MP who said it. */
-function chamberPick(s: Summary, words: Words, byId: Map<string, Depute>, group?: string) {
+function chamberPick(s: Summary, words: Words, byId: Map<string, Speaker>, group?: string, c: SpeechChamber = AN) {
   return {
     tip: (t: Term) => {
       const w = words[t[0]];
       if (!w) return t[2] ? `${t[0]} · ${themeName(s, t[2])}` : t[0];
-      return tipText(s, t, L(`Prononcé ${times(w.n)} par ${fmtNum(w.m)} députés`, `Said ${times(w.n)} by ${fmtNum(w.m)} MPs`), w.src[0], mpName(byId.get(w.src[0]?.m ?? "")));
+      return tipText(s, t, L(`Prononcé ${times(w.n)} par ${fmtNum(w.m)} ${c.members()}`, `Said ${times(w.n)} by ${fmtNum(w.m)} ${c.members()}`), w.src[0], mpName(byId.get(w.src[0]?.m ?? "")));
     },
-    open: (t: Term) => void openWordPopup({ s, term: t, byId, quotes: words[t[0]]?.src, group }),
+    open: (t: Term) => void openWordPopup({ s, term: t, byId, quotes: words[t[0]]?.src, group, c }),
   };
 }
 /** An MP's cloud: hover = how often they said it and their latest quote; click = the popup, with this MP highlighted. */
-function mpPick(s: Summary, d: Depute, byId: Map<string, Depute>) {
+function mpPick(s: Summary, d: Speaker, byId: Map<string, Speaker>, c: SpeechChamber = AN) {
   const said = (t: Term) => L(`${d.civ === "Mme" ? "Elle l’a dit" : "Il l’a dit"} ${times(t[3] ?? 0)} en séance`, `Said ${times(t[3] ?? 0)} in the chamber`);
   return {
     tip: (t: Term) => (t[3] == null ? (t[2] ? `${t[0]} · ${themeName(s, t[2])}` : t[0]) : tipText(s, t, said(t), t[4]?.[0])),
-    open: (t: Term) => void openWordPopup({ s, term: t, byId, current: d, quotes: t[4] }),
+    open: (t: Term) => void openWordPopup({ s, term: t, byId, current: d, quotes: t[4], c }),
   };
 }
 function legend(s: Summary, terms: Term[]) {
@@ -207,52 +246,95 @@ function legend(s: Summary, terms: Term[]) {
   return `<ul class="legend-list inline cloud-legend">${s.themes.filter((t) => used.has(t.id)).map((t) => `<li><i class="dot" style="background:${color(t.id)}"></i>${esc(L(t.fr, t.en))}</li>`).join("")}<li><i class="dot" style="background:${NEUTRAL}"></i>${L("Sans thème", "No theme")}</li></ul>`;
 }
 /** Horizontal bars, one per theme, with a tick for the chamber average. */
-function themeBars(s: Summary, shares: Shares, opts: { top?: number; compare?: boolean } = {}) {
+function themeBars(s: Summary, shares: Shares, opts: { top?: number; compare?: boolean; c?: SpeechChamber } = {}) {
+  const house = (opts.c ?? AN).house();
   const rows = s.themes.map((t) => ({ t, v: shares[t.id] ?? 0, ref: s.chamber.themes[t.id] ?? 0 })).sort((a, b) => b.v - a.v).slice(0, opts.top ?? s.themes.length);
   const max = Math.max(...rows.map((r) => Math.max(r.v, opts.compare ? r.ref : 0)), 0.01);
   return `<ul class="bars compact theme-bars">${rows
-    .map(({ t, v, ref }) => `<li data-tip="${esc(`${L(t.fr, t.en)}${colon()}${pct(v, 1)}${opts.compare ? ` (${L("Assemblée", "whole house")} ${pct(ref, 1)})` : ""}`)}">
+    .map(({ t, v, ref }) => `<li data-tip="${esc(`${L(t.fr, t.en)}${colon()}${pct(v, 1)}${opts.compare ? ` (${house} ${pct(ref, 1)})` : ""}`)}">
       <div class="bar-label"><span>${esc(L(t.fr, t.en))}</span><b>${pct(v)}</b></div>
       <div class="bar"><div style="width:${(100 * v) / max}%;background:${color(t.id)}"></div>${opts.compare ? `<i class="ref" style="left:${(100 * ref) / max}%"></i>` : ""}</div>
     </li>`)
     .join("")}</ul>`;
 }
-const methodNote = () =>
+const methodNote = (c: SpeechChamber = AN) =>
   L(
-    "Chaque intervention en séance publique est rattachée à un ou plusieurs thèmes d’après un lexique de mots-clés (et le titre du débat en cours). Les mots du nuage sont ceux que ce député emploie nettement plus que les autres (TF-IDF), mots de procédure exclus. Méthode automatique, indicative.",
-    "Each speech in public sitting is assigned to one or more themes from a keyword lexicon (plus the title of the debate under way). Cloud words are those this MP uses far more than the others (TF-IDF), procedural words excluded. Automatic and indicative.",
+    `Chaque intervention en séance publique est rattachée à un ou plusieurs thèmes d’après un lexique de mots-clés (et le titre du débat en cours). ${c.methodNote()}, mots de procédure exclus. Méthode automatique, indicative.`,
+    `Each speech in public sitting is assigned to one or more themes from a keyword lexicon (plus the title of the debate under way). ${c.methodNote()}, procedural words excluded. Automatic and indicative.`,
   );
 
+/** The Assemblée nationale (public/data/an/interventions/). */
+const AN: SpeechChamber = {
+  base: "/data/an/interventions/",
+  people: loadDeputes,
+  href: (id) => `#/depute/${id}`,
+  photo: (p) => photoUrl(p.id),
+  record: AN_CR,
+  link: () => ["#/assemblee/themes", L("Ce que disent les députés", "What MPs say")],
+  members: () => L("députés", "MPs"),
+  house: () => L("Assemblée", "whole house"),
+  barNote: () => L("Barre : part de ses interventions ; trait : moyenne de l’Assemblée.", "Bar: share of their speeches; tick: whole-house average."),
+  methodNote: () => L("Les mots du nuage sont ceux que ce député emploie nettement plus que les autres (TF-IDF)", "Cloud words are those this MP uses far more than the others (TF-IDF)"),
+  briefLabel: () => L("Interpellations", "Interjections"),
+};
+
 // ---------- one MP ----------
-export async function renderMpSpeech(el: HTMLElement, d: Depute) {
+export const renderMpSpeech = (el: HTMLElement, d: Depute) => renderSpeakerSpeech(el, d, AN);
+
+/** The "what they say in the chamber" card for one member of chamber `c`. */
+export async function renderSpeakerSpeech(el: HTMLElement, d: Speaker, c: SpeechChamber) {
   const she = d.civ === "Mme";
   const title = L(she ? "Ce qu’elle dit dans l’hémicycle" : "Ce qu’il dit dans l’hémicycle", "What they say in the chamber");
-  let s: Summary, m: MpSpeech, deputes: Depute[];
+  const [linkHref, linkLabel] = c.link();
+  let s: Summary, m: MpSpeech, people: Speaker[];
   try {
-    [s, m, deputes] = await Promise.all([loadSummary(), loadMp(d.id), loadDeputes()]);
+    [s, m, people] = await Promise.all([loadSummary(c), loadMp(d.id, c), c.people()]);
   } catch {
-    el.innerHTML = `<article class="card mp-speech"><header class="card-head"><h2>${title}</h2><a href="#/assemblee/themes">${L("Ce que disent les députés", "What MPs say")}</a></header><p class="muted">${L("Aucune intervention en séance publique relevée pour l’instant.", "No speech in public sitting recorded yet.")}</p></article>`;
+    el.innerHTML = `<article class="card mp-speech"><header class="card-head"><h2>${title}</h2><a href="${linkHref}">${linkLabel}</a></header><p class="muted">${L("Aucune intervention en séance publique relevée pour l’instant.", "No speech in public sitting recorded yet.")}</p></article>`;
     return;
   }
   await fontsReady();
   const top = Object.entries(m.themes).sort((a, b) => b[1] - a[1])[0];
   el.innerHTML = `
     <article class="card mp-speech">
-      <header class="card-head"><h2>${title}</h2><a href="#/assemblee/themes">${L("Ce que disent les députés", "What MPs say")}</a></header>
+      <header class="card-head"><h2>${title}</h2><a href="${linkHref}">${linkLabel}</a></header>
       <div class="kpis kpis-4">
         <div><span class="muted">${L("Interventions", "Speeches")}</span><strong>${fmtNum(m.speeches)}</strong></div>
-        <div><span class="muted">${L("Interpellations", "Interjections")}</span><strong>${fmtNum(m.interjections)}</strong></div>
+        <div><span class="muted">${c.briefLabel()}</span><strong>${fmtNum(m.interjections)}</strong></div>
         <div><span class="muted">${L("Mots", "Words")}</span><strong>${fmtNum(m.words)}</strong></div>
         <div><span class="muted">${L("Premier thème", "Top theme")}</span><strong class="theme-kpi" style="color:${color(top && top[1] ? top[0] : null)}">${top && top[1] ? esc(themeName(s, top[0])) : "—"}</strong></div>
       </div>
       ${m.terms.length ? `<div class="speech-grid">
         <div><div class="cloud-slot" id="mp-cloud"></div>${legend(s, m.terms)}</div>
-        <div><h3>${L("Thèmes abordés", "Themes raised")}</h3>${m.classified ? themeBars(s, m.themes, { top: 8, compare: true }) : `<p class="muted small">${L("Trop peu d’interventions classées.", "Too few classified speeches.")}</p>`}
-          <p class="muted small">${L("Barre : part de ses interventions ; trait : moyenne de l’Assemblée.", "Bar: share of their speeches; tick: whole-house average.")}</p></div>
+        <div><h3>${L("Thèmes abordés", "Themes raised")}</h3>${m.classified ? themeBars(s, m.themes, { top: 8, compare: true, c }) : `<p class="muted small">${L("Trop peu d’interventions classées.", "Too few classified speeches.")}</p>`}
+          <p class="muted small">${c.barNote()}</p></div>
       </div>` : `<p class="muted">${L("Trop peu de mots prononcés pour un nuage.", "Too few words spoken for a cloud.")}</p>`}
-      <p class="muted small">${methodNote()} ${L("Interventions du", "Speeches from")} ${fmtDate(m.first)} ${L("au", "to")} ${fmtDate(m.last)}.</p>
+      <p class="muted small">${methodNote(c)} ${L("Interventions du", "Speeches from")} ${fmtDate(m.first)} ${L("au", "to")} ${fmtDate(m.last)}.</p>
+      ${c.sourceLine ? c.sourceLine(s.period) : ""}
     </article>`;
-  fillCloud(el.querySelector("#mp-cloud"), s, m.terms, L(`Mots les plus caractéristiques de ${d.prenom} ${d.nom}`, `Most distinctive words of ${d.prenom} ${d.nom}`), mpPick(s, d, new Map(deputes.map((x) => [x.id, x]))));
+  fillCloud(el.querySelector("#mp-cloud"), s, m.terms, L(`Mots les plus caractéristiques de ${d.prenom} ${d.nom}`, `Most distinctive words of ${d.prenom} ${d.nom}`), mpPick(s, d, new Map(people.map((x) => [x.id, x])), c));
+}
+
+/** One chamber's word cloud on its own, with hover quotes and the click-through ranking (the Senate list page). */
+export async function renderChamberCloud(el: HTMLElement, c: SpeechChamber, title: string, intro: (s: Summary) => string) {
+  let s: Summary, people: Speaker[], words: Words;
+  try {
+    [s, people, words] = await Promise.all([loadSummary(c), c.people(), loadWords(c)]);
+  } catch {
+    el.innerHTML = "";
+    return;
+  }
+  await fontsReady();
+  el.innerHTML = `
+    <article class="card">
+      <header class="card-head"><h2>${title}</h2></header>
+      <p class="muted small">${intro(s)}</p>
+      <div class="cloud-slot" id="ch-cloud"></div>
+      ${legend(s, s.chamber.terms)}
+      <p class="muted small">${methodNote(c)}</p>
+      ${c.sourceLine ? c.sourceLine(s.period) : ""}
+    </article>`;
+  fillCloud(el.querySelector("#ch-cloud"), s, s.chamber.terms, title, chamberPick(s, words, new Map(people.map((x) => [x.id, x])), undefined, c));
 }
 
 // ---------- the whole chamber ----------

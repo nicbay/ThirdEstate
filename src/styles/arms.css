@@ -39,6 +39,8 @@ a.arms:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
   .town-id { gap: 0.8rem; }
   .arms-xxl canvas { height: 96px; }
   .town-arms .arms-s { display: none; }
+  /* an arrondissement shows its arms and its city's, the same size: a little smaller as a pair, so the name keeps room */
+  .town-arms:has(.arms-xxl + .arms-xxl) .arms-xxl canvas { height: 72px; }
 }
 .town-arms:empty { display: none; }
 /* the homepage's "where you live": the town's photo with its arms and the department's */

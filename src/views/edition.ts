@@ -130,8 +130,8 @@ function borrowHtml(b: Borrow, short = false) {
 
 /** Figures in a line of ours ("2,6 %", "3 %pt"), in bold. */
 const figures = (html: string) => html.replace(/\d+(?:[.,]\d+)?[ \u00a0]?%(?:pt)?/g, (m) => `<b>${m}</b>`);
-/** Sunday's brief: three lines that take a stand, each a bold lead, a sentence, and its source (the outlet alone). */
-const briefHtml = (lines: BriefLine[]) => `<ol class="lg-brief">${lines.slice(0, 3).map((l) => `<li><b>${esc(L(l.lead.fr, l.lead.en))}</b> ${figures(esc(L(l.fr, l.en)))}${l.story ? ` ${src(l.story)}` : ""}</li>`).join("")}</ol>`;
+/** Sunday's brief: three to five lines that take a stand, each a bold lead, a sentence, and its source (the outlet alone). */
+const briefHtml = (lines: BriefLine[]) => `<ol class="lg-brief">${lines.slice(0, 5).map((l) => `<li><b>${esc(L(l.lead.fr, l.lead.en))}</b> ${figures(esc(L(l.fr, l.en)))}${l.story ? ` ${src(l.story)}` : ""}</li>`).join("")}</ol>`;
 
 /** Sunday's longer recap: the week's largest rise and fall in the polls and in the odds, the polls published, the most-covered stories. */
 function recapHtml(r: NonNullable<Ledger["recap"]>) {
@@ -198,13 +198,13 @@ function kpisHtml(g: Ledger) {
   const wk7 = c ? `${L("clôture du", "close of")} ${esc(fmtDate(c.asOf).replace(/\s\d{4}$/, ""))}, ${L("sur 7 jours", "over 7 days")}` : "";
   const pc = (v: number) => delta(v, L("\u00a0%", "%"), true);
   const market = c ? [line("CAC 40", wk7, whole(c.level), pc(c.d7)), ...c.movers.map((m) => line(esc(m.name), L("la plus forte variation du CAC 40, sur 7 jours", "among the CAC 40’s biggest moves, over 7 days"), "", pc(m.d7)))].join("") : "";
-  return `${noteHtml(g.notes?.kpis)}<table class="lg-table lg-kpi">
+  // the column opens with our reads, as the polls column does: the CAC 40's first, then the week's figures'
+  return `${noteHtml(g.notes?.cac)}${noteHtml(g.notes?.kpis)}<table class="lg-table lg-kpi">
     <caption><span>${L("Les chiffres de la semaine", "The week’s numbers")}</span><a href="#/chiffres#conjoncture">${L("Tous les chiffres", "Every figure")} →</a></caption>
     <thead><tr><th scope="col">${L("Indicateur", "Indicator")}</th><th scope="col">${L("Niveau", "Level")}</th><th scope="col">${L("Variation", "Change")}</th></tr></thead>
     <tbody>${rates}${rows}${market}</tbody>
   </table>
   ${b ? `<p class="lg-cost">${borrowHtml(b, true)}</p>` : ""}
-  ${noteHtml(g.notes?.cac)}
   <p class="lg-cap">${L("Vert : mieux, rouge : moins bien. Sources : Insee, Eurostat, Teleborsa via Borsa Italiana, Yahoo Finance.", "Green: better, red: worse. Sources: INSEE, Eurostat, Teleborsa via Borsa Italiana, Yahoo Finance.")}</p>`;
 }
 
@@ -248,7 +248,10 @@ const postHtml = (p: NonNullable<Ledger["post"]>) => `<blockquote class="lg-post
 function bodyHtml(g: Ledger, s: Pick | null | undefined) {
   const wk = g.span === "week";
   const surprises: Line[] = g.surprises ?? (s ? [s] : []);
-  const take = g.brief?.length ? briefHtml(g.brief) : g.take ? `${figures(esc(L(g.take.fr, g.take.en)))}${g.take.story ? ` ${src(g.take.story)}` : ""}` : "";
+  // a longer take may come in paragraphs (blank lines); the source sits at the end of the last one
+  const paras = (t: string) => t.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
+  const takeText = g.take ? paras(L(g.take.fr, g.take.en)) : [];
+  const take = g.brief?.length ? briefHtml(g.brief) : takeText.length ? takeText.map((p, i) => `<p>${figures(esc(p))}${i === takeText.length - 1 && g.take!.story ? ` ${src(g.take!.story)}` : ""}</p>`).join("") : "";
   // our own voice is signed: the fox sits under the label
   const takeRow = take ? row(`${L("Notre lecture", "Our take")}<span class="lg-logo">${foxSvg(30, true, 'role="img" aria-label="Third Estate"')}</span>`, take, "is-te") : "";
   const facts = `${g.world ? row(L("Monde", "World"), story(g.world)) : ""}${g.france ? row("France", story(g.france)) : ""}

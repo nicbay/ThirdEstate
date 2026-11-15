@@ -106,7 +106,9 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/senat(?:\/(\w{2,3}))?$/, (m) => renderSenat(app, m[1])],
   [/^#\/candidat\/([\w-]+)$/, (m) => renderCandidate(app, m[1])],
   [/^#\/senateur\/([\w-]+)$/, (m) => renderSenateur(app, m[1])],
-  [/^#\/elus$/, () => renderAssemblee(app, "carte")],
+  [/^#\/elus$/, () => import("./views/elus").then((v) => v.renderElus(app))],
+  [/^#\/europe$/, () => import("./views/europe").then((v) => v.renderEurope(app))],
+  [/^#\/eurodepute\/(\d+)$/, (m) => import("./views/europe").then((v) => v.renderEurodepute(app, m[1]))],
   [/^#\/explorer(?:\/(\w{2,3}))?$/, (m) => renderExplorer(app, m[1])],
   [/^#\/contributeurs$/, () => import("./views/contributors").then((v) => v.renderContributors(app))],
   [/^#\/ville\/(\w{5})$/, (m) => renderTown(app, m[1])],
@@ -117,7 +119,7 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/quiz(?:\/([\w-]+))?$/, (m) => renderQuiz(app, m[1])],
   // section names as paths, so a typed or shared section link lands somewhere
   // (old six-section names included: "la-france" and "france" now live under Data & archives)
-  [/^#\/(chez-vous|votre-ville|parlement|la-france|france|archives|donnees)$/, (m) => void (location.hash = { "chez-vous": homeHref(), "votre-ville": homeHref(), parlement: "#/assemblee", "la-france": "#/chiffres", france: "#/chiffres", archives: "#/resultats", donnees: "#/resultats" }[m[1]]!)],
+  [/^#\/(chez-vous|votre-ville|parlement|eurodeputes|la-france|france|archives|donnees)$/, (m) => void (location.hash = { "chez-vous": homeHref(), "votre-ville": homeHref(), parlement: "#/elus", eurodeputes: "#/europe", "la-france": "#/chiffres", france: "#/chiffres", archives: "#/resultats", donnees: "#/resultats" }[m[1]]!)],
   [/^#\/2027\/(simulateur|programmes|sondages|quiz)$/, (m) => void (location.hash = `#/${m[1]}`)], // guessed paths under the 2027 section
   [/^#\/(budget|simulateur-foyer)$/, () => void (location.hash = "#/programmes/melenchon/simulateur")],
   [/^#\/programmes(?:\/theme\/([\w-]+))?$/, (m) => import("./views/programmes-hub").then((v) => v.renderProgrammesHub(app, m[1]))],
@@ -150,13 +152,15 @@ async function findMyMp(code: string) {
 // Information architecture: four sections, organised by what the reader wants to know.
 // 1. 2027: the presidential race — who leads, what they propose, how to take part (polls, programmes, simulators,
 //    the red/blue feed, the quiz, and how voting, sponsorships and the calendar work).
-// 2. Chez vous: the reader's town (remembered), their MP and senators, every town.
-// 3. Parlement: the MPs (map, composition, discipline, speeches — one page with tabs), finding an MP, the Senate.
+// 2. Chez vous: the reader's town (remembered), their MP, every town.
+// 3. Élus: the MPs (map, composition, discipline, speeches — one page with tabs), finding an MP, the senators,
+//    the French members of the European Parliament; #/elus is the section's hub.
 // 4. Données et archives: every election since 1848, the shift maps, France in numbers.
 // Each page carries a one-line description: the masthead menus and the phone menu say what is behind every link.
 // `group` splits a long menu into columns; `minor` keeps a page out of the second-level row (it stays in the menus);
-// `sub` is a shorter label for that row.
-type Item = { href: string; match: RegExp; fr: string; en: string; note?: string; desc?: [string, string]; group?: [string, string]; minor?: boolean; sub?: [string, string] };
+// `sub` is a shorter label for that row; `hi` outlines a section's most important pages in the menus (the
+// others stay quieter).
+type Item = { href: string; match: RegExp; fr: string; en: string; note?: string; desc?: [string, string]; group?: [string, string]; minor?: boolean; sub?: [string, string]; hi?: boolean };
 type Section = Item & { key: string; icon: PixelIcon; short: [string, string]; blurb: [string, string]; children: Item[] };
 const NEVER = /$^/;
 function sections(): Section[] {
@@ -172,54 +176,55 @@ function sections(): Section[] {
       key: "2027", icon: "ballot", short: ["2027", "2027"], href: "#/2027", match: /^#\/(2027|sondages|simulateur|fil|quiz|candidat|programmes)/, fr: "2027", en: "2027",
       blurb: ["La présidentielle : qui est en tête, ce qu’ils proposent, comment voter.", "The presidential race: who leads, what they propose, how to vote."],
       children: [
-        { group: RACE, href: "#/2027", match: /^#\/(2027$|candidat)/, fr: "La course", en: "The race", desc: ["La prévision, les candidats, leurs fiches", "The forecast, the candidates, their files"] },
+        { group: RACE, hi: true, href: "#/2027", match: /^#\/(2027$|candidat)/, fr: "La course", en: "The race", desc: ["La prévision, les candidats, leurs fiches", "The forecast, the candidates, their files"] },
         { group: RACE, href: "#/sondages", match: /^#\/sondages$/, fr: "Sondages et marchés", en: "Polls and markets", desc: ["Chaque sondage, et ce que parient les marchés", "Every poll, and what the markets are betting"] },
         { group: RACE, href: "#/sondages/instituts", match: /^#\/sondages\/instituts/, fr: "Les instituts notés", en: "Pollsters graded", sub: ["Instituts", "Pollsters"], desc: ["De A+ à F, sur leurs sondages passés face aux résultats", "A+ to F, on their past polls against the results"] },
         { group: RACE, href: "#/sondages#point", match: NEVER, minor: true, fr: "Le point du jour", en: "Today’s brief", desc: ["Ce qui a bougé en 24 heures, et pourquoi peut-être", "What moved in 24 hours, and perhaps why"] },
         ...(FEED_ON ? [{ group: RACE, href: "#/fil", match: /^#\/fil/, fr: "Fil rouge, fil bleu", en: "Red feed, blue feed", desc: ["L’actualité vue de gauche et de droite", "The news as left and right see it"] as [string, string] }] : []),
         { group: RACE, href: "#/2027/calendrier", match: /^#\/2027\/calendrier/, fr: "Calendrier de la campagne", en: "Campaign calendar", sub: ["Calendrier", "Calendar"], desc: ["Les dates clés jusqu’au second tour", "Key dates up to the runoff"] },
         { group: RACE, href: "#/2027/parrainages", match: /^#\/2027\/parrainages/, minor: true, fr: "Les parrainages", en: "Sponsorships", desc: ["Les 500 signatures d’élus pour être candidat", "The 500 officials’ signatures needed to run"] },
-        { group: PROG, href: "#/programmes", match: /^#\/programmes(\/theme\/[\w-]+)?$/, fr: "Les programmes", en: "Programs", desc: ["Tous les candidats, de la gauche à la droite", "Every candidate, from left to right"] },
+        { group: PROG, hi: true, href: "#/programmes", match: /^#\/programmes(\/theme\/[\w-]+)?$/, fr: "Les programmes", en: "Programs", desc: ["Tous les candidats, de la gauche à la droite", "Every candidate, from left to right"] },
         { group: PROG, href: "#/programmes#comparer", match: NEVER, minor: true, fr: "Comparer par thème", en: "Compare by theme", desc: ["Sur le même sujet, qui propose quoi", "On the same subject, who proposes what"] },
         { group: PROG, href: "#/programmes#couts", match: NEVER, minor: true, fr: "Ce que ça coûte", en: "What it costs", desc: ["Le chiffre du parti, celui des instituts", "The party’s figure and the institutes’"] },
         { group: PROG, href: "#/programmes#droit", match: NEVER, minor: true, fr: "Droit et faisabilité", en: "Law and feasibility", desc: ["Constitution, droit européen, majorités", "Constitution, EU law, majorities"] },
-        { group: VOTE, href: "#/2027/voter", match: /^#\/2027\/voter/, fr: "Comment voter", en: "How to vote", desc: ["S’inscrire, voter par procuration, trouver son bureau", "Registering, proxy votes, your polling station"] },
+        { group: VOTE, hi: true, href: "#/2027/voter", match: /^#\/2027\/voter/, fr: "Comment voter", en: "How to vote", desc: ["S’inscrire, voter par procuration, trouver son bureau", "Registering, proxy votes, your polling station"] },
         { group: VOTE, href: "#/2027/comment-ca-marche", match: /^#\/2027\/comment-ca-marche/, minor: true, fr: "Comment ça marche", en: "How it works", desc: ["L’élection présidentielle expliquée, étape par étape", "The presidential election explained, step by step"] },
-        { group: VOTE, href: "#/quiz", match: /^#\/quiz/, fr: "Le quiz : qui vous ressemble ?", en: "The quiz: who is closest to you?", sub: ["Le quiz", "The quiz"], desc: ["Le député et le candidat les plus proches de vos réponses", "The MP and candidate closest to your answers"] },
-        { group: SIM, href: "#/simulateur", match: /^#\/simulateur/, fr: "Simulateur de second tour", en: "Second-round simulator", sub: ["Simulateur de second tour", "Runoff simulator"], desc: ["Composez votre second tour, report de voix par report", "Build your own runoff, vote transfer by transfer"] },
+        { group: VOTE, hi: true, href: "#/quiz", match: /^#\/quiz/, fr: "Le quiz : qui vous ressemble ?", en: "The quiz: who is closest to you?", sub: ["Le quiz", "The quiz"], desc: ["Le député et le candidat les plus proches de vos réponses", "The MP and candidate closest to your answers"] },
+        { group: SIM, hi: true, href: "#/simulateur", match: /^#\/simulateur/, fr: "Simulateur de second tour", en: "Second-round simulator", sub: ["Simulateur de second tour", "Runoff simulator"], desc: ["Composez votre second tour, report de voix par report", "Build your own runoff, vote transfer by transfer"] },
         { group: SIM, href: "#/programmes/melenchon/simulateur", match: /^#\/programmes\/[\w-]+\/simulateur/, fr: "Votre budget selon un programme", en: "Your budget under a program", sub: ["Votre budget", "Your budget"], desc: ["L’effet d’un programme sur le budget de votre foyer", "A program’s effect on your household budget"] },
       ],
     },
     {
       key: "chez-vous", icon: "home", short: ["Chez vous", "Your town"], href: mine, match: /^#\/(explorer|ville|comparer|classements)/, fr: "Chez vous", en: "Your town",
-      blurb: ["Votre commune, votre député, vos sénateurs.", "Your town, your MP, your senators."],
+      blurb: ["Votre commune, votre député, et comment elle se compare.", "Your town, your MP, and how it compares."],
       children: [
-        ...(home?.code ? [{ href: mine, match: new RegExp(`^#\\/ville\\/${home.code}$`), fr: "Ma commune", en: "My town", note: home.commune ?? home.code }] : []),
+        ...(home?.code ? [{ hi: true, href: mine, match: new RegExp(`^#\\/ville\\/${home.code}$`), fr: "Ma commune", en: "My town", note: home.commune ?? home.code }] : []),
         ...(mp?.id ? [{ href: `#/depute/${mp.id}`, match: NEVER, fr: "Mon député", en: "My MP", note: mp.name }] : []),
-        ...(home?.dep ? [{ href: `#/senat/${home.dep}`, match: NEVER, fr: "Mes sénateurs", en: "My senators", note: home.depName }] : []),
         { href: home?.code ? `#/comparer/${home.code}` : "#/comparer", match: /^#\/comparer/, fr: "Comparer deux communes", en: "Compare two towns", desc: ["Votre commune face à une autre : revenus, sécurité, finances", "Your town against another: income, safety, finances"] },
         { href: "#/classements", match: /^#\/classements/, fr: "Classements des communes", en: "Town rankings", desc: ["Qualité de vie, revenus, sécurité, contributeurs nets : chaque commune classée", "Quality of life, income, safety, net contributors: every town ranked"] },
-        { href: "#/explorer", match: home?.code ? new RegExp(`^#\\/(explorer|ville\\/(?!${home.code}$))`) : /^#\/(explorer|ville)/, fr: "Toutes les communes", en: "Every town", desc: ["Maire, conseil, écoles, sécurité, quartiers : 34 920 communes", "Mayor, council, schools, safety, neighbourhoods: 34,920 towns"] },
+        { hi: !home?.code, href: "#/explorer", match: home?.code ? new RegExp(`^#\\/(explorer|ville\\/(?!${home.code}$))`) : /^#\/(explorer|ville)/, fr: "Toutes les communes", en: "Every town", desc: ["Maire, conseil, écoles, sécurité, quartiers : 34 920 communes", "Mayor, council, schools, safety, neighbourhoods: 34,920 towns"] },
       ],
     },
     {
-      key: "parlement", icon: "parliament", short: ["Parlement", "Parliament"], href: "#/assemblee", match: /^#\/(assemblee|elus|circo|depute|senat|senateur)/, fr: "Parlement", en: "Parliament",
-      blurb: ["577 députés, 348 sénateurs : chacun de leurs votes.", "577 MPs, 348 senators: every vote they cast."],
+      key: "elus", icon: "parliament", short: ["Élus", "Officials"], href: "#/elus", match: /^#\/(assemblee|elus|circo|depute|senat|senateur|europe|eurodepute)/, fr: "Élus", en: "Elected officials",
+      blurb: ["Députés, sénateurs, eurodéputés : leurs votes et leurs mots.", "MPs, senators, MEPs: how they vote and what they say."],
       children: [
-        { href: "#/assemblee", match: /^#\/(elus$|assemblee(\/(\w{2,3}|composition|loyaute|themes))?$|circo\/)/, fr: "Les députés", en: "The MPs", desc: ["La carte, qui ils sont, comment ils votent, ce qu’ils disent", "The map, who they are, how they vote, what they say"] },
-        { href: "#/assemblee/deputes", match: /^#\/(assemblee\/deputes|depute\/)/, fr: "Trouver un député", en: "Find an MP", desc: ["Chercher un député, par nom ou par groupe", "Find an MP by name or group"] },
-        { href: "#/senat", match: /^#\/(senat|senateur)/, fr: "Sénat", en: "Senate", desc: ["Les 348 sénateurs et leurs votes", "The 348 senators and their votes"] },
+        { hi: true, href: "#/assemblee", match: /^#\/(assemblee(\/(\w{2,3}|composition|loyaute|themes))?$|circo\/)/, fr: "Les députés", en: "The MPs", desc: ["La carte, qui ils sont, comment ils votent, ce qu’ils disent", "The map, who they are, how they vote, what they say"] },
+        { hi: true, href: "#/assemblee/deputes", match: /^#\/(assemblee\/deputes|depute\/)/, fr: "Trouver un député", en: "Find an MP", desc: ["Chercher un député, par nom ou par groupe", "Find an MP by name or group"] },
+        { href: "#/senat", match: /^#\/(senat|senateur)/, fr: "Les sénateurs", en: "Senators", desc: ["Les 348 sénateurs, leurs votes, ce qu’ils disent", "The 348 senators, their votes, what they say"] },
+        ...(home?.dep ? [{ href: `#/senat/${home.dep}`, match: NEVER, minor: true, fr: "Mes sénateurs", en: "My senators", note: home.depName }] : []),
+        { href: "#/europe", match: /^#\/(europe|eurodepute)/, fr: "Les eurodéputés", en: "MEPs", desc: ["Les élus français au Parlement européen : votes et discours", "France’s members of the European Parliament: votes and speeches"] },
       ],
     },
     {
       key: "archives", icon: "archive", short: ["Données", "Data"], href: "#/resultats", match: /^#\/(resultats|histoire|presidentielle|chiffres)/, fr: "Données et archives", en: "Data & archives",
       blurb: ["Chaque élection depuis 1848, et le pays en chiffres.", "Every election since 1848, and the country in numbers."],
       children: [
-        { href: "#/resultats", match: /^#\/(resultats(\/presidentielles)?$|histoire)/, fr: "Toutes les élections depuis 1848", en: "Every election since 1848", desc: ["Résultats, cartes, annonces filmées", "Results, maps, filmed announcements"] },
+        { hi: true, href: "#/resultats", match: /^#\/(resultats(\/presidentielles)?$|histoire)/, fr: "Toutes les élections depuis 1848", en: "Every election since 1848", desc: ["Résultats, cartes, annonces filmées", "Results, maps, filmed announcements"] },
         { href: "#/resultats/presidentielle-2022", match: /^#\/resultats\/presidentielle-2022/, fr: "Présidentielle 2022", en: "2022 presidential", desc: ["Les sondages face au résultat", "The polls against the result"] },
         { href: "#/resultats/legislatives-2024", match: /^#\/resultats\/legislatives-2024/, fr: "Législatives 2024", en: "2024 legislative", desc: ["Circonscription par circonscription", "District by district"] },
         { href: "#/resultats/bascules", match: /^#\/resultats\/bascules/, fr: "Cartes des bascules", en: "Shift maps", desc: ["Où la France a glissé à gauche, à droite", "Where France moved left, and right"] },
-        { href: "#/chiffres", match: /^#\/chiffres/, fr: "La France en chiffres", en: "France in numbers", desc: ["Dette, emploi, prix, déficit", "Debt, jobs, prices, deficit"] },
+        { hi: true, href: "#/chiffres", match: /^#\/chiffres/, fr: "La France en chiffres", en: "France in numbers", desc: ["Dette, emploi, prix, déficit", "Debt, jobs, prices, deficit"] },
         { href: "#/chiffres#depuis", match: NEVER, minor: true, fr: "La dette en direct", en: "The debt, live", desc: ["Le compteur, président par président", "The counter, president by president"] },
       ],
     },
@@ -247,7 +252,7 @@ function nextSteps(path: string) {
   const france = { href: "#/chiffres", fr: "La France en chiffres", en: "France in numbers" };
   const shifts = { href: "#/resultats/bascules", fr: "Les cartes des bascules gauche-droite", en: "The left–right shift maps" };
   const pick = /^#\/(ville|explorer|comparer|classements)/.test(path) ? [race, mps, quiz]
-    : /^#\/(circo|depute|assemblee|elus|senat|senateur)/.test(path) ? [mine, /themes/.test(path) && FEED_ON ? feed : words, race]
+    : /^#\/(circo|depute|assemblee|elus|senat|senateur|europe|eurodepute)/.test(path) ? [mine, /themes/.test(path) && FEED_ON ? feed : words, race]
     : /^#\/quiz/.test(path) ? [race, progs, mps]
     : /^#\/programmes$/.test(path) ? [race, quiz, mps]
     : /^#\/programmes\/[\w-]+\/simulateur/.test(path) ? [byTheme, sim, vote]
@@ -299,8 +304,8 @@ function renderChrome(path: string) {
   const home = getHome();
   if (home?.code && !myMp(home.code)) setTimeout(() => void findMyMp(home.code!), 1200);
   if (!progAsked) setTimeout(loadProgNames, 600);
-  const candLinks = (cls: string) => (progNames?.length ? `<div class="${cls}"><p>${L("Programme par candidat", "Programme by candidate")}</p><div>${progNames.map((p) => `<a href="#/programmes/${esc(p.slug)}"${path === `#/programmes/${p.slug}` ? ` aria-current="page"` : ""}>${esc(p.candidate)}</a>`).join("")}</div></div>` : "");
-  const itemLink = (c: Item) => `<a href="${c.href}"${c.match.test(path) ? ` aria-current="page"` : ""}><span>${esc(L(c.fr, c.en))}</span>${c.note ? `<small class="nm-note">${esc(c.note)}</small>` : c.desc ? `<small>${esc(L(...c.desc))}</small>` : ""}</a>`;
+  const candLinks = (cls: string) => (progNames?.length ? `<div class="${cls}"><p>${L("Programme par candidat", "Platform by candidate")}</p><div>${progNames.map((p) => `<a href="#/programmes/${esc(p.slug)}"${path === `#/programmes/${p.slug}` ? ` aria-current="page"` : ""}>${esc(p.candidate)}</a>`).join("")}</div></div>` : "");
+  const itemLink = (c: Item) => `<a href="${c.href}"${c.hi ? ` class="is-key"` : ""}${c.match.test(path) ? ` aria-current="page"` : ""}><span>${esc(L(c.fr, c.en))}</span>${c.note ? `<small class="nm-note">${esc(c.note)}</small>` : c.desc ? `<small>${esc(L(...c.desc))}</small>` : ""}</a>`;
 
   // a section's pages, in columns when they carry a group (2027), each under its heading
   const groupsOf = (s: Section) => {

@@ -96,7 +96,8 @@ export async function heroDay() {
     </figure>
   </section>`;
   // the hero's art: the 577 districts on the map of France, flying into the 577 seats of the Assembly and back
-  const artHtml = `<figure class="hday-art hw-fig">${viz.svg}<figcaption><div class="hd-toggle" role="group" aria-label="${L("Vue", "View")}"><button type="button" data-hd="map">${L("Circonscriptions", "Districts")}</button><button type="button" data-hd="hemi">${L("Sièges", "Seats")}</button></div><p id="hd-caption"></p></figcaption></figure>`;
+  // only the animation (with its MP count and majority, drawn in the SVG): no view toggle, no caption under it
+  const artHtml = `<figure class="hday-art hw-fig">${viz.svg}</figure>`;
 
   // ---- widget 2: the shift map, small: the latest district arrows and the national change since 1848
   // every pair of elections since 1848 (department level; the latest also district by district): the bars under the
@@ -138,7 +139,7 @@ export async function heroDay() {
         <p class="hday-count"><b>${daysToGo}</b><span>${L(daysToGo > 1 ? "jours avant le premier tour" : "jour avant le premier tour", daysToGo === 1 ? "day to the first round" : "days to the first round")}</span><time datetime="${ELECTION_DAY}">${fmtDate(ELECTION_DAY)}</time></p>
       </div>
       <nav class="hday-doors" aria-label="${L("Par où commencer", "Where to start")}">
-        <a href="#/2027">${L("Qui gagnerait aujourd’hui", "See who would win today")}</a><a class="hday-quiz" href="#/quiz">${L("Faire le quiz · 3 min", "Take the quiz · 3 min")}</a><a href="#/assemblee/deputes">${L("Trouver mon député", "Find my MP")}</a><a href="#/programmes">${L("Comparer les programmes", "Compare the programmes")}</a>
+        <a href="#/2027">${L("Qui gagnerait aujourd’hui", "See who would win today")}</a><a class="hday-quiz" href="#/quiz">${L("Faire le quiz · 3 min", "Take the quiz · 3 min")}</a><a href="#/assemblee/deputes">${L("Trouver mon député", "Find my MP")}</a><a href="#/programmes">${L("Comparer les programmes", "Compare the programs")}</a>
       </nav>
       <section class="box hday-town" aria-labelledby="hday-town-title">
         <p class="hday-town-k">${L("Votre commune", "Your town")}</p>
