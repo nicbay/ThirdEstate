@@ -14208,6 +14208,312 @@
       },
       "check": null,
       "postTime": "2026-11-13T16:41:14.772Z"
+    },
+    "bsky:at://did:plc:bnulcjvue27qpnwzup3y7hv3/app.bsky.feed.post/3n2ejc7ttgc2z": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T17:24:32.623Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Appel à un embargo sur le matériel de guerre vendu à Israël et soutien au mouvement BDS, positions classées à gauche.",
+        "rationale_en": "Calls for an arms embargo on Israel and supports the BDS movement, positions typically placed on the left."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message militant sans opposition au peuple contre des élites ; quelques formules d'appui sans rhétorique populiste marquée.",
+        "rationale_en": "Activist message with no people-versus-elites framing; only a few supportive slogans, no marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-15T17:15:54.557Z"
+    },
+    "bsky:at://did:plc:inuy32xledgkurdb4vjgvnqf/app.bsky.feed.post/3n2ej54jwvs25": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T17:24:32.623Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de commémoration du 11 novembre sans position politique.",
+        "rationale_en": "Armistice commemoration message with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-15T17:13:03.317Z"
+    },
+    "yt:Qc-TUJzE6A4": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T17:24:32.623Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Critique de « la Macronie » et valorisation du mouvement social, positions de gauche radicale.",
+        "rationale_en": "Criticizes 'Macronie' and promotes the social movement, positions of the radical left."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [],
+        "rationale_fr": "Ton militant et formule « refait mai 68 », sans opposition explicite peuple contre élites.",
+        "rationale_en": "Militant tone and 'redoes May 68' framing, without an explicit people-versus-elites opposition."
+      },
+      "check": null,
+      "postTime": "2026-11-15T16:46:31.000Z"
+    },
+    "bsky:at://did:plc:wu3up6kgql5q3v4wtdh2h624/app.bsky.feed.post/3n2ef3bbfqk2b": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T17:24:32.623Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de commémoration et de remerciements, sans contenu politique.",
+        "rationale_en": "Commemoration and thank-you message with no political content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-15T16:00:26.207Z"
+    },
+    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3n2ebhhyzbc2x": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T17:24:32.623Z",
+      "storyItems": [
+        "3a30426a6510"
+      ],
+      "storyTitle": "\"Franc-Jeu\". Avec Michel-Edouard Leclerc",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Simple annonce de la diffusion d'un débat, sans position exprimée.",
+        "rationale_en": "Simple announcement of a debate broadcast, with no position expressed."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-15T14:55:40.961Z"
+    },
+    "yt:kPXP5b-oHho": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T17:24:32.623Z",
+      "storyItems": [
+        "3a30426a6510"
+      ],
+      "storyTitle": "\"Franc-Jeu\". Avec Michel-Edouard Leclerc",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce de la diffusion d'un débat, sans position exprimée.",
+        "rationale_en": "Announcement of a debate broadcast, with no position expressed."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-15T14:30:58.000Z"
+    },
+    "yt:aSIsqmSHcHg": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T17:24:32.623Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.4,
+        "rationale_fr": "Critique de Mélenchon et de ses militants, défense de l'ordre et du respect de la démocratie, positions de droite conservatrice.",
+        "rationale_en": "Criticizes Mélenchon and his activists, defends order and respect for democracy, conservative-right positions."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Présente les militants adverses comme illégitimes et mise sur l'inquiétude (« je m'inquiète »).",
+        "rationale_en": "Presents opposing activists as illegitimate and relies on worry ('I am worried') rather than arguments."
+      },
+      "check": null,
+      "postTime": "2026-11-15T14:00:14.000Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3n2e5lu5hj22p": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T17:24:32.623Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Met en avant le programme de Jean-Luc Mélenchon et le soutien à la jeunesse mobilisée, positions de gauche radicale.",
+        "rationale_en": "Promotes Jean-Luc Mélenchon's program and support for mobilized youth, radical-left positions."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [],
+        "rationale_fr": "Ton de soutien à un programme, sans opposition explicite peuple contre élites.",
+        "rationale_en": "Supportive tone toward a program, without explicit people-versus-elites opposition."
+      },
+      "check": null,
+      "postTime": "2026-11-15T13:46:32.936Z"
+    },
+    "yt:8AbeIVTjlio": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T17:24:43.675Z",
+      "storyItems": [
+        "9e5ee86b9e8e",
+        "1a6e706a7c59",
+        "8a2020bec3db"
+      ],
+      "storyTitle": "Sommet de la francophonie : Emmanuel Macron appelle à l’« unité » et au « consensus » face aux tensions entre la RDC et le Rwanda",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message culturel et diplomatique sur la francophonie, sans contenu idéologique clairement situé à gauche ou à droite.",
+        "rationale_en": "Cultural and diplomatic message on la francophonie, with no clear left-right ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Ton institutionnel et fraternel, sans opposition au peuple ni aux élites.",
+        "rationale_en": "Institutional, fraternal tone with no opposition to the people or elites."
+      },
+      "check": null,
+      "postTime": "2026-11-15T11:09:14.000Z"
+    },
+    "yt:uRDyn4sUb0o": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T17:24:43.675Z",
+      "storyItems": [
+        "2800547ed9c3",
+        "30f0302e1b6e",
+        "ba349626b649",
+        "155795d9004f",
+        "c10accd283f8"
+      ],
+      "storyTitle": "Tout comprendre au smic, le salaire minimum que le gouvernement va revaloriser",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique de revalorisation du SMIC jugée minimale et appel à changer de politique sociale, position de gauche sociale.",
+        "rationale_en": "Criticizes the minimal SMIC increase and calls for a policy change, a social-left position."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Alerte sur une explosion sociale imminente, formule émotionnelle plutôt qu'argument chiffré.",
+        "rationale_en": "Warns of imminent social explosion, an emotional formula rather than a quantified argument."
+      },
+      "check": null,
+      "postTime": "2026-11-15T08:45:41.000Z"
+    },
+    "bsky:at://did:plc:wu3up6kgql5q3v4wtdh2h624/app.bsky.feed.post/3n2cjspb5f22e": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T17:24:43.675Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de visite d'un club sportif, sans position politique.",
+        "rationale_en": "Visit report on a sports club, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-14T22:19:48.118Z"
+    },
+    "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3n2ccpye2222w": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T17:24:43.676Z",
+      "storyItems": [
+        "c979b761d2f2",
+        "1b814898cc32",
+        "cc9c34413246"
+      ],
+      "storyTitle": "Présidentielle 2027 : le livre programme de Jean-Luc Mélenchon, « L’Avenir en commun », en tête des ventes de livres, devant le prix Goncourt",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Le message fait la promotion du programme sans exposer d'idées précises, donc pas de position idéologique identifiable.",
+        "rationale_en": "The message promotes the program without stating specific ideas, so no identifiable ideological position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Mise en avant d'une dynamique militante, sans opposition au peuple ni aux élites.",
+        "rationale_en": "Highlights militant momentum, without opposition to the people or elites."
+      },
+      "check": {
+        "claim": "Le programme « L'Avenir en commun » est en tête des ventes et des rassemblements de 20 000 personnes au Bourget et 3 000 à Nice.",
+        "why_fr": "Le chiffre de 20 000 personnes semble provenir des organisateurs, et la comparaison des ventes porte sur une période de deux jours seulement.",
+        "why_en": "The 20,000 attendance figure appears to come from the organizers, and the sales comparison covers only two days.",
+        "sources": [
+          {
+            "title": "Présidentielle 2027 : le livre programme de Jean-Luc Mélenchon, « L'Avenir en commun », en tête des ventes de livres, devant le prix Goncourt",
+            "url": "https://www.lemonde.fr/politique/article/2026/11/12/presidentielle-2027-le-livre-programme-de-jean-luc-melenchon-l-avenir-en-commun-en-tete-des-ventes-de-livres-devant-le-prix-goncourt_6809100_823448.html"
+          }
+        ]
+      },
+      "postTime": "2026-11-14T20:13:00.798Z"
+    },
+    "bsky:at://did:plc:wu3up6kgql5q3v4wtdh2h624/app.bsky.feed.post/3n2btkbrii22u": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T17:24:43.676Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de visite d'un club sportif, sans position politique.",
+        "rationale_en": "Visit report on a sports club, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-14T15:41:23.215Z"
     }
   },
   "failures": {
