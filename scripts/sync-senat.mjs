@@ -22,6 +22,7 @@
 import { mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { parse } from "node-html-parser";
 import { csvObjects } from "./lib/csv.mjs";
+import { safeName } from "./lib/safe-name.mjs";
 
 const ROOT = new URL("../", import.meta.url);
 const OUT = new URL("public/data/senat/", ROOT);
@@ -774,7 +775,8 @@ await writeFile(new URL("senateurs.json", OUT), JSON.stringify(senateurs));
 await writeFile(new URL("scrutins.json", OUT), JSON.stringify(scrutinList));
 for (const [id, v] of votes) {
   const sorted = Object.fromEntries(Object.entries(v).sort(([a], [b]) => a.localeCompare(b, "en", { numeric: true })));
-  await writeFile(new URL(`votes/${id}.json`, OUT), JSON.stringify(sorted));
+  const name = safeName(id); // a senator id from the remote list never names a path outside votes/
+  if (name) await writeFile(new URL(`votes/${name}.json`, OUT), JSON.stringify(sorted));
 }
 if (elections) await writeFile(new URL("elections-2026.json", OUT), JSON.stringify(elections));
 meta.sources = { ...SRC, scrutinsIndex: SRC.scrutinsIndex("<session>"), scrutinPage: SRC.scrutinPage("<session>", "<n>"), scrutinVotes: SRC.scrutinVotes("<session>", "<n>"), licence: "Licence Ouverte (data.senat.fr/licence, www.senat.fr); Licence Ouverte 2.0 (data.gouv.fr); CC0 (Wikidata)" };

@@ -14,6 +14,7 @@ import { createReadStream } from "node:fs";
 import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import { createInterface } from "node:readline";
 import { createGunzip } from "node:zlib";
+import { safeName } from "./lib/safe-name.mjs";
 
 const DATASET = "621df2954fa5a3b5a023e23c";
 const CACHE = new URL("../.cache/crime-history/", import.meta.url);
@@ -107,7 +108,9 @@ for (const [dep, communes] of Object.entries(byDep)) {
     department: Object.fromEntries(Object.entries(depRates[dep] ?? {}).map(([k, by]) => [k, series(by)])),
     communes: Object.fromEntries(Object.entries(communes).map(([c, keys]) => [c, Object.fromEntries(Object.entries(keys).map(([k, by]) => [k, series(by)]))])),
   };
-  await writeFile(new URL(`${dep}.json`, OUT), JSON.stringify(out));
+  const name = safeName(dep); // the department comes from the remote file's commune codes
+  if (!name) continue;
+  await writeFile(new URL(`${name}.json`, OUT), JSON.stringify(out));
   files++;
 }
 console.log(`crime history ${years[0]}–${years.at(-1)}: ${n} published town-year values, ${files} department files`);
