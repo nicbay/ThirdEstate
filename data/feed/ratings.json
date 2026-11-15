@@ -13979,6 +13979,53 @@
       },
       "check": null,
       "postTime": "2026-11-14T16:28:50.733Z"
+    },
+    "bsky:at://did:plc:skhpi6tvodwwkygydxmka5tm/app.bsky.feed.post/3n2cpj6kiza2l": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T02:06:50.720Z",
+      "storyItems": [
+        "ef112e1b9e71"
+      ],
+      "storyTitle": "\"Plus d'énergie, en pleurs, à bout de forces\" : un éleveur qui a \"craqué\" raconte comment il s'est relevé grâce aux accompagnements mis en place",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique des coupes budgétaires dans l'emploi et l'accompagnement, défense implicite de l'action publique sociale ; positionnement de gauche.",
+        "rationale_en": "Criticises budget cuts to employment and support programs and defends public social action; left-leaning position."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Ton alarmiste (« morts au travail s'accumulent », « 🚨 ») et attaque du gouvernement, sans rhétorique anti-élite explicite.",
+        "rationale_en": "Alarmist tone (\"deaths at work pile up\", siren emoji) and attack on the government, without explicit anti-elite rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-15T00:01:51.048Z"
+    },
+    "bsky:at://did:plc:wu3up6kgql5q3v4wtdh2h624/app.bsky.feed.post/3n2ckcxrs3c2w": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T02:06:50.720Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message d'hommage aux sapeurs-pompiers ; il évoque le recul des services publics sans position idéologique clairement exprimée.",
+        "rationale_en": "Tribute to firefighters; mentions the retreat of public services without a clearly stated ideological position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Hommage sobre, aucune rhétorique populiste repérable.",
+        "rationale_en": "Measured tribute with no identifiable populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-14T22:28:53.921Z"
     }
   },
   "failures": {
