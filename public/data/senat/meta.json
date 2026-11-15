@@ -1,5 +1,5 @@
 {
- "syncedAt": "2026-11-14T13:36:41.158Z",
+ "syncedAt": "2026-11-15T13:59:11.410Z",
  "firstSession": "2023-2024",
  "sources": {
   "api": "https://www.senat.fr/api-senat/senateurs.json",
@@ -679,61 +679,52 @@
   "coverage": {
    "senat": {
     "twitter": 208,
-    "instagram": 34,
-    "linkedin": 113,
-    "facebook": 242,
+    "instagram": 30,
+    "linkedin": 104,
+    "facebook": 241,
     "bluesky": 1,
     "tiktok": 1,
-    "youtube": 3,
+    "youtube": 2,
     "mastodon": 0,
-    "website": 48
+    "website": 46
    },
    "wikidata": {
     "twitter": 247,
-    "instagram": 47,
-    "linkedin": 127,
-    "facebook": 256,
+    "instagram": 43,
+    "linkedin": 119,
+    "facebook": 255,
     "bluesky": 12,
     "tiktok": 3,
-    "youtube": 7,
+    "youtube": 6,
     "mastodon": 2,
     "website": 108
    },
    "site": {
     "twitter": 247,
-    "instagram": 63,
-    "linkedin": 132,
-    "facebook": 260,
+    "instagram": 60,
+    "linkedin": 125,
+    "facebook": 258,
     "bluesky": 15,
-    "tiktok": 6,
-    "youtube": 24,
+    "tiktok": 7,
+    "youtube": 25,
     "mastodon": 3,
     "website": 108
    },
    "final": {
     "twitter": 247,
-    "instagram": 63,
-    "linkedin": 132,
-    "facebook": 260,
+    "instagram": 60,
+    "linkedin": 125,
+    "facebook": 258,
     "bluesky": 15,
-    "tiktok": 6,
-    "youtube": 24,
+    "tiktok": 7,
+    "youtube": 25,
     "mastodon": 3,
     "website": 108
    }
   },
-  "withAnyAccount": 291,
+  "withAnyAccount": 289,
   "wikidataItems": 346,
   "conflicts": [
-   {
-    "id": "19591F",
-    "nom": "Xavier Iacovelli",
-    "platform": "facebook",
-    "kept": "senat: https://www.facebook.com/iacoxavier",
-    "others": [
-     "senat: https://www.facebook.com/596443558"
-    ]
-   },
    {
     "id": "20286Q",
     "nom": "Amel Gacquerre",
@@ -879,15 +870,6 @@
     ]
    },
    {
-    "id": "11045K",
-    "nom": "Laurence Rossignol",
-    "platform": "facebook",
-    "kept": "senat: https://www.facebook.com/RossignolLaurence",
-    "others": [
-     "senat: https://www.facebook.com/100058135596444"
-    ]
-   },
-   {
     "id": "19349W",
     "nom": "Didier Rambaud",
     "platform": "facebook",
@@ -961,15 +943,6 @@
     ]
    },
    {
-    "id": "14193X",
-    "nom": "Cédric Perrin",
-    "platform": "facebook",
-    "kept": "senat: https://www.facebook.com/cedric.perrin.330",
-    "others": [
-     "senat: https://www.facebook.com/100063778643519"
-    ]
-   },
-   {
     "id": "21071F",
     "nom": "Marie-Do Aeschlimann",
     "platform": "instagram",
@@ -987,24 +960,6 @@
      "senat: https://www.facebook.com/profile.php?id=100092547395047",
      "wikidata: https://www.facebook.com/Pierre-Barros-100092547395047",
      "site: https://www.facebook.com/profile.php?id=100092547395047"
-    ]
-   },
-   {
-    "id": "19489J",
-    "nom": "Éric Kerrouche",
-    "platform": "facebook",
-    "kept": "senat: https://www.facebook.com/eric.kerrouche",
-    "others": [
-     "senat: https://www.facebook.com/752244486"
-    ]
-   },
-   {
-    "id": "19489J",
-    "nom": "Éric Kerrouche",
-    "platform": "website",
-    "kept": "senat: https://erickerrouche.fr/",
-    "others": [
-     "wikidata: http://www.erickerrouche.fr/"
     ]
    },
    {
@@ -1166,15 +1121,6 @@
     ]
    },
    {
-    "id": "19954N",
-    "nom": "Catherine Belrhiti",
-    "platform": "facebook",
-    "kept": "senat: https://www.facebook.com/p/Catherine-Belrhiti-S%C3%A9natrice-de-la-Moselle-100066793099399",
-    "others": [
-     "senat: https://www.facebook.com/100003094434363"
-    ]
-   },
-   {
     "id": "19593H",
     "nom": "Pierre Ouzoulias",
     "platform": "facebook",
@@ -1193,15 +1139,6 @@
     ]
    },
    {
-    "id": "20060X",
-    "nom": "Rémi Cardon",
-    "platform": "facebook",
-    "kept": "senat: https://www.facebook.com/RemiCardon80",
-    "others": [
-     "senat: https://www.facebook.com/1259946388"
-    ]
-   },
-   {
     "id": "18395Y",
     "nom": "Karine Daniel",
     "platform": "twitter",
@@ -1217,15 +1154,6 @@
     "kept": "senat: https://www.facebook.com/KarineDanielNantes",
     "others": [
      "wikidata: https://www.facebook.com/100009715560504"
-    ]
-   },
-   {
-    "id": "18395Y",
-    "nom": "Karine Daniel",
-    "platform": "website",
-    "kept": "senat: https://senatricekarinedaniel.fr/",
-    "others": [
-     "wikidata: http://karinedaniel2016.fr/"
     ]
    },
    {
@@ -1253,15 +1181,6 @@
     "kept": "wikidata: https://x.com/HayeLudovic",
     "others": [
      "wikidata: https://x.com/ludovichaye"
-    ]
-   },
-   {
-    "id": "20128B",
-    "nom": "Ludovic Haye",
-    "platform": "facebook",
-    "kept": "senat: https://www.facebook.com/LudovicHaye68",
-    "others": [
-     "senat: https://www.facebook.com/100064162956438"
     ]
    },
    {
@@ -1695,14 +1614,6 @@
     "reason": "institution or party site, not the senator's own: http://www.senat.fr/"
    },
    {
-    "id": "12016W",
-    "nom": "Victorin Lurel",
-    "platform": "website",
-    "value": "http://lurel.parti-socialiste.fr",
-    "source": "wikidata",
-    "reason": "institution or party site, not the senator's own: http://lurel.parti-socialiste.fr"
-   },
-   {
     "id": "17229F",
     "nom": "Stéphane Demilly",
     "platform": "facebook",
@@ -1717,6 +1628,14 @@
     "value": "http://www.senat.fr/senateur/duffourg_alain20040t.html",
     "source": "wikidata",
     "reason": "institution or party site, not the senator's own: http://www.senat.fr/senateur/duffourg_alain20040t.html"
+   },
+   {
+    "id": "12016W",
+    "nom": "Victorin Lurel",
+    "platform": "website",
+    "value": "http://lurel.parti-socialiste.fr",
+    "source": "wikidata",
+    "reason": "institution or party site, not the senator's own: http://lurel.parti-socialiste.fr"
    },
    {
     "id": "11048N",
@@ -1748,6 +1667,11 @@
     "id": "19711U",
     "url": "http://www.christinelavarde.fr/",
     "error": "robots.txt disallows"
+   },
+   {
+    "id": "86034E",
+    "url": "http://www.gerardlarcher.fr/",
+    "error": "fetch failed for http://www.gerardlarcher.fr/"
    },
    {
     "id": "19719D",
@@ -1785,11 +1709,6 @@
     "error": "robots.txt disallows"
    },
    {
-    "id": "19591F",
-    "url": "https://iacovelli.fr/",
-    "error": "fetch failed for https://iacovelli.fr/"
-   },
-   {
     "id": "19611R",
     "url": "http://laurentlafon.com/",
     "error": "HTTP 404"
@@ -1798,6 +1717,11 @@
     "id": "19697Q",
     "url": "https://martinlevrier.fr/",
     "error": "fetch failed for https://martinlevrier.fr/"
+   },
+   {
+    "id": "11045K",
+    "url": "http://www.laurence-rossignol.fr/",
+    "error": "fetch failed for http://www.laurence-rossignol.fr/"
    },
    {
     "id": "04070G",
@@ -1890,6 +1814,11 @@
     "error": "fetch failed for http://bernardjomier.eelv.fr/"
    },
    {
+    "id": "18395Y",
+    "url": "http://karinedaniel2016.fr/",
+    "error": "fetch failed for http://karinedaniel2016.fr/"
+   },
+   {
     "id": "20110Q",
     "url": "https://guy-benarroche.fr/",
     "error": "fetch failed for https://guy-benarroche.fr/"
@@ -1910,6 +1839,11 @@
     "error": "fetch failed for http://nadiasollogoub.fr/"
    },
    {
+    "id": "20104S",
+    "url": "http://www.alain-cadec.org/",
+    "error": "fetch failed for http://www.alain-cadec.org/"
+   },
+   {
     "id": "20172F",
     "url": "https://www.laurencegarnier.fr/",
     "error": "fetch failed for https://www.laurencegarnier.fr/"
@@ -1928,6 +1862,11 @@
     "id": "21094N",
     "url": "http://www.annesouyris.fr/",
     "error": "fetch failed for http://www.annesouyris.fr/"
+   },
+   {
+    "id": "14221J",
+    "url": "http://pierremedevielle.fr/",
+    "error": "HTTP 403"
    },
    {
     "id": "11115U",
