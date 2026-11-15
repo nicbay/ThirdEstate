@@ -14514,6 +14514,27 @@
       },
       "check": null,
       "postTime": "2026-11-14T15:41:23.215Z"
+    },
+    "yt:FD4s6ioIKTY": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-15T23:10:22.196Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de présentation d'une rencontre sportive et personnelle, sans position politique.",
+        "rationale_en": "Presentation of a personal and sports encounter, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste dans ce message de présentation.",
+        "rationale_en": "No populist rhetoric in this presentation message."
+      },
+      "check": null,
+      "postTime": "2026-11-15T15:58:47.000Z"
     }
   },
   "failures": {
