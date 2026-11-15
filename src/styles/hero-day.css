@@ -475,7 +475,10 @@
 .lg-table + .lg-note, .lg-cost + .lg-note { margin-top: 0.8rem; }
 
 /* the note's name ("La note du jour / de la semaine"): a square outline, so the box reads as the note at a glance */
-.ed-k b { display: inline-block; padding: 0.3rem 0.75rem 0.25rem; border: 2px solid var(--accent); color: var(--ink); }
+.ed-k b { display: inline-block; padding: 0.35rem 0.8rem calc(0.3rem + var(--box-bar-h)); color: var(--ink);
+  /* the site's one box (overhaul.css): thin grey line, the box's ground, the red/blue underline at its foot */
+  border: 1px solid var(--box-line); border-bottom: 0;
+  background: var(--box-bar) left bottom / 100% var(--box-bar-h) no-repeat border-box, var(--box-bg); }
 
 /* light theme: the note of the day / week is a sheet of white paper laid on the dark pixel ocean (the band, the chart
    and the rest of the hero stay night). The night overrides of .hday-chart are reset to the paper palette inside it.

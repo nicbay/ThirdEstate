@@ -253,7 +253,7 @@ function bodyHtml(g: Ledger, s: Pick | null | undefined) {
   const takeText = g.take ? paras(L(g.take.fr, g.take.en)) : [];
   const take = g.brief?.length ? briefHtml(g.brief) : takeText.length ? takeText.map((p, i) => `<p>${figures(esc(p))}${i === takeText.length - 1 && g.take!.story ? ` ${src(g.take!.story)}` : ""}</p>`).join("") : "";
   // our own voice is signed: the fox sits under the label
-  const takeRow = take ? row(`${L("Notre lecture", "Our take")}<span class="lg-logo">${foxSvg(30, true, 'role="img" aria-label="Third Estate"')}</span>`, take, "is-te") : "";
+  const takeRow = take ? row(`${L("Notre analyse", "Our analysis")}<span class="lg-logo">${foxSvg(30, true, 'role="img" aria-label="Third Estate"')}</span>`, take, "is-te") : "";
   const facts = `${g.world ? row(L("Monde", "World"), story(g.world)) : ""}${g.france ? row("France", story(g.france)) : ""}
     ${surprises.length ? row(surprises.length > 1 ? L("Les surprises", "Surprises") : L("La surprise", "Surprise"), linesHtml(surprises)) : ""}
     ${g.declarations?.length ? row(L("Déclarations", "Statements"), linesHtml(g.declarations)) : ""}
