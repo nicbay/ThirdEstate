@@ -138,7 +138,7 @@ export async function heroDay() {
         <p class="hday-count"><b>${daysToGo}</b><span>${L(daysToGo > 1 ? "jours avant le premier tour" : "jour avant le premier tour", daysToGo === 1 ? "day to the first round" : "days to the first round")}</span><time datetime="${ELECTION_DAY}">${fmtDate(ELECTION_DAY)}</time></p>
       </div>
       <nav class="hday-doors" aria-label="${L("Par où commencer", "Where to start")}">
-        <a href="#/2027">${L("Qui gagnerait aujourd’hui", "See who would win today")}</a><a class="hday-quiz" href="#/quiz">${L("Faire le quiz · 2 min", "Take the quiz · 2 min")}</a><a href="#/assemblee/deputes">${L("Trouver mon député", "Find my MP")}</a><a href="#/programmes">${L("Comparer les programmes", "Compare the programmes")}</a>
+        <a href="#/2027">${L("Qui gagnerait aujourd’hui", "See who would win today")}</a><a class="hday-quiz" href="#/quiz">${L("Faire le quiz · 3 min", "Take the quiz · 3 min")}</a><a href="#/assemblee/deputes">${L("Trouver mon député", "Find my MP")}</a><a href="#/programmes">${L("Comparer les programmes", "Compare the programmes")}</a>
       </nav>
       <section class="box hday-town" aria-labelledby="hday-town-title">
         <p class="hday-town-k">${L("Votre commune", "Your town")}</p>

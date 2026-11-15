@@ -13,6 +13,7 @@
 // opponents call it. When the recorded vote was on deleting the text (`inv`), positions are flipped so that
 // "Pour" always means for the proposal in the question.
 //
+// Each run of the quiz draws its own questions in the browser (src/views/quiz.ts): this file is the pool.
 // Output (public/data/an/quiz.json):
 //   questions[]  id, scrutin number, date, theme, fr/en question + context, official result
 //   themes[]     the 17 speech themes (same order as interventions/summary.json)
@@ -28,12 +29,12 @@ const readJson = async (u) => JSON.parse(await readFile(u, "utf8"));
 /** The curated questions, in the order the quiz asks them. */
 const QUESTIONS = [
   {
-    id: "retraites", n: 3684, theme: "travail",
+    id: "retraites", hook: true, n: 3684, theme: "travail",
     fr: ["Faut-il suspendre jusqu’en 2028 la réforme des retraites de 2023, qui relève progressivement l’âge légal de départ à 64 ans ?", "Article du budget de la Sécurité sociale pour 2026 qui gèle le relèvement de l’âge légal et de la durée de cotisation."],
     en: ["Should the 2023 pension reform, which gradually raises the legal retirement age to 64, be suspended until 2028?", "Article of the 2026 Social Security budget freezing the rise in the legal age and in required years of contributions."],
   },
   {
-    id: "fin-de-vie", n: 2107, theme: "sante",
+    id: "fin-de-vie", hook: true, n: 2107, theme: "sante",
     fr: ["Faut-il créer un droit à l’aide à mourir pour les malades majeurs atteints d’une affection grave et incurable, à certaines conditions ?", "Proposition de loi sur la fin de vie, vote sur l’ensemble en première lecture. Un texte distinct sur les soins palliatifs a été voté le même jour."],
     en: ["Should adults with a serious and incurable illness have a right to assisted dying, under certain conditions?", "End-of-life bill, final vote at first reading. A separate bill on palliative care was voted the same day."],
   },
@@ -43,7 +44,7 @@ const QUESTIONS = [
     en: ["Should birthright citizenship be restricted in Mayotte, by requiring the parents of a child born there to have lived there legally for over a year?", "Compromise text agreed by MPs and senators (joint committee), the Assembly’s final vote."],
   },
   {
-    id: "zucman", n: 881, theme: "budget",
+    id: "zucman", hook: true, n: 881, theme: "budget",
     fr: ["Faut-il créer un impôt minimum de 2 % par an sur les patrimoines de plus de 100 millions d’euros ?", "Proposition de loi dite « taxe Zucman », du nom de l’économiste qui l’a conçue ; vote sur l’ensemble en première lecture."],
     en: ["Should fortunes above €100 million pay a minimum tax of 2% a year?", "The so-called “Zucman tax” bill, named after the economist who designed it; final vote at first reading."],
   },
@@ -63,12 +64,12 @@ const QUESTIONS = [
     en: ["Should France and the European Union step up their support for Ukraine?", "European resolution: a text stating the Assembly’s position, with no binding force."],
   },
   {
-    id: "zfe", n: 8613, theme: "ecologie", inv: true,
+    id: "zfe", hook: true, n: 8613, theme: "ecologie", inv: true,
     fr: ["Faut-il supprimer les zones à faibles émissions (ZFE), qui restreignent la circulation des véhicules les plus polluants dans certaines agglomérations ?", "Le vote portait sur un amendement supprimant l’article unique de la proposition d’abrogation : voter pour revenait à garder les ZFE. Les positions sont affichées dans le sens de la question."],
     en: ["Should low-emission zones (ZFE), which restrict the most polluting vehicles in some cities, be abolished?", "The vote was on an amendment deleting the repeal bill’s only article: voting for it meant keeping the zones. Positions are shown in the direction of the question."],
   },
   {
-    id: "medecins", n: 1214, theme: "sante",
+    id: "medecins", hook: true, n: 1214, theme: "sante",
     fr: ["Faut-il réguler l’installation des médecins, en n’autorisant une nouvelle installation dans les zones déjà bien dotées qu’en cas de départ d’un confrère ?", "Amendement rétablissant l’article principal de la proposition de loi transpartisane contre les déserts médicaux."],
     en: ["Should doctors’ freedom to set up practice be regulated, allowing a new practice in well-served areas only when another doctor leaves?", "Amendment restoring the main article of the cross-party bill on medical deserts."],
   },
@@ -117,8 +118,9 @@ const QUESTIONS = [
 const GROUPS = ["LFI-NFP", "GDR", "ECOS", "SOC", "LIOT", "DEM", "EPR", "HOR", "DR", "UDR", "RN"];
 
 /**
- * Long version: two measures from each candidate's own 2027 programme (public/data/programmes/compare.json),
- * asked as a proposal without saying whose it is. Chosen by hand from each candidate's logged measures so that
+ * Four measures from each candidate's own record (public/data/programmes/compare.json): their programme
+ * document or, where they have only announced positions so far, their public announcements (see `origin`).
+ * Asked as a proposal without saying whose it is; the complete version draws two per candidate, the express four in all. Chosen by hand from each candidate's logged measures so that
  * every candidate has the same number, the wording is a concrete proposal (not a slogan or a budget total), and
  * the set covers different subjects. The statement restates the measure in neutral terms; the quiz shows the
  * candidate's own wording (`text` in compare.json) next to it once the results are out. The build fails if a
@@ -151,6 +153,33 @@ const MEASURES = [
   ["le-pen", "m23", "Faut-il abroger la loi qui interdit la recherche d’hydrocarbures sur le sol français ?", "Should the law banning exploration for oil and gas on French soil be repealed?"],
   ["zemmour", "z03", "Faut-il expulser tout étranger, même en situation régulière, après un an de chômage ?", "Should any foreigner, even one legally resident, be expelled after a year of unemployment?"],
   ["zemmour", "z23", "Faut-il sortir la France de l’OTAN ?", "Should France leave NATO?"],
+  // second pair per candidate (a run draws two of each candidate's four)
+  ["arthaud", "m01", "Faut-il qu’aucun salaire ne soit inférieur à 2 200 euros net par mois ?", "Should no wage be lower than €2,200 net a month?"],
+  ["arthaud", "m05", "Faut-il lever le secret des affaires pour rendre publics les comptes des grandes entreprises ?", "Should business secrecy be lifted so that large companies’ accounts are made public?"],
+  ["melenchon", "L55602e", "Faut-il légaliser le cannabis, avec un monopole d’État sur sa production et sa vente ?", "Should cannabis be legalised, with a state monopoly on producing and selling it?"],
+  ["melenchon", "Lefdefe", "Faut-il généraliser une sixième semaine de congés payés ?", "Should every employee get a sixth week of paid leave?"],
+  ["roussel", "m14", "Faut-il supprimer Parcoursup et la sélection à l’entrée de l’université ?", "Should Parcoursup and selection for university entry be abolished?"],
+  ["roussel", "m08", "Faut-il créer un revenu étudiant d’au moins 850 euros par mois ?", "Should students receive an income of at least €850 a month?"],
+  ["tondelier", "m03", "Faut-il planifier la sortie du nucléaire, en arrêtant les nouveaux projets de réacteurs ?", "Should France plan to phase out nuclear power, ending new reactor projects?"],
+  ["tondelier", "m06", "Faut-il créer une tranche d’impôt sur le revenu à 60 % au-delà de 250 000 euros par an ?", "Should there be a 60% income-tax band above €250,000 a year?"],
+  ["glucksmann", "m01", "Faut-il inscrire dans la Constitution que la République est écologique ?", "Should the Constitution state that the Republic is ecological?"],
+  ["glucksmann", "m09", "Faut-il proposer un million de voitures électriques en location à 100 euros par mois, sans apport ?", "Should a million electric cars be offered for lease at €100 a month, with no deposit?"],
+  ["attal", "m09", "Faut-il geler pendant un an toutes les prestations sociales, à l’exception des petites retraites ?", "Should all welfare benefits be frozen for a year, except small pensions?"],
+  ["attal", "m24", "Faut-il juger les mineurs en comparution immédiate ?", "Should minors be tried in fast-track hearings?"],
+  ["philippe", "m09", "Faut-il laisser chaque entreprise fixer librement la durée du travail, pour sortir des 35 heures ?", "Should each company be free to set working time, moving away from the 35-hour week?"],
+  ["philippe", "m12", "Faut-il instaurer trois jours de carence pour tous les arrêts maladie, dans le privé comme dans le public ?", "Should the first three days of any sick leave go unpaid, in the private and public sectors alike?"],
+  ["villepin", "m02", "Faut-il supprimer en cinq ans toutes les niches fiscales et sociales ?", "Should every tax and social-contribution break be abolished within five years?"],
+  ["villepin", "m19", "Faut-il rétablir l’École nationale d’administration (ENA) et les grands corps de l’État ?", "Should the École nationale d’administration (ENA) and the senior civil-service corps be restored?"],
+  ["lisnard", "m18", "Faut-il supprimer la carte scolaire, au moins en ville ?", "Should school catchment areas be abolished, at least in cities?"],
+  ["lisnard", "m05", "Faut-il cesser d’indexer sur l’inflation les pensions de retraite supérieures à 2 000 euros par mois ?", "Should pensions above €2,000 a month stop rising with inflation?"],
+  ["retailleau", "r04", "Faut-il plafonner le total des aides sociales d’un foyer à 70 % du Smic ?", "Should a household’s total welfare benefits be capped at 70% of the minimum wage?"],
+  ["retailleau", "r12", "Faut-il soumettre à référendum la suppression du droit du sol ?", "Should ending birthright citizenship be put to a referendum?"],
+  ["dupont-aignan", "d04", "Faut-il arrêter l’aide de la France à l’Ukraine ?", "Should France stop its aid to Ukraine?"],
+  ["dupont-aignan", "d12", "Faut-il sortir du marché européen de l’électricité et rétablir le monopole d’EDF ?", "Should France leave the European electricity market and restore EDF’s monopoly?"],
+  ["le-pen", "m01", "Faut-il inscrire la préférence nationale dans la Constitution ?", "Should national preference be written into the Constitution?"],
+  ["le-pen", "m22", "Faut-il taxer de 1 000 euros par an l’embauche d’un salarié non européen ?", "Should hiring a non-European worker be taxed €1,000 a year?"],
+  ["zemmour", "z04", "Faut-il expulser tous les étrangers détenus dans les prisons françaises ?", "Should all foreigners held in French prisons be expelled?"],
+  ["zemmour", "z22", "Faut-il interdire le voile et la kippa dans l’espace public ?", "Should the veil and the kippa be banned in public places?"],
 ];
 
 const deputes = await readJson(new URL("deputes.json", AN));
@@ -272,12 +301,27 @@ for (const f of (await readdir(CAND)).filter((x) => x.endsWith(".json") && !["in
 
 // ---------- own measures (long version) ----------
 const compare = await readJson(new URL("../public/data/programmes/compare.json", import.meta.url));
-const measures = MEASURES.map(([slug, id, fr, en]) => {
+/** "programme" (the candidate's own document or site) or "statement" (announced publicly: speeches, interviews,
+ *  campaign announcements), from the kind of the latest programme version that carries the measure; `year` is
+ *  that version's. */
+const PROG = new URL("../public/data/programmes/", import.meta.url);
+const progFile = new Map();
+async function origin(slug, id) {
+  if (!progFile.has(slug)) progFile.set(slug, await readJson(new URL(`${slug}.json`, PROG)));
+  const f = progFile.get(slug), last = f.versions[f.versions.length - 1];
+  const m = f.measures?.find((x) => x.id === id);
+  const vid = m ? Object.keys(m.texts).filter((k) => f.versions.some((v) => v.id === k)).pop() : null;
+  const v = f.versions.find((x) => x.id === vid) ?? last;
+  return { kind: v.kind === "announcements" ? "statement" : "programme", year: v.year };
+}
+const origins = [];
+for (const [slug, id] of MEASURES) origins.push(await origin(slug, id));
+const measures = MEASURES.map(([slug, id, fr, en], i) => {
   const m = compare.candidates.find((c) => c.slug === slug)?.measures.find((x) => x.id === id);
   if (!m) throw new Error(`measure ${slug}/${id} not found in compare.json`);
   if (m.status === "dropped") throw new Error(`measure ${slug}/${id} was dropped from the programme`);
   if (!candidates.some((c) => c.slug === slug)) throw new Error(`measure ${slug}/${id}: no candidate file`);
-  return { slug, id, theme: m.theme, fr, en, text: m.text };
+  return { slug, id, theme: m.theme, fr, en, text: m.text, src: origins[i] };
 });
 const perCand = new Map();
 for (const m of measures) perCand.set(m.slug, (perCand.get(m.slug) ?? 0) + 1);
@@ -288,7 +332,7 @@ if (new Set(candidates.map((c) => perCand.get(c.slug) ?? 0)).size !== 1) throw n
 // step take the vote that adds the most separation between pairs of candidates (each pair's distance counts up
 // to 3 votes' worth, so pairs already far apart stop attracting questions), minus a penalty when its subject
 // has already been asked. The short version is the first SHORT votes of that order, the long one the first LONG.
-const SHORT = 10, LONG = 14;
+
 const VAL = { P: 1, A: 0, C: -1, "-": null };
 const cv = candidates.map((c) => QUESTIONS.map((_, k) => {
   const v = c.groups.map((g) => VAL[groups[g].line[k]]).filter((x) => x != null);
@@ -312,36 +356,23 @@ while (order.length < QUESTIONS.length) {
   order.push(best);
   for (let i = 0; i < candidates.length; i++) for (let j = i + 1; j < candidates.length; j++) if (cv[i][best] != null && cv[j][best] != null) dist[i][j] += Math.abs(cv[i][best] - cv[j][best]) / 2;
 }
-// long version: measures in two rounds (each candidate once per round, in an order that alternates sides of the
-// hemicycle so neighbours on the list are not neighbours in politics), a vote after every two measures
-const stride = (n) => Array.from({ length: n }, (_, i) => (i * 5) % n); // 5 and 13 are coprime: visits everyone
-const bySlug = candidates.map((c) => measures.map((m, i) => ({ m, i })).filter((x) => x.m.slug === c.slug).map((x) => x.i));
-const mOrder = [0, 1].flatMap((round) => stride(candidates.length).map((ci) => bySlug[ci][round]).filter((x) => x != null));
-const longOrder = [];
-const lv = order.slice(0, LONG);
-for (let i = 0, v = 0, m = 0; v < lv.length || m < mOrder.length; i++) {
-  if (i % 3 === 0 && v < lv.length) longOrder.push(`v${lv[v++]}`);
-  else if (m < mOrder.length) longOrder.push(`m${mOrder[m++]}`);
-  else longOrder.push(`v${lv[v++]}`);
-}
 // a stamp of the question set: share links made for another set are not decoded as if they were for this one
 const rev = [...`${QUESTIONS.map((q) => q.id).join()}|${measures.map((m) => m.slug + m.id).join()}|${order.join()}`].reduce((h, ch) => (Math.imul(h, 31) + ch.charCodeAt(0)) >>> 0, 7).toString(36).slice(0, 4);
 
 const out = {
   generatedAt: new Date().toISOString(),
   rev,
-  short: order.slice(0, SHORT).map((k) => `v${k}`),
-  long: longOrder,
+  order, // the votes, most separating first
   candidates,
   measures,
   legislature: 17,
   questions: QUESTIONS.map((q) => {
     const s = byNum.get(q.n);
-    return { id: q.id, n: q.n, d: s[1], theme: q.theme, inv: !!q.inv, censure: !!q.censure, fr: { q: q.fr[0], c: q.fr[1] }, en: { q: q.en[0], c: q.en[1] }, sort: s[3], res: [s[5], s[6], s[7]] };
+    return { id: q.id, n: q.n, d: s[1], theme: q.theme, hook: !!q.hook, inv: !!q.inv, censure: !!q.censure, fr: { q: q.fr[0], c: q.fr[1] }, en: { q: q.en[0], c: q.en[1] }, sort: s[3], res: [s[5], s[6], s[7]] };
   }),
   themes,
   groups,
   mps,
 };
 await writeFile(new URL("quiz.json", AN), JSON.stringify(out));
-console.log(`✓ quiz: ${QUESTIONS.length} votes (short: ${out.short.map((x) => QUESTIONS[x.slice(1)].id).join(", ")}), ${measures.length} measures, long ${longOrder.length} questions, ${candidates.length} candidates, ${mps.length} MPs, rev ${rev}`);
+console.log(`✓ quiz: ${QUESTIONS.length} votes (most separating: ${order.slice(0, 8).map((k) => QUESTIONS[k].id).join(", ")}), ${measures.length} measures (${measures.filter((m) => m.src.kind === "statement").length} public announcements), ${candidates.length} candidates, ${mps.length} MPs, rev ${rev}`);

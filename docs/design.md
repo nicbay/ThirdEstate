@@ -253,7 +253,11 @@ Each keeps its styles in its own file under `src/styles/`, imported by its view.
   of biggest moves lights its arrow. The homepage card keeps the light version. Encoding rules above are unchanged.
 - **Simulator** (`simulator.css`): scenario cards computed from the polls, a first round → qualifiers → runoff
   strip, undo/redo, transfers badged measured or assumed, pin and compare.
-- **Quiz** (`quiz.css`): a short version (10 Assembly votes chosen to separate the candidates) and a long one
-  (plus two measures per candidate, unnamed until the results); deal breakers and compatibles per candidate; the
+- **Quiz** (`quiz.css`): the landing page is the quiz. The first question of an express run sits right under
+  the title and answering it starts the run; the candidates' faces on the left–right line (fox in the middle)
+  stand beside the title on wide screens, below the question on narrow ones. Each run draws its questions at
+  random from Assembly votes, programme measures and public announcements (unnamed until the results): express
+  (8 votes + 4 measures) or complete (14 votes + 2 measures per candidate). The three kinds of source are told
+  apart by line (solid, outlined, dashed), never by hue. Deal breakers and compatibles per candidate; the
   reader's place on the left–right axis, overall and subject by subject. Proximity, never voting advice.
 - **Town photos** are the plain Wikimedia Commons photograph, credited under the picture. No pixel treatment.
