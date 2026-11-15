@@ -3587,6 +3587,29 @@
    "iv": true,
    "presidential": true,
    "legislative": false
+  },
+  "2393": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10371-pres-iv-opinionway-cnews-12-novembre.pdf",
+   "fieldwork": [
+    "2026-11-10",
+    "2026-11-12"
+   ],
+   "samples": [
+    964,
+    1001,
+    4660,
+    500,
+    600,
+    7500,
+    660,
+    611,
+    504,
+    471,
+    512
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
   }
  },
  "lookups": {
@@ -3627,6 +3650,10 @@
   },
   "presidential|elabe|2026-10-14|2026-10-16": {
    "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10324-pres-iv-elabe-17-octobre.pdf"
+  },
+  "presidential|elabe|2026-11-12|2026-11-13": {
+   "url": null,
+   "checked": "2026-11-15"
   },
   "presidential|harris|2021-03-03|2021-03-04": {
    "url": null,
@@ -3730,11 +3757,10 @@
   },
   "presidential|opinionway|2026-11-09|2026-11-10": {
    "url": null,
-   "checked": "2026-11-13"
+   "checked": "2026-11-15"
   },
   "presidential|opinionway|2026-11-10|2026-11-12": {
-   "url": null,
-   "checked": "2026-11-13"
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10371-pres-iv-opinionway-cnews-12-novembre.pdf"
   },
   "presidential|verian|2026-07-09|2026-07-10": {
    "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10225-pres-iv-1er-tour-verian-lhemicycle-10-juillet.pdf"
