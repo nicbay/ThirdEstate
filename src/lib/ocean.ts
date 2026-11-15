@@ -2,7 +2,7 @@
 // (8,314 × 8,314 ≈ 69.1 million cells) and drawn by a fragment shader, so nothing is stored: every cell's colour comes
 // from a hash of its position, and the screen shows a window onto it with the true proportion (about 71 % in colour).
 // Registered voters take the flag's three colours; everyone else (minors, foreign residents, adults not on the rolls)
-// is grey. Nothing moves across the screen: each pixel flickers softly on its own rhythm, and now and then fades to
+// is grey. Nothing moves across the screen: slow swells of light pass over the grid, each pixel barely breathes (every one keeps its dark separator), and now and then one fades to
 // blue and back. The ocean fades out toward the bottom of the band and around the chart (no pixels behind it).
 // One pixel glows bright white: the reader. Over it (pointer, focus or tap) the pixels around it are pushed aside to make room,
 // crowd an uneven edge and keep pressing back, and "your vote matters" appears in the space. Touch screens
@@ -24,7 +24,7 @@ precision highp float;
 precision mediump float;
 #endif
 uniform vec2 uRes; uniform float uT; uniform float uCell; uniform vec2 uOff; uniform float uShare; uniform float uSide;
-uniform vec2 uMe; uniform float uOpen; uniform float uR; uniform float uDpr; uniform vec4 uMask; uniform vec4 uMask2;
+uniform vec2 uMe; uniform float uOpen; uniform float uR; uniform float uDpr; uniform float uGap; uniform vec4 uMask; uniform vec4 uMask2;
 // a cell's identity, hashed in two small parts so precision never smears neighbours together
 float h1(vec2 p){ p = fract(p * vec2(0.1031, 0.1030)); p += dot(p, p.yx + 33.33); return fract((p.x + p.y) * p.x); }
 float hash(vec2 c){ vec2 lo = mod(c, 64.0), hi = floor(c / 64.0); return fract(h1(lo + 0.5) + h1(hi * 1.37 + 7.0) * 1.618); }
@@ -56,10 +56,10 @@ void main(){
   L = uR * 2.8;
   // the reader's own pixel never moves
   vec2 fc = floor(frag / uCell); vec2 fin = frag - fc * uCell;
-  if (fc == meCell && fin.x < uCell - uDpr && fin.y < uCell - uDpr) { gl_FragColor = vec4(GOLD, 1.0); return; }
+  if (fc == meCell && fin.x < uCell - uGap && fin.y < uCell - uGap) { gl_FragColor = vec4(GOLD, 1.0); return; }
   vec2 d = frag - meC;
   float r = length(d);
-  vec2 cell = fc; bool hit = fin.x < uCell - uDpr && fin.y < uCell - uDpr;
+  vec2 cell = fc; bool hit = fin.x < uCell - uGap && fin.y < uCell - uGap;
   if (uOpen > 0.001 && r < L + 3.0 * uCell) {
     // which pixel landed here: start from a guess (the push undone along this direction), then look around it
     float H = holeAt(atan(d.y, d.x));
@@ -72,7 +72,7 @@ void main(){
       if (cc == meCell) continue;
       vec2 p = pushed((cc + 0.5) * uCell, hash(mod(cc + uOff, uSide) + 5.0));
       vec2 lp = frag - (p - 0.5 * uCell);
-      if (lp.x >= 0.0 && lp.y >= 0.0 && lp.x < uCell - uDpr && lp.y < uCell - uDpr) {
+      if (lp.x >= 0.0 && lp.y >= 0.0 && lp.x < uCell - uGap && lp.y < uCell - uGap) {
         float dd = dot(frag - p, frag - p);
         if (dd < best) { best = dd; cell = cc; hit = true; }
       }
@@ -95,19 +95,20 @@ void main(){
     vec3 base = vec3(0.37, 0.38, 0.44); float k = 0.35;
     if (r1 < uShare) { base = r2 < 0.34 ? BLUE : (r2 < 0.67 ? vec3(0.93, 0.93, 0.97) : vec3(1.0, 0.37, 0.44)); k = 1.0; }
     // slow swells of light roll over the grid, like light on water: the pixels stay put, only their brightness travels
+    float t = uT * 0.5;                               // half the pace: the water barely moves
     vec2 sp = fc / 46.0;
-    float swell = vnoise(sp + vec2(uT * 0.035, uT * 0.012)) * 0.65 + vnoise(sp * 2.3 - vec2(uT * 0.02, -uT * 0.03)) * 0.35;
+    float swell = vnoise(sp + vec2(t * 0.035, t * 0.012)) * 0.65 + vnoise(sp * 2.3 - vec2(t * 0.02, -t * 0.03)) * 0.35;
     swell = smoothstep(0.38, 0.85, swell);
-    // most pixels breathe faintly; a few, here and there, catch the light for a moment
-    float f = 0.5 + 0.5 * sin(uT * (0.35 + r3 * 0.9) + r4 * 6.2832);
+    // most pixels barely breathe; a few, here and there, catch a little light (never bright enough to pull the eye)
+    float f = 0.5 + 0.5 * sin(t * (0.35 + r3 * 0.9) + r4 * 6.2832);
     float glint = pow(f, 24.0) * step(0.86, r3);
     // now and then a pixel drifts to blue and back
-    float toBlue = smoothstep(0.82, 1.0, sin(uT * (0.08 + r4 * 0.12) + r3 * 6.2832));
+    float toBlue = smoothstep(0.82, 1.0, sin(t * (0.08 + r4 * 0.12) + r3 * 6.2832));
     col = mix(base, BLUE, toBlue * 0.85);
     // calm behind the words on the left, fuller toward the right
     float side = smoothstep(0.05, 0.85, uv.x);
     float vis = (0.25 + 0.75 * side) * clear * bottom;
-    a = ((0.018 + 0.16 * swell) * (0.55 + 0.45 * f) * (0.6 + 0.4 * r2) * k + 0.4 * glint * k) * vis;
+    a = ((0.018 + 0.16 * swell) * (0.84 + 0.16 * f) * (0.6 + 0.4 * r2) * k + 0.1 * glint * k) * vis;
   }
   // the reader's pixel glows a little, between the pixels too (only while the room is closed)
   float glow = exp(-(dMe * dMe) / (2.0 * 7.0 * 7.0)) * (0.32 + 0.08 * sin(uT * 2.2)) * (1.0 - uOpen);
@@ -136,7 +137,7 @@ export function mountOcean(host: HTMLElement) {
   gl.enableVertexAttribArray(loc);
   gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
   const u = (n: string) => gl.getUniformLocation(prog, n);
-  const U = { res: u("uRes"), t: u("uT"), cell: u("uCell"), off: u("uOff"), share: u("uShare"), side: u("uSide"), me: u("uMe"), open: u("uOpen"), r: u("uR"), dpr: u("uDpr"), mask: u("uMask"), mask2: u("uMask2") };
+  const U = { res: u("uRes"), t: u("uT"), cell: u("uCell"), off: u("uOff"), share: u("uShare"), side: u("uSide"), me: u("uMe"), open: u("uOpen"), r: u("uR"), dpr: u("uDpr"), gap: u("uGap"), mask: u("uMask"), mask2: u("uMask2") };
   gl.uniform1f(U.share, REGISTERED / POPULATION);
   gl.uniform1f(U.side, SIDE);
   // which window onto the 69 million this visit shows
@@ -153,6 +154,11 @@ export function mountOcean(host: HTMLElement) {
   say.className = "ocean-say";
   say.id = "ocean-say";
   say.innerHTML = `<i aria-hidden="true"></i><p><b>${L("Votre voix compte", "Your vote matters")}</b></p>`;
+  // what the pixels are, said once, under the hero's opening
+  const cap = document.createElement("p");
+  cap.className = "ocean-cap";
+  cap.textContent = L(`${POPULATION.toLocaleString("fr-FR")} pixels, un par habitant. L’un d’eux, c’est vous.`, `${POPULATION.toLocaleString("en-GB")} pixels, one per inhabitant. One of them is you.`);
+  host.querySelector(".hday-top")?.after(cap);
   host.classList.add("has-ocean");
   host.prepend(canvas);
   // the room and the message are for a mouse (and the keyboard); on touch screens the pixel only glows
@@ -162,6 +168,9 @@ export function mountOcean(host: HTMLElement) {
   const art = host.querySelector<HTMLElement>(".hday-art"), intro = host.querySelector<HTMLElement>(".hday-intro");
 
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // a pixel and its separator are whole screen pixels (cellPx, gapPx), whatever the zoom or the display scaling:
+  // drawn in fractions, some separators fall between screen pixels and neighbours merge into clumps
+  let cellPx = CELL, gapPx = 1, cs = CELL;
   let dpr = 1, meX = 0, meY = 0, R = 120, raf = 0, visible = true, pinned = false, hover = false;
   let open = 0, openTarget = 0;
   let mask = [0, 0, 0, 0], mask2 = [-9, -9, -9, -9];
@@ -176,9 +185,10 @@ export function mountOcean(host: HTMLElement) {
     const e = open < 0.5 ? 4 * open ** 3 : 1 - (-2 * open + 2) ** 3 / 2;
     gl.uniform2f(U.res, canvas.width, canvas.height);
     gl.uniform1f(U.t, reduced ? 0 : (now - t0) / 1000);
-    gl.uniform1f(U.cell, CELL * dpr);
+    gl.uniform1f(U.cell, cellPx);
+    gl.uniform1f(U.gap, gapPx);
     gl.uniform1f(U.dpr, dpr);
-    gl.uniform2f(U.me, meX * dpr, meY * dpr);
+    gl.uniform2f(U.me, (meX + cs / 2) * dpr, (meY + cs / 2) * dpr);
     gl.uniform1f(U.open, e);
     gl.uniform1f(U.r, R * dpr);
     gl.uniform4f(U.mask, mask[0] * dpr, mask[1] * dpr, mask[2] * dpr, mask[3] * dpr);
@@ -202,6 +212,9 @@ export function mountOcean(host: HTMLElement) {
     const r = host.getBoundingClientRect();
     dpr = Math.min(2, window.devicePixelRatio || 1);
     canvas.width = Math.round(r.width * dpr); canvas.height = Math.round(r.height * dpr);
+    // the canvas is shown at exactly its own pixels, so the browser never resamples the grid
+    canvas.style.width = `${canvas.width / dpr}px`; canvas.style.height = `${canvas.height / dpr}px`;
+    cellPx = Math.max(2, Math.round(CELL * dpr)); gapPx = Math.max(1, Math.round(dpr)); cs = cellPx / dpr;
     gl.viewport(0, 0, canvas.width, canvas.height);
     const wide = r.width > 760;
     // the circle fits the open space above the chart, at the right of the headline; snapped to the grid
@@ -209,18 +222,18 @@ export function mountOcean(host: HTMLElement) {
     // pixels pushed past the top of the band or behind the chart simply aren't drawn, so the room can be wider than
     // the space; the message's own solid centre (four fifths of it) stays above the chart and below the masthead
     R = Math.max(90, Math.min(wide ? 120 : 104, (room - 6) / 1.6));
-    meX = Math.floor(Math.min(r.width * (wide ? 0.8 : 0.84), r.width - R * 0.8 - 6) / CELL) * CELL;
-    meY = Math.floor((R * 0.8 + 3) / CELL) * CELL;
+    meX = Math.floor(Math.min(r.width * (wide ? 0.8 : 0.84), r.width - R * 0.8 - 6) / cs) * cs;
+    meY = Math.floor((R * 0.8 + 3) / cs) * cs;
     // an easter egg: the reader's pixel hides to the right of the map of France, in the margin when there is one
     if (art && wide) {
       const ab = art.getBoundingClientRect();
       R = 84;
       const right = ab.right - r.left, margin = r.width - right;
-      meX = Math.floor((margin > 2 * R * 0.8 ? right + margin / 2 : r.width - R * 0.8 - 6) / CELL) * CELL;
-      meY = Math.floor((ab.top - r.top + ab.height * 0.42) / CELL) * CELL;
+      meX = Math.floor((margin > 2 * R * 0.8 ? right + margin / 2 : r.width - R * 0.8 - 6) / cs) * cs;
+      meY = Math.floor((ab.top - r.top + ab.height * 0.42) / cs) * cs;
     }
     void intro;
-    for (const el of [me, say]) { el.style.left = `${meX + CELL / 2}px`; el.style.top = `${meY + CELL / 2}px`; }
+    for (const el of [me, say]) { el.style.left = `${meX + cs / 2}px`; el.style.top = `${meY + cs / 2}px`; }
     say.style.setProperty("--r", `${R}px`);
     if (chart) {
       const c = chart.getBoundingClientRect();

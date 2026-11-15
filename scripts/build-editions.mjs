@@ -10,7 +10,7 @@
 // Inputs: public/data/daily/history.json (one snapshot a day), public/data/feed/archive/<date>.json (the day's
 // stories), public/data/polls/2027.json.
 // Output: public/data/daily/editions/<date>.json and editions/index.json [{ date, head }]
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 
 const ROOT = new URL("../public/data/", import.meta.url);
 const read = async (p) => JSON.parse(await readFile(new URL(p, ROOT), "utf8"));
@@ -52,10 +52,51 @@ const market = (s, name) => {
 };
 const diff = (a, b) => (a == null || b == null ? null : r1(a - b));
 const pollMean = (p, name) => { const v = p.hyps.map((h) => h[name]).filter((x) => x != null); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null; };
+// outlet ids of the press feed, as readers know them
+const outletName = new Map(((await read("feed/latest.json").catch(() => null))?.outlets ?? []).map((o) => [o.id, o.name]));
 const stories = async (date) => {
   const f = await read(`feed/archive/${date}.json`).catch(() => null);
-  return (f?.stories ?? []).map((s) => ({ title: s.title, link: s.items?.[0]?.link ?? null, outlet: s.items?.[0]?.outlet ?? s.outlets?.[0] ?? "", n: s.outlets?.length ?? 1 }));
+  return (f?.stories ?? []).map((s) => ({ title: s.title, link: s.items?.[0]?.link ?? null, outlet: outletName.get(s.items?.[0]?.outlet ?? s.outlets?.[0]) ?? s.items?.[0]?.outlet ?? s.outlets?.[0] ?? "", n: s.outlets?.length ?? 1 }));
 };
+
+// The city of the day: a town with a local story dated that day (or the eve) in the regional press feeds
+// (public/data/news/<dep>.json), whose headline names it, with a coat of arms to show and at least 10,000
+// inhabitants. Crime and accident stories are left out, and a town does not come back within 30 days. Once picked
+// a city is kept (daily/cities.json): the press files only cover the last two weeks, so past days can't be redone.
+const cities = await read("daily/cities.json").catch(() => ({}));
+let citiesChanged = false, localNews = null;
+const GRIM = /meurtr|\bmorts?\b|\bmorte|tu[ée]e?s?\b|d[ée]c[èe]s|d[ée]c[èe]d|\bviols?\b|agress|accident|poignard|fusillade|incendie|drame|suicide|disparu|bless[ée]|proc[èe]s|condamn|prison|drogue|narco|braquage|cambriol|attentat|homicide|f[ée]minicide|noyade|cadavre|\bcorps\b|garde à vue|mis en examen|interpell|lacrymog|violen|heurts|[ée]meut|menac|enqu[êe]te|plainte/i;
+const hashStr = (t) => { let h = 2166136261; for (const c of t) h = Math.imul(h ^ c.charCodeAt(0), 16777619); return h >>> 0; };
+async function cityOf(D) {
+  if (cities[D]) return cities[D];
+  if (D < iso(Date.now() - 2 * DAY)) return null;
+  if (!localNews) {
+    localNews = [];
+    const files = await readdir(new URL("news/", ROOT)).catch(() => []);
+    for (const f of files.filter((x) => x.endsWith(".json"))) {
+      const j = await read(`news/${f}`).catch(() => null);
+      for (const [code, items] of Object.entries(j?.communes ?? {})) for (const item of items) localNews.push({ dep: j.department, depName: j.name, code, item });
+    }
+  }
+  const eve = iso(Date.parse(D) - DAY);
+  const recent = new Set(Object.entries(cities).filter(([d]) => d > iso(Date.parse(D) - 30 * DAY)).map(([, c]) => c.code));
+  const pool = localNews.filter((x) => x.item.time && [D, eve].includes(x.item.time.slice(0, 10)) && !GRIM.test(x.item.title) && !recent.has(x.code));
+  const cands = [];
+  for (const dep of [...new Set(pool.map((x) => x.dep))]) {
+    const arms = await read(`arms/communes/${dep}.json`).catch(() => ({}));
+    const com = (await read(`communes-dep/${dep}.json`).catch(() => null))?.communes ?? {};
+    for (const x of pool.filter((p) => p.dep === dep)) {
+      const c = com[x.code];
+      if (!c || !arms[x.code] || (c.population?.value ?? 0) < 10000 || c.name.length < 4) continue;
+      if (!new RegExp("(^|[^a-z])" + norm(c.name).replace(/[^a-z0-9]+/g, "[^a-z0-9]+") + "([^a-z]|$)").test(norm(x.item.title))) continue;
+      cands.push({ code: x.code, name: c.name, dep, depName: x.depName, arms: arms[x.code], title: x.item.title, link: x.item.link, outlet: x.item.outlet, time: x.item.time });
+    }
+  }
+  if (!cands.length) return null;
+  cands.sort((a, b) => (b.time.slice(0, 10) === D) - (a.time.slice(0, 10) === D) || hashStr(D + a.code) - hashStr(D + b.code));
+  cities[D] = cands[0]; citiesChanged = true;
+  return cands[0];
+}
 
 await mkdir(new URL("daily/editions/", ROOT), { recursive: true });
 const index = [];
@@ -67,7 +108,7 @@ for (const day of days) {
     market: market(day, name) == null ? null : r1(market(day, name)),
     d1: diff(market(day, name), market(y1, name)), d7: diff(market(day, name), market(y7, name)),
     kalshi1: diff(day.kalshi?.[name], y1?.kalshi?.[name]), poly1: diff(day.poly?.[name], y1?.poly?.[name]),
-    polls: day.polls?.[name] ?? null, polls7: diff(day.polls?.[name], y7?.polls?.[name]),
+    polls: day.polls?.[name] ?? null, polls1: diff(day.polls?.[name], y1?.polls?.[name]), polls7: diff(day.polls?.[name], y7?.polls?.[name]),
   })).filter((r) => (r.market ?? 0) >= 1 || (r.polls ?? 0) >= 3).sort((a, b) => (b.market ?? 0) - (a.market ?? 0));
 
   // polls published since the previous edition (by fieldwork end), and the day's and the eve's stories
@@ -104,7 +145,14 @@ for (const day of days) {
   const up = wk[0]?.d7 >= 1 ? wk[0] : null, down = wk.at(-1)?.d7 <= -1 ? wk.at(-1) : null;
   const pts = (v) => `${Math.abs(v).toString().replace(".", ",")} point${Math.abs(v) >= 2 ? "s" : ""}`;
   const ptsEn = (v) => `${Math.abs(v)} point${Math.abs(v) >= 2 ? "s" : ""}`;
-  const head = {
+  const dy = rows.filter((r) => r.d1 != null).sort((a, b) => b.d1 - a.d1);
+  const upD = dy[0]?.d1 >= 1 ? dy[0] : null, downD = dy.at(-1)?.d1 <= -1 ? dy.at(-1) : null;
+  const sunday = new Date(D + "T12:00:00Z").getUTCDay() === 0;
+  // the day's moves when there are any; the week's on a Sunday, or on a day when nothing moved a point
+  const head = !sunday && (upD || downD) ? {
+    fr: upD && downD ? surname(upD.name) + " gagne " + pts(upD.d1) + " sur les marchés en un jour, " + surname(downD.name) + " en perd " + pts(downD.d1) : upD ? surname(upD.name) + " gagne " + pts(upD.d1) + " sur les marchés en un jour" : surname(downD.name) + " perd " + pts(downD.d1) + " sur les marchés en un jour",
+    en: upD && downD ? surname(upD.name) + " up " + ptsEn(upD.d1) + " on the markets today, " + surname(downD.name) + " down " + ptsEn(downD.d1) : upD ? surname(upD.name) + " up " + ptsEn(upD.d1) + " on the markets today" : surname(downD.name) + " down " + ptsEn(downD.d1) + " on the markets today",
+  } : {
     fr: up && down ? `${surname(up.name)} gagne ${pts(up.d7)} sur les marchés en une semaine, ${surname(down.name)} en perd ${pts(down.d7)}` : up ? `${surname(up.name)} gagne ${pts(up.d7)} sur les marchés en une semaine` : down ? `${surname(down.name)} perd ${pts(down.d7)} sur les marchés en une semaine` : "Une semaine calme sur les marchés",
     en: up && down ? `${surname(up.name)} up ${ptsEn(up.d7)} on the markets this week, ${surname(down.name)} down ${ptsEn(down.d7)}` : up ? `${surname(up.name)} up ${ptsEn(up.d7)} on the markets this week` : down ? `${surname(down.name)} down ${ptsEn(down.d7)} on the markets this week` : "A quiet week on the markets",
   };
@@ -159,9 +207,47 @@ for (const day of days) {
   const bad = ranked.filter((r) => score(r) <= -1).reverse().slice(0, 3).map((r) => ({ name: r.name, fr: line(r, true), en: line(r, false), story: storyFor(r.name) }));
   const insight = ai?.insight ?? { head, surprise, good, bad, by: "template" };
 
-  const edition = { date: D, provisional: !!day.provisional, note, insight, prev: y1?.date ?? null, head: insight.head ?? head, rows: rows.slice(0, 8), polls: fresh, headlines: headlines.slice(0, 5), analysis, week };
+  // the ledger (the note's lines on the homepage): the world's and France's main story, the candidates in the
+  // news, who had the momentum, the table of polls and odds, the city of the day. Day by day; on a Sunday the
+  // week, with a longer recap. Figures only: the page writes the sentences.
+  const hl = await read("daily/headlines/" + D + ".json").catch(() => null);
+  const whoIn = (h) => rows.find((r) => { const k = surnameKey(r.name); return k && norm(h.title).includes(k); });
+  const candNews = [];
+  for (const h of headlines) { const r = whoIn(h); if (!r || h.title === insight.surprise?.story?.title || candNews.some((c) => c.name === r.name)) continue; candNews.push({ ...h, name: r.name }); if (candNews.length === 2) break; }
+  const momentum = (span) => {
+    const m = (r) => (span === "day" ? r.d1 : r.d7), p = (r) => (span === "day" ? r.polls1 : r.polls7);
+    const sc = (r) => (m(r) ?? 0) + 1.5 * (p(r) ?? 0);
+    const one = (r) => ({ name: r.name, market: m(r), polls: p(r) });
+    const xs = rows.filter((r) => Math.abs(sc(r)) >= (span === "day" ? 0.5 : 1)).sort((a, b) => sc(b) - sc(a));
+    return { span, up: xs.filter((r) => sc(r) > 0).slice(0, 2).map(one), down: xs.filter((r) => sc(r) < 0).reverse().slice(0, 2).map(one) };
+  };
+  let lead = momentum(sunday ? "week" : "day");
+  if (!sunday && !lead.up.length && !lead.down.length) lead = momentum("week"); // a still day: the week instead
+  let recap = null;
+  if (sunday) {
+    const ext = (key, now) => { const xs = rows.filter((r) => r[key] != null).sort((a, b) => b[key] - a[key]); const o = (r) => ({ name: r.name, now: r[now], d: r[key] }); return { up: xs[0]?.[key] > 0 ? o(xs[0]) : null, down: xs.at(-1)?.[key] < 0 ? o(xs.at(-1)) : null }; };
+    const wkNews = [];
+    for (let k = 0; k < 7; k++) wkNews.push(...await stories(iso(Date.parse(D) - k * DAY)));
+    const wkSeen = new Set();
+    recap = {
+      polls: ext("polls7", "polls"), markets: ext("d7", "market"),
+      newPolls: polls.filter((p) => p.end > iso(Date.parse(D) - 7 * DAY) && p.end <= D).map((p) => ({ pollster: p.pollster, end: p.end, url: p.url ?? null })),
+      stories: wkNews.filter((x) => (wkSeen.has(x.title) ? false : (wkSeen.add(x.title), true))).sort((x, y) => y.n - x.n).slice(0, 3),
+    };
+  }
+  const ledger = {
+    span: sunday ? "week" : "day",
+    world: hl?.world?.[0] ?? null,
+    france: hl?.france?.find((h) => !whoIn(h)) ?? hl?.france?.[0] ?? headlines.find((h) => !whoIn(h)) ?? null,
+    candidates: candNews, lead, recap,
+    table: [...rows].sort((x, y) => (y.polls ?? -1) - (x.polls ?? -1) || (y.market ?? 0) - (x.market ?? 0)).slice(0, 7).map(({ name, polls, polls1, polls7, market, d1, d7 }) => ({ name, polls, polls1, polls7, market, d1, d7 })),
+    city: await cityOf(D),
+  };
+
+  const edition = { date: D, ledger, provisional: !!day.provisional, note, insight, prev: y1?.date ?? null, head: insight.head ?? head, rows: rows.slice(0, 8), polls: fresh, headlines: headlines.slice(0, 5), analysis, week };
   await writeFile(new URL(`daily/editions/${D}.json`, ROOT), JSON.stringify(edition));
   index.push({ date: D, head: edition.head });
 }
 await writeFile(new URL("daily/editions/index.json", ROOT), JSON.stringify(index));
+if (citiesChanged) await writeFile(new URL("daily/cities.json", ROOT), JSON.stringify(cities));
 console.log(`editions: ${index.length} (${index[0]?.date} → ${index.at(-1)?.date})`);

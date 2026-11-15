@@ -1,41 +1,50 @@
-// The day's edition, at the top of the homepage: a dated front page readers can step through (◀ ▶, or the arrow
-// keys), built each day by scripts/build-editions.mjs. The week's headline; four moves of the day (the favourite
-// on the markets, the day's biggest mover, the new poll, the most-covered story), with figures that count up;
-// "what could have moved them", candidate by candidate (the polls, the day's polls, the headlines naming them, a
-// gap between the two markets, or nothing in the record); and the week in review as a small drawn chart.
+// The note of the day, at the top of the homepage: a dated front page readers can step through (◀ ▶, or the arrow
+// keys), built each day by scripts/build-editions.mjs. Under the day's headline, a ledger of labelled lines: the
+// world's main story, France's, the surprise, the candidates in the news, and Third Estate's read (who had the
+// momentum), beside one table of the polls and the odds of winning. It is about the day (changes since yesterday);
+// on a Sunday it reviews the week, with a longer recap. The last line is the city of the day, with its coat of
+// arms. "What could have moved them", candidate by candidate, stays folded underneath.
 import { fetchJson } from "../data";
 import { L, fmtDate } from "../i18n";
 import { meta } from "../lib/candidates";
-import { dec } from "../lib/format";
+import { armsSlot, paintArms } from "../lib/arms";
+import { dec, pct } from "../lib/format";
 import { gradeColor, pollsterName, pollsterRating } from "../lib/polls";
 import { esc, safeUrl } from "../util";
 
 type T = { fr: string; en: string };
-interface Row { name: string; market: number | null; d1: number | null; d7: number | null; polls: number | null; polls7: number | null }
-interface Headline { title: string; link: string | null; outlet: string; n: number }
+interface Row { name: string; market: number | null; d1: number | null; d7: number | null; polls: number | null; polls1?: number | null; polls7: number | null }
+interface Headline { title: string; link: string | null; outlet: string; n?: number }
 type Factor =
   | { kind: "polls"; same: boolean; d: number }
   | { kind: "poll"; pollster: string; url: string | null; v: number; avg: number; same: boolean }
   | { kind: "news"; headlines: Headline[] }
   | { kind: "split"; kalshi: number; poly: number }
   | { kind: "none" };
-interface Story { title: string; link: string | null; outlet: string; n: number }
-interface Pick { name: string; fr: string; en: string; story: Story | null }
+interface Pick { name: string; fr: string; en: string; story: Headline | null }
 interface Insight { head: T; surprise: Pick | null; good: Pick[]; bad: Pick[]; by: string }
+interface Mv { name: string; market: number | null; polls: number | null }
+interface Ext { name: string; now: number | null; d: number }
+interface Ledger {
+  span: "day" | "week";
+  world: Headline | null; france: Headline | null; candidates: (Headline & { name: string })[];
+  lead: { span: "day" | "week"; up: Mv[]; down: Mv[] };
+  recap: { polls: { up: Ext | null; down: Ext | null }; markets: { up: Ext | null; down: Ext | null }; newPolls: { pollster: string; end: string; url: string | null }[]; stories: Headline[] } | null;
+  table: Row[];
+  city: { code: string; name: string; depName: string; arms: string; title: string; link: string; outlet: string } | null;
+}
 interface Edition {
-  date: string; head: T; rows: Row[]; provisional?: boolean; note?: T & { by: string }; insight?: Insight;
-  polls: { pollster: string; end: string; url: string | null; top: { name: string; v: number }[] }[];
-  headlines: Headline[];
+  date: string; head: T; rows: Row[]; provisional?: boolean; insight?: Insight; ledger?: Ledger;
   analysis: { name: string; market: number | null; d1: number | null; d7: number | null; factors: Factor[] }[];
-  week: { date: string; v: Record<string, number | null> }[];
 }
 
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const sur = (n: string) => esc(meta(n).surname);
 const sgn = (v: number) => `${v > 0 ? "+" : v < 0 ? "−" : ""}${dec(Math.abs(v))}`;
 const chip = (d: number | null, span: string) => d == null ? "" : `<span class="ed-chip ${Math.abs(d) < 0.05 ? "" : d > 0 ? "is-up" : "is-down"}"><small>${span}</small>${Math.abs(d) < 0.05 ? "=" : `${d > 0 ? "▲" : "▼"} ${sgn(d)}`}</span>`;
-const count = (v: number, suffix = "", signed = false) => `<b class="ed-count" data-v="${v}" data-s="${esc(suffix)}"${signed ? ` data-signed="1"` : ""}>${signed ? sgn(v) : dec(v)}${suffix}</b>`;
-const story = (h: Headline) => `${h.link ? `<a href="${esc(safeUrl(h.link))}" target="_blank" rel="noopener">${esc(h.title)}</a>` : esc(h.title)} <span class="ed-src">${esc(h.outlet)}${h.n > 1 ? ` · ${h.n} ${L("médias", "outlets")}` : ""}</span>`;
+/** A headline without the "Présidentielle 2027 :" prefix every election story carries. */
+const short = (t: string) => t.replace(/^(EN DIRECT\s*[-–]\s*)?(Présidentielle|Élection présidentielle)\s*2027\s*:\s*/i, "");
+const story = (h: Headline) => `${h.link ? `<a href="${esc(safeUrl(h.link))}" target="_blank" rel="noopener">${esc(short(h.title))}</a>` : esc(short(h.title))} <span class="ed-src">${esc(h.outlet)}${(h.n ?? 1) > 1 ? ` · ${h.n} ${L("médias", "outlets")}` : ""}</span>`;
 
 function factorHtml(f: Factor, name: string) {
   switch (f.kind) {
@@ -45,7 +54,7 @@ function factorHtml(f: Factor, name: string) {
     case "poll": {
       const g = pollsterRating(f.pollster)?.grade;
       const who = `${f.url ? `<a href="${esc(safeUrl(f.url))}" target="_blank" rel="noopener">${esc(pollsterName(f.pollster))}</a>` : esc(pollsterName(f.pollster))}${g ? ` <b style="color:${gradeColor(g)}">${g}</b>` : ""}`;
-      return L(`<b>Un sondage du jour</b> : ${who} ${f.same ? "le confirme" : "va dans l’autre sens"}, ${sur(name)} à ${dec(f.v)} %, ${sgn(f.v - f.avg)} par rapport à sa moyenne.`, `<b>A poll that day</b>: ${who} ${f.same ? "backs it" : "points the other way"}, ${sur(name)} on ${dec(f.v)}%, ${sgn(f.v - f.avg)} from their average.`);
+      return L(`<b>Un sondage du jour</b> : ${who} ${f.same ? "le confirme" : "va dans l’autre sens"}, ${sur(name)} à ${pct(f.v)}, ${sgn(f.v - f.avg)} par rapport à sa moyenne.`, `<b>A poll that day</b>: ${who} ${f.same ? "backs it" : "points the other way"}, ${sur(name)} on ${pct(f.v)}, ${sgn(f.v - f.avg)} from their average.`);
     }
     case "news": return `<b>${L("Dans l’actualité", "In the news")}</b>${L(" :", ":")}<ul>${f.headlines.map((h) => `<li>${story(h)}</li>`).join("")}</ul>`;
     case "split": return L(`<b>Un seul marché a bougé</b> : Kalshi ${sgn(f.kalshi)}, Polymarket ${sgn(f.poly)}. Peut-être un seul gros pari.`, `<b>Only one market moved</b>: Kalshi ${sgn(f.kalshi)}, Polymarket ${sgn(f.poly)}. Possibly a single large bet.`);
@@ -63,90 +72,95 @@ function verdict(fs: Factor[]) {
   return L("Pas d’explication dans nos données.", "No explanation in our records.");
 }
 
-/** One column of the day's verdict: a candidate per line, why in a sentence, and the headline behind it. */
-function verdictCol(xs: Pick[], dir: "up" | "down", title: string) {
-  if (!xs.length) return `<section class="ed-col is-${dir}"><h3>${title}</h3><p class="ed-none">${L("Personne aujourd’hui.", "Nobody today.")}</p></section>`;
-  return `<section class="ed-col is-${dir}"><h3><span aria-hidden="true">${dir === "up" ? "▲" : "▼"}</span> ${title}</h3><ul>${xs.map((p) => `<li style="--c:${meta(p.name).color}">
-    <b class="ed-name"><i aria-hidden="true"></i>${sur(p.name)}</b>
-    <span>${esc(L(p.fr, p.en))}</span>
-    ${p.story ? `<span class="ed-ev">${story(p.story)}</span>` : ""}
-  </li>`).join("")}</ul></section>`;
+/** One labelled line of the ledger. */
+const row = (k: string, body: string, cls = "") => (body ? `<div class="lg-row${cls ? ` ${cls}` : ""}"><span class="lg-k">${k}</span><div class="lg-b">${body}</div></div>` : "");
+const moved = (v: number | null): v is number => v != null && Math.abs(v) >= 0.05;
+
+/** Third Estate's read: who had the momentum (candidate and party), on the day or over the week, with the figures. */
+function leadHtml(g: Ledger) {
+  const one = (m: Mv) => {
+    const party = meta(m.name).party;
+    const bits = [moved(m.market) ? `${sgn(m.market)} ${L("pt sur les marchés", "pt on the markets")}` : "", moved(m.polls) ? `${sgn(m.polls)} ${L("pt dans les sondages", "pt in the polls")}` : ""].filter(Boolean).join(", ");
+    return `<b class="lg-who" style="--c:${meta(m.name).color}"><i aria-hidden="true"></i>${sur(m.name)}</b>${party ? ` (${esc(party)})` : ""}, ${bits}`;
+  };
+  const { up, down, span } = g.lead;
+  if (!up.length && !down.length) return L("Rien n’a bougé, ni en un jour ni sur la semaine.", "Nothing moved, in a day or over the week.");
+  const when = span === "day" ? L("Dynamique du jour", "Momentum today") : g.span === "week" ? L("Dynamique de la semaine", "Momentum this week") : L("Journée calme. Sur la semaine, la dynamique", "A still day. Over the week, momentum");
+  return [
+    up.length ? `${when}${L(" : ", ": ")}${up.map(one).join(" ; ")}.` : `${span === "day" ? L("Personne ne progresse aujourd’hui", "Nobody gained today") : L("Personne ne progresse sur la semaine", "Nobody gained over the week")}.`,
+    down.length ? `${L("En recul", "Losing ground")}${L(" : ", ": ")}${down.map(one).join(" ; ")}.` : "",
+  ].filter(Boolean).join(" ");
 }
 
-function weekChart(e: Edition) {
-  const names = Object.keys(e.week.at(-1)?.v ?? {}).slice(0, 4);
-  const vals = e.week.flatMap((d) => names.map((n) => d.v[n])).filter((v): v is number => v != null);
-  if (e.week.length < 2 || !vals.length) return "";
-  const W = 320, H = 92, P = 6, R = 92;
-  const max = Math.ceil(Math.max(...vals) / 10) * 10, x = (i: number) => P + (i * (W - P - R)) / (e.week.length - 1), y = (v: number) => P + (1 - v / max) * (H - 2 * P);
-  const ends: { n: string; y: number; v: number }[] = [];
-  const lines = names.map((n) => {
-    const pts = e.week.map((d, i) => (d.v[n] == null ? null : `${x(i).toFixed(1)},${y(d.v[n]!).toFixed(1)}`)).filter(Boolean);
-    const last = e.week.at(-1)!.v[n];
-    if (last != null) ends.push({ n, y: y(last), v: last });
-    return `<polyline pathLength="1" points="${pts.join(" ")}" fill="none" stroke="${meta(n).color}" stroke-width="2.4" stroke-linejoin="round"/>`;
-  }).join("");
-  ends.sort((a, b) => a.y - b.y);
-  for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < 13) ends[i].y = ends[i - 1].y + 13;
-  return `<svg class="ed-week" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(L("Chances de victoire sur les marchés, 7 jours", "Chance of winning on the markets, 7 days"))}">
-    ${[0, max / 2, max].map((v) => `<line x1="${P}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" class="ed-grid"/>`).join("")}
-    ${lines}${ends.map((e2) => `<text x="${W - R + 6}" y="${e2.y + 4}" fill="${meta(e2.n).color}">${sur(e2.n)} ${dec(e2.v)}</text>`).join("")}
-  </svg>`;
+/** Sunday's longer recap: the week's largest rise and fall in the polls and in the odds, the polls published, the most-covered stories. */
+function recapHtml(r: NonNullable<Ledger["recap"]>) {
+  const ext = (x: Ext | null, up: boolean) => (x ? `<b>${sur(x.name)}</b> ${up ? L("gagne le plus", "gains the most") : L("perd le plus", "loses the most")}, ${sgn(x.d)} pt ${L("à", "to")} ${pct(x.now)}` : "");
+  const pair = (p: { up: Ext | null; down: Ext | null }) => [ext(p.up, true), ext(p.down, false)].filter(Boolean).join(" ; ");
+  const who = [...new Map(r.newPolls.map((p) => [p.pollster, p])).values()].map((p) => (p.url ? `<a href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">${esc(pollsterName(p.pollster))}</a>` : esc(pollsterName(p.pollster)))).join(", ");
+  return `<ul class="lg-recap">
+    ${pair(r.polls) ? `<li><span>${L("Sondages", "Polls")}</span>${pair(r.polls)}.</li>` : ""}
+    ${pair(r.markets) ? `<li><span>${L("Chances de victoire", "Odds of winning")}</span>${pair(r.markets)}.</li>` : ""}
+    <li><span>${L("Publiés", "Published")}</span>${r.newPolls.length ? `${r.newPolls.length} ${L(r.newPolls.length > 1 ? "sondages" : "sondage", r.newPolls.length > 1 ? "polls" : "poll")}${L(" : ", ": ")}${who}.` : L("Aucun sondage cette semaine.", "No poll this week.")}</li>
+    ${r.stories.length ? `<li><span>${L("Les plus repris", "Most covered")}</span><ol>${r.stories.map((s) => `<li>${story(s)}</li>`).join("")}</ol></li>` : ""}
+  </ul>`;
 }
 
-function render(e: Edition, idx: { date: string }[], pollsHtml = "") {
+/** The polls and the odds of winning in one table, each figure with its change over the day (or the week on a Sunday). */
+function tableHtml(g: Ledger) {
+  const wk = g.span === "week", span = wk ? L("7 j", "7 days") : L("24 h", "24h");
+  const d = (v: number | null | undefined) => v == null ? `<small class="flat"></small>` : `<small class="${moved(v) ? (v > 0 ? "up" : "down") : "flat"}">${moved(v) ? `${v > 0 ? "▲" : "▼"} ${dec(Math.abs(v))}` : "="}</small>`;
+  return `<table class="lg-table">
+    <caption><span>${L("Sondages et marchés de prédiction", "Polls and prediction markets")}</span><a class="ed-wk-go" href="#trend">${L("Tous les sondages", "Every poll")} ↓</a></caption>
+    <thead><tr><th scope="col">${L("Candidat", "Candidate")}</th><th scope="col">${L("Sondages", "Polls")}, ${span}</th><th scope="col">${L("Chance de victoire", "Chance to win")}, ${span}</th></tr></thead>
+    <tbody>${g.table.map((r) => `<tr><th scope="row"><i style="background:${meta(r.name).color}" aria-hidden="true"></i>${sur(r.name)}</th><td>${r.polls == null ? "–" : pct(r.polls)}${d(wk ? r.polls7 : r.polls1)}</td><td>${r.market == null ? "–" : pct(r.market)}${d(wk ? r.d7 : r.d1)}</td></tr>`).join("")}</tbody>
+  </table>
+  <p class="lg-cap">${L("Moyenne des sondages (intentions de vote) ; Kalshi et Polymarket, en moyenne.", "Poll average (voting intention); Kalshi and Polymarket, averaged.")}</p>`;
+}
+
+function render(e: Edition, idx: { date: string }[]) {
   const i = idx.findIndex((x) => x.date === e.date);
   const prev = idx[i - 1], next = idx[i + 1];
-  const fav = e.rows[0];
-  const big = [...e.rows].filter((r) => r.d1 != null).sort((a, b) => Math.abs(b.d1!) - Math.abs(a.d1!))[0];
-  const poll = e.polls[0];
   const day = new Date(e.date).toLocaleDateString(L("fr-FR", "en-GB"), { weekday: "long", day: "numeric", month: "long" });
-  const cards = [
-    fav?.market != null ? `<div class="ed-card" style="--c:${meta(fav.name).color}"><p class="ed-ck">${L("Favori des marchés de prédiction", "Prediction markets' favourite")}</p><p class="ed-big">${count(fav.market, " %")}</p><p>${sur(fav.name)}</p><p class="ed-chips">${chip(fav.d1, L("24 h", "24h"))}${chip(fav.d7, L("7 j", "7d"))}</p></div>` : "",
-    big && big.name !== fav?.name ? `<div class="ed-card" style="--c:${meta(big.name).color}"><p class="ed-ck">${L("Le mouvement du jour", "The move of the day")}</p><p class="ed-big">${count(big.d1!, "", true)}<small> pt</small></p><p>${sur(big.name)}, ${dec(big.market ?? 0)} %</p><p class="ed-chips">${chip(big.d7, L("7 j", "7d"))}</p></div>` : "",
-    poll ? `<div class="ed-card"><p class="ed-ck">${L("Nouveau sondage", "New poll")}</p><p class="ed-poll">${poll.url ? `<a href="${esc(safeUrl(poll.url))}" target="_blank" rel="noopener">${esc(pollsterName(poll.pollster))}</a>` : esc(pollsterName(poll.pollster))}${(() => { const g = pollsterRating(poll.pollster)?.grade; return g ? ` <b style="color:${gradeColor(g)}">${g}</b>` : ""; })()}</p><p class="ed-small">${poll.top.slice(0, 3).map((t) => `${sur(t.name)} ${dec(t.v)}`).join(" · ")}</p></div>` : "",
-  ].filter(Boolean).join("");
+  const g = e.ledger, s = e.insight?.surprise;
+  const city = g?.city;
   return `<div class="ed-nav">
       ${prev ? `<button type="button" class="ed-go" data-d="${prev.date}" aria-label="${esc(L(`Édition du ${fmtDate(prev.date)}`, `Edition of ${fmtDate(prev.date)}`))}">◀ ${esc(fmtDate(prev.date).replace(/\s\d{4}$/, ""))}</button>` : `<span></span>`}
-      <p class="ed-k"><b>${L("La note du jour", "Note of the day")}</b><span>${esc(day)}</span></p>
+      <p class="ed-k"><b>${g?.span === "week" ? L("La note de la semaine", "Note of the week") : L("La note du jour", "Note of the day")}</b><span>${esc(day)}</span></p>
       ${next ? `<button type="button" class="ed-go" data-d="${next.date}" aria-label="${esc(L(`Édition du ${fmtDate(next.date)}`, `Edition of ${fmtDate(next.date)}`))}">${esc(fmtDate(next.date).replace(/\s\d{4}$/, ""))} ▶</button>` : `<span></span>`}
     </div>
     <h2 class="ed-head">${esc(L((e.insight?.head ?? e.head).fr, (e.insight?.head ?? e.head).en))}</h2>
     ${e.provisional ? `<p class="ed-prov">${L("Édition du jour en cours : cours des marchés de la dernière heure ; les sondages et l’analyse complète arrivent avec la synthèse quotidienne.", "Today's edition in progress: the latest hourly market prices; the polls and the full analysis come with the daily brief.")}</p>` : ""}
-    <div class="ed-cards">${cards}</div>
-    ${e.insight?.surprise ? `<p class="ed-surprise" style="--c:${meta(e.insight.surprise.name).color}"><span class="ed-surprise-k">${L("La surprise", "The surprise")}</span><span>${esc(L(e.insight.surprise.fr, e.insight.surprise.en))}${e.insight.surprise.story ? ` <span class="ed-ev">${story(e.insight.surprise.story)}</span>` : ""}</span></p>` : ""}
-    ${e.insight && (e.insight.good.length || e.insight.bad.length) ? `<div class="ed-days">
-      ${verdictCol(e.insight.good, "up", L("Bonne journée pour", "A good day for"))}
-      ${verdictCol(e.insight.bad, "down", L("Mauvaise journée pour", "A bad day for"))}
+    ${g ? `<div class="ed-lg">
+      <div class="lg">
+        ${g.recap ? row(L("La semaine", "The week"), recapHtml(g.recap), "is-week") : ""}
+        ${g.world ? row(L("Monde", "World"), story(g.world)) : ""}
+        ${g.france ? row("France", story(g.france)) : ""}
+        ${s ? row(L("La surprise", "Surprise"), `${esc(L(s.fr, s.en))}${s.story ? ` <span class="ed-ev">${story(s.story)}</span>` : ""}`) : ""}
+        ${g.candidates.length ? row(L("Candidats", "Candidates"), `<ul class="lg-list">${g.candidates.map((c) => `<li>${story(c)}</li>`).join("")}</ul>`) : ""}
+        ${row("Third Estate", leadHtml(g), "is-te")}
+      </div>
+      <div class="lg-side">${tableHtml(g)}</div>
     </div>` : ""}
-    ${e.insight && e.insight.by !== "template" ? `<p class="ed-by">${L("Verdicts écrits par une IA (Claude) à partir des chiffres et des titres du jour ; chaque nom et chaque chiffre vérifiés. Ils jugent la position dans la course, jamais les idées.", "Verdicts written by AI (Claude) from the day's figures and headlines; every name and figure checked. They judge standing in the race, never ideas.")}</p>` : `<p class="ed-by">${L("Verdicts calculés à partir des marchés (Kalshi et Polymarket) et de la moyenne des sondages sur 7 jours. Ils jugent la position dans la course, jamais les idées.", "Verdicts computed from the markets (Kalshi and Polymarket) and the 7-day polling average. They judge standing in the race, never ideas.")}</p>`}
-    <div class="ed-body">
-      <details class="ed-why"><summary>${L("Le détail : ce qui a pu les faire bouger", "In detail: what could have moved them")}</summary>
-        ${e.analysis.length ? `<ol>${e.analysis.map((a) => `<li style="--c:${meta(a.name).color}">
-          <p class="ed-who"><b>${sur(a.name)}</b> ${chip(a.d1, L("24 h", "24h"))}${chip(a.d7, L("7 j", "7d"))} <span class="ed-verdict-line">${verdict(a.factors)}</span></p>
-          <ul class="ed-factors">${a.factors.map((f) => `<li>${factorHtml(f, a.name)}</li>`).join("")}</ul>
-        </li>`).join("")}</ol>` : `<p>${L("Aucun candidat n’a bougé d’un point en un jour, ni de 2,5 points en une semaine.", "No candidate moved a point in a day or 2.5 points in a week.")}</p>`}
-        <p class="ed-note">${L("Des pistes, pas des causes : les titres sont ceux qui citent le candidat ce jour-là et la veille.", "Leads, not causes: the headlines are those naming the candidate that day and the day before.")}</p>
-      </details>
-      <section class="ed-wk">${pollsHtml}<h3>${L("Chance de victoire sur les marchés de prédiction, 7 jours", "Chance of winning on the prediction markets, 7 days")}</h3>
-        <a class="ed-wk-go" href="#trend" aria-label="${esc(L("Voir les sondages et le graphique complet", "See the polls and the full chart"))}">${weekChart(e)}<span>${L("Kalshi et Polymarket, en moyenne. Les sondages, plus bas", "Kalshi and Polymarket, averaged. The polls, below")} ↓</span></a></section>
-    </div>`;
+    <details class="ed-why"><summary>${L("Le détail : ce qui a pu les faire bouger", "In detail: what could have moved them")}</summary>
+      ${e.analysis.length ? `<ol>${e.analysis.map((a) => `<li style="--c:${meta(a.name).color}">
+        <p class="ed-who"><b>${sur(a.name)}</b> ${chip(a.d1, L("24 h", "24h"))}${chip(a.d7, L("7 j", "7d"))} <span class="ed-verdict-line">${verdict(a.factors)}</span></p>
+        <ul class="ed-factors">${a.factors.map((f) => `<li>${factorHtml(f, a.name)}</li>`).join("")}</ul>
+      </li>`).join("")}</ol>` : `<p>${L("Aucun candidat n’a bougé d’un point en un jour, ni de 2,5 points en une semaine.", "No candidate moved a point in a day or 2.5 points in a week.")}</p>`}
+      <p class="ed-note">${L("Des pistes, pas des causes : les titres sont ceux qui citent le candidat ce jour-là et la veille.", "Leads, not causes: the headlines are those naming the candidate that day and the day before.")}</p>
+    </details>
+    ${city ? `<div class="ed-city">${armsSlot(city.arms, city.name, "s", `#/ville/${city.code}`)}<p><span class="lg-k">${L("La ville du jour", "City of the day")}</span><a class="ed-city-name" href="#/ville/${esc(city.code)}">${esc(city.name)}</a> <span class="ed-src">${esc(city.depName)}</span><br>${story(city)}</p></div>` : ""}
+    <p class="ed-by">${L("La lecture de Third Estate, à partir des sondages, des marchés et des titres du jour. Elle juge la position dans la course, jamais les idées.", "Third Estate's read, from the day's polls, markets and headlines. It judges standing in the race, never ideas.")}</p>`;
 }
 
 function animate(root: HTMLElement) {
   if (reduced()) return;
-  root.querySelectorAll<HTMLElement>(".ed-count").forEach((el) => {
-    const v = Number(el.dataset.v), s = el.dataset.s ?? "", signed = !!el.dataset.signed, t0 = performance.now();
-    const step = (t: number) => { const k = Math.min(1, (t - t0) / 900), e = 1 - (1 - k) ** 3; el.textContent = `${signed ? sgn(v * e) : dec(v * e)}${s}`; if (k < 1) requestAnimationFrame(step); };
-    requestAnimationFrame(step);
-  });
   root.classList.remove("is-in");
   void root.offsetWidth;
   root.classList.add("is-in");
 }
 
 /** Mounts the edition into `box` (latest first); returns nothing, draws asynchronously. */
-export async function mountEdition(box: HTMLElement, pollsHtml = "") {
+export async function mountEdition(box: HTMLElement) {
   const idx = await fetchJson<{ date: string; head: T }[]>("/data/daily/editions/index.json").catch(() => null);
   if (!idx?.length) { box.remove(); return; }
   const cache = new Map<string, Promise<Edition | null>>();
@@ -154,9 +168,10 @@ export async function mountEdition(box: HTMLElement, pollsHtml = "") {
   const show = async (d: string) => {
     const e = await get(d);
     if (!e) return;
-    box.innerHTML = render(e, idx, pollsHtml);
+    box.innerHTML = render(e, idx);
+    paintArms(box);
     box.querySelectorAll<HTMLButtonElement>(".ed-go").forEach((b) => b.addEventListener("click", () => void show(b.dataset.d!)));
-    // the small chart leads to the polls chart below (an in-page scroll, not a route change)
+    // "every poll" leads to the polls chart below (an in-page scroll, not a route change)
     box.querySelector(".ed-wk-go")?.addEventListener("click", (ev) => { ev.preventDefault(); document.getElementById("trend")?.scrollIntoView({ behavior: reduced() ? "auto" : "smooth", block: "start" }); });
     animate(box);
   };
