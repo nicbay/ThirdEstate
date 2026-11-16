@@ -14535,6 +14535,27 @@
       },
       "check": null,
       "postTime": "2026-11-15T15:58:47.000Z"
+    },
+    "bsky:at://did:plc:skhpi6tvodwwkygydxmka5tm/app.bsky.feed.post/3n2baj5oqyj2a": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T07:14:51.392Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.4,
+        "rationale_fr": "Dénonce la parole haineuse de l'extrême droite et les attaques contre les personnes queer, position sociale-démocrate ou de gauche sur les questions de société.",
+        "rationale_en": "Denounces far-right hate speech and attacks against queer people, a left-leaning position on social issues."
+      },
+      "populism": {
+        "score": 0.05,
+        "markers": [],
+        "rationale_fr": "Critique politique argumentée appuyée sur un décompte journalistique, sans opposition peuple contre élites.",
+        "rationale_en": "Argued political criticism backed by a journalistic count, with no people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-14T10:00:44.284Z"
     }
   },
   "failures": {
