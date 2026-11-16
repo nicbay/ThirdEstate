@@ -37,12 +37,13 @@ export const loadLoyalty = () => (cache ??= fetchJson<LoyaltyFile>("/data/an/loy
 /** Descriptive tiers. High loyalty is framed as obedience, not merit. */
 const TIERS: [number, string, string][] = [
   [0.99, "Doigt sur la couture", "Toes the line"],
-  [0.97, "Bon petit soldat", "Good little soldier"],
+  [0.97, "Aux ordres", "Good little soldier"],
   [0.93, "Quelques écarts", "The odd step out of line"],
   [0.85, "Électron libre", "Free spirit"],
-  [0, "Frondeur", "Rebel"],
+  [0, "Frondeur|Frondeuse", "Rebel"],
 ];
-export const tier = (l: number) => { const x = TIERS.find(([min]) => l >= min)!; return L(x[1], x[2]); };
+/** The French label agrees with the MP: "masculine|feminine" where the two differ. */
+export const tier = (l: number, fem = false) => { const x = TIERS.find(([min]) => l >= min)!; const [m, f] = x[1].split("|"); return L(fem ? f ?? m : m, x[2]); };
 
 const posLabel = (p: string) => { const s = t(); return ({ P: s.for, C: s.against, A: s.abstention } as Record<string, string>)[p] ?? p; };
 const pct = (x: number, d = 1) => fmtPct(100 * x, d);
@@ -186,7 +187,7 @@ export async function renderLoyalty(pane: HTMLElement) {
           <td class="num">${m.rank}</td>
           <td><a href="#/depute/${m.id}">${esc(names.get(m.id))}</a>${m.moved ? ` <span class="muted small" title="${esc(m.moved.map(([g, k]) => `${g}${colon()}${k}`).join(" · "))}">${L("a changé de groupe", "switched group")}</span>` : ""}</td>
           <td>${chip(m.g)}</td>
-          <td class="loy-cell"><div class="loy-bar"><div style="width:${Math.max(0, w)}%;background:${colors.get(m.g!) ?? "var(--other)"}"></div></div><b>${pct(m.loyalty!)}</b> <span class="muted small">${esc(tier(m.loyalty!))}</span></td>
+          <td class="loy-cell"><div class="loy-bar"><div style="width:${Math.max(0, w)}%;background:${colors.get(m.g!) ?? "var(--other)"}"></div></div><b>${pct(m.loyalty!)}</b> <span class="muted small">${esc(tier(m.loyalty!, byId.get(m.id)?.civ === "Mme"))}</span></td>
           <td class="num">${fmtNum(m.n - m.ok)}</td>
           <td class="num">${fmtNum(m.opp)}</td>
           <td class="num muted">${fmtNum(m.n)}</td>
@@ -236,7 +237,8 @@ function mpCard(f: LoyaltyFile, m: LoyaltyMp, deputes: Depute[], scrutins: Scrut
   const ranked = f.mps.filter((x) => x.rank).sort((a, b) => a.rank! - b.rank!);
   const byNum = new Map(scrutins.map((s) => [s[0], s]));
   const grp = m.g ? f.groups[m.g] : null;
-  const head = `<header class="card-head"><h2>${L("Doigt sur la couture ou frondeur ?", "Toeing the line or rebel?")}</h2> <a class="small" href="#/assemblee/loyaute">${L("Voir le classement", "See the ranking")} →</a></header>`;
+  const she = deputes.find((d) => d.id === m.id)?.civ === "Mme"; // the French agrees with the MP
+  const head = `<header class="card-head"><h2>${L(she ? "Doigt sur la couture ou frondeuse ?" : "Doigt sur la couture ou frondeur ?", "Toeing the line or rebel?")}</h2> <a class="small" href="#/assemblee/loyaute">${L("Voir le classement", "See the ranking")} →</a></header>`;
 
   let body: string;
   if (m.rank && m.loyalty != null) {
@@ -248,18 +250,18 @@ function mpCard(f: LoyaltyFile, m: LoyaltyMp, deputes: Depute[], scrutins: Scrut
         <div><span class="muted">${L("Écarts avec le groupe", "Breaks with group")}</span><strong>${fmtNum(reb)}</strong></div>
         <div><span class="muted">${t().participation}</span><strong>${pct(m.part, 0)}</strong></div>
       </div>
-      <p><b>${esc(tier(m.loyalty))}.</b> ${L(
+      <p><b>${esc(tier(m.loyalty, she))}.</b> ${L(
         `Sur ${fmtNum(m.n)} votes comptés, ${fmtNum(m.ok)} suivent la ligne de son groupe ; ${fmtNum(reb)} s’en écartent, dont ${fmtNum(m.opp)} votes dans le sens opposé.`,
         `Of ${fmtNum(m.n)} counted votes, ${fmtNum(m.ok)} follow the group line; ${fmtNum(reb)} break from it, ${fmtNum(m.opp)} of them voting the opposite way.`,
       )}${grp ? L(` Moyenne du groupe ${esc(m.g)} : ${pct(grp.avg)}.`, ` ${esc(m.g)} group average: ${pct(grp.avg)}.`) : ""}</p>
       ${scale(ranked, colors, names, m)}`;
   } else if (!m.g) {
-    body = `<p>${L("Non-inscrit : sans groupe, pas de ligne à suivre, donc pas de score.", "Non-attached: no group, no line to follow, so no score.")}${m.n ? L(` Avec son ancien groupe, ce député votait la ligne dans ${pct(m.loyalty!)} des cas (${fmtNum(m.n)} votes).`, ` With their former group, this MP voted the line ${pct(m.loyalty!)} of the time (${fmtNum(m.n)} votes).`) : ""}</p>`;
+    body = `<p>${L(`${she ? "Non-inscrite" : "Non-inscrit"} : sans groupe, pas de ligne à suivre, donc pas de score.`, "Non-attached: no group, no line to follow, so no score.")}${m.n ? L(` Avec son ancien groupe, ${she ? "cette députée" : "ce député"} votait la ligne dans ${pct(m.loyalty!)} des cas (${fmtNum(m.n)} votes).`, ` With their former group, this MP voted the line ${pct(m.loyalty!)} of the time (${fmtNum(m.n)} votes).`) : ""}</p>`;
   } else {
-    body = `<p>${L(`Pas assez de votes comptés pour être classé (${m.n}, minimum ${f.minVotes}).`, `Not enough counted votes to be ranked (${m.n}, minimum ${f.minVotes}).`)}${m.loyalty != null ? L(` Score provisoire : ${pct(m.loyalty)}.`, ` Provisional score: ${pct(m.loyalty)}.`) : ""}</p>`;
+    body = `<p>${L(`Pas assez de votes comptés pour être ${she ? "classée" : "classé"} (${m.n}, minimum ${f.minVotes}).`, `Not enough counted votes to be ranked (${m.n}, minimum ${f.minVotes}).`)}${m.loyalty != null ? L(` Score provisoire : ${pct(m.loyalty)}.`, ` Provisional score: ${pct(m.loyalty)}.`) : ""}</p>`;
   }
   const moved = m.moved
-    ? `<p class="muted small">${L("A voté sous plusieurs étiquettes :", "Voted under more than one label:")} ${m.moved.map(([g, k]) => `${esc(g)} (${fmtNum(k)})`).join(", ")}. ${L("Chaque vote est comparé au groupe du moment ; les votes comme non-inscrit ne comptent pas.", "Each vote is compared with the group at the time; votes cast as non-attached are not counted.")}</p>`
+    ? `<p class="muted small">${L("A voté sous plusieurs étiquettes :", "Voted under more than one label:")} ${m.moved.map(([g, k]) => `${esc(g)} (${fmtNum(k)})`).join(", ")}. ${L(`Chaque vote est comparé au groupe du moment ; les votes comme ${she ? "non-inscrite" : "non-inscrit"} ne comptent pas.`, "Each vote is compared with the group at the time; votes cast as non-attached are not counted.")}</p>`
     : "";
   const top = m.top.slice(0, 5);
   const list = top.length
@@ -271,7 +273,7 @@ function mpCard(f: LoyaltyFile, m: LoyaltyMp, deputes: Depute[], scrutins: Scrut
           return `<li>
             <div class="vote-meta muted small">${s ? `${fmtDate(s[1])} · ` : ""}n° ${num}</div>
             <div class="vote-title"><a href="https://www.assemblee-nationale.fr/dyn/17/scrutins/${num}" target="_blank" rel="noopener">${esc(s?.[2] ?? L(`Scrutin n° ${num}`, `Vote no. ${num}`))}</a></div>
-            <div class="small">${L("Groupe :", "Group:")} <b class="pos-${line}">${esc(posLabel(line))}</b> ${L(`(${pct(coh, 0)} des ${others} collègues votants)`, `(${pct(coh, 0)} of ${others} colleagues voting)`)} · ${L("Ce député :", "This MP:")} <b class="pos-${mine}">${esc(posLabel(mine))}</b></div>
+            <div class="small">${L("Groupe :", "Group:")} <b class="pos-${line}">${esc(posLabel(line))}</b> ${L(`(${pct(coh, 0)} des ${others} collègues votants)`, `(${pct(coh, 0)} of ${others} colleagues voting)`)} · ${L(she ? "Cette députée :" : "Ce député :", "This MP:")} <b class="pos-${mine}">${esc(posLabel(mine))}</b></div>
           </li>`;
         })
         .join("")}</ul>`

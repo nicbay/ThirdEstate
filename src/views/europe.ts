@@ -58,7 +58,7 @@ const ln = () => (getLang() === "fr" ? "FR" : "EN");
 /** The roll-call results of a sitting, opened at the vote item (official page, anchors are the item numbers). */
 const rcvUrl = (date: string, item: string) => `${DOCEO}PV-10-${date}-RCV_${ln()}.html${item ? `#${item.replace(/^.*VOT-ITM-/, "")}` : ""}`;
 const rcvPdf = (date: string) => `https://data.europarl.europa.eu/distribution/doc/PV-10-${date}-RCV_${ln().toLowerCase()}.pdf`;
-const posLabel = (p: string) => ({ P: L("Pour", "For"), C: L("Contre", "Against"), A: L("Abstention", "Abstain"), "-": L("Absent", "Absent") } as Record<string, string>)[p] ?? p;
+const posLabel = (p: string, fem = false) => ({ P: L("Pour", "For"), C: L("Contre", "Against"), A: L("Abstention", "Abstain"), "-": L(fem ? "Absente" : "Absent", "Absent") } as Record<string, string>)[p] ?? p;
 const outcomeLabel = (o: string) => ({ ADOPTED: L("adopté", "adopted"), REJECTED: L("rejeté", "rejected"), LAPSED: L("caduc", "lapsed") } as Record<string, string>)[o] ?? o.toLowerCase();
 const groupOrder = (g: string) => ({ "The Left": 1, "S&D": 2, "Verts/ALE": 3, Renew: 4, PPE: 6, ECR: 7, PfE: 8, ESN: 9, NI: 10 } as Record<string, number>)[g] ?? 11;
 
@@ -73,7 +73,7 @@ const PE: SpeechChamber = {
   members: () => L("eurodéputés français", "French MEPs"),
   house: () => L("eurodéputés français", "French MEPs"),
   barNote: () => L("Barre : part de ses interventions ; trait : moyenne des eurodéputés français.", "Bar: share of their speeches; tick: average of French MEPs."),
-  methodNote: () => L("Les mots du nuage sont ceux que cet eurodéputé emploie nettement plus que les autres eurodéputés français (TF-IDF)", "Cloud words are those this MEP uses far more than the other French MEPs (TF-IDF)"),
+  methodNote: (she) => L(`Les mots du nuage sont ceux que ${she ? "cette eurodéputée" : "cet eurodéputé"} emploie nettement plus que les autres eurodéputés français (TF-IDF)`, "Cloud words are those this MEP uses far more than the other French MEPs (TF-IDF)"),
   briefLabel: () => L("Pas en français (écartées)", "Not in French (left out)"),
   sourceLine: (p) =>
     `<p class="source muted">${L(
@@ -216,9 +216,9 @@ export async function renderEurodepute(app: HTMLElement, id: string) {
             <div><span class="muted">${L("Votes", "Votes")}</span><strong>${fmtNum(st.cast)}</strong></div>
           </div>
           <div class="stack" aria-hidden="true"><div class="bg-P" style="width:${st.cast ? (100 * st.pour) / st.cast : 0}%"></div><div class="bg-A" style="width:${st.cast ? (100 * st.abstention) / st.cast : 0}%"></div><div class="bg-C" style="width:${st.cast ? (100 * st.contre) / st.cast : 0}%"></div></div>
-          <p class="small">${L("Pour", "For")} <b class="pos-P">${fmtNum(st.pour)}</b> · ${L("Contre", "Against")} <b class="pos-C">${fmtNum(st.contre)}</b> · ${L("Abstention", "Abstain")} <b class="pos-A">${fmtNum(st.abstention)}</b> · ${L(`présent à ${fmtNum(st.cast)} votes sur ${fmtNum(st.eligible)}`, `voted in ${fmtNum(st.cast)} of ${fmtNum(st.eligible)}`)}</p>
+          <p class="small">${L("Pour", "For")} <b class="pos-P">${fmtNum(st.pour)}</b> · ${L("Contre", "Against")} <b class="pos-C">${fmtNum(st.contre)}</b> · ${L("Abstention", "Abstain")} <b class="pos-A">${fmtNum(st.abstention)}</b> · ${L(`${m.feminin ? "présente" : "présent"} à ${fmtNum(st.cast)} votes sur ${fmtNum(st.eligible)}`, `voted in ${fmtNum(st.cast)} of ${fmtNum(st.eligible)}`)}</p>
           <p class="muted tiny">${L(
-            `Votes par appel nominal en séance plénière pendant son mandat. « Avec son groupe » : part de ses votes identiques à la position majoritaire des autres membres de son groupe européen (tous pays) ayant voté, quand au moins 3 ont voté et sans égalité (${fmtNum(st.group.n)} votes comparés${st.group.ni ? `, ${fmtNum(st.group.ni)} comme non-inscrit non comptés` : ""}). « Avec les Français » : même calcul avec les autres eurodéputés français (${fmtNum(st.france.n)} votes). L’abstention compte comme une participation.`,
+            `Votes par appel nominal en séance plénière pendant son mandat. « Avec son groupe » : part de ses votes identiques à la position majoritaire des autres membres de son groupe européen (tous pays) ayant voté, quand au moins 3 ont voté et sans égalité (${fmtNum(st.group.n)} votes comparés${st.group.ni ? `, ${fmtNum(st.group.ni)} comme ${m.feminin ? "non-inscrite" : "non-inscrit"} non comptés` : ""}). « Avec les Français » : même calcul avec les autres eurodéputés français (${fmtNum(st.france.n)} votes). L’abstention compte comme une participation.`,
             `Plenary roll-call votes held during their term. “With their group”: share of their votes matching the majority position of the other members of their European group (all countries) who voted, when at least 3 voted and there was no tie (${fmtNum(st.group.n)} votes compared${st.group.ni ? `, ${fmtNum(st.group.ni)} as non-attached not counted` : ""}). “With French MEPs”: same with the other French MEPs (${fmtNum(st.france.n)} votes). Abstaining counts as taking part.`,
           )}</p>` : `<p class="muted">${L("Pas de vote par appel nominal chargé pour ce mandat.", "No roll-call vote loaded for this term.")}</p>`}
         </div>
@@ -226,7 +226,7 @@ export async function renderEurodepute(app: HTMLElement, id: string) {
 
       ${partyRows.length ? `<article class="card">
         <header class="card-head"><h2>${L(`Avec quelles délégations françaises vote-t-${m.feminin ? "elle" : "il"} ?`, "Which French delegations do they vote with?")}</h2></header>
-        <p class="muted small">${L("Part de ses votes identiques à la position majoritaire de chaque délégation nationale française (parti), lui exclu, sur les votes où la délégation avait une position claire. Délégations comparées sur au moins 20 votes.", "Share of their votes matching the majority position of each French national delegation (party), excluding themselves, on votes where the delegation had a clear position. Delegations compared on at least 20 votes.")}</p>
+        <p class="muted small">${L(`Part de ses votes identiques à la position majoritaire de chaque délégation nationale française (parti), ${m.feminin ? "elle exclue" : "lui exclu"}, sur les votes où la délégation avait une position claire. Délégations comparées sur au moins 20 votes.`, "Share of their votes matching the majority position of each French national delegation (party), excluding themselves, on votes where the delegation had a clear position. Delegations compared on at least 20 votes.")}</p>
         <ul class="bars compact">${partyRows
           .map((r) => `<li><div class="bar-label"><span>${esc(partyLabel(r.p))}${r.own ? ` <span class="muted small">(${L("son parti", "own party")})</span>` : ""} <span class="muted small">${fmtNum(r.n)} ${L("votes", "votes")}</span></span><b>${pct(r.rate)}</b></div><div class="bar"><div style="width:${100 * r.rate}%;background:${r.own ? safeColor(m.groupe.couleur) : "var(--ink-3)"}"></div></div></li>`)
           .join("")}</ul>
@@ -241,7 +241,7 @@ export async function renderEurodepute(app: HTMLElement, id: string) {
             return `<li><div class="vote-meta muted small">${fmtDate(v[1])} · ${L(`groupe ${m.groupe.abrev}`, `${m.groupe.abrev} group`)}${colon()}${posLabel(line)} (${pct(share)} ${L(`de ${others} votants`, `of ${others} voting`)})</div>
               <div class="vote-title"><a href="${esc(rcvUrl(v[1], v[2]))}" target="_blank" rel="noopener">${esc(itemTitle(v))}</a></div>
               <div class="muted small">${esc(L(v[3], v[4] || v[3]))}</div>
-              <span class="pos pos-${own} bg-${own}">${posLabel(own)}</span></li>`;
+              <span class="pos pos-${own} bg-${own}">${posLabel(own, m.feminin)}</span></li>`;
           })
           .join("")}</ul>
       </article>` : ""}
@@ -256,7 +256,7 @@ export async function renderEurodepute(app: HTMLElement, id: string) {
         <summary><h2>${L(`Ses votes, un par un (${fmtNum(rows.length)})`, `Their votes, one by one (${fmtNum(rows.length)})`)}</h2></summary>
         <div class="filters">
           <input id="vq" type="search" placeholder="${L("Rechercher dans les votes…", "Search votes…")}"/>
-          <select id="vpos"><option value="">${L("Toutes positions", "All positions")}</option>${["P", "C", "A", "-"].map((k) => `<option value="${k}">${posLabel(k)}</option>`).join("")}</select>
+          <select id="vpos"><option value="">${L("Toutes positions", "All positions")}</option>${["P", "C", "A", "-"].map((k) => `<option value="${k}">${posLabel(k, m.feminin)}</option>`).join("")}</select>
           <span id="vcount" class="muted small"></span>
         </div>
         <ul class="votes" id="votes"></ul>
@@ -287,7 +287,7 @@ export async function renderEurodepute(app: HTMLElement, id: string) {
             <div class="vote-meta muted small">${fmtDate(date)} · <span class="${o === "ADOPTED" ? "sort-ok" : "sort-ko"}">${esc(outcomeLabel(o))}</span> (${p}–${c}–${a})${g ? ` · ${esc(m.groupe.abrev)}${colon()}${posLabel(g)}` : ""}${frLine ? ` · ${L("Français", "French MEPs")}${colon()}${posLabel(frLine)}` : ""}</div>
             <div class="vote-title"><a href="${esc(rcvUrl(date, item))}" target="_blank" rel="noopener">${esc(itemTitle(v))}</a></div>
             <div class="muted small">${esc(L(lfr, len || lfr))} · <a href="${esc(rcvPdf(date))}" target="_blank" rel="noopener">PDF ↗</a></div>
-            <span class="pos pos-${pos} bg-${pos}">${posLabel(pos)}</span>
+            <span class="pos pos-${pos} bg-${pos}">${posLabel(pos, m.feminin)}</span>
           </li>`;
         })
         .join("");

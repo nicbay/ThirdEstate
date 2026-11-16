@@ -33,6 +33,8 @@ export async function renderDepute(app: HTMLElement, id: string) {
   const d = deputes.find((x) => x.id === id);
   if (!d) throw new Error(id);
   const s = t();
+  const she = d.civ === "Mme"; // the French agrees with the MP
+  const nonVoting = L(she ? "Non-votante" : s.nonVoting, s.nonVoting), absent = L(she ? "Absente" : s.absent, s.absent);
   const st = d.stats;
   const cast = st.pour + st.contre + st.abstention;
   const pct = (n: number) => (cast ? (100 * n) / cast : 0);
@@ -66,14 +68,14 @@ export async function renderDepute(app: HTMLElement, id: string) {
       <div class="mp-grid-2">
         <div class="card">
           <dl class="facts">
-            ${d.naissance ? `<dt>${s.born}</dt><dd>${fmtDate(d.naissance)} (${age(d)} ${L("ans", "years")})</dd>` : ""}
+            ${d.naissance ? `<dt>${L(she ? "Née le" : "Né le", s.born)}</dt><dd>${fmtDate(d.naissance)} (${age(d)} ${L("ans", "years")})</dd>` : ""}
             ${d.profession ? `<dt>${s.profession}</dt><dd>${esc(d.profession)}</dd>` : ""}
             ${d.catSocPro ? `<dt>${s.socioCategory}</dt><dd>${pcsGroup(d.famSocPro) === "none" ? "" : `${esc(pcsGroupLabel(pcsGroup(d.famSocPro)))} — `}${esc(pcsCategoryLabel(d.catSocPro))}</dd>` : ""}
             ${d.hatvp ? `<dt>HATVP</dt><dd><a href="${esc(safeUrl(d.hatvp))}" target="_blank" rel="noopener">${s.hatvp} ↗</a> <span class="muted small">${L("parcours, activités et intérêts déclarés", "declared career, activities and interests")}</span></dd>` : ""}
             <dt>LinkedIn</dt><dd>${
               d.socials.linkedin
                 ? `<a href="${esc(safeUrl(href("linkedin", d.socials.linkedin)))}" target="_blank" rel="noopener">${L("Voir le profil", "View profile")}</a>`
-                : `<a href="https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(`${d.prenom} ${d.nom} député`)}" target="_blank" rel="noopener">${L("Rechercher sur LinkedIn", "Search LinkedIn")} ↗</a> <span class="muted small">${L("aucun profil déclaré", "no profile declared")}</span>`
+                : `<a href="https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(`${d.prenom} ${d.nom} ${she ? "députée" : "député"}`)}" target="_blank" rel="noopener">${L("Rechercher sur LinkedIn", "Search LinkedIn")} ↗</a> <span class="muted small">${L("aucun profil déclaré", "no profile declared")}</span>`
             }</dd>
           </dl>
           <h3>${s.contact} <span class="score" title="${L("Nombre de réseaux déclarés sur 5 (X, Facebook, Instagram, LinkedIn, site web)", "Channels declared out of 5 (X, Facebook, Instagram, LinkedIn, website)")}">${L("Présence numérique", "Digital presence")} ${presence(d)}/${PLATFORMS.length}</span></h3>
@@ -108,7 +110,7 @@ export async function renderDepute(app: HTMLElement, id: string) {
           <input id="vq" type="search" placeholder="${s.searchVotes}" />
           <select id="vpos">
             <option value="">${s.allPositions}</option>
-            <option value="P">${s.for}</option><option value="C">${s.against}</option><option value="A">${s.abstention}</option><option value="N">${s.nonVoting}</option><option value="-">${s.absent}</option>
+            <option value="P">${s.for}</option><option value="C">${s.against}</option><option value="A">${s.abstention}</option><option value="N">${nonVoting}</option><option value="-">${absent}</option>
           </select>
           <select id="vsort"><option value="">${s.allOutcomes}</option><option value="adopté">${s.adopted}</option><option value="rejeté">${s.rejected}</option></select>
           <span id="vcount" class="muted"></span>
@@ -120,7 +122,7 @@ export async function renderDepute(app: HTMLElement, id: string) {
     </section>`;
 
   void mountMpLoyalty(app.querySelector(".mp-grid-2")!, d); // group-loyalty card (src/views/loyalty.ts)
-  const label: Record<string, string> = { P: s.for, C: s.against, A: s.abstention, N: s.nonVoting, "-": s.absent };
+  const label: Record<string, string> = { P: s.for, C: s.against, A: s.abstention, N: nonVoting, "-": absent };
   const draw = () => {
     const q = f.q.toLowerCase();
     const rows = mine.filter((x) => {

@@ -39,7 +39,7 @@ const SENATE_SPEECH: SpeechChamber = {
   members: () => L("sénateurs", "senators"),
   house: () => L("Sénat", "whole Senate"),
   barNote: () => L("Barre : part de ses interventions ; trait : moyenne du Sénat.", "Bar: share of their speeches; tick: whole-Senate average."),
-  methodNote: () => L("Les mots du nuage sont ceux que ce sénateur emploie nettement plus que les autres (TF-IDF)", "Cloud words are those this senator uses far more than the others (TF-IDF)"),
+  methodNote: (she) => L(`Les mots du nuage sont ceux que ${she ? "cette sénatrice" : "ce sénateur"} emploie nettement plus que les autres (TF-IDF)`, "Cloud words are those this senator uses far more than the others (TF-IDF)"),
   briefLabel: () => L("Brèves interventions", "Brief remarks"),
   sourceLine: (p) =>
     `<p class="source muted">${L(
@@ -105,7 +105,7 @@ export async function renderSenateur(app: HTMLElement, id: string) {
   if (!s) throw new Error(id);
   const st = s.stats;
   const f = { q: "", pos: "", page: 1 };
-  const label: Record<string, string> = { P: L("Pour", "For"), C: L("Contre", "Against"), A: L("Abstention", "Abstain"), N: L("Non-votant", "Non-voting"), "-": L("Pas de position", "No position") };
+  const label: Record<string, string> = { P: L("Pour", "For"), C: L("Contre", "Against"), A: L("Abstention", "Abstain"), N: L(s.civ === "Mme" ? "Non-votante" : "Non-votant", "Non-voting"), "-": L("Pas de position", "No position") };
   const mine = scrutins.filter((x) => x[1] >= s.debutMandat);
   app.innerHTML = `
     <section class="page">

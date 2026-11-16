@@ -52,7 +52,7 @@ export interface SpeechChamber {
   /** "Barre : part de ses interventions ; trait : moyenne de l’Assemblée." */
   barNote: () => string;
   /** "Les mots du nuage sont ceux que ce député emploie…" */
-  methodNote: () => string;
+  methodNote: (she?: boolean) => string;
   /** label of the short-remarks KPI */
   briefLabel: () => string;
   /** extra line under the section (source and coverage), given the summary period */
@@ -257,10 +257,10 @@ function themeBars(s: Summary, shares: Shares, opts: { top?: number; compare?: b
     </li>`)
     .join("")}</ul>`;
 }
-const methodNote = (c: SpeechChamber = AN) =>
+const methodNote = (c: SpeechChamber = AN, she = false) =>
   L(
-    `Chaque intervention en séance publique est rattachée à un ou plusieurs thèmes d’après un lexique de mots-clés (et le titre du débat en cours). ${c.methodNote()}, mots de procédure exclus. Méthode automatique, indicative.`,
-    `Each speech in public sitting is assigned to one or more themes from a keyword lexicon (plus the title of the debate under way). ${c.methodNote()}, procedural words excluded. Automatic and indicative.`,
+    `Chaque intervention en séance publique est rattachée à un ou plusieurs thèmes d’après un lexique de mots-clés (et le titre du débat en cours). ${c.methodNote(she)}, mots de procédure exclus. Méthode automatique, indicative.`,
+    `Each speech in public sitting is assigned to one or more themes from a keyword lexicon (plus the title of the debate under way). ${c.methodNote(she)}, procedural words excluded. Automatic and indicative.`,
   );
 
 /** The Assemblée nationale (public/data/an/interventions/). */
@@ -274,7 +274,7 @@ const AN: SpeechChamber = {
   members: () => L("députés", "MPs"),
   house: () => L("Assemblée", "whole house"),
   barNote: () => L("Barre : part de ses interventions ; trait : moyenne de l’Assemblée.", "Bar: share of their speeches; tick: whole-house average."),
-  methodNote: () => L("Les mots du nuage sont ceux que ce député emploie nettement plus que les autres (TF-IDF)", "Cloud words are those this MP uses far more than the others (TF-IDF)"),
+  methodNote: (she) => L(`Les mots du nuage sont ceux que ${she ? "cette députée" : "ce député"} emploie nettement plus que les autres (TF-IDF)`, "Cloud words are those this MP uses far more than the others (TF-IDF)"),
   briefLabel: () => L("Interpellations", "Interjections"),
 };
 
@@ -309,7 +309,7 @@ export async function renderSpeakerSpeech(el: HTMLElement, d: Speaker, c: Speech
         <div><h3>${L("Thèmes abordés", "Themes raised")}</h3>${m.classified ? themeBars(s, m.themes, { top: 8, compare: true, c }) : `<p class="muted small">${L("Trop peu d’interventions classées.", "Too few classified speeches.")}</p>`}
           <p class="muted small">${c.barNote()}</p></div>
       </div>` : `<p class="muted">${L("Trop peu de mots prononcés pour un nuage.", "Too few words spoken for a cloud.")}</p>`}
-      <p class="muted small">${methodNote(c)} ${L("Interventions du", "Speeches from")} ${fmtDate(m.first)} ${L("au", "to")} ${fmtDate(m.last)}.</p>
+      <p class="muted small">${methodNote(c, she)} ${L("Interventions du", "Speeches from")} ${fmtDate(m.first)} ${L("au", "to")} ${fmtDate(m.last)}.</p>
       ${c.sourceLine ? c.sourceLine(s.period) : ""}
     </article>`;
   fillCloud(el.querySelector("#mp-cloud"), s, m.terms, L(`Mots les plus caractéristiques de ${d.prenom} ${d.nom}`, `Most distinctive words of ${d.prenom} ${d.nom}`), mpPick(s, d, new Map(people.map((x) => [x.id, x])), c));
