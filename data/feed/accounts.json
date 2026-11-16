@@ -916,12 +916,6 @@
         "source": "socials.json"
       }
     },
-    "PA796042": {
-      "youtube": {
-        "channelId": "UCqHcBQ8dnjV0jUcC7jwa2-g",
-        "source": "socials.json"
-      }
-    },
     "PA793444": {
       "youtube": {
         "channelId": "UCr7r7gh9N45WVwYAmHQ3m3w",
@@ -2261,6 +2255,12 @@
       "bluesky": {
         "handle": "rogervicot.bsky.social",
         "source": "socials.json"
+      }
+    },
+    "PA796042": {
+      "youtube": {
+        "channelId": "UCqHcBQ8dnjV0jUcC7jwa2-g",
+        "source": "wikidata"
       }
     }
   }

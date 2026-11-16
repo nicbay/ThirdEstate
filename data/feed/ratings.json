@@ -14556,6 +14556,937 @@
       },
       "check": null,
       "postTime": "2026-11-14T10:00:44.284Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3n2h6jf5wps2r": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:54:48.013Z",
+      "storyItems": [
+        "74619b625662"
+      ],
+      "storyTitle": "Contre l’extrême droite, les insoumis sont plus républicains que les Républicains",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Défend l'idée que les électeurs LFI sont plus républicains face à l'extrême droite ; positionnement de gauche, sans contenu économique.",
+        "rationale_en": "Defends the idea that LFI voters are more republican against the far right; left-leaning positioning, no economic content."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Réfute une affirmation adverse de façon directe, sans rhétorique populiste marquée.",
+        "rationale_en": "Directly rebuts an opposing claim, without marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-16T18:41:03.075Z"
+    },
+    "yt:qAJ4kI1hTJ8": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:54:48.013Z",
+      "storyItems": [
+        "55d7c5c45eb3"
+      ],
+      "storyTitle": "17 octobre: face aux violences et aux pillages, l'est de Paris été \"défavorisé\" par rapport à l'ouest, estime le maire Emmanuel Grégoire",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique de l'État et du ministère de l'Intérieur sur la gestion du 17 octobre, sans thème idéologique marqué au-delà de la responsabilité publique.",
+        "rationale_en": "Criticizes the State and Interior Ministry over handling of 17 October, no strong ideological theme beyond public accountability."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Critique d'institutions sur la base d'éléments d'audition, sans rhétorique du peuple contre les élites.",
+        "rationale_en": "Criticizes institutions based on hearing details, without people-versus-elite rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-16T18:01:39.000Z"
+    },
+    "yt:q9wk7w3skrg": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:54:48.013Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Dénonce la répression policière et défend les lycéens mobilisés, position de gauche sur les libertés et la jeunesse.",
+        "rationale_en": "Denounces police repression and defends mobilized students, a left-leaning stance on civil liberties and youth."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "appel_emotionnel",
+          "delegitimation"
+        ],
+        "rationale_fr": "Recours marqué à l'indignation (« brutalité inacceptable », « humiliations ») pour appuyer la critique.",
+        "rationale_en": "Strong reliance on indignation (\"unacceptable brutality\", \"humiliations\") to support the critique."
+      },
+      "check": null,
+      "postTime": "2026-11-16T17:38:17.000Z"
+    },
+    "yt:1ex3Yt_j17Q": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:54:48.013Z",
+      "storyItems": [
+        "55d7c5c45eb3"
+      ],
+      "storyTitle": "17 octobre: face aux violences et aux pillages, l'est de Paris été \"défavorisé\" par rapport à l'ouest, estime le maire Emmanuel Grégoire",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Interroge le maire de Paris sur la sécurité privée et l'information de la mairie, critique de l'action préfectorale.",
+        "rationale_en": "Questions the Paris mayor on private security and information from the prefecture; critique of prefectoral action."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Interpellation factuelle sur le suivi de l'enquête, sans rhétorique populiste.",
+        "rationale_en": "Factual questioning on the inquiry follow-up, no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-16T17:16:13.000Z"
+    },
+    "bsky:at://did:plc:jk3xvtjsvyzcpqamvsgriqt6/app.bsky.feed.post/3n2gyaxmzls2j": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:54:48.013Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message d'agenda et de permanences, sans position politique.",
+        "rationale_en": "Agenda and constituency-office announcements, no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-16T16:48:58.000Z"
+    },
+    "yt:MyApM9zPdJQ": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:54:48.013Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce d'une interview sur BFMTV, sans contenu idéologique.",
+        "rationale_en": "Announcement of a BFMTV interview, no ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-16T16:37:53.000Z"
+    },
+    "bsky:at://did:plc:k4zxrbhn35w47kyskzs3pse4/app.bsky.feed.post/3n2gwhuev722r": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:54:48.013Z",
+      "storyItems": [
+        "5a8511447370",
+        "102705ecb6f7"
+      ],
+      "storyTitle": "Parlement hebdo — Parlement hebdo",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique l'exécutif sur le contournement du Parlement pour engager les forces armées, position de gauche sur le contrôle démocratique.",
+        "rationale_en": "Criticizes the executive for bypassing Parliament on armed forces deployment, a left-leaning stance on democratic oversight."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "souverainete_populaire",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Invoque la prérogative du Parlement face à l'exécutif, avec un ton d'indignation (« ne peut pas »).",
+        "rationale_en": "Invokes Parliament's prerogatives against the executive, with an indignant tone (\"cannot\")."
+      },
+      "check": null,
+      "postTime": "2026-11-16T16:17:01.982Z"
+    },
+    "bsky:at://did:plc:trj7jvmh2g7ekxbuqem6zgzq/app.bsky.feed.post/3n2gw7z42kk24": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:54:48.013Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Dénonce l'« astro-capitalisme » et la privatisation du bien commun spatial, position écologiste et de gauche.",
+        "rationale_en": "Denounces \"astro-capitalism\" and privatization of the space commons, an ecologist, left-leaning position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "anti_elites"
+        ],
+        "rationale_fr": "Critique d'acteurs privés sans appel au peuple contre des élites.",
+        "rationale_en": "Criticizes private actors without appeal to the people against elites."
+      },
+      "check": null,
+      "postTime": "2026-11-16T16:12:38.504Z"
+    },
+    "bsky:at://did:plc:bnulcjvue27qpnwzup3y7hv3/app.bsky.feed.post/3n2gv3lh4oc2x": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:54:57.327Z",
+      "storyItems": [
+        "01e811e8db7c",
+        "26b2017b6798",
+        "0f7bfc7ea8ed",
+        "5bc23292ff8d",
+        "986ccff411df",
+        "98ee3922fa7f"
+      ],
+      "storyTitle": "Manifestations du 14 novembre : suivez la journée de mobilisation à l'appel de gilets jaunes et d'organisations de jeunesse",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Soutien à une niche socialiste visant à encadrer les marges des raffineurs, mesure de régulation économique de gauche.",
+        "rationale_en": "Supports a Socialist bill to cap refiners' margins, a left-leaning economic regulation measure."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Agenda factuel sans opposition peuple contre élites ni appel émotionnel marqué.",
+        "rationale_en": "Factual agenda with no people-versus-elite framing or strong emotional appeal."
+      },
+      "check": null,
+      "postTime": "2026-11-16T15:52:16.227Z"
+    },
+    "bsky:at://did:plc:ln2ibflz7bn3uttly7yepk4f/app.bsky.feed.post/3n2gu5iktj22e": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:54:57.327Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Compte rendu d'un déplacement local sans position politique.",
+        "rationale_en": "Report of a local visit with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-16T15:35:26.566Z"
+    },
+    "yt:K3szInQOSqA": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:54:57.327Z",
+      "storyItems": [
+        "9c6c574d2164"
+      ],
+      "storyTitle": "\"Quand j'ai tout payé, il ne me reste plus grand chose\" : pour le cinquième samedi de mobilisation contre la vie chère, des manifestants toujours déterminés",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Propositions de SMIC à 1700 euros, retraite à 60 ans, blocage des loyers et semaine de 32 heures : programme de gauche radicale.",
+        "rationale_en": "Proposals for a 1,700 euro minimum wage, retirement at 60, rent freeze and 32-hour week: radical left programme."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Met en avant la précarité et l'explosion du coût de la vie pour appuyer ses mesures.",
+        "rationale_en": "Emphasises precarity and rising living costs to back its measures."
+      },
+      "check": null,
+      "postTime": "2026-11-16T15:21:40.000Z"
+    },
+    "yt:zLNQQSCcXL0": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:54:57.327Z",
+      "storyItems": [
+        "1dfc73106323",
+        "4e8b20cf71e3"
+      ],
+      "storyTitle": "La préfecture de police valide l'itinéraire commun République-Nation à Paris, déclaré par trois organisateurs distincts pour la mobilisation du 14 novembre",
+      "political": true,
+      "lean": {
+        "score": -0.9,
+        "rationale_fr": "Programme de réforme de la police, commission indépendante et récépissé de contrôle, positionnement de gauche radicale sur les questions de sécurité.",
+        "rationale_en": "Police reform programme with independent commission and ID check receipts, a far-left position on security."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Qualifie la police de violente et raciste, sans nuance, et recourt à une formule frappante.",
+        "rationale_en": "Describes policing as violent and racist without nuance, using a striking formula."
+      },
+      "check": null,
+      "postTime": "2026-11-16T15:15:41.000Z"
+    },
+    "bsky:at://did:plc:rabmqa3wsllbt6kkg6wzfonz/app.bsky.feed.post/3n2grwyxn522k": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:54:57.327Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Soutien aux mobilisations pour le climat et les droits des enfants, opposition à la loi « permis de tuer ».",
+        "rationale_en": "Supports climate and children's rights mobilisations and opposes the so-called 'licence to kill' law."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Appel à la mobilisation sur des droits fondamentaux, formulé de façon militante.",
+        "rationale_en": "Call to mobilise around fundamental rights, phrased in militant terms."
+      },
+      "check": null,
+      "postTime": "2026-11-16T14:56:01.398Z"
+    },
+    "bsky:at://did:plc:7qlw6gig76xhkjjkxl35xpxe/app.bsky.feed.post/3n2goxp2zdk2r": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:54:57.327Z",
+      "storyItems": [
+        "01e811e8db7c",
+        "26b2017b6798",
+        "0f7bfc7ea8ed",
+        "5bc23292ff8d",
+        "986ccff411df",
+        "98ee3922fa7f"
+      ],
+      "storyTitle": "Manifestations du 14 novembre : suivez la journée de mobilisation à l'appel de gilets jaunes et d'organisations de jeunesse",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Revendique hausse des salaires, dégel du point d'indice et blocage des prix : programme social de gauche.",
+        "rationale_en": "Calls for wage increases, unfreezing the civil service index and price controls: left-wing social programme."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "peuple_homogene"
+        ],
+        "rationale_fr": "Appel à « tous en grève » présentant les salariés comme un bloc uni.",
+        "rationale_en": "'All on strike' call presents workers as a single united bloc."
+      },
+      "check": null,
+      "postTime": "2026-11-16T14:02:43.357Z"
+    },
+    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3n2goxigenk2c": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:54:57.327Z",
+      "storyItems": [
+        "59e25c37add2",
+        "782a41fe478f",
+        "c67c6096f31c",
+        "c29d302101fd",
+        "6182601b13e5",
+        "056ea206d4c5"
+      ],
+      "storyTitle": "Violences dans les lycées : les syndicats de l’éducation nationale dénoncent les propos de Sébastien Lecornu sur de possibles « complicités »",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Défend le mouvement de la jeunesse et critique le gouvernement sur les questions sociales et éducatives.",
+        "rationale_en": "Defends the youth movement and criticises the government on social and education issues."
+      },
+      "populism": {
+        "score": 0.6,
+        "markers": [
+          "delegitimation",
+          "complot",
+          "nativisme"
+        ],
+        "rationale_fr": "Accuse le gouvernement de manipulation « trumpiste » et de propagande, et délégitime ses adversaires.",
+        "rationale_en": "Accuses the government of 'Trumpist' manipulation and propaganda, delegitimising opponents."
+      },
+      "check": null,
+      "postTime": "2026-11-16T14:02:36.390Z"
+    },
+    "bsky:at://did:plc:i27lvonqvridxzfgstsqw6p2/app.bsky.feed.post/3n2golnwmi226": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:54:57.328Z",
+      "storyItems": [
+        "8e91a34bb44f",
+        "0b4fe5996416"
+      ],
+      "storyTitle": "Mouvement lycéen : le cri d’alarme des proviseurs, « à bout » face aux violences",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Critique de l'État et de la réponse policière au mouvement lycéen, en faveur de la mobilisation étudiante et lycéenne.",
+        "rationale_en": "Criticises the state and police response to the student movement, in support of student mobilisation."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel",
+          "delegitimation"
+        ],
+        "rationale_fr": "Dénonce des gardes à vue « injustifiées » et l'attitude de l'État, sur un ton indigné.",
+        "rationale_en": "Denounces 'unjustified' police custody and the state's attitude in an indignant tone."
+      },
+      "check": {
+        "claim": "Des milliers de gardes à vue injustifiées liées à la mobilisation lycéenne et étudiante.",
+        "why_fr": "Le chiffre de « milliers » et le caractère « injustifié » ne sont pas précisés dans les articles fournis ; une vérification du décompte est utile.",
+        "why_en": "The 'thousands' figure and 'unjustified' characterisation are not detailed in the provided articles; checking the count is useful.",
+        "sources": [
+          {
+            "title": "Mouvement lycéen : le cri d'alarme des proviseurs, « à bout » face aux violences",
+            "url": "https://www.lemonde.fr/campus/article/2026/11/13/mouvement-lyceen-le-cri-d-alarme-des-proviseurs-a-bout-face-aux-violences_6809386_4401467.html"
+          },
+          {
+            "title": "Les proviseurs dénoncent les violences et «la réponse de l'État» aux lycéens",
+            "url": "https://www.mediapart.fr/journal/france/141126/les-proviseurs-denoncent-les-violences-et-la-reponse-de-l-etat-aux-lyceens"
+          }
+        ]
+      },
+      "postTime": "2026-11-16T13:55:59.512Z"
+    },
+    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3n2gok3n3ls24": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:10.127Z",
+      "storyItems": [
+        "2800547ed9c3",
+        "30f0302e1b6e",
+        "ba349626b649",
+        "155795d9004f",
+        "c10accd283f8"
+      ],
+      "storyTitle": "Tout comprendre au smic, le salaire minimum que le gouvernement va revaloriser",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Revalorisation du SMIC à 1700 € net et affacturage public contre les mauvais payeurs : propositions de gauche de rupture avec l'intervention de l'État.",
+        "rationale_en": "Raising the minimum wage to €1,700 net and state-backed invoice factoring against late payers: left-wing proposals relying on state intervention."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message programmatique sans attaque contre des élites ni rhétorique de peuple homogène.",
+        "rationale_en": "Programmatic message with no attack on elites and no homogeneous-people rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-16T13:55:06.768Z"
+    },
+    "bsky:at://did:plc:hnbsxunvrlx6p7mkrfjzmmim/app.bsky.feed.post/3n2gnzipud22l": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:10.127Z",
+      "storyItems": [
+        "013b1782cbdb"
+      ],
+      "storyTitle": "Un garçon de 16 ans poignardé en Gironde, son pronostic vital engagé",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de soutien et de condoléances après une agression, sans position idéologique.",
+        "rationale_en": "Message of support after an attack, with no ideological position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-16T13:45:50.068Z"
+    },
+    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3n2glogg7c224": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:10.127Z",
+      "storyItems": [
+        "b0d86978dc90"
+      ],
+      "storyTitle": "Grève du 17 novembre et colère lycéenne : les rendez-vous, les perturbations et la réponse du gouvernement",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Critique de la réponse gouvernementale aux revendications sociales et de la jeunesse, en faveur des demandes syndicales et salariales.",
+        "rationale_en": "Criticizes the government's response to social and youth demands, siding with union and wage demands."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Critique d'une politique sans attaque d'élites ni opposition peuple contre élites.",
+        "rationale_en": "Criticism of a policy without attacks on elites or people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-16T13:03:51.071Z"
+    },
+    "yt:Ac9fQMLkbww": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:10.127Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce pratique d'une participation à un débat télévisé, sans contenu politique.",
+        "rationale_en": "Practical announcement of a TV debate appearance, with no political content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-16T11:20:01.000Z"
+    },
+    "yt:UieXX8_7Wdg": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:10.127Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.8,
+        "rationale_fr": "Défense du « retour des nations » contre la globalisation, position nationaliste et souverainiste de droite.",
+        "rationale_en": "Defends the 'return of nations' against globalization, a nationalist and sovereignist right-wing position."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [],
+        "rationale_fr": "Référence à la volonté des Français et à une fin de monde, sans attaque explicite des élites.",
+        "rationale_en": "Invokes the French people's view and an 'end of a world' framing, without explicit attacks on elites."
+      },
+      "check": null,
+      "postTime": "2026-11-16T11:00:19.000Z"
+    },
+    "bsky:at://did:plc:d5z43zq352zq6xmavrlavcwq/app.bsky.feed.post/3n2gduau7y222": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:10.127Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Proposition d'interdire le commerce avec les colonies israéliennes, position de gauche sur le droit international.",
+        "rationale_en": "Proposal to ban trade with Israeli settlements, a left-leaning position grounded in international law."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Argument juridique sans rhétorique populiste.",
+        "rationale_en": "Legal argument without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-16T10:43:56.633Z"
+    },
+    "bsky:at://did:plc:d5z43zq352zq6xmavrlavcwq/app.bsky.feed.post/3n2gdpzpr6222": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:10.127Z",
+      "storyItems": [
+        "b0d86978dc90"
+      ],
+      "storyTitle": "Grève du 17 novembre et colère lycéenne : les rendez-vous, les perturbations et la réponse du gouvernement",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Appel à des réponses du gouvernement pour la reprise des cours, sans contenu idéologique précis.",
+        "rationale_en": "Calls for government answers to resume classes, with no specific ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-16T10:41:34.928Z"
+    },
+    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3n2gdkyvsbc25": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:10.127Z",
+      "storyItems": [
+        "97afc70e6129",
+        "0769e5c13586",
+        "0e3bed8cc9b0",
+        "726b1258f1d2",
+        "180806347ba9",
+        "a87af46c261c"
+      ],
+      "storyTitle": "Attentat de Trappes : le RN annonce une plainte en diffamation contre Marine Tondelier",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Critique implicite de la couverture politique et médiatique de l'attentat, sans position idéologique claire.",
+        "rationale_en": "Implicit criticism of political and media coverage of the attack, with no clear ideological position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Réaction ciblant les médias sans attaque d'élites ou de peuple homogène.",
+        "rationale_en": "Reaction aimed at the media without attacks on elites or homogeneous-people rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-16T10:38:46.301Z"
+    },
+    "bsky:at://did:plc:d5z43zq352zq6xmavrlavcwq/app.bsky.feed.post/3n2gdkxv3fc22": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:19.285Z",
+      "storyItems": [
+        "adb2a4bdd05e",
+        "75bb8932115d",
+        "8e635d08ffcc",
+        "702f101346e7",
+        "67fa5a34dfa8",
+        "7735de4354cb"
+      ],
+      "storyTitle": "«Une volonté de lynchage»: des journalistes de BFMTV agressés en marge d'une manifestation à Lyon",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Dénonce les violences contre une journaliste au nom de la justice sociale ; position de gauche sur le mouvement social, sans contenu économique.",
+        "rationale_en": "Condemns violence against a journalist in the name of social justice; left-leaning framing of the protest movement, with no economic content."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message de condamnation mesuré, sans attaque contre les élites ni appel au peuple.",
+        "rationale_en": "Measured condemnation with no attack on elites or appeal to the people."
+      },
+      "check": null,
+      "postTime": "2026-11-16T10:38:45.233Z"
+    },
+    "bsky:at://did:plc:d5z43zq352zq6xmavrlavcwq/app.bsky.feed.post/3n2gdi2cyts22": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:19.285Z",
+      "storyItems": [
+        "51797bc62924",
+        "7f8875dad094",
+        "06c248b8b9fa",
+        "6e2092afbbd5",
+        "158c91f7a528"
+      ],
+      "storyTitle": "«Un peu plus d’un milliard d’euros» : le coût de la hausse du Smic et des bas salaires des fonctionnaires dévoilé par le gouvernement",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Propose de financer des dépenses par la suppression de cadeaux fiscaux aux entreprises ; position social-démocrate.",
+        "rationale_en": "Proposes funding spending by cutting business tax breaks; social-democratic position."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "anti_elites"
+        ],
+        "rationale_fr": "Oppose les cadeaux fiscaux aux entreprises aux salaires, sans virulence excessive.",
+        "rationale_en": "Contrasts business tax breaks with wages, without excessive rhetoric."
+      },
+      "check": {
+        "claim": "Les cadeaux fiscaux aux entreprises coûtent 70 milliards d'euros par an, sans contrepartie sur les salaires.",
+        "why_fr": "Le chiffre de 70 milliards dépend du périmètre retenu (niches, crédits d'impôt, exonérations) et l'absence de contrepartie est une appréciation ; la période et la définition ne sont pas précisées.",
+        "why_en": "The 70 billion figure depends on the scope used (tax niches, credits, exemptions), and the absence of wage counterpart is an assessment; the definition is not specified.",
+        "sources": [
+          {
+            "title": "Vie publique - Dépenses fiscales",
+            "url": "https://www.vie-publique.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-16T10:37:07.124Z"
+    },
+    "bsky:at://did:plc:d5z43zq352zq6xmavrlavcwq/app.bsky.feed.post/3n2gdfznm5c22": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:19.285Z",
+      "storyItems": [
+        "246abe5be528",
+        "756c33e2638d",
+        "2c28f6a2017b",
+        "a443c0d066bc",
+        "0f9fe14274ed",
+        "bd7cad631f95"
+      ],
+      "storyTitle": "Pourquoi Gabriel Attal est persuadé de gagner la primaire face à Retailleau et Lisnard",
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Critique Attal, Philippe et Retailleau comme se surenchérissant à droite ; positionne implicitement la majorité à droite libérale.",
+        "rationale_en": "Criticizes Attal, Philippe and Retailleau for outbidding each other on the right; implicitly places the majority on the liberal right."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Présente les adversaires en termes de surenchère sans argument détaillé, ton polémique.",
+        "rationale_en": "Presents rivals as engaged in outbidding without detailed argument, polemical tone."
+      },
+      "check": null,
+      "postTime": "2026-11-16T10:35:59.314Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3n2gdcigbzy2w": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:19.285Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce d'un événement de présentation de livre, sans position politique.",
+        "rationale_en": "Announcement of a book event, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Message purement pratique, sans rhétorique populiste.",
+        "rationale_en": "Purely practical message with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-16T10:34:00.579Z"
+    },
+    "bsky:at://did:plc:d5z43zq352zq6xmavrlavcwq/app.bsky.feed.post/3n2gdbuqqds22": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:19.285Z",
+      "storyItems": [
+        "42a982333aff"
+      ],
+      "storyTitle": "La CFDT rejoint l'appel à la grève dans la fonction publique le 17 novembre, estimant que les propositions du gouvernement \"ne constituent pas de véritables avancées\"",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Appelle à un choc budgétaire pour le pouvoir d'achat et la crise sociale ; orientation sociale-démocrate.",
+        "rationale_en": "Calls for a budget shock to boost purchasing power and address social crisis; social-democratic orientation."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Parle de « crise sociale » et de « véritable choc » pour susciter l'urgence.",
+        "rationale_en": "Uses 'social crisis' and 'real shock' framing to create urgency."
+      },
+      "check": null,
+      "postTime": "2026-11-16T10:33:39.956Z"
+    },
+    "bsky:at://did:plc:d5z43zq352zq6xmavrlavcwq/app.bsky.feed.post/3n2gd5tmyjk22": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:19.285Z",
+      "storyItems": [
+        "51797bc62924",
+        "7f8875dad094",
+        "06c248b8b9fa",
+        "6e2092afbbd5",
+        "158c91f7a528"
+      ],
+      "storyTitle": "«Un peu plus d’un milliard d’euros» : le coût de la hausse du Smic et des bas salaires des fonctionnaires dévoilé par le gouvernement",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Critique la politique macroniste et réclame un SMIC à 1700 euros ; orientation de gauche redistributive.",
+        "rationale_en": "Criticizes Macronist policy and calls for a 1700 euro minimum wage; redistributive left orientation."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "anti_elites",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Oppose les plus riches aux autres et met en avant l'indignation sur les salaires.",
+        "rationale_en": "Opposes the richest to everyone else and foregrounds outrage over wages."
+      },
+      "check": {
+        "claim": "Le coup de pouce au SMIC représente 5 euros par mois.",
+        "why_fr": "D'autres chiffres circulent : les articles fournis évoquent une hausse d'environ 24 euros par mois, et la période de comparaison n'est pas précisée.",
+        "why_en": "Other figures circulate: the provided articles mention an increase of about 24 euros a month, and the comparison period is not specified.",
+        "sources": [
+          {
+            "title": "Le JDD - Témoignages sur le smic",
+            "url": "https://www.franceinfo.fr/economie/pouvoir-achat/temoignages-j-ai-l-impression-de-travailler-a-perte-salaries-au-smic-ils-racontent-un-quotidien-de-privations-de-galeres-et-de-declassement_8276399.html"
+          }
+        ]
+      },
+      "postTime": "2026-11-16T10:31:24.563Z"
+    },
+    "bsky:at://did:plc:7qlw6gig76xhkjjkxl35xpxe/app.bsky.feed.post/3n2gczrz34s2a": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:19.285Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message d'agenda relatif à une cérémonie commémorative, sans position politique.",
+        "rationale_en": "Agenda message about a commemorative ceremony, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-16T10:29:08.637Z"
+    },
+    "bsky:at://did:plc:4yo5qhevwdkksmmxtvlben3v/app.bsky.feed.post/3n2gbfdilsw2d": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:19.285Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Hommage à Manouchian et appel à la vigilance face à la stigmatisation des étrangers ; sensibilité de gauche sur l'immigration.",
+        "rationale_en": "Tribute to Manouchian and call for vigilance against stigmatizing foreigners; left-leaning stance on immigration."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Hommage historique mesuré, sans opposition du peuple aux élites.",
+        "rationale_en": "Measured historical tribute with no people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-16T09:59:48.589Z"
+    },
+    "bsky:at://did:plc:sgunesm6k7o2zrdzdico7ai7/app.bsky.feed.post/3n2gahm5yac2t": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:24.169Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Demande de revalorisation des salaires et des indemnités de déplacement des aides à domicile, positionnement de social-démocratie.",
+        "rationale_en": "Calls for higher pay and better travel compensation for home-care workers, a social-democratic position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Critique d'une politique par une question écrite au gouvernement, sans rhétorique populiste notable.",
+        "rationale_en": "Criticizes policy through a written question to government, with no notable populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-16T09:43:11.047Z"
+    },
+    "yt:ZPhAR6uaCOY": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:24.169Z",
+      "storyItems": [
+        "b0d871b3a977",
+        "33c23338fde1",
+        "f7225886950d",
+        "7c8b3da5fddc"
+      ],
+      "storyTitle": "Marseille : Des militants d’extrême droite attaqués par un groupe cagoulé dans un bar",
+      "political": true,
+      "lean": {
+        "score": 0.8,
+        "rationale_fr": "Accuse l'extrême gauche de violences politiques, en citant des candidats de droite et du centre ; positionnement de droite nationaliste.",
+        "rationale_en": "Accuses the far left of political violence; positions itself on the nationalist right."
+      },
+      "populism": {
+        "score": 0.6,
+        "markers": [
+          "delegitimation",
+          "complot",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Présente les militants adverses comme une force violente organisée et utilise une indignation mise en avant.",
+        "rationale_en": "Presents opposing activists as an organized violent force and emphasizes indignation."
+      },
+      "check": null,
+      "postTime": "2026-11-16T07:00:30.000Z"
+    },
+    "yt:xdBZK_BjrwE": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:24.169Z",
+      "storyItems": [
+        "57d5ceb2d06c"
+      ],
+      "storyTitle": "Et le candidat idéal du bloc central et de la droite est …",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Appelle à l'unité de la gauche face à l'extrême droite et au bloc central ; position de gauche.",
+        "rationale_en": "Calls for left-wing unity against the far right and the central bloc; left-wing position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Mise en avant de la poussée de l'extrême droite pour appeler à l'unité, sans rhétorique populiste marquée.",
+        "rationale_en": "Invokes the rise of the far right to call for unity, without marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-16T06:45:06.000Z"
+    },
+    "yt:Mes2S5SNAko": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-16T18:55:24.169Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Critique de la presse et des comportements de militants, sans contenu idéologique identifiable sur l'axe gauche-droite.",
+        "rationale_en": "Criticizes the press and activists' behavior, with no identifiable left-right ideological content."
+      },
+      "populism": {
+        "score": 0.6,
+        "markers": [
+          "anti_elites",
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Attaque la presse comme élite complice et qualifie les adversaires de comportement antidémocratique.",
+        "rationale_en": "Attacks the press as a complicit elite and labels opponents' behavior as antidemocratic."
+      },
+      "check": null,
+      "postTime": "2026-11-15T11:00:06.000Z"
     }
   },
   "failures": {
