@@ -3,7 +3,7 @@
 // exact place; the real node, its data and its links are never touched. A clone is styled by copying the
 // computed style of each of its nodes, so it looks the same away from the CSS context it came from.
 import { GRAVITY } from "./fox-physics";
-import { measure, standRange, type Surface } from "./fox-world";
+import { boxOf, standRange, visibleSurfaces, type Surface } from "./fox-world";
 
 /** What a trick needs from the fox. Every action resolves false when the fox is interrupted (grabbed, called away). */
 export interface FoxApi {
@@ -148,13 +148,14 @@ export function propCandidates(): HTMLElement[] {
   return [...chips, ...[...document.querySelectorAll<HTMLElement>(".hday-doors a")].filter(onScreen)];
 }
 
-/** The box to stand on to reach an element: the nearest box under it (its legend row, its card…) or itself. */
+/** The box to stand on to reach an element: the box around it (its card), else the nearest other box on screen
+ *  (a hero button is fetched from the button next to it, never from itself: it is hidden while it is carried). */
 function perchFor(el: HTMLElement): Surface | null {
-  for (let e: HTMLElement | null = el.parentElement; e && e !== document.body; e = e.parentElement) {
-    const s = measure(e);
-    if (s && s.right - s.left >= 90 && s.top < el.getBoundingClientRect().top + scrollY + 4) return s;
-  }
-  return measure(el);
+  const around = el.parentElement && boxOf(el.parentElement);
+  if (around && around.right - around.left >= 90) return around;
+  const r = el.getBoundingClientRect(), cx = r.left + r.width / 2 + scrollX, cy = r.top + scrollY;
+  const d = (s: Surface) => Math.abs((s.left + s.right) / 2 - cx) + Math.abs(s.top - cy);
+  return visibleSurfaces().filter((s) => s.el !== el && !el.contains(s.el)).sort((a, b) => d(a) - d(b))[0] ?? null;
 }
 
 const near = (s: Surface, x: number) => Math.max(standRange(s)[0], Math.min(standRange(s)[1], x));

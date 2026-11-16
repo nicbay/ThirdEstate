@@ -19,7 +19,7 @@ import sprites from "./fox-sprites.json";
 import "../styles/fox.css";
 import { L } from "../i18n";
 import { arcAt, makeArc, squash, stepBody, type Arc, type Body } from "./fox-physics";
-import { ATTN_SEL, clearAbove, jumpSpot, measure, plan, standRange, visibleSurfaces, SURF_SEL, type Surface } from "./fox-world";
+import { ATTN_SEL, boxOf, clearAbove, jumpSpot, measure, plan, standRange, visibleSurfaces, SURF_SEL, type Surface } from "./fox-world";
 import { playTrick, type FoxApi, type Prop } from "./fox-props";
 
 type Frame = keyof typeof sprites.frames;
@@ -204,7 +204,7 @@ function createFox(opts: Opts) {
     say("!");
     if (!(await timed("look", 700))) return false;
     say("");
-    const s = measure(target);
+    const s = boxOf(target); // it looks at a chart or a table, but only ever stands on the box around it
     if (!s || s.top - scrollY < 70 || s.top - scrollY > innerHeight - 20) return timed("look", 2500);
     // beside it, on its top corner away from the pointer (so the fox never sits where the reader points)
     const [lo, hi] = standRange(s);

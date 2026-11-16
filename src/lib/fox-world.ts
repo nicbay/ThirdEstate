@@ -15,6 +15,26 @@ export type Surface = { el: Element; left: number; right: number; top: number };
 
 const TOP_BAR = 64; // under the sticky masthead nothing can be stood on
 
+const clear = (c: string) => !c || c === "transparent" || /,\s*0\)$/.test(c);
+/** True when the element is one of the boxes above AND is drawn as one right now: a visible top line, or a ground
+ *  of its own. The class alone is not enough (a card inside a card is flat, and page CSS changes), so this is
+ *  read from the computed style each time. */
+export function isBox(el: Element): boolean {
+  if (!el.matches(SURF_SEL) || el.closest(".fox-layer")) return false;
+  const cs = getComputedStyle(el);
+  if (cs.visibility === "hidden" || cs.display === "none") return false;
+  const line = parseFloat(cs.borderTopWidth) > 0 && cs.borderTopStyle !== "none" && !clear(cs.borderTopColor);
+  return line || !clear(cs.backgroundColor) || cs.backgroundImage !== "none";
+}
+
+/** The nearest box around an element (or the element itself), as a surface; null when it sits in no box. */
+export function boxOf(el: Element): Surface | null {
+  for (let e: Element | null = el; e; e = e.parentElement?.closest(SURF_SEL) ?? null) {
+    if (isBox(e)) { const s = measure(e); if (s) return s; }
+  }
+  return null;
+}
+
 /** A box's top edge in page coordinates, or null when it is gone, hidden or too small to stand on. */
 export function measure(el: Element): Surface | null {
   if (!el.isConnected) return null;
@@ -28,9 +48,9 @@ export function visibleSurfaces(margin = 0): Surface[] {
   const out: Surface[] = [];
   const vh = innerHeight, vw = innerWidth;
   for (const el of document.querySelectorAll(SURF_SEL)) {
-    if (el.closest(".fox-layer")) continue;
     const r = el.getBoundingClientRect();
     if (r.width < 36 || r.height < 8 || r.top < TOP_BAR - margin || r.top > vh + margin || r.right < 0 || r.left > vw) continue;
+    if (!isBox(el)) continue; // after the cheap test: only what is on screen has its style read
     out.push({ el, left: r.left + scrollX, right: r.right + scrollX, top: r.top + scrollY });
     if (out.length > 60) break; // a long list page: the first sixty on screen are plenty to choose from
   }
