@@ -15487,6 +15487,256 @@
       },
       "check": null,
       "postTime": "2026-11-15T11:00:06.000Z"
+    },
+    "yt:1NR_BfzVgoo": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-17T03:09:19.030Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce d'un débat télévisé, sans position politique exprimée.",
+        "rationale_en": "Announces a televised debate without expressing any political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste, simple annonce.",
+        "rationale_en": "No populist rhetoric, simple announcement."
+      },
+      "check": null,
+      "postTime": "2026-11-16T22:20:49.000Z"
+    },
+    "bsky:at://did:plc:vjwqkzs27ge527nmwckanige/app.bsky.feed.post/3n2himptls226": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-17T03:09:19.030Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Critique des parents qui soutiennent les blocages, sans contenu idéologique identifiable.",
+        "rationale_en": "Criticizes parents supporting blockades, with no identifiable ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucun marqueur populiste relevé dans le message.",
+        "rationale_en": "No populist markers found in the message."
+      },
+      "check": null,
+      "postTime": "2026-11-16T21:41:52.351Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3n2hf3psdl22r": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-17T03:09:19.030Z",
+      "storyItems": [
+        "55d7c5c45eb3",
+        "c7b9a809ff58"
+      ],
+      "storyTitle": "17 octobre: face aux violences et aux pillages, l'est de Paris été \"défavorisé\" par rapport à l'ouest, estime le maire Emmanuel Grégoire",
+      "political": true,
+      "lean": {
+        "score": -0.2,
+        "rationale_fr": "Critique de l'action de l'État envers l'est parisien, orientation de gauche modérée à peine marquée.",
+        "rationale_en": "Criticizes state action toward eastern Paris, mildly left-leaning orientation."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Formule polémique (« abandon de l'État ») sans opposition peuple contre élites.",
+        "rationale_en": "Polemical phrasing (state abandonment) without people versus elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-16T20:38:40.660Z"
+    },
+    "bsky:at://did:plc:k4zxrbhn35w47kyskzs3pse4/app.bsky.feed.post/3n2hdmyxnmc24": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-17T03:09:19.030Z",
+      "storyItems": [
+        "2800547ed9c3",
+        "30f0302e1b6e",
+        "ba349626b649",
+        "155795d9004f",
+        "c10accd283f8"
+      ],
+      "storyTitle": "Tout comprendre au smic, le salaire minimum que le gouvernement va revaloriser",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Oppose la gauche au refus d'augmenter le SMIC et aux économies sur la Sécurité sociale.",
+        "rationale_en": "Opposes the left to refusing SMIC increases and cuts to social security."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Formule militante (« recettes de la droite et de l'extrême droite ») sans opposition au peuple.",
+        "rationale_en": "Activist wording (right and far-right recipes) without a people-versus-elites frame."
+      },
+      "check": null,
+      "postTime": "2026-11-16T20:12:33.208Z"
+    },
+    "masto:https://mastodon.social/users/_EvaSas/statuses/117627810650700651": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-17T03:09:19.030Z",
+      "storyItems": [
+        "2800547ed9c3",
+        "30f0302e1b6e",
+        "ba349626b649",
+        "155795d9004f",
+        "c10accd283f8"
+      ],
+      "storyTitle": "Tout comprendre au smic, le salaire minimum que le gouvernement va revaloriser",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Défend une revalorisation du SMIC à 1700 euros nets, critique le vote du RN et de la majorité.",
+        "rationale_en": "Backs a SMIC increase to 1700 net euros and criticizes the RN and majority vote."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Présente les autres groupes comme non alliés des salariés, sans attaque sur les institutions.",
+        "rationale_en": "Presents other groups as not allies of workers, without attacking institutions."
+      },
+      "check": null,
+      "postTime": "2026-11-16T19:39:10.600Z"
+    },
+    "bsky:at://did:plc:bnulcjvue27qpnwzup3y7hv3/app.bsky.feed.post/3n2haqlnsfs2u": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-17T03:09:19.030Z",
+      "storyItems": [
+        "ef7da0a696d2",
+        "cf5cc759c4ef"
+      ],
+      "storyTitle": "Présidentielle 2027 : la pauvreté requiert des \"solutions structurelles\", selon les Restos du Coeur",
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce pratique d'un débat, sans position politique.",
+        "rationale_en": "Practical debate announcement, no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-16T19:20:52.242Z"
+    },
+    "bsky:at://did:plc:i27lvonqvridxzfgstsqw6p2/app.bsky.feed.post/3n2ha22hw7s26": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-17T03:09:19.030Z",
+      "storyItems": [
+        "51797bc62924",
+        "7f8875dad094",
+        "06c248b8b9fa",
+        "6e2092afbbd5",
+        "158c91f7a528"
+      ],
+      "storyTitle": "«Un peu plus d’un milliard d’euros» : le coût de la hausse du Smic et des bas salaires des fonctionnaires dévoilé par le gouvernement",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Demande un dégel du point d'indice et critique la revalorisation proposée par le gouvernement.",
+        "rationale_en": "Calls for thawing the civil service index and criticizes the government's proposed raise."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Indignation mise en avant (« Honteux ! ») plus que développement argumenté.",
+        "rationale_en": "Indignation foregrounded (Shameful!) rather than argued development."
+      },
+      "check": null,
+      "postTime": "2026-11-16T19:08:16.034Z"
+    },
+    "yt:mVcZEC_1wtQ": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-17T03:09:19.030Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Présentation en images d'épisodes budgétaires, sans prise de position.",
+        "rationale_en": "Video recap of budget debates, without taking a position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-16T19:03:24.000Z"
+    },
+    "x:2122401663117885480": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-17T03:09:21.946Z",
+      "storyItems": [
+        "8541cce0f2da",
+        "213835510703",
+        "698ddbc83a4a",
+        "66fce231c85d",
+        "cea7736da1aa",
+        "b20b2e6901a4"
+      ],
+      "storyTitle": "\"J'ai fait de mon mieux\" : à six mois de la fin de son mandat, Emmanuel Macron reconnaît \"des erreurs\" au cours de ses dix ans au pouvoir",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique frontale de la politique et du bilan d'Emmanuel Macron (casse sociale, pauvreté, autoritarisme), sans proposition détaillée; positionnement de gauche au vu des thèmes sociaux mis en avant.",
+        "rationale_en": "Harsh criticism of Macron's record (social cuts, poverty, authoritarianism) with no detailed proposal; left-leaning framing on social themes."
+      },
+      "populism": {
+        "score": 0.5,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Ton indigné et formules ad hominem (« Vivement votre départ ») qui délégitiment le pouvoir plutôt que d'argumenter.",
+        "rationale_en": "Indignant tone and personal jabs (\"Vivement votre départ\") delegitimize the government rather than argue the case."
+      },
+      "check": null,
+      "postTime": "2026-11-16T18:49:23.460Z"
+    },
+    "bsky:at://did:plc:f5ymvi2nsevpogvseolqk2yv/app.bsky.feed.post/3n2ggnlbgms22": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-17T03:09:21.946Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message purement pratique annonçant un agenda, sans position politique.",
+        "rationale_en": "Purely practical post announcing an agenda, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste dans ce message d'agenda.",
+        "rationale_en": "No populist rhetoric in this agenda post."
+      },
+      "check": null,
+      "postTime": "2026-11-16T11:33:53.827Z"
     }
   },
   "failures": {
