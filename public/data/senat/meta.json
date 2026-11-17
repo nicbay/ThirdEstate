@@ -1,5 +1,5 @@
 {
- "syncedAt": "2026-11-16T15:53:25.027Z",
+ "syncedAt": "2026-11-17T16:06:22.757Z",
  "firstSession": "2023-2024",
  "sources": {
   "api": "https://www.senat.fr/api-senat/senateurs.json",
@@ -32,13 +32,13 @@
    "max": 340
   },
   "session2026": {
-   "listed": 107,
-   "max": 107
+   "listed": 114,
+   "max": 114
   },
   "votes": {
-   "listed": 1029,
-   "written": 1029,
-   "fetchedThisRun": 67,
+   "listed": 1036,
+   "written": 1036,
+   "fetchedThisRun": 74,
    "failed": [],
    "noNominativeList": [
     "2023-100",
