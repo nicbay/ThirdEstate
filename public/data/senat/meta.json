@@ -1,5 +1,5 @@
 {
- "syncedAt": "2026-11-17T16:06:22.757Z",
+ "syncedAt": "2026-11-18T15:44:06.226Z",
  "firstSession": "2023-2024",
  "sources": {
   "api": "https://www.senat.fr/api-senat/senateurs.json",
@@ -32,12 +32,12 @@
    "max": 340
   },
   "session2026": {
-   "listed": 114,
-   "max": 114
+   "listed": 117,
+   "max": 117
   },
   "votes": {
-   "listed": 1036,
-   "written": 1036,
+   "listed": 1039,
+   "written": 1039,
    "fetchedThisRun": 74,
    "failed": [],
    "noNominativeList": [
@@ -562,23 +562,6 @@
     "positions": "kept"
    },
    {
-    "id": "2023-99",
-    "published": {
-     "pour": 341,
-     "contre": 0,
-     "abstention": 0,
-     "nppv": 7
-    },
-    "nominative": {
-     "P": 103,
-     "C": 228,
-     "A": 10,
-     "N": 7
-    },
-    "gap": 476,
-    "positions": "dropped"
-   },
-   {
     "id": "2023-98",
     "published": {
      "pour": 191,
@@ -593,6 +576,23 @@
      "N": 7
     },
     "gap": 301,
+    "positions": "dropped"
+   },
+   {
+    "id": "2023-99",
+    "published": {
+     "pour": 341,
+     "contre": 0,
+     "abstention": 0,
+     "nppv": 7
+    },
+    "nominative": {
+     "P": 103,
+     "C": 228,
+     "A": 10,
+     "N": 7
+    },
+    "gap": 476,
     "positions": "dropped"
    },
    {
