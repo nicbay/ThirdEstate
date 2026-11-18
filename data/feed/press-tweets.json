@@ -16379,6 +16379,127 @@
       "at": "2026-11-17T22:38:15.879Z",
       "status": "ok",
       "tweets": []
+    },
+    "be5818927558": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "5b8c4619ba37": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "1e8128e35520": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "7ca3adef9fe4": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "bd26ee8010e3": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "fb9e3d477bbc": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2122654350979801186",
+          "handle": "Cybernews",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/Cybernews/status/2122654350979801186",
+          "time": "2026-11-17T11:33:28.941Z"
+        }
+      ]
+    },
+    "fffd86995fd6": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "c2bf161b7cb4": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "547755da9a9b": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "c02c4fa0cdf1": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "cd719cc715c8": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "db28a3c358dc": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "333b0f1323d9": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "20d8138f38e4": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "9e4dbc35e9e3": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "83612663c373": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2112266967382176047",
+          "handle": "GDarmanin",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "link",
+          "url": "https://x.com/GDarmanin/status/2112266967382176047",
+          "time": "2026-10-19T19:37:43.703Z"
+        }
+      ]
+    },
+    "f0451b6193f3": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "status": "ok",
+      "tweets": []
     }
   },
   "oembed": {
@@ -17335,6 +17456,18 @@
       "handle": "marinetondelier",
       "name": "Marine Tondelier",
       "text": "Première fois de ma vie que j’ai dû taper « lacrymo allaitement » dans mon moteur de recherche en rentrant de manif. Ce n’est pas une dystopie, ce sont les recherches que ce gouvernement nous oblige à faire. Depuis le début de la mobilisation lycéenne, les gaz lacrymogènes sont…"
+    },
+    "2112266967382176047": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "handle": "GDarmanin",
+      "name": "Gérald DARMANIN",
+      "text": "J’ai envoyé ce matin une instruction à tous les parquets de France pour leur demander de retenir les qualifications de criminalité organisée face à ces actes extrêmement graves. Sous ce régime, les gardes à vue pourront être prolongées jusqu’à 72 heures, des géolocalisations et…"
+    },
+    "2122654350979801186": {
+      "at": "2026-11-18T03:51:25.026Z",
+      "handle": "Cybernews",
+      "name": "Cybernews",
+      "text": "A driverless vehicle recently tested the limits of an active police blockade. During a routine traffic break on Interstate 280 in San Francisco, a Waymo robotaxi attempted to bypass California Highway Patrol cruisers. Authorities had initiated the slowdown to safely clear road…"
     }
   }
 }
