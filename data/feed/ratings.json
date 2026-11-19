@@ -1703,159 +1703,6 @@
       "check": null,
       "postTime": "2026-11-05T07:05:52.000Z"
     },
-    "bsky:at://did:plc:d57dxlliqj3ctzpgmentyyn3/app.bsky.feed.post/3mzjivtnkbs22": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v1",
-      "ratedAt": "2026-11-07T12:29:15.083Z",
-      "storyItems": [
-        "ad50f7387657",
-        "d22432d23d96",
-        "b78d3c43c488",
-        "ec88731ef639",
-        "1e142ccee986",
-        "50751336c8fb"
-      ],
-      "storyTitle": "Budget 2027: l'Assemblée rejette à l'unanimité la partie \"recettes\", le projet de loi de finances va être transmis au Sénat",
-      "political": true,
-      "lean": {
-        "score": -0.7,
-        "rationale_fr": "Appel à la rue et à un avenir en commun, critique du budget et de l'ère Macron, ton de gauche radicale.",
-        "rationale_en": "Calls for street protest and a common future, criticises the budget and the Macron era, radical-left tone."
-      },
-      "populism": {
-        "score": 0.3,
-        "markers": [
-          "appel_emotionnel",
-          "delegitimation"
-        ],
-        "rationale_fr": "Rhétorique de défaite et d'écrasement, présentant le gouvernement comme balayé et illégitime.",
-        "rationale_en": "Rhetoric of defeat and crushing, presenting the government as swept away and illegitimate."
-      },
-      "check": {
-        "claim": "Aucun député n'a voté le budget",
-        "why_fr": "Le vote évoqué porte sur la partie recettes du projet de loi de finances, pas sur l'ensemble du texte ; la portée exacte du vote mérite d'être précisée.",
-        "why_en": "The vote concerned the revenue part of the finance bill, not the whole text; the exact scope of the vote should be checked.",
-        "sources": [
-          {
-            "title": "Assemblée nationale",
-            "url": "https://www.assemblee-nationale.fr"
-          }
-        ]
-      },
-      "postTime": "2026-11-04T23:27:06.182Z"
-    },
-    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3mzjhk26ays2v": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v1",
-      "ratedAt": "2026-11-07T12:29:15.083Z",
-      "storyItems": [
-        "ad50f7387657",
-        "d22432d23d96",
-        "b78d3c43c488",
-        "ec88731ef639",
-        "1e142ccee986",
-        "50751336c8fb"
-      ],
-      "storyTitle": "Budget 2027: l'Assemblée rejette à l'unanimité la partie \"recettes\", le projet de loi de finances va être transmis au Sénat",
-      "political": true,
-      "lean": {
-        "score": -0.3,
-        "rationale_fr": "Critique du budget et de sa cohérence, sans argument idéologique explicite sur l'axe gauche-droite.",
-        "rationale_en": "Criticises the budget and its coherence, without explicit left-right ideological argument."
-      },
-      "populism": {
-        "score": 0.2,
-        "markers": [
-          "simplisme",
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Image du château de sable et formule choc pour résumer un débat budgétaire complexe.",
-        "rationale_en": "Sandcastle image and punchy line summarising a complex budget debate."
-      },
-      "check": {
-        "claim": "Rejet de la partie recettes par 418 voix contre 0 en séance",
-        "why_fr": "Un autre message du même auteur donne 458 voix contre ; le décompte exact du scrutin mérite d'être vérifié au compte rendu.",
-        "why_en": "Another post by the same author gives 458 votes against; the exact tally should be checked against the official record.",
-        "sources": [
-          {
-            "title": "Assemblée nationale",
-            "url": "https://www.assemblee-nationale.fr"
-          }
-        ]
-      },
-      "postTime": "2026-11-04T23:02:36.631Z"
-    },
-    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3mzjgwlavss2v": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v1",
-      "ratedAt": "2026-11-07T12:29:15.083Z",
-      "storyItems": [
-        "ad50f7387657",
-        "d22432d23d96",
-        "b78d3c43c488",
-        "ec88731ef639",
-        "1e142ccee986",
-        "50751336c8fb"
-      ],
-      "storyTitle": "Budget 2027: l'Assemblée rejette à l'unanimité la partie \"recettes\", le projet de loi de finances va être transmis au Sénat",
-      "political": true,
-      "lean": {
-        "score": -0.4,
-        "rationale_fr": "Critique du budget jugé sans crédibilité ni cohérence, dans une perspective de gauche.",
-        "rationale_en": "Criticises the budget as lacking credibility and coherence, from a left-leaning perspective."
-      },
-      "populism": {
-        "score": 0.2,
-        "markers": [
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Formulation affirmative et répétitive pour renforcer l'indignation.",
-        "rationale_en": "Affirmative, repetitive wording to reinforce outrage."
-      },
-      "check": {
-        "claim": "458 voix contre, 0 pour, une première dans l'histoire budgétaire",
-        "why_fr": "Un autre message du même auteur indique 418 voix contre ; le décompte et le caractère inédit de ce résultat méritent d'être confirmés.",
-        "why_en": "Another post by the same author gives 418 votes against; the tally and the claim of a first should be confirmed.",
-        "sources": [
-          {
-            "title": "Assemblée nationale",
-            "url": "https://www.assemblee-nationale.fr"
-          }
-        ]
-      },
-      "postTime": "2026-11-04T22:51:43.453Z"
-    },
-    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3mzjfpe43fk2x": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v1",
-      "ratedAt": "2026-11-07T12:29:15.083Z",
-      "storyItems": [
-        "ad50f7387657",
-        "d22432d23d96",
-        "b78d3c43c488",
-        "ec88731ef639",
-        "1e142ccee986",
-        "50751336c8fb"
-      ],
-      "storyTitle": "Budget 2027: l'Assemblée rejette à l'unanimité la partie \"recettes\", le projet de loi de finances va être transmis au Sénat",
-      "political": true,
-      "lean": {
-        "score": -0.3,
-        "rationale_fr": "Critique du budget 2027 et du macronisme, sans proposition idéologique détaillée.",
-        "rationale_en": "Criticises the 2027 budget and Macronism, without detailed ideological proposal."
-      },
-      "populism": {
-        "score": 0.3,
-        "markers": [
-          "delegitimation",
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Présente le budget comme dissous et le bilan du pouvoir comme vide, avec une formule forte.",
-        "rationale_en": "Presents the budget as dissolved and the government record as empty, with a strong formula."
-      },
-      "check": null,
-      "postTime": "2026-11-04T22:29:47.328Z"
-    },
     "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3mzq6sdxkrc2i": {
       "model": "claude-haiku-5-5",
       "promptVersion": "feed-rating-v2",
@@ -3490,69 +3337,6 @@
       },
       "check": null,
       "postTime": "2026-11-05T07:00:09.000Z"
-    },
-    "bsky:at://did:plc:fakceyj3l3pen4wtnjhgudd3/app.bsky.feed.post/3mzjh2yhx6s2a": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-07T15:30:15.331Z",
-      "storyItems": [
-        "ad50f7387657",
-        "d22432d23d96",
-        "b78d3c43c488",
-        "ec88731ef639",
-        "1e142ccee986",
-        "50751336c8fb"
-      ],
-      "storyTitle": "Budget 2027: l'Assemblée rejette à l'unanimité la partie \"recettes\", le projet de loi de finances va être transmis au Sénat",
-      "political": true,
-      "lean": {
-        "score": -0.7,
-        "rationale_fr": "Soutien à Mélenchon et rejet du budget gouvernemental ; positionnement de gauche radicale.",
-        "rationale_en": "Backs Mélenchon and rejects the government budget; radical-left positioning."
-      },
-      "populism": {
-        "score": 0.5,
-        "markers": [
-          "delegitimation",
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Présente le gouvernement comme moribond et l'extrême droite comme complice ; ton polémique.",
-        "rationale_en": "Describes government as moribund and far right as complicit; polemical tone."
-      },
-      "check": null,
-      "postTime": "2026-11-04T22:54:11.515Z"
-    },
-    "bsky:at://did:plc:7qlw6gig76xhkjjkxl35xpxe/app.bsky.feed.post/3mzjft6m4sk2p": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-07T15:30:15.331Z",
-      "storyItems": [
-        "ad50f7387657",
-        "d22432d23d96",
-        "b78d3c43c488",
-        "ec88731ef639",
-        "1e142ccee986",
-        "50751336c8fb"
-      ],
-      "storyTitle": "Budget 2027: l'Assemblée rejette à l'unanimité la partie \"recettes\", le projet de loi de finances va être transmis au Sénat",
-      "political": true,
-      "lean": {
-        "score": -0.6,
-        "rationale_fr": "Critique du budget et des cadeaux aux riches, appel à la sortie du gouvernement ; gauche.",
-        "rationale_en": "Criticises the budget and tax breaks for the rich, calls for government to go; left-leaning."
-      },
-      "populism": {
-        "score": 0.6,
-        "markers": [
-          "peuple_vs_elites",
-          "delegitimation",
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Oppose la mobilisation populaire aux riches et au gouvernement, présenté comme illégitime ; appel à partir.",
-        "rationale_en": "Opposes popular mobilisation to the rich and to a government framed as illegitimate; calls for it to leave."
-      },
-      "check": null,
-      "postTime": "2026-11-04T22:31:55.787Z"
     },
     "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3mzqfxs4qs22i": {
       "model": "claude-haiku-5-5",
@@ -18576,6 +18360,34 @@
       },
       "check": null,
       "postTime": "2026-11-18T11:03:55.115Z"
+    },
+    "x:2122641639516889440": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-19T03:50:08.300Z",
+      "storyItems": [
+        "cd4cd49dc8a8",
+        "2611e4ea0088",
+        "9d6f06fe8a49",
+        "5b29e4421ee1",
+        "dcb9df524c69",
+        "ebab35f7b923"
+      ],
+      "storyTitle": "Présidentielle 2027 : 62 ans, capitalisation… On vous résume la réforme des retraites de Marine Le Pen",
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Soutien à un pilier de capitalisation des retraites, présenté comme marqueur de liberté ; position de droite libérale sur l'économie sociale.",
+        "rationale_en": "Supports a funded pension pillar framed as a freedom marker; a center-right, market-leaning position on social economics."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message d'éloge partisan sans attaque des élites ni appel au peuple ; rhétorique politique ordinaire.",
+        "rationale_en": "Partisan praise without attacks on elites or appeals to the people; ordinary political rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-17T10:42:58.292Z"
     }
   },
   "failures": {

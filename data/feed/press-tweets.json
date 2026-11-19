@@ -18630,6 +18630,144 @@
       "at": "2026-11-18T22:18:53.730Z",
       "status": "ok",
       "tweets": []
+    },
+    "8f43ad932068": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "eaf86049f6bd": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "7f69d79a578d": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2123220522284572944",
+          "handle": "FoxNews",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/FoxNews/status/2123220522284572944",
+          "time": "2026-11-19T01:03:14.699Z"
+        }
+      ]
+    },
+    "8248428e4649": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "3a7a95aff42f": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "b0e3085011e7": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "f3590a4e04b3": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "9797c6dbf7be": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "fe88c1aa1348": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "53816efb3a33": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "b1e2bbc0d067": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "f52c4a561537": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "70f2522e80fd": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "d6b797f02ba7": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "db6b6b96134b": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "b1e603a70a65": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "f8b283c85e92": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "6e4889d571ce": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "9f1f0a8f0ac7": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "7380c0fe7ac9": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "fdd8ae431741": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "74187e2cdcd4": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "c204e342232d": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "status": "ok",
+      "tweets": []
     }
   },
   "oembed": {
@@ -19670,6 +19808,12 @@
       "handle": "HouseDemocrats",
       "name": "House Democrats",
       "text": "House Democrats nominate @RepJeffries for Speaker of the House for the 120th Congress."
+    },
+    "2123220522284572944": {
+      "at": "2026-11-19T03:49:45.779Z",
+      "handle": "FoxNews",
+      "name": "Fox News",
+      "text": "TRUMP on Jensen Huang’s ousting: “Such a tragedy.” President Trump reacts to the former NVIDIA CEO’s departure during an interview with @JacquiHeinrich , calling him “a brilliant man.” “Some people can’t be replaced. He was ten years ahead,” Trump says, adding that he briefly…"
     }
   }
 }
