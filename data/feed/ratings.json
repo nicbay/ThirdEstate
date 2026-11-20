@@ -18355,6 +18355,31 @@
       },
       "check": null,
       "postTime": "2026-11-17T16:11:59.000Z"
+    },
+    "bsky:at://did:plc:fwu2s2iocrkadqq2tbpeojbi/app.bsky.feed.post/3n2p34h3dpc27": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-20T03:43:44.403Z",
+      "storyItems": [
+        "74b4ba4a287d",
+        "850a569d931a",
+        "075defd98a21"
+      ],
+      "storyTitle": "Yannick Jadot et Jérémie Iordanoff quittent les Ecologistes après l’approche de Marine Tondelier vers Jean-Luc Mélenchon pour la présidentielle",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Le message ne contient qu'un titre et un lien, sans contenu idéologique explicite.",
+        "rationale_en": "The message contains only a title and a link, with no explicit ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste visible dans le message court.",
+        "rationale_en": "No visible populist rhetoric in the short message."
+      },
+      "check": null,
+      "postTime": "2026-11-19T22:01:25.560Z"
     }
   },
   "failures": {
