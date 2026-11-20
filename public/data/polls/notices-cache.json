@@ -3588,6 +3588,20 @@
    "presidential": true,
    "legislative": false
   },
+  "2392": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10370-pres-primaire-centre-droite-ifop-sud-radio-12-novembre.pdf",
+   "fieldwork": [
+    "2026-11-04",
+    "2026-11-05"
+   ],
+   "samples": [
+    1481,
+    1500
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": true
+  },
   "2393": {
    "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10371-pres-iv-opinionway-cnews-12-novembre.pdf",
    "fieldwork": [
@@ -3651,6 +3665,67 @@
    "presidential": true,
    "legislative": true
   },
+  "2399": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10378-pres-radiographie-antisemitisme-ifop-16-novembre.pdf",
+   "fieldwork": [
+    "2026-09-17",
+    "2026-09-24"
+   ],
+   "samples": [
+    2000,
+    500,
+    1029,
+    15459,
+    874,
+    34500
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": false
+  },
+  "2401": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10380-pres-mesures-pouvoir-achat-gauche-ifop-lhumanite-13-novembre.pdf",
+   "fieldwork": [
+    "2026-11-09",
+    "2026-11-10"
+   ],
+   "samples": [
+    1003,
+    1000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": true
+  },
+  "2404": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10381-pres-participation-2nd-tour-jl-melenchon-m-le-pen-ifop-franc-tireur-18-novembre.pdf",
+   "fieldwork": [
+    "2026-11-02",
+    "2026-11-04"
+   ],
+   "samples": [
+    1834,
+    1978,
+    2000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": true
+  },
+  "2405": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10379-pres-candidature-t-riner-ifop-paris-match-17-novembre.pdf",
+   "fieldwork": [
+    "2026-11-10",
+    "2026-11-12"
+   ],
+   "samples": [
+    1003,
+    1000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": true
+  },
   "2406": {
    "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10384-pres-iv-ifop-18-novembre.pdf",
    "fieldwork": [
@@ -3679,6 +3754,52 @@
    "iv": true,
    "presidential": true,
    "legislative": true
+  },
+  "2407": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10383-pres-logement-ifop-18-novembre.pdf",
+   "fieldwork": [
+    "2026-10-22",
+    "2026-10-26"
+   ],
+   "samples": [
+    2000,
+    1200,
+    1792
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "2409": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10387-pres-primaire-centre-droite-ifop-18-novembre.pdf",
+   "fieldwork": [
+    "2026-11-13",
+    "2026-11-18"
+   ],
+   "samples": [
+    2542,
+    2823,
+    996,
+    1000,
+    2000,
+    3000
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
+  },
+  "2414": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10390-egalite-des-chances-ifop-19-novembre.pdf",
+   "fieldwork": [
+    "2026-10-22",
+    "2026-10-27"
+   ],
+   "samples": [
+    2000
+   ],
+   "iv": false,
+   "presidential": true,
+   "legislative": false
   }
  },
  "lookups": {
@@ -3780,6 +3901,10 @@
   },
   "presidential|ifop|2026-10-27|2026-10-29": {
    "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10351-pres-iv-ifop-lci-3-novembre.pdf"
+  },
+  "presidential|ifop|2026-11-02|2026-11-04": {
+   "url": null,
+   "checked": "2026-11-20"
   },
   "presidential|ifop|2026-11-13|2026-11-16": {
    "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10384-pres-iv-ifop-18-novembre.pdf"
