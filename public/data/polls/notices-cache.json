@@ -3800,6 +3800,32 @@
    "iv": false,
    "presidential": true,
    "legislative": false
+  },
+  "2416": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10392-pres-iv-ifop-sud-radio-20-novembre.pdf",
+   "fieldwork": [
+    "2026-11-02",
+    "2026-11-04"
+   ],
+   "samples": [
+    1834,
+    1978,
+    1100,
+    1200,
+    1300,
+    2000,
+    1346,
+    1115,
+    1297,
+    1083,
+    1321,
+    1103,
+    1293,
+    1080
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
   }
  },
  "lookups": {
@@ -3903,8 +3929,7 @@
    "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10351-pres-iv-ifop-lci-3-novembre.pdf"
   },
   "presidential|ifop|2026-11-02|2026-11-04": {
-   "url": null,
-   "checked": "2026-11-20"
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10392-pres-iv-ifop-sud-radio-20-novembre.pdf"
   },
   "presidential|ifop|2026-11-13|2026-11-16": {
    "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10384-pres-iv-ifop-18-novembre.pdf"
