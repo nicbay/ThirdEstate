@@ -235,31 +235,6 @@
       "check": null,
       "postTime": "2026-11-07T09:16:09.004Z"
     },
-    "bsky:at://did:plc:yphqj24zexmev436eeyx6gof/app.bsky.feed.post/3mzohibkdpk2b": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-07T15:28:46.093Z",
-      "storyItems": [
-        "99fb717bb79e"
-      ],
-      "storyTitle": "Présidentielle 2027 : Smic à 1.700 euros net, Retraite à 62 ans… Le programme de LFI en 1.069 mesures en librairie",
-      "political": true,
-      "lean": {
-        "score": -0.6,
-        "rationale_fr": "Promotion d'un programme de gauche radicale (« L'Avenir en commun ») sans contenu précis cité dans le message.",
-        "rationale_en": "Promotes a radical-left programme ('L'Avenir en commun') without specific content in the message."
-      },
-      "populism": {
-        "score": 0.2,
-        "markers": [
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Appel à être « une déferlante » et ton militant, sans attaque d'élites.",
-        "rationale_en": "Calls to be 'a tidal wave' with activist tone, without attacking elites."
-      },
-      "check": null,
-      "postTime": "2026-11-06T22:44:55.945Z"
-    },
     "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3mzqfxs4qs22i": {
       "model": "claude-haiku-5-5",
       "promptVersion": "feed-rating-v2",
@@ -17895,6 +17870,143 @@
       },
       "check": null,
       "postTime": "2026-11-18T17:18:11.990Z"
+    },
+    "yt:u4vpALrawEE": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T03:28:24.210Z",
+      "storyItems": [
+        "62cc43d451fe",
+        "a2ff86b0f2b4",
+        "1c642152988f",
+        "9d02bdad508b",
+        "f50114b3c842",
+        "4590357e7832"
+      ],
+      "storyTitle": "Logement : les députés adoptent un amendement RN supprimant les interdictions de louer des passoires thermiques",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Le message cite un constat sur la construction et le logement sans proposition idéologique explicite.",
+        "rationale_en": "The message cites a finding on housing construction without an explicit ideological proposal."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Formule alarmiste (« tout est en train de s'effondrer », « dramatique ») mise en avant sans argument développé.",
+        "rationale_en": "Alarmist wording (\"everything is collapsing\", \"dramatic\") without developed argument."
+      },
+      "check": null,
+      "postTime": "2026-11-21T00:30:23.000Z"
+    },
+    "yt:OIMNYwy5hG0": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T03:28:24.211Z",
+      "storyItems": [
+        "03d61ab3cf54",
+        "b7178ad1f020",
+        "64be748facbd"
+      ],
+      "storyTitle": "\"C'était une grave erreur\" : à Londres, des Britanniques regrettent le Brexit et se disent prêts à revenir dans l'Union européenne",
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Demande de remise en cause de la tarification européenne de l'électricité pour réindustrialiser, orientation souverainiste de droite.",
+        "rationale_en": "Calls to end EU electricity pricing to reindustrialise, a right-leaning sovereigntist stance."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "souverainete_populaire"
+        ],
+        "rationale_fr": "Opposition entre « nous » producteurs d'électricité peu chère et le système européen, sans appui à un peuple homogène.",
+        "rationale_en": "Contrast between cheap French electricity and the EU system, without a homogeneous people framing."
+      },
+      "check": {
+        "claim": "Production d'électricité à 45-50 euros le mégawattheure",
+        "why_fr": "Ce chiffre date d'une émission de décembre 2024 et correspond à un coût de production ou à un prix donné à une période précise ; la base de calcul n'est pas précisée, et le message ne reprend pas de source chiffrée.",
+        "why_en": "This figure comes from a December 2024 broadcast and reflects a specific cost or price basis that is not specified; no source is given for it.",
+        "sources": [
+          {
+            "title": "Vie publique, énergie et électricité",
+            "url": "https://www.vie-publique.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-20T23:30:27.000Z"
+    },
+    "yt:yT2CuysDJBY": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T03:28:24.211Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Demande de mesures publiques de dignité et de droits pour des familles de voyageurs, critique de l'exécutif local, orientation sociale de gauche.",
+        "rationale_en": "Calls for public measures on dignity and rights for traveller families, criticising local executive; left-leaning social stance."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Appel à la solidarité et indignation mises en avant, sans attaque d'un peuple contre des élites.",
+        "rationale_en": "Appeal to solidarity and outrage, with no people-versus-elite framing."
+      },
+      "check": null,
+      "postTime": "2026-11-20T16:51:06.000Z"
+    },
+    "yt:g1d3exDFi20": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T03:28:24.211Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0,
+        "rationale_fr": "Présentation neutre d'un texte d'ajustement budgétaire et des besoins qu'il couvre, sans orientation idéologique marquée.",
+        "rationale_en": "Neutral presentation of a budget adjustment bill and the needs it covers, with no marked ideological orientation."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Message institutionnel et descriptif, sans rhétorique populiste.",
+        "rationale_en": "Institutional, descriptive message with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-19T10:34:23.000Z"
+    },
+    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3n2lymlurjs2t": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T03:28:24.211Z",
+      "storyItems": [
+        "92f22fe5ff85"
+      ],
+      "storyTitle": "La carrure GTA, le col roulé du stagiaire, la doudoune au cul des vaches… Les erreurs stylistiques du Grand Débat des cinq candidats",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Critique moqueuse d'un candidat sur son vêtement, sans contenu idéologique identifiable.",
+        "rationale_en": "Mocking criticism of a candidate's clothing, with no identifiable ideological content."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation",
+          "simplisme"
+        ],
+        "rationale_fr": "Présente les candidats comme indignes du pouvoir à partir d'une formule sur une doudoune.",
+        "rationale_en": "Presents candidates as unfit for power based on a remark about a down jacket."
+      },
+      "check": null,
+      "postTime": "2026-11-18T16:38:47.016Z"
     }
   },
   "failures": {
