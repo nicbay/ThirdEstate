@@ -1,191 +1,5 @@
 {
   "ratings": {
-    "yt:_pVj2Yx_EkI": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v1",
-      "ratedAt": "2026-11-07T12:26:32.603Z",
-      "storyItems": [
-        "42ba57359ccf",
-        "41d49f98a51b",
-        "7846f873309b",
-        "47340d4a1988",
-        "8b3d93ffc639",
-        "ee32244e873f"
-      ],
-      "storyTitle": "« Gouverner » : que retenir du nouveau livre du non-candidat Jordan Bardella ?",
-      "political": true,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Réaction à un épisode de la soirée de présentation du livre de Jordan Bardella, sans idée politique exprimée.",
-        "rationale_en": "Reaction to an episode at Bardella's book launch, with no political idea expressed."
-      },
-      "populism": {
-        "score": 0.2,
-        "markers": [
-          "delegitimation"
-        ],
-        "rationale_fr": "Le départ des journalistes est présenté en termes de provocation, sans attaque structurée contre des élites.",
-        "rationale_en": "Journalists leaving is framed as provocation, without a structured attack on elites."
-      },
-      "check": null,
-      "postTime": "2026-11-07T12:02:08.000Z"
-    },
-    "yt:7vWTBpIPQ4g": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v1",
-      "ratedAt": "2026-11-07T12:26:32.603Z",
-      "storyItems": [],
-      "storyTitle": null,
-      "political": false,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Message promotionnel (vidéo, appel à soutien), sans position politique.",
-        "rationale_en": "Promotional message (video, call for support) with no political position."
-      },
-      "populism": {
-        "score": 0,
-        "markers": [],
-        "rationale_fr": "Aucune rhétorique populiste dans le message.",
-        "rationale_en": "No populist rhetoric in the message."
-      },
-      "check": null,
-      "postTime": "2026-11-07T11:31:38.000Z"
-    },
-    "bsky:at://did:plc:6iihpsin54462khal536kkjs/app.bsky.feed.post/3mzps6i6drs2p": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v1",
-      "ratedAt": "2026-11-07T12:26:32.603Z",
-      "storyItems": [
-        "99fb717bb79e"
-      ],
-      "storyTitle": "Présidentielle 2027 : Smic à 1.700 euros net, Retraite à 62 ans… Le programme de LFI en 1.069 mesures en librairie",
-      "political": true,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Annonce la sortie du programme LFI sans exposer d'idée précise dans le message lui-même.",
-        "rationale_en": "Announces the LFI programme release without stating specific ideas in the message itself."
-      },
-      "populism": {
-        "score": 0.1,
-        "markers": [],
-        "rationale_fr": "Ton promotionnel sans opposition au peuple ni aux élites.",
-        "rationale_en": "Promotional tone without opposing the people to elites."
-      },
-      "check": null,
-      "postTime": "2026-11-07T11:28:58.243Z"
-    },
-    "bsky:at://did:plc:awp4pev7xbtmhlwvq6qfirpz/app.bsky.feed.post/3mzprjhigok2s": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v1",
-      "ratedAt": "2026-11-07T12:26:32.603Z",
-      "storyItems": [
-        "66e19823719c",
-        "04835f49c939",
-        "79956b9d047d",
-        "84ae03855929",
-        "64d3ac164e7f",
-        "277856c778da"
-      ],
-      "storyTitle": "Présidentielle 2027: ce qui change dans le nouveau programme de Jean-Luc Mélenchon",
-      "political": true,
-      "lean": {
-        "score": -0.7,
-        "rationale_fr": "Revendique la devise « Liberté, Égalité, Solidarité » comme cœur du programme LFI, orientation de gauche radicale.",
-        "rationale_en": "Claims the motto 'Liberté, Égalité, Solidarité' as the core of the LFI programme, a far-left orientation."
-      },
-      "populism": {
-        "score": 0.1,
-        "markers": [],
-        "rationale_fr": "Slogan sans opposition au peuple contre des élites.",
-        "rationale_en": "Slogan with no people-versus-elites framing."
-      },
-      "check": null,
-      "postTime": "2026-11-07T11:17:12.881Z"
-    },
-    "yt:zam5_D814JU": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v1",
-      "ratedAt": "2026-11-07T12:26:32.603Z",
-      "storyItems": [
-        "cd7be2563e46"
-      ],
-      "storyTitle": "5 novembre : dans le cortège, la gauche au défi de répondre aux revendications",
-      "political": true,
-      "lean": {
-        "score": -0.6,
-        "rationale_fr": "Critique du gouvernement et défense de « revendications populaires » sur la vie chère, orientation de gauche.",
-        "rationale_en": "Criticizes the government and defends 'popular demands' on the cost of living, a left-leaning stance."
-      },
-      "populism": {
-        "score": 0.3,
-        "markers": [
-          "peuple_homogene"
-        ],
-        "rationale_fr": "Parle de « revendications populaires » comme d'un bloc unique face au gouvernement.",
-        "rationale_en": "Refers to 'popular demands' as a single bloc facing the government."
-      },
-      "check": null,
-      "postTime": "2026-11-07T09:15:19.000Z"
-    },
-    "x:2118980328626782385": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v1",
-      "ratedAt": "2026-11-07T12:26:32.603Z",
-      "storyItems": [
-        "66e19823719c",
-        "04835f49c939",
-        "79956b9d047d",
-        "84ae03855929",
-        "64d3ac164e7f",
-        "277856c778da"
-      ],
-      "storyTitle": "Présidentielle 2027: ce qui change dans le nouveau programme de Jean-Luc Mélenchon",
-      "political": true,
-      "lean": {
-        "score": 0.8,
-        "rationale_fr": "Critique du programme LFI et évoque le rétablissement du droit du sol, position de droite nationale.",
-        "rationale_en": "Criticizes the LFI programme and mentions restoring jus soli, a national-right position."
-      },
-      "populism": {
-        "score": 0.5,
-        "markers": [
-          "delegitimation",
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Présente le programme adverse comme un « démantèlement de la France » avec une tonalité alarmiste.",
-        "rationale_en": "Presents the rival programme as 'dismantling France' in an alarmist tone."
-      },
-      "check": null,
-      "postTime": "2026-11-07T08:14:13.752Z"
-    },
-    "yt:RDEaonZ093E": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v1",
-      "ratedAt": "2026-11-07T12:26:32.603Z",
-      "storyItems": [
-        "66e19823719c",
-        "04835f49c939",
-        "79956b9d047d",
-        "84ae03855929",
-        "64d3ac164e7f",
-        "277856c778da"
-      ],
-      "storyTitle": "Présidentielle 2027: ce qui change dans le nouveau programme de Jean-Luc Mélenchon",
-      "political": true,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Appel à la mobilisation et informations pratiques sur le meeting, sans idée politique précise citée.",
-        "rationale_en": "Call to mobilize and practical meeting information, with no specific political idea cited."
-      },
-      "populism": {
-        "score": 0.1,
-        "markers": [],
-        "rationale_fr": "Appel militant sans rhétorique populiste marquée.",
-        "rationale_en": "Militant call without marked populist rhetoric."
-      },
-      "check": null,
-      "postTime": "2026-11-07T06:12:39.000Z"
-    },
     "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3mzq6sdxkrc2i": {
       "model": "claude-haiku-5-5",
       "promptVersion": "feed-rating-v2",
@@ -208,32 +22,6 @@
       },
       "check": null,
       "postTime": "2026-11-07T15:14:49.825Z"
-    },
-    "bsky:at://did:plc:hiebgjpdm7uhdm2zjafcg5on/app.bsky.feed.post/3mzpkqyd7u42y": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-07T15:28:46.093Z",
-      "storyItems": [
-        "4973bd30e93d"
-      ],
-      "storyTitle": "La mobilisation impose les revendications sociales dans le débat, au grand dam du gouvernement et de l’extrême droite",
-      "political": true,
-      "lean": {
-        "score": -0.5,
-        "rationale_fr": "Dénonce le refus du gouvernement de répondre aux revendications populaires, centrées sur la question sociale.",
-        "rationale_en": "Criticises the government for refusing popular social demands, a left-wing framing."
-      },
-      "populism": {
-        "score": 0.4,
-        "markers": [
-          "peuple_vs_elites",
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Oppose le « gouvernement » aux « revendications populaires » avec un ton de mobilisation.",
-        "rationale_en": "Opposes the government to 'popular demands' in a mobilising tone."
-      },
-      "check": null,
-      "postTime": "2026-11-07T09:16:09.004Z"
     },
     "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3mzqfxs4qs22i": {
       "model": "claude-haiku-5-5",
@@ -18007,6 +17795,295 @@
       },
       "check": null,
       "postTime": "2026-11-18T16:38:47.016Z"
+    },
+    "yt:4tgUTzRgFpQ": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T13:00:02.609Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.9,
+        "rationale_fr": "Appel à signer pour soutenir la candidature de Jean-Luc Mélenchon, figure de la gauche radicale (LFI).",
+        "rationale_en": "Calls to sign a petition supporting Jean-Luc Mélenchon's candidacy, a radical-left figure (LFI)."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message surtout pratique, sans rhétorique populiste notable.",
+        "rationale_en": "Mostly practical message with no notable populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-21T12:11:19.000Z"
+    },
+    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3n2sy2qiq4223": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T13:00:02.609Z",
+      "storyItems": [
+        "0d6f8a0cbc2a",
+        "d54136f4f048",
+        "e7854e779659",
+        "075defd98a21"
+      ],
+      "storyTitle": "\"Je ne savais pas qu'il était encore là\", réagit Marine Tondelier après le départ de Yannick Jadot des Ecologistes",
+      "political": true,
+      "lean": {
+        "score": -0.4,
+        "rationale_fr": "Plaidoyer pour une union de la gauche derrière Mélenchon, positionnement écologiste de gauche.",
+        "rationale_en": "Argues for a left-wing alliance behind Mélenchon, from an ecologist left-leaning position."
+      },
+      "populism": {
+        "score": 0.05,
+        "markers": [],
+        "rationale_fr": "Critique interne d'une position politique, sans opposition peuple contre élites.",
+        "rationale_en": "Internal criticism of a political position, with no people-versus-elite framing."
+      },
+      "check": null,
+      "postTime": "2026-11-21T11:17:26.055Z"
+    },
+    "yt:sF3CeD2EqA8": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T13:00:02.609Z",
+      "storyItems": [
+        "de1a4169d573",
+        "ead50a8c2810",
+        "4658b3f09174",
+        "0c87d45a0ec0",
+        "2955cfe7b0ac",
+        "f3269a60cf1d"
+      ],
+      "storyTitle": "L'écologiste Marine Tondelier se dit \"prête à travailler à une coalition autour de la candidature de Jean-Luc Mélenchon\" pour la présidentielle 2027",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Défend une coalition de gauche sur un programme de rupture : hausse des salaires, transition écologique, transports.",
+        "rationale_en": "Backs a left coalition on a rupture programme: wage increases, ecological transition, public transport."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Appel à l'urgence et à la mobilisation, mais argumentation politique assumée.",
+        "rationale_en": "Calls for urgency and mobilisation, but with a stated policy argument."
+      },
+      "check": null,
+      "postTime": "2026-11-21T10:49:00.000Z"
+    },
+    "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3n2sw6cuxos2a": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T13:00:02.609Z",
+      "storyItems": [
+        "1e807bc6452b",
+        "ab9845493774",
+        "3a55b90cc699",
+        "23729fd39711",
+        "4ceed5c99367",
+        "f371e392f0d9"
+      ],
+      "storyTitle": "Affaire Michel Zecler: la justice reconnaît enfin le racisme des policiers",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Met en avant la lutte contre le racisme systémique et les violences policières, orientation de gauche.",
+        "rationale_en": "Stresses fighting systemic racism and police violence, a left-leaning orientation."
+      },
+      "populism": {
+        "score": 0.15,
+        "markers": [],
+        "rationale_fr": "Affirmation générale sur la police, sans opposition peuple contre élites.",
+        "rationale_en": "General claim about the police, with no people-versus-elite framing."
+      },
+      "check": {
+        "claim": "Le verdict de l'affaire Michel Zecler établirait l'existence de racisme chez les policiers condamnés.",
+        "why_fr": "Les extraits disponibles décrivent surtout la condamnation pour violences et les peines prononcées ; la place du caractère raciste dans la décision n'y est pas précisée. Il vaut la peine de consulter le jugement.",
+        "why_en": "The available excerpts mainly describe the conviction for violence and the sentences; the role of any racist element in the ruling is not specified. The judgment is worth checking directly.",
+        "sources": [
+          {
+            "title": "Passage à tabac de Michel Zecler : des peines de un à deux ans de prison ferme pour les trois policiers condamnés",
+            "url": "https://www.lopinion.fr/politique/passage-a-tabac-de-michel-zecler-des-peines-de-un-a-deux-ans-de-prison-ferme-pour-les-trois-policiers-condamnes"
+          },
+          {
+            "title": "Serge Money, avocat de Michel Zecler, salue une décision historique mais les peines laissent un petit goût amer",
+            "url": "https://www.franceinfo.fr/faits-divers/producteur-passe-a-tabac-par-des-policiers/serge-money-avocat-de-michel-zecler-salue-une-decision-historique-mais-les-peines-laissent-un-petit-gout-amer_8293472.html"
+          }
+        ]
+      },
+      "postTime": "2026-11-21T10:43:38.510Z"
+    },
+    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3n2sviiwubs23": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T13:00:02.609Z",
+      "storyItems": [
+        "0d6f8a0cbc2a",
+        "d54136f4f048",
+        "e7854e779659",
+        "075defd98a21"
+      ],
+      "storyTitle": "\"Je ne savais pas qu'il était encore là\", réagit Marine Tondelier après le départ de Yannick Jadot des Ecologistes",
+      "political": true,
+      "lean": {
+        "score": -0.3,
+        "rationale_fr": "Défend le pluralisme interne des écologistes entre réalistes et radicaux, sensibilité écologiste de gauche.",
+        "rationale_en": "Defends internal pluralism among ecologists, between pragmatists and radicals, from an ecologist left-leaning view."
+      },
+      "populism": {
+        "score": 0.05,
+        "markers": [],
+        "rationale_fr": "Argumentation sur le débat démocratique interne, sans rhétorique populiste.",
+        "rationale_en": "Argues for internal democratic debate, with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-21T10:31:26.656Z"
+    },
+    "yt:xUD-d6QoRrU": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T13:00:02.609Z",
+      "storyItems": [
+        "80b7dc0dd2bf"
+      ],
+      "storyTitle": "Doudounes sans manches et crise du logement... Face aux professionnels du bâtiment, les candidats à la présidentielle s’en prennent aux normes",
+      "political": true,
+      "lean": {
+        "score": 0.7,
+        "rationale_fr": "Propose de supprimer les normes au-dessus du minimum européen, orientation de droite nationaliste dérégulatrice.",
+        "rationale_en": "Proposes removing norms above the European minimum, a nationalist right deregulatory stance."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "simplisme"
+        ],
+        "rationale_fr": "Présente la suppression des normes comme solution simple à un problème complexe.",
+        "rationale_en": "Presents removing norms as a simple fix for a complex problem."
+      },
+      "check": null,
+      "postTime": "2026-11-21T08:30:28.000Z"
+    },
+    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3n2skxmawfs2d": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T13:00:02.609Z",
+      "storyItems": [
+        "b3ba542a3f2c"
+      ],
+      "storyTitle": "Garde à vue de mineurs : les parents doivent être informés d’une prolongation, selon le Conseil constitutionnel",
+      "political": true,
+      "lean": {
+        "score": -0.4,
+        "rationale_fr": "Se félicite d'une décision protégeant les droits de la défense des mineurs, sensibilité de gauche libertaire.",
+        "rationale_en": "Welcomes a ruling protecting minors' rights of defence, a left-libertarian sensibility."
+      },
+      "populism": {
+        "score": 0.05,
+        "markers": [],
+        "rationale_fr": "Saluer une décision de justice sans rhétorique populiste.",
+        "rationale_en": "Praises a court ruling with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-21T07:23:02.296Z"
+    },
+    "yt:NBh6fGI7hWg": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T13:00:02.609Z",
+      "storyItems": [
+        "4ab77210504b",
+        "6c0f6e45cb4a",
+        "fc6092c45ddf",
+        "862992e5f9ce",
+        "cd4cd49dc8a8",
+        "2611e4ea0088"
+      ],
+      "storyTitle": "Présidentielle 2027 : Pourquoi Marine Le Pen fait (encore) évoluer sa réforme des retraites",
+      "political": true,
+      "lean": {
+        "score": 0.3,
+        "rationale_fr": "Critique le recul de l'âge de départ et défend un financement sans hausse de charges pour les Français, orientation nationaliste à dimension sociale.",
+        "rationale_en": "Criticises raising the retirement age and argues against making the French pay, a nationalist stance with a social dimension."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "simplisme",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Oppose une solution simple et facile aux adversaires, avec un ton d'indignation.",
+        "rationale_en": "Contrasts an easy solution with opponents' choices, in an indignant tone."
+      },
+      "check": null,
+      "postTime": "2026-11-21T06:30:36.000Z"
+    },
+    "masto:https://piaille.fr/users/sandraregol/statuses/117649501710689561": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T13:00:10.633Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Appelle à lutter contre la haine transphobe, pour l'accès aux soins et la protection des victimes, positions de gauche sociale et progressiste.",
+        "rationale_en": "Calls to fight transphobic hate and for access to care and victim protection, a left-leaning social and progressive stance."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Mobilisation émotionnelle autour de la « colère » et de la solidarité, sans attaque d'élites ni appel au peuple homogène.",
+        "rationale_en": "Emotional mobilisation around anger and solidarity, without attacks on elites or a homogeneous 'people' appeal."
+      },
+      "check": null,
+      "postTime": "2026-11-20T15:35:29.911Z"
+    },
+    "bsky:at://did:plc:i27lvonqvridxzfgstsqw6p2/app.bsky.feed.post/3n2ookcy45s23": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T13:00:10.634Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Soutien aux mobilisations lycéennes et enseignantes et critique d'un gouvernement, positions de gauche.",
+        "rationale_en": "Support for student and teacher mobilisations and criticism of the government, left-leaning positions."
+      },
+      "populism": {
+        "score": 0.15,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Qualifie le gouvernement d'« irresponsable » sans argumentation détaillée, critique politique assez classique.",
+        "rationale_en": "Describes the government as 'irresponsible' without detailed argument, a fairly standard political criticism."
+      },
+      "check": null,
+      "postTime": "2026-11-19T18:16:32.377Z"
+    },
+    "bsky:at://did:plc:ymrgrrgrkf6jk23dg6w4c36d/app.bsky.feed.post/3n2nxkogcuc2b": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T13:00:10.634Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Alerte sur la menace du terrorisme d'extrême droite, préoccupation sécuritaire portée depuis la gauche.",
+        "rationale_en": "Warns about the threat of far-right terrorism, a security concern raised from the left."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Message bref et factuel, sans rhétorique d'élites ni de peuple contre institutions.",
+        "rationale_en": "Brief, factual message with no elite-bashing or people-versus-institutions rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-19T11:25:08.316Z"
     }
   },
   "failures": {
