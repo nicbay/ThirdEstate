@@ -23881,6 +23881,842 @@
       "at": "2026-11-21T12:59:21.615Z",
       "status": "ok",
       "tweets": []
+    },
+    "ccd902da3e52": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "6922628a9111": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "3a3514bdc08b": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "2bd3bb127664": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "e8475e13f80e": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "c7a3cf1dbce1": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2124233826029211864",
+          "handle": "ClementArgoud",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/ClementArgoud/status/2124233826029211864",
+          "time": "2026-11-21T20:09:45.138Z"
+        }
+      ]
+    },
+    "ae990cf2c118": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2124215179445436681",
+          "handle": "CanalplusFoot",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/CanalplusFoot/status/2124215179445436681",
+          "time": "2026-11-21T18:55:39.446Z"
+        },
+        {
+          "id": "2124203844305313799",
+          "handle": "CanalplusFoot",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/CanalplusFoot/status/2124203844305313799",
+          "time": "2026-11-21T18:10:36.938Z"
+        },
+        {
+          "id": "2124133699688013905",
+          "handle": "CanalplusFoot",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/CanalplusFoot/status/2124133699688013905",
+          "time": "2026-11-21T13:31:53.158Z"
+        },
+        {
+          "id": "2124163749166641525",
+          "handle": "CanalplusFoot",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/CanalplusFoot/status/2124163749166641525",
+          "time": "2026-11-21T15:31:17.512Z"
+        }
+      ]
+    },
+    "f3d32824d00d": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "15748c349f30": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "d8902c0c3851": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2124214162272485545",
+          "handle": "lospumas",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/lospumas/status/2124214162272485545",
+          "time": "2026-11-21T18:51:36.933Z"
+        },
+        {
+          "id": "2124223068742561882",
+          "handle": "FranceRugby",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/FranceRugby/status/2124223068742561882",
+          "time": "2026-11-21T19:27:00.401Z"
+        },
+        {
+          "id": "2123339598143336898",
+          "handle": "lospumas",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/lospumas/status/2123339598143336898",
+          "time": "2026-11-19T08:56:24.596Z"
+        },
+        {
+          "id": "2123356282417741885",
+          "handle": "FranceRugby",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/FranceRugby/status/2123356282417741885",
+          "time": "2026-11-19T10:02:42.437Z"
+        }
+      ]
+    },
+    "ed699909c5fe": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "a7341ffc3e33": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "bb1d90ae8137": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "5f8b281e50f7": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "7511d816e948": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "db07e19fefe5": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2124220425622176192",
+          "handle": "Eurosport_FR",
+          "name": "Eurosport France",
+          "text": "DINGUE ! Théo Arribagé et Albano Olivetti sont en finale des ATP Finals après avoir sauvé trois balles de match 🔥 https://t.co/wTI8yQcoqo",
+          "dateText": "November 21, 2026",
+          "via": "blockquote",
+          "url": "https://x.com/Eurosport_FR/status/2124220425622176192",
+          "time": "2026-11-21T19:16:30.232Z"
+        }
+      ]
+    },
+    "e3f777dfdb3b": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "0825172f139e": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "de253dcbe0d6": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "ad6a10a5f84a": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "b39b1baca94b": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "15f8a44773ef": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "5c477745138a": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "1f1544b0959d": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "8a8539bc792a": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "98472da61cbf": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "82ffbb0de3ae": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "c1b9d4f83c38": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "4e45f3369fa0": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "93d88da072fd": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "ac3f9fa63deb": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "52768d05b050": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "a5f3324888d8": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "251bdfa8fcdd": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "76b56fdbc53a": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "e1ec4c336899": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "a8015efe7d8a": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "262d0fc05f73": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "407509e8e094": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "87ebf0c32e50": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "ba1c2f546a4d": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "d63adbfb145c": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "93109500d215": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "5b39ce0ac4a8": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "fec6c9446b3d": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "0a51de60953e": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "0d7afe7a7727": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "f94dbd0c37a8": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "ad469e827bfe": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "772a9ceb0209": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "ac9358eca903": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "04a9bb54dbd7": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "dc709154782a": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "ff92fcc7bb42": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "49430fc85f85": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "bab5736e0938": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2124186142836674569",
+          "handle": "Francois_Ruffin",
+          "name": "François Ruffin",
+          "text": "Face au risque du pire, je retire ma candidature à l'élection présidentielle.",
+          "dateText": "November 21, 2026",
+          "via": "blockquote",
+          "url": "https://x.com/Francois_Ruffin/status/2124186142836674569",
+          "time": "2026-11-21T17:00:16.579Z"
+        }
+      ]
+    },
+    "6a759b3ea51b": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "8a4ec2055cb3": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2124186142836674569",
+          "handle": "Francois_Ruffin",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/Francois_Ruffin/status/2124186142836674569",
+          "time": "2026-11-21T17:00:16.579Z"
+        }
+      ]
+    },
+    "a45507c40a56": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2124186142836674569",
+          "handle": "Francois_Ruffin",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "link",
+          "url": "https://x.com/Francois_Ruffin/status/2124186142836674569",
+          "time": "2026-11-21T17:00:16.579Z"
+        }
+      ]
+    },
+    "2e5eb398e0db": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "ba1493f0d85e": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "6f24bebbeeaf": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2124186002726019446",
+          "handle": "ligue1plus",
+          "name": "L1+",
+          "text": "Blessure très inquiétante pour Désiré Doué 😩🇫🇷 L'international français est touché au genou et cède sa place... #OGCNPSG https://t.co/b2MiPvc1f9",
+          "dateText": "November 21, 2026",
+          "via": "blockquote",
+          "url": "https://x.com/ligue1plus/status/2124186002726019446",
+          "time": "2026-11-21T16:59:43.174Z"
+        }
+      ]
+    },
+    "255e3e996ea2": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "2fd8fefb1891": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "44cf90d8d45e": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "6a680f8eb63f": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "1b4de4979ebc": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "a1eb38889af3": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "52cdc6f9e50a": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "5f87f852e180": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "d6ade642380d": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2124186142836674569",
+          "handle": "Francois_Ruffin",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/Francois_Ruffin/status/2124186142836674569",
+          "time": "2026-11-21T17:00:16.579Z"
+        }
+      ]
+    },
+    "c7f3d1c7de0a": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "85cb113c6176": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "7981a16a9493": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "d11f93b33010": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "8cdb15376060": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "ddad402d1997": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "f086bf655849": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "08d2c82bd08a": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "9e78b6f73461": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "4e73940bc6db": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "2bb79c9f7fb7": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "e2271a2c6da2": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "7d64d14e8e88": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "b1d0a95be29a": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "2b276774b843": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "db85017e55a1": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2124060450316775933",
+          "handle": "NunezLaurent",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "link",
+          "url": "https://x.com/NunezLaurent/status/2124060450316775933",
+          "time": "2026-11-21T08:40:49.147Z"
+        }
+      ]
+    },
+    "e17d6daee1be": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "b30eef04975f": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2124167768886935873",
+          "handle": "JeuSetMaths",
+          "name": "Jeu, Set et Maths",
+          "text": "📊 Carlos Alcaraz 🇪🇸 sur dur intérieur en 2026 : 🇦🇹 Vienne ✅ vs Khachanov (N°24) ✅ vs Basilashvili (N°95) ✅ vs Paul (N°14) ✅ vs Medvedev (N°5) 🏆 vs De Minaur (N°10) 🇫🇷 Paris ✅ vs Michelsen (N°35) ✅ vs Fritz (N°12) ✅ vs Ruud (N°23) 🏆 vs Shelton (N°4) 🎱 Masters ✅ vs Tiafoe (N°8) ✅ vs Medvedev (N°5) ✅ vs Cobolli (N°6) ✅ vs Shelton (N°4) ❓ ➡️ 13 victoires, 0 défaite ↪️ 2 sets concédés ✍️ Auxquelles on devrait ajouter une victoire en Laver Cup (vs Fritz, N°10) qui officiellement est comptabilisée dans les bilans ATP.",
+          "dateText": "November 21, 2026",
+          "via": "blockquote",
+          "url": "https://x.com/JeuSetMaths/status/2124167768886935873",
+          "time": "2026-11-21T15:47:15.888Z"
+        }
+      ]
+    },
+    "2750d56a77fb": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "26262dee7f00": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "2954445a2b58": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "cb25221fa243": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "ec05d0ef595c": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "873960128e5b": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "e9401ec9825b": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "6dd4f916e9b8": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "73b677561a28": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "22a010ff7c6a": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "31ff3cfc04d2": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "ab78738f6e68": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "7c79d960e2e1": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "54a036e57ed3": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "3b87109a7a1b": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "1d99eea41800": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "a07c9d268291": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "2739cb23c342": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "87af10da1b90": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "6f9e3397c970": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "e91347472bf4": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2122978749134279153",
+          "handle": "FranceRugby",
+          "name": "France Rugby",
+          "text": "J-3️⃣ avant de retrouver les Pumas ! 🐆 #XVdeFrance https://t.co/Enn1hc9zcv",
+          "dateText": "November 18, 2026",
+          "via": "blockquote",
+          "url": "https://x.com/FranceRugby/status/2122978749134279153",
+          "time": "2026-11-18T09:02:31.488Z"
+        }
+      ]
+    },
+    "3d42edb5fc01": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "9d3a5db8104b": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "status": "ok",
+      "tweets": []
     }
   },
   "oembed": {
@@ -25101,6 +25937,72 @@
       "handle": "PetteriOrpo",
       "name": "Petteri Orpo",
       "text": "Sota läikkyy lähialueillemme. Suomen viranomaiset hoitavat tilannetta Suomenlahdella, jossa drooni-isku on osunut venäläiseen kauppa-alukseen. Ukrainalla on oikeus taistella hyökkääjää vastaan."
+    },
+    "2124215179445436681": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "handle": "CanalplusFoot",
+      "name": "CANAL+ Foot",
+      "text": "NEWCASTLE RENVERSE ARSENAL 🤯 En inscrivant deux buts en moins d'un quart d'heure, les Magpies prennent les commandes de la rencontre 😮 #NEWARS | #PremierLeague"
+    },
+    "2124233826029211864": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "handle": "ClementArgoud",
+      "name": "Clément Argoud",
+      "text": "#NationsChampionship Le fils de Martin Aramburu, assassiné à Paris en mars 2022, entre sur la pelouse du Stade de France en compagnie du capitaine argentin, Julian Montoya"
+    },
+    "2124203844305313799": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "handle": "CanalplusFoot",
+      "name": "CANAL+ Foot",
+      "text": "EZE TROUVE LA FAILLE POUR ARSENAL 💥 L'Anglais est magnifiquement servi par Havertz et permet aux Gunners de prendre les devants 🔥 #NEWARS , c'est sur CANAL+ FOOT ⚡️ #PremierLeague"
+    },
+    "2124133699688013905": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "handle": "CanalplusFoot",
+      "name": "CANAL+ Foot",
+      "text": "Le but INVISIBLE de Muniz face à Man. City (merci le soleil) 🌞 Il reste 45 minutes aux Cityzens pour renverser les Cottagers sur CANAL+ 🖥️ #MCIFUL | #PremierLeague"
+    },
+    "2124163749166641525": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "handle": "CanalplusFoot",
+      "name": "CANAL+ Foot",
+      "text": "PREMIÈRE TITULARISATION ET PREMIER BUT POUR EMEGHA 🇳🇱 L'ancien Strasbourgeois fête parfaitement sa première apparition dans le onze de Xabi Alonso ⚡️ #CHELEE , c'est dans le multiplex #PremierLeague sur CANAL+ FOOT 🔥"
+    },
+    "2124214162272485545": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "handle": "lospumas",
+      "name": "Los Pumas",
+      "text": "¡Novedades en el plantel de Los Pumas! 🚨 ▶️ Justo Piccardo será titular en lugar de Santiago Chocobares, quién sufrió una lesión muscular. 📌 Mateo Carreras quedó desafectado de la concentración tras su lesión en uno de sus hombros."
+    },
+    "2124223068742561882": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "handle": "FranceRugby",
+      "name": "France Rugby",
+      "text": "🤝 @lospumas 🇦🇷 Le coup d’envoi sera donné par les Bleus 🇫🇷 #XVdeFrance"
+    },
+    "2123339598143336898": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "handle": "lospumas",
+      "name": "Los Pumas",
+      "text": "¡Los 23 para enfrentar a Francia! 🇦🇷 📆 Sábado 21/11 ⏰ 17:10 h (hora argentina) 🆚 Francia 🇫🇷 🏟️ Stade de France 📺 ESPN"
+    },
+    "2123356282417741885": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "handle": "FranceRugby",
+      "name": "France Rugby",
+      "text": "🇫🇷🇦🇷 Le dernier match de l’année à la maison 🔥 Les 23 Bleus qui défendront nos couleurs samedi au @StadeFrance 💪 #XVdeFrance"
+    },
+    "2124060450316775933": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "handle": "NunezLaurent",
+      "name": "Laurent Nuñez",
+      "text": "Je remercie le Parlement pour l’adoption définitive de la loi reconnaissant aux policiers et aux gendarmes une présomption d’usage légal de leurs armes. Je remercie son auteur, le député LR @EricPAUGET1 , ainsi que la sénatrice @LaurianeJosende , avec lesquels nous avons bâti un…"
+    },
+    "2124186142836674569": {
+      "at": "2026-11-21T20:39:41.166Z",
+      "handle": "Francois_Ruffin",
+      "name": "François Ruffin",
+      "text": "Face au risque du pire, je retire ma candidature à l'élection présidentielle."
     }
   }
 }

@@ -1,164 +1,5 @@
 {
   "ratings": {
-    "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3mzq6sdxkrc2i": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-07T15:28:46.093Z",
-      "storyItems": [
-        "06e2d1518a6d"
-      ],
-      "storyTitle": "Présidentielle 2027 : « Liberté, Égalité, Solidarité », Jean-Luc Mélenchon dévoile une nouvelle affiche de campagne",
-      "political": true,
-      "lean": {
-        "score": -0.5,
-        "rationale_fr": "Appel à « reconstruire l'École publique » et « l'égalité et l'émancipation », orientation de gauche sur les services publics.",
-        "rationale_en": "Calls to rebuild public schooling around equality and emancipation, a left-leaning position on public services."
-      },
-      "populism": {
-        "score": 0.1,
-        "markers": [],
-        "rationale_fr": "Slogan de programme sans attaque d'élites ni rhétorique populiste.",
-        "rationale_en": "Programmatic slogan with no attack on elites or populist rhetoric."
-      },
-      "check": null,
-      "postTime": "2026-11-07T15:14:49.825Z"
-    },
-    "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3mzqfxs4qs22i": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-07T17:51:43.699Z",
-      "storyItems": [
-        "ad50f7387657",
-        "d22432d23d96",
-        "b78d3c43c488",
-        "ec88731ef639",
-        "1e142ccee986",
-        "50751336c8fb"
-      ],
-      "storyTitle": "Budget 2027: l'Assemblée rejette à l'unanimité la partie \"recettes\", le projet de loi de finances va être transmis au Sénat",
-      "political": true,
-      "lean": {
-        "score": -0.5,
-        "rationale_fr": "Oppose son programme et projet de budget à ceux des autres, sans idée économique précise ; orientation de gauche implicite via le cadre LFI.",
-        "rationale_en": "Contrasts her group's programme and budget project with rivals; left-leaning implicitly via LFI framing, no detailed economic idea stated."
-      },
-      "populism": {
-        "score": 0.2,
-        "markers": [
-          "delegitimation"
-        ],
-        "rationale_fr": "Moquerie envers les autres partis (« n'ont même pas choisi leur candidat ») sans fond argumentatif.",
-        "rationale_en": "Mocks other parties (\"haven't even chosen their candidate\") without substantive argument."
-      },
-      "check": null,
-      "postTime": "2026-11-07T17:23:08.639Z"
-    },
-    "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3mzqftd3vsk2i": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-07T17:51:43.699Z",
-      "storyItems": [
-        "a6356f1c7b49",
-        "9663236cd2a9",
-        "207004f1622c",
-        "b8612f349b2f",
-        "1f7d7f6d68a1",
-        "c1a3bb52f2c9"
-      ],
-      "storyTitle": "Présidentielle 2027: ce qui change dans le nouveau programme de Jean-Luc Mélenchon",
-      "political": true,
-      "lean": {
-        "score": -0.8,
-        "rationale_fr": "Présente le programme « L'Avenir en commun » de LFI, rupture anticapitaliste et révolution citoyenne selon les articles.",
-        "rationale_en": "Presents LFI's \"L'Avenir en commun\" programme, anticapitalist rupture and citizen revolution per the articles."
-      },
-      "populism": {
-        "score": 0.2,
-        "markers": [
-          "souverainete_populaire"
-        ],
-        "rationale_fr": "Mise en avant d'un projet porté par « nous » face à l'élection, sans attaque directe majeure.",
-        "rationale_en": "Frames the programme as carried by \"us\" for the election, without major direct attack."
-      },
-      "check": null,
-      "postTime": "2026-11-07T17:20:38.662Z"
-    },
-    "bsky:at://did:plc:k3duvs7l7xsp7varh7eoajnq/app.bsky.feed.post/3mzqfbjcc7s2z": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-07T17:51:43.699Z",
-      "storyItems": [],
-      "storyTitle": null,
-      "political": false,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Message purement festif et pratique sur une course camarguaise, sans contenu politique.",
-        "rationale_en": "Purely festive and practical post about a bull event, no political content."
-      },
-      "populism": {
-        "score": 0,
-        "markers": [],
-        "rationale_fr": "Aucune rhétorique populiste.",
-        "rationale_en": "No populist rhetoric."
-      },
-      "check": null,
-      "postTime": "2026-11-07T17:10:41.179Z"
-    },
-    "bsky:at://did:plc:i27lvonqvridxzfgstsqw6p2/app.bsky.feed.post/3mzqdcwtkos2a": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-07T17:51:43.699Z",
-      "storyItems": [
-        "727187b137a3",
-        "1c36e4854631",
-        "dce2bac29685",
-        "007da6cf642e",
-        "162e08e5f0f8"
-      ],
-      "storyTitle": "Attentat de Trappes : les obsèques de Pengo Bossio Wangi se dérouleront samedi",
-      "political": true,
-      "lean": {
-        "score": -0.5,
-        "rationale_fr": "Engagement antiraciste et contre l'extrême droite, centré sur la lutte contre le racisme.",
-        "rationale_en": "Antiracist stance and opposition to the far right, focused on combating racism."
-      },
-      "populism": {
-        "score": 0.1,
-        "markers": [
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Formulations émotionnelles (« l'horreur a frappé », « poison mortel ») pour appuyer le propos.",
-        "rationale_en": "Emotional wording (\"horror struck\", \"deadly poison\") supports the message."
-      },
-      "check": null,
-      "postTime": "2026-11-07T16:35:41.322Z"
-    },
-    "yt:3FuZzyuBQOo": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-07T17:51:43.699Z",
-      "storyItems": [
-        "e811e1598606"
-      ],
-      "storyTitle": "Débat budgétaire : un jeu de rôles dont tout le monde sort perdant",
-      "political": true,
-      "lean": {
-        "score": -0.8,
-        "rationale_fr": "Annonce un programme de rupture avec « le vieux monde » ; cadre de gauche radicale selon le contexte LFI.",
-        "rationale_en": "Announces a programme breaking with \"the old world\"; radical-left framing given the LFI context."
-      },
-      "populism": {
-        "score": 0.4,
-        "markers": [
-          "anti_elites",
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Oppose « le vieux monde » au futur gouvernement, avec une rhétorique épique plutôt qu'argumentée.",
-        "rationale_en": "Opposes \"the old world\" to the future government with epic rhetoric rather than argument."
-      },
-      "check": null,
-      "postTime": "2026-11-07T15:27:58.000Z"
-    },
     "bsky:at://did:plc:bnulcjvue27qpnwzup3y7hv3/app.bsky.feed.post/3mzqrwdparc2j": {
       "model": "claude-haiku-5-5",
       "promptVersion": "feed-rating-v2",
@@ -240,158 +81,6 @@
       },
       "postTime": "2026-11-07T20:41:13.175Z"
     },
-    "bsky:at://did:plc:fakceyj3l3pen4wtnjhgudd3/app.bsky.feed.post/3mzqnsmsbc22o": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-07T22:17:54.012Z",
-      "storyItems": [
-        "7f0f771935fa",
-        "5c2baf7027c5",
-        "a78452c6d0dd",
-        "588a0dc615ee",
-        "de7371b74b3a",
-        "78b4523b8287"
-      ],
-      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
-      "political": true,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Message de mobilisation sans contenu idéologique précis.",
-        "rationale_en": "Mobilisation message with no specific ideological content."
-      },
-      "populism": {
-        "score": 0.4,
-        "markers": [
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Slogans et ton exalté (« ON VA GAGNER ») plutôt que arguments.",
-        "rationale_en": "Exalted slogans ('WE WILL WIN') rather than arguments."
-      },
-      "check": {
-        "claim": "Plus de 20 000 sur place et plus de 70 000 suivis en ligne",
-        "why_fr": "Ces chiffres semblent provenir des organisateurs ; les audiences en ligne ne sont pas vérifiées par une source indépendante.",
-        "why_en": "These figures appear to come from organisers; online audience numbers are not independently verified.",
-        "sources": [
-          {
-            "title": "En direct - meeting au Bourget (Le Parisien)",
-            "url": "https://www.leparisien.fr/elections/presidentielle/ici-est-la-force-depuis-le-bourget-jean-luc-melenchon-pret-a-decoller-pour-le-second-tour-de-la-presidentielle-07-11-2026-5AP5ZDQ7V5CATKZPLLC7VKHT6I.php"
-          }
-        ]
-      },
-      "postTime": "2026-11-07T19:43:25.203Z"
-    },
-    "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3mzqnskec6c2j": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-07T22:17:54.012Z",
-      "storyItems": [
-        "7f0f771935fa",
-        "5c2baf7027c5",
-        "a78452c6d0dd",
-        "588a0dc615ee",
-        "de7371b74b3a",
-        "78b4523b8287"
-      ],
-      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
-      "political": true,
-      "lean": {
-        "score": -0.8,
-        "rationale_fr": "Promotion du programme de LFI, de gauche radicale, avec des valeurs républicaines mises en avant.",
-        "rationale_en": "Promotes LFI's far-left programme while framing it around republican values."
-      },
-      "populism": {
-        "score": 0.2,
-        "markers": [
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Appel militant (« faites le gagner ») sans rhétorique anti-élite marquée.",
-        "rationale_en": "Militant call ('help him win') without marked anti-elite rhetoric."
-      },
-      "check": null,
-      "postTime": "2026-11-07T19:43:22.654Z"
-    },
-    "yt:tYJw4hFCYKI": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-07T22:17:54.012Z",
-      "storyItems": [
-        "7f0f771935fa",
-        "5c2baf7027c5",
-        "a78452c6d0dd",
-        "588a0dc615ee",
-        "de7371b74b3a",
-        "78b4523b8287"
-      ],
-      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
-      "political": true,
-      "lean": {
-        "score": -0.8,
-        "rationale_fr": "Présentation du programme de gouvernement de LFI, orientation de gauche radicale.",
-        "rationale_en": "Presents LFI's government programme, far-left orientation."
-      },
-      "populism": {
-        "score": 0.5,
-        "markers": [
-          "souverainete_populaire",
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Référence à « la force insoumise, c'est vous » et ton d'exaltation collective.",
-        "rationale_en": "'The insoumise force is you' and collective exaltation."
-      },
-      "check": {
-        "claim": "Plus de 20 000 personnes au Bourget",
-        "why_fr": "Le chiffre semble provenir des organisateurs ; d'autres sources peuvent donner une estimation différente.",
-        "why_en": "The figure appears to come from organisers; other sources may give a different estimate.",
-        "sources": [
-          {
-            "title": "En direct - meeting au Bourget (Le Parisien)",
-            "url": "https://www.leparisien.fr/elections/presidentielle/ici-est-la-force-depuis-le-bourget-jean-luc-melenchon-pret-a-decoller-pour-le-second-tour-de-la-presidentielle-07-11-2026-5AP5ZDQ7V5CATKZPLLC7VKHT6I.php"
-          }
-        ]
-      },
-      "postTime": "2026-11-07T19:02:14.000Z"
-    },
-    "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3mzqj4onrfc2s": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-07T22:17:54.012Z",
-      "storyItems": [
-        "7f0f771935fa",
-        "5c2baf7027c5",
-        "a78452c6d0dd",
-        "588a0dc615ee",
-        "de7371b74b3a",
-        "78b4523b8287"
-      ],
-      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
-      "political": true,
-      "lean": {
-        "score": -0.8,
-        "rationale_fr": "Présentation de L'Avenir en commun, programme de gauche radicale de LFI.",
-        "rationale_en": "Presents L'Avenir en commun, a far-left LFI programme."
-      },
-      "populism": {
-        "score": 0.5,
-        "markers": [
-          "appel_emotionnel",
-          "souverainete_populaire"
-        ],
-        "rationale_fr": "Ton d'exaltation (« HISTORIQUE ! ») et mise en avant d'un élan collectif.",
-        "rationale_en": "Exalted tone ('HISTORIC!') and stress on collective momentum."
-      },
-      "check": {
-        "claim": "Plus de 20 000 personnes au Bourget",
-        "why_fr": "Le chiffre semble provenir des organisateurs ; d'autres estimations peuvent différer.",
-        "why_en": "The figure appears to come from organisers; other estimates may differ.",
-        "sources": [
-          {
-            "title": "En direct - meeting au Bourget (Le Parisien)",
-            "url": "https://www.leparisien.fr/elections/presidentielle/ici-est-la-force-depuis-le-bourget-jean-luc-melenchon-pret-a-decoller-pour-le-second-tour-de-la-presidentielle-07-11-2026-5AP5ZDQ7V5CATKZPLLC7VKHT6I.php"
-          }
-        ]
-      },
-      "postTime": "2026-11-07T18:19:33.995Z"
-    },
     "yt:5RRVE4HdjnU": {
       "model": "claude-haiku-5-5",
       "promptVersion": "feed-rating-v2",
@@ -419,87 +108,6 @@
       },
       "check": null,
       "postTime": "2026-11-07T23:43:58.000Z"
-    },
-    "yt:99bV2j5fNzk": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T01:48:34.218Z",
-      "storyItems": [
-        "5cea37f4f40f",
-        "7f0f771935fa",
-        "5c2baf7027c5",
-        "a78452c6d0dd",
-        "588a0dc615ee",
-        "de7371b74b3a"
-      ],
-      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
-      "political": true,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Appel à rejoindre le meeting et à « changer ce pays », sans contenu idéologique précis.",
-        "rationale_en": "Call to join the rally and to 'change the country', with no specific ideological content."
-      },
-      "populism": {
-        "score": 0.15,
-        "markers": [
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Mise en avant de l'enthousiasme de la foule pour mobiliser, sans attaque d'adversaires.",
-        "rationale_en": "Emphasis on the crowd's enthusiasm to mobilise, without attacking opponents."
-      },
-      "check": null,
-      "postTime": "2026-11-07T19:10:25.000Z"
-    },
-    "yt:KGlqniahM5I": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T01:48:34.218Z",
-      "storyItems": [
-        "5cea37f4f40f",
-        "7f0f771935fa",
-        "5c2baf7027c5",
-        "a78452c6d0dd",
-        "588a0dc615ee",
-        "de7371b74b3a"
-      ],
-      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
-      "political": true,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Soutien à la campagne de Jean-Luc Mélenchon, sans contenu idéologique explicite.",
-        "rationale_en": "Support for Jean-Luc Mélenchon's campaign, with no explicit ideological content."
-      },
-      "populism": {
-        "score": 0.15,
-        "markers": [
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Ton enthousiaste et slogan (« historique », « jusqu'à la victoire ») plutôt que argumentation.",
-        "rationale_en": "Enthusiastic tone and slogans ('historic', 'until victory') rather than argument."
-      },
-      "check": null,
-      "postTime": "2026-11-07T18:23:12.000Z"
-    },
-    "yt:SKa6T75hV_c": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T01:48:34.218Z",
-      "storyItems": [],
-      "storyTitle": null,
-      "political": false,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Annonce d'une intervention médiatique, sans position politique.",
-        "rationale_en": "Announcement of a media appearance, with no political position."
-      },
-      "populism": {
-        "score": 0,
-        "markers": [],
-        "rationale_fr": "Aucune rhétorique populiste.",
-        "rationale_en": "No populist rhetoric."
-      },
-      "check": null,
-      "postTime": "2026-11-07T17:49:08.000Z"
     },
     "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3mzrzkb3s3k2k": {
       "model": "claude-haiku-5-5",
@@ -589,114 +197,6 @@
       },
       "check": null,
       "postTime": "2026-11-07T21:10:15.281Z"
-    },
-    "yt:GWemcz4Rejg": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T09:27:41.925Z",
-      "storyItems": [
-        "61da60e29cb2",
-        "46a98464772b",
-        "65004675d19b",
-        "33846d81499c",
-        "6232a9149881",
-        "0158c21b68fa"
-      ],
-      "storyTitle": "\"Il n'y en a qu'un qui ne veut pas de cette primaire\" : Édouard Philippe peut-il encore échapper à une primaire de la droite et du centre ?",
-      "political": true,
-      "lean": {
-        "score": 0.3,
-        "rationale_fr": "Appelle à une primaire de la droite et du centre, positionnement centre-droit.",
-        "rationale_en": "Calls for a centre-right primary, a centre-right positioning."
-      },
-      "populism": {
-        "score": 0.1,
-        "markers": [],
-        "rationale_fr": "Plaidoyer pour une primaire, avec un ton peu populiste.",
-        "rationale_en": "Advocacy for a primary, with a non-populist tone."
-      },
-      "check": null,
-      "postTime": "2026-11-07T18:45:46.000Z"
-    },
-    "yt:kKFS__TeKmU": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T09:27:41.926Z",
-      "storyItems": [
-        "93a01468f3e7",
-        "e66acba0a737",
-        "c9efaa7a800f",
-        "5cea37f4f40f",
-        "7f0f771935fa",
-        "5c2baf7027c5"
-      ],
-      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
-      "political": true,
-      "lean": {
-        "score": -0.8,
-        "rationale_fr": "Présente un programme de rupture avec des propositions de gauche radicale sur la transformation sociale.",
-        "rationale_en": "Presents a rupture programme with far-left proposals on social transformation."
-      },
-      "populism": {
-        "score": 0.4,
-        "markers": [
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Mise en avant de « HISTORIQUE » et d'une mobilisation chiffrée pour susciter l'enthousiasme.",
-        "rationale_en": "Uses 'HISTORIC' and a headcount to stir enthusiasm."
-      },
-      "check": {
-        "claim": "Plus de 20 000 personnes au meeting du Bourget.",
-        "why_fr": "Le chiffre est présenté comme un fait, mais il semble correspondre à un décompte des organisateurs ; d'autres sources ou décomptes peuvent différer.",
-        "why_en": "The figure is stated as fact but appears to come from the organisers' count; other sources or counts may differ.",
-        "sources": [
-          {
-            "title": "Présidentielle 2027 : au Bourget, Jean-Luc Mélenchon mise sur la rupture pour conquérir l'Elysée",
-            "url": "https://www.lexpress.fr/economie/presidentielle-2027-au-bourget-jean-luc-melenchon-mise-sur-la-rupture-pour-conquerir-lelysee-LOUEYCV6DVAEZOJYYRZHQ5V3CI/"
-          }
-        ]
-      },
-      "postTime": "2026-11-07T18:43:39.000Z"
-    },
-    "yt:gPAWKfSU6WQ": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T09:27:41.926Z",
-      "storyItems": [
-        "93a01468f3e7",
-        "e66acba0a737",
-        "c9efaa7a800f",
-        "5cea37f4f40f",
-        "7f0f771935fa",
-        "5c2baf7027c5"
-      ],
-      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
-      "political": true,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Message de mobilisation autour du meeting, sans contenu idéologique précis.",
-        "rationale_en": "Mobilisation message around the rally, with no specific ideological content."
-      },
-      "populism": {
-        "score": 0.2,
-        "markers": [
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Ton d'enthousiasme et de victoire annoncée, sans arguments développés.",
-        "rationale_en": "Enthusiastic tone and announced victory, without developed arguments."
-      },
-      "check": {
-        "claim": "Plus de 20 000 personnes réunies au meeting de présentation du programme.",
-        "why_fr": "Le chiffre est présenté comme un fait, mais il semble provenir des organisateurs ; d'autres décomptes peuvent différer.",
-        "why_en": "The figure is stated as fact but seems to come from the organisers; other counts may differ.",
-        "sources": [
-          {
-            "title": "Présidentielle 2027 : au Bourget, Jean-Luc Mélenchon mise sur la rupture pour conquérir l'Elysée",
-            "url": "https://www.lexpress.fr/economie/presidentielle-2027-au-bourget-jean-luc-melenchon-mise-sur-la-rupture-pour-conquerir-lelysee-LOUEYCV6DVAEZOJYYRZHQ5V3CI/"
-          }
-        ]
-      },
-      "postTime": "2026-11-07T18:37:07.000Z"
     },
     "bsky:at://did:plc:wu3up6kgql5q3v4wtdh2h624/app.bsky.feed.post/3mzsiiizom227": {
       "model": "claude-haiku-5-5",
@@ -18084,6 +17584,328 @@
       },
       "check": null,
       "postTime": "2026-11-19T11:25:08.316Z"
+    },
+    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3n2tu6f5ahk2w": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T20:40:19.155Z",
+      "storyItems": [
+        "2bd3bb127664",
+        "e8475e13f80e",
+        "251bdfa8fcdd",
+        "fec6c9446b3d",
+        "04a9bb54dbd7",
+        "49430fc85f85"
+      ],
+      "storyTitle": "Qui est Hugues Moutouh, le préfet soupçonné d’être la taupe du RN ?",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Critique de la gestion d'une mise en retrait d'un préfet soupçonné de fuites ; aucun contenu idéologique sur l'économie ou les institutions.",
+        "rationale_en": "Criticizes how a prefect's suspension was handled; no ideological content on economics or institutions."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Critique ciblée d'un fonctionnaire, sans rhétorique populiste.",
+        "rationale_en": "Targeted criticism of an official, without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-21T19:40:33.131Z"
+    },
+    "bsky:at://did:plc:vjwqkzs27ge527nmwckanige/app.bsky.feed.post/3n2tn7ydvqc2p": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T20:40:19.155Z",
+      "storyItems": [
+        "90c7b6b274d7"
+      ],
+      "storyTitle": "Deux enseignants et onze élèves blessés ou choqués dans des lycées d'Île-de-France en marge des mobilisations lycéennes",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Condamnation des menaces contre les établissements scolaires, sans position idéologique explicite.",
+        "rationale_en": "Condemns threats against schools, without explicit ideological position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Indignation exprimée mais sans opposition peuple contre élites.",
+        "rationale_en": "Expresses outrage but no people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-21T17:36:10.631Z"
+    },
+    "bsky:at://did:plc:wu3up6kgql5q3v4wtdh2h624/app.bsky.feed.post/3n2tlh7gids2i": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T20:40:19.155Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce d'un vernissage local, sans position politique.",
+        "rationale_en": "Announcement of a local exhibition opening, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-21T17:04:25.454Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3n2tl7vunb222": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T20:40:19.155Z",
+      "storyItems": [
+        "6922628a9111",
+        "dc709154782a",
+        "bab5736e0938",
+        "a45507c40a56",
+        "8a4ec2055cb3",
+        "44cf90d8d45e"
+      ],
+      "storyTitle": "Présidentielle 2027 : François Ruffin renonce à sa candidature",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce de retrait de candidature sans contenu idéologique explicite.",
+        "rationale_en": "Announcement of withdrawal from the race with no explicit ideological content."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Formule alarmiste (« risque du pire ») sans rhétorique populiste.",
+        "rationale_en": "Alarmist phrasing (\"risk of the worst\") without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-21T17:00:20.554Z"
+    },
+    "x:2124186142836674569": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T20:40:19.155Z",
+      "storyItems": [
+        "6922628a9111",
+        "dc709154782a",
+        "bab5736e0938",
+        "a45507c40a56",
+        "8a4ec2055cb3",
+        "44cf90d8d45e"
+      ],
+      "storyTitle": "Présidentielle 2027 : François Ruffin renonce à sa candidature",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce de retrait de candidature sans contenu idéologique explicite.",
+        "rationale_en": "Announcement of withdrawal from the race with no explicit ideological content."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Formule alarmiste (« risque du pire ») sans rhétorique populiste.",
+        "rationale_en": "Alarmist phrasing (\"risk of the worst\") without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-21T17:00:16.579Z"
+    },
+    "bsky:at://did:plc:bnulcjvue27qpnwzup3y7hv3/app.bsky.feed.post/3n2tl3pqyas2b": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T20:40:19.155Z",
+      "storyItems": [
+        "6fa8483842c6"
+      ],
+      "storyTitle": "Des militants en «convois» là où LFI perce sans exister: la nouvelle idée de la campagne Mélenchon",
+      "political": true,
+      "lean": {
+        "score": -0.7,
+        "rationale_fr": "Soutien à la campagne de Jean-Luc Mélenchon et à La France insoumise, formation de gauche radicale.",
+        "rationale_en": "Supports Jean-Luc Mélenchon's campaign and La France insoumise, a radical left party."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Enthousiasme militant (« force inarrêtable ») mis en avant plutôt que des arguments.",
+        "rationale_en": "Militant enthusiasm (\"unstoppable force\") emphasized over arguments."
+      },
+      "check": null,
+      "postTime": "2026-11-21T16:57:59.901Z"
+    },
+    "bsky:at://did:plc:hiebgjpdm7uhdm2zjafcg5on/app.bsky.feed.post/3n2tiainshy2c": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T20:40:19.155Z",
+      "storyItems": [
+        "1e807bc6452b",
+        "ab9845493774",
+        "3a55b90cc699",
+        "23729fd39711",
+        "4ceed5c99367",
+        "f371e392f0d9"
+      ],
+      "storyTitle": "Affaire Michel Zecler: la justice reconnaît enfin le racisme des policiers",
+      "political": true,
+      "lean": {
+        "score": -0.4,
+        "rationale_fr": "Salue une condamnation pour racisme policier, thème de l'antiracisme de gauche.",
+        "rationale_en": "Welcomes a conviction for police racism, a theme of left-leaning anti-racism."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Jugement sur un verdict, sans opposition peuple contre élites.",
+        "rationale_en": "Judgment on a verdict, without people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-21T16:06:58.791Z"
+    },
+    "yt:VwHsNB8D2gE": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T20:40:19.155Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.7,
+        "rationale_fr": "Priorité donnée à la sécurité, peines fermes et présence policière, positions de droite nationaliste.",
+        "rationale_en": "Prioritizes security, firm sentences and police presence, positions of the nationalist right."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "simplisme"
+        ],
+        "rationale_fr": "Formule simplificatrice (« la première des libertés, c'est la sécurité ») pour un sujet complexe.",
+        "rationale_en": "Simplifying slogan (\"the first freedom is security\") on a complex issue."
+      },
+      "check": null,
+      "postTime": "2026-11-21T16:00:21.000Z"
+    },
+    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3n2th45vuq22w": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T20:40:24.819Z",
+      "storyItems": [
+        "ec05d0ef595c",
+        "de1a4169d573",
+        "ead50a8c2810",
+        "4658b3f09174",
+        "0c87d45a0ec0",
+        "2955cfe7b0ac"
+      ],
+      "storyTitle": "L'écologiste Marine Tondelier se dit \"prête à travailler à une coalition autour de la candidature de Jean-Luc Mélenchon\" pour la présidentielle 2027",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique d'un choix de rapprochement avec Mélenchon, au sein de la gauche écologiste ; position de gauche sans idée économique explicite.",
+        "rationale_en": "Criticizes a rapprochement with Mélenchon within the left-ecologist camp; left-of-centre position without explicit economic ideas."
+      },
+      "populism": {
+        "score": 0.05,
+        "markers": [],
+        "rationale_fr": "Message court, critique d'une stratégie d'alliance sans rhétorique anti-élite ni appel au peuple.",
+        "rationale_en": "Short message criticizing an alliance strategy with no anti-elite or people-based rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-21T15:46:39.794Z"
+    },
+    "yt:jSlBLuA92Lc": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T20:40:24.820Z",
+      "storyItems": [
+        "dab8a3a320ae",
+        "5721da00aa48",
+        "98410809b3a9",
+        "a1c80bcf5ebb",
+        "4b91abb8f314",
+        "7508ce9f8c31"
+      ],
+      "storyTitle": "Encadrement des loyers : le Parlement prolonge de deux ans le dispositif contesté",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Demande une protection renforcée des locataires face aux propriétaires, ce qui relève d'une gauche sociale-démocrate.",
+        "rationale_en": "Calls for stronger tenant protection against landlords, a social-democratic left position."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "anti_elites",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Dénonce des « abus des propriétaires » et des institutions qui « abandonnent » les locataires, avec un ton d'indignation mis en avant.",
+        "rationale_en": "Denounces landlord abuses and institutions that 'abandon' tenants, with emphasized indignation."
+      },
+      "check": {
+        "claim": "Quatre jeunes femmes paient 2 710 € de loyer à Pantin pour un logement qui ne devrait pas dépasser 1 480 €; un studio à 900 € ; 30 % des habitants sous le seuil de pauvreté.",
+        "why_fr": "Cas individuel et chiffres locaux non sourcés dans le message ; les sources fournies ne traitent pas de ces montants précis, et la part de pauvreté à Pantin mérite une vérification sur données officielles.",
+        "why_en": "Individual case and local figures are unsourced in the message; the provided articles do not address these specific amounts, and the poverty share in Pantin warrants checking against official data.",
+        "sources": [
+          {
+            "title": "Insee, statistiques et études",
+            "url": "https://www.insee.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-19T13:12:02.000Z"
+    },
+    "bsky:at://did:plc:skhpi6tvodwwkygydxmka5tm/app.bsky.feed.post/3n2ntrosgph2l": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T20:40:24.820Z",
+      "storyItems": [
+        "4ab77210504b",
+        "6f9e3397c970",
+        "6c0f6e45cb4a",
+        "fc6092c45ddf",
+        "79894cc3436c",
+        "862992e5f9ce"
+      ],
+      "storyTitle": "Réforme des retraites : de LFI à LR en passant par le Medef, le projet de Marine Le Pen critiqué de tous bords",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Propose de financer les retraites par l'égalité salariale femmes-hommes, position de gauche progressiste sur le travail et les retraites.",
+        "rationale_en": "Proposes funding pensions through gender pay equality, a progressive left position on work and pensions."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Argumentation sur l'égalité salariale sans opposition au peuple ni rhétorique populiste.",
+        "rationale_en": "Argument on pay equality without people-versus-elite framing or populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-19T10:17:28.621Z"
+    },
+    "bsky:at://did:plc:bxz2mzgckkz2noaav3jwkvij/app.bsky.feed.post/3n2nt4tl6lk2a": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-21T20:40:24.820Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce pratique d'une diffusion en direct, sans position politique.",
+        "rationale_en": "Practical announcement of a live broadcast, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Simple annonce d'agenda, aucune rhétorique populiste.",
+        "rationale_en": "Simple agenda announcement with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-19T10:05:48.972Z"
     }
   },
   "failures": {
