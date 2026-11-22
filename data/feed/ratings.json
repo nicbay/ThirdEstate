@@ -1,196 +1,5 @@
 {
   "ratings": {
-    "bsky:at://did:plc:i27lvonqvridxzfgstsqw6p2/app.bsky.feed.post/3mzthfysgpc2r": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T22:28:43.051Z",
-      "storyItems": [
-        "4973bd30e93d"
-      ],
-      "storyTitle": "La mobilisation impose les revendications sociales dans le débat, au grand dam du gouvernement et de l’extrême droite",
-      "political": true,
-      "lean": {
-        "score": -0.5,
-        "rationale_fr": "Demande de 10 milliards pour l'éducation, suppression de Parcoursup, hausse des salaires et dégel du point d'indice : revendications de gauche sociale.",
-        "rationale_en": "Calls for 10 billion for education, scrapping Parcoursup, higher wages and unfreezing civil service pay: left-wing social demands."
-      },
-      "populism": {
-        "score": 0.3,
-        "markers": [
-          "delegitimation",
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Accuse le gouvernement de mépriser le mouvement social, formulation émotionnelle sans argumentation détaillée.",
-        "rationale_en": "Accuses the government of despising the social movement, an emotionally charged framing without detailed argument."
-      },
-      "check": null,
-      "postTime": "2026-11-08T22:26:58.361Z"
-    },
-    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3mztevlhvtk2m": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T22:28:43.051Z",
-      "storyItems": [
-        "81c836f98d17",
-        "4dbafea05e73",
-        "3cf10450960e",
-        "a8ee85703f9a"
-      ],
-      "storyTitle": "Essonne : la députée Insoumise Farida Amrani touchée par un tir de mortier chez le coiffeur",
-      "political": false,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Message de soutien sans contenu idéologique.",
-        "rationale_en": "Support message with no ideological content."
-      },
-      "populism": {
-        "score": 0,
-        "markers": [],
-        "rationale_fr": "Aucune rhétorique populiste.",
-        "rationale_en": "No populist rhetoric."
-      },
-      "check": null,
-      "postTime": "2026-11-08T21:42:00.026Z"
-    },
-    "bsky:at://did:plc:dzhhf6dtekdyjpcvm5xr6jeb/app.bsky.feed.post/3mztdxojmqs2n": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T22:28:43.051Z",
-      "storyItems": [],
-      "storyTitle": null,
-      "political": true,
-      "lean": {
-        "score": -0.5,
-        "rationale_fr": "Se réclame d'un « Goëlo ouvert et solidaire » et s'oppose à l'extrême droite, positionnement de gauche.",
-        "rationale_en": "Invokes an 'open and supportive' local community and opposes the far right, a left-leaning stance."
-      },
-      "populism": {
-        "score": 0.05,
-        "markers": [],
-        "rationale_fr": "Message festif, sans attaque d'élites ni appel à la peur.",
-        "rationale_en": "Festive message with no attack on elites or fear appeal."
-      },
-      "check": null,
-      "postTime": "2026-11-08T21:25:16.591Z"
-    },
-    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3mztct4xa7s2m": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T22:28:43.051Z",
-      "storyItems": [
-        "4ed16c3f9f16",
-        "394e1045d328",
-        "355ea91498d5",
-        "e37804dd5742",
-        "7078b807c902",
-        "ab45863302fa"
-      ],
-      "storyTitle": "Une pétition appelant à fermer CNews atteint un million de signatures sur le site de l'Assemblée nationale",
-      "political": true,
-      "lean": {
-        "score": -0.5,
-        "rationale_fr": "Soutien à la fermeture de CNews, critique d'un média jugé d'extrême droite, orientation de gauche.",
-        "rationale_en": "Supports closing CNews, a channel criticized as far right, a left-leaning position."
-      },
-      "populism": {
-        "score": 0.15,
-        "markers": [
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Réaction brève et enthousiaste, sans argumentation développée.",
-        "rationale_en": "Brief enthusiastic reaction without developed argument."
-      },
-      "check": null,
-      "postTime": "2026-11-08T21:04:50.208Z"
-    },
-    "yt:v1XNJwFdgt4": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T22:28:43.051Z",
-      "storyItems": [
-        "21a0307b06c8",
-        "496f6e509cec",
-        "bf480087ea04",
-        "45f7f21c8650",
-        "a723d0c9eb9e",
-        "0ef9b7fdc4d5"
-      ],
-      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
-      "political": true,
-      "lean": {
-        "score": -1,
-        "rationale_fr": "Programme de la France insoumise présenté comme « Nouvelle France », avec rupture avec l'ordre économique actuel.",
-        "rationale_en": "Presents the La France insoumise programme as a 'New France', implying a break with the current economic order."
-      },
-      "populism": {
-        "score": 0.5,
-        "markers": [
-          "anti_elites",
-          "peuple_vs_elites",
-          "souverainete_populaire"
-        ],
-        "rationale_fr": "Discours de convention militante opposant le peuple à un système présenté comme dominant.",
-        "rationale_en": "Movement convention speech opposing the people to a system presented as dominant."
-      },
-      "check": null,
-      "postTime": "2026-11-08T19:35:23.000Z"
-    },
-    "yt:TUB2oRyN7-8": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T22:28:43.051Z",
-      "storyItems": [
-        "841603580841",
-        "244355df5900",
-        "06dda69fe17d"
-      ],
-      "storyTitle": "En dessous de 1 700 euros net, toute revalorisation du Smic équivaudrait à \"des miettes accordées par des gens qui ont distribué des milliards aux plus riches\", déclare le député LFI Antoine Léaument",
-      "political": true,
-      "lean": {
-        "score": -0.8,
-        "rationale_fr": "Propose de financer un SMIC à 1700 euros net, critique des plus riches et de la redistribution inverse, orientation de gauche radicale.",
-        "rationale_en": "Proposes funding a 1,700 euro net minimum wage, critiquing the wealthy and reverse redistribution: far-left orientation."
-      },
-      "populism": {
-        "score": 0.4,
-        "markers": [
-          "anti_elites",
-          "peuple_vs_elites"
-        ],
-        "rationale_fr": "Oppose les gens ordinaires aux plus riches et au gouvernement, dans un registre de rupture.",
-        "rationale_en": "Opposes ordinary people to the wealthy and the government, in a rupture register."
-      },
-      "check": null,
-      "postTime": "2026-11-08T18:21:47.000Z"
-    },
-    "yt:RoOt8wist6A": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-09T01:57:40.136Z",
-      "storyItems": [
-        "df8fc1bf5868",
-        "be48e1fcea21",
-        "3fb5feb41df0",
-        "f46184511c8c",
-        "623259491edf",
-        "6d55dda8d095"
-      ],
-      "storyTitle": "Présidentielle 2027 : Emmanuel Macron se dit en faveur d’une « coalition » de David Lisnard à Raphaël Glucksmann",
-      "political": true,
-      "lean": {
-        "score": -0.5,
-        "rationale_fr": "Critique de Macron comme symptôme d'une crise politique, positionnement de gauche critique du macronisme et de l'establishment centriste.",
-        "rationale_en": "Criticizes Macron as a symptom of a political crisis, a left-leaning critique of centrist establishment politics."
-      },
-      "populism": {
-        "score": 0.1,
-        "markers": [],
-        "rationale_fr": "Critique politique sobre sans appel au peuple contre des élites ni rhétorique émotionnelle marquée.",
-        "rationale_en": "Measured political critique with no clear people-versus-elite framing or strong emotional appeal."
-      },
-      "check": null,
-      "postTime": "2026-11-08T20:04:00.000Z"
-    },
     "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3mzuow6hzeh2r": {
       "model": "claude-haiku-5-5",
       "promptVersion": "feed-rating-v2",
@@ -3883,27 +3692,6 @@
       },
       "check": null,
       "postTime": "2026-11-09T16:33:33.909Z"
-    },
-    "bsky:at://did:plc:k3duvs7l7xsp7varh7eoajnq/app.bsky.feed.post/3mzt3efeauc2p": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-10T21:00:47.367Z",
-      "storyItems": [],
-      "storyTitle": null,
-      "political": false,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Remerciements et compte rendu d'un loto local, sans contenu idéologique.",
-        "rationale_en": "Thanks and report on a local lotto event, with no ideological content."
-      },
-      "populism": {
-        "score": 0,
-        "markers": [],
-        "rationale_fr": "Aucune rhétorique populiste présente.",
-        "rationale_en": "No populist rhetoric present."
-      },
-      "check": null,
-      "postTime": "2026-11-08T18:51:19.512Z"
     },
     "bsky:at://did:plc:d57dxlliqj3ctzpgmentyyn3/app.bsky.feed.post/3mzyiwrgkts2c": {
       "model": "claude-haiku-5-5",
@@ -17739,6 +17527,216 @@
       },
       "check": null,
       "postTime": "2026-11-20T17:00:00.957Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3n2wm5osnq727": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-22T23:48:39.788Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.3,
+        "rationale_fr": "Appel à « conjurer » le risque d'extrême droite pour défendre la démocratie ; position de gauche anti-RN sans proposition économique détaillée.",
+        "rationale_en": "Calls to ward off the far-right risk to defend democracy; left-leaning anti-RN stance without detailed economic proposals."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Mise en avant de la peur (« le risque qui est devant nous ») plutôt que d'arguments précis.",
+        "rationale_en": "Foregrounds fear (« the risk before us ») rather than specific arguments."
+      },
+      "check": null,
+      "postTime": "2026-11-22T21:54:58.977Z"
+    },
+    "yt:I7yZcMRwLAQ": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-22T23:48:39.788Z",
+      "storyItems": [
+        "34789ae60984",
+        "16426c8ee87f",
+        "49db8606d351",
+        "6922628a9111",
+        "dc709154782a",
+        "bab5736e0938"
+      ],
+      "storyTitle": "Présidentielle 2027 : François Ruffin renonce à sa candidature",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce de retrait et appel à une campagne anti-RN, sans contenu idéologique explicite.",
+        "rationale_en": "Announcement of withdrawal and call for an anti-RN campaign, without explicit ideological content."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Message d'annonce sans rhétorique populiste.",
+        "rationale_en": "Announcement message without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-22T21:51:08.000Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3n2wlibobqn2f": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-22T23:48:39.788Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Défense des ouvriers de Goodyear et refus d'abandonner les salariés, orientation sociale de gauche.",
+        "rationale_en": "Defends Goodyear workers and refuses to abandon employees, a social left-leaning orientation."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "anti_elites"
+        ],
+        "rationale_fr": "Prise de distance avec les négociations entre partis, présentées comme éloignées des gens.",
+        "rationale_en": "Distances itself from party negotiations, presented as detached from ordinary people."
+      },
+      "check": null,
+      "postTime": "2026-11-22T21:43:00.560Z"
+    },
+    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3n2wk7rruti2w": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-22T23:48:39.788Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.4,
+        "rationale_fr": "Critique de la proposition sociale du RN, présentée comme une arnaque, et d'un Macron économiquement proche ; orientation de gauche.",
+        "rationale_en": "Criticizes the RN's social proposals as a scam and Macron's economics as similar; left-leaning orientation."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Présente l'adversaire comme trompeur (« arnaque », « vous allez faire avoir ») et mobilise l'indignation.",
+        "rationale_en": "Presents the opponent as deceptive (« scam », « you're going to be fooled ») and appeals to indignation."
+      },
+      "check": null,
+      "postTime": "2026-11-22T21:20:21.719Z"
+    },
+    "bsky:at://did:plc:d57dxlliqj3ctzpgmentyyn3/app.bsky.feed.post/3n2wjfiktac2e": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-22T23:48:39.788Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Soutien à la candidature de Jean-Luc Mélenchon sans argument idéologique explicite dans le message.",
+        "rationale_en": "Support for Jean-Luc Mélenchon's candidacy without explicit ideological argument in the message."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message de mobilisation militante sans attaque contre des élites ni appel au peuple.",
+        "rationale_en": "Militant mobilization message without attacks on elites or appeals to the people."
+      },
+      "check": null,
+      "postTime": "2026-11-22T21:05:39.659Z"
+    },
+    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3n2wiq4nga22d": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-22T23:48:39.789Z",
+      "storyItems": [
+        "ca368727ceb9"
+      ],
+      "storyTitle": "«Le sport est politique» : à Saint-Denis, plongée dans la course à pied militante des mélenchonistes",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Soutien à la candidature de Mélenchon et dynamique de campagne, sans contenu idéologique explicite.",
+        "rationale_en": "Support for Mélenchon's candidacy and campaign momentum, without explicit ideological content."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Ton enthousiaste et militant, sans rhétorique populiste marquée.",
+        "rationale_en": "Enthusiastic militant tone, without marked populist rhetoric."
+      },
+      "check": {
+        "claim": "Plus de 200 personnes ont participé au running insoumis à Saint-Denis.",
+        "why_fr": "Le chiffre émane d'un militant de la campagne ; un décompte de participation venant d'une seule partie mérite d'être confronté à un article indépendant.",
+        "why_en": "The figure comes from a campaign activist; an attendance count from one party deserves checking against an independent article.",
+        "sources": [
+          {
+            "title": "«Le sport est politique» : à Saint-Denis, plongée dans la course à pied militante des mélenchonistes",
+            "url": "https://www.lefigaro.fr/politique/le-sport-est-politique-a-saint-denis-plongee-dans-la-course-a-pied-militante-des-melenchonistes-20261122"
+          }
+        ]
+      },
+      "postTime": "2026-11-22T20:53:42.519Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3n2tlhyxc2222": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-22T23:48:39.789Z",
+      "storyItems": [
+        "3ea598daae1f"
+      ],
+      "storyTitle": "Organisations présentes, dispositif de sécurité... A quoi faut-il s'attendre pour les manifestations du samedi 21 novembre ?",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Soutien aux étudiants, au blocage des prix et à la hausse des salaires, revendications de gauche sociale.",
+        "rationale_en": "Support for students, price freezes and wage increases, social left-leaning demands."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Message syndical classique sans rhétorique populiste.",
+        "rationale_en": "Standard union-style message without populist rhetoric."
+      },
+      "check": {
+        "claim": "Des milliers de personnes ont manifesté samedi aux côtés des étudiants et des syndicats.",
+        "why_fr": "Les chiffres de participation varient selon les organisateurs et les autorités ; le terme « milliers » demande à être confronté à un décompte d'article.",
+        "why_en": "Participation figures vary between organizers and authorities; the term « thousands » should be checked against a reported count.",
+        "sources": [
+          {
+            "title": "Organisations présentes, dispositif de sécurité... A quoi faut-il s'attendre pour les manifestations du samedi 21 novembre ?",
+            "url": "https://www.franceinfo.fr/economie/greve/organisations-presentes-dispositif-de-securite-a-quoi-faut-il-s-attendre-pour-les-manifestations-du-samedi-21-novembre_8292461.html"
+          }
+        ]
+      },
+      "postTime": "2026-11-21T17:04:52.215Z"
+    },
+    "yt:1RY9iL1PdLk": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-22T23:48:39.789Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Critique des heures de cours perdues sans position idéologique explicite sur l'axe gauche-droite.",
+        "rationale_en": "Criticism of lost class hours without explicit ideological position on the left-right axis."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Indignation mise en avant (« Ça suffit ! ») plutôt qu'argumentation détaillée.",
+        "rationale_en": "Indignation foregrounded (« Enough! ») rather than detailed argument."
+      },
+      "check": null,
+      "postTime": "2026-11-21T09:41:30.000Z"
     }
   },
   "failures": {
