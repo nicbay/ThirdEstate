@@ -1,73 +1,5 @@
 {
   "ratings": {
-    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3mzrzkb3s3k2k": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T09:27:41.925Z",
-      "storyItems": [],
-      "storyTitle": null,
-      "political": true,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Moquerie visant le Front national et une pancarte, sans contenu idéologique précis.",
-        "rationale_en": "Jab at the Front National and a sign, with no specific ideological content."
-      },
-      "populism": {
-        "score": 0.1,
-        "markers": [],
-        "rationale_fr": "Ton ironique, sans rhétorique populiste.",
-        "rationale_en": "Ironic tone, no populist rhetoric."
-      },
-      "check": null,
-      "postTime": "2026-11-08T08:46:09.145Z"
-    },
-    "yt:793lEPBVgaE": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T09:27:41.925Z",
-      "storyItems": [
-        "244355df5900",
-        "06dda69fe17d"
-      ],
-      "storyTitle": "Politique : \"Je n'attends plus grand-chose de ce gouvernement, à part de le remplacer par nous-mêmes\", tacle le député LFI Antoine Léaument",
-      "political": true,
-      "lean": {
-        "score": -0.8,
-        "rationale_fr": "Défend le blocage des prix, un SMIC à 1 700 € net et une redistribution forte, positions de gauche radicale.",
-        "rationale_en": "Defends price freezes, a 1,700 euro net minimum wage and strong redistribution, far-left positions."
-      },
-      "populism": {
-        "score": 0.3,
-        "markers": [
-          "anti_elites"
-        ],
-        "rationale_fr": "Oppose le peuple appauvri aux « plus riches » et à Emmanuel Macron, sans excès particulier.",
-        "rationale_en": "Contrasts an impoverished population with the richest and Emmanuel Macron, without extreme framing."
-      },
-      "check": null,
-      "postTime": "2026-11-08T08:22:00.000Z"
-    },
-    "masto:https://piaille.fr/users/cyrielle_chatelain/statuses/117579847487490833": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T09:27:41.925Z",
-      "storyItems": [],
-      "storyTitle": null,
-      "political": true,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Constat social sur des lycéens qui travaillent, sans position idéologique explicite.",
-        "rationale_en": "Social observation about students working, with no explicit ideological position."
-      },
-      "populism": {
-        "score": 0,
-        "markers": [],
-        "rationale_fr": "Relais de témoignages, sans rhétorique populiste.",
-        "rationale_en": "Relays testimonies, no populist rhetoric."
-      },
-      "check": null,
-      "postTime": "2026-11-08T08:21:30.812Z"
-    },
     "bsky:at://did:plc:wu3up6kgql5q3v4wtdh2h624/app.bsky.feed.post/3mzsiiizom227": {
       "model": "claude-haiku-5-5",
       "promptVersion": "feed-rating-v2",
@@ -446,131 +378,6 @@
         ]
       },
       "postTime": "2026-11-08T10:42:17.107Z"
-    },
-    "bsky:at://did:plc:dzhhf6dtekdyjpcvm5xr6jeb/app.bsky.feed.post/3mzs5wy6jbc22": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T16:48:14.778Z",
-      "storyItems": [
-        "bf480087ea04",
-        "45f7f21c8650",
-        "a723d0c9eb9e",
-        "0ef9b7fdc4d5",
-        "93a01468f3e7",
-        "e66acba0a737"
-      ],
-      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
-      "political": true,
-      "lean": {
-        "score": -0.8,
-        "rationale_fr": "Promeut le programme « L'Avenir en commun » de LFI, projet de gauche radicale.",
-        "rationale_en": "Promotes LFI's 'L'Avenir en commun' programme, a radical left project."
-      },
-      "populism": {
-        "score": 0.1,
-        "markers": [],
-        "rationale_fr": "Slogan militant sans attaque d'élites ni opposition peuple contre élites.",
-        "rationale_en": "Militant slogan with no attack on elites or people-versus-elites framing."
-      },
-      "check": {
-        "claim": "Plus de 20 000 personnes au Bourget pour le meeting de présentation du programme",
-        "why_fr": "Ce chiffre semble être celui des organisateurs ; d'autres sources peuvent donner un décompte différent.",
-        "why_en": "This figure appears to be the organisers' count; other sources may give a different estimate.",
-        "sources": [
-          {
-            "title": "La « Nouvelle France » rassemblée au meeting de Mélenchon au Bourget",
-            "url": "https://www.liberation.fr/politique/elections/la-nouvelle-france-rassemblee-au-meeting-de-melenchon-au-bourget-une-realite-a-ne-pas-minimiser-20261108_CSFT2KNSAVFNTBBTO7EVTHKF5A/"
-          }
-        ]
-      },
-      "postTime": "2026-11-08T10:04:50.976Z"
-    },
-    "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3mzs3ztj2fs2w": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T16:48:14.778Z",
-      "storyItems": [],
-      "storyTitle": null,
-      "political": false,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Message purement pratique annonçant une intervention télévisée.",
-        "rationale_en": "Purely practical message announcing a TV appearance."
-      },
-      "populism": {
-        "score": 0,
-        "markers": [],
-        "rationale_fr": "Aucune rhétorique populiste.",
-        "rationale_en": "No populist rhetoric."
-      },
-      "check": null,
-      "postTime": "2026-11-08T09:30:39.255Z"
-    },
-    "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3mzs3tli5ck23": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T16:48:20.314Z",
-      "storyItems": [
-        "bf480087ea04",
-        "45f7f21c8650",
-        "a723d0c9eb9e",
-        "0ef9b7fdc4d5",
-        "93a01468f3e7",
-        "e66acba0a737"
-      ],
-      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
-      "political": true,
-      "lean": {
-        "score": -0.8,
-        "rationale_fr": "Présentation d'un programme de la France insoumise, défense de la candidature Mélenchon ; orientation de gauche radicale.",
-        "rationale_en": "Presents the La France insoumise programme and backs Mélenchon's candidacy; far-left orientation."
-      },
-      "populism": {
-        "score": 0.3,
-        "markers": [
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Ton d'enthousiasme et de certitude de victoire, sans rhétorique anti-élites explicite.",
-        "rationale_en": "Enthusiastic, certain-of-victory tone, without explicit anti-elite rhetoric."
-      },
-      "check": {
-        "claim": "Plus de 20.000 personnes présentes au meeting du Bourget",
-        "why_fr": "Le chiffre provient de l'auteur·e et ne figure pas dans les articles fournis ; les décomptes de meetings varient souvent selon les sources (organisateurs, police).",
-        "why_en": "The figure comes from the author and is not in the provided articles; meeting attendance counts often vary by source (organisers, police).",
-        "sources": [
-          {
-            "title": "Liberté, Le Monde, Le Parisien : couverture du meeting du Bourget",
-            "url": "https://www.leparisien.fr/elections/presidentielle/meeting-de-melenchon-au-bourget-une-creation-artistique-collective-illustrera-le-programme-presidentiel-de-lfi-06-11-2026-JBQI7V3K5VH4LLASGP2ZVT6BKY.php"
-          }
-        ]
-      },
-      "postTime": "2026-11-08T09:27:09.512Z"
-    },
-    "yt:qFM3qnzm540": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T16:48:20.314Z",
-      "storyItems": [],
-      "storyTitle": null,
-      "political": false,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Message de partage de témoignages de lycéens, sans position politique explicite.",
-        "rationale_en": "Shares high-school students' testimonies, with no explicit political position."
-      },
-      "populism": {
-        "score": 0,
-        "markers": [],
-        "rationale_fr": "Aucune rhétorique populiste repérable.",
-        "rationale_en": "No discernible populist rhetoric."
-      },
-      "check": {
-        "claim": "1 lycéen sur 4 travaille en parallèle de ses études, selon le Céreq en mars 2026",
-        "why_fr": "Le chiffre est attribué au Céreq sans lien vers la publication ; il mérite une vérification auprès de la source originale.",
-        "why_en": "The figure is attributed to the Céreq without a link to the publication; it deserves checking against the original source.",
-        "sources": []
-      },
-      "postTime": "2026-11-08T08:15:12.000Z"
     },
     "bsky:at://did:plc:i27lvonqvridxzfgstsqw6p2/app.bsky.feed.post/3mzthfysgpc2r": {
       "model": "claude-haiku-5-5",
@@ -17797,6 +17604,228 @@
       },
       "check": null,
       "postTime": "2026-11-21T13:00:10.000Z"
+    },
+    "yt:xmCnnR2KWpc": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-22T10:16:24.102Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.6,
+        "rationale_fr": "Proposition de préservation des maisons familiales jusqu'à 850 000 euros, présentée comme un enjeu d'identité nationale ; orientation de droite nationaliste.",
+        "rationale_en": "Proposal to protect family homes up to 850,000 euros, framed as a matter of identity; right-nationalist orientation."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Formulation émotionnelle (souvenirs, identité) plus que rhétorique populiste structurée.",
+        "rationale_en": "Emotional framing (memories, identity) rather than structured populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-22T10:00:39.000Z"
+    },
+    "yt:hXF4og3qLK4": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-22T10:16:24.102Z",
+      "storyItems": [
+        "80b7dc0dd2bf"
+      ],
+      "storyTitle": "Doudounes sans manches et crise du logement... Face aux professionnels du bâtiment, les candidats à la présidentielle s’en prennent aux normes",
+      "political": true,
+      "lean": {
+        "score": 0.9,
+        "rationale_fr": "Demande que les travailleurs étrangers rentrent chez eux à la fin de leur contrat : position de droite nationaliste sur l'immigration.",
+        "rationale_en": "Calls for foreign workers to return home after their contract: right-nationalist position on immigration."
+      },
+      "populism": {
+        "score": 0.5,
+        "markers": [
+          "nativisme"
+        ],
+        "rationale_fr": "Opposition implicite entre les travailleurs étrangers et « leur propre pays », cadrage nativiste.",
+        "rationale_en": "Implicit us-versus-foreigners framing ('their own country'), a nativist cue."
+      },
+      "check": null,
+      "postTime": "2026-11-22T08:30:00.000Z"
+    },
+    "bsky:at://did:plc:7qlw6gig76xhkjjkxl35xpxe/app.bsky.feed.post/3n2v3dijsrs2v": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-22T10:16:24.102Z",
+      "storyItems": [
+        "da57d92703c1",
+        "ba7622d74560",
+        "7e636f38e472",
+        "22a010ff7c6a",
+        "9be07c767f2c",
+        "f1b53c5e7438"
+      ],
+      "storyTitle": "Budget de l’État : Emmanuel Macron envisagerait de convoquer le Congrès pour instaurer une règle d’or",
+      "political": true,
+      "lean": {
+        "score": -0.6,
+        "rationale_fr": "Critique des coupes budgétaires et de la règle d'or, présentée comme une politique de droite héritée de Sarkozy : position de gauche sur la dépense publique.",
+        "rationale_en": "Criticizes budget cuts and the golden rule as right-wing austerity inherited from Sarkozy: left-leaning position on public spending."
+      },
+      "populism": {
+        "score": 0.5,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Qualifie le projet de « coup d'état financier » et de « coup de force », présentant les adversaires comme illégitimes.",
+        "rationale_en": "Describes the plan as a 'financial coup' and 'coup de force', presenting opponents as illegitimate."
+      },
+      "check": {
+        "claim": "La règle d'or budgétaire aurait été portée en 2011 par Christine Lagarde et n'aurait jamais été adoptée.",
+        "why_fr": "La règle d'or de 2011 relève d'une initiative gouvernementale et parlementaire de l'époque, Christine Lagarde dirigeant alors le FMI ; une loi organique l'a ensuite intégrée en 2012. L'attribution et l'affirmation de non-adoption méritent d'être vérifiées.",
+        "why_en": "The 2011 golden rule was a government and parliamentary initiative, while Christine Lagarde was then heading the IMF; an organic law later incorporated it in 2012. The attribution and the claim it was never adopted deserve checking.",
+        "sources": [
+          {
+            "title": "Vie publique, rubrique finances publiques",
+            "url": "https://www.vie-publique.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-22T07:21:20.394Z"
+    },
+    "yt:BuVgIU8PGM0": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-22T10:16:24.102Z",
+      "storyItems": [
+        "c75ee8cf0a41"
+      ],
+      "storyTitle": "Gel des pensions de retraite : ce qu'en disent les candidats à la présidentielle",
+      "political": true,
+      "lean": {
+        "score": 0.3,
+        "rationale_fr": "Rejet de la désindexation des retraites et de la hausse d'impôt sur les retraités, avec une défense du pouvoir d'achat des pensionnés ; orientation plutôt de droite sociale.",
+        "rationale_en": "Rejects pension de-indexation and higher income tax on retirees, defending pensioners' purchasing power; leaning center-right on social issues."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Attaque ciblée d'un adversaire sur un projet précis, sans rhétorique populiste.",
+        "rationale_en": "Targeted attack on a rival's specific proposal, without populist rhetoric."
+      },
+      "check": {
+        "claim": "Désindexer les retraites au-dessus de 2 000 euros et augmenter l'impôt des retraités de 7 milliards d'euros, comme projet de M. Lisnard.",
+        "why_fr": "Un article fourni évoque un gel des pensions supérieures à 1 260 euros, et non 2 000 euros ; le seuil et le montant du projet attribué à M. Lisnard méritent d'être vérifiés.",
+        "why_en": "A provided article refers to a freeze on pensions above 1,260 euros, not 2,000 euros; the threshold and the amount attributed to Mr Lisnard's plan should be checked.",
+        "sources": [
+          {
+            "title": "Gel des pensions de retraite : ce qu'en disent les candidats à la présidentielle",
+            "url": "https://www.lejdd.fr/politique/gel-des-pensions-de-retraite-ce-quen-disent-les-candidats-a-la-presidentielle-189372"
+          }
+        ]
+      },
+      "postTime": "2026-11-22T06:30:03.000Z"
+    },
+    "yt:u9i0qGniSAo": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-22T10:16:24.102Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.3,
+        "rationale_fr": "Prêts à taux zéro pour les jeunes et hausse de la transmission en franchise à 150 000 euros : mesures de droite libérale-conservatrice sur la propriété.",
+        "rationale_en": "Zero-rate loans for young buyers and a higher tax-free transfer of 150,000 euros: center-right property policy."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Proposition concrète sans rhétorique populiste.",
+        "rationale_en": "Concrete proposal without populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-22T00:30:12.000Z"
+    },
+    "yt:khX3ph-ZKPo": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-22T10:16:24.102Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.8,
+        "rationale_fr": "Priorité nationale pour l'accès aux logements étudiants, réservée aux nationaux : position de droite nationaliste.",
+        "rationale_en": "National priority for access to student housing, reserved for nationals: right-nationalist position."
+      },
+      "populism": {
+        "score": 0.5,
+        "markers": [
+          "nativisme"
+        ],
+        "rationale_fr": "Oppose les nationaux aux étrangers (« dans leur propre pays ») pour l'accès au logement.",
+        "rationale_en": "Sets nationals against foreigners ('in their own country') for access to housing."
+      },
+      "check": null,
+      "postTime": "2026-11-21T10:00:09.000Z"
+    },
+    "yt:Uq6sgt65ikc": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-22T10:16:24.102Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Constat général sur les difficultés économiques, sans proposition ni contenu idéologique identifiable.",
+        "rationale_en": "General statement on economic difficulties, with no proposal or identifiable ideological content."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Formule alarmiste (« très graves difficultés », « toutes les factures ») mise en avant sans argument chiffré.",
+        "rationale_en": "Alarmist wording ('very serious difficulties', 'all the bills') without quantified arguments."
+      },
+      "check": null,
+      "postTime": "2026-11-20T18:00:28.000Z"
+    },
+    "x:2123691095510909375": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-22T10:16:24.102Z",
+      "storyItems": [
+        "3a3514bdc08b",
+        "ac9358eca903",
+        "6a680f8eb63f",
+        "1b4de4979ebc",
+        "c20ac74e371e",
+        "0b2f818d7b2a"
+      ],
+      "storyTitle": "ÉDITO. Présidentielle 2027 : Gabriel Attal, Bruno Retailleau et David Lisnard se préparent à l'épreuve des poteaux",
+      "political": true,
+      "lean": {
+        "score": 0.3,
+        "rationale_fr": "Soutien à Édouard Philippe, candidat de la droite et du centre, face à d'autres candidats ; position centre-droit.",
+        "rationale_en": "Support for Édouard Philippe, a center-right candidate, against other contenders; center-right position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Formulation polémique envers des rivaux, sans rhétorique populiste substantielle.",
+        "rationale_en": "Polemical wording about rivals, without substantial populist rhetoric."
+      },
+      "check": {
+        "claim": "Le sondage Ifop-Fiducial pour Sud Radio désigne Édouard Philippe comme le seul candidat de la droite et du centre pouvant accéder au second tour.",
+        "why_fr": "Un article fourni présente cette qualification comme conditionnelle à une candidature unique de la droite et du centre ; le message la présente sans cette condition.",
+        "why_en": "A provided article presents this qualification as conditional on a single candidacy of the right and centre; the message presents it without that condition.",
+        "sources": []
+      },
+      "postTime": "2026-11-20T08:13:08.099Z"
     }
   },
   "failures": {
