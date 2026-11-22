@@ -1,5 +1,5 @@
 {
- "syncedAt": "2026-11-21T14:43:22.263Z",
+ "syncedAt": "2026-11-22T14:38:43.822Z",
  "firstSession": "2023-2024",
  "sources": {
   "api": "https://www.senat.fr/api-senat/senateurs.json",
@@ -686,7 +686,7 @@
     "tiktok": 1,
     "youtube": 2,
     "mastodon": 0,
-    "website": 46
+    "website": 45
    },
    "wikidata": {
     "twitter": 247,
@@ -697,7 +697,7 @@
     "tiktok": 3,
     "youtube": 6,
     "mastodon": 2,
-    "website": 108
+    "website": 107
    },
    "site": {
     "twitter": 247,
@@ -706,9 +706,9 @@
     "facebook": 258,
     "bluesky": 15,
     "tiktok": 7,
-    "youtube": 25,
+    "youtube": 24,
     "mastodon": 3,
-    "website": 108
+    "website": 107
    },
    "final": {
     "twitter": 247,
@@ -717,9 +717,9 @@
     "facebook": 258,
     "bluesky": 15,
     "tiktok": 7,
-    "youtube": 25,
+    "youtube": 24,
     "mastodon": 3,
-    "website": 108
+    "website": 107
    }
   },
   "withAnyAccount": 289,
@@ -1023,7 +1023,17 @@
     "platform": "twitter",
     "kept": "senat: https://x.com/hconwaymouret",
     "others": [
-     "wikidata: https://x.com/HMouretConway"
+     "wikidata: https://x.com/HMouretConway",
+     "site: https://x.com/francerugby"
+    ]
+   },
+   {
+    "id": "11027H",
+    "nom": "Hélène Conway-Mouret",
+    "platform": "instagram",
+    "kept": "wikidata: https://www.instagram.com/hconwaymouret/",
+    "others": [
+     "site: https://www.instagram.com/heleneconway/"
     ]
    },
    {
@@ -1285,15 +1295,6 @@
     ]
    },
    {
-    "id": "21065H",
-    "nom": "Cédric Chevalier",
-    "platform": "facebook",
-    "kept": "senat: https://www.facebook.com/61551806835411",
-    "others": [
-     "senat: https://www.facebook.com/profile.php?id=61551806835411"
-    ]
-   },
-   {
     "id": "14042U",
     "nom": "Élisabeth Doineau",
     "platform": "facebook",
@@ -1528,7 +1529,8 @@
     "platform": "facebook",
     "kept": "wikidata: https://www.facebook.com/DiazEdwige",
     "others": [
-     "site: https://www.facebook.com/400338823633387"
+     "site: https://www.facebook.com/400338823633387",
+     "site: https://www.facebook.com/109576115736240"
     ]
    }
   ],
@@ -1614,12 +1616,12 @@
     "reason": "institution or party site, not the senator's own: http://www.senat.fr/"
    },
    {
-    "id": "17229F",
-    "nom": "Stéphane Demilly",
-    "platform": "facebook",
-    "value": "Stéphane-Demilly-1497343097190263",
+    "id": "12016W",
+    "nom": "Victorin Lurel",
+    "platform": "website",
+    "value": "http://lurel.parti-socialiste.fr",
     "source": "wikidata",
-    "reason": "not a Facebook page: Stéphane-Demilly-1497343097190263"
+    "reason": "institution or party site, not the senator's own: http://lurel.parti-socialiste.fr"
    },
    {
     "id": "20040T",
@@ -1630,12 +1632,12 @@
     "reason": "institution or party site, not the senator's own: http://www.senat.fr/senateur/duffourg_alain20040t.html"
    },
    {
-    "id": "12016W",
-    "nom": "Victorin Lurel",
-    "platform": "website",
-    "value": "http://lurel.parti-socialiste.fr",
+    "id": "17229F",
+    "nom": "Stéphane Demilly",
+    "platform": "facebook",
+    "value": "Stéphane-Demilly-1497343097190263",
     "source": "wikidata",
-    "reason": "institution or party site, not the senator's own: http://lurel.parti-socialiste.fr"
+    "reason": "not a Facebook page: Stéphane-Demilly-1497343097190263"
    },
    {
     "id": "11048N",
@@ -1660,6 +1662,14 @@
     "value": "https://www.linkedin.com/in/mayer-quentin",
     "source": "site",
     "reason": "LinkedIn profile without the senator's name"
+   },
+   {
+    "id": "20044X",
+    "nom": "Stéphane Sautarel",
+    "platform": "twitter",
+    "value": "https://twitter.com/publicsenat",
+    "source": "site",
+    "reason": "institutional account"
    }
   ],
   "siteErrors": [
@@ -1762,11 +1772,6 @@
     "id": "21436Q",
     "url": "https://marieangerousselot.fr/",
     "error": "robots.txt disallows"
-   },
-   {
-    "id": "14193X",
-    "url": "http://www.cedricperrin.fr/",
-    "error": "fetch failed for http://www.cedricperrin.fr/"
    },
    {
     "id": "14215L",
