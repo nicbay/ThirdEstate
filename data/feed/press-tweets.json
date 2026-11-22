@@ -24717,6 +24717,153 @@
       "at": "2026-11-21T20:39:41.166Z",
       "status": "ok",
       "tweets": []
+    },
+    "593d2e149bed": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "cb8dcbdd23ff": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2124234573701685757",
+          "handle": "DAZN_FR",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/DAZN_FR/status/2124234573701685757",
+          "time": "2026-11-21T20:12:43.397Z"
+        },
+        {
+          "id": "2124244819123777708",
+          "handle": "DAZN_FR",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/DAZN_FR/status/2124244819123777708",
+          "time": "2026-11-21T20:53:26.096Z"
+        },
+        {
+          "id": "2124261237471039701",
+          "handle": "DAZN_FR",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/DAZN_FR/status/2124261237471039701",
+          "time": "2026-11-21T21:58:40.535Z"
+        },
+        {
+          "id": "2124265165654778208",
+          "handle": "LaLiga",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/LaLiga/status/2124265165654778208",
+          "time": "2026-11-21T22:14:17.087Z"
+        }
+      ]
+    },
+    "d81a5ec17c3e": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2124263627041747278",
+          "handle": "TF1",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/TF1/status/2124263627041747278",
+          "time": "2026-11-21T22:08:10.253Z"
+        }
+      ]
+    },
+    "e6d289108f30": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "f43c795e2069": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "5f9f8824d1e4": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "6b1ac263f576": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "3d7f78a8d523": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "c99a08cd61a1": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "5e4015e2235e": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "1741777609cf": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "d97adf7a3e82": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "99fb9d3a9461": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "ed43ad922342": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2124265680807535013",
+          "handle": "FranceRugby",
+          "name": "France Rugby",
+          "text": "🤩 ON EST EN FINAAAALE 🥳 Bravo à nos Bleus qui l’emportent une nouvelle fois ce soir 💪 On est fiers de vous 🇫🇷 #XVdeFrance https://t.co/JNZQCRDhVM",
+          "dateText": "November 21, 2026",
+          "via": "blockquote",
+          "url": "https://x.com/FranceRugby/status/2124265680807535013",
+          "time": "2026-11-21T22:16:19.909Z"
+        }
+      ]
     }
   },
   "oembed": {
@@ -26003,6 +26150,36 @@
       "handle": "Francois_Ruffin",
       "name": "François Ruffin",
       "text": "Face au risque du pire, je retire ma candidature à l'élection présidentielle."
+    },
+    "2124244819123777708": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "handle": "DAZN_FR",
+      "name": "DAZN France",
+      "text": "❌ I Kylian Mbappé RATE le penalty de l’égalisation… 🥶🇫🇷 #LALIGA #RealMadridCelta Suivez la rencontre en direct sur DAZN 📲"
+    },
+    "2124234573701685757": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "handle": "DAZN_FR",
+      "name": "DAZN France",
+      "text": "🤍 I Le bel hommage du Bernabéu à Jesús de Miguel, en présence de sa famille. 🕊️ #LALIGA #RealMadridCelta Suivez la rencontre en direct sur DAZN 📲"
+    },
+    "2124261237471039701": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "handle": "DAZN_FR",
+      "name": "DAZN France",
+      "text": "🦸 I Carlos Espí sauve une nouvelle fois le Real Madrid dans les derniers instants ! 🇪🇸💫 #LALIGA #RealMadridCelta Suivez la rencontre en direct sur DAZN 📲"
+    },
+    "2124265165654778208": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "handle": "LaLiga",
+      "name": "LALIGA",
+      "text": "FINAL #RealMadridCelta 2-1 🤍 ¡Victoria del @realmadrid en el Bernabéu! #LALIGAEASPORTS"
+    },
+    "2124263627041747278": {
+      "at": "2026-11-22T00:41:30.097Z",
+      "handle": "TF1",
+      "name": "TF1",
+      "text": "🇫🇷 France 45 - 17 Argentine 🇦🇷 C'est terminé ! Victoire du XV de France.🔥"
     }
   }
 }

@@ -1,114 +1,5 @@
 {
   "ratings": {
-    "bsky:at://did:plc:bnulcjvue27qpnwzup3y7hv3/app.bsky.feed.post/3mzqrwdparc2j": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-07T22:17:54.011Z",
-      "storyItems": [
-        "7f0f771935fa",
-        "5c2baf7027c5",
-        "a78452c6d0dd",
-        "588a0dc615ee",
-        "de7371b74b3a",
-        "78b4523b8287"
-      ],
-      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
-      "political": true,
-      "lean": {
-        "score": -0.8,
-        "rationale_fr": "Présentation d'un programme de gauche radicale ; mise en avant de la dynamique de LFI pour 2027.",
-        "rationale_en": "Promotes a far-left programme and LFI's 2027 momentum; no specific policy detail in the post."
-      },
-      "populism": {
-        "score": 0.6,
-        "markers": [
-          "souverainete_populaire",
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Mise en avant d'un « élan populaire gigantesque » et d'une enthousiasme émotionnel plutôt que d'arguments.",
-        "rationale_en": "Stresses a 'gigantic popular momentum' and emotional enthusiasm rather than arguments."
-      },
-      "check": {
-        "claim": "Plus de 20 000 personnes au Bourget",
-        "why_fr": "Le chiffre semble provenir des organisateurs ; d'autres sources pourraient donner une estimation différente.",
-        "why_en": "The figure appears to come from organisers; other sources may give a different estimate.",
-        "sources": [
-          {
-            "title": "En direct - meeting au Bourget (Le Parisien)",
-            "url": "https://www.leparisien.fr/elections/presidentielle/ici-est-la-force-depuis-le-bourget-jean-luc-melenchon-pret-a-decoller-pour-le-second-tour-de-la-presidentielle-07-11-2026-5AP5ZDQ7V5CATKZPLLC7VKHT6I.php"
-          }
-        ]
-      },
-      "postTime": "2026-11-07T20:57:04.858Z"
-    },
-    "bsky:at://did:plc:ymrgrrgrkf6jk23dg6w4c36d/app.bsky.feed.post/3mzqqzy42wk2w": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-07T22:17:54.012Z",
-      "storyItems": [
-        "7f0f771935fa",
-        "5c2baf7027c5",
-        "a78452c6d0dd",
-        "588a0dc615ee",
-        "de7371b74b3a",
-        "78b4523b8287"
-      ],
-      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
-      "political": true,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Message de soutien sans contenu idéologique précis.",
-        "rationale_en": "Supportive message with no specific ideological content."
-      },
-      "populism": {
-        "score": 0.3,
-        "markers": [
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Enthousiasme mis en avant (« incroyable démonstration de force ») sans argument.",
-        "rationale_en": "Enthusiasm ('incredible show of force') without arguments."
-      },
-      "check": {
-        "claim": "Plus de 20 000 personnes au meeting du Bourget",
-        "why_fr": "Le chiffre semble provenir des organisateurs ; d'autres estimations peuvent différer.",
-        "why_en": "The figure appears to come from organisers; other estimates may differ.",
-        "sources": [
-          {
-            "title": "En direct - meeting au Bourget (Le Parisien)",
-            "url": "https://www.leparisien.fr/elections/presidentielle/ici-est-la-force-depuis-le-bourget-jean-luc-melenchon-pret-a-decoller-pour-le-second-tour-de-la-presidentielle-07-11-2026-5AP5ZDQ7V5CATKZPLLC7VKHT6I.php"
-          }
-        ]
-      },
-      "postTime": "2026-11-07T20:41:13.175Z"
-    },
-    "yt:5RRVE4HdjnU": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T01:48:34.218Z",
-      "storyItems": [
-        "5cea37f4f40f",
-        "7f0f771935fa",
-        "5c2baf7027c5",
-        "a78452c6d0dd",
-        "588a0dc615ee",
-        "de7371b74b3a"
-      ],
-      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
-      "political": false,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Message de communication sur un chiffre de participation, sans position politique exprimée.",
-        "rationale_en": "Post reporting an attendance figure, with no political position expressed."
-      },
-      "populism": {
-        "score": 0,
-        "markers": [],
-        "rationale_fr": "Aucune rhétorique populiste dans ce message court.",
-        "rationale_en": "No populist rhetoric in this short message."
-      },
-      "check": null,
-      "postTime": "2026-11-07T23:43:58.000Z"
-    },
     "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3mzrzkb3s3k2k": {
       "model": "claude-haiku-5-5",
       "promptVersion": "feed-rating-v2",
@@ -176,27 +67,6 @@
       },
       "check": null,
       "postTime": "2026-11-08T08:21:30.812Z"
-    },
-    "bsky:at://did:plc:vjwqkzs27ge527nmwckanige/app.bsky.feed.post/3mzqsnviwd226": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-08T09:27:41.925Z",
-      "storyItems": [],
-      "storyTitle": null,
-      "political": true,
-      "lean": {
-        "score": 0.4,
-        "rationale_fr": "Défend la liberté de choisir son école et les écoles privées sous contrat, position de droite libérale.",
-        "rationale_en": "Defends school choice and private contract schools, a liberal-conservative position."
-      },
-      "populism": {
-        "score": 0.1,
-        "markers": [],
-        "rationale_fr": "Argumentation générale, sans opposition peuple contre élites.",
-        "rationale_en": "General argument, no people versus elites framing."
-      },
-      "check": null,
-      "postTime": "2026-11-07T21:10:15.281Z"
     },
     "bsky:at://did:plc:wu3up6kgql5q3v4wtdh2h624/app.bsky.feed.post/3mzsiiizom227": {
       "model": "claude-haiku-5-5",
@@ -17906,6 +17776,27 @@
       },
       "check": null,
       "postTime": "2026-11-19T10:05:48.972Z"
+    },
+    "yt:_t9QPAZG_xw": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-22T00:41:48.727Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Défend la compatibilité de l'islam avec la République tout en distinguant l'islamisme ; position sur l'identité et la laïcité classée à droite nationale.",
+        "rationale_en": "Argues Islam is compatible with the Republic while distinguishing Islamism; a position on identity and secularism leaning right-nationalist."
+      },
+      "populism": {
+        "score": 0.05,
+        "markers": [],
+        "rationale_fr": "Message de citation d'interview sans rhétorique anti-élites, complot ou appel émotionnel.",
+        "rationale_en": "Interview quote with no anti-elite, conspiracy or emotional rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-21T13:00:10.000Z"
     }
   },
   "failures": {
