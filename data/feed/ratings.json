@@ -166,62 +166,6 @@
       "check": null,
       "postTime": "2026-11-09T08:22:30.942Z"
     },
-    "bsky:at://did:plc:hiebgjpdm7uhdm2zjafcg5on/app.bsky.feed.post/3mzuhzl5zuq2j": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-09T10:19:07.419Z",
-      "storyItems": [
-        "fb92aa94b318",
-        "1e942ce39940",
-        "c6bd813b8fa6",
-        "bcfc1414a5a3"
-      ],
-      "storyTitle": "\"J'aimerais que la justice passe\" : Michel Zecler réclame un procès \"à la hauteur de la gravité des faits\" pour les policiers accusés de l'avoir roué de coups",
-      "political": true,
-      "lean": {
-        "score": -0.6,
-        "rationale_fr": "Soutien aux victimes de violences policières racistes, position de gauche sur la police et la justice.",
-        "rationale_en": "Support for victims of racist police violence, a left-leaning position on policing and justice."
-      },
-      "populism": {
-        "score": 0.2,
-        "markers": [
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Mise en avant de l'émotion et de l'indignation par un soutien symbolique.",
-        "rationale_en": "Emphasises emotion and indignation through symbolic support."
-      },
-      "check": null,
-      "postTime": "2026-11-09T08:10:34.648Z"
-    },
-    "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3mzuhea2sqc2o": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-09T10:19:07.419Z",
-      "storyItems": [
-        "bfa02044f7c0",
-        "6302203d6ceb",
-        "21a0307b06c8",
-        "496f6e509cec",
-        "bf480087ea04",
-        "45f7f21c8650"
-      ],
-      "storyTitle": "EN DIRECT - En meeting au Bourget ce samedi, Jean-Luc Mélenchon veut faire une démonstration de force",
-      "political": false,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Annonce d'une passage sur LCI, message à visée pratique.",
-        "rationale_en": "Announces an appearance on LCI, a practical message."
-      },
-      "populism": {
-        "score": 0,
-        "markers": [],
-        "rationale_fr": "Aucune rhétorique populiste.",
-        "rationale_en": "No populist rhetoric."
-      },
-      "check": null,
-      "postTime": "2026-11-09T07:58:38.602Z"
-    },
     "bsky:at://did:plc:7qlw6gig76xhkjjkxl35xpxe/app.bsky.feed.post/3mzvobdhoc224": {
       "model": "claude-haiku-5-5",
       "promptVersion": "feed-rating-v2",
@@ -17737,6 +17681,100 @@
       },
       "check": null,
       "postTime": "2026-11-21T09:41:30.000Z"
+    },
+    "masto:https://mastodon.social/users/_EvaSas/statuses/117664720901017071": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-23T08:11:23.441Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message de salutation sur une fête paroissiale, sans position politique.",
+        "rationale_en": "Greeting about a parish community event, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-23T08:05:56.335Z"
+    },
+    "yt:YonlugPvAIA": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-23T08:11:23.441Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Plaide pour une politique d'atténuation climatique renforcée, position typique de l'écologie de gauche.",
+        "rationale_en": "Calls for stronger climate mitigation policy, a position typical of left-wing ecology."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Argumentation fondée sur des données, sans opposition peuple contre élites.",
+        "rationale_en": "Argument based on data, without people-versus-elites framing."
+      },
+      "check": {
+        "claim": "Plus de 8000 personnes sont mortes en France à cause des fortes chaleurs l'été dernier.",
+        "why_fr": "Le chiffre semble supérieur à ceux publiés par les organismes officiels de surmortalité estivale, et la méthode de comptage (mortalité en excès ou décès directement attribués) n'est pas précisée.",
+        "why_en": "The figure appears higher than official summer excess-mortality estimates, and the counting method (excess deaths or directly attributed deaths) is not specified.",
+        "sources": []
+      },
+      "postTime": "2026-11-23T07:22:22.000Z"
+    },
+    "masto:https://piaille.fr/users/cyrielle_chatelain/statuses/117664540946716826": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-23T08:11:23.442Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Plaide pour une politique d'atténuation climatique renforcée, position typique de l'écologie de gauche.",
+        "rationale_en": "Calls for stronger climate mitigation policy, a position typical of left-wing ecology."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Argumentation fondée sur des données, sans opposition peuple contre élites.",
+        "rationale_en": "Argument based on data, without people-versus-elites framing."
+      },
+      "check": {
+        "claim": "Plus de 8000 personnes sont mortes en France à cause des fortes chaleurs l'été dernier.",
+        "why_fr": "Le chiffre semble supérieur à ceux publiés par les organismes officiels de surmortalité estivale, et la méthode de comptage (mortalité en excès ou décès directement attribués) n'est pas précisée.",
+        "why_en": "The figure appears higher than official summer excess-mortality estimates, and the counting method (excess deaths or directly attributed deaths) is not specified.",
+        "sources": []
+      },
+      "postTime": "2026-11-23T07:20:10.441Z"
+    },
+    "yt:RGNpmm06Pys": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-23T08:11:23.442Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Aide conditionnée à la « valeur travail », argument typique de la droite conservatrice, sans remise en cause des équilibres économiques.",
+        "rationale_en": "Aid tied to the 'value of work', a conservative right argument, without challenging economic balances."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Annonce d'une mesure concrète, sans opposition peuple contre élites.",
+        "rationale_en": "Announces a concrete measure, without people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-23T00:30:01.000Z"
     }
   },
   "failures": {
