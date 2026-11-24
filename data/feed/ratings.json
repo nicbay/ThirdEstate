@@ -452,50 +452,6 @@
       },
       "postTime": "2026-11-10T07:25:35.968Z"
     },
-    "yt:VXaUYiMgOjg": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-10T12:58:48.139Z",
-      "storyItems": [],
-      "storyTitle": null,
-      "political": false,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Message de promotion de chaîne YouTube sans contenu politique.",
-        "rationale_en": "Channel promotion with no political content."
-      },
-      "populism": {
-        "score": 0,
-        "markers": [],
-        "rationale_fr": "Aucune rhétorique populiste dans le message.",
-        "rationale_en": "No populist rhetoric in the message."
-      },
-      "check": null,
-      "postTime": "2026-11-09T21:48:48.000Z"
-    },
-    "yt:dE3z6IiOdCA": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-10T12:58:48.139Z",
-      "storyItems": [],
-      "storyTitle": null,
-      "political": true,
-      "lean": {
-        "score": -0.5,
-        "rationale_fr": "Soutien à « L'Avenir en commun », programme de la gauche insoumise pour 2027 : orientation de gauche radicale à social-démocrate.",
-        "rationale_en": "Supports 'L'Avenir en commun', a left-wing programme for 2027."
-      },
-      "populism": {
-        "score": 0.2,
-        "markers": [
-          "appel_emotionnel"
-        ],
-        "rationale_fr": "Formule d'autopromotion (« Y A PAS PHOTO ») sans argument développé.",
-        "rationale_en": "Self-promotional slogan with no developed argument."
-      },
-      "check": null,
-      "postTime": "2026-11-09T21:35:21.000Z"
-    },
     "bsky:at://did:plc:6iihpsin54462khal536kkjs/app.bsky.feed.post/3mzy5ypm6us2q": {
       "model": "claude-haiku-5-5",
       "promptVersion": "feed-rating-v2",
@@ -17279,6 +17235,348 @@
       },
       "check": null,
       "postTime": "2026-11-22T20:44:39.275Z"
+    },
+    "yt:q9_3aczUuXQ": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-24T04:58:40.990Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.3,
+        "rationale_fr": "Propose que le baccalauréat détermine l'entrée à l'université, une sélection par les résultats au bac, orientation libérale-conservatrice.",
+        "rationale_en": "Proposes that the baccalauréat decide university admission, a results-based selection approach with a liberal-conservative orientation."
+      },
+      "populism": {
+        "score": 0.05,
+        "markers": [],
+        "rationale_fr": "Ton programmatique sans opposition au peuple, aux élites ou aux adversaires.",
+        "rationale_en": "Programmatic tone with no opposition to the people, elites or opponents."
+      },
+      "check": null,
+      "postTime": "2026-11-24T00:30:15.000Z"
+    },
+    "yt:3GZ2Z3J4HO0": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-24T04:58:40.990Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Compte rendu d'une participation à un événement, sans position politique.",
+        "rationale_en": "Account of attending an event, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-23T21:32:58.000Z"
+    },
+    "yt:Mr5pmVO-Osw": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-24T04:58:40.991Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Critique des aides publiques aux associations, référence à un débat budgétaire sur la dépense, orientation de droite.",
+        "rationale_en": "Criticizes public aid to associations in a budget debate, a right-leaning orientation."
+      },
+      "populism": {
+        "score": 0.15,
+        "markers": [],
+        "rationale_fr": "Reproche de caricature adressé à un adversaire, sans opposition peuple contre élites.",
+        "rationale_en": "Accuses an opponent of caricature, without people-versus-elites framing."
+      },
+      "check": {
+        "claim": "Il y a 53 milliards d'aides aux associations.",
+        "why_fr": "Les estimations du montant des aides publiques aux associations varient selon le périmètre retenu (subventions, aides fiscales, emplois aidés), ce qui mérite une vérification du périmètre précis.",
+        "why_en": "Estimates of public aid to associations vary depending on the scope used (grants, tax aid, subsidised jobs), so the exact scope should be checked.",
+        "sources": [
+          {
+            "title": "Vie publique, site d'information officiel sur le débat public",
+            "url": "https://www.vie-publique.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-23T21:30:30.000Z"
+    },
+    "bsky:at://did:plc:acgikw5qlvyil2hucces4she/app.bsky.feed.post/3n2z34a6qh22u": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-24T04:58:40.991Z",
+      "storyItems": [
+        "0237a3583f6a"
+      ],
+      "storyTitle": "Un mois après l'attentat raciste de Trappes, la famille de Pengo Bossio Wangi regrette qu'aucune date n'ait été annoncée pour l'hommage national au jeune homme",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique du gouvernement sur la lutte contre le racisme et demande d'hommage national, orientation de gauche.",
+        "rationale_en": "Criticizes the government on the fight against racism and calls for a national tribute, a left-leaning orientation."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Critique gouvernementale argumentée, sans rhétorique populiste marquée.",
+        "rationale_en": "Argued government criticism without marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-23T21:27:55.713Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3n2yyhben2t2m": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-24T04:58:40.991Z",
+      "storyItems": [
+        "2bfaf9cc0da4"
+      ],
+      "storyTitle": "17 octobre: les circulaires de Gérald Darmanin n'ont entraîné \"aucune modification de la politique pénale du parquet de Paris\", selon la procureure",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Critique de la politique de maintien de l'ordre et du gouvernement sur la lutte contre les violences, orientation de gauche.",
+        "rationale_en": "Criticizes government and policing policy on violence, a left-leaning orientation."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Présente le gouvernement comme désavoué et exige que des responsables rendent des comptes, avec un ton d'indignation.",
+        "rationale_en": "Presents the government as discredited and demands accountability from officials, with an indignant tone."
+      },
+      "check": {
+        "claim": "Rien ne permet d'affirmer que les auteurs des violences sont des militants « d'ultragauche », selon la procureure de Paris.",
+        "why_fr": "L'article rapporté porte sur l'absence de modification de la politique pénale du parquet ; il ne reprend pas explicitement la formulation sur la nature politique des auteurs, ce qui mérite une lecture directe du compte rendu d'audition.",
+        "why_en": "The reported article addresses whether penal policy changed; it does not explicitly quote the wording about the political nature of the perpetrators, so the hearing record should be read directly.",
+        "sources": [
+          {
+            "title": "17 octobre : les circulaires de Gérald Darmanin n'ont entraîné « aucune modification de la politique pénale du parquet de Paris », selon la procureure",
+            "url": "https://lcp.fr/actualites/17-octobre-les-circulaires-de-gerald-darmanin-n-ont-entraine-aucune-modification-de-la"
+          }
+        ]
+      },
+      "postTime": "2026-11-23T20:40:24.831Z"
+    },
+    "bsky:at://did:plc:zvgnnx7oncrqqqlwmhqiccpv/app.bsky.feed.post/3n2yqoc2lrc2h": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-24T04:58:40.991Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Dénonce les soupçons de double allégeance visant les personnes immigrées et critique un traitement médiatique, orientation de gauche.",
+        "rationale_en": "Denounces suspicions of dual allegiance targeting immigrants and criticizes media treatment, a left-leaning orientation."
+      },
+      "populism": {
+        "score": 0.05,
+        "markers": [],
+        "rationale_fr": "Mise en garde générale sans opposition peuple contre élites.",
+        "rationale_en": "General warning without people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-23T18:21:10.496Z"
+    },
+    "yt:vwgMDAt4gzU": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-24T04:58:40.991Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": false,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Annonce pratique d'un meeting et de liens, sans position politique.",
+        "rationale_en": "Practical announcement of a meeting and links, with no political position."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Aucune rhétorique populiste.",
+        "rationale_en": "No populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-23T12:38:37.000Z"
+    },
+    "x:2124844150935691523": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-24T04:58:40.991Z",
+      "storyItems": [
+        "bfe2af7a0ffb",
+        "5d7d16f486ae",
+        "72155786bd5f",
+        "b7d47761fbd4",
+        "64e5dc4cedbe"
+      ],
+      "storyTitle": "Assemblée nationale : une vidéo polémique tournée par des jeunes lors d’une visite organisée par un député LFI",
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Qualifie une loi adoptée au Sénat de scélérate et défend des militants, positionnement de gauche radicale.",
+        "rationale_en": "Calls a Senate-adopted law scandalous and defends activists, a radical left position."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Qualifie une loi de scélérate et met en avant l'indignation plutôt que des arguments détaillés.",
+        "rationale_en": "Labels a law as scandalous and foregrounds indignation rather than detailed arguments."
+      },
+      "check": null,
+      "postTime": "2026-11-23T12:34:57.935Z"
+    },
+    "x:2124834434650124693": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-24T04:58:47.301Z",
+      "storyItems": [
+        "bfe2af7a0ffb",
+        "5d7d16f486ae",
+        "72155786bd5f",
+        "b7d47761fbd4",
+        "64e5dc4cedbe"
+      ],
+      "storyTitle": "Assemblée nationale : une vidéo polémique tournée par des jeunes lors d’une visite organisée par un député LFI",
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Dénonce une « propagande d'extrême gauche » et défend l'institution contre des militants LFI ; position de droite nationale.",
+        "rationale_en": "Denounces 'far-left propaganda' and defends the institution against LFI activists; right-leaning national stance."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Qualifie les militants d'adversaires de la République avec un ton indigné ('ont osé', 'QG de propagande').",
+        "rationale_en": "Frames activists as adversaries of the Republic with indignant tone ('dared', 'propaganda HQ')."
+      },
+      "check": null,
+      "postTime": "2026-11-23T11:56:21.392Z"
+    },
+    "x:2124821976912957871": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-24T04:58:47.301Z",
+      "storyItems": [
+        "bfe2af7a0ffb",
+        "5d7d16f486ae",
+        "72155786bd5f",
+        "b7d47761fbd4",
+        "64e5dc4cedbe"
+      ],
+      "storyTitle": "Assemblée nationale : une vidéo polémique tournée par des jeunes lors d’une visite organisée par un député LFI",
+      "political": true,
+      "lean": {
+        "score": 0.8,
+        "rationale_fr": "Accuse des élus LFI de complicité et dénonce une haine envers la France chez les jeunes des quartiers ; rhétorique nationaliste et identitaire.",
+        "rationale_en": "Accuses LFI deputies of complicity and claims youth from suburbs are taught hatred of France; nationalist-identitarian rhetoric."
+      },
+      "populism": {
+        "score": 0.5,
+        "markers": [
+          "delegitimation",
+          "nativisme",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Présente les élus LFI comme complices, oppose « la France » aux jeunes militants et mobilise l'indignation (« honte absolue »).",
+        "rationale_en": "Presents LFI deputies as complicit, opposes 'France' to young activists and uses outrage ('absolute disgrace')."
+      },
+      "check": null,
+      "postTime": "2026-11-23T11:06:51.236Z"
+    },
+    "yt:eaSrywortYc": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-24T04:58:47.301Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Défend une réforme des retraites centrée sur la récompense du travail précoce, positionnement de droite nationale sur le social.",
+        "rationale_en": "Defends a pension reform rewarding early work, a national-right position on social policy."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Argumentation sur une réforme sans attaque d'élites ni appel au peuple ; ton affirmatif mais mesuré.",
+        "rationale_en": "Argues a reform without attacking elites or invoking the people; assertive but measured tone."
+      },
+      "check": null,
+      "postTime": "2026-11-23T06:30:08.000Z"
+    },
+    "x:2124607204695146735": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-24T04:58:47.301Z",
+      "storyItems": [
+        "fdfe9d3f118b",
+        "bd6482a935d9"
+      ],
+      "storyTitle": "Accusé par le ministre du Logement de «s’afficher avec des types cagoulés qui tirent au mortier sur les forces de l’ordre», Louis Boyard annonce porter plainte",
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Message centré sur une procédure judiciaire et une réponse aux accusations, sans idéologie exprimée.",
+        "rationale_en": "Message centers on a legal procedure and response to accusations, with no ideology expressed."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "delegitimation"
+        ],
+        "rationale_fr": "Présente les propos du ministre comme des accusations mensongères, sans attaque d'un groupe large.",
+        "rationale_en": "Presents the minister's remarks as false accusations, without attacking a broad group."
+      },
+      "check": null,
+      "postTime": "2026-11-22T20:53:25.549Z"
+    },
+    "x:2124549184292618750": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-24T04:58:47.301Z",
+      "storyItems": [
+        "bfe2af7a0ffb",
+        "5d7d16f486ae",
+        "72155786bd5f",
+        "b7d47761fbd4",
+        "64e5dc4cedbe"
+      ],
+      "storyTitle": "Assemblée nationale : une vidéo polémique tournée par des jeunes lors d’une visite organisée par un député LFI",
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Dénonce une « propagande d'extrême gauche » et saisit la présidente de l'Assemblée ; position de droite nationale.",
+        "rationale_en": "Denounces 'far-left propaganda' and refers the matter to the Assembly president; national-right position."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "delegitimation",
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Accuse les militants LFI de vouloir mettre la République en cause, avec un ton d'indignation ('Inacceptable !').",
+        "rationale_en": "Accuses LFI activists of attacking the Republic, with an indignant tone ('Unacceptable!')."
+      },
+      "check": null,
+      "postTime": "2026-11-22T17:02:52.407Z"
     }
   },
   "failures": {
