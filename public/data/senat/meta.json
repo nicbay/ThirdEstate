@@ -1,5 +1,5 @@
 {
- "syncedAt": "2026-11-24T17:50:51.473Z",
+ "syncedAt": "2026-11-25T17:17:09.708Z",
  "firstSession": "2023-2024",
  "sources": {
   "api": "https://www.senat.fr/api-senat/senateurs.json",
@@ -32,13 +32,13 @@
    "max": 340
   },
   "session2026": {
-   "listed": 164,
-   "max": 164
+   "listed": 170,
+   "max": 170
   },
   "votes": {
-   "listed": 1086,
-   "written": 1086,
-   "fetchedThisRun": 105,
+   "listed": 1092,
+   "written": 1092,
+   "fetchedThisRun": 107,
    "failed": [],
    "noNominativeList": [
     "2023-100",
@@ -562,23 +562,6 @@
     "positions": "kept"
    },
    {
-    "id": "2023-99",
-    "published": {
-     "pour": 341,
-     "contre": 0,
-     "abstention": 0,
-     "nppv": 7
-    },
-    "nominative": {
-     "P": 103,
-     "C": 228,
-     "A": 10,
-     "N": 7
-    },
-    "gap": 476,
-    "positions": "dropped"
-   },
-   {
     "id": "2023-98",
     "published": {
      "pour": 191,
@@ -610,6 +593,23 @@
      "N": 8
     },
     "gap": 475,
+    "positions": "dropped"
+   },
+   {
+    "id": "2023-99",
+    "published": {
+     "pour": 341,
+     "contre": 0,
+     "abstention": 0,
+     "nppv": 7
+    },
+    "nominative": {
+     "P": 103,
+     "C": 228,
+     "A": 10,
+     "N": 7
+    },
+    "gap": 476,
     "positions": "dropped"
    }
   ],
@@ -1535,6 +1535,14 @@
    }
   ],
   "rejected": [
+   {
+    "id": "19111A",
+    "nom": "Isabelle Florennes",
+    "platform": "facebook",
+    "value": "https://www.facebook.com/share/1A3EDU9vDC/?mibextid=wwXIfr",
+    "source": "senat",
+    "reason": "not a Facebook page: https://www.facebook.com/share/1A3EDU9vDC/?mibextid=wwXIfr"
+   },
    {
     "id": "19611R",
     "nom": "Laurent Lafon",
