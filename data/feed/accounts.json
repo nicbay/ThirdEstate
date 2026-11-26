@@ -1,5 +1,93 @@
 {
   "wikidata": {
+    "PA795920": {
+      "youtube": {
+        "channelId": "UChQtNvdOcFDk9vaZ4oG5Xog",
+        "source": "wikidata"
+      }
+    },
+    "PA840997": {
+      "bluesky": {
+        "handle": "benoit-biteau.bsky.social",
+        "source": "wikidata"
+      },
+      "youtube": {
+        "channelId": "UC4Dp2H_paHTmvUw6xrLxGYQ",
+        "source": "wikidata"
+      }
+    },
+    "PA840765": {
+      "bluesky": {
+        "handle": "laurent-lhardit.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA841885": {
+      "bluesky": {
+        "handle": "arnaud-bonnet.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA841191": {
+      "bluesky": {
+        "handle": "snosbe.bsky.social",
+        "source": "wikidata"
+      },
+      "youtube": {
+        "channelId": "UCqMusvhLBEn33EeSiBVtmDw",
+        "source": "wikidata"
+      }
+    },
+    "PA605745": {
+      "bluesky": {
+        "handle": "nicolas-sansu.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA793444": {
+      "youtube": {
+        "channelId": "UCr7r7gh9N45WVwYAmHQ3m3w",
+        "source": "wikidata"
+      }
+    },
+    "PA721896": {
+      "bluesky": {
+        "handle": "elsafaucillon.bsky.social",
+        "source": "wikidata"
+      },
+      "youtube": {
+        "channelId": "UCLXCYpbD-9TnoX_cXSbVLjw",
+        "source": "wikidata"
+      }
+    },
+    "PA794494": {
+      "bluesky": {
+        "handle": "rogervicot.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA794778": {
+      "bluesky": {
+        "handle": "sandraregol.bsky.social",
+        "source": "wikidata"
+      },
+      "mastodon": {
+        "acct": "sandraregol@piaille.fr",
+        "source": "wikidata"
+      }
+    },
+    "PA841633": {
+      "bluesky": {
+        "handle": "peiodufau.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA840175": {
+      "bluesky": {
+        "handle": "dorabreg.bsky.social",
+        "source": "wikidata"
+      }
+    },
     "PA794198": {
       "youtube": {
         "channelId": "UC0shOjHEEdiMfdhtrwFhrlg",
@@ -9,12 +97,6 @@
     "PA736201": {
       "bluesky": {
         "handle": "sophietaillepolian.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA1654": {
-      "bluesky": {
-        "handle": "fhollande.bsky.social",
         "source": "wikidata"
       }
     },
@@ -70,119 +152,159 @@
         "source": "wikidata"
       }
     },
-    "PA795920": {
-      "youtube": {
-        "channelId": "UChQtNvdOcFDk9vaZ4oG5Xog",
-        "source": "wikidata"
-      }
-    },
-    "PA605745": {
+    "PA793780": {
       "bluesky": {
-        "handle": "nicolas-sansu.bsky.social",
+        "handle": "christinearrighi.bsky.social",
         "source": "wikidata"
       }
     },
-    "PA793444": {
-      "youtube": {
-        "channelId": "UCr7r7gh9N45WVwYAmHQ3m3w",
-        "source": "wikidata"
-      }
-    },
-    "PA721896": {
+    "PA842045": {
       "bluesky": {
-        "handle": "elsafaucillon.bsky.social",
+        "handle": "julieozenne.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA606793": {
+      "bluesky": {
+        "handle": "laurentbaumel.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA841515": {
+      "bluesky": {
+        "handle": "aurelienlecoq.bsky.social",
         "source": "wikidata"
       },
       "youtube": {
-        "channelId": "UCLXCYpbD-9TnoX_cXSbVLjw",
+        "channelId": "UCKB_K3phNlVxVEKIOUKnhVw",
         "source": "wikidata"
       }
     },
-    "PA794494": {
-      "bluesky": {
-        "handle": "rogervicot.bsky.social",
+    "PA722190": {
+      "youtube": {
+        "channelId": "UCOcDPuYTuxoRBtfmTBXtqBA",
         "source": "wikidata"
       }
     },
-    "PA794778": {
+    "PA342196": {
       "bluesky": {
-        "handle": "sandraregol.bsky.social",
+        "handle": "claudiarouaux.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA1654": {
+      "bluesky": {
+        "handle": "fhollande.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA588884": {
+      "bluesky": {
+        "handle": "clementineautain.bsky.social",
+        "source": "wikidata"
+      },
+      "youtube": {
+        "channelId": "UCZgJ_r_Ewlu1Ck-RzNCHuUQ",
+        "source": "wikidata"
+      }
+    },
+    "PA794138": {
+      "bluesky": {
+        "handle": "segoleneamiot.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA795318": {
+      "bluesky": {
+        "handle": "louisboyard.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA841419": {
+      "bluesky": {
+        "handle": "damiengirard.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA720614": {
+      "youtube": {
+        "channelId": "UCU3z3px1_RCqYBwrs8LJVWg",
+        "source": "wikidata"
+      }
+    },
+    "PA721202": {
+      "bluesky": {
+        "handle": "ericcoquerel.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA717379": {
+      "bluesky": {
+        "handle": "sylvain-maillard.bsky.social",
+        "source": "wikidata"
+      },
+      "youtube": {
+        "channelId": "UC4Ds3UCi1pAUFEPss9NH28Q",
+        "source": "wikidata"
+      }
+    },
+    "PA794146": {
+      "bluesky": {
+        "handle": "julielaernoes.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA719968": {
+      "youtube": {
+        "channelId": "UCj38R6P1VoHBt63h4AtIXnQ",
+        "source": "wikidata"
+      }
+    },
+    "PA841713": {
+      "bluesky": {
+        "handle": "boristavernier.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA795164": {
+      "youtube": {
+        "channelId": "UCBmDLidbbwRUiZeCKWrlPMg",
         "source": "wikidata"
       },
       "mastodon": {
-        "acct": "sandraregol@piaille.fr",
+        "acct": "TrouveAurelie@nupes.social",
         "source": "wikidata"
       }
     },
-    "PA841633": {
+    "PA609332": {
       "bluesky": {
-        "handle": "peiodufau.bsky.social",
+        "handle": "olivierfaure.bsky.social",
         "source": "wikidata"
       }
     },
-    "PA840175": {
+    "PA795310": {
       "bluesky": {
-        "handle": "dorabreg.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA840997": {
-      "bluesky": {
-        "handle": "benoit-biteau.bsky.social",
+        "handle": "clemenceguette.bsky.social",
         "source": "wikidata"
       },
       "youtube": {
-        "channelId": "UC4Dp2H_paHTmvUw6xrLxGYQ",
+        "channelId": "UCpU9riAixpc1Xn9Q4i7AkOw",
         "source": "wikidata"
       }
     },
-    "PA840765": {
+    "PA793756": {
       "bluesky": {
-        "handle": "laurent-lhardit.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA841885": {
-      "bluesky": {
-        "handle": "arnaud-bonnet.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA841191": {
-      "bluesky": {
-        "handle": "snosbe.bsky.social",
+        "handle": "francoispiquemal.bsky.social",
         "source": "wikidata"
       },
       "youtube": {
-        "channelId": "UCqMusvhLBEn33EeSiBVtmDw",
+        "channelId": "UCB6vbZrh1S6EC1PAokq3xRA",
         "source": "wikidata"
       }
     },
-    "PA610968": {
+    "PA841813": {
       "bluesky": {
-        "handle": "pouriaamirshahi.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA721024": {
-      "bluesky": {
-        "handle": "agenetet.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA720892": {
-      "bluesky": {
-        "handle": "mathildepanot.bsky.social",
-        "source": "wikidata"
-      },
-      "youtube": {
-        "channelId": "UCilxiEGEQHVZ25GU_cnyCzg",
-        "source": "wikidata"
-      }
-    },
-    "PA794022": {
-      "bluesky": {
-        "handle": "iordanoff.bsky.social",
+        "handle": "fleautey.bsky.social",
         "source": "wikidata"
       }
     },
@@ -230,6 +352,12 @@
         "source": "wikidata"
       }
     },
+    "PA793432": {
+      "youtube": {
+        "channelId": "UCWZt1s_z5wOC5jJt1wsVi-g",
+        "source": "wikidata"
+      }
+    },
     "PA722358": {
       "youtube": {
         "channelId": "UCCaFw8qbWdrdU6MYYGYwH2w",
@@ -254,137 +382,31 @@
         "source": "wikidata"
       }
     },
-    "PA722190": {
-      "youtube": {
-        "channelId": "UCOcDPuYTuxoRBtfmTBXtqBA",
+    "PA610968": {
+      "bluesky": {
+        "handle": "pouriaamirshahi.bsky.social",
         "source": "wikidata"
       }
     },
-    "PA342196": {
+    "PA721024": {
       "bluesky": {
-        "handle": "claudiarouaux.bsky.social",
+        "handle": "agenetet.bsky.social",
         "source": "wikidata"
       }
     },
-    "PA588884": {
+    "PA720892": {
       "bluesky": {
-        "handle": "clementineautain.bsky.social",
+        "handle": "mathildepanot.bsky.social",
         "source": "wikidata"
       },
       "youtube": {
-        "channelId": "UCZgJ_r_Ewlu1Ck-RzNCHuUQ",
+        "channelId": "UCilxiEGEQHVZ25GU_cnyCzg",
         "source": "wikidata"
       }
     },
-    "PA794138": {
+    "PA794022": {
       "bluesky": {
-        "handle": "segoleneamiot.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA795318": {
-      "bluesky": {
-        "handle": "louisboyard.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA841419": {
-      "bluesky": {
-        "handle": "damiengirard.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA793780": {
-      "bluesky": {
-        "handle": "christinearrighi.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA842045": {
-      "bluesky": {
-        "handle": "julieozenne.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA793432": {
-      "youtube": {
-        "channelId": "UCWZt1s_z5wOC5jJt1wsVi-g",
-        "source": "wikidata"
-      }
-    },
-    "PA795164": {
-      "youtube": {
-        "channelId": "UCBmDLidbbwRUiZeCKWrlPMg",
-        "source": "wikidata"
-      },
-      "mastodon": {
-        "acct": "TrouveAurelie@nupes.social",
-        "source": "wikidata"
-      }
-    },
-    "PA609332": {
-      "bluesky": {
-        "handle": "olivierfaure.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA795310": {
-      "bluesky": {
-        "handle": "clemenceguette.bsky.social",
-        "source": "wikidata"
-      },
-      "youtube": {
-        "channelId": "UCpU9riAixpc1Xn9Q4i7AkOw",
-        "source": "wikidata"
-      }
-    },
-    "PA793756": {
-      "bluesky": {
-        "handle": "francoispiquemal.bsky.social",
-        "source": "wikidata"
-      },
-      "youtube": {
-        "channelId": "UCB6vbZrh1S6EC1PAokq3xRA",
-        "source": "wikidata"
-      }
-    },
-    "PA841813": {
-      "bluesky": {
-        "handle": "fleautey.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA796090": {
-      "bluesky": {
-        "handle": "aymeric-caron.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA793948": {
-      "bluesky": {
-        "handle": "nicolas-thierry.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA795228": {
-      "bluesky": {
-        "handle": "nadege-abomangoli.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA841919": {
-      "bluesky": {
-        "handle": "dieynadiop.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA841657": {
-      "bluesky": {
-        "handle": "anaisbelouassa.bsky.social",
-        "source": "wikidata"
-      },
-      "youtube": {
-        "channelId": "UCmDVsbbyjudgh-bPZmQ8zyw",
+        "handle": "iordanoff.bsky.social",
         "source": "wikidata"
       }
     },
@@ -470,6 +492,80 @@
         "source": "wikidata"
       }
     },
+    "PA796090": {
+      "bluesky": {
+        "handle": "aymeric-caron.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA793948": {
+      "bluesky": {
+        "handle": "nicolas-thierry.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA795228": {
+      "bluesky": {
+        "handle": "nadege-abomangoli.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA841919": {
+      "bluesky": {
+        "handle": "dieynadiop.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA841657": {
+      "bluesky": {
+        "handle": "anaisbelouassa.bsky.social",
+        "source": "wikidata"
+      },
+      "youtube": {
+        "channelId": "UCmDVsbbyjudgh-bPZmQ8zyw",
+        "source": "wikidata"
+      }
+    },
+    "PA330240": {
+      "bluesky": {
+        "handle": "ericciotti.bsky.social",
+        "source": "wikidata"
+      },
+      "youtube": {
+        "channelId": "UCyHieXWJ4oewUR3ZTHdyzDw",
+        "source": "wikidata"
+      }
+    },
+    "PA606545": {
+      "bluesky": {
+        "handle": "jeanlouisroumegas.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA719930": {
+      "bluesky": {
+        "handle": "borisvallaud.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA841701": {
+      "bluesky": {
+        "handle": "leabalage.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA795808": {
+      "bluesky": {
+        "handle": "sabrinasebaihi.bsky.social",
+        "source": "wikidata"
+      }
+    },
+    "PA841507": {
+      "bluesky": {
+        "handle": "nicolasbonnet.fr",
+        "source": "wikidata"
+      }
+    },
     "PA842271": {
       "youtube": {
         "channelId": "UCj0m90LI5VSDrxLdIEP3iNQ",
@@ -551,105 +647,9 @@
         "channelId": "UC8E80FjYV1x54K14x4ZMuWA",
         "source": "wikidata"
       }
-    },
-    "PA720614": {
-      "youtube": {
-        "channelId": "UCU3z3px1_RCqYBwrs8LJVWg",
-        "source": "wikidata"
-      }
-    },
-    "PA721202": {
-      "bluesky": {
-        "handle": "ericcoquerel.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA717379": {
-      "bluesky": {
-        "handle": "sylvain-maillard.bsky.social",
-        "source": "wikidata"
-      },
-      "youtube": {
-        "channelId": "UC4Ds3UCi1pAUFEPss9NH28Q",
-        "source": "wikidata"
-      }
-    },
-    "PA794146": {
-      "bluesky": {
-        "handle": "julielaernoes.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA719968": {
-      "youtube": {
-        "channelId": "UCj38R6P1VoHBt63h4AtIXnQ",
-        "source": "wikidata"
-      }
-    },
-    "PA841713": {
-      "bluesky": {
-        "handle": "boristavernier.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA330240": {
-      "bluesky": {
-        "handle": "ericciotti.bsky.social",
-        "source": "wikidata"
-      },
-      "youtube": {
-        "channelId": "UCyHieXWJ4oewUR3ZTHdyzDw",
-        "source": "wikidata"
-      }
-    },
-    "PA606545": {
-      "bluesky": {
-        "handle": "jeanlouisroumegas.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA719930": {
-      "bluesky": {
-        "handle": "borisvallaud.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA841701": {
-      "bluesky": {
-        "handle": "leabalage.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA795808": {
-      "bluesky": {
-        "handle": "sabrinasebaihi.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA841507": {
-      "bluesky": {
-        "handle": "nicolasbonnet.fr",
-        "source": "wikidata"
-      }
-    },
-    "PA606793": {
-      "bluesky": {
-        "handle": "laurentbaumel.bsky.social",
-        "source": "wikidata"
-      }
-    },
-    "PA841515": {
-      "bluesky": {
-        "handle": "aurelienlecoq.bsky.social",
-        "source": "wikidata"
-      },
-      "youtube": {
-        "channelId": "UCKB_K3phNlVxVEKIOUKnhVw",
-        "source": "wikidata"
-      }
     }
   },
-  "wikidataAt": "2026-11-24T18:16:47.757Z",
+  "wikidataAt": "2026-11-26T00:39:35.757Z",
   "youtubeIds": {
     "https://www.youtube.com/@abomangoli": "UClvV_Ga3QUnyE8O1kPKhrnQ",
     "https://www.youtube.com/@AllegretPilot": "UCD1VaKCimaPWE38QP_71VNg",
