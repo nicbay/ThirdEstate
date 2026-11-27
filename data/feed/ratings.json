@@ -1,49 +1,5 @@
 {
   "ratings": {
-    "bsky:at://did:plc:fakceyj3l3pen4wtnjhgudd3/app.bsky.feed.post/3n25nof72um2m": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-12T23:52:45.945Z",
-      "storyItems": [
-        "0a97a996808a"
-      ],
-      "storyTitle": "11 novembre : derrière la cérémonie commémorative imposée par le ministre de l’Éducation, une tentative d’embrigadement de la jeunesse",
-      "political": true,
-      "lean": {
-        "score": -0.5,
-        "rationale_fr": "Appel à agir pour la paix et critique implicite de la guerre ; position pacifiste proche de la gauche écologiste/sociale-démocrate.",
-        "rationale_en": "Calls for acting for peace and implicitly criticizes war; pacifist stance close to left-wing social-democratic positions."
-      },
-      "populism": {
-        "score": 0,
-        "markers": [],
-        "rationale_fr": "Aucune rhétorique populiste : pas d'opposition peuple/élites ni d'attaque d'adversaires.",
-        "rationale_en": "No populist rhetoric: no people-versus-elites framing or attack on opponents."
-      },
-      "check": null,
-      "postTime": "2026-11-12T23:45:39.400Z"
-    },
-    "bsky:at://did:plc:e3tbauupqe4xf7qrnyv7rlkt/app.bsky.feed.post/3n25ddjh4w32r": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-12T23:52:45.945Z",
-      "storyItems": [],
-      "storyTitle": null,
-      "political": false,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Message promotionnel sur la sortie d'un livre et une tournée, sans contenu idéologique.",
-        "rationale_en": "Promotional message about a book release and tour, with no ideological content."
-      },
-      "populism": {
-        "score": 0.1,
-        "markers": [],
-        "rationale_fr": "Slogan « remettre le pays debout » sans rhétorique populiste marquée.",
-        "rationale_en": "Slogan 'get the country back on its feet' without marked populist rhetoric."
-      },
-      "check": null,
-      "postTime": "2026-11-12T20:40:37.563Z"
-    },
     "masto:https://mastodon.social/users/_EvaSas/statuses/117610114396476103": {
       "model": "claude-haiku-5-5",
       "promptVersion": "feed-rating-v2",
@@ -18270,6 +18226,156 @@
       },
       "check": null,
       "postTime": "2026-11-25T00:30:37.000Z"
+    },
+    "yt:xtEnym8QfZI": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-27T03:16:31.484Z",
+      "storyItems": [
+        "c3df39852545",
+        "e3c1533aa87e",
+        "fdc243c10b6a"
+      ],
+      "storyTitle": "Présidentielle 2027 : Marine Le Pen courtise les PME avec un nouveau projet de réforme fiscale",
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Propose de baisser l'impôt sur les sociétés pour les petites entreprises et met en avant l'emploi, un positionnement de droite libérale.",
+        "rationale_en": "Proposes cutting corporate tax for small firms and stresses job creation, a center-right liberal position."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Argumentation chiffrée et sans opposition au peuple contre les élites.",
+        "rationale_en": "Numbers-based argument with no people-versus-elites framing."
+      },
+      "check": null,
+      "postTime": "2026-11-27T01:30:34.000Z"
+    },
+    "yt:AuwCeRCsqwc": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-27T03:16:31.484Z",
+      "storyItems": [
+        "e77f89da5a4a"
+      ],
+      "storyTitle": "Lycées bloqués : enquête sur la « génération mortier »",
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Défend un cadre scolaire strict et l'idée que le lycée ne doit pas servir au débat politique, position conservatrice.",
+        "rationale_en": "Defends a strict school framework and says high schools should not host political debate, a conservative stance."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [],
+        "rationale_fr": "Critique du laxisme institutionnel sans opposition explicite au peuple ou aux élites.",
+        "rationale_en": "Criticizes institutional laxity without explicit people-versus-elites opposition."
+      },
+      "check": null,
+      "postTime": "2026-11-27T00:30:38.000Z"
+    },
+    "yt:-p7snvITED8": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-27T03:16:31.484Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.4,
+        "rationale_fr": "Conditionne une aide publique au respect de la loi et évoque des mesures de pouvoir d'achat, orientation de droite.",
+        "rationale_en": "Conditions public aid on respect for the law and proposes purchasing-power measures, a right-leaning orientation."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Proposition concrète sans rhétorique populiste marquée.",
+        "rationale_en": "Concrete proposal without marked populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-26T21:30:36.000Z"
+    },
+    "bsky:at://did:plc:i27lvonqvridxzfgstsqw6p2/app.bsky.feed.post/3n3aiwea2mc2k": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-27T03:16:31.485Z",
+      "storyItems": [
+        "012104e12782"
+      ],
+      "storyTitle": "Présidentielle 2027 : la lutte contre la fraude sociale et fiscale, cette promesse d’argent facile qui se heurte à la réalité",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Reproche à la droite de cibler la fraude au RSA plutôt que la fraude fiscale, critique de gauche sociale.",
+        "rationale_en": "Faults the right for targeting RSA fraud rather than tax fraud, a social-democratic left critique."
+      },
+      "populism": {
+        "score": 0.2,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Ton ironique (« Devinez qui ») qui mobilise l'indignation plutôt que l'argumentation.",
+        "rationale_en": "Ironic tone (\"Guess who\") that appeals to indignation rather than argument."
+      },
+      "check": {
+        "claim": "La fraude fiscale coûte au moins 80 milliards d'euros par an et la fraude au RSA 1,5 milliard.",
+        "why_fr": "Ces montants sont des estimations qui varient selon les sources ; le chiffre pour le RSA semble plus élevé que certaines évaluations officielles, et la méthode de calcul n'est pas précisée.",
+        "why_en": "These amounts are estimates that vary by source; the RSA figure appears higher than some official assessments, and the calculation method is not specified.",
+        "sources": [
+          {
+            "title": "Vie publique, rubrique fiscalité et protection sociale",
+            "url": "https://www.vie-publique.fr/"
+          },
+          {
+            "title": "Cour des comptes",
+            "url": "https://www.ccomptes.fr/"
+          }
+        ]
+      },
+      "postTime": "2026-11-26T20:23:49.180Z"
+    },
+    "bsky:at://did:plc:m5u2srpgzpqqo2x3k6uwi5ng/app.bsky.feed.post/3n37y2444jk2n": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-27T03:16:31.485Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "S'oppose au démantèlement d'un secteur psychiatrique public, position de défense des services publics de gauche.",
+        "rationale_en": "Opposes dismantling a public psychiatric sector, a left-leaning defense of public services."
+      },
+      "populism": {
+        "score": 0,
+        "markers": [],
+        "rationale_fr": "Message de mobilisation syndicale sans rhétorique populiste.",
+        "rationale_en": "Union-mobilization message with no populist rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-26T15:21:41.266Z"
+    },
+    "yt:UiNR34tYKi0": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-27T03:16:31.485Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": null,
+        "rationale_fr": "Plaide pour une réglementation des armes autonomes sans position relevant clairement de l'axe gauche-droite.",
+        "rationale_en": "Calls for regulating autonomous weapons without a position clearly on the left-right axis."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Argumentation éthique sans opposition au peuple ni appel à l'émotion dominant.",
+        "rationale_en": "Ethical argument with no people-versus-elites framing or dominant emotional appeal."
+      },
+      "check": null,
+      "postTime": "2026-11-26T14:18:21.000Z"
     }
   },
   "failures": {
