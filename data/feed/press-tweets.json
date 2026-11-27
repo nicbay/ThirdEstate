@@ -1,1131 +1,5 @@
 {
   "articles": {
-    "8f43ad932068": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "eaf86049f6bd": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "7f69d79a578d": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "ok",
-      "tweets": [
-        {
-          "id": "2123220522284572944",
-          "handle": "FoxNews",
-          "name": null,
-          "text": null,
-          "dateText": null,
-          "via": "blockquote",
-          "url": "https://x.com/FoxNews/status/2123220522284572944",
-          "time": "2026-11-19T01:03:14.699Z"
-        }
-      ]
-    },
-    "8248428e4649": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "3a7a95aff42f": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "b0e3085011e7": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "f3590a4e04b3": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "9797c6dbf7be": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "fe88c1aa1348": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "53816efb3a33": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "b1e2bbc0d067": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "f52c4a561537": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "70f2522e80fd": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "d6b797f02ba7": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "db6b6b96134b": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "b1e603a70a65": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "f8b283c85e92": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "6e4889d571ce": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "9f1f0a8f0ac7": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "7380c0fe7ac9": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "fdd8ae431741": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "74187e2cdcd4": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "c204e342232d": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "aa71d6ccf3fb": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "f9966851446a": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "a882e2719f8d": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "a1f197a48a8b": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "570f051511ff": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "730e5a646ac2": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "6c740b43abb4": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "c8f8181a3820": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "479521954eb0": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "73a892ca5f65": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "73a69d162e4e": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "b844a64ab16e": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "45188955edd4": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "cb1d4f250c8d": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "c84bfbb9602d": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "8762580d9657": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": [
-        {
-          "id": "2123404027794723101",
-          "handle": "JeromeGuedj",
-          "name": null,
-          "text": null,
-          "dateText": null,
-          "via": "blockquote",
-          "url": "https://x.com/JeromeGuedj/status/2123404027794723101",
-          "time": "2026-11-19T13:12:25.822Z"
-        },
-        {
-          "id": "2123157785621790813",
-          "handle": "mbompard",
-          "name": null,
-          "text": null,
-          "dateText": null,
-          "via": "blockquote",
-          "url": "https://x.com/mbompard/status/2123157785621790813",
-          "time": "2026-11-18T20:53:57.113Z"
-        }
-      ]
-    },
-    "a848bd09a04c": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "bfb30bd5924e": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "986eebe66f9d": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "4590357e7832": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "64560675fa7a": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "609a43f213bb": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "47fb8f314263": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "b21577ca1d27": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "ed29c01c4ea5": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "d6540b325767": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "0a98eeb83d36": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "2c6433ea8558": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "d9cc823c761d": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "37977ddefe42": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "d5af107a9b35": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "bc87ea18155a": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "8f5cf85877f4": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "f419dcc6fc1c": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "9ccbea17ed37": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "99d60a2cdf29": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "8dd5f1bccc71": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "42fba67c64dd": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "c5c7a1b7591e": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "2c046a73d438": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "5f79e3924efb": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "08ebe7e24d9e": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": [
-        {
-          "id": "2123158583667990960",
-          "handle": "TonyPittaro",
-          "name": null,
-          "text": "🚨𝗝𝗘𝗔𝗡-𝗙𝗥𝗔𝗡𝗖̧𝗢𝗜𝗦 𝗖𝗢𝗣𝗘́ – « Il faut que l’école de la République enseigne l’arabe ! »\n👆 « C’est dingue que nos jeunes français d’origine immigrée ne parlent pas un mot d’arabe ! » https://t.co/KpUqiD74HO\n— Tony Pittaro (@TonyPittaro) November 18, 2026",
-          "dateText": null,
-          "via": "blockquote",
-          "url": "https://x.com/TonyPittaro/status/2123158583667990960",
-          "time": "2026-11-18T20:57:07.382Z"
-        }
-      ]
-    },
-    "8c6302ae31db": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "241f5742d801": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "d8dafd1b83c9": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "3c3051617daf": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "90c7b6b274d7": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "8b76f9912aa9": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "b9a0d2fa3273": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "1e42f963390c": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "b951fe638dae": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "cb22f7531ce6": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": [
-        {
-          "id": "2102780539216523415",
-          "handle": "StephaneJavet",
-          "name": null,
-          "text": null,
-          "dateText": null,
-          "via": "blockquote",
-          "url": "https://x.com/StephaneJavet/status/2102780539216523415",
-          "time": "2026-09-23T15:22:02.979Z"
-        }
-      ]
-    },
-    "76fa812baa05": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "2f2caee18117": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": [
-        {
-          "id": "2123362907970732172",
-          "handle": "FranceOlympique",
-          "name": "FranceOlympique",
-          "text": "[#ClubFrance] Une nouvelle étape majeure vient d’être franchie dans la préparation du Club France des Jeux Olympiques de Los Angeles 2028. 🇫🇷 Ce mercredi, le Club France a été présenté à la presse sur le site qui accueillera le Club France : l’Annenberg Community Beach House, à Santa Monica. Ouvert par Caroline Torosis, maire de Santa Monica, ce temps de présentation a permis à Amélie Oudéa-Castéra, présidente du CNOSF, de dévoiler l’ambition du Club France : faire vivre les Jeux au plus près du public, avec la diffusion en direct des épreuves, la célébration des athlètes français et de nombreuses animations sportives pour toutes et tous. Le Club France sera bien plus qu'un lieu de célébration. Il sera aussi un espace de rencontres, de partage et de connexions entre athlètes, coachs, médias, partenaires et acteurs du mouvement sportif français et international. Le tout dans une atmosphère résolument française, ouverte sur le monde ! À cette occasion, Frédérick Fisher, architecte de l’Annenberg Community Beach House, a évoqué l’histoire du site, tandis que Nicolas Batum, double vice-champion olympique de basket, a partagé son lien avec les Jeux et le Club France. 📍 Rendez-vous le 14 juillet 2028 à Santa Monica pour faire vibrer la France au rythme des Jeux !",
-          "dateText": "November 19, 2026",
-          "via": "blockquote",
-          "url": "https://x.com/FranceOlympique/status/2123362907970732172",
-          "time": "2026-11-19T10:29:02.092Z"
-        }
-      ]
-    },
-    "959081108e80": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": [
-        {
-          "id": "2123332064539726009",
-          "handle": null,
-          "name": null,
-          "text": null,
-          "dateText": null,
-          "via": "iframe",
-          "url": "https://x.com/i/status/2123332064539726009",
-          "time": "2026-11-19T08:26:28.445Z"
-        }
-      ]
-    },
-    "c8551e5f0652": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "ebdfd97cba16": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "c0d23172bc49": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "ae665f6b56f6": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "6fc258cb2b21": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "2758348be12e": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "b205fa29ab50": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "96a75f406f1c": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "02a59040b8f9": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "0e9997af8728": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "aafaef9e2142": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "7c8bfccd0a49": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "65b475e5432b": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "0f4abfa9dc6b": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": [
-        {
-          "id": "2123166540652486886",
-          "handle": "PaulVannierFI",
-          "name": null,
-          "text": null,
-          "dateText": null,
-          "via": "link",
-          "url": "https://x.com/PaulVannierFI/status/2123166540652486886",
-          "time": "2026-11-18T21:28:44.475Z"
-        },
-        {
-          "id": "2123202218270535937",
-          "handle": "Benjam1Lucas",
-          "name": null,
-          "text": null,
-          "dateText": null,
-          "via": "link",
-          "url": "https://x.com/Benjam1Lucas/status/2123202218270535937",
-          "time": "2026-11-18T23:50:30.682Z"
-        },
-        {
-          "id": "2123172074957238475",
-          "handle": "Aurelientache",
-          "name": null,
-          "text": null,
-          "dateText": null,
-          "via": "link",
-          "url": "https://x.com/Aurelientache/status/2123172074957238475",
-          "time": "2026-11-18T21:50:43.956Z"
-        },
-        {
-          "id": "2123171149550875129",
-          "handle": "BFMTV",
-          "name": null,
-          "text": null,
-          "dateText": null,
-          "via": "link",
-          "url": "https://x.com/BFMTV/status/2123171149550875129",
-          "time": "2026-11-18T21:47:03.322Z"
-        }
-      ]
-    },
-    "94021fd70aa2": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": [
-        {
-          "id": "2123340162038190324",
-          "handle": "ZemmourEric",
-          "name": "Eric Zemmour",
-          "text": "Jean-Mohamed Copé a encore une idée révolutionnaire pour la France ! https://t.co/zJyz2KnDFr",
-          "dateText": "November 19, 2026",
-          "via": "blockquote",
-          "url": "https://x.com/ZemmourEric/status/2123340162038190324",
-          "time": "2026-11-19T08:58:39.039Z"
-        }
-      ]
-    },
-    "d8c2f45b7caf": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "4460df1d8d70": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "5dbf4b4fef03": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "e48994c2c6be": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "1b39607a87e9": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "cadae94889af": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "2060f0cd64db": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "e804b8a170cc": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "0e55b150fa77": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "4e0d3e7099d0": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "b6d49717e049": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "0c67588cd35c": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "9a1144a4483d": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "6edeeeb38924": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "a0d6b549e221": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "c0e6ba00163e": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "1e5daf97df03": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "71fe1572b1d2": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "b2459fc1b574": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "ffb197ed6ee1": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "86996e7002e1": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "fc6092c45ddf": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "f1521c592e62": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "baae50f72663": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": [
-        {
-          "id": "2123282786299895871",
-          "handle": "VigiMeteoFrance",
-          "name": "VigiMétéoFrance",
-          "text": "Jeudi 19 Novembre : 🟠🌧️ 4 départements en vigilance orange Vendredi 20 Novembre : 🟠 🌧️4 départements en vigilance orange Restez informés : ▶️https://t.co/JGz4rTV3xn https://t.co/iTpSgo4mBu",
-          "dateText": "November 19, 2026",
-          "via": "blockquote",
-          "url": "https://x.com/VigiMeteoFrance/status/2123282786299895871",
-          "time": "2026-11-19T05:10:39.597Z"
-        }
-      ]
-    },
-    "f57dc63317a5": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "ba50cb1495ba": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "3d5dbeb921d7": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "a62e8d53dfc2": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "c6629cd42408": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "4b882ec8dd2e": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "fe9a13948737": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "8efd6d6ddf4c": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "20b16ea715eb": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": [
-        {
-          "id": "2123332064539726009",
-          "handle": "franceinfo",
-          "name": "franceinfo",
-          "text": "🔴 M. Tondelier se dit \"prête\" à travailler avec J-L. Mélenchon ➡️ \"Elle a choisi de tourner le dos à la tradition écologiste, qui est une tradition profondément pro-européenne et viscéralement attachée à la démocratie\", dit Raphaël Glucksmann, candidat à la présidentielle.",
-          "dateText": "November 19, 2026",
-          "via": "blockquote",
-          "url": "https://x.com/franceinfo/status/2123332064539726009",
-          "time": "2026-11-19T08:26:28.445Z"
-        }
-      ]
-    },
-    "34bc24d17514": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "cdae36dcc99f": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "42531f15d877": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "0a69cdc65905": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "786adcc00ccc": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "ccdaf0407abf": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "76b9475ccd41": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "f20b0508a293": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "e6578b12ee9e": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "5634bb2b2972": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "9ce97a0a5a99": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": [
-        {
-          "id": "2123103391509258672",
-          "handle": "JLMelenchon",
-          "name": null,
-          "text": null,
-          "dateText": null,
-          "via": "blockquote",
-          "url": "https://x.com/JLMelenchon/status/2123103391509258672",
-          "time": "2026-11-18T17:17:48.546Z"
-        }
-      ]
-    },
-    "0ac4b5fa7e02": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "79894cc3436c": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "abaad89d025d": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "c4e18547c33a": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "01329f9742f5": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "c9779ac5811a": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "70323f1afe36": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "2897f970777c": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "9b9e5922a256": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "2a965b86751b": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "b28d6da7df7d": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "b4dc439f25f0": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "6025713dc7aa": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "e54f701d2456": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "478d6601be96": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "46bf1c236e02": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "daed7b150631": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "3444db4e33a8": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "2aa60c20ecee": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "HTTP 403",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "9f7b39f5cf7b": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "407453666313": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "35d72835e401": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "b7d063b8807d": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "883a896be878": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "e92aa31f0de5": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "0cae7f40f5c5": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "352d6aae2fbf": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "f0d658423bae": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "2b79590b9c4b": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "blocked (bot challenge)",
-      "permanent": true,
-      "tries": 1,
-      "tweets": []
-    },
-    "3658016c1913": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "66d0dba5b6d6": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
-    "8d03399b8b16": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "status": "ok",
-      "tweets": []
-    },
     "3cb266de33e6": {
       "at": "2026-11-19T22:25:57.944Z",
       "status": "HTTP 403",
@@ -17354,57 +16228,1207 @@
       "at": "2026-11-27T03:15:53.232Z",
       "status": "ok",
       "tweets": []
+    },
+    "af6d815cb4cd": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "f0ce14c72129": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "110ec1f69227": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "ff8ceb00c33c": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "9b05ccbae7d8": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "804cb2b81973": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2126214821817225480",
+          "handle": "SkySportsNews",
+          "name": "Sky Sports News",
+          "text": "Paris Fury has retracted her claim that husband Tyson Fury was diagnosed with schizophrenia. Paris Fury made the comments about schizophrenia in an initial version of the documentary. Netflix said it has worked to \"update\" the footage in light of her clarification. https://t.co/Pvm5tbOBOT",
+          "dateText": "November 27, 2026",
+          "via": "blockquote",
+          "url": "https://x.com/SkySportsNews/status/2126214821817225480",
+          "time": "2026-11-27T07:21:31.339Z"
+        }
+      ]
+    },
+    "72611f198f6f": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "11c3f63537f6": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "88d19aa19467": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2126309108869402626",
+          "handle": "BFMTV",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "link",
+          "url": "https://x.com/BFMTV/status/2126309108869402626",
+          "time": "2026-11-27T13:36:11.124Z"
+        },
+        {
+          "id": "2126309596851576948",
+          "handle": "BFMTV",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "link",
+          "url": "https://x.com/BFMTV/status/2126309596851576948",
+          "time": "2026-11-27T13:38:07.468Z"
+        }
+      ]
+    },
+    "a04ec1ec2584": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "4e84c7780851": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "20b92fc9c13c": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "ad17bf11483f": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "28116ffdded6": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "a42b1ac05120": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "a820ccfa76c1": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "f49d6bf2e04a": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "4e3a40e0730b": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "8899b24bfc52": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "46fdb761f868": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "ff77fe9ba3b1": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "8bfc32d7c4fa": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "55fa5d77349f": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "6b40fcd82b6d": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "4c2971078b91": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "1229423e8ee7": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "a153fc647a26": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "23614dffba62": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "cd242aef4927": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "427c4e27c39f": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "ad060c5f91fd": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "37ab1b4d98be": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "d66903533d28": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "2f83b6225dd4": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "a5881edc0339": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "713a17ba4ac8": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "608a5ffe45d7": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "22aa75201107": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "995a60349551": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "f06d67b28418": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "564c8f322825": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "e4c81ea3cccb": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "e47a33172eef": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "30a579fcf970": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "4adf7136f5d0": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "12a5e11897fe": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "07752668445b": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "974821703093": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "a4e08a7a3ef6": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2125542839807340565",
+          "handle": "jevousposelaq",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/jevousposelaq/status/2125542839807340565",
+          "time": "2026-11-25T10:51:18.343Z"
+        },
+        {
+          "id": "2125191380804723171",
+          "handle": "lapres_fr",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "link",
+          "url": "https://x.com/lapres_fr/status/2125191380804723171",
+          "time": "2026-11-24T11:34:43.987Z"
+        },
+        {
+          "id": "2125488890546970788",
+          "handle": "RaquelGarridoFr",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "link",
+          "url": "https://x.com/RaquelGarridoFr/status/2125488890546970788",
+          "time": "2026-11-25T07:16:55.837Z"
+        },
+        {
+          "id": "2125973094149824766",
+          "handle": "RaquelGarridoFr",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "link",
+          "url": "https://x.com/RaquelGarridoFr/status/2125973094149824766",
+          "time": "2026-11-26T15:20:58.972Z"
+        },
+        {
+          "id": "2126020818060583039",
+          "handle": "lapres_fr",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "link",
+          "url": "https://x.com/lapres_fr/status/2126020818060583039",
+          "time": "2026-11-26T18:30:37.239Z"
+        },
+        {
+          "id": "2126240633396346914",
+          "handle": "alexiscorbiere",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "link",
+          "url": "https://x.com/alexiscorbiere/status/2126240633396346914",
+          "time": "2026-11-27T09:04:05.299Z"
+        },
+        {
+          "id": "2126208753217192189",
+          "handle": "alexiscorbiere",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "link",
+          "url": "https://x.com/alexiscorbiere/status/2126208753217192189",
+          "time": "2026-11-27T06:57:24.472Z"
+        }
+      ]
+    },
+    "efb7ac4a70e4": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "ff2f3765365f": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "60d0abe17c94": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "6fb1d89d3815": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "44b12a73bba8": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "ea4872268118": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2126106423264236009",
+          "handle": "FranceskAlbs",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "link",
+          "url": "https://x.com/FranceskAlbs/status/2126106423264236009",
+          "time": "2026-11-27T00:10:47.110Z"
+        },
+        {
+          "id": "2126180855047418254",
+          "handle": "dannydanon",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "link",
+          "url": "https://x.com/dannydanon/status/2126180855047418254",
+          "time": "2026-11-27T05:06:33.030Z"
+        },
+        {
+          "id": "2126273358547353960",
+          "handle": "UNHumanRights",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "link",
+          "url": "https://x.com/UNHumanRights/status/2126273358547353960",
+          "time": "2026-11-27T11:14:07.583Z"
+        }
+      ]
+    },
+    "8e4b97950773": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "9bc197311e2f": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "62fa703ca399": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "e14f3cb239de": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "c169a5563994": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "e6337d3ebdd0": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "68ad573b450d": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "5e04a3173318": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "2dc0d5ba594c": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "befe4c37fa2c": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "ba9b6576a470": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "1ca1429350fb": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "44b0e282978d": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "c3264234eefd": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "03b04aeed142": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2126012974456565851",
+          "handle": "Frontieresmedia",
+          "name": "Frontières",
+          "text": "🚨 ALERTE - Un SAPIN a terminé EN FEU ce jeudi en fin de manifestation à Paris.",
+          "dateText": "November 26, 2026",
+          "via": "blockquote",
+          "url": "https://x.com/Frontieresmedia/status/2126012974456565851",
+          "time": "2026-11-26T17:59:27.178Z"
+        }
+      ]
+    },
+    "142ae09228b7": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "ec5602f23d08": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "5e1f40a1244d": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "dc60ac83de37": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "f0f87dac8741": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "e13336c13a12": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "6d4f9144cc7d": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "8d6de6039f73": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "b1917045ebe0": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "9f6cf1902016": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "56be304d61bc": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2126270622661542060",
+          "handle": "FranceRugby",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/FranceRugby/status/2126270622661542060",
+          "time": "2026-11-27T11:03:15.297Z"
+        },
+        {
+          "id": "2125698430412476513",
+          "handle": "FranceRugby",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "blockquote",
+          "url": "https://x.com/FranceRugby/status/2125698430412476513",
+          "time": "2026-11-25T21:09:34.034Z"
+        }
+      ]
+    },
+    "a87061d7c626": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "80d745abf610": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "d33e10cd32f3": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "b00de965331a": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "3f49c62564b1": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "43ce1a255c2f": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "e9c156fc4c18": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "851e00175ebc": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "e980bf1b1122": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "d78e8785ea3e": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "951f051a7382": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "5d89f2d8076a": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "63821f9ac746": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "6f910010c5a1": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "a5e46d4dd848": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "6754c34150d9": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "ea4944494379": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "f4fa7578678f": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "45bc9ec49c63": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "40bff588e7db": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "055066d3febc": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "36bd47943366": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "3da21713ac31": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "bd237c6a8895": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "30078d136fc4": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "1468473656f8": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "3d7e1e599ed1": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "7a9100fdecb5": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "07309a691b44": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2126233561611096240",
+          "handle": "franceinfo",
+          "name": "franceinfo",
+          "text": "🔴 Affaire Bardella : de nouveaux éléments révélés ➡️ \"Qui peut être étonné qu'un parti qui a été fondé par des Waffen-SS et des antisémites soit présidé encore par un antisémite ? [...] Des erreurs de jeunesse, ça commence à en faire beaucoup du côté du RN\", dit Manon Aubry https://t.co/lzMcxoygLi",
+          "dateText": "November 27, 2026",
+          "via": "blockquote",
+          "url": "https://x.com/franceinfo/status/2126233561611096240",
+          "time": "2026-11-27T08:35:59.254Z"
+        }
+      ]
+    },
+    "2b0fae48c9e3": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "d23b6bf27613": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "6fc789e82994": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2126241164525486208",
+          "handle": "NBAFRANCE",
+          "name": "NBA France",
+          "text": "C'était Thanksgiving, pas de match, mais on te régale avec un menu spécial @Wemby 🍽️ 😋 Retrouve Victor et les @Spurs face aux @Lakers de Luka Doncic, cette nuit, à partir de 3H30 sur Prime Video (@PVSPortFR) 🏆 @Emirates NBA Cup, le 2nd face au 1er ! https://t.co/zX7LpkX3rj",
+          "dateText": "November 27, 2026",
+          "via": "blockquote",
+          "url": "https://x.com/NBAFRANCE/status/2126241164525486208",
+          "time": "2026-11-27T09:06:11.930Z"
+        }
+      ]
+    },
+    "ecce2370c0cc": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "cf6a6883ac55": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "e191bedf88d0": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "e57e9253ae0f": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "a7c50f6fcdd4": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2126222937258627536",
+          "handle": "telematin",
+          "name": "Telematin",
+          "text": "🗣️ \"Les 66,25 milliards dont la France dispose pour sa politique agricole doivent demeurer. Si nous n'obtenons pas satisfaction, la France n'approuvera pas le budget de l'UE.\" 🔴 @AnnieGenevard, ministre de l’Agriculture, rapporte que le président de la République n’exclut pas un blocage du budget de l’UE. #Les4Vérités",
+          "dateText": "November 27, 2026",
+          "via": "blockquote",
+          "url": "https://x.com/telematin/status/2126222937258627536",
+          "time": "2026-11-27T07:53:46.211Z"
+        }
+      ]
+    },
+    "aecf4e61a3cd": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "dfb41031c573": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "f0c4c542d387": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "edd79bf12b90": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "7fd2c6630f57": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "e0df16c96c23": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "04f1c277d394": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "c4044ebd8571": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2126017636072894844",
+          "handle": "Lbnn313",
+          "name": "Libanaistre ރ 🇱🇧🇮🇷🇾🇪🇵🇸",
+          "text": "Salut nazi en direct du stade vélodrome 👀 #OMLEVSKI https://t.co/xrIXLh3Y4Q",
+          "dateText": "November 26, 2026",
+          "via": "blockquote",
+          "url": "https://x.com/Lbnn313/status/2126017636072894844",
+          "time": "2026-11-26T18:17:58.594Z"
+        },
+        {
+          "id": "2126005198380576983",
+          "handle": "OMActu__",
+          "name": "OM Actu",
+          "text": "Un supporter bulgare qui fait un salut nazi en parcage... 🤮 #OMLEVSKI #TeamOM https://t.co/sLO4vEmNXq",
+          "dateText": "November 26, 2026",
+          "via": "blockquote",
+          "url": "https://x.com/OMActu__/status/2126005198380576983",
+          "time": "2026-11-26T17:28:33.217Z"
+        },
+        {
+          "id": "2126079148405727287",
+          "handle": "CanalplusFoot",
+          "name": "CANAL+ Foot",
+          "text": "De violentes échauffourées ont éclaté dans les tribunes du Vélodrome entre des \"supporters\" de Sofia et ceux de l'OM ce jeudi soir. #UEL https://t.co/OFNEqD9Mke",
+          "dateText": "November 26, 2026",
+          "via": "blockquote",
+          "url": "https://x.com/CanalplusFoot/status/2126079148405727287",
+          "time": "2026-11-26T22:22:24.277Z"
+        }
+      ]
+    },
+    "84821a3c47d9": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "35b9890a265d": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "10c517b365c9": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "a14d6403407f": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "0daf377e690a": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "3976eaadbcef": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "496f72cdcec1": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "57dcd3259a98": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "95e1ad156775": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "ba1ed5d934c7": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "de8ebb262e37": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "423eba7288df": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "bfcaa9197b62": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "132a3aee073c": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "00664fa9ddad": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "24d7305963e7": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "02f3f1534cb3": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "cfcbf99f23f7": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "b8da998612c1": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "d8b78970172f": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "bc3c99a02fd1": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "39f381454e7c": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "26b127385af0": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "58bf9c54b4c6": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "eccd17171d67": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "a33e18d5573d": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "043f5045f155": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "ebe1b43d0b3c": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "98eaffd0fc5b": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "341f9049579c": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "3f2380444e4b": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "828a28fb5d25": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "e1af13fd9319": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "9b81ac457710": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "3d834b65d90e": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2125702241797775456",
+          "handle": "alexiscorbiere",
+          "name": null,
+          "text": null,
+          "dateText": null,
+          "via": "link",
+          "url": "https://x.com/alexiscorbiere/status/2125702241797775456",
+          "time": "2026-11-25T21:24:42.739Z"
+        }
+      ]
+    },
+    "8c181d21d058": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": [
+        {
+          "id": "2126255124376866839",
+          "handle": "JLMelenchon",
+          "name": "Jean-Luc Mélenchon",
+          "text": "Les patrons du Medef et leur président, candidat fuyard de France, ont-ils toujours envie de rire maintenant que la France est entrée en récession, comme je le leur avais annoncé s'ils refusaient de relancer la consommation populaire par les salaires ? Sont-ils toujours aussi…",
+          "dateText": "November 27, 2026",
+          "via": "blockquote",
+          "url": "https://x.com/JLMelenchon/status/2126255124376866839",
+          "time": "2026-11-27T10:01:40.218Z"
+        },
+        {
+          "id": "2126219290441371754",
+          "handle": "RTLFrance",
+          "name": "RTL France",
+          "text": "#Presidentielle2027 : \"Que Monsieur Lisnard ne sache pas choisir entre Édouard Philippe et Marine Le Pen, c'est un problème extrêmement important, un problème immense\" @GDarmanin face à @FogielMarcO dans #RTLMatin",
+          "dateText": "November 27, 2026",
+          "via": "blockquote",
+          "url": "https://x.com/RTLFrance/status/2126219290441371754",
+          "time": "2026-11-27T07:39:16.742Z"
+        }
+      ]
+    },
+    "88f980ec9421": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "HTTP 403",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "05763ff19f9d": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
+    },
+    "f50855e8f643": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "blocked (bot challenge)",
+      "permanent": true,
+      "tries": 1,
+      "tweets": []
+    },
+    "6c406bbb131e": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "status": "ok",
+      "tweets": []
     }
   },
   "oembed": {
-    "2123220522284572944": {
-      "at": "2026-11-19T03:49:45.779Z",
-      "handle": "FoxNews",
-      "name": "Fox News",
-      "text": "TRUMP on Jensen Huang’s ousting: “Such a tragedy.” President Trump reacts to the former NVIDIA CEO’s departure during an interview with @JacquiHeinrich , calling him “a brilliant man.” “Some people can’t be replaced. He was ten years ahead,” Trump says, adding that he briefly…"
-    },
-    "2123332064539726009": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "handle": "franceinfo",
-      "name": "franceinfo",
-      "text": "🔴 M. Tondelier se dit \"prête\" à travailler avec J-L. Mélenchon ➡️ \"Elle a choisi de tourner le dos à la tradition écologiste, qui est une tradition profondément pro-européenne et viscéralement attachée à la démocratie\", dit Raphaël Glucksmann, candidat à la présidentielle."
-    },
-    "2123404027794723101": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "handle": "JeromeGuedj",
-      "name": "Jérôme Guedj",
-      "text": "En tournant le dos à la tradition écologiste, Marine Tondelier fait un choix politique qui interroge. Mais l’enjeu de 2027 dépasse les alliances de premier tour. La vraie question est celle du second : comment rassembler une majorité de Français suffisamment large pour faire…"
-    },
-    "2123157785621790813": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "handle": "mbompard",
-      "name": "Manuel Bompard",
-      "text": "Marine Tondelier a raison de souligner la dynamique de la campagne de Jean-Luc Mélenchon et de rappeler nos nombreuses convergences programmatiques. Elle se dit aujourd’hui prête à une coalition autour de Jean-Luc Mélenchon. C’est une bonne nouvelle qui renforce la possibilité… https://t.co/WlA3Y7znlt"
-    },
-    "2123202218270535937": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "handle": "Benjam1Lucas",
-      "name": "Benjamin LUCAS",
-      "text": "Ce soir se renforce la perspective d’une coalition pour faire gagner la gauche et l’écologie, autour de la candidature de @JLMelenchon . C’est une perspective enthousiasmante dans laquelle s’inscrit @GenerationsMvt depuis plusieurs semaines. Faisons-le ! https://t.co/5jBT9eA8Fc"
-    },
-    "2123171149550875129": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "handle": "BFMTV",
-      "name": "BFM",
-      "text": "Proposition de \"coalition autour de Jean-Luc Mélenchon\" formulée par Marine Tondelier: Jérôme Guedj, député \"Parti socialiste\" et porte-parole de Raphaël Glucksmann, dénonce \"des choix tactiques et parfois de tambouille\""
-    },
-    "2123172074957238475": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "handle": "Aurelientache",
-      "name": "Aurélien Taché",
-      "text": "Bravo ! Les écologistes n'ont jamais manqué a l'appel pour censurer les gouvernements d'Emmanuel Macron. Leurs votes démontrent qu'ils veulent une vraie rupture avec la politique actuelle et un rassemblement derrière la candidature de @JLMelenchon serait donc naturel. https://t.co/B3l5yMi5Jk"
-    },
-    "2123103391509258672": {
-      "at": "2026-11-19T13:52:07.510Z",
-      "handle": "JLMelenchon",
-      "name": "Jean-Luc Mélenchon",
-      "text": "Des policiers manifestent à 50 mètres de l'Elysée. Ils doivent être sévèrement punis. Surtout si avant ça ils ont fait de la fraude sociale avec des arrêts maladies bidons. https://t.co/UkMopNrZTv"
-    },
     "2123494548982706463": {
       "at": "2026-11-19T22:25:57.944Z",
       "handle": "BFMTV",
@@ -18160,6 +18184,102 @@
       "handle": "andrii_sybiha",
       "name": "Andrii Sybiha 🇺🇦",
       "text": "I had a call with Libyan Foreign Minister Al-Taher Al-Baour @Mofa_Libya following recent developments off the coast of Libya and in the port of Benghazi. First of all, I reaffirmed Ukraine's full support for Libya's sovereignty and territorial integrity, as well as for efforts…"
+    },
+    "2126309108869402626": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "handle": "BFMTV",
+      "name": "BFM",
+      "text": "Prisons: \"Il faut que les peines soient faites, on a un devoir de sécuriser la population qui vit à l'extérieur\", déclare Teddy Riner, candidat à la présidentielle"
+    },
+    "2123103391509258672": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "handle": "JLMelenchon",
+      "name": "Jean-Luc Mélenchon",
+      "text": "Des policiers manifestent à 50 mètres de l'Elysée. Ils doivent être sévèrement punis. Surtout si avant ça ils ont fait de la fraude sociale avec des arrêts maladies bidons. https://t.co/UkMopNrZTv"
+    },
+    "2126309596851576948": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "handle": "BFMTV",
+      "name": "BFM",
+      "text": "\"Je ne crois pas qu'il soit un homme politique\": Robert Ménard estime que Teddy Riner, candidat à la présidentielle, \"veut se mettre au service de ce pays\""
+    },
+    "2125191380804723171": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "handle": "lapres_fr",
+      "name": "L’APRÈS",
+      "text": "Pour l’unité de la gauche et des écologistes. L’APRÈS propose une rencontre bilatérale à La France insoumise afin d’échanger sur les conditions de réalisation et de réussite d’une éventuelle coalition autour de l’élection présidentielle de 2027. Notre objectif reste le même :…"
+    },
+    "2125488890546970788": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "handle": "RaquelGarridoFr",
+      "name": "Raquel Garrido",
+      "text": "Le dernier quinquennat Macron nous a appris qu’il ne suffit pas de gagner une présidentielle pour gouverner. Encore faut-il une majorité à l’Assemblée nationale. La gauche n’a que 192 circonscriptions aujourd’hui. Y a-t-il une stratégie en œuvre pour les garder ou nous… https://t.co/nBFaxJKKc0"
+    },
+    "2125542839807340565": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "handle": "jevousposelaq",
+      "name": "Je_vous_pose_la_question",
+      "text": "L'Après, on fait comme avant ? Autain, Garrido, Corbière : deux ans de critiques contre la France insoumise, puis un appel à voter Mélenchon. On oublie tout ? Abonnez-vous, commentez, partagez, likez. Sources à l'écran. #lapres #clementineautain #lfi #presidentielle2027 #gauche"
+    },
+    "2125973094149824766": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "handle": "RaquelGarridoFr",
+      "name": "Raquel Garrido",
+      "text": "Je ne ferais pas de pronostic. Mais je n'en fais aucunement une question personnelle ni une compétition. J'ai perdu déjà trois fois avec ce candidat. En attendant, l'extrême-droite se rapproche dangereusement du pouvoir. C'est le sujet, et non les obsessions (lesquelles ?) et…"
+    },
+    "2126020818060583039": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "handle": "lapres_fr",
+      "name": "L’APRÈS",
+      "text": "Alors que l’extrême droite est aux portes du pouvoir, rien ne peut justifier le refus de discuter entre forces de gauche. Pour gagner en 2027, nous avons la responsabilité collective de créer les conditions de l’unité la plus large, sans exception ni exclusive. L’APRÈS…"
+    },
+    "2126240633396346914": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "handle": "alexiscorbiere",
+      "name": "Alexis Corbière",
+      "text": "L’accord avec les Ecolos et Générations, qui ont dit pire, est possible , mais pas avec nous ? Respecte toi. Arrête de justifier l’injustifiable. Si on croit vraiment que la menace de l’extrême droite est sérieuse, on arrête le sectarisme. Sinon, on joue. Moi, je ne joue pas"
+    },
+    "2126208753217192189": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "handle": "alexiscorbiere",
+      "name": "Alexis Corbière",
+      "text": "Puéril. Rien de tout cela n’est écrit dans le communiqué. Nous avons été insulté, calomnié, traités de misérables et dégénérés, vendus au macronisme, racistes, etc.. mais face à l’extrême droite nous disons soyons collectivement responsables. Et vous pinaillez. Restons en là"
+    },
+    "2126106423264236009": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "handle": "FranceskAlbs",
+      "name": "Francesca Albanese, UN Special Rapporteur oPt",
+      "text": "Conoces la cara del imperio el día que le tocas los nervios o traspasas sus confines. (Saludos desde el aeropuerto de Costa Rica)."
+    },
+    "2126180855047418254": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "handle": "dannydanon",
+      "name": "Danny Danon 🇮🇱 דני דנון",
+      "text": "אני מברך את ממשלת קוסטה ריקה על החלטתה למנוע את כניסתה של ״דווחית״ האו״ם פרנצ׳סקה אלבנזה, למדינה. מי שמנצל את המנדט שניתן לו מטעם האו״ם כדי להפיץ תעמולה נתעבת, להעניק לגיטימציה לארגוני טרור, לחלל את זכרם של ששת מיליון היהודים שנרצחו בשואה ולהכפיש ללא הרף את ישראל ואת ארה״ב, צריך…"
+    },
+    "2126273358547353960": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "handle": "UNHumanRights",
+      "name": "UN Human Rights",
+      "text": "UN Human Rights Chief @volker_turk deeply concerned by denial of entry to Francesca Albanese, Special Rapporteur on the occupied Palestinian territory, at Costa Rica airport on claimed national security grounds. This is difficult to reconcile with Costa Rica’s longstanding…"
+    },
+    "2126270622661542060": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "handle": "FranceRugby",
+      "name": "France Rugby",
+      "text": "Mode finale activé ✅ Les 23 Bleus qui défendront notre maillot dimanche à Twickenham 🇫🇷🇿🇦 #XVdeFrance"
+    },
+    "2125698430412476513": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "handle": "FranceRugby",
+      "name": "France Rugby",
+      "text": "Le week-end est lancé 🇫🇷 #XVdeFrance"
+    },
+    "2125702241797775456": {
+      "at": "2026-11-27T14:17:58.596Z",
+      "handle": "alexiscorbiere",
+      "name": "Alexis Corbière",
+      "text": "Cessons les rancœurs, vengeances, faux procès, saisissons la gravité historique du moment, la hauteur du danger. Depuis toujours, par ex en 36, pour battre l’extrême droite et faire triompher la gauche et les écologistes, on rassemble. A bon entendeur https://t.co/tBOe2IHAio"
     }
   }
 }
