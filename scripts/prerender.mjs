@@ -153,7 +153,11 @@ page({
   title: "Third Estate — Élections et vie publique en France",
   h1: "Third Estate : les élections et la vie publique en France",
   desc: "Sondages et prévision de la présidentielle 2027, programmes des candidats, résultats de chaque élection depuis 1848, vos députés et sénateurs et leurs votes, la vie de votre commune. Sources publiques, méthode ouverte.",
-  sections: [["Rubriques", sectionLinks], ["Candidats à la présidentielle 2027", linkList(candidates.map((c) => [c.name, `/candidat/${c.slug}`, c.party?.fr]))]],
+  sections: [
+    ["Rubriques", sectionLinks],
+    ["Candidats à la présidentielle 2027", linkList(candidates.map((c) => [c.name, `/candidat/${c.slug}`, c.party?.fr]))],
+    ["Les plus grandes villes", linkList(departments.flatMap((d) => Object.values(d.communes ?? {})).filter((c) => c.type === "commune" && c.population?.value).sort((a, b) => b.population.value - a.population.value).slice(0, 40).map((c) => [c.name, `/ville/${c.code}`, c.department?.name]))],
+  ],
   ld: [
     { "@type": "WebSite", name: "Third Estate", url: ORIGIN + "/", inLanguage: ["fr", "en"], description: "Élections et vie publique en France : sondages, prévisions, résultats, élus, communes." },
     { "@type": "Organization", name: "Third Estate", url: ORIGIN + "/", logo: ORIGIN + "/favicon.svg", email: "contact@thirdestate.fr", contactPoint: { "@type": "ContactPoint", email: "contact@thirdestate.fr", contactType: "customer support", availableLanguage: ["fr", "en"] } },
@@ -246,7 +250,23 @@ for (const s of senateurs) {
     path: `/senateur/${s.id}`, title: `${name}, ${role.toLowerCase()} ${s.circonscription ? `(${s.circonscription})` : ""}`.trim(), h1: name,
     desc: `${name}, ${role.toLowerCase()} ${s.groupe?.abrev ?? ""} ${s.circonscription ? `(${s.circonscription})` : ""}. Ses votes au Sénat, ses interventions, sa commission.`.replace(/\s+/g, " "),
     trail: [["Accueil", "/"], ["Les sénateurs", "/senat"]],
-    sections: s.numDepartement ? [["Ailleurs", linkList([[`Les sénateurs du département (${s.circonscription ?? ""})`, `/senat/${s.numDepartement}`], [`Les communes du département`, `/explorer/${s.numDepartement}`]])]] : [],
+    sections: [
+      ["En bref", factList([
+        s.groupe?.libelle && ["Groupe", s.groupe.libelle],
+        s.circonscription && ["Département", s.circonscription],
+        s.commission?.libelle && ["Commission", `${s.commission.libelle}${s.commission.fonction && s.commission.fonction !== "Membre" ? ` (${s.commission.fonction.toLowerCase()})` : ""}`],
+        s.profession && ["Profession", s.profession],
+        s.naissance && ageOf(s.naissance) && ["Âge", `${ageOf(s.naissance)} ans`],
+        s.serie && ["Série", `${s.serie} (renouvellement par moitié tous les trois ans)`],
+        s.stats?.scrutins && ["Votes", `${nf(s.stats.pour ?? 0)} pour, ${nf(s.stats.contre ?? 0)} contre, ${nf(s.stats.abstention ?? 0)} abstentions, sur ${nf(s.stats.scrutins)} scrutins publics`],
+        s.stats?.participation != null && ["Participation aux scrutins", pct(s.stats.participation)],
+      ])],
+      ...(s.numDepartement ? [["Ailleurs", linkList([
+        [`Les sénateurs du département (${s.circonscription ?? ""})`, `/senat/${s.numDepartement}`],
+        [`Les communes du département`, `/explorer/${s.numDepartement}`],
+        ...deputes.filter((o) => o.numDepartement === s.numDepartement).slice(0, 8).map((o) => [`${o.prenom} ${o.nom}, ${fem(o) ? "députée" : "député"} ${o.groupe?.abrev ?? ""}`, `/depute/${o.id}`]),
+      ])]] : []),
+    ],
     ld: [{ "@type": "Person", name, givenName: s.prenom, familyName: s.nom, jobTitle: role, ...(s.groupe?.libelle ? { memberOf: { "@type": "Organization", name: s.groupe.libelle } } : {}), url: ORIGIN + `/senateur/${s.id}` }],
     group: "elus", priority: 0.6,
   });
@@ -268,6 +288,20 @@ for (const m of meps) {
     path: `/eurodepute/${m.id}`, title: `${name}, ${fem(m) ? "eurodéputée" : "eurodéputé"}`, h1: name,
     desc: `${name}, ${fem(m) ? "eurodéputée" : "eurodéputé"} ${m.parti?.libelle ? `(${m.parti.libelle})` : ""}, groupe ${m.groupe?.libelle ?? ""} au Parlement européen : ses votes et ses discours.`.replace(/\s+/g, " "),
     trail: [["Accueil", "/"], ["Les eurodéputés", "/europe"]],
+    sections: [
+      ["En bref", factList([
+        m.groupe?.libelle && ["Groupe au Parlement européen", m.groupe.libelle],
+        m.parti?.libelle && ["Parti", m.parti.libelle],
+        m.naissance && ageOf(m.naissance) && ["Âge", `${ageOf(m.naissance)} ans`],
+        m.mandats?.[0]?.[0] && ["Eurodéputé·e depuis le", frDate(m.mandats[0][0])],
+        m.stats?.cast && ["Votes", `${nf(m.stats.pour ?? 0)} pour, ${nf(m.stats.contre ?? 0)} contre, ${nf(m.stats.abstention ?? 0)} abstentions, sur ${nf(m.stats.eligible ?? m.stats.cast)} votes`],
+        m.stats?.participation != null && ["Participation", pct(m.stats.participation)],
+        m.stats?.group?.rate != null && ["Vote avec son groupe", pct(m.stats.group.rate)],
+        m.stats?.france?.rate != null && ["Vote avec la majorité des élus français", pct(m.stats.france.rate)],
+      ])],
+      ["Les autres eurodéputés de son groupe", linkList(meps.filter((o) => o.groupe?.abrev === m.groupe?.abrev && o.id !== m.id).map((o) => [`${o.prenom} ${o.nom}`, `/eurodepute/${o.id}`, o.parti?.libelle]))],
+    ],
+    ...(/^https:\/\/www\.europarl\.europa\.eu\//.test(m.photo ?? "") ? { image: m.photo } : {}),
     ld: [{ "@type": "Person", name, jobTitle: "Membre du Parlement européen", ...(m.groupe?.libelle ? { memberOf: { "@type": "Organization", name: m.groupe.libelle } } : {}), url: ORIGIN + `/eurodepute/${m.id}` }],
     group: "elus", priority: 0.5,
   });
@@ -326,7 +360,14 @@ for (const d of departments) {
     path: `/explorer/${depCode}`, title: `${depName} (${depCode}) : toutes les communes`,
     desc: `${depName} (${depCode}), ${nf(list.filter((c) => c.type === "commune").length)} communes : maire, député, résultats électoraux, sécurité, écoles, finances, prix de l’immobilier.`,
     trail: [["Accueil", "/"], ["Toutes les communes", "/explorer"]],
-    sections: [["Les communes", linkList([...list].sort((a, b) => a.name.localeCompare(b.name, "fr")).map((c) => [c.name, `/ville/${c.code}`, c.postcodes?.[0]]))]],
+    sections: [
+      ["Les plus grandes communes", linkList([...list].filter((c) => c.type === "commune" && c.population?.value).sort((a, b) => b.population.value - a.population.value).slice(0, 15).map((c) => [c.name, `/ville/${c.code}`, `${nf(c.population.value)} habitants`]))],
+      ["Les élus du département", linkList([
+        ...deputes.filter((m) => m.numDepartement === depCode).map((m) => [`${m.prenom} ${m.nom}, ${fem(m) ? "députée" : "député"} de la ${ord(m.numCirco)} circonscription`, `/depute/${m.id}`, m.groupe?.abrev]),
+        ...(senDeps.has(depCode) ? [[`Les sénateurs de ${depName}`, `/senat/${depCode}`]] : []),
+      ])],
+      ["Toutes les communes", linkList([...list].sort((a, b) => a.name.localeCompare(b.name, "fr")).map((c) => [c.name, `/ville/${c.code}`, c.postcodes?.[0]]))],
+    ],
     group: "communes", priority: 0.5,
   });
   const muni = tryJson(`municipal/${depCode}.json`)?.communes ?? {};
