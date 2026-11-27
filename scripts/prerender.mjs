@@ -117,7 +117,7 @@ const SECTIONS = [
   ["/resultats/bascules", "Cartes des bascules gauche-droite", "Où la France a glissé à gauche, où elle a glissé à droite, élection après élection.", 0.6],
   ["/chiffres", "La France en chiffres", "La dette publique en direct, l’emploi, les prix, le déficit : la France en chiffres, président par président.", 0.7],
   ["/sources", "Sources et méthode", "D’où viennent les données de Third Estate, et comment elles sont traitées.", 0.3],
-  ["/mentions-legales", "Mentions légales", "Mentions légales et données personnelles.", 0.1],
+  ["/mentions-legales", "Mentions légales et contact", "Mentions légales, données personnelles, et comment écrire à Third Estate (contact@thirdestate.fr) : signaler une erreur, demander une rectification, presse et recherche.", 0.3],
   ["/contributeurs", "Les contributeurs", "Les personnes qui ont contribué à Third Estate.", 0.2],
 ];
 const sectionLinks = linkList(SECTIONS.slice(0, 28).map(([p, t]) => [t, p]));
@@ -131,7 +131,7 @@ page({
   sections: [["Rubriques", sectionLinks], ["Candidats à la présidentielle 2027", linkList(candidates.map((c) => [c.name, `/candidat/${c.slug}`, c.party?.fr]))]],
   ld: [
     { "@type": "WebSite", name: "Third Estate", url: ORIGIN + "/", inLanguage: ["fr", "en"], description: "Élections et vie publique en France : sondages, prévisions, résultats, élus, communes." },
-    { "@type": "Organization", name: "Third Estate", url: ORIGIN + "/", logo: ORIGIN + "/favicon.svg" },
+    { "@type": "Organization", name: "Third Estate", url: ORIGIN + "/", logo: ORIGIN + "/favicon.svg", email: "contact@thirdestate.fr", contactPoint: { "@type": "ContactPoint", email: "contact@thirdestate.fr", contactType: "customer support", availableLanguage: ["fr", "en"] } },
   ],
   priority: 1,
 });

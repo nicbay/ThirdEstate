@@ -345,7 +345,7 @@ function renderChrome(path: string) {
         <summary>${pixelIcon(s.icon, 24)}<span><b>${L(s.fr, s.en)}</b><small>${esc(L(...s.blurb))}</small></span>${caret}</summary>
         <div class="ms-links">${groupsOf(s).map((g) => `${g.head ? `<p class="ms-group">${esc(L(...g.head))}</p>` : ""}${g.items.map(itemLink).join("")}`).join("")}${withCands(s) ? candLinks("ms-extra") : ""}</div>
       </details>`).join("")}</nav>
-    <footer class="ms-foot"><a href="#/">${L("Accueil", "Home")}</a><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/mentions-legales">${L("Mentions légales", "Legal notice")}</a><button type="button" data-ms="lang">${getLang() === "fr" ? "English" : "Français"}</button></footer>
+    <footer class="ms-foot"><a href="#/">${L("Accueil", "Home")}</a><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/mentions-legales">${L("Mentions légales", "Legal notice")}</a><a href="#/mentions-legales#contact">${L("Nous écrire", "Contact us")}</a><button type="button" data-ms="lang">${getLang() === "fr" ? "English" : "Français"}</button></footer>
   </div>`;
 
   const sub = document.getElementById("subnav")!;
@@ -373,7 +373,7 @@ function renderChrome(path: string) {
     <nav class="foot-map" aria-label="${L("Plan du site", "Site map")}">${SECTIONS.map((s) => `<div${isGrouped(s) ? ` class="foot-wide"` : ""}><a class="foot-h" href="${s.href}">${pixelIcon(s.icon, 12)}${L(s.fr, s.en)}</a>${isGrouped(s)
         ? `<div class="foot-cols">${groupsOf(s).map((g) => `<div>${g.head ? `<span class="foot-g">${esc(L(...g.head))}</span>` : ""}${g.items.map((c) => `<a href="${c.href}">${esc(L(c.fr, c.en))}</a>`).join("")}</div>`).join("")}</div>`
         : s.children.map((c) => `<a href="${c.href}">${esc(L(c.fr, c.en))}</a>`).join("")}</div>`).join("")}
-      <div><span class="foot-h">${L("Le site", "About")}</span><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/mentions-legales">${L("Mentions légales, vos données", "Legal notice, your data")}</a></div></nav>
+      <div><span class="foot-h">${L("Le site", "About")}</span><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/mentions-legales">${L("Mentions légales, vos données", "Legal notice, your data")}</a><a href="#/mentions-legales#contact">${L("Nous écrire", "Contact us")}</a><a href="mailto:contact@thirdestate.fr">contact@thirdestate.fr</a></div></nav>
     <p class="foot-legal">${L("Aucun cookie, aucune publicité, aucun suivi individuel.", "No cookies, no ads, no individual tracking.")} <a href="#/mentions-legales#cookies">${L("Pourquoi il n’y a pas de bandeau", "Why there is no banner")}</a></p>
   </div>`;
 }
