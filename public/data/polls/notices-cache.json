@@ -3826,6 +3826,30 @@
    "iv": true,
    "presidential": true,
    "legislative": true
+  },
+  "2424": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10400-pres-iv-vague-5-opinionway-26-novembre.pdf",
+   "fieldwork": [
+    "2026-11-25",
+    "2026-11-26"
+   ],
+   "samples": [
+    912,
+    1020,
+    4632,
+    500,
+    600,
+    7500,
+    632,
+    596,
+    482,
+    460,
+    513,
+    451
+   ],
+   "iv": true,
+   "presidential": true,
+   "legislative": true
   }
  },
  "lookups": {
@@ -3981,6 +4005,9 @@
   },
   "presidential|opinionway|2026-11-10|2026-11-12": {
    "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10371-pres-iv-opinionway-cnews-12-novembre.pdf"
+  },
+  "presidential|opinionway|2026-11-25|2026-11-26": {
+   "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10400-pres-iv-vague-5-opinionway-26-novembre.pdf"
   },
   "presidential|verian|2026-07-09|2026-07-10": {
    "url": "https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10225-pres-iv-1er-tour-verian-lhemicycle-10-juillet.pdf"
