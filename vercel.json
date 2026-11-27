@@ -86,7 +86,7 @@
   "rewrites": [
     {
       "source": "/((?!assets/|data/|docs/|fonts/|_vercel/|api/)[^.]*)",
-      "destination": "/app.html"
+      "destination": "/app"
     }
   ]
 }
