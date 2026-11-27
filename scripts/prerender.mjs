@@ -21,6 +21,12 @@ const esc = (s) => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").
 const clip = (s, n) => (s.length <= n ? s : s.slice(0, n - 1).replace(/\s+\S*$/, "") + "…");
 const nf = (n) => Math.round(n).toLocaleString("fr-FR").replace(/\u202f/g, " ");
 const ord = (n) => (n === 1 ? "1re" : `${n}e`);
+/** "Emmanuel GRÉGOIRE" → "Emmanuel Grégoire" (the registers write surnames in capitals) */
+const titleCase = (s) => String(s ?? "").replace(/(^|[\s\-’'])([A-ZÀ-Ý])([A-ZÀ-Ý]+)/gu, (_, p, a, b) => p + a + b.toLowerCase()).trim();
+/** "de" with French elision: "d’Emmanuel", "de Marine" */
+const de = (w) => (/^[aeiouyhàâéèêîôûAEIOUYHÀÂÉÈÊÎÔÛ]/.test(w) ? `d’${w}` : `de ${w}`);
+const MONTHS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+const frDate = (iso) => { const [y, m, d] = String(iso).split("-").map(Number); return y && m && d ? `${d === 1 ? "1er" : d} ${MONTHS[m - 1]} ${y}` : String(iso); };
 
 // the built shell, kept aside so the script can run again on the same dist/ (index.html becomes the homepage)
 const SHELL = ".cache/shell.html";
@@ -84,7 +90,26 @@ const depFiles = readdirSync(join(DATA, "communes-dep")).filter((f) => /^\w{2,3}
 const departments = depFiles.map((f) => json(`communes-dep/${f}`));
 const districtCodes = readdirSync(join(DATA, "districts")).filter((f) => /^\w{4,5}\.json$/.test(f)).map((f) => f.replace(".json", "")).sort();
 const mpByCirco = new Map(deputes.map((d) => [d.circo, d]));
+const RANK_N = tryJson("rankings/meta.json")?.n ?? {};
+const townsOfDistrict = new Map();
+for (const f of readdirSync(join(DATA, "communes-dep")).filter((x) => /^\w{2,3}\.json$/.test(x))) {
+  for (const c of Object.values(json(`communes-dep/${f}`).communes ?? {})) {
+    if (c.type !== "commune") continue;
+    for (const d of c.districts ?? []) townsOfDistrict.set(d.code, [...(townsOfDistrict.get(d.code) ?? []), [c, (c.population?.value ?? 0) * d.share]]);
+  }
+}
+const leg24 = tryJson("results/legislatives-2024-t1.json")?.circos ?? {};
+const NUANCE = { RN: "Rassemblement national", UG: "Union de la gauche (NFP)", ENS: "Ensemble", LR: "Les Républicains", UXD: "Union de l’extrême droite (LR-RN)", DVG: "Divers gauche", DVD: "Divers droite", DVC: "Divers centre", DIV: "Divers", DSV: "Droite souverainiste", ECO: "Écologistes", REC: "Reconquête", HOR: "Horizons", UDI: "UDI", EXG: "Extrême gauche", REG: "Régionalistes", EXD: "Extrême droite", RDG: "Radicaux de gauche", FI: "La France insoumise", SOC: "Parti socialiste", COM: "Parti communiste", VEC: "Les Écologistes" };
 const fem = (p) => p.civ === "Mme" || p.feminin === true;
+const factList = (rows) => `<dl class="facts">${rows.filter(Boolean).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl>`;
+const ageOf = (iso) => { const b = new Date(iso); if (isNaN(+b)) return null; const n = new Date(); return n.getFullYear() - b.getFullYear() - (n < new Date(n.getFullYear(), b.getMonth(), b.getDate()) ? 1 : 0); };
+const pct = (x) => `${String(Math.round(x * 1000) / 10).replace(".", ",")} %`;
+const leg24Html = (code) => {
+  const r = leg24[code];
+  if (!r?.c?.length) return null;
+  return `<p>Premier tour, 30 juin 2024 (${nf(r.e)} suffrages exprimés) :</p><ul>${r.c.slice(0, 6).map(([n, p, e]) => `<li>${esc(NUANCE[n] ?? n)} : ${String(p).replace(".", ",")} %${e === "E" ? " (élu dès le premier tour)" : ""}</li>`).join("")}</ul>`;
+};
+const AN_PHOTO = (id) => `https://www2.assemblee-nationale.fr/static/tribun/17/photos/carre/${String(id).slice(2).replace(/D/g, "")}.jpg`;
 
 // ---------------------------------------------------------------- sections
 const SECTIONS = [
@@ -171,12 +196,26 @@ for (const m of deputes) {
   page({
     path: `/depute/${m.id}`, title: `${name}, ${role.toLowerCase()}${m.departement ? ` (${m.departement}${m.numCirco ? `, ${ord(m.numCirco)} circonscription` : ""})` : ""}`, h1: name, desc,
     trail: [["Accueil", "/"], ["Les députés", "/assemblee"]],
-    sections: [["En bref", linkList([
-      [`Groupe : ${m.groupe?.libelle ?? "—"}`, "/assemblee/composition"],
-      ...(m.circo ? [[`Circonscription : ${m.departement ?? ""} ${ord(m.numCirco)}`, `/circo/${m.circo}`]] : []),
-      ...(m.numDepartement && m.numDepartement !== "99" ? [[`Les communes du département`, `/explorer/${m.numDepartement}`]] : []),
-    ])]],
-    ld: [{ "@type": "Person", name, givenName: m.prenom, familyName: m.nom, jobTitle: role, ...(m.profession ? { hasOccupation: { "@type": "Occupation", name: m.profession } } : {}), ...(m.groupe?.libelle ? { memberOf: { "@type": "Organization", name: m.groupe.libelle } } : {}), url: ORIGIN + `/depute/${m.id}`, ...(m.naissance ? { birthDate: m.naissance } : {}) }],
+    sections: [
+      ["En bref", factList([
+        ["Groupe", m.groupe?.libelle ?? "—"],
+        m.circo && ["Circonscription", `${m.departement ?? ""}, ${ord(m.numCirco)} circonscription`],
+        m.profession && ["Profession", m.profession],
+        m.naissance && ageOf(m.naissance) && ["Âge", `${ageOf(m.naissance)} ans`],
+        m.debutMandat && [`${role} depuis le`, frDate(m.debutMandat)],
+        m.stats?.scrutins && ["Votes", `${nf(m.stats.pour ?? 0)} pour, ${nf(m.stats.contre ?? 0)} contre, ${nf(m.stats.abstention ?? 0)} abstentions, sur ${nf(m.stats.scrutins)} scrutins publics`],
+        m.stats?.participation != null && ["Participation aux scrutins", pct(m.stats.participation)],
+      ])],
+      ...(m.circo && leg24Html(m.circo) ? [["Législatives 2024 dans sa circonscription", leg24Html(m.circo)]] : []),
+      ["Ailleurs", linkList([
+        ...(m.circo ? [[`La ${ord(m.numCirco)} circonscription ${m.departement ? `(${m.departement})` : ""} : communes et résultats`, `/circo/${m.circo}`]] : []),
+        ...(m.numDepartement && m.numDepartement !== "99" ? [[`Les communes du département`, `/explorer/${m.numDepartement}`], [`Les sénateurs du département`, `/senat/${m.numDepartement}`]] : []),
+        ...deputes.filter((o) => o.numDepartement === m.numDepartement && o.id !== m.id).slice(0, 8).map((o) => [`${o.prenom} ${o.nom}, ${fem(o) ? "députée" : "député"} ${o.groupe?.abrev ?? ""}`, `/depute/${o.id}`]),
+        ...(m.hatvp ? [["Sa déclaration d’intérêts (HATVP)", m.hatvp]] : []),
+      ])],
+    ],
+    image: AN_PHOTO(m.id),
+    ld: [{ "@type": "Person", name, givenName: m.prenom, familyName: m.nom, jobTitle: role, ...(m.profession ? { hasOccupation: { "@type": "Occupation", name: m.profession } } : {}), ...(m.groupe?.libelle ? { memberOf: { "@type": "Organization", name: m.groupe.libelle } } : {}), url: ORIGIN + `/depute/${m.id}`, image: AN_PHOTO(m.id), ...(m.naissance ? { birthDate: m.naissance } : {}) }],
     group: "elus", priority: 0.7,
   });
 }
@@ -189,7 +228,12 @@ for (const code of districtCodes) {
     path: `/circo/${code}`, title: `${dj.department?.name ? `${dj.department.name} : ` : ""}${dj.label ?? "circonscription"}, résultats et député`, h1: label,
     desc: `La ${dj.label ?? "circonscription"} ${dj.department?.name ? `(${dj.department.name})` : ""} : ${mp ? `son ${fem(mp) ? "députée" : "député"}, ${mp.prenom} ${mp.nom} (${mp.groupe?.abrev ?? ""}), ` : ""}les résultats des législatives 2024, ses communes, son profil.`.replace(/\s+/g, " "),
     trail: [["Accueil", "/"], ["Les députés", "/assemblee"]],
-    sections: mp ? [["Le député", linkList([[`${mp.prenom} ${mp.nom}`, `/depute/${mp.id}`, mp.groupe?.libelle]])]] : [],
+    sections: [
+      ...(mp ? [[fem(mp) ? "La députée" : "Le député", linkList([[`${mp.prenom} ${mp.nom}`, `/depute/${mp.id}`, mp.groupe?.libelle]])]] : []),
+      ...(leg24Html(code) ? [["Législatives 2024", leg24Html(code)]] : []),
+      ...(townsOfDistrict.get(code)?.length ? [["Ses communes", linkList(townsOfDistrict.get(code).sort((a, b) => b[1] - a[1]).slice(0, 60).map(([c]) => [c.name, `/ville/${c.code}`]))]] : []),
+    ],
+    ...(mp ? { image: AN_PHOTO(mp.id) } : {}),
     group: "elus", priority: 0.5,
   });
 }
@@ -237,8 +281,18 @@ for (const c of candidates) {
     path: `/candidat/${c.slug}`, title: `${c.name}, ${/\bcandidate\b/.test(c.role?.fr ?? "") ? "candidate" : "candidat"} à la présidentielle 2027`, h1: c.name,
     desc: `${c.name} (${c.party?.fr ?? ""}) : ${c.role?.fr ?? "candidat à la présidentielle 2027"}. Sondages, programme, parcours, patrimoine déclaré, mandats.`,
     trail: [["Accueil", "/"], ["Présidentielle 2027", "/2027"]],
-    sections: [["À lire", linkList([...(prog ? [[`Le programme de ${c.name}`, `/programmes/${c.slug}`]] : []), ["Les sondages de la présidentielle", "/sondages"], ["Le quiz : quel candidat vous ressemble ?", "/quiz"]])]],
-    ld: [{ "@type": "Person", name: c.name, ...(c.party?.fr ? { affiliation: { "@type": "Organization", name: c.party.fr } } : {}), ...(full?.born?.date ? { birthDate: full.born.date } : {}), ...(full?.wikidata ? { sameAs: [`https://www.wikidata.org/wiki/${full.wikidata}`] } : {}), url: ORIGIN + `/candidat/${c.slug}` }],
+    sections: [
+      ["En bref", factList([
+        c.party?.fr && ["Parti", c.party.fr],
+        c.role?.fr && ["Fonction", c.role.fr],
+        full?.born?.date && ["Naissance", `${frDate(full.born.date)}${full.born.place ? `, ${full.born.place}` : ""}${ageOf(full.born.date) ? ` (${ageOf(full.born.date)} ans)` : ""}`],
+      ])],
+      ...(full?.mandates?.length ? [["Mandats", `<ul>${full.mandates.slice(0, 12).map((x) => `<li>${esc(x.label?.fr ?? x.office ?? "")}${x.from ? ` (${x.from.slice(0, 4)}–${x.to ? x.to.slice(0, 4) : "en cours"})` : ""}</li>`).join("")}</ul>`]] : []),
+      ...(full?.candidacies?.length ? [["Candidatures passées", `<ul>${full.candidacies.slice(0, 12).map((x) => `<li>${esc(`${x.date?.slice(0, 4) ?? ""} · ${x.office?.fr ?? x.type ?? ""}${x.place ? `, ${x.place}` : ""}${x.pct != null ? ` : ${String(x.pct).replace(".", ",")} %` : ""}${x.elected ? " (élu·e)" : ""}`)}</li>`).join("")}</ul>`]] : []),
+      ["À lire", linkList([...(prog ? [[`Le programme de ${c.name}`, `/programmes/${c.slug}`]] : []), ["Les sondages de la présidentielle", "/sondages"], ["Le quiz : quel candidat vous ressemble ?", "/quiz"], ...candidates.filter((o) => o.slug !== c.slug).map((o) => [o.name, `/candidat/${o.slug}`, o.party?.fr])])],
+    ],
+    ...(/^https:\/\/(commons|upload)\.wikimedia\.org\//.test(c.photo ?? "") ? { image: c.photo } : {}),
+    ld: [{ "@type": "Person", name: c.name, ...(c.photo ? { image: c.photo } : {}), ...(c.party?.fr ? { affiliation: { "@type": "Organization", name: c.party.fr } } : {}), ...(full?.born?.date ? { birthDate: full.born.date } : {}), ...(full?.wikidata ? { sameAs: [`https://www.wikidata.org/wiki/${full.wikidata}`] } : {}), url: ORIGIN + `/candidat/${c.slug}` }],
     group: "pages", priority: 0.8,
   });
 }
@@ -275,22 +329,68 @@ for (const d of departments) {
     sections: [["Les communes", linkList([...list].sort((a, b) => a.name.localeCompare(b.name, "fr")).map((c) => [c.name, `/ville/${c.code}`, c.postcodes?.[0]]))]],
     group: "communes", priority: 0.5,
   });
+  const muni = tryJson(`municipal/${depCode}.json`)?.communes ?? {};
+  const ranks = tryJson(`rankings/ranks/${depCode}.json`) ?? {};
+  const located = list.filter((c) => c.centroid && c.type === "commune");
   for (const c of list) {
     const pop = c.population?.value;
-    const mayor = c.elected?.mayor?.status === "ok" ? c.elected.mayor.name : null;
+    const mayor = c.elected?.mayor?.status === "ok" ? titleCase(c.elected.mayor.name) : null;
     const mps = (c.districts ?? []).map((x) => mpByCirco.get(x.code)).filter(Boolean);
-    const cp = c.postcodes?.[0] ? ` (${c.postcodes[0]})` : "";
-    const bits = [mayor ? `maire : ${mayor.replace(/\b([A-ZÀ-Ý])([A-ZÀ-Ý'’-]+)/g, (_, a, b) => a + b.toLowerCase())}` : "", pop ? `${nf(pop)} habitants` : ""].filter(Boolean).join(", ");
+    const m26 = muni[c.code]?.y2026;
+    const win = m26?.winner;
+    const flat = c.property?.status === "ok" ? c.property.apartment?.medianPerM2 : null;
+    const house = c.property?.status === "ok" ? c.property.house?.medianPerM2 : null;
+    const bits = [mayor ? `maire : ${mayor}` : "", pop ? `${nf(pop)} habitants` : ""].filter(Boolean).join(", ");
+
+    // the town in figures: only what the data holds for this town, so every page says something of its own
+    const facts = [
+      ["Département", `${depName} (${depCode})`],
+      c.region?.name && ["Région", c.region.name],
+      pop && ["Population", `${nf(pop)} habitants${c.population.year ? ` (${c.population.year})` : ""}`],
+      c.postcodes?.length && ["Code postal", c.postcodes.slice(0, 6).join(", ") + (c.postcodes.length > 6 ? "…" : "")],
+      mayor && ["Maire", `${mayor}${c.elected.mayor.since ? `, depuis le ${frDate(c.elected.mayor.since)}` : ""}`],
+      c.elected?.council?.count && ["Conseil municipal", `${c.elected.council.count} élus`],
+      c.cantons?.length && ["Canton", c.cantons.map((x) => x.name).join(", ")],
+      flat && ["Prix des appartements", `${nf(flat)} €/m² (médiane ${c.property.year})`],
+      house && ["Prix des maisons", `${nf(house)} €/m² (médiane ${c.property.year})`],
+      c.broadband?.ftth?.status === "ok" && ["Fibre", `${String(c.broadband.ftth.share).replace(".", ",")} % des locaux raccordables`],
+      c.health?.gpAccess?.status === "ok" && ["Accès aux généralistes", `${String(c.health.gpAccess.value).replace(".", ",")} consultations par an et par habitant (France : ${String(c.health.gpAccess.national).replace(".", ",")})`],
+      c.assets?.monuments?.count && ["Monuments historiques", `${nf(c.assets.monuments.count)}`],
+    ].filter(Boolean);
+    const sections = [["La commune en bref", `<dl class="facts">${facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl>`]];
+
+    if (win) {
+      const r = m26.rounds?.[(m26.decidedRound ?? 1) - 1];
+      sections.push(["Municipales 2026", `<p>${esc(`Liste élue${m26.decidedRound === 2 ? " au second tour" : m26.decidedRound === 1 ? " dès le premier tour" : ""} : « ${win.label} », menée par ${titleCase(win.head?.name ?? "")}${win.pctExpressed != null ? `, ${String(win.pctExpressed).replace(".", ",")} % des suffrages exprimés` : ""}${win.seats ? `, ${win.seats} sièges sur ${muni[c.code].seats}` : ""}.${r?.turnoutPct != null ? ` Participation : ${String(r.turnoutPct).replace(".", ",")} %.` : ""}`)}</p>`]);
+    }
+    const crime = c.local?.crime?.status === "ok" ? c.local.crime.values : null;
+    if (crime) {
+      const row = (k, label, unit) => crime[k] ? `<li>${esc(label)} : ${esc(String(crime[k][1]).replace(".", ","))} ${unit}</li>` : "";
+      const items = row("burglary", "Cambriolages de logement", "pour 1 000 logements") + row("theftFromPersons", "Vols sans violence contre des personnes", "pour 1 000 habitants") + row("physicalViolenceOther", "Violences physiques hors famille", "pour 1 000 habitants") + row("criminalDamage", "Destructions et dégradations", "pour 1 000 habitants");
+      if (items) sections.push([`Sécurité (${c.local.crime.year})`, `<ul>${items}</ul><p>Faits enregistrés par la police et la gendarmerie (SSMSI, ministère de l’Intérieur).</p>`]);
+    }
+    const rk = ranks[c.code] ?? {};
+    const rankLine = (k, label, slug) => rk[k] && RANK_N[k] ? [`${label} : ${nf(rk[k])}e sur ${nf(RANK_N[k])} communes`, `/classements/${slug}/${c.code}`] : null;
+    const rankLinks = [rankLine("quality", "Qualité de vie", "qualite-de-vie"), rankLine("income", "Niveau de vie", "niveau-de-vie"), rankLine("pop", "Population", "population"), rankLine("flat", "Prix des appartements", "prix-appartements")].filter(Boolean);
+    if (rankLinks.length) sections.push(["Classements", linkList(rankLinks)]);
+
+    // the six nearest towns of the department: readers compare with neighbours, crawlers follow the links
+    const near = c.centroid ? located.filter((o) => o.code !== c.code).map((o) => [o, (o.centroid[0] - c.centroid[0]) ** 2 * 0.53 + (o.centroid[1] - c.centroid[1]) ** 2]).sort((a, b) => a[1] - b[1]).slice(0, 6).map(([o]) => o) : [];
+    sections.push(["Élus et comparaisons", linkList([
+      ...mps.slice(0, 4).map((m) => [`${m.prenom} ${m.nom}, ${fem(m) ? "députée" : "député"} ${m.groupe?.abrev ?? ""}`, `/depute/${m.id}`]),
+      ...(c.districts ?? []).slice(0, 4).map((d) => [`Circonscription ${d.code.slice(-2)} : résultats des législatives`, `/circo/${d.code}`]),
+      [`Les sénateurs de ${depName}`, `/senat/${depCode}`],
+      [`Comparer ${c.name} à une autre commune`, `/comparer/${c.code}`],
+    ])]);
+    if (near.length) sections.push(["Communes voisines", linkList(near.map((o) => [o.name, `/ville/${o.code}`]))]);
+
+    const img = c.media?.image?.status === "ok" && /^https:\/\/(upload|thumb)\.wikimedia\.org\//.test(c.media.image.thumb ?? "") ? c.media.image.thumb : null;
     page({
-      path: `/ville/${c.code}`, title: `${c.name}${cp} : mairie, élus, élections, sécurité, finances`, h1: `${c.name}${cp}`,
-      desc: `${c.name}, ${depName}${bits ? ` — ${bits}` : ""}. Le maire et le conseil municipal, le député, les résultats des élections, la sécurité, les écoles, les impôts et les finances de la commune.`,
+      path: `/ville/${c.code}`, title: `${c.name} (${depCode}) : maire, élections, sécurité, prix de l’immobilier`, h1: `${c.name} (${depCode})`,
+      desc: `${c.name}${c.name === depName ? "" : `, ${depName}`}${bits ? ` — ${bits}` : ""}.${win?.head?.name ? ` Municipales 2026 : liste ${de(titleCase(win.head.name))}.` : ""}${flat ? ` Appartements : ${nf(flat)} €/m².` : ""} Élus, résultats des élections, sécurité, écoles et finances de la commune.`,
       trail: [["Accueil", "/"], ["Toutes les communes", "/explorer"], [`${depName} (${depCode})`, `/explorer/${depCode}`]],
-      sections: [["Élus et comparaisons", linkList([
-        ...mps.slice(0, 4).map((m) => [`${m.prenom} ${m.nom}, ${fem(m) ? "députée" : "député"} ${m.groupe?.abrev ?? ""}`, `/depute/${m.id}`]),
-        [`Comparer ${c.name} à une autre commune`, `/comparer/${c.code}`],
-        ["Le classement des communes", `/classements/qualite-de-vie/${c.code}`],
-      ])]],
-      ld: [{ "@type": "City", name: c.name, ...(c.centroid ? { geo: { "@type": "GeoCoordinates", longitude: c.centroid[0], latitude: c.centroid[1] } } : {}), containedInPlace: { "@type": "AdministrativeArea", name: depName }, ...(c.postcodes?.[0] ? { address: { "@type": "PostalAddress", postalCode: c.postcodes[0], addressLocality: c.name, addressCountry: "FR" } } : {}) }],
+      sections, image: img,
+      ld: [{ "@type": "City", name: c.name, ...(c.centroid ? { geo: { "@type": "GeoCoordinates", longitude: c.centroid[0], latitude: c.centroid[1] } } : {}), containedInPlace: { "@type": "AdministrativeArea", name: depName }, ...(c.media?.wikidata?.url ? { sameAs: [c.media.wikidata.url] } : {}), ...(img ? { image: img } : {}), ...(c.postcodes?.[0] ? { address: { "@type": "PostalAddress", postalCode: c.postcodes[0], addressLocality: c.name, addressCountry: "FR" } } : {}) }],
       group: "communes", priority: pop > 20000 ? 0.6 : 0.4,
     });
     towns++;
@@ -299,7 +399,11 @@ for (const d of departments) {
 
 // ---------------------------------------------------------------- app shell, sitemaps, robots
 // any other address (a simulator scenario, a two-town comparison) gets the bare app; it sets its own tags once drawn
-writeFileSync(join(DIST, "app.html"), template.replace(/\s*<link rel="canonical"[^>]*>/, "").replace(/\s*<meta property="og:url"[^>]*>/, ""));
+writeFileSync(join(DIST, "app.html"), template
+  .replace(/\s*<link rel="canonical"[^>]*>/, "")
+  .replace(/\s*<meta property="og:url"[^>]*>/, "")
+  // comparisons, simulator and quiz links have no page of their own: kept out of the index, their links followed
+  .replace("</title>", '</title>\n    <meta name="robots" content="noindex, follow" />'));
 
 const groups = [...new Set(urls.map((u) => u.group))];
 const files = [];
@@ -312,6 +416,26 @@ for (const g of groups) {
   }
 }
 writeFileSync(join(DIST, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${files.map((f) => `<sitemap><loc>${ORIGIN}/${f}</loc><lastmod>${TODAY}</lastmod></sitemap>`).join("\n")}\n</sitemapindex>\n`);
+writeFileSync(join(DIST, "llms.txt"), `# Third Estate
+
+> Données électorales et civiques françaises, de la commune à l’Élysée : sondages et prévision de la présidentielle 2027, programmes des candidats, résultats de chaque élection depuis 1848, les 577 députés, 348 sénateurs et eurodéputés français avec leurs votes, et une page pour chacune des 34 920 communes (maire, municipales 2026, sécurité, prix de l’immobilier, services). Sources publiques, citées sur chaque page. Site en français et en anglais.
+
+Citer : « Source : Third Estate (thirdestate.fr) » avec un lien vers la page.
+
+## Présidentielle 2027
+${SECTIONS.filter(([p]) => /^\/(2027|sondages|programmes|quiz|simulateur)/.test(p)).map(([p, t, d]) => `- [${t}](${ORIGIN}${p}): ${d}`).join("\n")}
+${candidates.map((c) => `- [${c.name}](${ORIGIN}/candidat/${c.slug}): ${c.party?.fr ?? ""}`).join("\n")}
+
+## Élus
+${SECTIONS.filter(([p]) => /^\/(elus|assemblee|senat|europe)/.test(p)).map(([p, t, d]) => `- [${t}](${ORIGIN}${p}): ${d}`).join("\n")}
+
+## Communes et données
+${SECTIONS.filter(([p]) => /^\/(explorer|comparer|classements|resultats|chiffres|sources)/.test(p)).map(([p, t, d]) => `- [${t}](${ORIGIN}${p}): ${d}`).join("\n")}
+
+## Plan complet
+- [Sitemap](${ORIGIN}/sitemap.xml)
+`);
+
 // Search engines and AI *search* crawlers are welcome (they send readers); crawlers that collect pages to train
 // AI models are not. Each company names its training crawler separately from its search crawler.
 const AI_TRAINING = ["GPTBot", "ClaudeBot", "anthropic-ai", "CCBot", "Google-Extended", "Applebot-Extended", "Bytespider", "meta-externalagent", "FacebookBot", "cohere-training-data-crawler", "Diffbot", "Omgilibot", "Timpibot", "ImagesiftBot"];
