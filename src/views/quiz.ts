@@ -349,7 +349,7 @@ function bindKeys(stage: HTMLElement, fn: ((e: KeyboardEvent) => void) | null) {
 /** Starts a run in place (another draw, the complete version, a resumed run): the frame is rebuilt. */
 function begin(stage: HTMLElement, d: QuizData, run: Run) {
   st = run;
-  if (location.hash !== "#/quiz") history.replaceState(null, "", "#/quiz");
+  if (location.pathname !== "/quiz" || location.hash) history.replaceState(null, "", "/quiz");
   saveRun(d);
   stage.innerHTML = "";
   draw(stage, d, 1);
@@ -371,7 +371,7 @@ function go(stage: HTMLElement, d: QuizData, delta: 1 | -1) {
     if (run) window.scrollBy(0, run.getBoundingClientRect().top - y0);
   }
   s.step = Math.max(0, s.step + delta);
-  if (s.step >= s.ts.length) history.replaceState(null, "", `#/quiz/${encode(d, s.mode, s.all, s.a)}`);
+  if (s.step >= s.ts.length) history.replaceState(null, "", `/quiz/${encode(d, s.mode, s.all, s.a)}`);
   saveRun(d);
   draw(stage, d, delta);
   keepInView(stage);
@@ -617,7 +617,7 @@ function results(stage: HTMLElement, d: QuizData) {
     stage.innerHTML = `<div class="qz-card qz-in-fwd"><h2 class="qz-q">${L("Encore quelques réponses", "A few more answers")}</h2>
       <p class="qz-ctx">${L(`Répondez à au moins ${MIN_COMPARED} questions pour obtenir un classement : vous en avez passé ${ts.length - nAns} sur ${ts.length}.`, `Answer at least ${MIN_COMPARED} questions to get a ranking: you skipped ${ts.length - nAns} of ${ts.length}.`)}</p>
       <button type="button" class="qz-cta" id="qz-resume">${L("Reprendre le quiz", "Back to the quiz")}</button></div>`;
-    stage.querySelector("#qz-resume")!.addEventListener("click", () => { s.step = 0; history.replaceState(null, "", "#/quiz"); stage.innerHTML = ""; draw(stage, d, -1); });
+    stage.querySelector("#qz-resume")!.addEventListener("click", () => { s.step = 0; history.replaceState(null, "", "/quiz"); stage.innerHTML = ""; draw(stage, d, -1); });
     return;
   }
   const order = [...d.candidates].sort((x, y) => spectrumRank(x.pollName) - spectrumRank(y.pollName));
@@ -815,7 +815,7 @@ function results(stage: HTMLElement, d: QuizData) {
   // keep the answers already given: this run only asks what the complete version still needs
   stage.querySelector("#qz-longer")?.addEventListener("click", () => begin(stage, d, { mode: "l", step: 0, a, started: true, ts: moreAsk, all: more }));
   stage.querySelector("#qz-share")!.addEventListener("click", async () => {
-    const url = `${location.origin}${location.pathname}#/quiz/${code}`;
+    const url = `${location.origin}/quiz/${code}`;
     const out = stage.querySelector<HTMLElement>(".qz-copied")!;
     try {
       await navigator.clipboard.writeText(url);

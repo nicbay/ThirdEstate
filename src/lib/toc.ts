@@ -4,6 +4,7 @@
 // Pages that already carry their own jump links (programmes, candidates, towns) are left alone.
 import { L } from "../i18n";
 import { esc } from "../util";
+import { hrefKey } from "./url";
 
 const LONG = /^#\/(2027\/(comment-ca-marche|voter)|sources|mentions-legales)$/;
 const slug = (s: string) => s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 48);
@@ -12,7 +13,7 @@ let spy: IntersectionObserver | null = null;
 export function longRead(page: HTMLElement, path: string) {
   if (!LONG.test(path) || page.querySelector(".prog-jump, .cand-toc, .cv-toc, .jump")) { page.querySelector(".px-toc")?.remove(); page.classList.remove("has-toc"); return; }
   // a page that already links to its own sections (jump buttons in its header) needs no second list
-  const own = [...page.querySelectorAll<HTMLAnchorElement>("a[href*='#']")].filter((a) => !a.closest(".px-toc") && a.getAttribute("href")!.startsWith(path + "#"));
+  const own = [...page.querySelectorAll<HTMLAnchorElement>("a[href*='#']")].filter((a) => !a.closest(".px-toc") && (hrefKey(a.getAttribute("href")) ?? "").startsWith(path + "#"));
   if (own.length >= 3) { page.querySelector(".px-toc")?.remove(); page.classList.remove("has-toc"); return; }
   const heads = [...page.querySelectorAll<HTMLElement>("h2")].filter((h) => !h.closest(".sec-hero, .next-steps, .px-toc") && h.textContent?.trim());
   if (heads.length < 4) return;

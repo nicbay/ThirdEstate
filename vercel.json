@@ -1,4 +1,5 @@
 {
+  "cleanUrls": true,
   "ignoreCommand": "sh scripts/vercel-ignore.sh",
   "headers": [
     {
@@ -28,7 +29,12 @@
     },
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "beta.thirdestate.fr" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "beta.thirdestate.fr"
+        }
+      ],
       "headers": [
         {
           "key": "X-Robots-Tag",
@@ -39,8 +45,14 @@
     {
       "source": "/docs/(.*)",
       "headers": [
-        { "key": "Content-Security-Policy", "value": "default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; object-src 'self'; frame-ancestors 'none'" },
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; object-src 'self'; frame-ancestors 'none'"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
       ]
     },
     {
@@ -60,6 +72,21 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
+    },
+    {
+      "source": "/(sitemap.*.xml|robots.txt)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!assets/|data/|docs/|fonts/|_vercel/|api/)[^.]*)",
+      "destination": "/app.html"
     }
   ]
 }

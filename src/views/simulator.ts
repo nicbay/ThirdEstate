@@ -8,6 +8,7 @@
 //    chance of that result given polling error, the scenario's probability from the 20,000-run
 //    simulation (lib/scenario-odds.ts), and what the betting markets say.
 // Every scenario lives in the URL (#/simulateur/<code>, same code as before) and can be saved and compared.
+import { currentPath } from "../lib/url";
 import { loadMarkets, loadPolls } from "../data";
 import { combineOdds, oddsFor, platformShare, winShare } from "../lib/markets";
 import { dec, pair100, pct, pts, signed } from "../lib/format";
@@ -136,7 +137,7 @@ const decode = (t: string): Scenario | null => {
     return null;
   }
 };
-const shareUrl = (s: Scenario) => `${location.origin}${location.pathname}#/simulateur/${encode(s)}`;
+const shareUrl = (s: Scenario) => `${location.origin}/simulateur/${encode(s)}`;
 
 /** First-round votes → runoff: each finalist's votes, the lost votes, and every flow. */
 function outcome(s: Scenario) {
@@ -707,9 +708,9 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
     clearTimeout(urlTimer);
     urlTimer = window.setTimeout(() => {
       if (!app.querySelector("#p1-bar")) return; // left the page: do not rewrite another page's address
-      if (!location.hash.startsWith("#/simulateur")) return;
-      const h = `#/simulateur/${encode(s)}`;
-      if (location.hash !== h) history.replaceState(history.state, "", h);
+      if (!currentPath().startsWith("#/simulateur")) return;
+      const h = `/simulateur/${encode(s)}`;
+      if (location.pathname !== h || location.hash) history.replaceState(history.state, "", h);
       const link = app.querySelector<HTMLInputElement>("#share-url");
       if (link) link.value = shareUrl(s);
       if (compare.has("now")) redrawCompare();
@@ -1149,7 +1150,7 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
     } else compare.delete(el.dataset.cmp);
     redrawCompare();
   });
-  if (!authHooked) { authHooked = true; onAuth(() => { if (location.hash.startsWith("#/simulateur")) renderSimulator(app); }); }
+  if (!authHooked) { authHooked = true; onAuth(() => { if (currentPath().startsWith("#/simulateur")) renderSimulator(app); }); }
 
   renderP1();
   renderP2();

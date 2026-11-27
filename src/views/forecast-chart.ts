@@ -30,7 +30,7 @@ export function scenarioFromUrl(): ScenarioKey[] {
   return m ? canonical(m[1].split("+").filter(isScenario)) : [];
 }
 function setUrl(sel: readonly ScenarioKey[]) {
-  const path = location.hash.replace(/#scenario-[\w+-]+$/, "").replace(/^(#\/[^#]*).*$/, "$1") || "#/";
+  const path = location.pathname;
   history.replaceState(history.state, "", sel.length ? `${path}#scenario-${sel.join("+")}` : path);
 }
 
