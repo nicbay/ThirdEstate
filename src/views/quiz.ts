@@ -11,6 +11,7 @@
 // Data: public/data/an/quiz.json (scripts/build-quiz.mjs, which documents how the pool is chosen).
 // Answers never leave the browser: everything is computed here, an unfinished run is kept in sessionStorage (this
 // tab only), and the share link carries the answers in the URL hash (#/quiz/<code>), which browsers do not send.
+import { setQuizResult } from "../lib/profile";
 import "../styles/quiz.css";
 import { toast } from "../lib/toast";
 import { fetchJson, loadPolls } from "../data";
@@ -62,7 +63,7 @@ const themeName = (d: QuizData, id: string) => { const t = d.themes.find((x) => 
 // `w` is the pending "very important" flag of the question on screen.
 // `ts` is what this run asks; `all` is every question behind the results (more than `ts` when an express run
 // is continued into a complete one: the answers already given are kept and not asked again).
-interface Run { mode: Mode; step: number; a: Answers; started: boolean; w?: boolean; ts: string[]; all: string[] }
+interface Run { mode: Mode; step: number; a: Answers; started: boolean; w?: boolean; ts: string[]; all: string[]; shared?: boolean }
 let st: Run | null = null;
 
 const STORE = "te-quiz-run";
@@ -313,7 +314,7 @@ export async function renderQuiz(app: HTMLElement, code?: string) {
   const [d, polls] = await Promise.all([loadQuiz(), loadPolls("2027").catch(() => null)]);
   if (polls) registerParties(polls.parties);
   const shared = code ? decode(code, d) : null;
-  if (shared) st = { mode: shared.mode, step: shared.all.length, a: shared.a, started: true, ts: shared.all, all: shared.all };
+  if (shared) st = { mode: shared.mode, step: shared.all.length, a: shared.a, started: true, ts: shared.all, all: shared.all, shared: true };
   else if (!st || (st.step >= st.ts.length && !code)) st = freshRun(d);
   const stale = !!code && !shared;
 
@@ -720,6 +721,8 @@ function results(stage: HTMLElement, d: QuizData) {
   const groups = Object.entries(d.groups).filter(([g]) => g !== "NI").map(([g, v]) => ({ g, v, sc: scoreVotes(v.line, d, a) })).filter((r): r is { g: string; v: QuizGroup; sc: { s: number; n: number } } => !!r.sc).sort((p, q) => q.sc.s - p.sc.s);
   const gcol = (g: string) => safeColor(d.groups[g]?.couleur, "#8d949a");
 
+  // a results link someone shared shows their answers: only a run played here becomes the reader's own result
+  if (!s.shared) setQuizResult({ code, top: top ? { slug: top.c.slug, name: top.c.name, score: top.s } : null, n: nAns });
   stage.innerHTML = `<div class="qz-results">
     ${top ? `<section class="qz-match" style="--c:${colorOf(top.c)}">
       <p class="qz-match-k">${ties.length > 1 ? L("Les candidats les plus proches de vos réponses, à égalité", "The candidates closest to your answers, level") : L("Le candidat le plus proche de vos réponses", "The candidate closest to your answers")}</p>
@@ -737,6 +740,8 @@ function results(stage: HTMLElement, d: QuizData) {
 
     <div class="qz-actions">
       ${long ? "" : `<button type="button" class="qz-cta" id="qz-longer">${L(`Affiner avec la version complète : ${moreAsk.length} questions de plus`, `Sharpen it with the complete version: ${moreAsk.length} more questions`)} <i aria-hidden="true">→</i></button>`}
+      ${top && ties.length === 1 ? `<button type="button" class="qz-btn" data-my-cand="${esc(top.c.slug)}" data-name="${esc(top.c.name)}">${L(`Suivre ${esc(top.c.name)}`, `Follow ${esc(top.c.name)}`)}</button>` : ""}
+      <a class="qz-btn" href="#/compte">${L("Mon profil citoyen", "My civic profile")} →</a>
       <button type="button" class="qz-btn" id="qz-share">${L("Copier le lien de mes résultats", "Copy a link to my results")}</button>
       <button type="button" class="qz-btn" id="qz-restart">${L("Recommencer", "Start again")}</button>
       <span class="qz-copied muted small" role="status"></span>

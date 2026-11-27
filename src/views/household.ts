@@ -3,6 +3,7 @@
 // Rules: src/lib/household-rules.ts (pure, tested by scripts/test-household.ts). Distribution data and sources:
 // public/data/programmes/melenchon-household.json. Route: #/programmes/melenchon/simulateur.
 // Tone: estimates, not verdicts. Every line links to the programme measure; every assumption is shown.
+import { touch } from "../lib/profile";
 import { fetchJson } from "../data";
 import { L, fmtNum, fmtPct as pctRaw } from "../i18n";
 import { esc, safeUrl } from "../util";
@@ -86,7 +87,7 @@ function sanitize(s: Partial<Household>): Household {
     realEstate: n(s.realEstate, 0, 1e12), inheritance: n(s.inheritance, 0, 1e12), mutuelle: s.mutuelle == null ? null : n(s.mutuelle, 0, 1e4), canteen: s.canteen !== false,
   };
 }
-function saveState(h: Household) { try { localStorage.setItem(KEY, JSON.stringify(h)); } catch { /* ignore */ } }
+function saveState(h: Household) { try { localStorage.setItem(KEY, JSON.stringify(h)); } catch { /* ignore */ } touch("household"); }
 
 export async function renderHousehold(app: HTMLElement) {
   const dist = await fetchJson<DistFile>(`/data/programmes/${SLUG}-household.json`).catch(() => null);
@@ -170,7 +171,7 @@ export async function renderHousehold(app: HTMLElement) {
   const form = app.querySelector<HTMLFormElement>("#hhf")!;
   form.addEventListener("submit", (e) => e.preventDefault()); // no inline handler: the CSP allows no inline script
   // income and wealth answers stay in this browser until cleared (shared computers): one click forgets them
-  app.querySelector("#hh-clear")?.addEventListener("click", () => { try { localStorage.removeItem(KEY); } catch { /* ignore */ } renderHousehold(app); });
+  app.querySelector("#hh-clear")?.addEventListener("click", () => { try { localStorage.removeItem(KEY); } catch { /* ignore */ } touch("household"); renderHousehold(app); });
   const out = app.querySelector<HTMLElement>("#hh-out")!;
   const adultsBox = app.querySelector<HTMLElement>("#hh-adults")!;
 

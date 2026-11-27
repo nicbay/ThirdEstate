@@ -32,12 +32,14 @@ import { foxCells, foxSvg } from "./lib/fox";
 import { wordmarkSvg } from "./lib/wordmark";
 import { pixelIcon, type PixelIcon } from "./lib/pixel-icons";
 import { initSearch, openSearch } from "./lib/search";
+import { toast } from "./lib/toast";
 import { foxBusy, initFox, initMotion, pageTransition } from "./lib/motion";
 import { foxLeave, foxVisit } from "./lib/fox-pet";
 import { paintDepArms } from "./lib/arms";
 import { renderCandidate } from "./views/candidate";
 import { currentRoute, hrefKey, prettifyLinks, prettyHref } from "./lib/url";
 import { applyPageMeta } from "./lib/page-meta";
+import { getMyCandidate, initProfile, onProfile, setMyCandidate, signedInUser } from "./lib/profile";
 
 const app = document.getElementById("app")!;
 const nav = document.getElementById("nav")!;
@@ -62,6 +64,11 @@ themeBtn.addEventListener("click", () => {
 });
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", paintThemeBtn);
 const footer = document.getElementById("footer")!;
+const acctBtn = document.createElement("a");
+acctBtn.id = "acct-btn";
+acctBtn.className = "search-btn acct-btn";
+acctBtn.href = "/compte";
+themeBtn.before(acctBtn);
 const searchBtn = document.getElementById("search-btn") as HTMLButtonElement;
 const quizBtn = document.getElementById("quiz-cta") as HTMLAnchorElement;
 const tabbar = document.getElementById("tabbar")!;
@@ -117,6 +124,7 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/comparer(?:\/(\w{5}))?(?:\/(\w{5}))?$/, (m) => import("./views/compare").then((v) => v.renderCompare(app, m[1], m[2]))],
   [/^#\/classements(?:\/([\w-]+))?(?:\/(\w{5}))?$/, (m) => import("./views/rankings").then((v) => v.renderRankings(app, m[1], m[2]))],
   [/^#\/chiffres$/, () => renderEconomy(app)],
+  [/^#\/compte$/, () => import("./views/account").then((v) => v.renderAccount(app))],
   [/^#\/quiz\/citations$/, () => import("./views/quiz-quotes").then((v) => v.renderQuotes(app))],
   [/^#\/quiz(?:\/([\w-]+))?$/, (m) => renderQuiz(app, m[1])],
   // section names as paths, so a typed or shared section link lands somewhere
@@ -339,7 +347,7 @@ function renderChrome(path: string) {
     <header class="ms-head"><span class="ms-brand" aria-label="Third Estate">${foxSvg(32, true)}${wordmarkSvg(3)}</span><button type="button" class="ms-close" data-ms="close" aria-label="${L("Fermer le menu", "Close the menu")}">${pixelIcon("close", 24)}</button></header>
     <div class="ms-tools">
       <button type="button" data-ms="search">${pixelIcon("search", 12)}<span>${L("Rechercher une commune, un élu, un mot", "Search a town, an official, a word")}</span></button>
-      <a class="ms-quiz" href="#/quiz">${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</a>
+      <a class="ms-quiz" href="#/compte">${L("Mon profil citoyen", "My civic profile")}</a><a class="ms-quiz" href="#/quiz">${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</a>
     </div>
     <nav class="ms-nav" aria-label="${L("Rubriques", "Sections")}">${SECTIONS.map((s, n) => `<details${s === current || (!current && n === 0) ? " open" : ""}>
         <summary>${pixelIcon(s.icon, 24)}<span><b>${L(s.fr, s.en)}</b><small>${esc(L(...s.blurb))}</small></span>${caret}</summary>
@@ -361,6 +369,10 @@ function renderChrome(path: string) {
   quizBtn.innerHTML = `<span class="q-long">${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</span><span class="q-short">Quiz</span>`;
   quizBtn.toggleAttribute("aria-current", /^#\/quiz/.test(path));
   paintThemeBtn();
+  const me = signedInUser();
+  acctBtn.innerHTML = `${pixelIcon("star", 12)}<span class="sb-label">${me ? L("Mon espace", "My space") : L("Mon profil", "My profile")}</span>`;
+  acctBtn.setAttribute("aria-label", me ? L("Mon espace : profil et compte", "My space: profile and account") : L("Mon profil citoyen", "My civic profile"));
+  acctBtn.toggleAttribute("aria-current", /^#\/compte/.test(path));
   langBtn.innerHTML = `<span class="l-long">${t().langSwitch}</span><span class="l-short" aria-hidden="true">${getLang() === "fr" ? "EN" : "FR"}</span>`;
   langBtn.setAttribute("aria-label", getLang() === "fr" ? "Switch to English" : "Passer en français");
   skip.textContent = L("Aller au contenu", "Skip to content");
@@ -373,8 +385,9 @@ function renderChrome(path: string) {
     <nav class="foot-map" aria-label="${L("Plan du site", "Site map")}">${SECTIONS.map((s) => `<div${isGrouped(s) ? ` class="foot-wide"` : ""}><a class="foot-h" href="${s.href}">${pixelIcon(s.icon, 12)}${L(s.fr, s.en)}</a>${isGrouped(s)
         ? `<div class="foot-cols">${groupsOf(s).map((g) => `<div>${g.head ? `<span class="foot-g">${esc(L(...g.head))}</span>` : ""}${g.items.map((c) => `<a href="${c.href}">${esc(L(c.fr, c.en))}</a>`).join("")}</div>`).join("")}</div>`
         : s.children.map((c) => `<a href="${c.href}">${esc(L(c.fr, c.en))}</a>`).join("")}</div>`).join("")}
-      <div><span class="foot-h">${L("Le site", "About")}</span><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/mentions-legales">${L("Mentions légales, vos données", "Legal notice, your data")}</a><a href="#/mentions-legales#contact">${L("Nous écrire", "Contact us")}</a><a href="mailto:contact@thirdestate.fr">contact@thirdestate.fr</a></div></nav>
+      <div><span class="foot-h">${L("Le site", "About")}</span><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/mentions-legales">${L("Mentions légales, vos données", "Legal notice, your data")}</a><a href="#/compte">${L("Votre profil, votre compte", "Your profile, your account")}</a><a href="#/mentions-legales#contact">${L("Nous écrire", "Contact us")}</a><a href="mailto:contact@thirdestate.fr">contact@thirdestate.fr</a></div></nav>
     <p class="foot-legal">${L("Aucun cookie, aucune publicité, aucun suivi individuel.", "No cookies, no ads, no individual tracking.")} <a href="#/mentions-legales#cookies">${L("Pourquoi il n’y a pas de bandeau", "Why there is no banner")}</a></p>
+    <p class="foot-legal">© ${new Date().getFullYear()} Third Estate. ${L("Données compilées : reprise non commerciale libre avec la mention « Source : Third Estate (thirdestate.fr) » et un lien.", "Compiled data: free non-commercial reuse with the credit “Source: Third Estate (thirdestate.fr)” and a link.")} <a href="#/mentions-legales#droits">${L("Conditions", "Terms")}</a></p>
   </div>`;
 }
 
@@ -700,6 +713,25 @@ new MutationObserver(() => {
 }).observe(document.body, { childList: true, subtree: true });
 prettifyLinks(document);
 onHome(() => renderChrome(split().path));
+initProfile();
+onProfile(() => renderChrome(split().path));
+const paintMyCand = (root: ParentNode = document) => {
+  const mine = getMyCandidate()?.slug;
+  root.querySelectorAll<HTMLButtonElement>("button[data-my-cand]").forEach((b) => {
+    const on = b.dataset.myCand === mine;
+    b.setAttribute("aria-pressed", String(on));
+    b.textContent = on ? L(`Vous suivez ${b.dataset.name}`, `You follow ${b.dataset.name}`) : L(`Suivre ${b.dataset.name}`, `Follow ${b.dataset.name}`);
+  });
+};
+document.addEventListener("click", (e) => {
+  const b = (e.target as Element).closest?.<HTMLButtonElement>("button[data-my-cand]");
+  if (!b) return;
+  const on = getMyCandidate()?.slug === b.dataset.myCand;
+  setMyCandidate(on ? null : { slug: b.dataset.myCand!, name: b.dataset.name ?? "" });
+  paintMyCand();
+  if (!on) toast(L(`Vous suivez ${b.dataset.name}. +15 points sur votre profil.`, `You follow ${b.dataset.name}. +15 points on your profile.`), { uniqueID: "my-cand", action: { label: L("Voir mon profil", "See my profile"), href: "/compte" } });
+});
+new MutationObserver(() => paintMyCand(app)).observe(app, { childList: true, subtree: false });
 setLang(getLang());
 initTooltip();
 initInfoTips();

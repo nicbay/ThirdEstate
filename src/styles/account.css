@@ -1,0 +1,55 @@
+/* /compte: the civic-profile quest (src/views/account.ts) */
+.account { max-width: 860px; }
+.account h2 small { font-family: var(--mono); font-weight: 400; font-size: 0.8rem; margin-left: 0.4rem; }
+
+/* rank card: the fox, the rank, a pixel meter */
+.ac-rank { display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: center; margin: 1rem 0 1.6rem; }
+.ac-fox svg { display: block; image-rendering: pixelated; }
+.ac-k { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.72rem; color: var(--ink-3); margin: 0; }
+.ac-title { font-family: var(--display); font-size: clamp(1.6rem, 4vw, 2.3rem); font-weight: 800; line-height: 1.05; margin: 0.15rem 0 0.35rem; }
+.ac-meter { display: flex; align-items: center; gap: 0.7rem; margin: 0.6rem 0 0.4rem; font-family: var(--mono); }
+.ac-blocks { display: inline-grid; grid-template-columns: repeat(20, 1fr); gap: 2px; flex: 1; max-width: 420px; }
+.ac-blocks i { height: 14px; background: color-mix(in srgb, currentColor 16%, transparent); }
+.ac-blocks i.on { background: var(--accent); animation: ac-fill 0.35s steps(3) both; animation-delay: calc(var(--i) * 35ms); }
+@keyframes ac-fill { from { transform: scaleY(0.2); opacity: 0.2; } to { transform: none; opacity: 1; } }
+
+/* the steps */
+.ac-quests { list-style: none; padding: 0; margin: 0.6rem 0 1.8rem; display: grid; gap: 0.5rem; }
+.ac-quests a { position: relative; display: grid; grid-template-columns: auto 1fr auto; gap: 0.9rem; align-items: center; padding: 0.75rem 0.9rem; color: inherit; text-decoration: none; border: 2px solid color-mix(in srgb, currentColor 18%, transparent); background: var(--paper); }
+.ac-quests a:hover { border-color: var(--ink); }
+.ac-quests a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.ac-ic { display: grid; place-items: center; width: 40px; height: 40px; background: color-mix(in srgb, currentColor 10%, transparent); color: var(--ink-3); }
+.ac-txt { display: grid; gap: 0.1rem; min-width: 0; }
+.ac-txt small { color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; }
+.ac-xp { font-family: var(--mono); font-weight: 700; color: var(--ink-3); white-space: nowrap; }
+.is-done .ac-ic { background: var(--accent); color: #fff; }
+.is-done .ac-xp { color: var(--ink); }
+.ac-check { margin-right: 0.35rem; }
+.is-done .ac-txt b { text-decoration: none; }
+.ac-new { position: absolute; top: -9px; right: 10px; padding: 1px 7px; font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; background: var(--ink); color: var(--paper); }
+.is-new a { animation: ac-pop 0.5s steps(4) both; animation-delay: calc(var(--i) * 60ms); }
+@keyframes ac-pop { 0% { transform: scale(0.96); } 60% { transform: scale(1.015); } 100% { transform: none; } }
+
+/* sign-up / account card */
+.ac-signup h2 { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+.ac-xp-tag { font-family: var(--mono); font-size: 0.8rem; padding: 2px 8px; background: var(--accent); color: #fff; }
+.ac-perks { list-style: none; padding: 0; margin: 0.4rem 0 1rem; display: grid; gap: 0.35rem; }
+.ac-perks .px-icon { vertical-align: -1px; margin-right: 0.3rem; }
+.ac-form label[for] { display: block; font-weight: 700; margin-bottom: 0.3rem; }
+.ac-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+.ac-row input { flex: 1 1 240px; min-width: 0; padding: 0.65rem 0.8rem; font: inherit; border: 2px solid var(--ink); background: var(--paper); color: var(--ink); }
+.ac-row input:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; }
+.ac-check-row { display: grid; grid-template-columns: auto 1fr; gap: 0.55rem; align-items: start; margin: 0.5rem 0; font-size: 0.92rem; line-height: 1.4; }
+.ac-check-row input { margin-top: 0.2rem; width: 1.05rem; height: 1.05rem; accent-color: var(--accent); }
+.ac-msg { min-height: 1.2em; margin: 0.4rem 0 0; color: var(--ink-2); }
+.ac-sent { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center; }
+.ac-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.ac-danger { color: #b3261e; border-color: currentColor; }
+
+@media (max-width: 560px) {
+  .ac-rank { grid-template-columns: 1fr; text-align: left; }
+  .ac-fox { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ac-blocks i.on, .is-new a { animation: none; }
+}

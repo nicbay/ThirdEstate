@@ -312,6 +312,13 @@ for (const g of groups) {
   }
 }
 writeFileSync(join(DIST, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${files.map((f) => `<sitemap><loc>${ORIGIN}/${f}</loc><lastmod>${TODAY}</lastmod></sitemap>`).join("\n")}\n</sitemapindex>\n`);
-if (!existsSync(join(DIST, "robots.txt"))) writeFileSync(join(DIST, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /kit\n\nSitemap: ${ORIGIN}/sitemap.xml\n`);
+// Search engines and AI *search* crawlers are welcome (they send readers); crawlers that collect pages to train
+// AI models are not. Each company names its training crawler separately from its search crawler.
+const AI_TRAINING = ["GPTBot", "ClaudeBot", "anthropic-ai", "CCBot", "Google-Extended", "Applebot-Extended", "Bytespider", "meta-externalagent", "FacebookBot", "cohere-training-data-crawler", "Diffbot", "Omgilibot", "Timpibot", "ImagesiftBot"];
+writeFileSync(join(DIST, "robots.txt"), [
+  ...AI_TRAINING.map((b) => `User-agent: ${b}\nDisallow: /\n`),
+  `User-agent: *\nAllow: /\nDisallow: /kit\nDisallow: /compte\n`,
+  `Sitemap: ${ORIGIN}/sitemap.xml\n`,
+].join("\n"));
 
 console.log(`prerender: ${urls.length} pages (${towns} towns), ${files.length} sitemaps`);

@@ -140,6 +140,7 @@ export async function renderCandidate(app: HTMLElement, slug: string) {
           <p class="eyebrow">${polled ? L("Testé dans les sondages 2027", "Polled for 2027") : L("Présidentielle 2027", "2027 presidential election")} · <span class="chip" style="--c:${m.color}">${esc(tr(d.party))}</span></p>
           <h1>${esc(d.name)}</h1>
           <p class="dek">${esc(tr(d.role))}</p>
+          <p><button type="button" class="button cand-follow" data-my-cand="${esc(d.slug)}" data-name="${esc(d.name)}">${L(`Suivre ${esc(d.name)}`, `Follow ${esc(d.name)}`)}</button></p>
           <p class="cand-meta">${d.born ? `${L("Naissance", "Born")}${L(" : ", ": ")}${esc(when(d.born.date))}${d.born.place ? `, ${esc(d.born.place)}` : ""} · ` : ""}${L("Dernière vérification", "Last checked")}${L(" : ", ": ")}${esc(when(d.verified))}</p>
         </div>
       </header>
