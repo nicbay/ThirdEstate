@@ -64,7 +64,7 @@ export async function renderTownPolice(box: HTMLElement, cityCode: string, whole
   let cmp = "";
   if (p.agents && p.band?.median) {
     const d = ((p.per10k - p.band.median) / p.band.median) * 100;
-    const ref = L(`la médiane des communes ${sizeLabel(p.band)} dotées d’une police municipale`, `the median for towns ${sizeLabel(p.band)} with a municipal police`);
+    const ref = L(`la médiane des communes ${sizeLabel(p.band)} dotées d’une police municipale`, `the median for towns ${sizeLabel(p.band)} with a municipal police force`);
     cmp = Math.abs(d) < 10
       ? L(`, proche de ${ref} (${dec(p.band.median)})`, `, close to ${ref} (${dec(p.band.median)})`)
       : `, ${L(`${Math.round(Math.abs(d))} % ${d > 0 ? "au-dessus" : "en dessous"} de ${ref}`, `${Math.round(Math.abs(d))}% ${d > 0 ? "above" : "below"} ${ref}`)} (${dec(p.band.median)})`;

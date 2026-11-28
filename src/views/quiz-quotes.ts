@@ -124,7 +124,7 @@ export async function renderQuotes(app: HTMLElement) {
     const fooled = g.rounds.find((r) => r.q.slug === DECOY && r.pick !== DECOY);
     const verdict = right === total ? L("Sans faute. Vous écoutez trop la radio.", "A clean sheet. You listen to too much radio.")
       : right >= total * 0.7 ? L("Solide : vous reconnaissez les voix.", "Solid: you know the voices.")
-      : right >= total * 0.4 ? L("Honorable. Les extrêmes se ressemblent parfois plus qu’on ne croit.", "Respectable. The extremes sound more alike than you would think.")
+      : right >= total * 0.4 ? L("Honorable. Les extrêmes se ressemblent parfois plus qu’on ne croit.", "Respectable. The extremes sometimes sound more alike than you would think.")
       : L("Ils parlent tous pareil, finalement ?", "So they all sound the same after all?");
     stage.innerHTML = `<div class="qz-results">
       <section class="qz-match qq-score">

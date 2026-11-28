@@ -24,3 +24,6 @@ drop policy if exists "own scenarios: update" on public.scenarios;
 create policy "own scenarios: update" on public.scenarios for update using (auth.uid() = user_id) with check (auth.uid() = user_id);
 drop policy if exists "own scenarios: delete" on public.scenarios;
 create policy "own scenarios: delete" on public.scenarios for delete using (auth.uid() = user_id);
+
+-- Accounts: profiles, consent for political data, account deletion.
+-- See supabase/migrations/2026-11-27-profiles.sql (run it once; it is also safe to run again).

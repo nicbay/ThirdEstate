@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-11-10T15:32:54.541Z",
+ "fetchedAt": "2026-11-24T18:50:17.491Z",
  "debt": {
   "eur": 3595524900000,
   "pct": 119.1,
@@ -45,7 +45,7 @@
     ["2026-Q1", 3535928600000],
     ["2026-Q2", 3595524900000]
    ],
-   "updated": "2026-10-21",
+   "updated": "2026-11-12",
    "source": {
     "name": "Eurostat",
     "dataset": "gov_10q_ggdebt",
@@ -80,7 +80,7 @@
     ["2026-Q1", 117.7],
     ["2026-Q2", 119.1]
    ],
-   "updated": "2026-10-21",
+   "updated": "2026-11-12",
    "source": {
     "name": "Eurostat",
     "dataset": "gov_10q_ggdebt",
@@ -134,7 +134,7 @@
     ["2024", 2935236200000],
     ["2025", 2991055900000]
    ],
-   "updated": "2026-11-05",
+   "updated": "2026-11-11",
    "source": {
     "name": "Eurostat",
     "dataset": "nama_10_gdp",
@@ -165,7 +165,7 @@
     ["2026-Q2", 0],
     ["2026-Q3", -0.1]
    ],
-   "updated": "2026-11-05",
+   "updated": "2026-11-20",
    "source": {
     "name": "Eurostat",
     "dataset": "namq_10_gdp",
@@ -192,7 +192,7 @@
     ["2024", 1.5],
     ["2025", 0.8]
    ],
-   "updated": "2026-11-05",
+   "updated": "2026-11-11",
    "source": {
     "name": "Eurostat",
     "dataset": "nama_10_gdp",
@@ -231,7 +231,7 @@
     ["2026-09", 3.1],
     ["2026-10", 3.4]
    ],
-   "updated": "2026-10-30",
+   "updated": "2026-11-13",
    "source": {
     "name": "INSEE",
     "dataset": "011814632 (Indice des prix à la consommation - Base 2025 - Glissement annuel - Ensemble des ménages - France - Nomenclature Coicop : 00 - Ensemble)",
@@ -378,7 +378,7 @@
     ["2026-Q2", -2784800000],
     ["2026-Q3", -4317000000]
    ],
-   "updated": "2026-11-05",
+   "updated": "2026-11-20",
    "source": {
     "name": "Eurostat",
     "dataset": "namq_10_gdp",
@@ -663,7 +663,7 @@
  "errors": [
   {
    "id": "debt_history_fr",
-   "error": "Cannot find package 'fflate' imported from /home/runner/work/projectview/projectview/scripts/lib/xlsx.mjs"
+   "error": "Cannot find package 'fflate' imported from /home/runner/work/ThirdEstate/ThirdEstate/scripts/lib/xlsx.mjs"
   }
  ]
 }

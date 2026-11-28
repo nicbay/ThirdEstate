@@ -52,7 +52,7 @@ export function detailSheet(el: HTMLElement, label: string, opts: { snaps?: numb
     place(px(at), animate);
     el.classList.toggle("is-peek", at === 0);
     grab.setAttribute("aria-expanded", String(at > 0));
-    grab.setAttribute("aria-label", at === snaps.length - 1 ? L("Réduire le panneau", "Fold the panel") : L("Agrandir le panneau", "Expand the panel"));
+    grab.setAttribute("aria-label", at === snaps.length - 1 ? L("Réduire le panneau", "Collapse the panel") : L("Agrandir le panneau", "Expand the panel"));
   };
 
   // keyboard and taps on the grab bar: cycle up, and from the top back down to the peek

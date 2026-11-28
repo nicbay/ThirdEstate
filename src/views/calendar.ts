@@ -94,7 +94,7 @@ export async function renderCalendar(app: HTMLElement) {
         <p class="crumbs"><a href="#/2027">${L("Présidentielle 2027", "2027 presidential election")}</a></p>
         <p class="eyebrow">${L("Calendrier", "Calendar")}</p>
         <h1>${L("Le calendrier de la campagne", "The campaign calendar")}</h1>
-        <p class="dek">${L("Des parrainages au second tour, les dates qui comptent, chacune avec sa source. Les étapes passées sont estompées.", "From sponsorships to the run-off, the dates that matter, each with its source. Past steps are faded.")}</p>
+        <p class="dek">${L("Des parrainages au second tour, les dates qui comptent, chacune avec sa source. Les étapes passées sont estompées.", "From sponsorships to the runoff, the dates that matter, each with its source. Past steps are faded.")}</p>
       </div>
 
       <div class="cv-count">${countdown}${nextBox}</div>
@@ -108,7 +108,7 @@ export async function renderCalendar(app: HTMLElement) {
           ${KINDS.map(([k, label]) => `<button type="button" data-k="${k}" aria-pressed="false">${label()}</button>`).join("")}
         </div>
         <ol class="cv-tl">${items.map(row).join("")}</ol>
-        <p class="muted small">${L("Aucun débat télévisé entre les candidats officiels n’a encore de date annoncée ; ils seront ajoutés ici dès qu’ils le seront.", "No TV debate between the official candidates has an announced date yet; they will be added here when they do.")}</p>
+        <p class="muted small">${L("Aucun débat télévisé entre les candidats officiels n’a encore de date annoncée ; ils seront ajoutés ici dès qu’ils seront annoncés.", "No TV debate between the official candidates has an announced date yet; they will be added here once they are announced.")}</p>
       </section>
 
       <section class="cv-sources card">

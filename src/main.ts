@@ -32,10 +32,14 @@ import { foxCells, foxSvg } from "./lib/fox";
 import { wordmarkSvg } from "./lib/wordmark";
 import { pixelIcon, type PixelIcon } from "./lib/pixel-icons";
 import { initSearch, openSearch } from "./lib/search";
+import { toast } from "./lib/toast";
 import { foxBusy, initFox, initMotion, pageTransition } from "./lib/motion";
 import { foxLeave, foxVisit } from "./lib/fox-pet";
 import { paintDepArms } from "./lib/arms";
 import { renderCandidate } from "./views/candidate";
+import { currentRoute, hrefKey, prettifyLinks, prettyHref } from "./lib/url";
+import { applyPageMeta } from "./lib/page-meta";
+import { getMyCandidate, initProfile, onProfile, setMyCandidate, signedInUser } from "./lib/profile";
 
 const app = document.getElementById("app")!;
 const nav = document.getElementById("nav")!;
@@ -58,6 +62,11 @@ themeBtn.addEventListener("click", () => {
   paintThemeBtn();
 });
 const footer = document.getElementById("footer")!;
+const acctBtn = document.createElement("a");
+acctBtn.id = "acct-btn";
+acctBtn.className = "search-btn acct-btn";
+acctBtn.href = "/compte";
+themeBtn.before(acctBtn);
 const searchBtn = document.getElementById("search-btn") as HTMLButtonElement;
 const quizBtn = document.getElementById("quiz-cta") as HTMLAnchorElement;
 const tabbar = document.getElementById("tabbar")!;
@@ -113,6 +122,7 @@ const routes: [RegExp, (m: RegExpMatchArray) => Promise<void> | void][] = [
   [/^#\/comparer(?:\/(\w{5}))?(?:\/(\w{5}))?$/, (m) => import("./views/compare").then((v) => v.renderCompare(app, m[1], m[2]))],
   [/^#\/classements(?:\/([\w-]+))?(?:\/(\w{5}))?$/, (m) => import("./views/rankings").then((v) => v.renderRankings(app, m[1], m[2]))],
   [/^#\/chiffres$/, () => renderEconomy(app)],
+  [/^#\/compte$/, () => import("./views/account").then((v) => v.renderAccount(app))],
   [/^#\/quiz\/citations$/, () => import("./views/quiz-quotes").then((v) => v.renderQuotes(app))],
   [/^#\/quiz(?:\/([\w-]+))?$/, (m) => renderQuiz(app, m[1])],
   // section names as paths, so a typed or shared section link lands somewhere
@@ -174,7 +184,7 @@ function sections(): Section[] {
       key: "2027", icon: "ballot", short: ["2027", "2027"], href: "#/2027", match: /^#\/(2027|sondages|simulateur|fil|quiz|candidat|programmes)/, fr: "2027", en: "2027",
       blurb: ["La présidentielle : qui est en tête, ce qu’ils proposent, comment voter.", "The presidential race: who leads, what they propose, how to vote."],
       children: [
-        { group: RACE, hi: true, href: "#/2027", match: /^#\/(2027$|candidat)/, fr: "La course", en: "The race", desc: ["La prévision, les candidats, leurs fiches", "The forecast, the candidates, their files"] },
+        { group: RACE, hi: true, href: "#/2027", match: /^#\/(2027$|candidat)/, fr: "La course", en: "The race", desc: ["La prévision, les candidats, leurs fiches", "The forecast, the candidates, their profiles"] },
         { group: RACE, href: "#/sondages", match: /^#\/sondages$/, fr: "Sondages et marchés", en: "Polls and markets", desc: ["Chaque sondage, et ce que parient les marchés", "Every poll, and what the markets are betting"] },
         { group: RACE, href: "#/sondages/instituts", match: /^#\/sondages\/instituts/, fr: "Les instituts notés", en: "Pollsters graded", sub: ["Instituts", "Pollsters"], desc: ["De A+ à F, sur leurs sondages passés face aux résultats", "A+ to F, on their past polls against the results"] },
         { group: RACE, href: "#/sondages#point", match: NEVER, minor: true, fr: "Le point du jour", en: "Today’s brief", desc: ["Ce qui a bougé en 24 heures, et pourquoi peut-être", "What moved in 24 hours, and perhaps why"] },
@@ -271,11 +281,7 @@ function nextSteps(path: string) {
   return `<nav class="next-steps" aria-label="${label}"><p>${label}</p><ul>${pick.map((x) => `<li><a href="${x.href}">${esc(L(x.fr, x.en))}<span aria-hidden="true">→</span></a></li>`).join("")}</ul></nav>`;
 }
 
-const split = () => {
-  const h = location.hash || "#/";
-  const i = h.indexOf("#", 1);
-  return i < 0 ? { path: h, anchor: "" } : { path: h.slice(0, i), anchor: h.slice(i + 1) };
-};
+const split = currentRoute;
 
 const isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
 const caret = `<svg viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" shape-rendering="crispEdges" fill="currentColor"><rect x="1" y="3" width="8" height="1"/><rect x="2" y="4" width="6" height="1"/><rect x="3" y="5" width="4" height="1"/><rect x="4" y="6" width="2" height="1"/></svg>`;
@@ -339,13 +345,13 @@ function renderChrome(path: string) {
     <header class="ms-head"><span class="ms-brand" aria-label="Third Estate">${foxSvg(32, true)}${wordmarkSvg(3)}</span><button type="button" class="ms-close" data-ms="close" aria-label="${L("Fermer le menu", "Close the menu")}">${pixelIcon("close", 24)}</button></header>
     <div class="ms-tools">
       <button type="button" data-ms="search">${pixelIcon("search", 12)}<span>${L("Rechercher une commune, un élu, un mot", "Search a town, an official, a word")}</span></button>
-      <a class="ms-quiz" href="#/quiz">${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</a>
+      <a class="ms-quiz" href="#/compte">${L("Mon profil citoyen", "My civic profile")}</a><a class="ms-quiz" href="#/quiz">${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</a>
     </div>
     <nav class="ms-nav" aria-label="${L("Rubriques", "Sections")}">${SECTIONS.map((s, n) => `<details${s === current || (!current && n === 0) ? " open" : ""}>
         <summary>${pixelIcon(s.icon, 24)}<span><b>${L(s.fr, s.en)}</b><small>${esc(L(...s.blurb))}</small></span>${caret}</summary>
         <div class="ms-links">${groupsOf(s).map((g) => `${g.head ? `<p class="ms-group">${esc(L(...g.head))}</p>` : ""}${g.items.map(itemLink).join("")}`).join("")}${withCands(s) ? candLinks("ms-extra") : ""}</div>
       </details>`).join("")}</nav>
-    <footer class="ms-foot"><a href="#/">${L("Accueil", "Home")}</a><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/mentions-legales">${L("Mentions légales", "Legal notice")}</a><button type="button" data-ms="lang">${getLang() === "fr" ? "English" : "Français"}</button></footer>
+    <footer class="ms-foot"><a href="#/">${L("Accueil", "Home")}</a><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/mentions-legales">${L("Mentions légales", "Legal notice")}</a><a href="#/mentions-legales#contact">${L("Nous écrire", "Contact us")}</a><button type="button" data-ms="lang">${getLang() === "fr" ? "English" : "Français"}</button></footer>
   </div>`;
 
   const sub = document.getElementById("subnav")!;
@@ -361,6 +367,10 @@ function renderChrome(path: string) {
   quizBtn.innerHTML = `<span class="q-long">${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</span><span class="q-short">Quiz</span>`;
   quizBtn.toggleAttribute("aria-current", /^#\/quiz/.test(path));
   paintThemeBtn();
+  const me = signedInUser();
+  acctBtn.innerHTML = `${pixelIcon("star", 12)}<span class="sb-label">${me ? L("Mon espace", "My space") : L("Mon profil", "My profile")}</span>`;
+  acctBtn.setAttribute("aria-label", me ? L("Mon espace : profil et compte", "My space: profile and account") : L("Mon profil citoyen", "My civic profile"));
+  acctBtn.toggleAttribute("aria-current", /^#\/compte/.test(path));
   langBtn.innerHTML = getLang() === "fr"
     ? `<span class="flag" aria-hidden="true">${UK_FLAG}</span><span class="l-short">EN</span>`
     : `<span class="flag" aria-hidden="true">${FR_FLAG}</span><span class="l-short">FR</span>`;
@@ -375,8 +385,9 @@ function renderChrome(path: string) {
     <nav class="foot-map" aria-label="${L("Plan du site", "Site map")}">${SECTIONS.map((s) => `<div${isGrouped(s) ? ` class="foot-wide"` : ""}><a class="foot-h" href="${s.href}">${pixelIcon(s.icon, 12)}${L(s.fr, s.en)}</a>${isGrouped(s)
         ? `<div class="foot-cols">${groupsOf(s).map((g) => `<div>${g.head ? `<span class="foot-g">${esc(L(...g.head))}</span>` : ""}${g.items.map((c) => `<a href="${c.href}">${esc(L(c.fr, c.en))}</a>`).join("")}</div>`).join("")}</div>`
         : s.children.map((c) => `<a href="${c.href}">${esc(L(c.fr, c.en))}</a>`).join("")}</div>`).join("")}
-      <div><span class="foot-h">${L("Le site", "About")}</span><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/mentions-legales">${L("Mentions légales, vos données", "Legal notice, your data")}</a></div></nav>
-    <p class="foot-legal">${L("Aucun cookie, aucune publicité, aucun suivi.", "No cookies, no ads, no tracking.")} <a href="#/mentions-legales#cookies">${L("Pourquoi il n’y a pas de bandeau", "Why there is no banner")}</a></p>
+      <div><span class="foot-h">${L("Le site", "About")}</span><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/mentions-legales">${L("Mentions légales, vos données", "Legal notice, your data")}</a><a href="#/compte">${L("Votre profil, votre compte", "Your profile, your account")}</a><a href="#/mentions-legales#contact">${L("Nous écrire", "Contact us")}</a><a href="mailto:contact@thirdestate.fr">contact@thirdestate.fr</a></div></nav>
+    <p class="foot-legal">${L("Aucun cookie, aucun suivi individuel.", "No cookies, no individual tracking.")} <a href="#/mentions-legales#cookies">${L("Pourquoi il n’y a pas de bandeau", "Why there is no banner")}</a></p>
+    <p class="foot-legal">© ${new Date().getFullYear()} Third Estate. ${L("Données compilées : reprise non commerciale libre avec la mention « Source : Third Estate (thirdestate.fr) » et un lien.", "Compiled data: free non-commercial reuse with the credit “Source: Third Estate (thirdestate.fr)” and a link.")} <a href="#/mentions-legales#droits">${L("Conditions", "Terms")}</a></p>
   </div>`;
 }
 
@@ -559,7 +570,7 @@ function mergeLocalTabs() {
   const sub = document.getElementById("subnav");
   const row = sub?.firstElementChild as HTMLElement | null;
   // a page's own link row: the Assemblée's views (.page-tabs), or a tab row of links in the page head (Résultats)
-  const tabs = app.querySelector<HTMLElement>(":scope > .page .page-tabs, :scope > .page .page-head nav.tabs:has(a[href^='#/'])");
+  const tabs = app.querySelector<HTMLElement>(":scope > .page .page-tabs, :scope > .page .page-head nav.tabs:has(a[href^='#/'], a[href^='/'])");
   if (tabs && tabs === mergedTabs && sub?.querySelector(".sub-tabs")) return; // already merged for this render
   mergedTabs = tabs;
   sub?.querySelector(".sub-tabs")?.remove();
@@ -567,10 +578,11 @@ function mergeLocalTabs() {
   if (!sub || !row || !tabs) return;
   const owner = row.querySelector<HTMLAnchorElement>("a.active");
   if (!owner) return;
-  const known = new Set([...row.querySelectorAll<HTMLAnchorElement>("a")].map((a) => a.getAttribute("href")));
+  const key = (a: Element) => hrefKey(a.getAttribute("href"));
+  const known = new Set([...row.querySelectorAll<HTMLAnchorElement>("a")].map(key));
   // a row that only repeats the section bar's links is dropped, not merged
-  if ([...tabs.querySelectorAll<HTMLAnchorElement>("a")].every((a) => known.has(a.getAttribute("href")))) { tabs.hidden = true; return; }
-  const views = [...tabs.querySelectorAll<HTMLAnchorElement>("a")].filter((a) => !known.has(a.getAttribute("href")) || a.getAttribute("href") === owner.getAttribute("href"));
+  if ([...tabs.querySelectorAll<HTMLAnchorElement>("a")].every((a) => known.has(key(a)))) { tabs.hidden = true; return; }
+  const views = [...tabs.querySelectorAll<HTMLAnchorElement>("a")].filter((a) => !known.has(key(a)) || key(a) === key(owner));
   if (views.length < 2) return;
   const group = document.createElement("span");
   group.className = "sub-tabs";
@@ -578,7 +590,7 @@ function mergeLocalTabs() {
   for (const a of views) {
     const c = a.cloneNode(true) as HTMLAnchorElement;
     c.setAttribute("role", "listitem");
-    if (a.getAttribute("href") === owner.getAttribute("href") && !a.hasAttribute("aria-current")) c.removeAttribute("aria-current");
+    if (key(a) === key(owner) && !a.hasAttribute("aria-current")) c.removeAttribute("aria-current");
     group.append(c);
   }
   owner.after(group);
@@ -644,6 +656,7 @@ async function render(path: string, anchor: string | undefined) {
         paintDepArms(app); // a department's arms beside an MP, a district, a senator
         const page = app.querySelector(":scope > .page");
         if (page && !page.querySelector(".next-steps")) page.insertAdjacentHTML("beforeend", nextSteps(path));
+        applyPageMeta(app, path);
         if (anchor) document.getElementById(anchor)?.scrollIntoView();
         else window.scrollTo(0, 0);
       } catch (err) {
@@ -664,13 +677,66 @@ langBtn.addEventListener("click", () => {
   lastPath = "";
   route();
 });
-window.addEventListener("hashchange", route);
+// ---------- addresses: real paths (/depute/PA123), see src/lib/url.ts ----------
+// Same-site links are followed without a reload; `location.hash = "#/x"` (used across the views) and old /#/x
+// links become /x. Views and widgets that close on navigation listen to "hashchange", so every navigation
+// raises one.
+let lastUrl = "";
+function onUrlChange() {
+  if (location.hash.startsWith("#/")) history.replaceState(history.state, "", prettyHref(location.hash) + location.search);
+  const now = location.pathname + location.hash;
+  if (now === lastUrl) return;
+  lastUrl = now;
+  void route();
+}
+const FILE = /^\/(data|docs|assets|fonts|_vercel)\/|\.[a-z0-9]{2,5}$/i;
+document.addEventListener("click", (e) => {
+  if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  const a = (e.target as Element).closest?.("a");
+  if (!a || a.hasAttribute("download") || (a.getAttribute("target") ?? "_self") !== "_self") return;
+  const href = a.getAttribute("href") ?? "";
+  if (!href.startsWith("#/") && !(href.startsWith("/") && !href.startsWith("//"))) return;
+  const url = prettyHref(href);
+  if (FILE.test(url.split("#")[0])) return;
+  e.preventDefault();
+  if (url !== location.pathname + location.hash) history.pushState(null, "", url);
+  window.dispatchEvent(new HashChangeEvent("hashchange"));
+});
+window.addEventListener("hashchange", onUrlChange);
+window.addEventListener("popstate", () => window.dispatchEvent(new HashChangeEvent("hashchange")));
+// every link in the page carries its real path (crawlers, "open in a new tab", copying a link)
+let linksQueued = false;
+new MutationObserver(() => {
+  if (linksQueued) return;
+  linksQueued = true;
+  queueMicrotask(() => { linksQueued = false; prettifyLinks(document); });
+}).observe(document.body, { childList: true, subtree: true });
+prettifyLinks(document);
 onHome(() => renderChrome(split().path));
+initProfile();
+onProfile(() => renderChrome(split().path));
+const paintMyCand = (root: ParentNode = document) => {
+  const mine = getMyCandidate()?.slug;
+  root.querySelectorAll<HTMLButtonElement>("button[data-my-cand]").forEach((b) => {
+    const on = b.dataset.myCand === mine;
+    b.setAttribute("aria-pressed", String(on));
+    b.textContent = on ? L(`Vous suivez ${b.dataset.name}`, `You’re following ${b.dataset.name}`) : L(`Suivre ${b.dataset.name}`, `Follow ${b.dataset.name}`);
+  });
+};
+document.addEventListener("click", (e) => {
+  const b = (e.target as Element).closest?.<HTMLButtonElement>("button[data-my-cand]");
+  if (!b) return;
+  const on = getMyCandidate()?.slug === b.dataset.myCand;
+  setMyCandidate(on ? null : { slug: b.dataset.myCand!, name: b.dataset.name ?? "" });
+  paintMyCand();
+  if (!on) toast(L(`Vous suivez ${b.dataset.name}. +15 points sur votre profil.`, `You’re following ${b.dataset.name}. +15 points on your profile.`), { uniqueID: "my-cand", action: { label: L("Voir mon profil", "See my profile"), href: "/compte" } });
+});
+new MutationObserver(() => paintMyCand(app)).observe(app, { childList: true, subtree: false });
 setLang(getLang());
 initTooltip();
 initInfoTips();
 joinPresence();
-route();
+onUrlChange();
 // the reader's own town is one tap away from every page ("Chez vous"): once the first page has settled, fetch its
 // department's files in the background so that tap opens at once
 {

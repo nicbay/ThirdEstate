@@ -98,7 +98,7 @@ export async function renderHome(app: HTMLElement) {
 /** No town set yet: a search box for it, and the comparison of two towns. */
 function drawFindTown(box: HTMLElement) {
   box.innerHTML = `<section class="card mine mine-find">
-    <header class="card-head"><h2>${L("Et chez vous ?", "And where you live?")}</h2><a href="#/comparer">${L("Comparer deux communes", "Compare two towns")} →</a></header>
+    <header class="card-head"><h2>${L("Et chez vous ?", "What about where you live?")}</h2><a href="#/comparer">${L("Comparer deux communes", "Compare two towns")} →</a></header>
     <p class="muted small">${L("Vos élus, la sécurité, les écoles, ce que la commune reçoit de l’État, et comment elle se compare aux autres.", "Your officials, safety, schools, what the town gets from the state, and how it compares with others.")}</p>
     ${searchBox(L("Votre commune ou votre code postal", "Your town or postcode"))}
   </section>`;

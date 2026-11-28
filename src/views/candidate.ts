@@ -17,6 +17,7 @@ import { estimatePay, UNPRICED, type Mandate, type PayScales } from "../lib/publ
 import { esc, FEED_ON, safeUrl } from "../util";
 import { shiftDays } from "./home";
 import "../styles/candidate.css";
+import { deFr } from "../lib/scenario-odds";
 
 type Bi = { fr: string; en: string };
 interface Source { title: string; publisher: string; url: string; date: string }
@@ -140,6 +141,7 @@ export async function renderCandidate(app: HTMLElement, slug: string) {
           <p class="eyebrow">${polled ? L("Testé dans les sondages 2027", "Polled for 2027") : L("Présidentielle 2027", "2027 presidential election")} · <span class="chip" style="--c:${m.color}">${esc(tr(d.party))}</span></p>
           <h1>${esc(d.name)}</h1>
           <p class="dek">${esc(tr(d.role))}</p>
+          <p><button type="button" class="button cand-follow" data-my-cand="${esc(d.slug)}" data-name="${esc(d.name)}">${L(`Suivre ${esc(d.name)}`, `Follow ${esc(d.name)}`)}</button></p>
           <p class="cand-meta">${d.born ? `${L("Naissance", "Born")}${L(" : ", ": ")}${esc(when(d.born.date))}${d.born.place ? `, ${esc(d.born.place)}` : ""} · ` : ""}${L("Dernière vérification", "Last checked")}${L(" : ", ": ")}${esc(when(d.verified))}</p>
         </div>
       </header>
@@ -153,8 +155,8 @@ export async function renderCandidate(app: HTMLElement, slug: string) {
         ${!row && !fr && mk == null
           ? `<p class="cand-none">${polled ? L("Pas dans la moyenne récente", "Not in the recent average") : L("Pas encore testé", "Not polled yet")}</p>
              <p class="muted small">${polled
-               ? L("Aucun des sondages de premier tour des trois dernières semaines ne le teste : pas de moyenne, pas de prévision, et aucun marché prédictif ne le cote.", "None of the first-round polls of the last three weeks tests this candidate: no average, no forecast, and no prediction market lists them.")
-               : L("Aucun sondage publié ne le teste encore, et aucun marché prédictif ne le cote. Sa moyenne et sa prévision apparaîtront ici dès qu’il sera testé.", "No published poll tests this candidate yet and no prediction market lists them. The average and forecast will appear here once they are polled.")}</p>`
+               ? L("Aucun des sondages de premier tour des trois dernières semaines ne mesure ses intentions de vote : pas de moyenne, pas de prévision, et aucun marché prédictif ne propose de cote.", "None of the first-round polls of the last three weeks tests this candidate: no average, no forecast, and no prediction market lists them.")
+               : L("Aucun sondage publié ne mesure encore ses intentions de vote, et aucun marché prédictif ne propose de cote. Sa moyenne et sa prévision apparaîtront ici dès qu’un sondage l’inclura.", "No published poll tests this candidate yet and no prediction market lists them. The average and forecast will appear here once they are polled.")}</p>`
           : `${row ? `<p class="cand-race"><strong data-count>${pct(row.avg)}</strong><span>${L("moyenne des sondages de premier tour", "first-round polling average")}${rank ? `, ${rank}${L(rank === 1 ? "er" : "e", rank === 1 ? "st" : rank === 2 ? "nd" : rank === 3 ? "rd" : "th")}` : ""}</span></p>` : ""}
         <p class="cand-race-s">${[
           delta == null ? "" : Math.abs(delta) < 0.05
@@ -213,7 +215,7 @@ export async function renderCandidate(app: HTMLElement, slug: string) {
           : `<p class="cand-none">${L("Aucune trouvée", "None found")}</p>`}
         <p class="muted tiny">${L(
           "Ne figurent ici que les condamnations pénales devenues définitives (et les jugements civils définitifs en matière de presse), puis les procédures où la personne est elle-même prévenue, mise en examen ou appelante, chacune appuyée sur une décision, un communiqué officiel ou deux médias de référence. Les relaxes, plaintes, enquêtes visant un parti et accusations ne sont pas reprises, ni les condamnations amnistiées, réputées non avenues ou effacées par la réhabilitation. En cas de doute, l’information est écartée.",
-          "Only criminal convictions that became final (and final civil judgments under press law) are listed, then proceedings where the person is personally a defendant, under formal investigation or appellant, each backed by a decision, an official communiqué or two reference outlets. Acquittals, complaints, investigations targeting a party and accusations are left out, as are amnestied, voided or expunged convictions. When in doubt, the item is left out.",
+          "Only criminal convictions that became final (and final civil judgments under press law) are listed, then proceedings where the person is personally a defendant, under formal investigation or an appellant, each backed by a decision, an official communiqué or two reference outlets. Acquittals, complaints, investigations targeting a party and accusations are left out, as are amnestied, voided or expunged convictions. When in doubt, the item is left out.",
         )}</p>
         ${src(d.convictions.sources)}
       </section>
@@ -300,7 +302,7 @@ function programmeCard(d: CandidateFile, p: ProgEntry | null) {
   if (!p) return `<section class="card" id="c-programme">
       <header class="card-head"><h2>${L("Programme", "Manifesto")}</h2><a href="#/programmes">${L("Tous les programmes", "Every manifesto")}</a></header>
       <p class="cand-none">${L("Pas encore analysé", "Not analysed yet")}</p>
-      <p class="muted small">${L(`Aucune analyse du programme de ${esc(d.name)} n’est encore publiée sur Third Estate. Elle apparaîtra ici, avec le nombre de mesures et leur coût.`, `No analysis of ${esc(d.name)}’s manifesto is published on Third Estate yet. It will appear here, with the number of measures and their cost.`)}</p>
+      <p class="muted small">${L(`Aucune analyse du programme ${deFr(esc(d.name))} n’est encore publiée sur Third Estate. Elle apparaîtra ici, avec le nombre de mesures et leur coût.`, `No analysis of ${esc(d.name)}’s manifesto is published on Third Estate yet. It will appear here, with the number of measures and their cost.`)}</p>
     </section>`;
   const n = p.inLatest ?? p.total;
   const e = p.lastEstimate;
@@ -314,7 +316,7 @@ function programmeCard(d: CandidateFile, p: ProgEntry | null) {
     </div>
     ${e ? `<p class="muted small">${e.label ? `${esc(tr(e.label))}. ` : ""}${e.announced != null ? `${L("Chiffrage annoncé", "Claimed cost")}${L(" : ", ": ")}${md(e.announced)} ; ` : `${L("Pas de chiffrage du parti", "No party costing")} ; `}${L("estimation", "estimate")} ${esc(e.by)}${L(" : ", ": ")}${md(e.net)}${e.horizon ? ` ${esc(tr(e.horizon))}` : ""}. ${L("Solde pour les finances publiques : négatif = coût net.", "Net effect on public finances: negative = net cost.")}</p>` : ""}
     ${p.status === "partial" && p.statusNote ? `<p class="muted small">${esc(tr(p.statusNote))}</p>` : ""}
-    <a class="door cand-door" href="#/programmes/${esc(p.slug)}"><b>${n ? L(`Les ${fmtNum(n)} mesures de ${esc(surname(d.name))}, une par une`, `${esc(surname(d.name))}’s ${fmtNum(n)} measures, one by one`) : L(`Le programme de ${esc(surname(d.name))}, mesure par mesure`, `${esc(surname(d.name))}’s manifesto, measure by measure`)}</b><span class="muted small">${L("Mesures, coût, droit et sources, point par point.", "Measures, cost, law and sources, point by point.")}</span></a>
+    <a class="door cand-door" href="#/programmes/${esc(p.slug)}"><b>${n ? L(`Les ${fmtNum(n)} mesures ${deFr(esc(surname(d.name)))}, une par une`, `${esc(surname(d.name))}’s ${fmtNum(n)} measures, one by one`) : L(`Le programme ${deFr(esc(surname(d.name)))}, mesure par mesure`, `${esc(surname(d.name))}’s manifesto, measure by measure`)}</b><span class="muted small">${L("Mesures, coût, droit et sources, point par point.", "Measures, cost, law and sources, point by point.")}</span></a>
   </section>`;
 }
 
@@ -351,9 +353,9 @@ function newsCard(d: CandidateFile, items: Headline[], hours: number) {
   return `<section class="card" id="c-actu">
     <header class="card-head"><h2>${L("Dans l’actualité", "In the news")}</h2>${FEED_ON ? `<a href="#/fil">${L("Le fil", "The feed")}</a>` : ""}</header>
     ${shown.length
-      ? `<p class="muted small">${L(`${items.length} titre${items.length > 1 ? "s" : ""} le cit${items.length > 1 ? "ent" : "e"} dans le fil des ${hours} dernières heures (quinze médias, de gauche à droite)${items.length > shown.length ? ` ; les ${shown.length} plus récents` : ""}.`, `${items.length} headline${items.length > 1 ? "s" : ""} in the last ${hours} hours of our feed (fifteen outlets, left to right) name${items.length > 1 ? "" : "s"} this candidate${items.length > shown.length ? `; the ${shown.length} most recent` : ""}.`)}</p>
+      ? `<p class="muted small">${L(`${items.length} titre${items.length > 1 ? "s" : ""} mentionn${items.length > 1 ? "ent" : "e"} son nom dans le fil des ${hours} dernières heures (quinze médias, de gauche à droite)${items.length > shown.length ? ` ; les ${shown.length} plus récents` : ""}.`, `${items.length} headline${items.length > 1 ? "s" : ""} in the last ${hours} hours of our feed (fifteen outlets, left to right) name${items.length > 1 ? "" : "s"} this candidate${items.length > shown.length ? `; the ${shown.length} most recent` : ""}.`)}</p>
          <ol class="cand-news">${shown.map((h) => `<li><a href="${esc(safeUrl(h.link))}" target="_blank" rel="noopener">${esc(h.title)}</a><span class="muted small">${esc(h.outlet)} · ${esc(t(h.time))}</span></li>`).join("")}</ol>`
-      : `<p class="cand-none">${L("Aucun titre récent", "No recent headline")}</p><p class="muted small">${L(`Aucun des titres du fil des ${hours} dernières heures ne le cite.`, `None of the headlines in the last ${hours} hours of our feed names this candidate.`)}</p>`}
+      : `<p class="cand-none">${L("Aucun titre récent", "No recent headline")}</p><p class="muted small">${L(`Aucun des titres du fil des ${hours} dernières heures ne mentionne son nom.`, `None of the headlines in the last ${hours} hours of our feed names this candidate.`)}</p>`}
   </section>`;
 }
 
@@ -362,8 +364,8 @@ function quizCard(d: CandidateFile) {
   return `<section class="card" id="c-quiz">
     <header class="card-head"><h2>${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</h2></header>
     ${g.length
-      ? `<p class="small">${L(`Répondez aux votes de l’Assemblée et aux mesures des programmes : ${esc(d.name)} y est représenté par ${g.length > 1 ? "les groupes" : "le groupe"} ${g.map(esc).join(" et ")}.`, `Answer the Assembly’s votes and the manifesto measures: ${esc(d.name)} is represented by the ${g.map(esc).join(" and ")} group${g.length > 1 ? "s" : ""}.`)}${d.quiz.note ? ` ${esc(tr(d.quiz.note))}` : ""}</p>`
-      : `<p class="cand-none">${L("Pas encore dans le quiz", "Not in the quiz yet")}</p><p class="muted small">${d.quiz.note ? esc(tr(d.quiz.note)) : L("Aucun groupe parlementaire ne le représente encore dans le quiz.", "No parliamentary group stands for this candidate in the quiz yet.")}</p>`}
+      ? `<p class="small">${L(`Répondez aux votes de l’Assemblée et aux mesures des programmes : les positions ${deFr(esc(d.name))} y sont celles ${g.length > 1 ? "des groupes" : "du groupe"} ${g.map(esc).join(" et ")}.`, `Answer the Assembly’s votes and the manifesto measures: ${esc(d.name)} is represented by the ${g.map(esc).join(" and ")} group${g.length > 1 ? "s" : ""}.`)}${d.quiz.note ? ` ${esc(tr(d.quiz.note))}` : ""}</p>`
+      : `<p class="cand-none">${L("Pas encore dans le quiz", "Not in the quiz yet")}</p><p class="muted small">${d.quiz.note ? esc(tr(d.quiz.note)) : L("Aucun groupe parlementaire ne porte encore ses positions dans le quiz.", "No parliamentary group stands for this candidate in the quiz yet.")}</p>`}
     <a class="button" href="#/quiz">${L("Faire le quiz", "Take the quiz")}</a>
   </section>`;
 }
@@ -388,7 +390,7 @@ async function fillParliament(app: HTMLElement, d: CandidateFile) {
       const recent = scrutins.filter((s) => votes[String(s[0])]).sort((a, b) => b[1].localeCompare(a[1]) || b[0] - a[0]).slice(0, 6)
         .map((s) => ({ date: s[1], title: s[2], result: s[3], v: votes[String(s[0])] }));
       return void (box()!.innerHTML = parlBlock({
-        who: L(`Député${mp.civ === "Mme" ? "e" : ""} ${mp.departement ? `(${mp.departement}, ${mp.numCirco}${mp.numCirco === 1 ? L("re", "st") : L("e", "th")} circ.)` : ""}`, `MP ${mp.departement ? `(${mp.departement}, constituency ${mp.numCirco})` : ""}`),
+        who: L(`Député${mp.civ === "Mme" ? "e" : ""} ${mp.departement ? `(${mp.departement}, ${mp.numCirco}${mp.numCirco === 1 ? L("re", "st") : L("e", "th")} circ.)` : ""}`, `MP ${mp.departement ? `(${mp.departement}, district ${mp.numCirco})` : ""}`),
         group: mp.groupe?.libelle ?? "", href: `#/depute/${mp.id}`, label: L("Sa page de député : tous ses votes, interventions, présence", "Their MP page: every vote, speech, attendance"),
         stats: mp.stats, recent,
       }));
@@ -445,7 +447,7 @@ function payNotes(d: CandidateFile, gaps: Set<string>) {
   return `<details class="cand-method">
     <summary>${L("Comment l’estimation est calculée", "How the estimate works")}</summary>
     <ol class="small">
-      <li>${L("Pour chaque jour où un mandat est exercé, on prend le montant mensuel brut officiel de l’année pour cette fonction, au prorata : indemnité parlementaire (base, résidence et fonction) pour les députés et sénateurs, et pour les députés européens français jusqu’au 13 juillet 2009 ; ensuite le traitement unique des députés européens ; traitement des membres du Gouvernement (barème de 2002, puis baisse de 30 % en 2012), qui remplace l’indemnité parlementaire.", "For each day a mandate is held, the year’s official gross monthly amount for that office, pro rata: parliamentary indemnity (base, residence and function) for deputies and senators, and for French MEPs until 13 July 2009; then the single MEP salary; government pay (2002 scale, then the 2012 30% cut), which replaces the parliamentary indemnity.")}</li>
+      <li>${L("Pour chaque jour où un mandat est exercé, on prend le montant mensuel brut officiel de l’année pour cette fonction, au prorata : indemnité parlementaire (base, résidence et fonction) pour les députés et sénateurs, et pour les députés européens français jusqu’au 13 juillet 2009 ; ensuite le traitement unique des députés européens ; traitement des membres du Gouvernement (barème de 2002, puis baisse de 30 % en 2012), qui remplace l’indemnité parlementaire.", "For each day a mandate is held, the year’s official gross monthly amount for that office, pro rata: parliamentary indemnity (base, residence and function) for MPs and senators, and for French MEPs until 13 July 2009; then the single MEP salary; government pay (2002 scale, then the 2012 30% cut), which replaces the parliamentary indemnity.")}</li>
       <li>${L("Mandats locaux : taux maximal légal (Code général des collectivités territoriales) selon la population, appliqué au traitement de l’indice brut terminal de la fonction publique. Les conseils peuvent voter moins : c’est une estimation haute. Les majorations facultatives ne sont pas appliquées.", "Local mandates: the legal maximum rate (local authorities code) for the population tier, applied to the pay of the top civil-service index. Councils may vote less: this is an upper estimate. Optional increases are not applied.")} ${L("Le barème des conseillers régionaux et celui des présidents d’intercommunalité ne sont vérifiés qu’à partir de 2019 (et de 2002 pour les intercommunalités) ; ils sont appliqués tels quels aux années antérieures, comme l’indice terminal de 1992 à 2001.", "The regional councillor scale and the inter-municipal president scale are only verified from 2019 (and 2002 for inter-municipal bodies); they are applied as is to earlier years, as is the 1992–2001 terminal index.")}</li>
       <li>${L("Écrêtement : un parlementaire ne peut ajouter que la moitié de l’indemnité parlementaire de base en indemnités locales ; un élu local ne peut dépasser 1,5 fois cette base au total.", "Écrêtement: a parliamentarian can add at most half the base parliamentary indemnity in local allowances; a local official cannot exceed 1.5 times that base in total.")}</li>
       <li>${L("Non compté : frais de mandat, crédits collaborateurs, retraites, traitements de fonctionnaire (grade et échelon non publics), présidences de partis et d’associations.", "Not counted: expense allowances, staff budgets, pensions, civil-service salaries (grade and step not public), party and association posts.")}${unpriced.length ? ` ${L("Ici", "Here")}${L(" : ", ": ")}${unpriced.map((x) => esc(tr(x.label))).join(" ; ")}.` : ""}</li>

@@ -61,7 +61,7 @@ const story = (h: Headline) => `${h.link ? `<a href="${esc(safeUrl(h.link))}" ta
 function factorHtml(f: Factor, name: string) {
   switch (f.kind) {
     case "polls": return f.same
-      ? L(`<b>Les sondages vont dans le même sens</b> : ${sgn(f.d)} point en 7 jours.`, `<b>The polls point the same way</b>: ${sgn(f.d)} in 7 days.`)
+      ? L(`<b>Les sondages vont dans le même sens</b> : ${sgn(f.d)} point${Math.abs(f.d) >= 2 ? "s" : ""} en 7 jours.`, `<b>The polls point the same way</b>: ${sgn(f.d)} point${Math.abs(f.d) === 1 ? "" : "s"} in 7 days.`)
       : L(`<b>Pas les sondages</b> : ils l’ont fait bouger de ${sgn(f.d)} en 7 jours, dans l’autre sens.`, `<b>Not the polls</b>: they moved ${sgn(f.d)} in 7 days, the other way.`);
     case "poll": {
       const g = pollsterRating(f.pollster)?.grade;
@@ -197,7 +197,7 @@ function kpisHtml(g: Ledger) {
   }).join("");
   const wk7 = c ? `${L("clôture du", "close of")} ${esc(fmtDate(c.asOf).replace(/\s\d{4}$/, ""))}, ${L("sur 7 jours", "over 7 days")}` : "";
   const pc = (v: number) => delta(v, L("\u00a0%", "%"), true);
-  const market = c ? [line("CAC 40", wk7, whole(c.level), pc(c.d7)), ...c.movers.map((m) => line(esc(m.name), L("la plus forte variation du CAC 40, sur 7 jours", "among the CAC 40’s biggest moves, over 7 days"), "", pc(m.d7)))].join("") : "";
+  const market = c ? [line("CAC 40", wk7, whole(c.level), pc(c.d7)), ...c.movers.map((m) => line(esc(m.name), L("parmi les plus fortes variations du CAC 40, sur 7 jours", "among the CAC 40’s biggest moves, over 7 days"), "", pc(m.d7)))].join("") : "";
   // the column opens with our reads, as the polls column does: the CAC 40's first, then the week's figures'
   return `${noteHtml(g.notes?.cac)}${noteHtml(g.notes?.kpis)}<table class="lg-table lg-kpi">
     <caption><span>${L("Les chiffres de la semaine", "The week’s numbers")}</span><a href="#/chiffres#conjoncture">${L("Tous les chiffres", "Every figure")} →</a></caption>

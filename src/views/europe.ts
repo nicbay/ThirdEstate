@@ -87,7 +87,7 @@ function coverage(meta: Meta) {
   const s = meta.speeches;
   return L(
     `Votes : ${v ? `${fmtNum(v.rollCalls)} votes par appel nominal sur ${fmtNum(v.sittingsWithRollCalls)} séances, du ${fmtDate(v.from)} au ${fmtDate(v.to)}` : "non chargés"}. Interventions : ${fmtNum(s.total)} relevées${s.from ? ` du ${fmtDate(s.from)} au ${fmtDate(s.to!)}` : ""}, dont ${fmtNum(s.french)} en français analysées et ${fmtNum(s.notFrench)} dans une autre langue écartées. Mise à jour le ${fmtDate(meta.syncedAt)}.`,
-    `Votes: ${v ? `${fmtNum(v.rollCalls)} roll-call votes on ${fmtNum(v.sittingsWithRollCalls)} sittings, ${fmtDate(v.from)} to ${fmtDate(v.to)}` : "not loaded"}. Speeches: ${fmtNum(s.total)} recorded${s.from ? ` from ${fmtDate(s.from)} to ${fmtDate(s.to!)}` : ""}, of which ${fmtNum(s.french)} in French analysed and ${fmtNum(s.notFrench)} in another language left out. Updated ${fmtDate(meta.syncedAt)}.`,
+    `Votes: ${v ? `${fmtNum(v.rollCalls)} roll-call votes across ${fmtNum(v.sittingsWithRollCalls)} sittings, ${fmtDate(v.from)} to ${fmtDate(v.to)}` : "not loaded"}. Speeches: ${fmtNum(s.total)} recorded${s.from ? ` from ${fmtDate(s.from)} to ${fmtDate(s.to!)}` : ""}, of which ${fmtNum(s.french)} in French analysed and ${fmtNum(s.notFrench)} in another language left out. Updated ${fmtDate(meta.syncedAt)}.`,
   );
 }
 const SOURCE = () => L(

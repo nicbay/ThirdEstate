@@ -1,14 +1,14 @@
 {
-  "syncedAt": "2026-11-08T17:27:10.624Z",
+  "syncedAt": "2026-11-26T17:49:47.606Z",
   "legislature": 17,
   "sources": {
     "deputes": {
       "url": "https://data.assemblee-nationale.fr/static/openData/repository/17/amo/deputes_actifs_mandats_actifs_organes/AMO10_deputes_actifs_mandats_actifs_organes.json.zip",
-      "lastModified": "Sun, 08 Nov 2026 02:50:36 GMT"
+      "lastModified": "Thu, 26 Nov 2026 02:50:45 GMT"
     },
     "scrutins": {
       "url": "https://data.assemblee-nationale.fr/static/openData/repository/17/loi/scrutins/Scrutins.json.zip",
-      "lastModified": "Sun, 08 Nov 2026 11:26:18 GMT"
+      "lastModified": "Thu, 26 Nov 2026 11:27:55 GMT"
     }
   }
 }

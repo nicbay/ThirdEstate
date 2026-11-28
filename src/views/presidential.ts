@@ -24,7 +24,7 @@ export async function renderPresidential(app: HTMLElement, year?: number) {
       </div>
       <div class="pres-grid">
         <div class="map-card card">
-          <svg id="map" viewBox="0 0 600 600" role="img" aria-label="Carte"></svg>
+          <svg id="map" viewBox="0 0 600 600" role="img" aria-label="${L("Carte", "Map")}"></svg>
           <div class="overseas-label muted">${s.overseas}</div>
           <div id="overseas" class="overseas"></div>
         </div>

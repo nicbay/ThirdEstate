@@ -8,6 +8,7 @@
 //    chance of that result given polling error, the scenario's probability from the 20,000-run
 //    simulation (lib/scenario-odds.ts), and what the betting markets say.
 // Every scenario lives in the URL (#/simulateur/<code>, same code as before) and can be saved and compared.
+import { currentPath } from "../lib/url";
 import { loadMarkets, loadPolls } from "../data";
 import { combineOdds, oddsFor, platformShare, winShare } from "../lib/markets";
 import { dec, pair100, pct, pts, signed } from "../lib/format";
@@ -136,7 +137,7 @@ const decode = (t: string): Scenario | null => {
     return null;
   }
 };
-const shareUrl = (s: Scenario) => `${location.origin}${location.pathname}#/simulateur/${encode(s)}`;
+const shareUrl = (s: Scenario) => `${location.origin}/simulateur/${encode(s)}`;
 
 /** First-round votes → runoff: each finalist's votes, the lost votes, and every flow. */
 function outcome(s: Scenario) {
@@ -366,7 +367,7 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
       <header class="page-head">
         <p class="eyebrow">${L("Présidentielle 2027, simulateur", "2027 presidential, simulator")}</p>
         <h1>${L("Présidentielle 2027, à vous de jouer", "The 2027 election, your call")}</h1>
-        <p class="dek">${L("Et si la gauche s’unissait, si un candidat se retirait, si les reports de voix changeaient ? Partez d’un scénario tout prêt ou déplacez les chiffres : qui se qualifie et qui gagne se recalculent à chaque geste.", "What if the left united, a candidate withdrew, or vote transfers shifted? Start from a ready-made scenario or move the numbers: who qualifies and who wins are recomputed at every touch.")}</p>
+        <p class="dek">${L("Et si la gauche s’unissait, si un candidat se retirait, si les reports de voix changeaient ? Partez d’un scénario tout prêt ou déplacez les chiffres : qui se qualifie et qui gagne se recalculent à chaque geste.", "What if the left united, a candidate withdrew, or vote transfers shifted? Start from a ready-made scenario or move the numbers: who qualifies and who wins are recomputed with every move.")}</p>
       </header>
       <div class="sim-app" id="sim-app">
         <section class="sim-ready" aria-labelledby="sim-t0">
@@ -692,7 +693,7 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
         <tr><th scope="row">${L("Chance que ce duel ait lieu", "Chance of this pairing")}</th>${cols.map((c) => `<td class="${c.cls}">${c.p1}</td>`).join("")}</tr>
       </tbody></table>
       <p class="sim-vs-line">${base.o.winner === out.winner && pairKey(...baseSc.finalists) === pairKey(fa, fb)
-        ? (Math.abs(r1(wv - base.w)) < 0.05 ? L("Même duel, même résultat que les sondages du jour.", "Same pairing, same result as today’s polls.") : `${esc(surname(out.winner))} <b>${signed(r1(wv - base.w))}</b> ${L("point au second tour par rapport aux sondages du jour.", "points in the runoff against today’s polls.")}`)
+        ? (Math.abs(r1(wv - base.w)) < 0.05 ? L("Même duel, même résultat que les sondages du jour.", "Same pairing, same result as today’s polls.") : `${esc(surname(out.winner))} <b>${signed(r1(wv - base.w))}</b> ${L(`point${Math.abs(r1(wv - base.w)) >= 2 ? "s" : ""} au second tour par rapport aux sondages du jour.`, "points in the runoff against today’s polls.")}`)
         : base.o.winner === out.winner ? esc(L(`Le duel change (${base.duel} dans les sondages du jour), le vainqueur reste ${surname(out.winner)}.`, `The pairing changes (${base.duel} in today’s polls); the winner is still ${surname(out.winner)}.`))
         : esc(L(`Le vainqueur change : ${surname(base.o.winner)} dans les sondages du jour, ${surname(out.winner)} ici.`, `The winner changes: ${surname(base.o.winner)} in today’s polls, ${surname(out.winner)} here.`))}</p>
       <p class="sim-changes">${moved.map((x) => `<span style="--c:${color(x.n)}">${esc(surname(x.n))} ${x.gone ? L("se retire", "withdraws") : signed(x.d)}</span>`).join("") || `<span>${L("Premier tour : la moyenne des sondages", "First round: the polling average")}</span>`}<span class="is-rule">${esc(rule)}</span></p>`;
@@ -707,9 +708,9 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
     clearTimeout(urlTimer);
     urlTimer = window.setTimeout(() => {
       if (!app.querySelector("#p1-bar")) return; // left the page: do not rewrite another page's address
-      if (!location.hash.startsWith("#/simulateur")) return;
-      const h = `#/simulateur/${encode(s)}`;
-      if (location.hash !== h) history.replaceState(history.state, "", h);
+      if (!currentPath().startsWith("#/simulateur")) return;
+      const h = `/simulateur/${encode(s)}`;
+      if (location.pathname !== h || location.hash) history.replaceState(history.state, "", h);
       const link = app.querySelector<HTMLInputElement>("#share-url");
       if (link) link.value = shareUrl(s);
       if (compare.has("now")) redrawCompare();
@@ -1149,7 +1150,7 @@ export async function renderSimulator(app: HTMLElement, shared?: string) {
     } else compare.delete(el.dataset.cmp);
     redrawCompare();
   });
-  if (!authHooked) { authHooked = true; onAuth(() => { if (location.hash.startsWith("#/simulateur")) renderSimulator(app); }); }
+  if (!authHooked) { authHooked = true; onAuth(() => { if (currentPath().startsWith("#/simulateur")) renderSimulator(app); }); }
 
   renderP1();
   renderP2();

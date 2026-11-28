@@ -37,7 +37,7 @@ export function renderVote(app: HTMLElement) {
       <div class="cv-key" role="note">
         <div><span>${L("Inscription", "Registration")}</span><b>${L("12 mars 2027", "12 March 2027")}</b></div>
         <div><span>${L("1er tour", "1st round")}</span><b>${L("18 avril 2027", "18 April 2027")}</b></div>
-        <div><span>${L("2d tour", "Run-off")}</span><b>${L("2 mai 2027", "2 May 2027")}</b></div>
+        <div><span>${L("2d tour", "Runoff")}</span><b>${L("2 mai 2027", "2 May 2027")}</b></div>
       </div>
       <p class="muted small cv-under">${L("Dates retenues par le gouvernement le 1er juillet 2026 ; elles seront officielles à la parution du décret de convocation, attendu au plus tard le 7 février 2027. ", "Dates chosen by the government on 1 July 2026; they become official when the decree calling voters is published, due by 7 February 2027 at the latest. ")}<a href="#/2027/calendrier">${L("Tout le calendrier", "Full calendar")}</a></p>
 
@@ -109,7 +109,7 @@ export function renderVote(app: HTMLElement) {
           <p class="cv-num">+</p>
           <h2>${L("Vous vivez à l’étranger", "You live abroad")}</h2>
           <p>${L("Inscrivez-vous sur la liste électorale consulaire, en ligne (", "Register on the consular electoral roll, online (")}${ext(S.consular, L("registre des Français de l’étranger", "register of French nationals abroad"))}${L(") ou au consulat. Ensuite, deux façons de voter à la présidentielle : en personne, au bureau ouvert par votre ambassade ou consulat, ou par procuration. Le vote par internet ne s’applique pas à la présidentielle.", ") or at the consulate. Then two ways to vote in the presidential election: in person at the polling station set up by your embassy or consulate, or by proxy. Internet voting does not apply to the presidential election.")}</p>
-          <p>${L("Sur le continent américain, on vote le samedi : 17 avril et 1er mai.", "In the Americas, voting is on Saturday: 17 April and 1 May.")}</p>
+          <p>${L("Sur le continent américain, on vote le samedi : 17 avril et 1er mai.", "In the Americas, voting is on the Saturday: 17 April and 1 May.")}</p>
           ${src(S.abroad, L("Vote d’un Français installé à l’étranger, service-public.gouv.fr", "Voting as a French national living abroad, service-public.gouv.fr"))}
         </article>
       </div>
