@@ -16,12 +16,14 @@ import { esc } from "../util";
 
 interface Quest { id: string; icon: PixelIcon; xp: number; done: boolean; title: [string, string]; done_: [string, string]; todo: [string, string]; href: string }
 
+// Five ranks, named with words that are the same for everyone (no masculine/feminine form to choose), from a first
+// visit to the last rank, which borrows the site's name and Sieyès's answer: "What is the Third Estate? Everything."
 const RANKS: { min: number; fr: string; en: string; note: [string, string] }[] = [
-  { min: 0, fr: "Au balcon", en: "On the balcony", note: ["Vous regardez la vie publique de loin.", "You watch public life from afar."] },
-  { min: 20, fr: "Dans la foule", en: "In the crowd", note: ["Vous savez où vous votez, et pour qui on vote chez vous.", "You know where you vote, and who stands where you live."] },
-  { min: 45, fr: "Au club", en: "At the club", note: ["Vous comparez les idées, pas seulement les visages.", "You compare ideas, not just faces."] },
-  { min: 70, fr: "À la tribune", en: "At the rostrum", note: ["Vous avez fait vos calculs et choisi qui suivre.", "You have run the numbers and chosen whom to follow."] },
-  { min: 100, fr: "À la Constituante", en: "In the Assembly", note: ["Tout y est, et c’est gardé sur tous vos appareils.", "Everything is there, and kept on all your devices."] },
+  { min: 0, fr: "Novice", en: "Newcomer", note: ["Vous faites vos premiers pas dans la vie publique.", "You are taking your first steps in public life."] },
+  { min: 20, fr: "Témoin", en: "Witness", note: ["Vous savez qui vous représente là où vous vivez.", "You know who represents you where you live."] },
+  { min: 45, fr: "Vigie", en: "Lookout", note: ["Vous comparez les idées, pas seulement les visages.", "You compare ideas, not just faces."] },
+  { min: 70, fr: "Pilier", en: "Pillar", note: ["Vous avez fait vos calculs et choisi qui suivre.", "You have run the numbers and chosen whom to follow."] },
+  { min: 100, fr: "Tiers état", en: "Third Estate", note: ["« Qu’est-ce que le tiers état ? Tout. » Et tout est gardé sur vos appareils.", "“What is the Third Estate? Everything.” And it is all kept on your devices."] },
 ];
 const SEEN_KEY = "te-quests-seen";
 
@@ -71,7 +73,7 @@ export async function renderAccount(app: HTMLElement) {
           <p class="ac-title">${esc(L(rank.fr, rank.en))}</p>
           <p class="muted">${esc(L(...rank.note))}</p>
           <p class="ac-meter">${blocks(xp)}<b><span data-count="${xp}">${xp}</span>/100</b></p>
-          <p class="small muted">${next ? L(`Encore ${next.min - xp} points pour « ${next.fr} ».`, `${next.min - xp} more points to reach “${next.en}”.`) : L("Rang maximal. Chapeau.", "Top rank. Hats off.")}${nextQuest ? ` <a href="${esc(nextQuest.href)}">${L("Prochaine étape : ", "Next step: ")}${esc(L(...nextQuest.title))} →</a>` : ""}</p>
+          <p class="small muted">${next ? L(`Plus que ${next.min - xp} points avant le rang « ${next.fr} ».`, `${next.min - xp} more points to reach the rank of “${next.en}”.`) : L("Vous avez atteint le rang le plus élevé.", "You have reached the top rank.")}${nextQuest ? ` <a href="${esc(nextQuest.href)}">${L("Prochaine étape : ", "Next step: ")}${esc(L(...nextQuest.title))} →</a>` : ""}</p>
         </div>
       </section>
 
