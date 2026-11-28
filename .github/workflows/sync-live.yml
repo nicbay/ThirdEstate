@@ -58,3 +58,9 @@ jobs:
           git commit -m "update"
           git pull --rebase --autostash
           git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:${GITHUB_REF_NAME}"
+
+      # Last, after the data is pushed: a poll the press reported (named institute, last 4 days) that Wikipedia
+      # hasn't listed yet fails the job, so the failure email says a poll needs adding by hand. False alarms
+      # (popularity barometers): add the story id to public/data/polls/coverage-ignore.json.
+      - name: Check no reported poll is missing
+        run: node scripts/check-polls-coverage.mjs

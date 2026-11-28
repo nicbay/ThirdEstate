@@ -1,3 +1,3 @@
-// Runs before first paint (loaded synchronously in <head>): apply the reader's chosen theme, if any, so a
-// reader who picked light or dark against their system setting never sees the other one flash.
-try { const t = localStorage.getItem("te-theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch { /* storage blocked: follow the system */ }
+// Runs before first paint (loaded synchronously in <head>): light is the default; a reader who picked dark keeps it
+// (kept in localStorage), so the other theme never flashes.
+try { const t = localStorage.getItem("te-theme"); document.documentElement.dataset.theme = t === "dark" ? "dark" : "light"; } catch { document.documentElement.dataset.theme = "light"; }

@@ -104,7 +104,8 @@ const stored = (() => {
     return null;
   }
 })();
-let lang: Lang = stored === "en" || stored === "fr" ? stored : navigator.language.startsWith("fr") ? "fr" : "en";
+// French first: English only when the reader picked it (flag button, top right)
+let lang: Lang = stored === "en" ? "en" : "fr";
 
 export const getLang = () => lang;
 /** French typography: a no-break space before : ; ! ? » and after «, so the mark never starts a line. */

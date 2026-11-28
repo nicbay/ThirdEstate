@@ -277,5 +277,5 @@ export async function heroDay() {
 }
 
 /** The widgets sit on paper: party colours as they are, lifted only when the reader's paper is dark. */
-const isDarkTheme = () => (document.documentElement.dataset.theme ? document.documentElement.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches);
+const isDarkTheme = () => document.documentElement.dataset.theme === "dark";
 const fmt1 = (v: number) => (getLang() === "fr" ? v.toFixed(1).replace(".", ",") : v.toFixed(1)).replace("-", "−");

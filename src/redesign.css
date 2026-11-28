@@ -613,3 +613,9 @@ footer .brand .fox { width: 64px; height: 64px; }
 .ev-mairie { display: inline-block; font: 700 0.66rem var(--mono); text-transform: uppercase; letter-spacing: 0.04em; padding: 0.05rem 0.35rem; margin-left: 0.3rem; background: var(--split-blue); color: #fff; }
 .mine-events { margin-top: 1rem; }
 .mine-events h3 { font-size: 1rem; margin: 0 0 0.4rem; }
+
+/* language switch: a small flag + code, top right */
+.lang { display: inline-flex; align-items: center; gap: 0.35rem; }
+.lang .flag { display: inline-flex; line-height: 0; }
+.lang .flag svg { display: block; border-radius: 1px; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15); }
+.lang .l-short { display: inline; }

@@ -40,9 +40,11 @@ import { renderCandidate } from "./views/candidate";
 const app = document.getElementById("app")!;
 const nav = document.getElementById("nav")!;
 const langBtn = document.getElementById("lang") as HTMLButtonElement;
+const UK_FLAG = `<svg viewBox="0 0 60 30" width="18" height="9"><clipPath id="ukc"><path d="M0,0v30h60V0z"/></clipPath><clipPath id="ukt"><path d="M30,15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#ukc)"><path d="M0,0v30h60V0z" fill="#012169"/><path d="M0,0L60,30M60,0L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0L60,30M60,0L0,30" clip-path="url(#ukt)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></g></svg>`;
+const FR_FLAG = `<svg viewBox="0 0 3 2" width="15" height="10"><path fill="#002395" d="M0 0h1v2H0z"/><path fill="#fff" d="M1 0h1v2H1z"/><path fill="#ED2939" d="M2 0h1v2H2z"/></svg>`;
 const themeBtn = document.getElementById("theme") as HTMLButtonElement;
-// light / dark: follows the system until the reader picks one (kept in localStorage, applied before paint by public/theme-boot.js)
-const isDark = () => document.documentElement.dataset.theme ? document.documentElement.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+// light / dark: light by default; a reader who picks dark keeps it (localStorage, applied before paint by public/theme-boot.js)
+const isDark = () => document.documentElement.dataset.theme === "dark";
 function paintThemeBtn() {
   const dark = isDark();
   themeBtn.innerHTML = pixelIcon(dark ? "sun" : "moon", 12);
@@ -52,13 +54,9 @@ function paintThemeBtn() {
 themeBtn.addEventListener("click", () => {
   const next = isDark() ? "light" : "dark";
   document.documentElement.dataset.theme = next;
-  // back to "follow the system" when the pick matches it, so a later system change is followed again
-  const sys = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  try { if (next === sys) localStorage.removeItem("te-theme"); else localStorage.setItem("te-theme", next); } catch { /* private mode */ }
-  if (next === sys) delete document.documentElement.dataset.theme;
+  try { if (next === "light") localStorage.removeItem("te-theme"); else localStorage.setItem("te-theme", next); } catch { /* private mode */ }
   paintThemeBtn();
 });
-matchMedia("(prefers-color-scheme: dark)").addEventListener("change", paintThemeBtn);
 const footer = document.getElementById("footer")!;
 const searchBtn = document.getElementById("search-btn") as HTMLButtonElement;
 const quizBtn = document.getElementById("quiz-cta") as HTMLAnchorElement;
@@ -363,7 +361,9 @@ function renderChrome(path: string) {
   quizBtn.innerHTML = `<span class="q-long">${L("Le quiz : qui vous ressemble ?", "The quiz: who is closest to you?")}</span><span class="q-short">Quiz</span>`;
   quizBtn.toggleAttribute("aria-current", /^#\/quiz/.test(path));
   paintThemeBtn();
-  langBtn.innerHTML = `<span class="l-long">${t().langSwitch}</span><span class="l-short" aria-hidden="true">${getLang() === "fr" ? "EN" : "FR"}</span>`;
+  langBtn.innerHTML = getLang() === "fr"
+    ? `<span class="flag" aria-hidden="true">${UK_FLAG}</span><span class="l-short">EN</span>`
+    : `<span class="flag" aria-hidden="true">${FR_FLAG}</span><span class="l-short">FR</span>`;
   langBtn.setAttribute("aria-label", getLang() === "fr" ? "Switch to English" : "Passer en français");
   skip.textContent = L("Aller au contenu", "Skip to content");
   toTop.setAttribute("aria-label", L("Haut de page", "Back to top"));

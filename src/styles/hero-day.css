@@ -508,3 +508,21 @@
   :root:not([data-theme]) .hday-chart .ed [style*="#1c2c6c"] { --c: #1c2c6c !important; }
   :root:not([data-theme]) .hday-chart .ed :is(.lg-row.is-te .lg-k, .ed-prov, .lg-kpi tbody th small em) { color: var(--left-text); }
 }
+
+/* "Du nouveau aujourd'hui" (src/views/day-updates.ts): three short rows above the note of the day, same box */
+.hday-chart .ed-updates { gap: 0.6rem; }
+.du-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.45rem; }
+.du-list li { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.8rem; align-items: baseline; padding-top: 0.45rem; border-top: 1px solid var(--rule); font-size: 0.92rem; line-height: 1.45; }
+.du-list li:first-child { border-top: 0; padding-top: 0; }
+.du-k { font: 600 0.7rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); }
+.du-list li.is-new .du-k::before { content: ""; display: inline-block; width: 0.5rem; height: 0.5rem; margin-right: 0.4rem; background: var(--accent); vertical-align: 0.05rem; }
+.du-d, .du-src { font: 500 0.75rem var(--mono); color: var(--ink-3); }
+@media (max-width: 640px) { .du-list li { grid-template-columns: 1fr; gap: 0.15rem; } }
+/* the polls chart: its own box under the note of the day, in the paper palette of the box */
+.hday-chart .ed-pollbox { gap: 0.6rem; }
+.ed-pollbox .hday-small, .ed-updates .hday-small { color: var(--ink-3); }
+.ed-pollbox :is(.hday-small a, .hday-fc a) { color: var(--link); }
+.ed-pollbox .hday-fc { color: var(--ink-2); }
+.ed-pollbox .hday-fc b { color: var(--ink); }
+.hday-chart .ed-pollbox .scn-more summary { color: var(--ink-2); }
+.hday-chart .ed-pollbox .scn-more a { color: var(--link); }

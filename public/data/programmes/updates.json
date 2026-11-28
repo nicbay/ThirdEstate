@@ -1,0 +1,13 @@
+{
+  "_doc": "Dated log of programme news for the homepage box 'Du nouveau aujourd'hui' (src/views/day-updates.ts); shown for 7 days. An entry is news, not a programme version: programme pages still take the candidate's own document only.",
+  "updates": [
+    {
+      "date": "2026-11-17",
+      "slug": "le-pen",
+      "candidate": "Marine Le Pen",
+      "fr": "réforme des retraites présentée (retour à 62 ans, 60 ans pour les carrières longues, capitalisation obligatoire, abrogation de la réforme Borne au 1er janvier 2028). Pas encore de document publié par le RN.",
+      "en": "pension reform presented (back to 62, 60 for long careers, compulsory funded pillar, the Borne reform repealed on 1 January 2028). No document published by the RN yet.",
+      "url": "https://www.publicsenat.fr/actualites/politique/presidentielle-2027-que-contient-la-reforme-des-retraites-presentee-par-marine-le-pen"
+    }
+  ]
+}
