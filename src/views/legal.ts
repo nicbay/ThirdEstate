@@ -18,7 +18,7 @@ export function renderLegal(app: HTMLElement) {
 
       <article class="card prose" id="editeur">
         <header class="card-head"><h2>${L("Éditeur", "Publisher")}</h2></header>
-        <p>${L("Third Estate (thirdestate.fr) est un site personnel, publié à titre non professionnel, sans publicité ni abonnement. Conformément à la loi du 21 juin 2004 pour la confiance dans l’économie numérique, son éditeur, personne physique, a communiqué son identité à l’hébergeur, qui la tient à la disposition de l’autorité judiciaire.", "Third Estate (thirdestate.fr) is a personal site, published on a non-professional basis, with no advertising and no subscription. As allowed by the French law of 21 June 2004 on confidence in the digital economy, its publisher, a private individual, has given their identity to the host, which holds it at the disposal of the courts.")}</p>
+        <p>${L("Third Estate (thirdestate.fr) est un site personnel, publié à titre non professionnel. Conformément à la loi du 21 juin 2004 pour la confiance dans l’économie numérique, son éditeur, personne physique, a communiqué son identité à l’hébergeur, qui la tient à la disposition de l’autorité judiciaire.", "Third Estate (thirdestate.fr) is a personal site, published on a non-professional basis. As allowed by the French law of 21 June 2004 on confidence in the digital economy, its publisher, a private individual, has given their identity to the host, which holds it at the disposal of the courts.")}</p>
         <p>${L("Contact, demande de rectification ou droit de réponse : ", "Contact, correction requests and right of reply: ")}<a href="mailto:${CONTACT}">${CONTACT}</a>${L(", ou ", ", or ")}<a href="${REPO}/issues" target="_blank" rel="noopener">${L("un signalement public sur GitHub", "a public issue on GitHub")}</a>. ${L("Toute personne citée sur le site peut demander la correction d’une information inexacte ; chaque fait concernant un candidat ou un élu est accompagné de sa source.", "Anyone named on the site can ask for an inaccurate statement to be corrected; every fact about a candidate or an elected official carries its source.")}</p>
       </article>
 
@@ -32,7 +32,7 @@ export function renderLegal(app: HTMLElement) {
           <li><b>${L("Presse, recherche, réutilisation", "Press, research, reuse")}</b> — ${L("une question sur une méthode, une demande de données, une citation, une collaboration.", "a question about a method, a data request, a quote, a collaboration.")}</li>
           <li><b>${L("Une idée", "An idea")}</b> — ${L("une page qui manque, une question à laquelle le site devrait répondre.", "a missing page, a question the site should answer.")}</li>
         </ul>
-        <p>${L("Chaque message est lu. Les erreurs confirmées sont corrigées, et la correction est datée sur la page concernée. Third Estate ne vend rien et ne répond pas aux sollicitations commerciales.", "Every message is read. Confirmed errors are corrected, and the correction is dated on the page concerned. Third Estate sells nothing and does not answer commercial solicitations.")}</p>
+        <p>${L("Chaque message est lu. Les erreurs confirmées sont corrigées, et la correction est datée sur la page concernée. Third Estate ne répond pas aux démarchages commerciaux non sollicités.", "Every message is read. Confirmed errors are corrected, and the correction is dated on the page concerned. Third Estate does not answer unsolicited sales pitches.")}</p>
       </article>
 
       <article class="card prose" id="droits">

@@ -386,7 +386,7 @@ function renderChrome(path: string) {
         ? `<div class="foot-cols">${groupsOf(s).map((g) => `<div>${g.head ? `<span class="foot-g">${esc(L(...g.head))}</span>` : ""}${g.items.map((c) => `<a href="${c.href}">${esc(L(c.fr, c.en))}</a>`).join("")}</div>`).join("")}</div>`
         : s.children.map((c) => `<a href="${c.href}">${esc(L(c.fr, c.en))}</a>`).join("")}</div>`).join("")}
       <div><span class="foot-h">${L("Le site", "About")}</span><a href="#/sources">${L("Sources et méthode", "Sources & method")}</a><a href="#/mentions-legales">${L("Mentions légales, vos données", "Legal notice, your data")}</a><a href="#/compte">${L("Votre profil, votre compte", "Your profile, your account")}</a><a href="#/mentions-legales#contact">${L("Nous écrire", "Contact us")}</a><a href="mailto:contact@thirdestate.fr">contact@thirdestate.fr</a></div></nav>
-    <p class="foot-legal">${L("Aucun cookie, aucune publicité, aucun suivi individuel.", "No cookies, no ads, no individual tracking.")} <a href="#/mentions-legales#cookies">${L("Pourquoi il n’y a pas de bandeau", "Why there is no banner")}</a></p>
+    <p class="foot-legal">${L("Aucun cookie, aucun suivi individuel.", "No cookies, no individual tracking.")} <a href="#/mentions-legales#cookies">${L("Pourquoi il n’y a pas de bandeau", "Why there is no banner")}</a></p>
     <p class="foot-legal">© ${new Date().getFullYear()} Third Estate. ${L("Données compilées : reprise non commerciale libre avec la mention « Source : Third Estate (thirdestate.fr) » et un lien.", "Compiled data: free non-commercial reuse with the credit “Source: Third Estate (thirdestate.fr)” and a link.")} <a href="#/mentions-legales#droits">${L("Conditions", "Terms")}</a></p>
   </div>`;
 }

@@ -111,7 +111,7 @@ function signupHtml() {
     <ul class="ac-perks">
       <li>${pixelIcon("globe", 12)} ${L("Retrouvez votre commune, votre député et vos scénarios sur tous vos appareils.", "Find your town, your MP and your scenarios on every device.")}</li>
       <li>${pixelIcon("shield", 12)} ${L("Pas de mot de passe : un lien de connexion par courriel.", "No password: a sign-in link by email.")}</li>
-      <li>${pixelIcon("cross", 12)} ${L("Ni publicité, ni revente. Supprimable en un clic.", "No ads, no resale. Deleted in one click.")}</li>
+      <li>${pixelIcon("cross", 12)} ${L("Votre adresse n’est jamais transmise à un tiers. Supprimable en un clic.", "Your address is never passed to anyone else. Deleted in one click.")}</li>
     </ul>
     <form class="ac-form" novalidate>
       <label for="ac-email">${L("Votre adresse électronique", "Your email address")}</label>
