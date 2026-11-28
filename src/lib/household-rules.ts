@@ -298,7 +298,7 @@ export function simulate(h: Household): Result {
     note: t("Les hausses de salaire ou de pension ci-dessus entrent dans le revenu imposable.", "The pay or pension rises above are part of taxable income.") });
   lines.push({ id: "ir14", measure: "L846994", kind: "tax", amount: -(S2 - S1), assumption: true,
     label: t("Impôt sur le revenu à 14 tranches", "Income tax with 14 brackets"),
-    note: t("Barème de l’amendement LFI-NFP I-CF748 (PLF 2025) : 0 % jusqu’à 10 434 €, puis 5 % à 70 % au-delà de 400 000 € par part. Le programme ne donne pas les taux.", "Scale of LFI-NFP amendment I-CF748 (2025 budget): 0% up to €10,434, then 5% to 70% above €400,000 per part. The program gives no rates.") });
+    note: t("Barème de l’amendement LFI-NFP I-CF748 (PLF 2025) : 0 % jusqu’à 10 434 €, puis 5 % à 70 % au-delà de 400 000 € par part. Le programme ne donne pas les taux.", "Scale of LFI-NFP amendment I-CF748 (2025 budget): 0% up to €10,434, then 5% to 70% above €400,000 per tax share. The program gives no rates.") });
   assumptions.push(t("Barème à 14 tranches : celui de l’amendement LFI-NFP I-CF748 au budget 2025 (rejeté), non réindexé ; décote et plafond du quotient familial inchangés.", "14-bracket scale: the one in LFI-NFP amendment I-CF748 to the 2025 budget (rejected), not re-indexed; décote and family-quotient cap unchanged."));
   if (h.status === "married" && h.adults.length === 2) {
     lines.push({ id: "conjugal", measure: "Le4b9b7", kind: "tax", amount: -(S3 - S2), assumption: true,
@@ -363,7 +363,7 @@ export function simulate(h: Household): Result {
   if (h.apl > 0) {
     lines.push({ id: "apl", measure: "Le46f33", kind: "income", amount: h.apl * 12 * APL_RISE,
       label: t("Aides au logement (APL) +10 %", "Housing benefit (APL) +10%"),
-      note: t("Revalorisation de 10 % de l’aide déclarée.", "A 10% rise of the benefit you entered.") });
+      note: t("Revalorisation de 10 % de l’aide déclarée.", "A 10% rise in the benefit you entered.") });
   }
   lines.push({ id: "energy", measure: "L0bd9c8", kind: "service", amount: ENERGY.kwh * ENERGY.price, assumption: true,
     label: t("Première tranche d’énergie gratuite", "Free first tranche of energy"),

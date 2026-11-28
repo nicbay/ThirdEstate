@@ -107,7 +107,7 @@ const pct = (x) => `${String(Math.round(x * 1000) / 10).replace(".", ",")} %`;
 const leg24Html = (code) => {
   const r = leg24[code];
   if (!r?.c?.length) return null;
-  return `<p>Premier tour, 30 juin 2024 (${nf(r.e)} suffrages exprimés) :</p><ul>${r.c.slice(0, 6).map(([n, p, e]) => `<li>${esc(NUANCE[n] ?? n)} : ${String(p).replace(".", ",")} %${e === "E" ? " (élu dès le premier tour)" : ""}</li>`).join("")}</ul>`;
+  return `<p>Premier tour, 30 juin 2024 (${nf(r.e)} suffrages exprimés) :</p><ul>${r.c.slice(0, 6).map(([n, p, e]) => `<li>${esc(NUANCE[n] ?? n)} : ${String(p).replace(".", ",")} %${e === "E" ? " (élu·e dès le premier tour)" : ""}</li>`).join("")}</ul>`;
 };
 const AN_PHOTO = (id) => `https://www2.assemblee-nationale.fr/static/tribun/17/photos/carre/${String(id).slice(2).replace(/D/g, "")}.jpg`;
 
@@ -122,7 +122,7 @@ const SECTIONS = [
   ["/quiz", "Le quiz : quel candidat vous ressemble ?", "Répondez à quelques questions : le député et le candidat à la présidentielle 2027 les plus proches de vos positions.", 0.9],
   ["/quiz/citations", "Le quiz des citations", "Qui a dit quoi ? Des citations de responsables politiques français, à attribuer.", 0.5],
   ["/2027/voter", "Comment voter en 2027", "S’inscrire sur les listes électorales, voter par procuration, trouver son bureau de vote pour la présidentielle 2027.", 0.7],
-  ["/2027/comment-ca-marche", "Comment marche l’élection présidentielle", "L’élection présidentielle française expliquée, étape par étape : parrainages, campagne, premier et second tour.", 0.6],
+  ["/2027/comment-ca-marche", "Comment marche l’élection présidentielle", "L’élection présidentielle française expliquée, étape par étape : parrainages, campagne, premier et second tours.", 0.6],
   ["/2027/calendrier", "Calendrier de la présidentielle 2027", "Les dates clés de la campagne présidentielle 2027, jusqu’au second tour.", 0.7],
   ["/2027/parrainages", "Les parrainages de la présidentielle", "Les 500 signatures d’élus nécessaires pour être candidat à la présidentielle : qui a parrainé qui.", 0.6],
   ["/elus", "Vos élus", "Députés, sénateurs, eurodéputés : qui ils sont, comment ils votent, ce qu’ils disent.", 0.7],
@@ -323,7 +323,7 @@ for (const c of candidates) {
       ])],
       ...(full?.mandates?.length ? [["Mandats", `<ul>${full.mandates.slice(0, 12).map((x) => `<li>${esc(x.label?.fr ?? x.office ?? "")}${x.from ? ` (${x.from.slice(0, 4)}–${x.to ? x.to.slice(0, 4) : "en cours"})` : ""}</li>`).join("")}</ul>`]] : []),
       ...(full?.candidacies?.length ? [["Candidatures passées", `<ul>${full.candidacies.slice(0, 12).map((x) => `<li>${esc(`${x.date?.slice(0, 4) ?? ""} · ${x.office?.fr ?? x.type ?? ""}${x.place ? `, ${x.place}` : ""}${x.pct != null ? ` : ${String(x.pct).replace(".", ",")} %` : ""}${x.elected ? " (élu·e)" : ""}`)}</li>`).join("")}</ul>`]] : []),
-      ["À lire", linkList([...(prog ? [[`Le programme de ${c.name}`, `/programmes/${c.slug}`]] : []), ["Les sondages de la présidentielle", "/sondages"], ["Le quiz : quel candidat vous ressemble ?", "/quiz"], ...candidates.filter((o) => o.slug !== c.slug).map((o) => [o.name, `/candidat/${o.slug}`, o.party?.fr])])],
+      ["À lire", linkList([...(prog ? [[`Le programme ${de(c.name)}`, `/programmes/${c.slug}`]] : []), ["Les sondages de la présidentielle", "/sondages"], ["Le quiz : quel candidat vous ressemble ?", "/quiz"], ...candidates.filter((o) => o.slug !== c.slug).map((o) => [o.name, `/candidat/${o.slug}`, o.party?.fr])])],
     ],
     ...(/^https:\/\/(commons|upload)\.wikimedia\.org\//.test(c.photo ?? "") ? { image: c.photo } : {}),
     ld: [{ "@type": "Person", name: c.name, ...(c.photo ? { image: c.photo } : {}), ...(c.party?.fr ? { affiliation: { "@type": "Organization", name: c.party.fr } } : {}), ...(full?.born?.date ? { birthDate: full.born.date } : {}), ...(full?.wikidata ? { sameAs: [`https://www.wikidata.org/wiki/${full.wikidata}`] } : {}), url: ORIGIN + `/candidat/${c.slug}` }],
@@ -332,8 +332,8 @@ for (const c of candidates) {
 }
 for (const p of programmes) {
   page({
-    path: `/programmes/${p.slug}`, title: `Le programme de ${p.candidate} pour 2027${p.programme ? ` : ${p.programme}` : ""}`, h1: `${p.candidate} : ${p.programme ?? "le programme"}`,
-    desc: `Le programme de ${p.candidate} (${p.party ?? ""}) mesure par mesure : ce qu’il propose, ce que ça coûte selon le parti et selon les instituts, ce que dit le droit, et comment ses élus votent.`,
+    path: `/programmes/${p.slug}`, title: `Le programme ${de(p.candidate)} pour 2027${p.programme ? ` : ${p.programme}` : ""}`, h1: `${p.candidate} : ${p.programme ?? "le programme"}`,
+    desc: `Le programme ${de(p.candidate)} (${p.party ?? ""}) mesure par mesure : ce qu’il propose, ce que ça coûte selon le parti et selon les instituts, ce que dit le droit, et comment ses élus votent.`,
     trail: [["Accueil", "/"], ["Les programmes", "/programmes"]],
     sections: [["À lire", linkList([[`${p.candidate}, la fiche`, `/candidat/${p.slug}`], ["Comparer les programmes par thème", "/programmes"]])]],
     group: "pages", priority: 0.8,
@@ -344,7 +344,7 @@ for (const p of programmes) {
 for (const e of elections) {
   page({
     path: `/histoire/${e.id}`, title: e.title.fr, h1: e.title.fr,
-    desc: `${e.title.fr}${e.winner?.name ? ` : élection de ${e.winner.name}` : ""}. Les résultats${e.direct ? " tour par tour, la carte, la participation" : ""}, le contexte. ${e.method?.fr ?? ""}.`.replace(/\s+/g, " "),
+    desc: `${e.title.fr}${e.winner?.name ? ` : élection ${de(e.winner.name)}` : ""}. Les résultats${e.direct ? " tour par tour, la carte, la participation" : ""}, le contexte. ${e.method?.fr ?? ""}.`.replace(/\s+/g, " "),
     trail: [["Accueil", "/"], ["Toutes les élections depuis 1848", "/resultats"]],
     group: "pages", priority: 0.5,
   });
@@ -364,7 +364,7 @@ for (const d of departments) {
       ["Les plus grandes communes", linkList([...list].filter((c) => c.type === "commune" && c.population?.value).sort((a, b) => b.population.value - a.population.value).slice(0, 15).map((c) => [c.name, `/ville/${c.code}`, `${nf(c.population.value)} habitants`]))],
       ["Les élus du département", linkList([
         ...deputes.filter((m) => m.numDepartement === depCode).map((m) => [`${m.prenom} ${m.nom}, ${fem(m) ? "députée" : "député"} de la ${ord(m.numCirco)} circonscription`, `/depute/${m.id}`, m.groupe?.abrev]),
-        ...(senDeps.has(depCode) ? [[`Les sénateurs de ${depName}`, `/senat/${depCode}`]] : []),
+        ...(senDeps.has(depCode) ? [[`Les sénateurs du département (${depName})`, `/senat/${depCode}`]] : []),
       ])],
       ["Toutes les communes", linkList([...list].sort((a, b) => a.name.localeCompare(b.name, "fr")).map((c) => [c.name, `/ville/${c.code}`, c.postcodes?.[0]]))],
     ],
@@ -420,7 +420,7 @@ for (const d of departments) {
     sections.push(["Élus et comparaisons", linkList([
       ...mps.slice(0, 4).map((m) => [`${m.prenom} ${m.nom}, ${fem(m) ? "députée" : "député"} ${m.groupe?.abrev ?? ""}`, `/depute/${m.id}`]),
       ...(c.districts ?? []).slice(0, 4).map((d) => [`Circonscription ${d.code.slice(-2)} : résultats des législatives`, `/circo/${d.code}`]),
-      [`Les sénateurs de ${depName}`, `/senat/${depCode}`],
+      [`Les sénateurs du département (${depName})`, `/senat/${depCode}`],
       [`Comparer ${c.name} à une autre commune`, `/comparer/${c.code}`],
     ])]);
     if (near.length) sections.push(["Communes voisines", linkList(near.map((o) => [o.name, `/ville/${o.code}`]))]);

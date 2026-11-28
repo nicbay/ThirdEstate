@@ -80,7 +80,7 @@ export async function heroDay() {
   const pollsHtml = `<section class="hday-block ed-polls">
         <header><h2>${L(`Moyenne des sondages au ${fmtDate(latest)}`, `Poll average, ${fmtDate(latest)}`)}</h2><a href="#/sondages">${L("Chaque sondage", "Every poll")} →</a></header>
         <ol class="hdp">${pollRows}</ol>
-        <p class="hday-small">${L("Intentions de vote aujourd’hui, pondérées par la note des instituts, corrigées de leurs penchants · variation sur 7 jours. Le graphique au-dessus prolonge ces moyennes jusqu’au premier tour.", "Voting intention today, weighted by institute grade, corrected for their leans · change over 7 days. The chart above carries these averages forward to the first round.")}${infoTip(L("Chaque sondage compte selon la note de son institut (de A+ à F), gagnée par l’écart entre ses derniers sondages et les résultats depuis 2002. La flèche donne la variation sur les 7 derniers jours.", "Each poll counts by its institute’s grade (A+ to F), earned from how far its final polls landed from the results since 2002. The arrow is the change over the last 7 days."), L("À propos de la moyenne", "About the average"))}${lastLine ? ` · ${lastLine}` : ""}</p>
+        <p class="hday-small">${L("Intentions de vote aujourd’hui, pondérées par la note des instituts, corrigées de leurs penchants · variation sur 7 jours. Le graphique au-dessus prolonge ces moyennes jusqu’au premier tour.", "Voting intention today, weighted by institute grade, corrected for their leans · change over 7 days. The chart above carries these averages forward to the first round.")}${infoTip(L("Chaque sondage compte selon la note de son institut (de A+ à F), tirée de l’écart entre ses derniers sondages et les résultats depuis 2002. La flèche donne la variation sur les 7 derniers jours.", "Each poll counts by its institute’s grade (A+ to F), earned from how far its final polls landed from the results since 2002. The arrow is the change over the last 7 days."), L("À propos de la moyenne", "About the average"))}${lastLine ? ` · ${lastLine}` : ""}</p>
       </section>`;
 
   // ---- widget 1: the Assembly, 577 dots that fly from the map into the seats
@@ -144,7 +144,7 @@ export async function heroDay() {
       </nav>
       <section class="box hday-town" aria-labelledby="hday-town-title">
         <p class="hday-town-k">${L("Votre commune", "Your town")}</p>
-        <h2 id="hday-town-title">${L("Votre commune, votre député, et comment il a voté", "Your town, your MP, how it voted")}</h2>
+        <h2 id="hday-town-title">${L("Votre commune, votre député, et comment il a voté", "Your town, your MP, and how they voted")}</h2>
         ${searchBox(L("Une ville ou un code postal", "A town or a postcode"))}
         ${getHome()?.code ? `<p class="hday-town-me">${L("Votre commune", "Your town")}${colon()}<a href="#/ville/${getHome()!.code}">${esc(getHome()!.commune ?? "")} →</a></p>` : ""}
       </section>

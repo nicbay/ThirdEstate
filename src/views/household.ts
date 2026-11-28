@@ -100,7 +100,7 @@ export async function renderHousehold(app: HTMLElement) {
         <h1>${L("Le programme de Mélenchon vous coûterait-il ou vous rapporterait-il ?", "Would Mélenchon’s program cost you or pay you?")}</h1>
         <p class="dek">${L(
           "Décrivez votre foyer : le simulateur applique les mesures chiffrables de L’Avenir en commun (version 2027) aux règles fiscales et sociales de 2026, mesure par mesure. Ce sont des estimations : chaque hypothèse est affichée.",
-          "Describe your household: the simulator applies the measures of L’Avenir en commun (2027 version) that can be costed to 2026 tax and benefit rules, measure by measure. These are estimates: every assumption is shown.")}</p>
+          "Describe your household: the simulator applies the costable measures of L’Avenir en commun (2027 version) to 2026 tax and benefit rules, measure by measure. These are estimates: every assumption is shown.")}</p>
         <nav class="prog-jump" aria-label="${L("Sur cette page", "On this page")}">
           <a href="#/programmes/${SLUG}/simulateur#hh-sim">${L("Votre foyer", "Your household")}</a>
           <a href="#/programmes/${SLUG}/simulateur#repartition">${L("Qui paie les hausses d’impôts", "Who pays the tax rises")}</a>
@@ -147,7 +147,7 @@ export async function renderHousehold(app: HTMLElement) {
               <label>${L("Revenus du capital par an (dividendes, intérêts, plus-values hors livrets, PEA et assurance-vie)", "Capital income a year (dividends, interest, capital gains, excluding tax-free savings accounts, PEA and life insurance)")}<input type="number" inputmode="numeric" min="0" step="500" id="hh-capital" value="${h.capital}"></label>
               <label>${L("Patrimoine net taxable", "Net taxable wealth")}<select id="hh-wealth">${bandOptions(WEALTH_BANDS, h.wealth)}</select></label>
               <label>${L("dont immobilier", "of which property")}<select id="hh-re">${[0, 0.25, 0.5, 0.75, 1].map((s) => `<option value="${s}" ${Math.abs((h.wealth ? h.realEstate / h.wealth : 0.5) - s) < 0.01 ? "selected" : ""}>${fmtPct(s * 100, 0)}</option>`).join("")}</select></label>
-              <label>${L("Héritage attendu (votre part, en ligne directe)", "Expected inheritance (your share, from a parent)")}<select id="hh-inherit">${bandOptions(INHERIT_BANDS, h.inheritance)}</select></label>
+              <label>${L("Héritage attendu (votre part, en ligne directe)", "Expected inheritance (your share, from a parent or grandparent)")}<select id="hh-inherit">${bandOptions(INHERIT_BANDS, h.inheritance)}</select></label>
             </div>
           </details>
           <p class="muted small">${L("Rien n’est envoyé : le calcul se fait dans votre navigateur, qui garde vos réponses pour votre prochaine visite.", "Nothing is sent: the calculation runs in your browser, which keeps your answers for your next visit.")} <button type="button" class="linkish" id="hh-clear">${L("Effacer mes réponses", "Clear my answers")}</button></p>
@@ -342,7 +342,7 @@ function distHtml(d: DistFile, r: Result): string {
     </div>
     <p class="hh-mine">${L(
       `Votre foyer : niveau de vie estimé ${eur(r.nivVie)} par an et par unité de consommation, soit le groupe « ${esc(mine.fr)} » (repéré par le trait vertical). Hausses d’impôts estimées pour vous : ${eur(Math.max(0, r.taxRise))}${r.taxRise < 0 ? ` (baisse de ${eur(-r.taxRise)})` : ""}, ${fmtPct(myPct, 1)} de votre revenu disponible ; moyenne du groupe : ${taxEur(rows.find((x) => x.g.id === mine.id)!.total)}.`,
-      `Your household: estimated standard of living ${eur(r.nivVie)} a year per consumption unit, which is the “${esc(mine.en)}” group. Estimated tax rises for you: ${eur(Math.max(0, r.taxRise))}${r.taxRise < 0 ? ` (a cut of ${eur(-r.taxRise)})` : ""}, ${fmtPct(myPct, 1)} of your disposable income; group average: ${taxEur(rows.find((x) => x.g.id === mine.id)!.total)}.`)}</p>
+      `Your household: estimated standard of living ${eur(r.nivVie)} a year per consumption unit, which is the “${esc(mine.en)}” group (marked by the vertical line). Estimated tax rises for you: ${eur(Math.max(0, r.taxRise))}${r.taxRise < 0 ? ` (a cut of ${eur(-r.taxRise)})` : ""}, ${fmtPct(myPct, 1)} of your disposable income; group average: ${taxEur(rows.find((x) => x.g.id === mine.id)!.total)}.`)}</p>
     <details class="hh-table">
       <summary>${L("Le détail en euros par ménage et par an", "The detail in euros per household a year")}</summary>
       <div class="table-scroll"><table class="table">
@@ -372,7 +372,7 @@ function notCounted(): string {
     ["Ledc583", { fr: "Cotisation sociale universelle remplaçant cotisations et CSG : aucun taux publié.", en: "Universal social contribution replacing contributions and CSG: no rates published." }],
     ["L4ad94f", { fr: "Taxe d’habitation progressive rétablie (80 % des ménages exonérés) : barème non publié.", en: "Progressive council tax restored (80% of households exempt): no scale published." }],
     ["L80e85c", { fr: "35 heures, heures supplémentaires majorées, 32 heures dans certains métiers : dépend de l’employeur.", en: "35-hour week, higher overtime pay, 32 hours in some jobs: depends on the employer." }],
-    ["Lc140d0", { fr: "Indexation des salaires sur l’inflation : dépend de l’inflation future.", en: "Wages indexed on inflation: depends on future inflation." }],
+    ["Lc140d0", { fr: "Indexation des salaires sur l’inflation : dépend de l’inflation future.", en: "Wages indexed to inflation: depends on future inflation." }],
     ["L86eca6", { fr: "Garantie d’emploi au SMIC pour les chômeurs de longue durée : dépend de votre parcours.", en: "Job guarantee at the minimum wage for the long-term unemployed: depends on your situation." }],
     ["Ldc0fbb", { fr: "AAH au niveau du SMIC, allocation de soutien familial revalorisée : non saisies dans le formulaire.", en: "Disability allowance at the minimum wage, higher single-parent allowance: not in the form." }],
     ["L8e6d31", { fr: "« TVA grand luxe », plafond de 5 logements transmissibles, refonte de la taxe foncière : taux ou modalités non publiés.", en: "‘Luxury VAT’, cap of 5 homes that can be inherited, property-tax overhaul: rates or rules not published." }],

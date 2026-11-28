@@ -119,7 +119,7 @@ export async function renderSources(app: HTMLElement) {
         <h2>${L("Votre commune en bref", "Your town in brief")}</h2>
         <p>${L(
           "Le résumé en tête de chaque commune est écrit automatiquement à partir des données ci-dessus : député, résultat des législatives dans la circonscription principale, niveau de vie comparé à la médiane nationale des circonscriptions, et l’indicateur de délinquance le plus éloigné de la moyenne nationale. Paris, Lyon et Marseille ne publient la délinquance qu’à l’échelle de la ville entière.",
-          "The summary at the top of each town is written automatically from the data above: MP, legislative result in the main district, standard of living against the national median of districts, and the crime indicator furthest from the national average. Paris, Lyon and Marseille crime is published for the whole city only.",
+          "The summary at the top of each town is written automatically from the data above: MP, legislative result in the main district, standard of living against the national median of districts, and the crime indicator furthest from the national average. For Paris, Lyon and Marseille, crime is published for the whole city only.",
         )}</p>
         <h2>${L("Présence numérique et réseaux sociaux", "Digital presence and social media")}</h2>
         <p>${L(

@@ -238,7 +238,7 @@ function mpCard(f: LoyaltyFile, m: LoyaltyMp, deputes: Depute[], scrutins: Scrut
   const byNum = new Map(scrutins.map((s) => [s[0], s]));
   const grp = m.g ? f.groups[m.g] : null;
   const she = deputes.find((d) => d.id === m.id)?.civ === "Mme"; // the French agrees with the MP
-  const head = `<header class="card-head"><h2>${L(she ? "Doigt sur la couture ou frondeuse ?" : "Doigt sur la couture ou frondeur ?", "Toeing the line or rebel?")}</h2> <a class="small" href="#/assemblee/loyaute">${L("Voir le classement", "See the ranking")} →</a></header>`;
+  const head = `<header class="card-head"><h2>${L(she ? "Doigt sur la couture ou frondeuse ?" : "Doigt sur la couture ou frondeur ?", "Toeing the line or rebelling?")}</h2> <a class="small" href="#/assemblee/loyaute">${L("Voir le classement", "See the ranking")} →</a></header>`;
 
   let body: string;
   if (m.rank && m.loyalty != null) {

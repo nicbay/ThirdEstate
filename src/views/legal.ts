@@ -72,7 +72,7 @@ export function renderLegal(app: HTMLElement) {
         <p>${L("Pour fonctionner, il garde quelques réglages dans le stockage local de votre navigateur. Ils ne quittent pas votre appareil et vous pouvez les effacer à tout moment :", "To work, it keeps a few settings in your browser’s local storage. They never leave your device and you can erase them at any time:")}</p>
         <ul>
           <li>${L("la langue choisie ;", "the language you chose;")}</li>
-          <li>${L("votre commune, si vous cliquez « J’habite ici », et le député qui lui correspond ;", "your town, if you click ‘I live here’, and its MP;")}</li>
+          <li>${L("votre commune, si vous cliquez sur « J’habite ici », et le député qui lui correspond ;", "your town, if you click ‘I live here’, and its MP;")}</li>
           <li>${L("vos dernières recherches et vos scénarios du simulateur ;", "your recent searches and your simulator scenarios;")}</li>
           <li>${L("ce que vous saisissez dans le simulateur de foyer (revenus, composition) : ces chiffres restent dans votre navigateur et ne sont jamais envoyés ;", "what you enter in the household simulator (income, household): these figures stay in your browser and are never sent;")}</li>
           <li>${L("si vous vous connectez pour enregistrer un scénario, le jeton de session de Supabase.", "if you sign in to save a scenario, Supabase’s session token.")}</li>

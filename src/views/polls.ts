@@ -155,7 +155,7 @@ function marketsHtml(data: NonNullable<Awaited<ReturnType<typeof loadMarkets>>>,
       : `Our forecast gives ${esc(top.name)} a ${pct(top.win, 0)} chance${mk != null ? `; the markets combined, ${pct(mk, 0)}` : ""}. The site’s reference figure is the forecast; the markets are a second opinion, one that also prices who will actually stand.`} <a href="#/sondages#point">${L("Pourquoi les deux diffèrent", "Why the two differ")}</a></p>` : ""}
     <p class="muted small">${L(
       "Prix des contrats « oui », lus comme une probabilité implicite. Ce ne sont pas des sondages : ils reflètent les paris d’une poignée de parieurs, souvent hors de France. Polymarket est bloqué en France ; il est interrogé depuis un serveur hors de France.",
-      "Price of “yes” contracts, read as an implied probability. These aren’t polls: they reflect bets by a small number of traders, mostly outside France. Polymarket is blocked in France and is queried from a server outside the country.",
+      "Price of “yes” contracts, read as an implied probability. These aren’t polls: they reflect bets by a small number of traders, often outside France. Polymarket is blocked in France and is queried from a server outside the country.",
     )} ${L("Mis à jour le", "Updated")} ${fmtDate(data.fetchedAt)}.</p>
     <div class="grid-3">${data.markets
       .map(

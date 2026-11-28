@@ -217,7 +217,7 @@ function referenceView(d: File2022, who: (c: Candidate) => string, open: boolean
     <div class="kpis pg-kpis">
       ${first ? `<div><span class="muted">${L("Premier à 500", "First to 500")}</span><strong>${esc(surname(first))}</strong><span class="small muted">${esc(shortDate(first.reached500On!))}, J+${days(w.opened, first.reached500On!)}</span></div>` : ""}
       ${last ? `<div><span class="muted">${L("Dernier qualifié", "Last to qualify")}</span><strong>${esc(surname(last))}</strong><span class="small muted">${esc(shortDate(last.reached500On!))}, ${L("dernière liste", "final list")}</span></div>` : ""}
-      ${short[0] ? `<div><span class="muted">${L("Le plus proche sans y parvenir", "Closest to miss")}</span><strong>${esc(surname(short[0]))}</strong><span class="small muted">${fmtNum(short[0].total)} ${L("parrainages", "sponsorships")}</span></div>` : ""}
+      ${short[0] ? `<div><span class="muted">${L("Le plus proche sans y parvenir", "Closest miss")}</span><strong>${esc(surname(short[0]))}</strong><span class="small muted">${fmtNum(short[0].total)} ${L("parrainages", "sponsorships")}</span></div>` : ""}
       <div><span class="muted">${L("Parrainages validés", "Validated sponsorships")}</span><strong>${fmtNum(t.sponsorships)}</strong></div>
     </div>
     ${bars("pg-2022", inRace, who, { minDeps: d.rules.minDepartments, maxShare: d.rules.maxShare, extra, visible: open ? 12 : inRace.length })}

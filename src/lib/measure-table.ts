@@ -140,7 +140,7 @@ export function measureTable(rows: Assessed[], opts: { id: string; partyName: st
     </div>
     <p class="muted small">${L(
       `Coûts en milliards d’euros par an, en régime de croisière ; négatif = dépense ou perte de recettes, positif = recette. Quand l’Institut Montaigne a chiffré la mesure, son chiffre est repris ; sinon, l’estimation de la rédaction est indiquée avec son calcul et ses sources. Les totaux additionnent des chiffrages d’origines différentes : un ordre de grandeur, pas un budget. « Populisme économique » : avantage large et immédiat pour les ménages, coûtant au moins 2 Md€ par an, et soit jugé peu réalisable, soit face à un obstacle juridique sérieux, soit chiffré par un tiers à au moins 1,5 fois le chiffre du parti (« en partie » : avantage large et coûteux, sans ces signes). Ce critère décrit la forme d’une promesse, pas les intentions de ${opts.partyName}.`,
-      `Costs in € billions a year at full speed; negative = spending or lost revenue, positive = revenue. Where Institut Montaigne costed the measure its figure is used; otherwise our estimate is shown with its calculation and sources. Totals add up costings from different sources: an order of magnitude, not a budget. ‘Economic populism’: a broad, immediate benefit for households, costing at least €2bn a year, and either judged hard to deliver, facing a serious legal obstacle, or costed by a third party at 1.5× the party’s figure or more (‘partly’: a broad, costly benefit without those signs). The test describes the shape of a promise, not the intentions of ${opts.partyName}.`)}</p>`;
+      `Costs in € billions a year once fully phased in; negative = spending or lost revenue, positive = revenue. Where Institut Montaigne costed the measure its figure is used; otherwise our estimate is shown with its calculation and sources. Totals add up costings from different sources: an order of magnitude, not a budget. ‘Economic populism’: a broad, immediate benefit for households, costing at least €2bn a year, and either judged hard to deliver, facing a serious legal obstacle, or costed by a third party at 1.5× the party’s figure or more (‘partly’: a broad, costly benefit without those signs). The test describes the shape of a promise, not the intentions of ${opts.partyName}.`)}</p>`;
   return html;
 }
 
@@ -165,7 +165,7 @@ export function mountMeasureTable(root: HTMLElement, id: string, rows: Assessed[
   const syncAll = () => {
     const open = groups.filter((g) => !g.hidden).every((g) => g.open);
     allBtn.dataset.open = open ? "0" : "1";
-    allBtn.textContent = open ? L("Tout replier", "Fold all") : L("Tout ouvrir", "Open all");
+    allBtn.textContent = open ? L("Tout replier", "Collapse all") : L("Tout ouvrir", "Open all");
   };
   groups.forEach((g) => g.addEventListener("toggle", syncAll));
   allBtn.addEventListener("click", () => { const open = allBtn.dataset.open === "1"; groups.forEach((g) => { if (!g.hidden) g.open = open; }); syncAll(); });

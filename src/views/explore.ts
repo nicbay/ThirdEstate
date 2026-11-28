@@ -275,7 +275,7 @@ export async function renderExplorer(app: HTMLElement, dep?: string) {
       <header class="page-head">
         <p class="eyebrow">${L("Ma commune", "My town")}</p>
         <h1>${L("Votre commune, de la mairie à l’Assemblée", "Your town, from the town hall to the Assembly")}</h1>
-        <p class="dek">${L("Vos élus et leurs votes, la vie locale, l’emploi, les écoles, la sécurité, et ce qui fait le charme du coin. Cherchez une adresse ou parcourez un département.", "Your elected officials and how they vote, local life, jobs, schools, safety, and what makes the place good. Search an address or browse a department.")}</p>
+        <p class="dek">${L("Vos élus et leurs votes, la vie locale, l’emploi, les écoles, la sécurité, et ce qui fait le charme du coin. Cherchez une adresse ou parcourez un département.", "Your elected officials and how they vote, local life, jobs, schools, safety, and what gives the place its charm. Search an address or browse a department.")}</p>
         ${searchBox()}
       </header>
       <div class="explore-bar">

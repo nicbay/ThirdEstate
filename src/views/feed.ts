@@ -23,7 +23,7 @@ export async function renderFeed(app: HTMLElement) {
         <h1>${L("L’actualité, et ce qu’en disent les responsables politiques à gauche et à droite", "The news, and what politicians on the left and right say about it")}</h1>
         <p class="dek">${L(
           `Les sujets des ${feed.windowHours} dernières heures dans la presse, avec les messages X que les articles eux-mêmes citent : c’est la rédaction qui les relie au sujet. Chaque message est placé à gauche, au centre ou à droite d’après son contenu quand il a été analysé, sinon d’après le groupe ou le parti de son auteur.`,
-          `The stories of the last ${feed.windowHours} hours in the press, with the X posts the articles themselves quote: the newsroom ties them to the story. Each post is placed left, centre or right from its content when it has been rated, otherwise from its author’s group or party.`,
+          `The stories of the last ${feed.windowHours} hours in the press, with the X posts the articles themselves quote: the newsroom ties them to the story. Each post is placed left, centre or right based on its content when it has been rated, otherwise on its author’s group or party.`,
         )}</p>
         <div class="filters">
           <label class="check"><input type="checkbox" id="f-pop" ${ui.populist ? "checked" : ""}/> ${L("Seulement les messages au ton populiste", "Only posts with a populist tone")}</label>
@@ -118,11 +118,11 @@ function pressPost(p: FeedPress, outletName: Map<string, string>, fr: boolean) {
   // say why the post sits in its column: the content rating, or only the author's camp
   const why =
     p.sideFrom === "content"
-      ? L("placé d’après le contenu du message", "placed from the post’s content")
+      ? L("placé d’après le contenu du message", "placed based on the post’s content")
       : p.sideFrom === "group"
-        ? L(`placé d’après le groupe de l’auteur (${a.group?.abrev ?? ""})`, `placed from the author’s group (${a.group?.abrev ?? ""})`)
+        ? L(`placé d’après le groupe de l’auteur (${a.group?.abrev ?? ""})`, `placed based on the author’s group (${a.group?.abrev ?? ""})`)
         : p.sideFrom === "party"
-          ? L(`placé d’après le parti de l’auteur (${a.party ?? ""})`, `placed from the author’s party (${a.party ?? ""})`)
+          ? L(`placé d’après le parti de l’auteur (${a.party ?? ""})`, `placed based on the author’s party (${a.party ?? ""})`)
           : "";
   const quoted = p.quotedBy
     .map((q) => `<a href="${esc(safeUrl(q.link))}" target="_blank" rel="noopener" title="${esc(q.title)}">${esc(outletName.get(q.outlet) ?? q.outlet)}</a>`)

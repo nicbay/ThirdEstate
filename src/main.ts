@@ -186,7 +186,7 @@ function sections(): Section[] {
       key: "2027", icon: "ballot", short: ["2027", "2027"], href: "#/2027", match: /^#\/(2027|sondages|simulateur|fil|quiz|candidat|programmes)/, fr: "2027", en: "2027",
       blurb: ["La présidentielle : qui est en tête, ce qu’ils proposent, comment voter.", "The presidential race: who leads, what they propose, how to vote."],
       children: [
-        { group: RACE, hi: true, href: "#/2027", match: /^#\/(2027$|candidat)/, fr: "La course", en: "The race", desc: ["La prévision, les candidats, leurs fiches", "The forecast, the candidates, their files"] },
+        { group: RACE, hi: true, href: "#/2027", match: /^#\/(2027$|candidat)/, fr: "La course", en: "The race", desc: ["La prévision, les candidats, leurs fiches", "The forecast, the candidates, their profiles"] },
         { group: RACE, href: "#/sondages", match: /^#\/sondages$/, fr: "Sondages et marchés", en: "Polls and markets", desc: ["Chaque sondage, et ce que parient les marchés", "Every poll, and what the markets are betting"] },
         { group: RACE, href: "#/sondages/instituts", match: /^#\/sondages\/instituts/, fr: "Les instituts notés", en: "Pollsters graded", sub: ["Instituts", "Pollsters"], desc: ["De A+ à F, sur leurs sondages passés face aux résultats", "A+ to F, on their past polls against the results"] },
         { group: RACE, href: "#/sondages#point", match: NEVER, minor: true, fr: "Le point du jour", en: "Today’s brief", desc: ["Ce qui a bougé en 24 heures, et pourquoi peut-être", "What moved in 24 hours, and perhaps why"] },
@@ -720,7 +720,7 @@ const paintMyCand = (root: ParentNode = document) => {
   root.querySelectorAll<HTMLButtonElement>("button[data-my-cand]").forEach((b) => {
     const on = b.dataset.myCand === mine;
     b.setAttribute("aria-pressed", String(on));
-    b.textContent = on ? L(`Vous suivez ${b.dataset.name}`, `You follow ${b.dataset.name}`) : L(`Suivre ${b.dataset.name}`, `Follow ${b.dataset.name}`);
+    b.textContent = on ? L(`Vous suivez ${b.dataset.name}`, `You’re following ${b.dataset.name}`) : L(`Suivre ${b.dataset.name}`, `Follow ${b.dataset.name}`);
   });
 };
 document.addEventListener("click", (e) => {
@@ -729,7 +729,7 @@ document.addEventListener("click", (e) => {
   const on = getMyCandidate()?.slug === b.dataset.myCand;
   setMyCandidate(on ? null : { slug: b.dataset.myCand!, name: b.dataset.name ?? "" });
   paintMyCand();
-  if (!on) toast(L(`Vous suivez ${b.dataset.name}. +15 points sur votre profil.`, `You follow ${b.dataset.name}. +15 points on your profile.`), { uniqueID: "my-cand", action: { label: L("Voir mon profil", "See my profile"), href: "/compte" } });
+  if (!on) toast(L(`Vous suivez ${b.dataset.name}. +15 points sur votre profil.`, `You’re following ${b.dataset.name}. +15 points on your profile.`), { uniqueID: "my-cand", action: { label: L("Voir mon profil", "See my profile"), href: "/compte" } });
 });
 new MutationObserver(() => paintMyCand(app)).observe(app, { childList: true, subtree: false });
 setLang(getLang());
