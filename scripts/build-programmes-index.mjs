@@ -7,7 +7,7 @@ import { readdir, readFile, writeFile } from "node:fs/promises";
 const DIR = new URL("../public/data/programmes/", import.meta.url);
 const STATUS = new Set(["maintained", "modified", "new", "dropped"]);
 // <slug>-household.json holds the household simulator's distribution data, not a programme
-const files = (await readdir(DIR)).filter((f) => f.endsWith(".json") && !["index.json", "posts.json", "compare.json"].includes(f) && !f.endsWith("-household.json"));
+const files = (await readdir(DIR)).filter((f) => f.endsWith(".json") && !["index.json", "posts.json", "compare.json", "updates.json"].includes(f) && !f.endsWith("-household.json"));
 const out = [];
 const errors = [];
 // compare.json: every candidate's current measures in one compact file, for the hub (#/programmes): theme by theme,
