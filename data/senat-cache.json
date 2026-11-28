@@ -8505,23 +8505,6 @@
    "gap": 301,
    "positions": "dropped"
   },
-  "2023-100": {
-   "id": "2023-100",
-   "published": {
-    "pour": 103,
-    "contre": 228,
-    "abstention": 10,
-    "nppv": 7
-   },
-   "nominative": {
-    "P": 340,
-    "C": 0,
-    "A": 0,
-    "N": 8
-   },
-   "gap": 475,
-   "positions": "dropped"
-  },
   "2023-99": {
    "id": "2023-99",
    "published": {
@@ -8537,6 +8520,23 @@
     "N": 7
    },
    "gap": 476,
+   "positions": "dropped"
+  },
+  "2023-100": {
+   "id": "2023-100",
+   "published": {
+    "pour": 103,
+    "contre": 228,
+    "abstention": 10,
+    "nppv": 7
+   },
+   "nominative": {
+    "P": 340,
+    "C": 0,
+    "A": 0,
+    "N": 8
+   },
+   "gap": 475,
    "positions": "dropped"
   }
  }
