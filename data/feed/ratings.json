@@ -1,26 +1,5 @@
 {
   "ratings": {
-    "bsky:at://did:plc:vjwqkzs27ge527nmwckanige/app.bsky.feed.post/3n2a3h7kdks2h": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-13T23:52:17.383Z",
-      "storyItems": [],
-      "storyTitle": null,
-      "political": false,
-      "lean": {
-        "score": null,
-        "rationale_fr": "Message de commémoration sans position politique explicite.",
-        "rationale_en": "Commemorative message with no explicit political position."
-      },
-      "populism": {
-        "score": 0,
-        "markers": [],
-        "rationale_fr": "Aucune rhétorique populiste.",
-        "rationale_en": "No populist rhetoric."
-      },
-      "check": null,
-      "postTime": "2026-11-13T22:57:30.683Z"
-    },
     "bsky:at://did:plc:5s35d5bkcdc4i6msaogvvl7k/app.bsky.feed.post/3n2brbhw22s2l": {
       "model": "claude-haiku-5-5",
       "promptVersion": "feed-rating-v2",
@@ -286,56 +265,6 @@
       },
       "check": null,
       "postTime": "2026-11-14T09:15:46.004Z"
-    },
-    "bsky:at://did:plc:k4zxrbhn35w47kyskzs3pse4/app.bsky.feed.post/3n2ayr6ey222q": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-14T15:21:06.724Z",
-      "storyItems": [
-        "f7ea34d82dd0",
-        "60b052fb5ad8"
-      ],
-      "storyTitle": "Jeune Garde : Un assistant du député LFI Raphaël Arnault entendu dans l’enquête sur la reconstitution du groupuscule",
-      "political": true,
-      "lean": {
-        "score": -0.7,
-        "rationale_fr": "Dénonce la répression des lycéen·nes et les gardes à vue, positions de gauche radicale sur les libertés et la jeunesse.",
-        "rationale_en": "Denounces repression of high-school students and police custody, a radical-left position on civil liberties and youth."
-      },
-      "populism": {
-        "score": 0.3,
-        "markers": [
-          "appel_emotionnel",
-          "delegitimation"
-        ],
-        "rationale_fr": "Mise en avant de la violence subie par la jeunesse et de l'indignation, avec des autorités implicitement présentées comme oppressives.",
-        "rationale_en": "Emphasises violence against youth and indignation, with authorities implicitly cast as oppressive."
-      },
-      "check": null,
-      "postTime": "2026-11-14T07:42:03.514Z"
-    },
-    "bsky:at://did:plc:skhpi6tvodwwkygydxmka5tm/app.bsky.feed.post/3n2at3ls3ac24": {
-      "model": "claude-haiku-5-5",
-      "promptVersion": "feed-rating-v2",
-      "ratedAt": "2026-11-14T15:21:06.724Z",
-      "storyItems": [],
-      "storyTitle": null,
-      "political": true,
-      "lean": {
-        "score": -0.3,
-        "rationale_fr": "Proposition d'un fonds pour l'emploi des jeunes, mesure active de politique de l'emploi plutôt sociale-démocrate.",
-        "rationale_en": "Proposal for a fund for youth-specific jobs, an active employment policy with a social-democratic flavour."
-      },
-      "populism": {
-        "score": 0.1,
-        "markers": [
-          "peuple_homogene"
-        ],
-        "rationale_fr": "« La jeunesse veut » présente un groupe comme bloc unique, sans rhétorique anti-élites.",
-        "rationale_en": "« La jeunesse veut » presents a group as a single bloc, without anti-elite rhetoric."
-      },
-      "check": null,
-      "postTime": "2026-11-14T06:00:30.650Z"
     },
     "bsky:at://did:plc:hlx5zxbo4kkp7mvtotlaaljg/app.bsky.feed.post/3n2cedjmvg22c": {
       "model": "claude-haiku-5-5",
@@ -18688,6 +18617,118 @@
       },
       "check": null,
       "postTime": "2026-11-25T21:24:42.739Z"
+    },
+    "bsky:at://did:plc:sgunesm6k7o2zrdzdico7ai7/app.bsky.feed.post/3n3ebk4jv5k2e": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-28T08:26:11.793Z",
+      "storyItems": [
+        "a0e090c1d609",
+        "5d1da78660c5",
+        "e9ecbc971d0d"
+      ],
+      "storyTitle": "Manifestations : nouvelle journée de mobilisation samedi, notamment contre les violences faites aux femmes",
+      "political": true,
+      "lean": {
+        "score": -0.5,
+        "rationale_fr": "Appel à mobiliser samedi et demande de 3 milliards d'euros pour les associations et des droits nouveaux : positions de gauche sur les services publics et les droits.",
+        "rationale_en": "Calls for Saturday mobilisation and 3 billion euros for associations plus new rights: left-leaning positions on public services and rights."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Critique des discours et des numéros verts sans rhétorique anti-élites ni opposition peuple contre élites.",
+        "rationale_en": "Criticises speeches and helplines without anti-elite or people-versus-elite rhetoric."
+      },
+      "check": null,
+      "postTime": "2026-11-28T08:22:21.222Z"
+    },
+    "yt:k_7uYhTUq8w": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-28T08:26:11.793Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Critique de l'inflation et de la hausse des prix pour les salariés, sans proposition précise ; ton libéral-conservateur sur le pouvoir d'achat.",
+        "rationale_en": "Criticises inflation and rising prices for workers without a specific proposal; centre-right tone on purchasing power."
+      },
+      "populism": {
+        "score": 0.3,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Formule « les salariés ne s'en sortent plus » qui mise sur le ressenti plutôt que sur une analyse détaillée.",
+        "rationale_en": "The phrase 'workers can no longer make ends meet' relies on feeling rather than detailed analysis."
+      },
+      "check": {
+        "claim": "Hausses de 33 % sur l'alimentation et d'environ 62 % sur l'énergie.",
+        "why_fr": "La période de comparaison n'est pas précisée, et d'autres sources de données sur les prix donnent des séries différentes selon les dates retenues.",
+        "why_en": "The comparison period is not specified, and other price data sources give different series depending on the dates chosen.",
+        "sources": [
+          {
+            "title": "Insee, indices des prix à la consommation",
+            "url": "https://www.insee.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-28T01:30:22.000Z"
+    },
+    "yt:vDqPheyZ7BI": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-28T08:26:11.793Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": 0.5,
+        "rationale_fr": "Responsabilisation financière des parents et exclusion des élèves perturbateurs : position de droite sur l'ordre et l'autorité scolaire.",
+        "rationale_en": "Financial responsibility of parents and exclusion of disruptive pupils: right-leaning position on school order and authority."
+      },
+      "populism": {
+        "score": 0.1,
+        "markers": [],
+        "rationale_fr": "Position sur la discipline scolaire sans attaque contre les élites ni opposition peuple contre élite.",
+        "rationale_en": "Position on school discipline without attacks on elites or people-versus-elite framing."
+      },
+      "check": null,
+      "postTime": "2026-11-28T00:30:15.000Z"
+    },
+    "yt:LzZkixmMvYo": {
+      "model": "claude-haiku-5-5",
+      "promptVersion": "feed-rating-v2",
+      "ratedAt": "2026-11-28T08:26:11.794Z",
+      "storyItems": [],
+      "storyTitle": null,
+      "political": true,
+      "lean": {
+        "score": -0.8,
+        "rationale_fr": "Demande d'interdiction des gaz lacrymogènes au nom de la santé publique, portée par un collectif proche de la gauche radicale.",
+        "rationale_en": "Calls for a ban on tear gas in the name of public health, backed by a collective close to the radical left."
+      },
+      "populism": {
+        "score": 0.4,
+        "markers": [
+          "appel_emotionnel"
+        ],
+        "rationale_fr": "Titre et témoignages mis en avant (« Lacrymos de sang », symptômes inquiétants) pour susciter l'indignation plus que l'argumentation.",
+        "rationale_en": "Headline and testimonies ('blood tear gas', alarming symptoms) stir indignation more than argument."
+      },
+      "check": {
+        "claim": "9 personnes sur 10 déclarent des troubles gynécologiques après exposition aux gaz lacrymogènes, sur la base de 10 000 témoignages.",
+        "why_fr": "Le chiffre provient d'un collectif militant à partir de témoignages auto-déclarés, et non d'une étude indépendante ; il s'agit d'un décompte d'une seule source.",
+        "why_en": "The figure comes from an activist collective based on self-reported testimonies, not an independent study; it is a count from a single source.",
+        "sources": [
+          {
+            "title": "Assemblée nationale",
+            "url": "https://www.assemblee-nationale.fr"
+          }
+        ]
+      },
+      "postTime": "2026-11-27T13:19:28.000Z"
     }
   },
   "failures": {
